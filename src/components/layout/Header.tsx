@@ -370,15 +370,15 @@ function LevelUpModeButton() {
   // level" by subtracting cumulative grants up through the previous level
   // from the user's total usage.
   const picksGrantedThisLevel = getPicksGrantedAtLevel(level);
-  const slotsGrantedThisLevel = getSlotsGrantedAtLevel(level);
+  const slotsGrantedThisLevel = getSlotsGrantedAtLevel(level, build.serverId);
   const cumulativePicksBefore = getPowerPicksAtLevel(level - 1);
-  const cumulativeSlotsBefore = getTotalSlotsAtLevel(level - 1);
+  const cumulativeSlotsBefore = getTotalSlotsAtLevel(level - 1, build.serverId);
   const picksUsedThisLevel = Math.max(0, picksUsed - cumulativePicksBefore);
   const slotsUsedThisLevel = Math.max(0, slotsUsed - cumulativeSlotsBefore);
   const picksPending = Math.max(0, picksGrantedThisLevel - picksUsedThisLevel);
   const slotsPending = Math.max(0, slotsGrantedThisLevel - slotsUsedThisLevel);
   const ready = picksPending === 0 && slotsPending === 0;
-  const nextLevel = getNextGrantLevel(level);
+  const nextLevel = getNextGrantLevel(level, build.serverId);
   const atMax = level >= MAX_LEVEL;
 
   const handleLevelUp = () => {
@@ -391,7 +391,7 @@ function LevelUpModeButton() {
   // they reached before enabling the mode. Disabling the mode leaves level alone.
   const handleToggle = () => {
     if (!levelUpMode) {
-      const progression = getProgressionLevel(picksUsed, slotsUsed);
+      const progression = getProgressionLevel(picksUsed, slotsUsed, build.serverId);
       if (progression < level) setLevel(progression);
     }
     toggleLevelUpMode();
@@ -475,7 +475,7 @@ export function HeaderLevelSlider() {
   // In Level Up mode, compute whether the user has used all grants at the current level.
   // If not, block upward advancement so picks/slots must be placed before advancing.
   const picksAvailable = getPowerPicksAtLevel(level);
-  const slotsAvailable = getTotalSlotsAtLevel(level);
+  const slotsAvailable = getTotalSlotsAtLevel(level, build.serverId);
   const picksUsed = countManualPowerPicks(build);
   const slotsUsed = countPlacedBudgetSlots(build);
   const readyToAdvance = picksUsed >= picksAvailable && slotsUsed >= slotsAvailable;

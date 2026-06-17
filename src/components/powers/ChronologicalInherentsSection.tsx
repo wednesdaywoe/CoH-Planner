@@ -290,7 +290,8 @@ function InherentGroup({
               key={power.name}
               name={power.name}
               iconSrc={getPowerIconPath(power.icon)}
-              size="xs"
+              size="lg"
+              stackedLayout
               muted
               selectedPower={power}
               powerCategory="inherent"
@@ -298,7 +299,7 @@ function InherentGroup({
               isLocked={isLocked}
               slots={power.slots}
               maxSlots={power.maxSlots}
-              toggleSize={shouldShowToggle(power) ? 'sm' : undefined}
+              toggleSize={shouldShowToggle(power) ? 'md' : undefined}
               isActive={power.isActive ?? false}
               onToggle={() => onToggle(power.internalName)}
               onAddSlots={(count) => onAddSlots(power.internalName, count)}

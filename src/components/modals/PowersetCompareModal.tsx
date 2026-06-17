@@ -10,7 +10,7 @@ import { Select } from '@/components/ui';
 import { useUIStore } from '@/stores';
 import { getArchetype, getArchetypeIds } from '@/data/archetypes';
 import { getPowerset } from '@/data/powersets';
-import { calculateDamageWithATTable } from '@/utils/calculations/damage';
+import { calculateDamageWithATTable, dotTickCount } from '@/utils/calculations/damage';
 import type { Power, ScaledDamageEntry } from '@/types/power';
 import type { ArchetypeId } from '@/types/archetype';
 import type { SelectOption } from '@/components/ui/Select';
@@ -121,7 +121,7 @@ function calculateMetric(
         if (val !== null) {
           // For DoT, multiply by tick count
           if (d.duration && d.tickRate && d.tickRate > 0) {
-            const ticks = Math.floor(d.duration / d.tickRate) + 1;
+            const ticks = dotTickCount(d.duration, d.tickRate);
             total += val * ticks;
           } else {
             total += val;

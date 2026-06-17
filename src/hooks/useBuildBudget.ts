@@ -41,7 +41,7 @@ export function useBuildBudget(): BuildBudget {
     (build.epicPool ? countNonGranted(build.epicPool.powers) : 0);
   const currentSlotCount = countPlacedBudgetSlots(build);
   const powerBudget = getPowerPicksAtLevel(build.level);
-  const slotBudget = getTotalSlotsAtLevel(build.level);
+  const slotBudget = getTotalSlotsAtLevel(build.level, build.serverId);
 
   return {
     currentPowerCount,

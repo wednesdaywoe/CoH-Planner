@@ -144,6 +144,7 @@ export {
   getPowerPicksAtLevel,
   // Slot grants
   SLOT_GRANTS,
+  getSlotGrants,
   getSlotsGrantedAtLevel,
   getTotalSlotsAtLevel,
   getNextGrantLevel,

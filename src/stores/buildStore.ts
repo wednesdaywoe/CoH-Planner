@@ -621,11 +621,12 @@ function countPlacedSlots(build: Build): number {
 
 /**
  * Get the number of placeable slots available at a given level.
- * This is the total slot grants (67 at level 50).
- * Free first slots from powers are separate and don't count against this budget.
+ * This is the total slot grants (67 at level 50 on most servers; 71 on
+ * Thunderspy). Free first slots from powers are separate and don't count
+ * against this budget.
  */
-function getPlacedSlotLimit(level: number): number {
-  return getTotalSlotsAtLevel(level);
+function getPlacedSlotLimit(level: number, serverId?: string): number {
+  return getTotalSlotsAtLevel(level, serverId);
 }
 
 /**
@@ -1588,7 +1589,7 @@ export const useBuildStore = create<BuildStore>()(
         // Check total placed slot limit (level-aware)
         // Only count additional slots beyond each power's free first slot.
         // Inherent power slots are excluded entirely from the budget.
-        if (countPlacedSlots(state.build) >= getPlacedSlotLimit(state.build.level)) return false;
+        if (countPlacedSlots(state.build) >= getPlacedSlotLimit(state.build.level, state.build.serverId)) return false;
 
         historyCheckpoint();
         const newSlotIndex = power.slots.length; // index of the slot being added
@@ -2205,7 +2206,7 @@ export const useBuildStore = create<BuildStore>()(
 
       getSlotsRemaining: () => {
         const build = get().build;
-        return getPlacedSlotLimit(build.level) - countPlacedSlots(build);
+        return getPlacedSlotLimit(build.level, build.serverId) - countPlacedSlots(build);
       },
 
       canAddSlot: (powerName, categoryHint) => {
@@ -2215,7 +2216,7 @@ export const useBuildStore = create<BuildStore>()(
 
         return (
           found.power.slots.length < found.power.maxSlots &&
-          countPlacedSlots(state.build) < getPlacedSlotLimit(state.build.level)
+          countPlacedSlots(state.build) < getPlacedSlotLimit(state.build.level, state.build.serverId)
         );
       },
 

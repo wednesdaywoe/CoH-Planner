@@ -30,7 +30,7 @@ import {
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import { resolveAtMechanic } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
@@ -646,10 +646,11 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           firesPerSpawn = 1;
         } else if (isAuto && period > 0) {
           // Auto abilities fire immediately on spawn, then every `period`
-          // seconds. +1 to count the initial tick at t=0.
-          firesPerSpawn = Math.max(1, Math.floor(duration / period) + 1);
+          // seconds. dotTickCount counts the initial tick at t=0 (and is robust
+          // to float32 period noise — see Freeze Ray).
+          firesPerSpawn = dotTickCount(duration, period);
         } else if (ab.cycleTime > 0) {
-          firesPerSpawn = Math.max(1, Math.floor(duration / ab.cycleTime) + 1);
+          firesPerSpawn = dotTickCount(duration, ab.cycleTime);
         } else {
           firesPerSpawn = 1;
         }

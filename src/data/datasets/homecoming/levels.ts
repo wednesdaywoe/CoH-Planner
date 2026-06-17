@@ -116,18 +116,43 @@ export const SLOT_GRANTS: Readonly<Record<number, number>> = {
 } as const;
 
 /**
+ * Thunderspy grants four MORE placeable slots than every other server — one
+ * extra at L9, L23 and L29 (2→3) and at L43 (3→4) — for 71 total at L50 instead
+ * of 67. (Schedule confirmed by a Thunderspy player, 2026-06-16; the only diffs
+ * from the shared schedule are those four levels.) Homecoming and Rebirth use
+ * the shared SLOT_GRANTS above.
+ */
+const THUNDERSPY_SLOT_GRANTS: Readonly<Record<number, number>> = {
+  ...SLOT_GRANTS,
+  9: 3,
+  23: 3,
+  29: 3,
+  43: 4,
+};
+
+/**
+ * The slot-grant schedule for a server. Defaults to the shared 67-slot schedule;
+ * Thunderspy gets its own 71-slot variant. The slot functions below all accept
+ * an optional `serverId` so the budget/progression math tracks the build's
+ * server — pass `build.serverId` at the call site.
+ */
+export function getSlotGrants(serverId?: string): Readonly<Record<number, number>> {
+  return serverId === 'thunderspy' ? THUNDERSPY_SLOT_GRANTS : SLOT_GRANTS;
+}
+
+/**
  * Get the number of slots granted at a specific level
  */
-export function getSlotsGrantedAtLevel(level: number): number {
-  return SLOT_GRANTS[level] ?? 0;
+export function getSlotsGrantedAtLevel(level: number, serverId?: string): number {
+  return getSlotGrants(serverId)[level] ?? 0;
 }
 
 /**
  * Get the total number of enhancement slots available at a given level
  */
-export function getTotalSlotsAtLevel(level: number): number {
+export function getTotalSlotsAtLevel(level: number, serverId?: string): number {
   let total = 0;
-  for (const [lvl, slots] of Object.entries(SLOT_GRANTS)) {
+  for (const [lvl, slots] of Object.entries(getSlotGrants(serverId))) {
     if (parseInt(lvl) <= level) {
       total += slots;
     }
@@ -140,10 +165,10 @@ export function getTotalSlotsAtLevel(level: number): number {
  * Used by Level Up mode to advance to the next meaningful milestone.
  * Returns MAX_LEVEL if no further grants exist.
  */
-export function getNextGrantLevel(currentLevel: number): number {
+export function getNextGrantLevel(currentLevel: number, serverId?: string): number {
   const grantLevels = new Set<number>();
   for (const l of POWER_PICK_LEVELS) grantLevels.add(l);
-  for (const l of Object.keys(SLOT_GRANTS)) grantLevels.add(Number(l));
+  for (const l of Object.keys(getSlotGrants(serverId))) grantLevels.add(Number(l));
   const sorted = [...grantLevels].sort((a, b) => a - b);
   return sorted.find((l) => l > currentLevel) ?? MAX_LEVEL;
 }
@@ -166,12 +191,12 @@ export function getPicksGrantedAtLevel(level: number): number {
  * from future levels. If the build has fully consumed everything at level 50,
  * returns MAX_LEVEL.
  */
-export function getProgressionLevel(usedPicks: number, usedSlots: number): number {
+export function getProgressionLevel(usedPicks: number, usedSlots: number, serverId?: string): number {
   let accumPicks = 0;
   let accumSlots = 0;
   for (let L = 1; L <= MAX_LEVEL; L++) {
     accumPicks += getPicksGrantedAtLevel(L);
-    accumSlots += getSlotsGrantedAtLevel(L);
+    accumSlots += getSlotsGrantedAtLevel(L, serverId);
     if (usedPicks < accumPicks || usedSlots < accumSlots) {
       return L;
     }
@@ -959,12 +984,12 @@ export interface LevelInfo {
 /**
  * Get complete progression info for a specific level
  */
-export function getLevelInfo(level: number): LevelInfo {
+export function getLevelInfo(level: number, serverId?: string): LevelInfo {
   return {
     level,
     powerPick: isPowerPickLevel(level),
-    slotsGranted: getSlotsGrantedAtLevel(level),
-    totalSlots: getTotalSlotsAtLevel(level),
+    slotsGranted: getSlotsGrantedAtLevel(level, serverId),
+    totalSlots: getTotalSlotsAtLevel(level, serverId),
     totalPowerPicks: getPowerPicksAtLevel(level),
     enhancements: {
       TO: isEnhancementAvailable('TO', level),
@@ -980,10 +1005,10 @@ export function getLevelInfo(level: number): LevelInfo {
 /**
  * Generate full level progression table (levels 1-50)
  */
-export function generateProgressionTable(): LevelInfo[] {
+export function generateProgressionTable(serverId?: string): LevelInfo[] {
   const table: LevelInfo[] = [];
   for (let level = 1; level <= MAX_LEVEL; level++) {
-    table.push(getLevelInfo(level));
+    table.push(getLevelInfo(level, serverId));
   }
   return table;
 }

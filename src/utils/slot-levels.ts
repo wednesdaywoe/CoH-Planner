@@ -18,7 +18,7 @@
  */
 
 import type { Build, SelectedPower } from '@/types';
-import { SLOT_GRANTS, getInherentAutoGrantedSlotLevels, getInherentAutoGrantedSlotCount } from '@/data';
+import { getSlotGrants, getInherentAutoGrantedSlotLevels, getInherentAutoGrantedSlotCount } from '@/data';
 import { powerKey, type PowerCategory } from '@/utils/power-key';
 
 /**
@@ -68,10 +68,11 @@ interface CategorizedPower {
   category: PowerCategory;
 }
 
-/** Build a flat, sorted array of slot grant levels up to maxLevel. */
-function buildGrantPool(maxLevel: number): number[] {
+/** Build a flat, sorted array of slot grant levels up to maxLevel. The schedule
+ *  is server-aware (Thunderspy grants 71 slots vs the shared 67). */
+function buildGrantPool(maxLevel: number, serverId?: string): number[] {
   const pool: number[] = [];
-  for (const [lvl, count] of Object.entries(SLOT_GRANTS)) {
+  for (const [lvl, count] of Object.entries(getSlotGrants(serverId))) {
     const level = parseInt(lvl);
     if (level > maxLevel) continue;
     for (let i = 0; i < count; i++) pool.push(level);
@@ -187,7 +188,7 @@ function resolveSlotCategory(
 function computeSlotLevelsRespec(build: Build): Map<string, number[]> {
   const allPowers = collectAllPowers(build);
   const result = initSlotLevels(allPowers);
-  const grantPool = buildGrantPool(build.level);
+  const grantPool = buildGrantPool(build.level, build.serverId);
 
   let grantIndex = 0;
 
@@ -225,7 +226,7 @@ function computeSlotLevelsRespec(build: Build): Map<string, number[]> {
 function computeSlotLevelsLeveling(build: Build): Map<string, number[]> {
   const allPowers = collectAllPowers(build);
   const result = initSlotLevels(allPowers);
-  const grantPool = buildGrantPool(build.level);
+  const grantPool = buildGrantPool(build.level, build.serverId);
 
   // Build a lookup for power pick levels (keyed by powerKey)
   const pickLevelMap = new Map<string, number>();
@@ -331,7 +332,7 @@ export function findNextAvailableGrantLevel(
   build: Build,
   pickLevel: number
 ): number | null {
-  const grantPool = buildGrantPool(build.level);
+  const grantPool = buildGrantPool(build.level, build.serverId);
   const usedGrants = new Set<number>();
 
   // Replay existing slotOrder, honoring stored levels first, greedy fallback after.

@@ -16,6 +16,22 @@ import { normalizeTableName, normalizeArchetypeId } from './at-table-normalize';
 import { calculateBuffDebuffFraction, type BuffDebuffCategory } from './buff-debuff';
 import { warnFallback } from '@/utils/fallback-warnings';
 
+/**
+ * Number of DoT ticks over `duration` at `period`, counting the tick at t=0:
+ * ticks fire at 0, period, 2·period, …, duration — i.e. `duration/period + 1`.
+ *
+ * The small epsilon absorbs float32 noise in the period (the bin stores e.g.
+ * `0.20000000298` for a 0.2s tick), which would otherwise make `2 / 0.2` come
+ * out as 9.9999998 and drop the final tick via `Math.floor` — Freeze Ray then
+ * reads 10 ticks in the planner vs 11 in game. The epsilon (1e-4) is far above
+ * any float32 representation error yet far below the gap to a genuinely
+ * fractional ratio, so real tick counts are unchanged.
+ */
+export function dotTickCount(duration: number, period: number): number {
+  if (!period || period <= 0) return 1;
+  return Math.floor(duration / period + 1e-4) + 1;
+}
+
 // ============================================
 // DAMAGE TABLES
 // ============================================
@@ -651,7 +667,7 @@ export function calculatePowerDamage(
   if (pendingDotEntries.length > 0) {
     const dotDuration = pendingDotEntries[0].duration;
     const dotTickRate = pendingDotEntries[0].tickRate;
-    const dotTicks = Math.floor(dotDuration / dotTickRate) + 1;
+    const dotTicks = dotTickCount(dotDuration, dotTickRate);
     const dotTypeName = [...new Set(pendingDotEntries.map(e => e.type))].join('/');
 
     if (isPureDot) {

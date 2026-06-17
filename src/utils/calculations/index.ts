@@ -11,6 +11,7 @@ export {
   calculateBuffDebuffPercent,
   abbreviateDamageType,
   calculateArcanaTime,
+  dotTickCount,
   type DamageTableType,
   type DamageCalculationOptions,
   type PowerDamageResult,

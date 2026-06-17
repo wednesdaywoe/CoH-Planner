@@ -785,6 +785,7 @@ function InherentPowerGroup({
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
   const openEnhancementPicker = useUIStore((s) => s.openEnhancementPicker);
   const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
+  const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
 
   const sortedPowers = [...powers].sort((a, b) => a.available - b.available);
 
@@ -823,6 +824,9 @@ function InherentPowerGroup({
                 isLocked={isLocked}
                 slots={power.slots}
                 maxSlots={power.maxSlots}
+                toggleSize={shouldShowToggle(power) ? 'md' : undefined}
+                isActive={power.isActive ?? false}
+                onToggle={() => togglePowerActive(power.internalName, 'inherent')}
                 onAddSlots={(count) => onAddSlots(power.internalName, count)}
                 onRemoveSlot={(index) => onRemoveSlot(power.internalName, index)}
                 onRemoveAllSlots={() => onRemoveAllSlots(power.internalName, power.slots.length)}
