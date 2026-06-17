@@ -238,7 +238,7 @@ export function IncarnateModal({ isOpen, onClose }: IncarnateModalProps) {
             {currentPower && activeSlotId !== 'genesis' && (
               <button
                 onClick={() => { onClose(); openIncarnateCraftingModal(); }}
-                className="px-4 py-2 text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors rounded-lg hover:bg-blue-900/30 border border-blue-800 hover:border-blue-600"
+                className="px-4 py-2 text-sm font-medium text-link hover:text-white transition-colors rounded-lg hover:bg-[var(--color-primary)]/20 border border-[var(--color-primary)]/40 hover:border-[var(--color-primary)]"
               >
                 Recipe
               </button>

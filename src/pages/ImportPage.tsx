@@ -123,7 +123,7 @@ export function ImportPage() {
                       className={`
                         px-3 py-1.5 rounded text-xs font-medium transition-colors
                         ${state.selectedBuild === b.index
-                          ? 'bg-blue-600 text-white'
+                          ? 'bg-[var(--color-primary)] text-on-primary'
                           : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
                         }
                       `}

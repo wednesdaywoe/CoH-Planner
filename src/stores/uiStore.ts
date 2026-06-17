@@ -27,7 +27,7 @@ import type {
   Enhancement,
 } from '@/types';
 import { createDefaultIncarnateActiveState } from '@/types';
-import { type ColorThemeId, DEFAULT_COLOR_THEME, applyColorTheme } from '@/data/core/themes';
+import { type ColorThemeId, DEFAULT_COLOR_THEME, applyColorTheme, type ColorMode, DEFAULT_COLOR_MODE, applyColorMode } from '@/data/core/themes';
 import type { SlotLevelRef } from '@/utils/slot-levels';
 import type { PowerMetric } from '@/utils/calculations/attack-chain';
 
@@ -259,6 +259,9 @@ interface UIState {
   /** Selected color theme. Re-skins the chrome via [data-theme] on <html>. */
   colorTheme: ColorThemeId;
 
+  /** Light/dark mode — orthogonal to colorTheme; flips the ramp via [data-mode]. */
+  colorMode: ColorMode;
+
   /** Incarnate active state - which incarnate slots are active for stat calculations */
   incarnateActive: IncarnateActiveState;
 
@@ -431,6 +434,7 @@ interface UIActions {
   toggleDashboardCollapsed: () => void;
   setUIScale: (scale: number) => void;
   setColorTheme: (theme: ColorThemeId) => void;
+  setColorMode: (mode: ColorMode) => void;
 
   // Info Panel
   setInfoPanelEnabled: (enabled: boolean) => void;
@@ -776,6 +780,7 @@ export const useUIStore = create<UIStore>()(
       dashboardCollapsed: false,
       uiScale: 1.0,
       colorTheme: DEFAULT_COLOR_THEME,
+      colorMode: DEFAULT_COLOR_MODE,
       incarnateActive: createDefaultIncarnateActiveState(),
       incarnateLevelShiftActive: true,
       dominationActive: false,
@@ -1025,6 +1030,10 @@ export const useUIStore = create<UIStore>()(
       setColorTheme: (theme: ColorThemeId) => {
         applyColorTheme(theme);
         set({ colorTheme: theme });
+      },
+      setColorMode: (mode: ColorMode) => {
+        applyColorMode(mode);
+        set({ colorMode: mode });
       },
 
       // Info Panel
@@ -1655,6 +1664,7 @@ export const useUIStore = create<UIStore>()(
         dashboardCollapsed: state.dashboardCollapsed,
         uiScale: state.uiScale,
         colorTheme: state.colorTheme,
+        colorMode: state.colorMode,
         incarnateActive: state.incarnateActive,
         incarnateLevelShiftActive: state.incarnateLevelShiftActive,
         dominationActive: state.dominationActive,
@@ -1713,6 +1723,13 @@ export const useUIStore = create<UIStore>()(
         if (raw && raw.attackChainAnnounceDismissed === true &&
             !merged.dismissedAnnouncements.includes('attack-chain-builder')) {
           merged.dismissedAnnouncements = [...merged.dismissedAnnouncements, 'attack-chain-builder'];
+        }
+        // Migrate the retired 'imperial-light' theme → imperial + light mode.
+        // The generated light ramp reproduces the old inverted theme exactly,
+        // so users who picked it keep their look on the new mode axis.
+        if ((merged.colorTheme as string) === 'imperial-light') {
+          merged.colorTheme = 'imperial';
+          merged.colorMode = 'light';
         }
         // Ensure procSettings has all keys (in case new categories are added)
         if (merged.procSettings) {

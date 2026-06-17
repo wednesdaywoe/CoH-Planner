@@ -37,7 +37,7 @@ export function SettingsLayout() {
             className="px-3 py-2 text-sm text-gray-400 hover:text-white border-b-2 border-transparent transition-colors -mb-px"
             activeProps={{
               className:
-                'px-3 py-2 text-sm text-white border-b-2 border-blue-500 transition-colors -mb-px',
+                'px-3 py-2 text-sm text-white border-b-2 border-[var(--color-primary)] transition-colors -mb-px',
             }}
           >
             {tab.label}

@@ -60,7 +60,7 @@ function ToastItem({ toast }: { toast: Toast }) {
       {toast.action && (
         <button
           onClick={handleAction}
-          className="shrink-0 px-2.5 py-1 text-xs font-medium rounded bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-[var(--color-primary-fg)] transition-colors"
+          className="shrink-0 px-2.5 py-1 text-xs font-medium rounded bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-on-primary transition-colors"
         >
           {toast.action.label}
         </button>

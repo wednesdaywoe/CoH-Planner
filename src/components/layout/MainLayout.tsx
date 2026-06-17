@@ -110,7 +110,7 @@ export function MainLayout({ children }: MainLayoutProps) {
       <div className="hidden lg:flex fixed bottom-4 right-4 z-40 items-center gap-2">
         <button
           onClick={() => openHelpModal()}
-          className="flex items-center justify-center w-9 h-9 bg-blue-600 hover:bg-blue-500 text-white rounded-full shadow-lg transition-colors border border-blue-400"
+          className="flex items-center justify-center w-9 h-9 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-on-primary rounded-full shadow-lg transition-colors border border-[var(--color-primary-hover)]"
           title="Help"
           aria-label="Open help"
           data-onboarding="help"

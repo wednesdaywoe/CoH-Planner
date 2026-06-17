@@ -240,7 +240,7 @@ export function ProfileSettingsPage() {
               placeholder="Tell people about yourself..."
               maxLength={BIO_MAX}
               rows={4}
-              className="block w-full px-3 py-1.5 bg-gray-800 text-gray-200 border border-gray-600 rounded text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed resize-y"
+              className="block w-full px-3 py-1.5 bg-gray-800 text-gray-200 border border-gray-600 rounded text-sm placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-[var(--color-ring)] disabled:opacity-50 disabled:cursor-not-allowed resize-y"
             />
             <span className="text-xs text-gray-400">
               {trimmedBio.length}/{BIO_MAX}

@@ -572,7 +572,7 @@ export function CompareSlottingModal() {
                 className={`
                   rounded-lg border p-3 cursor-pointer transition-all
                   ${hoveredCopyId === copy.id
-                    ? 'border-blue-500 bg-slate-700/50'
+                    ? 'border-[var(--color-primary)] bg-slate-700/50'
                     : appliedCopyId === copy.id
                       ? 'border-green-500 bg-green-500/10'
                       : 'border-slate-600 bg-slate-800 hover:border-slate-500'
@@ -604,7 +604,7 @@ export function CompareSlottingModal() {
                     </button>
                     <button
                       onClick={(e) => { e.stopPropagation(); handleApply(copy.id); }}
-                      className="text-[10px] px-1.5 py-0.5 rounded bg-blue-600/30 text-blue-300 hover:bg-blue-600/50 hover:text-blue-200"
+                      className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--color-primary)]/30 text-link hover:bg-[var(--color-primary)]/50 hover:text-white"
                       title="Apply this slotting to your build"
                     >
                       Apply
@@ -631,7 +631,7 @@ export function CompareSlottingModal() {
                         cursor-pointer transition-transform hover:scale-110
                         ${slot
                           ? 'border-transparent bg-transparent'
-                          : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-blue-500 hover:bg-slate-600'
+                          : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-[var(--color-primary)] hover:bg-slate-600'
                         }
                       `}
                       onClick={(e) => {

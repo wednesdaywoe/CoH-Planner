@@ -23,7 +23,7 @@ export function UpdateBanner() {
   if (!needRefresh) return null;
 
   return (
-    <div className="bg-amber-600/90 text-white text-sm flex items-center justify-center gap-3 px-4 py-1.5 flex-wrap">
+    <div className="bg-amber-600/90 text-on-warning text-sm flex items-center justify-center gap-3 px-4 py-1.5 flex-wrap">
       <span>Sidekick has received an update! Please</span>
       <button
         onClick={() => updateServiceWorker(true)}

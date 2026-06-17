@@ -53,7 +53,7 @@ export function LevelSpinner({
   step = 1,
   pxPerStep = 6,
   showPlus = false,
-  valueColorClass = 'text-blue-400',
+  valueColorClass = 'text-link',
   decreaseTitle,
   increaseTitle,
   valueTitle,
@@ -154,7 +154,7 @@ export function LevelSpinner({
             else if (e.key === 'Escape') { e.preventDefault(); setEditing(false); }
           }}
           // Match the static cell's footprint so the row doesn't reflow.
-          className={`text-sm font-mono ${widthClass} text-center bg-transparent border border-blue-400/60 rounded outline-none ${valueColorClass} px-0.5`}
+          className={`text-sm font-mono ${widthClass} text-center bg-transparent border border-[var(--color-primary)]/60 rounded outline-none ${valueColorClass} px-0.5`}
         />
       ) : (
         <div

@@ -224,12 +224,10 @@ export function Header() {
       {/* Row 2: left-anchored Shared Builds + toggles + login/version right-anchored */}
       <div className="flex items-center gap-2 flex-wrap">
         <Button
-          variant="ghost"
+          variant="primary"
           size="sm"
           onClick={() => navigate({ to: isOnBuildsPage ? '/' : '/builds' })}
           title={isOnBuildsPage ? 'Return to the build planner' : 'Browse shared builds from the community'}
-          style={{ background: 'var(--color-primary)', borderColor: 'var(--color-primary-hover)' }}
-          className="text-[var(--color-primary-fg)] hover:!brightness-110"
         >
           <svg className="w-4 h-4 sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />

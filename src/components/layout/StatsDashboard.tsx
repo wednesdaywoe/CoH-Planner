@@ -427,7 +427,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
               {isLevel50 ? (
                 <button
                   onClick={openIncarnateCraftingModal}
-                  className="text-[10px] text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 bg-blue-900/30 hover:bg-blue-900/50 transition-colors px-1.5 py-0.5 rounded font-normal normal-case"
+                  className="text-[10px] text-link hover:text-white border border-[var(--color-primary)]/40 hover:border-[var(--color-primary)] bg-[var(--color-primary)]/20 hover:bg-[var(--color-primary)]/30 transition-colors px-1.5 py-0.5 rounded font-normal normal-case"
                   title="Incarnate Crafting Checklist"
                 >
                   Crafting
@@ -530,7 +530,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
           {isLevel50 && (
             <button
               onClick={openIncarnateCraftingModal}
-              className="text-[10px] text-blue-400 hover:text-blue-300 border border-blue-800 hover:border-blue-600 bg-blue-900/30 hover:bg-blue-900/50 transition-colors px-1.5 py-0.5 rounded shrink-0"
+              className="text-[10px] text-link hover:text-white border border-[var(--color-primary)]/40 hover:border-[var(--color-primary)] bg-[var(--color-primary)]/20 hover:bg-[var(--color-primary)]/30 transition-colors px-1.5 py-0.5 rounded shrink-0"
               title="Incarnate Crafting Checklist"
             >
               Crafting

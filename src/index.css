@@ -14,6 +14,24 @@
   --color-primary-fg: #ffffff;
   --color-link: #60a5fa;
 
+  /* Paired "on-" foreground tokens — the text/icon color that sits ON TOP OF a
+     solid fill of the same name. These are the durable fix for the
+     light-text-on-light-fill bug class: any chrome that paints a solid
+     `bg-<token>` MUST also set `text-on-<token>`, so the fill and its foreground
+     travel together and can never desync when a light-primary theme
+     (Imperial/Paragon gold) makes the fill pale. --color-on-primary tracks each
+     theme's --color-primary-fg via var() indirection (so the 8 [data-theme]
+     blocks need no extra edits); the status on-colors are white because every
+     status fill is a dark Tailwind -600 in every theme and light mode alike.
+     NOTE the naming split: `--color-<x>-fg` = the LIGHT accent shade used as
+     TEXT on the dark canvas (e.g. success-fg = green-400 in a `/20` tint);
+     `--color-on-<x>` = the text that sits on a SOLID <x> fill. Different jobs. */
+  --color-on-primary: var(--color-primary-fg);
+  --color-on-success: #ffffff;
+  --color-on-warning: #ffffff;
+  --color-on-danger:  #ffffff;
+  --color-on-info:    #ffffff;
+
   /* Family 1 — focus ring. Follows the active accent via var() indirection, so
      it re-skins per theme automatically wherever a [data-theme] overrides
      --color-primary. Use as focus:ring-[var(--color-ring)]. */
@@ -254,50 +272,6 @@ body {
   --color-link: #6FA0CC;
 }
 
-/* --- Imperial Light — Praetoria by day (inverted Imperial ramp: light marble) ---
-   This is the app's first LIGHT theme. The gray/slate ramp is the reverse of
-   Imperial's, so the darkest steps (used by components for backgrounds) resolve
-   to light marble and the lightest steps (used for text) resolve to near-black.
-   Stat colors (text-*-400) and any hardcoded text-white/bg-black still assume a
-   dark canvas — see the light-theme audit before trusting contrast everywhere. */
-[data-theme='imperial-light'] {
-  --color-gray-50:  #0E0F12;  --color-slate-50:  #0E0F12;
-  --color-gray-100: #131419;  --color-slate-100: #131419;
-  --color-gray-200: #18191F;  --color-slate-200: #18191F;
-  --color-gray-300: #25272E;  --color-slate-300: #25272E;
-  --color-gray-400: #3A3C44;  --color-slate-400: #3A3C44;
-  --color-gray-500: #5A5C64;  --color-slate-500: #5A5C64;
-  --color-gray-600: #8C8D88;  --color-slate-600: #8C8D88;
-  --color-gray-700: #ACABA2;  --color-slate-700: #ACABA2;
-  --color-gray-800: #C6C4BA;  --color-slate-800: #C6C4BA;
-  --color-gray-900: #D8D4C8;  --color-slate-900: #D8D4C8;
-  --color-gray-950: #ECEAE2;  --color-slate-950: #ECEAE2;
-
-  --color-sk-magenta: #3F6E9E;
-  --color-primary: #C8A840;
-  --color-primary-hover: #AE9032;
-  --color-primary-fg: #15140F;
-  --color-link: #2E5E8C;
-
-  /* Light-canvas fixes for literals that assume a dark background. Scoped to
-     this theme only — the dark themes are untouched.
-       • `text-white`/`bg-white` flip to near-black via --color-white so bright
-         text stays readable on marble (covers ~170 hardcoded text-white sites
-         at once). --color-black is left alone so modal bg-black/70 still dims.
-       • The stat accents that wash out on near-white (yellow=accuracy/tohit,
-         amber=summon/speed, orange=resistance/end-cost, blue=recovery/recharge,
-         cyan/sky=recovery/fly) drop to readable shades while keeping their hue,
-         so the global stat semantics (yellow=accuracy) survive without editing
-         stat-colors.ts. Red/pink/green/purple already read on light. */
-  --color-white: #18191F;
-  --color-yellow-400: #A16207;  --color-yellow-300: #A16207;
-  --color-amber-400:  #B45309;  --color-amber-300:  #B45309;
-  --color-orange-400: #C2410C;  --color-orange-300: #C2410C;
-  --color-blue-400:   #2563EB;  --color-blue-300:   #2563EB;
-  --color-cyan-400:   #0E7490;
-  --color-sky-400:    #0369A1;
-}
-
 /* --- Renegade — Rogue / Vigilante (Rogue purple / Vanguard teal) --- */
 [data-theme='renegade'] {
   --color-gray-50:  #ECE8F5;  --color-slate-50:  #ECE8F5;
@@ -388,4 +362,157 @@ body {
   --color-primary-hover: #C21A68;
   --color-primary-fg: #ffffff;
   --color-link: #C58AE0;
+}
+
+/* ============================================================
+   LIGHT MODE  (orthogonal axis: data-mode='light' on <html>)
+   ------------------------------------------------------------
+   Dark is the default (no data-mode attribute). Light mode flips
+   the gray/slate ramp so the darkest steps — which components use
+   as backgrounds (bg-gray-900 etc.) — resolve to LIGHT values and
+   the lightest steps — used as text (text-gray-100) — resolve to
+   DARK values. Each named theme's light ramp is the exact REVERSE
+   of its dark ramp (generated, so the two never drift), scoped to
+   `[data-theme='x'][data-mode='light']` so it outranks the dark
+   `[data-theme='x']` block on specificity (0,2,0 > 0,1,0).
+
+   The base `[data-mode='light']` block below carries (a) the
+   Sidekick (default, no-data-theme) light ramp and (b) the
+   theme-INDEPENDENT literal fixes for things that hardcode a dark
+   canvas — these are NOT overridden by the per-theme ramp blocks
+   (which only set gray/slate), so they apply under every light
+   theme. Same two tricks the shelved imperial-light proved out:
+     • --color-white flips to near-black so the ~170 hardcoded
+       text-white sites stay readable on a light canvas (--color-
+       black left alone so modal bg-black/70 still dims).
+     • stat accents that wash out on near-white (yellow=accuracy,
+       amber=speed, orange=resistance, blue/cyan/sky=recovery/fly)
+       drop to readable shades while KEEPING their hue, so global
+       stat semantics survive without editing stat-colors.ts.
+       Red/pink/green/purple already read on light.
+   Unlayered + placed after the dark blocks, same as those.
+   ============================================================ */
+
+/* Base: Sidekick (default) light ramp + theme-independent fixes. */
+[data-mode='light'] {
+  /* Sidekick default — reversed neutral grey ramp. */
+  --color-gray-50:  #0B0F17;  --color-slate-50:  #020617;
+  --color-gray-100: #111827;  --color-slate-100: #0F172A;
+  --color-gray-200: #1F2937;  --color-slate-200: #1E293B;
+  --color-gray-300: #374151;  --color-slate-300: #334155;
+  --color-gray-400: #4B5563;  --color-slate-400: #475569;
+  --color-gray-500: #6B7280;  --color-slate-500: #64748B;
+  --color-gray-600: #9CA3AF;  --color-slate-600: #94A3B8;
+  --color-gray-700: #D1D5DB;  --color-slate-700: #CBD5E1;
+  --color-gray-800: #E5E7EB;  --color-slate-800: #E2E8F0;
+  --color-gray-900: #F3F4F6;  --color-slate-900: #F1F5F9;
+  --color-gray-950: #F9FAFB;  --color-slate-950: #F8FAFC;
+
+  /* Theme-independent light-canvas fixes (apply under every light theme). */
+  --color-white: #18191F;
+  --color-yellow-400: #A16207;  --color-yellow-300: #A16207;
+  --color-amber-400:  #B45309;  --color-amber-300:  #B45309;
+  --color-orange-400: #C2410C;  --color-orange-300: #C2410C;
+  --color-blue-400:   #2563EB;  --color-blue-300:   #2563EB;
+  --color-cyan-400:   #0E7490;
+  --color-sky-400:    #0369A1;
+}
+
+/* Per-theme reversed ramps (generated — exact reverse of each dark block). */
+[data-theme='paragon'][data-mode='light'] {
+  --color-gray-50: #0A0F1A;  --color-slate-50: #0A0F1A;
+  --color-gray-100: #0C1525;  --color-slate-100: #0C1525;
+  --color-gray-200: #0F1E3A;  --color-slate-200: #0F1E3A;
+  --color-gray-300: #1B3A72;  --color-slate-300: #1B3A72;
+  --color-gray-400: #27508F;  --color-slate-400: #27508F;
+  --color-gray-500: #3D6AAE;  --color-slate-500: #3D6AAE;
+  --color-gray-600: #7C99C4;  --color-slate-600: #7C99C4;
+  --color-gray-700: #A9BEDB;  --color-slate-700: #A9BEDB;
+  --color-gray-800: #CEDAEC;  --color-slate-800: #CEDAEC;
+  --color-gray-900: #E8EEF8;  --color-slate-900: #E8EEF8;
+  --color-gray-950: #F4F7FC;  --color-slate-950: #F4F7FC;
+}
+
+[data-theme='menace'][data-mode='light'] {
+  --color-gray-50: #0F0909;  --color-slate-50: #0F0909;
+  --color-gray-100: #1B0F12;  --color-slate-100: #1B0F12;
+  --color-gray-200: #281619;  --color-slate-200: #281619;
+  --color-gray-300: #3B1D21;  --color-slate-300: #3B1D21;
+  --color-gray-400: #52272C;  --color-slate-400: #52272C;
+  --color-gray-500: #75363B;  --color-slate-500: #75363B;
+  --color-gray-600: #B48A8D;  --color-slate-600: #B48A8D;
+  --color-gray-700: #D1B3B4;  --color-slate-700: #D1B3B4;
+  --color-gray-800: #E7D1D0;  --color-slate-800: #E7D1D0;
+  --color-gray-900: #F4E8E7;  --color-slate-900: #F4E8E7;
+  --color-gray-950: #FAF4F3;  --color-slate-950: #FAF4F3;
+}
+
+[data-theme='imperial'][data-mode='light'] {
+  --color-gray-50: #0E0F12;  --color-slate-50: #0E0F12;
+  --color-gray-100: #131419;  --color-slate-100: #131419;
+  --color-gray-200: #18191F;  --color-slate-200: #18191F;
+  --color-gray-300: #25272E;  --color-slate-300: #25272E;
+  --color-gray-400: #3A3C44;  --color-slate-400: #3A3C44;
+  --color-gray-500: #5A5C64;  --color-slate-500: #5A5C64;
+  --color-gray-600: #8C8D88;  --color-slate-600: #8C8D88;
+  --color-gray-700: #ACABA2;  --color-slate-700: #ACABA2;
+  --color-gray-800: #C6C4BA;  --color-slate-800: #C6C4BA;
+  --color-gray-900: #D8D4C8;  --color-slate-900: #D8D4C8;
+  --color-gray-950: #ECEAE2;  --color-slate-950: #ECEAE2;
+}
+
+[data-theme='renegade'][data-mode='light'] {
+  --color-gray-50: #0E0C17;  --color-slate-50: #0E0C17;
+  --color-gray-100: #191532;  --color-slate-100: #191532;
+  --color-gray-200: #221D40;  --color-slate-200: #221D40;
+  --color-gray-300: #2C2655;  --color-slate-300: #2C2655;
+  --color-gray-400: #3F3770;  --color-slate-400: #3F3770;
+  --color-gray-500: #574D8C;  --color-slate-500: #574D8C;
+  --color-gray-600: #948BB9;  --color-slate-600: #948BB9;
+  --color-gray-700: #AFA6D0;  --color-slate-700: #AFA6D0;
+  --color-gray-800: #C7BBDF;  --color-slate-800: #C7BBDF;
+  --color-gray-900: #D9D1E9;  --color-slate-900: #D9D1E9;
+  --color-gray-950: #ECE8F5;  --color-slate-950: #ECE8F5;
+}
+
+[data-theme='hamidon'][data-mode='light'] {
+  --color-gray-50: #0a1c18;  --color-slate-50: #050E0C;
+  --color-gray-100: #061310;  --color-slate-100: #061310;
+  --color-gray-200: #0d2920;  --color-slate-200: #081A14;
+  --color-gray-300: #134130;  --color-slate-300: #0D2E22;
+  --color-gray-400: #145C44;  --color-slate-400: #145C44;
+  --color-gray-500: #1F8763;  --color-slate-500: #1F8763;
+  --color-gray-600: #5BB291;  --color-slate-600: #5BB291;
+  --color-gray-700: #8BCEB3;  --color-slate-700: #8BCEB3;
+  --color-gray-800: #B5E2CF;  --color-slate-800: #B5E2CF;
+  --color-gray-900: #D6F0E4;  --color-slate-900: #D6F0E4;
+  --color-gray-950: #EAF7F1;  --color-slate-950: #EAF7F1;
+}
+
+[data-theme='resistance'][data-mode='light'] {
+  --color-gray-50: #0E0C0A;  --color-slate-50: #0E0C0A;
+  --color-gray-100: #14110E;  --color-slate-100: #14110E;
+  --color-gray-200: #1C1814;  --color-slate-200: #1C1814;
+  --color-gray-300: #2C2620;  --color-slate-300: #2C2620;
+  --color-gray-400: #4A4138;  --color-slate-400: #4A4138;
+  --color-gray-500: #706458;  --color-slate-500: #706458;
+  --color-gray-600: #908373;  --color-slate-600: #908373;
+  --color-gray-700: #B5A998;  --color-slate-700: #B5A998;
+  --color-gray-800: #D2C9BD;  --color-slate-800: #D2C9BD;
+  --color-gray-900: #E5DFD7;  --color-slate-900: #E5DFD7;
+  --color-gray-950: #F2EFEA;  --color-slate-950: #F2EFEA;
+}
+
+[data-theme='carnival'][data-mode='light'] {
+  --color-gray-50: #15111F;  --color-slate-50: #15111F;
+  --color-gray-100: #1B1628;  --color-slate-100: #1B1628;
+  --color-gray-200: #221A33;  --color-slate-200: #221A33;
+  --color-gray-300: #34264C;  --color-slate-300: #34264C;
+  --color-gray-400: #51436B;  --color-slate-400: #51436B;
+  --color-gray-500: #635877;  --color-slate-500: #635877;
+  --color-gray-600: #847A99;  --color-slate-600: #847A99;
+  --color-gray-700: #A79EBE;  --color-slate-700: #A79EBE;
+  --color-gray-800: #C8C0D8;  --color-slate-800: #C8C0D8;
+  --color-gray-900: #E4DEEC;  --color-slate-900: #E4DEEC;
+  --color-gray-950: #F4F1F8;  --color-slate-950: #F4F1F8;
 }

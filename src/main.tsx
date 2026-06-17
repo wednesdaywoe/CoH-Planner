@@ -9,18 +9,26 @@ import { loadDataset, type DatasetId } from '@/data/dataset'
 import '@/utils/calc-debug'
 import '@/utils/fallback-warnings'
 import { installChunkErrorReload } from '@/utils/chunk-error-reload'
-import { applyColorTheme, isColorThemeId, DEFAULT_COLOR_THEME } from '@/data/core/themes'
+import { applyColorTheme, isColorThemeId, DEFAULT_COLOR_THEME, applyColorMode, isColorMode, DEFAULT_COLOR_MODE } from '@/data/core/themes'
 
-// Apply the persisted color theme to <html> before React mounts so there's no
-// flash of the default chrome on reload. Read straight from localStorage rather
-// than the store (which hasn't been created yet at this point).
+// Apply the persisted color theme + mode to <html> before React mounts so
+// there's no flash of the default chrome on reload. Read straight from
+// localStorage rather than the store (which hasn't been created yet here).
 function bootColorTheme() {
   try {
     const raw = localStorage.getItem('coh-planner-ui')
-    const id = raw ? JSON.parse(raw)?.state?.colorTheme : undefined
-    applyColorTheme(isColorThemeId(id) ? id : DEFAULT_COLOR_THEME)
+    const state = raw ? JSON.parse(raw)?.state : undefined
+    // The retired 'imperial-light' theme maps to imperial + light mode.
+    if (state?.colorTheme === 'imperial-light') {
+      applyColorTheme('imperial')
+      applyColorMode('light')
+      return
+    }
+    applyColorTheme(isColorThemeId(state?.colorTheme) ? state.colorTheme : DEFAULT_COLOR_THEME)
+    applyColorMode(isColorMode(state?.colorMode) ? state.colorMode : DEFAULT_COLOR_MODE)
   } catch {
     applyColorTheme(DEFAULT_COLOR_THEME)
+    applyColorMode(DEFAULT_COLOR_MODE)
   }
 }
 bootColorTheme()
@@ -77,7 +85,7 @@ function ErrorFallback() {
         <div className="flex items-center justify-center gap-3">
           <button
             onClick={() => window.location.reload()}
-            className="px-4 py-2 rounded bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium"
+            className="px-4 py-2 rounded bg-sky-600 hover:bg-sky-500 text-on-info text-sm font-medium"
           >
             Reload
           </button>

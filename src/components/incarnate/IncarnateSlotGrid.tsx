@@ -164,7 +164,7 @@ function IncarnateSlotMini({
         style={{
           borderWidth: '1px',
           borderStyle: selectedPower ? 'solid' : 'dashed',
-          borderColor: disabled ? '#374151' : isGenesisSwap ? '#A3E635' : dimmed ? '#374151' : selectedPower ? tierColor : slotColor + '60',
+          borderColor: disabled ? 'var(--color-gray-700)' : isGenesisSwap ? '#A3E635' : dimmed ? 'var(--color-gray-700)' : selectedPower ? tierColor : slotColor + '60',
         }}
       >
         {/* Icon or letter circle */}
@@ -186,7 +186,7 @@ function IncarnateSlotMini({
           <div
             className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
             style={{
-              backgroundColor: '#1f2937',
+              backgroundColor: 'var(--color-gray-800)',
               border: `2px solid ${slotColor}`,
               color: slotColor,
               opacity: disabled ? 0.4 : 0.7,
@@ -200,7 +200,7 @@ function IncarnateSlotMini({
         {selectedPower && (
           <div
             className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full"
-            style={{ backgroundColor: dimmed ? '#4B5563' : tierColor }}
+            style={{ backgroundColor: dimmed ? 'var(--color-gray-600)' : tierColor }}
           />
         )}
 

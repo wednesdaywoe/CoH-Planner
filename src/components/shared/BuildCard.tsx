@@ -216,7 +216,7 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
             <button
               onClick={handleDelete}
               disabled={deleteLoading}
-              className="px-3 py-1.5 text-xs bg-red-600 text-white rounded hover:bg-red-700 transition-colors disabled:opacity-50"
+              className="px-3 py-1.5 text-xs bg-red-600 text-on-danger rounded hover:bg-red-700 transition-colors disabled:opacity-50"
             >
               {deleteLoading ? 'Deleting...' : 'Delete'}
             </button>

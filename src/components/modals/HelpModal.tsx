@@ -113,7 +113,7 @@ export function HelpModal({ isOpen, onClose, initialTopicId }: HelpModalProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search help topics..."
-              className="w-full pl-10 pr-10 py-2 bg-gray-800 border border-gray-600 rounded-lg text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-10 py-2 bg-gray-800 border border-gray-600 rounded-lg text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] focus:border-transparent"
             />
             {searchQuery && (
               <button

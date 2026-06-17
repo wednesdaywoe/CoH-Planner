@@ -118,7 +118,7 @@ export function ForumExportModal({ isOpen, onClose }: ForumExportModalProps) {
                   title={f.hint}
                   className={`px-3 py-1.5 rounded text-sm border transition-colors ${
                     format === f.id
-                      ? 'bg-blue-600 border-blue-500 text-white'
+                      ? 'bg-[var(--color-primary)] border-[var(--color-primary-hover)] text-on-primary'
                       : 'bg-gray-800 border-gray-700 text-gray-300 hover:bg-gray-700'
                   }`}
                 >
@@ -138,7 +138,7 @@ export function ForumExportModal({ isOpen, onClose }: ForumExportModalProps) {
                 type="checkbox"
                 checked={includeSetBonuses}
                 onChange={(e) => setIncludeSetBonuses(e.target.checked)}
-                className="rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500 focus:ring-offset-gray-900"
+                className="rounded border-gray-600 bg-gray-700 text-[var(--color-primary)] focus:ring-[var(--color-ring)] focus:ring-offset-gray-900"
               />
               Include set bonuses
             </label>
@@ -147,7 +147,7 @@ export function ForumExportModal({ isOpen, onClose }: ForumExportModalProps) {
                 type="checkbox"
                 checked={includeIncarnates}
                 onChange={(e) => setIncludeIncarnates(e.target.checked)}
-                className="rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500 focus:ring-offset-gray-900"
+                className="rounded border-gray-600 bg-gray-700 text-[var(--color-primary)] focus:ring-[var(--color-ring)] focus:ring-offset-gray-900"
               />
               Include incarnates
             </label>
@@ -160,7 +160,7 @@ export function ForumExportModal({ isOpen, onClose }: ForumExportModalProps) {
               value={output}
               readOnly
               spellCheck={false}
-              className="w-full h-72 bg-gray-900 border border-gray-700 rounded p-2 text-xs font-mono text-gray-200 resize-y focus:outline-none focus:ring-1 focus:ring-blue-500/50 whitespace-pre"
+              className="w-full h-72 bg-gray-900 border border-gray-700 rounded p-2 text-xs font-mono text-gray-200 resize-y focus:outline-none focus:ring-1 focus:ring-[var(--color-ring)]/50 whitespace-pre"
             />
           </div>
         </div>

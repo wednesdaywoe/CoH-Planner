@@ -136,7 +136,7 @@ export function AuthorPage() {
   const isOwnProfile = currentUser?.id === author.user_id;
 
   const selectClass =
-    'bg-gray-800 border border-gray-600 rounded px-2 py-1 text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500';
+    'bg-gray-800 border border-gray-600 rounded px-2 py-1 text-xs text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]';
 
   return (
     <div className="max-w-6xl mx-auto p-6 relative">
@@ -227,7 +227,7 @@ export function AuthorPage() {
               ? 'Search your builds...'
               : `Search ${author.display_name}'s builds...`
           }
-          className="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
+          className="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] w-64"
         />
         <select
           value={sortBy}

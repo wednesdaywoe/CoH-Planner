@@ -35,7 +35,7 @@ export function CraftingSalvageRow({
         checked={isChecked}
         onChange={() => !disabled && onToggle(checkKey)}
         disabled={disabled}
-        className="w-3.5 h-3.5 rounded border-gray-600 bg-gray-800 text-blue-500 focus:ring-blue-500 focus:ring-offset-0 cursor-pointer disabled:cursor-not-allowed"
+        className="w-3.5 h-3.5 rounded border-gray-600 bg-gray-800 text-[var(--color-primary)] focus:ring-[var(--color-ring)] focus:ring-offset-0 cursor-pointer disabled:cursor-not-allowed"
       />
       <span
         className={`text-xs ${isChecked ? 'line-through' : ''}`}

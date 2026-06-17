@@ -97,7 +97,7 @@ export function IncarnateSlotButton({
       style={{
         borderWidth: '2px',
         borderStyle: 'solid',
-        borderColor: disabled ? '#4B5563' : isGenesisSwap ? '#A3E635' : dimmed ? '#4B5563' : tierColor,
+        borderColor: disabled ? 'var(--color-gray-600)' : isGenesisSwap ? '#A3E635' : dimmed ? 'var(--color-gray-600)' : tierColor,
         boxShadow: isGenesisSwap ? '0 0 8px #A3E63560' : disabled || dimmed ? 'none' : `0 0 8px ${tierColor}40`,
       }}
       title={
@@ -132,7 +132,7 @@ export function IncarnateSlotButton({
       <div className="text-center w-full">
         <div
           className="text-[10px] font-semibold uppercase tracking-wide"
-          style={{ color: dimmed ? '#6B7280' : slotColor }}
+          style={{ color: dimmed ? 'var(--color-gray-500)' : slotColor }}
         >
           {slotName}
         </div>
@@ -147,7 +147,7 @@ export function IncarnateSlotButton({
       {selectedPower && (
         <div
           className="absolute -top-1 -right-1 w-3 h-3 rounded-full"
-          style={{ backgroundColor: dimmed ? '#4B5563' : tierColor }}
+          style={{ backgroundColor: dimmed ? 'var(--color-gray-600)' : tierColor }}
           title={selectedPower.tier.charAt(0).toUpperCase() + selectedPower.tier.slice(1)}
         />
       )}

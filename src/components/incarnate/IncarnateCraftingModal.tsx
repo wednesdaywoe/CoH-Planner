@@ -161,7 +161,7 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
               <p className="text-gray-400 text-sm">No power selected for this slot.</p>
               <button
                 onClick={() => { onClose(); openIncarnateModal(activeSlotId); }}
-                className="px-4 py-2 text-sm font-medium text-blue-400 border border-blue-700 hover:border-blue-500 hover:bg-blue-900/30 rounded-lg transition-colors"
+                className="px-4 py-2 text-sm font-medium text-link border border-[var(--color-primary)]/40 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/20 rounded-lg transition-colors"
               >
                 Select a Power
               </button>

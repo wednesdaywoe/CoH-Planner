@@ -249,13 +249,13 @@ function ComparisonBarRow({
       {/* Set A bar */}
       <div
         className={`flex items-center gap-2 cursor-pointer rounded px-1 py-0.5 ${
-          isSelectedA ? 'ring-1 ring-blue-400 bg-blue-900/20' : 'hover:bg-slate-800/50'
+          isSelectedA ? 'ring-1 ring-[var(--color-ring)] bg-[var(--color-primary)]/20' : 'hover:bg-slate-800/50'
         }`}
         onClick={() => onTap(pairIndex, 'A')}
       >
         <span
           className={`w-24 sm:w-32 text-[11px] text-right truncate flex-shrink-0 ${
-            !pair.powerA ? 'text-slate-600 italic' : isSelectedA ? 'text-blue-300 font-medium' : 'text-slate-300'
+            !pair.powerA ? 'text-slate-600 italic' : isSelectedA ? 'text-link font-medium' : 'text-slate-300'
           }`}
         >
           {pair.powerA?.name ?? '—'}

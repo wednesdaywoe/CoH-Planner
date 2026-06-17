@@ -248,7 +248,7 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
       <button
         type="button"
         onClick={() => setPoolPickerOpen(true)}
-        className="w-full text-xs px-2 py-1.5 rounded border border-blue-600/40 bg-slate-800 text-blue-200 hover:border-blue-500 hover:bg-slate-700/60 transition-colors"
+        className="w-full text-xs px-2 py-1.5 rounded border border-[var(--color-primary)]/40 bg-slate-800 text-link hover:border-[var(--color-primary)] hover:bg-slate-700/60 transition-colors"
       >
         + Add Power Pool…
       </button>

@@ -21,6 +21,8 @@ export function GeneralSettings() {
 
   const colorTheme = useUIStore((s) => s.colorTheme);
   const setColorTheme = useUIStore((s) => s.setColorTheme);
+  const colorMode = useUIStore((s) => s.colorMode);
+  const setColorMode = useUIStore((s) => s.setColorMode);
 
   const [claimLoading, setClaimLoading] = useState(false);
   const [claimResult, setClaimResult] = useState<{ claimed: number; failed: number } | null>(null);
@@ -111,8 +113,44 @@ export function GeneralSettings() {
       <div className="bg-gray-800 border border-gray-700 rounded-lg p-5 mb-6">
         <h2 className="text-sm font-semibold text-gray-300 mb-1">Appearance</h2>
         <p className="text-sm text-gray-400 mb-4">
-          Choose a color theme. Changes apply instantly and are saved on this device.
+          Choose a color theme and mode. Changes apply instantly and are saved on this device.
         </p>
+
+        {/* Light/dark mode — orthogonal to the theme; flips each theme's ramp. */}
+        <div className="flex items-center justify-between gap-4 mb-4">
+          <div className="min-w-0">
+            <span className="text-sm font-medium text-gray-100">Mode</span>
+            <p className="text-xs text-gray-400 leading-snug">
+              Light or dark canvas. Each theme keeps its colors either way.
+            </p>
+          </div>
+          <div
+            role="radiogroup"
+            aria-label="Color mode"
+            className="shrink-0 flex rounded-lg border border-gray-700 p-0.5 bg-gray-900/40"
+          >
+            {(['dark', 'light'] as const).map((mode) => {
+              const active = colorMode === mode;
+              return (
+                <button
+                  key={mode}
+                  type="button"
+                  role="radio"
+                  aria-checked={active}
+                  onClick={() => setColorMode(mode)}
+                  className={`px-3 py-1 text-xs font-medium rounded-md capitalize transition-colors ${
+                    active
+                      ? 'bg-[var(--color-primary)] text-on-primary'
+                      : 'text-gray-400 hover:text-gray-200'
+                  }`}
+                >
+                  {mode}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {COLOR_THEME_ORDER.map((id) => {
             const theme = COLOR_THEMES[id];
@@ -206,7 +244,7 @@ export function GeneralSettings() {
             aria-checked={calcDebug}
             onClick={toggleCalcDebug}
             className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
-              calcDebug ? 'bg-blue-600' : 'bg-gray-600'
+              calcDebug ? 'bg-[var(--color-primary)]' : 'bg-gray-600'
             }`}
           >
             <span

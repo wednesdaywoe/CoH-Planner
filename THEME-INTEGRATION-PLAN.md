@@ -182,3 +182,78 @@ from scope.
 value coloring, and stat-category indicator dots. These are intentionally global
 and consistent across every theme.
 ```
+
+## Addendum — light/dark mode as the durable fix (user direction, 2026-06)
+
+> **STATUS: DONE (2026-06-17).** Built the full light/dark-per-theme system.
+> - **Paired `--color-on-*` tokens** (`on-primary`/`on-success`/`on-warning`/
+>   `on-danger`/`on-info`) added to `@theme` — the foreground that rides on top
+>   of a solid fill of the same name. `on-primary` tracks each theme's
+>   `--color-primary-fg` via `var()` indirection; the status on-colors are white
+>   and are **not** re-skinned per mode, so they never flip. `ui/` primitives
+>   (Button/Toast) use them; the Shared Builds button is now a real `primary`
+>   variant (fill+text travel together) — the inline-gold + `!text` band-aid is
+>   gone. Audit confirmed it was the only desync in the codebase.
+> - **Mode axis**: `data-mode='light|dark'` on `<html>`, orthogonal to
+>   `data-theme`. `colorMode` in uiStore (default `dark`, persisted),
+>   `applyColorMode`, pre-paint bootstrap in main.tsx, and a Light/Dark control
+>   at the top of Settings → Appearance. Default dark = no change for live users.
+> - **Light ramps** are generated as the exact reverse of each theme's dark
+>   ramp, scoped `[data-theme='x'][data-mode='light']` (outranks the dark block
+>   on specificity), so the two never drift. A base `[data-mode='light']` block
+>   carries the Sidekick light ramp + theme-independent literal fixes (the
+>   `--color-white`→near-black flip and hue-preserving stat-accent darkening).
+>   Saturated `bg-*-600 text-white` action/status fills migrated to `text-on-*`
+>   so they don't flip dark-on-color; Incarnate inline-hex grays wired to the ramp.
+> - **`imperial-light` retired** — it's reproduced exactly by `imperial` + light
+>   mode (byte-identical ramp). Persisted `colorTheme: 'imperial-light'` migrates
+>   to `imperial` + light in both the store `merge` and the main.tsx bootstrap.
+> - **Verified** (Playwright, headless): toggle flips `data-mode` to `light`;
+>   Imperial/Paragon/Carnival all flip the ramp while keeping hue; Shared Builds
+>   button contrast 8.02 / 4.70 / 4.51 (all ≥ AA 4.5). Typecheck + build clean.
+> - **Chrome accent migration (follow-on, same session):** re-hued the remaining
+>   hardcoded blue/indigo/sky **action** chrome onto the theme accent so it
+>   adopts the active theme (the original Phases 2–3 goal, finished here for the
+>   action bucket). Migrated: `focus:ring-blue-500` → `--color-ring` and checkbox
+>   `text-blue-500` → `--color-primary` (all input/checkbox sites); solid action
+>   fills → `bg-[var(--color-primary)] text-on-primary` (MainLayout FAB,
+>   BuildFilters apply, EnhancementPicker active tab, ForumExportModal/ImportPage
+>   selected, CompareSlotting Apply pill, GeneralSettings debug toggle,
+>   DraggableSlotGhost drop-target); selected/active states → primary/link
+>   (Settings active-tab underline, PowersetCompare/CompareSlotting selections,
+>   EnhancementPicker active-category + selected-enhancement ring + active-press +
+>   proc-piece name + tracked-stat, Incarnate action buttons, AvailablePoolPowers
+>   button, StatsDashboard buttons, LevelSpinner value/border). Verified under
+>   Carnival: FAB now crimson `rgb(224,32,122)`, zero buttons/tabs/links still
+>   painting literal Tailwind blue-600/500. **Deliberately LEFT** (correct, not
+>   action chrome): the crash-screen Reload (neutral by design, theme may be
+>   broken at crash time), the PowersetCompare data-viz bar, StatsConfigModal
+>   category dots/toggles (bucket 3, explicitly out of scope), all stat/effect
+>   blue (Endurance/Recovery/recharge hues), effect-aspect maps, info boxes
+>   (HelpModal/BuildsPage/ChangelogModal — bucket 2, blue=info stays), and pure
+>   text-link nav hovers in the builds-browser pages (lower-value, separate pass).
+
+
+The motivating bug class: a component overrides ONE half of a variant (e.g.
+sets `background: var(--color-primary)` inline) but leaves the variant's text
+color (`ghost` → `text-gray-300`), producing light text on a light fill in
+light-primary themes (Imperial/Paragon/Hamilton/Menace gold/amber). Concrete
+case fixed 2026-06: the header "Shared Builds" button — `variant="ghost"` +
+inline gold bg; the ghost `text-gray-300` and the arbitrary
+`text-[var(--color-primary-fg)]` override have equal specificity, so source
+order left grey-on-gold. Patched with `!text-[var(--color-primary-fg)]`, but
+that's a band-aid.
+
+**User's preferred direction:** build a comprehensive **light/dark mode system**
+rather than per-theme whack-a-mole. The robust shape is *paired* semantic
+surface/on-surface tokens (`--surface` / `--on-surface`, `--primary` /
+`--on-primary`, etc.) so a fill and its text always travel together and can
+never desync — fixing the root cause this addendum describes. This subsumes the
+shelved `imperial-light` experiment (see the `light-theme-wip` memory): instead
+of one inverted-ramp light theme, every theme gains a correct light + dark
+variant from the same paired tokens.
+
+Net: prioritize defining paired on-/fill tokens (Phase 0) and migrating the
+`ui/` primitives (Button/Toggle/Badge/etc.) so variants can't be half-overridden
+into a contrast failure. That single change would have prevented the Shared
+Builds bug structurally.

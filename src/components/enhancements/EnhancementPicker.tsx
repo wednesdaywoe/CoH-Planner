@@ -992,7 +992,7 @@ export function EnhancementPicker() {
                 title="When on, taps/clicks queue selections instead of slotting immediately. For common IOs / HOs / Origins, each tap adds another copy. Use the action bar at the bottom to slot all queued enhancements at once."
                 className={`text-xs px-2 py-0.5 rounded mr-1 transition-colors ${
                   selectMode
-                    ? 'bg-green-600 text-white hover:bg-green-500'
+                    ? 'bg-green-600 text-on-success hover:bg-green-500'
                     : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
                 }`}
               >
@@ -1107,7 +1107,7 @@ export function EnhancementPicker() {
             <button
               onClick={handleSlotMultiSelect}
               disabled={emptySlotIndices.length === 0}
-              className="text-xs sm:text-sm px-3 py-1.5 rounded bg-green-600 hover:bg-green-500 text-white font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="text-xs sm:text-sm px-3 py-1.5 rounded bg-green-600 hover:bg-green-500 text-on-success font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
               Slot {Math.min(totalSelectedPieces, emptySlotIndices.length)}
             </button>
@@ -1139,7 +1139,7 @@ function SidebarButton({ label, count, isActive, onClick, textColor, title }: Si
       title={title}
       className={`w-full px-3 py-2 text-left text-sm transition-colors ${
         isActive
-          ? 'bg-blue-900/30 text-blue-300 border-l-2 border-blue-400'
+          ? 'bg-[var(--color-primary)]/20 text-link border-l-2 border-[var(--color-primary)]'
           : `${textColor || 'text-gray-400'} hover:bg-gray-800/50 hover:text-gray-200`
       }`}
     >
@@ -1168,7 +1168,7 @@ function MobileCategoryButton({ label, count, isActive, onClick, textColor, titl
       title={title}
       className={`px-2.5 py-1 text-xs font-medium rounded-full whitespace-nowrap transition-colors ${
         isActive
-          ? 'bg-blue-600 text-white'
+          ? 'bg-[var(--color-primary)] text-on-primary'
           : `bg-gray-700 ${textColor || 'text-gray-300'} hover:bg-gray-600`
       }`}
     >
@@ -1374,7 +1374,7 @@ function ProcsContent({
                 ? 'border-gray-700 opacity-40 cursor-not-allowed bg-gray-900/30'
                 : shiftSel
                   ? 'border-green-400 bg-green-900/20 ring-1 ring-green-400/50'
-                  : 'border-gray-600 bg-gray-800/40 hover:border-blue-400 hover:bg-blue-900/10'
+                  : 'border-gray-600 bg-gray-800/40 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/10'
             }`}
             style={{ touchAction: 'pan-y' }}
           >
@@ -1529,7 +1529,7 @@ function IOSetRow({
       ref={rowRef}
       className={`rounded-lg p-2 transition-shadow ${
         hasTrackedMatch
-          ? 'bg-blue-900/20 border-l-2 border-l-blue-500/70'
+          ? 'bg-[var(--color-primary)]/20 border-l-2 border-l-[var(--color-primary)]/70'
           : 'bg-gray-800/40'
       } ${jumpFlash ? 'ring-2 ring-[var(--color-primary)] ring-offset-2 ring-offset-gray-900' : ''}`}
     >
@@ -1580,8 +1580,8 @@ function IOSetRow({
                     : shiftSel
                       ? 'border-green-400 scale-110 ring-2 ring-green-400/50'
                       : dragSelected
-                        ? 'border-blue-400 scale-110 ring-2 ring-blue-400/50'
-                        : 'border-gray-600 hover:border-blue-400 hover:scale-110'
+                        ? 'border-[var(--color-primary)] scale-110 ring-2 ring-[var(--color-ring)]/50'
+                        : 'border-gray-600 hover:border-[var(--color-primary)] hover:scale-110'
                 }`}
                 style={{ touchAction: 'pan-y' }}
               >
@@ -1633,8 +1633,8 @@ function IOSetRow({
                   : shiftSel
                     ? 'border-green-400 bg-green-900/20 ring-1 ring-green-400/50'
                     : selected
-                      ? 'border-blue-400 bg-blue-900/20'
-                      : 'border-gray-600 bg-gray-900/50 active:bg-blue-900/10'
+                      ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/20'
+                      : 'border-gray-600 bg-gray-900/50 active:bg-[var(--color-primary)]/10'
               }`}
               style={{
                 WebkitUserSelect: 'none',
@@ -1709,7 +1709,7 @@ function StackedCountBadge({ count, onDecrement }: { count: number; onDecrement:
         onDecrement();
       }}
       title="Click to remove one"
-      className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-green-600 hover:bg-red-600 text-white text-[10px] font-bold leading-none flex items-center justify-center shadow ring-1 ring-gray-900 transition-colors"
+      className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-green-600 hover:bg-red-600 text-on-success text-[10px] font-bold leading-none flex items-center justify-center shadow ring-1 ring-gray-900 transition-colors"
     >
       ×{count}
     </button>
@@ -1750,7 +1750,7 @@ function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect, stac
               <div className="relative">
                 <button
                   onClick={(e) => onSelect(stat, e)}
-                  className="rounded border border-gray-600 hover:border-blue-400 hover:scale-110 transition-all bg-gray-900/50 flex flex-col items-center w-[46px] py-0.5"
+                  className="rounded border border-gray-600 hover:border-[var(--color-primary)] hover:scale-110 transition-all bg-gray-900/50 flex flex-col items-center w-[46px] py-0.5"
                 >
                   <GenericIOIcon stat={stat} size={30} alt={stat} />
                   <span className="text-[8px] text-gray-400 leading-tight truncate w-full text-center">{stat}</span>
@@ -2013,7 +2013,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
         />
         <div className="min-w-0">
           <h3 className="text-xs font-semibold text-yellow-400 leading-tight">{set.name}</h3>
-          <span className="text-[10px] text-blue-400">{resolveProcPieceName(piece.name, set.name, piece.proc)}</span>
+          <span className="text-[10px] text-link">{resolveProcPieceName(piece.name, set.name, piece.proc)}</span>
         </div>
       </div>
 
@@ -2199,7 +2199,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
                       // Use eff.value for accurate display instead of pre-rounded eff.desc
                       const formatted = formatBonusDesc(eff.desc, eff.stat, eff.value);
                       return (
-                        <span key={i} className={capped ? 'text-warning-fg font-semibold' : isTracked ? 'text-blue-300 font-semibold' : ''}>
+                        <span key={i} className={capped ? 'text-warning-fg font-semibold' : isTracked ? 'text-link font-semibold' : ''}>
                           {i > 0 && ', '}
                           {formatted}
                           {isActive && totalCount > 0 && (

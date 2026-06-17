@@ -56,7 +56,7 @@ export function BuildFilters({ filters, onFiltersChange }: BuildFiltersProps) {
   };
 
   const selectClass =
-    'bg-gray-800 border border-gray-600 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500';
+    'bg-gray-800 border border-gray-600 rounded px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]';
 
   return (
     <div className="space-y-3">
@@ -67,11 +67,11 @@ export function BuildFilters({ filters, onFiltersChange }: BuildFiltersProps) {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           placeholder="Search builds..."
-          className="flex-1 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+          className="flex-1 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
         />
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-medium transition-colors"
+          className="px-4 py-2 bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-on-primary rounded text-sm font-medium transition-colors"
         >
           Search
         </button>
@@ -229,7 +229,7 @@ function AuthorAutocomplete({ onSelect }: AuthorAutocompleteProps) {
         }}
         onFocus={() => setOpen(true)}
         placeholder="Search by author..."
-        className="bg-gray-800 border border-gray-600 rounded px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 w-48"
+        className="bg-gray-800 border border-gray-600 rounded px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] w-48"
       />
 
       {showDropdown && (

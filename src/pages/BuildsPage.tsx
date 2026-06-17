@@ -172,7 +172,7 @@ export function BuildsPage() {
   ];
 
   const selectClass =
-    'bg-gray-800 border border-gray-600 rounded px-2 py-1 text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500';
+    'bg-gray-800 border border-gray-600 rounded px-2 py-1 text-xs text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)]';
 
   return (
     <div className="max-w-6xl mx-auto p-6 relative">
@@ -241,7 +241,7 @@ export function BuildsPage() {
             value={mySearch}
             onChange={(e) => setMySearch(e.target.value)}
             placeholder="Filter builds..."
-            className="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 w-48"
+            className="bg-gray-800 border border-gray-600 rounded px-3 py-1.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] w-48"
           />
           <select
             value={mySortBy}

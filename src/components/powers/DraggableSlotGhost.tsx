@@ -214,7 +214,7 @@ export function DraggableSlotGhost({
       ghostSlots.push(
         <div
           key={i}
-          className="w-6 h-6 rounded-full border-2 border-dashed border-blue-400 bg-blue-500/20 flex items-center justify-center animate-pulse"
+          className="w-6 h-6 rounded-full border-2 border-dashed border-[var(--color-primary)] bg-[var(--color-primary)]/20 flex items-center justify-center animate-pulse"
           style={{
             position: 'fixed',
             left: ghostPosition.x + (i - 1) * (GHOST_SLOT_SIZE + GHOST_SLOT_GAP),
@@ -223,7 +223,7 @@ export function DraggableSlotGhost({
             height: GHOST_SLOT_SIZE,
           }}
         >
-          <span className="text-[9px] font-semibold text-blue-300">{i + 1}</span>
+          <span className="text-[9px] font-semibold text-link">{i + 1}</span>
         </div>
       );
     }
@@ -232,14 +232,14 @@ export function DraggableSlotGhost({
   // Button label and colors based on drag mode
   const buttonLabel = isAdding ? String(slotsCount) : isRemoving ? `-${slotsCount}` : maxCanAdd > 0 ? '+' : '\u2212';
   const dragBorderClass = isAdding
-    ? 'border-2 border-dashed border-blue-400 bg-blue-500/20 animate-pulse'
+    ? 'border-2 border-dashed border-[var(--color-primary)] bg-[var(--color-primary)]/20 animate-pulse'
     : isRemoving
       ? 'border-2 border-dashed border-red-400 bg-red-500/20 animate-pulse'
       : '';
   const idleClass = maxCanAdd > 0
-    ? 'border border-dashed border-slate-600/50 opacity-40 hover:opacity-100 hover:border-blue-500 hover:bg-slate-700/50'
+    ? 'border border-dashed border-slate-600/50 opacity-40 hover:opacity-100 hover:border-[var(--color-primary)] hover:bg-slate-700/50'
     : 'border border-dashed border-slate-600/50 opacity-40 hover:opacity-100 hover:border-red-400 hover:bg-slate-700/50';
-  const textColor = isAdding ? 'text-blue-300' : isRemoving ? 'text-red-300' : 'text-slate-400';
+  const textColor = isAdding ? 'text-link' : isRemoving ? 'text-red-300' : 'text-slate-400';
 
   const title = dragMode
     ? `Release to ${dragMode === 'add' ? 'add' : 'remove'} ${slotsCount} slot${slotsCount > 1 ? 's' : ''}`
