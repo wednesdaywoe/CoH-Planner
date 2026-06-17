@@ -610,7 +610,7 @@ function BuildIdentityPopover() {
       'display:flex', 'flex-direction:column',
       'align-items:center', 'justify-content:center',
       'gap:18px', 'color:#e2e8f0',
-      'font-family:system-ui,-apple-system,sans-serif',
+      "font-family:'SN Pro','Nunito',system-ui,sans-serif",
     ].join(';');
     overlay.innerHTML = `
       <div style="width:48px;height:48px;border:3px solid #1e293b;border-top-color:#3b82f6;border-radius:50%;animation:spin 1s linear infinite;"></div>

@@ -975,7 +975,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           }}
         />
         <div className="min-w-0">
-          <h3 className="text-sm font-semibold text-blue-400 leading-tight">
+          <h3 className="text-sm font-bold text-blue-400 leading-tight">
             {power.name}
             {isQuickSnipe && (
               <span className="text-[11px] text-amber-400 ml-1 font-normal">(Quick)</span>
@@ -1601,7 +1601,7 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
           />
         </div>
         <div className="min-w-0 flex-1">
-          <h3 className="text-sm font-semibold leading-tight" style={{ color: slotColor }}>
+          <h3 className="text-sm font-bold leading-tight" style={{ color: slotColor }}>
             {selectedPower.displayName}
           </h3>
           <div className="flex items-center gap-2 mt-0.5">

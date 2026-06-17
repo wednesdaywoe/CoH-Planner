@@ -429,7 +429,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     <div className="space-y-1.5 max-w-[320px]">
       {/* Header */}
       <div>
-        <h3 className="text-sm font-semibold text-[var(--color-link)] leading-tight">
+        <h3 className="text-sm font-bold text-[var(--color-link)] leading-tight">
           {basePower.name}
           {hasEnhancements && (
             <span className="text-[10px] text-green-500 ml-1">(enhanced)</span>

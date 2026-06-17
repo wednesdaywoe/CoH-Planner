@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
 @theme {
+  /* Site font. SN Pro (variable, 200–900) is the primary face, loaded via the
+     Google Fonts <link> in index.html; Nunito (also Google-hosted) is the loaded
+     fallback, then system-ui. Setting --font-sans here makes Tailwind's default
+     type and every `font-sans` utility resolve to this stack. */
+  --font-sans: 'SN Pro', 'Nunito', system-ui, sans-serif;
+
   /* Brand accent. Themeable: stays magenta on the default (Sidekick) look,
      overridden to each theme's accent under [data-theme] below. Also used by
      special-mechanic highlights (Scourge / Fury / crits / Hide). */
@@ -191,7 +197,7 @@
 /* Base styles */
 body {
   @apply bg-gray-900 text-gray-100;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-family: var(--font-sans);
 }
 
 /* ============================================================

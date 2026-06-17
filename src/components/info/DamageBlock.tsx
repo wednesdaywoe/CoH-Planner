@@ -204,8 +204,8 @@ function DamageRows({
         <span className={hasEnh ? 'text-green-400' : 'text-slate-500'}>
           {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(2)}` : '—'}
         </span>
-        <span className={`${hasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
-          {hasGlobal || showCombatMod ? <>→ {displayFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
+        <span className={`font-semibold ${hasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
+          {hasGlobal || showCombatMod ? <>→ {displayFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px] font-normal`}>{dmgConArrow.symbol}</span>}</> : '—'}
         </span>
         {inherentInfo && (
           <span className={`${hasInherentDiff || showCombatMod ? inherentInfo.color : 'text-slate-500'} ${cappedClass}`}>
@@ -226,8 +226,8 @@ function DamageRows({
             <span className={dotHasEnh ? 'text-green-400' : 'text-slate-500'}>
               {dotHasEnh ? `→ ${dot.enhanced.toFixed(2)}` : '—'}
             </span>
-            <span className={`${dotHasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
-              {dotHasGlobal || showCombatMod ? <>→ {displayDotFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
+            <span className={`font-semibold ${dotHasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
+              {dotHasGlobal || showCombatMod ? <>→ {displayDotFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px] font-normal`}>{dmgConArrow.symbol}</span>}</> : '—'}
             </span>
             {inherentInfo && (
               <span className={`${dotHasInherent || showCombatMod ? inherentInfo.color : 'text-slate-500'} ${cappedClass}`}>
@@ -251,8 +251,8 @@ function DamageRows({
               <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-500'}>
                 {hasTotalEnh ? `→ ${dotTotalEnhanced.toFixed(2)}` : '—'}
               </span>
-              <span className={`${hasTotalGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
-                {hasTotalGlobal || showCombatMod ? <>→ {dotTotalFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
+              <span className={`font-semibold ${hasTotalGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
+                {hasTotalGlobal || showCombatMod ? <>→ {dotTotalFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px] font-normal`}>{dmgConArrow.symbol}</span>}</> : '—'}
               </span>
               {inherentInfo && (
                 <span className={`${hasTotalInherent || showCombatMod ? inherentInfo.color : 'text-slate-500'} ${cappedClass}`}>
@@ -431,7 +431,7 @@ function DamageMetrics({
           {metric.unavailableReason ? (
             <div className="text-slate-400" title={metric.unavailableReason}>—</div>
           ) : (
-            <div className={improved ? 'text-amber-400' : 'text-slate-300'}>
+            <div className={`font-semibold ${improved ? 'text-amber-400' : 'text-slate-300'}`}>
               {metric.valueFinal.toFixed(2)}
               {improved && metric.valueBase > 0 && (
                 <span className="text-green-400 text-xs ml-1">

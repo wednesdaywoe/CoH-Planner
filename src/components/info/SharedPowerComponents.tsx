@@ -120,7 +120,7 @@ export function ThreeTierStatRow({
         <span className="text-slate-500">—</span>
       )}
       {enhanceable ? (
-        <span className={hasGlobal ? 'text-amber-400' : 'text-slate-300'}>
+        <span className={`font-semibold ${hasGlobal ? 'text-amber-400' : 'text-slate-300'}`}>
           {formatValue(final)}
         </span>
       ) : (
@@ -201,7 +201,7 @@ export function DamageRow({
       <span className={dimmed ? 'text-slate-500' : (hasEnh ? 'text-green-400' : 'text-slate-300')}>
         {enhanced.toFixed(1)}
       </span>
-      <span className={dimmed ? 'text-slate-500' : (hasGlobal ? finalColorClass : 'text-slate-300')}>
+      <span className={`font-semibold ${dimmed ? 'text-slate-500' : (hasGlobal ? finalColorClass : 'text-slate-300')}`}>
         {final.toFixed(1)}
       </span>
     </div>
@@ -1080,6 +1080,23 @@ export function RegistryEffectsDisplay({
   const fontSize = compact ? 'text-xs' : 'text-sm';
   const headerFontSize = compact ? 'text-[10px]' : 'text-[11px]';
 
+  // Power-level duration, surfaced as its own row instead of being stamped onto
+  // every effect label as a "(Ns)" parenthetical — that repeated the same value
+  // down the column and pushed the label past its fixed track. Prefer the
+  // explicit power buff duration; fall back to a per-effect duration only when
+  // every timed row agrees, so a power with genuinely mixed durations doesn't
+  // collapse to one misleading row (those keep showing inline below).
+  const hasTimedEffect = displayableEffects.some((e) => e.effect.config.category !== 'execution');
+  let powerDuration: number | undefined = buffDur != null && buffDur > 0 ? buffDur : undefined;
+  if (powerDuration == null) {
+    const durs = displayableEffects
+      .map((e) => getEffectDuration(e.effect.key, e.effect.config.category))
+      .filter((d): d is number => d != null && d > 0);
+    if (durs.length > 0 && durs.every((d) => Math.abs(d - durs[0]) < 0.001)) {
+      powerDuration = durs[0];
+    }
+  }
+
   return (
     <div>
       {/* Section header if provided */}
@@ -1229,11 +1246,12 @@ export function RegistryEffectsDisplay({
         const hasEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;
         const hasFinal = Math.abs(tiers.final - tiers.enhanced) > 0.001;
 
-        // Build label — expanded label takes precedence
-        let label = expandedLabel || config.label;
-        if (!expandedLabel && byTypeLabel) {
-          label = `${config.label} (${byTypeLabel})`;
-        }
+        // Build label — expanded label takes precedence. The by-type breakdown
+        // (e.g. -Speed's RunSpeed / JumpHeight / FlyJump attribs) is no longer
+        // baked into the visible label: a long list overflowed the fixed label
+        // column and collided with the value columns. It moves to a hover
+        // tooltip on the standard row instead.
+        const label = expandedLabel || config.label;
 
         // Handle mez effects (magnitude format)
         if (config.format === 'mag') {
@@ -1321,20 +1339,17 @@ export function RegistryEffectsDisplay({
           );
         }
 
-        // Duration annotation for this effect (suppressed for execution stats)
-        const effectDur = getEffectDuration(key, config.category);
-
         // Standard three-tier row \u2014 precision owned by the effect's registry
         // config (see formatEffectValueForConfig).
         const formatValue = (v: number) => formatEffectValueForConfig(v, config);
 
         return (
           <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
-            <span className={`${config.colorClass} whitespace-nowrap`}>
+            <span
+              className={`${config.colorClass} min-w-0 truncate ${byTypeLabel ? 'underline decoration-dotted decoration-slate-500/70 underline-offset-2 cursor-help' : ''}`}
+              title={byTypeLabel ? `Affects: ${byTypeLabel}` : undefined}
+            >
               {label}
-              {effectDur != null && (
-                <span className="text-slate-400 font-normal text-[11px] ml-0.5">({effectDur}s)</span>
-              )}
             </span>
             <span className="text-slate-200">{formatValue(tiers.base)}</span>
             {enhanceable ? (
@@ -1406,6 +1421,20 @@ export function RegistryEffectsDisplay({
         result.push(...extraRows);
         return result;
       })}
+
+      {/* Power duration — its own row rather than a parenthetical repeated on
+        * every timed effect's label. Only shown when the power actually has a
+        * timed (non-execution) effect. */}
+      {powerDuration != null && hasTimedEffect && (
+        <div className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+          <span className="text-slate-400">Duration</span>
+          <span className="text-slate-300">
+            {Number.isInteger(powerDuration) ? powerDuration : powerDuration.toFixed(1)}s
+          </span>
+          <span className="text-slate-500">—</span>
+          <span className="text-slate-500">—</span>
+        </div>
+      )}
 
       {/* SPECIAL — chance procs / state-grant entries surfaced from
         * `specialEffects`. Emits its own neutral subheader (same style as
