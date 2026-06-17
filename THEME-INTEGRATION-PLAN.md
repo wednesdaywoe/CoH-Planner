@@ -232,6 +232,18 @@ and consistent across every theme.
 >   blue (Endurance/Recovery/recharge hues), effect-aspect maps, info boxes
 >   (HelpModal/BuildsPage/ChangelogModal — bucket 2, blue=info stays), and pure
 >   text-link nav hovers in the builds-browser pages (lower-value, separate pass).
+> - **Light-mode accent-TEXT contrast (decision #3, done):** accent text tuned
+>   for the dark canvas (`--color-link` = a light tint; the status `-fg` = light
+>   `-400`s) was light-on-light on the light canvas (e.g. the washed-out
+>   Menu/Options pills). Fix: in `[data-mode='light']`, override `--color-link`
+>   per theme to a DARK shade of that theme's accent, darken the Family-2 status
+>   `-fg` to `-700` shades (theme-independent, base block), and point the two
+>   genuine `text-[var(--color-primary)]`-as-text labels (GeneralSettings
+>   "Active", PowerRow slot button) at `text-link`. The solid fills + `--color-on-*`
+>   are untouched (status/primary fills stay dark-enough in light). Verified: the
+>   Menu pill (accent text on a `bg-primary/20` tint composited over the light
+>   canvas) clears AA in all 7 named themes — 4.52–6.81 (Carnival 5.55 after one
+>   extra darkening notch).
 
 
 The motivating bug class: a component overrides ONE half of a variant (e.g.

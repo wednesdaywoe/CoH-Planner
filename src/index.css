@@ -278,21 +278,24 @@ body {
   --color-gray-100: #D9D1E9;  --color-slate-100: #D9D1E9;
   --color-gray-200: #C7BBDF;  --color-slate-200: #C7BBDF;
   --color-gray-300: #AFA6D0;  --color-slate-300: #AFA6D0;
-  --color-gray-400: #948BB9;  --color-slate-400: #948BB9;
-  --color-gray-500: #574D8C;  --color-slate-500: #574D8C;
-  --color-gray-600: #3F3770;  --color-slate-600: #3F3770;
-  --color-gray-700: #2C2655;  --color-slate-700: #2C2655;
-  --color-gray-800: #221D40;  --color-slate-800: #221D40;
+  --color-gray-400: #D8344E;  --color-slate-400: #577eb6;
+  --color-gray-500: #a062ec;  --color-slate-500: #D8344E;
+  --color-gray-600: #13325b;  --color-slate-600: #13325b;
+  --color-gray-700: #335083;  --color-slate-700: #4e4567;
+  --color-gray-800: #282343;  --color-slate-800: #211445;
   --color-gray-900: #191532;  --color-slate-900: #191532;
   --color-gray-950: #0E0C17;  --color-slate-950: #0E0C17;
 
-  /* Action accent is TEAL on the rogue-purple ramp — pops where purple blended
-     into the purple chrome. Light purple survives as the --color-link highlight. */
-  --color-sk-magenta: #75818b;
-  --color-primary: #525b62;
-  --color-primary-hover: #75818b;
-  --color-primary-fg: #06241C;
-  --color-link: #B3A6D8;
+  /* Rogue / Vigilante = a purple↔red↔blue morality mix. The ramp stays rogue
+     PURPLE (chrome identity); the action accent is vigilante RED (buttons /
+     selections pop against the purple), and hero BLUE rides --color-link for
+     highlights. Special-mechanic accent is a purple-magenta so purple stays in
+     the foreground accents too. */
+  --color-sk-magenta: #B65CD8;
+  --color-primary: #D8344E;
+  --color-primary-hover: #BC2C42;
+  --color-primary-fg: #ffffff;
+  --color-link: #6DA8EA;
 }
 
 /* --- Hamidon — the Devouring Earth (Bio teal / Hami gold) --- */
@@ -408,6 +411,20 @@ body {
   --color-gray-900: #F3F4F6;  --color-slate-900: #F1F5F9;
   --color-gray-950: #F9FAFB;  --color-slate-950: #F8FAFC;
 
+  /* Sidekick (default) accent-as-text: blue-400 reads on dark, too light on the
+     light canvas — drop to blue-700. Per-theme light blocks override this. */
+  --color-link: #1E40AF;
+
+  /* Family-2 status accent TEXT (`-fg`, the -400 shades used as text on `/20`
+     tints) washes out on a light canvas. Drop to -700 shades — same hue, dark
+     enough to read. The solid base tokens (--color-success etc.) and the white
+     `--color-on-*` are unchanged (status fills stay dark-enough -600 in light).
+     Theme-independent, so set once here. */
+  --color-success-fg: #15803D;
+  --color-warning-fg: #B45309;
+  --color-danger-fg:  #B91C1C;
+  --color-info-fg:    #1D4ED8;
+
   /* Theme-independent light-canvas fixes (apply under every light theme). */
   --color-white: #18191F;
   --color-yellow-400: #A16207;  --color-yellow-300: #A16207;
@@ -431,6 +448,8 @@ body {
   --color-gray-800: #CEDAEC;  --color-slate-800: #CEDAEC;
   --color-gray-900: #E8EEF8;  --color-slate-900: #E8EEF8;
   --color-gray-950: #F4F7FC;  --color-slate-950: #F4F7FC;
+  /* accent-as-text: dark shade of the theme accent for the light canvas. */
+  --color-link: #15396B;
 }
 
 [data-theme='menace'][data-mode='light'] {
@@ -445,6 +464,8 @@ body {
   --color-gray-800: #E7D1D0;  --color-slate-800: #E7D1D0;
   --color-gray-900: #F4E8E7;  --color-slate-900: #F4E8E7;
   --color-gray-950: #FAF4F3;  --color-slate-950: #FAF4F3;
+  /* accent-as-text: dark shade of the theme accent for the light canvas. */
+  --color-link: #842028;
 }
 
 [data-theme='imperial'][data-mode='light'] {
@@ -459,6 +480,8 @@ body {
   --color-gray-800: #C6C4BA;  --color-slate-800: #C6C4BA;
   --color-gray-900: #D8D4C8;  --color-slate-900: #D8D4C8;
   --color-gray-950: #ECEAE2;  --color-slate-950: #ECEAE2;
+  /* accent-as-text: dark shade of the theme accent for the light canvas. */
+  --color-link: #21496E;
 }
 
 [data-theme='renegade'][data-mode='light'] {
@@ -473,6 +496,8 @@ body {
   --color-gray-800: #C7BBDF;  --color-slate-800: #C7BBDF;
   --color-gray-900: #D9D1E9;  --color-slate-900: #D9D1E9;
   --color-gray-950: #ECE8F5;  --color-slate-950: #ECE8F5;
+  /* accent-as-text: dark shade of the theme accent for the light canvas. */
+  --color-link: #1E5A9E;
 }
 
 [data-theme='hamidon'][data-mode='light'] {
@@ -487,6 +512,8 @@ body {
   --color-gray-800: #B5E2CF;  --color-slate-800: #B5E2CF;
   --color-gray-900: #D6F0E4;  --color-slate-900: #D6F0E4;
   --color-gray-950: #EAF7F1;  --color-slate-950: #EAF7F1;
+  /* accent-as-text: dark shade of the theme accent for the light canvas. */
+  --color-link: #0E5340;
 }
 
 [data-theme='resistance'][data-mode='light'] {
@@ -501,6 +528,8 @@ body {
   --color-gray-800: #D2C9BD;  --color-slate-800: #D2C9BD;
   --color-gray-900: #E5DFD7;  --color-slate-900: #E5DFD7;
   --color-gray-950: #F2EFEA;  --color-slate-950: #F2EFEA;
+  /* accent-as-text: dark shade of the theme accent for the light canvas. */
+  --color-link: #114E78;
 }
 
 [data-theme='carnival'][data-mode='light'] {
@@ -515,4 +544,6 @@ body {
   --color-gray-800: #C8C0D8;  --color-slate-800: #C8C0D8;
   --color-gray-900: #E4DEEC;  --color-slate-900: #E4DEEC;
   --color-gray-950: #F4F1F8;  --color-slate-950: #F4F1F8;
+  /* accent-as-text: dark shade of the theme accent for the light canvas. */
+  --color-link: #4A1F6B;
 }

@@ -181,7 +181,7 @@ export function GeneralSettings() {
                     <span className="text-xs text-gray-500 truncate">{theme.tagline}</span>
                   </div>
                   {selected && (
-                    <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wide text-[var(--color-primary)]">
+                    <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wide text-link">
                       Active
                     </span>
                   )}

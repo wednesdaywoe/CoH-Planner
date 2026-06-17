@@ -291,7 +291,7 @@ export function PowerRow({
       {isTouch && (
         <button
           onClick={() => setShowSlotting((v) => !v)}
-          className={`w-6 h-6 flex items-center justify-center rounded-md border transition-colors flex-shrink-0 text-[var(--color-primary)] ${
+          className={`w-6 h-6 flex items-center justify-center rounded-md border transition-colors flex-shrink-0 text-link ${
             showSlotting
               ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/30'
               : 'border-[var(--color-primary)]/60 bg-[var(--color-primary)]/15 hover:bg-[var(--color-primary)]/25'
