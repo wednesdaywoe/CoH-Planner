@@ -249,7 +249,7 @@ function ComparisonBarRow({
       {/* Set A bar */}
       <div
         className={`flex items-center gap-2 cursor-pointer rounded px-1 py-0.5 ${
-          isSelectedA ? 'ring-1 ring-[var(--color-ring)] bg-[var(--color-primary)]/20' : 'hover:bg-slate-800/50'
+          isSelectedA ? 'ring-1 ring-[var(--color-ring)] bg-[var(--color-selected)]/20' : 'hover:bg-slate-800/50'
         }`}
         onClick={() => onTap(pairIndex, 'A')}
       >

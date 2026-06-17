@@ -1442,7 +1442,7 @@ function KheldianFormSelector() {
         onClick={() => setKheldianForm(form)}
         className={`px-2 py-0.5 text-xs rounded border transition-colors ${
           active
-            ? 'bg-[var(--color-primary)]/40 border-[var(--color-primary)] text-[var(--color-link)]'
+            ? 'bg-[var(--color-selected)]/40 border-[var(--color-selected)] text-[var(--color-link)]'
             : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
         }`}
       >
@@ -1481,7 +1481,7 @@ function PrimalistFormSelector() {
         onClick={() => setPrimalistForm(form)}
         className={`px-2 py-0.5 text-xs rounded border transition-colors ${
           active
-            ? 'bg-[var(--color-primary)]/40 border-[var(--color-primary)] text-[var(--color-link)]'
+            ? 'bg-[var(--color-selected)]/40 border-[var(--color-selected)] text-[var(--color-link)]'
             : 'bg-slate-700/50 border-slate-600 text-slate-300 hover:bg-slate-600/50'
         }`}
       >

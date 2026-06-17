@@ -112,12 +112,12 @@ export const COLOR_THEMES: Record<ColorThemeId, ColorTheme> = {
     description:
       'I frequently talk to birds.',
     swatch: {
-      base: '#0E0C17',
-      surface: '#221D40',
-      panel: '#2C2655',
-      primary: '#D8344E',
-      accent: '#6DA8EA',
-      highlight: '#C7BBDF',
+      base: '#0C0A14',
+      surface: '#1E1838',
+      panel: '#6248A8',
+      primary: '#2D72D8',
+      accent: '#C82030',
+      highlight: '#C8C0E0',
     },
   },
   hamidon: {

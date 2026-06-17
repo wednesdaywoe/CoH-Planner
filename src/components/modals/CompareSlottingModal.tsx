@@ -572,7 +572,7 @@ export function CompareSlottingModal() {
                 className={`
                   rounded-lg border p-3 cursor-pointer transition-all
                   ${hoveredCopyId === copy.id
-                    ? 'border-[var(--color-primary)] bg-slate-700/50'
+                    ? 'border-[var(--color-selected)] bg-slate-700/50'
                     : appliedCopyId === copy.id
                       ? 'border-green-500 bg-green-500/10'
                       : 'border-slate-600 bg-slate-800 hover:border-slate-500'
@@ -631,7 +631,7 @@ export function CompareSlottingModal() {
                         cursor-pointer transition-transform hover:scale-110
                         ${slot
                           ? 'border-transparent bg-transparent'
-                          : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-[var(--color-primary)] hover:bg-slate-600'
+                          : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-[var(--color-selected)] hover:bg-slate-600'
                         }
                       `}
                       onClick={(e) => {

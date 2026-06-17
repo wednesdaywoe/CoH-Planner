@@ -37,7 +37,7 @@ export function PowerSlot({
     return (
       <button
         onClick={onClick}
-        className="w-8 h-8 rounded border-2 border-dashed border-gray-600 hover:border-[var(--color-primary)] flex items-center justify-center text-gray-500 hover:text-[var(--color-primary)] transition-colors"
+        className="w-8 h-8 rounded border-2 border-dashed border-gray-600 hover:border-[var(--color-selected)] flex items-center justify-center text-gray-500 hover:text-[var(--color-primary)] transition-colors"
         title="Add enhancement slot"
         data-onboarding="add-slot"
       >
@@ -51,7 +51,7 @@ export function PowerSlot({
       <button
         onClick={onClick}
         onContextMenu={handleContextMenu}
-        className="w-8 h-8 rounded bg-gray-700 border border-gray-600 hover:border-[var(--color-primary)] flex items-center justify-center transition-colors"
+        className="w-8 h-8 rounded bg-gray-700 border border-gray-600 hover:border-[var(--color-selected)] flex items-center justify-center transition-colors"
         title={`Slot ${slotIndex + 1} - Click to add enhancement`}
         data-onboarding="slot-enhancement"
       >

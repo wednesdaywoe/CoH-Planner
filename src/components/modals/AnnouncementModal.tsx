@@ -71,7 +71,7 @@ export function AnnouncementModal() {
               onClick={() => setActiveIdx(i)}
               className={`flex items-center gap-1.5 px-3 py-2 text-sm border-b-2 -mb-px transition-colors ${
                 isActive
-                  ? 'text-gray-100 border-[var(--color-primary)]'
+                  ? 'text-gray-100 border-[var(--color-selected)]'
                   : 'text-gray-400 border-transparent hover:text-gray-200'
               }`}
             >

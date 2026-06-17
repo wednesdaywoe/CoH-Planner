@@ -740,7 +740,7 @@ export function EnhancementPicker() {
                 title={tab.title}
                 className={`px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
                   typeFilter === tab.id
-                    ? 'text-[var(--color-link)] border-b-2 border-[var(--color-primary)] bg-gray-800/50'
+                    ? 'text-[var(--color-link)] border-b-2 border-[var(--color-selected)] bg-gray-800/50'
                     : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/30'
                 }`}
               >
@@ -1003,13 +1003,13 @@ export function EnhancementPicker() {
                     <span className="text-xs text-gray-500 mr-1">Sort:</span>
                     <button
                       onClick={() => setIOSortBy('name')}
-                      className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'name' ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]' : 'text-gray-400 hover:text-gray-200'}`}
+                      className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'name' ? 'bg-[var(--color-selected)] text-[var(--color-primary-fg)]' : 'text-gray-400 hover:text-gray-200'}`}
                     >
                       A-Z
                     </button>
                     <button
                       onClick={() => setIOSortBy('level')}
-                      className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'level' ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]' : 'text-gray-400 hover:text-gray-200'}`}
+                      className={`text-xs px-1.5 py-0.5 rounded ${ioSortBy === 'level' ? 'bg-[var(--color-selected)] text-[var(--color-primary-fg)]' : 'text-gray-400 hover:text-gray-200'}`}
                     >
                       Level
                     </button>
@@ -1139,7 +1139,7 @@ function SidebarButton({ label, count, isActive, onClick, textColor, title }: Si
       title={title}
       className={`w-full px-3 py-2 text-left text-sm transition-colors ${
         isActive
-          ? 'bg-[var(--color-primary)]/20 text-link border-l-2 border-[var(--color-primary)]'
+          ? 'bg-[var(--color-selected)]/20 text-link border-l-2 border-[var(--color-selected)]'
           : `${textColor || 'text-gray-400'} hover:bg-gray-800/50 hover:text-gray-200`
       }`}
     >
@@ -1168,7 +1168,7 @@ function MobileCategoryButton({ label, count, isActive, onClick, textColor, titl
       title={title}
       className={`px-2.5 py-1 text-xs font-medium rounded-full whitespace-nowrap transition-colors ${
         isActive
-          ? 'bg-[var(--color-primary)] text-on-primary'
+          ? 'bg-[var(--color-selected)] text-selected-fg'
           : `bg-gray-700 ${textColor || 'text-gray-300'} hover:bg-gray-600`
       }`}
     >
@@ -1374,7 +1374,7 @@ function ProcsContent({
                 ? 'border-gray-700 opacity-40 cursor-not-allowed bg-gray-900/30'
                 : shiftSel
                   ? 'border-green-400 bg-green-900/20 ring-1 ring-green-400/50'
-                  : 'border-gray-600 bg-gray-800/40 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/10'
+                  : 'border-gray-600 bg-gray-800/40 hover:border-[var(--color-selected)] hover:bg-[var(--color-selected)]/10'
             }`}
             style={{ touchAction: 'pan-y' }}
           >
@@ -1529,7 +1529,7 @@ function IOSetRow({
       ref={rowRef}
       className={`rounded-lg p-2 transition-shadow ${
         hasTrackedMatch
-          ? 'bg-[var(--color-primary)]/20 border-l-2 border-l-[var(--color-primary)]/70'
+          ? 'bg-[var(--color-selected)]/20 border-l-2 border-l-[var(--color-primary)]/70'
           : 'bg-gray-800/40'
       } ${jumpFlash ? 'ring-2 ring-[var(--color-primary)] ring-offset-2 ring-offset-gray-900' : ''}`}
     >
@@ -1580,8 +1580,8 @@ function IOSetRow({
                     : shiftSel
                       ? 'border-green-400 scale-110 ring-2 ring-green-400/50'
                       : dragSelected
-                        ? 'border-[var(--color-primary)] scale-110 ring-2 ring-[var(--color-ring)]/50'
-                        : 'border-gray-600 hover:border-[var(--color-primary)] hover:scale-110'
+                        ? 'border-[var(--color-selected)] scale-110 ring-2 ring-[var(--color-ring)]/50'
+                        : 'border-gray-600 hover:border-[var(--color-selected)] hover:scale-110'
                 }`}
                 style={{ touchAction: 'pan-y' }}
               >
@@ -1633,8 +1633,8 @@ function IOSetRow({
                   : shiftSel
                     ? 'border-green-400 bg-green-900/20 ring-1 ring-green-400/50'
                     : selected
-                      ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/20'
-                      : 'border-gray-600 bg-gray-900/50 active:bg-[var(--color-primary)]/10'
+                      ? 'border-[var(--color-selected)] bg-[var(--color-selected)]/20'
+                      : 'border-gray-600 bg-gray-900/50 active:bg-[var(--color-selected)]/10'
               }`}
               style={{
                 WebkitUserSelect: 'none',
@@ -1750,7 +1750,7 @@ function GenericIOContent({ availableIOs, ioValue, globalIOLevel, onSelect, stac
               <div className="relative">
                 <button
                   onClick={(e) => onSelect(stat, e)}
-                  className="rounded border border-gray-600 hover:border-[var(--color-primary)] hover:scale-110 transition-all bg-gray-900/50 flex flex-col items-center w-[46px] py-0.5"
+                  className="rounded border border-gray-600 hover:border-[var(--color-selected)] hover:scale-110 transition-all bg-gray-900/50 flex flex-col items-center w-[46px] py-0.5"
                 >
                   <GenericIOIcon stat={stat} size={30} alt={stat} />
                   <span className="text-[8px] text-gray-400 leading-tight truncate w-full text-center">{stat}</span>

@@ -37,6 +37,15 @@
      --color-primary. Use as focus:ring-[var(--color-ring)]. */
   --color-ring: var(--color-primary);
 
+  /* Family 1 — "selected / active" highlight. Distinct from --color-primary
+     (buttons / triggers / toggles) so a theme can give SELECTION states their
+     own accent — e.g. Renegade uses blue buttons but RED selections. Defaults
+     to the primary accent, so every other theme is visually identical until it
+     overrides this. Use bg-selected[/alpha], border-selected, text-selected-fg
+     for selected rows / active tabs / chosen items. */
+  --color-selected: var(--color-primary);
+  --color-selected-fg: var(--color-primary-fg);
+
   /* Family 2 — semantic status. Defined ONCE here and intentionally NOT
      re-skinned per dark [data-theme]: green=success, red=danger, amber=warning,
      blue=info must read the same under every theme (a purple "success" toast is
@@ -272,30 +281,42 @@ body {
   --color-link: #6FA0CC;
 }
 
-/* --- Renegade — Rogue / Vigilante (Rogue purple / Vanguard teal) --- */
+/* --- Renegade — Rogue / Vigilante (neutral purple chrome; hero-blue + villain-
+   red as co-equal accent partners — neither side wins) ---
+   Purple is the workhorse: the gray/slate ramp is a single smooth purple from
+   void (#0C0A14) to lavender (#ECE8F6), so all chrome reads purple. The three
+   themeable accent slots carry the morality trio: PRIMARY = renegade purple
+   (buttons / tabs / toggles / selections / focus rings), --color-link = hero
+   BLUE (accent text, values, links, the bg-primary/20 menu pills), and
+   --color-sk-magenta = villain RED (special-mechanic glints). The link blue is
+   lighter than the reference's button blue so accent TEXT clears AA on the dark
+   panels. */
 [data-theme='renegade'] {
-  --color-gray-50:  #ECE8F5;  --color-slate-50:  #ECE8F5;
-  --color-gray-100: #D9D1E9;  --color-slate-100: #D9D1E9;
-  --color-gray-200: #C7BBDF;  --color-slate-200: #C7BBDF;
-  --color-gray-300: #AFA6D0;  --color-slate-300: #AFA6D0;
-  --color-gray-400: #D8344E;  --color-slate-400: #577eb6;
-  --color-gray-500: #a062ec;  --color-slate-500: #D8344E;
-  --color-gray-600: #13325b;  --color-slate-600: #13325b;
-  --color-gray-700: #335083;  --color-slate-700: #4e4567;
-  --color-gray-800: #282343;  --color-slate-800: #211445;
-  --color-gray-900: #191532;  --color-slate-900: #191532;
-  --color-gray-950: #0E0C17;  --color-slate-950: #0E0C17;
+  --color-gray-50:  #ECE8F6;  --color-slate-50:  #ECE8F6;
+  --color-gray-100: #D9D1EC;  --color-slate-100: #D9D1EC;
+  --color-gray-200: #C8C0E0;  --color-slate-200: #C8C0E0;
+  --color-gray-300: #A99CC8;  --color-slate-300: #A99CC8;
+  --color-gray-400: #8979AE;  --color-slate-400: #8979AE;
+  --color-gray-500: #645690;  --color-slate-500: #645690;
+  --color-gray-600: #473C6E;  --color-slate-600: #473C6E;
+  --color-gray-700: #302850;  --color-slate-700: #302850;
+  --color-gray-800: #1E1838;  --color-slate-800: #1E1838;
+  --color-gray-900: #141020;  --color-slate-900: #141020;
+  --color-gray-950: #0C0A14;  --color-slate-950: #0C0A14;
 
-  /* Rogue / Vigilante = a purple↔red↔blue morality mix. The ramp stays rogue
-     PURPLE (chrome identity); the action accent is vigilante RED (buttons /
-     selections pop against the purple), and hero BLUE rides --color-link for
-     highlights. Special-mechanic accent is a purple-magenta so purple stays in
-     the foreground accents too. */
-  --color-sk-magenta: #B65CD8;
-  --color-primary: #D8344E;
-  --color-primary-hover: #BC2C42;
-  --color-primary-fg: #ffffff;
-  --color-link: #6DA8EA;
+  /* Purple is only the BACKDROP (the ramp above). The action colors contrast it:
+     hero BLUE = primary (buttons / toggles / triggers / focus rings), villain
+     RED = --color-selected (active tabs / selected rows / chosen items), so both
+     morality partners read as real chrome and neither side wins. --color-link is
+     LAVENDER (accent text / values) to keep purple in the foreground without
+     going blue-on-blue against the blue buttons. */
+  --color-sk-magenta: #C82030;
+  --color-primary: #2461BE;
+  --color-primary-hover: #1E539C;
+  --color-primary-fg: #EBF2FF;
+  --color-selected: #C82030;
+  --color-selected-fg: #FFEAEC;
+  --color-link: #A99AD8;
 }
 
 /* --- Hamidon — the Devouring Earth (Bio teal / Hami gold) --- */
@@ -485,19 +506,27 @@ body {
 }
 
 [data-theme='renegade'][data-mode='light'] {
-  --color-gray-50: #0E0C17;  --color-slate-50: #0E0C17;
-  --color-gray-100: #191532;  --color-slate-100: #191532;
-  --color-gray-200: #221D40;  --color-slate-200: #221D40;
-  --color-gray-300: #2C2655;  --color-slate-300: #2C2655;
-  --color-gray-400: #3F3770;  --color-slate-400: #3F3770;
-  --color-gray-500: #574D8C;  --color-slate-500: #574D8C;
-  --color-gray-600: #948BB9;  --color-slate-600: #948BB9;
-  --color-gray-700: #AFA6D0;  --color-slate-700: #AFA6D0;
-  --color-gray-800: #C7BBDF;  --color-slate-800: #C7BBDF;
-  --color-gray-900: #D9D1E9;  --color-slate-900: #D9D1E9;
-  --color-gray-950: #ECE8F5;  --color-slate-950: #ECE8F5;
-  /* accent-as-text: dark shade of the theme accent for the light canvas. */
-  --color-link: #1E5A9E;
+  --color-gray-50:  #2A2040;  --color-slate-50:  #2A2040;
+  --color-gray-100: #332456;  --color-slate-100: #332456;
+  --color-gray-200: #3E2F70;  --color-slate-200: #3E2F70;
+  --color-gray-300: #534093;  --color-slate-300: #534093;
+  --color-gray-400: #6858A0;  --color-slate-400: #6858A0;
+  --color-gray-500: #8878C0;  --color-slate-500: #8878C0;
+  --color-gray-600: #A898D0;  --color-slate-600: #A898D0;
+  --color-gray-700: #C4B8E0;  --color-slate-700: #C4B8E0;
+  --color-gray-800: #DDD5F0;  --color-slate-800: #DDD5F0;
+  --color-gray-900: #EDE8F8;  --color-slate-900: #EDE8F8;
+  --color-gray-950: #F5F3FC;  --color-slate-950: #F5F3FC;
+
+  /* Light-canvas accents: dark hero-BLUE primary (buttons), dark villain-RED
+     selected, deep-purple LAVENDER link (accent text) — all dark enough to read
+     on the light lavender surfaces. primary-fg (#EBF2FF) carries over. */
+  --color-primary: #1858C0;
+  --color-primary-hover: #134AA0;
+  --color-selected: #B01828;
+  --color-selected-fg: #FFEAEC;
+  --color-sk-magenta: #B01828;
+  --color-link: #4A3888;
 }
 
 [data-theme='hamidon'][data-mode='light'] {

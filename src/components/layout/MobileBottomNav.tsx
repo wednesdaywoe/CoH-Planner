@@ -226,7 +226,7 @@ function NavButton({
     >
       {active && (
         <span
-          className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 w-8 rounded-b bg-[var(--color-primary)]"
+          className="absolute top-0 left-1/2 -translate-x-1/2 h-0.5 w-8 rounded-b bg-[var(--color-selected)]"
           aria-hidden
         />
       )}
@@ -515,7 +515,7 @@ function MobileSettingsContent() {
           <button
             onClick={() => setContentMode('standard')}
             className={`text-sm px-3 py-1 rounded transition-colors ${
-              contentMode === 'standard' ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]' : 'text-slate-400'
+              contentMode === 'standard' ? 'bg-[var(--color-selected)] text-[var(--color-primary-fg)]' : 'text-slate-400'
             }`}
           >
             Standard
@@ -523,7 +523,7 @@ function MobileSettingsContent() {
           <button
             onClick={() => setContentMode('incarnate')}
             className={`text-sm px-3 py-1 rounded transition-colors ${
-              contentMode === 'incarnate' ? 'bg-[var(--color-primary)] text-[var(--color-primary-fg)]' : 'text-slate-400'
+              contentMode === 'incarnate' ? 'bg-[var(--color-selected)] text-[var(--color-primary-fg)]' : 'text-slate-400'
             }`}
           >
             Incarnate

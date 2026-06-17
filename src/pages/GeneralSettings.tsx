@@ -171,7 +171,7 @@ export function GeneralSettings() {
                 aria-pressed={selected}
                 className={`text-left rounded-lg border p-3 transition-colors ${
                   selected
-                    ? 'border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/40 bg-gray-700/40'
+                    ? 'border-[var(--color-selected)] ring-2 ring-[var(--color-selected)]/40 bg-gray-700/40'
                     : 'border-gray-700 hover:border-gray-600 hover:bg-gray-700/30'
                 }`}
               >

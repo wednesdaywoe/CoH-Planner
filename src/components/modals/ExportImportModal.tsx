@@ -703,7 +703,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
           <button
             className={`px-4 py-2 font-semibold transition-colors ${
               activeTab === 'save'
-                ? 'text-[var(--color-link)] border-b-2 border-[var(--color-primary)]'
+                ? 'text-[var(--color-link)] border-b-2 border-[var(--color-selected)]'
                 : 'text-gray-400 hover:text-gray-300'
             }`}
             onClick={() => setActiveTab('save')}
@@ -713,7 +713,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
           <button
             className={`px-4 py-2 font-semibold transition-colors ${
               activeTab === 'load-import'
-                ? 'text-[var(--color-link)] border-b-2 border-[var(--color-primary)]'
+                ? 'text-[var(--color-link)] border-b-2 border-[var(--color-selected)]'
                 : 'text-gray-400 hover:text-gray-300'
             }`}
             onClick={() => setActiveTab('load-import')}
@@ -723,7 +723,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
           <button
             className={`px-4 py-2 font-semibold transition-colors ${
               activeTab === 'share-export'
-                ? 'text-[var(--color-link)] border-b-2 border-[var(--color-primary)]'
+                ? 'text-[var(--color-link)] border-b-2 border-[var(--color-selected)]'
                 : 'text-gray-400 hover:text-gray-300'
             }`}
             onClick={() => setActiveTab('share-export')}

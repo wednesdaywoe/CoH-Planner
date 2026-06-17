@@ -293,8 +293,8 @@ export function PowerRow({
           onClick={() => setShowSlotting((v) => !v)}
           className={`w-6 h-6 flex items-center justify-center rounded-md border transition-colors flex-shrink-0 text-link ${
             showSlotting
-              ? 'border-[var(--color-primary)] bg-[var(--color-primary)]/30'
-              : 'border-[var(--color-primary)]/60 bg-[var(--color-primary)]/15 hover:bg-[var(--color-primary)]/25'
+              ? 'border-[var(--color-selected)] bg-[var(--color-selected)]/30'
+              : 'border-[var(--color-selected)]/60 bg-[var(--color-selected)]/15 hover:bg-[var(--color-selected)]/25'
           }`}
           title={showSlotting ? 'Hide slotted enhancements' : 'Show slotted enhancements'}
           aria-expanded={showSlotting}

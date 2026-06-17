@@ -221,13 +221,13 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                     const isActive = feedbackType === type;
                     const colorMap = {
                       red: isActive
-                        ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)] text-[var(--color-link)]'
+                        ? 'bg-[var(--color-selected)]/20 border-[var(--color-selected)] text-[var(--color-link)]'
                         : 'border-gray-600 text-gray-400 hover:border-gray-500 hover:text-gray-300',
                       blue: isActive
-                        ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)] text-[var(--color-link)]'
+                        ? 'bg-[var(--color-selected)]/20 border-[var(--color-selected)] text-[var(--color-link)]'
                         : 'border-gray-600 text-gray-400 hover:border-gray-500 hover:text-gray-300',
                       purple: isActive
-                        ? 'bg-[var(--color-primary)]/20 border-[var(--color-primary)] text-[var(--color-link)]'
+                        ? 'bg-[var(--color-selected)]/20 border-[var(--color-selected)] text-[var(--color-link)]'
                         : 'border-gray-600 text-gray-400 hover:border-gray-500 hover:text-gray-300',
                     };
                     return (

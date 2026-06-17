@@ -301,7 +301,7 @@ export function TouchableSlot({
                       ? 'border-red-500 bg-red-900/40 ring-1 ring-red-500/50'
                       : slot
                         ? 'border-transparent bg-transparent'
-                        : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-[var(--color-primary)] hover:bg-slate-600'
+                        : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-[var(--color-selected)] hover:bg-slate-600'
             }
           `}
           style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
