@@ -1335,6 +1335,121 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "",
     unique: "Exclusive"
   },
+  // ATO passive-global / pet-proc 6th-piece specials. The binary tags these
+  // proc:false (the special isn't a self chance-proc), so they were dropped from
+  // the slot UI and the totals — see the extractor's HC_PIECE_PATCHES. Values
+  // binary-sourced from Set_Bonus.Global_Bonus.* except Scrapper's Strike crit
+  // (a special crit mechanic; std +2/+4%, sup +3/+6% confirmed in-game by
+  // @Redlynne). Pet-targeted globals are skipped by the player calc (they buff
+  // pets), so they display only; Kheldian's Grace is a SELF global that applies.
+  "Superior Scrapper's Strike: Critical Hit Bonus": {
+    setCategory: "Archetype Enhancement",
+    setName: "Superior Scrapper's Strike",
+    ioName: "Critical Hit Bonus",
+    ppm: null,
+    mechanics: "+Critical Hit Chance (+3% vs Minions, +6% others) for ALL powers",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Command of the Mastermind: Pet Defense Bonus": {
+    setCategory: "Archetype Enhancement",
+    setName: "Command of the Mastermind",
+    ioName: "Pet Defense Bonus",
+    ppm: null,
+    mechanics: "Buff(+Def AoE 10%) to pets",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Command of the Mastermind: Pet Defense Bonus": {
+    setCategory: "Archetype Enhancement",
+    setName: "Superior Command of the Mastermind",
+    ioName: "Pet Defense Bonus",
+    ppm: null,
+    mechanics: "Buff(+Def AoE 15%) to pets",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Kheldian's Grace: Resistance Bonus": {
+    setCategory: "Archetype Enhancement",
+    setName: "Kheldian's Grace",
+    ioName: "Resistance Bonus",
+    ppm: null,
+    mechanics: "+Resistance (All) 3.5%, +Max HP 7.5%",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Kheldian's Grace: Resistance Bonus": {
+    setCategory: "Archetype Enhancement",
+    setName: "Superior Kheldian's Grace",
+    ioName: "Resistance Bonus",
+    ppm: null,
+    mechanics: "+Resistance (All) 5%, +Max HP 10%",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Mark of Supremacy: Pet Resistance Bonus": {
+    setCategory: "Archetype Enhancement",
+    setName: "Mark of Supremacy",
+    ioName: "Pet Resistance Bonus",
+    ppm: null,
+    mechanics: "Buff(+Res All 10%) to pets",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Mark of Supremacy: Pet Resistance Bonus": {
+    setCategory: "Archetype Enhancement",
+    setName: "Superior Mark of Supremacy",
+    ioName: "Pet Resistance Bonus",
+    ppm: null,
+    mechanics: "Buff(+Res All 15%) to pets",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Spider's Bite: Pet Toxic Bonus": {
+    setCategory: "Archetype Enhancement",
+    setName: "Spider's Bite",
+    ioName: "Pet Toxic Bonus",
+    ppm: null,
+    mechanics: "Grants your pets' damage powers an 8% chance for minor Toxic damage",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "10--50",
+    pool: "",
+    unique: "Exclusive"
+  },
+  "Superior Spider's Bite: Pet Toxic Bonus": {
+    setCategory: "Archetype Enhancement",
+    setName: "Superior Spider's Bite",
+    ioName: "Pet Toxic Bonus",
+    ppm: null,
+    mechanics: "Grants your pets' damage powers an 8% chance for Toxic damage",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "50",
+    pool: "",
+    unique: "Exclusive"
+  },
   "Chance for Critical Hit": {
     setCategory: "Archetype Enhancement",
     setName: "Critical Strikes",

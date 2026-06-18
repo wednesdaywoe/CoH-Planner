@@ -3993,9 +3993,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Pet Defense Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -12187,9 +12187,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Resistance Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -13698,9 +13698,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Recharge/Pet Resistance Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -18300,9 +18300,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Critical Hit Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -19413,9 +19413,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Pet Toxic Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -21164,9 +21164,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Pet Defense Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -22837,9 +22837,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Resistance Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -23110,9 +23110,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Endurance"
         ],
-        "name": "Endurance",
+        "name": "Recharge/Pet Resistance Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -23817,9 +23817,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Critical Hit Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }
@@ -23948,9 +23948,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Recharge"
         ],
-        "name": "Recharge",
+        "name": "Recharge/Pet Toxic Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 4,
         "unique": true
       }

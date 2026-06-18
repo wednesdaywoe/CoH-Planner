@@ -333,6 +333,25 @@ HC_PIECE_PATCHES: dict[str, dict[int, dict]] = {
     'superior_assassins_mark':   {6: {'name': 'Recharge/Chance for Recharge Power', 'proc': True}},
     'essence_transfer':          {6: {'name': 'Recharge/Chance for +Health', 'proc': True}},
     'superior_essence_transfer': {6: {'name': 'Recharge/Chance for +Health', 'proc': True}},
+    # ATO passive-global 6th pieces — the special is an ALWAYS-ON global (not a
+    # chance-proc), so the binary tags them proc:false and the global is dropped
+    # from BOTH the slot UI and the character totals. (Reported via Scrapper's
+    # Strike, @Redlynne 2026-06-18.) Effect values binary-sourced from
+    # Set_Bonus.Global_Bonus.* — except Scrapper's Strike's +Crit, a special crit
+    # mechanic with no Global_Bonus power, hand-curated in proc-data.ts
+    # (std +2%/+4%, sup +3%/+6%, both confirmed in-game). findProcData resolves
+    # each by set name, so the piece label is cosmetic; each set has exactly one
+    # global proc-data entry so the set fallback is unambiguous.
+    'scrappers_strike':                   {6: {'name': 'Recharge/Critical Hit Bonus', 'proc': True}},
+    'superior_scrappers_strike':          {6: {'name': 'Recharge/Critical Hit Bonus', 'proc': True}},
+    'command_of_the_mastermind':          {6: {'name': 'Recharge/Pet Defense Bonus', 'proc': True}},
+    'superior_command_of_the_mastermind': {6: {'name': 'Recharge/Pet Defense Bonus', 'proc': True}},
+    'kheldians_grace':                    {6: {'name': 'Recharge/Resistance Bonus', 'proc': True}},
+    'superior_kheldians_grace':           {6: {'name': 'Recharge/Resistance Bonus', 'proc': True}},
+    'mark_of_supremacy':                  {6: {'name': 'Recharge/Pet Resistance Bonus', 'proc': True}},
+    'superior_mark_of_supremacy':         {6: {'name': 'Recharge/Pet Resistance Bonus', 'proc': True}},
+    'spiders_bite':                       {6: {'name': 'Recharge/Pet Toxic Bonus', 'proc': True}},
+    'superior_spiders_bite':              {6: {'name': 'Recharge/Pet Toxic Bonus', 'proc': True}},
 }
 
 # ---------------------------------------------------------------------

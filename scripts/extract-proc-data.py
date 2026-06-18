@@ -87,6 +87,19 @@ SCALING_OVERRIDES = {
     # applies the 3% floor via this structured `scaling` effect).
     'reactivedefenses': [{'category': 'Resistance', 'value': 3.0, 'effectType': 'All', 'scaling': True}],
     'preventivemedicine': [{'category': 'Absorb', 'value': 20.0, 'scaling': True}],
+    # Kheldian's Grace ATO global — the only SELF global among the ATO passive-
+    # global 6th pieces (the rest buff pets, which the player calc skips). Its
+    # Set_Bonus.Global_Bonus power resolves cleanly via structured_effects() but
+    # the per-piece resolve_piece() walk misses it (ATO boost pieces don't carry
+    # the Null/Grant_Power marker the walk expects), so hand-provide the SELF
+    # Res(All) + Max HP. Values binary-sourced from Set_Bonus.Global_Bonus.
+    # [Superior_]Kheldians_Grace (2026-06-18); the set's +Dmg-to-pets component is
+    # omitted (pet target → calc-skipped; the binary's ×250 damage-proc heuristic
+    # mislabels it anyway).
+    'kheldiansgrace':         [{'category': 'Resistance', 'value': 3.5, 'effectType': 'All'},
+                               {'category': 'MaxHP', 'value': 7.5}],
+    'superiorkheldiansgrace': [{'category': 'Resistance', 'value': 5.0, 'effectType': 'All'},
+                               {'category': 'MaxHP', 'value': 10.0}],
 }
 
 
