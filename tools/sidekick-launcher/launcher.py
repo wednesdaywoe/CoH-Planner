@@ -39,14 +39,44 @@ def port_open(port: int, host: str = "127.0.0.1", timeout: float = 0.25) -> bool
             return False
 
 
+_PYTHON_HEADS = {"py", "py.exe", "python", "python.exe", "python3", "python3.exe"}
+
+
+def resolve_command(command: list[str]) -> list[str]:
+    """Make a tools.json `command` cross-platform.
+
+    The registry uses the Windows form ``["py", "-3", "-m", "pkg", ...]``, but
+    ``py`` (the Windows Python launcher) doesn't exist on Linux/macOS. Replace a
+    leading Python launcher — ``py`` / ``python`` / ``python3``, plus an optional
+    ``py``-style ``-3`` version selector — with the interpreter running THIS
+    launcher (``sys.executable``), so child tools use the same Python on every
+    platform. Non-Python commands pass through untouched.
+    """
+    if not command:
+        return command
+    head = Path(command[0]).name.lower()
+    if head not in _PYTHON_HEADS and not head.startswith("python3."):
+        return command
+    rest = command[1:]
+    # Drop a Windows `py`-launcher version selector ("-3", "-3.11") — it's
+    # meaningless to a direct interpreter and would be read as a script flag.
+    if rest and rest[0].startswith("-3"):
+        rest = rest[1:]
+    return [sys.executable, *rest]
+
+
+def _spawn_kwargs() -> dict:
+    """Detach the child so it keeps running independently of the launcher: a
+    fresh console + process group on Windows, a new session on POSIX."""
+    if sys.platform == "win32":
+        return {"creationflags": subprocess.CREATE_NEW_CONSOLE | subprocess.CREATE_NEW_PROCESS_GROUP}
+    return {"start_new_session": True}
+
+
 def launch_tool(tool: dict) -> tuple[bool, str]:
     """Spawn a tool. Prefers an explicit argv `command` (so we can pass
-    --no-browser and avoid double-opening tabs); falls back to the .bat
-    launcher if `command` is absent."""
-    flags = 0
-    if sys.platform == "win32":
-        flags = subprocess.CREATE_NEW_CONSOLE | subprocess.CREATE_NEW_PROCESS_GROUP
-
+    --no-browser and avoid double-opening tabs); falls back to the platform
+    launcher script if `command` is absent."""
     command = tool.get("command")
     if command:
         cwd_rel = tool.get("cwd", ".")
@@ -55,28 +85,35 @@ def launch_tool(tool: dict) -> tuple[bool, str]:
             return False, f"cwd not found: {cwd}"
         try:
             subprocess.Popen(
-                command,
+                resolve_command(command),
                 cwd=str(cwd),
-                creationflags=flags,
                 stdin=subprocess.DEVNULL,
+                **_spawn_kwargs(),
             )
             return True, "launched"
         except OSError as e:
             return False, str(e)
 
+    # Fallback: a `launcher` script. On Windows that's the `.bat`; on POSIX try a
+    # sibling `.sh` with the same stem so a command-less tool still launches.
     launcher_rel = tool.get("launcher")
     if not launcher_rel:
         return False, "no launcher or command configured"
     launcher = (ROOT / launcher_rel).resolve()
+    if sys.platform != "win32" and launcher.suffix.lower() == ".bat":
+        sh = launcher.with_suffix(".sh")
+        if sh.exists():
+            launcher = sh
     if not launcher.exists():
         return False, f"launcher not found: {launcher}"
     try:
+        argv = [str(launcher)] if sys.platform == "win32" else ["/bin/sh", str(launcher)]
         subprocess.Popen(
-            [str(launcher)],
+            argv,
             cwd=str(launcher.parent),
-            shell=True,
-            creationflags=flags,
+            shell=(sys.platform == "win32"),
             stdin=subprocess.DEVNULL,
+            **_spawn_kwargs(),
         )
         return True, "launched"
     except OSError as e:

@@ -29,6 +29,7 @@ from bin_crawler.parser._powercats import parse_powercats
 from bin_crawler.parser._boostsets import parse_boostsets, build_power_category_index
 from bin_crawler.parser._messages import load_messages
 from bin_crawler.parser._pigg import BinResolver
+from bin_crawler.assets_dir import resolve_assets_dir
 from bin_crawler.parser._enums import POWER_TYPE, EFFECT_AREA, TARGET_TYPE, PVP_FLAG
 
 
@@ -248,22 +249,27 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
 
 def main():
     ap = argparse.ArgumentParser(description='Export player power data as structured JSON')
-    ap.add_argument('--assets-dir', default=r'G:\Homecoming\assets\live',
-                    help='Path to assets directory (with .pigg files or bin/ subdir)')
+    ap.add_argument('--assets-dir', default=None,
+                    help='Path to assets directory (with .pigg files or bin/ subdir). '
+                         'Omit to use the remembered path or a folder picker.')
+    ap.add_argument('--pick', action='store_true',
+                    help='Open a folder picker to choose/change the assets directory')
     ap.add_argument('--output-dir', default=None,
                     help='Output directory for JSON files (default: ./exported_powers/<assets-dir-name>, e.g. ./exported_powers/live or ./exported_powers/experimental)')
     ap.add_argument('--categories', nargs='*',
                     help='Specific categories to export (default: all player categories)')
     args = ap.parse_args()
 
+    assets_dir = resolve_assets_dir(args.assets_dir, pick=args.pick)
+
     if args.output_dir is None:
-        source_name = Path(args.assets_dir).name or 'export'
+        source_name = Path(assets_dir).name or 'export'
         output_dir = Path('./exported_powers') / source_name
     else:
         output_dir = Path(args.output_dir)
     categories = set(args.categories) if args.categories else PLAYER_CATEGORIES
 
-    resolver = BinResolver(args.assets_dir)
+    resolver = BinResolver(assets_dir)
     print(f'Source: {resolver.source_description}', flush=True)
 
     # Load message table

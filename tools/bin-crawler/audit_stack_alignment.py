@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from bin_crawler.parser._powers import parse_powers
 from bin_crawler.parser._pigg import BinResolver
+from bin_crawler.assets_dir import resolve_assets_dir
 from bin_crawler.parser._enums import ATTRIB_MOD_STACK
 
 
@@ -312,19 +313,23 @@ def discriminator_summary(mismatches: list[dict], goods: list[dict]) -> None:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--assets-dir', default=r'G:\Homecoming\assets\live')
+    ap.add_argument('--assets-dir', default=None,
+                    help='Assets directory; omit to use the remembered path or a folder picker')
+    ap.add_argument('--pick', action='store_true',
+                    help='Open a folder picker to choose/change the assets directory')
     ap.add_argument('--defs-dir', default=r'C:\Projects\CoH-Planner\raw defs')
     ap.add_argument('--limit', type=int, default=10,
                     help='Max example mismatches to print')
     args = ap.parse_args()
+    assets_dir = resolve_assets_dir(args.assets_dir, pick=args.pick)
 
     print(f'Loading defs from {args.defs_dir}', flush=True)
     defs_dir = Path(args.defs_dir)
     defs_map = collect_defs(defs_dir)
     print(f'  {len(defs_map)} powers indexed from defs', flush=True)
 
-    print(f'\nParsing powers.bin from {args.assets_dir}', flush=True)
-    resolver = BinResolver(args.assets_dir)
+    print(f'\nParsing powers.bin from {assets_dir}', flush=True)
+    resolver = BinResolver(assets_dir)
     powers = parse_powers(resolver.read('powers.bin'))
     print(f'  {len(powers)} powers parsed', flush=True)
 

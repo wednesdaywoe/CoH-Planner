@@ -17,8 +17,8 @@ from socketserver import ThreadingMixIn
 from urllib.parse import parse_qs, urlparse
 
 from .parser import parse_powers, parse_powersets, parse_powercats, parse_classes, load_messages, BinResolver
+from .assets_dir import resolve_assets_dir
 
-DEFAULT_ASSETS_DIR = Path(r"G:\Homecoming\assets\live")
 
 
 class DataSource:
@@ -339,6 +339,9 @@ def main():
                     help="Path to assets directory (with .pigg files or bin/ subdir)")
     ap.add_argument("--source", action="append", metavar="NAME=PATH",
                     help="Named data source, e.g. --source hc=G:/Homecoming/assets/live")
+    ap.add_argument("--pick", action="store_true",
+                    help="Open a folder picker to choose/change the assets directory "
+                         "(ignored when --source is given)")
     ap.add_argument("--port", "-p", type=int, default=8090)
     ap.add_argument("--no-browser", action="store_true")
     args = ap.parse_args()
@@ -354,11 +357,14 @@ def main():
             name, path_str = spec.split("=", 1)
             label = name.replace("_", " ").title()
             source_specs.append((name, label, Path(path_str)))
-    elif args.assets_dir:
-        source_specs.append(("default", "Default", args.assets_dir))
     else:
-        # Default: load Homecoming from assets/live (reads pigg archives)
-        source_specs.append(("hc", "Homecoming", DEFAULT_ASSETS_DIR))
+        # No explicit --source: resolve a single assets dir (the --assets-dir
+        # flag, else the remembered path, else a folder picker) so the browser
+        # is one command to start without retyping the path each time.
+        assets_dir = resolve_assets_dir(
+            str(args.assets_dir) if args.assets_dir else None, pick=args.pick
+        )
+        source_specs.append(("hc", "Homecoming", Path(assets_dir)))
 
     if not source_specs:
         print("No data sources specified.", file=sys.stderr)

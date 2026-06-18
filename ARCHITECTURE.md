@@ -321,11 +321,11 @@ Homecoming occasionally adds new fields to the binary format during patches. Bin
 
 ## Sidekick Launcher
 
-A small dashboard that lives at `http://localhost:8000/` and acts as the front door for the suite. It reads [`tools/sidekick-launcher/tools.json`](tools/sidekick-launcher/tools.json), polls each registered tool's port to show live status, and exposes a `/api/launch` endpoint that shells out to a tool's `.bat` when the user clicks Launch.
+A small dashboard that lives at `http://localhost:8000/` and acts as the front door for the suite. It reads [`tools/sidekick-launcher/tools.json`](tools/sidekick-launcher/tools.json), polls each registered tool's port to show live status, and exposes a `/api/launch` endpoint that spawns a tool when the user clicks Launch. Launch is cross-platform: it runs the tool's `command` array, rewriting the registry's Windows `py -3` head to the launcher's own interpreter (`sys.executable`) so the same Python is used on Linux/macOS/Windows, and detaches the child (new console on Windows, new session on POSIX). The `.bat`/`.sh` launcher scripts are only a fallback for command-less tools.
 
 The launcher is intentionally thin (~150 LOC, stdlib-only): it does not bundle, proxy, or wrap the other tools — they keep running on their own ports and remain usable standalone. Adding a future tool is one entry in `tools.json`. The dashboard also lists external links (e.g. the hosted planner at coh-sidekick.com).
 
-Run with `py -3 tools/sidekick-launcher/launcher.py` or by double-clicking `SidekickLauncher.bat` in the repo root.
+Run with `python3 tools/sidekick-launcher/launcher.py`, or double-click `SidekickLauncher.bat` (Windows) / `SidekickLauncher.sh` (Linux/macOS) in the repo root.
 
 ## How the Tools Fit Together
 

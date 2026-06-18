@@ -13,10 +13,11 @@ import subprocess
 import sys
 from pathlib import Path
 
+from bin_crawler.assets_dir import resolve_dir
+
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 EXPORT_SCRIPT = SCRIPT_DIR / 'export_powers.py'
-DEFAULT_ASSETS_ROOT = Path(r'G:\Homecoming\assets')
 DEFAULT_OUTPUT_ROOT = Path('./exported_powers')
 
 
@@ -121,15 +122,31 @@ def main():
     ap = argparse.ArgumentParser(description='Export live + experimental and diff')
     ap.add_argument('--left', default='live', help='Left assets subdir name (default: live)')
     ap.add_argument('--right', default='experimental', help='Right assets subdir name (default: experimental)')
-    ap.add_argument('--assets-root', default=str(DEFAULT_ASSETS_ROOT),
-                    help=f'Root containing <left>/ and <right>/ (default: {DEFAULT_ASSETS_ROOT})')
+    ap.add_argument('--assets-root', default=None,
+                    help='Root containing <left>/ and <right>/. Omit to use the '
+                         'remembered root or a folder picker.')
+    ap.add_argument('--pick', action='store_true',
+                    help='Open a folder picker to choose/change the assets root')
     ap.add_argument('--output-root', default=str(DEFAULT_OUTPUT_ROOT),
                     help=f'Root for JSON outputs (default: {DEFAULT_OUTPUT_ROOT})')
     ap.add_argument('--skip-export', action='store_true',
                     help='Skip running exports; diff existing output dirs')
     args = ap.parse_args()
 
-    assets_root = Path(args.assets_root)
+    # The assets ROOT holds two assets dirs (<left>/ and <right>/), so validate
+    # that both halves look like assets dirs rather than the root itself.
+    def _valid_root(p) -> bool:
+        from bin_crawler.assets_dir import is_assets_dir
+        root = Path(p)
+        return root.is_dir() and is_assets_dir(root / args.left) and is_assets_dir(root / args.right)
+
+    assets_root = Path(resolve_dir(
+        args.assets_root,
+        key='assets_root',
+        title=f'Select the assets ROOT (the folder containing {args.left}/ and {args.right}/)',
+        pick=args.pick,
+        validate=_valid_root,
+    ))
     output_root = Path(args.output_root)
     left_out = output_root / args.left
     right_out = output_root / args.right

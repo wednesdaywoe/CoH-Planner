@@ -26,7 +26,7 @@ Goal: Generate CoD2-compatible structured JSON from Bin Crawler's binary parser,
 
 The export is functional and verified. Run with: `py -3 tools/bin-crawler/bin_crawler/export_powers.py` (or `py -3 -m bin_crawler.export_powers` from inside `tools/bin-crawler/`).
 
-The exporter and HTTP server read directly from `.pigg` archives via `BinResolver`, which uses Pigg Wrangler's `PiggArchive` under the hood. Use `--assets-dir` to point at an assets directory (default: `G:\Homecoming\assets\live`).
+The exporter and HTTP server read directly from `.pigg` archives via `BinResolver`, which uses Pigg Wrangler's `PiggArchive` under the hood. Point a command at an assets directory with `--assets-dir`; omit it and the shared resolver (`bin_crawler/assets_dir.py`) uses the **remembered path**, else opens a **folder picker** (tkinter) and saves the choice to `~/.config/bin-crawler/config.json` (`%APPDATA%\bin-crawler\config.json` on Windows). `--pick` re-opens the picker to change it. The flag always overrides (deterministic for scripts/CI); on a headless box the picker falls back to a typed prompt. The diff tool selects an assets *root* under a separate `assets_root` key; the server's picker is bypassed when `--source NAME=PATH` is given.
 
 - **5,277 player powers** exported across 610 powersets in 34 categories (last verified 2026-03-28)
 - Effect template parsing implemented with core fields: attribs, aspect, table, scale, duration, magnitude

@@ -56,6 +56,13 @@ class BinResolver:
             self._bin_dir = self.assets_dir
 
     @property
+    def has_data(self) -> bool:
+        """True if this directory actually yielded readable .bin sources
+        (pigg archives or loose files) — used to validate a chosen/remembered
+        assets directory before trusting it."""
+        return bool(self._piggs or self._bin_dir)
+
+    @property
     def source_description(self) -> str:
         if self._piggs:
             pigg_names = [Path(p.pigg_path).name for p in self._piggs]

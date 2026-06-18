@@ -26,6 +26,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from bin_crawler.parser._pigg import BinResolver
+from bin_crawler.assets_dir import resolve_assets_dir
 from bin_crawler.parser._classes import parse_classes
 
 
@@ -38,20 +39,25 @@ def _normalize_class_name(name: str) -> str:
 
 def main():
     ap = argparse.ArgumentParser(description="Export AT class/pet tables as JSON")
-    ap.add_argument("--assets-dir", default=r"G:\Homecoming\assets\live",
-                    help="Path to assets directory containing .pigg archives")
+    ap.add_argument("--assets-dir", default=None,
+                    help="Path to assets directory containing .pigg archives. "
+                         "Omit to use the remembered path or a folder picker.")
+    ap.add_argument("--pick", action="store_true",
+                    help="Open a folder picker to choose/change the assets directory")
     ap.add_argument("--output-dir", default=None,
                     help="Output directory (default: ./exported_powers/<assets-dir-name>/tables)")
     args = ap.parse_args()
 
+    assets_dir = resolve_assets_dir(args.assets_dir, pick=args.pick)
+
     if args.output_dir is None:
-        source_name = Path(args.assets_dir).name or "export"
+        source_name = Path(assets_dir).name or "export"
         output_dir = Path("./exported_powers") / source_name / "tables"
     else:
         output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    resolver = BinResolver(args.assets_dir)
+    resolver = BinResolver(assets_dir)
     print(f"Source: {resolver.source_description}", flush=True)
     print(f"Output: {output_dir}", flush=True)
 

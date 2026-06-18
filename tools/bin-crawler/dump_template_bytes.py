@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from bin_crawler.parser import _powers as P
 from bin_crawler.parser._pigg import BinResolver
+from bin_crawler.assets_dir import resolve_assets_dir
 
 
 def hex_groups(data: bytes, per_line: int = 16) -> str:
@@ -28,8 +29,12 @@ def hex_groups(data: bytes, per_line: int = 16) -> str:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('power', help='power full_name to dump')
-    ap.add_argument('--assets-dir', default=r'G:\Homecoming\assets\live')
+    ap.add_argument('--assets-dir', default=None,
+                    help='Assets directory; omit to use the remembered path or a folder picker')
+    ap.add_argument('--pick', action='store_true',
+                    help='Open a folder picker to choose/change the assets directory')
     args = ap.parse_args()
+    assets_dir = resolve_assets_dir(args.assets_dir, pick=args.pick)
 
     target = args.power.lower()
     captured = []  # list of (power_full_name, [tmpl_bytes, ...])
@@ -111,7 +116,7 @@ def main():
     P._parse_effect_group = wrapped_group
     P._parse_power = wrapped_parse_power
 
-    resolver = BinResolver(args.assets_dir)
+    resolver = BinResolver(assets_dir)
     print('Parsing powers.bin (~1-3 min)...', flush=True)
     powers = P.parse_powers(resolver.read('powers.bin'))
     print(f'  parsed {len(powers)} powers', flush=True)
