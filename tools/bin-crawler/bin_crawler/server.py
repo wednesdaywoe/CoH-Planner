@@ -9,6 +9,7 @@ Usage:
 import argparse
 import json
 import sys
+import threading
 import webbrowser
 from dataclasses import asdict
 from http.server import HTTPServer, BaseHTTPRequestHandler
@@ -17,7 +18,7 @@ from socketserver import ThreadingMixIn
 from urllib.parse import parse_qs, urlparse
 
 from .parser import parse_powers, parse_powersets, parse_powercats, parse_classes, load_messages, BinResolver
-from .assets_dir import resolve_assets_dir
+from .assets_dir import is_assets_dir, saved_assets_dir, remember_assets_dir
 
 
 
@@ -51,6 +52,16 @@ class StatsHandler(BaseHTTPRequestHandler):
     default_source: str = ""
     static_dir: Path = Path(__file__).resolve().parent / "static"
 
+    # Single-dir (web-UI) mode state. The server binds its port immediately and
+    # parses in the background, so the launcher's port-based status detection
+    # sees it online right away and the directory can be (re)chosen from the web
+    # UI cogwheel without a blocking startup picker.
+    assets_dir: str = ""             # currently configured dir for the default source
+    load_status: str = "unconfigured"  # unconfigured | loading | ready | error
+    load_message: str = "Choose your game assets folder to begin."
+    _load_lock = threading.Lock()
+    _load_generation = 0             # bumped per load so a stale parse can't clobber a newer one
+
     def log_message(self, fmt, *args):
         sys.stderr.write(f"{args[0]}\n")
 
@@ -60,7 +71,10 @@ class StatsHandler(BaseHTTPRequestHandler):
     def _get_source(self) -> DataSource:
         p = self._params()
         name = p.get("source", self.default_source)
-        return self.sources.get(name, self.sources[self.default_source])
+        # Until a background parse finishes, `sources` may be empty — serve an
+        # empty source rather than KeyError so the UI can show the loading state.
+        src = self.sources.get(name) or self.sources.get(self.default_source)
+        return src if src is not None else _EMPTY_SOURCE
 
     def _json(self, obj, status=200):
         body = json.dumps(obj, ensure_ascii=False).encode()
@@ -91,6 +105,7 @@ class StatsHandler(BaseHTTPRequestHandler):
         path = urlparse(self.path).path
         routes = {
             "/": lambda: self._serve_static("index.html"),
+            "/api/config": self._api_config,
             "/api/sources": self._api_sources,
             "/api/stats": self._api_stats,
             "/api/categories": self._api_categories,
@@ -107,6 +122,49 @@ class StatsHandler(BaseHTTPRequestHandler):
                 self._json({"error": str(e)}, 500)
         else:
             self.send_error(404)
+
+    def do_POST(self):
+        path = urlparse(self.path).path
+        if path == "/api/set-assets-dir":
+            try:
+                self._api_set_assets_dir()
+            except Exception as e:
+                self._json({"error": str(e)}, 500)
+        else:
+            self.send_error(404)
+
+    def _api_config(self):
+        """Current single-dir state for the web UI cogwheel: the configured
+        folder and the background-load status (unconfigured / loading / ready /
+        error)."""
+        self._json({
+            "assets_dir": self.assets_dir,
+            "saved_dir": saved_assets_dir() or "",
+            "status": self.load_status,
+            "message": self.load_message,
+            "multi_source": len(self.sources) > 1,
+        })
+
+    def _api_set_assets_dir(self):
+        """Set/change the assets folder from the web UI, persist it, and kick off
+        a background re-parse. Validates that the path actually holds .pigg/.bin
+        data so a typo doesn't silently wipe the current data."""
+        length = int(self.headers.get("Content-Length", "0"))
+        try:
+            payload = json.loads(self.rfile.read(length) or b"{}")
+        except json.JSONDecodeError:
+            self._json({"ok": False, "error": "invalid json"}, 400)
+            return
+        new_dir = (payload.get("path") or "").strip()
+        if not new_dir:
+            self._json({"ok": False, "error": "no path given"}, 400)
+            return
+        if not is_assets_dir(new_dir):
+            self._json({"ok": False, "error": "That folder has no .pigg or .bin game data."}, 400)
+            return
+        remember_assets_dir(new_dir)
+        start_default_load(new_dir)
+        self._json({"ok": True, "status": StatsHandler.load_status})
 
     def _api_sources(self):
         self._json([
@@ -333,68 +391,102 @@ def load_source(name: str, label: str, assets_dir: Path) -> DataSource:
     return src
 
 
+# Empty placeholder served while a background parse is still running (or no
+# folder is configured yet), so the API never KeyErrors on a missing source.
+_EMPTY_SOURCE = DataSource("", "")
+
+
+def _background_load(path: str, name: str = "hc", label: str = "Homecoming") -> None:
+    """Parse `path` off the request thread and swap it in as the default source.
+    A generation counter guards against an older parse finishing after a newer
+    one was requested (rapid folder changes)."""
+    StatsHandler._load_generation += 1
+    gen = StatsHandler._load_generation
+    StatsHandler.load_status = "loading"
+    StatsHandler.load_message = f"Parsing {path} … (1-3 min on first load)"
+    try:
+        src = load_source(name, label, Path(path))
+        if gen != StatsHandler._load_generation:
+            return  # a newer load superseded this one
+        with StatsHandler._load_lock:
+            StatsHandler.sources = {name: src}
+            StatsHandler.default_source = name
+            StatsHandler.assets_dir = path
+        if src.total > 0:
+            StatsHandler.load_status = "ready"
+            StatsHandler.load_message = f"{src.total:,} powers loaded."
+        else:
+            StatsHandler.load_status = "error"
+            StatsHandler.load_message = "No power data found in that folder."
+    except Exception as e:  # noqa: BLE001 — surface any parse error to the UI
+        if gen == StatsHandler._load_generation:
+            StatsHandler.load_status = "error"
+            StatsHandler.load_message = f"Failed to load: {e}"
+
+
+def start_default_load(path: str) -> None:
+    """Kick off `_background_load` in a daemon thread (returns immediately)."""
+    threading.Thread(target=_background_load, args=(path,), daemon=True).start()
+
+
 def main():
     ap = argparse.ArgumentParser(description="Power Stats Browser")
     ap.add_argument("--assets-dir", type=Path, default=None,
                     help="Path to assets directory (with .pigg files or bin/ subdir)")
     ap.add_argument("--source", action="append", metavar="NAME=PATH",
-                    help="Named data source, e.g. --source hc=G:/Homecoming/assets/live")
-    ap.add_argument("--pick", action="store_true",
-                    help="Open a folder picker to choose/change the assets directory "
-                         "(ignored when --source is given)")
+                    help="Named data source, e.g. --source hc=G:/Homecoming/assets/live "
+                         "(advanced/multi-source; loads synchronously before serving)")
     ap.add_argument("--port", "-p", type=int, default=8090)
     ap.add_argument("--no-browser", action="store_true")
     args = ap.parse_args()
 
-    # Build source list
-    source_specs: list[tuple[str, str, Path]] = []  # (name, label, path)
+    addr = ("127.0.0.1", args.port)
+    server = ThreadingHTTPServer(addr, StatsHandler)
+    url = f"http://127.0.0.1:{args.port}"
 
     if args.source:
+        # Advanced multi-source mode (e.g. the diff tool): load every named
+        # source synchronously, then serve. No web-UI directory picker here.
+        import time as _time
+        print("=" * 60, flush=True)
+        print(f"Bin Crawler — loading {len(args.source)} data source(s).", flush=True)
+        print("Parsing the .pigg archives can take 1-3 minutes per source.", flush=True)
+        print("=" * 60, flush=True)
+        sources: dict[str, DataSource] = {}
         for spec in args.source:
             if "=" not in spec:
                 print(f"Invalid --source format: {spec!r} (expected NAME=PATH)", file=sys.stderr)
                 sys.exit(1)
             name, path_str = spec.split("=", 1)
             label = name.replace("_", " ").title()
-            source_specs.append((name, label, Path(path_str)))
+            print(f"\nLoading source '{name}' from {path_str}...", flush=True)
+            t0 = _time.monotonic()
+            sources[name] = load_source(name, label, Path(path_str))
+            print(f"  [{name}] loaded in {_time.monotonic() - t0:.1f}s.", flush=True)
+        StatsHandler.sources = sources
+        StatsHandler.default_source = next(iter(sources))
+        StatsHandler.load_status = "ready"
+        StatsHandler.load_message = f"{sum(s.total for s in sources.values()):,} powers loaded."
+        print(f"\nServing {len(sources)} source(s) on {url}", flush=True)
     else:
-        # No explicit --source: resolve a single assets dir (the --assets-dir
-        # flag, else the remembered path, else a folder picker) so the browser
-        # is one command to start without retyping the path each time.
-        assets_dir = resolve_assets_dir(
-            str(args.assets_dir) if args.assets_dir else None, pick=args.pick
-        )
-        source_specs.append(("hc", "Homecoming", Path(assets_dir)))
-
-    if not source_specs:
-        print("No data sources specified.", file=sys.stderr)
-        sys.exit(1)
-
-    # Load all sources
-    print("=" * 60, flush=True)
-    print(f"Bin Crawler — loading {len(source_specs)} data source(s).", flush=True)
-    print("Parsing the .pigg archives can take 1-3 minutes per source", flush=True)
-    print("(it's CPU-bound, not stuck). Progress per .bin file is shown below.", flush=True)
-    print("The browser will open automatically once the server is ready.", flush=True)
-    print("=" * 60, flush=True)
-    import time as _time
-    sources: dict[str, DataSource] = {}
-    overall_start = _time.monotonic()
-    for name, label, path in source_specs:
-        print(f"\nLoading source '{name}' from {path}...", flush=True)
-        src_start = _time.monotonic()
-        sources[name] = load_source(name, label, path)
-        print(f"  [{name}] Source loaded in {_time.monotonic() - src_start:.1f}s.", flush=True)
-    print(f"\nAll sources loaded in {_time.monotonic() - overall_start:.1f}s.", flush=True)
-
-    StatsHandler.sources = sources
-    StatsHandler.default_source = source_specs[0][0]
-
-    addr = ("127.0.0.1", args.port)
-    server = ThreadingHTTPServer(addr, StatsHandler)
-    url = f"http://127.0.0.1:{args.port}"
-    total_powers = sum(s.total for s in sources.values())
-    print(f"\nServing {len(sources)} source(s), {total_powers} total powers on {url}", flush=True)
+        # Single-dir (web-UI) mode — the launcher's path. Bind the port NOW and
+        # parse in the background, so the launcher sees the server online
+        # immediately and the folder can be chosen / changed from the web-UI
+        # cogwheel. Auto-load the --assets-dir flag or the remembered folder if
+        # it's valid; otherwise wait for the user to pick one in the UI.
+        initial = str(args.assets_dir) if args.assets_dir else saved_assets_dir()
+        print(f"Bin Crawler serving on {url}", flush=True)
+        if initial and is_assets_dir(initial):
+            print(f"Loading remembered folder in the background: {initial}", flush=True)
+            start_default_load(initial)
+        else:
+            StatsHandler.assets_dir = initial or ""
+            StatsHandler.load_status = "unconfigured"
+            StatsHandler.load_message = (
+                "Choose your game assets folder (the one with the .pigg files) "
+                "via the ⚙ button."
+            )
+            print("No valid folder configured yet — set one via the web UI (⚙).", flush=True)
 
     if not args.no_browser:
         webbrowser.open(url)

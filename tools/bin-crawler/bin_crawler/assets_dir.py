@@ -66,6 +66,19 @@ def is_assets_dir(path: str | os.PathLike) -> bool:
         return False
 
 
+def saved_assets_dir() -> str | None:
+    """The remembered assets directory (raw — may no longer exist), or None.
+    Used by the server to auto-load / pre-fill the settings field without ever
+    opening a blocking picker."""
+    return _load_config().get("assets_dir")
+
+
+def remember_assets_dir(path: str) -> None:
+    """Persist `path` as the remembered assets directory (used by the server's
+    web-UI directory picker)."""
+    _save_config("assets_dir", path)
+
+
 def _pick_dialog(title: str, initialdir: str | None) -> str | None:
     """Native folder picker; returns None when cancelled or no GUI is available."""
     try:

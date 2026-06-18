@@ -300,7 +300,31 @@ td .boost-tags {
     </select>
     <select id="boost-filter"><option value="">All Boost Types</option></select>
     <button class="btn-export" id="btn-export-all" onclick="App.exportAll()">Export JSON</button>
+    <button class="btn-export" id="btn-cog" title="Change game assets folder" style="padding:0.45rem 0.6rem">&#9881;</button>
     <span class="stats-line" id="stats-line"></span>
+</div>
+
+<!-- Config banner: shown while no folder is set or a parse is in progress. -->
+<div id="config-banner" style="display:none;padding:0.9rem 1.25rem;margin:0.75rem;border:1px solid var(--border);border-radius:6px;background:var(--bg-alt,#1a1d23);color:var(--text);font-size:0.95rem"></div>
+
+<!-- Settings overlay: typed assets-folder path → /api/set-assets-dir. -->
+<div id="settings-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:300;align-items:center;justify-content:center">
+  <div style="background:var(--bg,#15171c);border:1px solid var(--border);border-radius:8px;padding:1.25rem 1.5rem;max-width:560px;width:90%;box-shadow:0 10px 40px rgba(0,0,0,0.5)">
+    <h2 style="margin:0 0 0.5rem;font-size:1.05rem">Game assets folder</h2>
+    <p style="margin:0 0 0.75rem;font-size:0.85rem;color:var(--text-dim,#9aa4b2)">
+      The folder containing the game's <code>.pigg</code> archives (e.g.
+      <code>…/Homecoming/assets/live</code> or a Rebirth/Thunderspy assets folder).
+      Changing it re-parses in the background (1–3&nbsp;min on first load).
+    </p>
+    <input type="text" id="settings-input" spellcheck="false"
+           style="width:100%;padding:0.5rem 0.7rem;border:1px solid var(--border);background:var(--bg-input,#0f1115);color:var(--text);border-radius:4px;font-size:0.85rem;font-family:monospace;box-sizing:border-box"
+           placeholder="/path/to/assets/live">
+    <div id="settings-status" style="font-size:0.82rem;margin:0.6rem 0;min-height:1.2em;color:var(--text-dim,#9aa4b2)"></div>
+    <div style="display:flex;gap:0.5rem;justify-content:flex-end">
+      <button class="btn-export" id="settings-cancel">Cancel</button>
+      <button class="btn-export" id="settings-apply" style="background:var(--accent);color:#0f1115">Apply</button>
+    </div>
+  </div>
 </div>
 
 <div class="table-wrap" id="table-wrap">
@@ -407,9 +431,100 @@ const App = {
         this.setupSearch();
         this.setupSortHeaders();
         this.populateBoostFilter();
+        this.setupSettings();
+        await this.boot();
+    },
+
+    // ---- Directory config / background-load state ----
+
+    setupSettings() {
+        document.getElementById('btn-cog').addEventListener('click', () => this.openSettings());
+        document.getElementById('settings-cancel').addEventListener('click', () => this.closeSettings());
+        document.getElementById('settings-apply').addEventListener('click', () => this.applySettings());
+        document.getElementById('settings-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') this.applySettings();
+            if (e.key === 'Escape') this.closeSettings();
+        });
+    },
+
+    async getConfig() {
+        try { return await (await fetch('/api/config')).json(); }
+        catch { return null; }
+    },
+
+    applyConfigState(cfg) {
+        const banner = document.getElementById('config-banner');
+        const table = document.getElementById('table-wrap');
+        if (!cfg || cfg.status === 'ready' || cfg.multi_source) {
+            banner.style.display = 'none';
+            table.style.display = '';
+        } else {
+            banner.textContent = cfg.message || '';
+            banner.style.display = '';
+            table.style.display = 'none';
+        }
+    },
+
+    // First load (and after a folder change): branch on the server's load state.
+    async boot() {
+        const cfg = await this.getConfig();
+        this.applyConfigState(cfg);
+        if (!cfg || cfg.status === 'ready' || cfg.multi_source) {
+            await this.loadAll();
+        } else if (cfg.status === 'loading') {
+            await this.waitForReady();
+        } else {
+            this.openSettings();  // unconfigured / error → prompt for a folder
+        }
+    },
+
+    async loadAll() {
         await this.loadSources();
         await this.loadCategories();
         await this.loadPowers();
+    },
+
+    // Poll while a background parse runs, then load (or re-open settings on error).
+    async waitForReady() {
+        for (;;) {
+            await new Promise((r) => setTimeout(r, 2000));
+            const cfg = await this.getConfig();
+            this.applyConfigState(cfg);
+            if (!cfg || cfg.status === 'ready') { await this.loadAll(); return; }
+            if (cfg.status === 'error' || cfg.status === 'unconfigured') { this.openSettings(); return; }
+        }
+    },
+
+    async openSettings() {
+        const cfg = await this.getConfig();
+        document.getElementById('settings-input').value = (cfg && (cfg.assets_dir || cfg.saved_dir)) || '';
+        document.getElementById('settings-status').textContent = (cfg && cfg.status !== 'ready') ? (cfg.message || '') : '';
+        document.getElementById('settings-overlay').style.display = 'flex';
+        document.getElementById('settings-input').focus();
+    },
+
+    closeSettings() {
+        document.getElementById('settings-overlay').style.display = 'none';
+    },
+
+    async applySettings() {
+        const path = document.getElementById('settings-input').value.trim();
+        const status = document.getElementById('settings-status');
+        if (!path) { status.textContent = 'Enter a folder path.'; return; }
+        status.textContent = 'Checking folder…';
+        let data;
+        try {
+            const res = await fetch('/api/set-assets-dir', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ path }),
+            });
+            data = await res.json();
+        } catch (e) { status.textContent = 'Request failed: ' + e; return; }
+        if (!data.ok) { status.textContent = data.error || 'Failed to set folder.'; return; }
+        this.closeSettings();
+        this.currentSource = '';  // reset; loadSources will repopulate
+        await this.waitForReady();
     },
 
     async loadSources() {
