@@ -1201,8 +1201,8 @@ function applyActivePowerBonuses(
       }
     }
 
-    // Movement (top-level scalar form). Stack-aware. Speed attribs scale by
-    // their AT table; jump height uses bare scale — see resolveMovementPercent.
+    // Movement (top-level scalar form). Stack-aware. All movement attribs —
+    // speed AND jump height — scale by their AT table; see resolveMovementPercent.
     if (effects.runSpeed !== undefined) {
       const adjusted = adjustForStacking(effects.runSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'runSpeed', effects.maxStacks);
       const value = resolveMovementPercent(adjusted, 'runSpeed', archetypeId, buildLevel);
@@ -1738,25 +1738,28 @@ function resolveScaledEffect(
  * Resolve a movement effect to its displayed percentage (the value added to
  * global.runSpeed/flySpeed/jumpSpeed/jumpHeight).
  *
- * Speed attribs (run/fly/jump SPEED) scale by their AT modifier table just like
- * every other buff — e.g. Super Speed `RunningSpeed 1.0 × Melee_SpeedRunning`
- * (3.5 at L50) = +350%, Ninja Run `0.4 × 3.5` = +140%. Verified against the
- * Rebirth/HC `powers.bin`. The bare-scale reading (×100, no table) used here
- * historically gave absurdly slow travel powers (Super Speed +100% ≈ 28 mph).
+ * ALL movement attribs — run/fly/jump SPEED *and* jump HEIGHT — scale by their
+ * AT modifier table, like every other buff: `scale × AT-table × 100`. E.g.
+ * Super Speed `RunningSpeed 1.0 × Melee_SpeedRunning` (3.5 @50) = +350%; Ninja
+ * Run jumpHeight `0.25 × Melee_Leap` (27.8 @50) = +695%. The bare-scale reading
+ * (×100, no table) gave absurdly slow travel powers (Super Speed ≈ 28 mph) and
+ * an order-of-magnitude-too-small jump height (Ninja Run +25% → ~5 ft vs the
+ * in-game ~25-30 ft onto a rooftop ledge — Redlynne, Rebirth, 2026-06-16).
  *
- * Jump HEIGHT is the exception: its table (`Melee_Leap` ≈ 27.8 at L50) is NOT a
- * percent multiplier — applying it would yield +695% for Ninja Run. Jump height
- * uses the bare scale (Hurdle `0.06` → +6%, Ninja Run `0.25` → +25%), matching
- * the bin's `Melee_Ones`-tabled Sprint jump (`0.1` → +10%) and long-standing
- * intent.
+ * Jump height was previously special-cased to bare scale, which collapsed a
+ * deliberate bin distinction: Ninja Run / Beast Run use the BIG `Melee_Leap`
+ * table (27.8) while Sprint / the prestige sprints use flat `Melee_Ones` (1.0,
+ * → +10% either way). That table choice is only meaningful if the table is
+ * applied — so jump height is table-aware too. Verified vs Rebirth/HC
+ * `powers.bin`: Ninja Run `0.25×27.8` → +695%, Hurdle `0.06×27.8` → +167%,
+ * Sprint `0.1×Melee_Ones` → +10%.
  */
 function resolveMovementPercent(
   effect: ScalarOrScaled | undefined,
-  movementKey: string,
+  _movementKey: string,
   archetypeId: string,
   level: number,
 ): number {
-  if (movementKey === 'jumpHeight') return extractScaleValue(effect) * 100;
   return resolveScaledEffect(effect, archetypeId, level) * 100;
 }
 
@@ -1791,16 +1794,17 @@ function addToBreakdown(
 /**
  * Fitness power effects derived from INHERENT_FITNESS_POWERS scale data (levels.ts).
  *
- * Movement SPEED stats (runSpeed, flySpeed, jumpSpeed) are resolved at runtime
- * through their AT table — Swift's RunningSpeed is `scale 0.1 × Melee_SpeedRunning`
- * (3.5 at L50) = +35%, not the bare +10% — so the `value` below is only a
- * fallback (see the FITNESS_MOVEMENT_STATS branch in applyFitnessPowerBonuses).
- * Jump HEIGHT and the Melee_Ones buffs (regen, recovery) genuinely equal
- * scale × 100, so their `value` is authoritative.
+ * Movement stats (runSpeed, flySpeed, jumpSpeed, jumpHeight) are resolved at
+ * runtime through their AT table — Swift's RunningSpeed is `scale 0.1 ×
+ * Melee_SpeedRunning` (3.5 at L50) = +35%, not the bare +10%; Hurdle's jumpHeight
+ * is `0.06 × Melee_Leap` (27.8) = +167% — so the `value` below is only a fallback
+ * (see the FITNESS_MOVEMENT_STATS branch in applyFitnessPowerBonuses). The
+ * Melee_Ones buffs (regen, recovery) equal scale × 100, so their `value` is
+ * authoritative.
  *
  *   Swift:   runSpeed  { scale: 0.1,  table: 'Melee_SpeedRunning' } → table-resolved (~35% @50)
  *            flySpeed  { scale: 0.1,  table: 'Melee_SpeedFlying' }  → table-resolved (~14% @50)
- *   Hurdle:  jumpHeight { scale: 0.06, table: 'Melee_Leap' }        → 6% (bare scale)
+ *   Hurdle:  jumpHeight { scale: 0.06, table: 'Melee_Leap' }        → table-resolved (~167% @50)
  *   Health:  regenBuff  { scale: 0.4,  table: 'Melee_Ones' }        → 40%
  *   Stamina: recoveryBuff { scale: 0.25, table: 'Melee_Ones' }      → 25%
  */
