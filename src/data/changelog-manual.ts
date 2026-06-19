@@ -21,8 +21,9 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-15',
+    date: '2026-06-19',
     items: [
+      { message: 'Fixed an issue preventing Kheldian powers from displaying in Level-Mode', type: 'fix' },
       { message: 'Adjusted mobile UI: when adding/changing enhancements, there is now an expand button to list all the enhancements slotted in the power', type: 'update' },
       { message: 'Fixed a regression where split enhancmement aspects (health/absorb) were counted as two aspects', type: 'fix' },
       { message: "Fixed Synapse's Shock \"EndMod/+Run Speed\" — it now grants its global run-speed bonus and shows up in the proc list", type: 'fix' },

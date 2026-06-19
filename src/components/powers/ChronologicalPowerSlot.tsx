@@ -281,6 +281,74 @@ export function ChronologicalPowerSlot({
           }
         }}
       />
+
+      {/* Slottable form sub-powers (e.g. Kheldian Nova/Dwarf attacks). These are
+          auto-granted and don't occupy their own slot, so they render nested
+          under the parent toggle — mirroring the "By Powerset" layout. */}
+      {power.slottableSubPowers && power.slottableSubPowers.length > 0 && (
+        <div className="ml-4 mt-0.5 space-y-0.5 border-l-2 border-slate-700/50 pl-1">
+          {power.slottableSubPowers.map((subPower) => {
+            const subIsLocked =
+              infoPanelLocked &&
+              lockedContent?.type === 'power' &&
+              lockedContent.powerName === subPower.internalName;
+
+            return (
+              <PowerRow
+                key={subPower.name}
+                name={subPower.name}
+                iconSrc={getPowerIconPath(subPower.icon)}
+                size="lg"
+                stackedLayout
+                isLocked={subIsLocked}
+                showRemove={false}
+                showAutoLabel
+                slots={subPower.slots}
+                maxSlots={subPower.maxSlots}
+                onAddSlots={(count) => {
+                  for (let i = 0; i < count; i++) addSlot(subPower.internalName, storeCategory);
+                }}
+                onRemoveSlot={(index) => removeSlot(subPower.internalName, index, storeCategory)}
+                onRemoveAllSlots={() => {
+                  for (let i = subPower.slots.length - 1; i > 0; i--) removeSlot(subPower.internalName, i, storeCategory);
+                }}
+                onClearEnhancement={(index) => clearEnhancement(subPower.internalName, index, storeCategory)}
+                onClearAllEnhancements={() => {
+                  for (let i = 0; i < subPower.slots.length; i++) clearEnhancement(subPower.internalName, i, storeCategory);
+                }}
+                onOpenPicker={(slotIndex) => openEnhancementPicker(subPower.internalName, subPower.powerSet || power.powerSet, slotIndex, undefined, undefined, storeCategory)}
+                onHover={() => {
+                  const ps = subPower.powerSet || power.powerSet;
+                  if (ps) setInfoPanelContent({ type: 'power', powerName: subPower.internalName, powerSet: ps });
+                }}
+                onLeave={handlePowerLeave}
+                onEnhancementHover={(index) => setInfoPanelContent({ type: 'slotted-enhancement', powerName: subPower.internalName, slotIndex: index })}
+                onRightClick={(e) => {
+                  e.preventDefault();
+                  const ps = subPower.powerSet || power.powerSet;
+                  if (!ps) return;
+                  if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === subPower.internalName) {
+                    unlockInfoPanel();
+                  } else {
+                    lockInfoPanel({ type: 'power', powerName: subPower.internalName, powerSet: ps });
+                  }
+                }}
+                onCompareSlotting={() => openCompareSlotting(subPower.internalName, subPower.powerSet || power.powerSet)}
+                onInfoClick={() => {
+                  const ps = subPower.powerSet || power.powerSet;
+                  if (!ps) return;
+                  if (subIsLocked) {
+                    unlockInfoPanel();
+                  } else {
+                    lockInfoPanel({ type: 'power', powerName: subPower.internalName, powerSet: ps });
+                  }
+                }}
+                slotLevels={showSlotLevels ? slotLevelsMap.get(powerKey(power.category, subPower.internalName)) : undefined}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

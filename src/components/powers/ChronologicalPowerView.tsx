@@ -7,6 +7,7 @@
 
 import { useState, useMemo, useCallback } from 'react';
 import { useBuildStore } from '@/stores';
+import { GRANTED_POWER_GROUPS } from '@/data';
 import type { SelectedPower } from '@/types';
 import { ChronologicalPowerSlot } from './ChronologicalPowerSlot';
 import { ChronologicalInherentsSection } from './ChronologicalInherentsSection';
@@ -18,6 +19,10 @@ export type PowerCategory = 'primary' | 'secondary' | 'pool' | 'epic';
 export interface CategorizedPower extends SelectedPower {
   category: PowerCategory;
   poolName?: string; // For pool powers, the pool name
+  // Auto-granted slottable sub-powers (e.g. Kheldian form attacks like
+  // Bright Nova Bolt). These don't consume a power pick, so they're rendered
+  // nested under the parent toggle's slot rather than getting their own slot.
+  slottableSubPowers?: SelectedPower[];
 }
 
 // Drag state shared across all slots during a drag operation
@@ -131,14 +136,27 @@ function useChronologicalPowers() {
   return useMemo(() => {
     const allPowers: CategorizedPower[] = [];
 
+    // Find a parent toggle's auto-granted slottable sub-powers (Kheldian form
+    // attacks), so they can ride along nested under the parent's slot instead
+    // of being dropped entirely (they're filtered from the top-level list
+    // because isAutoGranted powers don't occupy their own pick slot).
+    const slottableSubsOf = (categoryPowers: SelectedPower[], parentName: string): SelectedPower[] | undefined => {
+      const group = GRANTED_POWER_GROUPS[parentName];
+      if (!group?.slottable) return undefined;
+      const subs = categoryPowers.filter(
+        (p) => p.isAutoGranted && p.grantedByPower === parentName,
+      );
+      return subs.length > 0 ? subs : undefined;
+    };
+
     // Collect primary powers (exclude auto-granted form sub-powers)
     build.primary.powers.filter(p => !p.isAutoGranted).forEach((p) => {
-      allPowers.push({ ...p, category: 'primary' });
+      allPowers.push({ ...p, category: 'primary', slottableSubPowers: slottableSubsOf(build.primary.powers, p.internalName) });
     });
 
     // Collect secondary powers (exclude auto-granted form sub-powers)
     build.secondary.powers.filter(p => !p.isAutoGranted).forEach((p) => {
-      allPowers.push({ ...p, category: 'secondary' });
+      allPowers.push({ ...p, category: 'secondary', slottableSubPowers: slottableSubsOf(build.secondary.powers, p.internalName) });
     });
 
     // Collect pool powers
