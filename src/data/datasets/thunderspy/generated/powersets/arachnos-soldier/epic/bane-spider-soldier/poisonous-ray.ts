@@ -43,6 +43,7 @@ export const PoisonousRay: Power = {
     "type": "Special",
     "scale": 0.4,
     "table": "Ranged_Damage",
-    "duration": 2.1
+    "duration": 2.1,
+    "tickRate": 0.5
   }
 };

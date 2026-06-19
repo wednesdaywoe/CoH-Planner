@@ -44,7 +44,8 @@ export const FireCages: Power = {
     "type": "Special",
     "scale": 0.11,
     "table": "Ranged_Damage",
-    "duration": 5.2
+    "duration": 5.2,
+    "tickRate": 2
   },
   "effects": {
     "immobilize": {

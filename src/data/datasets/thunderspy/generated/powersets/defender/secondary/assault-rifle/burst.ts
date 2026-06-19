@@ -43,6 +43,7 @@ export const Burst: Power = {
     "type": "Lethal",
     "scale": 0.546667,
     "table": "Ranged_Damage",
-    "duration": 0.7
+    "duration": 0.7,
+    "tickRate": 0.30000001192092896
   }
 };

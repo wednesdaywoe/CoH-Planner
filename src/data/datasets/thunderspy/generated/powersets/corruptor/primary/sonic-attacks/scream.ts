@@ -40,7 +40,8 @@ export const Scream: Power = {
     "type": "Special",
     "scale": 0.14,
     "table": "Ranged_Damage",
-    "duration": 1.05
+    "duration": 1.05,
+    "tickRate": 0.25
   },
   "conditionalEffects": [
     {
@@ -52,7 +53,8 @@ export const Scream: Power = {
         "type": "Special",
         "scale": 0.28,
         "table": "Ranged_Damage",
-        "duration": 1.05
+        "duration": 1.05,
+        "tickRate": 0.25
       }
     }
   ]

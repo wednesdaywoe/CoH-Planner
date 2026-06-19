@@ -48,6 +48,7 @@ export const CallLocusts: Power = {
     "type": "Special",
     "scale": 0.3036,
     "table": "Ranged_Damage",
-    "duration": 1.5
+    "duration": 1.5,
+    "tickRate": 0.375
   }
 };

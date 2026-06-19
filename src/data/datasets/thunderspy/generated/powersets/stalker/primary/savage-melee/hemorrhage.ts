@@ -51,13 +51,15 @@ export const Hemorrhage: Power = {
           "type": "Lethal",
           "scale": 1.11,
           "table": "Melee_Damage",
-          "duration": 4.1
+          "duration": 4.1,
+          "tickRate": 1
         },
         {
           "type": "Lethal",
           "scale": 1.35,
           "table": "Melee_Damage",
-          "duration": 5.1
+          "duration": 5.1,
+          "tickRate": 1
         }
       ]
     },

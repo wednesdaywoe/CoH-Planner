@@ -48,7 +48,8 @@ export const DragonBreath: Power = {
       "type": "Special",
       "scale": 0.22,
       "table": "Ranged_Damage",
-      "duration": 3.1
+      "duration": 3.1,
+      "tickRate": 1
     }
   ]
 };

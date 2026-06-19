@@ -48,7 +48,8 @@ export const ParasiticAura: Power = {
         "type": "Special",
         "scale": 0.1,
         "table": "Melee_Damage",
-        "duration": 30
+        "duration": 30,
+        "tickRate": 0.4000000059604645
       }
     }
   ]

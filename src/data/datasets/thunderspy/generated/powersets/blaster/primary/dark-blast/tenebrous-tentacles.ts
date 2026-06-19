@@ -48,7 +48,8 @@ export const TenebrousTentacles: Power = {
     "type": "Negative",
     "scale": 0.07235,
     "table": "Ranged_Damage",
-    "duration": 7.1
+    "duration": 7.1,
+    "tickRate": 1
   },
   "effects": {
     "immobilize": {

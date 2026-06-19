@@ -52,7 +52,8 @@ export const FlingThorns: Power = {
       "type": "Lethal",
       "scale": 0.1,
       "table": "Ranged_Damage",
-      "duration": 4.1
+      "duration": 4.1,
+      "tickRate": 1
     }
   ]
 };

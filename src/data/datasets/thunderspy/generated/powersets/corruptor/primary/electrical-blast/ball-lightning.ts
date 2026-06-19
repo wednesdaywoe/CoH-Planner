@@ -50,7 +50,8 @@ export const BallLightning: Power = {
       "type": "Special",
       "scale": 0.36,
       "table": "Ranged_Damage",
-      "duration": 1.1
+      "duration": 1.1,
+      "tickRate": 1
     }
   ],
   "conditionalEffects": [

@@ -43,6 +43,7 @@ export const Flamethrower: Power = {
     "type": "Special",
     "scale": 0.242,
     "table": "Ranged_Damage",
-    "duration": 3.55
+    "duration": 3.55,
+    "tickRate": 0.5
   }
 };

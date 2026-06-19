@@ -46,7 +46,8 @@ export const FireBlast: Power = {
       "type": "Fire",
       "scale": 0.2,
       "table": "Ranged_Damage",
-      "duration": 2.1
+      "duration": 2.1,
+      "tickRate": 1
     }
   ]
 };

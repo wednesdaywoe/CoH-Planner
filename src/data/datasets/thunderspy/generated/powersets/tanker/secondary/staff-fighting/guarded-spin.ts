@@ -46,6 +46,7 @@ export const GuardedSpin: Power = {
     "type": "Special",
     "scale": 0.231667,
     "table": "Melee_Damage",
-    "duration": 1.5
+    "duration": 1.5,
+    "tickRate": 0.30000001192092896
   }
 };

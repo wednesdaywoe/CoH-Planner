@@ -43,7 +43,8 @@ export const Flay: Power = {
     "type": "Special",
     "scale": 0.1,
     "table": "Melee_Damage",
-    "duration": 0.6
+    "duration": 0.6,
+    "tickRate": 0.4000000059604645
   },
   "conditionalEffects": [
     {
@@ -55,7 +56,8 @@ export const Flay: Power = {
         "type": "Special",
         "scale": 0.1,
         "table": "Melee_Damage",
-        "duration": 3
+        "duration": 3,
+        "tickRate": 0.4000000059604645
       }
     },
     {

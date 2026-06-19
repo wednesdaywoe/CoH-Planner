@@ -46,7 +46,8 @@ export const Scorch: Power = {
       "type": "Fire",
       "scale": 0.2,
       "table": "Melee_Damage",
-      "duration": 1.1
+      "duration": 1.1,
+      "tickRate": 1
     }
   ],
   "requires": "Defender_Ranged.Fire_Blast.Fire_Blast !"

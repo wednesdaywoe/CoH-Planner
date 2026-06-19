@@ -48,7 +48,8 @@ export const Combustion: Power = {
       "type": "Special",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 2.25
+      "duration": 2.25,
+      "tickRate": 0.25
     }
   ]
 };

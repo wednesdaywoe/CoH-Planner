@@ -43,7 +43,8 @@ export const Lash: Power = {
     "type": "Special",
     "scale": 0.1,
     "table": "Melee_Damage",
-    "duration": 0.5
+    "duration": 0.5,
+    "tickRate": 0.33000001311302185
   },
   "conditionalEffects": [
     {
@@ -55,7 +56,8 @@ export const Lash: Power = {
         "type": "Special",
         "scale": 0.3,
         "table": "Melee_Damage",
-        "duration": 0.5
+        "duration": 0.5,
+        "tickRate": 0.33000001311302185
       }
     }
   ],

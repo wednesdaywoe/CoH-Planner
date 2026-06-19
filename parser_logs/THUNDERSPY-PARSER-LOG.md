@@ -43,6 +43,53 @@ later. Player power math is unaffected; only summoned-pet detail panels are.
 
 > ---RESOLVED ---
 
+## ✅ Every Thunderspy DoT lost its `tickRate` — `application_period` was never read — 2026-06-18
+
+**Symptom.** No DoT line / no DoT-aware damage totals for ANY Thunderspy DoT
+(Gloom, Fire Breath, Tenebrous Tentacles, …). Across the export, ~372 damage
+blocks carried a `duration` but **0** carried a `tickRate`. The calc
+(`damage.ts`) only treats an entry as a DoT when **both** `duration > 0` AND
+`tickRate > 0`, so every Thunderspy DoT silently fell through to direct damage.
+HC + Rebirth were fine.
+
+**Root cause.** `_parse_effect_template_thunderspy`
+([_powers.py](../tools/bin-crawler/bin_crawler/parser/_powers.py)) scans the
+template tail for the modifier-table string, then read only `scale` (table+4) and
+`duration` (table+8) before bailing. It never read the period, so the
+`EffectTemplate` fell back to the dataclass default `application_period = 0.0`,
+and the converter's `dmg.tickRate = template.application_period` (only set when
+`> 0`) was never populated.
+
+**Reverse-engineering.** Hand-decoded Gloom's raw AttribMod bytes and surveyed
+2,672 DoT damage templates: the post-table numeric block is **identical to HC's
+Parse7 layout** — `table, scale(f4), duration(f4), magnitude(f4),
+dur_expr(u4_array), mag_expr(u4_array), delay(f4), application_period(f4),
+tick_chance(f4)`. The two expr arrays are empty (count 0), which is exactly why
+slots table+16 / table+20 read 0 across the whole dataset; **delay lands at
+table+24, the period at table+28, tick_chance at table+32.**
+
+**Fix (2026-06-18).** After locating the table, read the period array-aware
+(walk the two `u4_array` expr blocks rather than fixed offsets, so a future
+non-empty expr list can't shift the period) and pass `application_period` (+
+`delay`) into the `EffectTemplate`. Re-export + `convert-all-powersets.cjs
+--dataset thunderspy --force`: **isolated diff** — only `application_period`
+(1874 templates) and `delay` (2203) added to `exported_powers/thunderspy/`; the
+generated layer gained **395 `tickRate`** fields, nothing else changed. Gloom →
+`dur 1.5 / tickRate 0.2 → 8 ticks`; Fire Breath → 3-tick cone; Tenebrous
+Tentacles → 8-tick. Guard: `src/data/thunderspy-dot-tickrate.test.ts`.
+
+**Key gotcha — Thunderspy ≠ HC values; don't validate against HC.** The original
+memo assumed Gloom should read HC's `3.6s / 0.5s`. It doesn't: Thunderspy
+rebalanced the *player* Gloom to a tighter `1.5s / 0.2s` window (still 8 ticks),
+while the NPC/critter Glooms keep the classic `3.6 / 0.5`. The duration was
+**never wrong** — only the missing period was. Thunderspy rebalances player
+powers freely, so the binary (not HC parity) is the oracle. Likewise Thunderspy
+made Ring of Fire / Chilblain / Entangle / Stone Prison (9 immobilize-damage
+powers) genuinely period-0 (vs HC's ticking DoTs) — their post-table `duration`
+and `period` are both 0 in the binary; the `duration: 1` they export is the
+header `duration_default` fallback, and having no tickRate is correct (they're
+not multi-tick DoTs on Thunderspy).
+
 ## ✅ Damage element type was generic `Special` (Thunderspy uses a single `Damage` attrib) — 2026-06-16
 
 **Context.** Thunderspy effect templates store damage with one generic `Damage`

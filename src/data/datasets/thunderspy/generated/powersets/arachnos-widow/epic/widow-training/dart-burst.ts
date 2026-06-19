@@ -44,13 +44,15 @@ export const DartBurst: Power = {
       "type": "Special",
       "scale": 0.1785,
       "table": "Ranged_Damage",
-      "duration": 0.8
+      "duration": 0.8,
+      "tickRate": 0.33000001311302185
     },
     {
       "type": "Special",
       "scale": 0.11,
       "table": "Ranged_Damage",
-      "duration": 5
+      "duration": 5,
+      "tickRate": 1
     }
   ]
 };

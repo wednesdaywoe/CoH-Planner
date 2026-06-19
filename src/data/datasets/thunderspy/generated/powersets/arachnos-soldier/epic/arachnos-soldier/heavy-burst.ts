@@ -46,6 +46,7 @@ export const HeavyBurst: Power = {
     "type": "Lethal",
     "scale": 0.109,
     "table": "Ranged_Damage",
-    "duration": 2
+    "duration": 2,
+    "tickRate": 0.30000001192092896
   }
 };

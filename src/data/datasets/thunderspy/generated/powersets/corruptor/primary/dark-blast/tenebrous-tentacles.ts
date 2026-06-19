@@ -48,7 +48,8 @@ export const TenebrousTentacles: Power = {
     "type": "Negative",
     "scale": 0.07235,
     "table": "Ranged_Damage",
-    "duration": 6.1
+    "duration": 6.1,
+    "tickRate": 1
   },
   "effects": {
     "immobilize": {
@@ -67,7 +68,8 @@ export const TenebrousTentacles: Power = {
         "type": "Negative",
         "scale": 0.118,
         "table": "Ranged_Damage",
-        "duration": 6.1
+        "duration": 6.1,
+        "tickRate": 1
       }
     }
   ]

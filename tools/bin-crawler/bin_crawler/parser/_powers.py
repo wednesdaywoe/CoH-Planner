@@ -1231,29 +1231,60 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
     req_parts = [n for n in (_resolve_str(o) for o in req_offs) if n]
     jit_requires = ' '.join(req_parts) if req_parts else ''
 
-    # Scan the remainder for the first table-name string. The bytes from here
-    # to the end of the template carry a mix of length-prefixed sub-arrays and
-    # f4 values; we only need the table + the two f4s that follow it.
+    # Scan the remainder for the first table-name string, then read the
+    # canonical CoH AttribMod numeric block that follows it. Thunderspy shares
+    # HC's Parse7 post-table layout *exactly* (verified by hand-decoding Gloom +
+    # surveying 2,672 DoT damage templates against the Parse7 reader above):
+    #
+    #   table(str) scale(f4) duration(f4) magnitude(f4)
+    #   dur_expr(u4_array) mag_expr(u4_array)   ← almost always empty (count=0)
+    #   delay(f4) application_period(f4) tick_chance(f4) ...
+    #
+    # The two empty expression arrays are why slots table+16 / table+20 read 0
+    # across the whole dataset; delay lands at table+24, the *period* (DoT tick
+    # interval) at table+28, tick_chance at table+32. Reading the arrays as
+    # arrays (not fixed offsets) keeps the period aligned if a template ever
+    # carries a non-empty expr list. Recovering application_period is the fix
+    # for "every Thunderspy DoT loses its tickRate" — without it the converter's
+    # `dmg.tickRate` is never set and the calc can't compute tick count.
     tail_start = r._pos
     tail = bytes(strtab_data[tail_start:r._end])
     table = ''
     scale = 0.0
     duration = 0.0
+    app_period = 0.0
+    delay = 0.0
     for k in range(0, len(tail) - 4, 4):
         u = struct.unpack_from('<I', tail, k)[0]
         candidate = _resolve_str(u)
         if not candidate or not candidate.startswith(_TSPY_TABLE_PREFIXES):
             continue
         table = candidate
-        # Next f4 is the table scale (the multiplier applied to the table value)
-        if k + 8 <= len(tail):
-            scale = struct.unpack_from('<f', tail, k + 4)[0]
-        # The f4 two slots after the table is the duration override — 0 for
-        # instant attacks, DoT tick-window length (e.g. 3.1) for DoTs. Mez
-        # template durations live further down in a different slot we don't
-        # extract here; the planner reconstructs them as scale × table-lookup.
-        if k + 12 <= len(tail):
-            duration = struct.unpack_from('<f', tail, k + 8)[0]
+
+        def _f4(off: int) -> float:
+            return struct.unpack_from('<f', tail, off)[0] if off + 4 <= len(tail) else 0.0
+
+        def _skip_u4_array(off: int) -> int:
+            """Return the offset past a [u4 count][count×u4] block at `off`."""
+            if off + 4 > len(tail):
+                return off + 4
+            count = struct.unpack_from('<I', tail, off)[0]
+            # A bogus count means we're misreading; treat as empty so the fixed
+            # post-table offsets still apply (expr arrays are empty in practice).
+            if count > 64:
+                return off + 4
+            return off + 4 + count * 4
+
+        scale = _f4(k + 4)
+        duration = _f4(k + 8)
+        # magnitude override at k+12 (post-table); the template-level magnitude
+        # default read earlier is what we surface, so this slot is consumed only
+        # to walk past it to the expression arrays.
+        pos = k + 16
+        pos = _skip_u4_array(pos)   # dur_expr tokens (count=0 → +4)
+        pos = _skip_u4_array(pos)   # mag_expr tokens (count=0 → +4)
+        delay = _f4(pos)
+        app_period = _f4(pos + 4)   # application_period — the DoT tick interval
         break
 
     # Sentinel -1 means "instant" — collapse to 0 so downstream doesn't read
@@ -1262,6 +1293,10 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
         duration_default = 0.0
     if duration < 0:
         duration = 0.0
+    if app_period < 0:
+        app_period = 0.0
+    if delay < 0:
+        delay = 0.0
     # For damage attacks, table-scale supersedes the template-level magnitude
     # default (which is the unscaled "1.0" placeholder). Magnitude only matters
     # for non-table effects like raw mez magnitudes.
@@ -1278,6 +1313,8 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
         scale=final_scale,
         duration=duration or duration_default,
         magnitude=magnitude,
+        delay=delay,
+        application_period=app_period,
         jit_requires=jit_requires,
     )
 

@@ -46,13 +46,15 @@ export const BreathofFire: Power = {
       "type": "Special",
       "scale": 0.68,
       "table": "Melee_Damage",
-      "duration": 0.6
+      "duration": 0.6,
+      "tickRate": 0.5
     },
     {
       "type": "Special",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 3.1
+      "duration": 3.1,
+      "tickRate": 1
     }
   ]
 };

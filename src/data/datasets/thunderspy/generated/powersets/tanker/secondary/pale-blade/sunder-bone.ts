@@ -80,7 +80,8 @@ export const SunderBone: Power = {
         {
           "type": "Special",
           "scale": 0.5,
-          "table": "Melee_Damage"
+          "table": "Melee_Damage",
+          "tickRate": 0.5
         }
       ]
     },

@@ -50,7 +50,8 @@ export const CrackWhip: Power = {
       "type": "Fire",
       "scale": 0.222,
       "table": "Melee_Damage",
-      "duration": 1.05
+      "duration": 1.05,
+      "tickRate": 1
     }
   ]
 };

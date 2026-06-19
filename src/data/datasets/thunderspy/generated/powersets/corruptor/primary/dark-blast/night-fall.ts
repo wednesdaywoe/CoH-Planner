@@ -46,7 +46,8 @@ export const NightFall: Power = {
     "type": "Negative",
     "scale": 0.11,
     "table": "Ranged_Damage",
-    "duration": 2.8
+    "duration": 2.8,
+    "tickRate": 0.30000001192092896
   },
   "conditionalEffects": [
     {
@@ -58,7 +59,8 @@ export const NightFall: Power = {
         "type": "Negative",
         "scale": 0.11,
         "table": "Ranged_Damage",
-        "duration": 2.8
+        "duration": 2.8,
+        "tickRate": 0.30000001192092896
       }
     }
   ]

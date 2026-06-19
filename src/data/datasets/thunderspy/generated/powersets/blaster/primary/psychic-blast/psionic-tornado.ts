@@ -44,6 +44,7 @@ export const PsionicTornado: Power = {
     "type": "Special",
     "scale": 0.178,
     "table": "Ranged_Damage",
-    "duration": 2.05
+    "duration": 2.05,
+    "tickRate": 0.5
   }
 };

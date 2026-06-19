@@ -42,7 +42,8 @@ export const PsiWhipCoil: Power = {
     "type": "Psionic",
     "scale": 0.1625,
     "table": "Ranged_Damage",
-    "duration": 2
+    "duration": 2,
+    "tickRate": 0.25
   },
   "effects": {
     "immobilize": {

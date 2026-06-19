@@ -45,7 +45,8 @@ export const PsiWhipLash: Power = {
     {
       "type": "Psionic",
       "scale": 0.5,
-      "table": "Ranged_Damage"
+      "table": "Ranged_Damage",
+      "tickRate": 1
     }
   ]
 };

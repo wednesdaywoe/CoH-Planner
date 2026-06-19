@@ -49,7 +49,8 @@ export const FullAuto: Power = {
       "type": "Lethal",
       "scale": 0.162,
       "table": "Ranged_Damage",
-      "duration": 3.3
+      "duration": 3.3,
+      "tickRate": 0.20000000298023224
     }
   ],
   "conditionalEffects": [
@@ -62,7 +63,8 @@ export const FullAuto: Power = {
         "type": "Lethal",
         "scale": 0.162,
         "table": "Ranged_Damage",
-        "duration": 3.3
+        "duration": 3.3,
+        "tickRate": 0.20000000298023224
       }
     }
   ]

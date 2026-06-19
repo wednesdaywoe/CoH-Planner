@@ -42,7 +42,8 @@ export const DualWield: Power = {
     "type": "Lethal",
     "scale": 0.98,
     "table": "Ranged_Damage",
-    "duration": 0.3
+    "duration": 0.3,
+    "tickRate": 0.25
   },
   "effects": {
     "knockback": {

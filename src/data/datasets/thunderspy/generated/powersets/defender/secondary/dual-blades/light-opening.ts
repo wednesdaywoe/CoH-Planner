@@ -39,6 +39,7 @@ export const LightOpening: Power = {
     "type": "Lethal",
     "scale": 0.42,
     "table": "Melee_Damage",
-    "duration": 0.5
+    "duration": 0.5,
+    "tickRate": 0.33000001311302185
   }
 };

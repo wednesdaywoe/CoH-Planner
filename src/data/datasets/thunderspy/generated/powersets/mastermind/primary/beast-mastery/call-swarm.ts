@@ -45,6 +45,7 @@ export const CallSwarm: Power = {
     "type": "Special",
     "scale": 0.264,
     "table": "Ranged_Damage",
-    "duration": 1.5
+    "duration": 1.5,
+    "tickRate": 0.375
   }
 };

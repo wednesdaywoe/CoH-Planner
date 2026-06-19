@@ -65,7 +65,8 @@ export const Geyser: Power = {
           "type": "Fire",
           "scale": 0.143182,
           "table": "Ranged_Damage",
-          "duration": 5.1
+          "duration": 5.1,
+          "tickRate": 0.5
         }
       ],
       "effects": {
@@ -92,7 +93,8 @@ export const Geyser: Power = {
           "type": "Fire",
           "scale": 0.152727,
           "table": "Ranged_Damage",
-          "duration": 5.1
+          "duration": 5.1,
+          "tickRate": 0.5
         }
       ],
       "effects": {
@@ -119,7 +121,8 @@ export const Geyser: Power = {
           "type": "Fire",
           "scale": 0.170455,
           "table": "Ranged_Damage",
-          "duration": 5.1
+          "duration": 5.1,
+          "tickRate": 0.5
         }
       ],
       "effects": {
@@ -140,7 +143,8 @@ export const Geyser: Power = {
         "type": "Fire",
         "scale": 0.136364,
         "table": "Ranged_Damage",
-        "duration": 5.1
+        "duration": 5.1,
+        "tickRate": 0.5
       },
       "group": "tidal_power-stacks"
     }

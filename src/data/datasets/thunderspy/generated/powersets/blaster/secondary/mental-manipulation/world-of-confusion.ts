@@ -47,6 +47,7 @@ export const WorldofConfusion: Power = {
   "damage": {
     "type": "Special",
     "scale": 0.12,
-    "table": "Ranged_Damage"
+    "table": "Ranged_Damage",
+    "tickRate": 2
   }
 };

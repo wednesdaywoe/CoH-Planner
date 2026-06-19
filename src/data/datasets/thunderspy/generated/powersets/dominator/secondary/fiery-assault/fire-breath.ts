@@ -48,7 +48,8 @@ export const FireBreath: Power = {
       "type": "Fire",
       "scale": 0.1,
       "table": "Ranged_Damage",
-      "duration": 2.1
+      "duration": 2.1,
+      "tickRate": 1
     }
   ]
 };

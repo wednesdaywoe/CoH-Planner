@@ -43,7 +43,8 @@ export const SkySplitter: Power = {
     "type": "Smashing",
     "scale": 1.38,
     "table": "Melee_Damage",
-    "duration": 1.9
+    "duration": 1.9,
+    "tickRate": 1
   },
   "effects": {
     "stun": {

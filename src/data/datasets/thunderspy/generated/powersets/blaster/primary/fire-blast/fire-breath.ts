@@ -43,6 +43,7 @@ export const FireBreath: Power = {
     "type": "Special",
     "scale": 0.585,
     "table": "Ranged_Damage",
-    "duration": 2.1
+    "duration": 2.1,
+    "tickRate": 1
   }
 };

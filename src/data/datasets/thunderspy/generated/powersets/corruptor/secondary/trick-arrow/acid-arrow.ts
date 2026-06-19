@@ -45,6 +45,7 @@ export const AcidArrow: Power = {
     "type": "Special",
     "scale": 0.01,
     "table": "Ranged_Damage",
-    "duration": 20
+    "duration": 20,
+    "tickRate": 1
   }
 };

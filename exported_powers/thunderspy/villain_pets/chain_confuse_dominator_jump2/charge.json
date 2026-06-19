@@ -152,7 +152,7 @@
           "scale": -1.0,
           "duration": "4.10 seconds",
           "magnitude": 1.0,
-          "delay": 0.0,
+          "delay": 4.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,

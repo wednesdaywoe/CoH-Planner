@@ -43,13 +43,15 @@ export const Disintegrate: Power = {
       "type": "Special",
       "scale": 0.216,
       "table": "Ranged_Damage",
-      "duration": 10.5
+      "duration": 10.5,
+      "tickRate": 1.1100000143051147
     },
     {
       "type": "Special",
       "scale": 0.108,
       "table": "Ranged_Damage",
-      "duration": 10.5
+      "duration": 10.5,
+      "tickRate": 1.1100000143051147
     }
   ]
 };

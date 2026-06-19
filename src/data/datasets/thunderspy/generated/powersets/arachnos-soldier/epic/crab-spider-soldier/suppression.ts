@@ -46,6 +46,7 @@ export const Suppression: Power = {
     "type": "Special",
     "scale": 0.185397,
     "table": "Ranged_Damage",
-    "duration": 3.1
+    "duration": 3.1,
+    "tickRate": 0.6000000238418579
   }
 };

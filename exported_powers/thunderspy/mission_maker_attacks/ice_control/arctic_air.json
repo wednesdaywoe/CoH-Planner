@@ -220,7 +220,7 @@
           "scale": 2.0,
           "duration": "0 seconds",
           "magnitude": 0.30000001192092896,
-          "delay": 0.0,
+          "delay": 1.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,

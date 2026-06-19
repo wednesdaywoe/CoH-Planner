@@ -42,7 +42,8 @@ export const Char: Power = {
     "type": "Special",
     "scale": 0.22,
     "table": "Ranged_Damage",
-    "duration": 4.2
+    "duration": 4.2,
+    "tickRate": 1
   },
   "effects": {
     "immobilize": {

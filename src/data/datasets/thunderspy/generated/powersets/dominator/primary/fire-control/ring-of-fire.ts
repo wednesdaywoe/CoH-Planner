@@ -42,7 +42,8 @@ export const RingofFire: Power = {
     "type": "Special",
     "scale": 0.22,
     "table": "Ranged_Damage",
-    "duration": 9.2
+    "duration": 9.2,
+    "tickRate": 2
   },
   "effects": {
     "immobilize": {

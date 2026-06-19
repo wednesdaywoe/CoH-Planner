@@ -43,6 +43,7 @@ export const Longfang: Power = {
     "type": "Lethal",
     "scale": 0.382,
     "table": "Ranged_Damage",
-    "duration": 0.7
+    "duration": 0.7,
+    "tickRate": 0.30000001192092896
   }
 };

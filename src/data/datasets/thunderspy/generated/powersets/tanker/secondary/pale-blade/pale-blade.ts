@@ -44,7 +44,8 @@ export const PaleBlade: Power = {
     "type": "Special",
     "scale": 0.5,
     "table": "Melee_Damage",
-    "duration": 1
+    "duration": 1,
+    "tickRate": 0.4000000059604645
   },
   "conditionalEffects": [
     {

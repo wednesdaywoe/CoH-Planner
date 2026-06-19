@@ -47,6 +47,7 @@ export const Frost: Power = {
     "type": "Special",
     "scale": 0.27,
     "table": "Melee_Damage",
-    "duration": 5.1
+    "duration": 5.1,
+    "tickRate": 1
   }
 };

@@ -43,13 +43,15 @@ export const ThornBarrage: Power = {
       "type": "Lethal",
       "scale": 0.53,
       "table": "Ranged_Damage",
-      "duration": 1.75
+      "duration": 1.75,
+      "tickRate": 0.5
     },
     {
       "type": "Lethal",
       "scale": 0.1,
       "table": "Ranged_Damage",
-      "duration": 3.1
+      "duration": 3.1,
+      "tickRate": 1
     }
   ],
   "effects": {

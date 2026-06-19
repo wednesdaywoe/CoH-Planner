@@ -43,6 +43,7 @@ export const Irradiate: Power = {
     "type": "Special",
     "scale": 0.07,
     "table": "Ranged_Damage",
-    "duration": 4.6
+    "duration": 4.6,
+    "tickRate": 0.5
   }
 };

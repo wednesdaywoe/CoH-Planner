@@ -44,7 +44,8 @@ export const PsiBladeSlash: Power = {
     {
       "type": "Special",
       "scale": 0.98,
-      "table": "Melee_Damage"
+      "table": "Melee_Damage",
+      "tickRate": 1
     }
   ]
 };

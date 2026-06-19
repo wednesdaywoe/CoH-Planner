@@ -44,7 +44,8 @@ export const HighLow: Power = {
     "type": "Lethal",
     "scale": 0.151,
     "table": "Melee_Damage",
-    "duration": 2.05
+    "duration": 2.05,
+    "tickRate": 0.20000000298023224
   },
   "conditionalEffects": [
     {
@@ -67,7 +68,8 @@ export const HighLow: Power = {
         "type": "Lethal",
         "scale": 0.27,
         "table": "Melee_Damage",
-        "duration": 3.1
+        "duration": 3.1,
+        "tickRate": 1
       }
     }
   ]

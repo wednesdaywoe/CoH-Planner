@@ -44,7 +44,8 @@ export const FireSwordCircle: Power = {
       "type": "Fire",
       "scale": 0.15,
       "table": "Melee_Damage",
-      "duration": 2.1
+      "duration": 2.1,
+      "tickRate": 1
     }
   ],
   "requires": "Defender_Ranged.Fire_Blast.Rain_of_Fire !"

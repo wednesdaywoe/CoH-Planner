@@ -45,7 +45,8 @@ export const HeartofDarkness: Power = {
     "type": "Special",
     "scale": 0.07,
     "table": "Ranged_Damage",
-    "duration": 4.1
+    "duration": 4.1,
+    "tickRate": 1
   },
   "effects": {
     "stun": {

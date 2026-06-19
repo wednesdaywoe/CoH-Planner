@@ -46,13 +46,15 @@ export const TRCocoon: Power = {
       "type": "Special",
       "scale": 0.155,
       "table": "Ranged_Damage",
-      "duration": 6
+      "duration": 6,
+      "tickRate": 0.4000000059604645
     },
     {
       "type": "Special",
       "scale": 0.0755,
       "table": "Ranged_Damage",
-      "duration": 6
+      "duration": 6,
+      "tickRate": 0.4000000059604645
     }
   ],
   "effects": {

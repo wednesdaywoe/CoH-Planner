@@ -42,7 +42,8 @@ export const EyeoftheStorm: Power = {
     "type": "Smashing",
     "scale": 0.205,
     "table": "Melee_Damage",
-    "duration": 2.3
+    "duration": 2.3,
+    "tickRate": 0.4000000059604645
   },
   "conditionalEffects": [
     {

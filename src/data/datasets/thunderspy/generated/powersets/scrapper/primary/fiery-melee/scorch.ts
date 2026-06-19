@@ -45,7 +45,8 @@ export const Scorch: Power = {
       "type": "Fire",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 2.1
+      "duration": 2.1,
+      "tickRate": 1
     }
   ]
 };

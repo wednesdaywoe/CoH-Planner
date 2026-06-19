@@ -45,6 +45,7 @@ export const GroupEnergyFlight: Power = {
     "type": "Special",
     "scale": 0.08,
     "table": "Ranged_Damage",
-    "duration": 1.25
+    "duration": 1.25,
+    "tickRate": 0.5
   }
 };

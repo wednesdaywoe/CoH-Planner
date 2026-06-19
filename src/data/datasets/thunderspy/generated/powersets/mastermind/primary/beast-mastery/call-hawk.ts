@@ -45,6 +45,7 @@ export const CallHawk: Power = {
     "type": "Special",
     "scale": 0.392,
     "table": "Ranged_Damage",
-    "duration": 1.3
+    "duration": 1.3,
+    "tickRate": 0.30000001192092896
   }
 };

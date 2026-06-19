@@ -47,7 +47,8 @@ export const Pounce: Power = {
       "type": "Lethal",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 4.1
+      "duration": 4.1,
+      "tickRate": 1
     }
   ],
   "effects": {
@@ -73,7 +74,8 @@ export const Pounce: Power = {
           "type": "Lethal",
           "scale": 0.2,
           "table": "Melee_Damage",
-          "duration": 4.1
+          "duration": 4.1,
+          "tickRate": 1
         }
       ],
       "effects": {

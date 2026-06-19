@@ -43,7 +43,8 @@ export const HailofBullets: Power = {
     "type": "Lethal",
     "scale": 0.227,
     "table": "Ranged_Damage",
-    "duration": 3.5
+    "duration": 3.5,
+    "tickRate": 0.30000001192092896
   },
   "conditionalEffects": [
     {

@@ -42,6 +42,7 @@ export const ShortCircuit: Power = {
     "type": "Special",
     "scale": 0.5,
     "table": "Melee_Damage",
-    "duration": 2
+    "duration": 2,
+    "tickRate": 1
   }
 };

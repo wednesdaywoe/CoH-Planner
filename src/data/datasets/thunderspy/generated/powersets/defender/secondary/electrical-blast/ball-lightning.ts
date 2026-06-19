@@ -50,7 +50,8 @@ export const BallLightning: Power = {
       "type": "Special",
       "scale": 0.27,
       "table": "Ranged_Damage",
-      "duration": 2
+      "duration": 2,
+      "tickRate": 1
     }
   ]
 };

@@ -57,7 +57,8 @@ export const PaleWind: Power = {
         "type": "Special",
         "scale": 0.1,
         "table": "Melee_Damage",
-        "duration": 6
+        "duration": 6,
+        "tickRate": 0.5
       }
     },
     {
@@ -69,7 +70,8 @@ export const PaleWind: Power = {
         "type": "Special",
         "scale": 0.1,
         "table": "Melee_Damage",
-        "duration": 6
+        "duration": 6,
+        "tickRate": 0.5
       }
     }
   ]

@@ -49,6 +49,7 @@ export const Gloom: Power = {
     "type": "Special",
     "scale": 0.22,
     "table": "Ranged_Damage",
-    "duration": 1.5
+    "duration": 1.5,
+    "tickRate": 0.20000000298023224
   }
 };

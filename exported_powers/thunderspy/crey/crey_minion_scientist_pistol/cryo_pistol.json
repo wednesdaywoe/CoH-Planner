@@ -145,7 +145,7 @@
           "scale": 10.0,
           "duration": "0 seconds",
           "magnitude": 0.10000000149011612,
-          "delay": 0.0,
+          "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,

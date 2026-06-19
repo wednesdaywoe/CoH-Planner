@@ -47,7 +47,8 @@ export const Lash: Power = {
       "type": "Fire",
       "scale": 0.11,
       "table": "Ranged_Damage",
-      "duration": 1.5
+      "duration": 1.5,
+      "tickRate": 1
     }
   ],
   "effects": {

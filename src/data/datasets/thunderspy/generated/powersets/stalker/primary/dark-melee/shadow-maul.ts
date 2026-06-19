@@ -45,7 +45,8 @@ export const ShadowMaul: Power = {
     "type": "Special",
     "scale": 0.16,
     "table": "Melee_Damage",
-    "duration": 2
+    "duration": 2,
+    "tickRate": 0.625
   },
   "conditionalEffects": [
     {

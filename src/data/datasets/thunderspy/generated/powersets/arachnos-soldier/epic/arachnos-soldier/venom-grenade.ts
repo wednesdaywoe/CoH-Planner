@@ -42,7 +42,8 @@ export const VenomGrenade: Power = {
     "type": "Special",
     "scale": 0.1964,
     "table": "Ranged_Damage",
-    "duration": 4.12
+    "duration": 4.12,
+    "tickRate": 1
   },
   "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade !"
 };

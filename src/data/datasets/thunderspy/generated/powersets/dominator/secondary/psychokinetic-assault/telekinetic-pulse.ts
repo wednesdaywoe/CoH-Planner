@@ -46,7 +46,8 @@ export const TelekineticPulse: Power = {
   "damage": {
     "type": "Psionic",
     "scale": 0.055,
-    "table": "Ranged_Damage"
+    "table": "Ranged_Damage",
+    "tickRate": 2
   },
   "effects": {
     "knockback": {

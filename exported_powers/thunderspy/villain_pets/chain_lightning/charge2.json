@@ -111,7 +111,7 @@
           "scale": 1.0,
           "duration": "3 seconds",
           "magnitude": 1.0,
-          "delay": 0.0,
+          "delay": 1.5,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,

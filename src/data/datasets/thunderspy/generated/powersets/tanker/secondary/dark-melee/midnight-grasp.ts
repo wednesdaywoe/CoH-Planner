@@ -54,7 +54,8 @@ export const MidnightGrasp: Power = {
       "type": "Negative",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 3.1
+      "duration": 3.1,
+      "tickRate": 0.75
     }
   ],
   "effects": {

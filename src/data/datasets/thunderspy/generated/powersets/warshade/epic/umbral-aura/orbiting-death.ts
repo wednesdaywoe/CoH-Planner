@@ -41,6 +41,7 @@ export const OrbitingDeath: Power = {
     "type": "Special",
     "scale": 0.17,
     "table": "Melee_Damage",
-    "duration": 2.5
+    "duration": 2.5,
+    "tickRate": 3
   }
 };

@@ -41,7 +41,8 @@ export const Barrage: Power = {
     "type": "Smashing",
     "scale": 0.198,
     "table": "Melee_Damage",
-    "duration": 0.3
+    "duration": 0.3,
+    "tickRate": 0.25
   },
   "effects": {
     "stun": {

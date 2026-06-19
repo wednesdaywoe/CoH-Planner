@@ -51,13 +51,15 @@ export const EmptyClips: Power = {
       "type": "Lethal",
       "scale": 0.13,
       "table": "Ranged_Damage",
-      "duration": 1.6
+      "duration": 1.6,
+      "tickRate": 0.5
     },
     {
       "type": "Lethal",
       "scale": 0.13,
       "table": "Ranged_Damage",
-      "duration": 1.6
+      "duration": 1.6,
+      "tickRate": 0.5
     }
   ],
   "conditionalEffects": [

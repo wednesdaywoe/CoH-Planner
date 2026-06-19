@@ -44,6 +44,7 @@ export const FRTPsionicLance: Power = {
     "type": "Special",
     "scale": 0.203429,
     "table": "Ranged_Damage",
-    "duration": 2.05
+    "duration": 2.05,
+    "tickRate": 0.5
   }
 };

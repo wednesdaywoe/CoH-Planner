@@ -51,7 +51,8 @@ export const CrowdControl: Power = {
       "type": "Smashing",
       "scale": 0.1,
       "table": "Melee_Damage",
-      "duration": 4.1
+      "duration": 4.1,
+      "tickRate": 1
     }
   ]
 };

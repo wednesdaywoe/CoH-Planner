@@ -44,7 +44,8 @@ export const Flashfire: Power = {
     "type": "Special",
     "scale": 0.06,
     "table": "Ranged_Damage",
-    "duration": 4
+    "duration": 4,
+    "tickRate": 1
   },
   "effects": {
     "stun": {

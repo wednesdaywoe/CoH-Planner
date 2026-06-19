@@ -45,7 +45,8 @@ export const Placate: Power = {
     "type": "Smashing",
     "scale": 0.332,
     "table": "Melee_Damage",
-    "duration": 1.7
+    "duration": 1.7,
+    "tickRate": 0.4000000059604645
   },
   "effects": {
     "immobilize": {

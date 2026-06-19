@@ -53,7 +53,8 @@ export const Special2: Power = {
         "type": "Lethal",
         "scale": 0.27,
         "table": "Melee_Damage",
-        "duration": 3.1
+        "duration": 3.1,
+        "tickRate": 1
       }
     }
   ]

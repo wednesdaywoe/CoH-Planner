@@ -50,7 +50,8 @@ export const ElectricFence: Power = {
     "type": "Special",
     "scale": 0.2,
     "table": "Ranged_Damage",
-    "duration": 8.2
+    "duration": 8.2,
+    "tickRate": 2
   },
   "effects": {
     "immobilize": {

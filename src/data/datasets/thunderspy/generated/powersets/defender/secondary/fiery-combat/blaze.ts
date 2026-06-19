@@ -46,7 +46,8 @@ export const Blaze: Power = {
       "type": "Fire",
       "scale": 0.225,
       "table": "Ranged_Damage",
-      "duration": 4.1
+      "duration": 4.1,
+      "tickRate": 1
     }
   ],
   "requires": "Defender_Ranged.Fire_Blast.Fire_Sword !"

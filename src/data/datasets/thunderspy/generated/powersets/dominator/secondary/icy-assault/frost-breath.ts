@@ -45,6 +45,7 @@ export const FrostBreath: Power = {
     "type": "Special",
     "scale": 0.55,
     "table": "Ranged_Damage",
-    "duration": 0.6
+    "duration": 0.6,
+    "tickRate": 0.5
   }
 };

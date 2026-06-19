@@ -53,7 +53,8 @@ export const Overcharge: Power = {
       "type": "Energy",
       "scale": 0.1,
       "table": "Ranged_Damage",
-      "duration": 4.1
+      "duration": 4.1,
+      "tickRate": 1
     }
   ],
   "effects": {

@@ -45,7 +45,8 @@ export const Suffocate: Power = {
     "type": "Special",
     "scale": 0.275,
     "table": "Ranged_Damage",
-    "duration": 3.1
+    "duration": 3.1,
+    "tickRate": 1
   },
   "effects": {
     "immobilize": {

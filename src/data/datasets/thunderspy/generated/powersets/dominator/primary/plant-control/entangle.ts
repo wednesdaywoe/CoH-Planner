@@ -42,7 +42,8 @@ export const Entangle: Power = {
     "type": "Special",
     "scale": 0.175,
     "table": "Ranged_Damage",
-    "duration": 3
+    "duration": 3,
+    "tickRate": 0.5
   },
   "effects": {
     "stun": {
