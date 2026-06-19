@@ -50,8 +50,8 @@ import { getPowerset, stanceAdjusterOverrides } from '@/data';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
 import { MechanicAdjusters } from './MechanicAdjusters';
 import { DamageBlock } from './DamageBlock';
-import { TagsRow } from './TagsRow';
-import { TagsBlock, GeneralStatsBlock } from './PowerInfoBlocks';
+import { ShortHelpChips } from './TagsRow';
+import { PowerMetaTags, AllowedEnhancementsBlock, GeneralStatsBlock } from './PowerInfoBlocks';
 import type {
   ArchetypeId,
   Power,
@@ -985,16 +985,20 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               <span className="text-[11px] text-green-500 ml-1 font-normal">(enhanced)</span>
             )}
           </h3>
-          <span className="text-xs text-slate-300 capitalize">{power.powerType}</span>
         </div>
       </div>
 
-      {/* Tags row — chip-style render of shortHelp (range/area, mez, debuff,
-        * buff, damage type) for at-a-glance power identity. */}
-      {power.shortHelp && <TagsRow shortHelp={power.shortHelp} />}
+      {/* Top tag cloud — Power Type / Target Type (+ mez-immunity flags) as
+        * chips, followed by the chip-style render of shortHelp (range/area,
+        * mez, debuff, buff, damage type) for at-a-glance power identity. */}
+      <div className="flex flex-wrap gap-1">
+        <PowerMetaTags power={power} />
+        {power.shortHelp && <ShortHelpChips shortHelp={power.shortHelp} />}
+      </div>
 
-      {/* Tags Block — Power Type / Target Type / Allowed Enhancements. */}
-      <TagsBlock power={power} />
+      {/* Allowed Enhancements — its own wrapping section of chips so nothing
+        * gets truncated. */}
+      <AllowedEnhancementsBlock power={power} />
 
       {/* Summon/Pet Info with DPS. Pseudo-pet powers (Blizzard, Caltrops,
         * Ice Storm, Bonfire, etc.) surface their lifetime damage through

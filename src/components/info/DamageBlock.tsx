@@ -72,19 +72,22 @@ export interface DamageBlockProps {
 }
 
 export function DamageBlock(props: DamageBlockProps) {
-  const { calculatedDamage, effects, buildLevel } = props;
+  const { calculatedDamage, buildLevel } = props;
   // Average proc damage per activation — computed once and shared by the
-  // cap bar (yellow segment) and the per-cycle metric so both reflect the
-  // same number. Zero when the include-procs toggle is off.
+  // cap bar (yellow segment) and the tier readout so both reflect the same
+  // number. Zero when the include-procs toggle is off.
   const procDamagePerActivation = computeProcDamagePerActivation(props);
   return (
     <div>
-      <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
-        Damage <span className="text-slate-500 font-normal">(Lvl {buildLevel})</span>
-      </h4>
-      <div className="bg-slate-800/50 rounded p-2">
+      {/* Header + mode toggle share one row to save vertical space. */}
+      <div className="flex items-center justify-between gap-2 mb-1">
+        <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide">
+          Damage <span className="text-slate-500 font-normal">(Lvl {buildLevel})</span>
+        </h4>
         <ModeToggle />
-        <DamageRows {...props} />
+      </div>
+      <div className="bg-slate-800/50 rounded p-2">
+        <DamageTiers {...props} procDamagePerActivation={procDamagePerActivation} />
         {!calculatedDamage.unknown && calculatedDamage.scale != null && (
           <DamageBar {...props} procDamagePerActivation={procDamagePerActivation} />
         )}
@@ -93,9 +96,7 @@ export function DamageBlock(props: DamageBlockProps) {
             * Actual damage varies (pseudo-pet or redirect power)
           </div>
         )}
-        {!calculatedDamage.unknown && effects.recharge != null && effects.castTime != null && (
-          <DamageMetrics {...props} procDamagePerActivation={procDamagePerActivation} />
-        )}
+        <DamageContext {...props} />
       </div>
     </div>
   );
@@ -104,7 +105,7 @@ export function DamageBlock(props: DamageBlockProps) {
 // ----------------------------------------------------------------------
 // ModeToggle — DMG / DPA / DPS / DPE radio. Reads/writes uiStore directly
 // so the chosen mode persists across power selections without prop
-// threading. Replaces the prior global toggle in the Header.
+// threading. The selected mode drives what the three big tier numbers show.
 // ----------------------------------------------------------------------
 
 const MODE_BUTTONS = [
@@ -119,7 +120,7 @@ function ModeToggle() {
   const setDamageDisplayMode = useUIStore((s) => s.setDamageDisplayMode);
   return (
     <div
-      className="inline-flex items-center bg-slate-700/40 rounded border border-slate-600/50 overflow-hidden mb-1.5"
+      className="inline-flex items-center bg-slate-700/40 rounded border border-slate-600/50 overflow-hidden shrink-0"
       role="radiogroup"
       aria-label="Damage display mode"
     >
@@ -146,127 +147,156 @@ function ModeToggle() {
 }
 
 // ----------------------------------------------------------------------
-// DamageRows — three-tier table with optional inherent column.
+// DamageTiers — the headline: three big BASE / ENHANCED / FINAL numbers
+// for the selected metric (DMG / DPA / DPS / DPE).
+//
+// The numbers are the power's DoT-inclusive lifetime totals transformed by
+// the metric divisor. BASE uses the unenhanced cycle; ENHANCED/FINAL use
+// the enhanced cycle (so DPS reflects recharge slotting). The three tiers
+// are fundamentally the DAMAGE decomposition — base → +slotted damage enh →
+// +global/set bonuses — so the dash logic ("no slots" on ENHANCED) keys off
+// damage, not the metric. When an AT inherent applies (Crit/Scourge/Fury/
+// Containment) it is highlighted AS the FINAL number in its accent color,
+// with the plain final shown beneath.
 // ----------------------------------------------------------------------
 
-function DamageRows({
-  calculatedDamage,
+function DamageTiers({
+  calculatedDamage: cd,
+  effects,
   inherentInfo,
   globalCombatModifier,
   targetLevelOffset,
-}: DamageBlockProps) {
-  // Type column needs room for "Smash/Eng" (joined damage types like
-  // Energy Melee's Smashing/Energy). 4rem cut off the second word; 5.5rem
-  // fits the longest joined-and-abbreviated form with a small margin.
-  const gridCols = inherentInfo ? 'grid-cols-[5.5rem_1fr_1fr_1fr_1fr]' : 'grid-cols-[5.5rem_1fr_1fr_1fr]';
-  const dot = calculatedDamage.dotDamage;
-  const hasDirectDamage = dot ? Math.abs(calculatedDamage.base - dot.base) > 0.001 : true;
-  const isPureDot = dot && !hasDirectDamage;
-
-  const hasEnh = Math.abs(calculatedDamage.enhanced - calculatedDamage.base) > 0.001;
-  const hasGlobal = Math.abs(calculatedDamage.final - calculatedDamage.enhanced) > 0.001;
-  const inherentFinal = inherentInfo ? inherentInfo.applyBonus(calculatedDamage.final) : calculatedDamage.final;
-  const hasInherentDiff = inherentInfo != null && Math.abs(inherentFinal - calculatedDamage.final) > 0.001;
+  damageDisplayMode: mode,
+  arcanaTimeEnabled,
+  enhancementBonuses,
+  globalBonusesForCalc,
+  procDamagePerActivation,
+}: DamageBlockProps & { procDamagePerActivation: number }) {
+  // DoT-inclusive lifetime totals (mirror DamageBar). For pure-DoT powers
+  // calculatedDamage.base IS the per-tick value, so use only the DoT total.
+  const dot = cd.dotDamage;
+  const isPureDot = dot ? Math.abs(cd.base - dot.base) <= 0.001 : false;
+  const lt = (perTick: number) => (dot ? perTick * dot.ticks : 0);
+  const totalBase = isPureDot ? lt(dot!.base) : cd.base + (dot ? lt(dot.base) : 0);
+  const totalEnh = isPureDot ? lt(dot!.enhanced) : cd.enhanced + (dot ? lt(dot.enhanced) : 0);
+  const totalFinalRaw = isPureDot ? lt(dot!.final) : cd.final + (dot ? lt(dot.final) : 0);
 
   const showCombatMod = targetLevelOffset !== 0 && globalCombatModifier !== 1;
-  const dmgConArrow = showCombatMod ? getConArrow(targetLevelOffset) : null;
-  const cappedClass = calculatedDamage.capped ? 'underline decoration-dotted decoration-amber-400/50' : '';
+  const cm = showCombatMod ? globalCombatModifier : 1;
+  const totalFinal = totalFinalRaw * cm;
+  const inherentFinal = (inherentInfo ? inherentInfo.applyBonus(totalFinalRaw) : totalFinalRaw) * cm;
 
-  // Apply combat modifier to final and inherent values for display
-  const displayFinal = showCombatMod ? calculatedDamage.final * globalCombatModifier : calculatedDamage.final;
-  const displayInherentFinal = showCombatMod ? inherentFinal * globalCombatModifier : inherentFinal;
+  // Metric divisors. Cast time is not enhanced, so DPA shares it across
+  // tiers; only DPS varies its divisor (base vs enhanced cycle).
+  const rechargeStats = calcThreeTierUtil('recharge', effects.recharge ?? 0, enhancementBonuses, globalBonusesForCalc);
+  const effCast = arcanaTimeEnabled ? calculateArcanaTime(effects.castTime ?? 0) : (effects.castTime ?? 0);
+  const baseCycle = effCast + (effects.recharge ?? 0);
+  const finalCycle = effCast + rechargeStats.final;
+  const endCost = effects.enduranceCost ?? 0;
 
-  // DoT per-tick values (with inherent bonus on DoT)
-  const dotInherentFinal = dot && inherentInfo ? inherentInfo.applyBonus(dot.final) : dot?.final ?? 0;
-  const displayDotFinal = dot ? (showCombatMod ? dot.final * globalCombatModifier : dot.final) : 0;
-  const displayDotInherentFinal = showCombatMod ? dotInherentFinal * globalCombatModifier : dotInherentFinal;
+  const unavailable =
+    mode === 'damagePerAnim' && effCast <= 0 ? 'No activation time' :
+    mode === 'damagePerEnd' && endCost <= 0 ? 'No endurance cost' :
+    mode === 'damagePerSec' && finalCycle <= 0 ? 'No cycle time' :
+    null;
 
-  // DoT totals
-  const dotTotalBase = dot ? dot.base * dot.ticks : 0;
-  const dotTotalEnhanced = dot ? dot.enhanced * dot.ticks : 0;
-  const dotTotalFinal = dot ? displayDotFinal * dot.ticks : 0;
-  const dotTotalInherent = dot && inherentInfo ? displayDotInherentFinal * dot.ticks : dotTotalFinal;
+  const metric = (dmg: number, state: 'base' | 'final'): number => {
+    switch (mode) {
+      case 'damagePerAnim': return dmg / effCast;
+      case 'damagePerSec': return dmg / (state === 'base' ? baseCycle : finalCycle);
+      case 'damagePerEnd': return dmg / endCost;
+      case 'damage':
+      default: return dmg;
+    }
+  };
+
+  const baseVal = metric(totalBase, 'base');
+  const enhVal = metric(totalEnh, 'final');
+  const finalVal = metric(totalFinal, 'final');
+  const inherentVal = metric(inherentFinal, 'final');
+  const procVal = computeProcContribution(mode, procDamagePerActivation, finalCycle, effCast, endCost);
+
+  const hasEnhDmg = Math.abs(totalEnh - totalBase) > 0.001;
+  const hasInherent = inherentInfo != null && Math.abs(inherentFinal - totalFinal) > 0.001;
+  const improvedPct = baseVal > 0 ? ((finalVal - procVal) / baseVal - 1) * 100 : 0;
+  const finalImproved = improvedPct > 1 || showCombatMod;
+  const cappedClass = cd.capped ? 'underline decoration-dotted decoration-amber-400/50' : '';
+  const conArrow = showCombatMod ? getConArrow(targetLevelOffset) : null;
+
+  const typeLabel = `${abbreviateDamageType(cd.type)}${isPureDot ? ' DoT' : ''}`;
+  const fmt = (v: number) => v.toFixed(2);
+
+  if (unavailable) {
+    return (
+      <div className="text-center py-2 text-slate-400 text-sm">
+        — <span className="text-xs">({unavailable})</span>
+      </div>
+    );
+  }
 
   return (
-    <>
-      <div className={`grid ${gridCols} gap-1 text-[11px] text-slate-400 uppercase mb-0.5 border-b border-slate-700 pb-0.5`}>
-        <span>Type</span>
-        <span>Base</span>
-        <span>Enhanced</span>
-        <span>Final</span>
-        {inherentInfo && <span className={inherentInfo.color}>{inherentInfo.header}</span>}
+    <div>
+      <div className="text-[11px] text-red-400 mb-1">{typeLabel}</div>
+      <div className="grid grid-cols-3 gap-1 text-center">
+        <Tier label="Base" value={fmt(baseVal)} valueClass="text-slate-100" />
+        <Tier
+          label="Enhanced"
+          value={hasEnhDmg ? fmt(enhVal) : '—'}
+          valueClass={hasEnhDmg ? 'text-green-400' : 'text-slate-600'}
+          sub={hasEnhDmg ? undefined : 'no slots'}
+        />
+        <Tier
+          label={hasInherent ? `Final ${inherentInfo!.header}` : 'Final'}
+          value={hasInherent ? fmt(inherentVal) : fmt(finalVal)}
+          valueClass={`${hasInherent ? inherentInfo!.color : finalImproved ? 'text-amber-400' : 'text-slate-100'} ${cappedClass}`}
+          arrow={conArrow}
+          sub={
+            hasInherent
+              ? `${fmt(finalVal)} base`
+              : finalImproved && improvedPct > 1
+                ? `+${improvedPct.toFixed(0)}%`
+                : undefined
+          }
+        />
       </div>
+      {!cd.unknown && procDamagePerActivation > 0 && (
+        <div
+          className="text-center text-[11px] text-cyan-400 mt-1"
+          title="Average proc damage per activation, shown separately (flat, cap-exempt) so the (+%) reflects the enhancement multiplier on the attack itself."
+        >
+          +{procVal.toFixed(1)} proc
+        </div>
+      )}
+    </div>
+  );
+}
 
-      {/* Direct damage row (or per-tick for pure DoT) */}
-      <div className={`grid ${gridCols} gap-1 items-baseline text-sm`}>
-        <span className="text-red-400">{isPureDot ? `${abbreviateDamageType(calculatedDamage.type)}/tick` : abbreviateDamageType(calculatedDamage.type)}</span>
-        <span className="text-slate-200">{calculatedDamage.base.toFixed(2)}</span>
-        <span className={hasEnh ? 'text-green-400' : 'text-slate-500'}>
-          {hasEnh ? `→ ${calculatedDamage.enhanced.toFixed(2)}` : '—'}
-        </span>
-        <span className={`font-semibold ${hasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
-          {hasGlobal || showCombatMod ? <>→ {displayFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px] font-normal`}>{dmgConArrow.symbol}</span>}</> : '—'}
-        </span>
-        {inherentInfo && (
-          <span className={`${hasInherentDiff || showCombatMod ? inherentInfo.color : 'text-slate-500'} ${cappedClass}`}>
-            {hasInherentDiff || showCombatMod ? <>→ {displayInherentFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
-          </span>
-        )}
+// ----------------------------------------------------------------------
+// Tier — one big-number column (label / emphasized value / sub-annotation).
+// ----------------------------------------------------------------------
+
+function Tier({
+  label,
+  value,
+  valueClass,
+  sub,
+  arrow,
+}: {
+  label: string;
+  value: string;
+  valueClass?: string;
+  sub?: string;
+  arrow?: { symbol: string; colorClass: string } | null;
+}) {
+  return (
+    <div className="min-w-0 rounded border border-slate-700/60 bg-slate-900/30 px-1 py-1.5">
+      <div className="text-[10px] uppercase tracking-wide text-slate-400 leading-tight truncate">{label}</div>
+      <div className={`text-2xl font-bold tabular-nums leading-tight ${valueClass ?? 'text-slate-100'}`}>
+        {value}
+        {arrow && <span className={`${arrow.colorClass} text-[11px] font-normal ml-0.5 align-top`}>{arrow.symbol}</span>}
       </div>
-
-      {/* DoT per-tick row (only for mixed direct+DoT powers) */}
-      {dot && hasDirectDamage && (() => {
-        const dotHasEnh = Math.abs(dot.enhanced - dot.base) > 0.001;
-        const dotHasGlobal = Math.abs(dot.final - dot.enhanced) > 0.001;
-        const dotHasInherent = inherentInfo != null && Math.abs(dotInherentFinal - dot.final) > 0.001;
-        return (
-          <div className={`grid ${gridCols} gap-1 items-baseline text-sm`}>
-            <span className="text-red-400">{abbreviateDamageType(dot.type)}/tick</span>
-            <span className="text-slate-200">{dot.base.toFixed(2)}</span>
-            <span className={dotHasEnh ? 'text-green-400' : 'text-slate-500'}>
-              {dotHasEnh ? `→ ${dot.enhanced.toFixed(2)}` : '—'}
-            </span>
-            <span className={`font-semibold ${dotHasGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
-              {dotHasGlobal || showCombatMod ? <>→ {displayDotFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px] font-normal`}>{dmgConArrow.symbol}</span>}</> : '—'}
-            </span>
-            {inherentInfo && (
-              <span className={`${dotHasInherent || showCombatMod ? inherentInfo.color : 'text-slate-500'} ${cappedClass}`}>
-                {dotHasInherent || showCombatMod ? <>→ {displayDotInherentFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
-              </span>
-            )}
-          </div>
-        );
-      })()}
-
-      {/* DoT total row */}
-      {dot && (() => {
-        const hasTotalEnh = Math.abs(dotTotalEnhanced - dotTotalBase) > 0.001;
-        const hasTotalGlobal = Math.abs(dotTotalFinal - dotTotalEnhanced) > 0.001;
-        const hasTotalInherent = inherentInfo != null && Math.abs(dotTotalInherent - dotTotalFinal) > 0.001;
-        return (
-          <>
-            <div className={`grid ${gridCols} gap-1 items-baseline text-sm mt-1 pt-1 border-t border-slate-700/50`}>
-              <span className="text-orange-400">DoT</span>
-              <span className="text-slate-200">{dotTotalBase.toFixed(2)}</span>
-              <span className={hasTotalEnh ? 'text-green-400' : 'text-slate-500'}>
-                {hasTotalEnh ? `→ ${dotTotalEnhanced.toFixed(2)}` : '—'}
-              </span>
-              <span className={`font-semibold ${hasTotalGlobal || showCombatMod ? 'text-amber-400' : 'text-slate-500'} ${cappedClass}`}>
-                {hasTotalGlobal || showCombatMod ? <>→ {dotTotalFinal.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px] font-normal`}>{dmgConArrow.symbol}</span>}</> : '—'}
-              </span>
-              {inherentInfo && (
-                <span className={`${hasTotalInherent || showCombatMod ? inherentInfo.color : 'text-slate-500'} ${cappedClass}`}>
-                  {hasTotalInherent || showCombatMod ? <>→ {dotTotalInherent.toFixed(2)}{dmgConArrow && <span className={`${dmgConArrow.colorClass} ml-0.5 text-[11px]`}>{dmgConArrow.symbol}</span>}</> : '—'}
-                </span>
-              )}
-            </div>
-            <div className="text-[11px] text-orange-400/70 italic mt-0.5 ml-1">
-              {dot.ticks} ticks over {dot.duration}s ({Number(dot.tickRate.toFixed(2))}s/tick)
-            </div>
-          </>
-        );
-      })()}
-    </>
+      <div className="text-[10px] text-slate-500 leading-tight min-h-[0.9rem]">{sub ?? ''}</div>
+    </div>
   );
 }
 
@@ -355,98 +385,49 @@ function DamageBar({ calculatedDamage, archetypeId, procDamagePerActivation, max
 }
 
 // ----------------------------------------------------------------------
-// DamageMetrics — Cycle Time + selected DPx readout.
+// DamageContext — compact context line beneath the big numbers: enhanced
+// Cycle Time (with ArcanaTime flag + "was Xs" delta) and, for DoT powers,
+// the tick breakdown that the lifetime totals above are built from.
 // ----------------------------------------------------------------------
 
-function DamageMetrics({
-  calculatedDamage,
+function DamageContext({
+  calculatedDamage: cd,
   effects,
-  damageDisplayMode,
   arcanaTimeEnabled,
   enhancementBonuses,
   globalBonusesForCalc,
-  procDamagePerActivation,
-}: DamageBlockProps & { procDamagePerActivation: number }) {
-  // Calculate enhanced recharge time
-  const rechargeStats = calcThreeTierUtil('recharge', effects.recharge ?? 0, enhancementBonuses, globalBonusesForCalc);
-  const rawCastTime = effects.castTime ?? 0;
-  const effectiveCastTime = arcanaTimeEnabled ? calculateArcanaTime(rawCastTime) : rawCastTime;
+}: DamageBlockProps) {
+  if (cd.unknown) return null;
+  const dot = cd.dotDamage;
+  const hasCycle = effects.recharge != null && effects.castTime != null;
+  if (!hasCycle && !dot) return null;
 
-  // Cycle time = cast time + recharge time
-  const baseCycleTime = effectiveCastTime + (effects.recharge ?? 0);
-  const finalCycleTime = effectiveCastTime + rechargeStats.final;
-
-  // For pure-DoT powers, calculatedDamage.base IS the per-tick value
-  // (calc copies it into dotDamage.base), so adding both double-counts
-  // one tick. Detect that case and use only the DoT total.
-  const dot = calculatedDamage.dotDamage;
-  const isPureDot = dot ? Math.abs(calculatedDamage.base - dot.base) <= 0.001 : false;
-  const dotTotalBase = dot ? dot.base * dot.ticks : 0;
-  const dotTotalFinal = dot ? dot.final * dot.ticks : 0;
-
-  const totalDmgBase = isPureDot
-    ? dotTotalBase
-    : calculatedDamage.base + dotTotalBase;
-  const totalDmgFinal = isPureDot
-    ? dotTotalFinal + procDamagePerActivation
-    : calculatedDamage.final + dotTotalFinal + procDamagePerActivation;
-
-  const baseDPS = totalDmgBase / baseCycleTime;
-  const finalDPS = totalDmgFinal / finalCycleTime;
-
-  // Resolve the displayed figure based on the current mode.
-  const endCost = effects.enduranceCost ?? 0;
-  const metric = resolveDamageMetric({
-    mode: damageDisplayMode,
-    arcanaTimeEnabled,
-    totalDmgBase,
-    totalDmgFinal,
-    baseDPS,
-    finalDPS,
-    effectiveCastTime,
-    endCost,
-  });
-
-  const improved = metric.valueFinal > metric.valueBase * 1.01;
-  const procContribution = computeProcContribution(damageDisplayMode, procDamagePerActivation, finalCycleTime, effectiveCastTime, endCost);
+  let cycleNode = null;
+  if (hasCycle) {
+    const rechargeStats = calcThreeTierUtil('recharge', effects.recharge ?? 0, enhancementBonuses, globalBonusesForCalc);
+    const effCast = arcanaTimeEnabled ? calculateArcanaTime(effects.castTime ?? 0) : (effects.castTime ?? 0);
+    const baseCycle = effCast + (effects.recharge ?? 0);
+    const finalCycle = effCast + rechargeStats.final;
+    cycleNode = (
+      <span className="text-slate-400">
+        Cycle{' '}
+        <span className="text-slate-300">{finalCycle.toFixed(2)}s</span>
+        {arcanaTimeEnabled && <span className="text-cyan-500 ml-0.5" title="ArcanaTime (server-tick-adjusted cast time)">A</span>}
+        {finalCycle < baseCycle - 0.01 && (
+          <span className="text-green-400 ml-1">(was {baseCycle.toFixed(1)}s)</span>
+        )}
+      </span>
+    );
+  }
 
   return (
-    <div className="mt-2 pt-2 border-t border-slate-700">
-      <div className="grid grid-cols-2 gap-2 text-sm">
-        <div>
-          <span className="text-slate-400">
-            Cycle Time{arcanaTimeEnabled && <span className="text-cyan-500 text-[11px] ml-0.5" title="Using ArcanaTime (server-tick-adjusted cast time)">A</span>}
-          </span>
-          <div className="text-slate-300">
-            {finalCycleTime.toFixed(2)}s
-            {finalCycleTime < baseCycleTime - 0.01 && (
-              <span className="text-green-400 text-xs ml-1">
-                (was {baseCycleTime.toFixed(1)}s)
-              </span>
-            )}
-          </div>
+    <div className="mt-2 pt-2 border-t border-slate-700 text-[11px] space-y-0.5">
+      {cycleNode && <div>{cycleNode}</div>}
+      {dot && (
+        <div className="text-orange-400/80">
+          DoT: {dot.ticks} ticks × {dot.final.toFixed(2)} over {dot.duration}s ({Number(dot.tickRate.toFixed(2))}s/tick)
         </div>
-        <div>
-          <span className="text-slate-400" title={metric.title}>{metric.label}</span>
-          {metric.unavailableReason ? (
-            <div className="text-slate-400" title={metric.unavailableReason}>—</div>
-          ) : (
-            <div className={`font-semibold ${improved ? 'text-amber-400' : 'text-slate-300'}`}>
-              {metric.valueFinal.toFixed(2)}
-              {improved && metric.valueBase > 0 && (
-                <span className="text-green-400 text-xs ml-1">
-                  (+{(((metric.valueFinal - procContribution) / metric.valueBase - 1) * 100).toFixed(0)}%)
-                </span>
-              )}
-              {procDamagePerActivation > 0 && (
-                <span className="text-cyan-400 text-xs ml-1" title="Average proc damage per activation, shown separately so the (+%) badge reflects the enhancement-strength multiplier on the attack itself, not the additive proc chunk.">
-                  +{procContribution.toFixed(1)} proc
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -484,70 +465,6 @@ function computeProcDamagePerActivation(props: DamageBlockProps): number {
     });
   }
   return total;
-}
-
-interface MetricInputs {
-  mode: DamageDisplayMode;
-  arcanaTimeEnabled: boolean;
-  totalDmgBase: number;
-  totalDmgFinal: number;
-  baseDPS: number;
-  finalDPS: number;
-  effectiveCastTime: number;
-  endCost: number;
-}
-
-interface MetricResolved {
-  label: string;
-  title: string;
-  valueBase: number;
-  valueFinal: number;
-  unavailableReason: string | null;
-}
-
-function resolveDamageMetric(inputs: MetricInputs): MetricResolved {
-  const { mode, arcanaTimeEnabled, totalDmgBase, totalDmgFinal, baseDPS, finalDPS, effectiveCastTime, endCost } = inputs;
-  switch (mode) {
-    case 'damage':
-      return {
-        label: 'Average DMG',
-        title: 'Average damage of one activation',
-        valueBase: totalDmgBase,
-        valueFinal: totalDmgFinal,
-        unavailableReason: null,
-      };
-    case 'damagePerAnim':
-      if (effectiveCastTime <= 0) {
-        return { label: 'DPA', title: '', valueBase: 0, valueFinal: 0, unavailableReason: 'No activation time' };
-      }
-      return {
-        label: 'DPA',
-        title: `Damage per Animation — damage / ${arcanaTimeEnabled ? 'ArcanaTime' : 'activation time'}`,
-        valueBase: totalDmgBase / effectiveCastTime,
-        valueFinal: totalDmgFinal / effectiveCastTime,
-        unavailableReason: null,
-      };
-    case 'damagePerEnd':
-      if (endCost <= 0) {
-        return { label: 'DPE', title: '', valueBase: 0, valueFinal: 0, unavailableReason: 'No endurance cost' };
-      }
-      return {
-        label: 'DPE',
-        title: 'Damage per Endurance — damage / endurance cost',
-        valueBase: totalDmgBase / endCost,
-        valueFinal: totalDmgFinal / endCost,
-        unavailableReason: null,
-      };
-    case 'damagePerSec':
-    default:
-      return {
-        label: 'DPS',
-        title: 'Damage per Second — damage / full cycle time (activation + recharge)',
-        valueBase: baseDPS,
-        valueFinal: finalDPS,
-        unavailableReason: null,
-      };
-  }
 }
 
 function computeProcContribution(

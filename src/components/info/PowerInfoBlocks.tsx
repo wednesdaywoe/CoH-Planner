@@ -21,6 +21,7 @@ import type { Power, TargetType, EffectArea, SelectedPower, IOSetEnhancement } f
 import type { PowerDamageResult } from '@/utils/calculations';
 import { calcThreeTier as calcThreeTierUtil } from './powerDisplayUtils';
 import { abbreviateDamageType, calculateArcanaTime } from '@/utils/calculations';
+import { Chip, type TagKind } from './TagsRow';
 import {
   findProcData,
   isProcAlwaysOn,
@@ -30,10 +31,15 @@ import {
 } from '@/data';
 
 // ----------------------------------------------------------------------
-// TagsBlock — Power Type / Target Type / Allowed Enhancements.
+// PowerMetaTags — Power Type / Target Type (+ mez-immunity flags) as chips.
+//
+// Rendered as a bare fragment so the caller can drop these into the same
+// flex-wrap row as the shortHelp chips (TagsRow), giving one cohesive tag
+// cloud at the top of the panel. Allowed Enhancements moved to its own
+// section (AllowedEnhancementsBlock) — see below.
 // ----------------------------------------------------------------------
 
-interface TagsBlockProps {
+interface PowerMetaTagsProps {
   power: Power;
 }
 
@@ -45,34 +51,81 @@ function formatCastThroughMez(states: readonly string[]): string {
   return states.map((s) => CAST_THROUGH_MEZ_LABELS[s] ?? s).join(', ');
 }
 
-export function TagsBlock({ power }: TagsBlockProps) {
+export function PowerMetaTags({ power }: PowerMetaTagsProps) {
   const targetLabel = formatTargetType(power.targetType);
-  const allowedEnh = formatAllowedEnhancements(power);
   const castThroughMez = power.castThroughMez?.length ? formatCastThroughMez(power.castThroughMez) : null;
   const toggleIgnoreMez = power.toggleIgnoreMez?.length ? formatCastThroughMez(power.toggleIgnoreMez) : null;
   return (
-    <div className="bg-slate-800/40 rounded p-2 space-y-0.5">
-      <KvRow label="Power Type" value={power.powerType} />
-      {targetLabel && <KvRow label="Target Type" value={targetLabel} />}
+    <>
+      {power.powerType && <Chip kind="other" title="Power type">{power.powerType}</Chip>}
+      {targetLabel && <Chip kind="neutral" title="Target type">{targetLabel}</Chip>}
       {castThroughMez && (
-        <KvRow
-          label="Cast While Mez'd"
-          value={castThroughMez}
-          valueClass="text-amber-300"
+        <Chip
+          kind="buff"
           title={`This power can still be activated while ${castThroughMez} (e.g. Blaster Defiance).`}
-        />
+        >
+          Casts while {castThroughMez}
+        </Chip>
       )}
       {toggleIgnoreMez && (
-        <KvRow
-          label="Stays On While Mez'd"
-          value={toggleIgnoreMez}
-          valueClass="text-amber-300"
+        <Chip
+          kind="buff"
           title={`This power keeps running (does not detoggle) while ${toggleIgnoreMez}.`}
-        />
+        >
+          Stays on while {toggleIgnoreMez}
+        </Chip>
       )}
-      {allowedEnh && <KvRow label="Allowed Enh" value={allowedEnh} valueClass="text-slate-300 truncate" title={allowedEnh} />}
+    </>
+  );
+}
+
+// ----------------------------------------------------------------------
+// AllowedEnhancementsBlock — the slottable set categories (or fall back to
+// enhancement types) as a wrapping block of chips. Previously a single
+// truncated KvRow value that cut off and became unreadable.
+// ----------------------------------------------------------------------
+
+export function AllowedEnhancementsBlock({ power }: { power: Power }) {
+  const items = allowedEnhancementsList(power);
+  if (items.length === 0) return null;
+  return (
+    <div className="bg-slate-800/40 rounded p-2 space-y-1">
+      <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide">
+        Allowed Enhancements
+      </div>
+      <div className="flex flex-wrap gap-1">
+        {items.map((item) => (
+          <Chip key={item} kind={enhancementAspectKind(item)}>{item}</Chip>
+        ))}
+      </div>
     </div>
   );
+}
+
+/**
+ * Map an allowed-enhancement / set-category label to its in-game POG color
+ * (public/img/Enhancements/Components/POGS) so each chip matches the
+ * enhancement icon a player sees in their slots. Order matters: more
+ * specific aspects are checked before generic damage so e.g. "Resist
+ * Damage" → cyan and "Defense Debuff" → purple rather than red.
+ */
+function enhancementAspectKind(raw: string): TagKind {
+  const t = raw.toLowerCase();
+  if (/resist/.test(t)) return 'other';                                 // cyan  — Damage Resistance
+  if (/defen[cs]e/.test(t)) return 'mez';                               // purple — Defense (buff & debuff)
+  if (/to.?hit|accuracy/.test(t)) return 'yellow';                      // yellow — Accuracy / ToHit ("accuracy" not "accurate", so "Accurate Healing" → green)
+  if (/heal|absorb|resurrect|regen/.test(t)) return 'buff';            // green  — Heal
+  if (/endur|recovery/.test(t)) return 'blue';                         // blue   — Endurance / Recovery
+  if (/recharge/.test(t)) return 'maroon';                              // maroon — Recharge
+  if (/hold|immobil|intangib/.test(t)) return 'orange';                // orange — Hold / Immobilize / Intangible
+  if (/fear|terror|radius/.test(t)) return 'pink';                     // pink   — Fear / Radius
+  if (/confus/.test(t)) return 'mez';                                   // purple — Confuse
+  if (/slow/.test(t)) return 'other';                                   // cyan   — Slow Movement
+  if (/stun|sleep|knockback|interrupt|taunt|threat/.test(t)) return 'neutral'; // gray — Stun/Sleep/KB/Interrupt/Taunt
+  if (/damage|dmg|sniper/.test(t)) return 'damage';                     // red    — Damage (before range, so "Ranged Damage" → red not green)
+  if (/range|cone/.test(t)) return 'buff';                              // green  — Range / Cone
+  if (/fly|flight|run|jump|leap|teleport|travel|sprint|speed/.test(t)) return 'other'; // cyan — movement
+  return 'neutral';                                                      // gray   — Archetype Sets, Universal Debuff, etc.
 }
 
 // ----------------------------------------------------------------------
@@ -522,21 +575,20 @@ function damageEntryTables(power: Power): string[] {
 }
 
 /**
- * Render the slot-relevant set categories (or fall back to enhancement
- * types). Set categories carry richer build info ("Ranged Damage",
- * "Defense Debuff" — what IO sets you can slot here) so prefer those
- * when present.
+ * The slot-relevant set categories (or fall back to enhancement types). Set
+ * categories carry richer build info ("Ranged Damage", "Defense Debuff" —
+ * what IO sets you can slot here) so prefer those when present.
  */
-function formatAllowedEnhancements(power: Power): string | null {
+function allowedEnhancementsList(power: Power): string[] {
   const setCats = power.allowedSetCategories;
   if (setCats && setCats.length > 0) {
-    return setCats.join(', ');
+    return [...setCats];
   }
   const enh = power.allowedEnhancements;
   if (enh && enh.length > 0) {
-    return enh.join(', ');
+    return [...enh];
   }
-  return null;
+  return [];
 }
 
 // Re-export for any panel that wants to render PowerDamageResult-driven
