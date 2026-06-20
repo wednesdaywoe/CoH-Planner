@@ -41,7 +41,7 @@ const DASHBOARD_SECTIONS: { name: string; categories: StatCategory[] }[] = [
   { name: 'Defense', categories: ['defense'] },
   { name: 'Resistance', categories: ['resistance'] },
   { name: 'Status Protection', categories: ['status-protection'] },
-  { name: 'Status Resistance', categories: ['status-resistance'] },
+  { name: 'Status Effect Resistance', categories: ['status-resistance'] },
   { name: 'Debuff Resistance', categories: ['debuff-resistance'] },
 ];
 export type { StatDefinition, StatValue, CompoundStatValue, MezStatValue };
@@ -408,6 +408,8 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
                       breakdown={stat.breakdown}
                       breakdownUnit={stat.breakdownUnit}
                       totalBaseOffset={stat.totalBaseOffset}
+                      formatTotal={stat.formatTotal}
+                      formatBreakdownSource={stat.formatBreakdownSource}
                       rawValue={stat.value}
                       tracked={stat.breakdownKey ? trackedStats.includes(stat.breakdownKey) : false}
                       onTrack={stat.breakdownKey ? () => toggleTrackedStat(stat.breakdownKey!) : undefined}
@@ -820,6 +822,13 @@ interface StatItemProps {
    *  Recharge to follow Mids' speed-multiplier "Haste" convention where
    *  100% base is added to the sum of bonuses. */
   totalBaseOffset?: number;
+  /** Optional override for the tooltip's total line (e.g. mez resistance shows
+   *  the resulting duration %). Receives the raw summed total. */
+  formatTotal?: (total: number) => string;
+  /** Optional override for each per-source breakdown figure. Returns the full
+   *  string WITHOUT a leading "+" (e.g. status resistance shows each source's
+   *  negative duration reduction). */
+  formatBreakdownSource?: (raw: number) => string;
   rawValue?: StatValue;
   className?: string;
   tracked?: boolean;
@@ -830,7 +839,7 @@ interface StatItemProps {
   cap?: number;
 }
 
-function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', totalBaseOffset = 0, rawValue, className = '', tracked, onTrack, hpCap, cap }: StatItemProps) {
+function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', totalBaseOffset = 0, formatTotal, formatBreakdownSource, rawValue, className = '', tracked, onTrack, hpCap, cap }: StatItemProps) {
   const hasCapped = breakdown?.sources.some(s => s.capped) ?? false;
   const numericValue = typeof rawValue === 'number' ? rawValue : undefined;
   const isAtCap = cap !== undefined && numericValue !== undefined && numericValue >= cap;
@@ -885,6 +894,12 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
     const hpsSuffix = (pct: number) =>
       isRegen ? ` (${(regenBaseRate * pct / 100).toFixed(2)}/s)` : '';
 
+    // Per-source figure. Most stats render "+<value>"; status resistance
+    // overrides this to show each source's negative duration reduction
+    // (the value then carries its own sign, so no leading "+").
+    const renderSourceValue = (v: number) =>
+      formatBreakdownSource ? formatBreakdownSource(v) : `+${formatBonusValue(v)}`;
+
     // Group sources by type for display
     const setBonusSources = breakdown.sources.filter(s => s.type === 'set-bonus');
     const activePowerSources = breakdown.sources.filter(s => s.type === 'active-power');
@@ -913,7 +928,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
                   {source.name}
                 </span>
                 <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-warning-fg line-through' : 'text-green-400'}`}>
-                  +{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}
+                  {renderSourceValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}
                 </span>
               </div>
             ))}
@@ -927,7 +942,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {activePowerSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-400 ml-2 whitespace-nowrap">+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className="text-amber-400 ml-2 whitespace-nowrap">{renderSourceValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -940,7 +955,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {inherentSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-blue-400 ml-2 whitespace-nowrap">+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className="text-blue-400 ml-2 whitespace-nowrap">{renderSourceValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -953,7 +968,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {accoladeSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-300 ml-2 whitespace-nowrap">+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className="text-amber-300 ml-2 whitespace-nowrap">{renderSourceValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -966,7 +981,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {procSources.map((source, i) => (
               <div key={i} className={`flex justify-between text-[10px] ${source.capped ? 'opacity-70' : ''}`}>
                 <span className={`${source.capped ? 'text-warning-fg line-through' : 'text-slate-300'} truncate max-w-[200px]`}>{source.name}</span>
-                <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-warning-fg line-through' : 'text-cyan-400'}`}>+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className={`ml-2 whitespace-nowrap ${source.capped ? 'text-warning-fg line-through' : 'text-cyan-400'}`}>{renderSourceValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -979,7 +994,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
             {incarnateSources.map((source, i) => (
               <div key={i} className="flex justify-between text-[10px]">
                 <span className="text-slate-300 truncate max-w-[200px]">{source.name}</span>
-                <span className="text-purple-400 ml-2 whitespace-nowrap">+{formatBonusValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+                <span className="text-purple-400 ml-2 whitespace-nowrap">{renderSourceValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -992,7 +1007,9 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
         <div className="border-t border-slate-600 pt-1 flex justify-between text-[11px] font-medium">
           <span className="text-slate-300">{totalBaseOffset ? `Total (100% base + bonuses)` : 'Total'}</span>
           <span className={color}>
-            {totalBaseOffset
+            {formatTotal
+              ? formatTotal(breakdown.total)
+              : totalBaseOffset
               ? `${formatBonusValue(totalBaseOffset + breakdown.total)}${breakdownUnit}`
               : <>+{formatBonusValue(breakdown.total)}{breakdownUnit}</>}
             {isRegen && <span className="text-slate-400"> ({(rawValue as CompoundStatValue).perSec.toFixed(2)}/s)</span>}
@@ -1008,7 +1025,7 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
         )}
       </div>
     );
-  }, [breakdown, tooltip, label, color, breakdownUnit, totalBaseOffset, rawValue]);
+  }, [breakdown, tooltip, label, color, breakdownUnit, totalBaseOffset, formatTotal, formatBreakdownSource, rawValue]);
 
   return <Tooltip content={tooltipContent}>{content}</Tooltip>;
 }

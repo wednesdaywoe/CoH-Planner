@@ -2129,12 +2129,12 @@ export const useBuildStore = create<BuildStore>()(
         const dwarfForms = new Set(['White_Dwarf', 'Black_Dwarf']);
         const isNovaToggle = novaForms.has(powerName);
         const isDwarfToggle = dwarfForms.has(powerName);
-        // Ninja Run and Beast Run are P2W travel toggles that the game
-        // treats as a single "alt-run" slot — toggling one off the other.
-        // The pair stacks with Sprint (the user can have both Sprint and
-        // Ninja Run active), so only the Ninja/Beast pair is mutually
-        // exclusive with itself.
-        const altRunPair = new Set(['Ninja_Run', 'Beast_Run']);
+        // Ninja Run, Beast Run, and Athletic Run are travel toggles that the
+        // game treats as a single "alt-run" slot — toggling one off the others.
+        // The group stacks with Sprint (the user can have both Sprint and an
+        // alt-run active), so only the alt-run toggles are mutually exclusive
+        // with each other.
+        const altRunPair = new Set(['Ninja_Run', 'Beast_Run', 'Athletic_Run']);
         const isAltRunToggle = altRunPair.has(powerName);
         // NOTE: Staff Fighting's forms (Body/Mind/Soul) are NOT toggle powers —
         // they're non-slottable stance sub-powers selected via the parent's
@@ -2157,7 +2157,7 @@ export const useBuildStore = create<BuildStore>()(
               if (isDwarfToggle && novaForms.has(p.internalName ?? '')) {
                 return { ...p, isActive: false };
               }
-              // Ninja Run ↔ Beast Run mutual exclusivity.
+              // Ninja Run ↔ Beast Run ↔ Athletic Run mutual exclusivity.
               if (isAltRunToggle && p.internalName && p.internalName !== powerName && altRunPair.has(p.internalName)) {
                 return { ...p, isActive: false };
               }

@@ -591,7 +591,12 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
     // RunningSpeed (a flat +0.5 = +50%), NOT Melee_SpeedRunning — they are
     // sprints, not travel powers — plus a small +0.1 JumpHeight (Melee_Ones).
     effects: {
-      enduranceCost: 0.13,
+      // Per-second drain. powers.bin Sprint is endurance_cost 0.1463 per tick at
+      // activate_period 0.5s → 0.1463 / 0.5 = 0.2926/s (verified 2026-06-19).
+      // The inherent display path renders effects.enduranceCost as-is (it does
+      // not divide by a period the way slotted toggles do), so this field holds
+      // the already-per-second value. EndRdx scales it linearly (correct).
+      enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
@@ -621,7 +626,13 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
     isLocked: true,
     category: 'basic',
     effects: {
-      enduranceCost: 0.13,
+      // Per-second drain. In powers.bin the Prestige_Ninja_Run inherent is an
+      // Auto that grants the Prestige.Prestige_Travel.Prestige_Ninja_Run toggle;
+      // the actual endurance drain lives on that granted toggle, which is
+      // outside our 34-category player export, so this value is the in-game
+      // real-numbers rate (0.5688/s) rather than a re-derived bin figure.
+      // Stored already-per-second like Sprint above; EndRdx scales it linearly.
+      enduranceCost: 0.5688,
       runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning' },
       jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping' },
       jumpHeight: { scale: 0.25, table: 'Melee_Leap' },
@@ -644,7 +655,44 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
     isLocked: true,
     category: 'basic',
     effects: {
-      enduranceCost: 0.13,
+      // Beast Run mirrors Ninja Run exactly in-game (same granted-toggle drain);
+      // see the Ninja Run note above. 0.5688/s in-game real-numbers rate.
+      enduranceCost: 0.5688,
+      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning' },
+      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping' },
+      jumpHeight: { scale: 0.25, table: 'Melee_Leap' },
+    },
+  },
+  // Athletic Run — HC grants this free travel toggle at level 4 (per in-game
+  // description). Unlike the P2W Ninja/Beast Run it has no Auto granter; the
+  // toggle itself (Prestige.Prestige_Travel.Prestige_Athletic_Run) is granted
+  // directly. Modeled with available: -1 (auto-granted, hidden from the picker)
+  // like its siblings — the level-4 grant is cosmetic for the planner, which
+  // assumes a level-50 build. Movement is bin-verified IDENTICAL to Ninja/Beast
+  // (RunningSpeed 0.40 / JumpingSpeed 0.55 / JumpHeight 0.25). NOTE: the
+  // endurance/sec: HC-live powers.bin says 0.2844/0.5 = 0.5688/s (matching
+  // Ninja/Beast and the in-game read of 0.57); a wiki article quotes 0.46/s but
+  // that's stale — user confirmed the live-bin value (2026-06-19). Real
+  // exclusivity in-game is "detoggles Pool travel powers" (not modeled); the
+  // planner groups the three alt-runs (Ninja/Beast/Athletic) as mutually
+  // exclusive, an established simplification.
+  {
+    name: 'Athletic Run',
+    internalName: 'Athletic_Run',
+    fullName: 'Prestige.Prestige_Travel.Prestige_Athletic_Run',
+    description: 'Show off your extensive athletic training by using this power. This power is not as fast as Super Speed, nor will it allow you to jump as well as Super Leap; however, it is considerably better than the Fitness powers Swift and Hurdle.',
+    shortHelp: 'Toggle: Self +Run Speed, +Jump',
+    icon: 'inherent_athleticrun.png',
+    powerType: 'Toggle',
+    available: -1,
+    // Unslottable in-game (powers.bin boosts_allowed: []) — same as Ninja/Beast.
+    maxSlots: 0,
+    allowedEnhancements: [],
+    allowedSetCategories: [],
+    isLocked: true,
+    category: 'basic',
+    effects: {
+      enduranceCost: 0.5688,
       runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning' },
       jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping' },
       jumpHeight: { scale: 0.25, table: 'Melee_Leap' },
@@ -671,7 +719,10 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     isLocked: true,
     category: 'prestige',
     effects: {
-      enduranceCost: 0.13,
+      // Cosmetic Sprint clone — same toggle drain as Sprint: 0.2926/s
+      // (powers.bin sprint family is endurance_cost 0.1463 / period 0.5s).
+      // Stored already-per-second (inherent display shows this value as-is).
+      enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
@@ -691,7 +742,10 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     isLocked: true,
     category: 'prestige',
     effects: {
-      enduranceCost: 0.13,
+      // Cosmetic Sprint clone — same toggle drain as Sprint: 0.2926/s
+      // (powers.bin sprint family is endurance_cost 0.1463 / period 0.5s).
+      // Stored already-per-second (inherent display shows this value as-is).
+      enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
@@ -711,7 +765,10 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     isLocked: true,
     category: 'prestige',
     effects: {
-      enduranceCost: 0.13,
+      // Cosmetic Sprint clone — same toggle drain as Sprint: 0.2926/s
+      // (powers.bin sprint family is endurance_cost 0.1463 / period 0.5s).
+      // Stored already-per-second (inherent display shows this value as-is).
+      enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
@@ -731,7 +788,10 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     isLocked: true,
     category: 'prestige',
     effects: {
-      enduranceCost: 0.13,
+      // Cosmetic Sprint clone — same toggle drain as Sprint: 0.2926/s
+      // (powers.bin sprint family is endurance_cost 0.1463 / period 0.5s).
+      // Stored already-per-second (inherent display shows this value as-is).
+      enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
@@ -751,7 +811,10 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
     isLocked: true,
     category: 'prestige',
     effects: {
-      enduranceCost: 0.13,
+      // Cosmetic Sprint clone — same toggle drain as Sprint: 0.2926/s
+      // (powers.bin sprint family is endurance_cost 0.1463 / period 0.5s).
+      // Stored already-per-second (inherent display shows this value as-is).
+      enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },

@@ -38,7 +38,7 @@ const DETAILED_SECTIONS: { name: string; categories: StatCategory[] }[] = [
   { name: 'Defense', categories: ['defense'] },
   { name: 'Damage Resistance', categories: ['resistance'] },
   { name: 'Status Protection', categories: ['status-protection'] },
-  { name: 'Status Resistance', categories: ['status-resistance'] },
+  { name: 'Status Effect Resistance', categories: ['status-resistance'] },
   { name: 'Debuff Resistance', categories: ['debuff-resistance'] },
 ];
 
@@ -86,6 +86,13 @@ interface StatRow {
   /** Constant added to the displayed total (Recharge → 100% base + bonuses,
    *  matching Mids' speed-multiplier "Haste" convention). */
   totalBaseOffset?: number;
+  /** Optional override for the breakdown's total line (e.g. mez resistance shows
+   *  the resulting duration %). Receives the raw summed total. */
+  formatTotal?: (total: number) => string;
+  /** Optional override for each per-source breakdown figure (returns the full
+   *  string without a leading "+"). Status resistance uses it to show negative
+   *  duration reductions. */
+  formatBreakdownSource?: (raw: number) => string;
   /** Cap value as a percentage (e.g. 90 for 90%). Present for defense/resistance stats. */
   cap?: number;
 }
@@ -255,6 +262,8 @@ function BreakdownPanel({
   unit,
   color,
   totalBaseOffset = 0,
+  formatTotal,
+  formatBreakdownSource,
 }: {
   breakdown: DashboardStatBreakdown;
   unit: string;
@@ -262,7 +271,13 @@ function BreakdownPanel({
   /** Constant added to the displayed total — used for Recharge to match
    *  Mids' speed-multiplier "Haste" convention (100% base + bonuses). */
   totalBaseOffset?: number;
+  /** Optional override for the total line (e.g. mez resistance duration %). */
+  formatTotal?: (total: number) => string;
+  /** Optional override for each per-source figure (no leading "+"). */
+  formatBreakdownSource?: (raw: number) => string;
 }) {
+  const renderSourceValue = (v: number) =>
+    formatBreakdownSource ? formatBreakdownSource(v) : `+${formatBonusValue(v)}`;
   return (
     <div className="ml-4 mr-1 mb-1 mt-0.5 pl-2 border-l border-slate-600/50 space-y-1.5">
       {SOURCE_GROUPS.map(({ type, label, color: srcColor }) => {
@@ -288,7 +303,7 @@ function BreakdownPanel({
                     source.capped ? 'text-warning-fg line-through' : srcColor
                   }`}
                 >
-                  +{formatBonusValue(source.value)}{unit}
+                  {renderSourceValue(source.value)}{unit}
                 </span>
               </div>
             ))}
@@ -301,7 +316,9 @@ function BreakdownPanel({
       <div className="border-t border-slate-600/50 pt-0.5 flex justify-between text-[11px] font-medium">
         <span className="text-slate-300">{totalBaseOffset ? 'Total (100% base + bonuses)' : 'Total'}</span>
         <span className={color}>
-          {totalBaseOffset
+          {formatTotal
+            ? formatTotal(breakdown.total)
+            : totalBaseOffset
             ? `${formatBonusValue(totalBaseOffset + breakdown.total)}${unit}`
             : `+${formatBonusValue(breakdown.total)}${unit}`}
         </span>
@@ -412,6 +429,8 @@ function StatGrid({
                       unit={stat.breakdownUnit ?? '%'}
                       color={stat.color}
                       totalBaseOffset={stat.totalBaseOffset}
+                      formatTotal={stat.formatTotal}
+                      formatBreakdownSource={stat.formatBreakdownSource}
                     />
                   )}
                 </div>

@@ -54,6 +54,20 @@ export interface StatDefinition {
    *  "100% + sum of bonuses". This is purely a display convention; the
    *  underlying decimal value used by every formula is unchanged. */
   totalBaseOffset?: number;
+  /** Optional override for the breakdown tooltip's *total* line. The per-source
+   *  rows always render their raw contributions (`+formatBonusValue(value)`),
+   *  but the total can need a different presentation than a plain sum — e.g.
+   *  mez resistance shows the resulting mez-*duration* %, a nonlinear transform
+   *  of the summed resistance. Receives the raw summed total and returns the
+   *  full string for the total cell. When set, the headline's `format()` should
+   *  apply the same transform so the headline and tooltip total agree. */
+  formatTotal?: (total: number) => string;
+  /** Optional override for how each individual breakdown *source* value renders
+   *  (the per-row figure). Receives the source's raw value and returns the full
+   *  string WITHOUT a leading "+" (the value carries its own sign). Status
+   *  resistance uses this to show each buff's negative duration reduction
+   *  instead of its raw resistance %, matching the in-game combat monitor. */
+  formatBreakdownSource?: (raw: number) => string;
 }
 
 // ============================================
@@ -75,6 +89,37 @@ function pairedValue(a: number, b: number): StatValue {
  *  mechanic. */
 function pct2(n: number): string {
   return formatPrecision(n, 2);
+}
+
+/** Convert a mez-*resistance* percentage into the resulting mez-*duration*
+ *  percentage, matching the in-game combat-attributes convention. A mez of base
+ *  duration D lasts `D / (1 + R)` under R% resistance, so the residual duration
+ *  is `100 / (1 + R/100)` % of base. e.g. 50% resistance → 66.67% duration —
+ *  NOT 50%, the common "cut in half" misconception. Lower is better; 0%
+ *  resistance → 100% duration (full). Applies to the six status mezzes only
+ *  (Hold/Stun/Immob/Sleep/Confuse/Fear); Knockback resistance reduces distance,
+ *  not duration, so it keeps the raw-% display. */
+function mezResistDurationPct(resistPct: number): number {
+  return 100 / (1 + resistPct / 100);
+}
+
+/** Total-line formatter for the six status-resistance stats. Mirrors the in-game
+ *  "Status Effect Resistance" combat-attributes header: the *residual* duration
+ *  from the summed resistance, as a positive %. e.g. total 205.7% resistance →
+ *  100/(1+2.057) = 32.71% duration. (Per-source rows show each source's negative
+ *  reduction instead — see [[formatMezResistReduction]] — so they intentionally
+ *  do NOT sum to this total, exactly like the in-game window.) */
+function formatMezResistTotal(total: number): string {
+  return `${pct2(mezResistDurationPct(total))}% dur`;
+}
+
+/** Per-source breakdown formatter for status resistance. Matches the in-game
+ *  combat monitor, which lists each buff as the duration reduction it provides
+ *  in isolation, shown negative: `100/(1+R/100) − 100`. e.g. a +7.5% Status
+ *  Resistance bonus → −6.98%, a +20% bonus → −16.67%. Returned without a
+ *  leading "+" since the value carries its own sign. */
+function formatMezResistReduction(resistPct: number): string {
+  return pct2(mezResistDurationPct(resistPct) - 100);
 }
 
 /** Format a paired or simple percentage stat */
@@ -855,9 +900,11 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_hold',
     label: 'Hold',
     getValue: (stats) => stats.mezResistance.hold,
-    format: (v) => `${pct2(Number(v))}%`,
+    format: (v) => `${pct2(mezResistDurationPct(Number(v)))}%`,
+    formatTotal: formatMezResistTotal,
+    formatBreakdownSource: formatMezResistReduction,
     color: STAT_COLORS.hold,
-    tooltip: 'Hold resistance (%)',
+    tooltip: 'Hold duration as % of base (in-game convention). Lower is better — 50% resistance → 66.67% duration, not 50%.',
     showWhenZero: true,
     breakdownKey: 'mezResistHold',
   },
@@ -865,9 +912,11 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_stun',
     label: 'Stun',
     getValue: (stats) => stats.mezResistance.stun,
-    format: (v) => `${pct2(Number(v))}%`,
+    format: (v) => `${pct2(mezResistDurationPct(Number(v)))}%`,
+    formatTotal: formatMezResistTotal,
+    formatBreakdownSource: formatMezResistReduction,
     color: STAT_COLORS.stun,
-    tooltip: 'Stun resistance (%)',
+    tooltip: 'Stun duration as % of base (in-game convention). Lower is better — 50% resistance → 66.67% duration, not 50%.',
     showWhenZero: true,
     breakdownKey: 'mezResistStun',
   },
@@ -875,9 +924,11 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_immob',
     label: 'Immob',
     getValue: (stats) => stats.mezResistance.immobilize,
-    format: (v) => `${pct2(Number(v))}%`,
+    format: (v) => `${pct2(mezResistDurationPct(Number(v)))}%`,
+    formatTotal: formatMezResistTotal,
+    formatBreakdownSource: formatMezResistReduction,
     color: STAT_COLORS.immobilize,
-    tooltip: 'Immobilize resistance (%)',
+    tooltip: 'Immobilize duration as % of base (in-game convention). Lower is better — 50% resistance → 66.67% duration, not 50%.',
     showWhenZero: true,
     breakdownKey: 'mezResistImmobilize',
   },
@@ -885,9 +936,11 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_sleep',
     label: 'Sleep',
     getValue: (stats) => stats.mezResistance.sleep,
-    format: (v) => `${pct2(Number(v))}%`,
+    format: (v) => `${pct2(mezResistDurationPct(Number(v)))}%`,
+    formatTotal: formatMezResistTotal,
+    formatBreakdownSource: formatMezResistReduction,
     color: STAT_COLORS.sleep,
-    tooltip: 'Sleep resistance (%)',
+    tooltip: 'Sleep duration as % of base (in-game convention). Lower is better — 50% resistance → 66.67% duration, not 50%.',
     showWhenZero: true,
     breakdownKey: 'mezResistSleep',
   },
@@ -895,9 +948,11 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_confuse',
     label: 'Confuse',
     getValue: (stats) => stats.mezResistance.confuse,
-    format: (v) => `${pct2(Number(v))}%`,
+    format: (v) => `${pct2(mezResistDurationPct(Number(v)))}%`,
+    formatTotal: formatMezResistTotal,
+    formatBreakdownSource: formatMezResistReduction,
     color: STAT_COLORS.confuse,
-    tooltip: 'Confuse resistance (%)',
+    tooltip: 'Confuse duration as % of base (in-game convention). Lower is better — 50% resistance → 66.67% duration, not 50%.',
     showWhenZero: true,
     breakdownKey: 'mezResistConfuse',
   },
@@ -905,9 +960,11 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_fear',
     label: 'Fear',
     getValue: (stats) => stats.mezResistance.fear,
-    format: (v) => `${pct2(Number(v))}%`,
+    format: (v) => `${pct2(mezResistDurationPct(Number(v)))}%`,
+    formatTotal: formatMezResistTotal,
+    formatBreakdownSource: formatMezResistReduction,
     color: STAT_COLORS.fear,
-    tooltip: 'Fear/Terrorize resistance (%)',
+    tooltip: 'Fear/Terrorize duration as % of base (in-game convention). Lower is better — 50% resistance → 66.67% duration, not 50%.',
     showWhenZero: true,
     breakdownKey: 'mezResistFear',
   },
@@ -1012,18 +1069,22 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     id: 'mezres_taunt',
     label: 'Taunt',
     getValue: () => 0, // Requires globalBonuses
-    format: (v) => `${pct2(Number(v))}%`,
+    format: (v) => `${pct2(mezResistDurationPct(Number(v)))}%`,
+    formatTotal: formatMezResistTotal,
+    formatBreakdownSource: formatMezResistReduction,
     color: STAT_COLORS.hold,
-    tooltip: 'Taunt resistance',
+    tooltip: 'Taunt duration as % of base (in-game convention). Lower is better.',
     breakdownKey: 'mezResistTaunt',
   },
   mezres_placate: {
     id: 'mezres_placate',
     label: 'Placate',
     getValue: () => 0, // Requires globalBonuses
-    format: (v) => `${pct2(Number(v))}%`,
+    format: (v) => `${pct2(mezResistDurationPct(Number(v)))}%`,
+    formatTotal: formatMezResistTotal,
+    formatBreakdownSource: formatMezResistReduction,
     color: STAT_COLORS.confuse,
-    tooltip: 'Placate resistance',
+    tooltip: 'Placate duration as % of base (in-game convention). Lower is better.',
     breakdownKey: 'mezResistPlacate',
   },
 

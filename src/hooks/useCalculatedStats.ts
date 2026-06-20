@@ -196,7 +196,10 @@ export function convertToLegacyStats(
     jumpSpeed: charStats.jumpspeed,
     flySpeed: charStats.flyspeed,
 
-    // Mez Resistance: generic (from IO sets) + per-type (from active power effects)
+    // Mez Resistance: generic (from IO sets) + per-type (from active power effects).
+    // Generic "Mez Resistance (All)" (global.mezResist) covers the six status
+    // mezzes only — Knockback is NOT a status mez and is governed by its own
+    // separate Knockback Resistance, so it does NOT pick up global.mezResist.
     mezResistance: {
       hold: global.mezResist + global.mezResistHold,
       stun: global.mezResist + global.mezResistStun,
@@ -204,7 +207,7 @@ export function convertToLegacyStats(
       sleep: global.mezResist + global.mezResistSleep,
       confuse: global.mezResist + global.mezResistConfuse,
       fear: global.mezResist + global.mezResistFear,
-      knockback: global.mezResist + global.mezResistKnockback,
+      knockback: global.mezResistKnockback,
     },
 
     // Mez Protection (per-type magnitude from active powers + IO sets)
