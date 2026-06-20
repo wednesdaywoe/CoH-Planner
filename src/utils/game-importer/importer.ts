@@ -601,6 +601,7 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
     sets: {},
     incarnates: createEmptyIncarnateBuildState(),
     craftingChecklist: {},
+    incarnateObtained: {},
     shoppingListAcquired: {},
     slotOrder: [],
   };

@@ -14,7 +14,8 @@ import {
   getSalvageRarity,
   getSalvageCost,
 } from '@/data';
-import { TIER_NUMBER, aggregateSalvage, inferT3VariantKey } from './crafting-utils';
+import { TIER_NUMBER, inferT3VariantKey } from './crafting-utils';
+import { buildCraftTree, resolveGoalVariant, remainingSalvage } from './craft-tree';
 
 const RARITY_SORT: Record<string, number> = {
   'common': 0,
@@ -25,11 +26,12 @@ const RARITY_SORT: Record<string, number> = {
 
 export function ShoppingListView() {
   const incarnates = useBuildStore((s) => s.build.incarnates);
+  const incarnateObtained = useBuildStore((s) => s.build.incarnateObtained);
   const shoppingListAcquired = useBuildStore((s) => s.build.shoppingListAcquired);
   const acquireItem = useBuildStore((s) => s.acquireShoppingItem);
   const unacquireItem = useBuildStore((s) => s.unacquireShoppingItem);
 
-  // Aggregate all salvage across all slots
+  // Aggregate all salvage across all slots, pruning obtained crafting nodes.
   const totalSalvage = useMemo(() => {
     const totals = new Map<SalvageId, number>();
 
@@ -43,14 +45,18 @@ export function ShoppingListView() {
       if (!treeComponents || targetTier <= 0) continue;
 
       const t3Key = inferT3VariantKey(power.displayName, branch);
-      const slotSalvage = aggregateSalvage(treeComponents, branch, 1, targetTier, t3Key);
+      const tree = buildCraftTree(treeComponents, targetTier, resolveGoalVariant(targetTier, branch, t3Key));
+      const slotSalvage = remainingSalvage(
+        tree,
+        (path) => !!incarnateObtained[`${slotId}:${power.treeId}:${path}`],
+      );
       for (const [id, qty] of slotSalvage) {
         totals.set(id, (totals.get(id) || 0) + qty);
       }
     }
 
     return totals;
-  }, [incarnates]);
+  }, [incarnates, incarnateObtained]);
 
   // Sort: rarity (common -> very-rare), then alphabetical
   const sortedEntries = useMemo(() => {

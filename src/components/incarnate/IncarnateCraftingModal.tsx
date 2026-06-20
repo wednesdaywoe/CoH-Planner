@@ -1,6 +1,9 @@
 /**
  * IncarnateCraftingModal - Shows crafting requirements for the player's selected incarnate powers.
- * Only displays tiers up to the selected power's tier, filtered to the relevant core/radial branch.
+ * Renders the full crafting dependency tree for the goal power (a T4 consumes
+ * both T3 variants, each with its own T2/T1). Nodes marked "obtained" — and
+ * everything consumed to craft them — drop out of the cost summary and the
+ * consolidated shopping list.
  */
 
 import { useEffect, useState } from 'react';
@@ -13,10 +16,11 @@ import {
 } from '@/data';
 import { INCARNATE_SLOT_ORDER, inferBranchFromPowerName } from '@/types';
 import type { IncarnateSlotId, IncarnateBranch, SalvageId } from '@/types';
-import { CraftingTierSection } from './CraftingTierSection';
 import { CraftingCostSummary } from './CraftingCostSummary';
 import { ShoppingListView } from './ShoppingListView';
-import { TIER_NUMBER, branchVariants, aggregateSalvage, inferT3VariantKey } from './crafting-utils';
+import { CraftNodeRow } from './CraftNodeRow';
+import { TIER_NUMBER, inferT3VariantKey } from './crafting-utils';
+import { buildCraftTree, resolveGoalVariant, remainingSalvage, goalNodeSalvage } from './craft-tree';
 
 type ActiveView = 'per-slot' | 'shopping-list';
 
@@ -35,7 +39,9 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
   const openIncarnateModal = useUIStore((s) => s.openIncarnateModal);
   const incarnates = useBuildStore((s) => s.build.incarnates);
   const craftingChecklist = useBuildStore((s) => s.build.craftingChecklist);
+  const incarnateObtained = useBuildStore((s) => s.build.incarnateObtained);
   const toggleCraftingCheckItem = useBuildStore((s) => s.toggleCraftingCheckItem);
+  const toggleIncarnateObtainedNode = useBuildStore((s) => s.toggleIncarnateObtainedNode);
   const clearCraftingChecklistForSlot = useBuildStore((s) => s.clearCraftingChecklistForSlot);
   const clearShoppingListAcquired = useBuildStore((s) => s.clearShoppingListAcquired);
 
@@ -69,13 +75,23 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
   const t3VariantKey = currentPower ? inferT3VariantKey(currentPower.displayName, branch) : null;
   const treeComponents = treeName ? getTreeComponents(activeSlotId, treeName) : null;
 
-  // Aggregate salvage for per-slot summary
-  const nodeOnlySalvage = treeComponents && targetTier > 0
-    ? aggregateSalvage(treeComponents, branch, targetTier, targetTier, t3VariantKey)
-    : new Map<SalvageId, number>();
-  const fullPathSalvage = treeComponents && targetTier > 0
-    ? aggregateSalvage(treeComponents, branch, 1, targetTier, t3VariantKey)
-    : new Map<SalvageId, number>();
+  // Build the crafting dependency tree for the selected goal power. The tree
+  // accounts for consumption — a T4 pulls in BOTH T3 variants, each with its own
+  // T2/T1 — and obtained nodes prune their sub-tree from the remaining cost.
+  const craftTree = currentPower && treeComponents && targetTier > 0
+    ? buildCraftTree(
+        treeComponents,
+        targetTier,
+        resolveGoalVariant(targetTier, branch, t3VariantKey),
+        currentPower.displayName,
+      )
+    : null;
+
+  const isNodeObtained = (path: string) =>
+    !!incarnateObtained[`${activeSlotId}:${currentPower?.treeId}:${path}`];
+
+  const nodeOnlySalvage = craftTree ? goalNodeSalvage(craftTree) : new Map<SalvageId, number>();
+  const fullPathSalvage = craftTree ? remainingSalvage(craftTree, isNodeObtained) : new Map<SalvageId, number>();
 
   const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) onClose();
@@ -171,38 +187,45 @@ export function IncarnateCraftingModal({ isOpen, onClose }: IncarnateCraftingMod
             <div className="p-4 space-y-3">
               {/* Selected power header */}
               <div
-                className="px-3 py-2 rounded-lg flex items-center gap-2"
+                className="px-3 py-2 rounded-lg flex items-center gap-2 flex-wrap"
                 style={{ backgroundColor: `${getSlotColor(activeSlotId)}15`, border: `1px solid ${getSlotColor(activeSlotId)}40` }}
               >
                 <span className="text-xs text-gray-400">Crafting path to:</span>
                 <span className="text-sm font-semibold text-white">{currentPower.displayName}</span>
+                {craftTree && fullPathSalvage.size === 0 && (
+                  <span className="ml-auto text-[11px] font-semibold text-emerald-400">✓ Fully crafted</span>
+                )}
               </div>
+
+              {/* Hint: check off nodes you already have to trim the list */}
+              <p className="text-[10px] text-gray-500 -mt-1 px-1">
+                A Tier 4 consumes both Tier 3 powers (each with its own Tier 2 + Tier 1). Check a node you already
+                have — it and everything consumed to make it drop from the costs and shopping list.
+              </p>
 
               {/* Shopping list summary */}
               <CraftingCostSummary
                 nodeOnlySalvage={nodeOnlySalvage}
                 fullPathSalvage={fullPathSalvage}
+                fullPathLabel="Remaining"
               />
 
-              {/* Tier sections — only up to the selected tier */}
-              {[1, 2, 3, 4].filter((t) => t <= targetTier).map((tier) => {
-                const allVariants = treeComponents?.[tier];
-                if (!allVariants) return null;
-
-                const filteredVariants = branchVariants(allVariants, branch, tier, t3VariantKey);
-
-                return (
-                  <CraftingTierSection
-                    key={tier}
+              {/* Crafting dependency tree */}
+              {craftTree && (
+                <div className="space-y-0.5">
+                  <CraftNodeRow
+                    node={craftTree}
+                    depth={0}
                     slotId={activeSlotId}
                     treeId={currentPower.treeId}
-                    tier={tier}
-                    variants={filteredVariants}
+                    obtained={incarnateObtained}
+                    ancestorObtained={false}
+                    onToggleObtained={toggleIncarnateObtainedNode}
                     checklist={craftingChecklist}
                     onToggleCheck={toggleCraftingCheckItem}
                   />
-                );
-              })}
+                </div>
+              )}
             </div>
           )}
         </div>

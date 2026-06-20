@@ -178,6 +178,10 @@ interface BuildActions {
   setCraftingCheckItem: (key: CraftingChecklistKey, checked: boolean) => void;
   clearCraftingChecklist: () => void;
   clearCraftingChecklistForSlot: (slotId: IncarnateSlotId) => void;
+  /** Toggle whether a crafting-tree node is already obtained. Key is
+   *  `{slotId}:{treeId}:{nodePath}`. An obtained node (and everything consumed
+   *  to make it) drops from the crafting costs and shopping list. */
+  toggleIncarnateObtainedNode: (key: string) => void;
 
   // Shopping List
   acquireShoppingItem: (salvageId: string) => void;
@@ -2074,12 +2078,32 @@ export const useBuildStore = create<BuildStore>()(
 
       clearCraftingChecklistForSlot: (slotId) =>
         set((state) => {
+          const slotPrefix = `${slotId}:`;
           const filtered = Object.fromEntries(
             Object.entries(state.build.craftingChecklist).filter(
-              ([key]) => !key.startsWith(`${slotId}:`)
+              ([key]) => !key.startsWith(slotPrefix)
             )
           );
-          return { build: { ...state.build, craftingChecklist: filtered } };
+          // Clearing a slot's checklist also resets its obtained-node progress.
+          const obtained = Object.fromEntries(
+            Object.entries(state.build.incarnateObtained).filter(
+              ([key]) => !key.startsWith(slotPrefix)
+            )
+          );
+          return {
+            build: { ...state.build, craftingChecklist: filtered, incarnateObtained: obtained },
+          };
+        }),
+
+      toggleIncarnateObtainedNode: (key) =>
+        set((state) => {
+          const next = { ...state.build.incarnateObtained };
+          if (next[key]) {
+            delete next[key];
+          } else {
+            next[key] = true;
+          }
+          return { build: { ...state.build, incarnateObtained: next } };
         }),
 
       // Shopping List
@@ -2398,6 +2422,7 @@ export const useBuildStore = create<BuildStore>()(
               accolades: [],
               incarnates: createEmptyIncarnateBuildState(),
               craftingChecklist: createEmptyCraftingChecklistState(),
+              incarnateObtained: {},
               sets: {},
               slotOrder: [],
               // Re-grant inherents with fresh empty slots
@@ -2448,6 +2473,7 @@ export const useBuildStore = create<BuildStore>()(
           if (!Array.isArray(state.build.inherents)) state.build.inherents = [];
           if (!state.build.incarnates) state.build.incarnates = createEmptyIncarnateBuildState();
           if (!state.build.craftingChecklist) state.build.craftingChecklist = createEmptyCraftingChecklistState();
+          if (!state.build.incarnateObtained) state.build.incarnateObtained = {};
           if (!state.build.shoppingListAcquired) state.build.shoppingListAcquired = {};
           if (!Array.isArray(state.build.accolades)) state.build.accolades = [];
           if (!state.build.sets) state.build.sets = {};
@@ -2594,6 +2620,18 @@ export const useBuildStore = create<BuildStore>()(
             if (needsMigration) {
               state.build.craftingChecklist = migrated;
             }
+          }
+
+          // Migration: Initialize incarnate obtained-node progress if missing.
+          // An earlier iteration stored a per-slot numeric tier level
+          // (Record<slotId, number>); the model is now per-node boolean keys.
+          // Drop the old numeric shape rather than guess node paths from it.
+          if (!state.build.incarnateObtained) {
+            state.build.incarnateObtained = {};
+          } else if (
+            Object.values(state.build.incarnateObtained).some((v) => typeof v !== 'boolean')
+          ) {
+            state.build.incarnateObtained = {};
           }
 
           // Migration: Initialize shopping list acquired if missing

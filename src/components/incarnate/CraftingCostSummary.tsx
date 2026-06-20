@@ -23,6 +23,9 @@ const RARITY_ORDER: Record<string, number> = {
 interface CraftingCostSummaryProps {
   nodeOnlySalvage: Map<SalvageId, number>;
   fullPathSalvage: Map<SalvageId, number>;
+  /** Header label for the second (full-path) column. Defaults to "Full Path".
+   *  The crafting modal passes "Remaining" since obtained tiers are excluded. */
+  fullPathLabel?: string;
 }
 
 /** Sort salvage entries by rarity (common -> very-rare), then alphabetically */
@@ -58,6 +61,7 @@ function buildCountMap(sorted: [SalvageId, number][], prefix: string): Record<st
 export function CraftingCostSummary({
   nodeOnlySalvage,
   fullPathSalvage,
+  fullPathLabel = 'Full Path',
 }: CraftingCostSummaryProps) {
   const nodeCost = salvageCurrencyCost(nodeOnlySalvage);
   const fullCost = salvageCurrencyCost(fullPathSalvage);
@@ -101,7 +105,7 @@ export function CraftingCostSummary({
             <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">Node Only</span>
           </div>
           <div className="px-3 py-1.5 bg-gray-800/50 border-b border-gray-700/50">
-            <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">Full Path</span>
+            <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">{fullPathLabel}</span>
           </div>
         </div>
         <div className="grid grid-cols-2">
@@ -124,7 +128,7 @@ export function CraftingCostSummary({
               <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">Node Only</span>
             </div>
             <div className="px-3 py-1.5 bg-gray-800/50 border-b border-gray-700/50 flex items-center justify-between">
-              <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">Full Path</span>
+              <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide">{fullPathLabel}</span>
               <span className="text-[9px] text-gray-500 italic">Click items to track</span>
             </div>
           </div>

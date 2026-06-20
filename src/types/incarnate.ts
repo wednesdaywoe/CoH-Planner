@@ -212,9 +212,29 @@ export type CraftingChecklistKey = string;
 export type CraftingChecklistState = Record<CraftingChecklistKey, boolean>;
 
 /**
+ * Crafting nodes already obtained, on the way to the selected end-goal power.
+ *
+ * Keyed by `{slotId}:{treeId}:{nodePath}` where nodePath is a node's unique
+ * position in the crafting dependency tree (e.g. "alpha:vigor:4c/3c2/2c"). A
+ * checked node means you already hold that crafted ability, so it — and every
+ * lower node consumed to make it — drops out of the remaining shopping list.
+ *
+ * Like the crafting checklist, this is device-local crafting *progress* rather
+ * than part of the shareable build identity.
+ */
+export type IncarnateObtainedState = Record<string, boolean>;
+
+/**
  * Create empty crafting checklist state
  */
 export function createEmptyCraftingChecklistState(): CraftingChecklistState {
+  return {};
+}
+
+/**
+ * Create empty incarnate obtained-tier state
+ */
+export function createEmptyIncarnateObtainedState(): IncarnateObtainedState {
   return {};
 }
 

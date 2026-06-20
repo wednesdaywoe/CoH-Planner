@@ -5,8 +5,8 @@
 import type { Origin, ProgressionMode } from './common';
 import type { Archetype, ArchetypeId } from './archetype';
 import type { SelectedPower } from './power';
-import type { IncarnateBuildState, CraftingChecklistState } from './incarnate';
-import { createEmptyIncarnateBuildState, createEmptyCraftingChecklistState } from './incarnate';
+import type { IncarnateBuildState, CraftingChecklistState, IncarnateObtainedState } from './incarnate';
+import { createEmptyIncarnateBuildState, createEmptyCraftingChecklistState, createEmptyIncarnateObtainedState } from './incarnate';
 
 // ============================================
 // POWERSET SELECTION
@@ -163,6 +163,10 @@ export interface Build {
   /** Incarnate crafting checklist progress */
   craftingChecklist: CraftingChecklistState;
 
+  /** Highest crafting tier already obtained per incarnate slot (0 = none, 1-4).
+   *  Obtained tiers drop out of the crafting cost summary and shopping list. */
+  incarnateObtained: IncarnateObtainedState;
+
   /** Shopping list: count of salvage items marked as acquired across all incarnate slots */
   shoppingListAcquired: Record<string, number>;
 
@@ -251,6 +255,7 @@ export function createEmptyBuild(serverId: 'homecoming' | 'rebirth' | 'thundersp
     sets: {},
     incarnates: createEmptyIncarnateBuildState(),
     craftingChecklist: createEmptyCraftingChecklistState(),
+    incarnateObtained: createEmptyIncarnateObtainedState(),
     shoppingListAcquired: {},
     slotOrder: [],
   };

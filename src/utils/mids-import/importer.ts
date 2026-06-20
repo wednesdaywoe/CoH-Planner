@@ -541,6 +541,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
       ...incarnateResults,
     },
     craftingChecklist: {},
+    incarnateObtained: {},
     shoppingListAcquired: {},
     slotOrder: [],
   };

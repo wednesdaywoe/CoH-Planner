@@ -22,9 +22,9 @@ const SYNC_DEBOUNCE_MS = 300;
 
 /** slimBuild → JSON → deflate-raw → base64.
  *
- * Strips personal progress (`craftingChecklist`, `shoppingListAcquired`)
- * before encoding. These are device-local crafting state, not part of
- * the build itself, and they would otherwise:
+ * Strips personal progress (`craftingChecklist`, `incarnateObtained`,
+ * `shoppingListAcquired`) before encoding. These are device-local crafting
+ * state, not part of the build itself, and they would otherwise:
  *   - bloat shared URLs with data the recipient can't act on
  *   - cause every checklist tick to mutate the URL
  *   - get blown away on the recipient's device when they paste the link
@@ -34,8 +34,8 @@ const SYNC_DEBOUNCE_MS = 300;
 export function encodeBuildToHash(build: Build): string {
   const slim = slimBuild(build);
   // Drop fields that aren't part of the shareable build identity
-  const { craftingChecklist: _cc, shoppingListAcquired: _sl, ...shareable } = slim;
-  void _cc; void _sl;
+  const { craftingChecklist: _cc, incarnateObtained: _io, shoppingListAcquired: _sl, ...shareable } = slim;
+  void _cc; void _io; void _sl;
   return encodeImportFragment(JSON.stringify({ version: 4, build: shareable }));
 }
 
@@ -101,6 +101,7 @@ export function useUrlBuildSync(): void {
     // when a URL load replaces the build — including the user's own reload
     // case where syncBuildDefinitions might shift hashes out of alignment.
     const priorChecklist = currentBuild.craftingChecklist;
+    const priorObtained = currentBuild.incarnateObtained;
     const priorShopping = currentBuild.shoppingListAcquired;
 
     try {
@@ -113,6 +114,7 @@ export function useUrlBuildSync(): void {
           build: {
             ...after,
             craftingChecklist: { ...priorChecklist, ...after.craftingChecklist },
+            incarnateObtained: { ...priorObtained, ...after.incarnateObtained },
             shoppingListAcquired: { ...priorShopping, ...after.shoppingListAcquired },
           },
         });
