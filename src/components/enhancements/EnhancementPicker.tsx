@@ -1462,6 +1462,10 @@ function IOSetRow({
 }: IOSetRowProps) {
   const rowRef = useRef<HTMLDivElement>(null);
   const [jumpFlash, setJumpFlash] = useState(false);
+  // Mobile-only: set bonuses are collapsed by default to keep the (often long)
+  // set list compact. Desktop reveals the same data via the per-piece hover
+  // tooltip, which never fires on touch.
+  const [bonusesOpen, setBonusesOpen] = useState(false);
 
   // On open-to-change, bring the slotted set into view and flash it so the user
   // can see where the picker landed. Runs only when jumpTarget flips true.
@@ -1686,6 +1690,29 @@ function IOSetRow({
           );
         })}
       </div>
+
+      {/* Mobile-only: collapsible set bonuses. Desktop shows these in the
+          per-piece hover tooltip (SetPieceTooltip), which never fires on touch —
+          this is the touch path to the same data. */}
+      {set.bonuses.length > 0 && (
+        <div className="sm:hidden mt-1.5">
+          <button
+            type="button"
+            onClick={() => setBonusesOpen((o) => !o)}
+            aria-expanded={bonusesOpen}
+            className="w-full flex items-center gap-1.5 px-2 py-1.5 rounded border border-gray-700 bg-gray-900/40 text-xs text-gray-300 active:bg-gray-800/60"
+          >
+            <span className={`inline-block transition-transform text-gray-500 ${bonusesOpen ? 'rotate-90' : ''}`}>▸</span>
+            <span className="font-medium">Set Bonuses</span>
+            <span className="text-gray-500">({set.bonuses.length})</span>
+          </button>
+          {bonusesOpen && (
+            <div className="mt-1 px-2 pb-1">
+              <SetBonusList set={set} />
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -1916,15 +1943,18 @@ function OriginContent({ availableTypes, onSelect, stackedCountFor, onDecrement 
 // SHARED COMPONENTS
 // ============================================
 
-interface SetPieceTooltipProps {
-  set: IOSet;
-  piece: IOSetPiece;
-}
-
-function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
-  const globalIOLevel = useUIStore((s) => s.globalIOLevel);
-  const attunementEnabled = useUIStore((s) => s.attunementEnabled);
-  const globalBoostLevel = useUIStore((s) => s.globalBoostLevel);
+/**
+ * Renders a set's bonus tiers (2pc/3pc/…) with active/inactive coloring based on
+ * how many pieces of the set are already slotted in the current power, plus
+ * build-wide stack-count and cap annotations. Self-contained — it reads
+ * piecesInPower, tracked stats, and bonus tracking from the stores itself — so it
+ * drops into both the desktop hover tooltip (SetPieceTooltip) and the mobile
+ * inline expander (IOSetRow) without prop threading. One source of truth for
+ * set-bonus presentation; previously this markup lived only inside the
+ * hover tooltip, which never fires on touch, so mobile users had no way to see
+ * set bonuses while slotting.
+ */
+function SetBonusList({ set }: { set: IOSet }) {
   const build = useBuildStore((s) => s.build);
   const picker = useUIStore((s) => s.enhancementPicker);
   const trackedStats = useUIStore((s) => s.trackedStats);
@@ -1933,13 +1963,13 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   // Build a set of normalized stat keys that are being tracked (including paired stats)
   const trackedNormalized = useMemo(() => {
     if (trackedStats.length === 0) return new Set<string>();
-    const set = new Set<string>();
+    const out = new Set<string>();
     for (const key of trackedStats) {
-      set.add(key);
+      out.add(key);
       const pair = getPairedStat(key);
-      if (pair) set.add(pair);
+      if (pair) out.add(pair);
     }
-    return set;
+    return out;
   }, [trackedStats]);
 
   // Count how many pieces of this set are already slotted in the current power
@@ -1963,6 +1993,100 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
       return ioEnh.type === 'io-set' && ioEnh.setId === setId;
     }).length;
   }, [build, picker.currentPowerName, setId]);
+
+  if (set.bonuses.length === 0) return null;
+
+  const isPvPSet = set.category === 'pvp';
+  const hasPvPEffects = isPvPSet && set.bonuses.some(b => b.effects.some(e => e.pvp));
+
+  return (
+    <div className="border-t border-slate-700 pt-2">
+      <div className="text-[9px] text-slate-500 uppercase mb-1">
+        Set Bonuses ({piecesInPower}/{set.pieces.length} slotted)
+      </div>
+      {/* PvE bonuses (or all bonuses for non-PvP sets) */}
+      <div className="space-y-0.5">
+        {set.bonuses.map((bonus, idx) => {
+          const pveEffects = hasPvPEffects ? bonus.effects.filter(e => !e.pvp) : bonus.effects;
+          if (pveEffects.length === 0) return null;
+          const isActive = piecesInPower >= bonus.pieces;
+          return (
+            <div
+              key={idx}
+              className={`text-[10px] ${isActive ? 'text-green-400' : 'text-slate-500'}`}
+            >
+              <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-600'}`}>
+                {bonus.pieces}pc:
+              </span>{' '}
+              {pveEffects.map((eff, i) => {
+                const normalized = normalizeStatName(eff.stat);
+                const isTracked = normalized ? trackedNormalized.has(normalized) : false;
+                const totalCount = (isActive && normalized) ? getTotalBonusCount(bonusTracking, normalized, eff.value) : 0;
+                const capped = (isActive && normalized) ? isBonusCapped(bonusTracking, normalized, eff.value) : false;
+                // Use eff.value for accurate display instead of pre-rounded eff.desc
+                const formatted = formatBonusDesc(eff.desc, eff.stat, eff.value);
+                return (
+                  <span key={i} className={capped ? 'text-warning-fg font-semibold' : isTracked ? 'text-link font-semibold' : ''}>
+                    {i > 0 && ', '}
+                    {formatted}
+                    {isActive && totalCount > 0 && (
+                      <span className={`ml-0.5 text-[9px] ${capped ? 'text-warning-fg' : 'text-slate-500'}`}>
+                        ({totalCount}/5)
+                      </span>
+                    )}
+                  </span>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+      {/* PvP-only bonuses section */}
+      {hasPvPEffects && (
+        <>
+          <div className="text-[9px] text-red-400/70 uppercase mt-2 mb-0.5">PvP Only</div>
+          <div className="space-y-0.5">
+            {set.bonuses.map((bonus, idx) => {
+              const pvpEffects = bonus.effects.filter(e => e.pvp);
+              if (pvpEffects.length === 0) return null;
+              const isActive = piecesInPower >= bonus.pieces;
+              return (
+                <div
+                  key={idx}
+                  className={`text-[10px] ${isActive ? 'text-red-400/60' : 'text-slate-600'}`}
+                >
+                  <span className={`font-medium ${isActive ? 'text-red-400/70' : 'text-slate-700'}`}>
+                    {bonus.pieces}pc:
+                  </span>{' '}
+                  {pvpEffects.map((eff, i) => {
+                    const formatted = formatBonusDesc(eff.desc, eff.stat, eff.value);
+                    return (
+                      <span key={i}>
+                        {i > 0 && ', '}
+                        {formatted}
+                      </span>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+interface SetPieceTooltipProps {
+  set: IOSet;
+  piece: IOSetPiece;
+}
+
+function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
+  const globalIOLevel = useUIStore((s) => s.globalIOLevel);
+  const attunementEnabled = useUIStore((s) => s.attunementEnabled);
+  const globalBoostLevel = useUIStore((s) => s.globalBoostLevel);
+  const build = useBuildStore((s) => s.build);
 
   // Calculate aspect values at the effective level.
   // Both attuned and non-attuned cap at the set's maxLevel — only ATOs / event IOs
@@ -2168,87 +2292,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
       </div>
 
       {/* Set Bonuses */}
-      {set.bonuses.length > 0 && (() => {
-        const isPvPSet = set.category === 'pvp';
-        const hasPvPEffects = isPvPSet && set.bonuses.some(b => b.effects.some(e => e.pvp));
-
-        return (
-          <div className="border-t border-slate-700 pt-2">
-            <div className="text-[9px] text-slate-500 uppercase mb-1">
-              Set Bonuses ({piecesInPower}/{set.pieces.length} slotted)
-            </div>
-            {/* PvE bonuses (or all bonuses for non-PvP sets) */}
-            <div className="space-y-0.5">
-              {set.bonuses.map((bonus, idx) => {
-                const pveEffects = hasPvPEffects ? bonus.effects.filter(e => !e.pvp) : bonus.effects;
-                if (pveEffects.length === 0) return null;
-                const isActive = piecesInPower >= bonus.pieces;
-                return (
-                  <div
-                    key={idx}
-                    className={`text-[10px] ${isActive ? 'text-green-400' : 'text-slate-500'}`}
-                  >
-                    <span className={`font-medium ${isActive ? 'text-green-500' : 'text-slate-600'}`}>
-                      {bonus.pieces}pc:
-                    </span>{' '}
-                    {pveEffects.map((eff, i) => {
-                      const normalized = normalizeStatName(eff.stat);
-                      const isTracked = normalized ? trackedNormalized.has(normalized) : false;
-                      const totalCount = (isActive && normalized) ? getTotalBonusCount(bonusTracking, normalized, eff.value) : 0;
-                      const capped = (isActive && normalized) ? isBonusCapped(bonusTracking, normalized, eff.value) : false;
-                      // Use eff.value for accurate display instead of pre-rounded eff.desc
-                      const formatted = formatBonusDesc(eff.desc, eff.stat, eff.value);
-                      return (
-                        <span key={i} className={capped ? 'text-warning-fg font-semibold' : isTracked ? 'text-link font-semibold' : ''}>
-                          {i > 0 && ', '}
-                          {formatted}
-                          {isActive && totalCount > 0 && (
-                            <span className={`ml-0.5 text-[9px] ${capped ? 'text-warning-fg' : 'text-slate-500'}`}>
-                              ({totalCount}/5)
-                            </span>
-                          )}
-                        </span>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-            </div>
-            {/* PvP-only bonuses section */}
-            {hasPvPEffects && (
-              <>
-                <div className="text-[9px] text-red-400/70 uppercase mt-2 mb-0.5">PvP Only</div>
-                <div className="space-y-0.5">
-                  {set.bonuses.map((bonus, idx) => {
-                    const pvpEffects = bonus.effects.filter(e => e.pvp);
-                    if (pvpEffects.length === 0) return null;
-                    const isActive = piecesInPower >= bonus.pieces;
-                    return (
-                      <div
-                        key={idx}
-                        className={`text-[10px] ${isActive ? 'text-red-400/60' : 'text-slate-600'}`}
-                      >
-                        <span className={`font-medium ${isActive ? 'text-red-400/70' : 'text-slate-700'}`}>
-                          {bonus.pieces}pc:
-                        </span>{' '}
-                        {pvpEffects.map((eff, i) => {
-                          const formatted = formatBonusDesc(eff.desc, eff.stat, eff.value);
-                          return (
-                            <span key={i}>
-                              {i > 0 && ', '}
-                              {formatted}
-                            </span>
-                          );
-                        })}
-                      </div>
-                    );
-                  })}
-                </div>
-              </>
-            )}
-          </div>
-        );
-      })()}
+      <SetBonusList set={set} />
     </div>
   );
 }
