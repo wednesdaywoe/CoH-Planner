@@ -199,7 +199,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 </a>
                 {' '}or join the{' '}
                 <a
-                  href="https://discord.gg/Tf2nkeqcFy"
+                  href="https://discord.gg/fYs4SGsadC"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber-300 underline hover:text-amber-100"
