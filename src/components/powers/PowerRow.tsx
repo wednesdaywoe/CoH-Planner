@@ -13,6 +13,7 @@ import { Tooltip } from '@/components/ui';
 import { TouchableSlot } from './TouchableSlot';
 import { DraggableSlotGhost } from './DraggableSlotGhost';
 import { SlottedEnhancementList } from './SlottedEnhancementList';
+import { SlottedSetBonuses } from './SlottedSetBonuses';
 import { PermaRing } from './PermaRing';
 import type { SlotSize } from './TouchableSlot';
 import { useBuildStore, useUIStore, type PowerCategory } from '@/stores';
@@ -468,7 +469,10 @@ export function PowerRow({
           </div>
         </div>
         {isTouch && showSlotting && (
-          <SlottedEnhancementList slots={slots} onSelectSlot={handleSlotClick} />
+          <>
+            <SlottedEnhancementList slots={slots} onSelectSlot={handleSlotClick} />
+            <SlottedSetBonuses slots={slots} />
+          </>
         )}
       </div>
     );
