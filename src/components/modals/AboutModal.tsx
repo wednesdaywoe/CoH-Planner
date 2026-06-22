@@ -108,7 +108,7 @@ export function AboutModal({ isOpen, onClose }: AboutModalProps) {
           {/* Personal note */}
           <div className="max-w-md mx-auto mt-10 px-4 text-center">
             <p className="text-sm text-gray-400 leading-relaxed italic">
-              I'm 100% not the right person for this job, but I got tired of waiting for someone else to make it. So here we are.
+              I'm 100% not the right person for this job, but I got tired of waiting for someone else to make it. So here we are. I developed this tool with help from Claude Code because my Javascript knowledge is not enough to build something this complex. Making Sidekick has required React, SQL, reverse engineering binary with Ghidra, and so, SO much more. A sour troupe of Homecoming trolls requested this disclosure even though the repo is public, so here it is! 💅
             </p>
             <p className="text-sm text-gray-500 mt-2">-WW</p>
           </div>
