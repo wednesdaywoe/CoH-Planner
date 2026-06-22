@@ -23,6 +23,7 @@ import {
   getPowerPool,
   getEpicPool,
   getInherentPowers,
+  getArchetypeInherentPowers,
   createArchetypeInherentPower,
   getIncarnatePower,
   getIncarnateTree,
@@ -310,8 +311,17 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   // Build reverse lookup: sub-power display name → parent power name
   // Only for non-slottable groups (e.g., Adaptation toggles, Swap Ammo)
   const grantedSubPowerParent = new Map<string, string>();
+  // Reverse lookup for SLOTTABLE form sub-powers (Kheldian Nova/Dwarf attacks):
+  // sub-power internalName (lowercased) → parent form name. Mids exports these
+  // under Inherent.Inherent.* rather than in the form's powerset.
+  const slottableSubPowerParent = new Map<string, string>();
   for (const [parentName, group] of Object.entries(GRANTED_POWER_GROUPS)) {
-    if (group.slottable) continue; // Slottable sub-powers (Kheldian forms) are imported normally
+    if (group.slottable) {
+      for (const subName of group.grantedPowers) {
+        slottableSubPowerParent.set(subName.toLowerCase(), parentName);
+      }
+      continue;
+    }
     for (const subName of group.grantedPowers) {
       grantedSubPowerParent.set(subName, parentName);
     }
@@ -360,6 +370,52 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
           activeSubPowers.set(parentName, internalName);
         }
         summary.powersImported++;
+        continue;
+      }
+    }
+
+    // Slottable form sub-powers (Kheldian Nova/Dwarf attacks). Mids exports
+    // these under `Inherent.Inherent.<name>` instead of in the form's powerset,
+    // so the generic Inherent.* path would drop them (no matching auto-populated
+    // inherent to merge into). Resolve against the primary/secondary powerset
+    // and attach as auto-granted, slot-preserving sub-powers so they nest under
+    // the parent form instead of being lost.
+    {
+      const segments = entry.PowerName.split('.').map((s) => s.trim());
+      const subInternal = segments[segments.length - 1];
+      const parentName = slottableSubPowerParent.get(subInternal.toLowerCase());
+      if (parentName) {
+        const primaryMatch = primaryId
+          ? findPowerByMidsName([...(primaryPowerset?.powers ?? []), ...branchPrimaryPowers], subInternal)
+          : null;
+        const secondaryMatch = !primaryMatch && secondaryId
+          ? findPowerByMidsName([...(secondaryPowerset?.powers ?? []), ...branchSecondaryPowers], subInternal)
+          : null;
+        const match = primaryMatch ?? secondaryMatch;
+        if (match) {
+          const setId = (primaryMatch ? primaryId : secondaryId)!;
+          const subPower = buildSelectedPower(
+            match,
+            setId,
+            entry.Level,
+            entry.StatInclude,
+            entry.SlotEntries ?? [],
+            warnings,
+            summary,
+          );
+          subPower.isAutoGranted = true;
+          subPower.grantedByPower = parentName;
+          subPower.isActive =
+            subPower.powerType === 'Toggle' || subPower.powerType === 'Auto' ? true : undefined;
+          const targetList = primaryMatch ? primaryPowers : secondaryPowers;
+          if (!targetList.some((p) => p.internalName === match.internalName)) {
+            targetList.push(subPower);
+            summary.powersImported++;
+          }
+        } else {
+          warnings.push({ type: 'power', midsName: entry.PowerName, message: 'Form sub-power not found in primary/secondary powerset' });
+          summary.powersFailed++;
+        }
         continue;
       }
     }
@@ -484,6 +540,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
 
   // 11. Build inherent powers
   const inherents = getInherentSelectedPowers(
+    archetypeId,
     archetype.name,
     archetype.inherent,
   );
@@ -980,6 +1037,7 @@ function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
 }
 
 function getInherentSelectedPowers(
+  archetypeId: string | null,
   archetypeName: string,
   archetypeInherent: { name: string; description: string } | null,
 ): SelectedPower[] {
@@ -988,6 +1046,14 @@ function getInherentSelectedPowers(
   if (archetypeName && archetypeInherent) {
     const atInherentDef = createArchetypeInherentPower(archetypeName, archetypeInherent);
     powers.unshift(createInherentSelectedPower(atInherentDef));
+  }
+
+  // Archetype-specific inherent powers (e.g. Kheldian travel powers — Energy
+  // Flight, Combat Flight). Mids exports these under Inherent.Inherent.* but
+  // the inherent path only preserves slot data; without auto-populating them
+  // here they'd never appear for Kheldians.
+  for (const def of getArchetypeInherentPowers(archetypeId || undefined)) {
+    powers.push(createInherentSelectedPower(def));
   }
 
   return powers;

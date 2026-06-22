@@ -28,6 +28,7 @@ import {
   getIOSet,
   getAllIOSets,
   getInherentPowers,
+  getArchetypeInherentPowers,
   createArchetypeInherentPower,
   createIOSetEnhancement,
   createGenericIOEnhancement,
@@ -373,12 +374,28 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
   // Build set of non-slottable granted sub-power names to skip during import
   // (e.g., Double Jump from Super Jump, Speed Phase from Super Speed)
   const nonSlottableSubPowers = new Set<string>();
-  for (const group of Object.values(GRANTED_POWER_GROUPS)) {
-    if (group.slottable) continue;
+  // Reverse lookup for slottable form sub-powers (Kheldian Nova/Dwarf attacks):
+  // sub-power internalName (lowercased) → parent form internalName. These are
+  // imported as auto-granted sub-powers nested under the form, not as picks.
+  const slottableSubPowerParent = new Map<string, string>();
+  for (const [parentName, group] of Object.entries(GRANTED_POWER_GROUPS)) {
+    if (group.slottable) {
+      for (const subName of group.grantedPowers) {
+        slottableSubPowerParent.set(subName.toLowerCase(), parentName);
+      }
+      continue;
+    }
     for (const subName of group.grantedPowers) {
       nonSlottableSubPowers.add(subName.toLowerCase());
     }
   }
+
+  // Kheldian travel inherents (Energy Flight, Combat Flight) appear in the
+  // powerset data but are modeled as auto-granted archetype inherents. Their
+  // entries are routed to the inherent merge instead of consuming a power pick.
+  const archetypeInherentNames = new Set(
+    getArchetypeInherentPowers(archetypeId).map((p) => p.internalName.toLowerCase()),
+  );
 
   // 4. Process powers by category
   const primaryPowers: SelectedPower[] = [];
@@ -513,8 +530,46 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
     if (nonSlottableSubPowers.has(entry.powerName.toLowerCase()) ||
         nonSlottableSubPowers.has(powerDef.internalName.toLowerCase())) continue;
 
+    const formParent = slottableSubPowerParent.get(powerDef.internalName.toLowerCase());
+
+    // Skip auto-granted powerset powers that aren't slottable form sub-powers
+    // (e.g. Quantum Boost, granted while Energy Flight is active). available:-1
+    // marks them as granted rather than picked, mirroring the pool-power path.
+    if (!formParent && powerDef.available === -1) continue;
+
     const slots = resolveEnhancements(entry.enhancements, warnings, summary);
+
+    // Kheldian travel inherents (Energy Flight, Combat Flight) live in the
+    // powerset data but are modeled as auto-granted archetype inherents. Route
+    // their slot data into the inherent merge instead of consuming a power pick.
+    if (!formParent && archetypeInherentNames.has(powerDef.internalName.toLowerCase())) {
+      if (slots.some((s) => s !== null)) {
+        inherentSlotData.push({
+          name: powerDef.name,
+          powerSet: 'Inherent',
+          level: 1,
+          available: -1,
+          maxSlots: 6,
+          slots,
+          effects: {},
+        } as SelectedPower);
+      }
+      continue;
+    }
+
     const selectedPower = buildSelectedPower(powerDef, powersetId, entry.level, slots);
+
+    // Slottable form sub-powers (Kheldian Nova/Dwarf attacks) attach to their
+    // parent form as auto-granted sub-powers: they nest under the form's slot
+    // in the chronological view and don't consume a power pick.
+    if (formParent) {
+      selectedPower.isAutoGranted = true;
+      selectedPower.grantedByPower = formParent;
+      selectedPower.isActive =
+        selectedPower.powerType === 'Toggle' || selectedPower.powerType === 'Auto'
+          ? true
+          : undefined;
+    }
 
     if (catType === 'primary') {
       primaryId = powersetId;
@@ -550,7 +605,7 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
   }
 
   // 7. Build inherent powers
-  const inherents = getInherentSelectedPowers(archetype.name, archetype.inherent);
+  const inherents = getInherentSelectedPowers(archetypeId, archetype.name, archetype.inherent);
 
   // Merge slot data from inherent entries
   for (const slotPower of inherentSlotData) {
@@ -977,6 +1032,7 @@ function createInherentSelectedPower(def: InherentPowerDef): SelectedPower {
 }
 
 function getInherentSelectedPowers(
+  archetypeId: string | null,
   archetypeName: string,
   archetypeInherent: { name: string; description: string } | null,
 ): SelectedPower[] {
@@ -985,6 +1041,13 @@ function getInherentSelectedPowers(
   if (archetypeName && archetypeInherent) {
     const atInherentDef = createArchetypeInherentPower(archetypeName, archetypeInherent);
     powers.unshift(createInherentSelectedPower(atInherentDef));
+  }
+
+  // Archetype-specific inherent powers (e.g. Kheldian travel powers — Energy
+  // Flight, Combat Flight). These aren't in getInherentPowers(); without them
+  // a Kheldian build would be missing its inherent travel toggles.
+  for (const def of getArchetypeInherentPowers(archetypeId || undefined)) {
+    powers.push(createInherentSelectedPower(def));
   }
 
   return powers;
