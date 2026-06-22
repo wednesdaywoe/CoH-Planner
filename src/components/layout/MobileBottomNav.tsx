@@ -301,6 +301,7 @@ function MobileMenuContent({
   const openWelcomeModal = useUIStore((s) => s.openWelcomeModal);
   const openChangelogModal = useUIStore((s) => s.openChangelogModal);
   const openFeedbackModal = useUIStore((s) => s.openFeedbackModal);
+  const openDonateModal = useUIStore((s) => s.openDonateModal);
   const openControlsModal = useUIStore((s) => s.openControlsModal);
 
   const user = useAuthStore((s) => s.user);
@@ -337,18 +338,6 @@ function MobileMenuContent({
       {label}
     </button>
   );
-
-  const handleBuyMeCoffee = () => {
-    // Trigger the hidden BMC widget button (injected by the script in index.html)
-    const bmcBtn = document.getElementById('bmc-wbtn');
-    if (bmcBtn) {
-      bmcBtn.style.display = 'block';
-      bmcBtn.click();
-      bmcBtn.style.display = 'none';
-    } else {
-      window.open('https://buymeacoffee.com/Wednesdaywoe', '_blank');
-    }
-  };
 
   return (
     <div className="divide-y divide-slate-800">
@@ -387,7 +376,7 @@ function MobileMenuContent({
           <span>Join Sidekick Discord</span>
         </button>
         {item('About Sidekick', openAboutModal)}
-        {item('☕Buy me a coffee', handleBuyMeCoffee)}
+        {item('☕ Support Sidekick', openDonateModal)}
       </Section>
       {supabase && !loading && (
         <Section label="Account">

@@ -219,6 +219,21 @@ Each has AT-specific:
 - `VITE_SUPABASE_ANON_KEY` — Supabase anon key
 - Both stored as GitHub Actions secrets
 
+## Security
+
+The app is a static SPA on GitHub Pages. Two browser guarantees bound the worst case if a dependency were ever compromised:
+
+- **No first-party credentials.** Sign-in is delegated OAuth (Discord / SimpleLogin) — the user's password is only ever typed on the provider's domain, never on coh-sidekick.com. There is no password field to keylog and no saved-password autofill to trigger.
+- **Same-origin sandbox.** Code running on this origin can only read *this* origin's `localStorage` / cookies — never your Discord, email, bank, or any other site. The realistic blast radius of a compromise is the Supabase session token (impersonation of a *build-planner* account, RLS-scoped to that user's own builds) — no payment data, no cross-site reach.
+
+**Content-Security-Policy.** Injected as a `<meta>` into the built `index.html` by `cspPlugin()` in [vite.config.ts](vite.config.ts) (build-only — dev/HMR needs eval + inline scripts a strict CSP would block). The security-critical directive is `connect-src`: even a malicious dependency can't exfiltrate the session token, because the browser blocks any network request to a host not on the allowlist (Supabase, Sentry, the status repo, the feedback Worker). `script-src` is `'self'` plus auto-computed SHA-256 hashes of the two inline bootstrap scripts (no `'unsafe-inline'`); the plugin hashes the *post-transform* HTML so the hashes always match what ships. Keep `cspPlugin()` last in the `plugins` array. When you add a new external endpoint (image host, API, analytics), add it to the matching directive or the browser will block it.
+
+> Limitation: `frame-ancestors` (clickjacking) and other header-only directives can't be delivered via `<meta>` — they'd need a host that can send response headers, which GitHub Pages can't.
+
+**Third-party scripts: none at runtime.** Donations use [DonateModal](src/components/modals/DonateModal.tsx), which embeds Buy Me a Coffee in a cross-origin `<iframe>` (sandboxed by the same-origin policy — it can't read our storage) instead of the former `cdnjs.buymeacoffee.com` widget `<script>` (which ran with full first-party privileges). Google Fonts is the only other external origin (stylesheet + font files).
+
+**Dependency hygiene.** Small, mainstream runtime tree (~9 deps); `package-lock.json` is committed and both CI and deploy install with `npm ci` (pinned), so the deployed bundle is reproducible from a public commit.
+
 ## Branches
 
 - `main` — production, auto-deploys to GitHub Pages

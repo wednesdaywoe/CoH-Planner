@@ -40,6 +40,7 @@ interface MainLayoutProps {
 
 export function MainLayout({ children }: MainLayoutProps) {
   const openFeedbackModal = useUIStore((s) => s.openFeedbackModal);
+  const openDonateModal = useUIStore((s) => s.openDonateModal);
   const openHelpModal = useUIStore((s) => s.openHelpModal);
   const openWelcomeModal = useUIStore((s) => s.openWelcomeModal);
   const uiScale = useUIStore((s) => s.uiScale);
@@ -154,25 +155,15 @@ export function MainLayout({ children }: MainLayoutProps) {
           </svg>
         </a>
         <button
-          onClick={() => {
-            // Trigger the hidden BMC widget button to open its donation modal
-            const bmcBtn = document.getElementById('bmc-wbtn');
-            if (bmcBtn) {
-              bmcBtn.style.display = 'block';
-              bmcBtn.click();
-              bmcBtn.style.display = 'none';
-            } else {
-              window.open('https://buymeacoffee.com/Wednesdaywoe', '_blank');
-            }
-          }}
+          onClick={openDonateModal}
           className="flex items-center gap-1.5 h-9 px-3 bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white rounded-full shadow-lg transition-colors text-sm border border-purple-500"
-          title="Buy me a coffee!"
-          aria-label="Buy me a coffee"
+          title="Support Sidekick — buy me a coffee!"
+          aria-label="Support Sidekick"
         >
           <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 18h10a2 2 0 002-2V8H5v8a2 2 0 002 2zM17 8h2a2 2 0 010 4h-2M8 2v3M12 2v3" />
           </svg>
-          Buy me a coffee
+          Support Sidekick
         </button>
       </div>
     </div>

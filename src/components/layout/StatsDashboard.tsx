@@ -12,7 +12,7 @@ import { formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
@@ -147,6 +147,8 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const closeAccoladesModal = useUIStore((s) => s.closeAccoladesModal);
   const aboutModalOpen = useUIStore((s) => s.aboutModalOpen);
   const closeAboutModal = useUIStore((s) => s.closeAboutModal);
+  const donateModalOpen = useUIStore((s) => s.donateModalOpen);
+  const closeDonateModal = useUIStore((s) => s.closeDonateModal);
   const setBonusLookupModalOpen = useUIStore((s) => s.setBonusLookupModalOpen);
   const openSetBonusLookupModal = useUIStore((s) => s.openSetBonusLookupModal);
   const openSetBonusPopup = useUIStore((s) => s.openSetBonusPopup);
@@ -558,6 +560,12 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
       <AboutModal
         isOpen={aboutModalOpen}
         onClose={closeAboutModal}
+      />
+
+      {/* Donate ("Support Sidekick") Modal */}
+      <DonateModal
+        isOpen={donateModalOpen}
+        onClose={closeDonateModal}
       />
 
       {/* Set Bonus Lookup Modal */}

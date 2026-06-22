@@ -102,6 +102,9 @@ interface UIState {
   /** About modal open state */
   aboutModalOpen: boolean;
 
+  /** Donate ("Support Sidekick") modal open state */
+  donateModalOpen: boolean;
+
   /** Incarnate modal open state */
   incarnateModalOpen: boolean;
 
@@ -474,6 +477,10 @@ interface UIActions {
   openAboutModal: () => void;
   closeAboutModal: () => void;
 
+  // Donate ("Support Sidekick") Modal
+  openDonateModal: () => void;
+  closeDonateModal: () => void;
+
   // Incarnate Modal
   openIncarnateModal: (slotId?: IncarnateSlotId) => void;
   closeIncarnateModal: () => void;
@@ -734,6 +741,7 @@ export const useUIStore = create<UIStore>()(
       statsConfigScrollTo: null,
       accoladesModalOpen: false,
       aboutModalOpen: false,
+      donateModalOpen: false,
       incarnateModalOpen: false,
       incarnateCraftingModalOpen: false,
       currentIncarnateSlot: null,
@@ -1209,6 +1217,13 @@ export const useUIStore = create<UIStore>()(
 
       closeAboutModal: () =>
         set({ aboutModalOpen: false }),
+
+      // Donate ("Support Sidekick") Modal
+      openDonateModal: () =>
+        set({ donateModalOpen: true }),
+
+      closeDonateModal: () =>
+        set({ donateModalOpen: false }),
 
       setStatVisible: (stat, visible) =>
         set((state) => ({

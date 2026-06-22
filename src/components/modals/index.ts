@@ -6,6 +6,7 @@ export { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
 export { StatsConfigModal } from './StatsConfigModal';
 export { AccoladesModal } from './AccoladesModal';
 export { AboutModal } from './AboutModal';
+export { DonateModal } from './DonateModal';
 export { ExportImportModal } from './ExportImportModal';
 export { FeedbackModal } from './FeedbackModal';
 export { ChangelogModal } from './ChangelogModal';

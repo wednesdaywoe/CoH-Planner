@@ -42,17 +42,19 @@
         }
       })();
     </script>
-    <!-- Loading spinner animation + hide default BMC widget button -->
+    <!-- Loading spinner animation -->
     <style>
       @keyframes spin {
         to { transform: rotate(360deg); }
       }
-      #bmc-wbtn { display: none !important; }
     </style>
-    <!-- Buy Me a Coffee Widget (hidden button, modal only) -->
-    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-    data-id="Wednesdaywoe" data-description="Support me on Buy me a coffee!" data-message="I'm fueled by espresso, thank you for enabling me"
-    data-color="#BD5FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+    <!--
+      Donations are handled in-app by DonateModal, which embeds Buy Me a Coffee
+      in a cross-origin <iframe>. The old cdnjs.buymeacoffee.com widget <script>
+      was removed: it ran with first-party privileges (could read this origin's
+      localStorage / Supabase session). The iframe is sandboxed by the
+      same-origin policy and can't. See ARCHITECTURE.md (Security).
+    -->
   </head>
   <body>
     <div id="root">

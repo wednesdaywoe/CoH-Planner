@@ -1,10 +1,11 @@
-import { defineConfig } from 'vite'
+import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { VitePWA } from 'vite-plugin-pwa'
 import path from 'path'
 import { execSync } from 'child_process'
+import { createHash } from 'node:crypto'
 
 const BUILD_TIME = Date.now()
 
@@ -46,6 +47,76 @@ function getChangelogData(): string {
 }
 
 const CHANGELOG_DATA = getChangelogData()
+
+/**
+ * Inject a Content-Security-Policy <meta> into the built index.html.
+ *
+ * Build-only: GitHub Pages can't set HTTP headers, and dev/HMR relies on inline
+ * scripts + eval that a strict CSP would block. The two inline <script> blocks
+ * in index.html (the GH-Pages SPA redirect and the serverId loading label) are
+ * SHA-256 hashed here automatically, so `script-src` never needs 'unsafe-inline'
+ * — and because we hash the *post-transform* HTML, the hashes always match what
+ * actually ships (edit the inline scripts freely; the build re-hashes them).
+ *
+ * The security-critical directive is `connect-src`: even if a dependency were
+ * compromised, the browser blocks it from exfiltrating the Supabase session
+ * token to any host not on this list. `frame-src` allows the in-app
+ * "Support Sidekick" donation iframe (Buy Me a Coffee), which is cross-origin
+ * and therefore already walled off from this origin's storage by the browser.
+ *
+ * Note: `frame-ancestors` (clickjacking) is header-only and ignored in <meta>,
+ * so it's omitted — it would need a host that can send response headers.
+ */
+function cspPlugin(): Plugin {
+  return {
+    name: 'sidekick-csp',
+    apply: 'build',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html) {
+        // Match every INLINE <script> (no src= attribute) and hash its body.
+        const inlineScript = /<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/gi
+        const scriptHashes: string[] = []
+        for (const match of html.matchAll(inlineScript)) {
+          const code = match[1]
+          if (!code) continue
+          const digest = createHash('sha256').update(code, 'utf8').digest('base64')
+          scriptHashes.push(`'sha256-${digest}'`)
+        }
+
+        const csp = [
+          `default-src 'self'`,
+          `script-src 'self' ${scriptHashes.join(' ')}`.trim(),
+          // Landing page + Tailwind use inline style="" attributes (un-hashable);
+          // fonts.googleapis.com serves the SN Pro / Nunito stylesheet.
+          `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
+          `font-src 'self' https://fonts.gstatic.com data:`,
+          // Same-origin icons + data URIs + OAuth (Discord) / Supabase avatars.
+          `img-src 'self' data: https://cdn.discordapp.com https://*.supabase.co`,
+          // The complete set of hosts the app legitimately talks to. Anything
+          // else (i.e. an exfiltration attempt) is blocked by the browser:
+          //   *.supabase.co  — shared builds + auth (REST + realtime websocket)
+          //   *.sentry.io    — error reporting
+          //   wednesdaywoe.github.io — status banner status.json
+          //   ...workers.dev — feedback form endpoint
+          `connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.sentry.io https://wednesdaywoe.github.io https://coh-planner-feedback.wedswoe.workers.dev`,
+          // In-app "Support Sidekick" donation iframe.
+          `frame-src https://buymeacoffee.com https://www.buymeacoffee.com`,
+          `worker-src 'self'`,
+          `manifest-src 'self'`,
+          `base-uri 'self'`,
+          `form-action 'self'`,
+          `object-src 'none'`,
+        ].join('; ')
+
+        return html.replace(
+          /<head>/i,
+          `<head>\n    <meta http-equiv="Content-Security-Policy" content="${csp}" />`,
+        )
+      },
+    },
+  }
+}
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -117,6 +188,9 @@ export default defineConfig({
           authToken: process.env.SENTRY_AUTH_TOKEN,
         })]
       : []),
+    // Keep LAST so its post-transform runs after any other HTML transform,
+    // ensuring the inline-script hashes match the final shipped bytes.
+    cspPlugin(),
   ],
   define: {
     __BUILD_TIME__: JSON.stringify(BUILD_TIME),
