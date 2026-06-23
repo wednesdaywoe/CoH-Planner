@@ -18,7 +18,7 @@ import { POWER_POOLS_RAW as POWER_POOLS_RAW_HC } from './datasets/homecoming/pow
 import { POWER_POOLS_RAW as POWER_POOLS_RAW_REBIRTH } from './datasets/rebirth/power-pools-raw';
 import { POWER_POOLS_RAW as POWER_POOLS_RAW_THUNDERSPY } from './datasets/thunderspy/power-pools-raw';
 import { getActiveDataset } from './dataset';
-import { POOL_UNLOCK_LEVEL, EARLY_TRAVEL_POWERS } from './levels';
+import { POOL_UNLOCK_LEVEL } from './levels';
 
 // ============================================
 // POWER POOL REGISTRY TYPE
@@ -450,15 +450,25 @@ export function arePoolsUnlocked(level: number): boolean {
 }
 
 /**
- * Check if a specific pool power is available based on level and selected powers
+ * Check if a specific pool power is available based on level and selected powers.
  *
- * Rules:
- * - Pools unlock at level 4
- * - First two powers (rank 1-2) are available immediately when pool unlocks
- * - Travel powers (Super Speed, Fly, Teleport, Super Jump, Infiltration, Speed of Sound, Mystic Flight)
- *   are available at level 4 despite being rank 3
- * - Other rank 3 powers require level 14 AND 1 other power from the pool
- * - Rank 4-5 powers require level 14 AND 2 other powers from the pool
+ * Fully DATA-DRIVEN — no rank heuristics or hard-coded travel-power lists.
+ * Every gate comes from fields the bin parser already extracts:
+ *   - Pools unlock at level 4 (POOL_UNLOCK_LEVEL).
+ *   - `power.available` is the power's own 0-indexed unlock level and is the
+ *     authoritative level gate, clamped to the pool-unlock floor:
+ *       available 0  → level 4 (e.g. Boxing, Flurry — gated by pool unlock)
+ *       available 3  → level 4 (early travel: Super Speed, Fly, Jetpack…)
+ *       available 13 → level 14 (e.g. Tough, Weave, Whirlwind)
+ *   - `power.requires` carries every prerequisite: intra-pool counts
+ *     ("2 of {Flurry, Hasten, Super Speed}" for Whirlwind) and mutual-exclusion
+ *     locks ("Strike !" on Boxing). Evaluated by arePoolPrerequisitesMet;
+ *     empty requires → no prerequisite.
+ *
+ * This replaces the legacy rank→level mapping + EARLY_TRAVEL_POWERS list, which
+ * only approximated what `available` + `requires` already state exactly — and
+ * which mis-gated datasets whose pools diverge from Homecoming's 5-power shape
+ * (e.g. Thunderspy's 8-power Fighting pool, Rebirth's non-standard unlock levels).
  *
  * @param poolId - The pool ID
  * @param power - The power to check
@@ -471,46 +481,18 @@ export function isPowerAvailableInPool(
   level: number,
   selectedPowersInPool: string[]
 ): boolean {
-  // Pools not available before level 4
+  // Pools as a whole unlock at level 4.
   if (level < POOL_UNLOCK_LEVEL) return false;
 
-  // Powers with available=-1 are auto-granted powers that should never be shown in selection
-  // They are automatically added to the build when their parent power is selected
-  // Examples: Afterburner (granted by Fly), Adaptation modes in Bio Organic Armor
-  if (power.available < 0) {
-    return false;
-  }
+  // available = -1 marks auto-granted sub-powers (Afterburner from Fly, Bio
+  // Armor adaptations, etc.) — never user-pickable.
+  if (power.available < 0) return false;
 
-  const rank = power.rank || 1;
-  const numSelectedPowers = selectedPowersInPool.length;
+  // Data-driven level gate (the power's own unlock level, clamped to the floor).
+  if (level < Math.max(POOL_UNLOCK_LEVEL, power.available + 1)) return false;
 
-  // Rank 1-2: Available immediately at pool unlock (level 4)
-  if (rank <= 2) {
-    return true;
-  }
-
-  // Rank 3+: Check if it's an early travel power (available at level 4 with no prerequisites)
-  // Most travel powers are rank 3, but Mystic Flight is rank 4 because rank 3 is auto-granted
-  const isEarlyTravelPower = EARLY_TRAVEL_POWERS.includes(power.internalName);
-  if (isEarlyTravelPower) {
-    return true;
-  }
-
-  if (rank === 3) {
-    // Non-travel rank 3 powers require level 14 and 1 power from the pool
-    if (level < 14) return false;
-    if (numSelectedPowers < 1) return false;
-    return arePoolPrerequisitesMet(poolId, power.internalName, selectedPowersInPool);
-  }
-
-  // Rank 4-5+: Require level 14 and 2 powers from the pool
-  if (rank >= 4) {
-    if (level < 14) return false;
-    if (numSelectedPowers < 2) return false;
-    return arePoolPrerequisitesMet(poolId, power.internalName, selectedPowersInPool);
-  }
-
-  return false;
+  // Data-driven prerequisites (intra-pool counts + mutual-exclusion locks).
+  return arePoolPrerequisitesMet(poolId, power.internalName, selectedPowersInPool);
 }
 
 /**

@@ -283,46 +283,13 @@ export function isEnhancementAvailable(
 // POOL POWER REQUIREMENTS
 // ============================================
 
-/**
- * Pool power tier requirements
- * Note: Pool access itself requires level 4 (POOL_UNLOCK_LEVEL)
- */
-export const POOL_TIER_REQUIREMENTS = {
-  /** Tier 1-2 powers: Available at pool unlock level (level 4) */
-  ENTRY: {
-    minLevel: 4,
-    requiredPowers: 0,
-    description: 'First two powers in a pool, available at pool unlock',
-  },
-  /** Tier 3 power: Requires level 14+ and 1 power from the pool */
-  TIER_3: {
-    minLevel: 14,
-    requiredPowers: 1,
-    description: 'Third power, requires level 14 and 1 power from the pool',
-  },
-  /** Tier 4-5 powers: Requires level 14+ and 2 powers from the pool */
-  TIER_4_5: {
-    minLevel: 14,
-    requiredPowers: 2,
-    description: 'Fourth and fifth powers, require level 14 and 2 powers from the pool',
-  },
-} as const;
-
-/**
- * Travel powers that are available at level 4 despite being rank 3 powers
- * These powers have available=4 in the data but require no prerequisites
- */
-export const EARLY_TRAVEL_POWERS: readonly string[] = [
-  'Super_Speed',       // Pool.Speed.Super_Speed (rank 3)
-  'Fly',               // Pool.Flight.Fly (rank 3)
-  'Teleport',          // Pool.Teleportation.Teleport (rank 3)
-  'Long_Jump',         // Pool.Leaping.Long_Jump (rank 3, display name: Super Jump)
-  'Invisibility',      // Pool.Invisibility.Invisibility (rank 3, display name: Infiltration)
-  'Speed_of_Sound',    // Pool.Experimentation.Speed_of_Sound (rank 3)
-  'Mighty_Leap',       // Pool.Force_of_Will.Mighty_Leap (rank 3)
-  'Mystic_Flight',     // Pool.Sorcery.Mystic_Flight (rank 4, but rank 3 is auto-granted Arcane Power)
-  'Jetpack',           // Pool.Gadgetry.Jetpack (rank 3) — Rebirth-only Origin pool; L4 w/ no prereq like the other Origin travel powers
-] as const;
+// NOTE: Power-pool pick gating is fully data-driven — see isPowerAvailableInPool
+// in power-pools.ts. The level gate comes from each power's own `available`
+// field (clamped to POOL_UNLOCK_LEVEL) and prerequisites come from its
+// `requires` expression. The former POOL_TIER_REQUIREMENTS rank→level table and
+// the EARLY_TRAVEL_POWERS hard-coded list were removed: they only approximated
+// what `available` (e.g. Super Speed/Fly = available 3 = level 4) and `requires`
+// already encode, and mis-gated non-Homecoming pool layouts.
 
 /**
  * Epic/Patron pool power tier requirements

@@ -153,9 +153,7 @@ export {
   // Enhancement availability
   ENHANCEMENT_AVAILABILITY,
   isEnhancementAvailable,
-  // Pool requirements
-  POOL_TIER_REQUIREMENTS,
-  EARLY_TRAVEL_POWERS,
+  // Pool requirements (pool gating is data-driven; epic still uses this table)
   EPIC_TIER_REQUIREMENTS,
   // Epic pools
   canAccessEpicPools,

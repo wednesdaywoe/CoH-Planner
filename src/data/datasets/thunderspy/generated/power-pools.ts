@@ -81,14 +81,19 @@ export const POWER_POOLS_RAW = {
           "recharge": 8,
           "endurance": 8.528,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.64,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Speed of Sound",
         "fullName": "Pool.Experimentation.Speed_of_Sound",
         "rank": 3,
-        "available": 0,
+        "available": 3,
         "description": "Your experiments have yielded incredible results. By activating this power, you're able to run at incredible speeds. In fact, while this power is active, you gain access to the Jaunt power. Jaunt allows you to teleport to a distant location once every short while. Recharge: Moderate",
         "shortHelp": "Toggle: Self +Speed, (Special)",
         "icon": "experimentation_speedofsound.png",
@@ -115,7 +120,7 @@ export const POWER_POOLS_RAW = {
         "name": "Corrosive Vial",
         "fullName": "Pool.Experimentation.Corrosive_Vial",
         "rank": 4,
-        "available": 0,
+        "available": 13,
         "description": "You hurl a vial of toxic fluid that explodes upon impact leaving a corrosive puddle at your target's feet. Any foe that stands within the puddle will take toxic damage and have their defense reduced for a short while. Damage: High (DoT), Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), High DoT(Toxic), -Defense",
         "icon": "experimentation_corrosivevial.png",
@@ -145,7 +150,7 @@ export const POWER_POOLS_RAW = {
         "name": "Adrenal Booster",
         "fullName": "Pool.Experimentation.Adrenal_Booster",
         "rank": 5,
-        "available": 0,
+        "available": 19,
         "description": "You inject yourself with a concentrated serum that boosts your damage, recharge and chance to hit by a large amount for a short time. Recharge: Very Long",
         "shortHelp": "Self, +To Hit, +Recharge, +Damage",
         "icon": "experimentation_adrenalbooster.png",
@@ -173,7 +178,7 @@ export const POWER_POOLS_RAW = {
         "name": "Jaunt",
         "fullName": "Pool.Experimentation.Jaunt",
         "rank": 6,
-        "available": 0,
+        "available": -1,
         "description": "Clicking on this power and then selecting a location will cause the caster to vanish and reappear at their target location. Recharge: Moderate",
         "shortHelp": "Click, Self Teleport",
         "icon": "experimentation_jaunt.png",
@@ -203,10 +208,168 @@ export const POWER_POOLS_RAW = {
     "requires": "",
     "powers": [
       {
-        "name": "Tough",
-        "fullName": "Pool.Fighting.Tough",
+        "name": "Boxing",
+        "fullName": "Pool.Fighting.Boxing",
         "rank": 1,
         "available": 0,
+        "description": "You strike your opponent with a strong punch that causes  smashing damage and has a small chance to stun foes. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Weapon Strike. Damage: Moderate, Recharge: Fast",
+        "shortHelp": "Melee, Moderate DMG(Smashing), Foe Stun",
+        "icon": "fighting_boxing.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "Pool.Fighting.Strike !",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Melee Damage",
+          "Stuns"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 6,
+          "endurance": 6.864,
+          "activationTime": 1.07,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.32,
+            "table": "Melee_Damage"
+          },
+          "stun": {
+            "mag": 0.3499999940395355,
+            "scale": 4,
+            "table": "Melee_Stun"
+          }
+        }
+      },
+      {
+        "name": "Weapon Strike",
+        "fullName": "Pool.Fighting.Strike",
+        "rank": 2,
+        "available": 0,
+        "description": "You strike your opponent with your weapon to cause smashing damage and have a chance to stun foes. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Boxing. Damage: Moderate, Recharge: Fast",
+        "shortHelp": "Melee, Moderate DMG(Smashing), Foe Stun",
+        "icon": "fighting_boxing.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "Pool.Fighting.Boxing !",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge",
+          "Stun"
+        ],
+        "allowedSetCategories": [
+          "Melee Damage",
+          "Stuns"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 6,
+          "endurance": 6.864,
+          "activationTime": 1.23,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.32,
+            "table": "Melee_Damage"
+          },
+          "stun": {
+            "mag": 0.3499999940395355,
+            "scale": 4,
+            "table": "Melee_Stun"
+          }
+        }
+      },
+      {
+        "name": "Kick",
+        "fullName": "Pool.Fighting.Kick",
+        "rank": 3,
+        "available": 0,
+        "description": "You strike your opponent with a forceful kick that causes high smashing damage and has a small chance to knock opponents down. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Weapon Slam. Damage: High, Recharge: Moderate",
+        "shortHelp": "Melee, High DMG(Smashing), Foe Knockdown",
+        "icon": "fighting_kick.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "Pool.Fighting.Slam !",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Melee Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 10,
+          "endurance": 10.192,
+          "activationTime": 1.33,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.96,
+            "table": "Melee_Damage"
+          }
+        }
+      },
+      {
+        "name": "Weapon Slam",
+        "fullName": "Pool.Fighting.Slam",
+        "rank": 4,
+        "available": 0,
+        "description": "You strike your opponent with a forceful slam that causes high smashing damage and has a chance to knock opponents down. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Kick. Damage: High, Recharge: Moderate",
+        "shortHelp": "Melee, High DMG(Smashing), Foe Knockdown",
+        "icon": "fighting_kick.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "Pool.Fighting.Kick !",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Melee Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 7,
+          "recharge": 10,
+          "endurance": 10.192,
+          "activationTime": 1.83,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.96,
+            "table": "Melee_Damage"
+          }
+        }
+      },
+      {
+        "name": "Tough",
+        "fullName": "Pool.Fighting.Tough",
+        "rank": 5,
+        "available": 13,
         "description": "While active, you are tough and slightly resistant to Smashing and Lethal damage.  Purchasing Tough requires the user to be level 14 and possess Boxing or Kick.",
         "shortHelp": "Toggle: Self +Res(Smash/Lethal)",
         "icon": "fighting_tough.png",
@@ -234,8 +397,8 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Weave",
         "fullName": "Pool.Fighting.Weave",
-        "rank": 2,
-        "available": 0,
+        "rank": 6,
+        "available": 13,
         "description": "While active, you bob and weave, increasing your Defense to all attacks, as well as your resistance to Immobilize. You must be at least level 14 and have two other Fighting Powers before selecting Weave.",
         "shortHelp": "Toggle: Self +DEF(All), Res(Immobilize)",
         "icon": "fighting_weave.png",
@@ -261,148 +424,10 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
-        "name": "Boxing",
-        "fullName": "Pool.Fighting.Boxing",
-        "rank": 3,
-        "available": 0,
-        "description": "You strike your opponent with a strong punch that causes  smashing damage and has a small chance to stun foes. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Weapon Strike. Damage: Moderate, Recharge: Fast",
-        "shortHelp": "Melee, Moderate DMG(Smashing), Foe Stun",
-        "icon": "fighting_boxing.png",
-        "powerType": "Click",
-        "targetType": "Foe",
-        "requires": "Pool.Fighting.Strike !",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Melee Damage",
-          "Stuns"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 6,
-          "endurance": 6.864,
-          "activationTime": 1.07,
-          "effectArea": "SingleTarget",
-          "stun": {
-            "mag": 0.3499999940395355,
-            "scale": 4,
-            "table": "Melee_Stun"
-          }
-        }
-      },
-      {
-        "name": "Weapon Strike",
-        "fullName": "Pool.Fighting.Strike",
-        "rank": 4,
-        "available": 0,
-        "description": "You strike your opponent with your weapon to cause smashing damage and have a chance to stun foes. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Boxing. Damage: Moderate, Recharge: Fast",
-        "shortHelp": "Melee, Moderate DMG(Smashing), Foe Stun",
-        "icon": "fighting_boxing.png",
-        "powerType": "Click",
-        "targetType": "Foe",
-        "requires": "Pool.Fighting.Boxing !",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Recharge",
-          "Stun"
-        ],
-        "allowedSetCategories": [
-          "Melee Damage",
-          "Stuns"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 6,
-          "endurance": 6.864,
-          "activationTime": 1.23,
-          "effectArea": "SingleTarget",
-          "stun": {
-            "mag": 0.3499999940395355,
-            "scale": 4,
-            "table": "Melee_Stun"
-          }
-        }
-      },
-      {
-        "name": "Kick",
-        "fullName": "Pool.Fighting.Kick",
-        "rank": 5,
-        "available": 0,
-        "description": "You strike your opponent with a forceful kick that causes high smashing damage and has a small chance to knock opponents down. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Weapon Slam. Damage: High, Recharge: Moderate",
-        "shortHelp": "Melee, High DMG(Smashing), Foe Knockdown",
-        "icon": "fighting_kick.png",
-        "powerType": "Click",
-        "targetType": "Foe",
-        "requires": "Pool.Fighting.Slam !",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Melee Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 10,
-          "endurance": 10.192,
-          "activationTime": 1.33,
-          "effectArea": "SingleTarget"
-        }
-      },
-      {
-        "name": "Weapon Slam",
-        "fullName": "Pool.Fighting.Slam",
-        "rank": 6,
-        "available": 0,
-        "description": "You strike your opponent with a forceful slam that causes high smashing damage and has a chance to knock opponents down. this power will fatigue the target, draining some endurance and lowering recovery slightly. Choosing this power locks out Kick. Damage: High, Recharge: Moderate",
-        "shortHelp": "Melee, High DMG(Smashing), Foe Knockdown",
-        "icon": "fighting_kick.png",
-        "powerType": "Click",
-        "targetType": "Foe",
-        "requires": "Pool.Fighting.Kick !",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Accuracy",
-          "Damage",
-          "EnduranceReduction",
-          "Knockback",
-          "Recharge"
-        ],
-        "allowedSetCategories": [
-          "Knockback",
-          "Melee Damage"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "range": 7,
-          "recharge": 10,
-          "endurance": 10.192,
-          "activationTime": 1.83,
-          "effectArea": "SingleTarget"
-        }
-      },
-      {
         "name": "Cross Punch",
         "fullName": "Pool.Fighting.Cross_Punch",
         "rank": 7,
-        "available": 0,
+        "available": 13,
         "description": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. This attack causes moderate smashing damage and has a chance to both knock down and stun foes this power will improve your recharge and accuracy briefly. Choosing this power locks out Weapon Swing. Damage: Moderate, Recharge: Moderate",
         "shortHelp": "Melee (Cone), Moderate DMG (Smashing), Foe Knockdown, Stun",
         "icon": "fighting_crosspunch.png",
@@ -432,14 +457,19 @@ export const POWER_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 9,
           "arc": 1.5707963705062866,
-          "maxTargets": 5
+          "maxTargets": 5,
+          "damage": {
+            "type": "Special",
+            "scale": 1.3434,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Weapon Swing",
         "fullName": "Pool.Fighting.Swirl",
         "rank": 8,
-        "available": 0,
+        "available": 13,
         "description": "You swing your weapon in a wide arc in front of you. This attack strikes all foes within melee range. You deal moderate damage, and have a chance to Knockdown and Disorient every foe you hit. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Melee (Cone), Moderate DMG (Smashing), Foe Knockdown, Stun",
         "icon": "fighting_crosspunch.png",
@@ -469,7 +499,12 @@ export const POWER_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 8,
           "arc": 3.1415927410125732,
-          "maxTargets": 5
+          "maxTargets": 5,
+          "damage": {
+            "type": "Special",
+            "scale": 1.3636,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]
@@ -486,7 +521,7 @@ export const POWER_POOLS_RAW = {
         "name": "Swift",
         "fullName": "Pool.Fitness.Quick",
         "rank": 1,
-        "available": 0,
+        "available": 5,
         "description": "You can naturally run slightly faster than normal. This ability is always on and does not cost any Endurance.",
         "shortHelp": "Auto: Self +SPD",
         "icon": "fitness_quick.png",
@@ -513,7 +548,7 @@ export const POWER_POOLS_RAW = {
         "name": "Hurdle",
         "fullName": "Pool.Fitness.Hurdle",
         "rank": 2,
-        "available": 0,
+        "available": 5,
         "description": "You can naturally jump higher than normal. This ability is always on and does not cost any Endurance.",
         "shortHelp": "Auto: Self +Leap",
         "icon": "fitness_hurdle.png",
@@ -538,7 +573,7 @@ export const POWER_POOLS_RAW = {
         "name": "Health",
         "fullName": "Pool.Fitness.Health",
         "rank": 3,
-        "available": 0,
+        "available": 13,
         "description": "You heal slightly faster than a normal person. Your improved Health also grants you resistance to Sleep. This ability is always on and does not cost any Endurance. You must be at least level 14 and have Swift or Hurdle before selecting Health.",
         "shortHelp": "Auto: Self +Regeneration, Res(Sleep)",
         "icon": "fitness_health.png",
@@ -562,7 +597,7 @@ export const POWER_POOLS_RAW = {
         "name": "Stamina",
         "fullName": "Pool.Fitness.Stamina",
         "rank": 4,
-        "available": 0,
+        "available": 19,
         "description": "You recover Endurance slightly more quickly than normal. This ability is always on and does not cost any Endurance. You must be at least level 20 and have two other Fitness Powers before selecting Stamina.",
         "shortHelp": "Auto: Self +Recovery",
         "icon": "fitness_stamina.png",
@@ -648,14 +683,19 @@ export const POWER_POOLS_RAW = {
           "recharge": 8,
           "endurance": 8.528,
           "activationTime": 1.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.64,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Fly",
         "fullName": "Pool.Flight.Fly",
         "rank": 3,
-        "available": 0,
+        "available": 3,
         "description": "Fly allows you to travel large distances quickly. If you attack a target while this power is on, your flight speed will be temporarily reduced.  Your top Flight speed increases with your Level.",
         "shortHelp": "Toggle: Self Fly",
         "icon": "flight_travelflight.png",
@@ -682,7 +722,7 @@ export const POWER_POOLS_RAW = {
         "name": "Group Fly",
         "fullName": "Pool.Flight.Group_Fly",
         "rank": 4,
-        "available": 0,
+        "available": 13,
         "description": "You can endow your nearby teammates with Flight. Be mindful! Your friends will fall if you run out of Endurance or if they travel too far away from you. Group Fly travel speed is slower than Fly. You must be at least level 14 before selecting Group Fly.",
         "shortHelp": "Toggle: Team Fly, -ACC",
         "icon": "flight_groupfly.png",
@@ -712,7 +752,7 @@ export const POWER_POOLS_RAW = {
         "name": "Afterburner",
         "fullName": "Pool.Flight.Afterburner",
         "rank": 5,
-        "available": 0,
+        "available": 13,
         "description": "Afterburner greatly increases your maximum fly speed, provides a high amount of defense, flight protection and additional flight control, however while active you can only use powers that target yourself.    You must be at least level 14 before selecting Afterburner. Recharge: Long",
         "shortHelp": "Toggle: Self +FlySpeed, Res(-Fly), +Def(All), +Flight Control",
         "icon": "flight_afterburner.png",
@@ -811,14 +851,19 @@ export const POWER_POOLS_RAW = {
           "recharge": 8,
           "endurance": 8.528,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.64,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Mighty Leap",
         "fullName": "Pool.Force_of_Will.Mighty_Leap",
         "rank": 3,
-        "available": 0,
+        "available": 3,
         "description": "While this power is active you're able to leap great distances and jump incredibly high. In addition, while this power is active you're able to use Stomp, which will knockdown nearby foes. Recharge: Moderate",
         "shortHelp": "Toggle: Self Long Jump, (Special)",
         "icon": "forceofwill_mightyleap.png",
@@ -845,7 +890,7 @@ export const POWER_POOLS_RAW = {
         "name": "Wall of Force",
         "fullName": "Pool.Force_of_Will.Wall_of_Force",
         "rank": 4,
-        "available": 0,
+        "available": 13,
         "description": "You project an unfocused blast of sheer force at foes in a short wide cone in front of you, dealing moderate psionic and smashing damage and potentially knocking targets down. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged Cone, Moderate DMG(Psionic/Smash), Foe Knockdown",
         "icon": "forceofwill_wallofforce.png",
@@ -874,14 +919,19 @@ export const POWER_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 1.0471975803375244,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.181818,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Unleash Potential",
         "fullName": "Pool.Force_of_Will.Unleash_Potential",
         "rank": 5,
-        "available": 0,
+        "available": 19,
         "description": "Unleashing your potential, you grant yourself a moderate boost to defense, regeneration rate, recovery and recharge for a short time. Unleash Potential will drain a portion of your endurance and prevent you from recovering endurance after its benefits expire. This crash can be mitigated by using the Presence power Unrelenting before using Unleash Potential. Recharge: Very Long",
         "shortHelp": "Self, +Regen, +Recovery, +Recharge, +Defense",
         "icon": "forceofwill_unleashpotential.png",
@@ -913,7 +963,7 @@ export const POWER_POOLS_RAW = {
         "name": "Stomp",
         "fullName": "Pool.Force_of_Will.Stomp",
         "rank": 6,
-        "available": 0,
+        "available": -1,
         "description": "You stomp your foot on the ground with tremendous force, shattering the earth beneath and knocking nearby foes off of their feet. Recharge: Long",
         "shortHelp": "PBAoE Melee, Foe Knockdown",
         "icon": "forceofwill_stomp.png",
@@ -1008,7 +1058,7 @@ export const POWER_POOLS_RAW = {
         "name": "Phase Shift",
         "fullName": "Pool.Invisibility.Phase_Shift",
         "rank": 3,
-        "available": 0,
+        "available": 13,
         "description": "You can Phase Shift to become out of sync with normal space. Although you do not become completely Invisible, you are translucent and hard to see. You are intangible, and cannot affect or be affected by those in normal space. Cannot be used with Rest. You must be at least level 14 before selecting Phase Shift.",
         "shortHelp": "Toggle: Self Intangible",
         "icon": "invisibility_phaseshift.png",
@@ -1034,7 +1084,7 @@ export const POWER_POOLS_RAW = {
         "name": "Misdirection",
         "fullName": "Pool.Invisibility.Misdirection",
         "rank": 4,
-        "available": 0,
+        "available": 13,
         "description": "You redirect the anger of enemies around you, placating them. This causes them to break off their attacks. The momentary lack of awareness this causes also leads to reduced resistance to damage for a short time. You must be at least level 14 before you can train this power.  Recharge: Very Long",
         "shortHelp": "PBAoE, Foe Placate, -Res(All)",
         "icon": "invisibility_placate.png",
@@ -1062,7 +1112,7 @@ export const POWER_POOLS_RAW = {
         "name": "Intangibility",
         "fullName": "Pool.Invisibility.Invisibility",
         "rank": 5,
-        "available": 0,
+        "available": 13,
         "description": "You become Intangible, allowing you to move through some solid objects. While Intangible you have increased defense to all attacks other than Psionic, resist immobilize effects, move faster, and can jump higher with better control.",
         "shortHelp": "Toggle: Self Intangible, +DEF, +Jump, +SPD, Res(Immobilization)",
         "icon": "invisibility_invisibility.png",
@@ -1163,7 +1213,7 @@ export const POWER_POOLS_RAW = {
         "name": "Tactics",
         "fullName": "Pool.Leadership.Tactics",
         "rank": 3,
-        "available": 0,
+        "available": 13,
         "description": "While this power is active, your chance to hit and that of all your nearby teammates is increased. Your advanced Tactics also protect you and your team from Confuse and Fear effects, as well as your Perception so you can detect Stealthy foes.  Purchasing Tactics requires the user to be level 14.",
         "shortHelp": "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
         "icon": "leadership_tactics.png",
@@ -1194,7 +1244,7 @@ export const POWER_POOLS_RAW = {
         "name": "Vengeance",
         "fullName": "Pool.Leadership.Vengeance",
         "rank": 4,
-        "available": 0,
+        "available": 13,
         "description": "The loss of a comrade enrages the team. When a teammate is defeated in combat, activate this power to grant you and your teammates a bonus to chance to hit, Damage and Defense to all attacks. A Vengeful team has no fear, and Vengeance protects you and your Teammates from Fear effects. It also gives you and your team great resistance to Sleep, Hold, Disorient, Immobilize, Confuse, Taunt, Placate and Knockback. You must be at least level 14 before selecting Vengeance.  This power does not stack with multiple castings. Recharge: Very Long",
         "shortHelp": "Ranged (Targeted AoE), Teammates +DMG, +To Hit, +DEF(All), Res(Effects)",
         "icon": "leadership_vengence.png",
@@ -1227,7 +1277,7 @@ export const POWER_POOLS_RAW = {
         "name": "Victory Rush",
         "fullName": "Pool.Leadership.Victory_Rush",
         "rank": 5,
-        "available": 0,
+        "available": 13,
         "description": "The defeat of an opponent gives your team a rush of adrenaline. The excitement of your victory increases the recovery and reduces the endurance cost of your powers. This effect extends to your teammates as well. The total strength of this bonus is dependent upon the rank of the enemy on which this is cast, with Archvillains and Giant Monsters providing the greatest benefit. This power does not stack with multiple castings. You must be level 14 before you can train Victory Rush. Recharge: Very Long",
         "shortHelp": "Ranged (Targeted AoE), Team +Recovery, -End Cost",
         "icon": "leadership_victoryrush.png",
@@ -1294,6 +1344,11 @@ export const POWER_POOLS_RAW = {
           "endurance": 8.528,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.64,
+            "table": "Melee_Damage"
+          },
           "knockback": {
             "scale": 2,
             "table": "Melee_Knockback"
@@ -1301,10 +1356,39 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
-        "name": "Super Jump",
-        "fullName": "Pool.Leaping.Long_Jump",
+        "name": "Combat Jumping",
+        "fullName": "Pool.Leaping.Combat_Jumping",
         "rank": 2,
         "available": 0,
+        "description": "While active, Combat Jumping increases your Defense to all attacks, and adds resistance to Immobilization. Moderately increases your jump height and distance while providing good air control.",
+        "shortHelp": "Toggle: Self +Jump, +DEF(All), Res(Immobilization)",
+        "icon": "jump_combatjump.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "Pool.Invisibility.Invisibility !",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Jump"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets",
+          "Leaping & Sprints",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "endurance": 0.0325,
+          "activatePeriod": 0.5,
+          "effectArea": "SingleTarget"
+        }
+      },
+      {
+        "name": "Super Jump",
+        "fullName": "Pool.Leaping.Long_Jump",
+        "rank": 3,
+        "available": 3,
         "description": "While this power is active, you can leap great distances and heights, easily jumping over buildings and from rooftop to rooftop!  If you attack a target while this power is on, you will temporarily be reduced to a normal jump height.",
         "shortHelp": "Toggle: Self Long Jump",
         "icon": "jump_longjump.png",
@@ -1330,8 +1414,8 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Acrobatics",
         "fullName": "Pool.Leaping.Leap",
-        "rank": 3,
-        "available": 0,
+        "rank": 4,
+        "available": 13,
         "description": "While this power is active, you are very nimble and Acrobatic. You can avoid most Knockback effects and are resistant to Hold effects. You must be at least level 14 before selecting Acrobatics.",
         "shortHelp": "Toggle: Self +Res(Knockback, Hold)",
         "icon": "jump_acrobatics.png",
@@ -1359,8 +1443,8 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Spring Attack",
         "fullName": "Pool.Leaping.Spring_Attack",
-        "rank": 4,
-        "available": 0,
+        "rank": 5,
+        "available": 13,
         "description": "You leap into the air and smash down among ranks of foes in the blink of an eye.  Using this power allows you to jump to a selected area to deal significant smashing damage to all foes near the location you teleport to, most foes that are struck by your Spring Attack will be knocked down.  You must be at least level 14 before selecting Spring Attack. Damage: High, Recharge: Very Long.",
         "shortHelp": "PBAoE Superior DMG(Smashing), Foe Knockdown; Self Teleport",
         "icon": "jump_springattack.png",
@@ -1387,35 +1471,6 @@ export const POWER_POOLS_RAW = {
           "endurance": 13.52,
           "activationTime": 1.5,
           "effectArea": "Location"
-        }
-      },
-      {
-        "name": "Combat Jumping",
-        "fullName": "Pool.Leaping.Combat_Jumping",
-        "rank": 5,
-        "available": 0,
-        "description": "While active, Combat Jumping increases your Defense to all attacks, and adds resistance to Immobilization. Moderately increases your jump height and distance while providing good air control.",
-        "shortHelp": "Toggle: Self +Jump, +DEF(All), Res(Immobilization)",
-        "icon": "jump_combatjump.png",
-        "powerType": "Toggle",
-        "targetType": "Self",
-        "requires": "Pool.Invisibility.Invisibility !",
-        "maxSlots": 6,
-        "allowedEnhancements": [
-          "Defense",
-          "EnduranceReduction",
-          "Jump"
-        ],
-        "allowedSetCategories": [
-          "Defense Sets",
-          "Leaping & Sprints",
-          "Universal Travel"
-        ],
-        "effects": {
-          "accuracy": 1,
-          "endurance": 0.0325,
-          "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
         }
       }
     ]
@@ -1497,7 +1552,7 @@ export const POWER_POOLS_RAW = {
         "name": "Intimidate",
         "fullName": "Pool.Manipulation.Intimidate",
         "rank": 3,
-        "available": 0,
+        "available": 13,
         "description": "When fully engaged in battle, you are a frightening presence and can use this to your advantage. You threaten a single foe and cause that foe to tremble helplessly in fear for a short time. In order to acquire this ability you must be level 14.",
         "shortHelp": "Ranged, Fear (Foe)",
         "icon": "manipulation_intimidate.png",
@@ -1533,7 +1588,7 @@ export const POWER_POOLS_RAW = {
         "name": "Invoke Panic",
         "fullName": "Pool.Manipulation.Invoke_Panic",
         "rank": 4,
-        "available": 0,
+        "available": 13,
         "description": "When fully engaged in battle, you are a frightening presence and can use this to your advantage. This power causes sheer terror in all foes around you, causing them to tremble uncontrollably in fear. In order to acquire this ability you must be level 14.",
         "shortHelp": "PBAoE, Fear (Foe)",
         "icon": "manipulation_invokepanic.png",
@@ -1569,7 +1624,7 @@ export const POWER_POOLS_RAW = {
         "name": "Unrelenting",
         "fullName": "Pool.Manipulation.Unrelenting",
         "rank": 5,
-        "available": 0,
+        "available": 13,
         "description": "You channel your inner confidence to become a relentless opponent, gaining significant boosts to your damage, recovery and attack speed for a short while. Additionally, you will be able to fight though the pain caused by opponents, healing continuously over time.  You can also use this power to fight your way back to the living after defeat - if you use this power when defeated, you will be revived with 50% health.  You must be level 14 before you can train Unrelenting.",
         "shortHelp": "Self, Heal over Time, +DMG(All), +Rech, +Rec, Self Resurrect (Special)",
         "icon": "manipulation_unrelenting.png",
@@ -1666,7 +1721,7 @@ export const POWER_POOLS_RAW = {
         "name": "Aid Self",
         "fullName": "Pool.Medicine.Aid_Self",
         "rank": 3,
-        "available": 0,
+        "available": 13,
         "description": "You are able to heal yourself. This hypo also leaves you wide awake and resistant to stun effects. If you have also trained Field Medic, this power will also grant you an unenhanceable, long duration endurance over time effect. Purchasing Aid Self requires the user to be level 14.",
         "shortHelp": "Self, Heal, +Res(Stun), +EndGain(Synergy)",
         "icon": "medicine_selfadministration.png",
@@ -1695,7 +1750,7 @@ export const POWER_POOLS_RAW = {
         "name": "Resuscitate",
         "fullName": "Pool.Medicine.Resuscitate",
         "rank": 4,
-        "available": 0,
+        "available": 13,
         "description": "You revive a fallen ally, restoring health, but not endurance, completely. The target will also be protected from incurring any XP Debt for 15 seconds. This power is interruptible. You must be at least level 14 before selecting Resuscitate.",
         "shortHelp": "Close, Resurrect(Ally)",
         "icon": "medicine_smellingsalts.png",
@@ -1725,7 +1780,7 @@ export const POWER_POOLS_RAW = {
         "name": "Field Medic",
         "fullName": "Pool.Medicine.Field_Medic",
         "rank": 5,
-        "available": 0,
+        "available": 13,
         "description": "Your skill as a Field Medic is unparalleled. In addition to permanently removing the interrupt time Aid Other and adding Endurance recovery to Aid Self, using this power will grant a powerful boost in the effectiveness of your healing powers and reduce your resistance to healing debuffs. This effect increases with level. You must be at least level 14 before you can train as a Field Medic.  Recharge: Very Long",
         "shortHelp": "Self, +Heal, -Res(Heal), Special",
         "icon": "medicine_fieldmedic.png",
@@ -1816,6 +1871,11 @@ export const POWER_POOLS_RAW = {
           "endurance": 8.528,
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.64,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 0.67,
             "table": "Ranged_Knockback"
@@ -1826,7 +1886,7 @@ export const POWER_POOLS_RAW = {
         "name": "Mystic Flight",
         "fullName": "Pool.Sorcery.Mystic_Flight",
         "rank": 3,
-        "available": 0,
+        "available": 3,
         "description": "Using powerful magic you are able to lift yourself from the ground and fly. While this power's speed isn't as fast as some other forms of flight, you do gain access to the Translocation power. While Mystic Flight is active you can use Translocation to teleport to a distant location.",
         "shortHelp": "Toggle: Self Fly, (Special)",
         "icon": "sorcerypool_mysticflight.png",
@@ -1853,7 +1913,7 @@ export const POWER_POOLS_RAW = {
         "name": "Enflame",
         "fullName": "Pool.Sorcery.Enflame",
         "rank": 4,
-        "available": 0,
+        "available": 13,
         "description": "This ritual allows you to imbue an ally or curse a foe with a fiery spell. If Enflame is cast on an ally or a foe they will leave a fiery trail behind them that will damage foes. Recharge: Long",
         "shortHelp": "Ranged Friend/Foe, Special",
         "icon": "sorcerypool_enflame.png",
@@ -1884,7 +1944,7 @@ export const POWER_POOLS_RAW = {
         "name": "Rune of Protection",
         "fullName": "Pool.Sorcery.Rune_of_Protection",
         "rank": 5,
-        "available": 0,
+        "available": 19,
         "description": "You cast a Rune of Projection upon yourself granting you protection from Hold, Sleep, Immobilize, Knockdown and Disorient effects as well as granting you a measure of damage resistance against all forms of damage for a short time. Rune of Protection will drain a portion of your endurance and prevent you from recovering endurance for a short time after its benefits expire. This crash can be mitigated by using the Presence power Unrelenting before using Rune of Protection. Recharge: Very Long",
         "shortHelp": "Self, +Res(All Dmg, Hold, Sleep, Immobilize, Knockdown, Disorient)",
         "icon": "sorcerypool_runeofprotection.png",
@@ -1912,7 +1972,7 @@ export const POWER_POOLS_RAW = {
         "name": "Translocation",
         "fullName": "Pool.Sorcery.Translocation",
         "rank": 6,
-        "available": 0,
+        "available": -1,
         "description": "Clicking on this power and then selecting a location will cause the caster to vanish and reappear at their target location. Recharge: Very Fast",
         "shortHelp": "Click, Self Teleport",
         "icon": "sorcerypool_translocation.png",
@@ -1973,6 +2033,13 @@ export const POWER_POOLS_RAW = {
           "radius": 9,
           "arc": 1.5707963705062866,
           "maxTargets": 5,
+          "damage": {
+            "type": "Special",
+            "scale": 0.21,
+            "table": "Melee_Damage",
+            "duration": 1.8,
+            "tickRate": 0.25
+          },
           "stun": {
             "mag": 0.20000000298023224,
             "scale": 4,
@@ -2007,7 +2074,7 @@ export const POWER_POOLS_RAW = {
         "name": "Super Speed",
         "fullName": "Pool.Speed.Super_Speed",
         "rank": 3,
-        "available": 0,
+        "available": 3,
         "description": "You can run at super-human speeds! While running at such speeds, you are a blur, and many foes will not even notice you as you speed past them. If you attack a target while this power is on, you will temporarily be slowed to normal speed.",
         "shortHelp": "Toggle: Self +Speed",
         "icon": "superspeed_superspeed.png",
@@ -2034,7 +2101,7 @@ export const POWER_POOLS_RAW = {
         "name": "Whirlwind",
         "fullName": "Pool.Speed.Whirlwind",
         "rank": 4,
-        "available": 0,
+        "available": 13,
         "description": "You spin around at an amazing speed to create a Whirlwind around yourself. Any foes that enter this Whirlwind will be tossed into the air. You must be at least level 14 before selecting Whirlwind.",
         "shortHelp": "Toggle: PBAoE, Foe Knockback",
         "icon": "superspeed_whirlwind.png",
@@ -2065,7 +2132,7 @@ export const POWER_POOLS_RAW = {
         "name": "Burnout",
         "fullName": "Pool.Speed.Burnout",
         "rank": 5,
-        "available": 0,
+        "available": 13,
         "description": "Burnout allows you to instantly recharge all of your Primary and Secondary powers.  Burnout is very expensive in terms of endurance, and reduces your maximum endurance slightly for 60 seconds after use.   You must be at least level 14 before selecting Burnout   Recharge: Extremely Long",
         "shortHelp": "Self +Recharge",
         "icon": "superspeed_burnout.png",
@@ -2162,7 +2229,7 @@ export const POWER_POOLS_RAW = {
         "name": "Teleport",
         "fullName": "Pool.Teleportation.Teleport",
         "rank": 3,
-        "available": 0,
+        "available": 3,
         "description": "You can Teleport long distances. Teleport has no recharge time, and can be reactivated without pause, as long as you have Endurance.",
         "shortHelp": "Ranged (Location), Self Teleport",
         "icon": "teleportation_teleport.png",
@@ -2190,7 +2257,7 @@ export const POWER_POOLS_RAW = {
         "name": "Team Teleport",
         "fullName": "Pool.Teleportation.Team_Teleport",
         "rank": 4,
-        "available": 0,
+        "available": 13,
         "description": "You can Teleport yourself and your nearby teammates to a targeted location. Teammates must be in close proximity to you. Team Teleport costs slightly more Endurance than Teleport, but you can Teleport your entire team for no additional cost. You must be at least level 14 before selecting Team Teleport.",
         "shortHelp": "Ranged (Location), Team Teleport",
         "icon": "teleportation_groupteleport.png",
@@ -2221,7 +2288,7 @@ export const POWER_POOLS_RAW = {
         "name": "Long Range Teleport",
         "fullName": "Pool.Teleportation.Long_Range_Teleport",
         "rank": 5,
-        "available": 0,
+        "available": 13,
         "description": "Long Range Teleport allows you to teleport very long distances, even across city zones.  You must be at least level 14 before selecting Long Range Teleport.  Recharge: Very Long",
         "shortHelp": "Long Range Teleport",
         "icon": "teleportation_longrangeteleport.png",
