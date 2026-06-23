@@ -1,0 +1,1386 @@
+{
+  "ASCrit": {
+    "values": [
+      "0.02",
+      "0.075",
+      "0.1",
+      "0.333"
+    ],
+    "durations": [
+      "10",
+      "10.25",
+      "3.25",
+      "90"
+    ]
+  },
+  "BallisticSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "10.25",
+      "15",
+      "2.35",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "Bleed": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "15"
+    ]
+  },
+  "BossCrit": {
+    "values": [
+      "0.02",
+      "0.04",
+      "0.06",
+      "0.075",
+      "0.1",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "0.75",
+      "10",
+      "10.25",
+      "3.25",
+      "90"
+    ]
+  },
+  "ButchBuff": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "9999"
+    ]
+  },
+  "ColdDamage": {
+    "values": [
+      "1",
+      "1.000"
+    ],
+    "durations": [
+      "0.75",
+      "1.25"
+    ]
+  },
+  "Contaminated": {
+    "values": [
+      "1",
+      "1.00"
+    ],
+    "durations": [
+      "10"
+    ]
+  },
+  "ControlProc": {
+    "values": [
+      "0.1",
+      "0.2",
+      "0.35",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.3"
+    ]
+  },
+  "ControllerCritical": {
+    "values": [
+      "0.1"
+    ],
+    "durations": [
+      "kUntilShutOff"
+    ]
+  },
+  "CritActive": {
+    "values": [
+      "0.02",
+      "0.05",
+      "0.1"
+    ],
+    "durations": [
+      "10",
+      "15",
+      "90"
+    ]
+  },
+  "CritLarge": {
+    "values": [
+      "0.04",
+      "0.06",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "0.75",
+      "10.25",
+      "3.25"
+    ]
+  },
+  "CritPlayer": {
+    "values": [
+      "0.02",
+      "0.03",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "0.75",
+      "10.25",
+      "3.25"
+    ]
+  },
+  "CritSmall": {
+    "values": [
+      "0.02",
+      "0.03",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "0.75",
+      "10.25",
+      "3.25"
+    ]
+  },
+  "DeadlyLifetap": {
+    "values": [
+      "0.5",
+      "1"
+    ],
+    "durations": [
+      "60"
+    ]
+  },
+  "DebuffCritical": {
+    "values": [
+      "0.0",
+      "0.00",
+      "0.01",
+      "0.02",
+      "0.04",
+      "0.05",
+      "0.06",
+      "0.08",
+      "0.1",
+      "0.10",
+      "0.12"
+    ],
+    "durations": [
+      "10",
+      "10.25",
+      "3.25",
+      "90"
+    ]
+  },
+  "DefilerEnd": {
+    "values": [
+      "0.2",
+      "0.6"
+    ],
+    "durations": [
+      "300"
+    ]
+  },
+  "ECCritModLarge": {
+    "values": [
+      "0.04",
+      "0.06",
+      "0.33",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "0.75",
+      "10.25",
+      "2",
+      "3.25"
+    ]
+  },
+  "ECCritModPlayer": {
+    "values": [
+      "0.02",
+      "0.03",
+      "0.33",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "0.75",
+      "10.25",
+      "2",
+      "3.25"
+    ]
+  },
+  "ECCritModSmall": {
+    "values": [
+      "0.02",
+      "0.03",
+      "0.33",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "0.75",
+      "10.25",
+      "2",
+      "3.25"
+    ]
+  },
+  "EarthSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.75",
+      "10.25",
+      "15",
+      "2.25",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "ElectricSpecial": {
+    "values": [
+      "0.01",
+      "0.03"
+    ],
+    "durations": [
+      "10.25"
+    ]
+  },
+  "ElectricitySpecial": {
+    "values": [
+      "0.01",
+      "0.04"
+    ],
+    "durations": [
+      "0.25",
+      "0.5",
+      "0.75",
+      "10.25",
+      "15",
+      "2.25",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "EnergySpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.25",
+      "0.75",
+      "1.25",
+      "10.25",
+      "15",
+      "2.25",
+      "2.35",
+      "30",
+      "4.25",
+      "45",
+      "60"
+    ]
+  },
+  "FieryEmbrace": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "120",
+      "20"
+    ]
+  },
+  "FinesseSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.25",
+      "0.75",
+      "1.25",
+      "10.25",
+      "15",
+      "2.25",
+      "2.35",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "FireDamage": {
+    "values": [
+      "1",
+      "1.000"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "FireDamageDoT": {
+    "values": [
+      "-0.7",
+      "-0.8",
+      "-0.800",
+      "0.7",
+      "0.8",
+      "0.800"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "FireSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.25",
+      "0.75",
+      "10.25",
+      "15",
+      "2.25",
+      "2.35",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "FlightActive": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "0.75"
+    ]
+  },
+  "GenesisDoT": {
+    "values": [
+      "0.25",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.3"
+    ]
+  },
+  "GenesisMaxHp": {
+    "values": [
+      "0.25"
+    ],
+    "durations": [
+      "10.3"
+    ]
+  },
+  "GenesisResistance": {
+    "values": [
+      "0.25",
+      "0.75"
+    ],
+    "durations": [
+      "10.3"
+    ]
+  },
+  "GenesisStatus": {
+    "values": [
+      "0.08",
+      "0.1",
+      "0.12",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.3"
+    ]
+  },
+  "HailofBulletsCold": {
+    "values": [
+      "-0.5",
+      "-0.6",
+      "-0.600",
+      "0.5",
+      "0.6",
+      "0.600"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "HailofBulletsEndKnockback": {
+    "values": [
+      "-0.4",
+      "-0.400"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "HailofBulletsFire": {
+    "values": [
+      "-0.5",
+      "-0.6",
+      "-0.600",
+      "0.5",
+      "0.6",
+      "0.600"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "HailofBulletsKnockdown": {
+    "values": [
+      "-0.05",
+      "-0.050"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "HailofBulletsLethal": {
+    "values": [
+      "-0.5",
+      "-0.6",
+      "-0.600"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "HailofBulletsToxic": {
+    "values": [
+      "-0.5",
+      "-0.6",
+      "-0.600",
+      "0.5",
+      "0.6",
+      "0.600"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "Headshot": {
+    "values": [
+      "0.02",
+      "0.05",
+      "0.08",
+      "0.1"
+    ],
+    "durations": [
+      "10",
+      "3.25",
+      "60",
+      "90"
+    ]
+  },
+  "HealingAfterglow": {
+    "values": [
+      "0.4",
+      "0.75"
+    ],
+    "durations": [
+      "15.25",
+      "4.25"
+    ]
+  },
+  "HybridCC": {
+    "values": [
+      "0.3",
+      "0.45",
+      "0.7"
+    ],
+    "durations": [
+      "10.3"
+    ]
+  },
+  "IceSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.25",
+      "0.75",
+      "10.25",
+      "15",
+      "2.25",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "InterfaceDamage": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1",
+      "0.25",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.25",
+      "10.3"
+    ]
+  },
+  "InterfaceDefense": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1"
+    ],
+    "durations": [
+      "10.25"
+    ]
+  },
+  "InterfaceDoT": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1",
+      "0.25",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.25",
+      "10.3"
+    ]
+  },
+  "InterfaceMaxHP": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1"
+    ],
+    "durations": [
+      "10.25"
+    ]
+  },
+  "InterfaceMaxHp": {
+    "values": [
+      "0.25",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.3"
+    ]
+  },
+  "InterfaceMezResistance": {
+    "values": [
+      "0.25",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.3"
+    ]
+  },
+  "InterfaceMovement": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1",
+      "0.25",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.25",
+      "10.3"
+    ]
+  },
+  "InterfaceRecharge": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1",
+      "0.25",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.25",
+      "10.3"
+    ]
+  },
+  "InterfaceRecovery": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1"
+    ],
+    "durations": [
+      "10.25"
+    ]
+  },
+  "InterfaceRegen": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1",
+      "0.25",
+      "0.5",
+      "0.75",
+      "1"
+    ],
+    "durations": [
+      "10.25",
+      "10.3"
+    ]
+  },
+  "InterfaceResistance": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1",
+      "0.25",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.25",
+      "10.3"
+    ]
+  },
+  "InterfaceSpecial": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1",
+      "0.25",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.25",
+      "10.3"
+    ]
+  },
+  "InterfaceStatus": {
+    "values": [
+      "0",
+      "0.01",
+      "0.02",
+      "0.03",
+      "0.04",
+      "0.05",
+      "0.08",
+      "0.1",
+      "0.12",
+      "0.125",
+      "0.15",
+      "0.16",
+      "0.2",
+      "0.25",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "10.25",
+      "10.3"
+    ]
+  },
+  "InterfaceToHit": {
+    "values": [
+      "0.025",
+      "0.05",
+      "0.075",
+      "0.1",
+      "0.25",
+      "0.5",
+      "0.75",
+      "1"
+    ],
+    "durations": [
+      "10.25",
+      "10.3"
+    ]
+  },
+  "KillerBuff": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "9999"
+    ]
+  },
+  "LeeBuff": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "9999"
+    ]
+  },
+  "Lethal": {
+    "values": [
+      "-1",
+      "-1.000"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "LethalKB10": {
+    "values": [
+      "-0.1",
+      "-0.100"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "LethalKB25": {
+    "values": [
+      "-0.25",
+      "-0.250"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "LethalKB50": {
+    "values": [
+      "-0.5",
+      "-0.500"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "LethalKB70": {
+    "values": [
+      "-0.7",
+      "-0.700"
+    ],
+    "durations": [
+      "0.75",
+      "1.25",
+      "kUntilShutOff"
+    ]
+  },
+  "LifeSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.25",
+      "0.75",
+      "1.25",
+      "10.25",
+      "15",
+      "2.25",
+      "30",
+      "4.25",
+      "45",
+      "5.25",
+      "60",
+      "kUntilShutOff",
+      "kUntilShutoff"
+    ]
+  },
+  "LinkCharging": {
+    "values": [
+      "-2"
+    ],
+    "durations": [
+      "600"
+    ]
+  },
+  "LuminositySpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.25",
+      "0.75",
+      "10.25",
+      "15",
+      "20.25",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "MLCrit": {
+    "values": [
+      "0.02",
+      "0.03",
+      "0.075",
+      "0.1",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "0.75",
+      "10",
+      "10.25",
+      "3.25",
+      "90"
+    ]
+  },
+  "Marked": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "45"
+    ]
+  },
+  "MightSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.25",
+      "0.75",
+      "1.25",
+      "10.25",
+      "15",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "NBActive": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NBInactive": {
+    "values": [
+      "-1"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NBProwlerBrutalSwipeStun": {
+    "values": [
+      "0.15"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NBProwlerCloakCritActive": {
+    "values": [
+      "0.5"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NBProwlerCritActive": {
+    "values": [
+      "0.1"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NBProwlerFeralBlowStun": {
+    "values": [
+      "0.05"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NBProwlerPounceStun": {
+    "values": [
+      "0.25"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NBProwlerPrimalStrikeStun": {
+    "values": [
+      "0.3"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NBProwlerSavageBlowStun": {
+    "values": [
+      "0.3"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NBProwlerUpheavalStun": {
+    "values": [
+      "0.15"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NBProwlerViciousStrikeStun": {
+    "values": [
+      "0.1"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "NatureSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.25",
+      "0.75",
+      "1.75",
+      "10.25",
+      "15",
+      "2.25",
+      "2.35",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "NeuronClone": {
+    "values": [
+      "1",
+      "7"
+    ],
+    "durations": [
+      "5.25",
+      "kUntilShutOff"
+    ]
+  },
+  "PendragonEnrage": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "5.25"
+    ]
+  },
+  "PerfectionofBody": {
+    "values": [
+      "-1",
+      "1"
+    ],
+    "durations": [
+      "1.25"
+    ]
+  },
+  "PerfectionofMind": {
+    "values": [
+      "-1",
+      "1"
+    ],
+    "durations": [
+      "1.25"
+    ]
+  },
+  "PerfectionofSoul": {
+    "values": [
+      "-1",
+      "1"
+    ],
+    "durations": [
+      "1.25"
+    ]
+  },
+  "PetCrit": {
+    "values": [
+      "0.02",
+      "0.05",
+      "0.1"
+    ],
+    "durations": [
+      "10",
+      "90"
+    ]
+  },
+  "PeteyBuff": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "9999"
+    ]
+  },
+  "PlayerCrit": {
+    "values": [
+      "0.02",
+      "0.03",
+      "0.5",
+      "0.75"
+    ],
+    "durations": [
+      "0.75",
+      "10.25",
+      "3.25"
+    ]
+  },
+  "PresenceHealHigh": {
+    "values": [
+      "-1",
+      "-1.00"
+    ],
+    "durations": [
+      "10",
+      "30",
+      "60"
+    ]
+  },
+  "PresenceHealLow": {
+    "values": [
+      "1",
+      "1.00"
+    ],
+    "durations": [
+      "10",
+      "30",
+      "60"
+    ]
+  },
+  "PreventiveMedicine": {
+    "values": [
+      "-1"
+    ],
+    "durations": [
+      "120.1"
+    ]
+  },
+  "PsionicLink": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "600"
+    ]
+  },
+  "PsionicSpecial": {
+    "values": [
+      "0.01"
+    ],
+    "durations": [
+      "0.25",
+      "0.75",
+      "1.25",
+      "10.25",
+      "2.25",
+      "4.25"
+    ]
+  },
+  "PsychicSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.75",
+      "10.25",
+      "15",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "Rage": {
+    "values": [
+      "-1"
+    ],
+    "durations": [
+      "10"
+    ]
+  },
+  "RavagerEnd": {
+    "values": [
+      "0.2"
+    ],
+    "durations": [
+      "600"
+    ]
+  },
+  "ScourgeProc": {
+    "values": [
+      "0.75"
+    ],
+    "durations": [
+      "10.3"
+    ]
+  },
+  "SeedBlue": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "5.25"
+    ]
+  },
+  "SeedGreen": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "5.25"
+    ]
+  },
+  "SeedPurple": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "5.25"
+    ]
+  },
+  "SeedRed": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "5.25"
+    ]
+  },
+  "SeedYellow": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "5.25"
+    ]
+  },
+  "SentinelEnd": {
+    "values": [
+      "0.2"
+    ],
+    "durations": [
+      "600"
+    ]
+  },
+  "ShredRecharge": {
+    "values": [
+      "0.2"
+    ],
+    "durations": [
+      "15.1"
+    ]
+  },
+  "SntlOpt": {
+    "values": [
+      "0.025"
+    ],
+    "durations": [
+      "1"
+    ]
+  },
+  "SpeedRefresh": {
+    "values": [
+      "-1"
+    ],
+    "durations": [
+      "30"
+    ]
+  },
+  "StealthOn": {
+    "values": [
+      "-1"
+    ],
+    "durations": [
+      "0.75"
+    ]
+  },
+  "TargetDesignated": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "20"
+    ]
+  },
+  "Teleport4": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "25"
+    ]
+  },
+  "Teleport5": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "25"
+    ]
+  },
+  "Temporary_Powers.Temporary_Powers.FaeBlessing_HoldProc": {
+    "values": [
+      "0.08"
+    ],
+    "durations": [
+      "90"
+    ]
+  },
+  "ToxicDamage": {
+    "values": [
+      "1",
+      "1.000"
+    ],
+    "durations": [
+      "0.75",
+      "1.25"
+    ]
+  },
+  "UmbralSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.25",
+      "0.75",
+      "10.25",
+      "15",
+      "2.25",
+      "2.35",
+      "3.25",
+      "30",
+      "45",
+      "5.25",
+      "60",
+      "8.25"
+    ]
+  },
+  "VacuumSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.5",
+      "0.75",
+      "1.0",
+      "10.25",
+      "15",
+      "2.25",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "VibrationSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.5",
+      "0.75",
+      "1.25",
+      "10.25",
+      "15",
+      "2.25",
+      "30",
+      "45",
+      "60"
+    ]
+  },
+  "VortexCritical": {
+    "values": [
+      "1"
+    ],
+    "durations": [
+      "1.1"
+    ]
+  },
+  "WaterSpecial": {
+    "values": [
+      "0.01",
+      "0.03",
+      "0.04"
+    ],
+    "durations": [
+      "0.45",
+      "10.25",
+      "15",
+      "2.25",
+      "30",
+      "45",
+      "60"
+    ]
+  }
+}

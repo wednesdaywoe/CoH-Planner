@@ -109,58 +109,56 @@ def _warn_dropped(full_name: str, reason: str) -> None:
               f"(see total at end)", file=sys.stderr)
 
 
-def _detect_format(r: BinReader) -> tuple[bool, bool, bool]:
+def _detect_format(r: BinReader) -> tuple[bool, bool, bool, bool]:
     """Detect Parse7 powers.bin layout variant.
 
-    Tests the first 20 records across HC's 4 combinations of (has_41b, has_45b)
-    plus Thunderspy's Parse6-derived layout. Wrong layout shifts reads by 4+
-    bytes, producing implausible numeric values. Returns
-    (has_field_41b, has_field_45b, is_thunderspy). is_thunderspy is mutually
-    exclusive with the HC flags; when True, the others are False.
+    Tests the first 20 records across HC's 4 combinations of (has_41b, has_45b),
+    Thunderspy's Parse6-derived layout, and Veracity's variant. Wrong layout
+    shifts reads by 4+ bytes, producing implausible numeric values. Returns
+    (has_field_41b, has_field_45b, is_thunderspy, is_veracity). is_thunderspy /
+    is_veracity are mutually exclusive with the HC flags and each other; when
+    either is True, the HC flags are False.
     """
     save_pos = r.pos
-    best = (False, False, False)
+
+    def _score(parser) -> int:
+        r._pos = save_pos
+        score = 0
+        for _ in range(20):
+            rec_len = r.read_u4()
+            sub = r.sub_reader(rec_len)
+            try:
+                pw = parser(sub)
+                if (0 <= pw.range <= 500
+                        and 0 <= pw.recharge_time <= 3600
+                        and 0 <= pw.endurance_cost <= 500
+                        and 0 <= pw.time_to_activate <= 30):
+                    score += 1
+            except Exception:
+                pass
+            r.skip(rec_len)
+        return score
+
+    best = (False, False, False, False)
     best_score = -1
     # Try the 4 HC combos
     for has_41b in (False, True):
         for has_45b in (False, True):
-            r._pos = save_pos
-            score = 0
-            for _ in range(20):
-                rec_len = r.read_u4()
-                sub = r.sub_reader(rec_len)
-                try:
-                    pw = _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
-                    if (0 <= pw.range <= 500
-                            and 0 <= pw.recharge_time <= 3600
-                            and 0 <= pw.endurance_cost <= 500
-                            and 0 <= pw.time_to_activate <= 30):
-                        score += 1
-                except Exception:
-                    pass
-                r.skip(rec_len)
+            score = _score(lambda sub, a=has_45b, b=has_41b:
+                           _parse_power(sub, has_field_45b=a, has_field_41b=b))
             if score > best_score:
                 best_score = score
-                best = (has_41b, has_45b, False)
+                best = (has_41b, has_45b, False, False)
     # Try Thunderspy layout
-    r._pos = save_pos
-    score = 0
-    for _ in range(20):
-        rec_len = r.read_u4()
-        sub = r.sub_reader(rec_len)
-        try:
-            pw = _parse_power_parse6(sub, thunderspy=True)
-            if (0 <= pw.range <= 500
-                    and 0 <= pw.recharge_time <= 3600
-                    and 0 <= pw.endurance_cost <= 500
-                    and 0 <= pw.time_to_activate <= 30):
-                score += 1
-        except Exception:
-            pass
-        r.skip(rec_len)
+    score = _score(lambda sub: _parse_power_parse6(sub, thunderspy=True))
     if score > best_score:
         best_score = score
-        best = (False, False, True)
+        best = (False, False, True, False)
+    # Try Veracity layout
+    score = _score(lambda sub: _parse_power_parse6(sub, veracity=True))
+    if score > best_score:
+        best_score = score
+        best = (False, False, False, True)
     r._pos = save_pos
     return best
 
@@ -180,11 +178,15 @@ def parse_powers(bin_path_or_data) -> list[PowerRecord]:
         #   - field 45b (u4 between box_size and range) added in a past HC patch
         #   - field 41b (8 bytes after chain_delay) added in 2026 experimental patch
         # Wrong layout produces implausible values (negative range, huge recharge).
-        has_41b, has_45b, is_thunderspy = _detect_format(r)
+        has_41b, has_45b, is_thunderspy, is_veracity = _detect_format(r)
         if is_thunderspy:
             # Thunderspy: Parse7 wrapper, Parse6-derived schema with HC-style
             # box (24 bytes) and no field 43b. Reuses _parse_power_parse6.
             parser = lambda sub: _parse_power_parse6(sub, thunderspy=True)
+        elif is_veracity:
+            # Veracity: Parse7 wrapper, base retail field set + Dictionary,
+            # 43b present, box 24, HC-style EffectGroup effects.
+            parser = lambda sub: _parse_power_parse6(sub, veracity=True)
         else:
             parser = lambda sub: _parse_power(sub, has_field_45b=has_45b, has_field_41b=has_41b)
 
@@ -469,8 +471,15 @@ def _extract_params_parse6(tail_bytes: bytes, attribs: list[str]) -> dict | None
     return {'type': 'Power', 'power_names': power_names}
 
 
-def _parse_effect_template(r: BinReader) -> EffectTemplate:
-    """Parse a single attrib_mod template within an effect group."""
+def _parse_effect_template(r: BinReader, *, veracity: bool = False) -> EffectTemplate:
+    """Parse a single attrib_mod template within an effect group.
+
+    `veracity` selects the Veracity private-server variant, which is the HC
+    Parse7 template layout plus two fields inserted immediately after
+    `tick_chance`: HitsToBreak (u4) and HitBreakMinScale (f4). Confirmed by the
+    server dev and verified by hand-decoding Jab/Fire_Blast (the inserted fields
+    keep the downstream tick_mul/tick_add/stack reads aligned).
+    """
     # Attribs: u4_array where values are enum_index * 4
     raw_attribs = r.read_u4_array()
     attribs = [ATTRIB_NAME.get(v // 4, f"Unknown({v // 4})") for v in raw_attribs]
@@ -524,6 +533,12 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     # Tick fields
     app_period = r.read_f4()
     tick_chance = r.read_f4()
+    # Veracity inserts HitsToBreak (u4) + HitBreakMinScale (f4) here, between
+    # tick_chance and tick_mul (the "hits to break a hold/effect" mechanic). HC
+    # has neither field. Read-and-discard for now — not yet consumed downstream.
+    if veracity:
+        r.read_u4()   # HitsToBreak
+        r.read_f4()   # HitBreakMinScale
     tick_mul = r.read_f4()
     tick_add = r.read_f4()
 
@@ -656,7 +671,7 @@ def _parse_effect_template(r: BinReader) -> EffectTemplate:
     )
 
 
-def _parse_effect_group(r: BinReader) -> EffectGroup:
+def _parse_effect_group(r: BinReader, *, veracity: bool = False) -> EffectGroup:
     """Parse an effect group containing templates.
 
     Per the EffectGroup sub-descriptor at 0x1408ea180 (Ghidra dump in
@@ -673,7 +688,12 @@ def _parse_effect_group(r: BinReader) -> EffectGroup:
     whole binary. Reading as string fixes it for both formats.
     """
     tags = r.read_string_array()
-    _display_info = r.read_string()
+    # Veracity omits the DisplayInfo string that HC writes between Tag and the
+    # Chance/PPM/Delay/Radius block (verified by hand-decoding Jab/Fire_Blast:
+    # the numeric block follows Tag directly). Reading it on Veracity would shift
+    # every downstream field by 4 bytes and empty the group's templates.
+    if not veracity:
+        _display_info = r.read_string()
 
     # Effect header
     chance = r.read_f4()
@@ -705,6 +725,16 @@ def _parse_effect_group(r: BinReader) -> EffectGroup:
     else:
         is_pvp = "EITHER"
 
+    # Veracity encodes the PvE/PvP split in the group's Requires RPN
+    # (`enttype target> critter eq` / `… player eq`), parse6-style, rather than
+    # in the flags bitmask — so derive is_pvp from requires when the flags
+    # didn't already pin it. Mirrors the _parse_effects_parse6 logic.
+    if veracity and is_pvp == "EITHER":
+        if "target> player eq" in requires:
+            is_pvp = "PVP_ONLY"
+        elif "target> critter eq" in requires:
+            is_pvp = "PVE_ONLY"
+
     # Templates struct_array
     templates = []
     tmpl_count = r.read_u4()
@@ -712,7 +742,7 @@ def _parse_effect_group(r: BinReader) -> EffectGroup:
         tmpl_len = r.read_u4()
         tmpl_reader = r.sub_reader(tmpl_len)
         try:
-            tmpl = _parse_effect_template(tmpl_reader)
+            tmpl = _parse_effect_template(tmpl_reader, veracity=veracity)
             templates.append(tmpl)
         except Exception:
             pass  # Skip unparseable templates
@@ -730,7 +760,7 @@ def _parse_effect_group(r: BinReader) -> EffectGroup:
             child_len = r.read_u4()
             child_reader = r.sub_reader(child_len)
             try:
-                child = _parse_effect_group(child_reader)
+                child = _parse_effect_group(child_reader, veracity=veracity)
                 child_groups.append(child)
             except Exception:
                 pass
@@ -801,7 +831,7 @@ def _parse_redirects(r: BinReader) -> list[dict]:
     return out
 
 
-def _parse_effects(r: BinReader) -> tuple[list[EffectGroup], list[EffectGroup]]:
+def _parse_effects(r: BinReader, *, veracity: bool = False) -> tuple[list[EffectGroup], list[EffectGroup]]:
     """Parse the effects and activation_effects struct_arrays from a power record.
 
     The binary stores two parallel top-level structures:
@@ -826,11 +856,17 @@ def _parse_effects(r: BinReader) -> tuple[list[EffectGroup], list[EffectGroup]]:
         eff_len = r.read_u4()
         eff_reader = r.sub_reader(eff_len)
         try:
-            eg = _parse_effect_group(eff_reader)
+            eg = _parse_effect_group(eff_reader, veracity=veracity)
             effects.append(eg)
         except Exception:
             pass  # Skip unparseable effect groups
         r.skip(eff_len)
+
+    # Veracity's power-record tail (parse6-derived) has no ActivationEffect
+    # struct_array — effects are the final structure. Reading a second array
+    # would consume garbage; stop here.
+    if veracity:
+        return effects, []
 
     # ActivationEffects struct_array — same layout as regular effects.
     # Wrapped in try since not every power has this field present (older or
@@ -1573,17 +1609,35 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False) -> tuple[li
     return effects, []
 
 
-def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False) -> PowerRecord:
+def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
+                        veracity: bool = False) -> PowerRecord:
     """Parse a single power record (Parse6/Rebirth layout).
 
     The `thunderspy` flag selects Thunderspy's Parse7-wrapped variant of this
     schema, which differs from stock Parse6 in exactly two ways:
       - Field 43b (u4_array) is absent on Thunderspy (Parse6/Rebirth has it)
       - Box fields 44/45 are HC-style 24 bytes (2×f4×3), not Parse6's 8 bytes
-    Everything else — the missing HC extras (35b, 38/38b-d, 41b, 43c, 45b, 48b,
-    52b), the post-boosts tail (5 u4_arrays + flat AttribMod struct_array, no
-    Redirect, no ActivationEffect) — is identical to Parse6.
+
+    The `veracity` flag selects the Veracity private-server variant — a third
+    point in the design space, reverse-engineered 2026-06-23 (see
+    [[veracity-bin-recon]]). Veracity is Parse7-wrapped (string table) with the
+    *base* retail field set (no HC extras), and differs from stock Parse6 by:
+      - A `Dictionary` string_array inserted after the 6 requires arrays,
+        immediately before reward_fallback (carries `Quick_Attack` etc.).
+      - Field 43b PRESENT (like Parse6/Rebirth).
+      - Box 24 bytes (HC-style, like Thunderspy).
+      - Effects use the HC EffectGroup struct (Tag/Chance/PPM/Delay/Radii/
+        Requires/Flags/EvalFlags/templates) — NOT the flat Parse6 AttribMod
+        array — but with NO DisplayInfo field and an extra HitsToBreak/
+        HitBreakMinScale pair per template. No Redirect, no ActivationEffect.
+    Validated against Jab/Fire_Blast/Hand_Clap (range/recharge/end exact;
+    Ranged_Damage/Melee_Damage scales + fire DoT tickRate + PvE/PvP split +
+    combo/faction-conditional requires all resolve).
     """
+    # 43b is present for Parse6/Rebirth AND Veracity; absent only on Thunderspy.
+    has_43b = (not thunderspy) or veracity
+    # Box is HC-style 24 bytes on Thunderspy and Veracity; 8 bytes on Parse6.
+    box_24 = thunderspy or veracity
 
     # 1-9: Same as Parse7 minus HC extras
     full_name = r.read_string()
@@ -1616,7 +1670,9 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False) -> PowerRecor
     target_requires = " ".join(target_requires_parts) if target_requires_parts else ""
     r.read_string_array()  # 30
     r.read_string_array()  # 31
-    r.read_string()  # 32
+    if veracity:
+        r.read_string_array()  # 31b Dictionary (Veracity only)
+    r.read_string()  # 32 reward_fallback
     accuracy = r.read_f4()  # 33
     cast_through, toggle_ignore = _parse_cast_flags(r)  # 34
     r.read_u4()  # 35 ai_report
@@ -1629,10 +1685,10 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False) -> PowerRecor
     r.read_f4()  # 41 chain_delay
     r.read_string_array()  # 42
     r.read_string_array()  # 43
-    if not thunderspy:
-        r.read_u4_array()  # 43b (present in Parse6/Rebirth, absent in Thunderspy)
-    if thunderspy:
-        r.skip(24)  # 44-45 box (HC-style 2×f4×3 = 24 bytes)
+    if has_43b:
+        r.read_u4_array()  # 43b (present in Parse6/Rebirth + Veracity, absent in Thunderspy)
+    if box_24:
+        r.skip(24)  # 44-45 box (HC-style 2×f4×3 = 24 bytes; Thunderspy + Veracity)
     else:
         r.skip(8)  # 44-45 box (Parse6: 2×f4 = 8 bytes)
     range_val = r.read_f4()  # 46
@@ -1664,8 +1720,10 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False) -> PowerRecor
     boosts_raw = r.read_u4_array()  # 73
     # Parse6 (Rebirth) uses a different BOOST_TYPE enum than Parse7 (HC) —
     # see _enums.py BOOST_TYPE_REBIRTH for the divergence. Thunderspy predates
-    # the Rebirth-only positions 10/36, so it uses HC's stock enum.
-    boost_map = BOOST_TYPE if thunderspy else BOOST_TYPE_REBIRTH
+    # the Rebirth-only positions 10/36, so it uses HC's stock enum. Veracity
+    # likewise indexes HC-style (its attribs/effects all resolve via the HC
+    # tables), so it uses the stock BOOST_TYPE too.
+    boost_map = BOOST_TYPE if (thunderspy or veracity) else BOOST_TYPE_REBIRTH
     boosts_allowed = [boost_map.get(v, f"Unknown({v})") for v in boosts_raw]
     # 74: u4_array of mode/group refs (see HC parser comment). Not
     # allowed_boostset_cats — that field doesn't exist in the binary.
@@ -1693,7 +1751,12 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False) -> PowerRecor
         r.read_u4_array()  # ModesDisallowed
         r.read_u4_array()  # ModesSuspended
         try:
-            effects, activation_effects = _parse_effects_parse6(r, thunderspy=thunderspy)
+            if veracity:
+                # Veracity uses HC-style EffectGroup effects (no Redirect /
+                # ActivationEffect precede them), reached directly here.
+                effects, activation_effects = _parse_effects(r, veracity=True)
+            else:
+                effects, activation_effects = _parse_effects_parse6(r, thunderspy=thunderspy)
         except Exception:
             effects = []
             activation_effects = []
