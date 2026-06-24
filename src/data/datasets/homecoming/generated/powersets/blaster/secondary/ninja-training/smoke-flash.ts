@@ -23,7 +23,7 @@ export const SmokeFlash: Power = {
     "radius": 20,
     "recharge": 90,
     "endurance": 2.6,
-    "castTime": 1.83,
+    "castTime": 1.67,
     "maxTargets": 10
   },
   "allowedEnhancements": [

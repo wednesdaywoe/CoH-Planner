@@ -100,10 +100,10 @@
           "type": "Magnitude",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "4 seconds",
+          "target": "Self",
+          "table": "Melee_Level",
+          "scale": 1.0,
+          "duration": "1 seconds",
           "magnitude": 1.0,
           "delay": 0.625,
           "duration_expression": "",
@@ -114,20 +114,21 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Replace",
+          "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "Pets_Shield_Charge_Stalker",
-            "priority_list": "PL_StaticObject"
+            "entity_def": "PL_StaticObject",
+            "display_name": "Shield Charge",
+            "redirects": [
+              "Redirects.Shield_Defense.Shield_Charge_AoE"
+            ]
           },
           "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance",
             "CopyBoosts"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1280
         }
       ]
     }

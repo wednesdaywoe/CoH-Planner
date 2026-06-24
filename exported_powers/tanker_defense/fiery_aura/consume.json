@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Consume",
   "display_fullname": "Tanker Defense Fiery Aura Consume",
-  "display_help": "You can drain body heat from all nearby foes, and even from the air itself, increasing your health, resistance against endurance drain, as well as replenishing your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.<br><br>HP and End Drain resistance do not scale with enemy count, but will be granted even if there are no enemies nearby.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Long.</color>",
+  "display_help": "You can drain body heat from all nearby foes, and even from the air itself, increasing your health, resistance against endurance drain, as well as replenishing your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.<br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>10</color> seconds and each affected foe will increase the recharge by <color #FF7F27>5</color> seconds for a maximum total of <color #FF7F27>60</color> seconds.</color>",
   "display_short_help": "PBAoE, DMG(Fire), Self +End, +Max HP",
   "icon": "flamingshield_consume.png",
   "auto_issue": false,
@@ -18,7 +18,7 @@
   "range": 0.0,
   "range_secondary": 0.0,
   "activation_time": 2.03,
-  "recharge_time": 180.0,
+  "recharge_time": 10.0,
   "activate_period": 0.0,
   "endurance_cost": 0.52,
   "interrupt_time": 0.0,
@@ -69,67 +69,123 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Endurance"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 20.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.25,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1056
-        },
-        {
-          "attribs": [
-            "Recovery"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 0.05,
-          "duration": "15 seconds",
-          "magnitude": 1.0,
-          "delay": 0.25,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1056
-        }
-      ],
+      "templates": [],
       "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "tags": [],
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Endurance"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 15.0,
+              "duration": "0 seconds",
+              "magnitude": 1.0,
+              "delay": 0.25,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags": [
+                "IgnoreResistance",
+                "IgnoreCombatMods"
+              ],
+              "flags_raw": 96
+            },
+            {
+              "attribs": [
+                "Recovery"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.05,
+              "duration": "15 seconds",
+              "magnitude": 1.0,
+              "delay": 0.25,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags": [
+                "IgnoreResistance"
+              ],
+              "flags_raw": 1056
+            },
+            {
+              "attribs": [
+                "Recharge_Power"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 5.0,
+              "duration": "0 seconds",
+              "magnitude": 0.0,
+              "delay": 2.049999952316284,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "params": {
+                "type": "Power",
+                "power_names": [
+                  "Brute_Defense.Fiery_Aura.Consume",
+                  "Mission_Maker_Secondary.Fiery_Aura.Consume",
+                  "Scrapper_Defense.Fiery_Aura.Consume",
+                  "Sentinel_Defense.Fiery_Aura.Consume",
+                  "Stalker_Defense.Fiery_Aura.Consume",
+                  "Tanker_Defense.Fiery_Aura.Consume"
+                ]
+              },
+              "flags": [
+                "IgnoreCombatMods",
+                "NoHitDelay",
+                "NoProjectileDelay"
+              ],
+              "flags_raw": 196928
+            }
+          ]
+        },
         {
           "chance": 1.0,
           "ppm": 0.0,
@@ -167,50 +223,77 @@
               "stack_limit": 2,
               "stack_key": null,
               "flags_raw": 1280
-            }
-          ],
-          "child_effects": [
+            },
             {
-              "chance": 0.0,
-              "ppm": 0.0,
-              "delay": 0.0,
-              "radius_inner": -1.0,
-              "radius_outer": -1.0,
-              "requires_expression": "",
-              "tags": [
-                "FieryEmbrace"
+              "attribs": [
+                "Fire_Dmg"
               ],
-              "flags": [],
-              "is_pvp": "EITHER",
-              "eval_flags": 0,
-              "templates": [
-                {
-                  "attribs": [
-                    "Fire_Dmg"
-                  ],
-                  "type": "Magnitude",
-                  "application_type": "Immediate",
-                  "aspect": "Absolute",
-                  "target": "AnyAffected",
-                  "table": "Melee_Damage",
-                  "scale": 0.4871,
-                  "duration": "0 seconds",
-                  "magnitude": 1.0,
-                  "delay": 0.0,
-                  "duration_expression": "",
-                  "magnitude_expression": "",
-                  "application_period": 0.0,
-                  "tick_chance": 1.0,
-                  "tick_mag_multiplier": 1.0,
-                  "tick_mag_additive": 0.0,
-                  "jit_requires": "",
-                  "caster_stack": "Individual",
-                  "stack": "Stack",
-                  "stack_limit": 2,
-                  "stack_key": null,
-                  "flags_raw": 1280
-                }
-              ]
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "AnyAffected",
+              "table": "Melee_Damage",
+              "scale": 0.1,
+              "duration": "2.10 seconds",
+              "magnitude": 1.0,
+              "delay": 0.5,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.75,
+              "tick_chance": 0.800000011920929,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags": [
+                "CancelOnMiss"
+              ],
+              "flags_raw": 1284
+            }
+          ]
+        },
+        {
+          "chance": 0.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "tags": [
+            "FieryEmbrace"
+          ],
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Fire_Dmg"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Absolute",
+              "target": "AnyAffected",
+              "table": "Melee_Damage",
+              "scale": 0.18,
+              "duration": "0 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags_raw": 1280
             }
           ]
         }

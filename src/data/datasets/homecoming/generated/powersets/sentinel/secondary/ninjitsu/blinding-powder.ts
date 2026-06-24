@@ -12,25 +12,27 @@ export const BlindingPowder: Power = {
   "name": "Blinding Powder",
   "internalName": "Blinding_Powder",
   "available": 27,
-  "description": "You throw a handful of Blinding powder in a wide arc at your foes. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.Recharge: Long.",
-  "shortHelp": "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
+  "description": "Blinding powder can be thrown in a wide arc that can briefly distract your foes and Placate them so they can no longer find or target you. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.During the chaos, your chances to critically hit are improved.",
+  "shortHelp": "Ranged (Cone), Foe Placate, -To Hit, Sleep, Confuse, -Perception, +Special",
   "icon": "ninjitsu_blindingpowder.png",
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
   "stats": {
     "accuracy": 1,
-    "range": 25,
-    "radius": 25,
-    "arc": 0.7853981852531433,
-    "recharge": 120,
-    "endurance": 7.8,
+    "range": 40,
+    "radius": 40,
+    "arc": 1.5707963705062866,
+    "recharge": 90,
+    "endurance": 12.28,
     "castTime": 1.07,
     "maxTargets": 10
   },
   "allowedEnhancements": [
+    "Taunt",
     "EnduranceReduction",
     "Range",
+    "Sleep",
     "Recharge",
     "ToHit Debuff",
     "Confuse",
@@ -39,19 +41,20 @@ export const BlindingPowder: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Confuse",
+    "Sleep",
+    "Threat Duration",
     "To Hit Debuff"
   ],
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 2,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Sleep"
     },
-    "confuse": {
-      "mag": 2,
-      "scale": 20,
-      "table": "Melee_Immobilize"
+    "placate": {
+      "scale": 6,
+      "table": "Melee_Taunt"
     },
     "perceptionDebuff": {
       "scale": 0.9,
@@ -64,6 +67,11 @@ export const BlindingPowder: Power = {
     "tohitDebuff": {
       "scale": 1,
       "table": "Melee_DeBuff_ToHit"
+    },
+    "confuse": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Immobilize"
     },
     "buffDuration": 20
   },

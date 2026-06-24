@@ -41,6 +41,7 @@ export const KujiInRetsu: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Endurance Modification",
+    "Healing",
     "Running",
     "Running & Sprints",
     "Universal Travel"

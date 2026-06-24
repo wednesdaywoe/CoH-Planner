@@ -12,7 +12,7 @@ export const RisetotheChallenge: Power = {
   "name": "Rise to the Challenge",
   "internalName": "Rise_to_the_Challenge",
   "available": 7,
-  "description": "The more the odds are against you, the more determined you become. When surrounded by foes, your ability to regenerate health increases greatly. Additionally, your resolve and the look in your eye is enough to leave most foes shaken, so their attacks are less accurate. The first foe you engage in melee grants the highest regeneration bonus, and up to 10 foes can contribute to this effect.Recharge: Moderate.",
+  "description": "The more the odds are against you, the more determined you become. When surrounded by foes, your ability to regenerate health increases greatly. Additionally, your resolve and the look in your eye is enough to leave most foes shaken, so their attacks are less accurate. The first foe you engage in melee grants the highest regeneration bonus, and up to 10 foes can contribute to this effect.",
   "shortHelp": "Toggle: Self +Regen, Foe -ACC",
   "icon": "willpower_risetothechallenge.png",
   "powerType": "Toggle",
@@ -52,17 +52,24 @@ export const RisetotheChallenge: Power = {
     },
     "durations": {
       "tohitDebuff": 1,
-      "regenBuff": 1.12
+      "regenBuff": 1,
+      "debuffResistance": 1
     },
     "regenBuff": {
       "scale": 1.25,
       "table": "Melee_Ones",
       "perTarget": 0.25
     },
+    "debuffResistance": {
+      "regeneration": {
+        "scale": 0.0225,
+        "table": "Melee_Ones"
+      }
+    },
     "taunt": {
-      "scale": 1.1,
+      "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 1.12
+    "buffDuration": 1
   }
 };

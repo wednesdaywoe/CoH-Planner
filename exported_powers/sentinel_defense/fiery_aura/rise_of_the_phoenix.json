@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Phoenix Rising",
   "display_fullname": "Sentinel Defense Fiery Aura Rise of the Phoenix",
-  "display_help": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Gift of the Phoenix will leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.<br><br>You can also use this power even if you have not been defeated, with weakend effects. The closer you are to being defeated, the stronger the effects will be. You need to be under 75% health to activate this power.<br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Very Long.</color>",
-  "display_short_help": "Self Rez, Special",
+  "display_help": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Phoenix Rising will leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.<br><br>You can also use this power even if you have not been defeated, with weakend effects. The closer you are to being defeated, the stronger the effects will be.",
+  "display_short_help": "Self Heal, MaxHP, Rez, Special",
   "icon": "flamingshield_riseofthephoenix.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -20,7 +20,7 @@
   "activation_time": 2.0,
   "recharge_time": 300.0,
   "activate_period": 0.0,
-  "endurance_cost": 0.0,
+  "endurance_cost": 10.4,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -32,6 +32,7 @@
   ],
   "boosts_allowed": [
     "Recovery",
+    "EnduranceDiscount",
     "Stun",
     "Recharge",
     "Heal",
@@ -52,55 +53,17 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [],
-  "effects": [
+  "effects": [],
+  "redirect": [
     {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Execute_Power"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Strength",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 0.0,
-          "duration": "0 seconds",
-          "magnitude": 0.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Redirects.Fiery_Aura.Phoenix"
-            ]
-          },
-          "flags": [
-            "CopyBoosts"
-          ],
-          "flags_raw": 1280
-        }
-      ]
+      "name": "Redirects.Fiery_Aura.Phoenix_Rising_Concious",
+      "condition_expression": "Cur.kHitPoints source> 0 >",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Fiery_Aura.Phoenix_Rising_Defeated",
+      "condition_expression": "Always",
+      "show_in_info": true
     }
   ],
   "available_level": 29,

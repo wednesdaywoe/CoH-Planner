@@ -5,15 +5,15 @@
   "type": "Click",
   "display_name": "Burn",
   "display_fullname": "Tanker Defense Fiery Aura Burn",
-  "display_help": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power.<br><br><color #fcfc95>Damage: Moderate.</color><br><color #fcfc95>Recharge: Slow.</color>",
-  "display_short_help": "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
+  "display_help": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power.",
+  "display_short_help": "Location (PBAoE), DoT (Fire), Self Res(Immobilize, Knockback)",
   "icon": "flamingshield_burn.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "accuracy": 1.0,
-  "effect_area": "Sphere",
-  "max_targets_hit": 5,
-  "radius": 12.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
@@ -25,10 +25,10 @@
   "target_type": "Self",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "None"
+    "Self"
   ],
   "targets_affected": [
-    "Foe"
+    "Self"
   ],
   "boosts_allowed": [
     "Taunt",
@@ -54,92 +54,6 @@
     124
   ],
   "effects": [
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Fire_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Damage",
-          "scale": 1.1314,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags_raw": 1280
-        }
-      ],
-      "child_effects": [
-        {
-          "chance": 0.0,
-          "ppm": 0.0,
-          "delay": 0.0,
-          "radius_inner": -1.0,
-          "radius_outer": -1.0,
-          "requires_expression": "enttype target> critter eq",
-          "tags": [
-            "FieryEmbrace"
-          ],
-          "flags": [],
-          "is_pvp": "EITHER",
-          "eval_flags": 0,
-          "templates": [
-            {
-              "attribs": [
-                "Fire_Dmg"
-              ],
-              "type": "Magnitude",
-              "application_type": "Immediate",
-              "aspect": "Absolute",
-              "target": "AnyAffected",
-              "table": "Melee_Damage",
-              "scale": 0.648,
-              "duration": "0 seconds",
-              "magnitude": 1.0,
-              "delay": 0.0,
-              "duration_expression": "",
-              "magnitude_expression": "",
-              "application_period": 0.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": "",
-              "caster_stack": "Individual",
-              "stack": "Stack",
-              "stack_limit": 2,
-              "stack_key": null,
-              "flags_raw": 1280
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "activation_effects": [
     {
       "chance": 1.0,
       "ppm": 0.0,
@@ -288,62 +202,8 @@
                 "entity_def": "PL_StaticObject",
                 "display_name": "Burn Flames",
                 "redirects": [
-                  "Pets.ResistAll.ResistAll",
-                  "Redirects.Fiery_Aura.Burn"
-                ]
-              },
-              "flags": [
-                "CopyBoosts"
-              ],
-              "flags_raw": 1280
-            }
-          ]
-        },
-        {
-          "chance": 0.0,
-          "ppm": 0.0,
-          "delay": 0.0,
-          "radius_inner": -1.0,
-          "radius_outer": -1.0,
-          "requires_expression": "",
-          "tags": [
-            "FieryEmbrace"
-          ],
-          "flags": [],
-          "is_pvp": "EITHER",
-          "eval_flags": 0,
-          "templates": [
-            {
-              "attribs": [
-                "Create_Entity"
-              ],
-              "type": "Magnitude",
-              "application_type": "Immediate",
-              "aspect": "Current",
-              "target": "Self",
-              "table": "Melee_Level",
-              "scale": 1.0,
-              "duration": "4.50 seconds",
-              "magnitude": 1.0,
-              "delay": 0.4000000059604645,
-              "duration_expression": "",
-              "magnitude_expression": "",
-              "application_period": 0.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": "",
-              "caster_stack": "Individual",
-              "stack": "Stack",
-              "stack_limit": 2,
-              "stack_key": null,
-              "params": {
-                "type": "EntCreate",
-                "entity_def": "PL_StaticObject",
-                "display_name": "Burn Embraced Flames",
-                "redirects": [
-                  "Pets.ResistAll.ResistAll",
-                  "Redirects.Fiery_Aura.Burn"
+                  "Redirects.Fiery_Aura.FieryBurn",
+                  "Redirects.Fiery_Aura.FieryBurn_FrontDamage"
                 ]
               },
               "flags": [

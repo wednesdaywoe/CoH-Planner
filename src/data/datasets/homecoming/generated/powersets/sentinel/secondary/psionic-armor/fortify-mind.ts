@@ -75,5 +75,12 @@ export const FortifyMind: Power = {
     "stacksLinear": [
       "absorb"
     ]
-  }
+  },
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": -2,
+      "label": "Global_Chance_Mod"
+    }
+  ]
 };

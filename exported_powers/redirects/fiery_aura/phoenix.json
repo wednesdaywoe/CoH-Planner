@@ -2,10 +2,10 @@
   "name": "Phoenix",
   "full_name": "Redirects.Fiery_Aura.Phoenix",
   "short_name": "Phoenix",
-  "type": "Click",
+  "type": "Auto",
   "display_name": "Phoenix",
   "display_fullname": "Redirects Fiery Aura Phoenix",
-  "display_help": "All foes near the power of the Phoenix will be burned and knocked back.<br><br><color #fcfc95>Damage: Extreme.</color>",
+  "display_help": "All foes near the power of the Phoenix will be burned and knocked back.",
   "display_short_help": "Phoenix",
   "icon": "flamingshield_riseofthephoenix.png",
   "auto_issue": false,
@@ -18,8 +18,8 @@
   "range": 0.0,
   "range_secondary": 0.0,
   "activation_time": 0.0,
-  "recharge_time": 0.0,
-  "activate_period": 2.0,
+  "recharge_time": 20.0,
+  "activate_period": 20.0,
   "endurance_cost": 0.0,
   "interrupt_time": 0.0,
   "target_type": "Self",
@@ -70,13 +70,39 @@
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
-          "scale": 4.0,
+          "scale": 3.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
+        },
+        {
+          "attribs": [
+            "Fire_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Damage",
+          "scale": 0.2,
+          "duration": "7.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.75,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
@@ -108,11 +134,11 @@
           "delay": 0.0,
           "radius_inner": -1.0,
           "radius_outer": -1.0,
-          "requires_expression": "kHitPoints% source> 0 ==",
+          "requires_expression": "kHitPoints% source.owner> 0 ==",
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
-          "eval_flags": 4,
+          "eval_flags": 0,
           "templates": [
             {
               "attribs": [
@@ -144,7 +170,7 @@
               "attribs": [
                 "Stunned"
               ],
-              "type": "Expression",
+              "type": "Duration",
               "application_type": "Immediate",
               "aspect": "Current",
               "target": "AnyAffected",
@@ -348,213 +374,6 @@
             "DeepSleep"
           ],
           "flags_raw": 2560
-        }
-      ]
-    }
-  ],
-  "activation_effects": [
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 4,
-      "templates": [
-        {
-          "attribs": [
-            "Null"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "5 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags_raw": 1280
-        },
-        {
-          "attribs": [
-            "Heal_Dmg"
-          ],
-          "type": "Expression",
-          "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "Self",
-          "table": "Melee_HealSelf",
-          "scale": 5.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags_raw": 1280
-        },
-        {
-          "attribs": [
-            "Endurance"
-          ],
-          "type": "Expression",
-          "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 50.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags_raw": 1280
-        }
-      ],
-      "child_effects": [
-        {
-          "chance": 1.0,
-          "ppm": 0.0,
-          "delay": 0.0,
-          "radius_inner": -1.0,
-          "radius_outer": -1.0,
-          "requires_expression": "kHitPoints% source> 0 ==",
-          "tags": [],
-          "flags": [],
-          "is_pvp": "EITHER",
-          "eval_flags": 1,
-          "templates": [
-            {
-              "attribs": [
-                "Null"
-              ],
-              "type": "Magnitude",
-              "application_type": "Immediate",
-              "aspect": "Absolute",
-              "target": "Self",
-              "table": "Melee_Ones",
-              "scale": 5.0,
-              "duration": "0.50 seconds",
-              "magnitude": 1.0,
-              "delay": 0.0,
-              "duration_expression": "",
-              "magnitude_expression": "",
-              "application_period": 1.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": "",
-              "caster_stack": "Individual",
-              "stack": "Stack",
-              "stack_limit": 2,
-              "stack_key": null,
-              "flags": [
-                "IgnoreResistance"
-              ],
-              "flags_raw": 1056
-            },
-            {
-              "attribs": [
-                "Immobilized"
-              ],
-              "type": "Duration",
-              "application_type": "Immediate",
-              "aspect": "Current",
-              "target": "Self",
-              "table": "Melee_Ones",
-              "scale": 4.0,
-              "duration": "0 seconds",
-              "magnitude": 500.0,
-              "delay": 0.0,
-              "duration_expression": "",
-              "magnitude_expression": "",
-              "application_period": 0.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": "",
-              "caster_stack": "Individual",
-              "stack": "Stack",
-              "stack_limit": 2,
-              "stack_key": null,
-              "flags": [
-                "IgnoreStrength",
-                "IgnoreResistance",
-                "DeepSleep",
-                "KeepThroughDeath"
-              ],
-              "flags_raw": 18480
-            },
-            {
-              "attribs": [
-                "Execute_Power"
-              ],
-              "type": "Magnitude",
-              "application_type": "Immediate",
-              "aspect": "Strength",
-              "target": "AnyAffected",
-              "table": "Melee_Ones",
-              "scale": 0.0,
-              "duration": "0 seconds",
-              "magnitude": 0.0,
-              "delay": 0.0,
-              "duration_expression": "",
-              "magnitude_expression": "",
-              "application_period": 0.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": "",
-              "caster_stack": "Individual",
-              "stack": "Stack",
-              "stack_limit": 2,
-              "stack_key": null,
-              "params": {
-                "type": "Power",
-                "power_names": [
-                  "Redirects.Comeback.Comeback",
-                  "Redirects.Comeback.Debt_Protection"
-                ]
-              },
-              "flags": [
-                "CopyBoosts"
-              ],
-              "flags_raw": 1280
-            }
-          ]
         }
       ]
     }

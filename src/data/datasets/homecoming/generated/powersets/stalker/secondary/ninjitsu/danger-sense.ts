@@ -12,7 +12,7 @@ export const DangerSense: Power = {
   "name": "Danger Sense",
   "internalName": "Danger_Sense",
   "available": 3,
-  "description": "You become more evasive against ranged and area attacks while you have Danger Sense activated. This will increase your Defense versus ranged and Area of Effect attacks as long as it is active. Your Danger Sense also allow you to perceive stealthy foes and resist Defense DeBuffs.Recharge: Fast.",
+  "description": "You become more evasive against ranged and area attacks while you have Danger Sense activated. This will increase your Defense versus ranged and Area of Effect attacks as long as it is active. Your Danger Sense also allow you to perceive stealthy foes and resist Defense DeBuffs.",
   "shortHelp": "Toggle: Self +DEF(Ranged, AoE), +Perception, Res(DeBuff DEF)",
   "icon": "ninjitsu_dangersense.png",
   "powerType": "Toggle",

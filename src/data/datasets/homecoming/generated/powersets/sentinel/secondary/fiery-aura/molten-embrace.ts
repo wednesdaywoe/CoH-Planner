@@ -12,7 +12,7 @@ export const MoltenEmbrace: Power = {
   "name": "Molten Embrace",
   "internalName": "Molten_Embrace",
   "available": 0,
-  "description": "Molten Embrace superheats your attacks, increasing the damage they inflict. In addition, all your attacks will have a chance to inflict fire damage over time.Recharge: Moderate.",
+  "description": "Molten Embrace superheats your attacks, increasing the damage they inflict. In addition, all your attacks will have a chance to inflict fire damage over time.",
   "shortHelp": "Toggle: +Dmg, +Special",
   "icon": "flamingshield_fieryembrace.png",
   "powerType": "Toggle",

@@ -74,31 +74,31 @@ export const StridentEcho: Power = {
   "effects": {
     "debuffResistance": {
       "defense": {
-        "scale": 0.8,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "endurance": {
-        "scale": 0.8,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "tohit": {
-        "scale": 0.8,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "movement": {
-        "scale": 0.8,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "regeneration": {
-        "scale": 0.8,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "recovery": {
-        "scale": 0.8,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
       "recharge": {
-        "scale": 0.8,
+        "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       }
     },

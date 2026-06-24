@@ -19,17 +19,19 @@ export const ObscureSustenance: Power = {
   "targetType": "Self",
   "effectArea": "SingleTarget",
   "stats": {
-    "accuracy": 2,
+    "accuracy": 1,
     "recharge": 60,
     "endurance": 10.4,
     "castTime": 1.93
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Recharge",
     "Healing"
   ],
   "allowedSetCategories": [
+    "Endurance Modification",
     "Healing"
   ],
   "maxSlots": 6,
@@ -45,7 +47,7 @@ export const ObscureSustenance: Power = {
     },
     "durations": {
       "regenBuff": 60,
-      "recoveryBuff": 30,
+      "recoveryBuff": 60,
       "debuffResistance": 60
     },
     "recoveryBuff": {

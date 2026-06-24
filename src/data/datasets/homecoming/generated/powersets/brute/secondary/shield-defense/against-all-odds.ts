@@ -43,7 +43,7 @@ export const AgainstallOdds: Power = {
   "maxSlots": 6,
   "effects": {
     "damageBuff": {
-      "scale": 2.55,
+      "scale": 1.55,
       "table": "Melee_Buff_Dmg",
       "perTarget": 0.55
     },

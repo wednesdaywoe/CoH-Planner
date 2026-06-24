@@ -13,8 +13,7 @@
     "Stalker_Defense.Fiery_Aura.Consume",
     "Stalker_Defense.Fiery_Aura.Burn",
     "Stalker_Defense.Fiery_Aura.Cauterizing_Blaze",
-    "Stalker_Defense.Fiery_Aura.Rise_of_the_Phoenix",
-    "Stalker_Defense.Fiery_Aura.Phoenix_Rising"
+    "Stalker_Defense.Fiery_Aura.Rise_of_the_Phoenix"
   ],
   "available_level": [
     0,
@@ -25,11 +24,10 @@
     19,
     23,
     27,
-    29,
-    0
+    29
   ],
   "power_display_names": [
-    "Hide",
+    "Hidden Flame",
     "Fire Shield",
     "Healing Flames",
     "Temperature Protection",
@@ -37,19 +35,17 @@
     "Consume",
     "Burn",
     "Cauterizing Blaze",
-    "Phoenix Rising",
     "Phoenix Rising"
   ],
   "power_short_helps": [
     "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
     "Toggle: Self +Res(Fire, Lethal, Smash, Cold, Disorient)",
-    "Self Heal, +Res(Toxic)",
-    "Auto: Self +Res(Fire, Cold, Slow, Knock), +Regen",
+    "Self Heal, +Res(Toxic, Psionic)",
+    "Auto: Self +Res(Fire, Cold, Toxic, Psionic, Slow, Fear, Knock), +Regen, +Max HP",
     "Toggle: Self +Res(Energy, Negative, Fire, Hold, Sleep)",
     "PBAoE, DMG(Fire), Self +End, +Max HP",
-    "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
-    "Toggle: Self +Heal Over Time",
-    "Self Rez, Special",
-    "Self Rez, Special"
+    "Location (PBAoE), DoT (Fire), Self Res(Immobilize, Knockback)",
+    "Toggle: Self +Heal Over Time, +DMG",
+    "Self Heal, MaxHP, Rez, Special"
   ]
 }

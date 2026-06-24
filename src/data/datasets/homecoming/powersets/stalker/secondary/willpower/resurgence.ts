@@ -1,5 +1,5 @@
 /**
- * Resurgence — COMPOSED EXPORT
+ * Up to the Challenge — COMPOSED EXPORT
  *
  * The planner imports from here. Composes the auto-generated power object
  * with hand-written overrides via `withOverrides`. See src/data/README.md

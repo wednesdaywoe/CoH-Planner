@@ -40,7 +40,7 @@
   "power_short_helps": [
     "Melee, DMG(Energy/Smash), Foe Knockback, -Res(Debuffs)",
     "Melee, DMG(Energy/Smash), -Res(Debuffs), Foe Chance for Hold",
-    "Melee Toggle, DMG(Energy), Foe DOT(Energy), Special",
+    "Melee Toggle, Foe DOT(Energy), Foe -Res(DMG, Debuffs), Special",
     "Melee, DMG(Energy/Smashing), Sleep, -Res(DMG)",
     "Self +DMG, +To Hit",
     "Ranged, Foe Placate, Self Stealth/Hide",

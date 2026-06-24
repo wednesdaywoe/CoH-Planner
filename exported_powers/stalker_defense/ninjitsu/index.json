@@ -33,8 +33,8 @@
     "Caltrops",
     "Kuji-In Rin",
     "Kuji-In Sha",
+    "Bo Ryaku",
     "Smoke Flash",
-    "Blinding Powder",
     "Kuji-In Retsu"
   ],
   "power_short_helps": [
@@ -44,8 +44,8 @@
     "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
     "Self +SPD, +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Psionics)",
     "Self Heal, Res(Toxic)",
-    "PBAoE, Foe Placate",
-    "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
+    "Auto: Self +Res(Knockback, Knockup, All DMG)",
+    "PBAoE, Foe Placate, -To Hit, Sleep, Confuse, -Perception, +Special",
     "Self +DEF, +SPD, +Recovery, Res(DeBuff DEF), +Special"
   ]
 }

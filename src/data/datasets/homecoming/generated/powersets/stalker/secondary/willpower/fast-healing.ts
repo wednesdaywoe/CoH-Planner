@@ -12,8 +12,8 @@ export const FastHealing: Power = {
   "name": "Fast Healing",
   "internalName": "Fast_Healing",
   "available": 23,
-  "description": "You heal Hit Points at a faster rate than normal. This power is always on.",
-  "shortHelp": "Auto: Self +Regeneration",
+  "description": "You heal Hit Points and recovery Endurance at a faster rate than normal. This power is always on.",
+  "shortHelp": "Auto: Self +Regeneration, +Recovery",
   "icon": "willpower_fasthealing.png",
   "powerType": "Auto",
   "targetType": "Self",
@@ -23,9 +23,11 @@ export const FastHealing: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "Healing"
   ],
   "allowedSetCategories": [
+    "Endurance Modification",
     "Healing"
   ],
   "maxSlots": 6,
@@ -36,13 +38,22 @@ export const FastHealing: Power = {
     },
     "durations": {
       "regenBuff": 10,
-      "debuffResistance": 10
+      "debuffResistance": 10.25,
+      "recoveryBuff": 10
     },
     "debuffResistance": {
       "regeneration": {
         "scale": 0.75,
         "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
       }
+    },
+    "recoveryBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
     },
     "buffDuration": 10
   },

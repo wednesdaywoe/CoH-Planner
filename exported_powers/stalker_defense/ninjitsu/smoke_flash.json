@@ -2,41 +2,39 @@
   "name": "Smoke_Flash",
   "full_name": "Stalker_Defense.Ninjitsu.Smoke_Flash",
   "short_name": "Smoke_Flash",
-  "type": "Click",
-  "display_name": "Smoke Flash",
+  "type": "Auto",
+  "display_name": "Bo Ryaku",
   "display_fullname": "Stalker Defense Ninjitsu Smoke Flash",
-  "display_help": "You throw a smoke bomb at your feet. The resulting flash of light and smoke can briefly distract your foes and Placate them so they can no longer find or target you. Combined with Hide, Smoke Flash is the perfect distraction to get out of a bad situation.<br><br><color #fcfc95>Recharge: Long.</color>",
-  "display_short_help": "PBAoE, Foe Placate",
-  "icon": "ninjitsu_smokeflash.png",
+  "display_help": "B\u014d Ryaku is one of the 18 fundamental skills of the Togakure-ry\u016b school of ninjutsu. Alongside more orthodox and mainstream measures, B\u014d Ryaku includes use of unorthodox strategies and tactics that help you minimize the amount of damage taken in combat. This power is always on and costs no endurance.",
+  "display_short_help": "Auto: Self +Res(Knockback, Knockup, All DMG)",
+  "icon": "ninjitsu_resistance",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
-  "accuracy": 1.4,
-  "effect_area": "Sphere",
-  "max_targets_hit": 10,
-  "radius": 20.0,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
-  "activation_time": 1.83,
-  "recharge_time": 120.0,
-  "activate_period": 0.0,
-  "endurance_cost": 2.6,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 10.0,
+  "endurance_cost": 0.0,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "None"
+    "Self"
   ],
   "targets_affected": [
-    "Foe"
+    "Self"
   ],
   "boosts_allowed": [
-    "Taunt",
-    "Recharge",
-    "Accuracy"
+    "Res_Damage"
   ],
   "allowed_set_categories": [
-    "Threat Duration"
+    "Resist Damage"
   ],
   "cast_through": [],
   "toggle_ignore": [],
@@ -52,24 +50,27 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
+      "requires_expression": "",
       "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
+      "flags": [
+        "PVEOnly"
+      ],
+      "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
       "templates": [
         {
           "attribs": [
-            "Placate"
+            "Knockup",
+            "Knockback"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Taunt",
-          "scale": 8.0,
-          "duration": "0 seconds",
-          "magnitude": 3.0,
+          "aspect": "Resistance",
+          "target": "Self",
+          "table": "Melee_Res_Boolean",
+          "scale": 5.0,
+          "duration": "10.25 seconds",
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -79,13 +80,44 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Stack",
+          "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
-            "DeepSleep"
+            "IgnoreStrength",
+            "IgnoreResistance"
           ],
-          "flags_raw": 2560
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Knockup",
+            "Knockback"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Res_Boolean",
+          "scale": -15.0,
+          "duration": "10.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     },
@@ -95,24 +127,27 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
+      "requires_expression": "",
       "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
+      "flags": [
+        "PVPOnly"
+      ],
+      "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
       "templates": [
         {
           "attribs": [
-            "Placate"
+            "Knockup",
+            "Knockback"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Taunt",
-          "scale": 6.0,
-          "duration": "0 seconds",
-          "magnitude": 3.0,
+          "aspect": "Resistance",
+          "target": "Self",
+          "table": "Melee_Res_Boolean",
+          "scale": 6.5,
+          "duration": "10.25 seconds",
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -122,13 +157,64 @@
           "tick_mag_additive": 0.0,
           "jit_requires": "",
           "caster_stack": "Individual",
-          "stack": "Stack",
+          "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
-            "DeepSleep"
+            "IgnoreStrength",
+            "IgnoreResistance"
           ],
-          "flags_raw": 2560
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Psionic_Dmg",
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Resistance",
+          "target": "Self",
+          "table": "Melee_Res_Dmg",
+          "scale": 1.0,
+          "duration": "10.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
         }
       ]
     }

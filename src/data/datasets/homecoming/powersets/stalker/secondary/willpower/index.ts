@@ -11,12 +11,12 @@ import type { Powerset } from '@/types';
 
 import { Hide as Hide } from './hide';
 import { HighPainTolerance as HighPainTolerance } from './high-pain-tolerance';
-import { Reconstruction as Reconstruction } from './reconstruction';
 import { MindOverBody as MindOverBody } from './mind-over-body';
 import { IndomitableWill as IndomitableWill } from './indomitable-will';
+import { Resurgence as Resurgence } from './resurgence';
 import { HeightenedSenses as HeightenedSenses } from './heightened-senses';
 import { FastHealing as FastHealing } from './fast-healing';
-import { Resurgence as Resurgence } from './resurgence';
+import { Reconstruction as Reconstruction } from './reconstruction';
 import { StrengthofWill as StrengthofWill } from './strength-of-will';
 
 export const powerset: Powerset = {
@@ -29,12 +29,12 @@ export const powerset: Powerset = {
   powers: [
     Hide,
     HighPainTolerance,
-    Reconstruction,
     MindOverBody,
     IndomitableWill,
+    Resurgence,
     HeightenedSenses,
     FastHealing,
-    Resurgence,
+    Reconstruction,
     StrengthofWill,
   ],
 };

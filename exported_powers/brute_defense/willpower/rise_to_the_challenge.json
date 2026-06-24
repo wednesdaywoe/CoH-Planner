@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Rise to the Challenge",
   "display_fullname": "Brute Defense Willpower Rise to the Challenge",
-  "display_help": "The more the odds are against you, the more determined you become. When surrounded by foes, your ability to regenerate health increases greatly. Additionally, your resolve and the look in your eye is enough to leave most foes shaken, so their attacks are less accurate. The first foe you engage in melee grants the highest regeneration bonus, and up to 10 foes can contribute to this effect.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_help": "The more the odds are against you, the more determined you become. When surrounded by foes, your ability to regenerate health increases greatly. Additionally, your resolve and the look in your eye is enough to leave most foes shaken, so their attacks are less accurate. The first foe you engage in melee grants the highest regeneration bonus, and up to 10 foes can contribute to this effect.",
   "display_short_help": "Toggle: Self +Regen, Foe -To Hit",
   "icon": "willpower_risetothechallenge.png",
   "auto_issue": false,
@@ -68,213 +68,6 @@
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "ToHit"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Melee_DeBuff_ToHit",
-          "scale": 0.5,
-          "duration": "1 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "suppress_events": [
-            {
-              "event": "Event_1082130432",
-              "event_id": 1082130432,
-              "duration": 0.0,
-              "flag": 0
-            },
-            {
-              "event": "Event_4096",
-              "event_id": 4096,
-              "duration": 0.0,
-              "flag": 17937664
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [
-        "PVEOnly"
-      ],
-      "is_pvp": "PVE_ONLY",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Regeneration"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 0.25,
-          "duration": "1 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Continuous",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreResistance",
-            "IgnoreCombatMods"
-          ],
-          "flags_raw": 96
-        },
-        {
-          "attribs": [
-            "Regeneration"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "1.12 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreResistance",
-            "IgnoreCombatMods"
-          ],
-          "flags_raw": 96
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [
-        "PVPOnly"
-      ],
-      "is_pvp": "PVP_ONLY",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Regeneration"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 0.25,
-          "duration": "1 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Continuous",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreResistance",
-            "IgnoreCombatMods"
-          ],
-          "flags_raw": 96
-        },
-        {
-          "attribs": [
-            "Regeneration"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "1.12 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreResistance",
-            "IgnoreCombatMods"
-          ],
-          "flags_raw": 96
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [
-        "Taunt"
-      ],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
       "templates": [],
       "child_effects": [
         {
@@ -283,7 +76,7 @@
           "delay": 0.0,
           "radius_inner": -1.0,
           "radius_outer": -1.0,
-          "requires_expression": "Raid target.HasTag? ! enttype target> critter eq &&",
+          "requires_expression": "",
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
@@ -291,16 +84,16 @@
           "templates": [
             {
               "attribs": [
-                "Taunt"
+                "ToHit"
               ],
-              "type": "Duration",
+              "type": "Magnitude",
               "application_type": "Immediate",
-              "aspect": "Absolute",
+              "aspect": "Current",
               "target": "AnyAffected",
-              "table": "Melee_Ones",
-              "scale": 1.25,
-              "duration": "0 seconds",
-              "magnitude": 3.0,
+              "table": "Melee_DeBuff_ToHit",
+              "scale": 0.5,
+              "duration": "1 seconds",
+              "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
               "magnitude_expression": "",
@@ -313,11 +106,7 @@
               "stack": "Replace",
               "stack_limit": 2,
               "stack_key": null,
-              "flags": [
-                "CancelOnMiss",
-                "DeepSleep"
-              ],
-              "flags_raw": 2564
+              "flags_raw": 1280
             }
           ]
         },
@@ -327,24 +116,26 @@
           "delay": 0.0,
           "radius_inner": -1.0,
           "radius_outer": -1.0,
-          "requires_expression": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",
+          "requires_expression": "",
           "tags": [],
-          "flags": [],
-          "is_pvp": "EITHER",
-          "eval_flags": 2,
+          "flags": [
+            "PVEOnly"
+          ],
+          "is_pvp": "PVE_ONLY",
+          "eval_flags": 0,
           "templates": [
             {
               "attribs": [
-                "Taunt"
+                "Regeneration"
               ],
-              "type": "Duration",
+              "type": "Magnitude",
               "application_type": "Immediate",
-              "aspect": "Absolute",
-              "target": "AnyAffected",
+              "aspect": "Current",
+              "target": "Self",
               "table": "Melee_Ones",
-              "scale": 1.25,
-              "duration": "0 seconds",
-              "magnitude": 3.0,
+              "scale": 1.0,
+              "duration": "1.12 seconds",
+              "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
               "magnitude_expression": "",
@@ -358,63 +149,398 @@
               "stack_limit": 2,
               "stack_key": null,
               "flags": [
-                "CancelOnMiss",
-                "DeepSleep"
+                "IgnoreResistance",
+                "IgnoreCombatMods"
               ],
-              "flags_raw": 2564
+              "flags_raw": 96
+            },
+            {
+              "attribs": [
+                "Regeneration"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Resistance",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.075,
+              "duration": "1.12 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags": [
+                "IgnoreStrength",
+                "IgnoreResistance",
+                "IgnoreCombatMods"
+              ],
+              "flags_raw": 112
+            },
+            {
+              "attribs": [
+                "Regeneration"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.25,
+              "duration": "1 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Continuous",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags": [
+                "IgnoreResistance",
+                "IgnoreCombatMods"
+              ],
+              "flags_raw": 96
+            },
+            {
+              "attribs": [
+                "Regeneration"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Resistance",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.0225,
+              "duration": "1 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Continuous",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags": [
+                "IgnoreStrength",
+                "IgnoreResistance",
+                "IgnoreCombatMods"
+              ],
+              "flags_raw": 112
             }
           ]
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [
-        "InherentTaunt"
-      ],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
+        },
         {
-          "attribs": [
-            "Execute_Power"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Strength",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 0.0,
-          "duration": "0 seconds",
-          "magnitude": 0.0,
+          "chance": 1.0,
+          "ppm": 0.0,
           "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Redirects.Inherents.Fury_Proc_Aura"
-            ]
-          },
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "tags": [],
           "flags": [
-            "CopyBoosts"
+            "PVPOnly"
           ],
-          "flags_raw": 1280
+          "is_pvp": "PVP_ONLY",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Regeneration"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 1.0,
+              "duration": "1.12 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags": [
+                "IgnoreResistance",
+                "IgnoreCombatMods"
+              ],
+              "flags_raw": 96
+            },
+            {
+              "attribs": [
+                "Regeneration"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Resistance",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.075,
+              "duration": "1.12 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags": [
+                "IgnoreStrength",
+                "IgnoreResistance",
+                "IgnoreCombatMods"
+              ],
+              "flags_raw": 112
+            },
+            {
+              "attribs": [
+                "Regeneration"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Current",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.25,
+              "duration": "1 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Continuous",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags": [
+                "IgnoreResistance",
+                "IgnoreCombatMods"
+              ],
+              "flags_raw": 96
+            },
+            {
+              "attribs": [
+                "Regeneration"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Resistance",
+              "target": "Self",
+              "table": "Melee_Ones",
+              "scale": 0.0225,
+              "duration": "1 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Continuous",
+              "stack_limit": 2,
+              "stack_key": null,
+              "flags": [
+                "IgnoreStrength",
+                "IgnoreResistance",
+                "IgnoreCombatMods"
+              ],
+              "flags_raw": 112
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "tags": [
+            "Taunt"
+          ],
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [],
+          "child_effects": [
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "Raid target.HasTag? ! enttype target> critter eq &&",
+              "tags": [],
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Taunt"
+                  ],
+                  "type": "Duration",
+                  "application_type": "Immediate",
+                  "aspect": "Absolute",
+                  "target": "AnyAffected",
+                  "table": "Melee_Ones",
+                  "scale": 1.25,
+                  "duration": "0 seconds",
+                  "magnitude": 3.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "flags": [
+                    "CancelOnMiss",
+                    "DeepSleep"
+                  ],
+                  "flags_raw": 2564
+                }
+              ]
+            },
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",
+              "tags": [],
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 2,
+              "templates": [
+                {
+                  "attribs": [
+                    "Taunt"
+                  ],
+                  "type": "Duration",
+                  "application_type": "Immediate",
+                  "aspect": "Absolute",
+                  "target": "AnyAffected",
+                  "table": "Melee_Ones",
+                  "scale": 1.25,
+                  "duration": "0 seconds",
+                  "magnitude": 3.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "flags": [
+                    "CancelOnMiss",
+                    "DeepSleep"
+                  ],
+                  "flags_raw": 2564
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": "",
+          "tags": [
+            "InherentTaunt"
+          ],
+          "flags": [],
+          "is_pvp": "EITHER",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Execute_Power"
+              ],
+              "type": "Magnitude",
+              "application_type": "Immediate",
+              "aspect": "Strength",
+              "target": "AnyAffected",
+              "table": "Melee_Ones",
+              "scale": 0.0,
+              "duration": "0 seconds",
+              "magnitude": 0.0,
+              "delay": 0.0,
+              "duration_expression": "",
+              "magnitude_expression": "",
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": "",
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "params": {
+                "type": "Power",
+                "power_names": [
+                  "Redirects.Inherents.Fury_Proc_Aura"
+                ]
+              },
+              "flags": [
+                "CopyBoosts"
+              ],
+              "flags_raw": 1280
+            }
+          ]
         }
       ]
     }

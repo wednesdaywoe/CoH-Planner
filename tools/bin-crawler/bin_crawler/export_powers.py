@@ -26,6 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from bin_crawler.parser._powers import parse_powers
 from bin_crawler.parser._powersets import parse_powersets
 from bin_crawler.parser._powercats import parse_powercats
+from bin_crawler.parser._classes import parse_classes
 from bin_crawler.parser._boostsets import parse_boostsets, build_power_category_index
 from bin_crawler.parser._messages import load_messages
 from bin_crawler.parser._pigg import BinResolver
@@ -53,11 +54,16 @@ PLAYER_CATEGORIES = {
     # Kheldians
     'Peacebringer_Defensive', 'Peacebringer_Offensive',
     'Warshade_Defensive', 'Warshade_Offensive',
-    # Thunderspy Primalist — a custom Kheldian-style form-shifter AT. HC/Rebirth
-    # have no equivalent (these categories simply won't exist in those datasets).
-    # Primary 'Feral_Might', secondary 'Primal_Gifts'; the Hunter/Prowler/Primal
-    # form attack variants + per-attack lifesteal redirects live in
-    # 'Primalist_Misc' (listed below with the Lore/NPC pet categories).
+    # Thunderspy Primalist — a custom Kheldian-style form-shifter AT. Primary
+    # 'Feral_Might', secondary 'Primal_Gifts'; the Hunter/Prowler/Primal form
+    # attack variants + per-attack lifesteal redirects live in 'Primalist_Misc'
+    # (listed below with the Lore/NPC pet categories).
+    #   GOTCHA: HC's powers.bin ALSO carries ~63 ORPHAN Primalist powers under
+    #   these same name-prefixes — with NO backing powerset, powercat, or class.
+    #   (The old comment here wrongly assumed they "won't exist" in HC; they do,
+    #   and leaked into the HC export.) These categories are therefore gated at
+    #   runtime by `_source_has_primalist_class` below: kept ONLY when the source
+    #   actually defines a Primalist class (Thunderspy), dropped for HC/Rebirth.
     'Feral_Might', 'Primal_Gifts',
     # VEATs
     'Arachnos_Soldiers', 'Widow_Training', 'Teamwork',
@@ -100,6 +106,32 @@ PLAYER_CATEGORIES = {
     'Rikti', 'V_Wailers', 'CircleOfThorns', 'Clockwork', 'Vanguard',
     'V_Miscellaneous', 'PaladinEvent',
 }
+
+
+# Thunderspy-only Primalist categories. HC/Rebirth carry orphan powers under
+# these prefixes (no powerset/powercat/class), so they must be gated on the
+# source actually defining a Primalist class — see _source_has_primalist_class.
+PRIMALIST_CATEGORIES = {'Feral_Might', 'Primal_Gifts', 'Primalist_Misc'}
+
+
+def _source_has_primalist_class(resolver) -> bool:
+    """True iff the source defines a Primalist archetype (Thunderspy).
+
+    Used to decide whether the Primalist power categories are real player
+    content (Thunderspy: wired to the Primalist class) or orphan leakage
+    (HC/Rebirth: powers exist in powers.bin but no class/powerset references
+    them). Checks both the hero and villain class tables.
+    """
+    for bin_name in ('classes.bin', 'villain_classes.bin'):
+        if not resolver.has(bin_name):
+            continue
+        try:
+            for c in parse_classes(resolver.read(bin_name)):
+                if 'primalist' in (getattr(c, 'name', '') or '').lower():
+                    return True
+        except Exception:
+            continue
+    return False
 
 
 def format_duration(seconds: float) -> str:
@@ -271,6 +303,18 @@ def main():
 
     resolver = BinResolver(assets_dir)
     print(f'Source: {resolver.source_description}', flush=True)
+
+    # Source-aware Primalist gating: HC/Rebirth carry ORPHAN Primalist powers
+    # (no powerset/powercat/class) that otherwise leak into the export via the
+    # shared whitelist. Drop the Primalist categories unless this source defines
+    # a Primalist class (Thunderspy). Skip when the user passed explicit
+    # --categories (advanced override — respect their choice).
+    if not args.categories:
+        primalist_present = categories & PRIMALIST_CATEGORIES
+        if primalist_present and not _source_has_primalist_class(resolver):
+            categories = categories - PRIMALIST_CATEGORIES
+            print(f'  No Primalist class in source — excluding orphan Primalist '
+                  f'categories: {sorted(primalist_present)}', flush=True)
 
     # Load message table
     msgs = None

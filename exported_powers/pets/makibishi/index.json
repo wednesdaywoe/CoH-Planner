@@ -1,0 +1,19 @@
+{
+  "key": "Pets.Makibishi",
+  "display_name": "Makibishi",
+  "help": "Makibishi",
+  "short_help": "Makibishi",
+  "icon": "caltrops_set.ico",
+  "powers": [
+    "Pets.Makibishi.Makibishi"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Makibishi"
+  ],
+  "power_short_helps": [
+    "-Speed, -To Hit, -DMG, DoT(Lethal)"
+  ]
+}

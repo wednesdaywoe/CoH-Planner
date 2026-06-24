@@ -13,8 +13,7 @@
     "Brute_Defense.Fiery_Aura.Consume",
     "Brute_Defense.Fiery_Aura.Burn",
     "Brute_Defense.Fiery_Aura.Fiery_Embrace",
-    "Brute_Defense.Fiery_Aura.Rise_of_the_Phoenix",
-    "Brute_Defense.Fiery_Aura.Phoenix_Rising"
+    "Brute_Defense.Fiery_Aura.Rise_of_the_Phoenix"
   ],
   "available_level": [
     0,
@@ -25,8 +24,7 @@
     19,
     23,
     27,
-    29,
-    0
+    29
   ],
   "power_display_names": [
     "Fire Shield",
@@ -37,19 +35,17 @@
     "Consume",
     "Burn",
     "Fiery Embrace",
-    "Phoenix Rising",
     "Phoenix Rising"
   ],
   "power_short_helps": [
     "Toggle: Self +Res(Fire, Lethal, Smash, Cold, Disorient)",
     "Toggle: PBAoE, DoT (Fire)",
-    "Self Heal, +Res(Toxic)",
-    "Auto: Self +Res(Fire, Cold, Slow, Knock), +Regen",
+    "Self Heal, +Res(Toxic, Psionic)",
+    "Auto: Self +Res(Fire, Cold, Toxic, Psionic, Slow, Fear, Knock), +Regen, +Max HP",
     "Toggle: Self +Res(Energy, Negative, Fire, Hold, Sleep)",
     "PBAoE, DMG(Fire), Self +End, +Max HP",
-    "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
+    "Location (PBAoE), DoT (Fire), Self Res(Immobilize, Knockback)",
     "Self +DMG",
-    "Self Rez, Special",
-    "Self Rez, Special"
+    "Self Heal, MaxHP, Rez, Special"
   ]
 }

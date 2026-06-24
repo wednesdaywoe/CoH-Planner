@@ -11,7 +11,6 @@ import type { Powerset } from '@/types';
 
 import { BlazingAura as BlazingAura } from './blazing-aura';
 import { FireShield as FireShield } from './fire-shield';
-import { PhoenixRising as PhoenixRising } from './phoenix-rising';
 import { HealingFlames as HealingFlames } from './healing-flames';
 import { Temperatureprotection as Temperatureprotection } from './temperature-protection';
 import { Consume as Consume } from './consume';
@@ -30,7 +29,6 @@ export const powerset: Powerset = {
   powers: [
     BlazingAura,
     FireShield,
-    PhoenixRising,
     HealingFlames,
     Temperatureprotection,
     Consume,

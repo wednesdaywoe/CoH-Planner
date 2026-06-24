@@ -20,9 +20,98 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-*(none open)*
+## ⬜ `Grant_Power` proc targets in `Temporary_Powers` not exported — proc damage + enhanceability invisible to the converter (Molten Embrace DoT) — 2026-06-24
+
+**Surfaced during the I28P3 (June 23 2026) patch-notes vs live-export audit.** The note
+"Molten Embrace [Sentinels] — the DoT damage proc is now affected by damage enhancements
+and buffs" could not be verified from `exported_powers/` at all: the passive
+`Sentinel_Defense.Fiery_Aura.Molten_Embrace` does **not** carry the DoT inline. It holds
+**two `Grant_Power` templates** (`OnTick` + `OnActivate`, `params.power_names =
+["Temporary_Powers.Temporary_Powers.Molten_Embrace_Proc"]`) that grant a hidden proc
+power. The **actual** player-facing damage lives in that granted power:
+`Molten_Embrace_Proc` = Fire_Dmg scale ~0.0493/tick, `application_period` 1.0s, duration
+2.1s, flags `['CancelOnMiss']` — **no `IgnoreStrength`**, i.e. enhanceable (which is the
+exact thing the note claims). Confirmed by parsing `powers.bin` directly with
+`parse_powers` on the live assets; the note IS correctly implemented in the data.
+
+**The gap:** `Temporary_Powers` is **not** one of the exported player categories, so
+`Molten_Embrace_Proc` is absent from `exported_powers/`, and the `Grant_Power →
+Temporary_Powers` hop is **not** resolved at convert time (unlike the `Execute_Power` /
+`Create_Entity` pseudo-pet chains that `resolveSummonRedirects` already walks — see the
+"Pseudo-pet `summon.powers` redirect chains resolved" RESOLVED entry). Net effect: the
+proc's damage numbers **and** its enhanceable-ness are invisible to the pipeline; the only
+way to see them today is a direct bin parse.
+
+**Also affected:** Stalker `Hide` → "Hidden Flame" grants the same `Molten_Embrace_Proc`
+(per the I28P3 note "Hidden Flame is identical to Hide but now also grants the damage proc
+from Molten Embrace") — `stalker_defense/fiery_aura/hide.json` references it. Any other
+passive/toggle that delivers damage via a `Grant_Power` into `Temporary_Powers` shares this
+gap.
+
+**Before fixing — scope it (verify-don't-assume):** confirm whether the planner currently
+displays/calcs Molten Embrace (and Hidden Flame) proc damage at all. It may already be
+handled via a curated proc path / override (like other bespoke self-procs in
+`proc-data.ts`), in which case this is a documentation/consistency note rather than a
+missing-data bug. If it genuinely needs the data, two options: **(a)** include
+`Grant_Power` proc targets (or the `Temporary_Powers` category) in the export filter, or
+**(b)** resolve `Grant_Power → Temporary_Powers` hops at convert time, mirroring the
+existing pseudo-pet redirect resolver.
+
+**Audit-harness note (context, not a pipeline bug):** the same audit confirmed the
+production exporter DOES capture effects nested under `child_effects` (raw dataclass key
+`child_groups`) and caster-on-cast buffs under `activation_effects` (e.g. Blinding
+Powder's "+30% crit chance for 10s" `Global_Chance_Mod` lives there, not in `effects`) —
+any ad-hoc tooling that reads these JSONs must walk both `child_effects` and
+`activation_effects` or it will silently under-read. Only the `Grant_Power → Temporary_Powers`
+scope above is a real export-pipeline gap.
+
+*(Sibling game-data finding from the same audit — NOT a parser issue, logged here only for
+cross-reference: Sentinel `Blinding_Powder` Confuse **scale is 10**, but the patch notes
+and the Scrapper/Stalker versions say **12**. The parser reads it correctly — Scr/Stk parse
+as 12 — so the binary genuinely contains 10 on the Sentinel record. Flagged to the dev team;
+data pushed as-is.)*
 
 > ---RESOLVED ---
+
+## ✅ Thunderspy Primalist orphan-power LEAK into the HC export — source-aware category gating (2026-06-24)
+
+**Bug (found during the I28P3 export regen).** The HC export contained three
+Thunderspy-only Primalist categories — `feral_might` (14), `primal_gifts` (12),
+`primalist_misc` (37) = **63 orphan powers**. Primalist is strictly a Thunderspy custom AT;
+it must not appear in HC at all. `primalist_misc` had been leaking into committed HC
+exports for a while; `feral_might`/`primal_gifts` newly surfaced with the current HC bin.
+
+**Root cause.** `PLAYER_CATEGORIES` in
+[export_powers.py](tools/bin-crawler/bin_crawler/export_powers.py) is **one shared whitelist
+applied to every source**, and it lists `Feral_Might`/`Primal_Gifts`/`Primalist_Misc` for
+Thunderspy's sake. The old comment asserted *"HC/Rebirth have no equivalent (these
+categories simply won't exist in those datasets)"* — **false.** HC's `powers.bin` carries 63
+orphan Primalist powers under those exact name-prefixes with **0 backing powersets** (verified
+`parse_powersets` → 0), **0 powercats** (`powercats.bin` has 203 cats, none Primalist), and
+**no Primalist class** (HC `classes.bin` = the 15 standard ATs). The exporter assigns each
+power's category from its dotted-name prefix and filters by `pw.category in categories`, so
+the orphans sailed straight through. The Tspy-support whitelist entries quietly leaked HC's
+orphan copies. (Why HC's bin even has these powers: shared CoX codebase lineage; they're
+unwired dev/legacy data, not playable HC content.)
+
+**Severity was low** — export-tree-only. The convert step never produced HC-side Primalist
+data (no HC class/powerset to attach to), so the planner was unaffected; the legit Primalist
+in the app comes from `src/data/datasets/thunderspy/`. Still wrong, fixed at root.
+
+**Fix.** New `_source_has_primalist_class(resolver)` helper + `PRIMALIST_CATEGORIES`
+gate in `main()`: drop `Feral_Might`/`Primal_Gifts`/`Primalist_Misc` from the category set
+unless the source defines a **Primalist class** (checks `classes.bin` +
+`villain_classes.bin` for a class name containing `primalist`). Data-driven, no per-dataset
+flag; skipped when the user passes explicit `--categories` (advanced override). Updated the
+misleading whitelist comment to document the orphan-leak gotcha.
+
+**Validated.** HC: `_source_has_primalist_class` → **False** → re-export drops all 3
+categories → **63 cats / 10,644 powers** (was 66 / 10,707; exactly the 63 orphans removed).
+Thunderspy (`coxg` AND `tspy` sources): → **True** (matches `Class_Primalist`) → Primalist
+categories **retained** — the no-op guarantee for Tspy holds. Other cross-server whitelist
+entries (Rebirth `Guardian_Assault`/`Guardian_Comp`) do **not** leak into HC (absent from
+its bin); no other phantom categories found. Committed-tree cleanup: the stale leaked
+`exported_powers/primalist_misc/` removed as part of the HC re-export apply.
 
 ## ✅ HC P-hash "entity_def" FIXED — it was the EntCreate float/combat-text message, now resolved to the real entity at the parser — 2026-06-12
 

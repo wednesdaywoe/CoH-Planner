@@ -11,8 +11,8 @@ import type { Power } from '@/types';
 export const MindOverBody: Power = {
   "name": "Mind Over Body",
   "internalName": "Mind_Over_Body",
-  "available": 9,
-  "description": "When you toggle on this power, you empower your Mind Over Body to become highly resistant to Smashing, Lethal and Psionic damage.Recharge: Very Fast.",
+  "available": 3,
+  "description": "When you toggle on this power, you empower your Mind Over Body to become highly resistant to Smashing, Lethal and Psionic damage.",
   "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
   "icon": "willpower_mindoverbody.png",
   "powerType": "Toggle",

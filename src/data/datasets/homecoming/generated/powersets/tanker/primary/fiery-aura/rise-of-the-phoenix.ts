@@ -12,8 +12,8 @@ export const RiseofthePhoenix: Power = {
   "name": "Phoenix Rising",
   "internalName": "Rise_of_the_Phoenix",
   "available": 25,
-  "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Gift of the Phoenix will leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.You can also use this power even if you have not been defeated, with weakend effects. The closer you are to being defeated, the stronger the effects will be. You need to be under 75% health to activate this power.Damage: Extreme.Recharge: Very Long.",
-  "shortHelp": "Self Rez, Special",
+  "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down and Disorients them. You will revive with about half of your Hit Points and Endurance. Phoenix Rising will leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds.You can also use this power even if you have not been defeated, with weakend effects. The closer you are to being defeated, the stronger the effects will be.",
+  "shortHelp": "Self Heal, MaxHP, Rez, Special",
   "icon": "flamingshield_riseofthephoenix.png",
   "powerType": "Click",
   "targetType": "Self",
@@ -21,10 +21,12 @@ export const RiseofthePhoenix: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 300,
+    "endurance": 10.4,
     "castTime": 2
   },
   "allowedEnhancements": [
     "EnduranceModification",
+    "EnduranceReduction",
     "Stun",
     "Recharge",
     "Healing",
@@ -40,19 +42,32 @@ export const RiseofthePhoenix: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Fire",
-    "scale": 4,
-    "table": "Melee_Damage"
+    "type": "Heal",
+    "scale": 5,
+    "table": "Melee_HealSelf"
   },
   "effects": {
-    "knockback": {
-      "scale": 4.1,
-      "table": "Melee_Knockback"
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "PL_StaticObject",
+      "displayName": "Phoenix Rising (Resurecting)",
+      "powers": [
+        "Redirects.Fiery_Aura.Phoenix"
+      ],
+      "duration": 10,
+      "copyBoosts": true
     },
-    "stun": {
-      "mag": 4,
-      "scale": 10,
-      "table": "Melee_Stun"
-    }
+    "maxHPBuff": {
+      "scale": 3,
+      "table": "Melee_HealSelf"
+    },
+    "durations": {
+      "maxHPBuff": 30
+    },
+    "enduranceGain": {
+      "scale": 50,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 30
   }
 };

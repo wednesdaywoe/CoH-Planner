@@ -35,6 +35,7 @@
     "EnduranceDiscount"
   ],
   "allowed_set_categories": [
+    "Endurance Modification",
     "Resist Damage"
   ],
   "cast_through": [

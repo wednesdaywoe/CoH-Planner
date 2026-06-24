@@ -35,6 +35,7 @@ export const StrengthofWill: Power = {
     "EnduranceReduction"
   ],
   "allowedSetCategories": [
+    "Endurance Modification",
     "Resist Damage"
   ],
   "maxSlots": 6,

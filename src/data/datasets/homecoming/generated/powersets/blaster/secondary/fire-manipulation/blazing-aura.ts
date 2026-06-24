@@ -12,7 +12,7 @@ export const BlazingAura: Power = {
   "name": "Cauterizing Aura",
   "internalName": "Blazing_Aura",
   "available": 19,
-  "description": "While active, you are surrounded by flames that continuously burn all foes that attempt to enter melee range. In addition, you recover a small amount of health every few seconds.Damage: Minor(DoT).Recharge: Moderate.",
+  "description": "While active, you are surrounded by flames that continuously burn all foes that attempt to enter melee range. In addition, you recover a small amount of health every few seconds.",
   "shortHelp": "Toggle: PBAoE, DoT (Fire), Self +Heal Over Time, +Recovery",
   "icon": "firemanipulation_blazingaura.png",
   "powerType": "Toggle",
