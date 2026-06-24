@@ -74,6 +74,17 @@ const EXTRA_CATEGORIES = {
 
 const ALL_CATEGORIES = { ...CATEGORIES, ...EXTRA_CATEGORIES };
 
+// Per-dataset categories to skip because the dataset's classes.bin has NO
+// matching archetype, yet powers.bin still carries the vestigial category
+// definitions. Converting them would produce orphan powerset dirs that no
+// archetype references (dead weight in the bundle). Veracity's 14 classes have
+// no Sentinel and no Primalist (the latter is a Thunderspy-only AT), so their
+// blast/form categories are orphan. See veracity-bin-recon.
+const ORPHAN_CATEGORIES = {
+  veracity: new Set(['sentinel_ranged', 'sentinel_defense', 'feral_might', 'primal_gifts']),
+};
+const orphanSkip = ORPHAN_CATEGORIES[datasetId] || new Set();
+
 let converted = 0;
 let failed = 0;
 let skipped = 0;
@@ -95,6 +106,10 @@ const powersPath = (() => {
 })();
 
 for (const [category, info] of Object.entries(ALL_CATEGORIES)) {
+  if (orphanSkip.has(category)) {
+    console.log(`[SKIP orphan] ${category} — no matching ${datasetId} archetype`);
+    continue;
+  }
   const categoryPath = path.join(powersPath, category);
 
   if (!fs.existsSync(categoryPath)) {

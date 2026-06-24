@@ -45,6 +45,7 @@ from bin_crawler.parser._messages import load_messages
 # so committed output stays byte-identical across machines for the CI regen-diff.
 REBIRTH_ASSETS = os.environ.get('COH_REBIRTH_ASSETS', r'G:/Thunderspy Gaming/Sweet Tea/rebirth')
 HC_ASSETS = os.environ.get('COH_HC_ASSETS', r'G:/Homecoming/assets/live')
+VERACITY_ASSETS = os.environ.get('COH_VERACITY_ASSETS', r'G:/Veracity/assets')
 OUTPUT_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'rebirth' / 'io-sets-raw.ts'
 HC_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'homecoming' / 'io-sets-raw.ts'
 
@@ -1166,6 +1167,24 @@ def _apply_rebirth_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict]
     return {'shared_overridden': shared_overridden, 'pieces_overridden': pieces_overridden}
 
 
+def _apply_veracity_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict]) -> dict:
+    """Veracity post-build pass: reuse HC's hand-curated entry for shared sets
+    (the binary loses Accuracy aspects on many pieces and produces auto names
+    that fail Mids legacy-format imports). Veracity-only sets keep their binary
+    extraction. No Veracity-specific piece curation yet — experimental dataset;
+    add a PIECE_OVERRIDES-style pass here if specific Veracity sets need it."""
+    shared_overridden = 0
+    for set_id in list(out_sets.keys()):
+        hc_entry = hc_sets.get(set_id)
+        if hc_entry:
+            preserved_icon = ICON_OVERRIDES.get(set_id)
+            out_sets[set_id] = dict(hc_entry)
+            if preserved_icon:
+                out_sets[set_id]['icon'] = preserved_icon
+            shared_overridden += 1
+    return {'shared_overridden': shared_overridden}
+
+
 def _apply_homecoming_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict]) -> dict:
     """Homecoming post-build passes. HC IS the source, so there's no shared-set
     reuse — only the targeted overrides for what the binary can't reproduce:
@@ -1237,6 +1256,18 @@ DATASET_CONFIG = {
             ' * Includes Rebirth-only sets (Guardian\'s Gift, Absolute Resolution,\n'
             ' * Halloween + Winter event sets, Liberty\'s Belt, etc.) that aren\'t in\n'
             ' * HC\'s curated io-sets-raw. Shared sets reuse HC\'s hand-curated entry.\n'
+        ),
+    },
+    'veracity': {
+        'assets': VERACITY_ASSETS,
+        'output': PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'veracity' / 'io-sets-raw.ts',
+        'pigg': 'Veracity/assets/bin.pigg',
+        'server': 'Veracity',
+        'apply_overrides': _apply_veracity_overrides,
+        'extra_notes': (
+            ' * Veracity\'s boostsets.bin parses ~257 IO sets. Shared sets reuse\n'
+            ' * HC\'s hand-curated entry (binary loses Accuracy aspects + uses auto\n'
+            ' * names); Veracity-only sets keep their binary extraction.\n'
         ),
     },
     'homecoming': {
