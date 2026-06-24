@@ -55,7 +55,8 @@ export const TRAVEL_CAP_BUMPS: Record<string, { stat: MovementStat; cap: number 
   'Pool.Force_of_Will.Mighty_Leap':      { stat: 'jumpSpeed', cap: 101.80 },
   'Pool.Flight.Fly':                     { stat: 'flySpeed',  cap: 87.90 },
   'Pool.Sorcery.Mystic_Flight':          { stat: 'flySpeed',  cap: 87.90 },
-  'Pool.Flight.Fly_Boost':               { stat: 'flySpeed',  cap: 102.27 }, // Afterburner
+  'Pool.Flight.Fly_Boost':               { stat: 'flySpeed',  cap: 102.27 }, // Afterburner (HC)
+  'Pool.Flight.Fly_Afterburner':         { stat: 'flySpeed',  cap: 102.27 }, // Afterburner (Rebirth — Dive Attack + Fly)
 };
 
 /**

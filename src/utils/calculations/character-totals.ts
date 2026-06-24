@@ -1022,12 +1022,14 @@ function applyActivePowerBonuses(
       });
     }
 
-    // Damage buff
-    // Enhanced by Damage enhancements
+    // Damage buff (e.g. Assault, Build Up, Fulcrum Shift).
+    // NOT enhanced: a +Damage buff is a fixed buff to the target's Damage
+    // strength — Damage enhancements and global +Damage raise the OUTPUT of
+    // attack powers, not the magnitude of a buff, and no "Damage Buff"
+    // enhancement exists in CoH. (Same as accuracyBuff / tohitBuffUnenhanced.)
     if (effects.damageBuff !== undefined) {
-      const enhMultiplier = 1 + (enhBonuses.damage || 0);
       const adjustedBuff = adjustForStacking(effects.damageBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'damageBuff', effects.maxStacks);
-      const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
         name: power.name,

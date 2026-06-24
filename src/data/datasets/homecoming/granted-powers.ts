@@ -27,6 +27,11 @@ export interface GrantedPowerGroup {
   description?: string;
   /** If true, sub-powers accept enhancement slots and are added as full SelectedPower entries (e.g., Kheldian form sub-powers) */
   slottable?: boolean;
+  /** Additional sibling powers (internalNames) that must ALSO be selected in the
+   *  same pool/powerset for the grant to fire. The bonus power's own `requires`
+   *  only names the immediate parent; some grants are conjunctive in-game.
+   *  e.g. Rebirth's Group Fly needs BOTH Aerobatics (the parent) AND Fly. */
+  alsoRequires?: readonly string[];
   /** Damage type conversion when a sub-power is active (e.g., Dual Pistols ammo types).
    *  Maps sub-power internalName to { from, to } damage type conversion.
    *  All powers in the same powerset have their damage type converted. */
