@@ -113,6 +113,23 @@ entries (Rebirth `Guardian_Assault`/`Guardian_Comp`) do **not** leak into HC (ab
 its bin); no other phantom categories found. Committed-tree cleanup: the stale leaked
 `exported_powers/primalist_misc/` removed as part of the HC re-export apply.
 
+**SECOND VECTOR — `export_entities.py` (worse: it reached the planner).** The powers leak
+was export-tree-only/inert, but `export_entities.py` exports every villaindef entity whose
+name starts with `pets_`/etc. with **no class/category gate**, so HC's 13 orphan Primalist
+pet entities (`pets_primalwolf`, the per-attack `*_heal` lifesteal pseudo-pets) leaked — and
+these DID flow through `convert-pet-entities` into `src/data/datasets/homecoming/
+pet-entities.ts` (26 refs). Fixed with the SAME gate, reference-based: import
+`PRIMALIST_CATEGORIES` + `_source_has_primalist_class` from `export_powers` and skip any
+entity referencing a power in a Primalist category (robust — the NPC false-match
+`pets_minisignature_achlysgeneral_hunter`, refs `NPC_Pets`/`Pets` only, is correctly kept).
+HC re-export: **13 dropped, 731 written**, fresh-vs-committed diff = exactly those 13
+deletions (0 content drift on the 731 shared). After `convert-pet-entities` (note: it's
+`generated:false` in regen-all, so `regen:generated` does NOT refresh it — must run the full
+`regen` or the script directly), HC `pet-entities.ts` → **0 Primalist refs**; Thunderspy/
+Rebirth pet-entities unchanged. Exhaustive post-sweep of all HC surfaces (exported_powers,
+datasets/homecoming, generated, entities, tables) = clean; remaining "primal" hits are the
+Kheldian **Primal Energy** inherent and the Sorcery **Enflame** pet (not the Primalist AT).
+
 ## ✅ HC P-hash "entity_def" FIXED — it was the EntCreate float/combat-text message, now resolved to the real entity at the parser — 2026-06-12
 
 **The premise was wrong.** This was filed as "an opaque entity-def reference needing a
