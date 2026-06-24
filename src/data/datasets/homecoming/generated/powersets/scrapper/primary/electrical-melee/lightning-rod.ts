@@ -96,7 +96,6 @@ export const LightningRod: Power = {
                   "table": "Melee_Damage"
                 }
               ],
-              "conditionalDamage": true,
               "effects": [
                 {
                   "type": "Knockback",

@@ -20,39 +20,6 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-## ⬜ Summon-shell "ground patch" powers display as Single Target — headline area type hides the real AoE radius/cap (Burn et al.) — 2026-06-24
-
-**Symptom (I28P3 dev-server spot-check).** Burn shows as a **Single Target** power and its
-**radius/target-cap don't surface** — even though it's a 15ft / 10-target fire patch. Not
-technically wrong, but it misrepresents what the power does and hides values the player needs.
-
-**Root.** Burn (and every "ground patch" power) is a **Self-targeted summon shell**: its own
-`effect_area = SingleTarget`, `target = Self`, `radius = 0`, `max_targets = 0` — it just
-`Create_Entity`s a `PL_StaticObject` pseudo-pet ("Burn Flames") that redirects to the real
-damage power (Burn → `Redirects.Fiery_Aura.FieryBurn`, **radius 15 / maxTargets 10**). The
-converter DOES resolve the pet damage into `effects.summon.resolvedEntities[].abilities[]`
-(radius/maxTargets/damage all present and correct), but the **power's headline**
-`effectArea`/`radius`/`maxTargets` still carry the shell's Self/SingleTarget/0 values, so the
-UI labels it Single Target and omits the radius row.
-
-**Data is correct — this is a surfacing gap.** The AoE numbers exist in the resolved
-pseudo-pet; they're just not promoted to where the headline UI reads them.
-
-**Scope — systemic, ALL summon-shell patch powers**, not Burn-specific: Rain of Fire/Arrows,
-Caltrops, Tar Patch, Ice Storm, Sleet, Freezing Rain, Bonfire, Oil Slick, Burn, the
-Trick-Arrow/Marine patches, etc. (the `resolveSummonRedirects` / `PSEUDOPET_SHELL_ENTITIES`
-family — see the RESOLVED "Pseudo-pet `summon.powers` redirect chains" entry).
-
-**Fix direction (convert + UI, not the bin — the literal `effect_area=SingleTarget` is
-accurate).** When a power's only real effect is a damage-patch pseudo-pet, derive a
-**display** area/radius/max-targets from the resolved entity (e.g. a `displayEffectArea` /
-`effectiveRadius` field on the converted power, or have InfoPanel/PowerInfoTooltip read
-`resolvedEntities[].abilities[]` and render an AoE headline + radius/cap row). Do NOT mutate
-the real `effect_area` (downstream calc/targeting relies on it). Pre-existing — not an I28P3
-regression; surfaced while spot-checking the Burn rework.
-
----
-
 *(Sibling game-data finding from the I28P3 audit — NOT a parser issue, logged here only for
 cross-reference: Sentinel `Blinding_Powder` Confuse **scale is 10**, but the patch notes
 and the Scrapper/Stalker versions say **12**. The parser reads it correctly — Scr/Stk parse
@@ -60,6 +27,66 @@ as 12 — so the binary genuinely contains 10 on the Sentinel record. Flagged to
 data pushed as-is.)*
 
 > ---RESOLVED ---
+
+## ✅ Summon-shell "ground patch" powers now surface the pseudo-pet's AoE footprint (Burn et al.) — display-only, bin untouched — 2026-06-24
+
+**Was.** Burn showed as **Single Target** with no radius/cap; Location patches (Tar Patch,
+Rain of Fire, Caltrops, Ice Storm, …) showed a bare "Location AoE" with the radius/cap hidden —
+even though the real footprint (Burn → `FieryBurn` 15ft/10, Tar Patch 25ft/16) was already
+resolved into `effects.summon.resolvedEntities[].abilities[]`. The headline read the shell's
+`effect_area`/`radius`/`max_targets` (Self/SingleTarget/0), so the AoE numbers never surfaced.
+
+**Fix (UI display-only — convert/bin untouched, as the literal `effect_area` is accurate and
+downstream calc/targeting depends on it).** New `deriveSummonPatchArea(power, effects)` in
+[PowerInfoBlocks.tsx](src/components/info/PowerInfoBlocks.tsx) — the single source that feeds
+`GeneralStatsBlock` (used by both the Info Panel and the power tooltip):
+- Fires only when the power has `summon.resolvedEntities` **and** no headline radius of its own
+  (so real AoEs and MM/PET_ENTITIES summons are untouched). Keyed on `resolvedEntities`
+  presence, **not** the `isPseudoPet` flag — that flag is `false` for Burn-style
+  `PL_StaticObject` shells.
+- Picks the **widest-footprint** resolved ability (self-buff abilities carry no radius and are
+  skipped), borrows its `radius`/`maxTargets`. `255` (uncapped sentinel) is omitted rather than
+  rendered as "255 max".
+- Preserves the power's own area when it already conveys an AoE shape (Location patches stay
+  **"Location AoE, 25ft, 16 max (patch)"**); only the misleading Self/SingleTarget shells
+  borrow the pet's area (Burn → **"AoE, 15ft, 10 max (patch)"**). The `(patch)` suffix flags
+  that the footprint comes from the summoned entity, not a direct hit.
+- Also extended `formatEffectArea`'s `Location` case to render radius/cap (it previously dropped
+  them), which additionally benefits any real Location AoE that carries a headline radius.
+
+Types: `ResolvedPseudoPet`/`ResolvedPseudoPetAbility` re-exported from `@/types`. `tsc` clean;
+44 pseudo-pet data/calc tests still green (display change touches no calc path).
+
+## ✅ Burn / Lightning Rod showed ZERO damage — a gated FieryEmbrace bonus beside the base DoT flipped the whole ability to `conditionalDamage` — 2026-06-24
+
+**Symptom.** Burn displayed **no damage at all** (and Lightning Rod likewise). The summon
+shell's resolved pseudo-pet carried the right scales, but the Damage block was empty.
+
+**Root (`resolveSummonRedirects` in [convert-powerset.cjs](scripts/convert-powerset.cjs)).**
+`FieryBurn` has two damage groups: an always-on `chance=1` Fire DoT (scale 0.14) **and** a
+`chance=0, tags=["FieryEmbrace"]` bonus (scale 0.063) — the persistent Fiery-Embrace component.
+A `chance:0`-with-payload group is a mode-gate sentinel, so the 0.063 leaf is marked `gated`.
+The old rate classifier did `if (anyGated) conditionalDamage = true` — **one** gated bonus leaf
+flagged the **entire** ability conditional, and the runtime keeps `conditionalDamage` abilities
+OUT of the headline DoT. With both of Burn's abilities (FieryBurn + FieryBurn_FrontDamage) so
+flagged, the guaranteed 0.14 / 1.0+0.44 base damage was suppressed → zero. Same shape on
+Lightning Rod (base Energy 2.27 + a gated FE Fire 1.02) → also zero.
+
+**Fix (one-spot, surgical).** `conditionalDamage` now requires that there be **no guaranteed
+(non-gated) damage at all** — i.e. it's reserved for redirects whose damage is *entirely*
+mode-gated (a storm High-Winds-only branch, the original Storm-Cell `1908` guard). A gated bonus
+sitting **beside** an always-on hit no longer suppresses the headline; the bonus stays in the
+`damage` array (the armor Burns deliberately surface the FE-active variant `0.14 + 0.063`, per
+the existing `pseudopet-redirect` test + `_filterFieryEmbraceBonus` fire-set rationale). The
+proc-rate (`damageChance`) derivation now reads guaranteed leaves only, so a gated bonus can't
+drag the headline to a proc rate either.
+
+**Scope.** Regen touched exactly the 9 affected powers — Burn ×5 (Tanker/Brute/Scrapper/
+Sentinel/Stalker Fiery Aura) and Lightning Rod ×4 (Electric Melee) — each diff a pure
+`conditionalDamage: true` removal, all damage scales intact. Storm Cell / Category Five
+**unchanged** (their base aura is a non-gated `IncreaseStormStrength` accumulator, so they were
+never hitting the all-gated branch). `tsc` clean; full suite **577/577** green (the
+`pseudopet-redirect` Burn FE-variant test now passes for the right reason).
 
 ## ✅ `Grant_Power → Temporary_Powers` DoT procs resolved end-to-end — Molten Embrace / Hidden Flame DoT now visible + enhanceable-aware (full 3-layer fix, 2026-06-24)
 

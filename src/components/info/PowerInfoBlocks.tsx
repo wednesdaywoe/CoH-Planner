@@ -17,7 +17,7 @@
 
 import { useState } from 'react';
 import { useUIStore } from '@/stores';
-import type { Power, TargetType, EffectArea, SelectedPower, IOSetEnhancement } from '@/types';
+import type { Power, TargetType, EffectArea, SelectedPower, IOSetEnhancement, ResolvedPseudoPetAbility } from '@/types';
 import type { PowerDamageResult } from '@/utils/calculations';
 import { calcThreeTier as calcThreeTierUtil } from './powerDisplayUtils';
 import { abbreviateDamageType, calculateArcanaTime } from '@/utils/calculations';
@@ -169,7 +169,15 @@ export function GeneralStatsBlock({
   const activation = tier('castTime', effects.castTime);
   const rng = tier('range', effects.range);
 
-  const effectAreaLabel = formatEffectArea(power.effectArea, effects);
+  // Ground-patch / summon-shell powers (Burn, Rain of Fire, Caltrops, …) carry
+  // their shell's Self/SingleTarget/Location area with radius 0, so their real
+  // AoE footprint lives on the pseudo-pet. Surface that as the display area
+  // instead of the misleading "Single Target" — display-only, never mutates the
+  // power's real effect_area. See parser_logs/BIN-PARSER-LOG.md.
+  const patchArea = deriveSummonPatchArea(power, effects);
+  const effectAreaLabel = patchArea
+    ? `${formatEffectArea(patchArea.area, patchArea)} (patch)`
+    : formatEffectArea(power.effectArea, effects);
   const attackType = formatAttackType(power, effects, damageType);
 
   return (
@@ -518,13 +526,73 @@ function formatEffectArea(area: EffectArea | undefined, effects: { radius?: numb
       if (tgt) parts.push(`${tgt} max`);
       return parts.join(', ');
     }
-    case 'Location':
-      return 'Location AoE';
+    case 'Location': {
+      const r = effects.radius;
+      const tgt = effects.maxTargets;
+      const parts = ['Location AoE'];
+      if (r) parts.push(`${r.toFixed(0)}ft`);
+      if (tgt) parts.push(`${tgt} max`);
+      return parts.join(', ');
+    }
     case 'Chain':
       return 'Chain';
     default:
       return area;
   }
+}
+
+/**
+ * Derive a DISPLAY effect area for "ground patch" summon-shell powers (Burn,
+ * Rain of Fire, Caltrops, Tar Patch, Ice Storm, Sleet, Bonfire, …). These are
+ * Self/SingleTarget or Location shells whose own radius/max-targets are 0 — they
+ * just summon a pseudo-pet that carries the real AoE (Burn → FieryBurn, 15ft/10).
+ * The converter resolves that footprint into `summon.resolvedEntities[].abilities`,
+ * but the headline still reads the shell's values, so the UI mislabels these as
+ * "Single Target" and hides the radius/cap rows.
+ *
+ * Returns the widest pet-ability footprint to display, or null when the power
+ * isn't a pseudo-pet shell, already surfaces its own radius, or its pet has no
+ * AoE ability (callers then fall back to the power's own effect_area).
+ *
+ * Display-only: the real effect_area is never mutated — downstream calc/targeting
+ * depends on the literal Self/SingleTarget value. See parser_logs/BIN-PARSER-LOG.md.
+ */
+function deriveSummonPatchArea(
+  power: Power,
+  effects: { radius?: number },
+): { area: EffectArea; radius?: number; maxTargets?: number } | null {
+  // `resolvedEntities` is the converter's synthesized footprint for redirect-
+  // based patches/shells (it is NOT populated for real PET_ENTITIES summons like
+  // Mastermind henchmen), so its presence is the signal — not the narrower
+  // `isPseudoPet` flag, which is false for Burn-style PL_StaticObject shells.
+  const summon = power.effects?.summon;
+  if (!summon?.resolvedEntities?.length) return null;
+  // Only fill a gap: if the headline already shows a real AoE radius, leave it.
+  if (effects.radius && effects.radius > 0) return null;
+
+  // Widest-footprint ability across all resolved pets is the patch's AoE; pet
+  // self-buffs (ResistAll, etc.) carry no radius and are skipped.
+  let best: ResolvedPseudoPetAbility | null = null;
+  for (const ent of summon.resolvedEntities) {
+    for (const ab of ent.abilities) {
+      if (!ab.radius || ab.radius <= 0) continue;
+      if (!best || ab.radius > (best.radius ?? 0)) best = ab;
+    }
+  }
+  if (!best) return null;
+
+  // Keep the power's own area when it already conveys an AoE shape (Location
+  // patches like Tar Patch / Rain of Fire stay "Location AoE"); only the
+  // misleading Self/SingleTarget shells (Burn) borrow the pet's area.
+  const own = power.effectArea;
+  const petRaw = best.effectArea; // raw bin string ('Sphere' | 'Cone' | …), unmapped
+  const area: EffectArea =
+    own === 'Location' || own === 'AoE' || own === 'Cone'
+      ? own
+      : petRaw === 'Cone' ? 'Cone' : 'AoE';
+  // 255 is the bin's "uncapped" sentinel — omit rather than render "255 max".
+  const maxTargets = best.maxTargets && best.maxTargets < 255 ? best.maxTargets : undefined;
+  return { area, radius: best.radius, maxTargets };
 }
 
 /**

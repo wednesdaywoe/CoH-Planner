@@ -80,7 +80,6 @@ export const Burn: Power = {
                   "table": "Melee_Damage"
                 }
               ],
-              "conditionalDamage": true,
               "recharge": 0,
               "castTime": 0,
               "activatePeriod": 0.8,
@@ -114,7 +113,6 @@ export const Burn: Power = {
                   "table": "Melee_Damage"
                 }
               ],
-              "conditionalDamage": true,
               "recharge": 0,
               "castTime": 0,
               "activatePeriod": 100,

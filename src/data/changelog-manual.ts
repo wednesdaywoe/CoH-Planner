@@ -22,9 +22,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
     date: '2026-06-24',
-    
+
     items: [
-      { message: '**premptive entry**Updated Homecoming dataset to Issue 28 Page 3 Panel 3', type: 'update'},
+      { message: 'Updated Homecoming dataset to Issue 28 Page 3 Panel 3', type: 'update'},
       { message: 'Updated the Discord link', type: 'feat' },
       { message: 'Added collapsible set bonus view for mobile users', type: 'feat' },
       { message: 'The Incarnate crafting UI had a significant update to better reflect the crafting tree and node dependencies', type: 'update' },

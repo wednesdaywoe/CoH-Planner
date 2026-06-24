@@ -1201,7 +1201,10 @@ function resolveSummonRedirects(redirectNames) {
     const templates = collected.map(c => c.template);
 
     // Damage (reuse the converter's damage extractor — Current/Absolute aspects,
-    // excludes buff/debuff tables). Normalize to PetAbility damage shape.
+    // excludes buff/debuff tables). Normalize to PetAbility damage shape. Gated
+    // leaves (a chance:0 mode group like Burn's FieryEmbrace bonus) stay in the
+    // array — the armor Burns deliberately surface the FE-active variant
+    // (0.14 + 0.063); the gating only governs the conditionalDamage flag below.
     const dmg = extractDamage(templates);
     const dmgArr = dmg ? (Array.isArray(dmg) ? dmg : [dmg]) : [];
     // Dedup identical (type, scale, table) hits and drop PvP damage tables.
@@ -1243,27 +1246,35 @@ function resolveSummonRedirects(redirectNames) {
 
     if (damage.length === 0 && effects.length === 0) continue; // ResistAll etc.
 
-    // How often does this redirect's damage actually land? Derive from the
+    // How often does this redirect's damage actually land? Classify from the
     // per-template chance/gated flags of the damage leaves.
-    //  • gated (a chance:0 mode sentinel in the path) → MODE-gated (storm-strength
-    //    "while High Winds active"): no computable rate ⇒ `conditionalDamage`,
-    //    surfaced informationally not summed (else Storm Cell's bogus 1908).
+    //  • A redirect with NO always-on hit — every damage leaf is mode-gated
+    //    (storm-strength "while High Winds") — has no computable rate ⇒
+    //    `conditionalDamage`, surfaced informationally not summed (else Storm
+    //    Cell's bogus 1908).
     //  • 0 < chance < 1, not gated → a PROC: the runtime counts EXPECTED value
     //    (chance × per-hit), matching the planner's proc convention.
     //  • chance >= 1 → guaranteed DoT (enhanceable headline damage).
+    //
+    // CRITICAL: a gated bonus sitting BESIDE an always-on hit (Burn's
+    // FieryEmbrace 0.063 beside the base 0.14 DoT; Lightning Rod's FE Fire beside
+    // its base Energy) must NOT flip the whole ability to conditionalDamage — that
+    // zeroed the guaranteed headline damage entirely (Burn/Lightning Rod showed
+    // NOTHING). So conditionalDamage requires that there be no guaranteed damage
+    // at all; the gated bonus stays in `damage` as part of the FE-active variant.
     let conditionalDamage = false;
     let damageChance;
     if (damage.length > 0) {
-      let maxChance = 0, anyGated = false;
+      let maxGuaranteedChance = 0, hasGuaranteed = false, hasGated = false;
       for (const { template, chance, gated } of collected) {
         const a = template.attribs && template.attribs[0] ? template.attribs[0].toLowerCase() : null;
-        if (a && isDamageTypeAttrib(a) && extractDamage([template])) {
-          if (chance > maxChance) maxChance = chance;
-          if (gated) anyGated = true;
-        }
+        if (!(a && isDamageTypeAttrib(a) && extractDamage([template]))) continue;
+        if (gated) { hasGated = true; continue; }
+        hasGuaranteed = true;
+        if (chance > maxGuaranteedChance) maxGuaranteedChance = chance;
       }
-      if (anyGated) conditionalDamage = true;
-      else if (maxChance < 1) damageChance = Math.round(maxChance * 100) / 100;
+      if (!hasGuaranteed && hasGated) conditionalDamage = true;
+      else if (hasGuaranteed && maxGuaranteedChance < 1) damageChance = Math.round(maxGuaranteedChance * 100) / 100;
     }
 
     abilities.push({
