@@ -135,7 +135,7 @@ if ('launchQueue' in window) {
 //      dataset loads first and we don't flash the wrong one.
 //   3. Default to Homecoming.
 function bootServerId(): DatasetId {
-  const KNOWN: readonly DatasetId[] = ['homecoming', 'rebirth', 'thunderspy'];
+  const KNOWN: readonly DatasetId[] = ['homecoming', 'rebirth', 'thunderspy', 'veracity'];
   const isKnown = (v: unknown): v is DatasetId =>
     typeof v === 'string' && (KNOWN as readonly string[]).includes(v);
   try {

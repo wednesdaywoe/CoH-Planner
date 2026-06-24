@@ -1,0 +1,19 @@
+{
+  "key": "Pets.MG_Arena_of_Blood",
+  "display_name": "Arena of Blood",
+  "help": "Arena of Blood",
+  "short_help": "Arena of Blood",
+  "icon": "",
+  "powers": [
+    "Pets.MG_Arena_of_Blood.Aura"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Arena of Blood"
+  ],
+  "power_short_helps": [
+    ""
+  ]
+}

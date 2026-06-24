@@ -1,0 +1,59 @@
+{
+  "key": "Corruptor_Ranged.Assault_Rifle",
+  "display_name": "Assault Rifle",
+  "help": "The Assault Rifle is a state-of-the-art piece of hardware. It is equipped to handle an impressive arsenal of munitions and firing modes. The Assault Rifle is also equipped with the latest in targeting technology, and is a very accurate weapon.",
+  "short_help": "Assault Rifle",
+  "icon": "assault_rifle_set.ico",
+  "powers": [
+    "Corruptor_Ranged.Assault_Rifle.Burst",
+    "Corruptor_Ranged.Assault_Rifle.Slug",
+    "Corruptor_Ranged.Assault_Rifle.Buckshot",
+    "Corruptor_Ranged.Assault_Rifle.M30_Grenade",
+    "Corruptor_Ranged.Assault_Rifle.Beanbag",
+    "Corruptor_Ranged.Assault_Rifle.Sniper_Rifle",
+    "Corruptor_Ranged.Assault_Rifle.Flamethrower",
+    "Corruptor_Ranged.Assault_Rifle.Ignite",
+    "Corruptor_Ranged.Assault_Rifle.Full_Auto",
+    "Corruptor_Ranged.Assault_Rifle.One_Man_Army",
+    "Corruptor_Ranged.Assault_Rifle.Headshot"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Burst",
+    "Slug",
+    "Buckshot",
+    "M30 Grenade",
+    "Beanbag",
+    "Sniper Rifle",
+    "Flamethrower",
+    "Ignite",
+    "Full Auto",
+    "One Man Army",
+    "Headshot"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Lethal), Foe -DEF",
+    "Ranged, High DMG(Lethal), Foe Knockback",
+    "Ranged (Cone), Moderate DMG(Lethal), Foe Knockback",
+    "Ranged (Targeted AoE), Moderate DMG(Lethal/Smash), Knockback",
+    "Ranged, Minor DMG(Smash), Foe Disorient",
+    "Sniper, Extreme DMG(Lethal), Foe Knockback",
+    "Ranged (Cone), Extreme DoT(Fire)",
+    "Ranged (Targeted AoE), Moderate DoT(Fire)",
+    "Ranged (Cone), Superior DMG(Lethal), +Special",
+    "Self: +Headshot, +Damage, +Range",
+    "Ranged (Single Target), Lethal Damage + chance to Slay"
+  ]
+}

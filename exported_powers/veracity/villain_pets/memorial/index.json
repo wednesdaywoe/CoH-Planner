@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.Memorial",
+  "display_name": "Memorial",
+  "help": "A memorial tribute that displays visual effects at its location.",
+  "short_help": "Passive: Memorial Effect",
+  "icon": "naturalaffinity_spirittree.png",
+  "powers": [
+    "Villain_Pets.Memorial.Memorial_Exec"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Memorial"
+  ],
+  "power_short_helps": [
+    "Passive: Memorial Effect"
+  ]
+}

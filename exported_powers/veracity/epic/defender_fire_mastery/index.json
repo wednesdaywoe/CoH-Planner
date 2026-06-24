@@ -1,0 +1,35 @@
+{
+  "key": "Epic.Defender_Fire_Mastery",
+  "display_name": "Flame Mastery",
+  "help": "You have Mastery over Fire and Flame to control your foes and to add some much needed armor and defense.",
+  "short_help": "Flame Mastery",
+  "icon": "flame_mastery_set.ico",
+  "powers": [
+    "Epic.Defender_Fire_Mastery.Consume",
+    "Epic.Defender_Fire_Mastery.Char",
+    "Epic.Defender_Fire_Mastery.Fire_Shield",
+    "Epic.Defender_Fire_Mastery.Rise_of_the_Phoenix",
+    "Epic.Defender_Fire_Mastery.Greater_Fire_Sword"
+  ],
+  "available_level": [
+    31,
+    31,
+    34,
+    34,
+    37
+  ],
+  "power_display_names": [
+    "Consume",
+    "Char",
+    "Fire Shield",
+    "Rise of the Phoenix",
+    "Greater Fire Sword"
+  ],
+  "power_short_helps": [
+    "PBAoE, Minor DMG(Fire), Self +End",
+    "Ranged, Moderate DoT(Fire), Foe Hold",
+    "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
+    "Self Rez, Special",
+    "Melee, Superior DMG(Fire/Lethal)"
+  ]
+}

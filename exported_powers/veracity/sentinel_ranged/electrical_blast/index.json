@@ -1,0 +1,55 @@
+{
+  "key": "Sentinel_Ranged.Electrical_Blast",
+  "display_name": "Electrical Blast",
+  "help": "Electrical Blast endows you with ranged electrical attack powers. Electrical powers can drain foes' Endurance and can often temporarily halt their Endurance recovery. This can be quite effective against higher level foes and Bosses. Some Electrical Blast powers can even sometimes transfer this Endurance back to you.",
+  "short_help": "Electrical Blast",
+  "icon": "electrical_blast_set.ico",
+  "powers": [
+    "Sentinel_Ranged.Electrical_Blast.Charged_Bolts",
+    "Sentinel_Ranged.Electrical_Blast.Lightning_Bolt",
+    "Sentinel_Ranged.Electrical_Blast.Ball_Lightning",
+    "Sentinel_Ranged.Electrical_Blast.Zapping_Bolt",
+    "Sentinel_Ranged.Electrical_Blast.Aim",
+    "Sentinel_Ranged.Electrical_Blast.Tesla_Cage",
+    "Sentinel_Ranged.Electrical_Blast.Voltaic_Sentinel",
+    "Sentinel_Ranged.Electrical_Blast.Short_Circuit",
+    "Sentinel_Ranged.Electrical_Blast.Thunderous_Blast",
+    "Sentinel_Ranged.Electrical_Blast.Faraday_Cage"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    5,
+    7,
+    11,
+    17,
+    25,
+    31,
+    0
+  ],
+  "power_display_names": [
+    "Charged Bolts",
+    "Lightning Bolt",
+    "Ball Lightning",
+    "Zapping Bolt",
+    "Aim",
+    "Tesla Cage",
+    "Voltaic Sentinel",
+    "Short Circuit",
+    "Thunderous Blast",
+    "Faraday Cage"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Energy), Foe -End",
+    "Ranged, High DMG(Energy), Foe -End",
+    "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
+    "Very High DMG(Energy), Foe -End",
+    "Self +To Hit, +DMG, +Range",
+    "Ranged, Extreme DMG(Energy), Foe Hold, -End",
+    "Summon Sentinel: Ranged, Moderate DMG(Energy), Foe -End",
+    "PBAoE, Moderate DoT(Energy), Foe -End, -Recovery",
+    "Ranged (Targeted AoE), Extreme DMG(Energy), Foe -End, -Recovery",
+    "Toggle (Location), Fortify Patch \u2014 +Defense aura to allies"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "key": "Pets.Emit_VV",
+  "display_name": "ResistAll",
+  "help": "Resistance",
+  "short_help": "Resistance",
+  "icon": "resistall_set.ico",
+  "powers": [
+    "Pets.Emit_VV.VV_25"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Villainous Vulnerability"
+  ],
+  "power_short_helps": [
+    "Villain Archetype Synergy"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Mu_Hold",
+  "display_name": "Mu_Hold",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "mu_hold_set.ico",
+  "powers": [
+    "V_Arachnos.Mu_Hold.Shocking_Bolt"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Shocking Bolt"
+  ],
+  "power_short_helps": [
+    "Hold"
+  ]
+}

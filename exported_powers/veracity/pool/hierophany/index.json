@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Hierophany",
+  "display_name": "Hierophany",
+  "help": "These powers reflect your connection to the light. Powers in the Hierophany pool tend to grant defensive and healing options. Every power you take from the Hierophany pool increases your resistance to Recharge debuffs by 5%.",
+  "short_help": "Hierophany",
+  "icon": "invisibility_set.ico",
+  "powers": [
+    "Pool.Hierophany.Mote_of_Light",
+    "Pool.Hierophany.Sword_of_Faith",
+    "Pool.Hierophany.Purifier",
+    "Pool.Hierophany.Mists_of_Avalon",
+    "Pool.Hierophany.Guardian_Angel"
+  ],
+  "available_level": [
+    3,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Motes of Light",
+    "Sword of Faith",
+    "Purification",
+    "Mists of Avalon",
+    "Guardian Angel"
+  ],
+  "power_short_helps": [
+    "Summon Mote of Light",
+    "Self: +Damage(All), +ToHit, +Endurance, Terrorize Protection",
+    "ST Energy Damage, Foe -Regen, TAOE Accurate Heal",
+    "Map Wide Stealth, +Regeneration",
+    "Map Wide +Defense(S/L/F/C/E/N), +Stun Protection"
+  ]
+}

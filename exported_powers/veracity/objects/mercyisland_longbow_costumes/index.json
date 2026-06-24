@@ -1,0 +1,19 @@
+{
+  "key": "Objects.MercyIsland_Longbow_Costumes",
+  "display_name": "MercyIsland_Longbow_Costumes",
+  "help": "Map",
+  "short_help": "Map",
+  "icon": "mercyisland_longbow_costumes_set.ico",
+  "powers": [
+    "Objects.MercyIsland_Longbow_Costumes.Longbow_Disguise"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Longbow Disguise"
+  ],
+  "power_short_helps": [
+    "Longbow Disguise"
+  ]
+}

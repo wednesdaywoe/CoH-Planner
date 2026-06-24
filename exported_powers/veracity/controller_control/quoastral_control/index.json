@@ -1,0 +1,51 @@
+{
+  "key": "Controller_Control.QUOAstral_Control",
+  "display_name": "Astral Control",
+  "help": "You walk the realm somewhere between reality and dreams, wielding a mix of Psionic and Negative Energy powers that are half real and half imagined.",
+  "short_help": "Astral Control",
+  "icon": "darkness_control_set.ico",
+  "powers": [
+    "Controller_Control.QUOAstral_Control.Delirium",
+    "Controller_Control.QUOAstral_Control.Gleaming_Column",
+    "Controller_Control.QUOAstral_Control.Astonishing_Light",
+    "Controller_Control.QUOAstral_Control.Astral_Golem",
+    "Controller_Control.QUOAstral_Control.Ambiguity",
+    "Controller_Control.QUOAstral_Control.Subliminal_Aura",
+    "Controller_Control.QUOAstral_Control.Strange_Gate",
+    "Controller_Control.QUOAstral_Control.Spiritual_Dawn",
+    "Controller_Control.QUOAstral_Control.Lucid_Dream"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27
+  ],
+  "power_display_names": [
+    "Delirium",
+    "Dream Column",
+    "Parasomnia",
+    "Astral Golem",
+    "Ambiguity",
+    "Subliminal Aura",
+    "Astral Projection",
+    "Spiritual Dawn",
+    "Lucid Dream"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Psionic), Foe Sleep, Terrify",
+    "Ranged, Moderate DMG(Negative), Foe Hold",
+    "PBAoE, Minor DMG(Negative), Foe Immobilize, Foe Sleep",
+    "Summon Astral Golem: Ranged Moderate DMG(Psionic, Negative)",
+    "Foe Repel, -ToHit, -Perception",
+    "Toggle: PBAoE, Foe Sleep, -Mezz Resistance",
+    "Ranged, Caster Teleport, Summon Echo (Damage, Confuse, Knockup)",
+    "Self +Recharge, PBAoE Stun",
+    "Ranged AoE Sleep, Hold\" \"Ranged AoE Sleep, Hold"
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "name": "Mobility_4",
+  "full_name": "Inherent.Inherent.Mobility_4",
+  "short_name": "Mobility_4",
+  "type": "Auto",
+  "display_name": "Mobility 4",
+  "display_fullname": "Inherent Inherent Mobility 4",
+  "display_help": "Every character is assigned a Mobility score, and it determines how many stacks of <b>Mobility</b> you can passively accumulate. Each stack of <b>Mobility</b> grants you resistance to travel suppression, resistance to slows, and a small amount of Recharge. Through other powers and abilities, any character may accumulate up to nine stacks of Mobility, but the stacks will gradually decay down to your base rating.",
+  "display_short_help": "Resist Travel Suppression",
+  "icon": "e_icon_gen_run_01.png",
+  "auto_issue": true,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 1,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 30.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "Blaster_Ranged.Archery.Snap_Shot Blaster_Ranged.Archery.Aimed_Shot || Blaster_Ranged.Sonic_Attack.Shriek || Blaster_Ranged.Sonic_Attack.Scream || Blaster_Ranged.Water_Blast.Aqua_Bolt || Blaster_Ranged.Water_Blast.Hydro_Blast || Corruptor_Ranged.Archery.Snap_Shot || Corruptor_Ranged.Archery.Aimed_Shot || Corruptor_Ranged.Sonic_Attack.Shriek || Corruptor_Ranged.Sonic_Attack.Scream || Corruptor_Ranged.Water_Blast.Aqua_Bolt || Corruptor_Ranged.Water_Blast.Hydro_Blast || Defender_Ranged.Archery.Snap_Shot || Defender_Ranged.Sonic_Attack.Shriek || Defender_Ranged.Water_Blast.Aqua_Bolt || Dominator_Assault.Energy_Assault.Power_Bolt || Dominator_Assault.Psionic_Assault.Psionic_Dart || Warshade_Offensive.Umbral_Blast.Shadow_Bolt || Warshade_Offensive.Umbral_Blast.Ebon_Eye || Peacebringer_Offensive.Luminous_Blast.Gleaming_Bolt || Peacebringer_Offensive.Luminous_Blast.Glinting_Eye || Tanker_Melee.Energy_Melee.Barrage || Tanker_Melee.Katana.Hack || Tanker_Melee.Psionic_Melee.Mental_Strike || Tanker_Melee.Savage_Melee.Savage_Strike || Tanker_Melee.Spines.Barb_Swipe || Controller_Control.Mind_Control.Mesmerize || Controller_Control.Mind_Control.Levitate || Controller_Control.Gravity_Control.Crush || Controller_Control.Gravity_Control.Lift || Mastermind_Summon.Ninjas.Snap_Shot || Mastermind_Summon.Ninjas.Call_Genin || Stalker_Melee.Kinetic_Attack.Quick_Strike || Stalker_Melee.Kinetic_Attack.Body_Blow || Stalker_Melee.Martial_Arts.Thunder_Kick || Stalker_Melee.Martial_Arts.Storm_Kick || Scrapper_Melee.Staff_Fighting.Mercurial_Blow || Scrapper_Melee.Staff_Fighting.Precise_Strike || Scrapper_Melee.Martial_Arts.Thunder_Kick || Scrapper_Melee.Martial_Arts.Storm_Kick || Scrapper_Melee.Kinetic_Attack.Quick_Strike || Scrapper_Melee.Kinetic_Attack.Body_Blow || Brute_Melee.Kinetic_Attack.Quick_Strike || Brute_Melee.Kinetic_Attack.Body_Blow || Brute_Melee.Martial_Arts.Thunder_Kick || Brute_Melee.Martial_Arts.Storm_Kick || Arachnos_Soldiers.Arachnos_Soldier.Single_Shot || Arachnos_Soldiers.Arachnos_Soldier.Pummel || Arachnos_Soldiers.Crab_Spider_Soldier.Channelgun || Arachnos_Soldiers.Crab_Spider_Soldier.Slice || Arachnos_Soldiers.Bane_Spider_Soldier.BS_Bash || Arachnos_Soldiers.Bane_Spider_Soldier.Mace_Beam || Widow_Training.Widow_Training.Poison_Dart || Widow_Training.Widow_Training.Swipe || Widow_Training.Night_Widow_Training.NW_Mental_Blast || Widow_Training.Fortunata_Training.FRT_Mental_Blast || Widow_Training.Fortunata_Training.FRT_Telekinetic_Blast ||",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Mobility_State source.ownPowerNum? 4 <",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Global_Chance_Mod"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Collective",
+          "stack": "Unknown(4294967295)",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Mobility_State"
+            ]
+          },
+          "flags": [
+            "CopyBoosts"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Mobility_State source.ownPowerNum? 4 >",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Global_Chance_Mod"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Collective",
+          "stack": "Unknown(4294967295)",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Mobility_State"
+            ]
+          },
+          "flags": [
+            "CopyBoosts"
+          ]
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Inherent.Inherent"
+}

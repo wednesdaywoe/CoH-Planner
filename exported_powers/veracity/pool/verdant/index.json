@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Verdant",
+  "display_name": "Verdant",
+  "help": "Expresses your character's connection to the natural world with options for pets, healing, and buffs. Each power you take from Verdant increases your Regeneration by .3% of your Max HP.",
+  "short_help": "Verdant",
+  "icon": "teleportation_set.ico",
+  "powers": [
+    "Pool.Verdant.Ethereal_Panther",
+    "Pool.Verdant.Overgrowth",
+    "Pool.Verdant.Photosynthetic_Healing",
+    "Pool.Verdant.Barkskin",
+    "Pool.Verdant.Kindness_Drops"
+  ],
+  "available_level": [
+    3,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Ethereal Panther",
+    "Gnarling Roots",
+    "Photosynthetic Healing",
+    "Skin of Bark",
+    "Kindness Drops"
+  ],
+  "power_short_helps": [
+    "Summon Feline Ally",
+    "PBAOE Cone Minor Toxic DOT, Chance for Immobilize",
+    "PBAOE Healing Over Time, +Regen, Resistance to -Regen",
+    "Single Target +Absorb, +Defense/Resistance(Smashing, Lethal)",
+    "Targeted Area Heal Over Time, Special"
+  ]
+}

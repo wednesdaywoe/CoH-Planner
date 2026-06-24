@@ -1,0 +1,35 @@
+{
+  "key": "Epic.Kheldian_Earth_Mastery",
+  "display_name": "Earth Mastery",
+  "help": "Your latent facility with earth and stone has been neglected in favor of your Kheldian gifts, until now. With Earth Mastery, you can conjure mighty weapons of stone. Note that multiple Earth Mastery powers require you to be on the ground, and are therefore not accessible in Nova form.",
+  "short_help": "Earth Mastery",
+  "icon": "earth_mastery_set.ico",
+  "powers": [
+    "Epic.Kheldian_Earth_Mastery.Stone_Cages",
+    "Epic.Kheldian_Earth_Mastery.Stone_Mallet",
+    "Epic.Kheldian_Earth_Mastery.Mud_Pots",
+    "Epic.Kheldian_Earth_Mastery.Seismic_Smash",
+    "Epic.Kheldian_Earth_Mastery.Earthquake"
+  ],
+  "available_level": [
+    31,
+    31,
+    34,
+    34,
+    37
+  ],
+  "power_display_names": [
+    "Stone Cages",
+    "Stone Mallet",
+    "Mud Pots",
+    "Seismic Smash",
+    "Earthquake"
+  ],
+  "power_short_helps": [
+    "Ranged AoE, Minor DMG(Smash), Foe Immobilize, -Fly, -DEF",
+    "Melee, High DMG(Smash), Knockback",
+    "Toggle: PBAoE, Minor DoT(Fire), Foe Immobilize, -SPD",
+    "Melee, Extreme DMG(Smash), Foe Hold",
+    "Ranged (Location AoE), Foe Knockback, -DEF, -To Hit"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Leaping",
+  "display_name": "Jumping",
+  "help": "Grants you leaping travel and various combat abilities reflecting your nimbleness. Each power you take from Jumping grants you 0.8 magnitude of Immobilize protection.",
+  "short_help": "Jumping",
+  "icon": "leaping_set.ico",
+  "powers": [
+    "Pool.Leaping.Long_Jump",
+    "Pool.Leaping.Jump_Kick",
+    "Pool.Leaping.Combat_Jumping",
+    "Pool.Leaping.Leap",
+    "Pool.Leaping.Spring_Attack"
+  ],
+  "available_level": [
+    2,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Super Jump",
+    "Jump Kick",
+    "Combat Jumping",
+    "Acrobatics",
+    "Spring Attack"
+  ],
+  "power_short_helps": [
+    "Toggle: Self Long Jump",
+    "Melee, Moderate DMG(Smash), Foe Knockdown",
+    "Toggle: Self +Jump, +DEF(All), Res(Immobilization)",
+    "Toggle: Self +Res(Knockback, Hold)",
+    "PBAoE Superior DMG(Smashing), Foe Knockdown; Self Teleport"
+  ]
+}

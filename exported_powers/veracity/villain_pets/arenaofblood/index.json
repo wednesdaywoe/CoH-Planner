@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.ArenaOfBlood",
+  "display_name": "Arena of Blood",
+  "help": "You summon a 40-foot radius arena of Roman columns. The columns rise dramatically, blood splatters mark the arena floor, and after 20 seconds the columns topple outward. Duration: 30 seconds.",
+  "short_help": "Location AoE: Summon Gladiatorial Arena",
+  "icon": "bronzeage_arenaofblood.png",
+  "powers": [
+    "Villain_Pets.ArenaOfBlood.ArenaOfBlood_Exec"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Arena of Blood"
+  ],
+  "power_short_helps": [
+    "Location AoE: Summon Gladiatorial Arena"
+  ]
+}

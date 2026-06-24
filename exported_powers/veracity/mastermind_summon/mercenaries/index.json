@@ -1,0 +1,59 @@
+{
+  "key": "Mastermind_Summon.Mercenaries",
+  "display_name": "Mercenaries",
+  "help": "Despite their reputations, Mercenaries are extremely loyal and dedicated soldiers.  They are the best at what they do, and they always follow orders, exactly what a Mastermind needs.  Mercenaries typically use conventional weapons and all Mercenaries have body armor that gives them resistance to smashing and lethal damage and their training makes them resistant to Confusion and Placate",
+  "short_help": "Mercenaries",
+  "icon": "mercenaries_set.ico",
+  "powers": [
+    "Mastermind_Summon.Mercenaries.Burst",
+    "Mastermind_Summon.Mercenaries.Soldiers",
+    "Mastermind_Summon.Mercenaries.Slug",
+    "Mastermind_Summon.Mercenaries.Commanding_Presence",
+    "Mastermind_Summon.Mercenaries.M30_Grenade",
+    "Mastermind_Summon.Mercenaries.Spec_Ops",
+    "Mastermind_Summon.Mercenaries.Serum",
+    "Mastermind_Summon.Mercenaries.Commando",
+    "Mastermind_Summon.Mercenaries.Command_and_Conquer",
+    "Mastermind_Summon.Mercenaries.Ungarmax",
+    "Mastermind_Summon.Mercenaries.Attrition"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Burst",
+    "Soldiers",
+    "Slug",
+    "Paramilitary Presence",
+    "M30 Grenade",
+    "Spec Ops",
+    "Serum",
+    "Commando",
+    "Command and Conquer",
+    "Ungarmax",
+    "Attrition"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Lethal), Foe -DEF",
+    "P2937209522",
+    "Ranged, High DMG(Lethal), Foe Knockback",
+    "Special Attacks for Pets, Self +Defense, +Recharge",
+    "Ranged (Targeted AoE), Moderate DMG(Lethal/Smash), Knockback",
+    "Summon Spec Ops",
+    "Buff Mercenary +DMG, +RES(All except Psionic), +To Hit, +Recovery",
+    "Summon Commando",
+    "Ally +Damage(All), +ToHit, +Range, +Resist(Smash/Lethal)",
+    "Target AOE Fire/Lethal Damage, Repeating",
+    "Toggle (Single Target), Lethal Damage over time"
+  ]
+}

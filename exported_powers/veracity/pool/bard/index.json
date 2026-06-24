@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Bard",
+  "display_name": "Bard",
+  "help": "These powers reflect your character's passion for music, song, and dance. Every power you take from the Bard pool increases your maximum Endurance by 2.",
+  "short_help": "Bard",
+  "icon": "invisibility_set.ico",
+  "powers": [
+    "Pool.Bard.Motivational_Cheer",
+    "Pool.Bard.War_Drums",
+    "Pool.Bard.Lullabye",
+    "Pool.Bard.Verve",
+    "Pool.Bard.Puretone"
+  ],
+  "available_level": [
+    3,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Motivational Cheer",
+    "Drums of War",
+    "Exhausting Lullabye",
+    "Verve",
+    "Puretone Acoustics"
+  ],
+  "power_short_helps": [
+    "PBAoE Cone Mez Protection, +Recharge",
+    "PBAoE Ally +Damage (All), +Endurance",
+    "Foe Minor Psionic Damage, Slow, -Damage(All)",
+    "Auto: Resistance -Recharge, -Movespeed",
+    "Targeted AOE +Control, +Healing, +ToHit"
+  ]
+}

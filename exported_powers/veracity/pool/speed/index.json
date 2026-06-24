@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Speed",
+  "display_name": "Speed",
+  "help": "These powers reflect your uncanny speed and agility. The Speed pool offers options for offense, horizontal travel, and recharge improvement. Every power you take from the Speed pool grants you a 4% global recharge bonus.",
+  "short_help": "Speed",
+  "icon": "speed_set.ico",
+  "powers": [
+    "Pool.Speed.Super_Speed",
+    "Pool.Speed.Flurry",
+    "Pool.Speed.Hasten",
+    "Pool.Speed.Whirlwind",
+    "Pool.Speed.Burnout"
+  ],
+  "available_level": [
+    2,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Super Speed",
+    "Flurry",
+    "Hasten",
+    "Faster Than The Eye",
+    "Burnout"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Speed",
+    "Melee, Moderate DMG(Smash), Foe Disorient",
+    "Self +Recharge",
+    "Toggle: Self -Threat",
+    "Self +Recharge"
+  ]
+}

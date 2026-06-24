@@ -1,0 +1,16 @@
+/**
+ * Sting of the Wasp — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs brute_melee katana
+ */
+import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Hack as base } from '@/data/datasets/veracity/generated/powersets/brute/primary/katana/hack';
+import { overrides } from '@/data/datasets/veracity/overrides/powersets/brute/primary/katana/hack';
+
+export const Hack: Power = withOverrides(base, overrides);

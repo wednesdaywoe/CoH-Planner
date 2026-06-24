@@ -1,0 +1,23 @@
+{
+  "key": "Rikti.Toxic",
+  "display_name": "Toxic",
+  "help": "Rikti",
+  "short_help": "Rikti",
+  "icon": "toxic_set.ico",
+  "powers": [
+    "Rikti.Toxic.Envenom",
+    "Rikti.Toxic.Weaken"
+  ],
+  "available_level": [
+    1,
+    3
+  ],
+  "power_display_names": [
+    "Envenom",
+    "Weaken"
+  ],
+  "power_short_helps": [
+    "-RES, -DEF, -Regen, -Heal",
+    "-ACC, -DMG, -Special"
+  ]
+}

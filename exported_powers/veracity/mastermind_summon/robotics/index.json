@@ -1,0 +1,55 @@
+{
+  "key": "Mastermind_Summon.Robotics",
+  "display_name": "Robotics",
+  "help": "Robotics allows you to construct an army of mechanical henchmen and repair and upgrade them in order to keep your army in tip-top shape. Robot Henchmen generally have good resistances to Lethal, Cold and Psionic damage, as well as Sleep, Fear and Disorient.  They are  vulnerable to EMP attacks. Robot Henchmen cannot be resurrected.",
+  "short_help": "Robotics",
+  "icon": "robotics_set.ico",
+  "powers": [
+    "Mastermind_Summon.Robotics.Pulse_Rifle_Blast",
+    "Mastermind_Summon.Robotics.Battle_Drones",
+    "Mastermind_Summon.Robotics.Pulse_Rifle_Burst",
+    "Mastermind_Summon.Robotics.Equip_Robot",
+    "Mastermind_Summon.Robotics.Photon_Grenade",
+    "Mastermind_Summon.Robotics.Protector_Bots",
+    "Mastermind_Summon.Robotics.Repair",
+    "Mastermind_Summon.Robotics.Assault_Bot",
+    "Mastermind_Summon.Robotics.Monkeywrench",
+    "Mastermind_Summon.Robotics.Reanimation_Protocol"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    0
+  ],
+  "power_display_names": [
+    "Pulse Rifle Blast",
+    "Battle Drones",
+    "Pulse Rifle Burst",
+    "Machinist's Innovation",
+    "Photon Grenade",
+    "Protector Bots",
+    "Nanorepair Mechanism",
+    "Assault Bot",
+    "Monkeywrench",
+    "Reanimation Protocol"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Energy/Smash)",
+    "Summon Battle Drones",
+    "Ranged, High DMG(Energy), Foe Knockback",
+    "Special Attacks for Pets, Self +Defense, +Recharge",
+    "Ranged (Targeted AoE), Moderate DMG(Energy/Smash), Disorient",
+    "Summon Protector Bot",
+    "Single Target Heal Over Time, +End",
+    "Summon Assault Bot",
+    "Summon (Special)",
+    "Resurrect (PBAoE)"
+  ]
+}

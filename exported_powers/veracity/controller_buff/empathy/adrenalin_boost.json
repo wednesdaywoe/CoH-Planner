@@ -1,0 +1,106 @@
+{
+  "name": "Adrenalin_Boost",
+  "full_name": "Controller_Buff.Empathy.Adrenalin_Boost",
+  "short_name": "Adrenalin_Boost",
+  "type": "Click",
+  "display_name": "Sanctuary",
+  "display_fullname": "Controller Buff Empathy Adrenalin Boost",
+  "display_help": "Sanctuary shields an ally in a column of protective light. While within the protective light, they will receive a massive boost to Defense, Resistance, and Regeneration. The light will also generate an immense amount of healing every few seconds. The Sanctuary Light will only remain for fifteen seconds.",
+  "display_short_help": "Safe Zone",
+  "icon": "empathy_adrenalinboost.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.27,
+  "recharge_time": 1000.0,
+  "activate_period": 0.0,
+  "endurance_cost": 26.6,
+  "interrupt_time": 0.0,
+  "target_type": "Friend",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend"
+  ],
+  "targets_affected": [
+    "Friend"
+  ],
+  "boosts_allowed": [
+    "Res_Damage",
+    "Recovery",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Heal",
+    "Buff_ToHit",
+    "Buff_Defense"
+  ],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Endurance Modification",
+    "Healing",
+    "Resist Damage"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Level"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Level",
+          "scale": 1.0,
+          "duration": "15 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Collective",
+          "stack": "Unknown(4294967295)",
+          "stack_limit": 0,
+          "stack_key": null,
+          "flags": [
+            "NoFloaters",
+            "CopyBoosts"
+          ],
+          "flags_raw": 3
+        }
+      ]
+    }
+  ],
+  "available_level": 27,
+  "powerset": "Controller_Buff.Empathy"
+}

@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Fighting",
+  "display_name": "Fighting",
+  "help": "These powers reflect a background in hand-to-hand combat. Powers in the Fighting pool grant melee combat and durability options. Every power you take from the Fighting pool increases your base damage by 5%.",
+  "short_help": "Fighting",
+  "icon": "fighting_set.ico",
+  "powers": [
+    "Pool.Fighting.Boxing",
+    "Pool.Fighting.Kick",
+    "Pool.Fighting.Tough",
+    "Pool.Fighting.Weave",
+    "Pool.Fighting.Cross_Punch"
+  ],
+  "available_level": [
+    3,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Boxing",
+    "Kick",
+    "Tough",
+    "Weave",
+    "Cross Punch"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Smashing), Fighting Synergy, Foe Stun",
+    "Melee, Moderate DMG(Smashing), Synergy, Foe Knockdown",
+    "Toggle: Self +Res(Smash/Lethal)",
+    "Toggle: Self +DEF(All), Res(Immobilize)",
+    "Melee (Cone), Moderate DMG (Smashing), Fighting Synergy, Foe Knockdown, Stun"
+  ]
+}

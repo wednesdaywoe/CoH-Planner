@@ -26,7 +26,7 @@ const path = require('path');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 
-const KNOWN_DATASETS = new Set(['homecoming', 'rebirth', 'thunderspy']);
+const KNOWN_DATASETS = new Set(['homecoming', 'rebirth', 'thunderspy', 'veracity']);
 
 /**
  * Read `--dataset <id>` (or `--dataset=<id>`) from argv. Returns the id

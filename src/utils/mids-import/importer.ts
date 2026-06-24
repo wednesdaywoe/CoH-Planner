@@ -78,6 +78,8 @@ const MIDS_FULL_PATH_REMAP: Record<DatasetId, Record<string, string>> = {
   },
   // No known Mids path remaps for Thunderspy yet.
   thunderspy: {},
+  // No known Mids path remaps for Veracity yet.
+  veracity: {},
 };
 
 function remapMidsPath(path: string, server: DatasetId | null): string {

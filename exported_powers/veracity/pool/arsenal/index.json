@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Arsenal",
+  "display_name": "Arsenal",
+  "help": "These powers reflect your access to a basic arsenal of combat equipment. Every power you take from the Arsenal pool increases your global accuracy by 5%.",
+  "short_help": "Arsenal",
+  "icon": "invisibility_set.ico",
+  "powers": [
+    "Pool.Arsenal.Ornamental_Blade",
+    "Pool.Arsenal.Sawed_Off",
+    "Pool.Arsenal.Pins_and_Needles",
+    "Pool.Arsenal.Bulletproofing",
+    "Pool.Arsenal.Keen_Edge"
+  ],
+  "available_level": [
+    3,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Parrying Blade",
+    "Sawed-Off",
+    "Pins and Needles",
+    "Bulletproofing",
+    "Keen Edge"
+  ],
+  "power_short_helps": [
+    "Minor Lethal Damage, Self +Def(Melee)",
+    "Medium Lethal Damage Cone, Chance for Knockback",
+    "Lethal Damage over Time, Movement Slow",
+    "Self +Def(Smashing, Lethal), +Res (Smashing, Lethal)",
+    "Ally +Crit, +Fury"
+  ]
+}

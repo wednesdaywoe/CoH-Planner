@@ -1,0 +1,27 @@
+{
+  "key": "Villain_Pets.Egg_of_Luminosity",
+  "display_name": "Egg of Luminosity",
+  "help": "You channel concentrated Kheldian light into a brilliant sphere that slowly descends from above over 12 seconds. As the Egg of Luminosity descends, it pulses healing light to allies within its radius at 2, 5, and 9 seconds. When it reaches the ground, it creates a Luminous Sanctuary that grants regeneration to all allies who remain within for 30 seconds. Recharge: Very Long",
+  "short_help": "Ranged (Location), Ally Heal, +Regen",
+  "icon": "luminosity_eggofluminosity.png",
+  "powers": [
+    "Villain_Pets.Egg_of_Luminosity.Descent_Exec",
+    "Villain_Pets.Egg_of_Luminosity.Ring_Exec",
+    "Villain_Pets.Egg_of_Luminosity.Fortify_Exec"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Egg of Luminosity",
+    "Egg of Luminosity",
+    "Luminous Sanctuary"
+  ],
+  "power_short_helps": [
+    "Ranged (Location), Ally Heal, +Regen",
+    "Ranged (Location), Ally Heal, +Regen",
+    "Ally +Regen"
+  ]
+}

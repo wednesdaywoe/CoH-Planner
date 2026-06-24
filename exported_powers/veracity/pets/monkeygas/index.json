@@ -1,0 +1,19 @@
+{
+  "key": "Pets.MonkeyGas",
+  "display_name": "Monkey Gas",
+  "help": "Rikti",
+  "short_help": "Rikti",
+  "icon": "monkeygas_set.ico",
+  "powers": [
+    "Pets.MonkeyGas.Monkey_Gas"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Monkey Gas"
+  ],
+  "power_short_helps": [
+    "Monkey Gas"
+  ]
+}

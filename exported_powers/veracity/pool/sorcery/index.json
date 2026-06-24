@@ -1,0 +1,39 @@
+{
+  "key": "Pool.Sorcery",
+  "display_name": "Sorcery",
+  "help": "These powers reflect your magical training and expertise. The Sorcery pool offers options for flight, ranged damage, and summoning allies. Every power you take from the Sorcery pool improves your recovery.",
+  "short_help": "Sorcery",
+  "icon": "sorcery_set.ico",
+  "powers": [
+    "Pool.Sorcery.Mystic_Flight",
+    "Pool.Sorcery.Translocation",
+    "Pool.Sorcery.Spirit_Ward",
+    "Pool.Sorcery.Arcane_Bolt",
+    "Pool.Sorcery.Rune_of_Protection",
+    "Pool.Sorcery.Enflame"
+  ],
+  "available_level": [
+    2,
+    4294967295,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Mystic Flight",
+    "Translocation",
+    "Spirit Ward",
+    "Arcane Bolt",
+    "Rune of Protection",
+    "Daemonic Gate"
+  ],
+  "power_short_helps": [
+    "Toggle: Self Fly, (Special)",
+    "Click, Self Teleport",
+    "Ally, +Absorb over time",
+    "Ranged, Moderate DMG(Energy), Foe Knockdown",
+    "Self, +Res(All Dmg, Hold, Sleep, Immobilize, Knockdown, Disorient)",
+    "Summon Demon, Targeted AOE Fire Damage over Time"
+  ]
+}

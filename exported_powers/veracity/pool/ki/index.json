@@ -1,0 +1,43 @@
+{
+  "key": "Pool.Ki",
+  "display_name": "Ki",
+  "help": "These powers reflect your innate command of the energy flowing through all bodies. Powers in the Ki pool allow you to manifest unique attacks and power through longer combats. Every power you take from the Ki pool increases your resistance to Endurance and Recovery debuffs by 5%.",
+  "short_help": "Ki",
+  "icon": "invisibility_set.ico",
+  "powers": [
+    "Pool.Ki.Unlocked_Potential",
+    "Pool.Ki.Bakuhatsuha",
+    "Pool.Ki.Kiai",
+    "Pool.Ki.Solar_Flare",
+    "Pool.Ki.Genki_Dama",
+    "Pool.Ki.Charge_Genki_Dama",
+    "Pool.Ki.Throw_Genki_Dama"
+  ],
+  "available_level": [
+    3,
+    3,
+    3,
+    3,
+    6,
+    6,
+    6
+  ],
+  "power_display_names": [
+    "Unlocked Potential",
+    "Bakuhatsuha",
+    "Kiai",
+    "Solar Flash",
+    "Genki Dama",
+    "Charge Genki Dama",
+    "Throw Genki Dama"
+  ],
+  "power_short_helps": [
+    "Auto: +Debuff Resist(All), +Def/Res(S/L/P)",
+    "TAOE Smashing Damage, Knockup",
+    "Self: +Damage(All), +Mez Duration, +Hold Protection",
+    "Skillshot Cone: Moderate Fire Damage, -ToHit",
+    "ST Special: Extreme Energy Damage",
+    "Accumulate Ki",
+    "ST Special: Extreme Energy Damage"
+  ]
+}

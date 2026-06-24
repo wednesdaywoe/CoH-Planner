@@ -1,0 +1,19 @@
+{
+  "key": "Pets.Burn",
+  "display_name": "Burn",
+  "help": "Fire",
+  "short_help": "Fire",
+  "icon": "burn_set.ico",
+  "powers": [
+    "Pets.Burn.Burn"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Burn"
+  ],
+  "power_short_helps": [
+    "Burn"
+  ]
+}

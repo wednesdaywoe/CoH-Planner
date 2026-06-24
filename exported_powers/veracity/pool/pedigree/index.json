@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Pedigree",
+  "display_name": "Pedigree",
+  "help": "These powers reflect your natural magnetism and natural command. Powers in the Pedigree pool grant bonus options to your pets. Every power you take from the Pedigree pool increases the Resistance of all pets you control by 3%.",
+  "short_help": "Pedigree",
+  "icon": "manipulation_set.ico",
+  "powers": [
+    "Pool.Pedigree.Bonedigger",
+    "Pool.Pedigree.Esteem",
+    "Pool.Pedigree.Guardianship",
+    "Pool.Pedigree.Reunite",
+    "Pool.Pedigree.Surefooted_Eminence"
+  ],
+  "available_level": [
+    3,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Noble Reassurance",
+    "Esteem",
+    "Guardianship",
+    "Reunite",
+    "Surefooted Eminence"
+  ],
+  "power_short_helps": [
+    "+Def(S/L/E/N/P)",
+    "Pet +Level Shift",
+    "PBAOE Toggle: Pet +Resistance(All)",
+    "Quick Summon Pets",
+    "PBAOE Toggle: +Resistance(KB), +Damage"
+  ]
+}

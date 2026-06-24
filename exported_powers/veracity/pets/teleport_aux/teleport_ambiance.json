@@ -1,0 +1,87 @@
+{
+  "name": "Teleport_Ambiance",
+  "full_name": "Pets.Teleport_Aux.Teleport_Ambiance",
+  "short_name": "Teleport_Ambiance",
+  "type": "Auto",
+  "display_name": "Teleportation Exit Velocity",
+  "display_fullname": "Pets Teleport Aux Teleport Ambiance",
+  "display_help": "The physics of teleportation are not perfectly understood, even by the year 2039. What is clear to you is that you have sufficient momentum to extend a jumping motion, a flight path, or hover midair while considering your next move. Hopping through timespace will eventually catch up with you, and you will fall to the ground if you do not keep moving.",
+  "display_short_help": "Teleportation Aftereffects",
+  "icon": "teleportation_teleport.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 8,
+  "radius": 1.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 0.25,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend"
+  ],
+  "targets_affected": [
+    "Friend"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "JumpHeight"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.5,
+          "duration": "0.50 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unknown(21)",
+          "stack": "Unknown(19)",
+          "stack_limit": 22,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Pets.Teleport_Aux"
+}

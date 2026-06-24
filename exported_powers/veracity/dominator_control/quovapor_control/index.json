@@ -1,0 +1,55 @@
+{
+  "key": "Dominator_Control.QUOVapor_Control",
+  "display_name": "Vapor Control",
+  "help": "Gas is one of the four most basic forms of matter, and you are able to deploy it to hinder and distract your foes. Vapor Control focuses on indirect control methods such as toggles and pets, and receives special effects when gases are mixed into various formulas.",
+  "short_help": "Vapor Control",
+  "icon": "darkness_control_set.ico",
+  "powers": [
+    "Dominator_Control.QUOVapor_Control.Condensation",
+    "Dominator_Control.QUOVapor_Control.Plume",
+    "Dominator_Control.QUOVapor_Control.Haze",
+    "Dominator_Control.QUOVapor_Control.VentilationLoop",
+    "Dominator_Control.QUOVapor_Control.PersonalAtmosphere",
+    "Dominator_Control.QUOVapor_Control.ConcussiveMist",
+    "Dominator_Control.QUOVapor_Control.AerosolCurtain",
+    "Dominator_Control.QUOVapor_Control.NobleGasses",
+    "Dominator_Control.QUOVapor_Control.ReactiveCloud",
+    "Dominator_Control.QUOVapor_Control.Brine"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    0
+  ],
+  "power_display_names": [
+    "Condensation",
+    "Plume",
+    "Haze",
+    "Ventilation Loop",
+    "Personal Atmosphere",
+    "Concussive Mist",
+    "Laughing Gas",
+    "Noble Gas Cloud",
+    "Corrosive Clouds",
+    "Brine"
+  ],
+  "power_short_helps": [
+    "Minor DMG(Cold), Foe Slow, Immobilize",
+    "Ranged, Moderate DMG(Toxic), Foe Hold",
+    "Ranged (Targeted AoE), Foe -Perception, -To Hit",
+    "Ranged, Summon Ventilation Loop pet, Foe Immobilize, Ally +Endurance",
+    "Toggle, +Movement, -Movement (Enemy), Special Toggle Protection",
+    "Toggle (Ally-Affecting), Foe Stun",
+    "Toggle (Ally or Enemy Centered), Invisibility, -Threat (Ally), Terrify (Foe)",
+    "Summon Pseudo-Pet (KnockUp)",
+    "Summon Reactive Cloud Pets",
+    "PBAoE, +Max HP"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "key": "Controller_Control.Gravity_Control",
+  "display_name": "Gravity Control",
+  "help": "This power set allows you to manipulate the forces of gravity to control your foes. Enemies have little defense against Gravity powers.",
+  "short_help": "Gravity Control",
+  "icon": "gravity_control_set.ico",
+  "powers": [
+    "Controller_Control.Gravity_Control.Crush",
+    "Controller_Control.Gravity_Control.Lift",
+    "Controller_Control.Gravity_Control.Gravity_Distortion",
+    "Controller_Control.Gravity_Control.Fold_Space",
+    "Controller_Control.Gravity_Control.Propel",
+    "Controller_Control.Gravity_Control.Crushing_Field",
+    "Controller_Control.Gravity_Control.Dimension_Shift",
+    "Controller_Control.Gravity_Control.Gravity_Distortion_Field",
+    "Controller_Control.Gravity_Control.Wormhole"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27
+  ],
+  "power_display_names": [
+    "Crush",
+    "Lift",
+    "Gravity Distortion",
+    "Singularity",
+    "Propel",
+    "Crushing Field",
+    "Dimension Shift",
+    "Gravity Distortion Field",
+    "Wormhole"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DoT(Smash), Foe Immobilize, -Fly",
+    "Ranged, Moderate DMG(Smash)",
+    "Ranged, Moderate DoT(Smash), Foe Hold, -Fly",
+    "Summon Singularity: Ranged Control Special",
+    "Ranged, High DMG(Smash), Foe Knockback",
+    "Ranged (Targeted AoE), Minor DoT(Smash), Foe Immobilize, -Fly",
+    "Toggle, Ranged (Location AoE), Foe Intangible",
+    "Ranged (Targeted AoE), Foe Hold",
+    "Ranged (Targeted AoE), Foe Teleport, Disorient, Knockback"
+  ]
+}

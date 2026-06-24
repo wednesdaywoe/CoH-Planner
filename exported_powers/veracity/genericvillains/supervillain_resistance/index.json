@@ -1,0 +1,19 @@
+{
+  "key": "GenericVillains.Supervillain_Resistance",
+  "display_name": "Supervillain Resistance",
+  "help": "Incarnate",
+  "short_help": "Incarnate",
+  "icon": "supervillain_resistance_set.ico",
+  "powers": [
+    "GenericVillains.Supervillain_Resistance.Resistance"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Resistance"
+  ],
+  "power_short_helps": [
+    "Resistance"
+  ]
+}

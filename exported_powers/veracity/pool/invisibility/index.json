@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Invisibility",
+  "display_name": "Concealment",
+  "help": "These powers reflect your ability to hide and manage space immediately around you. Powers in the Concealment pool tend to grant defensive and stealth options. Every power you take from the Concealment pool increases your melee defense by 2%.",
+  "short_help": "Concealment",
+  "icon": "invisibility_set.ico",
+  "powers": [
+    "Pool.Invisibility.Invisibility",
+    "Pool.Invisibility.Stealth",
+    "Pool.Invisibility.Grant_Invisibility",
+    "Pool.Invisibility.Misdirection",
+    "Pool.Invisibility.Phase_Shift"
+  ],
+  "available_level": [
+    2,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Ninja Run",
+    "Stealth",
+    "Grant Cover",
+    "Misdirection",
+    "Etherealness"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Run Speed, +Jump",
+    "Toggle: Self Stealth, +DEF(All)",
+    "Targeted AOE Ally +Stealth, +Defense(Melee, Ranged)",
+    "PBAoE, Foe Placate, -Res(All)",
+    "Self Toggle: Ethereal, +Def/Res (S/L), -Dam (S/L)"
+  ]
+}

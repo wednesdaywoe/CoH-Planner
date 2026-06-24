@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Manipulation",
+  "display_name": "Intimidation",
+  "help": "Intimidation grants you access to Taunts, Terrorizes, and other psychological aspects of combat, representing your ability to direct a fight with a show of strength or wordplay. Each power you take from Intimidation grants you 1.2 magnitude of Hold protection.",
+  "short_help": "Intimidation",
+  "icon": "manipulation_set.ico",
+  "powers": [
+    "Pool.Manipulation.Challenge",
+    "Pool.Manipulation.Invoke_Panic",
+    "Pool.Manipulation.Unrelenting",
+    "Pool.Manipulation.Provoke",
+    "Pool.Manipulation.Intimidate"
+  ],
+  "available_level": [
+    3,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Rancorous Aura",
+    "Invoke Terror",
+    "Unrelenting",
+    "Provoke",
+    "Fearless Champion"
+  ],
+  "power_short_helps": [
+    "PBAOE Taunt Aura",
+    "PBAOE Negative Energy damage, Terrorize",
+    "Self, Heal over Time, +DMG(All), +Rech, +Rec, Self Resurrect (Special)",
+    "Targeted AoE, Taunt (Foe)",
+    "Map Wide Control Break, +Damage"
+  ]
+}

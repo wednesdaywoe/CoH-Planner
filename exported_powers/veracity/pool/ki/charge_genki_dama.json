@@ -1,0 +1,99 @@
+{
+  "name": "Charge_Genki_Dama",
+  "full_name": "Pool.Ki.Charge_Genki_Dama",
+  "short_name": "Charge_Genki_Dama",
+  "type": "Click",
+  "display_name": "Charge Genki Dama",
+  "display_fullname": "Pool Ki Charge Genki Dama",
+  "display_help": "Each use of Charge Genki Dama will grant you one stack of the Ki Accumulation temporary power per teammate in 60 feet. Each ally tapped to contribute to the Spirit Bomb commits 1 point of Max Endurance to the cause for 60s.",
+  "display_short_help": "Accumulate Ki",
+  "icon": "ki_genki_dama_b.png",
+  "auto_issue": true,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 8,
+  "radius": 60.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.5,
+  "recharge_time": 10.0,
+  "activate_period": 0.0,
+  "endurance_cost": 8.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend"
+  ],
+  "targets_affected": [
+    "Friend"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Recharge"
+  ],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "Pool.Ki.Genki_Dama",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Global_Chance_Mod"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Collective",
+          "stack": "Unknown(4294967295)",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Ki_Accumulation"
+            ]
+          },
+          "flags": [
+            "CopyBoosts"
+          ]
+        }
+      ]
+    }
+  ],
+  "available_level": 6,
+  "powerset": "Pool.Ki"
+}

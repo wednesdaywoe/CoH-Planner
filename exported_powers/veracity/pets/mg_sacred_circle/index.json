@@ -1,0 +1,19 @@
+{
+  "key": "Pets.MG_Sacred_Circle",
+  "display_name": "Sacred Circle",
+  "help": "Sacred Circle",
+  "short_help": "Sacred Circle",
+  "icon": "",
+  "powers": [
+    "Pets.MG_Sacred_Circle.Aura"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Sacred Circle"
+  ],
+  "power_short_helps": [
+    ""
+  ]
+}

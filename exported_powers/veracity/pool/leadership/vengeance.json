@@ -1,0 +1,85 @@
+{
+  "name": "Vengeance",
+  "full_name": "Pool.Leadership.Vengeance",
+  "short_name": "Vengeance",
+  "type": "Click",
+  "display_name": "Strategic Priority",
+  "display_fullname": "Pool Leadership Vengeance",
+  "display_help": "You identify the cornerstone of your team's strategy and configure the appropriate preparations for battle. The designated ally will gain a bonus to control and resistance to all damage for 90 seconds, giving you time to carry out your master plan. Multiple instances of Strategic Priority will not stack on the same target, and the power takes a while to recharge.",
+  "display_short_help": "Single Target Nonstacking +Control, +Res(All), Heal Over Time",
+  "icon": "strategicpriority.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 30.0,
+  "range_secondary": 0.0,
+  "activation_time": 1.5,
+  "recharge_time": 420.0,
+  "activate_period": 0.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Teammate",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Teammate"
+  ],
+  "targets_affected": [
+    "Teammate"
+  ],
+  "boosts_allowed": [
+    "Res_Damage",
+    "Recharge",
+    "Heal"
+  ],
+  "allowed_set_categories": [
+    "Defense Sets",
+    "Healing",
+    "Resist Damage",
+    "To Hit Buff"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "Pool.Leadership.Defense Pool.Leadership.Assault || Pool.Leadership.Tactics || Pool.Leadership.Victory_Rush ||",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Heal"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    }
+  ],
+  "available_level": 6,
+  "powerset": "Pool.Leadership"
+}

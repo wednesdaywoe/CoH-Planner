@@ -1,0 +1,146 @@
+{
+  "name": "Mobility_3",
+  "full_name": "Inherent.Inherent.Mobility_3",
+  "short_name": "Mobility_3",
+  "type": "Auto",
+  "display_name": "Mobility 3",
+  "display_fullname": "Inherent Inherent Mobility 3",
+  "display_help": "Every character is assigned a Mobility score, and it determines how many stacks of <b>Mobility</b> you can passively accumulate. Each stack of <b>Mobility</b> grants you resistance to travel suppression, resistance to slows, and a small amount of Recharge. Through other powers and abilities, any character may accumulate up to nine stacks of Mobility, but the stacks will gradually decay down to your base rating.",
+  "display_short_help": "Resist Travel Suppression",
+  "icon": "e_icon_gen_run_01.png",
+  "auto_issue": true,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 16,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 30.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "Blaster_Ranged.Psychic_Blast.Mental_Blast Blaster_Ranged.Psychic_Blast.Psionic_Dart || Blaster_Ranged.Energy_Blast.Power_Blast || Blaster_Ranged.Energy_Blast.Power_Bolt || Blaster_Ranged.Dual_Pistols.Pistols || Blaster_Ranged.Dual_Pistols.Dual_Wield || Corruptor_Ranged.Dual_Pistols.Pistols || Corruptor_Ranged.Dual_Pistols.Dual_Wield || Corruptor_Ranged.Psychic_Blast.Mental_Blast || Corruptor_Ranged.Psychic_Blast.Subdue || Corruptor_Ranged.Energy_Blast.Power_Bolt || Corruptor_Ranged.Energy_Blast.Power_Blast || Corruptor_Ranged.Dual_Pistols.Pistols || Corruptor_Ranged.Dual_Pistols.Dual_Wield || Defender_Ranged.Dual_Pistols.Pistols || Defender_Ranged.Energy_Blast.Power_Bolt || Defender_Ranged.Psychic_Blast.Mental_Blast || Dominator_Assault.Dark_Assault.Dark_Blast || Dominator_Assault.Earth_Assault.Stone_Spears || Dominator_Assault.Radioactive_Assault.Neutrino_Bolt || Dominator_Assault.Thorny_Assault.Thorny_Darts || Tanker_Melee.Broad_Sword.Hack || Tanker_Melee.Dark_Melee.Shadow_Punch || Tanker_Melee.Dual_Blades.Light_Opening || Tanker_Melee.Radiation_Melee.Contaminated_Strike || Tanker_Melee.Super_Strength.Jab || Controller_Control.Darkness_Control.Shadowy_Binds || Controller_Control.Darkness_Control.Dark_Grasp || Controller_Control.Earth_Control.Stone_Prison || Controller_Control.Earth_Control.Fossilize || Controller_Control.Illusion_Control.Spectral_Wounds || Controller_Control.Illusion_Control.Blind || Controller_Control.Plant_Control.Entangle || Controller_Control.Plant_Control.Strangler || Mastermind_Summon.Mercenaries.Burst || Mastermind_Summon.Mercenaries.Soldiers || Mastermind_Summon.Robotics.Pulse_Rifle_Blast || Mastermind_Summon.Robotics.Battle_Drones || Stalker_Melee.Energy_Melee.Barrage || Stalker_Melee.Energy_Melee.Energy_Punch || Stalker_Melee.Ninja_Sword.Hack || Stalker_Melee.Ninja_Sword.Slash || Stalker_Melee.Savage_Melee.Savage_Strike || Stalker_Melee.Savage_Melee.Maiming_Slash || Stalker_Melee.Spines.Barb_Swipe || Stalker_Melee.Spines.Lunge || Stalker_Melee.Psionic_Melee.Mental_Strike || Scrapper_Melee.Katana.Hack || Stalker_Melee.Psionic_Melee.Psi_Blade || Scrapper_Melee.Katana.Slash || Scrapper_Melee.Psionic_Melee.Mental_Strike || Scrapper_Melee.Psionic_Melee.Psi_Blade || Scrapper_Melee.Savage_Melee.Savage_Strike || Scrapper_Melee.Savage_Melee.Maiming_Slash || Scrapper_Melee.Quills.Barb_Swipe || Scrapper_Melee.Quills.Lunge || Brute_Melee.Energy_Melee.Barrage || Brute_Melee.Energy_Melee.Energy_Punch || Brute_Melee.Katana.Hack || Brute_Melee.Katana.Slash || Brute_Melee.Savage_Melee.Savage_Strike || Brute_Melee.Savage_Melee.Maiming_Slash || Brute_Melee.Spines.Barb_Swipe || Brute_Melee.Spines.Lunge ||",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Mobility_State source.ownPowerNum? 3 <",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Global_Chance_Mod"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Collective",
+          "stack": "Unknown(4294967295)",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Mobility_State"
+            ]
+          },
+          "flags": [
+            "CopyBoosts"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Mobility_State source.ownPowerNum? 3 >",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Global_Chance_Mod"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Collective",
+          "stack": "Unknown(4294967295)",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Mobility_State"
+            ]
+          },
+          "flags": [
+            "CopyBoosts"
+          ]
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Inherent.Inherent"
+}

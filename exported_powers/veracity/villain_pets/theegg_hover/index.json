@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.TheEgg_Hover",
+  "display_name": "Rubber Storm",
+  "help": "You summon a storm of rubber ducks at a target location. Ducks rain from the sky, pummeling foes with smashing damage, slowing their movement, and occasionally knocking them down. The storm persists for 15 seconds.",
+  "short_help": "Location AoE: DoT(Smash), Knockdown, -Speed",
+  "icon": "temporary_antigravitymatrix.png",
+  "powers": [
+    "Villain_Pets.TheEgg_Hover.TheEgg_Hover_Auto"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Rubber Storm"
+  ],
+  "power_short_helps": [
+    ""
+  ]
+}

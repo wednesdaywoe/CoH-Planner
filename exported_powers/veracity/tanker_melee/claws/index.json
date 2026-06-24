@@ -1,0 +1,55 @@
+{
+  "key": "Tanker_Melee.Claws",
+  "display_name": "Claws",
+  "help": "Claws are bones or blades that extend from your hands and cause Lethal damage. The lightweight, natural feel of claws gives this power set a reduced Endurance cost and faster attack rate than other Brute melee sets.",
+  "short_help": "Claws",
+  "icon": "claws_set.ico",
+  "powers": [
+    "Tanker_Melee.Claws.Swipe",
+    "Tanker_Melee.Claws.Strike",
+    "Tanker_Melee.Claws.Slash",
+    "Tanker_Melee.Claws.Taunt",
+    "Tanker_Melee.Claws.Spin",
+    "Tanker_Melee.Claws.Follow_Up",
+    "Tanker_Melee.Claws.Focus",
+    "Tanker_Melee.Claws.Eviscerate",
+    "Tanker_Melee.Claws.Shockwave",
+    "Tanker_Melee.Claws.Kinetic_Rebound"
+  ],
+  "available_level": [
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    27,
+    0
+  ],
+  "power_display_names": [
+    "Swipe",
+    "Strike",
+    "Slash",
+    "Taunt",
+    "Spin",
+    "Follow Up",
+    "Focus",
+    "Eviscerate",
+    "Shockwave",
+    "Kinetic Rebound"
+  ],
+  "power_short_helps": [
+    "Melee, Minor DMG(Lethal)",
+    "Melee, Moderate DMG(Lethal)",
+    "Melee, Moderate DMG(Lethal), Foe -DEF",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "PBAoE Melee, Moderate DMG(Lethal)",
+    "Melee, Moderate DMG(Lethal), Self +DMG +To-hit",
+    "Ranged, High DMG(Lethal), Knockback",
+    "Melee (Cone), Superior DMG(Lethal), Foe -DEF",
+    "Melee (Cone), Moderate DMG(Lethal), Foe Knockback",
+    "Ranged (Single Target), Lethal Damage + chance to Slay"
+  ]
+}

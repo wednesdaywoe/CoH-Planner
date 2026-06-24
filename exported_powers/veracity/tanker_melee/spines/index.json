@@ -1,0 +1,51 @@
+{
+  "key": "Tanker_Melee.Spines",
+  "display_name": "Spines",
+  "help": "Spines protrude from your body and can deal damage in melee or at very short ranges. Spines are hollow and hold a neural toxin that deals additional Toxic damage and can Slow or Immobilize your enemies. The toxin is cumulative, and multiple hits will affect a target more strongly.  Very few foes have resistance to Spine poison. Like all scrapper powers, all Spine attacks can sometimes land a critical hit for double damage.",
+  "short_help": "Spines",
+  "icon": "spines_set.ico",
+  "powers": [
+    "Tanker_Melee.Spines.Barb_Swipe",
+    "Tanker_Melee.Spines.Lunge",
+    "Tanker_Melee.Spines.Spine_Burst",
+    "Tanker_Melee.Spines.Taunt",
+    "Tanker_Melee.Spines.Ripper",
+    "Tanker_Melee.Spines.Build_Up",
+    "Tanker_Melee.Spines.Impale",
+    "Tanker_Melee.Spines.Quills",
+    "Tanker_Melee.Spines.Throw_Spines"
+  ],
+  "available_level": [
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    27
+  ],
+  "power_display_names": [
+    "Barb Swipe",
+    "Lunge",
+    "Spine Burst",
+    "Taunt",
+    "Ripper",
+    "Build Up",
+    "Impale",
+    "Quills",
+    "Throw Spines"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
+    "Melee, Moderate DMG(Lethal), DoT(Toxic) -SPD, -Recharge",
+    "PBAoE Melee, Moderate DMG(Lethal), DoT(Toxic), -SPD, -Recharge",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "Melee (Cone), High DMG(Lethal), DoT(Toxic), Knockback, -SPD, -Recharge",
+    "Self +DMG, +To Hit",
+    "Ranged, High DMG(Lethal), DoT(Toxic), Immobilize, -Recharge, -Fly",
+    "Toggle: PBAoE, Minor DoT(Lethal), Foe -Speed, -Recharge",
+    "Ranged (Cone), Moderate DMG(Lethal), DoT(Toxic), -SPD, -Recharge"
+  ]
+}

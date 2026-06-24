@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Leadership",
+  "display_name": "Leadership",
+  "help": "These powers reflect your ability to give clear directions and inspire others in combat. The Leadership pool offers many toggle powers for individual and group buffs. Every power you take from Leadership grants 1.2 Confusion resistance.",
+  "short_help": "Leadership",
+  "icon": "leadership_set.ico",
+  "powers": [
+    "Pool.Leadership.Defense",
+    "Pool.Leadership.Assault",
+    "Pool.Leadership.Tactics",
+    "Pool.Leadership.Victory_Rush",
+    "Pool.Leadership.Vengeance"
+  ],
+  "available_level": [
+    3,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Maneuvers",
+    "Assault",
+    "Tactics",
+    "Initiate The Attack",
+    "Strategic Priority"
+  ],
+  "power_short_helps": [
+    "Toggle: PBAoE, Team +DEF(All)",
+    "Toggle: PBAoE, Team +DMG, Res(Taunt, Placate)",
+    "Toggle: PBAoE, Team +To Hit, Res(Confuse, Fear), +Perception",
+    "Delayed Targeted AOE Moderate Lethal Damage",
+    "Single Target Nonstacking +Control, +Res(All), Heal Over Time"
+  ]
+}

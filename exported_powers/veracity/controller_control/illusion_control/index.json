@@ -1,0 +1,51 @@
+{
+  "key": "Controller_Control.Illusion_Control",
+  "display_name": "Illusion Control",
+  "help": "You can manipulate light and sound to manifest all sorts of Illusions, aiding your allies as well as deceiving your foes.",
+  "short_help": "Illusion Control",
+  "icon": "illusion_control_set.ico",
+  "powers": [
+    "Controller_Control.Illusion_Control.Spectral_Wounds",
+    "Controller_Control.Illusion_Control.Blind",
+    "Controller_Control.Illusion_Control.Deceive",
+    "Controller_Control.Illusion_Control.Phantasm",
+    "Controller_Control.Illusion_Control.Flash",
+    "Controller_Control.Illusion_Control.Invisibility",
+    "Controller_Control.Illusion_Control.Group_Invisibility",
+    "Controller_Control.Illusion_Control.Decoy",
+    "Controller_Control.Illusion_Control.Spectral_Terror"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27
+  ],
+  "power_display_names": [
+    "Spectral Wounds",
+    "Blind",
+    "Deceive",
+    "Phantasm",
+    "Flash",
+    "Superior Invisibility",
+    "Group Invisibility",
+    "Phantom Army",
+    "Spectral Terror"
+  ],
+  "power_short_helps": [
+    "Ranged, High DMG(Psionic), +Special",
+    "Ranged (Targeted AoE), Moderate DMG(Psionic), Foe Hold/Sleep",
+    "Ranged, Foe Confuse",
+    "Summon Phantasm: Ranged, Moderate DMG(Energy)",
+    "PBAoE, Foe Hold",
+    "Toggle: Self Stealth, +DEF(All)",
+    "PBAoE, Team Stealth, +DEF(All)",
+    "Summon Decoys: Ranged Minor DMG(Energy/Special)",
+    "Summon Terror: Ranged Fear"
+  ]
+}

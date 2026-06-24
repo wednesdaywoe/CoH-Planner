@@ -1,0 +1,55 @@
+{
+  "key": "Controller_Control.Darkness_Control",
+  "display_name": "Darkness Control",
+  "help": "You can control darkness and shadow to disable your foes with negative energy.  Enemies that are affected by many of your attacks will have their chance to hit reduced.",
+  "short_help": "Darkness Control",
+  "icon": "darkness_control_set.ico",
+  "powers": [
+    "Controller_Control.Darkness_Control.Shadowy_Binds",
+    "Controller_Control.Darkness_Control.Dark_Grasp",
+    "Controller_Control.Darkness_Control.Living_Shadows",
+    "Controller_Control.Darkness_Control.Umbra_Beast",
+    "Controller_Control.Darkness_Control.Possess",
+    "Controller_Control.Darkness_Control.Fearsome_Stare",
+    "Controller_Control.Darkness_Control.Heart_of_Darkness",
+    "Controller_Control.Darkness_Control.Haunt",
+    "Controller_Control.Darkness_Control.Shadow_Field",
+    "Controller_Control.Darkness_Control.Reaper_s_Scythe"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    0
+  ],
+  "power_display_names": [
+    "Shadowy Binds",
+    "Dark Grasp",
+    "Living Shadows",
+    "Umbra Beast",
+    "Possess",
+    "Fearsome Stare",
+    "Heart of Darkness",
+    "Haunt",
+    "Shadow Field",
+    "Reaper\u2019s Scythe"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DoT(Negative), Foe Immobilize, -To Hit, -Fly",
+    "Ranged, Moderate DMG(Negative), Foe Hold, -To Hit",
+    "Ranged (Cone), Minor DoT(Negative), Foe Immobilize, -To Hit, -Fly",
+    "Summon Umbra Beast",
+    "Ranged, Target Confuse",
+    "Ranged (Cone), Foe Fear, -To Hit",
+    "PBAoE, Foe Disorient, -To Hit, Minor DoT(Negative)",
+    "Foe Targeted, Summon Shades",
+    "Target (Location AoE), Foe Hold, -To Hit",
+    "Ranged (Single Target), Negative Energy Damage + chance to Slay"
+  ]
+}

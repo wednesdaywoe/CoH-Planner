@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.MemorialCross",
+  "display_name": "Memorial Cross",
+  "help": "A glowing cross memorial that radiates peaceful light.",
+  "short_help": "Passive: Glowing Cross Effect",
+  "icon": "naturalaffinity_spirittree.png",
+  "powers": [
+    "Villain_Pets.MemorialCross.MemorialCross_Exec"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Memorial Cross"
+  ],
+  "power_short_helps": [
+    "Passive: Glowing Cross Effect"
+  ]
+}

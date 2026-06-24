@@ -1,0 +1,55 @@
+{
+  "key": "Scrapper_Melee.Claws",
+  "display_name": "Claws",
+  "help": "Claws are bones or blades that extend from your hands and cause Lethal damage. The lightweight, natural feel of claws gives this power set a reduced Endurance cost and faster attack rate than other Scrapper melee sets. Like all scrapper powers, all Claw attacks can sometimes land a critical hit for double damage.",
+  "short_help": "Claws",
+  "icon": "claws_set.ico",
+  "powers": [
+    "Scrapper_Melee.Claws.Swipe",
+    "Scrapper_Melee.Claws.Strike",
+    "Scrapper_Melee.Claws.Slash",
+    "Scrapper_Melee.Claws.Spin",
+    "Scrapper_Melee.Claws.Follow_Up",
+    "Scrapper_Melee.Claws.Taunt",
+    "Scrapper_Melee.Claws.Focus",
+    "Scrapper_Melee.Claws.Eviscerate",
+    "Scrapper_Melee.Claws.Shockwave",
+    "Scrapper_Melee.Claws.Kinetic_Rebound"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    0
+  ],
+  "power_display_names": [
+    "Swipe",
+    "Strike",
+    "Slash",
+    "Spin",
+    "Follow Up",
+    "Confront",
+    "Focus",
+    "Eviscerate",
+    "Shockwave",
+    "Kinetic Rebound"
+  ],
+  "power_short_helps": [
+    "Melee, Minor DMG(Lethal)",
+    "Melee, Moderate DMG(Lethal)",
+    "Melee, Moderate DMG(Lethal), Foe -DEF",
+    "PBAoE Melee, Moderate DMG(Lethal)",
+    "Melee, Moderate DMG(Lethal), Self +DMG +To Hit",
+    "Ranged, Foe Taunt",
+    "Ranged, High DMG(Lethal), Knockback",
+    "Melee (Cone), Superior DMG(Lethal), +Special",
+    "Melee (Cone), Moderate DMG(Lethal), Foe Knockback",
+    "Ranged (Single Target), Lethal Damage + chance to Slay"
+  ]
+}

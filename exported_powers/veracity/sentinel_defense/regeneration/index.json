@@ -1,0 +1,51 @@
+{
+  "key": "Sentinel_Defense.Regeneration",
+  "display_name": "Regeneration",
+  "help": "Regeneration lets you regenerate more quickly from damage and effects. Regeneration offers almost no actual damage resistance, but your Hit Point Regeneration can become so incredibly fast, that your wounds heal almost instantly.  Those who possess this power set have little downtime.",
+  "short_help": "Regeneration",
+  "icon": "regeneration_set.ico",
+  "powers": [
+    "Sentinel_Defense.Regeneration.Fast_Healing",
+    "Sentinel_Defense.Regeneration.Reconstruction",
+    "Sentinel_Defense.Regeneration.Quick_Recovery",
+    "Sentinel_Defense.Regeneration.Instant_Regeneration",
+    "Sentinel_Defense.Regeneration.Dismiss_Pain",
+    "Sentinel_Defense.Regeneration.Integration",
+    "Sentinel_Defense.Regeneration.Resilience",
+    "Sentinel_Defense.Regeneration.Second_Wind",
+    "Sentinel_Defense.Regeneration.Moment_of_Glory"
+  ],
+  "available_level": [
+    0,
+    1,
+    3,
+    9,
+    15,
+    19,
+    27,
+    34,
+    37
+  ],
+  "power_display_names": [
+    "Fast Healing",
+    "Reconstruction",
+    "Quick Recovery",
+    "Instant Regeneration",
+    "Dismiss Pain",
+    "Integration",
+    "Resilience",
+    "Second Wind",
+    "Moment of Glory"
+  ],
+  "power_short_helps": [
+    "Auto: Self +Regeneration",
+    "Self Heal, Res(Toxic)",
+    "Auto: Self +Recovery",
+    "Toggle: Self +Absorption",
+    "Auto: Self +Max HP",
+    "Toggle: Self +Res(Knockback, Disorient, Hold, Sleep, Immobilize), +Regeneration",
+    "Auto: Self +Res(Disorient, All DMG)",
+    "Self  +Max HP, Rez(Special)",
+    "Self +Res(All DMG but Psionics, Knock Back, Repel, Stun, Hold, Sleep, Immobilize), +DEF(All DMG but Psionics), +Recovery"
+  ]
+}

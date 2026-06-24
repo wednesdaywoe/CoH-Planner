@@ -1,0 +1,51 @@
+{
+  "key": "Brute_Melee.Brawling",
+  "display_name": "Brawling",
+  "help": "",
+  "short_help": "",
+  "icon": "",
+  "powers": [
+    "Brute_Melee.Brawling.Initial_Strike",
+    "Brute_Melee.Brawling.Heavy_Blow",
+    "Brute_Melee.Brawling.Sweeping_Cross",
+    "Brute_Melee.Brawling.Combat_Readiness",
+    "Brute_Melee.Brawling.Throat_Strike",
+    "Brute_Melee.Brawling.Taunt",
+    "Brute_Melee.Brawling.Spinning_Strike",
+    "Brute_Melee.Brawling.Low_Kick",
+    "Brute_Melee.Brawling.Crushing_Uppercut"
+  ],
+  "available_level": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Initial Strike",
+    "Heavy Blow",
+    "Sweeping Cross",
+    "Combat Readiness",
+    "Rib Cracker",
+    "Taunt",
+    "Spinning Strike",
+    "Shin Breaker",
+    "Crushing Uppercut"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG (Smash), Foe Disorient, Combo Builder",
+    "Melee, Moderate DMG (Smash), Foe Knockdown, Combo Builder",
+    "Melee (Cone), High DMG (Smash), Foe Disorient, Finisher",
+    "Self, +DMG, +To Hit, Special",
+    "Melee, Moderate DMG (Smash), Foe -Res (All), -Dmg, Combo Builder",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "Melee (Targeted AoE), Heavy DMG (Smash), Foe Knockdown, Finisher",
+    "Melee, Superior DMG (Smashing), Foe -Speed, -Defense, Combo Builder",
+    "Melee, Extreme DMG (Smash), Foe Knock Up, Disorient, Finisher"
+  ]
+}

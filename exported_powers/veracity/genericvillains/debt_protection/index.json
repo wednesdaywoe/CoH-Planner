@@ -1,0 +1,19 @@
+{
+  "key": "GenericVillains.Debt_Protection",
+  "display_name": "Debt_Protection",
+  "help": "Debt Protection",
+  "short_help": "Debt Protection",
+  "icon": "debt_protection_set.ico",
+  "powers": [
+    "GenericVillains.Debt_Protection.Debt_Protection"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Debt Protection"
+  ],
+  "power_short_helps": [
+    "Debt Protection"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "key": "Pool.Force_of_Will",
+  "display_name": "Will",
+  "help": "Demonstrates your character's deep resolve with options for area damage, improved Resistance, Recovery, and Regeneration. Each power you take from Will increases your MaxHP by 2%.",
+  "short_help": "Will",
+  "icon": "force_of_will_set.ico",
+  "powers": [
+    "Pool.Force_of_Will.Mighty_Leap",
+    "Pool.Force_of_Will.Stomp",
+    "Pool.Force_of_Will.Weaken_Resolve",
+    "Pool.Force_of_Will.Project_Will",
+    "Pool.Force_of_Will.Unleash_Potential",
+    "Pool.Force_of_Will.Wall_of_Force"
+  ],
+  "available_level": [
+    2,
+    4294967295,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Mighty Leap",
+    "Stomp",
+    "Weaken Resolve",
+    "Wall of Force",
+    "Unleash Potential",
+    "Olympian Bolt"
+  ],
+  "power_short_helps": [
+    "Toggle: Self Long Jump, (Special)",
+    "PBAoE Melee, Foe Knockdown",
+    "Ranged, Foe -Resist, -Defense, Self +To Hit",
+    "Ranged Cone, Moderate DMG(Psionic/Smash), Foe Knockdown",
+    "Self, +Regen, +Recovery, +Recharge, +Defense",
+    "PBAoE Energy Damage"
+  ]
+}

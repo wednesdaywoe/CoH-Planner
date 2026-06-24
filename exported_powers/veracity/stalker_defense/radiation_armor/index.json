@@ -1,0 +1,55 @@
+{
+  "key": "Stalker_Defense.Radiation_Armor",
+  "display_name": "Radiation Armor",
+  "help": "Radiation emanates from your body which harms foes, but empowers and shields yourself. You can use this energy to absorb damage, heal from your wounds and debilitate nearby foes.",
+  "short_help": "Radiation Armor",
+  "icon": "radiation_armor_set.ico",
+  "powers": [
+    "Stalker_Defense.Radiation_Armor.Hide",
+    "Stalker_Defense.Radiation_Armor.Alpha_Barrier",
+    "Stalker_Defense.Radiation_Armor.Gamma_Boost",
+    "Stalker_Defense.Radiation_Armor.Proton_Armor",
+    "Stalker_Defense.Radiation_Armor.Fallout_Shelter",
+    "Stalker_Defense.Radiation_Armor.Radiation_Therapy",
+    "Stalker_Defense.Radiation_Armor.Particle_Shielding",
+    "Stalker_Defense.Radiation_Armor.Ground_Zero",
+    "Stalker_Defense.Radiation_Armor.Meltdown",
+    "Stalker_Defense.Radiation_Armor.Immunotherapy"
+  ],
+  "available_level": [
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    27,
+    0
+  ],
+  "power_display_names": [
+    "Hide",
+    "Alpha Barrier",
+    "Gamma Boost",
+    "Proton Armor",
+    "Fallout Shelter",
+    "Radiation Therapy",
+    "Particle Shielding",
+    "Ground Zero",
+    "Meltdown",
+    "Immunotherapy"
+  ],
+  "power_short_helps": [
+    "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE)",
+    "Toggle: Self +Res(Lethal, Smash, Toxic)",
+    "Auto: Self +Regen, +Recovery, Special",
+    "Toggle: Self, +Res(Energy, Fire, Cold and Negative)",
+    "Toggle: Self +Res(Hold, Sleep, Immobilize, Stun, Knockdown, Toxic, Psi, Slow)",
+    "PBAoE, Minor DMG(Energy), Minor DoT(Toxic), Foe -Regen, Self +HP, +End, Res(-Regen)",
+    "Self, +Absorb, +Regeneration",
+    "PBAoE, Foe Moderate DMG(Energy), Moderate DoT(Toxic), -DEF(All), Ally +HP, +Heal over time",
+    "Self, +Res(All), +Recovery, +DMG(All)",
+    "Toggle Aura, Healing"
+  ]
+}

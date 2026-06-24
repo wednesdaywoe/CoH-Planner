@@ -1,0 +1,168 @@
+{
+  "name": "Deadly_Lifetap",
+  "full_name": "Pool.Nocturne.Deadly_Lifetap",
+  "short_name": "Deadly_Lifetap",
+  "type": "Click",
+  "display_name": "Deadly Lifetap",
+  "display_fullname": "Pool Nocturne Deadly Lifetap",
+  "display_help": "You strike out at the life force in your opponent's body and soul. When Deadly Lifetap is activated, you gain a 50% chance to instantly heal a base 4% of your Max HP on a successful attack. If the Lifetap is successful, your opponent will also suffer a small Lethal damage over time effect. Any offensive power making an Accuracy check against an opponent qualifies to potentially proc Deadly Lifetap. The effect lasts for 60 seconds following activation. Deadly Lifetap costs a lot of endurance to use.",
+  "display_short_help": "Self: Chance to Heal % of Max HP",
+  "icon": "nocturne_deadly_lifetap.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.0,
+  "recharge_time": 420.0,
+  "activate_period": 0.5,
+  "endurance_cost": 0.78,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Recharge"
+  ],
+  "allowed_set_categories": [
+    "Accurate Healing"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "Pool.Nocturne.Coterie Pool.Nocturne.Seductive_Mesmer || Pool.Nocturne.Bloodmoon || Pool.Nocturne.Unhallowed_Presence ||",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Global_Chance_Mod"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "60 seconds",
+          "magnitude": 1.0,
+          "delay": 0.5,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Collective",
+          "stack": "Unknown(4294967295)",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pool_Aux.Pool_Aux.Deadly_Lifetap_Proc"
+            ]
+          },
+          "flags": [
+            "CopyBoosts"
+          ]
+        },
+        {
+          "attribs": [
+            "Global_Chance_Mod"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 60.5,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Collective",
+          "stack": "Unknown(4294967295)",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Pool_Aux.Pool_Aux.Deadly_Lifetap_Proc"
+            ]
+          },
+          "flags": [
+            "CopyBoosts"
+          ]
+        },
+        {
+          "attribs": [
+            "Combat_Phase"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffectedAndPets",
+          "table": "Melee_Ones",
+          "scale": 0.5,
+          "duration": "60 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 560,
+          "stack_key": null,
+          "suppress_events": [
+            {
+              "event": "Event_0",
+              "event_id": 0,
+              "duration": 0.0,
+              "flag": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "available_level": 6,
+  "powerset": "Pool.Nocturne"
+}

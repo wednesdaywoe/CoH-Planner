@@ -1,0 +1,39 @@
+{
+  "key": "Pool.Experimentation",
+  "display_name": "Experimentation",
+  "help": "These powers reflect a background in practical mad science. Powers in the Experimentation pool grant a variety of buffs and debuffs. Every power you take from the Experimentation pool increases your max HP by 2%.",
+  "short_help": "Experimentation",
+  "icon": "experimentation_set.ico",
+  "powers": [
+    "Pool.Experimentation.Speed_of_Sound",
+    "Pool.Experimentation.Jaunt",
+    "Pool.Experimentation.Experimental_Injection",
+    "Pool.Experimentation.Toxic_Dart",
+    "Pool.Experimentation.Adrenal_Booster",
+    "Pool.Experimentation.Corrosive_Vial"
+  ],
+  "available_level": [
+    2,
+    4294967295,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Speed of Sound",
+    "Jaunt",
+    "Forced Vaccination",
+    "Envenomed Dart",
+    "Adrenal Booster",
+    "Carcinogenic Sands"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Speed, (Special)",
+    "Click, Self Teleport",
+    "Mez Protection, +Regen, +Recovery",
+    "Ranged Lethal + Minor Toxic DoT, -Regen",
+    "Self +ToHit, +Recharge, +Damage, Heal over Time",
+    "Cone Minor Toxic DoT, Foe -Resistance (All)"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "key": "Pets.Sleet_Defender",
+  "display_name": "Sleet",
+  "help": "Cold Domination",
+  "short_help": "Cold Domination",
+  "icon": "sleet_defender_set.ico",
+  "powers": [
+    "Pets.Sleet_Defender.Sleet"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Sleet"
+  ],
+  "power_short_helps": [
+    "Cold, -Speed, -Recharge"
+  ]
+}

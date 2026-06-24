@@ -1,0 +1,55 @@
+{
+  "key": "Corruptor_Ranged.Radiation_Blast",
+  "display_name": "Radiation Blast",
+  "help": "Blast your foes with lethal radiation. Radiation Blast powers can bypass normal defenses, and lower your targets' overall Defense.",
+  "short_help": "Radiation Blast",
+  "icon": "radiation_blast_set.ico",
+  "powers": [
+    "Corruptor_Ranged.Radiation_Blast.Neutrino_Bolt",
+    "Corruptor_Ranged.Radiation_Blast.X-Ray_Beam",
+    "Corruptor_Ranged.Radiation_Blast.Irradiate",
+    "Corruptor_Ranged.Radiation_Blast.Electron_Haze",
+    "Corruptor_Ranged.Radiation_Blast.Proton_Volley",
+    "Corruptor_Ranged.Radiation_Blast.Aim",
+    "Corruptor_Ranged.Radiation_Blast.Cosmic_Burst",
+    "Corruptor_Ranged.Radiation_Blast.Neutron_Bomb",
+    "Corruptor_Ranged.Radiation_Blast.Atomic_Blast",
+    "Corruptor_Ranged.Radiation_Blast.Wasteland"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    0
+  ],
+  "power_display_names": [
+    "Neutrino Bolt",
+    "X-Ray Beam",
+    "Irradiate",
+    "Electron Haze",
+    "Proton Volley",
+    "Aim",
+    "Cosmic Burst",
+    "Neutron Bomb",
+    "Atomic Blast",
+    "Wasteland"
+  ],
+  "power_short_helps": [
+    "Ranged, Minor DMG(Energy), Foe -DEF",
+    "Ranged, Moderate DMG(Energy), Foe -DEF",
+    "Close (AoE), Moderate DoT(Energy), Foe -DEF",
+    "Close, Cone Moderate DMG(Energy), Foe -DEF, Knockback",
+    "Sniper, Superior DMG(Energy), Foe -DEF",
+    "Self +To Hit, +DMG",
+    "Extreme DMG(Energy), Foe Disorient, -DEF",
+    "Ranged (Targeted AoE), Moderate DMG(Energy), Foe -DEF",
+    "PBAoE, Extreme DMG(Energy/Smash), Foe Hold, -DEF",
+    "Toggle (Location), Fortify Patch \u2014 +Defense aura to allies"
+  ]
+}

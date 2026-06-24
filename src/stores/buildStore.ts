@@ -2579,7 +2579,7 @@ export const useBuildStore = create<BuildStore>()(
               const hasHash = !!window.location.hash && window.location.hash !== '#';
               if (!hasHash) {
                 const param = new URLSearchParams(window.location.search).get('serverId');
-                if ((param === 'homecoming' || param === 'rebirth' || param === 'thunderspy') && param !== state.build.serverId) {
+                if ((param === 'homecoming' || param === 'rebirth' || param === 'thunderspy' || param === 'veracity') && param !== state.build.serverId) {
                   state.build.serverId = param;
                   // Archetype/primary/secondary picks reference dataset-
                   // specific IDs; clear them to mirror handleServerChange.

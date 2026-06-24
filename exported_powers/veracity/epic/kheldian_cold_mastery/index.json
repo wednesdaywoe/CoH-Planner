@@ -1,0 +1,35 @@
+{
+  "key": "Epic.Kheldian_Cold_Mastery",
+  "display_name": "Cold Mastery",
+  "help": "Your latent facility with cold and ice has been hidden beneath your Kheldian gifts, until now. With Cold Mastery, you can create sharp armors that rend your enemies, or toss blasts of bitter ice into the fray of battle.",
+  "short_help": "Cold Mastery",
+  "icon": "cold_mastery_set.ico",
+  "powers": [
+    "Epic.Kheldian_Cold_Mastery.Icicles",
+    "Epic.Kheldian_Cold_Mastery.Ice_Blast",
+    "Epic.Kheldian_Cold_Mastery.Freeze_Ray",
+    "Epic.Kheldian_Cold_Mastery.Frozen_Armor",
+    "Epic.Kheldian_Cold_Mastery.Sleet"
+  ],
+  "available_level": [
+    31,
+    31,
+    34,
+    34,
+    37
+  ],
+  "power_display_names": [
+    "Icicles",
+    "Ice Blast",
+    "Freeze Ray",
+    "Frozen Armor",
+    "Sleet"
+  ],
+  "power_short_helps": [
+    "Toggle: PBAoE, Minor DoT(Lethal)",
+    "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
+    "Ranged, Moderate DMG(Cold), Foe Hold",
+    "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
+    "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF, -Res (All), Knockdown"
+  ]
+}

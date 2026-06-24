@@ -307,6 +307,17 @@ _ATTRIB_LAYOUT = {
     "parse7": {"count": 105, "cap_delta": 44656, "res_value_delta": 112744, "threat_delta": -4040, "dmg_cap_delta": 74872},
     "parse6": {"count": 50,  "cap_delta": 15472, "res_value_delta": 46420, "threat_delta": -4004, "dmg_cap_delta": 30944},
     "thunderspy": {"count": 50, "cap_delta": 15268, "res_value_delta": 45808, "threat_delta": -3968, "dmg_cap_delta": 30536},
+    # Veracity (private server): 50-entry tables, Parse7-framed, schema close to
+    # Thunderspy but with a few extra per-level member arrays, so the cap deltas
+    # shift. Derived empirically 2026-06-23 from Class_Blaster (hit_points anchor)
+    # and VERIFIED across 12 player ATs against canonical CoH cap signatures:
+    #   hp_cap   (+15880): Blaster 1606.3 · Tanker 3534 · Brute 3212.7 · Scrapper 2409.5 · Stalker 2088.2
+    #   dmg_cap  (+31760): Blaster/Scrapper/Stalker/Corruptor 5.0 · Brute 7.75 · Tanker/Defender/Controller/Dom/MM/Kheld 4.0
+    #   res_cap  (+47244): Tanker/Brute 0.90 · Scrapper/Stalker 0.80 (Veracity-specific; HC=0.75) · Kheldians 0.85 · others 0.75
+    # base_threat: Veracity has no per-AT threat ladder in the record (every AT
+    # reads 1.0 at -3968), so threat_delta is left at the Thunderspy value as a
+    # harmless flat 1.0 default — not a real per-AT value.
+    "veracity": {"count": 50, "cap_delta": 15880, "res_value_delta": 47244, "threat_delta": -3968, "dmg_cap_delta": 31760},
 }
 _PLAYER_LEVELS = 50             # planner uses levels 1-50
 
@@ -429,7 +440,15 @@ def parse_classes(bin_path_or_data) -> list[ClassRecord]:
         # Parse6 path above, so it never reaches here.)
         attribs = _extract_attribs(data, rec_start, rec_len, _ATTRIB_LAYOUT["parse7"])
         if not attribs:
-            attribs = _extract_attribs(data, rec_start, rec_len, _ATTRIB_LAYOUT["thunderspy"])
+            # Both Thunderspy and Veracity are 50-entry Parse7 schemas whose
+            # 105-entry parse7 anchor never matches, so both land here. They
+            # differ only in cap deltas — extract with each and keep whichever
+            # resolves the most members (tie → Thunderspy, the original). On a
+            # Thunderspy record the Veracity deltas miss the sanity checks (so
+            # Thunderspy wins) and vice-versa.
+            ts = _extract_attribs(data, rec_start, rec_len, _ATTRIB_LAYOUT["thunderspy"])
+            ve = _extract_attribs(data, rec_start, rec_len, _ATTRIB_LAYOUT["veracity"])
+            attribs = ve if len(ve) > len(ts) else ts
 
         records.append(ClassRecord(
             name=name,

@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.FaerieRing",
+  "display_name": "Faerie Ring",
+  "help": "You summon a mystical ring of mushrooms at a target location. Allies within the ring gain enhanced regeneration, recovery, and resistance to sleep effects. The ring persists for 60 seconds.",
+  "short_help": "Location AoE: Ally +Regen, +Recovery, +Res(Sleep)",
+  "icon": "naturalaffinity_spirittree.png",
+  "powers": [
+    "Villain_Pets.FaerieRing.FaerieRing_Exec"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Faerie Ring"
+  ],
+  "power_short_helps": [
+    "Location AoE: Ally +Regen, +Recovery, +Res(Sleep)"
+  ]
+}

@@ -147,8 +147,9 @@ export default defineConfig({
         // instant repeat loads. Raise the per-file cap above it (Workbox's 2 MiB
         // default would drop it from the precache and fail the build). Revisit
         // if the bundle keeps growing — at some point runtime-caching the data
-        // chunk on demand beats precaching it.
-        maximumFileSizeToCacheInBytes: 16 * 1024 * 1024,
+        // chunk on demand beats precaching it. (16→24 MiB when the 4th dataset
+        // (Veracity) pushed the main chunk to ~18 MB; ~6 MB headroom for now.)
+        maximumFileSizeToCacheInBytes: 24 * 1024 * 1024,
         cleanupOutdatedCaches: true,
         // SPA navigations are served the precached index.html — instant + works
         // offline. Freshness is governed by the controlled update prompt (the

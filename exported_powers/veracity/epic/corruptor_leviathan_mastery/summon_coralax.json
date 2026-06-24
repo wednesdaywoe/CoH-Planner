@@ -1,0 +1,77 @@
+{
+  "name": "Summon_Coralax",
+  "full_name": "Epic.Corruptor_Leviathan_Mastery.Summon_Coralax",
+  "short_name": "Summon_Coralax",
+  "type": "Click",
+  "display_name": "Summon Coralax",
+  "display_fullname": "Epic Corruptor Leviathan Mastery Summon Coralax",
+  "display_help": "Captain Mako has shown you how to summon a Coralax Red Hybrid to do your bidding. The Coralax are humans who have been infected with living coral. Your access to this Hybrid is very limited. You can only summon it once every 15 minutes and it will leave after 4 minutes, or if you exit a zone or mission. You must be level 38 and have two other Leviathan Mastery Powers before selecting this power. Recharge: Extremely Long",
+  "display_short_help": "Summon Hybrid: Ranged Moderate DMG(Psionic)",
+  "icon": "arachnos_patron_summononepet.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Location",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 3.2,
+  "recharge_time": 900.0,
+  "activate_period": 0.0,
+  "endurance_cost": 26.0,
+  "interrupt_time": 0.0,
+  "target_type": "Location",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Slow",
+    "EnduranceDiscount",
+    "Range",
+    "Stun",
+    "Recharge",
+    "Knockback",
+    "Immobilize",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_set_categories": [
+    "Knockback",
+    "Pet Damage",
+    "Recharge Intensive Pets",
+    "To Hit Debuff",
+    "Universal Damage Sets"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "SpidersKissPatron owned? TheStingerPatron owned? || BloodInTheWaterPatron owned? || MiragePatron owned? || Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Shark_Skin && Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Hibernate && || Epic.Corruptor_Leviathan_Mastery.School_of_Sharks Epic.Corruptor_Leviathan_Mastery.Spirit_Shark_Jaws && || Epic.Corruptor_Leviathan_Mastery.Shark_Skin Epic.Corruptor_Leviathan_Mastery.Hibernate && || Epic.Corruptor_Leviathan_Mastery.Shark_Skin Epic.Corruptor_Leviathan_Mastery.Spirit_Shark_Jaws && || &&",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    }
+  ],
+  "available_level": 37,
+  "powerset": "Epic.Corruptor_Leviathan_Mastery"
+}

@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.Attract_Well",
+  "display_name": "Attract Well",
+  "help": "You create a gravitational well at a target location that periodically pulls nearby foes toward its center. The well persists for 15 seconds, pulsing once per second in a 30-foot radius.",
+  "short_help": "Ranged (Location), Foe Attract",
+  "icon": "stormsummoning_gale.png",
+  "powers": [
+    "Villain_Pets.Attract_Well.Well_Exec"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Attract Well"
+  ],
+  "power_short_helps": [
+    "Ranged (Location), Foe Attract"
+  ]
+}

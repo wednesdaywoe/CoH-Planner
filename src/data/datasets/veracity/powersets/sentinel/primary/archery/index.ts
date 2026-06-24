@@ -1,0 +1,44 @@
+/**
+ * Archery Powerset
+ * The ancient art of Archery allows you to use a Bow and Arrow to great effect.  This power set has an inherent bonus to Accuracy.
+ *
+ * Archetype: sentinel
+ * Category: primary
+ * Source: sentinel_ranged/archery
+ */
+
+import type { Powerset } from '@/types';
+
+import { SnapShot as SnapShot } from './snap-shot';
+import { AimedShot as AimedShot } from './aimed-shot';
+import { ArtemesianAxis as ArtemesianAxis } from './artemesian-axis';
+import { FistfulofArrows as FistfulofArrows } from './fistful-of-arrows';
+import { StunningShot as StunningShot } from './stunning-shot';
+import { Aim as Aim } from './aim';
+import { ExplosiveArrow as ExplosiveArrow } from './explosive-arrow';
+import { BlazingArrow as BlazingArrow } from './blazing-arrow';
+import { RangedShot as RangedShot } from './ranged-shot';
+import { RainofArrows as RainofArrows } from './rain-of-arrows';
+
+export const powerset: Powerset = {
+  id: 'sentinel/archery',
+  name: 'Archery',
+  description: 'The ancient art of Archery allows you to use a Bow and Arrow to great effect.  This power set has an inherent bonus to Accuracy.',
+  icon: 'archery_set.ico',
+  archetype: 'sentinel',
+  category: 'primary',
+  powers: [
+    SnapShot,
+    AimedShot,
+    ArtemesianAxis,
+    FistfulofArrows,
+    StunningShot,
+    Aim,
+    ExplosiveArrow,
+    BlazingArrow,
+    RangedShot,
+    RainofArrows,
+  ],
+};
+
+export default powerset;

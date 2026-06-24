@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.RubberStorm_Cosmetic",
+  "display_name": "Rubber Storm",
+  "help": "You summon a storm of rubber ducks at a target location. Ducks rain from the sky, pummeling foes with smashing damage, slowing their movement, and occasionally knocking them down. The storm persists for 15 seconds.",
+  "short_help": "Location AoE: DoT(Smash), Knockdown, -Speed",
+  "icon": "iceblast_icestorm.png",
+  "powers": [
+    "Villain_Pets.RubberStorm_Cosmetic.RubberStorm_Cosmetic_Exec"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Rubber Storm"
+  ],
+  "power_short_helps": [
+    ""
+  ]
+}

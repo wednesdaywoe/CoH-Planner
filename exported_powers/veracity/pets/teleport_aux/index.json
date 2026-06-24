@@ -1,0 +1,23 @@
+{
+  "key": "Pets.Teleport_Aux",
+  "display_name": "ResistAll",
+  "help": "Resistance",
+  "short_help": "Resistance",
+  "icon": "resistall_set.ico",
+  "powers": [
+    "Pets.Teleport_Aux.Teleport_Ambiance",
+    "Pets.Teleport_Aux.Teleport_Ambiance_Hover"
+  ],
+  "available_level": [
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Teleportation Exit Velocity",
+    "Hover"
+  ],
+  "power_short_helps": [
+    "Teleportation Aftereffects",
+    "Toggle: Self Fly, +DEF(All)"
+  ]
+}

@@ -47,6 +47,7 @@ const SERVER_OPTIONS = [
   { value: 'homecoming', label: 'Homecoming' },
   { value: 'rebirth', label: 'Rebirth' },
   { value: 'thunderspy', label: 'Thunderspy' },
+  { value: 'veracity', label: 'Veracity' },
 ];
 
 // Archetype dropdown options. Mostly server-agnostic, but the lineup
@@ -343,6 +344,7 @@ const DATASET_BADGE_VARIANT: Record<DatasetId, BadgeVariant> = {
   homecoming: 'cyan',
   rebirth: 'purple',
   thunderspy: 'warning',
+  veracity: 'warning',
 };
 
 function DatasetBadge() {

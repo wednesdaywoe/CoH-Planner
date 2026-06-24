@@ -1,0 +1,16 @@
+/**
+ * Flashing Steel — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs tanker_melee katana
+ */
+import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { Slice as base } from '@/data/datasets/veracity/generated/powersets/tanker/secondary/katana/slice';
+import { overrides } from '@/data/datasets/veracity/overrides/powersets/tanker/secondary/katana/slice';
+
+export const Slice: Power = withOverrides(base, overrides);

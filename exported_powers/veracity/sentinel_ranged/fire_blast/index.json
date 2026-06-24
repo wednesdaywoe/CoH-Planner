@@ -1,0 +1,55 @@
+{
+  "key": "Sentinel_Ranged.Fire_Blast",
+  "display_name": "Fire Blast",
+  "help": "Fire Blast allows you to blast fire at foes, with a tendency to set them ablaze for added damage over time.",
+  "short_help": "Fire Blast",
+  "icon": "fire_blast_set.ico",
+  "powers": [
+    "Sentinel_Ranged.Fire_Blast.Flares",
+    "Sentinel_Ranged.Fire_Blast.Fire_Blast",
+    "Sentinel_Ranged.Fire_Blast.Fire_Ball",
+    "Sentinel_Ranged.Fire_Blast.Blaze",
+    "Sentinel_Ranged.Fire_Blast.Aim",
+    "Sentinel_Ranged.Fire_Blast.Fire_Breath",
+    "Sentinel_Ranged.Fire_Blast.Blazing_Blast",
+    "Sentinel_Ranged.Fire_Blast.Rain_of_Fire",
+    "Sentinel_Ranged.Fire_Blast.Inferno",
+    "Sentinel_Ranged.Fire_Blast.Sunbeam"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    5,
+    7,
+    11,
+    17,
+    25,
+    31,
+    0
+  ],
+  "power_display_names": [
+    "Flares",
+    "Fire Blast",
+    "Fire Ball",
+    "Blaze",
+    "Aim",
+    "Fire Breath",
+    "Blazing Blast",
+    "Rain of Fire",
+    "Inferno",
+    "Sunbeam"
+  ],
+  "power_short_helps": [
+    "Ranged, Minor DMG(Fire)",
+    "Ranged, Moderate DMG(Fire)",
+    "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
+    "High DMG(Fire)",
+    "Self +To Hit, +DMG, +Range",
+    "Close (Cone), Moderate DoT(Fire)",
+    "High DMG(Fire)",
+    "Ranged (Location AoE), Minor DoT(Fire), -SPD",
+    "PBAoE, Extreme DMG(Fire/Smash), Foe Moderate DoT(Fire)",
+    "Cone, Healing"
+  ]
+}

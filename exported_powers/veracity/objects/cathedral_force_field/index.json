@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Cathedral_Force_Field",
+  "display_name": "Cathedral Willforge",
+  "help": "Object",
+  "short_help": "Object",
+  "icon": "cathedral_force_field_set.ico",
+  "powers": [
+    "Objects.Cathedral_Force_Field.Force_Field"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Force Field"
+  ],
+  "power_short_helps": [
+    "Untouchable"
+  ]
+}

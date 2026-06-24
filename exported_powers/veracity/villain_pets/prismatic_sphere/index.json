@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.Prismatic_Sphere",
+  "display_name": "Prismatic Sphere",
+  "help": "Creates a 30-foot radius sphere with three rainbow arcs orbiting in different planes. This is a visual test effect with no mechanical impact. Duration: 30 seconds.",
+  "short_help": "Ranged (Location), Visual Effect",
+  "icon": "temporary_prismaticaura.png",
+  "powers": [
+    "Villain_Pets.Prismatic_Sphere.Sphere_Exec"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Prismatic Sphere"
+  ],
+  "power_short_helps": [
+    "Ranged (Location), Visual Effect"
+  ]
+}

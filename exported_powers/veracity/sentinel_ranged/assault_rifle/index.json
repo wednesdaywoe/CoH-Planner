@@ -1,0 +1,55 @@
+{
+  "key": "Sentinel_Ranged.Assault_Rifle",
+  "display_name": "Assault Rifle",
+  "help": "The Assault Rifle is a state-of-the-art piece of hardware. It is equipped to handle an impressive arsenal of munitions and firing modes. The Assault Rifle is also equipped with the latest in targeting technology, and is a very accurate weapon.",
+  "short_help": "Assault Rifle",
+  "icon": "assault_rifle_set.ico",
+  "powers": [
+    "Sentinel_Ranged.Assault_Rifle.Burst",
+    "Sentinel_Ranged.Assault_Rifle.Beanbag",
+    "Sentinel_Ranged.Assault_Rifle.Buckshot",
+    "Sentinel_Ranged.Assault_Rifle.Slug",
+    "Sentinel_Ranged.Assault_Rifle.Aim",
+    "Sentinel_Ranged.Assault_Rifle.M30_Grenade",
+    "Sentinel_Ranged.Assault_Rifle.Flamethrower",
+    "Sentinel_Ranged.Assault_Rifle.Incinerator",
+    "Sentinel_Ranged.Assault_Rifle.Full_Auto",
+    "Sentinel_Ranged.Assault_Rifle.Headshot"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    5,
+    7,
+    11,
+    17,
+    25,
+    31,
+    0
+  ],
+  "power_display_names": [
+    "Burst",
+    "Disorienting Shot",
+    "Buckshot",
+    "Slug",
+    "Aim",
+    "M30 Grenade",
+    "Flamethrower",
+    "Incinerator",
+    "Full Auto",
+    "Headshot"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Lethal), Foe -DEF",
+    "Ranged, Minor DMG(Smash), Foe Disorient",
+    "Ranged (Cone), Moderate DMG(Lethal), Foe Knockback",
+    "Ranged, High DMG(Lethal), Foe Knockback",
+    "Self +To Hit, +DMG, +Range",
+    "Ranged (Targeted AoE), Moderate DMG(Lethal/Smash), Knockback",
+    "Ranged (Cone), Extreme DoT(Fire)",
+    "Ranged, Extreme DoT(Fire)",
+    "Ranged (Cone), Superior DMG(Lethal), +Special",
+    "Ranged (Single Target), Lethal Damage + chance to Slay"
+  ]
+}

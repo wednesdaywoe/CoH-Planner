@@ -1,0 +1,69 @@
+{
+  "name": "Bakuhatsuha",
+  "full_name": "Pool.Ki.Bakuhatsuha",
+  "short_name": "Bakuhatsuha",
+  "type": "Click",
+  "display_name": "Bakuhatsuha",
+  "display_fullname": "Pool Ki Bakuhatsuha",
+  "display_help": "You target a 30 foot cylinder and compress the natural energy in that space, smashing your foes and knocking them upward with a gravity flux. This power takes a fair amount of time to recharge.",
+  "display_short_help": "TAOE Smashing Damage, Knockup",
+  "icon": "ki_bakuhatsuha.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Location",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 60.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.0,
+  "recharge_time": 240.0,
+  "activate_period": 0.0,
+  "endurance_cost": 19.5,
+  "interrupt_time": 0.0,
+  "target_type": "Location",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_set_categories": [
+    "Knockback",
+    "Ranged AoE Damage"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Levelminus"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    }
+  ],
+  "available_level": 3,
+  "powerset": "Pool.Ki"
+}

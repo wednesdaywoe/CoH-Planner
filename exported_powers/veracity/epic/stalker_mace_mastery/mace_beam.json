@@ -1,0 +1,62 @@
+{
+  "name": "Mace_Beam",
+  "full_name": "Epic.Stalker_Mace_Mastery.Mace_Beam",
+  "short_name": "Mace_Beam",
+  "type": "Click",
+  "display_name": "Mace Beam",
+  "display_fullname": "Epic Stalker Mace Mastery Mace Beam",
+  "display_help": "Fires an extremely long range and accurate beam of kinetic Energy from the Bane Mace that deals tremendous damage and knocks the target back. This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
+  "display_short_help": "Sniper, Superior DMG(Energy/Smash), Foe Knockback",
+  "icon": "arachnos_patron_targetedrangedsnipe.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.25,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 150.0,
+  "range_secondary": 0.0,
+  "activation_time": 8.0,
+  "recharge_time": 24.0,
+  "activate_period": 0.0,
+  "endurance_cost": 17.94,
+  "interrupt_time": 6.0,
+  "target_type": "Foe",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Interrupt",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_set_categories": [
+    "Knockback",
+    "Ranged Damage",
+    "Sniper Attacks",
+    "Universal Damage Sets"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "$archetype @Class_Stalker == $archetype @Class_Scrapper == || SpidersKissPatron owned? TheStingerPatron owned? || BloodInTheWaterPatron owned? || MiragePatron owned? || &&",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [
+    104,
+    116,
+    132
+  ],
+  "effects": [],
+  "available_level": 31,
+  "powerset": "Epic.Stalker_Mace_Mastery"
+}

@@ -1,0 +1,19 @@
+{
+  "key": "Crey.Crey_Minion_Security_Riot",
+  "display_name": "Crey_Minion_Security_Riot",
+  "help": "Crey",
+  "short_help": "Crey",
+  "icon": "crey_minion_security_riot_set.ico",
+  "powers": [
+    "Crey.Crey_Minion_Security_Riot.Riot_Baton"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Riot Baton"
+  ],
+  "power_short_helps": [
+    "Disorient"
+  ]
+}

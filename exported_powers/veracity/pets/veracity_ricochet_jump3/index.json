@@ -1,0 +1,19 @@
+{
+  "key": "Pets.Veracity_Ricochet_Jump3",
+  "display_name": "Charge",
+  "help": "Charge",
+  "short_help": "Charge",
+  "icon": "",
+  "powers": [
+    "Pets.Veracity_Ricochet_Jump3.Charge"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Charge"
+  ],
+  "power_short_helps": [
+    "Charged"
+  ]
+}

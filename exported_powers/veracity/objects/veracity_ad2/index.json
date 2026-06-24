@@ -1,0 +1,19 @@
+{
+  "key": "Objects.Veracity_AD2",
+  "display_name": "Challenge_Buff",
+  "help": "Map",
+  "short_help": "Map",
+  "icon": "challenge_buff_set.ico",
+  "powers": [
+    "Objects.Veracity_AD2.Veracity_AD2"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Challenge Buff"
+  ],
+  "power_short_helps": [
+    "+DMG, +ACC, +Res (Mez)"
+  ]
+}

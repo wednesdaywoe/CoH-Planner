@@ -1,0 +1,35 @@
+{
+  "key": "Epic.Kheldian_Energy_Mastery",
+  "display_name": "Energy Mastery",
+  "help": "Your latent facility with raw energy has been concealed beneath your Kheldian gifts, until now. With Energy Mastery, you can channel additional blasts of energy, and focus your power into accuracy and stability in combat.",
+  "short_help": "Energy Mastery",
+  "icon": "energy_mastery_set.ico",
+  "powers": [
+    "Epic.Kheldian_Energy_Mastery.Power_Burst",
+    "Epic.Kheldian_Energy_Mastery.Focused_Accuracy",
+    "Epic.Kheldian_Energy_Mastery.Physical_Perfection",
+    "Epic.Kheldian_Energy_Mastery.Energy_Torrent",
+    "Epic.Kheldian_Energy_Mastery.Entropy_Shield"
+  ],
+  "available_level": [
+    31,
+    31,
+    34,
+    34,
+    37
+  ],
+  "power_display_names": [
+    "Power Burst",
+    "Focused Accuracy",
+    "Physical Perfection",
+    "Energy Torrent",
+    "Entropy Aura"
+  ],
+  "power_short_helps": [
+    "High DMG(Energy/Smash), Foe Knockback",
+    "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
+    "Auto: Self, +Regeneration, +Recovery",
+    "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
+    "Toggle: Self +Res(Knockback, Repel, Disorient, Hold, Sleep, Immobilize, Teleport, DeBuff DEF), +Rech"
+  ]
+}

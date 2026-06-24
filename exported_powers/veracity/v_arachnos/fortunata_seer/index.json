@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Fortunata_Seer",
+  "display_name": "Fortunata_Seer",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "fortunata_seer_set.ico",
+  "powers": [
+    "V_Arachnos.Fortunata_Seer.Mind_Link"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Mind Link"
+  ],
+  "power_short_helps": [
+    "+ACC, Res(Confuse), +Perception"
+  ]
+}

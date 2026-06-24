@@ -1,0 +1,19 @@
+{
+  "key": "Rularuu.Reflections",
+  "display_name": "Reflections",
+  "help": "Rularuu",
+  "short_help": "Rularuu",
+  "icon": "reflections_set.ico",
+  "powers": [
+    "Rularuu.Reflections.Resistance"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Resistance"
+  ],
+  "power_short_helps": [
+    "Resistance"
+  ]
+}

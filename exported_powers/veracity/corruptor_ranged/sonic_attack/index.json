@@ -1,0 +1,55 @@
+{
+  "key": "Corruptor_Ranged.Sonic_Attack",
+  "display_name": "Sonic Attacks",
+  "help": "Sonic Attack lets you use the power of sound waves to damage and weaken your foes.",
+  "short_help": "Sonic Attacks",
+  "icon": "sonic_attack_set.ico",
+  "powers": [
+    "Corruptor_Ranged.Sonic_Attack.Shriek",
+    "Corruptor_Ranged.Sonic_Attack.Scream",
+    "Corruptor_Ranged.Sonic_Attack.Howl",
+    "Corruptor_Ranged.Sonic_Attack.Shockwave",
+    "Corruptor_Ranged.Sonic_Attack.Shout",
+    "Corruptor_Ranged.Sonic_Attack.Amplify",
+    "Corruptor_Ranged.Sonic_Attack.Sirens_Song",
+    "Corruptor_Ranged.Sonic_Attack.Screech",
+    "Corruptor_Ranged.Sonic_Attack.Dreadful_Wail",
+    "Corruptor_Ranged.Sonic_Attack.Harmonic_Field"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    0
+  ],
+  "power_display_names": [
+    "Shriek",
+    "Scream",
+    "Howl",
+    "Shockwave",
+    "Shout",
+    "Amplify",
+    "Sirens Song",
+    "Screech",
+    "Dreadful Wail",
+    "Harmonic Field"
+  ],
+  "power_short_helps": [
+    "Ranged, Minor DMG(Smashing/Energy), Foe -Res(All)",
+    "Ranged, Moderate DoT(Smashing/Energy), -Res",
+    "Ranged Cone, Medium DMG(Smashing/Energy), Foe -Res(All)",
+    "Ranged (Cone), Minor DMG(Smashing/Energy), Foe Knockback",
+    "Ranged, Heavy DMG(Smashing/Energy), Foe -Res(All)",
+    "Self +To Hit, +DMG",
+    "Ranged (Cone), Minor DMG(Energy), Foe Sleep",
+    "Ranged, Minor DMG(Smashing/Energy), Foe Disorient, -Res(All)",
+    "PBAoE, Extreme DMG(Energy/Smash), Foe Disorient, -Res(All)",
+    "Toggle (Location), Fortify Patch \u2014 +Defense aura to allies"
+  ]
+}

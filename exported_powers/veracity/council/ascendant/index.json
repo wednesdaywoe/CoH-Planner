@@ -1,0 +1,19 @@
+{
+  "key": "Council.Ascendant",
+  "display_name": "Ascendant",
+  "help": "Council",
+  "short_help": "Council",
+  "icon": "ascendant_set.ico",
+  "powers": [
+    "Council.Ascendant.Shield"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Shield"
+  ],
+  "power_short_helps": [
+    "Toggle: Invulnerable, +Regeneration, +Recovery"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "key": "Redirects.Dominator_Assault",
+  "display_name": "Dominator Assault",
+  "help": "These powers are used by stalker redirect powers.",
+  "short_help": "Dominator Assault",
+  "icon": "dominator_assault_set.ico",
+  "powers": [
+    "Redirects.Dominator_Assault.Feral_Charge",
+    "Redirects.Dominator_Assault.Rending_Flurry_Normal",
+    "Redirects.Dominator_Assault.Rending_Flurry_Large"
+  ],
+  "available_level": [
+    0,
+    0,
+    0
+  ],
+  "power_display_names": [
+    "Feral Charge",
+    "Rending Flurry Normal",
+    "Rending Flurry Large"
+  ],
+  "power_short_helps": [
+    "PBAoE, Superior DMG(Lethal), Foe Minor DoT(Lethal), +3 Blood Frenzy, Self Teleport",
+    "PBAoE, Moderate DMG(Lethal), Foe Minor DoT(Lethal), -Blood Frenzy",
+    "PBAoE, Moderate DMG(Lethal), Foe Minor DoT(Lethal), -Blood Frenzy"
+  ]
+}

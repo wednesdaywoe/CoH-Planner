@@ -1,0 +1,55 @@
+{
+  "key": "Brute_Melee.Blight_Melee",
+  "display_name": "Blight Melee",
+  "help": "You believe that might makes right, and manifest fascist anger to brutalize your foes. Blight Melee attacks are slow, but heavy handed, with a small chance to drain endurance. Blight Melee attacks initially emphasize physical prowess in the one-on-one setting, dealing primarily smashing damage with a negative energy component. As your will to power is realized, your attacks will sprawl across the battlefield, and deal equal parts smashing and negative damage.",
+  "short_help": "Blight Melee",
+  "icon": "broad_sword_set.ico",
+  "powers": [
+    "Brute_Melee.Blight_Melee.Cruel_Jab",
+    "Brute_Melee.Blight_Melee.Cruel_Punch",
+    "Brute_Melee.Blight_Melee.Cruel_Haymaker",
+    "Brute_Melee.Blight_Melee.Aura_of_Domination",
+    "Brute_Melee.Blight_Melee.Cruel_Knockout_Blow",
+    "Brute_Melee.Blight_Melee.Taunt",
+    "Brute_Melee.Blight_Melee.Sap_Will",
+    "Brute_Melee.Blight_Melee.Dark_Lightning_Net",
+    "Brute_Melee.Blight_Melee.Fist_of_Fascism",
+    "Brute_Melee.Blight_Melee.Fascist_Charisma"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27,
+    1
+  ],
+  "power_display_names": [
+    "Cruel Jab",
+    "Cruel Punch",
+    "Cruel Haymaker",
+    "Aura of Domination",
+    "Cruel Knockout Blow",
+    "Taunt",
+    "Sap Will",
+    "Dark Lightning Net",
+    "Fist of Fascism",
+    "Fascist Charisma"
+  ],
+  "power_short_helps": [
+    "Melee, Light DMG(Smash/Negative), Chance for -End",
+    "Melee, Moderate DMG(Smash/Negative), Chance for -End",
+    "Melee, Heavy DMG(Smash/Negative), Chance for Knockdown and -End",
+    "Toggle: Psionic Damage, -Healing, -Speed, -Jump",
+    "Melee, Superior DMG(Smash/Negative), Chance for Knockdown and -End",
+    "Ranged (Targeted AoE), Foe Taunt",
+    "Ranged, High DMG (Negative), Foe -End, Self +Recovery",
+    "PBAoE, Superior DMG(Negative), Chance for Immobilize, -Fly, and -End",
+    "Melee, Extreme DMG(Smash/Negative), Chance for Knockdown, Stun, and -End",
+    "+Damage (All), +ToHit, +Resist (All)"
+  ]
+}

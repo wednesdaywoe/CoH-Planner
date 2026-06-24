@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Flight",
+  "display_name": "Flight",
+  "help": "These powers reflect a background in practical mad science. Powers in the Flight pool will make you substantially more successful in midair combat. Every power you take from the Flight pool increases your ranged defense by 2%.",
+  "short_help": "Flight",
+  "icon": "flight_set.ico",
+  "powers": [
+    "Pool.Flight.Fly",
+    "Pool.Flight.Combat_Flight",
+    "Pool.Flight.Air_Superiority",
+    "Pool.Flight.Afterburner",
+    "Pool.Flight.Group_Fly"
+  ],
+  "available_level": [
+    2,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Fly",
+    "Aerial Advantage",
+    "Air Superiority",
+    "Eagle Eyes",
+    "Citadel of Sky"
+  ],
+  "power_short_helps": [
+    "Toggle: Self Fly",
+    "Toggle: Self Fly, +DEF(All)",
+    "Melee, Moderate DMG(Smash), Foe -Fly",
+    "PBAOE +ToHit, +Range, +Crit",
+    "PBAOE Toggle: +Defense(Ranged, Area), Flight option"
+  ]
+}

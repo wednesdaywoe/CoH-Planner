@@ -1,0 +1,87 @@
+{
+  "name": "Indicator_45_Exec",
+  "full_name": "Villain_Pets.ConeIndicator.Indicator_45_Exec",
+  "short_name": "Indicator_45_Exec",
+  "type": "Auto",
+  "display_name": "Egg of Luminosity",
+  "display_fullname": "Villain Pets ConeIndicator Indicator 45 Exec",
+  "display_help": "You channel concentrated Kheldian light into a brilliant sphere that slowly descends from above over 12 seconds. As the Egg of Luminosity descends, it pulses healing light to allies within its radius at 2, 5, and 9 seconds. When it reaches the ground, it creates a Luminous Sanctuary that grants regeneration to all allies who remain within for 30 seconds. Recharge: Very Long",
+  "display_short_help": "Ranged (Location), Ally Heal, +Regen",
+  "icon": "luminosity_eggofluminosity.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 1.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "VisualOnly"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Ranged_Ones",
+          "scale": 0.0,
+          "duration": "1.25 seconds",
+          "magnitude": 0.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 560,
+          "stack_key": null
+        }
+      ]
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Villain_Pets.ConeIndicator"
+}

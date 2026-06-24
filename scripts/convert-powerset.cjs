@@ -228,6 +228,23 @@ const EFFECT_AREA_MAP = {
   // powers; map to undefined so callers fall back to default behavior.
 };
 
+// The valid EffectArea union (src/types/common.ts). Anything outside it must NOT
+// reach the typed Power.effectArea field.
+const _VALID_EFFECT_AREAS = new Set(['SingleTarget', 'AoE', 'Cone', 'Location', 'Chain']);
+
+/**
+ * Normalize a bin `effect_area` string to a valid EffectArea, or `undefined` to
+ * omit. Maps "Sphere"→"AoE" etc. via EFFECT_AREA_MAP, passes through values that
+ * are already valid, and DROPS unmodeled areas the planner has no type for
+ * ("Map", "Volume", "Touch", "Room", "Unknown(N)"). HC never surfaces those at
+ * the power level, but Veracity's enum does — without this they'd be written raw
+ * and fail tsc against the EffectArea union.
+ */
+function normEffectArea(raw) {
+  const mapped = EFFECT_AREA_MAP[raw] ?? raw;
+  return _VALID_EFFECT_AREAS.has(mapped) ? mapped : undefined;
+}
+
 // IO Set category mapping
 const SET_CATEGORY_MAP = {
   'Accurate Defense Debuff': 'Accurate Defense Debuff',
@@ -1277,7 +1294,7 @@ function resolveSummonRedirects(redirectNames) {
       recharge: json.recharge_time || 0,
       castTime: json.activation_time || 0,
       ...(json.activate_period > 0 ? { activatePeriod: json.activate_period } : {}),
-      ...(json.effect_area ? { effectArea: json.effect_area } : {}),
+      ...(normEffectArea(json.effect_area) ? { effectArea: normEffectArea(json.effect_area) } : {}),
       ...(json.radius > 0 ? { radius: json.radius } : {}),
       ...(json.max_targets_hit > 0 ? { maxTargets: json.max_targets_hit } : {}),
     });
@@ -2203,6 +2220,17 @@ function _isUntoggleableGate(req) {
   // is below N%). Already a built-in inherent for Corruptors; surfacing as a
   // per-power toggle would duplicate the Header's Scourge state.
   if (/\bkHitPoints%\s+target>\s+\d+\s+</.test(req)) return true;
+  // Veracity vs-enemy-faction / creature-subtype bonus damage. The target
+  // carries a `Veracity.Subtypes.<Faction>_Properties` (or `_Subtype`) marker
+  // power, and the attack adds damage when hitting that enemy group. Since the
+  // planner shows build output against a generic target (no per-enemy combat
+  // sim), these never enter the displayed numbers — and without this skip the
+  // `target.ownPower?` classifier below would surface 50+ faction "toggles" per
+  // power. Per-enemy by design; dev confirmed skippable. See veracity-bin-recon.
+  if (/\bVeracity\.Subtypes\.\w+(_Properties|_Subtype)\b/i.test(req)) return true;
+  // Veracity combo system (`<Element>_Combo_Counter`) — deprecated mechanic
+  // (dev confirmed). Skip the combo-gated bonus groups entirely.
+  if (/_Combo_Counter\b/i.test(req)) return true;
   return false;
 }
 
@@ -2708,6 +2736,14 @@ function extractSpecialEffects(rawEffects, conditionalEffects) {
 
       const attrib = (t.attribs && t.attribs[0]) || null;
       if (!attrib) continue;
+
+      // Veracity deprecated combo system: templates that grant/reference a
+      // `*_Combo_Counter` power are the combo setup (a Global_Chance_Mod proc
+      // that increments the counter) or payoff. The dev confirmed combos are
+      // dead, so drop them — otherwise ~28% of Veracity attacks show a phantom
+      // "Global_Chance_Mod 30%" proc. Dataset-agnostic: no other server ships a
+      // `_Combo_Counter` power, so this is a no-op elsewhere. See veracity-bin-recon.
+      if ((t.params?.power_names || []).some(n => /_Combo_Counter\b/i.test(n))) continue;
 
       // Dedup: same chance + attrib pair shouldn't render twice.
       const key = `${attrib}:${chance.toFixed(4)}`;
@@ -3337,15 +3373,15 @@ function extractEffects(templates, powerName) {
       if (isDefensePosition(attrib)) {
         const posType = DEFENSE_POSITIONS[attrib];
         if (aspect === 'resistance') {
-          if (isDebuff) {
-            if (!effects.resistanceDebuff) effects.resistanceDebuff = {};
-            effects.resistanceDebuff[posType.toLowerCase()] = makeEffect();
-            recordDuration('resistanceDebuff');
-          } else {
-            if (!effects.resistance) effects.resistance = {};
-            effects.resistance[posType.toLowerCase()] = makeEffect();
-            recordDuration('resistance');
-          }
+          // Positional RESISTANCE (resistanceDebuff/resistance keyed by
+          // Melee/Ranged/Area) is not a CoH concept — resistance is by damage
+          // TYPE, defense is by position. HC never emits this; only Veracity's
+          // multi-attrib "Ones" mode templates (e.g. a `Source.Mode?`-gated
+          // "resist everything" spray) list positions with a Resistance aspect.
+          // Skip them so they don't land in the type-by-damage ResistanceByType
+          // container. (Real positional defense-debuff resistance, if any,
+          // would route through the Base_Defense → debuffResistance.defense path.)
+          continue;
         } else if (aspect === 'strength') {
           // +Defense-STRENGTH by position (Power Boost: Melee/Ranged/Area at
           // aspect=Strength on the Melee_Stun table). A strength multiplier
@@ -4586,7 +4622,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     // Other types (Click/Toggle/Auto) match between bin and planner.
     powerType: powerJson.type === 'GlobalBoost' ? 'Global Enhancement' : powerJson.type,
     targetType: mappedTargetType,
-    effectArea: EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area,
+    effectArea: normEffectArea(powerJson.effect_area),
   };
 
   // Cast-through-mez: which mez states this power can still be activated through

@@ -1,0 +1,16 @@
+/**
+ * Umbral Essence Bifurcation — COMPOSED EXPORT
+ *
+ * The planner imports from here. Composes the auto-generated power object
+ * with hand-written overrides via `withOverrides`. See src/data/README.md
+ * for the layering pattern.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs warshade_defensive umbral_aura
+ */
+import type { Power } from '@/types';
+import { withOverrides } from '@/data/_layer';
+import { UmbralEssenceBifurcation as base } from '@/data/datasets/veracity/generated/powersets/warshade/epic/umbral-aura/umbral-essence-bifurcation';
+import { overrides } from '@/data/datasets/veracity/overrides/powersets/warshade/epic/umbral-aura/umbral-essence-bifurcation';
+
+export const UmbralEssenceBifurcation: Power = withOverrides(base, overrides);

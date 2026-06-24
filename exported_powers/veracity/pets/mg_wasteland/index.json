@@ -1,0 +1,19 @@
+{
+  "key": "Pets.MG_Wasteland",
+  "display_name": "Wasteland",
+  "help": "Wasteland",
+  "short_help": "Wasteland",
+  "icon": "",
+  "powers": [
+    "Pets.MG_Wasteland.Aura"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Wasteland"
+  ],
+  "power_short_helps": [
+    ""
+  ]
+}

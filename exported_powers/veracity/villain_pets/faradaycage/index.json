@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.FaradayCage",
+  "display_name": "Faraday Cage",
+  "help": "You create a Faraday Cage at the target location, protecting allies within 30 feet from Hold, Stun, Immobilize, and Sleep effects for 60 seconds.",
+  "short_help": "Creates a Faraday Cage at your target's location.",
+  "icon": "electricitymanipulation_powersurge.png",
+  "powers": [
+    "Villain_Pets.FaradayCage.FaradayCage_Exec"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Faraday Cage"
+  ],
+  "power_short_helps": [
+    "Creates a Faraday Cage at your target's location."
+  ]
+}

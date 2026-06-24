@@ -1,0 +1,111 @@
+{
+  "name": "Mists_of_Avalon",
+  "full_name": "Pool.Hierophany.Mists_of_Avalon",
+  "short_name": "Mists_of_Avalon",
+  "type": "Toggle",
+  "display_name": "Mists of Avalon",
+  "display_fullname": "Pool Hierophany Mists of Avalon",
+  "display_help": "You gather divine mists of myth and legend in your presence, bringing fate's attention to your location. Your allies and their pets are granted +35ft Stealth that suppresses for 15 seconds if they attack, are damaged or mezzed, or click on a glowie objective. Additionally, your allies receive a small boost to Regeneration that suppresses in combat. It costs a lot of endurance to maintain Mists of Avalon, and if it is disabled, it takes time for the power to be usable again.",
+  "display_short_help": "Map Wide Stealth, +Regeneration",
+  "icon": "hierophany_mists_of_avalon.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Map",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.03,
+  "recharge_time": 60.0,
+  "activate_period": 1.0,
+  "endurance_cost": 0.8,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Teammate",
+    "Self",
+    "MyPet"
+  ],
+  "targets_affected": [
+    "Teammate",
+    "Self",
+    "MyPet"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Recharge",
+    "Heal"
+  ],
+  "allowed_set_categories": [
+    "Healing"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Recovery"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 0.5,
+          "duration": "1.25 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unknown(21)",
+          "stack": "Unknown(19)",
+          "stack_limit": 22,
+          "stack_key": "hColumn.5thColumnEndgame.NictusFX",
+          "cancel_events": [
+            "Attacked",
+            "Event_15",
+            "ActivateAttackClick",
+            "Event_12",
+            "Event_13",
+            "Event_15",
+            "ActivateAttackClick",
+            "Event_12",
+            "Event_31",
+            "Event_15",
+            "ActivateAttackClick",
+            "Event_0"
+          ]
+        }
+      ]
+    }
+  ],
+  "available_level": 3,
+  "powerset": "Pool.Hierophany"
+}

@@ -331,6 +331,9 @@ export interface DebuffResistance {
   recovery?: NumberOrScaled; // Recovery debuff resistance
   perception?: NumberOrScaled; // Perception debuff resistance
   range?: NumberOrScaled; // Range debuff resistance
+  accuracy?: NumberOrScaled; // Accuracy debuff resistance (emitted by the converter
+                             // for Accuracy-attrib + resistance-aspect templates;
+                             // surfaced by some Veracity armor toggles)
 }
 
 // ============================================
@@ -340,6 +343,9 @@ export interface DebuffResistance {
 export interface MovementEffect {
   scale: number;
   table?: string;
+  perTarget?: number; // Per-enemy stacking increment (Phalanx-style per-target
+                      // scaling patch); set when a self movement buff scales with
+                      // nearby entities. Read by the per-target calc path.
 }
 
 // ============================================

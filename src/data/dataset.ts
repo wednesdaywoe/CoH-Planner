@@ -129,7 +129,7 @@ export interface InherentRules {
 // DATASET INTERFACE
 // ============================================
 
-export type DatasetId = 'homecoming' | 'rebirth' | 'thunderspy';
+export type DatasetId = 'homecoming' | 'rebirth' | 'thunderspy' | 'veracity';
 
 export interface Dataset {
   id: DatasetId;
@@ -262,6 +262,8 @@ export async function loadDataset(id: DatasetId): Promise<Dataset> {
           return (await import('./datasets/rebirth')).default;
         case 'thunderspy':
           return (await import('./datasets/thunderspy')).default;
+        case 'veracity':
+          return (await import('./datasets/veracity')).default;
         default: {
           const _exhaustive: never = id;
           throw new Error(`Unknown dataset: ${_exhaustive}`);
@@ -286,5 +288,6 @@ export function getAllDatasetMetadata(): Array<{ id: DatasetId; displayName: str
     { id: 'homecoming', displayName: 'Homecoming' },
     { id: 'rebirth', displayName: 'Rebirth' },
     { id: 'thunderspy', displayName: 'Thunderspy' },
+    { id: 'veracity', displayName: 'Veracity' },
   ];
 }

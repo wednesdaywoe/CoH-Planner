@@ -1,0 +1,19 @@
+{
+  "key": "Pets.MG_Heart_of_Darkness",
+  "display_name": "Heart of Darkness",
+  "help": "Heart of Darkness",
+  "short_help": "Heart of Darkness",
+  "icon": "",
+  "powers": [
+    "Pets.MG_Heart_of_Darkness.Aura"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Heart of Darkness"
+  ],
+  "power_short_helps": [
+    ""
+  ]
+}

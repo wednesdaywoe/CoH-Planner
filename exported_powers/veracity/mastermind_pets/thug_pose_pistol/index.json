@@ -1,0 +1,19 @@
+{
+  "key": "Mastermind_Pets.Thug_Pose_Pistol",
+  "display_name": "Thug Posse",
+  "help": "Thugs",
+  "short_help": "Thugs",
+  "icon": "thug_pose_pistol_set.ico",
+  "powers": [
+    "Mastermind_Pets.Thug_Pose_Pistol.Automatic_Pistol"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Automatic Pistol"
+  ],
+  "power_short_helps": [
+    "Ranged, Moderate DMG(Lethal)"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "key": "Epic.Kheldian_Fire_Mastery",
+  "display_name": "Fire Mastery",
+  "help": "Your latent facility with heat and fire has been overshadowed by your Kheldian gifts, until now. With Fire Mastery, you can command torrents of fire to blast an area, and beckon your foes into an inferno of battle.",
+  "short_help": "Fire Mastery",
+  "icon": "fire_mastery_set.ico",
+  "powers": [
+    "Epic.Kheldian_Fire_Mastery.Fireball",
+    "Epic.Kheldian_Fire_Mastery.Consume",
+    "Epic.Kheldian_Fire_Mastery.Melt_Armor",
+    "Epic.Kheldian_Fire_Mastery.Blaze",
+    "Epic.Kheldian_Fire_Mastery.Beckoning_Embers"
+  ],
+  "available_level": [
+    31,
+    31,
+    34,
+    34,
+    37
+  ],
+  "power_display_names": [
+    "Fire Ball",
+    "Consume",
+    "Melt Armor",
+    "Blaze",
+    "Beckoning Embers"
+  ],
+  "power_short_helps": [
+    "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
+    "PBAoE, Minor DMG(Fire), Self +End",
+    "Ranged (Targeted AoE), Foe -Res, -DEF",
+    "High DMG(Fire)",
+    "Toggle: PBAoE, Minor DoT(Fire), Foe -SPD"
+  ]
+}

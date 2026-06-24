@@ -1,0 +1,35 @@
+{
+  "key": "Epic.Kheldian_Mind_Mastery",
+  "display_name": "Mind Mastery",
+  "help": "Your latent gifts of the mind have been neglected in favor of your Kheldian powers, until now. With Mind Mastery, you can dominate your foes with psychic attacks, and resist different disabling threats in combat.",
+  "short_help": "Mind Mastery",
+  "icon": "psychic_mastery_set.ico",
+  "powers": [
+    "Epic.Kheldian_Mind_Mastery.Psi_Blade",
+    "Epic.Kheldian_Mind_Mastery.Telekinesis",
+    "Epic.Kheldian_Mind_Mastery.Dominate",
+    "Epic.Kheldian_Mind_Mastery.Mind_Over_Body",
+    "Epic.Kheldian_Mind_Mastery.Link_Mind"
+  ],
+  "available_level": [
+    31,
+    31,
+    34,
+    34,
+    37
+  ],
+  "power_display_names": [
+    "Psi Blade",
+    "Telekinesis",
+    "Dominate",
+    "Mind Over Body",
+    "Link Minds"
+  ],
+  "power_short_helps": [
+    "Melee, Moderate DMG(Psionic/Lethal), Foe -Rech, Self +Insight",
+    "Toggle: Ranged (Targeted AoE), Foe Hold, Repel",
+    "Ranged, Moderate DMG(Psionic), Foe Hold",
+    "Toggle: Self +Res(Smash, Lethal, Psionics)",
+    "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)"
+  ]
+}

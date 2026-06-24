@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Mu_Boss",
+  "display_name": "Mu_Boss",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "mu_boss_set.ico",
+  "powers": [
+    "V_Arachnos.Mu_Boss.Sentinel_of_Lightning"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Sentinel of Lightning"
+  ],
+  "power_short_helps": [
+    "Summon Sentinel: Ranged, Moderate DMG(Energy), Foe -End"
+  ]
+}

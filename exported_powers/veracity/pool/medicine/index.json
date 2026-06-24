@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Medicine",
+  "display_name": "Medicine",
+  "help": "These powers reflect your ability to mend wounds and care for others. The Medicine pool offers options for healing, reviving allies, and mez break. Every power you take from Medicine improves your global healing bonus by 5%.",
+  "short_help": "Medicine",
+  "icon": "medicine_set.ico",
+  "powers": [
+    "Pool.Medicine.Aid_Other",
+    "Pool.Medicine.Stimulant",
+    "Pool.Medicine.Aid_Self",
+    "Pool.Medicine.Field_Medic",
+    "Pool.Medicine.Resuscitate"
+  ],
+  "available_level": [
+    3,
+    3,
+    3,
+    3,
+    3
+  ],
+  "power_display_names": [
+    "Aid Other",
+    "Injection",
+    "Aid Self",
+    "Advanced Aid",
+    "Legends Never Die"
+  ],
+  "power_short_helps": [
+    "Close, Heal(Ally)",
+    "Ranged, +Status Protection(Ally, PvE), +Status Resistance(Ally, PvP) OR -DMG(Foe, All), -Rech(Foe), -ToHit(Foe)",
+    "Self, Heal, +Res(Stun), +EndGain(Synergy)",
+    "Auto: Chance for Heal Over Time",
+    "PBAoE Resurrect, Heal Over Time"
+  ]
+}

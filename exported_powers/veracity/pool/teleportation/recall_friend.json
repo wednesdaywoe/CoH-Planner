@@ -1,0 +1,52 @@
+{
+  "name": "Recall_Friend",
+  "full_name": "Pool.Teleportation.Recall_Friend",
+  "short_name": "Recall_Friend",
+  "type": "Click",
+  "display_name": "Teleport Entity",
+  "display_fullname": "Pool Teleportation Recall Friend",
+  "display_help": "You teleport a single entity to your location. Allies may opt to decline the teleport if they have the appropriate options set. An opponent is allowed a ToHit check and Teleportation Resistance when determining if they are teleported or not.",
+  "display_short_help": "Single Target Relocate",
+  "icon": "teleportation_recallteleport.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 10000.0,
+  "range_secondary": 25.0,
+  "activation_time": 1.93,
+  "recharge_time": 6.0,
+  "activate_period": 0.0,
+  "endurance_cost": 15.0,
+  "interrupt_time": 0.0,
+  "target_type": "Any",
+  "target_type_secondary": "Teleport",
+  "targets_autohit": [
+    "None"
+  ],
+  "targets_affected": [
+    "Any"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge"
+  ],
+  "allowed_set_categories": [
+    "Teleport",
+    "Universal Travel"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [],
+  "available_level": 3,
+  "powerset": "Pool.Teleportation"
+}

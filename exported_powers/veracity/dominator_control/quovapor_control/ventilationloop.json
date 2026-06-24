@@ -1,0 +1,106 @@
+{
+  "name": "VentilationLoop",
+  "full_name": "Dominator_Control.QUOVapor_Control.VentilationLoop",
+  "short_name": "VentilationLoop",
+  "type": "Click",
+  "display_name": "Ventilation Loop",
+  "display_fullname": "Dominator Control QUOVapor Control VentilationLoop",
+  "display_help": "You create a loop in the local air supply that causes vapors to recirculate, resulting in a entity that is able to target enemies with attacks that immobilize them when they hit. Allies who stand close to a Ventilation Loop have a chance every few seconds to recover a small amount of Endurance. Recharge: Moderate",
+  "display_short_help": "Ranged, Summon Ventilation Loop pet, Foe Immobilize, Ally +Endurance",
+  "icon": "quovaporcontrol_ventilationloop.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 2.0,
+  "effect_area": "Location",
+  "max_targets_hit": 0,
+  "radius": 0.0,
+  "arc": 0.0,
+  "range": 80.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.03,
+  "recharge_time": 40.0,
+  "activate_period": 0.0,
+  "endurance_cost": 15.0,
+  "interrupt_time": 0.0,
+  "target_type": "Location",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Self"
+  ],
+  "targets_affected": [
+    "Self"
+  ],
+  "boosts_allowed": [
+    "Recovery",
+    "Slow",
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Immobilize",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_set_categories": [
+    "Dominator Archetype Sets",
+    "Endurance Modification",
+    "Immobilize",
+    "Pet Damage",
+    "Ranged Damage",
+    "Recharge Intensive Pets"
+  ],
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": -1.0,
+          "duration": "30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 0.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 560,
+          "stack_key": "Column.5thColumnEndgame.NictusFX",
+          "cancel_events": [
+            "Event_16"
+          ]
+        }
+      ]
+    }
+  ],
+  "available_level": 1,
+  "powerset": "Dominator_Control.QUOVapor_Control"
+}

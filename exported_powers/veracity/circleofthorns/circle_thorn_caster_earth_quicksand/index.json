@@ -1,0 +1,19 @@
+{
+  "key": "CircleOfThorns.Circle_Thorn_Caster_Earth_Quicksand",
+  "display_name": "Circle_Thorn_Caster_Earth_Quicksand",
+  "help": "Circle of Thorns",
+  "short_help": "Circle of Thorns",
+  "icon": "circle_thorn_caster_earth_quicksand_set.ico",
+  "powers": [
+    "CircleOfThorns.Circle_Thorn_Caster_Earth_Quicksand.Quicksand"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Quicksand"
+  ],
+  "power_short_helps": [
+    "Quicksand"
+  ]
+}

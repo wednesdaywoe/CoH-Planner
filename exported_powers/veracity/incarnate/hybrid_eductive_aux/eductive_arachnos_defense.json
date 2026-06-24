@@ -1,0 +1,66 @@
+{
+  "name": "Eductive_Arachnos_Defense",
+  "full_name": "Incarnate.Hybrid_Eductive_Aux.Eductive_Arachnos_Defense",
+  "short_name": "Eductive_Arachnos_Defense",
+  "type": "Auto",
+  "display_name": "Eductive Arachnos Shielding",
+  "display_fullname": "Incarnate Hybrid Eductive Aux Eductive Arachnos Defense",
+  "display_help": "Eductive Core Hybrid combined with a defensive Tier 4 Radial Lore has yielded this potent shield, reflecting the unique energy signature of the creatures you conjured. The shield stretches over a 120 foot radius, affecting yourself and up to 31 additional allies. Up to three shields of a kind will stack. You must have your Eductive Hybrid ability toggled on to sustain the shield. If your Eductive Hybrid deactivates, or if your Radial Lore support pet returns to the Well, the benefits will soon be lost.<br><br>Eductive Core Hybrid and Radial Lore can combine to create the following effects:<br>Cimerorans: +12% Smashing/Lethal Defense<br>Longbow: +12% Energy Defense<br>Banished Pantheon: +12% Negative Energy Defense<br>Demons: +12% Fire Defense<br>Polar Lights: +12% Cold Defense<br>Carnival: +12% Psionic Defense<br>Nemesis: +8% Melee Positional Defense<br>Arachnos: +8% Ranged Positional Defense<br>Storm Elementals: +8% Area Positional Defense<br>Rikti: +8 Mag Hold Protection<br>War Works: +8 Mag Sleep Protection<br>Seers: +8 Mag Stun Protection<br>Phantoms: +8 Mag Terror protection<br>Robotic Drones: +8 Mag Knockback Protection<br>IDF: +30% Regeneration Debuff Resistance<br>Clockwork: +30% Recharge Debuff Resistance<br>Knives: +30% Defense Debuff Resistance<br>Rularuu: +30% To Hit Debuff Resistance<br>Tsoo: +30% Recovery Debuff Resistance<br>Talons: +30% Damage Bonus<br>",
+  "display_short_help": "+Defense (Ranged)",
+  "icon": "incarnate_hybrid_eductive_veryrare.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 32,
+  "radius": 120.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 2.07,
+  "recharge_time": 0.0,
+  "activate_period": 10.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Friend"
+  ],
+  "targets_affected": [
+    "Friend"
+  ],
+  "boosts_allowed": [
+    "EnduranceDiscount",
+    "Range",
+    "Recharge",
+    "Buff_Defense"
+  ],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Incarnate.Hybrid_Eductive_Aux"
+}

@@ -1,0 +1,19 @@
+{
+  "key": "Pets.MG_Faraday_Cage",
+  "display_name": "Faraday Cage",
+  "help": "Faraday Cage",
+  "short_help": "Faraday Cage",
+  "icon": "",
+  "powers": [
+    "Pets.MG_Faraday_Cage.Aura"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Faraday Cage"
+  ],
+  "power_short_helps": [
+    ""
+  ]
+}

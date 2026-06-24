@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Ghosts_Boss_Low",
+  "display_name": "Ghosts Boss Low",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "ghosts_boss_low_set.ico",
+  "powers": [
+    "V_Arachnos.Ghosts_Boss_Low.Life_Drain"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Life Drain"
+  ],
+  "power_short_helps": [
+    "-ACC"
+  ]
+}

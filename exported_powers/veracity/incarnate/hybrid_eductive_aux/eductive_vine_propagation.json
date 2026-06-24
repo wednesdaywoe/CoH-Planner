@@ -1,0 +1,67 @@
+{
+  "name": "Eductive_Vine_Propagation",
+  "full_name": "Incarnate.Hybrid_Eductive_Aux.Eductive_Vine_Propagation",
+  "short_name": "Eductive_Vine_Propagation",
+  "type": "Auto",
+  "display_name": "Eductive Vine Propagation",
+  "display_fullname": "Incarnate Hybrid Eductive Aux Eductive Vine Propagation",
+  "display_help": "The Educed Fly Trap pulls thick roots from the ground, and calls on them to join the attack. The roots are completely immobile.",
+  "display_short_help": "Special",
+  "icon": "plantcontrol_carrioncreeper.png",
+  "auto_issue": false,
+  "auto_issue_keeps_level": false,
+  "accuracy": 1.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 2,
+  "radius": 20.0,
+  "arc": 0.0,
+  "range": 0.0,
+  "range_secondary": 0.0,
+  "activation_time": 0.0,
+  "recharge_time": 0.0,
+  "activate_period": 12.0,
+  "endurance_cost": 0.0,
+  "interrupt_time": 0.0,
+  "target_type": "Self",
+  "target_type_secondary": "None",
+  "targets_autohit": [
+    "Foe"
+  ],
+  "targets_affected": [
+    "Foe"
+  ],
+  "boosts_allowed": [
+    "Slow",
+    "EnduranceDiscount",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
+  "allowed_set_categories": null,
+  "cast_through": [],
+  "toggle_ignore": [],
+  "num_allowed": 1,
+  "requires": "",
+  "activate_requires": "",
+  "target_requires": "",
+  "attack_types": [],
+  "effects": [
+    {
+      "chance": 0.5,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [
+        "Ones"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": []
+    }
+  ],
+  "available_level": 0,
+  "powerset": "Incarnate.Hybrid_Eductive_Aux"
+}

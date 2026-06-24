@@ -1,0 +1,19 @@
+{
+  "key": "Council.Sniper",
+  "display_name": "Sniper",
+  "help": "Council",
+  "short_help": "Council",
+  "icon": "sniper_set.ico",
+  "powers": [
+    "Council.Sniper.Sniper_Rifle"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Sniper Rifle"
+  ],
+  "power_short_helps": [
+    "Sniper Lethal, Knockback"
+  ]
+}

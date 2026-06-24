@@ -1,0 +1,19 @@
+{
+  "key": "Pets.Puretone",
+  "display_name": "Bonfire",
+  "help": "Fire Control",
+  "short_help": "Fire Control",
+  "icon": "bonfire_set.ico",
+  "powers": [
+    "Pets.Puretone.Puretone"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Puretone Acoustics"
+  ],
+  "power_short_helps": [
+    "Targeted AOE +Control, +Healing, +ToHit"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Nocturne",
+  "display_name": "Nocturne",
+  "help": "These powers reflect your attunement to the moon and the night. Powers in the Nocturne pool can increase your movement, conjure nighttime allies, and even steal life from your foes. Every power you take from the Nocturne pool increases your resistance to Regeneration debuffs by 5%.",
+  "short_help": "Nocturne",
+  "icon": "invisibility_set.ico",
+  "powers": [
+    "Pool.Nocturne.Unhallowed_Presence",
+    "Pool.Nocturne.Coterie",
+    "Pool.Nocturne.Seductive_Mesmer",
+    "Pool.Nocturne.Bloodmoon",
+    "Pool.Nocturne.Deadly_Lifetap"
+  ],
+  "available_level": [
+    2,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Unhallowed Presence",
+    "Coterie",
+    "Seductive Mesmer",
+    "Bloodmoon",
+    "Deadly Lifetap"
+  ],
+  "power_short_helps": [
+    "Toggle: Unsuppressed Run/Jump, +Debuff Resist(Endurance, Recharge)",
+    "Summon Hungry Wolf, Bat Swarm",
+    "Toggle PBAOE Foe -Damage(All), -Mez Resistance",
+    "Self: +Heal Over Time, +Recovery, +Sleep Protection",
+    "Self: Chance to Heal % of Max HP"
+  ]
+}

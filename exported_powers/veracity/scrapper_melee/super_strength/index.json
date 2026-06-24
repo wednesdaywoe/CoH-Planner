@@ -1,0 +1,51 @@
+{
+  "key": "Scrapper_Melee.Super_Strength",
+  "display_name": "Super Strength",
+  "help": "Super Strength gives you combat powers derived from your super-human physical strength. Super Strength powers tend to knock foes back.",
+  "short_help": "Super Strength",
+  "icon": "super_strength_set.ico",
+  "powers": [
+    "Scrapper_Melee.Super_Strength.Jab",
+    "Scrapper_Melee.Super_Strength.Punch",
+    "Scrapper_Melee.Super_Strength.Haymaker",
+    "Scrapper_Melee.Super_Strength.Hand_Clap",
+    "Scrapper_Melee.Super_Strength.Knockout_Blow",
+    "Scrapper_Melee.Super_Strength.Confront",
+    "Scrapper_Melee.Super_Strength.Rage",
+    "Scrapper_Melee.Super_Strength.Hurl",
+    "Scrapper_Melee.Super_Strength.Foot_Stomp"
+  ],
+  "available_level": [
+    0,
+    0,
+    1,
+    1,
+    4,
+    4,
+    14,
+    14,
+    27
+  ],
+  "power_display_names": [
+    "Jab",
+    "Punch",
+    "Haymaker",
+    "Hand Clap",
+    "Knockout Blow",
+    "Confront",
+    "Rage",
+    "Hurl",
+    "Foot Stomp"
+  ],
+  "power_short_helps": [
+    "Melee, Minor DMG(Smashing), Minor Disorient",
+    "Melee, Moderate DMG(Smashing), Knockback",
+    "Melee, High DMG(Smashing), Knockback",
+    "PBAoE, Foe Disorient, Knockback",
+    "Melee, Extreme DMG(Smashing), Foe Hold",
+    "Ranged, Foe Taunt",
+    "Self +DMG, +To Hit, Delayed Self(Weaken, Special)",
+    "Ranged, High DMG(Smashing), Knockback, -Fly",
+    "PBAoE Melee, Moderate DMG(Smashing), Knockback"
+  ]
+}

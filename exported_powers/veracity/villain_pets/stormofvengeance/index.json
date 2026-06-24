@@ -1,0 +1,19 @@
+{
+  "key": "Villain_Pets.StormOfVengeance",
+  "display_name": "Storm of Vengeance",
+  "help": "You summon a massive 80-foot radius storm. A runic hex symbol appears for 10 seconds, then thorny brambles spawn throughout. Hailstorms and thunder alternate in phases. Duration: 60 seconds.",
+  "short_help": "Location AoE: Summon Vengeful Storm",
+  "icon": "coven_stormofvengeance.png",
+  "powers": [
+    "Villain_Pets.StormOfVengeance.StormOfVengeance_Exec"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Storm of Vengeance"
+  ],
+  "power_short_helps": [
+    "Location AoE: Summon Vengeful Storm"
+  ]
+}

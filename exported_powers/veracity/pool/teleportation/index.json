@@ -1,0 +1,35 @@
+{
+  "key": "Pool.Teleportation",
+  "display_name": "Teleportation",
+  "help": "These powers reflect your ability to warp through space. The Teleportation pool offers options for offense, travel, and defense. Every power you take from the Teleport pool grants you a 3% global range bonus.",
+  "short_help": "Teleportation",
+  "icon": "teleportation_set.ico",
+  "powers": [
+    "Pool.Teleportation.Teleport",
+    "Pool.Teleportation.Recall_Friend",
+    "Pool.Teleportation.Teleport_Foe",
+    "Pool.Teleportation.Team_Teleport",
+    "Pool.Teleportation.Long_Range_Teleport"
+  ],
+  "available_level": [
+    2,
+    3,
+    3,
+    3,
+    6
+  ],
+  "power_display_names": [
+    "Teleport",
+    "Teleport Entity",
+    "Teleport Kick",
+    "Combat Phasing",
+    "Teleport The Team"
+  ],
+  "power_short_helps": [
+    "Ranged (Location), Self Teleport",
+    "Single Target Relocate",
+    "Single Target Superior Smashing Damage, Chance for Stun",
+    "Toggle: Self Clipping, +Def(S/L)",
+    "Team Relocate"
+  ]
+}

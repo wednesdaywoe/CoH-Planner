@@ -1,0 +1,19 @@
+{
+  "key": "V_Arachnos.Wretch_TI",
+  "display_name": "Wretch TI",
+  "help": "Arachnos",
+  "short_help": "Arachnos",
+  "icon": "wretch_ti_set.ico",
+  "powers": [
+    "V_Arachnos.Wretch_TI.Temp_Invulnerability"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Temp Invulnerability"
+  ],
+  "power_short_helps": [
+    "Toggle: Self +Res(Smash, Lethal)"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "key": "CircleOfThorns.Circle_Thorn_Caster_Fire_Defense",
+  "display_name": "Circle_Thorn_Caster_Fire_Defense",
+  "help": "Circle of Thorns",
+  "short_help": "Circle of Thorns",
+  "icon": "circle_thorn_caster_fire_defense_set.ico",
+  "powers": [
+    "CircleOfThorns.Circle_Thorn_Caster_Fire_Defense.Consume"
+  ],
+  "available_level": [
+    0
+  ],
+  "power_display_names": [
+    "Consume"
+  ],
+  "power_short_helps": [
+    "Ranged Fire, Self +End"
+  ]
+}

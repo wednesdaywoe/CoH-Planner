@@ -16,6 +16,7 @@ import type {
 import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_HC } from './datasets/homecoming/epic-pools-raw';
 import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_REBIRTH } from './datasets/rebirth/epic-pools-raw';
 import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_THUNDERSPY } from './datasets/thunderspy/epic-pools-raw';
+import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_VERACITY } from './datasets/veracity/epic-pools-raw';
 import { getActiveDataset } from './dataset';
 import { EPIC_POOL_LEVEL, EPIC_TIER_REQUIREMENTS } from './levels';
 
@@ -190,6 +191,7 @@ function _resolveRawForDataset(datasetId: string) {
   switch (datasetId) {
     case 'rebirth': return EPIC_POOLS_RAW_REBIRTH;
     case 'thunderspy': return EPIC_POOLS_RAW_THUNDERSPY;
+    case 'veracity': return EPIC_POOLS_RAW_VERACITY;
     case 'homecoming':
     default: return EPIC_POOLS_RAW_HC;
   }
