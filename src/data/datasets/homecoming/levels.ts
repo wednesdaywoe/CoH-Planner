@@ -553,10 +553,13 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
     allowedSetCategories: ['Running & Sprints', 'Leaping & Sprints'],
     isLocked: true,
     category: 'basic',
-    // Per powers.bin (HC + Rebirth, verified 2026-06-16): the basic Sprint and
-    // the prestige sprints (PowerSlide/Rush/Surge/Dash/Quick) use Melee_Ones for
-    // RunningSpeed (a flat +0.5 = +50%), NOT Melee_SpeedRunning — they are
-    // sprints, not travel powers — plus a small +0.1 JumpHeight (Melee_Ones).
+    // Per powers.bin (HC + Rebirth, verified 2026-06-24): the basic Sprint and
+    // the prestige sprints (PowerSlide/Rush/Surge/Dash/Quick) grant RunningSpeed
+    // as TWO Melee_Ones templates of scale 0.5 each — one enhanceable, one
+    // IgnoreStrength (unenhanceable) — for a +100% base run speed of which only
+    // the +50% enhanceable half responds to Run Speed enhancements. They use
+    // Melee_Ones (flat), NOT Melee_SpeedRunning — they are sprints, not travel
+    // powers — plus a small +0.1 JumpHeight (Melee_Ones).
     effects: {
       // Per-second drain. powers.bin Sprint is endurance_cost 0.1463 per tick at
       // activate_period 0.5s → 0.1463 / 0.5 = 0.2926/s (verified 2026-06-19).
@@ -565,6 +568,7 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
       // the already-per-second value. EndRdx scales it linearly (correct).
       enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
@@ -691,6 +695,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
       // Stored already-per-second (inherent display shows this value as-is).
       enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
@@ -714,6 +719,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
       // Stored already-per-second (inherent display shows this value as-is).
       enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
@@ -737,6 +743,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
       // Stored already-per-second (inherent display shows this value as-is).
       enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
@@ -760,6 +767,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
       // Stored already-per-second (inherent display shows this value as-is).
       enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },
@@ -783,6 +791,7 @@ export const PRESTIGE_SPRINT_POWERS: InherentPowerDef[] = [
       // Stored already-per-second (inherent display shows this value as-is).
       enduranceCost: 0.2926,
       runSpeed: { scale: 0.5, table: 'Melee_Ones' },
+      runSpeedUnenhanced: { scale: 0.5, table: 'Melee_Ones' },
       jumpHeight: { scale: 0.1, table: 'Melee_Ones' },
     },
   },

@@ -544,6 +544,14 @@ export interface PowerEffects {
   // === LEGACY MOVEMENT (keep for backwards compatibility) ===
   /** @deprecated Use movement.runSpeed instead */
   runSpeed?: MovementEffect;
+  /**
+   * IgnoreStrength run-speed template — contributes to run-speed totals but is
+   * NOT boosted by slotted Run Speed enhancements. Used where a power grants two
+   * RunningSpeed templates, one enhanceable + one IgnoreStrength (e.g. Sprint and
+   * the prestige sprints: +50% enhanceable + +50% unenhanceable). Totals-only,
+   * mirroring tohitBuffUnenhanced / regenBuffUnenhanced.
+   */
+  runSpeedUnenhanced?: MovementEffect;
   /** @deprecated Use movement.jumpHeight instead */
   jumpHeight?: MovementEffect;
   /** @deprecated Use movement.jumpSpeed instead */
