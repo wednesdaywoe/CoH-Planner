@@ -20,58 +20,80 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-## ⬜ `Grant_Power` proc targets in `Temporary_Powers` not exported — proc damage + enhanceability invisible to the converter (Molten Embrace DoT) — 2026-06-24
-
-**Surfaced during the I28P3 (June 23 2026) patch-notes vs live-export audit.** The note
-"Molten Embrace [Sentinels] — the DoT damage proc is now affected by damage enhancements
-and buffs" could not be verified from `exported_powers/` at all: the passive
-`Sentinel_Defense.Fiery_Aura.Molten_Embrace` does **not** carry the DoT inline. It holds
-**two `Grant_Power` templates** (`OnTick` + `OnActivate`, `params.power_names =
-["Temporary_Powers.Temporary_Powers.Molten_Embrace_Proc"]`) that grant a hidden proc
-power. The **actual** player-facing damage lives in that granted power:
-`Molten_Embrace_Proc` = Fire_Dmg scale ~0.0493/tick, `application_period` 1.0s, duration
-2.1s, flags `['CancelOnMiss']` — **no `IgnoreStrength`**, i.e. enhanceable (which is the
-exact thing the note claims). Confirmed by parsing `powers.bin` directly with
-`parse_powers` on the live assets; the note IS correctly implemented in the data.
-
-**The gap:** `Temporary_Powers` is **not** one of the exported player categories, so
-`Molten_Embrace_Proc` is absent from `exported_powers/`, and the `Grant_Power →
-Temporary_Powers` hop is **not** resolved at convert time (unlike the `Execute_Power` /
-`Create_Entity` pseudo-pet chains that `resolveSummonRedirects` already walks — see the
-"Pseudo-pet `summon.powers` redirect chains resolved" RESOLVED entry). Net effect: the
-proc's damage numbers **and** its enhanceable-ness are invisible to the pipeline; the only
-way to see them today is a direct bin parse.
-
-**Also affected:** Stalker `Hide` → "Hidden Flame" grants the same `Molten_Embrace_Proc`
-(per the I28P3 note "Hidden Flame is identical to Hide but now also grants the damage proc
-from Molten Embrace") — `stalker_defense/fiery_aura/hide.json` references it. Any other
-passive/toggle that delivers damage via a `Grant_Power` into `Temporary_Powers` shares this
-gap.
-
-**Before fixing — scope it (verify-don't-assume):** confirm whether the planner currently
-displays/calcs Molten Embrace (and Hidden Flame) proc damage at all. It may already be
-handled via a curated proc path / override (like other bespoke self-procs in
-`proc-data.ts`), in which case this is a documentation/consistency note rather than a
-missing-data bug. If it genuinely needs the data, two options: **(a)** include
-`Grant_Power` proc targets (or the `Temporary_Powers` category) in the export filter, or
-**(b)** resolve `Grant_Power → Temporary_Powers` hops at convert time, mirroring the
-existing pseudo-pet redirect resolver.
-
-**Audit-harness note (context, not a pipeline bug):** the same audit confirmed the
-production exporter DOES capture effects nested under `child_effects` (raw dataclass key
-`child_groups`) and caster-on-cast buffs under `activation_effects` (e.g. Blinding
-Powder's "+30% crit chance for 10s" `Global_Chance_Mod` lives there, not in `effects`) —
-any ad-hoc tooling that reads these JSONs must walk both `child_effects` and
-`activation_effects` or it will silently under-read. Only the `Grant_Power → Temporary_Powers`
-scope above is a real export-pipeline gap.
-
-*(Sibling game-data finding from the same audit — NOT a parser issue, logged here only for
+*(Sibling game-data finding from the I28P3 audit — NOT a parser issue, logged here only for
 cross-reference: Sentinel `Blinding_Powder` Confuse **scale is 10**, but the patch notes
 and the Scrapper/Stalker versions say **12**. The parser reads it correctly — Scr/Stk parse
 as 12 — so the binary genuinely contains 10 on the Sentinel record. Flagged to the dev team;
 data pushed as-is.)*
 
 > ---RESOLVED ---
+
+## ✅ `Grant_Power → Temporary_Powers` DoT procs resolved end-to-end — Molten Embrace / Hidden Flame DoT now visible + enhanceable-aware (full 3-layer fix, 2026-06-24)
+
+**Gap (from the I28P3 audit).** The note "Molten Embrace [Sentinels] — the DoT damage proc
+is now affected by damage enhancements and buffs" was unverifiable from `exported_powers/`:
+the passive holds **two `Grant_Power` templates** → `Temporary_Powers.Temporary_Powers.
+Molten_Embrace_Proc`, and the *actual* player-facing damage (Fire ~0.0493/tick, period 1.0s,
+duration 2.1s, **no `IgnoreStrength`** = enhanceable) lives in that granted power.
+`Temporary_Powers` isn't an exported category, so the proc's damage **and** its
+enhanceable-ness were invisible to the whole pipeline. **Scoped first (verify-don't-assume):**
+confirmed the planner showed *nothing* of this proc (generated Molten Embrace = only the
+`+Damage` toggle; empty override; not in `proc-data.ts`, which is IO-set procs only). A direct
+`parse_powers` over `Temporary_Powers` showed the real scope is **narrow**: of 67 distinct
+`Temporary_Powers` grant targets, 14 carry damage — 13 of those are all-8-types
+`IgnoreStrength` **+Damage *buff*** definitions (Power Siphon, Reach for the Limit, Perfection
+of Body …, aspect=Strength), already represented elsewhere; the genuinely-missing
+**damage-DEALING** single-type procs are just Molten Embrace, Stalker Hidden Flame (same
+proc), Toxins, Envenomed Blades.
+
+**Fix (3 layers, all data-driven — no curated power lists).**
+1. **Export** ([export_powers.py](tools/bin-crawler/bin_crawler/export_powers.py)) — new
+   `_collect_grant_targets` + a referenced-target inclusion pass: after filtering to player
+   categories, pull in exactly the `Temporary_Powers` powers a player power **grants** via
+   `Grant_Power` (67 files), instead of the 1,247-power whole category (travel/accolade/event
+   junk). Mirrors how `Pets`/`*_Aux` host `Execute_Power`/redirect damage, but scoped to
+   references. `convert-all-powersets` never turns `Temporary_Powers` into a powerset (not in
+   its category map), so these are pure resolver data. Gated off `--categories`.
+2. **Convert** ([convert-powerset.cjs](scripts/convert-powerset.cjs)) — new
+   `resolveGrantedDamageProcs` / `_buildGrantedDamageProc`: walks the grant, loads the target
+   via the existing `resolveRedirectPath`, and attaches `grantedDamageProcs`. Three traps
+   handled: (a) the proc's damage lives in nested `child_groups` with engine-guard
+   `requires_expression`s (`activateperiod==0`, Judgement exclusions, `enttype critter eq`) that
+   `collectTemplatesWithChance` reads as conditional gates and would skip — so a dedicated
+   **lenient PvE walker** collects through them, dropping only the `enttype target> player eq`
+   PvP variant; (b) the damage genuinely sits on a `Melee_PvPDamage`-NAMED table, so the redirect
+   resolver's `/pvp/i`-table drop is wrong here (the **requires**, not the table name, is the
+   PvE/PvP discriminator); (c) **multi-grant guard** — a power granting >1 distinct proc is a
+   mutually-exclusive MODE system (Bio Armor Offensive/Defensive/Efficient adaptations grant all
+   three procs with no group-requires to tell stances apart), so it's left to the existing
+   conditionalEffects/Mechanic-Adjuster surface rather than flat-attached. `extractDamage` already
+   drops the aspect=Strength +Dmg buffs and we additionally exclude `Heal` (Bio's defensive proc
+   is a self-heal). `enhanceable = no kept damage template has IgnoreStrength`.
+3. **Display** ([InfoPanel.tsx](src/components/info/InfoPanel.tsx) + `GrantedDamageProc` type in
+   [power.ts](src/types/power.ts)) — a "Granted Damage Proc" block computing per-tick × ticks
+   over duration via `calculateDamageWithATTable` (the AT-table helper that resolves
+   `Melee_PvPDamage`; `calculateEffectValue` does NOT — §13 silent-fallback trap, now guarded by a
+   test). Enhanceable procs scale with the power's slotted damage + global damage strength;
+   IgnoreStrength ones show flat. Surfaced **informationally** (it procs off the player's own
+   attacks at `tickChance`), not summed into the power's own DPS.
+
+**Result.** Exactly 4 generated powers gain `grantedDamageProcs`: Molten Embrace + Stalker Hide
+(Fire 0.0493, **enhanceable:true**, 80%/tick, 2.1s — exactly the I28P3 claim), Toxins +
+Envenomed Blades (Toxic, enhanceable:false). Sentinel per-tick resolves to **Fire 3.80 ×3 ≈
+11.4** over 2.1s. **De-risked per §6:** scratch export vs committed = **0 files differ**, the only
+delta is the new `temporary_powers/` dir (+67 files). Regen is idempotent (only the 4 files).
+Guard: [granted-damage-procs.test.ts](src/data/granted-damage-procs.test.ts) (5 cases incl. the
+Bio-not-attached regression + the table-resolves guard). tsc clean, **577 tests**.
+
+**Follow-up (not done — deliberate scope cut).** The Bio Armor adaptation toxic proc + the
++Damage-buff grants (Power Siphon, Reach for the Limit, Perfection of Body) remain on the
+Mechanic-Adjuster surface only; folding the granted DoT into per-attack DPS (it fires off the
+player's attack chain) is a separate calc feature, not a data gap.
+
+**Audit-harness note (context, not a pipeline bug):** the production exporter DOES capture
+`child_effects` (raw `child_groups`) and caster-on-cast buffs under `activation_effects` (e.g.
+Blinding Powder's "+30% crit chance for 10s" `Global_Chance_Mod`) — any ad-hoc tooling reading
+these JSONs must walk both or it under-reads.
 
 ## ✅ Thunderspy Primalist orphan-power LEAK into the HC export — source-aware category gating (2026-06-24)
 

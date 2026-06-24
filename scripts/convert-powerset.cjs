@@ -2779,6 +2779,131 @@ function extractSpecialEffects(rawEffects, conditionalEffects) {
 const AT_INHERENT_GRANT_BLACKLIST = new Set(['domination']);
 
 /**
+ * Resolve `Grant_Power → Temporary_Powers` hops that deliver DAMAGE the granting
+ * power does not carry inline. A few passives/toggles grant a hidden
+ * Temporary_Powers proc power whose damage-over-time is the actual player-facing
+ * damage — invisible to the pipeline because Temporary_Powers isn't a converted
+ * category (Molten Embrace's Fire DoT, Stalker Hidden Flame, Envenomed Blades,
+ * Bio Offensive Adaptation, Plant Toxins). The exporter now includes the
+ * referenced grant targets (see `export_powers._collect_grant_targets`); this
+ * walks the grant and attaches the resolved DoT as `grantedDamageProcs`.
+ *
+ * Only DAMAGE-dealing grants surface: the granted power's +Damage *buff*
+ * definitions (Power Siphon, Reach for the Limit, Perfection of Body, …) are
+ * aspect=Strength and `extractDamage` drops them, and pure state grants (Combo
+ * Level, Insight, Contaminated) carry no damage. So "the granted power deals
+ * damage" is the discriminator, derived from the data — no curated list.
+ */
+function resolveGrantedDamageProcs(powerJson) {
+  const targets = [];
+  const queue = [...(powerJson.effects || []), ...(powerJson.activation_effects || [])];
+  while (queue.length) {
+    const eff = queue.shift();
+    for (const t of (eff.templates || [])) {
+      if ((t.attribs && t.attribs[0]) !== 'Grant_Power') continue;
+      for (const pName of ((t.params && t.params.power_names) || [])) {
+        if (/^temporary_powers\./i.test(pName)) targets.push(pName);
+      }
+    }
+    if (eff.child_effects) queue.push(...eff.child_effects);
+  }
+
+  // Distinct grant targets. A power that grants MORE THAN ONE distinct
+  // Temporary_Powers proc is a mutually-exclusive MODE system (Bio Armor's
+  // Offensive/Defensive/Efficient adaptations each grant all three adaptation
+  // procs, mode-gated inside the proc power, with no group-level requires to
+  // tell them apart) — attaching a flat proc would wrongly show the offensive
+  // toxic DoT on the defensive stance. Those mode mechanics are already
+  // surfaced as conditionalEffects / Mechanic Adjusters. So only the
+  // single-grant, unconditional case (Molten Embrace, Hidden Flame, Toxins,
+  // Envenomed Blades) resolves here — the clean "this power delivers a hidden
+  // DoT" shape.
+  const distinct = [...new Set(targets.map(t => t.toLowerCase()))];
+  if (distinct.length !== 1) return undefined;
+
+  const proc = _buildGrantedDamageProc(distinct[0]);
+  return proc ? [proc] : undefined;
+}
+
+function _buildGrantedDamageProc(pName) {
+  const filePath = resolveRedirectPath(pName);
+  if (!fs.existsSync(filePath)) return null;
+  let json;
+  try { json = JSON.parse(fs.readFileSync(filePath, 'utf-8')); } catch { return null; }
+  if (!json.effects || json.effects.length === 0) return null;
+
+  // Lenient PvE walk: collect damage templates, dropping only the PvP
+  // (`enttype target> player eq`) variant. The granted proc's other guards
+  // (Judgement exclusions, the `activateperiod==0` burst/DoT split, `critter eq`)
+  // are engine-internal and always hold for the normal PvE DoT — collect through
+  // them rather than treating them as conditional gates, because
+  // `collectTemplatesWithChance` reads `activateperiod==0` as a conditional gate
+  // and would skip the whole damage group. (The granted proc's damage genuinely
+  // lives on a `Melee_PvPDamage`-named table, so the redirect resolver's
+  // `/pvp/i`-table drop is also wrong here — the requires, not the table name, is
+  // the PvE/PvP discriminator.)
+  const templates = [];
+  const walk = (effs) => {
+    for (const e of effs || []) {
+      if (e.is_pvp === 'PVP_ONLY') continue;
+      if (/\benttype\s+target>\s+player\s+eq/i.test(e.requires_expression || '')) continue;
+      for (const t of (e.templates || [])) templates.push(t);
+      walk(e.child_effects);
+    }
+  };
+  walk(json.effects);
+
+  const dmg = extractDamage(templates);
+  // Real attack damage only — extractDamage also returns `Heal` entries (a
+  // granted heal-over-time, e.g. Bio's Defensive_Adaptation_Proc), which is not
+  // a damage proc. Keep the elemental/Special types; heals belong elsewhere.
+  const dmgArr = (dmg ? (Array.isArray(dmg) ? dmg : [dmg]) : []).filter(d => d.type !== 'Heal');
+  if (dmgArr.length === 0) return null; // state grant / +Dmg buff / heal — not a damage proc
+
+  // Dedup identical (type, scale, table) — the critter + activateperiod-split
+  // variants are the same DoT collected twice.
+  const seenDmg = new Set();
+  const damage = [];
+  let duration, period;
+  for (const d of dmgArr) {
+    const k = `${d.type}|${d.scale}|${d.table}`;
+    if (seenDmg.has(k)) continue;
+    seenDmg.add(k);
+    damage.push({ damageType: d.type, scale: d.scale, table: d.table });
+    if (d.duration !== undefined && duration === undefined) duration = d.duration;
+    if (d.tickRate !== undefined && period === undefined) period = d.tickRate;
+  }
+
+  // Damage-bearing templates only (exclude buff/debuff tables, mirroring
+  // extractDamage). Enhanceable when NONE carry IgnoreStrength — the I28P3
+  // Molten Embrace change is exactly removing IgnoreStrength from this proc.
+  const dmgTemplates = templates.filter(t =>
+    (t.attribs || []).some(a => isDamageTypeAttrib((a || '').toLowerCase())) &&
+    !/buff|debuff/i.test(t.table || ''));
+  const enhanceable = dmgTemplates.length > 0 &&
+    !dmgTemplates.some(t => (t.flags || []).includes('IgnoreStrength'));
+
+  // Per-application proc chance ("chance to inflict … over time").
+  let tickChance;
+  for (const t of dmgTemplates) {
+    if (typeof t.tick_chance === 'number' && t.tick_chance > 0 && t.tick_chance < 1) {
+      tickChance = Math.round(t.tick_chance * 100) / 100;
+      break;
+    }
+  }
+
+  return {
+    name: json.name,
+    displayName: json.display_name || json.name,
+    damage,
+    enhanceable,
+    ...(tickChance !== undefined ? { tickChance } : {}),
+    ...(period !== undefined ? { period } : {}),
+    ...(duration !== undefined ? { duration } : {}),
+  };
+}
+
+/**
  * Derive a player-friendly label for a Grant_Power template's target.
  *
  * `params.power_names[0]` is a dotted internal name like
@@ -4872,6 +4997,13 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     // rather than a generic "trigger".
     const special = extractSpecialEffects(powerJson.effects, conditional);
     if (special) power.specialEffects = special;
+
+    // Damage delivered via a `Grant_Power → Temporary_Powers` hop (Molten
+    // Embrace's Fire DoT, Hidden Flame, Envenomed Blades, …) — the granted
+    // proc's damage is invisible inline, so resolve it from the exported grant
+    // target and surface it on the power.
+    const granted = resolveGrantedDamageProcs(powerJson);
+    if (granted) power.grantedDamageProcs = granted;
   }
 
   // Storm Cell's powered-up state lives on the pseudo-pet (resolvedEntities), not

@@ -279,6 +279,33 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
     return d
 
 
+def _collect_grant_targets(powers, prefix='temporary_powers.'):
+    """Collect the dotted names a set of powers GRANT via `Grant_Power`
+    templates, restricted to the given category prefix (default
+    Temporary_Powers). Walks the full effect tree — top-level groups,
+    child_groups, and activation_effects — since a grant can nest anywhere.
+    Returns a set of lowercased full names.
+    """
+    targets: set[str] = set()
+
+    def walk(groups):
+        for g in groups or []:
+            for t in getattr(g, 'templates', []) or []:
+                attribs = getattr(t, 'attribs', None) or []
+                if 'Grant_Power' not in attribs:
+                    continue
+                params = getattr(t, 'params', None) or {}
+                for name in params.get('power_names') or []:
+                    if name.lower().startswith(prefix):
+                        targets.add(name.lower())
+            walk(getattr(g, 'child_groups', None))
+
+    for pw in powers:
+        walk(getattr(pw, 'effects', None))
+        walk(getattr(pw, 'activation_effects', None))
+    return targets
+
+
 def main():
     ap = argparse.ArgumentParser(description='Export player power data as structured JSON')
     ap.add_argument('--assets-dir', default=None,
@@ -363,6 +390,35 @@ def main():
     # Filter to player categories
     player_powers = [pw for pw in all_powers if pw.category in categories]
     print(f'\nFiltered to {len(player_powers)} player powers from {len(categories)} categories.')
+
+    # Referenced-target inclusion: pull in the Temporary_Powers powers that a
+    # player power GRANTS via a `Grant_Power` template. These host effects the
+    # granting power delivers but does not carry inline — most notably the
+    # damage-over-time procs a few passives/toggles grant (Molten Embrace's Fire
+    # DoT lives in Temporary_Powers.Temporary_Powers.Molten_Embrace_Proc, NOT in
+    # Molten Embrace itself). Temporary_Powers as a whole is 1200+ travel/
+    # accolade/event temps we don't want; only the powers actually referenced by
+    # a player power's grant are relevant, so include exactly those (mirrors how
+    # the Pets/*_Aux categories host Execute_Power/redirect damage targets, but
+    # scoped to references instead of the whole category). The convert-time
+    # resolver reads these by their dotted name; convert-all-powersets never
+    # turns Temporary_Powers into a powerset (not in its category map), so these
+    # are pure resolver data.
+    if not args.categories:
+        grant_targets = _collect_grant_targets(player_powers)
+        by_full = {pw.full_name.lower(): pw for pw in all_powers}
+        already = {pw.full_name.lower() for pw in player_powers}
+        added = []
+        for tgt in sorted(grant_targets):
+            if tgt in already:
+                continue
+            pw = by_full.get(tgt)
+            if pw is not None:
+                player_powers.append(pw)
+                added.append(pw)
+        if added:
+            print(f'  +{len(added)} referenced Grant_Power targets '
+                  f'(Temporary_Powers grant hosts).', flush=True)
 
     # Group by category/powerset
     grouped: dict[str, dict[str, list]] = {}

@@ -44,5 +44,22 @@ export const MoltenEmbrace: Power = {
       "damageBuff": 1.2
     },
     "buffDuration": 1.2
-  }
+  },
+  "grantedDamageProcs": [
+    {
+      "name": "Molten_Embrace_Proc",
+      "displayName": "Molten Embrace",
+      "damage": [
+        {
+          "damageType": "Fire",
+          "scale": 0.0493,
+          "table": "Melee_PvPDamage"
+        }
+      ],
+      "enhanceable": true,
+      "tickChance": 0.8,
+      "period": 1,
+      "duration": 2.1
+    }
+  ]
 };

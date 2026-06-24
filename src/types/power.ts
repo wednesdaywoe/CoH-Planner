@@ -720,8 +720,39 @@ export interface Power {
    *   chance Knockback" — a non-`Null` attrib template with `chance < 1`.
    */
   specialEffects?: SpecialEffect[];
+  /** Damage-over-time procs the power GRANTS via a hidden `Temporary_Powers`
+   *  power rather than carrying inline (Molten Embrace's Fire DoT, Stalker Hidden
+   *  Flame, Envenomed Blades, Bio Offensive Adaptation, Plant Toxins). The grant
+   *  hop is resolved at convert time. */
+  grantedDamageProcs?: GrantedDamageProc[];
   /** Mutually exclusive power(s) — picking this power prevents picking the listed internalNames */
   excludes?: string[];
+}
+
+/**
+ * A damage-over-time proc a power GRANTS through a hidden `Temporary_Powers`
+ * power. The damage lives in the granted power (e.g.
+ * `Temporary_Powers.Temporary_Powers.Molten_Embrace_Proc`), not inline on the
+ * granting power, so it was invisible to the planner until resolved at convert
+ * time. Surfaced informationally on the granting power — it procs off the
+ * player's OWN attacks (at `tickChance`), so it isn't folded into the granting
+ * power's own attack DPS.
+ */
+export interface GrantedDamageProc {
+  /** Internal name of the granted proc power. */
+  name: string;
+  displayName: string;
+  /** Damage components — scale/table resolve against the summoner's AT, like any attack. */
+  damage: { damageType: string; scale: number; table: string }[];
+  /** The player's damage enhancements/buffs scale this DoT (false ⇒ `IgnoreStrength`).
+   *  The I28P3 Molten Embrace change is exactly flipping this true. */
+  enhanceable: boolean;
+  /** Per-application proc chance (< 1) — the "chance to inflict … over time". */
+  tickChance?: number;
+  /** DoT tick interval in seconds (`application_period`). */
+  period?: number;
+  /** Total DoT duration in seconds. */
+  duration?: number;
 }
 
 /** A proc/conditional-grant entry for the InfoPanel SPECIAL section. */
