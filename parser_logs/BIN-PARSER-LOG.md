@@ -20,6 +20,39 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
+## ⬜ Summon-shell "ground patch" powers display as Single Target — headline area type hides the real AoE radius/cap (Burn et al.) — 2026-06-24
+
+**Symptom (I28P3 dev-server spot-check).** Burn shows as a **Single Target** power and its
+**radius/target-cap don't surface** — even though it's a 15ft / 10-target fire patch. Not
+technically wrong, but it misrepresents what the power does and hides values the player needs.
+
+**Root.** Burn (and every "ground patch" power) is a **Self-targeted summon shell**: its own
+`effect_area = SingleTarget`, `target = Self`, `radius = 0`, `max_targets = 0` — it just
+`Create_Entity`s a `PL_StaticObject` pseudo-pet ("Burn Flames") that redirects to the real
+damage power (Burn → `Redirects.Fiery_Aura.FieryBurn`, **radius 15 / maxTargets 10**). The
+converter DOES resolve the pet damage into `effects.summon.resolvedEntities[].abilities[]`
+(radius/maxTargets/damage all present and correct), but the **power's headline**
+`effectArea`/`radius`/`maxTargets` still carry the shell's Self/SingleTarget/0 values, so the
+UI labels it Single Target and omits the radius row.
+
+**Data is correct — this is a surfacing gap.** The AoE numbers exist in the resolved
+pseudo-pet; they're just not promoted to where the headline UI reads them.
+
+**Scope — systemic, ALL summon-shell patch powers**, not Burn-specific: Rain of Fire/Arrows,
+Caltrops, Tar Patch, Ice Storm, Sleet, Freezing Rain, Bonfire, Oil Slick, Burn, the
+Trick-Arrow/Marine patches, etc. (the `resolveSummonRedirects` / `PSEUDOPET_SHELL_ENTITIES`
+family — see the RESOLVED "Pseudo-pet `summon.powers` redirect chains" entry).
+
+**Fix direction (convert + UI, not the bin — the literal `effect_area=SingleTarget` is
+accurate).** When a power's only real effect is a damage-patch pseudo-pet, derive a
+**display** area/radius/max-targets from the resolved entity (e.g. a `displayEffectArea` /
+`effectiveRadius` field on the converted power, or have InfoPanel/PowerInfoTooltip read
+`resolvedEntities[].abilities[]` and render an AoE headline + radius/cap row). Do NOT mutate
+the real `effect_area` (downstream calc/targeting relies on it). Pre-existing — not an I28P3
+regression; surfaced while spot-checking the Burn rework.
+
+---
+
 *(Sibling game-data finding from the I28P3 audit — NOT a parser issue, logged here only for
 cross-reference: Sentinel `Blinding_Powder` Confuse **scale is 10**, but the patch notes
 and the Scrapper/Stalker versions say **12**. The parser reads it correctly — Scr/Stk parse
