@@ -23,6 +23,9 @@ export interface SlotContextMenuProps {
   /** Begin a Mids-style "move this slot's level to another slot" — when
    *  omitted (e.g. base slot / auto-granted slot), the item is hidden. */
   onMoveSlotLevel?: () => void;
+  /** Begin relocating this slot to another power (carrying its enhancement when
+   *  the destination allows it). Omitted for non-movable slots. */
+  onMoveSlotToPower?: () => void;
 }
 
 export function SlotContextMenu({
@@ -38,6 +41,7 @@ export function SlotContextMenu({
   onRemoveAllSlots,
   onCompareSlotting,
   onMoveSlotLevel,
+  onMoveSlotToPower,
 }: SlotContextMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const [backdropActive, setBackdropActive] = useState(false);
@@ -173,6 +177,22 @@ export function SlotContextMenu({
           >
             <span className="text-orange-400">x</span>
             Remove Slot
+          </button>
+        )}
+
+        {/* Relocate this slot (and its enhancement) to another power */}
+        {onMoveSlotToPower && (
+          <button
+            onClick={() => handleAction(onMoveSlotToPower)}
+            onTouchEnd={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleAction(onMoveSlotToPower);
+            }}
+            className="w-full px-3 py-2 text-left text-sm text-slate-200 hover:bg-slate-700 active:bg-slate-600 flex items-center gap-2"
+          >
+            <span className="text-sk-magenta">&#8631;</span>
+            Move slot&hellip;
           </button>
         )}
 

@@ -88,7 +88,7 @@ export function ControlsModal({ isOpen, onClose }: ControlsModalProps) {
               <ControlItem action="Click" description="Select powers or open the enhancement picker" />
               <ControlItem action="Right-click a power" description="Lock its info in the panel" />
               <ControlItem action="Right-click a slot" description="Remove enhancement or remove the slot" />
-              <ControlItem action="Shift + Right-click a slot" description="Slot Comparison Tool and Bulk actions menu" />
+              <ControlItem action="Shift + Left-click a slot" description="Slot Comparison Tool and Bulk actions menu" />
               <ControlItem action="Drag the + button" description="Add multiple slots at once" />
               <ControlItem action="D" description="Show or hide the dashboard" />
               <ControlItem action="L" description="Lock the info panel" />

@@ -637,3 +637,41 @@ export function applySlotLevelMove(
 
   return next;
 }
+
+/** Identifies a destination power (not a specific slot) for a relocation. */
+export interface PowerRef {
+  powerName: string;
+  category?: PowerCategory;
+}
+
+/**
+ * Whether the slot at `source` can be RELOCATED onto `target` power — the
+ * "move a slot from one power to another" gesture. This is distinct from
+ * `canMoveSlotLevel`, which only swaps two slots' grant levels in place.
+ *
+ * Valid when: the source is a user-allocated slot (not a free base slot or an
+ * auto-granted inherent slot), the target resolves to a DIFFERENT power, and
+ * the target has an open slot (`slots.length < maxSlots`). The slot budget is
+ * net-neutral across a relocation (one freed, one placed), so there is no
+ * budget gate here — the store performs the actual mutation and grant-level
+ * reassignment.
+ */
+export function canRelocateSlot(
+  build: Build,
+  source: SlotLevelRef,
+  target: PowerRef,
+): boolean {
+  if (!isMovableSlot(build, source)) return false;
+  const s = resolveRef(build, source);
+  const t = resolveRef(build, {
+    powerName: target.powerName,
+    slotIndex: 0,
+    category: target.category,
+  });
+  if (!s || !t) return false;
+  // Same power → nothing to relocate (use "move slot level" for in-place).
+  if (s.category === t.category && source.powerName === target.powerName) return false;
+  // Target needs an open slot.
+  if (t.power.slots.length >= t.power.maxSlots) return false;
+  return true;
+}

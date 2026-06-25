@@ -322,6 +322,12 @@ interface UIState {
    *  slot and the next slot they click becomes the swap target. Null = idle. */
   slotMoveSource: SlotLevelRef | null;
 
+  /** When set, the planner is in "pick a destination power" mode for relocating
+   *  a slot between powers (the "Move slot to another power" gesture): the user
+   *  armed this slot and the next eligible power they click receives it. Null =
+   *  idle. Mutually exclusive with `slotMoveSource`. */
+  slotRelocateSource: SlotLevelRef | null;
+
   /** Tracked stats — breakdownKey values for stats the user wants to chase via set bonuses */
   trackedStats: string[];
 
@@ -607,6 +613,11 @@ interface UIActions {
   beginSlotLevelMove: (source: SlotLevelRef) => void;
   cancelSlotLevelMove: () => void;
 
+  // Slot relocation (move a slot between powers): arm a source slot, then click
+  // a destination power. Mutually exclusive with the slot-level move above.
+  beginSlotRelocate: (source: SlotLevelRef) => void;
+  cancelSlotRelocate: () => void;
+
   // Tracked Stats
   toggleTrackedStat: (breakdownKey: string) => void;
   ensureTrackedStats: (keys: string[]) => void;
@@ -808,6 +819,7 @@ export const useUIStore = create<UIStore>()(
       powerViewMode: 'category', // powerViewMode: 'category' | 'chronological';
       hoverHint: null,
       slotMoveSource: null,
+      slotRelocateSource: null,
       trackedStats: [], // No tracked stats by default
       targetsHitValues: {}, // No per-target overrides by default
       mechanicAdjusters: {}, // No per-power conditional toggles overridden by default
@@ -1497,8 +1509,11 @@ export const useUIStore = create<UIStore>()(
       // Hover hint — ephemeral; never persisted
       setHoverHint: (hint) => set({ hoverHint: hint }),
 
-      beginSlotLevelMove: (source) => set({ slotMoveSource: source }),
+      beginSlotLevelMove: (source) => set({ slotMoveSource: source, slotRelocateSource: null }),
       cancelSlotLevelMove: () => set({ slotMoveSource: null }),
+
+      beginSlotRelocate: (source) => set({ slotRelocateSource: source, slotMoveSource: null }),
+      cancelSlotRelocate: () => set({ slotRelocateSource: null }),
 
       // Tracked Stats
       toggleTrackedStat: (breakdownKey) =>

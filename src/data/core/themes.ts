@@ -19,7 +19,8 @@ export type ColorThemeId =
   | 'renegade'
   | 'hamidon'
   | 'resistance'
-  | 'carnival';
+  | 'carnival'
+  | 'espresso';
 
 export interface ColorTheme {
   id: ColorThemeId;
@@ -165,6 +166,21 @@ export const COLOR_THEMES: Record<ColorThemeId, ColorTheme> = {
       highlight: '#C8C0D8',
     },
   },
+  espresso: {
+    id: 'espresso',
+    label: 'Espresso',
+    tagline: 'Dark roast',
+    description:
+      'Slotted for endurance.',
+    swatch: {
+      base: '#120C08',
+      surface: '#2A1F16',
+      panel: '#3D2E20',
+      primary: '#CA8E42',
+      accent: '#E2B57A',
+      highlight: '#EBE0CF',
+    },
+  },
 };
 
 /** Ordered list for rendering the picker. Sidekick (default) first. */
@@ -177,6 +193,7 @@ export const COLOR_THEME_ORDER: ColorThemeId[] = [
   'hamidon',
   'resistance',
   'carnival',
+  'espresso',
 ];
 
 export const DEFAULT_COLOR_THEME: ColorThemeId = 'sidekick';

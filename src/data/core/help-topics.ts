@@ -444,8 +444,8 @@ export const HELP_TOPICS: HelpTopic[] = [
     id: 'tm-compare-slotting',
     title: 'Compare Slotting Tool',
     category: 'tools-modals',
-    description: 'Shift + Right-click a slot to open the Slot Comparison Tool. It lets you stage alternative IO set combinations for a single power and shows total enhancement values, set bonuses, and pet damage side-by-side without committing changes to your build.',
-    keywords: ['compare', 'comparison', 'alternative', 'side by side', 'shift right click', 'slotting', 'pet damage'],
+    description: 'Shift + Left-click a slot to open the Slot Comparison Tool. It lets you stage alternative IO set combinations for a single power and shows total enhancement values, set bonuses, and pet damage side-by-side without committing changes to your build.',
+    keywords: ['compare', 'comparison', 'alternative', 'side by side', 'shift left click', 'shift right click', 'slotting', 'pet damage'],
   },
 
   // SETTINGS & TOGGLES
@@ -562,7 +562,7 @@ export const HELP_TOPICS: HelpTopic[] = [
       'Right-click a power: Lock its info in the panel',
       'Right-click a power (with recharge): Add to Perma Tracker',
       'Right-click a slot: Remove enhancement or slot',
-      'Shift + Right-click a slot: Compare Slotting tool',
+      'Shift + Left-click a slot: Compare Slotting tool',
       'Hold Shift while hovering: Pin tooltip for side-by-side compare',
       'Drag the + button: Add multiple slots at once',
       'Press T: Toggle info tooltips on/off',

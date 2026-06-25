@@ -48,7 +48,8 @@ import {
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
-import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, type SlotLevelRef } from '@/utils/slot-levels';
+import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, canRelocateSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
+import { enhancementAllowedInPower } from '@/utils/enhancement-eligibility';
 import { useHistoryStore } from './historyStore';
 import { useUIStore } from './uiStore';
 
@@ -104,6 +105,16 @@ interface BuildActions {
   moveSlotLevel: (source: SlotLevelRef, target: SlotLevelRef) => boolean;
   /** Whether `moveSlotLevel(source, target)` would succeed (for UI hinting). */
   canMoveSlotLevel: (source: SlotLevelRef, target: SlotLevelRef) => boolean;
+  /**
+   * Relocate an allocated slot from one power to another (the "move a slot
+   * between powers" gesture, distinct from moveSlotLevel). The slot's
+   * enhancement travels with it when the target power allows that enhancement;
+   * otherwise the slot moves empty and `enhancementDropped` is true. The slot
+   * budget is net-neutral. Returns `{ ok: false }` when the move is invalid.
+   */
+  moveSlot: (source: SlotLevelRef, target: PowerRef) => { ok: boolean; enhancementDropped: boolean };
+  /** Whether `moveSlot(source, target)` would succeed (for UI hinting). */
+  canMoveSlot: (source: SlotLevelRef, target: PowerRef) => boolean;
 
   // Enhancements
   setEnhancement: (powerName: string, slotIndex: number, enhancement: Enhancement, category?: PowerCategory) => void;
@@ -1673,6 +1684,85 @@ export const useBuildStore = create<BuildStore>()(
 
       canMoveSlotLevel: (source, target) => {
         return canMoveSlotLevel(get().build, source, target);
+      },
+
+      canMoveSlot: (source, target) => {
+        return canRelocateSlot(get().build, source, target);
+      },
+
+      moveSlot: (source, target) => {
+        const state = get();
+        if (!canRelocateSlot(state.build, source, target)) {
+          return { ok: false, enhancementDropped: false };
+        }
+
+        const src = findPower(state.build, source.powerName, source.category);
+        const tgt = findPower(state.build, target.powerName, target.category);
+        if (!src || !tgt) return { ok: false, enhancementDropped: false };
+
+        const sourceCategory = src.category;
+        const targetCategory = tgt.category;
+        const sourceIndex = source.slotIndex;
+
+        // The enhancement in the source slot travels with the slot when the
+        // destination power accepts it; otherwise the slot relocates empty.
+        const movingEnh = src.power.slots[sourceIndex] ?? null;
+        const carried = movingEnh && enhancementAllowedInPower(movingEnh, tgt.power) ? movingEnh : null;
+        const enhancementDropped = movingEnh != null && carried == null;
+
+        // The new slot lands at the end of the target's row. Removing the
+        // source slot never touches the target's own slots array (different
+        // power — enforced by canRelocateSlot), so this index stays valid.
+        const targetNewIndex = tgt.power.slots.length;
+        const targetPickLevel = targetCategory === 'inherent' ? 1 : tgt.power.level;
+
+        historyCheckpoint();
+        set((s) => {
+          const matchesSource = (e: { powerName: string; category?: string }) =>
+            e.powerName === source.powerName && (!e.category || e.category === sourceCategory);
+
+          // 1) Remove the slot from the source power and fix up slotOrder
+          //    (drop its entry, shift higher same-power indices down by one) —
+          //    mirrors removeSlot.
+          let newBuild = applyPowerUpdate(s.build, sourceCategory, (powers) =>
+            powers.map((p) =>
+              p.internalName === source.powerName
+                ? { ...p, slots: p.slots.filter((_, i) => i !== sourceIndex) }
+                : p
+            )
+          );
+          newBuild.slotOrder = newBuild.slotOrder
+            .filter((e) => !(matchesSource(e) && e.slotIndex === sourceIndex))
+            .map((e) =>
+              matchesSource(e) && e.slotIndex > sourceIndex
+                ? { ...e, slotIndex: e.slotIndex - 1 }
+                : e
+            );
+
+          // 2) Resolve the destination grant level against the POST-removal
+          //    slotOrder (so the freed source grant is back in the pool), then
+          //    append the slot to the target power — mirrors addSlot.
+          const assignedLevel = findNextAvailableGrantLevel(newBuild, targetPickLevel);
+          newBuild = applyPowerUpdate(newBuild, targetCategory, (powers) =>
+            powers.map((p) =>
+              p.internalName === target.powerName
+                ? { ...p, slots: [...p.slots, carried] }
+                : p
+            )
+          );
+          const newEntry: Build['slotOrder'][number] = {
+            powerName: target.powerName,
+            slotIndex: targetNewIndex,
+            category: targetCategory,
+            ...(assignedLevel !== null ? { level: assignedLevel } : {}),
+          };
+          newBuild.slotOrder = [...newBuild.slotOrder, newEntry];
+
+          newBuild.sets = updateSetTracking(newBuild);
+          return { build: newBuild };
+        });
+
+        return { ok: true, enhancementDropped };
       },
 
       // Enhancements

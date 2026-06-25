@@ -21,9 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-24',
+    date: '2026-06-25',
 
     items: [
+      { message: 'Added Move Slot feature to shift-leftclick menu', type: 'feat' },
       { message: 'Updated Homecoming dataset to Issue 28 Page 3 Panel 3', type: 'update'},
       { message: 'Updated the Discord link', type: 'feat' },
       { message: 'Added collapsible set bonus view for mobile users', type: 'feat' },
