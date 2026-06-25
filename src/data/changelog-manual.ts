@@ -31,6 +31,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Rebirth: Group Fly now unlocks from Aerobatics + Fly, and Afterburner from Dive Attack + Fly, in the reworked Flight pool', type: 'fix' },
       { message: 'Rebirth: removed Athletic Run from Inherents (Rebirth does not grant it)', type: 'fix' },
       { message: '+Damage buffs (Assault, Build Up, etc.) are no longer incorrectly scaled by Damage enhancements or global +Damage — the buff value is now flat, as in-game', type: 'fix' },
+      { message: 'Fixed the Superior Ascendancy of the Dominator ATO showing a Controller set icon', type: 'fix' },
     ]
   },
 
