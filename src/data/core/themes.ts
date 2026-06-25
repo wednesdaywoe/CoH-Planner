@@ -169,9 +169,9 @@ export const COLOR_THEMES: Record<ColorThemeId, ColorTheme> = {
   espresso: {
     id: 'espresso',
     label: 'Espresso',
-    tagline: 'Dark roast',
+    tagline: 'Gimme!',
     description:
-      'Slotted for endurance.',
+      'Slotted for recharge.',
     swatch: {
       base: '#120C08',
       surface: '#2A1F16',

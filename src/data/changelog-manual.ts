@@ -24,6 +24,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-06-25',
 
     items: [
+      { message: 'Added espresso theme just because', type: 'feat' },
       { message: 'Added Move Slot feature to shift-leftclick menu', type: 'feat' },
       { message: 'Updated Homecoming dataset to Issue 28 Page 3 Panel 3', type: 'update'},
       { message: 'Updated the Discord link', type: 'feat' },
