@@ -38,16 +38,21 @@ export const TacticalTrainingAssault: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "damageBuff": {
+      "scale": 1.5,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 2.25,
+      "confuse": 2.25,
+      "fear": 2.25
+    },
     "confuse": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
     "effectDuration": 2.25,
-    "durations": {
-      "confuse": 2.25,
-      "fear": 2.25
-    },
     "fear": {
       "mag": 1,
       "scale": 30,

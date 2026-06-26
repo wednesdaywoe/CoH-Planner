@@ -35,12 +35,6 @@ export const PowerSink: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.048,
-    "table": "Melee_Ones",
-    "duration": 9.53
-  },
   "effects": {
     "enduranceDrain": {
       "scale": 0.35,
@@ -49,7 +43,19 @@ export const PowerSink: Power = {
     "enduranceGain": {
       "scale": 25,
       "table": "Melee_Ones"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.048,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.53
+    },
+    "buffDuration": 9.53,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

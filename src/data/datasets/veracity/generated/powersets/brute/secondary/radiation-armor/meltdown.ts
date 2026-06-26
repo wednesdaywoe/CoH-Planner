@@ -72,19 +72,25 @@ export const Meltdown: Power = {
     },
     "durations": {
       "resistance": 60,
-      "taunt": 60
+      "taunt": 60,
+      "damageBuff": 60
     },
     "taunt": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 3.3,
+      "table": "Melee_Buff_Dmg"
     },
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Melee_Ones"
     },
     "buffDuration": 60,
-    "maxStacks": 544,
+    "maxStacks": 560,
     "stacksLinear": [
+      "damageBuff",
       "resistance"
     ]
   }

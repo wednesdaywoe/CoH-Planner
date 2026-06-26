@@ -50,6 +50,32 @@ export const GeneticContamination: Power = {
       "mag": 4,
       "scale": 1,
       "table": "Melee_InherentTaunt"
+    },
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 5
+    },
+    "buffDuration": 5
+  },
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "damageDebuff": {
+          "scale": 1.995,
+          "table": "Melee_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 5
+        },
+        "buffDuration": 5
+      }
     }
-  }
+  ]
 };

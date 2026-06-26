@@ -867,17 +867,13 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "NoFloaters",
-            "CancelOnMiss",
-            "IgnoreResistance",
+            "NearGround",
             "IgnoreCombatMods",
-            "IgnoreEfficiency",
-            "DeepSleep",
             "KeepThroughDeath",
             "NoHitDelay",
             "NoProjectileDelay"
           ],
-          "flags_raw": 219365,
+          "flags_raw": 218184,
           "boost_mod_allowed_id": 16
         }
       ]

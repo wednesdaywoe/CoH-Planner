@@ -81,6 +81,7 @@ export const GraniteArmor: Power = {
       "accuracyDebuff": 0.75,
       "repel": 0.75,
       "enduranceDiscount": 0.75,
+      "damageDebuff": 0.75,
       "movement": 0.75,
       "teleport": 0.75,
       "taunt": 0.75,
@@ -147,6 +148,10 @@ export const GraniteArmor: Power = {
       "table": "Melee_Ones"
     },
     "enduranceDiscount": {
+      "scale": 0.1,
+      "table": "Melee_Ones"
+    },
+    "damageDebuff": {
       "scale": 0.1,
       "table": "Melee_Ones"
     },

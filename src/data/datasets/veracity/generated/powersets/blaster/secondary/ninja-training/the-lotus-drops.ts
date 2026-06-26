@@ -53,12 +53,6 @@ export const TheLotusDrops: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.055,
-      "table": "Melee_Ones",
-      "duration": 9.33
     }
   ],
   "effects": {
@@ -67,8 +61,17 @@ export const TheLotusDrops: Power = {
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "damageBuff": 9.33
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.055,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 10,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

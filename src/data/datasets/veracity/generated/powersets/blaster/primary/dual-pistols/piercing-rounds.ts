@@ -75,12 +75,6 @@ export const PiercingRounds: Power = {
       "type": "Toxic",
       "scale": 0.615,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.138,
-      "table": "Ranged_Ones",
-      "duration": 10
     }
   ],
   "effects": {
@@ -116,13 +110,23 @@ export const PiercingRounds: Power = {
     },
     "durations": {
       "resistanceDebuff": 10,
-      "enduranceDiscount": 8
+      "enduranceDiscount": 8,
+      "damageBuff": 10
     },
     "enduranceDiscount": {
       "scale": 0.15,
       "table": "Ranged_Slow"
     },
-    "buffDuration": 8
+    "damageBuff": {
+      "scale": 0.138,
+      "table": "Ranged_Ones",
+      "perTarget": 0.138
+    },
+    "buffDuration": 10,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "conditionalEffects": [
     {
@@ -154,6 +158,23 @@ export const PiercingRounds: Power = {
           "slow": 8
         },
         "buffDuration": 8
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 6
+        },
+        "buffDuration": 6
       }
     }
   ]

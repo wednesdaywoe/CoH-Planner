@@ -41,12 +41,6 @@ export const GraniteArmor: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Psionic",
-    "scale": -0.3,
-    "table": "Melee_Ones",
-    "duration": 0.75
-  },
   "effects": {
     "resistance": {
       "smashing": {
@@ -87,6 +81,7 @@ export const GraniteArmor: Power = {
       "debuffResistance": 0.75,
       "accuracyDebuff": 0.75,
       "repel": 0.75,
+      "damageDebuff": 0.75,
       "movement": 0.75,
       "teleport": 0.75,
       "taunt": 0.75
@@ -155,6 +150,10 @@ export const GraniteArmor: Power = {
     },
     "repel": {
       "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "damageDebuff": {
+      "scale": 0.3,
       "table": "Melee_Ones"
     },
     "movement": {

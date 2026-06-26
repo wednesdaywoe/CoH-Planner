@@ -96,20 +96,19 @@ export const EntropyShield: Power = {
       "table": "Melee_Ones"
     },
     "enduranceDiscount": {
-      "scale": 0.05,
-      "table": "Melee_Ones",
-      "perTarget": 0.05
+      "scale": 0.2,
+      "table": "Melee_Slow"
     },
     "buffDuration": 2.25,
     "maxStacks": 560,
     "stacksLinear": [
       "accuracyBuff",
-      "enduranceDiscount",
       "fly",
       "flySpeed",
       "jumpHeight",
       "jumpSpeed",
       "runSpeed",
+      "specialBuff",
       "tohitBuff"
     ],
     "fly": {

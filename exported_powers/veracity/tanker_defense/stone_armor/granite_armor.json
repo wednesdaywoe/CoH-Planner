@@ -631,7 +631,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": -0.3,
@@ -751,8 +751,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2286030",
-              "event_id": 2286030,
+              "event": "Event_2284632",
+              "event_id": 2284632,
               "duration": 0.0,
               "flag": 0
             }
@@ -784,8 +784,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2286050",
-              "event_id": 2286050,
+              "event": "Event_2284652",
+              "event_id": 2284652,
               "duration": 0.0,
               "flag": 0
             }

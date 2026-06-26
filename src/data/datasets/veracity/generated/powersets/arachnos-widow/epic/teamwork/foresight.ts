@@ -115,7 +115,8 @@ export const Foresight: Power = {
     "stacksLinear": [
       "defenseBuff",
       "fly",
-      "resistance"
+      "resistance",
+      "specialBuff"
     ]
   },
   "mechanicType": "parentMechanic"

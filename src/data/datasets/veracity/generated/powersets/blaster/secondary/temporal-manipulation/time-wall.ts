@@ -46,12 +46,6 @@ export const TimeWall: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.106,
-    "table": "Ranged_Ones",
-    "duration": 9.1
-  },
   "effects": {
     "slow": {
       "runSpeed": {
@@ -74,7 +68,8 @@ export const TimeWall: Power = {
     "durations": {
       "slow": 20,
       "enduranceDiscount": 20,
-      "recoveryDebuff": 40
+      "recoveryDebuff": 40,
+      "damageBuff": 9.1
     },
     "enduranceDiscount": {
       "scale": 0.6,
@@ -88,6 +83,10 @@ export const TimeWall: Power = {
     "recoveryDebuff": {
       "scale": 0.05,
       "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.106,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 20
   }

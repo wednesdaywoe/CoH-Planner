@@ -49,33 +49,30 @@ export const PenumbralGrasp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.2,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.2,
+    "table": "Ranged_Damage",
+    "duration": 9.2,
+    "tickRate": 2
+  },
   "effects": {
     "sleep": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17,
+      "tohitDebuff": 20
+    },
     "tohitDebuff": {
       "scale": 0.1875,
       "table": "Melee_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 20
     },
     "buffDuration": 20
   }

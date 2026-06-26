@@ -40,26 +40,26 @@ export const ChokingPowder: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Toxic",
-      "scale": 0.22,
-      "table": "Ranged_Damage",
-      "duration": 4.2,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.071,
-      "table": "Ranged_Ones",
-      "duration": 8.57
-    }
-  ],
+  "damage": {
+    "type": "Toxic",
+    "scale": 0.22,
+    "table": "Ranged_Damage",
+    "duration": 4.2,
+    "tickRate": 1
+  },
   "effects": {
     "stun": {
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.071,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.57
+    },
+    "buffDuration": 8.57
   }
 };

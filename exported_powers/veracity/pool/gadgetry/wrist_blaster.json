@@ -93,7 +93,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -183,7 +184,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 151189
+          "boost_mod_allowed_id": 150893
         }
       ]
     },
@@ -268,7 +269,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -314,7 +316,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -360,7 +363,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -406,7 +410,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -452,7 +457,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -498,7 +504,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -544,7 +551,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -590,7 +598,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -636,7 +645,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -682,7 +692,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -728,7 +739,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -774,7 +786,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -820,7 +833,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -866,7 +880,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -912,7 +927,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -958,7 +974,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -1050,7 +1067,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -1142,7 +1160,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -1188,7 +1207,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -1234,7 +1254,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1

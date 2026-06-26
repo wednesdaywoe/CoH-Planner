@@ -80,7 +80,7 @@
           "stack": "Stack",
           "stack_limit": 640,
           "stack_key": null,
-          "boost_mod_allowed_id": 1927122
+          "boost_mod_allowed_id": 1925724
         },
         {
           "attribs": [
@@ -229,7 +229,7 @@
             "ActivateAttackClick",
             "Event_16",
             "Event_0",
-            "Event_1157046",
+            "Event_1155674",
             "Event_0",
             "Event_0"
           ]

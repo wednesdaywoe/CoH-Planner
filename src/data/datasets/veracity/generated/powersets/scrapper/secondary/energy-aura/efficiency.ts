@@ -47,9 +47,10 @@ export const Efficiency: Power = {
       "recoveryBuff": 30
     },
     "buffDuration": 30,
-    "maxStacks": 544,
+    "maxStacks": 560,
     "stacksLinear": [
-      "recoveryBuff"
+      "recoveryBuff",
+      "specialBuff"
     ]
   }
 };

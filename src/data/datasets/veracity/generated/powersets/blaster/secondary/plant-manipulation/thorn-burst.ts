@@ -53,12 +53,6 @@ export const ThornBurst: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.061,
-      "table": "Melee_Ones",
-      "duration": 10.5
     }
   ],
   "effects": {
@@ -67,8 +61,17 @@ export const ThornBurst: Power = {
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "damageBuff": 10.5
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.061,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 10.5,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

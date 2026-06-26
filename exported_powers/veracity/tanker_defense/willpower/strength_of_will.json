@@ -238,7 +238,7 @@
           "stack": "Stack",
           "stack_limit": 544,
           "stack_key": null,
-          "boost_mod_allowed_id": 100653
+          "boost_mod_allowed_id": 100380
         },
         {
           "attribs": [
@@ -266,8 +266,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2286351",
-              "event_id": 2286351,
+              "event": "Event_2284953",
+              "event_id": 2284953,
               "duration": 0.0,
               "flag": 0
             }
@@ -433,7 +433,7 @@
           "stack": "Stack",
           "stack_limit": 560,
           "stack_key": null,
-          "boost_mod_allowed_id": 162118
+          "boost_mod_allowed_id": 161512
         },
         {
           "attribs": [
@@ -459,7 +459,7 @@
           "stack": "Stack",
           "stack_limit": 560,
           "stack_key": null,
-          "boost_mod_allowed_id": 162147
+          "boost_mod_allowed_id": 161541
         },
         {
           "attribs": [

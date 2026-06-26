@@ -78,9 +78,9 @@ export const MetabolicAcceleration: Power = {
     "buffDuration": 0.75,
     "maxStacks": 560,
     "stacksLinear": [
-      "enduranceDiscount",
       "fly",
-      "recoveryBuff"
+      "recoveryBuff",
+      "specialBuff"
     ]
   }
 };

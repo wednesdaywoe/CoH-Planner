@@ -32,12 +32,12 @@ export const Inexhaustible: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "healing": {
+    "maxHPBuff": {
       "scale": 1,
       "table": "Melee_HealSelf"
     },
     "durations": {
-      "healing": 5.25,
+      "maxHPBuff": 5.25,
       "recoveryBuff": 5.25,
       "debuffResistance": 5.25,
       "enduranceDiscount": 5.25
@@ -64,8 +64,8 @@ export const Inexhaustible: Power = {
     "maxStacks": 560,
     "stacksLinear": [
       "enduranceDiscount",
-      "recoveryBuff",
-      "specialBuff"
+      "maxHPBuff",
+      "recoveryBuff"
     ]
   },
   "conditionalEffects": [
@@ -75,12 +75,12 @@ export const Inexhaustible: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "healing": {
+        "maxHPBuff": {
           "scale": 0.45,
           "table": "Melee_HealSelf"
         },
         "durations": {
-          "healing": 5.25
+          "maxHPBuff": 5.25
         },
         "buffDuration": 5.25
       },

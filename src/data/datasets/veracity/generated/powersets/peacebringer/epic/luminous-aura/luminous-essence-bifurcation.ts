@@ -36,13 +36,16 @@ export const LuminousEssenceBifurcation: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.3,
-    "table": "Melee_Ones",
-    "duration": 60
-  },
   "effects": {
+    "damageBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 60,
+      "resistance": 60,
+      "debuffResistance": 60
+    },
     "resistance": {
       "smashing": {
         "scale": 0.1,
@@ -76,10 +79,6 @@ export const LuminousEssenceBifurcation: Power = {
         "scale": 0.1,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "resistance": 60,
-      "debuffResistance": 60
     },
     "debuffResistance": {
       "recovery": {

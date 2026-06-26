@@ -255,7 +255,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 155608
+          "boost_mod_allowed_id": 155312
         }
       ]
     },
@@ -371,7 +371,7 @@
           "stack": "Stack",
           "stack_limit": 96,
           "stack_key": null,
-          "boost_mod_allowed_id": 162147
+          "boost_mod_allowed_id": 161541
         }
       ]
     },
@@ -414,8 +414,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1

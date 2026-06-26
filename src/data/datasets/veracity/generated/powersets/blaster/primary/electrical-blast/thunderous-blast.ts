@@ -51,19 +51,26 @@ export const ThunderousBlast: Power = {
       "type": "Energy",
       "scale": 3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.051,
-      "table": "Ranged_Ones",
-      "duration": 11.2
     }
   ],
   "effects": {
     "enduranceDrain": {
       "scale": 1.05,
       "table": "Ranged_Ones"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.051,
+      "table": "Ranged_Ones",
+      "perTarget": 0.051
+    },
+    "durations": {
+      "damageBuff": 11.2
+    },
+    "buffDuration": 11.2,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

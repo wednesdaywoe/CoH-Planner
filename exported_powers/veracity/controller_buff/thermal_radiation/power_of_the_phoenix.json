@@ -139,13 +139,12 @@
           "stack_key": null,
           "flags": [
             "CancelOnMiss",
-            "IgnoreStrength",
-            "IgnoreResistance",
-            "IgnoreEfficiency",
+            "IgnoreCombatMods",
+            "DeepSleep",
             "NoHitDelay",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 889526,
+          "flags_raw": 888134,
           "boost_mod_allowed_id": 16
         },
         {

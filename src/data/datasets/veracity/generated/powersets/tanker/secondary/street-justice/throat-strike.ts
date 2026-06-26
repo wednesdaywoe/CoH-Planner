@@ -47,6 +47,14 @@ export const ThroatStrike: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 5,
+      "resistanceDebuff": 5
+    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 1,
@@ -80,9 +88,6 @@ export const ThroatStrike: Power = {
         "scale": 1,
         "table": "Melee_Res_DMG"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 5
     },
     "confuse": {
       "mag": 4,

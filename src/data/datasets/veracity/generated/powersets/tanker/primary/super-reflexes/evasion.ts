@@ -66,9 +66,10 @@ export const Evasion: Power = {
       "table": "Melee_InherentTaunt"
     },
     "buffDuration": 2.25,
-    "maxStacks": 96,
+    "maxStacks": 560,
     "stacksLinear": [
-      "defenseBuff"
+      "defenseBuff",
+      "specialBuff"
     ]
   }
 };

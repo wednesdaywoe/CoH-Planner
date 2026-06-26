@@ -57,12 +57,6 @@ export const Ripper: Power = {
       "table": "Melee_Damage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.106,
-      "table": "Melee_Ones",
-      "duration": 9.67
     }
   ],
   "effects": {
@@ -75,7 +69,12 @@ export const Ripper: Power = {
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 12
+      "defenseDebuff": 12,
+      "damageBuff": 9.67
+    },
+    "damageBuff": {
+      "scale": 0.106,
+      "table": "Melee_Ones"
     },
     "buffDuration": 12
   },

@@ -81,17 +81,13 @@
           "flags": [
             "NoFloaters",
             "NearGround",
-            "IgnoreStrength",
-            "IgnoreResistance",
-            "IgnoreCombatMods",
             "IgnoreEfficiency",
-            "DeepSleep",
             "HideZero",
             "KeepThroughDeath",
             "NoHitDelay",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 911609,
+          "flags_raw": 910217,
           "boost_mod_allowed_id": 16
         }
       ]

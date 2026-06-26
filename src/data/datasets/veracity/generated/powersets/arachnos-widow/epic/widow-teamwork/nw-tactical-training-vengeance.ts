@@ -92,7 +92,8 @@ export const NWTacticalTrainingVengeance: Power = {
       "immobilize": 120,
       "mezResistance": 120,
       "debuffResistance": 120,
-      "accuracyDebuff": 120
+      "accuracyDebuff": 120,
+      "damageBuff": 120
     },
     "tohitBuff": {
       "scale": 3.5,
@@ -135,6 +136,10 @@ export const NWTacticalTrainingVengeance: Power = {
     "accuracyDebuff": {
       "scale": 100,
       "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 3.5,
+      "table": "Melee_Buff_Dmg"
     },
     "buffDuration": 120
   }

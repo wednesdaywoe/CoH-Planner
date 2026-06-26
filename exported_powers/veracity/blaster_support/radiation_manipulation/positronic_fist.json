@@ -465,7 +465,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 237340
+          "boost_mod_allowed_id": 236159
         }
       ]
     },
@@ -545,7 +545,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.176,

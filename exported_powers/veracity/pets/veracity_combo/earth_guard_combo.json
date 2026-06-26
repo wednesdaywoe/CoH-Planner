@@ -85,7 +85,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 2698051
+          "boost_mod_allowed_id": 2697851
         }
       ]
     },
@@ -130,7 +130,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 2698086
+          "boost_mod_allowed_id": 2697886
         }
       ]
     },
@@ -175,7 +175,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 2698126
+          "boost_mod_allowed_id": 2697926
         }
       ]
     },
@@ -220,7 +220,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 2698165
+          "boost_mod_allowed_id": 2697965
         }
       ]
     },
@@ -265,7 +265,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 2698199
+          "boost_mod_allowed_id": 2697999
         },
         {
           "attribs": [
@@ -294,7 +294,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 2698235
+          "boost_mod_allowed_id": 2698035
         }
       ]
     }

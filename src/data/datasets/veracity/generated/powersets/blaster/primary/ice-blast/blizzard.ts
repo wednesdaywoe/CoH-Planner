@@ -43,10 +43,18 @@ export const Blizzard: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.024,
-    "table": "Ranged_Ones",
-    "duration": 9.53
+  "effects": {
+    "damageBuff": {
+      "scale": 0.024,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.53
+    },
+    "buffDuration": 9.53,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

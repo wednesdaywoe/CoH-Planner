@@ -855,7 +855,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 0.3,
@@ -900,8 +900,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_931019",
-              "event_id": 931019,
+              "event": "Event_929627",
+              "event_id": 929627,
               "duration": 0.0,
               "flag": 0
             }
@@ -929,7 +929,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": -0.3,

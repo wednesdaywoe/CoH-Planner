@@ -63,10 +63,11 @@ export const ActiveDefense: Power = {
       }
     },
     "buffDuration": 0.75,
-    "maxStacks": 544,
+    "maxStacks": 560,
     "stacksLinear": [
       "defenseBuff",
-      "resistance"
+      "resistance",
+      "specialBuff"
     ]
   },
   "requires": "Tanker_Melee.Dual_Blades Tanker_Melee.Staff_Fighting || Tanker_Melee.Titan_Weapons || Tanker_Melee.Spines || Tanker_Melee.Katana || Tanker_Melee.Claws || !"

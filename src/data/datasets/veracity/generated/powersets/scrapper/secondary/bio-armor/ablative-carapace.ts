@@ -38,14 +38,8 @@ export const AblativeCarapace: Power = {
       "scale": 0.3,
       "table": "Melee_Ones"
     },
-    "specialBuff": {
-      "absorb": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
     "durations": {
-      "specialBuff": 30,
+      "absorb": 30,
       "recoveryBuff": 30
     },
     "recoveryBuff": {
@@ -56,8 +50,7 @@ export const AblativeCarapace: Power = {
     "maxStacks": 544,
     "stacksLinear": [
       "absorb",
-      "recoveryBuff",
-      "specialBuff"
+      "recoveryBuff"
     ]
   },
   "conditionalEffects": [
@@ -71,14 +64,8 @@ export const AblativeCarapace: Power = {
           "scale": 0.09,
           "table": "Melee_Ones"
         },
-        "specialBuff": {
-          "absorb": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          }
-        },
         "durations": {
-          "specialBuff": 30
+          "absorb": 30
         },
         "buffDuration": 30
       },

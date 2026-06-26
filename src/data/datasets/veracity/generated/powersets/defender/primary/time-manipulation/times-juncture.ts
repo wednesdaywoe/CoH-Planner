@@ -47,7 +47,8 @@ export const TimesJuncture: Power = {
     "durations": {
       "tohitDebuff": 30,
       "slow": 1,
-      "teleport": 1
+      "teleport": 1,
+      "damageDebuff": 1
     },
     "slow": {
       "runSpeed": {
@@ -71,6 +72,10 @@ export const TimesJuncture: Power = {
       "scale": 1.6,
       "table": "Ranged_Ones"
     },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
+    },
     "buffDuration": 1
   },
   "conditionalEffects": [
@@ -88,7 +93,8 @@ export const TimesJuncture: Power = {
         "durations": {
           "tohitDebuff": 1,
           "slow": 1,
-          "teleport": 1
+          "teleport": 1,
+          "damageDebuff": 1
         },
         "slow": {
           "runSpeed": {
@@ -111,6 +117,10 @@ export const TimesJuncture: Power = {
         "teleport": {
           "scale": 1.92,
           "table": "Ranged_Ones"
+        },
+        "damageDebuff": {
+          "scale": 2.4,
+          "table": "Ranged_Debuff_Dam"
         },
         "buffDuration": 1
       }

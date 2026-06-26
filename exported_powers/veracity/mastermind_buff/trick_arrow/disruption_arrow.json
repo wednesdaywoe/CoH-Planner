@@ -867,9 +867,7 @@
           "flags": [
             "CancelOnMiss",
             "NearGround",
-            "IgnoreStrength",
-            "IgnoreResistance",
-            "IgnoreEfficiency",
+            "IgnoreCombatMods",
             "DeepSleep",
             "HideZero",
             "KeepThroughDeath",
@@ -877,7 +875,7 @@
             "NoProjectileDelay",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 1011132,
+          "flags_raw": 1009740,
           "boost_mod_allowed_id": 16
         }
       ]

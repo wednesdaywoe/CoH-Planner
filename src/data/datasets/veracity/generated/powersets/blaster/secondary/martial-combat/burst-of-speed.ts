@@ -40,10 +40,14 @@ export const BurstofSpeed: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.026,
-    "table": "Ranged_Ones",
-    "duration": 8.5
+  "effects": {
+    "damageBuff": {
+      "scale": 0.026,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5
   }
 };

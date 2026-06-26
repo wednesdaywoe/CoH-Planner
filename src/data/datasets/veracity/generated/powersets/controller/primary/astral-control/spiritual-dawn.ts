@@ -40,8 +40,7 @@ export const SpiritualDawn: Power = {
   "effects": {
     "enduranceDiscount": {
       "scale": 0.3,
-      "table": "Ranged_Ones",
-      "perTarget": 0.3
+      "table": "Ranged_Ones"
     },
     "durations": {
       "enduranceDiscount": 6
@@ -49,7 +48,7 @@ export const SpiritualDawn: Power = {
     "buffDuration": 6,
     "maxStacks": 560,
     "stacksLinear": [
-      "enduranceDiscount"
+      "specialBuff"
     ]
   }
 };

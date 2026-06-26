@@ -42,12 +42,6 @@ export const TimeShift: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.033,
-    "table": "Ranged_Ones",
-    "duration": 9.53
-  },
   "effects": {
     "tohitDebuff": {
       "scale": 0.125,
@@ -55,7 +49,8 @@ export const TimeShift: Power = {
     },
     "durations": {
       "tohitDebuff": 40,
-      "slow": 20
+      "slow": 20,
+      "damageBuff": 9.53
     },
     "slow": {
       "runSpeed": {
@@ -75,6 +70,14 @@ export const TimeShift: Power = {
         "table": "Ranged_Slow"
       }
     },
-    "buffDuration": 40
+    "damageBuff": {
+      "scale": 0.033,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 40,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -47,7 +47,12 @@ export const SporeCloud: Power = {
     },
     "durations": {
       "tohitDebuff": 30,
+      "damageDebuff": 0.75,
       "recoveryDebuff": 30
+    },
+    "damageDebuff": {
+      "scale": 2.25,
+      "table": "Ranged_Debuff_Dam"
     },
     "recoveryDebuff": {
       "scale": 0.3,

@@ -40,17 +40,19 @@ export const Beanbag: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.2,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.2,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "damageBuff": {
       "scale": 0.059,
-      "table": "Ranged_Ones",
-      "duration": 8.4
-    }
-  ]
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.4
+    },
+    "buffDuration": 8.4
+  }
 };

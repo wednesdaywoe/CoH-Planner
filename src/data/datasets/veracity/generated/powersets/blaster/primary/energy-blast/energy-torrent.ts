@@ -53,19 +53,26 @@ export const EnergyTorrent: Power = {
       "type": "Energy",
       "scale": 0.66,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.03,
-      "table": "Ranged_Ones",
-      "duration": 8.57
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 3,
       "table": "Ranged_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.03,
+      "table": "Ranged_Ones",
+      "perTarget": 0.03
+    },
+    "durations": {
+      "damageBuff": 8.57
+    },
+    "buffDuration": 8.57,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

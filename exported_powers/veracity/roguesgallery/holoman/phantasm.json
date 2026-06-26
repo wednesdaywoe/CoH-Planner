@@ -78,9 +78,6 @@
           "stack": "Unknown(4294967295)",
           "stack_limit": 0,
           "stack_key": null,
-          "flags": [
-            "CopyBoosts"
-          ],
           "boost_mod_allowed_id": 16
         },
         {

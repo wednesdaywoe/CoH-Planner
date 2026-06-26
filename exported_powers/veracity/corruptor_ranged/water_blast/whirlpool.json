@@ -876,14 +876,15 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "NoFloaters",
+            "CancelOnMiss",
             "IgnoreStrength",
-            "DeepSleep",
+            "IgnoreResistance",
+            "IgnoreCombatMods",
             "HideZero",
             "KeepThroughDeath",
             "NoProjectileDelay"
           ],
-          "flags_raw": 194579,
+          "flags_raw": 193398,
           "boost_mod_allowed_id": 16
         }
       ]

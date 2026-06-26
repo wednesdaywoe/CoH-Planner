@@ -48,21 +48,13 @@ export const Chilblain: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.2,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.077,
-      "table": "Ranged_Ones",
-      "duration": 8.67
-    }
-  ],
+  "damage": {
+    "type": "Cold",
+    "scale": 0.2,
+    "table": "Ranged_Damage",
+    "duration": 9.2,
+    "tickRate": 2
+  },
   "effects": {
     "sleep": {
       "mag": 3,
@@ -92,7 +84,8 @@ export const Chilblain: Power = {
       "enduranceDiscount": 18,
       "debuffResistance": 15,
       "accuracyDebuff": 15,
-      "teleport": 15
+      "teleport": 15,
+      "damageBuff": 8.67
     },
     "enduranceDiscount": {
       "scale": 0.2,
@@ -110,6 +103,10 @@ export const Chilblain: Power = {
     },
     "teleport": {
       "scale": 1.6,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.077,
       "table": "Ranged_Ones"
     },
     "buffDuration": 15

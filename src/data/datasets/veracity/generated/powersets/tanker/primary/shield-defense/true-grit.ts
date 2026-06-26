@@ -32,12 +32,12 @@ export const TrueGrit: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "healing": {
+    "maxHPBuff": {
       "scale": 1,
       "table": "Melee_HealSelf"
     },
     "durations": {
-      "healing": 10.25,
+      "maxHPBuff": 10.25,
       "resistance": 10.25
     },
     "resistance": {
@@ -65,8 +65,8 @@ export const TrueGrit: Power = {
     "buffDuration": 10.25,
     "maxStacks": 544,
     "stacksLinear": [
-      "resistance",
-      "specialBuff"
+      "maxHPBuff",
+      "resistance"
     ]
   },
   "mechanicType": "parentMechanic"

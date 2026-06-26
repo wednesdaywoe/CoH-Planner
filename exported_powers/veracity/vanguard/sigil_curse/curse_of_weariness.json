@@ -60,7 +60,7 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Strength",
+          "aspect": "Maximum",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": -50.0,

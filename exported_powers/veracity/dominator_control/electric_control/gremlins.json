@@ -919,8 +919,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_908762",
-              "event_id": 908762,
+              "event": "Event_907370",
+              "event_id": 907370,
               "duration": 0.0,
               "flag": 0
             }

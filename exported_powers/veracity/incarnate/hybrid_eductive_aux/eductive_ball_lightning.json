@@ -245,8 +245,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -292,8 +291,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1

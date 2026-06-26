@@ -48,21 +48,13 @@ export const ElectricFence: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.2,
-      "table": "Ranged_Damage",
-      "duration": 8.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.077,
-      "table": "Ranged_Ones",
-      "duration": 8.67
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.2,
+    "table": "Ranged_Damage",
+    "duration": 8.2,
+    "tickRate": 2
+  },
   "effects": {
     "sleep": {
       "mag": 3,
@@ -76,7 +68,8 @@ export const ElectricFence: Power = {
     "durations": {
       "enduranceDrain": 6.2,
       "debuffResistance": 15,
-      "accuracyDebuff": 15
+      "accuracyDebuff": 15,
+      "damageBuff": 8.67
     },
     "debuffResistance": {
       "accuracy": {
@@ -86,6 +79,10 @@ export const ElectricFence: Power = {
     },
     "accuracyDebuff": {
       "scale": 100,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.077,
       "table": "Ranged_Ones"
     },
     "buffDuration": 15

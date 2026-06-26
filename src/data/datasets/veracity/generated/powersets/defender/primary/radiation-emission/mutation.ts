@@ -56,12 +56,22 @@ export const Mutation: Power = {
     },
     "durations": {
       "enduranceDiscount": 90,
+      "damageBuff": 90,
       "tohitBuff": 90,
+      "damageDebuff": 45,
       "tohitDebuff": 45
+    },
+    "damageBuff": {
+      "scale": 4,
+      "table": "Ranged_Buff_Dmg"
     },
     "tohitBuff": {
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
+    },
+    "damageDebuff": {
+      "scale": 4,
+      "table": "Ranged_Debuff_Dam"
     },
     "tohitDebuff": {
       "scale": 3,

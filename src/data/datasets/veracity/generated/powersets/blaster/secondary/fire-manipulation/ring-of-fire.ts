@@ -46,21 +46,13 @@ export const RingofFire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.22,
-      "table": "Ranged_Damage",
-      "duration": 9.2,
-      "tickRate": 1.5
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.077,
-      "table": "Ranged_Ones",
-      "duration": 8.67
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 0.22,
+    "table": "Ranged_Damage",
+    "duration": 9.2,
+    "tickRate": 1.5
+  },
   "effects": {
     "sleep": {
       "mag": 3,
@@ -76,7 +68,8 @@ export const RingofFire: Power = {
     "durations": {
       "debuffResistance": 15,
       "accuracyDebuff": 15,
-      "teleport": 10
+      "teleport": 10,
+      "damageBuff": 8.67
     },
     "accuracyDebuff": {
       "scale": 100,
@@ -84,6 +77,10 @@ export const RingofFire: Power = {
     },
     "teleport": {
       "scale": 1.6,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.077,
       "table": "Ranged_Ones"
     },
     "buffDuration": 15

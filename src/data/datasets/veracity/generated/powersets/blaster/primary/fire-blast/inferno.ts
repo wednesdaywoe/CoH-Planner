@@ -55,12 +55,21 @@ export const Inferno: Power = {
       "table": "Ranged_Damage",
       "duration": 8.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
+    }
+  ],
+  "effects": {
+    "damageBuff": {
       "scale": 0.042,
       "table": "Ranged_Ones",
-      "duration": 10.5
-    }
-  ]
+      "perTarget": 0.042
+    },
+    "durations": {
+      "damageBuff": 10.5
+    },
+    "buffDuration": 10.5,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

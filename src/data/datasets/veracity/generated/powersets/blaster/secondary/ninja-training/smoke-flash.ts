@@ -31,12 +31,6 @@ export const SmokeFlash: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.03,
-    "table": "Melee_Ones",
-    "duration": 9.33
-  },
   "effects": {
     "fear": {
       "mag": 3,
@@ -78,8 +72,17 @@ export const SmokeFlash: Power = {
       }
     },
     "durations": {
-      "resistanceDebuff": 15
+      "resistanceDebuff": 15,
+      "damageBuff": 9.33
     },
-    "buffDuration": 15
+    "damageBuff": {
+      "scale": 0.03,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 15,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

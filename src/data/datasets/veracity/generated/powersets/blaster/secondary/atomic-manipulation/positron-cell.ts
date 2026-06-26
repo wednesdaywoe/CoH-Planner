@@ -43,21 +43,13 @@ export const PositronCell: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.22,
-      "table": "Ranged_Damage",
-      "duration": 4.2,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.22,
+    "table": "Ranged_Damage",
+    "duration": 4.2,
+    "tickRate": 1
+  },
   "effects": {
     "stun": {
       "mag": 3,
@@ -69,7 +61,12 @@ export const PositronCell: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "damageBuff": 9.17
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   }

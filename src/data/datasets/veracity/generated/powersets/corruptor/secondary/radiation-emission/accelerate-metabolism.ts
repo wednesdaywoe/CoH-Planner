@@ -39,6 +39,16 @@ export const AccelerateMetabolism: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "damageBuff": {
+      "scale": 2,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 120,
+      "mezResistance": 120,
+      "debuffResistance": 120,
+      "enduranceDiscount": 120
+    },
     "mezResistance": {
       "stun": {
         "scale": 5,
@@ -48,11 +58,6 @@ export const AccelerateMetabolism: Power = {
         "scale": 5,
         "table": "Ranged_Res_Boolean"
       }
-    },
-    "durations": {
-      "mezResistance": 120,
-      "debuffResistance": 120,
-      "enduranceDiscount": 120
     },
     "debuffResistance": {
       "movement": {

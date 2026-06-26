@@ -35,14 +35,12 @@ export const ParticleShielding: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "specialBuff": {
-      "absorb": {
-        "scale": 3,
-        "table": "Melee_HealSelf"
-      }
+    "absorb": {
+      "scale": 3,
+      "table": "Melee_HealSelf"
     },
     "durations": {
-      "specialBuff": 60,
+      "absorb": 60,
       "recoveryBuff": 30
     },
     "recoveryBuff": {
@@ -52,8 +50,8 @@ export const ParticleShielding: Power = {
     "buffDuration": 60,
     "maxStacks": 544,
     "stacksLinear": [
-      "recoveryBuff",
-      "specialBuff"
+      "absorb",
+      "recoveryBuff"
     ]
   }
 };

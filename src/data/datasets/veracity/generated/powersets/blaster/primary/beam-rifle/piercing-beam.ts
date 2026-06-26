@@ -41,20 +41,21 @@ export const PiercingBeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 2.17,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
+  "damage": {
+    "type": "Energy",
+    "scale": 2.17,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "damageBuff": {
       "scale": 0.128,
       "table": "Ranged_Ones",
-      "duration": 9.83
-    }
-  ],
-  "effects": {
+      "perTarget": 0.128
+    },
+    "durations": {
+      "damageBuff": 9.83,
+      "resistanceDebuff": 10
+    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 2,
@@ -89,10 +90,11 @@ export const PiercingBeam: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 10
-    },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "conditionalEffects": [
     {

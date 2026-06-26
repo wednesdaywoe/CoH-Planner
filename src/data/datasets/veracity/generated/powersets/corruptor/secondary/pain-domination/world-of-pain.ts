@@ -44,7 +44,8 @@ export const WorldofPain: Power = {
     "durations": {
       "tohitBuff": 90,
       "fear": 90,
-      "resistance": 90
+      "resistance": 90,
+      "damageBuff": 90
     },
     "fear": {
       "mag": 1,
@@ -85,6 +86,10 @@ export const WorldofPain: Power = {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "damageBuff": {
+      "scale": 1.6,
+      "table": "Ranged_Buff_Dmg"
     },
     "buffDuration": 90
   }

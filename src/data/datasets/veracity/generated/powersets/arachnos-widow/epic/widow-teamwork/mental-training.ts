@@ -58,7 +58,8 @@ export const MentalTraining: Power = {
     "stacksLinear": [
       "enduranceDiscount",
       "flySpeed",
-      "runSpeed"
+      "runSpeed",
+      "specialBuff"
     ]
   },
   "mechanicType": "parentMechanic"

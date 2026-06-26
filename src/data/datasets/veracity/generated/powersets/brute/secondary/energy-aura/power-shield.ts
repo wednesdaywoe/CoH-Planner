@@ -71,7 +71,8 @@ export const PowerShield: Power = {
     "buffDuration": 0.75,
     "maxStacks": 544,
     "stacksLinear": [
-      "defenseBuff"
+      "defenseBuff",
+      "specialBuff"
     ]
   }
 };

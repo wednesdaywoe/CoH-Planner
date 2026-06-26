@@ -40,19 +40,11 @@ export const SoulDrain: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.063,
-      "table": "Melee_Ones",
-      "duration": 9.87
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 1,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "tohitBuff": {
       "scale": 1,
@@ -60,11 +52,18 @@ export const SoulDrain: Power = {
       "perTarget": 1
     },
     "durations": {
-      "tohitBuff": 30
+      "tohitBuff": 30,
+      "damageBuff": 9.87
+    },
+    "damageBuff": {
+      "scale": 4,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 4
     },
     "buffDuration": 30,
-    "maxStacks": 96,
+    "maxStacks": 112,
     "stacksLinear": [
+      "damageBuff",
       "tohitBuff"
     ]
   }

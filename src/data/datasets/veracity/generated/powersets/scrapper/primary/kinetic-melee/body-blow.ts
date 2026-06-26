@@ -51,6 +51,16 @@ export const BodyBlow: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "effects": {
+    "damageDebuff": {
+      "scale": 0.75,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 5
+    },
+    "buffDuration": 5
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

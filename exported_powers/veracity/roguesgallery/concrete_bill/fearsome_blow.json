@@ -314,9 +314,12 @@
             "ActivateAttackClick",
             "Event_16",
             "Event_0",
-            "Event_1546140",
+            "Event_1544664",
             "Event_0",
             "Event_0"
+          ],
+          "flags": [
+            "CopyBoosts"
           ]
         }
       ]

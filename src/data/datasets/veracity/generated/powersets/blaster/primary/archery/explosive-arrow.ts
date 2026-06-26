@@ -52,19 +52,26 @@ export const ExplosiveArrow: Power = {
       "type": "Lethal",
       "scale": 0.6,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.02,
-      "table": "Ranged_Ones",
-      "duration": 8.5
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 2,
       "table": "Ranged_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.02,
+      "table": "Ranged_Ones",
+      "perTarget": 0.02
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

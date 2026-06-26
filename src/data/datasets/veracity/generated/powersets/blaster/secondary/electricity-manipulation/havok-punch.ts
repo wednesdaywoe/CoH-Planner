@@ -53,12 +53,6 @@ export const HavokPunch: Power = {
       "type": "Energy",
       "scale": 0.6,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.099,
-      "table": "Melee_Ones",
-      "duration": 9
     }
   ],
   "effects": {
@@ -70,10 +64,18 @@ export const HavokPunch: Power = {
       "scale": 0.1,
       "table": "Melee_Ones"
     },
+    "damageBuff": {
+      "scale": 0.099,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 9
+    },
     "enduranceGain": {
       "scale": 6.76,
       "table": "Melee_Ones"
-    }
+    },
+    "buffDuration": 9
   },
   "specialEffects": [
     {

@@ -50,12 +50,6 @@ export const Smite: Power = {
       "type": "Negative",
       "scale": 1.47,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.064,
-      "table": "Melee_Ones",
-      "duration": 8.47
     }
   ],
   "effects": {
@@ -64,7 +58,12 @@ export const Smite: Power = {
       "table": "Melee_DeBuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 20
+      "tohitDebuff": 20,
+      "damageBuff": 8.47
+    },
+    "damageBuff": {
+      "scale": 0.064,
+      "table": "Melee_Ones"
     },
     "buffDuration": 20
   }

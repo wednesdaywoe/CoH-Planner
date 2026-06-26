@@ -86,7 +86,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -113,7 +114,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.2,
@@ -165,7 +166,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.2,
@@ -229,7 +230,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -283,8 +285,8 @@
             "Event_0",
             "ActivateAttackClick",
             "Event_16",
-            "Event_1540392",
-            "Event_1540404",
+            "Event_1538916",
+            "Event_1538928",
             "Event_0",
             "Event_0"
           ]

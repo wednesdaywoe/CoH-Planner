@@ -86,13 +86,14 @@
             "NoFloaters",
             "CancelOnMiss",
             "NearGround",
+            "IgnoreStrength",
             "IgnoreCombatMods",
-            "IgnoreEfficiency",
+            "DeepSleep",
             "HideZero",
             "NoHitDelay",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 897229,
+          "flags_raw": 895837,
           "boost_mod_allowed_id": 16
         }
       ]

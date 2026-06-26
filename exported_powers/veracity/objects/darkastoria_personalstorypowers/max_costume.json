@@ -80,8 +80,8 @@
           "stack_key": null,
           "suppress_events": [
             {
-              "event": "Event_1809029",
-              "event_id": 1809029,
+              "event": "Event_1807552",
+              "event_id": 1807552,
               "duration": 1.2611686178923354e-44,
               "flag": 0
             }

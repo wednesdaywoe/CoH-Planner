@@ -180,7 +180,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 1.0,
@@ -198,7 +198,7 @@
           "stack": "Stack",
           "stack_limit": 656,
           "stack_key": null,
-          "boost_mod_allowed_id": 86454
+          "boost_mod_allowed_id": 86181
         },
         {
           "attribs": [
@@ -212,7 +212,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 1.0,

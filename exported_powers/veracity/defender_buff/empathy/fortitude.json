@@ -89,7 +89,7 @@
           "stack": "Stack",
           "stack_limit": 544,
           "stack_key": null,
-          "boost_mod_allowed_id": 828737
+          "boost_mod_allowed_id": 827345
         }
       ]
     },
@@ -120,7 +120,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Buff_Dmg",
           "scale": 2.5,
@@ -293,7 +293,7 @@
           "stack": "Stack",
           "stack_limit": 544,
           "stack_key": null,
-          "boost_mod_allowed_id": 100653
+          "boost_mod_allowed_id": 100380
         },
         {
           "attribs": [
@@ -327,7 +327,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": 1.0,

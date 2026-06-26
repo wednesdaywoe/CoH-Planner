@@ -153,7 +153,7 @@
           "stack": "Stack",
           "stack_limit": 656,
           "stack_key": null,
-          "boost_mod_allowed_id": 874187
+          "boost_mod_allowed_id": 872795
         },
         {
           "attribs": [
@@ -214,7 +214,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 1.5,
@@ -358,7 +358,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 155608
+          "boost_mod_allowed_id": 155312
         }
       ]
     }

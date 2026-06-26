@@ -80,14 +80,12 @@
           "stack_key": null,
           "flags": [
             "NoFloaters",
-            "IgnoreStrength",
-            "IgnoreResistance",
-            "IgnoreEfficiency",
+            "IgnoreCombatMods",
             "KeepThroughDeath",
             "NoHitDelay",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 902835,
+          "flags_raw": 901443,
           "boost_mod_allowed_id": 16
         }
       ]

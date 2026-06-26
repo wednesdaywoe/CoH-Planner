@@ -873,13 +873,15 @@
           "flags": [
             "NoFloaters",
             "CancelOnMiss",
+            "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods",
+            "IgnoreEfficiency",
             "HideZero",
             "KeepThroughDeath",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 849767,
+          "flags_raw": 848375,
           "boost_mod_allowed_id": 16
         },
         {

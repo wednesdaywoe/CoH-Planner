@@ -872,13 +872,13 @@
           "stack_key": null,
           "flags": [
             "NoFloaters",
-            "IgnoreEfficiency",
+            "IgnoreStrength",
             "DeepSleep",
             "HideZero",
             "NoHitDelay",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 896643,
+          "flags_raw": 895251,
           "boost_mod_allowed_id": 16
         }
       ]

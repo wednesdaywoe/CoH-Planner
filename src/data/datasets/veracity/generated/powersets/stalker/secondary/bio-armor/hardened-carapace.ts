@@ -96,7 +96,25 @@ export const HardenedCarapace: Power = {
           "resistance": 0.75
         },
         "buffDuration": 0.75
-      }
+      },
+      "group": "adaptation"
+    },
+    {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "damageBuff": {
+          "scale": 2.5,
+          "table": "Melee_Buff_Dmg"
+        },
+        "durations": {
+          "damageBuff": 0.75
+        },
+        "buffDuration": 0.75
+      },
+      "group": "adaptation"
     }
   ]
 };

@@ -40,15 +40,21 @@ export const ChronologicalSelection: Power = {
     },
     "durations": {
       "enduranceDiscount": 10,
-      "tohitBuff": 10
+      "tohitBuff": 10,
+      "damageBuff": 10
     },
     "tohitBuff": {
       "scale": 2,
       "table": "Melee_Buff_ToHit"
     },
+    "damageBuff": {
+      "scale": 6.5,
+      "table": "Melee_Buff_Dmg"
+    },
     "buffDuration": 10,
-    "maxStacks": 544,
+    "maxStacks": 560,
     "stacksLinear": [
+      "damageBuff",
       "tohitBuff"
     ]
   }

@@ -53,12 +53,6 @@ export const BitterIceBlast: Power = {
       "type": "Cold",
       "scale": 1.28,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.071,
-      "table": "Ranged_Ones",
-      "duration": 8.57
     }
   ],
   "effects": {
@@ -69,7 +63,8 @@ export const BitterIceBlast: Power = {
     "durations": {
       "tohitDebuff": 12,
       "slow": 12,
-      "enduranceDiscount": 10
+      "enduranceDiscount": 10,
+      "damageBuff": 8.57
     },
     "slow": {
       "jumpHeight": {
@@ -92,6 +87,10 @@ export const BitterIceBlast: Power = {
     "enduranceDiscount": {
       "scale": 0.2,
       "table": "Ranged_Slow"
+    },
+    "damageBuff": {
+      "scale": 0.071,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 12
   }

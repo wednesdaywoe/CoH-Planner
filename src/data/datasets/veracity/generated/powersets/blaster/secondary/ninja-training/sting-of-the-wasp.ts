@@ -40,26 +40,23 @@ export const StingoftheWasp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.16,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.077,
-      "table": "Melee_Ones",
-      "duration": 8.67
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.16,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "damageBuff": 8.67
+    },
+    "damageBuff": {
+      "scale": 0.077,
+      "table": "Melee_Ones"
     },
     "buffDuration": 10
   }

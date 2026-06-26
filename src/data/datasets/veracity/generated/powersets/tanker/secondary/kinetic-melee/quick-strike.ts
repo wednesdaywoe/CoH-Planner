@@ -65,6 +65,14 @@ export const QuickStrike: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 4,
+      "resistanceDebuff": 10
+    },
     "resistanceDebuff": {
       "smashing": {
         "scale": 0.2,
@@ -98,9 +106,6 @@ export const QuickStrike: Power = {
         "scale": 0.2,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 10
     },
     "buffDuration": 10
   },

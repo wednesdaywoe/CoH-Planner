@@ -53,18 +53,25 @@ export const Shockwave: Power = {
       "type": "Energy",
       "scale": 0.32,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.058,
-      "table": "Ranged_Ones",
-      "duration": 9.67
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 3,
       "table": "Ranged_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.058,
+      "table": "Ranged_Ones",
+      "perTarget": 0.058
+    },
+    "durations": {
+      "damageBuff": 9.67
+    },
+    "buffDuration": 9.67,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

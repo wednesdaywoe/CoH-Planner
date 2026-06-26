@@ -37,10 +37,14 @@ export const AutoTurret: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.066,
-    "table": "Ranged_Ones",
-    "duration": 7.5
+  "effects": {
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 7.5
+    },
+    "buffDuration": 7.5
   }
 };

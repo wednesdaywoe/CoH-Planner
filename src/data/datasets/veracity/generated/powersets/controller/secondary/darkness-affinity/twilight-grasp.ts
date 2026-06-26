@@ -47,7 +47,12 @@ export const TwilightGrasp: Power = {
     },
     "durations": {
       "tohitDebuff": 40,
+      "damageDebuff": 20,
       "recoveryDebuff": 40
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Dam"
     },
     "recoveryDebuff": {
       "scale": 0.1,

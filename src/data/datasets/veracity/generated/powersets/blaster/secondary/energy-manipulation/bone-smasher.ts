@@ -49,14 +49,18 @@ export const BoneSmasher: Power = {
       "type": "Energy",
       "scale": 0.78,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.099,
-      "table": "Melee_Ones",
-      "duration": 9
     }
   ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.099,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 9
+    },
+    "buffDuration": 9
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -58,7 +58,8 @@ export const Quickness: Power = {
     "stacksLinear": [
       "enduranceDiscount",
       "flySpeed",
-      "runSpeed"
+      "runSpeed",
+      "specialBuff"
     ]
   },
   "mechanicType": "parentMechanic"

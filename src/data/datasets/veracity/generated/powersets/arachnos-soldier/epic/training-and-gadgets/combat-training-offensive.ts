@@ -46,6 +46,7 @@ export const CombatTrainingOffensive: Power = {
     "buffDuration": 0.75,
     "maxStacks": 560,
     "stacksLinear": [
+      "specialBuff",
       "tohitBuff"
     ]
   },

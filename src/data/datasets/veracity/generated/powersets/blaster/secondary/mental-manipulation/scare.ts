@@ -36,18 +36,20 @@ export const Scare: Power = {
     "Fear"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.176,
-    "table": "Melee_Ones",
-    "duration": 10.17
-  },
   "effects": {
     "immobilize": {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Fear"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.176,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.17
+    },
+    "buffDuration": 10.17
   },
   "specialEffects": [
     {

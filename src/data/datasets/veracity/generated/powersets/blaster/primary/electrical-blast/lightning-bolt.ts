@@ -46,19 +46,11 @@ export const LightningBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "enduranceDrain": {
       "scale": 0.1,
@@ -67,7 +59,15 @@ export const LightningBolt: Power = {
     "enduranceGain": {
       "scale": 4.265,
       "table": "Ranged_Ones"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17
+    },
+    "buffDuration": 9.17
   },
   "specialEffects": [
     {

@@ -57,8 +57,10 @@ export const ElixirofLife: Power = {
     "durations": {
       "enduranceDiscount": 90,
       "stun": 4,
+      "damageBuff": 90,
       "tohitBuff": 90,
       "resistance": 90,
+      "damageDebuff": 45,
       "tohitDebuff": 45
     },
     "stun": {
@@ -67,6 +69,10 @@ export const ElixirofLife: Power = {
       "table": "Ranged_Ones"
     },
     "effectDuration": 4,
+    "damageBuff": {
+      "scale": 4,
+      "table": "Ranged_Buff_Dmg"
+    },
     "tohitBuff": {
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
@@ -76,6 +82,10 @@ export const ElixirofLife: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "damageDebuff": {
+      "scale": 4,
+      "table": "Ranged_Debuff_Dam"
     },
     "tohitDebuff": {
       "scale": 3,

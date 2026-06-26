@@ -58,7 +58,8 @@ export const LightningReflexes: Power = {
     "stacksLinear": [
       "enduranceDiscount",
       "flySpeed",
-      "runSpeed"
+      "runSpeed",
+      "specialBuff"
     ]
   },
   "mechanicType": "parentMechanic"

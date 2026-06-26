@@ -158,6 +158,23 @@ export const ExecutionersShot: Power = {
         },
         "buffDuration": 10
       }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 8
+        },
+        "buffDuration": 8
+      }
     }
   ]
 };

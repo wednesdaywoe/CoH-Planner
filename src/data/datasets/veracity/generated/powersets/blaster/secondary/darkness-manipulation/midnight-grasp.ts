@@ -54,12 +54,6 @@ export const MidnightGrasp: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 0.75
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.137,
-      "table": "Melee_Ones",
-      "duration": 9.57
     }
   ],
   "effects": {
@@ -73,7 +67,12 @@ export const MidnightGrasp: Power = {
       "table": "Melee_DeBuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 40
+      "tohitDebuff": 40,
+      "damageBuff": 9.57
+    },
+    "damageBuff": {
+      "scale": 0.137,
+      "table": "Melee_Ones"
     },
     "buffDuration": 40
   }

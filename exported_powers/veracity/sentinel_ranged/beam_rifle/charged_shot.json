@@ -287,7 +287,7 @@
             "Event_0",
             "ActivateAttackClick",
             "Event_16",
-            "Event_146653",
+            "Event_146357",
             "Event_19440",
             "Event_0",
             "Event_0"
@@ -342,8 +342,8 @@
             "Event_0",
             "ActivateAttackClick",
             "Event_16",
-            "Event_61043",
-            "Event_151658",
+            "Event_60770",
+            "Event_151362",
             "Event_0",
             "Event_0"
           ]
@@ -437,7 +437,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 2116573
+          "boost_mod_allowed_id": 2115175
         },
         {
           "attribs": [

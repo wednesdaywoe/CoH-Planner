@@ -41,27 +41,28 @@ export const PsychicScream: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.04,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.064,
-      "table": "Ranged_Ones",
-      "duration": 10.17
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.04,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "enduranceDiscount": {
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
     "durations": {
-      "enduranceDiscount": 10
+      "enduranceDiscount": 10,
+      "damageBuff": 10.17
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.064,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 10.17,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

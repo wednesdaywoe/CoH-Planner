@@ -52,12 +52,6 @@ export const NegatronSlam: Power = {
       "type": "Energy",
       "scale": 1.47,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.099,
-      "table": "Melee_Ones",
-      "duration": 9
     }
   ],
   "effects": {
@@ -66,10 +60,15 @@ export const NegatronSlam: Power = {
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "damageBuff": 9
     },
     "accuracyBuff": {
       "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.099,
       "table": "Melee_Ones"
     },
     "buffDuration": 10

@@ -86,12 +86,6 @@ export const BulletRain: Power = {
       "table": "Ranged_Damage",
       "duration": 1.1,
       "tickRate": 0.5
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.034,
-      "table": "Ranged_Ones",
-      "duration": 9.17
     }
   ],
   "effects": {
@@ -100,13 +94,23 @@ export const BulletRain: Power = {
       "table": "Ranged_Knockback"
     },
     "durations": {
-      "enduranceDiscount": 10
+      "enduranceDiscount": 10,
+      "damageBuff": 9.17
     },
     "enduranceDiscount": {
       "scale": 0.15,
       "table": "Ranged_Slow"
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.034,
+      "table": "Ranged_Ones",
+      "perTarget": 0.034
+    },
+    "buffDuration": 10,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {
@@ -145,6 +149,23 @@ export const BulletRain: Power = {
           "slow": 10
         },
         "buffDuration": 10
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 8
+        },
+        "buffDuration": 8
       }
     }
   ]

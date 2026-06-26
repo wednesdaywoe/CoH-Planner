@@ -31,11 +31,16 @@ export const DefensiveAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "damage": {
-    "type": "Smashing",
-    "scale": -0.25,
-    "table": "Melee_Ones",
-    "duration": 1.1
+  "effects": {
+    "damageDebuff": {
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "selfPenalty": true,
+    "durations": {
+      "damageDebuff": 1.1
+    },
+    "buffDuration": 1.1
   },
   "requires": "Scrapper_Defense.Bio_Organic_Armor.Evolution"
 };

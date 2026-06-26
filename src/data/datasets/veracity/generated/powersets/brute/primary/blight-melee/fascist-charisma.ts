@@ -33,13 +33,18 @@ export const FascistCharisma: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "damageBuff": {
+      "scale": 3,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 2.25,
+      "tohitBuff": 2.25,
+      "resistance": 2.25
+    },
     "tohitBuff": {
       "scale": 2,
       "table": "Ranged_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 2.25,
-      "resistance": 2.25
     },
     "resistance": {
       "smashing": {

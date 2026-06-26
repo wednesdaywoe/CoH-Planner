@@ -38,10 +38,14 @@ export const DarkPit: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.018,
-    "table": "Ranged_Ones",
-    "duration": 8.57
+  "effects": {
+    "damageBuff": {
+      "scale": 0.018,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.57
+    },
+    "buffDuration": 8.57
   }
 };

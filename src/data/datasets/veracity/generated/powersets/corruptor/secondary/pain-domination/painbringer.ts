@@ -43,7 +43,12 @@ export const Painbringer: Power = {
       "table": "Ranged_Ones"
     },
     "durations": {
-      "recoveryBuff": 90
+      "recoveryBuff": 90,
+      "damageBuff": 90
+    },
+    "damageBuff": {
+      "scale": 5,
+      "table": "Ranged_Buff_Dmg"
     },
     "buffDuration": 90
   }

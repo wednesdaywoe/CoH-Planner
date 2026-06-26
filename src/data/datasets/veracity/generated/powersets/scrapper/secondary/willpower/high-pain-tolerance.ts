@@ -32,12 +32,12 @@ export const HighPainTolerance: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "healing": {
+    "maxHPBuff": {
       "scale": 2,
       "table": "Melee_HealSelf"
     },
     "durations": {
-      "healing": 10.25,
+      "maxHPBuff": 10.25,
       "resistance": 10.25
     },
     "resistance": {
@@ -77,8 +77,8 @@ export const HighPainTolerance: Power = {
     "buffDuration": 10.25,
     "maxStacks": 560,
     "stacksLinear": [
-      "resistance",
-      "specialBuff"
+      "maxHPBuff",
+      "resistance"
     ]
   },
   "mechanicType": "parentMechanic"

@@ -10,7 +10,7 @@
  *                     and bonus values (via Set_Bonus.X.X power records)
  *   - clientmessages-en.bin → display name resolution
  *
- * Total sets: 230
+ * Total sets: 257
  * Veracity's boostsets.bin parses ~257 IO sets. Shared sets reuse
  * HC's hand-curated entry (binary loses Accuracy aspects + uses auto
  * names); Veracity-only sets keep their binary extraction.
@@ -1806,6 +1806,294 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "type": "Melee AoE Damage"
+  },
+  "ballistic_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "sballistic_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Ballistic Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
   },
   "basilisks_gaze": {
     "bonuses": [
@@ -6228,6 +6516,264 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "type": "Soldiers of Arachnos Archetype Sets"
   },
+  "earth_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "searth_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Earth Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
+  },
   "edict_of_the_master": {
     "bonuses": [
       {
@@ -6484,6 +7030,294 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "type": "Endurance Modification"
   },
+  "electricity_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "selectricity_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Electricity Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
+  },
   "encouraged_accuracy": {
     "bonuses": [
       {
@@ -6545,6 +7379,264 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "type": "To Hit Buff"
+  },
+  "energy_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "senergy_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Energy Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
   },
   "energy_manipulator": {
     "bonuses": [
@@ -8082,6 +9174,522 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "type": "Ranged Damage"
+  },
+  "finesse_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "sfinesse_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Finesse Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
+  },
+  "fire_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "sfire_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Fire Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
   },
   "focused_smite": {
     "bonuses": [
@@ -10889,6 +12497,234 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "type": "Flight"
   },
+  "ice_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "sice_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Ice Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
+  },
   "ice_mistrals_torment": {
     "bonuses": [
       {
@@ -12549,13 +14385,291 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "type": "Sleep"
   },
   "life_elemental": {
-    "bonuses": [],
-    "category": "event",
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
     "icon": "slife_elemental.png",
     "maxLevel": 50,
     "minLevel": 1,
     "name": "Life Elemental Praxis",
-    "pieces": [],
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
     "type": ""
   },
   "lockdown": {
@@ -12828,13 +14942,261 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "type": "Defense Sets"
   },
   "luminosity_elemental": {
-    "bonuses": [],
-    "category": "event",
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
     "icon": "sluminosity_elemental.png",
     "maxLevel": 50,
     "minLevel": 1,
     "name": "Luminosity Elemental Praxis",
-    "pieces": [],
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
     "type": ""
   },
   "maelstroms_fury": {
@@ -13465,6 +15827,294 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "type": "Mastermind Archetype Sets"
   },
+  "might_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "smight_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Might Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
+  },
   "might_of_the_tanker": {
     "bonuses": [
       {
@@ -14013,6 +16663,294 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "type": "Melee AoE Damage"
+  },
+  "nature_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "snature_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Nature Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
   },
   "neuronic_shutdown": {
     "bonuses": [
@@ -14837,6 +17775,137 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "type": "Controller Archetype Sets"
   },
+  "overwhelming_force": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+12.0% Regeneration",
+            "stat": "regeneration",
+            "value": 12
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "defense_(energy)",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.25% Ranged Defense",
+            "stat": "defense_(ranged)",
+            "value": 1.25
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+400.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 400
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "uncommon",
+    "icon": "UD_Overwhelming_Force.png",
+    "maxLevel": 50,
+    "minLevel": 10,
+    "name": "Overwhelming Force",
+    "pieces": [
+      {
+        "aspects": [
+          "Accuracy",
+          "Damage"
+        ],
+        "name": "Accuracy/Damage",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "Recharge"
+        ],
+        "name": "Endurance/Recharge",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Damage",
+          "Endurance"
+        ],
+        "name": "Accuracy/Damage/Endurance",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Recharge"
+        ],
+        "name": "Damage/Endurance/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Damage",
+          "Endurance",
+          "Recharge"
+        ],
+        "name": "Accuracy/Damage/Endurance/Recharge",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "KnockToKnockDown"
+        ],
+        "name": "Damage/KnockToKnockDown/Chance for Knockback",
+        "num": 6,
+        "proc": true,
+        "unique": true
+      }
+    ],
+    "type": "Universal Damage Sets"
+  },
   "pacing_of_the_turtle": {
     "bonuses": [
       {
@@ -15143,34 +18212,4266 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "type": "Healing"
   },
+  "paragon_ballistic": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+5.0% Defense (Smashing)",
+            "stat": "defense_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Defense (Lethal)",
+            "stat": "defense_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Smashing)",
+            "stat": "damage_resistance_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Lethal)",
+            "stat": "damage_resistance_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recharge",
+            "stat": "recharge",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_ballistic.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Ballistic Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_earth": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          },
+          {
+            "desc": "+5.0% Defense (Smashing)",
+            "stat": "defense_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Defense (Lethal)",
+            "stat": "defense_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Smashing)",
+            "stat": "damage_resistance_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Lethal)",
+            "stat": "damage_resistance_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_earth.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Earth Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_electricity": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Defense (Energy)",
+            "stat": "defense_(energy)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Energy)",
+            "stat": "damage_resistance_(energy)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Recovery",
+            "stat": "recovery",
+            "value": 0.5
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_electricity.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Electricity Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_energy": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+5.0% Defense (Energy)",
+            "stat": "defense_(energy)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Energy)",
+            "stat": "damage_resistance_(energy)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_energy.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Energy Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_finesse": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+5.0% Defense (Smashing)",
+            "stat": "defense_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Defense (Lethal)",
+            "stat": "defense_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Smashing)",
+            "stat": "damage_resistance_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Lethal)",
+            "stat": "damage_resistance_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_finesse.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Finesse Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_fire": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+5.0% Defense (Fire)",
+            "stat": "defense_(fire)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Fire)",
+            "stat": "damage_resistance_(fire)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Sleep Duration",
+            "stat": "sleep_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_fire.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Fire Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_ice": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          },
+          {
+            "desc": "+5.0% Defense (Cold)",
+            "stat": "defense_(cold)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Cold)",
+            "stat": "damage_resistance_(cold)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.3% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.3
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_ice.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Ice Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
   "paragon_life": {
-    "bonuses": [],
-    "category": "event",
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Toxic)",
+            "stat": "damage_resistance_(toxic)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
     "icon": "sparagon_life.png",
     "maxLevel": 50,
-    "minLevel": 1,
+    "minLevel": 50,
     "name": "Life Paragon Enhancements",
-    "pieces": [],
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
     "type": ""
   },
   "paragon_luminosity": {
-    "bonuses": [],
-    "category": "event",
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+5.0% Defense (Energy)",
+            "stat": "defense_(energy)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Energy)",
+            "stat": "damage_resistance_(energy)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 0.25
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
     "icon": "sparagon_luminosity.png",
     "maxLevel": 50,
-    "minLevel": 1,
+    "minLevel": 50,
     "name": "Luminosity Paragon Enhancements",
-    "pieces": [],
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_might": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+5.0% Defense (Smashing)",
+            "stat": "defense_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Defense (Lethal)",
+            "stat": "defense_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Smashing)",
+            "stat": "damage_resistance_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Lethal)",
+            "stat": "damage_resistance_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Confuse Duration",
+            "stat": "confuse_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.5% Damage",
+            "stat": "damage",
+            "value": 3.5
+          },
+          {
+            "desc": "+0.8% Range",
+            "stat": "range",
+            "value": 0.8
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_might.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Might Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_nature": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Toxic)",
+            "stat": "damage_resistance_(toxic)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.33% Increased Movement",
+            "stat": "increased_movement",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Recovery",
+            "stat": "recovery",
+            "value": 5.0
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.2% Range",
+            "stat": "range",
+            "value": 1.2
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_nature.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Nature Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_psychic": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+5.0% Defense (Psionic)",
+            "stat": "defense_(psionic)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Psionic)",
+            "stat": "damage_resistance_(psionic)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_psychic.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Psychic Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
     "type": ""
   },
   "paragon_umbral": {
-    "bonuses": [],
-    "category": "event",
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+5.0% Defense (Negative)",
+            "stat": "defense_(negative)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Negative)",
+            "stat": "damage_resistance_(negative)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
     "icon": "sparagon_umbral.png",
     "maxLevel": 50,
-    "minLevel": 1,
+    "minLevel": 50,
     "name": "Umbral Paragon Enhancements",
-    "pieces": [],
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_vacuum": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Defense (Smashing)",
+            "stat": "defense_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Defense (Lethal)",
+            "stat": "defense_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Smashing)",
+            "stat": "damage_resistance_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Lethal)",
+            "stat": "damage_resistance_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_vacuum.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Vacuum Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_vibration": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+5.0% Defense (Smashing)",
+            "stat": "defense_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Defense (Lethal)",
+            "stat": "defense_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Smashing)",
+            "stat": "damage_resistance_(smashing)",
+            "value": 5.0
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Lethal)",
+            "stat": "damage_resistance_(lethal)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_vibration.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Vibration Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
+    "type": ""
+  },
+  "paragon_water": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Defense (Cold)",
+            "stat": "defense_(cold)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+10.0% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 10.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+5.0% Damage Resistance (Cold)",
+            "stat": "damage_resistance_(cold)",
+            "value": 5.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+12.0% Increased Movement",
+            "stat": "increased_movement",
+            "value": 12.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          },
+          {
+            "desc": "+3.0% Maximum Hitpoints",
+            "stat": "maximum_hitpoints",
+            "value": 3.0
+          },
+          {
+            "desc": "+3.6% Maximum Endurance",
+            "stat": "maximum_endurance",
+            "value": 3.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "purple",
+    "icon": "sparagon_water.png",
+    "maxLevel": 50,
+    "minLevel": 50,
+    "name": "Water Paragon Enhancements",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Range"
+        ],
+        "name": "Damage/Range",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Hold",
+          "Immobilize",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Hold/Immobilize/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "ToHit"
+        ],
+        "name": "Endurance/ToHit",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Defense",
+          "Recharge"
+        ],
+        "name": "Damage/Defense/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "ToHit"
+        ],
+        "name": "ToHit",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [],
+        "name": "Empty",
+        "num": 6,
+        "proc": false,
+        "unique": true
+      }
+    ],
     "type": ""
   },
   "paralytic": {
@@ -16269,6 +23570,294 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "type": "Healing"
+  },
+  "psychic_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "spsychic_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Psychic Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
   },
   "pulverizing_fisticuffs": {
     "bonuses": [
@@ -25956,13 +33545,261 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     "type": "Threat Duration"
   },
   "umbral_elemental": {
-    "bonuses": [],
-    "category": "event",
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
+            "value": 0.5
+          },
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3.0
+          },
+          {
+            "desc": "+1.0% Range",
+            "stat": "range",
+            "value": 1.0
+          },
+          {
+            "desc": "+0.4% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.4
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
     "icon": "sumbral_elemental.png",
     "maxLevel": 50,
     "minLevel": 1,
     "name": "Umbral Elemental Praxis",
-    "pieces": [],
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
     "type": ""
   },
   "unbounded_leap": {
@@ -26790,6 +34627,552 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "type": "Fear"
   },
+  "vacuum_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Ranged)",
+            "stat": "defense_(ranged)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Stun Duration",
+            "stat": "stun_duration",
+            "value": 0.33
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "svacuum_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Vacuum Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
+  },
+  "vibration_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+0.25% Defense (Melee)",
+            "stat": "defense_(melee)",
+            "value": 0.25
+          },
+          {
+            "desc": "+2.5% Damage",
+            "stat": "damage",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.6% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.6
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "svibration_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Vibration Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
+  },
   "vigilant_assault": {
     "bonuses": [
       {
@@ -27129,6 +35512,264 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "type": "Teleport"
+  },
+  "water_elemental": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          }
+        ],
+        "pieces": 1
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2.0% Damage",
+            "stat": "damage",
+            "value": 2.0
+          },
+          {
+            "desc": "+1.4% Range",
+            "stat": "range",
+            "value": 1.4
+          },
+          {
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
+            "value": 0.5
+          },
+          {
+            "desc": "+0.33% Accuracy",
+            "stat": "accuracy",
+            "value": 0.33
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "rare",
+    "icon": "swater_elemental.png",
+    "maxLevel": 50,
+    "minLevel": 1,
+    "name": "Water Elemental Praxis",
+    "pieces": [
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 1,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 2,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 3,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 4,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 5,
+        "proc": false,
+        "unique": false
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Hold",
+          "Immobilize",
+          "Range",
+          "Stun",
+          "Sleep",
+          "Terrorize"
+        ],
+        "name": "Damage/Endurance/Hold/Immobilize/Range/Stun/Sleep/Terrorize",
+        "num": 6,
+        "proc": false,
+        "unique": false
+      }
+    ],
+    "type": ""
   },
   "will_of_the_controller": {
     "bonuses": [

@@ -44,27 +44,24 @@ export const PsionicDart: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.066,
-      "table": "Ranged_Ones",
-      "duration": 8.5
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "enduranceDiscount": {
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
     "durations": {
-      "enduranceDiscount": 6
+      "enduranceDiscount": 6,
+      "damageBuff": 8.5
     },
-    "buffDuration": 6
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 8.5
   }
 };

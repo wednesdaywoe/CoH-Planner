@@ -42,11 +42,16 @@ export const TemporalSelection: Power = {
     },
     "durations": {
       "enduranceDiscount": 120,
-      "recoveryBuff": 120
+      "recoveryBuff": 120,
+      "damageBuff": 120
     },
     "recoveryBuff": {
       "scale": 1.5,
       "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Ranged_Buff_Dmg"
     },
     "buffDuration": 120
   }

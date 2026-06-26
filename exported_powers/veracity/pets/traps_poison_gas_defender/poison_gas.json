@@ -147,7 +147,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Slow",
           "scale": 0.44,
@@ -165,7 +165,7 @@
           "stack": "Stack",
           "stack_limit": 656,
           "stack_key": null,
-          "boost_mod_allowed_id": 66406
+          "boost_mod_allowed_id": 66133
         }
       ]
     },

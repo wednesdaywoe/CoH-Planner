@@ -100,12 +100,12 @@ export const EntropyShield: Power = {
     "maxStacks": 560,
     "stacksLinear": [
       "accuracyBuff",
-      "enduranceDiscount",
       "fly",
       "flySpeed",
       "jumpHeight",
       "jumpSpeed",
       "runSpeed",
+      "specialBuff",
       "tohitBuff"
     ]
   }

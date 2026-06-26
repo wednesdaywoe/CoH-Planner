@@ -43,21 +43,13 @@ export const FrostBreath: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.7,
-      "table": "Ranged_Damage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.082,
-      "table": "Ranged_Ones",
-      "duration": 10.17
-    }
-  ],
+  "damage": {
+    "type": "Cold",
+    "scale": 0.7,
+    "table": "Ranged_Damage",
+    "duration": 0.6,
+    "tickRate": 0.5
+  },
   "effects": {
     "slow": {
       "jumpHeight": {
@@ -79,12 +71,22 @@ export const FrostBreath: Power = {
     },
     "durations": {
       "slow": 10,
-      "enduranceDiscount": 5
+      "enduranceDiscount": 5,
+      "damageBuff": 10.17
     },
     "enduranceDiscount": {
       "scale": 0.1,
       "table": "Ranged_Slow"
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.082,
+      "table": "Ranged_Ones",
+      "perTarget": 0.082
+    },
+    "buffDuration": 10.17,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

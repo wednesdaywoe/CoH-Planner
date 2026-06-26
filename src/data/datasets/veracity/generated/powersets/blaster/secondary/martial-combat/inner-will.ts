@@ -52,7 +52,7 @@ export const InnerWill: Power = {
   "effects": {
     "movement": {
       "fly": {
-        "scale": 0.5,
+        "scale": 1,
         "table": "Melee_Ones"
       }
     },
@@ -63,7 +63,8 @@ export const InnerWill: Power = {
       "fear": 30,
       "immobilize": 30,
       "debuffResistance": 30,
-      "mezResistance": 30
+      "mezResistance": 30,
+      "specialBuff": 30
     },
     "sleep": {
       "mag": 1,
@@ -107,6 +108,28 @@ export const InnerWill: Power = {
       },
       "immobilize": {
         "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "specialBuff": {
+      "movement": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 0.5,
         "table": "Melee_Ones"
       }
     },

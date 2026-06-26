@@ -94,15 +94,13 @@
           "flags": [
             "CancelOnMiss",
             "NearGround",
-            "IgnoreStrength",
-            "IgnoreResistance",
-            "IgnoreEfficiency",
+            "IgnoreCombatMods",
             "DeepSleep",
             "NoHitDelay",
             "StackByAttribAndKey",
             "CopyBoosts"
           ],
-          "flags_raw": 859580,
+          "flags_raw": 858188,
           "boost_mod_allowed_id": 16
         }
       ]
@@ -146,8 +144,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -193,8 +190,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1

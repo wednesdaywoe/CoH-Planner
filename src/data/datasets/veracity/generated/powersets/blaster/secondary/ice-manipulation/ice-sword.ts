@@ -49,12 +49,6 @@ export const IceSword: Power = {
       "type": "Cold",
       "scale": 0.96,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.088,
-      "table": "Melee_Ones",
-      "duration": 8.83
     }
   ],
   "effects": {
@@ -78,11 +72,16 @@ export const IceSword: Power = {
     },
     "durations": {
       "slow": 8,
-      "enduranceDiscount": 8
+      "enduranceDiscount": 8,
+      "damageBuff": 8.83
     },
     "enduranceDiscount": {
       "scale": 0.1,
       "table": "Melee_Slow"
+    },
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Melee_Ones"
     },
     "buffDuration": 8
   }

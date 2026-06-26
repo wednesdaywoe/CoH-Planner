@@ -148,9 +148,9 @@ export const EnvironmentalAdaptation: Power = {
         },
         "durations": {
           "defenseBuff": 0.75,
-          "healing": 0.75
+          "maxHPBuff": 0.75
         },
-        "healing": {
+        "maxHPBuff": {
           "scale": 0.45,
           "table": "Melee_HealSelf"
         },

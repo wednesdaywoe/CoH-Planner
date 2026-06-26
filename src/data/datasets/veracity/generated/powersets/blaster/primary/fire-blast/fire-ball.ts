@@ -57,12 +57,21 @@ export const FireBall: Power = {
       "table": "Ranged_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
+    }
+  ],
+  "effects": {
+    "damageBuff": {
       "scale": 0.02,
       "table": "Ranged_Ones",
-      "duration": 8.5
-    }
-  ]
+      "perTarget": 0.02
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

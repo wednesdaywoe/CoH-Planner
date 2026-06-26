@@ -85,7 +85,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -247,7 +248,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 1006457
+          "boost_mod_allowed_id": 1005065
         },
         {
           "attribs": [

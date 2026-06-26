@@ -63,10 +63,11 @@ export const ActiveDefense: Power = {
       }
     },
     "buffDuration": 0.75,
-    "maxStacks": 544,
+    "maxStacks": 560,
     "stacksLinear": [
       "defenseBuff",
-      "resistance"
+      "resistance",
+      "specialBuff"
     ]
   },
   "requires": "Stalker_Melee.Claws Stalker_Melee.Ninja_Sword || Stalker_Melee.Spines || Stalker_Melee_Deprecated.Staff_Fighting || !"

@@ -80,8 +80,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2062858",
-              "event_id": 2062858,
+              "event": "Event_2061460",
+              "event_id": 2061460,
               "duration": 0.0,
               "flag": 0
             }
@@ -113,8 +113,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2062858",
-              "event_id": 2062858,
+              "event": "Event_2061460",
+              "event_id": 2061460,
               "duration": 0.0,
               "flag": 0
             }
@@ -146,8 +146,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2062858",
-              "event_id": 2062858,
+              "event": "Event_2061460",
+              "event_id": 2061460,
               "duration": 0.0,
               "flag": 0
             }

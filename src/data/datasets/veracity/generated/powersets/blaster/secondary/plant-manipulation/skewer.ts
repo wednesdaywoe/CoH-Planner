@@ -52,12 +52,6 @@ export const Skewer: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.108,
-      "table": "Melee_Ones",
-      "duration": 9.13
     }
   ],
   "effects": {
@@ -66,8 +60,13 @@ export const Skewer: Power = {
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 6
+      "defenseDebuff": 6,
+      "damageBuff": 9.13
     },
-    "buffDuration": 6
+    "damageBuff": {
+      "scale": 0.108,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 9.13
   }
 };

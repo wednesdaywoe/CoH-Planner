@@ -81,12 +81,14 @@
           "flags": [
             "NoFloaters",
             "CancelOnMiss",
+            "IgnoreStrength",
             "IgnoreResistance",
+            "IgnoreEfficiency",
             "HideZero",
             "NoProjectileDelay",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 927525,
+          "flags_raw": 926133,
           "boost_mod_allowed_id": 16
         }
       ]

@@ -38,17 +38,19 @@ export const Vines: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.063,
-    "table": "Ranged_Ones",
-    "duration": 10.6
-  },
   "effects": {
     "stun": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.063,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.6
+    },
+    "buffDuration": 10.6
   }
 };

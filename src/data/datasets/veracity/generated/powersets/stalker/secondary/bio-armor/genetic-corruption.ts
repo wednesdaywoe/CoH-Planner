@@ -38,6 +38,14 @@ export const GeneticCorruption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 5
+    },
+    "buffDuration": 5,
     "maxStacks": 560,
     "stacksLinear": [
       "recoveryBuff"

@@ -97,17 +97,12 @@ export const EmptyClips: Power = {
       "table": "Ranged_Damage",
       "duration": 1.6,
       "tickRate": 0.5
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.051,
-      "table": "Ranged_Ones",
-      "duration": 9.17
     }
   ],
   "effects": {
     "durations": {
-      "enduranceDiscount": 8
+      "enduranceDiscount": 8,
+      "damageBuff": 9.17
     },
     "accuracyBuff": {
       "scale": 0.4,
@@ -117,7 +112,16 @@ export const EmptyClips: Power = {
       "scale": 0.15,
       "table": "Ranged_Slow"
     },
-    "buffDuration": 8
+    "damageBuff": {
+      "scale": 0.051,
+      "table": "Ranged_Ones",
+      "perTarget": 0.051
+    },
+    "buffDuration": 8,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {
@@ -173,6 +177,23 @@ export const EmptyClips: Power = {
           "slow": 8
         },
         "buffDuration": 8
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 6
+        },
+        "buffDuration": 6
       }
     }
   ]

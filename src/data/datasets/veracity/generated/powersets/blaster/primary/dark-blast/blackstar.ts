@@ -51,12 +51,6 @@ export const Blackstar: Power = {
       "type": "Negative",
       "scale": 3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.042,
-      "table": "Ranged_Ones",
-      "duration": 10.5
     }
   ],
   "effects": {
@@ -65,8 +59,18 @@ export const Blackstar: Power = {
       "table": "Ranged_DeBuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 40
+      "tohitDebuff": 40,
+      "damageBuff": 10.5
     },
-    "buffDuration": 40
+    "damageBuff": {
+      "scale": 0.042,
+      "table": "Ranged_Ones",
+      "perTarget": 0.042
+    },
+    "buffDuration": 40,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

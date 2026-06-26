@@ -175,7 +175,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 155608
+          "boost_mod_allowed_id": 155312
         }
       ]
     },
@@ -206,7 +206,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 2.25,
@@ -254,7 +254,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 2.25,
@@ -358,7 +358,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 151189
+          "boost_mod_allowed_id": 150893
         }
       ]
     },

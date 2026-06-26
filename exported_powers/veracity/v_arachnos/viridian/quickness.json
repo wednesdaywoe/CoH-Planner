@@ -60,7 +60,7 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.2,

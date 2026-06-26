@@ -184,7 +184,7 @@
             "ActivateAttackClick",
             "Event_16",
             "Event_0",
-            "Event_1157046",
+            "Event_1155674",
             "Event_0",
             "Event_0"
           ]
@@ -538,7 +538,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 934144
+          "boost_mod_allowed_id": 932752
         }
       ]
     }

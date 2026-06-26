@@ -90,12 +90,6 @@ export const HailofBullets: Power = {
       "table": "Ranged_Damage",
       "duration": 3.5,
       "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.058,
-      "table": "Ranged_Ones",
-      "duration": 7.5
     }
   ],
   "effects": {
@@ -106,7 +100,8 @@ export const HailofBullets: Power = {
     "durations": {
       "accuracyBuff": 3.5,
       "enduranceDiscount": 10,
-      "defenseBuff": 5
+      "defenseBuff": 5,
+      "damageBuff": 7.5
     },
     "enduranceDiscount": {
       "scale": 0.2,
@@ -129,9 +124,15 @@ export const HailofBullets: Power = {
         "perTarget": 1.5
       }
     },
+    "damageBuff": {
+      "scale": 0.058,
+      "table": "Ranged_Ones",
+      "perTarget": 0.058
+    },
     "buffDuration": 10,
     "maxStacks": 112,
     "stacksLinear": [
+      "damageBuff",
       "defenseBuff"
     ]
   },
@@ -165,6 +166,23 @@ export const HailofBullets: Power = {
           "slow": 10
         },
         "buffDuration": 10
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 2,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 8
+        },
+        "buffDuration": 8
       }
     }
   ]

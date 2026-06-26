@@ -44,17 +44,19 @@ export const AimedShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.32,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.32,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "damageBuff": {
       "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
-    }
-  ]
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17
+    },
+    "buffDuration": 9.17
+  }
 };

@@ -56,12 +56,6 @@ export const Geyser: Power = {
       "type": "Fire",
       "scale": 1.5,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.041,
-      "table": "Ranged_Ones",
-      "duration": 10.43
     }
   ],
   "effects": {
@@ -84,13 +78,23 @@ export const Geyser: Power = {
       }
     },
     "durations": {
-      "slow": 10
+      "slow": 10,
+      "damageBuff": 10.43
     },
     "repel": {
       "scale": 1.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.041,
+      "table": "Ranged_Ones",
+      "perTarget": 0.041
+    },
+    "buffDuration": 10.43,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "conditionalEffects": [
     {

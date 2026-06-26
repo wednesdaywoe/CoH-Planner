@@ -63,10 +63,11 @@ export const ActiveDefense: Power = {
       }
     },
     "buffDuration": 0.75,
-    "maxStacks": 544,
+    "maxStacks": 560,
     "stacksLinear": [
       "defenseBuff",
-      "resistance"
+      "resistance",
+      "specialBuff"
     ]
   },
   "requires": "Brute_Melee_Deprecated.Dual_Blades Brute_Melee.Claws || Brute_Melee_Deprecated.Staff_Fighting || Brute_Melee.Katana || Brute_Melee.Titan_Weapons || Brute_Melee.Spines || !"

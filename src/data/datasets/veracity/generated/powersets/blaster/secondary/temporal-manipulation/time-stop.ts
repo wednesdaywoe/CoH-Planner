@@ -38,32 +38,30 @@ export const TimeStop: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Heal",
-      "scale": -0.25,
-      "table": "Ranged_Stun",
-      "duration": 20
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.143,
-      "table": "Ranged_Ones",
-      "duration": 9.67
-    }
-  ],
   "effects": {
     "stun": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
+    "specialBuff": {
+      "heal": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      }
+    },
+    "durations": {
+      "specialBuff": 20,
+      "recoveryDebuff": 40,
+      "damageBuff": 9.67
+    },
     "recoveryDebuff": {
       "scale": 0.1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "recoveryDebuff": 40
+    "damageBuff": {
+      "scale": 0.143,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 40
   },

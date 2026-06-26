@@ -39,19 +39,11 @@ export const EaglesClaw: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 3.24,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.167,
-      "table": "Melee_Ones",
-      "duration": 10.03
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 3.24,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "enduranceDiscount": {
       "scale": 0.25,
@@ -59,10 +51,15 @@ export const EaglesClaw: Power = {
     },
     "durations": {
       "enduranceDiscount": 10,
-      "rechargeDebuff": 10
+      "rechargeDebuff": 10,
+      "damageBuff": 10.03
     },
     "rechargeDebuff": {
       "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.167,
       "table": "Melee_Ones"
     },
     "buffDuration": 10

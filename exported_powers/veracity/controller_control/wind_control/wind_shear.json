@@ -131,7 +131,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 155608
+          "boost_mod_allowed_id": 155312
         }
       ]
     },
@@ -155,7 +155,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Slow",
           "scale": 0.65,
@@ -223,7 +223,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Strength",
+          "aspect": "Maximum",
           "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
           "scale": -1.0,
@@ -271,7 +271,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 1.25,

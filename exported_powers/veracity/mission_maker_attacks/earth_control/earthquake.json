@@ -81,12 +81,13 @@
           "flags": [
             "NoFloaters",
             "CancelOnMiss",
-            "DeepSleep",
+            "IgnoreStrength",
+            "IgnoreEfficiency",
             "KeepThroughDeath",
             "NoHitDelay",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 903941,
+          "flags_raw": 902549,
           "boost_mod_allowed_id": 16
         }
       ]

@@ -50,18 +50,20 @@ export const PowerPush: Power = {
       "type": "Energy",
       "scale": 0.134,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.073,
-      "table": "Ranged_Ones",
-      "duration": 8.6
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 8,
       "table": "Ranged_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.073,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.6
+    },
+    "buffDuration": 8.6
   }
 };

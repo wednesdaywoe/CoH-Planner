@@ -55,12 +55,21 @@ export const Flamethrower: Power = {
       "table": "Ranged_Damage",
       "duration": 7.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
+    }
+  ],
+  "effects": {
+    "damageBuff": {
       "scale": 0.065,
       "table": "Ranged_Ones",
-      "duration": 9.83
-    }
-  ]
+      "perTarget": 0.065
+    },
+    "durations": {
+      "damageBuff": 9.83
+    },
+    "buffDuration": 9.83,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

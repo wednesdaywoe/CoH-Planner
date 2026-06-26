@@ -226,7 +226,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.2,
@@ -251,7 +251,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.2,
@@ -317,7 +317,7 @@
           "cancel_events": [
             "Event_16"
           ],
-          "boost_mod_allowed_id": 2116573
+          "boost_mod_allowed_id": 2115175
         },
         {
           "attribs": [

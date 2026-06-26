@@ -58,12 +58,6 @@ export const SteamSpray: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.073,
-      "table": "Ranged_Ones",
-      "duration": 10.03
     }
   ],
   "effects": {
@@ -72,8 +66,18 @@ export const SteamSpray: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 8
+      "defenseDebuff": 8,
+      "damageBuff": 10.03
     },
-    "buffDuration": 8
+    "damageBuff": {
+      "scale": 0.073,
+      "table": "Ranged_Ones",
+      "perTarget": 0.073
+    },
+    "buffDuration": 10.03,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

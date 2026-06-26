@@ -146,7 +146,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
           "scale": 1.0,
@@ -164,7 +164,7 @@
           "stack": "Stack",
           "stack_limit": 112,
           "stack_key": null,
-          "boost_mod_allowed_id": 716705
+          "boost_mod_allowed_id": 715431
         },
         {
           "attribs": [
@@ -172,7 +172,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
           "scale": 1.0,
@@ -203,7 +203,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
           "scale": 1.0,
@@ -235,7 +235,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
           "scale": 0.55,
@@ -276,7 +276,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 1.0,
@@ -308,7 +308,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Debuff_Dam",
           "scale": 1.0,
@@ -368,8 +368,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1

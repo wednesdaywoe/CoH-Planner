@@ -52,12 +52,6 @@ export const PositronicFist: Power = {
       "type": "Energy",
       "scale": 2.67,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.176,
-      "table": "Melee_Ones",
-      "duration": 10.17
     }
   ],
   "effects": {
@@ -66,9 +60,14 @@ export const PositronicFist: Power = {
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "damageBuff": 10.17
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.176,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 10.17
   },
   "specialEffects": [
     {

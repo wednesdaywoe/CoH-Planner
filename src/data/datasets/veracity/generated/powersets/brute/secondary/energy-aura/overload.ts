@@ -74,14 +74,14 @@ export const Overload: Power = {
     "durations": {
       "defenseBuff": 180,
       "taunt": 180,
-      "healing": 180,
+      "maxHPBuff": 180,
       "debuffResistance": 180
     },
     "taunt": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "healing": {
+    "maxHPBuff": {
       "scale": 4,
       "table": "Melee_HealSelf"
     },
@@ -99,6 +99,7 @@ export const Overload: Power = {
     "maxStacks": 544,
     "stacksLinear": [
       "defenseBuff",
+      "maxHPBuff",
       "specialBuff"
     ]
   }

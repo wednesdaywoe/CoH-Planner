@@ -39,12 +39,12 @@ export const DullPain: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
-    "healing": {
+    "maxHPBuff": {
       "scale": 4,
       "table": "Melee_HealSelf"
     },
     "durations": {
-      "healing": 120
+      "maxHPBuff": 120
     },
     "buffDuration": 120
   }

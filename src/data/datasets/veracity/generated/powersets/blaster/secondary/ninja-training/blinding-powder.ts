@@ -41,12 +41,6 @@ export const BlindingPowder: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.038,
-    "table": "Melee_Ones",
-    "duration": 8.57
-  },
   "effects": {
     "tohitDebuff": {
       "scale": 0.25,
@@ -54,7 +48,8 @@ export const BlindingPowder: Power = {
     },
     "durations": {
       "tohitDebuff": 30,
-      "regenDebuff": 20
+      "regenDebuff": 20,
+      "damageBuff": 8.57
     },
     "fear": {
       "mag": 2,
@@ -65,7 +60,15 @@ export const BlindingPowder: Power = {
       "scale": 0.9,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30
+    "damageBuff": {
+      "scale": 0.038,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 30,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

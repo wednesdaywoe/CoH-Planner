@@ -30,55 +30,31 @@ export const PowerBoost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "movement": {
-      "fly": {
+    "specialBuff": {
+      "movement": {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
-      "runSpeed": {
+      "fear": {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
-      "flySpeed": {
+      "immobilize": {
         "scale": 0.66,
         "table": "Melee_Stun"
-      }
-    },
-    "durations": {
-      "movement": 15,
-      "fear": 15,
-      "immobilize": 15,
-      "sleep": 15,
-      "stun": 15,
-      "defenseBuff": 15,
-      "absorb": 15,
-      "tohitBuff": 15,
-      "enduranceGain": 15
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "effectDuration": 15,
-    "immobilize": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "defenseBuff": {
-      "scale": 0.66,
-      "table": "Melee_Stun",
+      },
+      "sleep": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "stun": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "defense": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
       "melee": {
         "scale": 0.66,
         "table": "Melee_Stun"
@@ -90,25 +66,59 @@ export const PowerBoost: Power = {
       "aoe": {
         "scale": 0.66,
         "table": "Melee_Stun"
+      },
+      "smashing": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "lethal": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "fire": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "cold": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "energy": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "negative": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "psionic": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "heal": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "absorb": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "tohit": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "endurance": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
       }
     },
-    "absorb": {
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "tohitBuff": {
-      "scale": 0.66,
-      "table": "Melee_Stun"
-    },
-    "enduranceGain": {
-      "scale": 0.66,
-      "table": "Melee_Stun"
+    "durations": {
+      "specialBuff": 15
     },
     "buffDuration": 15,
     "maxStacks": 544,
     "stacksLinear": [
-      "absorb",
-      "fly"
+      "specialBuff"
     ]
   }
 };

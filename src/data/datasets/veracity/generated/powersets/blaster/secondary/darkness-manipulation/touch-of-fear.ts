@@ -45,12 +45,6 @@ export const TouchofFear: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.077,
-    "table": "Melee_Ones",
-    "duration": 8.67
-  },
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -63,10 +57,15 @@ export const TouchofFear: Power = {
     },
     "durations": {
       "tohitDebuff": 40,
-      "recoveryBuff": 60
+      "recoveryBuff": 60,
+      "damageBuff": 8.67
     },
     "recoveryBuff": {
       "scale": 2.25,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.077,
       "table": "Melee_Ones"
     },
     "buffDuration": 60,

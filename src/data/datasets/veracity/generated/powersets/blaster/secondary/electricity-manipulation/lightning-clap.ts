@@ -43,19 +43,22 @@ export const LightningClap: Power = {
     "Stuns"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.025,
-    "table": "Melee_Ones",
-    "duration": 8.73
-  },
   "effects": {
     "accuracyBuff": {
       "scale": 1,
       "table": "Melee_Knockback"
     },
+    "damageBuff": {
+      "scale": 0.025,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.73
+    },
+    "buffDuration": 8.73,
     "maxStacks": 560,
     "stacksLinear": [
+      "damageBuff",
       "recoveryBuff"
     ],
     "recoveryBuff": {

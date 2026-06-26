@@ -110,7 +110,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.3,
@@ -255,6 +255,9 @@
             "Event_28845",
             "Event_0",
             "Event_0"
+          ],
+          "flags": [
+            "CopyBoosts"
           ],
           "boost_mod_allowed_id": 6266
         }

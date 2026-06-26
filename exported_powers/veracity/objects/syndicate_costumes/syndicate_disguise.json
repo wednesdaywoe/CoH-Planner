@@ -79,7 +79,8 @@
           "stack_limit": 0,
           "stack_key": "olumn.Fifth_Column_FogTrainee.Incendiary_Assault_Rifle",
           "flags": [
-            "NearGround"
+            "NearGround",
+            "CopyBoosts"
           ],
           "flags_raw": 8,
           "boost_mod_allowed_id": 1
@@ -125,8 +126,7 @@
           "stack_limit": 0,
           "stack_key": "olumn.Fifth_Column_FogTrainee.Incendiary_Assault_Rifle",
           "flags": [
-            "NearGround",
-            "CopyBoosts"
+            "NearGround"
           ],
           "flags_raw": 8,
           "boost_mod_allowed_id": 1

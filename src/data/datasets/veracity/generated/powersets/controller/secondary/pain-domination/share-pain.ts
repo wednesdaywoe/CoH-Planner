@@ -49,13 +49,18 @@ export const SharePain: Power = {
     }
   ],
   "effects": {
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 15,
+      "recoveryDebuff": 15,
+      "resistance": 15
+    },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 15,
-      "resistance": 15
     },
     "resistance": {
       "heal": {

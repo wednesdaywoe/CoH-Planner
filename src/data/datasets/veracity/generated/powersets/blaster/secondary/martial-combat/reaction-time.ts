@@ -72,7 +72,8 @@ export const ReactionTime: Power = {
     "durations": {
       "slow": 10,
       "enduranceDiscount": 10,
-      "specialBuff": 10
+      "specialBuff": 10,
+      "movement": 10
     },
     "enduranceDiscount": {
       "scale": 0.4,
@@ -81,6 +82,12 @@ export const ReactionTime: Power = {
     "selfPenalty": true,
     "specialBuff": {
       "movement": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      }
+    },
+    "movement": {
+      "runSpeed": {
         "scale": 1,
         "table": "Melee_SpeedRunning"
       }
@@ -88,7 +95,12 @@ export const ReactionTime: Power = {
     "buffDuration": 10,
     "maxStacks": 656,
     "stacksLinear": [
-      "specialBuff"
-    ]
+      "runSpeed"
+    ],
+    "runSpeed": {
+      "scale": 1,
+      "table": "Melee_SpeedRunning",
+      "perTarget": 1
+    }
   }
 };

@@ -29,10 +29,14 @@ export const IcePatch: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.229,
-    "table": "Melee_Ones",
-    "duration": 10.97
+  "effects": {
+    "damageBuff": {
+      "scale": 0.229,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.97
+    },
+    "buffDuration": 10.97
   }
 };

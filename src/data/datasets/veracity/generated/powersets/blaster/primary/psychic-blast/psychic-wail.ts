@@ -40,27 +40,29 @@ export const PsychicWail: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.027,
-      "table": "Ranged_Ones",
-      "duration": 9.47
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 4,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "enduranceDiscount": {
       "scale": 0.7,
       "table": "Ranged_Slow"
     },
     "durations": {
-      "enduranceDiscount": 20
+      "enduranceDiscount": 20,
+      "damageBuff": 9.47
     },
-    "buffDuration": 20
+    "damageBuff": {
+      "scale": 0.027,
+      "table": "Ranged_Ones",
+      "perTarget": 0.027
+    },
+    "buffDuration": 20,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

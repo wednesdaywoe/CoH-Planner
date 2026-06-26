@@ -47,6 +47,7 @@ export const WindShear: Power = {
     "durations": {
       "tohitDebuff": 30,
       "slow": 2.1,
+      "damageDebuff": 2.1,
       "teleport": 2.1
     },
     "slow": {
@@ -66,6 +67,10 @@ export const WindShear: Power = {
         "scale": 0.65,
         "table": "Melee_Slow"
       }
+    },
+    "damageDebuff": {
+      "scale": 1.25,
+      "table": "Melee_Debuff_Dam"
     },
     "teleport": {
       "scale": 2,

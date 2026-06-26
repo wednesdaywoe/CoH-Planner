@@ -58,12 +58,6 @@ export const HydroBlast: Power = {
       "type": "Cold",
       "scale": 1.11,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
     }
   ],
   "effects": {
@@ -86,10 +80,15 @@ export const HydroBlast: Power = {
       }
     },
     "durations": {
-      "slow": 10
+      "slow": 10,
+      "damageBuff": 9.17
     },
     "accuracyBuff": {
       "scale": 0.67,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.11,
       "table": "Ranged_Ones"
     },
     "buffDuration": 10

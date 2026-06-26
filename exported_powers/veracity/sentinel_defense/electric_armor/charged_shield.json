@@ -70,7 +70,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Strength",
+          "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 10.0,

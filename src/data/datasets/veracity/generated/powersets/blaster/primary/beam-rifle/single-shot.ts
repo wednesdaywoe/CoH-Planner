@@ -48,19 +48,11 @@ export const SingleShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.066,
-      "table": "Ranged_Ones",
-      "duration": 8.5
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "accuracyBuff": {
       "scale": 0.67,
@@ -71,7 +63,12 @@ export const SingleShot: Power = {
       "table": "Melee_Ones"
     },
     "durations": {
-      "recoveryDebuff": 20
+      "recoveryDebuff": 20,
+      "damageBuff": 8.5
+    },
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 20
   },

@@ -47,10 +47,22 @@ export const EaglesClaw: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "damageBuff": {
+      "scale": 3.3,
+      "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 3
+    },
     "confuse": {
       "mag": 4,
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "buffDuration": 3,
+    "maxStacks": 560,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

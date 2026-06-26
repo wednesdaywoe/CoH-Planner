@@ -40,17 +40,19 @@ export const StunningShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.25,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.25,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "damageBuff": {
       "scale": 0.066,
-      "table": "Ranged_Ones",
-      "duration": 8.5
-    }
-  ]
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5
+  }
 };

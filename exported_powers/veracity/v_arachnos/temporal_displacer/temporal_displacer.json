@@ -78,7 +78,7 @@
           "stack": "Stack",
           "stack_limit": 544,
           "stack_key": null,
-          "boost_mod_allowed_id": 2544304
+          "boost_mod_allowed_id": 2543793
         },
         {
           "attribs": [
@@ -369,7 +369,7 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
           "scale": 16.0,

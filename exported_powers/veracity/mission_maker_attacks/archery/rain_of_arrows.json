@@ -80,10 +80,15 @@
           "stack_key": null,
           "flags": [
             "CancelOnMiss",
-            "KeepThroughDeath",
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreCombatMods",
+            "IgnoreEfficiency",
+            "DeepSleep",
+            "HideZero",
             "NoProjectileDelay"
           ],
-          "flags_raw": 147460,
+          "flags_raw": 147164,
           "boost_mod_allowed_id": 16
         },
         {

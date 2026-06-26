@@ -44,12 +44,6 @@ export const WebGrenade: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.09,
-    "table": "Ranged_Ones",
-    "duration": 8.87
-  },
   "effects": {
     "sleep": {
       "mag": 3,
@@ -65,7 +59,8 @@ export const WebGrenade: Power = {
       "slow": 15,
       "debuffResistance": 15,
       "accuracyDebuff": 15,
-      "teleport": 15
+      "teleport": 15,
+      "damageBuff": 8.87
     },
     "slow": {
       "runSpeed": {
@@ -93,6 +88,10 @@ export const WebGrenade: Power = {
     },
     "teleport": {
       "scale": 10,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.09,
       "table": "Ranged_Ones"
     },
     "buffDuration": 15

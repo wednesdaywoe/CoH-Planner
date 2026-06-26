@@ -40,24 +40,29 @@ export const DragonsTail: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.18,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.045,
-      "table": "Melee_Ones",
-      "duration": 9
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.18,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "accuracyBuff": {
       "scale": 0.67,
       "table": "Melee_Ones"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.045,
+      "table": "Melee_Ones",
+      "perTarget": 0.045
+    },
+    "durations": {
+      "damageBuff": 9
+    },
+    "buffDuration": 9,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

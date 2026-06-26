@@ -54,12 +54,16 @@ export const Flares: Power = {
       "type": "Fire",
       "scale": 0.3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.066,
-      "table": "Ranged_Ones",
-      "duration": 8.5
     }
-  ]
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5
+  }
 };

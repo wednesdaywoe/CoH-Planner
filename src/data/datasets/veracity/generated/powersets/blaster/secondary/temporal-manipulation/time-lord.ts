@@ -62,7 +62,8 @@ export const TimeLord: Power = {
     "maxStacks": 560,
     "stacksLinear": [
       "enduranceDiscount",
-      "resistance"
+      "resistance",
+      "specialBuff"
     ]
   },
   "conditionalEffects": [

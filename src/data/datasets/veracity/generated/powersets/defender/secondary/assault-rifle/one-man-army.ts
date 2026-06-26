@@ -36,7 +36,12 @@ export const OneManArmy: Power = {
       "table": "Melee_Buff_ToHit"
     },
     "durations": {
-      "rechargeBuff": 60
+      "rechargeBuff": 60,
+      "damageBuff": 60
+    },
+    "damageBuff": {
+      "scale": 8,
+      "table": "Melee_Buff_Dmg"
     },
     "buffDuration": 60
   },

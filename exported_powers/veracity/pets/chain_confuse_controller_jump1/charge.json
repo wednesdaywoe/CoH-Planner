@@ -89,8 +89,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -144,8 +143,8 @@
             "Event_0",
             "ActivateAttackClick",
             "Event_16",
-            "Event_1699805",
-            "Event_1699817",
+            "Event_1698328",
+            "Event_1698340",
             "Event_0",
             "Event_0"
           ]

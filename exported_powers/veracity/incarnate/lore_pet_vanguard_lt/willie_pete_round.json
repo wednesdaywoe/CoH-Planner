@@ -87,8 +87,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -135,8 +134,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_1426024",
-              "event_id": 1426024,
+              "event": "Event_1424652",
+              "event_id": 1424652,
               "duration": 0.0,
               "flag": 0
             }
@@ -168,8 +167,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_213788",
-              "event_id": 213788,
+              "event": "Event_212607",
+              "event_id": 212607,
               "duration": 0.0,
               "flag": 0
             }

@@ -48,10 +48,15 @@ export const Fortitude: Power = {
     },
     "durations": {
       "tohitBuff": 120,
+      "damageBuff": 120,
       "defenseBuff": 120,
       "recoveryBuff": 120,
       "enduranceDiscount": 120,
       "debuffResistance": 120
+    },
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Ranged_Buff_Dmg"
     },
     "defenseBuff": {
       "melee": {

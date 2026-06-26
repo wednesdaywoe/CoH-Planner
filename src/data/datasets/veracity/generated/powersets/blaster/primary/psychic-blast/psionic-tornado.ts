@@ -42,34 +42,36 @@ export const PsionicTornado: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 0.178,
-      "table": "Ranged_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.039,
-      "table": "Ranged_Ones",
-      "duration": 9.87
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.178,
+    "table": "Ranged_Damage",
+    "duration": 4.1,
+    "tickRate": 1
+  },
   "effects": {
     "enduranceDiscount": {
       "scale": 0.3,
       "table": "Ranged_Slow"
     },
     "durations": {
-      "enduranceDiscount": 10
+      "enduranceDiscount": 10,
+      "damageBuff": 9.87
     },
     "repel": {
       "scale": 1.4,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.039,
+      "table": "Ranged_Ones",
+      "perTarget": 0.039
+    },
+    "buffDuration": 10,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

@@ -39,10 +39,18 @@ export const Caltrops: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.071,
-    "table": "Ranged_Ones",
-    "duration": 8.57
+  "effects": {
+    "damageBuff": {
+      "scale": 0.071,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.57
+    },
+    "buffDuration": 8.57,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

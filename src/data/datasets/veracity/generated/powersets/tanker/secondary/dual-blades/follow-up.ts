@@ -59,7 +59,12 @@ export const FollowUp: Power = {
       "table": "Melee_Buff_ToHit"
     },
     "durations": {
-      "tohitBuff": 10
+      "tohitBuff": 10,
+      "damageBuff": 10
+    },
+    "damageBuff": {
+      "scale": 3,
+      "table": "Melee_Buff_Dmg"
     },
     "buffDuration": 10
   },
@@ -75,7 +80,12 @@ export const FollowUp: Power = {
           "table": "Melee_Buff_ToHit"
         },
         "durations": {
-          "tohitBuffUnenhanced": 10
+          "tohitBuffUnenhanced": 10,
+          "damageBuff": 10
+        },
+        "damageBuff": {
+          "scale": 1,
+          "table": "Melee_Buff_Dmg"
         },
         "buffDuration": 10
       }

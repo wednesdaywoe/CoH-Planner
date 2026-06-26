@@ -60,12 +60,6 @@ export const Entangle: Power = {
       "table": "Ranged_Damage",
       "duration": 9.2,
       "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.079,
-      "table": "Ranged_Ones",
-      "duration": 8.7
     }
   ],
   "effects": {
@@ -83,7 +77,8 @@ export const Entangle: Power = {
     "durations": {
       "debuffResistance": 15,
       "accuracyDebuff": 15,
-      "teleport": 15
+      "teleport": 15,
+      "damageBuff": 8.7
     },
     "accuracyDebuff": {
       "scale": 100,
@@ -91,6 +86,10 @@ export const Entangle: Power = {
     },
     "teleport": {
       "scale": 1.6,
+      "table": "Ranged_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.079,
       "table": "Ranged_Ones"
     },
     "buffDuration": 15

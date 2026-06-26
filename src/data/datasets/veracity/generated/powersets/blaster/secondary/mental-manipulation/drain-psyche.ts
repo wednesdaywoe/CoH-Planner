@@ -39,12 +39,6 @@ export const DrainPsyche: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.035,
-    "table": "Melee_Ones",
-    "duration": 8.83
-  },
   "effects": {
     "recoveryBuff": {
       "scale": 0.75,
@@ -52,12 +46,21 @@ export const DrainPsyche: Power = {
     },
     "durations": {
       "recoveryBuff": 30,
-      "recoveryDebuff": 60
+      "recoveryDebuff": 60,
+      "damageBuff": 8.83
     },
     "recoveryDebuff": {
       "scale": 3,
       "table": "Melee_Ones"
     },
-    "buffDuration": 60
+    "damageBuff": {
+      "scale": 0.035,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 60,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

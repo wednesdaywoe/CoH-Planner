@@ -186,8 +186,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2285366",
-              "event_id": 2285366,
+              "event": "Event_2283968",
+              "event_id": 2283968,
               "duration": 0.0,
               "flag": 0
             }
@@ -219,8 +219,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2285384",
-              "event_id": 2285384,
+              "event": "Event_2283986",
+              "event_id": 2283986,
               "duration": 0.0,
               "flag": 0
             }
@@ -280,7 +280,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
           "scale": 3.3,

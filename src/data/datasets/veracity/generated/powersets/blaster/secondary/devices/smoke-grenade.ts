@@ -37,12 +37,6 @@ export const SmokeGrenade: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.014,
-    "table": "Melee_Ones",
-    "duration": 8.87
-  },
   "effects": {
     "regenDebuff": {
       "scale": 0.9,
@@ -50,12 +44,21 @@ export const SmokeGrenade: Power = {
     },
     "durations": {
       "regenDebuff": 60,
-      "tohitDebuff": 120
+      "tohitDebuff": 120,
+      "damageBuff": 8.87
     },
     "tohitDebuff": {
       "scale": 0.175,
       "table": "Ranged_DeBuff_ToHit"
     },
-    "buffDuration": 120
+    "damageBuff": {
+      "scale": 0.014,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 120,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

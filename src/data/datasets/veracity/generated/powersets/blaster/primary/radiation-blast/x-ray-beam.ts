@@ -47,27 +47,24 @@ export const XRayBeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 6
+      "defenseDebuff": 6,
+      "damageBuff": 9.17
     },
-    "buffDuration": 6
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 9.17
   }
 };

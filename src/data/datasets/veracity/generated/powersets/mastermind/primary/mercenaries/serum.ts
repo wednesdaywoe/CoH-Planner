@@ -39,12 +39,6 @@ export const Serum: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Ranged_Res_Dmg",
-    "duration": 60
-  },
   "effects": {
     "resistance": {
       "smashing": {
@@ -78,12 +72,17 @@ export const Serum: Power = {
     },
     "durations": {
       "resistance": 60,
+      "damageBuff": 60,
       "accuracyDebuff": 60,
       "debuffResistance": 60,
       "slow": 60,
       "stun": 60,
       "sleep": 60,
       "tohitBuff": 60
+    },
+    "damageBuff": {
+      "scale": 1,
+      "table": "Ranged_Res_Dmg"
     },
     "accuracyDebuff": {
       "scale": 100,

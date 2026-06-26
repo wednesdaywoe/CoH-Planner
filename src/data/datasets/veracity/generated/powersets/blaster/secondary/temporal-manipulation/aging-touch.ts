@@ -49,12 +49,6 @@ export const AgingTouch: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.066,
-      "table": "Melee_Ones",
-      "duration": 8.5
     }
   ],
   "effects": {
@@ -63,9 +57,14 @@ export const AgingTouch: Power = {
       "table": "Melee_Ones"
     },
     "durations": {
-      "enduranceDrain": 2.1
+      "enduranceDrain": 2.1,
+      "damageBuff": 8.5
     },
-    "buffDuration": 2.1
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 8.5
   },
   "conditionalEffects": [
     {

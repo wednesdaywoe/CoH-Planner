@@ -293,7 +293,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Strength",
+          "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_HealSelf",
           "scale": 7.5,
@@ -631,7 +631,8 @@
           "stack_limit": 0,
           "stack_key": "olumn.Fifth_Column_FogTrainee.Incendiary_Assault_Rifle",
           "flags": [
-            "NearGround"
+            "NearGround",
+            "CopyBoosts"
           ],
           "flags_raw": 8,
           "boost_mod_allowed_id": 1

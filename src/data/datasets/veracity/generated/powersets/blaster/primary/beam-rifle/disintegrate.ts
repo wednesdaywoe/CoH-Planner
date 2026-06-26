@@ -40,28 +40,25 @@ export const Disintegrate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.216,
-      "table": "Ranged_Damage",
-      "duration": 10.5,
-      "tickRate": 1.1100000143051147
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.125,
-      "table": "Ranged_Ones",
-      "duration": 9.4
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.216,
+    "table": "Ranged_Damage",
+    "duration": 10.5,
+    "tickRate": 1.1100000143051147
+  },
   "effects": {
+    "damageBuff": {
+      "scale": 0.125,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.4,
+      "recoveryDebuff": 30
+    },
     "recoveryDebuff": {
       "scale": 0.3,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 30
     },
     "buffDuration": 30
   },

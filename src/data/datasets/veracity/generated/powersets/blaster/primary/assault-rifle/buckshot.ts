@@ -53,19 +53,26 @@ export const Buckshot: Power = {
       "type": "Lethal",
       "scale": 0.455,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.028,
-      "table": "Ranged_Ones",
-      "duration": 8.4
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 0.75,
       "table": "Ranged_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.028,
+      "table": "Ranged_Ones",
+      "perTarget": 0.028
+    },
+    "durations": {
+      "damageBuff": 8.4
+    },
+    "buffDuration": 8.4,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

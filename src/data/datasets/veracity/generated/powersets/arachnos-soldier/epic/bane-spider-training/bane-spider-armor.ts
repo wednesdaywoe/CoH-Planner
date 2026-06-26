@@ -66,14 +66,14 @@ export const BaneSpiderArmor: Power = {
     },
     "durations": {
       "resistance": 10.25,
-      "healing": 10.25,
+      "maxHPBuff": 10.25,
       "slow": 10,
       "sleep": 10,
       "stun": 10,
       "fear": 10,
       "immobilize": 10
     },
-    "healing": {
+    "maxHPBuff": {
       "scale": 2,
       "table": "Melee_HealSelf"
     },
@@ -107,8 +107,8 @@ export const BaneSpiderArmor: Power = {
     "buffDuration": 10,
     "maxStacks": 560,
     "stacksLinear": [
-      "resistance",
-      "specialBuff"
+      "maxHPBuff",
+      "resistance"
     ]
   },
   "mechanicType": "parentMechanic"

@@ -40,12 +40,6 @@ export const SporeCloud: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.082,
-    "table": "Ranged_Ones",
-    "duration": 10.6
-  },
   "effects": {
     "tohitDebuff": {
       "scale": 0.1875,
@@ -53,12 +47,26 @@ export const SporeCloud: Power = {
     },
     "durations": {
       "tohitDebuff": 30,
-      "recoveryDebuff": 30
+      "damageDebuff": 0.75,
+      "recoveryDebuff": 30,
+      "damageBuff": 10.6
+    },
+    "damageDebuff": {
+      "scale": 1.125,
+      "table": "Ranged_Debuff_Dam"
     },
     "recoveryDebuff": {
       "scale": 0.225,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30
+    "damageBuff": {
+      "scale": 0.082,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 30,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -54,12 +54,6 @@ export const AtomSmasher: Power = {
       "type": "Toxic",
       "scale": 1.164,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.077,
-      "table": "Melee_Ones",
-      "duration": 10.43
     }
   ],
   "effects": {
@@ -68,9 +62,18 @@ export const AtomSmasher: Power = {
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "damageBuff": 10.43
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.077,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 10.43,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

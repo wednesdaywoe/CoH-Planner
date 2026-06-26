@@ -54,12 +54,6 @@ export const WaterBurst: Power = {
       "type": "Cold",
       "scale": 0.675,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.035,
-      "table": "Ranged_Ones",
-      "duration": 9.23
     }
   ],
   "effects": {
@@ -82,9 +76,19 @@ export const WaterBurst: Power = {
       }
     },
     "durations": {
-      "slow": 10
+      "slow": 10,
+      "damageBuff": 9.23
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.035,
+      "table": "Ranged_Ones",
+      "perTarget": 0.035
+    },
+    "buffDuration": 10,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "conditionalEffects": [
     {

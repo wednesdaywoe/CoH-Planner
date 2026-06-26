@@ -85,12 +85,6 @@ export const DualWield: Power = {
       "type": "Toxic",
       "scale": 0.396,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
     }
   ],
   "effects": {
@@ -99,11 +93,16 @@ export const DualWield: Power = {
       "table": "Ranged_Knockback"
     },
     "durations": {
-      "enduranceDiscount": 8
+      "enduranceDiscount": 8,
+      "damageBuff": 9.17
     },
     "enduranceDiscount": {
       "scale": 0.15,
       "table": "Ranged_Slow"
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 8
   },
@@ -149,6 +148,23 @@ export const DualWield: Power = {
           "slow": 8
         },
         "buffDuration": 8
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 6
+        },
+        "buffDuration": 6
       }
     }
   ]

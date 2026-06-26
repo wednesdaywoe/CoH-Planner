@@ -56,12 +56,16 @@ export const FireSword: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 0.75
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.088,
-      "table": "Melee_Ones",
-      "duration": 8.83
     }
-  ]
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.83
+    },
+    "buffDuration": 8.83
+  }
 };

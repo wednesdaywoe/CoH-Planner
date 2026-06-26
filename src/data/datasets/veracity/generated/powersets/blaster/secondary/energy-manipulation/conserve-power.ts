@@ -50,7 +50,8 @@ export const ConservePower: Power = {
     "buffDuration": 60,
     "maxStacks": 560,
     "stacksLinear": [
-      "recoveryBuff"
+      "recoveryBuff",
+      "specialBuff"
     ]
   }
 };

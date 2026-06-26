@@ -38,6 +38,24 @@ export const AgainstallOdds: Power = {
       "mag": 3,
       "scale": 1.25,
       "table": "Melee_InherentTaunt"
-    }
+    },
+    "damageBuff": {
+      "scale": 3,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 3
+    },
+    "durations": {
+      "damageBuff": 1,
+      "damageDebuff": 1
+    },
+    "damageDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Dam"
+    },
+    "buffDuration": 1,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -37,12 +37,6 @@ export const CommandandConquer: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.5,
-    "table": "Melee_Ones",
-    "duration": 60
-  },
   "effects": {
     "rechargeBuff": {
       "scale": 0.25,
@@ -51,7 +45,8 @@ export const CommandandConquer: Power = {
     "durations": {
       "rechargeBuff": 60,
       "resistance": 60,
-      "tohitBuff": 60
+      "tohitBuff": 60,
+      "damageBuff": 60
     },
     "resistance": {
       "smashing": {
@@ -67,6 +62,10 @@ export const CommandandConquer: Power = {
     },
     "tohitBuff": {
       "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "damageBuff": {
+      "scale": 0.5,
       "table": "Melee_Ones"
     },
     "buffDuration": 60,

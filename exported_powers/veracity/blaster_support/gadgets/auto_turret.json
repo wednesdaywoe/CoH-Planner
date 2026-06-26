@@ -89,14 +89,16 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
+            "NoFloaters",
             "CancelOnMiss",
-            "IgnoreCombatMods",
+            "IgnoreResistance",
+            "IgnoreEfficiency",
             "DeepSleep",
             "KeepThroughDeath",
             "NoHitDelay",
             "NoProjectileDelay"
           ],
-          "flags_raw": 216900,
+          "flags_raw": 215719,
           "boost_mod_allowed_id": 16
         }
       ]
@@ -128,7 +130,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Ranged_Ones",
           "scale": 0.066,

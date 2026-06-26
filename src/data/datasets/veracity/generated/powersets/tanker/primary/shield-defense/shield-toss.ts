@@ -16,12 +16,12 @@ export const ShieldToss: Power = {
   "shortHelp": "Ranged (Line), Lethal Damage",
   "icon": "fireblast_fireball.png",
   "powerType": "Click",
-  "targetType": "Foe",
+  "targetType": "Self",
   "stats": {
     "accuracy": 1,
-    "range": 80,
-    "radius": 80,
-    "recharge": 20,
+    "range": 100,
+    "radius": 100,
+    "recharge": 90,
     "endurance": 15.184,
     "castTime": 1.5,
     "maxTargets": 16
@@ -35,9 +35,15 @@ export const ShieldToss: Power = {
   ],
   "maxSlots": 6,
   "damage": {
-    "type": "Lethal",
-    "scale": 2.16,
+    "type": "Smashing",
+    "scale": 2.56,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "accuracyBuff": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    }
   },
   "requires": "MG_T1_Finesse TokenOwned?"
 };

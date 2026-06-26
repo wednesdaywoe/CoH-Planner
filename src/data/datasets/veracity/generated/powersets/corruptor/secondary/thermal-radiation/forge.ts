@@ -41,7 +41,12 @@ export const Forge: Power = {
       "table": "Ranged_Buff_ToHit"
     },
     "durations": {
-      "tohitBuff": 120
+      "tohitBuff": 120,
+      "damageBuff": 120
+    },
+    "damageBuff": {
+      "scale": 4,
+      "table": "Ranged_Buff_Dmg"
     },
     "buffDuration": 120
   }

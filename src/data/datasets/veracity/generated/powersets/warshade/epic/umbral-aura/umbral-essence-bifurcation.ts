@@ -36,14 +36,19 @@ export const UmbralEssenceBifurcation: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
+    "damageBuff": {
+      "scale": 7.5,
+      "table": "Ranged_Buff_Dmg"
     },
     "durations": {
+      "damageBuff": 60,
       "rechargeBuff": 60,
       "tohitBuff": 60,
       "debuffResistance": 60
+    },
+    "rechargeBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
     },
     "tohitBuff": {
       "scale": 1,

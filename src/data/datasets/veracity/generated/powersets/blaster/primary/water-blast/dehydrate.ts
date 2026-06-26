@@ -79,12 +79,6 @@ export const Dehydrate: Power = {
       "ignoreStrength": true,
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.123,
-      "table": "Ranged_Ones",
-      "duration": 9.37
     }
   ],
   "effects": {
@@ -108,11 +102,16 @@ export const Dehydrate: Power = {
     },
     "durations": {
       "slow": 8,
-      "defenseDebuff": 8
+      "defenseDebuff": 8,
+      "damageBuff": 9.37
     },
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
+    },
+    "damageBuff": {
+      "scale": 0.123,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 8,
     "maxStacks": 544,

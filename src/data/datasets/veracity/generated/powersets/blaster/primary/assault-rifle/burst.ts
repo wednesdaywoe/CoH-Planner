@@ -61,12 +61,6 @@ export const Burst: Power = {
       "table": "Ranged_Damage",
       "duration": 0.91,
       "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.066,
-      "table": "Ranged_Ones",
-      "duration": 8.5
     }
   ],
   "effects": {
@@ -75,8 +69,13 @@ export const Burst: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 8
+      "defenseDebuff": 8,
+      "damageBuff": 8.5
     },
-    "buffDuration": 8
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 8.5
   }
 };

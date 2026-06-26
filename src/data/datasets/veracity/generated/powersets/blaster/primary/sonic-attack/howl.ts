@@ -51,12 +51,6 @@ export const Howl: Power = {
       "type": "Energy",
       "scale": 0.405,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.063,
-      "table": "Ranged_Ones",
-      "duration": 9.83
     }
   ],
   "effects": {
@@ -95,8 +89,18 @@ export const Howl: Power = {
       }
     },
     "durations": {
-      "resistanceDebuff": 8
+      "resistanceDebuff": 8,
+      "damageBuff": 9.83
     },
-    "buffDuration": 8
+    "damageBuff": {
+      "scale": 0.063,
+      "table": "Ranged_Ones",
+      "perTarget": 0.063
+    },
+    "buffDuration": 9.83,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

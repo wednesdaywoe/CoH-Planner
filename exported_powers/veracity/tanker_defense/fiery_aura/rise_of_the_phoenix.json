@@ -179,14 +179,17 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
+            "NoFloaters",
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreResistance",
             "IgnoreEfficiency",
-            "DeepSleep",
             "HideZero",
             "KeepThroughDeath",
             "NoProjectileDelay",
             "IgnoreSuppressErrors"
           ],
-          "flags_raw": 1735296,
+          "flags_raw": 1733819,
           "boost_mod_allowed_id": 16
         }
       ]
@@ -285,8 +288,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2284781",
-              "event_id": 2284781,
+              "event": "Event_2283383",
+              "event_id": 2283383,
               "duration": 0.0,
               "flag": 0
             }
@@ -318,8 +321,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2284800",
-              "event_id": 2284800,
+              "event": "Event_2283402",
+              "event_id": 2283402,
               "duration": 0.0,
               "flag": 0
             }
@@ -351,8 +354,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2284818",
-              "event_id": 2284818,
+              "event": "Event_2283420",
+              "event_id": 2283420,
               "duration": 0.0,
               "flag": 0
             }

@@ -50,12 +50,6 @@ export const DreadfulWail: Power = {
       "type": "Energy",
       "scale": 2,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.027,
-      "table": "Ranged_Ones",
-      "duration": 9.47
     }
   ],
   "effects": {
@@ -94,8 +88,18 @@ export const DreadfulWail: Power = {
       }
     },
     "durations": {
-      "resistanceDebuff": 20
+      "resistanceDebuff": 20,
+      "damageBuff": 9.47
     },
-    "buffDuration": 20
+    "damageBuff": {
+      "scale": 0.027,
+      "table": "Ranged_Ones",
+      "perTarget": 0.027
+    },
+    "buffDuration": 20,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

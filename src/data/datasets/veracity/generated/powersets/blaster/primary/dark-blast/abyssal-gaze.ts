@@ -43,21 +43,13 @@ export const AbyssalGaze: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.472,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.472,
+    "table": "Ranged_Damage",
+    "duration": 2.1,
+    "tickRate": 1
+  },
   "effects": {
     "stun": {
       "mag": 3,
@@ -69,7 +61,12 @@ export const AbyssalGaze: Power = {
       "table": "Ranged_DeBuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 20
+      "tohitDebuff": 20,
+      "damageBuff": 9.17
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 20
   }

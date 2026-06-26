@@ -55,12 +55,6 @@ export const LifeDrain: Power = {
       "scale": 1,
       "table": "Ranged_HealSelf",
       "ignoreStrength": true
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.127,
-      "table": "Ranged_Ones",
-      "duration": 9.43
     }
   ],
   "effects": {
@@ -69,7 +63,12 @@ export const LifeDrain: Power = {
       "table": "Ranged_DeBuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 20
+      "tohitDebuff": 20,
+      "damageBuff": 9.43
+    },
+    "damageBuff": {
+      "scale": 0.127,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 20
   }

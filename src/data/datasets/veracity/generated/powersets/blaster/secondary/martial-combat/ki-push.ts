@@ -50,19 +50,11 @@ export const KiPush: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.055,
-      "table": "Melee_Ones",
-      "duration": 8.33
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.8,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 1,
@@ -71,12 +63,17 @@ export const KiPush: Power = {
     },
     "effectDuration": 2,
     "durations": {
-      "stun": 2
+      "stun": 2,
+      "damageBuff": 8.33
     },
     "accuracyBuff": {
       "scale": 4,
       "table": "Melee_Knockback"
     },
-    "buffDuration": 2
+    "damageBuff": {
+      "scale": 0.055,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 8.33
   }
 };

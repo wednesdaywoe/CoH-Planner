@@ -40,28 +40,29 @@ export const PsychicShockwave: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.04,
-      "table": "Ranged_Ones",
-      "duration": 9.47
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "enduranceDiscount": {
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
     "durations": {
-      "enduranceDiscount": 20
+      "enduranceDiscount": 20,
+      "damageBuff": 9.47
     },
-    "buffDuration": 20
+    "damageBuff": {
+      "scale": 0.04,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 20,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

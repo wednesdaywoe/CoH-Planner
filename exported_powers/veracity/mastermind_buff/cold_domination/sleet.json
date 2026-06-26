@@ -876,13 +876,12 @@
           "stack_key": null,
           "flags": [
             "CancelOnMiss",
-            "IgnoreStrength",
-            "IgnoreEfficiency",
+            "IgnoreResistance",
             "HideZero",
             "KeepThroughDeath",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 849558,
+          "flags_raw": 848166,
           "boost_mod_allowed_id": 16
         }
       ]

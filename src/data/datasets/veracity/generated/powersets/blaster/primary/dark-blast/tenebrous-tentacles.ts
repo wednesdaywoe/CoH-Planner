@@ -58,12 +58,6 @@ export const TenebrousTentacles: Power = {
       "type": "Negative",
       "scale": 0.135,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.048,
-      "table": "Ranged_Ones",
-      "duration": 9.17
     }
   ],
   "effects": {
@@ -72,13 +66,23 @@ export const TenebrousTentacles: Power = {
       "table": "Ranged_DeBuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 16
+      "tohitDebuff": 16,
+      "damageBuff": 9.17
     },
     "sleep": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "buffDuration": 16
+    "damageBuff": {
+      "scale": 0.048,
+      "table": "Ranged_Ones",
+      "perTarget": 0.048
+    },
+    "buffDuration": 16,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

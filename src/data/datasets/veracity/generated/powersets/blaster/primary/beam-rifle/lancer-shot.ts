@@ -40,19 +40,21 @@ export const LancerShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 2.12,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
+  "damage": {
+    "type": "Energy",
+    "scale": 2.12,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "damageBuff": {
       "scale": 0.125,
-      "table": "Ranged_Ones",
-      "duration": 9.4
-    }
-  ],
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.4
+    },
+    "buffDuration": 9.4
+  },
   "conditionalEffects": [
     {
       "id": "beam_rifle_debuff",

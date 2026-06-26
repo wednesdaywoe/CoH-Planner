@@ -85,11 +85,16 @@ export const Kyokan: Power = {
     },
     "durations": {
       "defenseBuff": 0.75,
-      "tohitBuff": 0.75
+      "tohitBuff": 0.75,
+      "damageBuff": 0.75
     },
     "tohitBuff": {
       "scale": 0.5,
       "table": "Melee_Buff_ToHit"
+    },
+    "damageBuff": {
+      "scale": 0.5,
+      "table": "Melee_Buff_Dmg"
     },
     "buffDuration": 0.75
   }

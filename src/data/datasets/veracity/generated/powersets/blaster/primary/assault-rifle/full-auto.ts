@@ -60,14 +60,23 @@ export const FullAuto: Power = {
       "table": "Ranged_Damage",
       "duration": 3.3,
       "tickRate": 0.20000000298023224
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.087,
-      "table": "Ranged_Ones",
-      "duration": 11.5
     }
   ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.087,
+      "table": "Ranged_Ones",
+      "perTarget": 0.087
+    },
+    "durations": {
+      "damageBuff": 11.5
+    },
+    "buffDuration": 11.5,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

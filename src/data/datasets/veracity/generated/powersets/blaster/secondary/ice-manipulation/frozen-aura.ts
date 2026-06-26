@@ -36,10 +36,18 @@ export const FrozenAura: Power = {
     "Sleep"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.055,
-    "table": "Ranged_Ones",
-    "duration": 9.6
+  "effects": {
+    "damageBuff": {
+      "scale": 0.055,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.6
+    },
+    "buffDuration": 9.6,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

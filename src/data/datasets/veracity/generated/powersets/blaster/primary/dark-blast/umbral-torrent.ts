@@ -46,19 +46,11 @@ export const UmbralTorrent: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.96,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.02,
-      "table": "Ranged_Ones",
-      "duration": 8.53
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.96,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "accuracyBuff": {
       "scale": 5,
@@ -69,8 +61,18 @@ export const UmbralTorrent: Power = {
       "table": "Ranged_DeBuff_ToHit"
     },
     "durations": {
-      "tohitDebuff": 20
+      "tohitDebuff": 20,
+      "damageBuff": 8.53
     },
-    "buffDuration": 20
+    "damageBuff": {
+      "scale": 0.02,
+      "table": "Ranged_Ones",
+      "perTarget": 0.02
+    },
+    "buffDuration": 20,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

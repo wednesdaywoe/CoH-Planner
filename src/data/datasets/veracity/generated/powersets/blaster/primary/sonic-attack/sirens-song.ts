@@ -43,17 +43,24 @@ export const SirensSong: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
+  "damage": {
+    "type": "Energy",
+    "scale": 0.5,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "damageBuff": {
       "scale": 0.054,
       "table": "Ranged_Ones",
-      "duration": 9.5
-    }
-  ]
+      "perTarget": 0.054
+    },
+    "durations": {
+      "damageBuff": 9.5
+    },
+    "buffDuration": 9.5,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

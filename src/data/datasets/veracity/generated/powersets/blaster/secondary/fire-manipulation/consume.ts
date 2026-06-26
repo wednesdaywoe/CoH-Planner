@@ -40,19 +40,11 @@ export const Consume: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.033,
-      "table": "Melee_Ones",
-      "duration": 9.53
-    },
-    {
-      "type": "Fire",
-      "scale": 0.4,
-      "table": "Melee_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 0.4,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "debuffResistance": {
       "endurance": {
@@ -61,8 +53,17 @@ export const Consume: Power = {
       }
     },
     "durations": {
-      "debuffResistance": 120
+      "debuffResistance": 120,
+      "damageBuff": 9.53
     },
-    "buffDuration": 120
+    "damageBuff": {
+      "scale": 0.033,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 120,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

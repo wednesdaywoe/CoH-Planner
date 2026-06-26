@@ -70,7 +70,7 @@ export const OnewiththeShield: Power = {
     },
     "durations": {
       "resistance": 120,
-      "healing": 120,
+      "maxHPBuff": 120,
       "repel": 120,
       "accuracyDebuff": 120,
       "mezResistance": 120,
@@ -79,7 +79,7 @@ export const OnewiththeShield: Power = {
       "stun": 120,
       "sleep": 120
     },
-    "healing": {
+    "maxHPBuff": {
       "scale": 2,
       "table": "Melee_HealSelf"
     },
@@ -130,8 +130,8 @@ export const OnewiththeShield: Power = {
     "stacksLinear": [
       "accuracyBuff",
       "fly",
-      "resistance",
-      "specialBuff"
+      "maxHPBuff",
+      "resistance"
     ]
   }
 };

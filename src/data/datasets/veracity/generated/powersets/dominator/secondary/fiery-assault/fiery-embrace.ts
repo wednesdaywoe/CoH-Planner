@@ -28,5 +28,15 @@ export const FieryEmbrace: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "damageBuff": {
+      "scale": 8,
+      "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 10
+    },
+    "buffDuration": 10
+  }
 };

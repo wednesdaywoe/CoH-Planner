@@ -55,18 +55,20 @@ export const PowerThrust: Power = {
       "type": "Energy",
       "scale": 0.4,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.066,
-      "table": "Melee_Ones",
-      "duration": 8.5
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 8,
       "table": "Melee_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5
   }
 };

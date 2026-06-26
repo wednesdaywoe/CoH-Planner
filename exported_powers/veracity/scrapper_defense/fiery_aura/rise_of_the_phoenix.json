@@ -138,14 +138,17 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
+            "NoFloaters",
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreResistance",
             "IgnoreEfficiency",
-            "DeepSleep",
             "HideZero",
             "KeepThroughDeath",
             "NoProjectileDelay",
             "IgnoreSuppressErrors"
           ],
-          "flags_raw": 1735296,
+          "flags_raw": 1733819,
           "boost_mod_allowed_id": 16
         }
       ]

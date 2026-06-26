@@ -51,12 +51,6 @@ export const ChargedBrawl: Power = {
       "type": "Energy",
       "scale": 0.96,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.055,
-      "table": "Melee_Ones",
-      "duration": 8.33
     }
   ],
   "effects": {
@@ -67,7 +61,15 @@ export const ChargedBrawl: Power = {
     "enduranceGain": {
       "scale": 5.095,
       "table": "Melee_Ones"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.055,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.33
+    },
+    "buffDuration": 8.33
   },
   "specialEffects": [
     {

@@ -39,7 +39,12 @@ export const BloodThirst: Power = {
       "table": "Melee_Buff_ToHit"
     },
     "durations": {
-      "tohitBuffUnenhanced": 15
+      "tohitBuffUnenhanced": 15,
+      "damageBuff": 15
+    },
+    "damageBuff": {
+      "scale": 3.333,
+      "table": "Melee_Buff_Dmg"
     },
     "buffDuration": 15
   }

@@ -84,21 +84,20 @@ export const Pistols: Power = {
       "type": "Toxic",
       "scale": 0.3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.066,
-      "table": "Ranged_Ones",
-      "duration": 8.5
     }
   ],
   "effects": {
     "durations": {
-      "enduranceDiscount": 8
+      "enduranceDiscount": 8,
+      "damageBuff": 8.5
     },
     "enduranceDiscount": {
       "scale": 0.12,
       "table": "Ranged_Slow"
+    },
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 8
   },
@@ -156,6 +155,23 @@ export const Pistols: Power = {
           "slow": 8
         },
         "buffDuration": 8
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 0.8,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 5
+        },
+        "buffDuration": 5
       }
     }
   ]

@@ -42,20 +42,24 @@ export const ThrowSand: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.029,
-    "table": "Ranged_Ones",
-    "duration": 8.57
-  },
   "effects": {
     "regenDebuff": {
       "scale": 0.9,
       "table": "Ranged_Ones"
     },
     "durations": {
-      "regenDebuff": 20
+      "regenDebuff": 20,
+      "damageBuff": 8.57
     },
-    "buffDuration": 20
+    "damageBuff": {
+      "scale": 0.029,
+      "table": "Ranged_Ones",
+      "perTarget": 0.029
+    },
+    "buffDuration": 20,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

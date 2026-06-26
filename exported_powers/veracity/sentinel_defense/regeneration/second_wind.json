@@ -67,7 +67,7 @@
           ],
           "type": "Expression",
           "application_type": "Immediate",
-          "aspect": "Strength",
+          "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_HealSelf",
           "scale": 5.0,
@@ -97,7 +97,7 @@
           ],
           "type": "Expression",
           "application_type": "Immediate",
-          "aspect": "Strength",
+          "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_HealSelf",
           "scale": 5.0,
@@ -146,8 +146,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1

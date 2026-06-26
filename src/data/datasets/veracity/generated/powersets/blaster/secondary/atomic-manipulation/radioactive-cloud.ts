@@ -34,10 +34,18 @@ export const RadioactiveCloud: Power = {
     "Holds"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.018,
-    "table": "Melee_Ones",
-    "duration": 8.57
+  "effects": {
+    "damageBuff": {
+      "scale": 0.018,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.57
+    },
+    "buffDuration": 8.57,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

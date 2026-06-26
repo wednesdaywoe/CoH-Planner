@@ -41,17 +41,24 @@ export const FistfulofArrows: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.91,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.91,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "damageBuff": {
       "scale": 0.032,
       "table": "Ranged_Ones",
-      "duration": 8.67
-    }
-  ]
+      "perTarget": 0.032
+    },
+    "durations": {
+      "damageBuff": 8.67
+    },
+    "buffDuration": 8.67,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

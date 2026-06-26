@@ -82,17 +82,12 @@ export const ExecutionersShot: Power = {
       "type": "Toxic",
       "scale": 0.636,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
     }
   ],
   "effects": {
     "durations": {
-      "enduranceDiscount": 10
+      "enduranceDiscount": 10,
+      "damageBuff": 9.17
     },
     "accuracyBuff": {
       "scale": 1,
@@ -101,6 +96,10 @@ export const ExecutionersShot: Power = {
     "enduranceDiscount": {
       "scale": 0.15,
       "table": "Ranged_Slow"
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   },
@@ -163,6 +162,23 @@ export const ExecutionersShot: Power = {
           "slow": 10
         },
         "buffDuration": 10
+      }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 8
+        },
+        "buffDuration": 8
       }
     }
   ]

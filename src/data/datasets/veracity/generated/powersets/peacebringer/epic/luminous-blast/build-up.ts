@@ -40,11 +40,16 @@ export const BuildUp: Power = {
     },
     "durations": {
       "tohitBuffUnenhanced": 10,
-      "tohitBuff": 30
+      "tohitBuff": 30,
+      "damageBuff": 30
     },
     "tohitBuff": {
       "scale": 0.77,
       "table": "Melee_Buff_ToHit"
+    },
+    "damageBuff": {
+      "scale": 3.2,
+      "table": "Melee_Buff_Dmg"
     },
     "buffDuration": 30
   }

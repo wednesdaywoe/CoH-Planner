@@ -51,18 +51,20 @@ export const StormKick: Power = {
       "table": "Melee_Damage",
       "duration": 1.5,
       "tickRate": 0.5
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.071,
-      "table": "Melee_Ones",
-      "duration": 8.57
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 0.67,
       "table": "Melee_Ones"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.071,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.57
+    },
+    "buffDuration": 8.57
   }
 };

@@ -54,19 +54,26 @@ export const BallLightning: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.022,
-      "table": "Ranged_Ones",
-      "duration": 8.57
     }
   ],
   "effects": {
     "enduranceDrain": {
       "scale": 0.07,
       "table": "Ranged_Ones"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.022,
+      "table": "Ranged_Ones",
+      "perTarget": 0.022
+    },
+    "durations": {
+      "damageBuff": 8.57
+    },
+    "buffDuration": 8.57,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

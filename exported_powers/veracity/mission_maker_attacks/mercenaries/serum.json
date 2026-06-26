@@ -78,7 +78,7 @@
           "stack": "Stack",
           "stack_limit": 544,
           "stack_key": null,
-          "boost_mod_allowed_id": 1630148
+          "boost_mod_allowed_id": 1628672
         },
         {
           "attribs": [
@@ -118,7 +118,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": 0.5,

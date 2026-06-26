@@ -49,12 +49,6 @@ export const FrozenFists: Power = {
       "type": "Cold",
       "scale": 0.64,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.088,
-      "table": "Melee_Ones",
-      "duration": 8.83
     }
   ],
   "effects": {
@@ -78,11 +72,16 @@ export const FrozenFists: Power = {
     },
     "durations": {
       "slow": 5,
-      "enduranceDiscount": 5
+      "enduranceDiscount": 5,
+      "damageBuff": 8.83
     },
     "enduranceDiscount": {
       "scale": 0.1,
       "table": "Melee_Slow"
+    },
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Melee_Ones"
     },
     "buffDuration": 5
   }

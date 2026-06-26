@@ -40,25 +40,30 @@ export const ShortCircuit: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.18,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.05,
-      "table": "Ranged_Ones",
-      "duration": 10.5
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.18,
+    "table": "Ranged_Damage",
+    "duration": 2.1,
+    "tickRate": 0.5
+  },
   "effects": {
     "enduranceDrain": {
       "scale": 0.35,
       "table": "Ranged_Ones"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.05,
+      "table": "Ranged_Ones",
+      "perTarget": 0.05
+    },
+    "durations": {
+      "damageBuff": 10.5
+    },
+    "buffDuration": 10.5,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

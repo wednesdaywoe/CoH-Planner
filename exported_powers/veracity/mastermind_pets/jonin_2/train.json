@@ -78,7 +78,7 @@
           "stack": "Stack",
           "stack_limit": 1072,
           "stack_key": null,
-          "boost_mod_allowed_id": 1603414
+          "boost_mod_allowed_id": 1601938
         },
         {
           "attribs": [
@@ -104,7 +104,7 @@
           "stack": "Stack",
           "stack_limit": 1072,
           "stack_key": null,
-          "boost_mod_allowed_id": 1603458
+          "boost_mod_allowed_id": 1601982
         }
       ]
     }

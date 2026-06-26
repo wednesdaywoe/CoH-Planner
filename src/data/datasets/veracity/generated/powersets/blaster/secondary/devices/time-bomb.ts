@@ -39,10 +39,14 @@ export const TimeBomb: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.528,
-    "table": "Ranged_Ones",
-    "duration": 15.5
+  "effects": {
+    "damageBuff": {
+      "scale": 0.528,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 15.5
+    },
+    "buffDuration": 15.5
   }
 };

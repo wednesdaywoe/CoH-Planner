@@ -375,6 +375,11 @@ EC_RARITY_TO_PLANNER = {
     'ECATO2':     'ato',
     'ECSATO2':    'ato',
     'ECUltraRare': 'purple',
+    # Veracity-specific rarity tokens (dev added clean tokens for content that
+    # previously serialized a garbled rarity field). ECElemental = the custom
+    # elemental damage sets; ECParagon = the new top-tier ("purple") sets.
+    'ECElemental': 'rare',
+    'ECParagon':   'purple',
     # Rebirth-specific oddballs
     'LibertysBelt':         'event',
     'ImperialMight':        'event',

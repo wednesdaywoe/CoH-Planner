@@ -50,12 +50,20 @@ export const Combustion: Power = {
       "table": "Melee_Damage",
       "duration": 7.1,
       "tickRate": 0.75
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.061,
-      "table": "Melee_Ones",
-      "duration": 10.5
     }
-  ]
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.061,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.5
+    },
+    "buffDuration": 10.5,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

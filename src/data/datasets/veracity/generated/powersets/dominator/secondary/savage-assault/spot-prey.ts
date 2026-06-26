@@ -41,7 +41,8 @@ export const SpotPrey: Power = {
     "durations": {
       "tohitBuffUnenhanced": 10,
       "regenBuff": 25,
-      "debuffResistance": 25
+      "debuffResistance": 25,
+      "damageBuff": 10
     },
     "regenBuff": {
       "scale": 1,
@@ -52,6 +53,10 @@ export const SpotPrey: Power = {
         "scale": 0.8,
         "table": "Melee_Ones"
       }
+    },
+    "damageBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_Dmg"
     },
     "buffDuration": 25
   }

@@ -146,15 +146,11 @@
           "stack_key": null,
           "flags": [
             "NearGround",
-            "IgnoreStrength",
-            "IgnoreResistance",
-            "IgnoreCombatMods",
             "IgnoreEfficiency",
-            "DeepSleep",
             "KeepThroughDeath",
             "IgnoreSuppressErrors"
           ],
-          "flags_raw": 1067770,
+          "flags_raw": 1066378,
           "boost_mod_allowed_id": 375
         },
         {

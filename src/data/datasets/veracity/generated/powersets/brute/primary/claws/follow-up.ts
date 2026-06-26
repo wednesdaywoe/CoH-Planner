@@ -52,7 +52,12 @@ export const FollowUp: Power = {
       "table": "Melee_Buff_ToHit"
     },
     "durations": {
-      "tohitBuff": 10
+      "tohitBuff": 10,
+      "damageBuff": 10
+    },
+    "damageBuff": {
+      "scale": 3,
+      "table": "Melee_Buff_Dmg"
     },
     "confuse": {
       "mag": 4,

@@ -79,7 +79,10 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 1280,
-          "stack_key": null
+          "stack_key": null,
+          "flags": [
+            "CopyBoosts"
+          ]
         }
       ]
     },

@@ -50,18 +50,25 @@ export const Nova: Power = {
       "type": "Energy",
       "scale": 3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.042,
-      "table": "Ranged_Ones",
-      "duration": 10.5
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 10,
       "table": "Ranged_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.042,
+      "table": "Ranged_Ones",
+      "perTarget": 0.042
+    },
+    "durations": {
+      "damageBuff": 10.5
+    },
+    "buffDuration": 10.5,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

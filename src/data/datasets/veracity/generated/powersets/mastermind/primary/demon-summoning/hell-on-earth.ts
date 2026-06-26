@@ -45,7 +45,12 @@ export const HellonEarth: Power = {
       "table": "Ranged_Buff_ToHit"
     },
     "durations": {
-      "tohitBuff": 90
+      "tohitBuff": 90,
+      "damageBuff": 90
+    },
+    "damageBuff": {
+      "scale": 5,
+      "table": "Ranged_Buff_Dmg"
     },
     "buffDuration": 90
   }

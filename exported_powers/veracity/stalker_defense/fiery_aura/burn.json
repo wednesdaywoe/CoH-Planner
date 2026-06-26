@@ -874,16 +874,16 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "CancelOnMiss",
+            "NoFloaters",
+            "NearGround",
             "IgnoreStrength",
-            "IgnoreResistance",
             "IgnoreCombatMods",
-            "IgnoreEfficiency",
-            "KeepThroughDeath",
+            "DeepSleep",
+            "HideZero",
             "NoHitDelay",
             "NoProjectileDelay"
           ],
-          "flags_raw": 213750,
+          "flags_raw": 212569,
           "boost_mod_allowed_id": 16
         }
       ]
@@ -1009,8 +1009,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -1056,8 +1055,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -1103,8 +1101,7 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1

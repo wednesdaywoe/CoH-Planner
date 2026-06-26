@@ -41,29 +41,31 @@ export const Irradiate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 4.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.018,
-      "table": "Ranged_Ones",
-      "duration": 8.57
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.1,
+    "table": "Ranged_Damage",
+    "duration": 4.6,
+    "tickRate": 0.5
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "damageBuff": 8.57
     },
-    "buffDuration": 10
+    "damageBuff": {
+      "scale": 0.018,
+      "table": "Ranged_Ones",
+      "perTarget": 0.018
+    },
+    "buffDuration": 10,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

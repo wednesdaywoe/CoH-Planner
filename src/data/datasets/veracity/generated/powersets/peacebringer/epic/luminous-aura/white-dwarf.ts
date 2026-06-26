@@ -81,7 +81,7 @@ export const WhiteDwarf: Power = {
     },
     "durations": {
       "resistance": 2,
-      "healing": 2,
+      "maxHPBuff": 2,
       "taunt": 2,
       "movement": 2,
       "debuffResistance": 2,
@@ -94,7 +94,7 @@ export const WhiteDwarf: Power = {
       "immobilize": 2.03,
       "sleep": 2.03
     },
-    "healing": {
+    "maxHPBuff": {
       "scale": 7.5,
       "table": "Melee_HealSelf"
     },
@@ -175,9 +175,9 @@ export const WhiteDwarf: Power = {
       "flySpeed",
       "jumpHeight",
       "jumpSpeed",
+      "maxHPBuff",
       "resistance",
       "runSpeed",
-      "specialBuff",
       "tohitBuff"
     ]
   }

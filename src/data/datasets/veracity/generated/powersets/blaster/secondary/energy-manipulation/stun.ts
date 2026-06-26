@@ -49,12 +49,16 @@ export const Stun: Power = {
       "type": "Energy",
       "scale": 0.1,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.119,
-      "table": "Melee_Ones",
-      "duration": 9.3
     }
-  ]
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.119,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.3
+    },
+    "buffDuration": 9.3
+  }
 };

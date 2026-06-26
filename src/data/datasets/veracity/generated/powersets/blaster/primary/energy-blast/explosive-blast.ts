@@ -52,19 +52,26 @@ export const ExplosiveBlast: Power = {
       "type": "Energy",
       "scale": 0.4,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.034,
-      "table": "Ranged_Ones",
-      "duration": 9.17
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 2,
       "table": "Ranged_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.034,
+      "table": "Ranged_Ones",
+      "perTarget": 0.034
+    },
+    "durations": {
+      "damageBuff": 9.17
+    },
+    "buffDuration": 9.17,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

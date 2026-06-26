@@ -31,11 +31,16 @@ from pigg_wrangler.pigg import PiggArchive  # noqa: E402
 from pigg_wrangler import texture as tex  # noqa: E402
 from PIL import Image  # noqa: E402
 
-DEFAULT_ASSETS = os.environ.get(
-    "THUNDERSPY_ASSETS_DIR",
-    "/run/media/jiiwii/New Volume/Thunderspy Gaming/Sweet Tea/tspy",
-)
-EXPORT_DIR = os.path.join(REPO, "exported_powers", "thunderspy")
+# Per-dataset assets default (env override). Veracity ships a dedicated
+# `veracity_sidekick_icons.pigg` inside the repo's `Veracity Bins/` folder.
+_ASSETS_ENV = {
+    "thunderspy": "THUNDERSPY_ASSETS_DIR",
+    "veracity": "VERACITY_ASSETS_DIR",
+}
+_ASSETS_DEFAULT = {
+    "thunderspy": "/run/media/jiiwii/New Volume/Thunderspy Gaming/Sweet Tea/tspy",
+    "veracity": os.path.join(REPO, "Veracity Bins"),
+}
 OUT_DIR = os.path.join(REPO, "public", "img", "powers")
 ICON_SIZE = 32  # match the app's existing power-icon convention
 
@@ -60,9 +65,9 @@ def index_pigg_icons(assets_dir: str) -> dict[str, tuple[str, str]]:
     return idx
 
 
-def referenced_icons() -> set[str]:
+def referenced_icons(export_dir: str) -> set[str]:
     refs: set[str] = set()
-    for f in glob.glob(os.path.join(EXPORT_DIR, "**", "*.json"), recursive=True):
+    for f in glob.glob(os.path.join(export_dir, "**", "*.json"), recursive=True):
         if f.endswith("index.json"):
             continue
         try:
@@ -91,19 +96,25 @@ def texture_to_png_bytes(raw: bytes) -> bytes:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--assets-dir", default=DEFAULT_ASSETS)
+    ap.add_argument("--dataset", default="thunderspy", choices=sorted(_ASSETS_DEFAULT))
+    ap.add_argument("--assets-dir", default=None)
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    if not os.path.isdir(args.assets_dir):
-        print(f"ERROR: assets dir not found: {args.assets_dir}", file=sys.stderr)
+    assets_dir = args.assets_dir or os.environ.get(
+        _ASSETS_ENV[args.dataset], _ASSETS_DEFAULT[args.dataset]
+    )
+    export_dir = os.path.join(REPO, "exported_powers", args.dataset)
+
+    if not os.path.isdir(assets_dir):
+        print(f"ERROR: assets dir not found: {assets_dir}", file=sys.stderr)
         return 2
 
-    idx = index_pigg_icons(args.assets_dir)
-    print(f"Indexed {len(idx)} icon textures across tspy piggs")
+    idx = index_pigg_icons(assets_dir)
+    print(f"Indexed {len(idx)} icon textures across {args.dataset} piggs")
 
     have = {os.path.basename(p).lower() for p in glob.glob(os.path.join(OUT_DIR, "*"))}
-    refs = referenced_icons()
+    refs = referenced_icons(export_dir)
     missing = [r for r in refs if r not in have]
     covered = sorted(m for m in missing if norm(m) in idx)
     print(f"{len(refs)} referenced / {len(missing)} missing / {len(covered)} extractable from piggs")

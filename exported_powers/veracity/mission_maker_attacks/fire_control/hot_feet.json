@@ -175,7 +175,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Slow",
           "scale": 0.7,
@@ -243,7 +243,7 @@
           "stack": "Stack",
           "stack_limit": 648,
           "stack_key": null,
-          "boost_mod_allowed_id": 214300
+          "boost_mod_allowed_id": 213119
         }
       ]
     }

@@ -57,23 +57,27 @@ export const Overcharge: Power = {
       "table": "Ranged_Damage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.04,
-      "table": "Ranged_Ones",
-      "duration": 10.4
     }
   ],
   "effects": {
+    "damageBuff": {
+      "scale": 0.04,
+      "table": "Ranged_Ones",
+      "perTarget": 0.04
+    },
+    "durations": {
+      "damageBuff": 10.4,
+      "defenseDebuff": 15
+    },
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
     },
-    "durations": {
-      "defenseDebuff": 15
-    },
-    "buffDuration": 15
+    "buffDuration": 15,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "specialEffects": [
     {

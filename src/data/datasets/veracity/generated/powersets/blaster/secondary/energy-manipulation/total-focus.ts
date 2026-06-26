@@ -49,12 +49,16 @@ export const TotalFocus: Power = {
       "type": "Energy",
       "scale": 2.56,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.218,
-      "table": "Melee_Ones",
-      "duration": 10.8
     }
-  ]
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.218,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.8
+    },
+    "buffDuration": 10.8
+  }
 };

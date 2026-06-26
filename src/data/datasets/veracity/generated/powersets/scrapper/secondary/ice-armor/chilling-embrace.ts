@@ -57,11 +57,16 @@ export const ChillingEmbrace: Power = {
     },
     "durations": {
       "slow": 5,
-      "enduranceDiscount": 5
+      "enduranceDiscount": 5,
+      "damageDebuff": 5
     },
     "enduranceDiscount": {
       "scale": 0.4,
       "table": "Melee_Slow"
+    },
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Dam"
     },
     "buffDuration": 5
   }

@@ -82,17 +82,13 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "NoFloaters",
-            "CancelOnMiss",
-            "IgnoreResistance",
+            "NearGround",
             "IgnoreCombatMods",
-            "IgnoreEfficiency",
-            "DeepSleep",
             "KeepThroughDeath",
             "NoHitDelay",
             "NoProjectileDelay"
           ],
-          "flags_raw": 219365,
+          "flags_raw": 218184,
           "boost_mod_allowed_id": 16
         }
       ]
@@ -124,7 +120,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Ones",
           "scale": 0.229,

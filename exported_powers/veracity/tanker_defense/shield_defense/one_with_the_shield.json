@@ -88,7 +88,7 @@
           "stack": "Stack",
           "stack_limit": 544,
           "stack_key": null,
-          "boost_mod_allowed_id": 717606
+          "boost_mod_allowed_id": 716332
         },
         {
           "attribs": [
@@ -166,7 +166,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Strength",
+          "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_HealSelf",
           "scale": 2.0,
@@ -303,7 +303,7 @@
           "stack": "Stack",
           "stack_limit": 544,
           "stack_key": null,
-          "boost_mod_allowed_id": 100653
+          "boost_mod_allowed_id": 100380
         },
         {
           "attribs": [
@@ -331,8 +331,8 @@
           "stack_key": "Column.5thColumnEndgame.NictusFX",
           "suppress_events": [
             {
-              "event": "Event_2285657",
-              "event_id": 2285657,
+              "event": "Event_2284259",
+              "event_id": 2284259,
               "duration": 0.0,
               "flag": 0
             }

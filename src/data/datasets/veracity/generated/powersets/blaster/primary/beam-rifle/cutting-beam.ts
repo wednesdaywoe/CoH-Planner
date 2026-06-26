@@ -44,28 +44,30 @@ export const CuttingBeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.919,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
+  "damage": {
+    "type": "Energy",
+    "scale": 0.919,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "damageBuff": {
       "scale": 0.051,
       "table": "Ranged_Ones",
-      "duration": 9.4
-    }
-  ],
-  "effects": {
+      "perTarget": 0.051
+    },
+    "durations": {
+      "damageBuff": 9.4,
+      "defenseDebuff": 10
+    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
-    "durations": {
-      "defenseDebuff": 10
-    },
-    "buffDuration": 10
+    "buffDuration": 10,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "conditionalEffects": [
     {

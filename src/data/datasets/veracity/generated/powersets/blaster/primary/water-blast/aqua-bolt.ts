@@ -57,12 +57,6 @@ export const AquaBolt: Power = {
       "type": "Cold",
       "scale": 0.63,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.066,
-      "table": "Ranged_Ones",
-      "duration": 8.5
     }
   ],
   "effects": {
@@ -71,8 +65,13 @@ export const AquaBolt: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 8
+      "defenseDebuff": 8,
+      "damageBuff": 8.5
     },
-    "buffDuration": 8
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 8.5
   }
 };

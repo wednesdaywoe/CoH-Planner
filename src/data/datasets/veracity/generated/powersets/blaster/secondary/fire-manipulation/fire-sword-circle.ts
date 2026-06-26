@@ -55,12 +55,20 @@ export const FireSwordCircle: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 0.75
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.07,
-      "table": "Melee_Ones",
-      "duration": 10.17
     }
-  ]
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.07,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.17
+    },
+    "buffDuration": 10.17,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
+  }
 };

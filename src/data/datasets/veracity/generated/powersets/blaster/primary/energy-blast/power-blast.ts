@@ -56,19 +56,21 @@ export const PowerBlast: Power = {
       "type": "Energy",
       "scale": 1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 1,
       "table": "Ranged_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17
+    },
+    "buffDuration": 9.17
   },
   "specialEffects": [
     {

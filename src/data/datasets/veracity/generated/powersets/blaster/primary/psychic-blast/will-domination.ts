@@ -40,19 +40,21 @@ export const WillDomination: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.24,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.24,
+    "table": "Ranged_Damage"
+  },
+  "effects": {
+    "damageBuff": {
       "scale": 0.073,
-      "table": "Ranged_Ones",
-      "duration": 8.6
-    }
-  ],
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.6
+    },
+    "buffDuration": 8.6
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

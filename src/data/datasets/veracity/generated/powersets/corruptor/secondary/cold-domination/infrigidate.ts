@@ -61,7 +61,8 @@ export const Infrigidate: Power = {
     "durations": {
       "slow": 20,
       "enduranceDiscount": 20,
-      "defenseDebuff": 20
+      "defenseDebuff": 20,
+      "damageDebuff": 20
     },
     "enduranceDiscount": {
       "scale": 0.25,
@@ -70,6 +71,10 @@ export const Infrigidate: Power = {
     "defenseDebuff": {
       "scale": 2.5,
       "table": "Ranged_Debuff_Def"
+    },
+    "damageDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Dam"
     },
     "buffDuration": 20
   }

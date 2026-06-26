@@ -138,14 +138,14 @@
           "flags": [
             "NoFloaters",
             "CancelOnMiss",
-            "NearGround",
             "IgnoreStrength",
-            "IgnoreEfficiency",
+            "IgnoreResistance",
+            "IgnoreCombatMods",
             "DeepSleep",
             "KeepThroughDeath",
             "NoProjectileDelay"
           ],
-          "flags_raw": 150175,
+          "flags_raw": 149879,
           "boost_mod_allowed_id": 16
         }
       ]

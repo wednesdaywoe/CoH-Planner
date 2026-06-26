@@ -88,7 +88,7 @@
           "stack": "Stack",
           "stack_limit": 544,
           "stack_key": null,
-          "boost_mod_allowed_id": 717606
+          "boost_mod_allowed_id": 716332
         },
         {
           "attribs": [
@@ -166,7 +166,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Strength",
+          "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_HealSelf",
           "scale": 2.0,
@@ -303,7 +303,7 @@
           "stack": "Stack",
           "stack_limit": 544,
           "stack_key": null,
-          "boost_mod_allowed_id": 100653
+          "boost_mod_allowed_id": 100380
         },
         {
           "attribs": [

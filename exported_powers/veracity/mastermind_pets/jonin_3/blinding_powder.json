@@ -194,7 +194,7 @@
           "stack": "Stack",
           "stack_limit": 640,
           "stack_key": null,
-          "boost_mod_allowed_id": 232309
+          "boost_mod_allowed_id": 231128
         }
       ]
     },
@@ -285,7 +285,8 @@
           "stack_limit": 24,
           "stack_key": "olumnEndgame.NictusFX",
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1

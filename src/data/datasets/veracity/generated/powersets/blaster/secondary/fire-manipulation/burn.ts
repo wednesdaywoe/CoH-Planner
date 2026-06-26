@@ -38,19 +38,11 @@ export const Burn: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1.6,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.061,
-      "table": "Melee_Ones",
-      "duration": 9.53
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 1.6,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": -15,
@@ -62,6 +54,14 @@ export const Burn: Power = {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
-    }
+    },
+    "damageBuff": {
+      "scale": 0.061,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.53
+    },
+    "buffDuration": 9.53
   }
 };

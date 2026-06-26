@@ -172,7 +172,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Strength",
+          "aspect": "Maximum",
           "target": "AnyAffected",
           "table": "Melee_SpeedRunning",
           "scale": -1.0,

@@ -32,10 +32,14 @@ export const LeonalsRoar: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 1,
-    "table": "Melee_Ones",
-    "duration": 60
+  "effects": {
+    "damageBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 60
+    },
+    "buffDuration": 60
   }
 };

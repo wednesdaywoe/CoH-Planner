@@ -31,12 +31,6 @@ export const Absorption: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.08,
-    "table": "Melee_Ones",
-    "duration": 2.25
-  },
   "effects": {
     "resistance": {
       "energy": {
@@ -51,7 +45,12 @@ export const Absorption: Power = {
       }
     },
     "durations": {
-      "resistance": 2.25
+      "resistance": 2.25,
+      "damageBuff": 2.25
+    },
+    "damageBuff": {
+      "scale": 0.08,
+      "table": "Melee_Ones"
     },
     "buffDuration": 2.25,
     "maxStacks": 544,

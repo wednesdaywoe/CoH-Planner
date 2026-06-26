@@ -39,12 +39,6 @@ export const Shiver: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.028,
-    "table": "Melee_Ones",
-    "duration": 9.67
-  },
   "effects": {
     "enduranceDiscount": {
       "scale": 0.65,
@@ -52,7 +46,8 @@ export const Shiver: Power = {
     },
     "durations": {
       "enduranceDiscount": 18,
-      "slow": 18
+      "slow": 18,
+      "damageBuff": 9.67
     },
     "slow": {
       "runSpeed": {
@@ -72,6 +67,14 @@ export const Shiver: Power = {
         "table": "Melee_Slow"
       }
     },
-    "buffDuration": 18
+    "damageBuff": {
+      "scale": 0.028,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 18,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

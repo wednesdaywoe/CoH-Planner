@@ -258,7 +258,7 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Strength",
+          "aspect": "Maximum",
           "target": "Self",
           "table": "Melee_HealSelf",
           "scale": -9.9,

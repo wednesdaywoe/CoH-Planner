@@ -46,21 +46,13 @@ export const ImmobilizingDart: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Toxic",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.099,
-      "table": "Ranged_Ones",
-      "duration": 9
-    }
-  ],
+  "damage": {
+    "type": "Toxic",
+    "scale": 0.1,
+    "table": "Ranged_Damage",
+    "duration": 3.1,
+    "tickRate": 1
+  },
   "effects": {
     "sleep": {
       "mag": 3,
@@ -87,11 +79,16 @@ export const ImmobilizingDart: Power = {
     },
     "durations": {
       "slow": 18,
-      "enduranceDiscount": 18
+      "enduranceDiscount": 18,
+      "damageBuff": 9
     },
     "enduranceDiscount": {
       "scale": 0.3,
       "table": "Ranged_Slow"
+    },
+    "damageBuff": {
+      "scale": 0.099,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 18
   }

@@ -40,26 +40,26 @@ export const Strangler: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.22,
-      "table": "Ranged_Damage",
-      "duration": 4.2,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.137,
-      "table": "Ranged_Ones",
-      "duration": 9.57
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.22,
+    "table": "Ranged_Damage",
+    "duration": 4.2,
+    "tickRate": 1
+  },
   "effects": {
     "stun": {
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.137,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.57
+    },
+    "buffDuration": 9.57
   }
 };

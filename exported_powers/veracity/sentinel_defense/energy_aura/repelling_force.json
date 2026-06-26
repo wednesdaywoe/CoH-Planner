@@ -87,12 +87,14 @@
           ],
           "flags": [
             "NoFloaters",
+            "CancelOnMiss",
+            "NearGround",
             "IgnoreResistance",
             "IgnoreCombatMods",
-            "IgnoreEfficiency",
+            "DeepSleep",
             "HideZero"
           ],
-          "flags_raw": 2109923
+          "flags_raw": 2108525
         },
         {
           "attribs": [

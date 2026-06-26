@@ -40,7 +40,12 @@ export const Rage: Power = {
       "table": "Melee_Buff_ToHit"
     },
     "durations": {
-      "tohitBuff": 120
+      "tohitBuff": 120,
+      "damageBuff": 120
+    },
+    "damageBuff": {
+      "scale": 8,
+      "table": "Melee_Buff_Dmg"
     },
     "enduranceDrain": {
       "scale": 0.5,

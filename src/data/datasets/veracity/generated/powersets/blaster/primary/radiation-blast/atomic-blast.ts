@@ -51,12 +51,6 @@ export const AtomicBlast: Power = {
       "type": "Energy",
       "scale": 3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.041,
-      "table": "Ranged_Ones",
-      "duration": 10.43
     }
   ],
   "effects": {
@@ -70,8 +64,18 @@ export const AtomicBlast: Power = {
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 20
+      "defenseDebuff": 20,
+      "damageBuff": 10.43
     },
-    "buffDuration": 20
+    "damageBuff": {
+      "scale": 0.041,
+      "table": "Ranged_Ones",
+      "perTarget": 0.041
+    },
+    "buffDuration": 20,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

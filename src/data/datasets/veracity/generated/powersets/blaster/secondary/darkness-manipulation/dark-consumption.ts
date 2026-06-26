@@ -39,23 +39,23 @@ export const DarkConsumption: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.031,
-      "table": "Melee_Ones",
-      "duration": 8.53
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.8,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "enduranceGain": {
       "scale": 25,
       "table": "Melee_Ones"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.031,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.53
+    },
+    "buffDuration": 8.53
   }
 };

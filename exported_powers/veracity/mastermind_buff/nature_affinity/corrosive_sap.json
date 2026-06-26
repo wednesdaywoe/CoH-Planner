@@ -51,108 +51,6 @@
       "chance": 0.0,
       "ppm": 0.0,
       "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [
-        "NatureSpecial"
-      ],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Global_Chance_Mod"
-          ],
-          "type": "Constant",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 0.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 1584,
-          "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Temporary_Powers.Temporary_Powers.Nature_Combo_Counter"
-            ]
-          },
-          "cancel_events": [
-            "Event_16"
-          ],
-          "boost_mod_allowed_id": 56861
-        }
-      ]
-    },
-    {
-      "chance": 0.30000001192092896,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "Temporary_Powers.Temporary_Powers.Ballistic_Combo_Counter target.ownPowerNum? 0 >",
-      "tags": [
-        "Ones"
-      ],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Global_Chance_Mod"
-          ],
-          "type": "Constant",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 0.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 1584,
-          "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Temporary_Powers.Temporary_Powers.Ballistic_Combo_Counter"
-            ]
-          },
-          "cancel_events": [
-            "Event_16"
-          ],
-          "boost_mod_allowed_id": 57014
-        }
-      ]
-    },
-    {
-      "chance": 0.0,
-      "ppm": 0.0,
-      "delay": 0.0,
       "radius_inner": 0.0,
       "radius_outer": 0.0,
       "requires_expression": "Veracity.Subtypes.CircleOfThorns_Properties target.ownPower?",
@@ -1072,7 +970,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 2.5,
@@ -1104,7 +1002,7 @@
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
-          "aspect": "Absolute",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Ranged_Debuff_Dam",
           "scale": 2.5,

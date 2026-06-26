@@ -145,6 +145,23 @@ export const Pistols: Power = {
         },
         "buffDuration": 8
       }
+    },
+    {
+      "id": "chemicalammunition",
+      "label": "Chemical Ammo",
+      "scope": "global",
+      "defaultActive": false,
+      "group": "swap-ammo",
+      "effects": {
+        "damageDebuff": {
+          "scale": 0.8,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 5
+        },
+        "buffDuration": 5
+      }
     }
   ]
 };

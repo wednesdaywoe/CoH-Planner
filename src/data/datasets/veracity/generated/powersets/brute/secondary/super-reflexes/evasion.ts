@@ -61,9 +61,10 @@ export const Evasion: Power = {
       }
     },
     "buffDuration": 2.25,
-    "maxStacks": 96,
+    "maxStacks": 560,
     "stacksLinear": [
-      "defenseBuff"
+      "defenseBuff",
+      "specialBuff"
     ]
   }
 };

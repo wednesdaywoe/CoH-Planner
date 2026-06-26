@@ -56,7 +56,15 @@ export const FocusedBurst: Power = {
     "accuracyBuff": {
       "scale": 0.67,
       "table": "Melee_Ones"
-    }
+    },
+    "damageDebuff": {
+      "scale": 0.75,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 7
+    },
+    "buffDuration": 7
   },
   "specialEffects": [
     {

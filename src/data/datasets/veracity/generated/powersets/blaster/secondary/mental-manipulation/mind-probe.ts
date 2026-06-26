@@ -37,27 +37,24 @@ export const MindProbe: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.64,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.077,
-      "table": "Melee_Ones",
-      "duration": 8.67
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.64,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "enduranceDiscount": {
       "scale": 0.4,
       "table": "Melee_Slow"
     },
     "durations": {
-      "enduranceDiscount": 6
+      "enduranceDiscount": 6,
+      "damageBuff": 8.67
     },
-    "buffDuration": 6
+    "damageBuff": {
+      "scale": 0.077,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 8.67
   }
 };

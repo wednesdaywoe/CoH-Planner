@@ -48,21 +48,13 @@ export const ElectronShackles: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.115,
-      "table": "Ranged_Damage",
-      "duration": 4.75,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.077,
-      "table": "Ranged_Ones",
-      "duration": 8.67
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.115,
+    "table": "Ranged_Damage",
+    "duration": 4.75,
+    "tickRate": 0.5
+  },
   "effects": {
     "sleep": {
       "mag": 3,
@@ -78,7 +70,8 @@ export const ElectronShackles: Power = {
     "durations": {
       "debuffResistance": 15,
       "accuracyDebuff": 15,
-      "defenseDebuff": 10
+      "defenseDebuff": 10,
+      "damageBuff": 8.67
     },
     "accuracyDebuff": {
       "scale": 100,
@@ -87,6 +80,10 @@ export const ElectronShackles: Power = {
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
+    },
+    "damageBuff": {
+      "scale": 0.077,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 15
   }

@@ -84,7 +84,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -114,7 +115,8 @@
           "stack_limit": 0,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "CopyBoosts"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1
@@ -218,7 +220,7 @@
           "stack": "Stack",
           "stack_limit": 1072,
           "stack_key": null,
-          "boost_mod_allowed_id": 915835
+          "boost_mod_allowed_id": 914443
         },
         {
           "attribs": [

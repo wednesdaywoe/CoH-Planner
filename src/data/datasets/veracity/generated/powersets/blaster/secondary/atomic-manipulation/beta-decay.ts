@@ -55,14 +55,13 @@ export const BetaDecay: Power = {
       "table": "Melee_Debuff_Def"
     },
     "enduranceDiscount": {
-      "scale": 0.1,
-      "table": "Melee_Ones",
-      "perTarget": 0.1
+      "scale": 0.025,
+      "table": "Melee_Ones"
     },
     "buffDuration": 1,
     "maxStacks": 112,
     "stacksLinear": [
-      "enduranceDiscount"
+      "specialBuff"
     ]
   }
 };

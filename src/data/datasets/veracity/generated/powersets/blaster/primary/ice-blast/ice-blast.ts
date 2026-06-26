@@ -56,12 +56,6 @@ export const IceBlast: Power = {
       "type": "Cold",
       "scale": 1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
     }
   ],
   "effects": {
@@ -85,11 +79,16 @@ export const IceBlast: Power = {
     },
     "durations": {
       "slow": 10,
-      "enduranceDiscount": 5
+      "enduranceDiscount": 5,
+      "damageBuff": 9.17
     },
     "enduranceDiscount": {
       "scale": 0.1,
       "table": "Ranged_Slow"
+    },
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 10
   }

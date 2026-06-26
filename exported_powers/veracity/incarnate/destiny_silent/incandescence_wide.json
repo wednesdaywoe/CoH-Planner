@@ -123,8 +123,7 @@
           "stack_limit": 29,
           "stack_key": ".5thColumnEndgame.NictusFX",
           "flags": [
-            "IgnoreStrength",
-            "CopyBoosts"
+            "IgnoreStrength"
           ],
           "flags_raw": 16,
           "boost_mod_allowed_id": 1

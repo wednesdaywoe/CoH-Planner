@@ -58,12 +58,6 @@ export const Scream: Power = {
       "table": "Ranged_Damage",
       "duration": 1.05,
       "tickRate": 0.25
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.11,
-      "table": "Ranged_Ones",
-      "duration": 9.17
     }
   ],
   "effects": {
@@ -102,8 +96,13 @@ export const Scream: Power = {
       }
     },
     "durations": {
-      "resistanceDebuff": 7
+      "resistanceDebuff": 7,
+      "damageBuff": 9.17
     },
-    "buffDuration": 7
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 9.17
   }
 };

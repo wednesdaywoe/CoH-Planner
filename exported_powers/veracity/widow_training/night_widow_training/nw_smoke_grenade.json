@@ -872,7 +872,7 @@
             {
               "event": "Event_0",
               "event_id": 0,
-              "duration": 3.030700292672428e-40,
+              "duration": 3.0141509578087518e-40,
               "flag": 0
             }
           ]
@@ -917,7 +917,7 @@
           "stack": "Stack",
           "stack_limit": 544,
           "stack_key": null,
-          "boost_mod_allowed_id": 216278
+          "boost_mod_allowed_id": 215097
         }
       ]
     },

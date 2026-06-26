@@ -50,12 +50,16 @@ export const BlazingArrow: Power = {
       "table": "Ranged_Damage",
       "duration": 4.12,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.121,
-      "table": "Ranged_Ones",
-      "duration": 9.33
     }
-  ]
+  ],
+  "effects": {
+    "damageBuff": {
+      "scale": 0.121,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.33
+    },
+    "buffDuration": 9.33
+  }
 };

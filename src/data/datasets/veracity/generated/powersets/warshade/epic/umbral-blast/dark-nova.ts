@@ -51,7 +51,8 @@ export const DarkNova: Power = {
       "teleport": 2,
       "resistance": 2,
       "movement": 2,
-      "tohitBuff": 2
+      "tohitBuff": 2,
+      "damageBuff": 2
     },
     "resistance": {
       "energy": {
@@ -80,6 +81,10 @@ export const DarkNova: Power = {
     "tohitBuff": {
       "scale": 1,
       "table": "Melee_Buff_ToHit"
+    },
+    "damageBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_Dmg"
     },
     "buffDuration": 2
   }

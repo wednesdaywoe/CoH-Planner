@@ -54,12 +54,6 @@ export const Shriek: Power = {
       "type": "Energy",
       "scale": 0.42,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.066,
-      "table": "Ranged_Ones",
-      "duration": 8.5
     }
   ],
   "effects": {
@@ -98,8 +92,13 @@ export const Shriek: Power = {
       }
     },
     "durations": {
-      "resistanceDebuff": 5
+      "resistanceDebuff": 5,
+      "damageBuff": 8.5
     },
-    "buffDuration": 5
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 8.5
   }
 };

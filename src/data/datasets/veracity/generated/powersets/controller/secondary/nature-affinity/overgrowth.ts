@@ -41,7 +41,12 @@ export const Overgrowth: Power = {
       "table": "Ranged_Buff_ToHit"
     },
     "durations": {
-      "tohitBuff": 60
+      "tohitBuff": 60,
+      "damageBuff": 60
+    },
+    "damageBuff": {
+      "scale": 6.6,
+      "table": "Ranged_Buff_Dmg"
     },
     "buffDuration": 60
   }

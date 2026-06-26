@@ -51,12 +51,6 @@ export const EndofTime: Power = {
       "type": "Energy",
       "scale": 0.388,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.054,
-      "table": "Melee_Ones",
-      "duration": 10
     }
   ],
   "effects": {
@@ -65,9 +59,18 @@ export const EndofTime: Power = {
       "table": "Melee_Ones"
     },
     "durations": {
-      "recoveryDebuff": 40
+      "recoveryDebuff": 40,
+      "damageBuff": 10
     },
-    "buffDuration": 40
+    "damageBuff": {
+      "scale": 0.054,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 40,
+    "maxStacks": 112,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   },
   "conditionalEffects": [
     {

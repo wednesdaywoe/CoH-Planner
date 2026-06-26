@@ -54,18 +54,28 @@ export const ConduitofPain: Power = {
     },
     "durations": {
       "enduranceDiscount": 60,
+      "damageBuff": 60,
       "tohitBuff": 60,
+      "damageDebuff": 30,
       "tohitDebuff": 30
+    },
+    "damageBuff": {
+      "scale": 3,
+      "table": "Ranged_Buff_Dmg"
     },
     "tohitBuff": {
       "scale": 2,
       "table": "Ranged_Buff_ToHit"
     },
+    "damageDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "selfPenalty": true,
     "tohitDebuff": {
       "scale": 2,
       "table": "Ranged_DeBuff_ToHit"
     },
-    "selfPenalty": true,
     "buffDuration": 60
   }
 };

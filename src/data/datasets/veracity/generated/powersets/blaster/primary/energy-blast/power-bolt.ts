@@ -56,19 +56,21 @@ export const PowerBolt: Power = {
       "type": "Energy",
       "scale": 0.8,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.066,
-      "table": "Ranged_Ones",
-      "duration": 8.5
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 0.7,
       "table": "Ranged_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5
+    },
+    "buffDuration": 8.5
   },
   "specialEffects": [
     {

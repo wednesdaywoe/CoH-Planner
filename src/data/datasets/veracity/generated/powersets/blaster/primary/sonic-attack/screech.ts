@@ -50,12 +50,6 @@ export const Screech: Power = {
       "type": "Energy",
       "scale": 0.1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.099,
-      "table": "Ranged_Ones",
-      "duration": 9
     }
   ],
   "effects": {
@@ -94,7 +88,12 @@ export const Screech: Power = {
       }
     },
     "durations": {
-      "resistanceDebuff": 12
+      "resistanceDebuff": 12,
+      "damageBuff": 9
+    },
+    "damageBuff": {
+      "scale": 0.099,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 12
   }

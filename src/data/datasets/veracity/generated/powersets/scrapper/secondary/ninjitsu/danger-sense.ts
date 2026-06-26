@@ -70,9 +70,10 @@ export const DangerSense: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 0.75,
-    "maxStacks": 544,
+    "maxStacks": 560,
     "stacksLinear": [
-      "defenseBuff"
+      "defenseBuff",
+      "specialBuff"
     ]
   }
 };

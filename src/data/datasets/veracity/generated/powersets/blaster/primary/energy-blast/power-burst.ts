@@ -50,19 +50,21 @@ export const PowerBurst: Power = {
       "type": "Energy",
       "scale": 1.12,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.132,
-      "table": "Ranged_Ones",
-      "duration": 9.5
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 2,
       "table": "Ranged_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.132,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.5
+    },
+    "buffDuration": 9.5
   },
   "specialEffects": [
     {

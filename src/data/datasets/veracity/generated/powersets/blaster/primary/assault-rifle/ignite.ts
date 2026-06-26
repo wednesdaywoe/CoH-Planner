@@ -38,10 +38,14 @@ export const Ignite: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.151,
-    "table": "Ranged_Ones",
-    "duration": 11.5
+  "effects": {
+    "damageBuff": {
+      "scale": 0.151,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 11.5
+    },
+    "buffDuration": 11.5
   }
 };

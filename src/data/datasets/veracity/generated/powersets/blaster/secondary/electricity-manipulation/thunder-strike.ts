@@ -53,19 +53,21 @@ export const ThunderStrike: Power = {
       "type": "Energy",
       "scale": 0.42,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.078,
-      "table": "Melee_Ones",
-      "duration": 10.8
     }
   ],
   "effects": {
     "accuracyBuff": {
       "scale": 2,
       "table": "Melee_Knockback"
-    }
+    },
+    "damageBuff": {
+      "scale": 0.078,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.8
+    },
+    "buffDuration": 10.8
   },
   "specialEffects": [
     {

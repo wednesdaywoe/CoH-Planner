@@ -874,14 +874,14 @@
           "stack_key": null,
           "flags": [
             "NoFloaters",
+            "CancelOnMiss",
             "NearGround",
             "IgnoreStrength",
-            "IgnoreResistance",
             "IgnoreCombatMods",
             "HideZero",
             "NoProjectileDelay"
           ],
-          "flags_raw": 173689,
+          "flags_raw": 172895,
           "boost_mod_allowed_id": 16
         }
       ]
