@@ -446,7 +446,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     getValue: (stats) => stats.enduranceReduction,
     format: (v) => `${pct2(Number(v))}%`,
     color: STAT_COLORS.enduranceDiscount,
-    tooltip: 'Endurance Discount (additive %): the sum that feeds the cost formula cost = base / (1 + EndDisc/100). Matches the value Mids and the in-game combat-attributes window show.',
+    tooltip: 'Endurance Discount (additive %): the sum that feeds the cost formula cost = base / (1 + EndDisc/100). Matches the value Mids shows. The in-game combat-attributes window instead shows the post-formula reduction 1 - 1/(1 + EndDisc/100), so e.g. 3.75% here reads as 3.6% in-game.',
     breakdownKey: 'endurance',
   },
   endcost: {

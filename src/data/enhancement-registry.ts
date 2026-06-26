@@ -298,6 +298,17 @@ export function getTierBorderColor(tier: string): string {
 // FACTORY FUNCTIONS
 // ============================================
 
+/**
+ * ATO and event (Winter/Summer/Anniversary) sets are always attuned in-game —
+ * they have no fixed level and can't be boosted. The data encodes this as
+ * `maxLevel <= 1` (they scale freely above their listed cap). Slotting one at a
+ * fixed level would bork its enhancement values and let it be erroneously
+ * boosted, so we always treat these as attuned regardless of the picker slider.
+ */
+export function isInherentlyAttuned(set: Pick<IOSet, 'maxLevel'>): boolean {
+  return set.maxLevel <= 1;
+}
+
 /** Create an IO Set Enhancement object */
 export function createIOSetEnhancement(
   set: IOSet,
@@ -306,10 +317,13 @@ export function createIOSetEnhancement(
   options: { attuned: boolean; level: number; boost?: number },
 ): IOSetEnhancement {
   const setId = set.id || set.name;
+  // ATO / event sets are inherently attuned (see isInherentlyAttuned) — force it
+  // here so every slotting path (picker, imports, deserialization) is consistent.
+  const attuned = options.attuned || isInherentlyAttuned(set);
   // Pure procs (no aspects) don't get boosted, and attuned enhancements can't be boosted
   // Hybrid procs (e.g. LotG Def/+Recharge) CAN be boosted — the aspect portion scales, the proc stays fixed
   const isPureProc = piece.proc && piece.aspects.length === 0;
-  const boost = (options.boost && options.boost > 0 && !isPureProc && !options.attuned) ? options.boost : undefined;
+  const boost = (options.boost && options.boost > 0 && !isPureProc && !attuned) ? options.boost : undefined;
   return {
     type: 'io-set',
     id: `${setId}-${pieceIndex}`,
@@ -323,8 +337,8 @@ export function createIOSetEnhancement(
     setId,
     setName: set.name,
     pieceNum: piece.num,
-    level: options.attuned ? undefined : options.level,
-    attuned: options.attuned,
+    level: attuned ? undefined : options.level,
+    attuned,
     boost,
     aspects: piece.aspects as EnhancementStatType[],
     isProc: piece.proc,
