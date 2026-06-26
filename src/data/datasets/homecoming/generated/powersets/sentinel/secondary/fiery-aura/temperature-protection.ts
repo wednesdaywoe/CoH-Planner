@@ -12,8 +12,8 @@ export const TemperatureProtection: Power = {
   "name": "Temperature Protection",
   "internalName": "Temperature_Protection",
   "available": 9,
-  "description": "Temperature Protection gives you strong resistance to Fire damage, some resistance to Cold damage and slow effects, and grants minor, unenhanceable regeneration as well as provide very minor Knockback Protection. This power is always on and costs no Endurance.",
-  "shortHelp": "Auto: Self +Res(Fire, Cold, Slow, Knock), +Regen",
+  "description": "Temperature Protection gives you strong resistance to Fire damage, some resistance to Cold, Toxic and Psionic damage. It also grants resistance against slow effects, and grants minor regeneration, maximum hit point increases, and Knockback Protection. This power is always on and costs no Endurance.",
+  "shortHelp": "Auto: Self +Res(Fire, Cold, Toxic, Psionic, Slow, Fear, Knock), +Regen, +Max HP",
   "icon": "flamingshield_temperatureprotection.png",
   "powerType": "Auto",
   "targetType": "Self",
@@ -23,9 +23,11 @@ export const TemperatureProtection: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [
-    "Resistance"
+    "Resistance",
+    "Healing"
   ],
   "allowedSetCategories": [
+    "Healing",
     "Resist Damage"
   ],
   "maxSlots": 6,
@@ -35,17 +37,28 @@ export const TemperatureProtection: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
       "fire": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       }
     },
     "durations": {
-      "resistance": 10,
-      "debuffResistance": 10,
-      "regenBuffUnenhanced": 10,
+      "resistance": 10.25,
+      "debuffResistance": 10.25,
+      "regenBuff": 10.25,
+      "maxHPBuff": 10.25,
       "knockback": 10.25,
-      "knockup": 10.25
+      "knockup": 10.25,
+      "mezResistance": 10.25,
+      "fear": 10.25
     },
     "debuffResistance": {
       "movement": {
@@ -57,19 +70,43 @@ export const TemperatureProtection: Power = {
         "table": "Melee_Ones"
       }
     },
-    "regenBuffUnenhanced": {
+    "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "knockback": {
+    "maxHPBuff": {
       "scale": 1,
+      "table": "Melee_HealSelf"
+    },
+    "knockback": {
+      "scale": 3,
       "table": "Melee_Ones"
     },
     "knockup": {
-      "scale": 1,
+      "scale": 3,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10
+    "mezResistance": {
+      "knockup": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "knockback": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 10.25,
+    "buffDuration": 10.25
   },
   "mechanicType": "parentMechanic"
 };

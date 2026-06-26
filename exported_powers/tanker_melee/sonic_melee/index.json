@@ -40,7 +40,7 @@
   "power_short_helps": [
     "Melee, DMG(Energy/Smash), Foe Knockback, -Res(Debuffs)",
     "Melee, DMG(Energy/Smash), Foe -Res(Debuffs), Chance for Hold",
-    "Melee Toggle, DMG(Energy), Foe DOT(Energy), Special",
+    "Melee Toggle, Foe DOT(Energy), Foe -Res(DMG, Debuffs), Special",
     "Ranged (Targeted AoE), Foe Taunt",
     "Melee (Cone), Foe Disorient, Knockdown",
     "Self +DMG, +To Hit, +Special",

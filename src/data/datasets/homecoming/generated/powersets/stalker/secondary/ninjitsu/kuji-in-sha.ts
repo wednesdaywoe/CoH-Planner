@@ -12,7 +12,7 @@ export const KujiInSha: Power = {
   "name": "Kuji-In Sha",
   "internalName": "Kuji-In_Sha",
   "available": 19,
-  "description": "Kuji-In Sha invokes the power of Sha, or healing. Focusing your inner power, you can heal your body of its wounds and leave yourself resistant to the effects of Toxic damage for a while.Recharge: Slow.",
+  "description": "Kuji-In Sha invokes the power of Sha, or healing. Focusing your inner power, you can heal your body of its wounds and leave yourself resistant to the effects of Toxic damage for a while.",
   "shortHelp": "Self Heal, Res(Toxic)",
   "icon": "ninjitsu_kujinsha.png",
   "powerType": "Click",

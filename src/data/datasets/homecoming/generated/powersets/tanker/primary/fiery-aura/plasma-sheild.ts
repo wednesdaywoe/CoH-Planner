@@ -12,7 +12,7 @@ export const PlasmaSheild: Power = {
   "name": "Plasma Shield",
   "internalName": "Plasma_Sheild",
   "available": 11,
-  "description": "While this power is active, you are surrounded by pure plasma. The Plasma Shield gives you resistance to Energy, Negative Energy, and Fire damage. Plasma Shield also gives your protection from Sleep and Hold effects.Recharge: Very Fast.",
+  "description": "While this power is active, you are surrounded by pure plasma. The Plasma Shield gives you resistance to Energy, Negative Energy, and Fire damage. Plasma Shield also gives your protection from Sleep and Hold effects.",
   "shortHelp": "Toggle: Self +Res(Energy, Negative, Fire, Hold, Sleep)",
   "icon": "flamingshield_plasmasheild.png",
   "powerType": "Toggle",

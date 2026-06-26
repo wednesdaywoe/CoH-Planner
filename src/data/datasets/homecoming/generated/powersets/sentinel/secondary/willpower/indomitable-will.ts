@@ -12,7 +12,7 @@ export const IndomitableWill: Power = {
   "name": "Indomitable Will",
   "internalName": "Indomitable_Will",
   "available": 9,
-  "description": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusions, Repel, Knockback and Hold effects. Indomitable Will also grants a moderate defense to Psionic based attacks.Recharge: Fast.",
+  "description": "When you toggle on this power, it grants protection from Sleep, Disorient, Fear, Immobilize, Confusions, Repel, Knockback and Hold effects. Indomitable Will also grants a moderate defense to Psionic based attacks.",
   "shortHelp": "Toggle: Self Res (Disorient, Hold, Immobilize, Sleep, Fear, Confuse, Repel, Knockback). DEF(Psionics)",
   "icon": "willpower_indomitablewill.png",
   "powerType": "Toggle",

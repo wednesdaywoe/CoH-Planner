@@ -12,19 +12,17 @@ export const Burn: Power = {
   "name": "Burn",
   "internalName": "Burn",
   "available": 27,
-  "description": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power.Damage: Moderate.Recharge: Slow.",
+  "description": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power.",
   "shortHelp": "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
   "icon": "firemanipulation_burn.png",
   "powerType": "Click",
   "targetType": "Self",
-  "effectArea": "AoE",
+  "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "radius": 8,
     "recharge": 25,
     "endurance": 5.2,
-    "castTime": 2.03,
-    "maxTargets": 5
+    "castTime": 2.03
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -38,24 +36,39 @@ export const Burn: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 1.44,
-    "table": "Melee_Damage"
-  },
   "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 100,
+    "durations": {
+      "immobilize": 100,
+      "knockup": 100,
+      "knockback": 100
+    },
+    "knockup": {
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
     "summon": {
       "isPseudoPet": false,
       "entity": "PL_StaticObject",
+      "displayName": "Burn Flames",
       "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Redirects.Fiery_Aura.Burn"
+        "Redirects.Fiery_Aura.Burn",
+        "Redirects.Fiery_Aura.Burn_FrontDamage"
       ],
       "duration": 10,
       "copyBoosts": true,
       "resolvedEntities": [
         {
-          "displayName": "Burn",
+          "displayName": "Burn Flames",
           "duration": 10,
           "copyCreatorMods": true,
           "abilities": [
@@ -66,7 +79,7 @@ export const Burn: Power = {
               "damage": [
                 {
                   "damageType": "Fire",
-                  "scale": 0.08,
+                  "scale": 0.14,
                   "table": "Melee_Damage"
                 }
               ],
@@ -74,12 +87,36 @@ export const Burn: Power = {
               "castTime": 0,
               "activatePeriod": 0.8,
               "effectArea": "Sphere",
-              "radius": 8,
-              "maxTargets": 5
+              "radius": 15,
+              "maxTargets": 10
+            },
+            {
+              "name": "Burn_FrontDamage",
+              "displayName": "Burn",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Fire",
+                  "scale": 1,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Fire",
+                  "scale": 0.44,
+                  "table": "Melee_Damage"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 100,
+              "effectArea": "Sphere",
+              "radius": 15,
+              "maxTargets": 10
             }
           ]
         }
       ]
-    }
+    },
+    "buffDuration": 100
   }
 };

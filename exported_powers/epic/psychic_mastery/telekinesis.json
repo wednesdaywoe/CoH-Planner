@@ -144,14 +144,14 @@
                 }
               ],
               "flags": [
-                "NoFloaters",
-                "CancelOnMiss",
+                "IgnoreStrength",
+                "IgnoreResistance",
                 "IgnoreCombatMods",
-                "IgnoreEfficiency",
+                "DeepSleep",
                 "KeepThroughDeath",
                 "IgnoreSuppressErrors"
               ],
-              "flags_raw": 1628103,
+              "flags_raw": 1628528,
               "boost_mod_allowed_id": 20
             },
             {
@@ -257,13 +257,14 @@
                 }
               ],
               "flags": [
-                "IgnoreResistance",
-                "IgnoreCombatMods",
+                "NoFloaters",
+                "NearGround",
                 "IgnoreEfficiency",
+                "DeepSleep",
                 "KeepThroughDeath",
                 "IgnoreSuppressErrors"
               ],
-              "flags_raw": 1628130,
+              "flags_raw": 1628555,
               "boost_mod_allowed_id": 20
             },
             {

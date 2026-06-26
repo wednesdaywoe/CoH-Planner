@@ -42,10 +42,10 @@
     "Toggle: Self +DEF(Ranged, AoE), +Perception, Res(DeBuff DEF)",
     "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE), +Special",
     "Self +SPD, +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Psionics)",
-    "Self +Endurance",
+    "Self +Endurance, Res(-Endurance)",
     "Self Heal, Res(Toxic)",
     "Auto: Self +Res(Knockback, Knockup, All DMG)",
-    "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
+    "Ranged (Cone), Foe Placate, -To Hit, Sleep, Confuse, -Perception, +Special",
     "Self +DEF, +SPD, +Recovery, Res(DeBuff DEF), +Special"
   ]
 }

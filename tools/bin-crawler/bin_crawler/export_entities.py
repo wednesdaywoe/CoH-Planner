@@ -35,6 +35,13 @@ from bin_crawler.assets_dir import resolve_assets_dir
 from bin_crawler.parser._entities import parse_entities, EntityRecord
 from bin_crawler.parser._powersets import parse_powersets
 from bin_crawler.parser._messages import load_messages
+# Reuse the powers exporter's source-aware Primalist gating so the two export
+# paths stay in lockstep. Importing is side-effect-free (export_powers guards
+# its CLI behind `if __name__ == '__main__'`).
+from bin_crawler.export_powers import (
+    PRIMALIST_CATEGORIES,
+    _source_has_primalist_class,
+)
 
 
 PET_PREFIXES = ("pets_", "mastermindpets_", "incarnatepets_", "villain_pets_")
@@ -193,20 +200,38 @@ def main():
         msgs = load_messages(resolver.read("clientmessages-en.bin"))
         print(f"  {len(msgs)} messages loaded.")
 
+    # Source-aware Primalist gating (mirrors export_powers): HC/Rebirth carry
+    # ORPHAN Primalist pet entities (pets_primalwolf, the per-attack lifesteal
+    # heal pseudo-pets) whose powers live in the Thunderspy-only Primalist
+    # categories. Drop them unless the source defines a Primalist class, so the
+    # leak that reached pet-entities.ts can't recur. Reference-based: an entity
+    # is Primalist iff it references a power in a Primalist category — robust and
+    # in lockstep with the powers-export discriminator.
+    drop_primalist = not _source_has_primalist_class(resolver)
+    if drop_primalist:
+        print("  No Primalist class in source — dropping orphan Primalist pet entities.")
+
     written = 0
     skipped_no_powers = 0
+    skipped_primalist = 0
     for rec in entities:
         if not rec.name.lower().startswith(PET_PREFIXES):
             continue
         if not rec.powers:
             skipped_no_powers += 1
             continue
+        if drop_primalist and any(
+            p.power_category in PRIMALIST_CATEGORIES for p in rec.powers
+        ):
+            skipped_primalist += 1
+            continue
         d = entity_to_dict(rec, ps_index, msgs=msgs)
         out_file = output_dir / f"{rec.name.lower()}.json"
         out_file.write_text(json.dumps(d, indent=2), encoding="utf-8")
         written += 1
 
-    print(f"\nWrote {written} pet entity files (skipped {skipped_no_powers} with no powers).")
+    print(f"\nWrote {written} pet entity files (skipped {skipped_no_powers} with "
+          f"no powers, {skipped_primalist} orphan Primalist).")
 
 
 if __name__ == "__main__":

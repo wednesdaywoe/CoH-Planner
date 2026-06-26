@@ -20,9 +20,197 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-*(none open)*
+*(Sibling game-data finding from the I28P3 audit — NOT a parser issue, logged here only for
+cross-reference: Sentinel `Blinding_Powder` Confuse **scale is 10**, but the patch notes
+and the Scrapper/Stalker versions say **12**. The parser reads it correctly — Scr/Stk parse
+as 12 — so the binary genuinely contains 10 on the Sentinel record. Flagged to the dev team;
+data pushed as-is.)*
 
 > ---RESOLVED ---
+
+## ✅ Summon-shell "ground patch" powers now surface the pseudo-pet's AoE footprint (Burn et al.) — display-only, bin untouched — 2026-06-24
+
+**Was.** Burn showed as **Single Target** with no radius/cap; Location patches (Tar Patch,
+Rain of Fire, Caltrops, Ice Storm, …) showed a bare "Location AoE" with the radius/cap hidden —
+even though the real footprint (Burn → `FieryBurn` 15ft/10, Tar Patch 25ft/16) was already
+resolved into `effects.summon.resolvedEntities[].abilities[]`. The headline read the shell's
+`effect_area`/`radius`/`max_targets` (Self/SingleTarget/0), so the AoE numbers never surfaced.
+
+**Fix (UI display-only — convert/bin untouched, as the literal `effect_area` is accurate and
+downstream calc/targeting depends on it).** New `deriveSummonPatchArea(power, effects)` in
+[PowerInfoBlocks.tsx](src/components/info/PowerInfoBlocks.tsx) — the single source that feeds
+`GeneralStatsBlock` (used by both the Info Panel and the power tooltip):
+- Fires only when the power has `summon.resolvedEntities` **and** no headline radius of its own
+  (so real AoEs and MM/PET_ENTITIES summons are untouched). Keyed on `resolvedEntities`
+  presence, **not** the `isPseudoPet` flag — that flag is `false` for Burn-style
+  `PL_StaticObject` shells.
+- Picks the **widest-footprint** resolved ability (self-buff abilities carry no radius and are
+  skipped), borrows its `radius`/`maxTargets`. `255` (uncapped sentinel) is omitted rather than
+  rendered as "255 max".
+- Preserves the power's own area when it already conveys an AoE shape (Location patches stay
+  **"Location AoE, 25ft, 16 max (patch)"**); only the misleading Self/SingleTarget shells
+  borrow the pet's area (Burn → **"AoE, 15ft, 10 max (patch)"**). The `(patch)` suffix flags
+  that the footprint comes from the summoned entity, not a direct hit.
+- Also extended `formatEffectArea`'s `Location` case to render radius/cap (it previously dropped
+  them), which additionally benefits any real Location AoE that carries a headline radius.
+
+Types: `ResolvedPseudoPet`/`ResolvedPseudoPetAbility` re-exported from `@/types`. `tsc` clean;
+44 pseudo-pet data/calc tests still green (display change touches no calc path).
+
+## ✅ Burn / Lightning Rod showed ZERO damage — a gated FieryEmbrace bonus beside the base DoT flipped the whole ability to `conditionalDamage` — 2026-06-24
+
+**Symptom.** Burn displayed **no damage at all** (and Lightning Rod likewise). The summon
+shell's resolved pseudo-pet carried the right scales, but the Damage block was empty.
+
+**Root (`resolveSummonRedirects` in [convert-powerset.cjs](scripts/convert-powerset.cjs)).**
+`FieryBurn` has two damage groups: an always-on `chance=1` Fire DoT (scale 0.14) **and** a
+`chance=0, tags=["FieryEmbrace"]` bonus (scale 0.063) — the persistent Fiery-Embrace component.
+A `chance:0`-with-payload group is a mode-gate sentinel, so the 0.063 leaf is marked `gated`.
+The old rate classifier did `if (anyGated) conditionalDamage = true` — **one** gated bonus leaf
+flagged the **entire** ability conditional, and the runtime keeps `conditionalDamage` abilities
+OUT of the headline DoT. With both of Burn's abilities (FieryBurn + FieryBurn_FrontDamage) so
+flagged, the guaranteed 0.14 / 1.0+0.44 base damage was suppressed → zero. Same shape on
+Lightning Rod (base Energy 2.27 + a gated FE Fire 1.02) → also zero.
+
+**Fix (one-spot, surgical).** `conditionalDamage` now requires that there be **no guaranteed
+(non-gated) damage at all** — i.e. it's reserved for redirects whose damage is *entirely*
+mode-gated (a storm High-Winds-only branch, the original Storm-Cell `1908` guard). A gated bonus
+sitting **beside** an always-on hit no longer suppresses the headline; the bonus stays in the
+`damage` array (the armor Burns deliberately surface the FE-active variant `0.14 + 0.063`, per
+the existing `pseudopet-redirect` test + `_filterFieryEmbraceBonus` fire-set rationale). The
+proc-rate (`damageChance`) derivation now reads guaranteed leaves only, so a gated bonus can't
+drag the headline to a proc rate either.
+
+**Scope.** Regen touched exactly the 9 affected powers — Burn ×5 (Tanker/Brute/Scrapper/
+Sentinel/Stalker Fiery Aura) and Lightning Rod ×4 (Electric Melee) — each diff a pure
+`conditionalDamage: true` removal, all damage scales intact. Storm Cell / Category Five
+**unchanged** (their base aura is a non-gated `IncreaseStormStrength` accumulator, so they were
+never hitting the all-gated branch). `tsc` clean; full suite **577/577** green (the
+`pseudopet-redirect` Burn FE-variant test now passes for the right reason).
+
+## ✅ `Grant_Power → Temporary_Powers` DoT procs resolved end-to-end — Molten Embrace / Hidden Flame DoT now visible + enhanceable-aware (full 3-layer fix, 2026-06-24)
+
+**Gap (from the I28P3 audit).** The note "Molten Embrace [Sentinels] — the DoT damage proc
+is now affected by damage enhancements and buffs" was unverifiable from `exported_powers/`:
+the passive holds **two `Grant_Power` templates** → `Temporary_Powers.Temporary_Powers.
+Molten_Embrace_Proc`, and the *actual* player-facing damage (Fire ~0.0493/tick, period 1.0s,
+duration 2.1s, **no `IgnoreStrength`** = enhanceable) lives in that granted power.
+`Temporary_Powers` isn't an exported category, so the proc's damage **and** its
+enhanceable-ness were invisible to the whole pipeline. **Scoped first (verify-don't-assume):**
+confirmed the planner showed *nothing* of this proc (generated Molten Embrace = only the
+`+Damage` toggle; empty override; not in `proc-data.ts`, which is IO-set procs only). A direct
+`parse_powers` over `Temporary_Powers` showed the real scope is **narrow**: of 67 distinct
+`Temporary_Powers` grant targets, 14 carry damage — 13 of those are all-8-types
+`IgnoreStrength` **+Damage *buff*** definitions (Power Siphon, Reach for the Limit, Perfection
+of Body …, aspect=Strength), already represented elsewhere; the genuinely-missing
+**damage-DEALING** single-type procs are just Molten Embrace, Stalker Hidden Flame (same
+proc), Toxins, Envenomed Blades.
+
+**Fix (3 layers, all data-driven — no curated power lists).**
+1. **Export** ([export_powers.py](tools/bin-crawler/bin_crawler/export_powers.py)) — new
+   `_collect_grant_targets` + a referenced-target inclusion pass: after filtering to player
+   categories, pull in exactly the `Temporary_Powers` powers a player power **grants** via
+   `Grant_Power` (67 files), instead of the 1,247-power whole category (travel/accolade/event
+   junk). Mirrors how `Pets`/`*_Aux` host `Execute_Power`/redirect damage, but scoped to
+   references. `convert-all-powersets` never turns `Temporary_Powers` into a powerset (not in
+   its category map), so these are pure resolver data. Gated off `--categories`.
+2. **Convert** ([convert-powerset.cjs](scripts/convert-powerset.cjs)) — new
+   `resolveGrantedDamageProcs` / `_buildGrantedDamageProc`: walks the grant, loads the target
+   via the existing `resolveRedirectPath`, and attaches `grantedDamageProcs`. Three traps
+   handled: (a) the proc's damage lives in nested `child_groups` with engine-guard
+   `requires_expression`s (`activateperiod==0`, Judgement exclusions, `enttype critter eq`) that
+   `collectTemplatesWithChance` reads as conditional gates and would skip — so a dedicated
+   **lenient PvE walker** collects through them, dropping only the `enttype target> player eq`
+   PvP variant; (b) the damage genuinely sits on a `Melee_PvPDamage`-NAMED table, so the redirect
+   resolver's `/pvp/i`-table drop is wrong here (the **requires**, not the table name, is the
+   PvE/PvP discriminator); (c) **multi-grant guard** — a power granting >1 distinct proc is a
+   mutually-exclusive MODE system (Bio Armor Offensive/Defensive/Efficient adaptations grant all
+   three procs with no group-requires to tell stances apart), so it's left to the existing
+   conditionalEffects/Mechanic-Adjuster surface rather than flat-attached. `extractDamage` already
+   drops the aspect=Strength +Dmg buffs and we additionally exclude `Heal` (Bio's defensive proc
+   is a self-heal). `enhanceable = no kept damage template has IgnoreStrength`.
+3. **Display** ([InfoPanel.tsx](src/components/info/InfoPanel.tsx) + `GrantedDamageProc` type in
+   [power.ts](src/types/power.ts)) — a "Granted Damage Proc" block computing per-tick × ticks
+   over duration via `calculateDamageWithATTable` (the AT-table helper that resolves
+   `Melee_PvPDamage`; `calculateEffectValue` does NOT — §13 silent-fallback trap, now guarded by a
+   test). Enhanceable procs scale with the power's slotted damage + global damage strength;
+   IgnoreStrength ones show flat. Surfaced **informationally** (it procs off the player's own
+   attacks at `tickChance`), not summed into the power's own DPS.
+
+**Result.** Exactly 4 generated powers gain `grantedDamageProcs`: Molten Embrace + Stalker Hide
+(Fire 0.0493, **enhanceable:true**, 80%/tick, 2.1s — exactly the I28P3 claim), Toxins +
+Envenomed Blades (Toxic, enhanceable:false). Sentinel per-tick resolves to **Fire 3.80 ×3 ≈
+11.4** over 2.1s. **De-risked per §6:** scratch export vs committed = **0 files differ**, the only
+delta is the new `temporary_powers/` dir (+67 files). Regen is idempotent (only the 4 files).
+Guard: [granted-damage-procs.test.ts](src/data/granted-damage-procs.test.ts) (5 cases incl. the
+Bio-not-attached regression + the table-resolves guard). tsc clean, **577 tests**.
+
+**Follow-up (not done — deliberate scope cut).** The Bio Armor adaptation toxic proc + the
++Damage-buff grants (Power Siphon, Reach for the Limit, Perfection of Body) remain on the
+Mechanic-Adjuster surface only; folding the granted DoT into per-attack DPS (it fires off the
+player's attack chain) is a separate calc feature, not a data gap.
+
+**Audit-harness note (context, not a pipeline bug):** the production exporter DOES capture
+`child_effects` (raw `child_groups`) and caster-on-cast buffs under `activation_effects` (e.g.
+Blinding Powder's "+30% crit chance for 10s" `Global_Chance_Mod`) — any ad-hoc tooling reading
+these JSONs must walk both or it under-reads.
+
+## ✅ Thunderspy Primalist orphan-power LEAK into the HC export — source-aware category gating (2026-06-24)
+
+**Bug (found during the I28P3 export regen).** The HC export contained three
+Thunderspy-only Primalist categories — `feral_might` (14), `primal_gifts` (12),
+`primalist_misc` (37) = **63 orphan powers**. Primalist is strictly a Thunderspy custom AT;
+it must not appear in HC at all. `primalist_misc` had been leaking into committed HC
+exports for a while; `feral_might`/`primal_gifts` newly surfaced with the current HC bin.
+
+**Root cause.** `PLAYER_CATEGORIES` in
+[export_powers.py](tools/bin-crawler/bin_crawler/export_powers.py) is **one shared whitelist
+applied to every source**, and it lists `Feral_Might`/`Primal_Gifts`/`Primalist_Misc` for
+Thunderspy's sake. The old comment asserted *"HC/Rebirth have no equivalent (these
+categories simply won't exist in those datasets)"* — **false.** HC's `powers.bin` carries 63
+orphan Primalist powers under those exact name-prefixes with **0 backing powersets** (verified
+`parse_powersets` → 0), **0 powercats** (`powercats.bin` has 203 cats, none Primalist), and
+**no Primalist class** (HC `classes.bin` = the 15 standard ATs). The exporter assigns each
+power's category from its dotted-name prefix and filters by `pw.category in categories`, so
+the orphans sailed straight through. The Tspy-support whitelist entries quietly leaked HC's
+orphan copies. (Why HC's bin even has these powers: shared CoX codebase lineage; they're
+unwired dev/legacy data, not playable HC content.)
+
+**Severity was low** — export-tree-only. The convert step never produced HC-side Primalist
+data (no HC class/powerset to attach to), so the planner was unaffected; the legit Primalist
+in the app comes from `src/data/datasets/thunderspy/`. Still wrong, fixed at root.
+
+**Fix.** New `_source_has_primalist_class(resolver)` helper + `PRIMALIST_CATEGORIES`
+gate in `main()`: drop `Feral_Might`/`Primal_Gifts`/`Primalist_Misc` from the category set
+unless the source defines a **Primalist class** (checks `classes.bin` +
+`villain_classes.bin` for a class name containing `primalist`). Data-driven, no per-dataset
+flag; skipped when the user passes explicit `--categories` (advanced override). Updated the
+misleading whitelist comment to document the orphan-leak gotcha.
+
+**Validated.** HC: `_source_has_primalist_class` → **False** → re-export drops all 3
+categories → **63 cats / 10,644 powers** (was 66 / 10,707; exactly the 63 orphans removed).
+Thunderspy (`coxg` AND `tspy` sources): → **True** (matches `Class_Primalist`) → Primalist
+categories **retained** — the no-op guarantee for Tspy holds. Other cross-server whitelist
+entries (Rebirth `Guardian_Assault`/`Guardian_Comp`) do **not** leak into HC (absent from
+its bin); no other phantom categories found. Committed-tree cleanup: the stale leaked
+`exported_powers/primalist_misc/` removed as part of the HC re-export apply.
+
+**SECOND VECTOR — `export_entities.py` (worse: it reached the planner).** The powers leak
+was export-tree-only/inert, but `export_entities.py` exports every villaindef entity whose
+name starts with `pets_`/etc. with **no class/category gate**, so HC's 13 orphan Primalist
+pet entities (`pets_primalwolf`, the per-attack `*_heal` lifesteal pseudo-pets) leaked — and
+these DID flow through `convert-pet-entities` into `src/data/datasets/homecoming/
+pet-entities.ts` (26 refs). Fixed with the SAME gate, reference-based: import
+`PRIMALIST_CATEGORIES` + `_source_has_primalist_class` from `export_powers` and skip any
+entity referencing a power in a Primalist category (robust — the NPC false-match
+`pets_minisignature_achlysgeneral_hunter`, refs `NPC_Pets`/`Pets` only, is correctly kept).
+HC re-export: **13 dropped, 731 written**, fresh-vs-committed diff = exactly those 13
+deletions (0 content drift on the 731 shared). After `convert-pet-entities` (note: it's
+`generated:false` in regen-all, so `regen:generated` does NOT refresh it — must run the full
+`regen` or the script directly), HC `pet-entities.ts` → **0 Primalist refs**; Thunderspy/
+Rebirth pet-entities unchanged. Exhaustive post-sweep of all HC surfaces (exported_powers,
+datasets/homecoming, generated, entities, tables) = clean; remaining "primal" hits are the
+Kheldian **Primal Energy** inherent and the Sorcery **Enflame** pet (not the Primalist AT).
 
 ## ✅ HC P-hash "entity_def" FIXED — it was the EntCreate float/combat-text message, now resolved to the real entity at the parser — 2026-06-12
 

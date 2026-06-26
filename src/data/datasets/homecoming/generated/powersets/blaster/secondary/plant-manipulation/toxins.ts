@@ -46,5 +46,19 @@ export const Toxins: Power = {
     "stacksLinear": [
       "tohitBuff"
     ]
-  }
+  },
+  "grantedDamageProcs": [
+    {
+      "name": "Plant_Manipulation_Toxins",
+      "displayName": "Toxins",
+      "damage": [
+        {
+          "damageType": "Toxic",
+          "scale": 1,
+          "table": "Melee_Damage"
+        }
+      ],
+      "enhanceable": false
+    }
+  ]
 };

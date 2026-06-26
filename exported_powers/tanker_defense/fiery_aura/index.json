@@ -13,8 +13,7 @@
     "Tanker_Defense.Fiery_Aura.Plasma_Sheild",
     "Tanker_Defense.Fiery_Aura.Burn",
     "Tanker_Defense.Fiery_Aura.Fiery_Embrace",
-    "Tanker_Defense.Fiery_Aura.Rise_of_the_Phoenix",
-    "Tanker_Defense.Fiery_Aura.Phoenix_Rising"
+    "Tanker_Defense.Fiery_Aura.Rise_of_the_Phoenix"
   ],
   "available_level": [
     0,
@@ -25,8 +24,7 @@
     11,
     17,
     21,
-    25,
-    0
+    25
   ],
   "power_display_names": [
     "Blazing Aura",
@@ -37,19 +35,17 @@
     "Plasma Shield",
     "Burn",
     "Fiery Embrace",
-    "Phoenix Rising",
     "Phoenix Rising"
   ],
   "power_short_helps": [
     "Toggle: PBAoE, DoT (Fire)",
     "Toggle: Self +Res(Fire, Lethal, Smash, Cold, Disorient)",
-    "Self Heal, +Res(Toxic)",
-    "Auto: Self +Res(Fire, Cold, Slow, Knock), +Regen",
+    "Self Heal, +Res(Toxic, Psionic)",
+    "Auto: Self +Res(Fire, Cold, Toxic, Psionic, Slow, Fear, Knock), +Regen, +Max HP",
     "PBAoE, DMG(Fire), Self +End, +Max HP",
     "Toggle: Self +Res(Energy, Negative, Fire, Hold, Sleep)",
-    "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
+    "Location (PBAoE), DoT (Fire), Self Res(Immobilize, Knockback)",
     "Self +DMG",
-    "Self Rez, Special",
-    "Self Rez, Special"
+    "Self Heal, MaxHP, Rez, Special"
   ]
 }

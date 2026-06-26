@@ -12,7 +12,7 @@ export const BuildUp: Power = {
   "name": "Build Up",
   "internalName": "Build_Up",
   "available": 15,
-  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.Recharge: Long.",
+  "description": "Greatly boosts your attacks for a few seconds. Slightly increases chance to hit.",
   "shortHelp": "Self +DMG +To Hit",
   "icon": "firemanipulation_buildup.png",
   "powerType": "Click",

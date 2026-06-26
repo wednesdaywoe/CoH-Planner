@@ -30,7 +30,7 @@ import {
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
 import { useBuildMaxAttackDamage } from '@/hooks/useBuildMaxAttackDamage';
-import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
+import { calculatePowerEnhancementBonuses, combineWithAlphaED, calculatePowerDamage, getAlphaEnhancementBonuses, abbreviateDamageType, calculateArcanaTime, dotTickCount, calculateDamageWithATTable, type EnhancementBonuses, type PowerDamageResult, isControllerPower, isCorruptorAttackPower, isBruteAttackPower, isScrapperAttackPower, isStalkerAttackPower, calculateFuryDamageBonus, calculateAssassinationDamageBonus, getContainmentInfo, getScourgeInfo, getCriticalHitInfo, getFuryInfo, getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
 import { resolveAtMechanic } from '@/utils/calculations/power-at-mechanics';
 import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
@@ -855,6 +855,48 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     return entries.length > 0 ? entries : null;
   }, [calculatedDamage, selectedPower, effectivePower, build.level, build.incarnates, archetypeId, incarnateActive?.hybrid, incarnateActive?.interface, enhancementBonuses.recharge, globalBonusesForCalc.damage, globalBonusesForCalc.recharge, useArcanaTimeToggle, powerCanSlotDamage]);
 
+  // Damage delivered by a power-GRANTED DoT proc (Molten Embrace's Fire DoT,
+  // Stalker Hidden Flame, Envenomed Blades, …). The damage lives in a hidden
+  // Temporary_Powers power resolved at convert time (`grantedDamageProcs`); it
+  // procs off the player's OWN attacks, so it isn't folded into this power's
+  // own DPS — surfaced as its own informational block. `enhanceable` procs
+  // (the I28P3 Molten Embrace change) scale with global damage strength + any
+  // damage slotted in this power; non-enhanceable ones (IgnoreStrength) show
+  // flat.
+  const grantedProcDamage = useMemo(() => {
+    const procs = effectivePower?.grantedDamageProcs;
+    if (!procs || procs.length === 0 || !archetypeId) return null;
+    // Enhanceable procs scale with this power's slotted damage + global damage
+    // strength; non-enhanceable (IgnoreStrength) ones show flat. Use the damage
+    // calc's AT-table helper (handles the proc's `Melee_PvPDamage`-named table,
+    // which `calculateEffectValue` does not resolve for damage).
+    const enhBonus = (enhancementBonuses.damage || 0);
+    const dmgBuffs = (globalBonusesForCalc.damage || 0);
+    const rows = procs.map((proc) => {
+      const ticks = proc.period && proc.duration ? dotTickCount(proc.duration, proc.period) : 1;
+      const comps = proc.damage.map((d) => {
+        const perTick = calculateDamageWithATTable(
+          d.scale, d.table, archetypeId, build.level,
+          proc.enhanceable ? enhBonus : 0,
+          proc.enhanceable ? dmgBuffs : 0,
+        ) ?? 0;
+        return { type: d.damageType, perTick };
+      });
+      const perTick = comps.reduce((s, c) => s + c.perTick, 0);
+      return {
+        name: proc.displayName,
+        comps,
+        ticks,
+        perTick,
+        total: perTick * ticks,
+        chance: proc.tickChance,
+        duration: proc.duration,
+        enhanceable: proc.enhanceable,
+      };
+    });
+    return rows.length > 0 ? rows : null;
+  }, [effectivePower, archetypeId, build.level, enhancementBonuses.damage, globalBonusesForCalc.damage]);
+
   // Average incarnate-proc damage per cast for THIS attack. Fed to
   // DamageBlock so its "+X proc" annotation includes Hybrid/Interface
   // proc contributions in addition to slotted IO procs. Independent of
@@ -1112,6 +1154,39 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
                 {procDamageEntries.reduce((s, p) => s + p.dps, 0).toFixed(2)} DPS
               </span>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Granted DoT procs — damage this power delivers via a hidden
+       * Temporary_Powers grant (Molten Embrace's Fire DoT, Hidden Flame, …).
+       * Procs off the player's own attacks, so it's shown informationally
+       * rather than summed into this power's DPS. */}
+      {grantedProcDamage && grantedProcDamage.length > 0 && (
+        <div>
+          <h4 className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide mb-1">
+            Granted Damage Proc <span className="text-slate-500 font-normal">(Lvl {build.level})</span>
+          </h4>
+          <div className="bg-slate-800/50 rounded p-2 space-y-1">
+            {grantedProcDamage.map((g, i) => (
+              <div key={i} className="text-xs space-y-0.5">
+                <div className="flex justify-between items-baseline">
+                  <span className="text-slate-300 truncate" title={g.name}>{g.name}</span>
+                  <span className="text-amber-300 tabular-nums">
+                    {g.comps.map((c) => `${abbreviateDamageType(c.type)} ${c.perTick.toFixed(2)}`).join(' + ')}
+                    {g.ticks > 1 ? <span className="text-slate-400">{` ×${g.ticks} = ${g.total.toFixed(1)}`}</span> : null}
+                  </span>
+                </div>
+                <div className="text-[11px] text-slate-500">
+                  {g.duration ? `over ${g.duration}s` : 'instant'}
+                  {g.chance != null ? ` · ${(g.chance * 100).toFixed(0)}% per tick` : ''}
+                  {' · '}
+                  <span className={g.enhanceable ? 'text-emerald-400' : 'text-slate-500'}>
+                    {g.enhanceable ? 'enhanced by damage' : 'unaffected by enhancements'}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}

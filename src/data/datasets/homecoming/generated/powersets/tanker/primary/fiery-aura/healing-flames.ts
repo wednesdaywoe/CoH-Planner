@@ -12,8 +12,8 @@ export const HealingFlames: Power = {
   "name": "Healing Flames",
   "internalName": "Healing_Flames",
   "available": 1,
-  "description": "You can concentrate for a few moments to heal yourself. The power of the flames can also protect you from Toxic Damage for a while.Recharge: Slow.",
-  "shortHelp": "Self Heal, +Res(Toxic)",
+  "description": "You can concentrate for a few moments to heal yourself. The power of the flames can also protect you from Toxic and Psionic Damage for a while.",
+  "shortHelp": "Self Heal, +Res(Toxic, Psionic)",
   "icon": "flamingshield_healingflames.png",
   "powerType": "Click",
   "targetType": "Self",
@@ -42,6 +42,10 @@ export const HealingFlames: Power = {
   },
   "effects": {
     "resistance": {
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_Dmg"

@@ -45,7 +45,7 @@
     "Toggle: Self +Regen, Foe -ACC",
     "Auto: Self +Recovery",
     "Toggle: Self +DEF(Smash, Lethal, Fire, Cold, Energy, Negative Energy), +Per",
-    "Self Rez, Special",
+    "Self Heal, Res(Fire, Cold, Energy, Negative, Toxic, Psionic), Self Rez, Special",
     "Self, +Res(Disorient, Sleep, Hold, Immobilize, Repel, Knockback, All DMG), +Recovery"
   ]
 }

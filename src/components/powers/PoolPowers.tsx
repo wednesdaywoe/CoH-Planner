@@ -407,6 +407,13 @@ function PoolPowerGroup({
     const group = getGrantedPowerGroup(parentPowerName);
     if (!group) return [];
 
+    // Conjunctive grants: some bonus powers only unlock when sibling powers are
+    // ALSO selected (e.g. Rebirth's Group Fly needs Aerobatics AND Fly).
+    if (group.alsoRequires?.length) {
+      const selectedNames = new Set(selectedPowers.map(p => p.internalName));
+      if (!group.alsoRequires.every(req => selectedNames.has(req))) return [];
+    }
+
     return poolPowers.filter(p => group.grantedPowers.includes(p.internalName));
   };
 

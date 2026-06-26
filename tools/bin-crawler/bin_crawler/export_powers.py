@@ -26,6 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from bin_crawler.parser._powers import parse_powers
 from bin_crawler.parser._powersets import parse_powersets
 from bin_crawler.parser._powercats import parse_powercats
+from bin_crawler.parser._classes import parse_classes
 from bin_crawler.parser._boostsets import parse_boostsets, build_power_category_index
 from bin_crawler.parser._messages import load_messages
 from bin_crawler.parser._pigg import BinResolver
@@ -53,11 +54,16 @@ PLAYER_CATEGORIES = {
     # Kheldians
     'Peacebringer_Defensive', 'Peacebringer_Offensive',
     'Warshade_Defensive', 'Warshade_Offensive',
-    # Thunderspy Primalist — a custom Kheldian-style form-shifter AT. HC/Rebirth
-    # have no equivalent (these categories simply won't exist in those datasets).
-    # Primary 'Feral_Might', secondary 'Primal_Gifts'; the Hunter/Prowler/Primal
-    # form attack variants + per-attack lifesteal redirects live in
-    # 'Primalist_Misc' (listed below with the Lore/NPC pet categories).
+    # Thunderspy Primalist — a custom Kheldian-style form-shifter AT. Primary
+    # 'Feral_Might', secondary 'Primal_Gifts'; the Hunter/Prowler/Primal form
+    # attack variants + per-attack lifesteal redirects live in 'Primalist_Misc'
+    # (listed below with the Lore/NPC pet categories).
+    #   GOTCHA: HC's powers.bin ALSO carries ~63 ORPHAN Primalist powers under
+    #   these same name-prefixes — with NO backing powerset, powercat, or class.
+    #   (The old comment here wrongly assumed they "won't exist" in HC; they do,
+    #   and leaked into the HC export.) These categories are therefore gated at
+    #   runtime by `_source_has_primalist_class` below: kept ONLY when the source
+    #   actually defines a Primalist class (Thunderspy), dropped for HC/Rebirth.
     'Feral_Might', 'Primal_Gifts',
     # VEATs
     'Arachnos_Soldiers', 'Widow_Training', 'Teamwork',
@@ -100,6 +106,32 @@ PLAYER_CATEGORIES = {
     'Rikti', 'V_Wailers', 'CircleOfThorns', 'Clockwork', 'Vanguard',
     'V_Miscellaneous', 'PaladinEvent',
 }
+
+
+# Thunderspy-only Primalist categories. HC/Rebirth carry orphan powers under
+# these prefixes (no powerset/powercat/class), so they must be gated on the
+# source actually defining a Primalist class — see _source_has_primalist_class.
+PRIMALIST_CATEGORIES = {'Feral_Might', 'Primal_Gifts', 'Primalist_Misc'}
+
+
+def _source_has_primalist_class(resolver) -> bool:
+    """True iff the source defines a Primalist archetype (Thunderspy).
+
+    Used to decide whether the Primalist power categories are real player
+    content (Thunderspy: wired to the Primalist class) or orphan leakage
+    (HC/Rebirth: powers exist in powers.bin but no class/powerset references
+    them). Checks both the hero and villain class tables.
+    """
+    for bin_name in ('classes.bin', 'villain_classes.bin'):
+        if not resolver.has(bin_name):
+            continue
+        try:
+            for c in parse_classes(resolver.read(bin_name)):
+                if 'primalist' in (getattr(c, 'name', '') or '').lower():
+                    return True
+        except Exception:
+            continue
+    return False
 
 
 def format_duration(seconds: float) -> str:
@@ -247,6 +279,33 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
     return d
 
 
+def _collect_grant_targets(powers, prefix='temporary_powers.'):
+    """Collect the dotted names a set of powers GRANT via `Grant_Power`
+    templates, restricted to the given category prefix (default
+    Temporary_Powers). Walks the full effect tree — top-level groups,
+    child_groups, and activation_effects — since a grant can nest anywhere.
+    Returns a set of lowercased full names.
+    """
+    targets: set[str] = set()
+
+    def walk(groups):
+        for g in groups or []:
+            for t in getattr(g, 'templates', []) or []:
+                attribs = getattr(t, 'attribs', None) or []
+                if 'Grant_Power' not in attribs:
+                    continue
+                params = getattr(t, 'params', None) or {}
+                for name in params.get('power_names') or []:
+                    if name.lower().startswith(prefix):
+                        targets.add(name.lower())
+            walk(getattr(g, 'child_groups', None))
+
+    for pw in powers:
+        walk(getattr(pw, 'effects', None))
+        walk(getattr(pw, 'activation_effects', None))
+    return targets
+
+
 def main():
     ap = argparse.ArgumentParser(description='Export player power data as structured JSON')
     ap.add_argument('--assets-dir', default=None,
@@ -271,6 +330,18 @@ def main():
 
     resolver = BinResolver(assets_dir)
     print(f'Source: {resolver.source_description}', flush=True)
+
+    # Source-aware Primalist gating: HC/Rebirth carry ORPHAN Primalist powers
+    # (no powerset/powercat/class) that otherwise leak into the export via the
+    # shared whitelist. Drop the Primalist categories unless this source defines
+    # a Primalist class (Thunderspy). Skip when the user passed explicit
+    # --categories (advanced override — respect their choice).
+    if not args.categories:
+        primalist_present = categories & PRIMALIST_CATEGORIES
+        if primalist_present and not _source_has_primalist_class(resolver):
+            categories = categories - PRIMALIST_CATEGORIES
+            print(f'  No Primalist class in source — excluding orphan Primalist '
+                  f'categories: {sorted(primalist_present)}', flush=True)
 
     # Load message table
     msgs = None
@@ -319,6 +390,35 @@ def main():
     # Filter to player categories
     player_powers = [pw for pw in all_powers if pw.category in categories]
     print(f'\nFiltered to {len(player_powers)} player powers from {len(categories)} categories.')
+
+    # Referenced-target inclusion: pull in the Temporary_Powers powers that a
+    # player power GRANTS via a `Grant_Power` template. These host effects the
+    # granting power delivers but does not carry inline — most notably the
+    # damage-over-time procs a few passives/toggles grant (Molten Embrace's Fire
+    # DoT lives in Temporary_Powers.Temporary_Powers.Molten_Embrace_Proc, NOT in
+    # Molten Embrace itself). Temporary_Powers as a whole is 1200+ travel/
+    # accolade/event temps we don't want; only the powers actually referenced by
+    # a player power's grant are relevant, so include exactly those (mirrors how
+    # the Pets/*_Aux categories host Execute_Power/redirect damage targets, but
+    # scoped to references instead of the whole category). The convert-time
+    # resolver reads these by their dotted name; convert-all-powersets never
+    # turns Temporary_Powers into a powerset (not in its category map), so these
+    # are pure resolver data.
+    if not args.categories:
+        grant_targets = _collect_grant_targets(player_powers)
+        by_full = {pw.full_name.lower(): pw for pw in all_powers}
+        already = {pw.full_name.lower() for pw in player_powers}
+        added = []
+        for tgt in sorted(grant_targets):
+            if tgt in already:
+                continue
+            pw = by_full.get(tgt)
+            if pw is not None:
+                player_powers.append(pw)
+                added.append(pw)
+        if added:
+            print(f'  +{len(added)} referenced Grant_Power targets '
+                  f'(Temporary_Powers grant hosts).', flush=True)
 
     # Group by category/powerset
     grouped: dict[str, dict[str, list]] = {}

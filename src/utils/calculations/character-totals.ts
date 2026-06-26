@@ -591,6 +591,10 @@ interface ActivePowerEffect {
   mezResistance?: Record<string, ScalarOrScaled>;
   elusivity?: Record<string, ScalarOrScaled>;
   runSpeed?: number;
+  // IgnoreStrength run-speed template (e.g. Sprint's second RunningSpeed effect):
+  // contributes to totals but is NOT boosted by slotted Run Speed enhancements.
+  // Mirrors the tohitBuffUnenhanced / regenBuffUnenhanced convention.
+  runSpeedUnenhanced?: ScalarOrScaled;
   flySpeed?: number;
   jumpHeight?: number;
   jumpSpeed?: number;
@@ -1018,12 +1022,14 @@ function applyActivePowerBonuses(
       });
     }
 
-    // Damage buff
-    // Enhanced by Damage enhancements
+    // Damage buff (e.g. Assault, Build Up, Fulcrum Shift).
+    // NOT enhanced: a +Damage buff is a fixed buff to the target's Damage
+    // strength — Damage enhancements and global +Damage raise the OUTPUT of
+    // attack powers, not the magnitude of a buff, and no "Damage Buff"
+    // enhancement exists in CoH. (Same as accuracyBuff / tohitBuffUnenhanced.)
     if (effects.damageBuff !== undefined) {
-      const enhMultiplier = 1 + (enhBonuses.damage || 0);
       const adjustedBuff = adjustForStacking(effects.damageBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'damageBuff', effects.maxStacks);
-      const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
+      const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
         name: power.name,
@@ -1203,8 +1209,26 @@ function applyActivePowerBonuses(
 
     // Movement (top-level scalar form). Stack-aware. All movement attribs —
     // speed AND jump height — scale by their AT table; see resolveMovementPercent.
+    // Enhanced by slotted Run/Fly/Jump enhancements (and Alpha), mirroring the
+    // fitness-inherent path: resolved percent * (1 + enhBonuses[aspect]). The
+    // enhBonuses object is already filtered to aspects the power accepts, so a
+    // non-enhanceable movement power simply sees a 1.0 multiplier.
     if (effects.runSpeed !== undefined) {
+      const enhMultiplier = 1 + (enhBonuses.run || 0);
       const adjusted = adjustForStacking(effects.runSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'runSpeed', effects.maxStacks);
+      const value = resolveMovementPercent(adjusted, 'runSpeed', archetypeId, buildLevel) * enhMultiplier;
+      global.runSpeed += value;
+      addToBreakdown(breakdown, 'runSpeed', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    // Unenhanceable run-speed template (IgnoreStrength) — e.g. Sprint's second
+    // RunningSpeed effect. Contributes flat, NO enhancement multiplier.
+    if (effects.runSpeedUnenhanced !== undefined) {
+      const adjusted = adjustForStacking(effects.runSpeedUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'runSpeedUnenhanced', effects.maxStacks);
       const value = resolveMovementPercent(adjusted, 'runSpeed', archetypeId, buildLevel);
       global.runSpeed += value;
       addToBreakdown(breakdown, 'runSpeed', {
@@ -1215,8 +1239,9 @@ function applyActivePowerBonuses(
     }
 
     if (effects.flySpeed !== undefined) {
+      const enhMultiplier = 1 + (enhBonuses.fly || 0);
       const adjusted = adjustForStacking(effects.flySpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'flySpeed', effects.maxStacks);
-      const value = resolveMovementPercent(adjusted, 'flySpeed', archetypeId, buildLevel);
+      const value = resolveMovementPercent(adjusted, 'flySpeed', archetypeId, buildLevel) * enhMultiplier;
       global.flySpeed += value;
       addToBreakdown(breakdown, 'flySpeed', {
         name: power.name,
@@ -1226,8 +1251,9 @@ function applyActivePowerBonuses(
     }
 
     if (effects.jumpHeight !== undefined) {
+      const enhMultiplier = 1 + (enhBonuses.jump || 0);
       const adjusted = adjustForStacking(effects.jumpHeight as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'jumpHeight', effects.maxStacks);
-      const value = resolveMovementPercent(adjusted, 'jumpHeight', archetypeId, buildLevel);
+      const value = resolveMovementPercent(adjusted, 'jumpHeight', archetypeId, buildLevel) * enhMultiplier;
       global.jumpHeight += value;
       addToBreakdown(breakdown, 'jumpHeight', {
         name: power.name,
@@ -1237,8 +1263,9 @@ function applyActivePowerBonuses(
     }
 
     if (effects.jumpSpeed !== undefined) {
+      const enhMultiplier = 1 + (enhBonuses.jump || 0);
       const adjusted = adjustForStacking(effects.jumpSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'jumpSpeed', effects.maxStacks);
-      const value = resolveMovementPercent(adjusted, 'jumpSpeed', archetypeId, buildLevel);
+      const value = resolveMovementPercent(adjusted, 'jumpSpeed', archetypeId, buildLevel) * enhMultiplier;
       global.jumpSpeed += value;
       addToBreakdown(breakdown, 'jumpSpeed', {
         name: power.name,
@@ -1260,13 +1287,22 @@ function applyActivePowerBonuses(
         jumpHeight: 'jumpHeight',
         jumpSpeed: 'jumpSpeed',
       };
+      // Enhancement aspect per global movement key (runSpeed→run, fly→fly,
+      // jump→jump). Same enhBonuses-multiplier treatment as the scalar path.
+      const movementAspectMap: Record<string, keyof EnhancementBonuses> = {
+        runSpeed: 'run',
+        flySpeed: 'fly',
+        jumpHeight: 'jump',
+        jumpSpeed: 'jump',
+      };
       for (const [type, val] of Object.entries(effects.movement)) {
         const key = movementKeyMap[type];
         if (key && key in global) {
           // Stack-aware: stacksLinear uses the bare effect key (e.g. 'runSpeed'),
           // matching what classifyTemplateForStacking produces.
+          const enhMultiplier = 1 + (enhBonuses[movementAspectMap[key]] || 0);
           const adjusted = adjustForStacking(val as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, type, effects.maxStacks);
-          const value = resolveMovementPercent(adjusted, key, archetypeId, buildLevel);
+          const value = resolveMovementPercent(adjusted, key, archetypeId, buildLevel) * enhMultiplier;
           global[key] += value;
           addToBreakdown(breakdown, key, {
             name: power.name,

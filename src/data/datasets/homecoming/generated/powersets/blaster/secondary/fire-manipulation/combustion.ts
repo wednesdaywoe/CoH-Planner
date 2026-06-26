@@ -12,7 +12,7 @@ export const Combustion: Power = {
   "name": "Combustion",
   "internalName": "Combustion",
   "available": 3,
-  "description": "Your mastery of fire allows you to violently raise the temperature around yourself in an attempt to spontaneously combust any nearby foes and set them ablaze, dealing damage over time.Damage: Moderate.Recharge: Slow.",
+  "description": "Your mastery of fire allows you to violently raise the temperature around yourself in an attempt to spontaneously combust any nearby foes and set them ablaze, dealing damage over time.",
   "shortHelp": "Melee (AoE), DoT (Fire)",
   "icon": "firemanipulation_combustion.png",
   "powerType": "Click",

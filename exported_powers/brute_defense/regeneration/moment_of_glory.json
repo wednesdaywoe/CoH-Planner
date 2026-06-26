@@ -476,7 +476,11 @@
             "Energy_Dmg",
             "Negative_Energy_Dmg",
             "Psionic_Dmg",
-            "Toxic_Dmg"
+            "Toxic_Dmg",
+            "Radiation_Dmg",
+            "Electrical_Dmg",
+            "Sonic_Dmg",
+            "Quantum_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

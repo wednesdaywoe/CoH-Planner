@@ -12,7 +12,7 @@ export const RingofFire: Power = {
   "name": "Ring of Fire",
   "internalName": "Ring_of_Fire",
   "available": 0,
-  "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.Damage: Moderate.Recharge: Fast.",
+  "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay.",
   "shortHelp": "Ranged, DoT (Fire), Foe Immobilize",
   "icon": "firemanipulation_ringoffire.png",
   "powerType": "Click",

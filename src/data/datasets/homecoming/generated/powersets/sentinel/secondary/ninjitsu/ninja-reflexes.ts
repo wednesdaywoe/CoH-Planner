@@ -12,7 +12,7 @@ export const NinjaReflexes: Power = {
   "name": "Ninja Reflexes",
   "internalName": "Ninja_Reflexes",
   "available": 0,
-  "description": "Activating your Ninja Reflexes enables you to be more evasive to melee attacks. This will increase your Defense versus melee as long as it is active. Ninja Reflexes also grants you resistance to Defense DeBuffs.Recharge: Fast.",
+  "description": "Activating your Ninja Reflexes enables you to be more evasive to melee attacks. This will increase your Defense versus melee as long as it is active. Ninja Reflexes also grants you resistance to Defense DeBuffs.",
   "shortHelp": "Toggle: Self +DEF(Melee), Res(DeBuff DEF)",
   "icon": "ninjitsu_ninjareflexes.png",
   "powerType": "Toggle",

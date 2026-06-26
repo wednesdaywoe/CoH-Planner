@@ -65,6 +65,10 @@ const dataset: Dataset = {
       Health: [8, 16],
       Stamina: [12, 22],
     },
+    // Rebirth has no Prestige Athletic Run (the bin ships
+    // Pool.Utility_Belt.Athletics instead). Drop it from the HC-sourced
+    // inherent list so it doesn't show up under Inherents on Rebirth builds.
+    excludeInherents: ['Athletic_Run'],
   },
 
   petEntities: PET_ENTITIES,

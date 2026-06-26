@@ -16,6 +16,9 @@
   "Objects.Escort.Self_Destruct": 5,
   "Objects.Escort_Warburg.Self_Destruct": 5,
   "Objects.Portal_Killer.Self_Destruct": 5,
+  "Objects.Proximity_Bomb.Self_Destruct": 3.0999999046325684,
+  "Objects.Underground_Bomb.Self_Destruct": 10.25,
+  "Objects.Underground_Bomb_Final.Self_Destruct": 10.25,
   "Pets.Dust_Devil.Self_Destruct": 18,
   "Pets.Enflame.Self_Destruct": 5,
   "Pets.Lost_Cure_Counter.Self_Destruct": 3,
@@ -32,6 +35,8 @@
   "Redirects.Electric_Control.Self_Destruct": 60,
   "Redirects.Gravity_Control.Self_Destruct": 60,
   "Rularuu.Natterling_Lt_Spawner.Self_Destruct": 5,
+  "V_Arachnos.Short_Fuse.Self_Destruct": 25,
+  "V_Miscellaneous.Blast_Radius.Self_Destruct": 1,
   "Villain_Pets.Creeper_Entangle.Self_Destruct": 2,
   "Villain_Pets.Creeper_Vine.Self_Destruct": 14,
   "Villain_Pets.Dominating_Grasp.Self_Destruct": 20,
@@ -39,7 +44,5 @@
   "Villain_Pets.Poison_Poison_Gas.Self_Destruct": 30,
   "Villain_Pets.Shade.Self_Destruct": 60,
   "Villain_Pets.Traps_Poison_Gas.Self_Destruct": 30,
-  "Villain_Pets.Vines.Self_Destruct": 60,
-  "V_Arachnos.Short_Fuse.Self_Destruct": 25,
-  "V_Miscellaneous.Blast_Radius.Self_Destruct": 1
+  "Villain_Pets.Vines.Self_Destruct": 60
 }

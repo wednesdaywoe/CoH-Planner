@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Cauterizing Blaze",
   "display_fullname": "Stalker Defense Fiery Aura Cauterizing Blaze",
-  "display_help": "While active, you are surrounded by flames cauterize your wounds healing you a small amount every few seconds.<br><br><color #fcfc95>Recharge: Moderate.</color>",
-  "display_short_help": "Toggle: Self +Heal Over Time",
+  "display_help": "While active, you are surrounded by flames cauterize your wounds healing you a small amount every few seconds.<br><br>These flames also moderately boost the damage of all your Fire attacks, as well as slightly boost the damage of all your other non-fire based attacks.",
+  "display_short_help": "Toggle: Self +Heal Over Time, +DMG",
   "icon": "flamingshield_cauterizing",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -90,6 +90,72 @@
             "NoFloaters"
           ],
           "flags_raw": 1281
+        },
+        {
+          "attribs": [
+            "Fire_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "Self",
+          "table": "Melee_Buff_Dmg",
+          "scale": 2.0,
+          "duration": "2.20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Psionic_Dmg",
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "Self",
+          "table": "Melee_Buff_Dmg",
+          "scale": 1.0,
+          "duration": "2.20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

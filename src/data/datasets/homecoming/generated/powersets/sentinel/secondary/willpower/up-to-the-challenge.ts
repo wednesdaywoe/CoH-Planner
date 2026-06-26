@@ -12,7 +12,7 @@ export const UptotheChallenge: Power = {
   "name": "Up to the Challenge",
   "internalName": "Up_to_the_Challenge",
   "available": 15,
-  "description": "Regardless of the odds against you, you are determined to go on. Your ability to regenerate health is greatly increased at all times.Recharge: Moderate.",
+  "description": "Regardless of the odds against you, you are determined to go on. Your ability to regenerate health is greatly increased at all times.",
   "shortHelp": "Toggle: Self +Regen",
   "icon": "willpower_risetothechallenge.png",
   "powerType": "Toggle",
@@ -45,7 +45,14 @@ export const UptotheChallenge: Power = {
       "table": "Melee_Ones"
     },
     "durations": {
-      "regenBuff": 1.12
+      "regenBuff": 1.12,
+      "debuffResistance": 1.12
+    },
+    "debuffResistance": {
+      "regeneration": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
+      }
     },
     "buffDuration": 1.12
   }

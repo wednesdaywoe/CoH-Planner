@@ -46,5 +46,19 @@ export const EnvenomedBlades: Power = {
     "stacksLinear": [
       "tohitBuff"
     ]
-  }
+  },
+  "grantedDamageProcs": [
+    {
+      "name": "Envenomed_Blades",
+      "displayName": "Envenomed Blades",
+      "damage": [
+        {
+          "damageType": "Toxic",
+          "scale": 0.15,
+          "table": "Melee_Damage"
+        }
+      ],
+      "enhanceable": false
+    }
+  ]
 };

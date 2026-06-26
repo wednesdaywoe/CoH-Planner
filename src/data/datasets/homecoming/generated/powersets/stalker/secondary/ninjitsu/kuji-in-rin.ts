@@ -12,7 +12,7 @@ export const KujiInRin: Power = {
   "name": "Kuji-In Rin",
   "internalName": "Kuji-In_Rin",
   "available": 15,
-  "description": "Kuji-In Rin is the strength of mind and body. By focusing your power on this exercise, you gain a resistance to Disorient, Hold, Sleep, Immobilization, Confusion, and fear, as well as resistance to Psionic damage for a few minutes. Your running speed and jumping height are also increased.Recharge: Long.",
+  "description": "Kuji-In Rin is the strength of mind and body. By focusing your power on this exercise, you gain a resistance to Disorient, Hold, Sleep, Immobilization, Confusion, and fear, as well as resistance to Psionic damage for a few minutes. Your running speed and jumping height are also increased.",
   "shortHelp": "Self +SPD, +Res(Disorient, Hold, Sleep, Immobilize, Confuse, Fear, Psionics)",
   "icon": "ninjitsu_kujinrin.png",
   "powerType": "Click",

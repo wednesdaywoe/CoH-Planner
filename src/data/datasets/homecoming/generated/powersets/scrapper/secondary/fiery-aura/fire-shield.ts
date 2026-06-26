@@ -12,7 +12,7 @@ export const FireShield: Power = {
   "name": "Fire Shield",
   "internalName": "Fire_Shield",
   "available": 0,
-  "description": "While this power is active, Fire Shield gives you good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage as well as protection from Disorient effects.Recharge: Very Fast.",
+  "description": "While this power is active, Fire Shield gives you good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage as well as protection from Disorient effects.",
   "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold, Disorient)",
   "icon": "flamingshield_flamingshield.png",
   "powerType": "Toggle",

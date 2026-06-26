@@ -21425,7 +21425,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1.4,
           "recharge": 120,
           "endurance": 15.6,
-          "activationTime": 1.83,
+          "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 20,
           "maxTargets": 10,

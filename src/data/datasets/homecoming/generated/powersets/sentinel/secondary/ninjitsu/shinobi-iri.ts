@@ -12,7 +12,7 @@ export const ShinobiIri: Power = {
   "name": "Shinobi-Iri",
   "internalName": "Shinobi-Iri",
   "available": 3,
-  "description": "Shinobi Iri are the ninjitsu techniques of silent movement and avoidance, granting you stealth and defense against all positional attacks. While stealthed, the strength of your next attack will be more powerful; however, you can only attempt this after spending 8 seconds without attacking.Recharge: Very Fast.",
+  "description": "Shinobi Iri are the ninjitsu techniques of silent movement and avoidance, granting you stealth and defense against all positional attacks as well as a slight boost to damage. While stealthed, you have a very high chance of landing a critical attack, however you can only attempt this after spending 8 seconds without attacking or being hit.",
   "shortHelp": "Toggle: Self Stealth, +DEF(Melee, Ranged, AoE), +Special",
   "icon": "ninjitsu_hide.png",
   "powerType": "Toggle",
@@ -59,7 +59,7 @@ export const ShinobiIri: Power = {
       "stealth": 0.75
     },
     "damageBuff": {
-      "scale": 4,
+      "scale": 1,
       "table": "Melee_Buff_Dmg"
     },
     "stealth": {

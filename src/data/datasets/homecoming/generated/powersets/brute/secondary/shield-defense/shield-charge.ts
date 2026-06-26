@@ -49,9 +49,54 @@ export const ShieldCharge: Power = {
     },
     "summon": {
       "isPseudoPet": false,
-      "entity": "Pets_Shield_Charge_Brute",
-      "duration": 4,
-      "copyBoosts": true
+      "entity": "PL_StaticObject",
+      "displayName": "Shield Charge",
+      "powers": [
+        "Redirects.Shield_Defense.Shield_Charge_AoE"
+      ],
+      "duration": 1,
+      "copyBoosts": true,
+      "resolvedEntities": [
+        {
+          "displayName": "Shield Charge",
+          "duration": 1,
+          "copyCreatorMods": true,
+          "abilities": [
+            {
+              "name": "Shield_Charge_AoE",
+              "displayName": "Shield Charge",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Smashing",
+                  "scale": 1.7,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Smashing",
+                  "scale": 0.7,
+                  "table": "Melee_Damage"
+                }
+              ],
+              "effects": [
+                {
+                  "type": "Knockback",
+                  "magnitude": 1,
+                  "scale": 0.64,
+                  "table": "Melee_Ones",
+                  "chance": 0.8
+                }
+              ],
+              "recharge": 10,
+              "castTime": 0,
+              "activatePeriod": 20,
+              "effectArea": "Sphere",
+              "radius": 20,
+              "maxTargets": 16
+            }
+          ]
+        }
+      ]
     }
   }
 };

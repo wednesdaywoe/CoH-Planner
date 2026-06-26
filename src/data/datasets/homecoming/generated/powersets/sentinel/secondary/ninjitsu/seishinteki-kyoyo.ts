@@ -12,15 +12,15 @@ export const SeishintekiKyoyo: Power = {
   "name": "Seishinteki Kyoyo",
   "internalName": "Seishinteki_Kyoyo",
   "available": 15,
-  "description": "Seishinteki Kyoyo is the spiritual education in Ninjitsu. Your mastery of these spiritual techniques allow you to recover endurance with a short period of meditation.Recharge: Slow.",
-  "shortHelp": "Self +Endurance",
+  "description": "Seishinteki Kyoyo is the spiritual education in Ninjitsu. Your mastery of these spiritual techniques allow you to become resistant to endurance drain and recover endurance over time.",
+  "shortHelp": "Self +Endurance, Res(-Endurance)",
   "icon": "ninjitsu_recovery.png",
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "recharge": 60,
+    "recharge": 90,
     "castTime": 1.83
   },
   "allowedEnhancements": [
@@ -33,12 +33,32 @@ export const SeishintekiKyoyo: Power = {
   "maxSlots": 6,
   "effects": {
     "enduranceGain": {
-      "scale": 0.3,
+      "scale": 0.2,
       "table": "Melee_Ones"
     },
+    "recoveryBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 30,
+      "debuffResistance": 30
+    },
+    "debuffResistance": {
+      "endurance": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      },
+      "recovery": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
+      }
+    },
+    "buffDuration": 30,
     "maxStacks": 2,
     "stacksLinear": [
-      "enduranceGain"
+      "enduranceGain",
+      "recoveryBuff"
     ]
   }
 };

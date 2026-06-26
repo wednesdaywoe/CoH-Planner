@@ -3,10 +3,10 @@
   "full_name": "Stalker_Defense.Willpower.Reconstruction",
   "short_name": "Reconstruction",
   "type": "Click",
-  "display_name": "Reconstruction",
+  "display_name": "Resurgence",
   "display_fullname": "Stalker Defense Willpower Reconstruction",
-  "display_help": "Through perfect control of your body, you can concentrate for a few moments and heal yourself. The effects of Reconstruction also leaves you resistant to Toxic damage for a while.<br><br><color #fcfc95>Recharge: Slow.</color>",
-  "display_short_help": "Self Heal, Res(Toxic)",
+  "display_help": "You heal yourself through pure perseverance. The effects of Resurgence also leave you resistant to Toxic Damage for a while. Should you fall in battle within 35 seconds of using this power, you can stand up and fight again.<br><br>If used after defeat, this power can Revive yourself from the brink of death, although it will incur a 300 second cooldown. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 20 seconds. Additionally, for 90 seconds, attack rate and endurance recovery will be improved. You will also have 15 seconds of immunity to most damage.",
+  "display_short_help": "Self Heal, Res(Fire, Cold, Energy, Negative, Toxic, Psionic), Self Rez, Special",
   "icon": "willpower_reconstruction.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -17,10 +17,10 @@
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
-  "activation_time": 0.73,
-  "recharge_time": 60.0,
+  "activation_time": 1.5,
+  "recharge_time": 300.0,
   "activate_period": 0.0,
-  "endurance_cost": 10.4,
+  "endurance_cost": 0.0,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -32,11 +32,13 @@
   ],
   "boosts_allowed": [
     "Res_Damage",
+    "Recovery",
     "EnduranceDiscount",
     "Recharge",
     "Heal"
   ],
   "allowed_set_categories": [
+    "Endurance Modification",
     "Healing",
     "Resist Damage"
   ],
@@ -47,77 +49,19 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [],
-  "effects": [
+  "effects": [],
+  "redirect": [
     {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": "",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Heal_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Absolute",
-          "target": "Self",
-          "table": "Melee_HealSelf",
-          "scale": 2.5,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags_raw": 1280
-        },
-        {
-          "attribs": [
-            "Toxic_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "Immediate",
-          "aspect": "Resistance",
-          "target": "Self",
-          "table": "Melee_Res_Dmg",
-          "scale": 2.0,
-          "duration": "60 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1056
-        }
-      ]
+      "name": "Redirects.Willpower.Resurgence_Concious",
+      "condition_expression": "Cur.kHitPoints source> 0 >",
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Willpower.Resurgence",
+      "condition_expression": "Always",
+      "show_in_info": true
     }
   ],
-  "available_level": 3,
+  "available_level": 27,
   "powerset": "Stalker_Defense.Willpower"
 }

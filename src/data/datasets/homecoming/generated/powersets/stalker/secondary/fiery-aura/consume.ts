@@ -12,7 +12,7 @@ export const Consume: Power = {
   "name": "Consume",
   "internalName": "Consume",
   "available": 19,
-  "description": "You can drain body heat from all nearby foes, and even from the air itself, increasing your health, resistance against endurance drain, as well as replenishing your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.HP and End Drain resistance do not scale with enemy count, but will be granted even if there are no enemies nearby.Damage: Minor.Recharge: Long.",
+  "description": "You can drain body heat from all nearby foes, and even from the air itself, increasing your health, resistance against endurance drain, as well as replenishing your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage.Notes: This power has adaptive recharge. It has a base recharge of 10 seconds and each affected foe will increase the recharge by 5 seconds for a maximum total of 60 seconds.",
   "shortHelp": "PBAoE, DMG(Fire), Self +End, +Max HP",
   "icon": "flamingshield_consume.png",
   "powerType": "Click",
@@ -21,7 +21,7 @@ export const Consume: Power = {
   "stats": {
     "accuracy": 1,
     "radius": 20,
-    "recharge": 180,
+    "recharge": 10,
     "endurance": 0.52,
     "castTime": 2.03,
     "maxTargets": 10
@@ -42,16 +42,25 @@ export const Consume: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Fire",
-    "scale": 0.4,
-    "table": "Melee_Damage"
-  },
+  "damage": [
+    {
+      "type": "Fire",
+      "scale": 0.4,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Fire",
+      "scale": 0.1,
+      "table": "Melee_Damage",
+      "duration": 2.1,
+      "tickRate": 0.75
+    }
+  ],
   "effects": {
     "enduranceGain": {
-      "scale": 20,
+      "scale": 15,
       "table": "Melee_Ones",
-      "perTarget": 20
+      "perTarget": 15
     },
     "recoveryBuff": {
       "scale": 0.05,
@@ -79,17 +88,5 @@ export const Consume: Power = {
       "enduranceGain",
       "recoveryBuff"
     ]
-  },
-  "specialEffects": [
-    {
-      "kind": "effect-proc",
-      "chance": 0.5,
-      "label": "Fire_Dmg"
-    },
-    {
-      "kind": "effect-proc",
-      "chance": 0.07000000029802322,
-      "label": "Fire_Dmg"
-    }
-  ]
+  }
 };

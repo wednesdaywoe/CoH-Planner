@@ -12,8 +12,8 @@ export const Resurgence: Power = {
   "name": "Resurgence",
   "internalName": "Resurgence",
   "available": 27,
-  "description": "Should you fall in battle, you can Revive yourself from the brink of death. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 20 seconds. Additionally, for 90 seconds, your damage, attack rate, endurance recovery and chance to hit will be improved, then for another 45 seconds, your damage and chance to hit will be diminished. You will also have 15 seconds of immunity to most damage.Recharge: Very Long.",
-  "shortHelp": "Self Rez, Special",
+  "description": "You heal yourself through pure perseverance. The effects of Resurgence also leave you resistant to Toxic Damage for a while. Should you fall in battle within 35 seconds of using this power, you can stand up and fight again.If used after defeat, this power can Revive yourself from the brink of death, although it will incur a 300 second cooldown. You will revive with most of your Hit Points and half your Endurance and be protected from XP Debt for 20 seconds. Additionally, for 90 seconds, attack rate and endurance recovery will be improved. You will also have 15 seconds of immunity to most damage.",
+  "shortHelp": "Self Heal, Res(Fire, Cold, Energy, Negative, Toxic, Psionic), Self Rez, Special",
   "icon": "willpower_resurgence.png",
   "powerType": "Click",
   "targetType": "Self",
@@ -24,12 +24,16 @@ export const Resurgence: Power = {
     "castTime": 1.5
   },
   "allowedEnhancements": [
+    "Resistance",
     "EnduranceModification",
     "EnduranceReduction",
-    "Recharge"
+    "Recharge",
+    "Healing"
   ],
   "allowedSetCategories": [
-    "Endurance Modification"
+    "Endurance Modification",
+    "Healing",
+    "Resist Damage"
   ],
   "maxSlots": 6,
   "damage": {
@@ -51,10 +55,7 @@ export const Resurgence: Power = {
     "durations": {
       "recoveryBuff": 90,
       "rechargeBuff": 90,
-      "damageBuff": 90,
-      "tohitBuffUnenhanced": 90,
-      "damageDebuff": 45,
-      "tohitDebuff": 45,
+      "resistance": 90,
       "untouchable": 15,
       "stealth": 15
     },
@@ -62,21 +63,31 @@ export const Resurgence: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "damageBuff": {
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuffUnenhanced": {
-      "scale": 3,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "damageDebuff": {
-      "scale": 4,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "tohitDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_ToHit"
+    "resistance": {
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
     },
     "untouchable": {
       "scale": 10,

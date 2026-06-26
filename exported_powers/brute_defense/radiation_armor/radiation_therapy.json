@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Radiation Therapy",
   "display_fullname": "Brute Defense Radiation Armor Radiation Therapy",
-  "display_help": "You channel a tremendous amount of radiation into a barrier around you. For a short time you will have a strong absorption shield in addition to a regeneration and recovery buff.<br><br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>15</color> </color> seconds and each affected foe will increase the recharge by a varying amount. First target adds <color #FF7F27>12</color> seconds for a maximum total of <color #FF7F27>60</color> seconds.</color>",
+  "display_help": "You concentrate your energies to harness the healing powers of radiation to mend your wounds and rebuild your endurance. Each nearby foe will increase the health and endurance you recover, with the first one yielding full strength and all seconday ones yielding 30% of the effect. Affected foes will have their regeneration rates substantially reduced for a short time.<br><br><color #fcfc95>Notes: This power has adaptive recharge. It has a base recharge of <color #FF7F27>25</color> seconds, the first target hit will increase its recharge by <color #FF7F27>9.5</color> with additional targets adding <color #FF7F27>2.8</color> seconds for a maximum total of <color #FF7F27>60</color> seconds.</color>",
   "display_short_help": "PBAoE, Minor DMG(Energy), Minor DoT(Toxic), Foe -Regen, Self +HP, +End, Res(-Regen)",
   "icon": "radiationarmor_radiationtherapy.png",
   "auto_issue": false,

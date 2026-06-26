@@ -434,7 +434,12 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     colorClass: STAT_COLORS.damage,
     format: 'percent',
     calculation: 'buff',
-    enhancementAspect: 'damage',
+    // No enhancementAspect: a +Damage BUFF (Assault, Build Up, Fulcrum Shift…)
+    // is a fixed buff to the target's Damage strength. It is NOT scaled by the
+    // caster's Damage enhancements or global +Damage bonuses — those raise the
+    // damage OUTPUT of attack powers, not the magnitude of a buff. There is no
+    // "Damage Buff" enhancement in CoH, so the value is flat across all tiers.
+    // (Same reasoning as accuracyBuff above.)
     priority: 2,
   },
   defenseBuff: {

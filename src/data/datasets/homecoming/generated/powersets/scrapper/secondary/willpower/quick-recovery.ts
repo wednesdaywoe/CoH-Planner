@@ -35,7 +35,14 @@ export const QuickRecovery: Power = {
       "table": "Melee_Ones"
     },
     "durations": {
-      "recoveryBuff": 10.25
+      "recoveryBuff": 10.25,
+      "debuffResistance": 10.25
+    },
+    "debuffResistance": {
+      "recovery": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
     },
     "buffDuration": 10.25
   },

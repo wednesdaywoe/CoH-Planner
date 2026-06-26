@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Fiery Breath",
   "display_fullname": "Tanker Melee Fiery Melee Breath of Fire",
-  "display_help": "This allows you to spew forth fire from your mouth, burning all foes within its narrow cone. This is a very accurate attack that can deal good damage at a close range.<br><br>If your main target is in melee range, they will be burned by intense heat for bonus damage.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
+  "display_help": "This allows you to spew forth fire from your mouth, burning all foes within its narrow cone. This is a very accurate attack that can deal good damage at a close range.<br><br>Your main target will be burned by intense heat for bonus damage.<br><br><color #fcfc95>Notes: Thanks to gauntlet, this power can hit up to <color #FF7F27>6</color> targets above its cap at 1/3rd effectiveness.</color>",
   "display_short_help": "Close (Cone) DoT (Fire)",
   "icon": "fieryfray_breathingfire.png",
   "auto_issue": false,
@@ -14,7 +14,7 @@
   "effect_area": "Cone",
   "max_targets_hit": 10,
   "radius": 15.0,
-  "arc": 0.5235987901687622,
+  "arc": 0.6981317400932312,
   "range": 15.0,
   "range_secondary": 0.0,
   "activation_time": 2.5,
@@ -130,7 +130,7 @@
           "delay": 0.0,
           "radius_inner": -1.0,
           "radius_outer": -1.0,
-          "requires_expression": "distance 8 <",
+          "requires_expression": "",
           "tags": [
             "MainTarget"
           ],

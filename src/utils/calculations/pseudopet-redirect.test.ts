@@ -232,27 +232,35 @@ describe('pseudo-pet redirect resolution', () => {
   });
 
   describe('Burn (PET_ENTITIES-overlap redirect override)', () => {
-    // All six Burn variants run the same Redirects.Fiery_Aura.Burn patch (Fire
-    // 0.08 / 0.8s). Three (tanker/brute/scrapper) summon it off a PL_StaticObject
-    // shell; three (blaster/sentinel/stalker) use entity_def "Burn" → the stale
-    // Pets_Burn entity (Fire 0.06). The chassis is normalized to PL_StaticObject so
-    // the 0.06 isn't counted ALONGSIDE the 0.08 redirect (the runtime renders the
-    // pet-entity path AND resolvedEntities as separate lists → would double-count).
+    // Burn resolves the Redirects.Fiery_Aura.Burn patch. Post I28P3 (2026-06-23)
+    // there are TWO variants: base `burn` (Fire 0.14) and `fieryburn`
+    // (0.14 + a persistent Fiery-Embrace bonus 0.063; "FE now lasts the full
+    // duration of the patch", scale 0.08→0.14, FE per-tick 0.036→0.063). The
+    // Blaster Fire-Manipulation Burn summons the BASE variant (0.14); all five
+    // Fiery-Aura armor Burns (tanker/brute/scrapper/sentinel/stalker) summon the
+    // FE-active `fieryburn` variant (0.14 + 0.063) — internally consistent across
+    // those five ATs (verified in the I28P3 regen). The chassis is normalized to
+    // PL_StaticObject so the stale Pets_Burn entity (Fire 0.06) isn't double-
+    // counted. The 0.063 FE component is kept (not stripped) because Fiery Aura is
+    // a genuine fire-themed set — see _filterFieryEmbraceBonus's fire-set bypass.
     it('normalizes the "Burn" chassis to the generic shell so the pet path finds nothing', () => {
       expect(BlasterBurn.effects!.summon!.entity).toBe('PL_StaticObject');
       expect(getPetEntity('PL_StaticObject')).toBeUndefined(); // no double-count
     });
 
-    it('resolves the authoritative redirect patch (Fire 0.08 / 0.8s), not the stale 0.06 entity', () => {
+    it('Blaster Fire-Manipulation Burn resolves the BASE patch variant (Fire 0.14 / 0.8s), not the stale 0.06 entity', () => {
       const ab = BlasterBurn.effects!.summon!.resolvedEntities![0].abilities[0];
       expect(ab.name).toBe('Burn');
       expect(ab.activatePeriod).toBe(0.8);
-      expect(ab.damage).toEqual([{ damageType: 'Fire', scale: 0.08, table: 'Melee_Damage' }]);
+      expect(ab.damage).toEqual([{ damageType: 'Fire', scale: 0.14, table: 'Melee_Damage' }]);
     });
 
-    it('the shell-chassis Burns resolve the identical patch (cross-AT consistency)', () => {
+    it('Fiery-Aura armor Burns resolve the FE-active variant (Fire 0.14 + FE 0.063), consistent across the 5 armor ATs', () => {
       const tank = TankerBurn.effects!.summon!.resolvedEntities![0].abilities[0];
-      expect(tank.damage).toEqual([{ damageType: 'Fire', scale: 0.08, table: 'Melee_Damage' }]);
+      expect(tank.damage).toEqual([
+        { damageType: 'Fire', scale: 0.14, table: 'Melee_Damage' },
+        { damageType: 'Fire', scale: 0.063, table: 'Melee_Damage' },
+      ]);
     });
 
     it('does NOT collapse the Fiery-Embrace bonus patch into the base count', () => {

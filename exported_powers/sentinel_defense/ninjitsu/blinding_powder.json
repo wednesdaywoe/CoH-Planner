@@ -5,22 +5,22 @@
   "type": "Click",
   "display_name": "Blinding Powder",
   "display_fullname": "Sentinel Defense Ninjitsu Blinding Powder",
-  "display_help": "You throw a handful of Blinding powder in a wide arc at your foes. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.<br><br><color #fcfc95>Recharge: Long.</color>",
-  "display_short_help": "Ranged (Cone), Foe -To Hit, Sleep, Confuse, -Perception",
+  "display_help": "Blinding powder can be thrown in a wide arc that can briefly distract your foes and Placate them so they can no longer find or target you. Most foes will be blinded, and unable to see. Some affected targets may be overcome by the powder that they may start attacking their own allies. If you attack the blinded foes, they will be alerted to your presence, but will continue to suffer a penalty to their chance to hit.<br><br>During the chaos, your chances to critically hit are improved.",
+  "display_short_help": "Ranged (Cone), Foe Placate, -To Hit, Sleep, Confuse, -Perception, +Special",
   "icon": "ninjitsu_blindingpowder.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "accuracy": 1.0,
   "effect_area": "Cone",
   "max_targets_hit": 10,
-  "radius": 25.0,
-  "arc": 0.7853981852531433,
-  "range": 25.0,
+  "radius": 40.0,
+  "arc": 1.5707963705062866,
+  "range": 40.0,
   "range_secondary": 0.0,
   "activation_time": 1.07,
-  "recharge_time": 120.0,
+  "recharge_time": 90.0,
   "activate_period": 0.0,
-  "endurance_cost": 7.8,
+  "endurance_cost": 12.28,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -31,8 +31,10 @@
     "Foe"
   ],
   "boosts_allowed": [
+    "Taunt",
     "EnduranceDiscount",
     "Range",
+    "Sleep",
     "Recharge",
     "Debuff_ToHit",
     "Confuse",
@@ -41,6 +43,8 @@
   "allowed_set_categories": [
     "Accurate To-Hit Debuff",
     "Confuse",
+    "Sleep",
+    "Threat Duration",
     "To Hit Debuff"
   ],
   "cast_through": [],
@@ -50,7 +54,8 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [
-    112
+    112,
+    140
   ],
   "effects": [
     {
@@ -59,45 +64,15 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
+      "requires_expression": "",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Sleep"
-          ],
-          "type": "Duration",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Melee_Sleep",
-          "scale": 10.0,
-          "duration": "0 seconds",
-          "magnitude": 2.0,
-          "delay": 0.25,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "DeepSleep"
-          ],
-          "flags_raw": 2560
-        }
-      ],
+      "templates": [],
       "child_effects": [
         {
-          "chance": 0.5,
+          "chance": 1.0,
           "ppm": 0.0,
           "delay": 0.0,
           "radius_inner": -1.0,
@@ -107,35 +82,188 @@
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
-          "templates": [
+          "templates": [],
+          "child_effects": [
             {
-              "attribs": [
-                "Confused"
-              ],
-              "type": "Duration",
-              "application_type": "Immediate",
-              "aspect": "Current",
-              "target": "AnyAffected",
-              "table": "Melee_Immobilize",
-              "scale": 20.0,
-              "duration": "0 seconds",
-              "magnitude": 2.0,
+              "chance": 1.0,
+              "ppm": 0.0,
               "delay": 0.0,
-              "duration_expression": "",
-              "magnitude_expression": "",
-              "application_period": 0.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": "",
-              "caster_stack": "Individual",
-              "stack": "Replace",
-              "stack_limit": 2,
-              "stack_key": null,
-              "flags": [
-                "DeepSleep"
-              ],
-              "flags_raw": 2560
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "enttype target> critter eq",
+              "tags": [],
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Sleep"
+                  ],
+                  "type": "Duration",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Melee_Sleep",
+                  "scale": 10.0,
+                  "duration": "0 seconds",
+                  "magnitude": 3.0,
+                  "delay": 0.25,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "flags": [
+                    "DeepSleep"
+                  ],
+                  "flags_raw": 2560
+                }
+              ]
+            },
+            {
+              "chance": 1.0,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "",
+              "tags": [],
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Placate"
+                  ],
+                  "type": "Duration",
+                  "application_type": "Immediate",
+                  "aspect": "Absolute",
+                  "target": "AnyAffected",
+                  "table": "Melee_Taunt",
+                  "scale": 8.0,
+                  "duration": "0 seconds",
+                  "magnitude": 3.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "flags": [
+                    "DeepSleep"
+                  ],
+                  "flags_raw": 2560
+                },
+                {
+                  "attribs": [
+                    "PerceptionRadius"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Melee_Ones",
+                  "scale": -0.9,
+                  "duration": "20 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "flags_raw": 1280
+                },
+                {
+                  "attribs": [
+                    "ToHit"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Melee_DeBuff_ToHit",
+                  "scale": 1.0,
+                  "duration": "15 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "flags_raw": 1280
+                }
+              ]
+            },
+            {
+              "chance": 0.5,
+              "ppm": 0.0,
+              "delay": 0.0,
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "enttype target> critter eq",
+              "tags": [],
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Confused"
+                  ],
+                  "type": "Duration",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Melee_Immobilize",
+                  "scale": 10.0,
+                  "duration": "0 seconds",
+                  "magnitude": 3.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "flags": [
+                    "DeepSleep"
+                  ],
+                  "flags_raw": 2560
+                }
+              ]
             }
           ]
         },
@@ -145,75 +273,236 @@
           "delay": 0.0,
           "radius_inner": -1.0,
           "radius_outer": -1.0,
-          "requires_expression": "",
+          "requires_expression": "enttype target> player eq",
           "tags": [],
           "flags": [],
           "is_pvp": "EITHER",
           "eval_flags": 0,
-          "templates": [
+          "templates": [],
+          "child_effects": [
             {
-              "attribs": [
-                "PerceptionRadius"
-              ],
-              "type": "Magnitude",
-              "application_type": "Immediate",
-              "aspect": "Current",
-              "target": "AnyAffected",
-              "table": "Melee_Ones",
-              "scale": -0.9,
-              "duration": "20 seconds",
-              "magnitude": 1.0,
+              "chance": 1.0,
+              "ppm": 0.0,
               "delay": 0.0,
-              "duration_expression": "",
-              "magnitude_expression": "",
-              "application_period": 0.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": "",
-              "caster_stack": "Individual",
-              "stack": "Replace",
-              "stack_limit": 2,
-              "stack_key": null,
-              "flags_raw": 1280
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "enttype target> player eq",
+              "tags": [],
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Sleep"
+                  ],
+                  "type": "Duration",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Melee_PvPMez",
+                  "scale": 1.0,
+                  "duration": "0 seconds",
+                  "magnitude": 2.0,
+                  "delay": 0.25,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "suppress_events": [
+                    {
+                      "event": "Stunned",
+                      "event_id": 23,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Event_24",
+                      "event_id": 24,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Held",
+                      "event_id": 25,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Sleep",
+                      "event_id": 26,
+                      "duration": 15.0,
+                      "flag": 0
+                    },
+                    {
+                      "event": "Confused",
+                      "event_id": 27,
+                      "duration": 15.0,
+                      "flag": 0
+                    }
+                  ],
+                  "flags": [
+                    "DeepSleep"
+                  ],
+                  "flags_raw": 2560
+                },
+                {
+                  "attribs": [
+                    "Placate"
+                  ],
+                  "type": "Duration",
+                  "application_type": "Immediate",
+                  "aspect": "Absolute",
+                  "target": "AnyAffected",
+                  "table": "Melee_Taunt",
+                  "scale": 6.0,
+                  "duration": "0 seconds",
+                  "magnitude": 3.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Stack",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "flags": [
+                    "DeepSleep"
+                  ],
+                  "flags_raw": 2560
+                },
+                {
+                  "attribs": [
+                    "PerceptionRadius"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Melee_Ones",
+                  "scale": -0.9,
+                  "duration": "20 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "cancel_events": [
+                    "Damaged"
+                  ],
+                  "flags_raw": 1280
+                },
+                {
+                  "attribs": [
+                    "ToHit"
+                  ],
+                  "type": "Magnitude",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Melee_DeBuff_ToHit",
+                  "scale": 1.0,
+                  "duration": "15 seconds",
+                  "magnitude": 1.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "flags_raw": 1280
+                }
+              ]
             },
             {
-              "attribs": [
-                "ToHit"
-              ],
-              "type": "Magnitude",
-              "application_type": "Immediate",
-              "aspect": "Current",
-              "target": "AnyAffected",
-              "table": "Melee_DeBuff_ToHit",
-              "scale": 1.0,
-              "duration": "15 seconds",
-              "magnitude": 1.0,
+              "chance": 0.5,
+              "ppm": 0.0,
               "delay": 0.0,
-              "duration_expression": "",
-              "magnitude_expression": "",
-              "application_period": 0.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": "",
-              "caster_stack": "Individual",
-              "stack": "Replace",
-              "stack_limit": 2,
-              "stack_key": null,
-              "flags_raw": 1280
+              "radius_inner": -1.0,
+              "radius_outer": -1.0,
+              "requires_expression": "enttype target> player eq",
+              "tags": [],
+              "flags": [],
+              "is_pvp": "EITHER",
+              "eval_flags": 0,
+              "templates": [
+                {
+                  "attribs": [
+                    "Confused"
+                  ],
+                  "type": "Duration",
+                  "application_type": "Immediate",
+                  "aspect": "Current",
+                  "target": "AnyAffected",
+                  "table": "Melee_PvPMez",
+                  "scale": 1.0,
+                  "duration": "0 seconds",
+                  "magnitude": 2.0,
+                  "delay": 0.0,
+                  "duration_expression": "",
+                  "magnitude_expression": "",
+                  "application_period": 0.0,
+                  "tick_chance": 1.0,
+                  "tick_mag_multiplier": 1.0,
+                  "tick_mag_additive": 0.0,
+                  "jit_requires": "",
+                  "caster_stack": "Individual",
+                  "stack": "Replace",
+                  "stack_limit": 2,
+                  "stack_key": null,
+                  "suppress_events": [
+                    {
+                      "event": "Event_28",
+                      "event_id": 28,
+                      "duration": 15.0,
+                      "flag": 0
+                    }
+                  ],
+                  "flags": [
+                    "DeepSleep"
+                  ],
+                  "flags_raw": 2560
+                }
+              ]
             }
           ]
         }
       ]
-    },
+    }
+  ],
+  "activation_effects": [
     {
       "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq",
+      "requires_expression": "",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -221,78 +510,17 @@
       "templates": [
         {
           "attribs": [
-            "Sleep"
-          ],
-          "type": "Duration",
-          "application_type": "Immediate",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Melee_PvPMez",
-          "scale": 1.0,
-          "duration": "0 seconds",
-          "magnitude": 2.0,
-          "delay": 0.25,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "",
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "suppress_events": [
-            {
-              "event": "Stunned",
-              "event_id": 23,
-              "duration": 15.0,
-              "flag": 0
-            },
-            {
-              "event": "Event_24",
-              "event_id": 24,
-              "duration": 15.0,
-              "flag": 0
-            },
-            {
-              "event": "Held",
-              "event_id": 25,
-              "duration": 15.0,
-              "flag": 0
-            },
-            {
-              "event": "Sleep",
-              "event_id": 26,
-              "duration": 15.0,
-              "flag": 0
-            },
-            {
-              "event": "Confused",
-              "event_id": 27,
-              "duration": 15.0,
-              "flag": 0
-            }
-          ],
-          "flags": [
-            "DeepSleep"
-          ],
-          "flags_raw": 2560
-        },
-        {
-          "attribs": [
-            "PerceptionRadius"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "AnyAffected",
+          "target": "Self",
           "table": "Melee_Ones",
-          "scale": -0.9,
-          "duration": "20 seconds",
+          "scale": 0.3,
+          "duration": "10 seconds",
           "magnitude": 1.0,
-          "delay": 0.0,
+          "delay": 1.6699999570846558,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -304,24 +532,25 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "cancel_events": [
-            "Damaged"
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
           ],
-          "flags_raw": 1280
+          "flags_raw": 1072
         },
         {
           "attribs": [
-            "ToHit"
+            "Global_Chance_Mod"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
           "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Melee_DeBuff_ToHit",
-          "scale": 1.0,
-          "duration": "15 seconds",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 0.3,
+          "duration": "10 seconds",
           "magnitude": 1.0,
-          "delay": 0.0,
+          "delay": 1.6699999570846558,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -333,60 +562,11 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "flags_raw": 1280
-        }
-      ],
-      "child_effects": [
-        {
-          "chance": 0.5,
-          "ppm": 0.0,
-          "delay": 0.0,
-          "radius_inner": -1.0,
-          "radius_outer": -1.0,
-          "requires_expression": "enttype target> player eq",
-          "tags": [],
-          "flags": [],
-          "is_pvp": "EITHER",
-          "eval_flags": 0,
-          "templates": [
-            {
-              "attribs": [
-                "Confused"
-              ],
-              "type": "Duration",
-              "application_type": "Immediate",
-              "aspect": "Current",
-              "target": "AnyAffected",
-              "table": "Melee_PvPMez",
-              "scale": 1.0,
-              "duration": "0 seconds",
-              "magnitude": 2.0,
-              "delay": 0.0,
-              "duration_expression": "",
-              "magnitude_expression": "",
-              "application_period": 0.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": "",
-              "caster_stack": "Individual",
-              "stack": "Replace",
-              "stack_limit": 2,
-              "stack_key": null,
-              "suppress_events": [
-                {
-                  "event": "Event_28",
-                  "event_id": 28,
-                  "duration": 15.0,
-                  "flag": 0
-                }
-              ],
-              "flags": [
-                "DeepSleep"
-              ],
-              "flags_raw": 2560
-            }
-          ]
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

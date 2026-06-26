@@ -12,8 +12,8 @@ export const CauterizingBlaze: Power = {
   "name": "Cauterizing Blaze",
   "internalName": "Cauterizing_Blaze",
   "available": 27,
-  "description": "While active, you are surrounded by flames cauterize your wounds healing you a small amount every few seconds.Recharge: Moderate.",
-  "shortHelp": "Toggle: Self +Heal Over Time",
+  "description": "While active, you are surrounded by flames cauterize your wounds healing you a small amount every few seconds.These flames also moderately boost the damage of all your Fire attacks, as well as slightly boost the damage of all your other non-fire based attacks.",
+  "shortHelp": "Toggle: Self +Heal Over Time, +DMG",
   "icon": "flamingshield_cauterizing.png",
   "powerType": "Toggle",
   "targetType": "Self",
@@ -43,5 +43,19 @@ export const CauterizingBlaze: Power = {
     "type": "Heal",
     "scale": 0.075,
     "table": "Melee_HealSelf"
+  },
+  "effects": {
+    "damageBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 2.2
+    },
+    "buffDuration": 2.2,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "damageBuff"
+    ]
   }
 };

@@ -12,6 +12,7 @@ export {
   abbreviateDamageType,
   calculateArcanaTime,
   dotTickCount,
+  calculateDamageWithATTable,
   type DamageTableType,
   type DamageCalculationOptions,
   type PowerDamageResult,

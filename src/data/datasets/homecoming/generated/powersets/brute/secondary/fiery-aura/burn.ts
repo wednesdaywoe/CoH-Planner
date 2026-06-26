@@ -12,19 +12,17 @@ export const Burn: Power = {
   "name": "Burn",
   "internalName": "Burn",
   "available": 23,
-  "description": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power.Damage: Moderate.Recharge: Slow.",
-  "shortHelp": "Location (PBAoE), DoT (Fire), Self Res(Immobilize)",
+  "description": "You can ignite the ground beneath you, freeing yourself from Immobilization effects. Foes that enter the flames you leave behind will take damage. You must be near the ground to activate this power.",
+  "shortHelp": "Location (PBAoE), DoT (Fire), Self Res(Immobilize, Knockback)",
   "icon": "flamingshield_burn.png",
   "powerType": "Click",
   "targetType": "Self",
-  "effectArea": "AoE",
+  "effectArea": "SingleTarget",
   "stats": {
     "accuracy": 1,
-    "radius": 8,
     "recharge": 25,
     "endurance": 5.2,
-    "castTime": 2.03,
-    "maxTargets": 5
+    "castTime": 2.03
   },
   "allowedEnhancements": [
     "Taunt",
@@ -40,30 +38,26 @@ export const Burn: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1.44,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.648,
-      "table": "Melee_Damage"
-    }
-  ],
   "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "effectDuration": 100,
+    "durations": {
+      "immobilize": 100
+    },
     "summon": {
       "isPseudoPet": false,
       "entity": "PL_StaticObject",
       "displayName": "Burn Flames",
       "powers": [
-        "Pets.ResistAll.ResistAll",
-        "Redirects.Fiery_Aura.Burn"
+        "Redirects.Fiery_Aura.FieryBurn",
+        "Redirects.Fiery_Aura.FieryBurn_FrontDamage"
       ],
       "duration": 10,
       "copyBoosts": true,
-      "entityCount": 2,
       "resolvedEntities": [
         {
           "displayName": "Burn Flames",
@@ -71,13 +65,18 @@ export const Burn: Power = {
           "copyCreatorMods": true,
           "abilities": [
             {
-              "name": "Burn",
+              "name": "FieryBurn",
               "displayName": "Burn",
               "type": "Auto",
               "damage": [
                 {
                   "damageType": "Fire",
-                  "scale": 0.08,
+                  "scale": 0.14,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Fire",
+                  "scale": 0.063,
                   "table": "Melee_Damage"
                 }
               ],
@@ -85,12 +84,46 @@ export const Burn: Power = {
               "castTime": 0,
               "activatePeriod": 0.8,
               "effectArea": "Sphere",
-              "radius": 8,
-              "maxTargets": 5
+              "radius": 15,
+              "maxTargets": 10
+            },
+            {
+              "name": "FieryBurn_FrontDamage",
+              "displayName": "Burn",
+              "type": "Auto",
+              "damage": [
+                {
+                  "damageType": "Fire",
+                  "scale": 1,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Fire",
+                  "scale": 0.45,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Fire",
+                  "scale": 0.44,
+                  "table": "Melee_Damage"
+                },
+                {
+                  "damageType": "Fire",
+                  "scale": 0.198,
+                  "table": "Melee_Damage"
+                }
+              ],
+              "recharge": 0,
+              "castTime": 0,
+              "activatePeriod": 100,
+              "effectArea": "Sphere",
+              "radius": 15,
+              "maxTargets": 10
             }
           ]
         }
       ]
-    }
+    },
+    "buffDuration": 100
   }
 };

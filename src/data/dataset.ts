@@ -39,6 +39,10 @@ export interface GrantedPowerGroup {
   mutuallyExclusive: boolean;
   description?: string;
   slottable?: boolean;
+  /** Sibling powers (internalNames) that must ALSO be selected in the same
+   *  pool/powerset for the grant to fire (conjunctive grants, e.g. Rebirth's
+   *  Group Fly needs both Aerobatics and Fly). See the granted-powers modules. */
+  alsoRequires?: readonly string[];
   damageConversion?: Record<string, { from: string; to: string }>;
 }
 
@@ -123,6 +127,15 @@ export interface InherentRules {
    * key) means no auto-grants.
    */
   autoGrantedSlotLevels: Record<string, readonly number[]>;
+
+  /**
+   * Inherent power `internalName`s that this server does NOT grant, so they
+   * are filtered out of the shared inherent list. The shared list is sourced
+   * from HC; servers that lack one of those powers (e.g. Rebirth has no
+   * Prestige Athletic Run — it ships `Pool.Utility_Belt.Athletics` instead)
+   * list it here. Absent/empty → nothing removed.
+   */
+  excludeInherents?: readonly string[];
 }
 
 // ============================================

@@ -50,6 +50,8 @@ export type {
   MovementByType,
   StealthEffects,
   SummonEffect,
+  ResolvedPseudoPet,
+  ResolvedPseudoPetAbility,
   HealingEffect,
   DebuffResistance,
   MovementEffect,
