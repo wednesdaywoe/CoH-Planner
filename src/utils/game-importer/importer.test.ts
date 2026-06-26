@@ -55,3 +55,39 @@ describe('importer SO/DO stat resolution', () => {
     expect(result.warnings.some((w) => w.message.includes('Unknown SO/DO stat'))).toBe(true);
   });
 });
+
+describe('importer special-enhancement level → boost', () => {
+  beforeAll(async () => {
+    await loadDataset('homecoming');
+  });
+
+  function slottedSpecial(enh: GameExportEnhancement) {
+    const result = importFromParsedData(exportWithEnhancement(enh));
+    expect(result.warnings.filter((w) => w.type === 'enhancement')).toEqual([]);
+    // The test export slots the special into the Inherent "Health" power.
+    const allPowers = [
+      ...result.build!.primary.powers,
+      ...result.build!.secondary.powers,
+      ...result.build!.inherents,
+    ];
+    const slotted = allPowers.flatMap((p) => p.slots ?? []).find(Boolean);
+    expect(slotted?.type).toBe('special');
+    return slotted as { type: 'special'; boost?: number };
+  }
+
+  it('maps an external-JSON level-53 special (boost folded into level) to +3 boost', () => {
+    // External .json encodes a boosted special as "level": 53 / "numCombines": null.
+    const enh = slottedSpecial({ uid: 'Hydra_Damage_Accuracy', level: 53, boost: undefined, attuned: false });
+    expect(enh.boost).toBe(3);
+  });
+
+  it('keeps an unboosted level-50 special at no boost', () => {
+    const enh = slottedSpecial({ uid: 'Hydra_Damage_Accuracy', level: 50, boost: undefined, attuned: false });
+    expect(enh.boost).toBeUndefined();
+  });
+
+  it('prefers an explicit boost (game text "50+3" form) over the level', () => {
+    const enh = slottedSpecial({ uid: 'Hydra_Damage_Accuracy', level: 50, boost: 3, attuned: false });
+    expect(enh.boost).toBe(3);
+  });
+});
