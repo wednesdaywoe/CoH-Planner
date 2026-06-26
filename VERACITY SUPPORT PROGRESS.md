@@ -1,9 +1,9 @@
 # Veracity Support — Progress
 
-**Last updated:** 2026-06-24
-**Branch:** `veracity-test`
+**Last updated:** 2026-06-26
+**Branch:** `veracity-test` (merged up to date with `main`)
 
-Adding **Veracity** as a fourth dataset source alongside HC (Homecoming), Rebirth, and Thunderspy. Veracity is a heavily-modified private server (SCoRE-Neptune lineage) whose dev is actively collaborating — providing raw data and answering schema questions. Recon piggs live at `Veracity Bins/` in the repo root (`bin.pigg` 19 MB, `bin_powers.pigg` 4.3 MB → `powers.bin` extracts to ~50.9 MB).
+Adding **Veracity** as a fourth dataset source alongside HC (Homecoming), Rebirth, and Thunderspy. Veracity is a heavily-modified private server (SCoRE-Neptune lineage) whose dev is actively collaborating — providing raw data and answering schema questions. Recon piggs live at `Veracity Bins/` in the repo root: `bin.pigg`, `bin_powers.pigg`, and `veracity_sidekick_icons.pigg` (a dedicated icon archive the dev built for Sidekick, ~3,770 `.texture` icons).
 
 See also the memory note `veracity-bin-recon` and `dataset-scope-final` (Veracity is the first server added under the "dev actively collaborates" rule).
 
@@ -12,11 +12,19 @@ See also the memory note `veracity-bin-recon` and `dataset-scope-final` (Veracit
 **Veracity is a fully selectable, experimental dataset in the planner.** It ships behind the amber "experimental" badge (same treatment as Thunderspy). End-to-end: parser → export → converters → dataset module → app wiring all complete and verified.
 
 - **tsc:** 0 errors
-- **Tests:** 572/572 pass (no regression on HC/Rebirth/Thunderspy)
+- **Tests:** 586/586 pass (no regression on HC/Rebirth/Thunderspy)
 - **Production build:** green (4-dataset bundle; PWA precache limit raised 16→24 MiB)
 - **Runtime:** `loadDataset('veracity')` loads and assembles; dev-server spot-check clean (no console complaints)
 
 Select it in the header server picker, or deep-link with `?serverId=veracity`.
+
+### Latest round (2026-06-26): updated bins + dev's icon pigg
+
+- **`veracity-test` merged up to date with `main`** (10 commits: icon fixes, conjunctive grants, summon-shell AoE, Issue 28 panel-3 HC patch, etc.). Clean auto-merge; both the Veracity integration and main's changes preserved in the 3 overlapping files (`convert-powerset.cjs`, `dataset.ts`, `power.ts`).
+- **Re-generated everything from the dev's updated bins** (powers/classes re-export + full converter pipeline). Counts shifted slightly (9,162 player powers / 63 categories).
+- **All 257 IO sets now extract (0 skipped)** — the dev added clean rarity tokens (`ECElemental`, `ECParagon`, and `ECVeryRare`-first for Overwhelming Force) for content that previously serialized a garbled rarity field.
+- **Power icons: 0 missing** (was 37) — extracted from `veracity_sidekick_icons.pigg`, incl. the custom Astral Control + Vapor Control sets.
+- **Elemental IO-set icons (16): extracted** to `/img/Enhancements/IO Sets/`. **Paragon ("purple") set icons (16): still missing** — not in the dev's pigg yet (dev-confirmed: "you'll get all the elemental sets but miss the new purple sets"); they fall back to the placeholder.
 
 ## What works
 
@@ -25,10 +33,10 @@ Select it in the header server picker, or deep-link with `?serverId=veracity`.
 | `powers.bin` | 23,424 / 23,425 records; 99.5% sane range/recharge | Full header + HC-style effect groups |
 | `powersets.bin` | 7,161 powersets (2 skipped) | available-levels parse correctly (no level-1 bug) |
 | `classes.bin` | 14 player classes | **No Sentinel** — see roster note below |
-| `boostsets.bin` | 257 sets → 230 extracted | 27 custom sets skipped (rarity-field misread) |
-| `clientmessages-en.bin` | 87,993 strings | P-hash resolution works |
+| `boostsets.bin` | 257 sets → **257 extracted (0 skipped)** | dev added clean rarity tokens (ECElemental/ECParagon) |
+| `clientmessages-en.bin` | strings | P-hash resolution works |
 
-**Exported:** 9,225 player powers across 66 categories. **Shipped dataset:** 287 powersets, 12 power pools, 77 epic pools, incarnate (Interface/Judgement/Lore + a Veracity-specific **Genesis** slot), 230 IO sets.
+**Exported:** ~9,162 player powers across 63 categories. **Shipped dataset:** 287 powersets, 12 power pools, 77 epic pools, incarnate (Interface/Judgement/Lore + a Veracity-specific **Genesis** slot), **257 IO sets**.
 
 ### Archetype roster (14, no Sentinel)
 
@@ -99,7 +107,8 @@ Both filters are dataset-agnostic in code (no other server ships these tokens, s
 
 - **Parser** (`tools/bin-crawler/bin_crawler/parser/`): `_powers.py` (Veracity power + effect branch — committed at `3e0cffec1`), `_classes.py` (Veracity AT-cap layout).
 - **Converter** (`scripts/convert-powerset.cjs`): faction/combo skip-filters, `normEffectArea()` (drops unmodeled areas Map/Volume/Touch/Room/Unknown(N) from the typed field), positional-resistance skip (Melee/Ranged/Area + Resistance aspect — not a CoH concept). `convert-all-powersets.cjs`: `ORPHAN_CATEGORIES` skip for Sentinel/Primalist. `_dataset-paths.cjs`: `veracity` added to `KNOWN_DATASETS`.
-- **IO sets** (`scripts/extract-rebirth-io-sets-v2.py`): `veracity` `DATASET_CONFIG` + `_apply_veracity_overrides` (HC-reuse for shared sets) + `COH_VERACITY_ASSETS` env.
+- **IO sets** (`scripts/extract-rebirth-io-sets-v2.py`): `veracity` `DATASET_CONFIG` + `_apply_veracity_overrides` (HC-reuse for shared sets) + `COH_VERACITY_ASSETS` env + the `ECElemental`/`ECParagon` rarity tokens.
+- **Icons** (`scripts/extract-thunderspy-icons.py`): generalized with a `--dataset` flag (power-icon extraction from a dataset's icon pigg). Plus a one-off elemental-set-icon extraction into `/img/Enhancements/IO Sets/`.
 - **Types** (`src/types/power.ts`): widened `DebuffResistance.accuracy?` + `MovementEffect.perTarget?` (optional; Veracity-only in practice).
 - **Dataset module** (`src/data/datasets/veracity/`): `index.ts`, `archetypes.ts`, `at-tables.ts`, `generated/` (archetype-stats, powersets, power-pools, epic-pools, incarnate-effects), `io-sets-raw.ts`, `power-pools-raw.ts`, `epic-pools-raw.ts`, `overrides/`. First-pass re-exports of HC: `purple-patch.ts`, `granted-powers.ts`. `pet-entities.ts` is an empty stub.
 - **Wiring (9 files):** `DatasetId` + `loadDataset` + `getAllDatasetMetadata` (`dataset.ts`); `SERVER_OPTIONS` + `DATASET_BADGE_VARIANT.veracity='warning'` (`Header.tsx`); the io-sets / power-pools / powersets / epic-pools facades; `build.ts` (×3 `serverId` unions); `buildStore.ts` URL-param validation; `main.tsx` `KNOWN`; `importer.ts` Mids remap.
@@ -107,25 +116,28 @@ Both filters are dataset-agnostic in code (no other server ships these tokens, s
 
 ## Enhancements (IO sets)
 
-`extract-rebirth-io-sets-v2.py --dataset veracity` (with `COH_VERACITY_ASSETS` pointing at `Veracity Bins/`) → **230 sets** in `veracity/io-sets-raw.ts`:
+`extract-rebirth-io-sets-v2.py --dataset veracity` (with `COH_VERACITY_ASSETS` pointing at `Veracity Bins/`) → **all 257 sets (0 skipped)** in `veracity/io-sets-raw.ts`:
 
-- 224 shared sets reuse HC's hand-curated entries (binary loses Accuracy aspects + auto-names that break Mids legacy import).
-- 6 Veracity-specific sets extracted from the binary.
-- This replaced the previous first-pass HC re-export — now it's Veracity's real set list (no longer shows sets the server lacks).
+- 225 shared sets reuse HC's hand-curated entries (binary loses Accuracy aspects + auto-names that break Mids legacy import).
+- 32 Veracity-specific sets extracted from the binary (the 16 `*_Elemental` "Praxis" damage sets, the 16 `Paragon_*` sets, etc.).
+- Replaced the original first-pass HC re-export — now Veracity's real set list.
 
-**27 sets skipped** — the Veracity-custom `*_Elemental` damage sets + Overwhelming Force, whose `boostsets.bin` rarity field misreads (garbage strings like `'ng_Haymaker'` = string-offset misalignment, same layout-divergence class as `powers.bin`). Recovering them needs an RE pass on the boostsets record layout (or the dev's schema for the boostset struct).
+**Rarity tokens:** the dev added clean rarity tokens for content that previously serialized a garbled rarity field — `ECElemental` (→ `rare`) and `ECParagon` (→ `purple`), and made `ECVeryRare` lead Overwhelming Force's list. Mapped in `EC_RARITY_TO_PLANNER`. This recovered the 27 sets that were previously skipped on the garbled rarity field (no boostsets RE needed after all).
 
 ## Icons
 
-- **~97% covered** by the existing HC icon library — Veracity's powers use standard CoH icon names, so 1,147 / 1,184 shipped power icons already resolve from `public/img/powers/`.
-- **~37 missing**, all Veracity-custom: the **Astral Control** (Controller) and **Vapor Control** (Dominator) sets (`quo*` textures) + a handful of Mastermind/Peacebringer pet-upgrade icons.
-- **Blocked:** `Veracity Bins/` has only the *data* piggs — no `texture_gui.pigg` / `texture_library.pigg`, so the custom textures can't be extracted here. The app degrades gracefully (`/img/Unknown.png` fallback on icon error).
-- **Next:** request the texture piggs from the dev, then port `extract-thunderspy-icons.py` (generalize `referenced_icons()` to read the Veracity export; point `--assets-dir` at the texture piggs).
+**Power icons — 0 missing.** Veracity's powers mostly use standard CoH icon names (≈97% inherited from HC's `public/img/powers/`). The remaining custom ones — the **Astral Control** (Controller) and **Vapor Control** (Dominator) `quo*` sets + some MM/PB pet-upgrade icons — were extracted from the dev's dedicated **`veracity_sidekick_icons.pigg`** (306 written via `extract-thunderspy-icons.py --dataset veracity`).
+
+**IO-set (enhancement-picker) icons:**
+- 225 shared sets reuse HC's icon strings → resolve already.
+- **16 elemental sets: extracted** — `Elemental_<Element>.texture` from the pigg → `/img/Enhancements/IO Sets/s<element>_elemental.png` (matching the converter's default `s{set_id}.png` name, so no converter change). The lone naming nuance: set `electricity` ↔ texture `Electric`.
+- **16 Paragon ("purple") sets: still missing** (`sparagon_*.png`) — not in the dev's pigg yet (dev-confirmed). They fall back to `/img/Unknown.png` gracefully until he adds those textures.
 
 ## Known gaps / first-pass items (not blocking; experimental badge)
 
-1. **27 custom IO sets** skipped (boostsets rarity-field RE — or dev schema).
-2. **~37 custom power icons** need the dev's texture piggs.
+1. ✅ ~~27 custom IO sets skipped~~ — RESOLVED (dev's rarity tokens; all 257 extract).
+2. ✅ ~~Custom power icons missing~~ — RESOLVED (dev's icon pigg; 0 power icons missing).
+2b. **16 Paragon ("purple") set-picker icons** still missing — not in the dev's icon pigg yet (placeholder fallback). Re-run the elemental-icon extraction for `Paragon_*` once they land.
 3. **3 new header bools** (`FaceTarget` / `ShowPowerLabel` / `PowerLabelRankThreshold`) the dev mentioned are *not* between accuracy and range (range hits the clean base offset) — they sit later (confirm-dialog region or post-effects) and are absorbed harmlessly. Pin exact positions when the dev sends the diff summary.
 4. **Warshade / Arachnos Soldier / Widow** caps parsed Kheldian-like (res 0.85, HP cap 2409.5) via the validated deltas — worth a dev spot-check whether that's Veracity's intended value.
 5. **`pet-entities.ts` empty** — no Veracity `VillainDef.bin` parser yet (Mastermind henchmen / Lore / pseudo-pet detail panels lack data). Same first-pass state as Thunderspy/Rebirth shipped with.
@@ -135,11 +147,12 @@ Both filters are dataset-agnostic in code (no other server ships these tokens, s
 
 ## Open questions for the dev
 
-1. **Texture piggs** for the custom icons (Astral Control, Vapor Control, MM/PB pet upgrades).
-2. **boostsets struct** change that garbles the rarity field on the custom `*_Elemental` sets (or we RE it).
+1. ✅ ~~Texture piggs~~ — provided (`veracity_sidekick_icons.pigg`). ✅ ~~boostsets rarity~~ — fixed (clean tokens).
+2. **Paragon set icons** — the `Paragon_*` ("new purple") set icons aren't in the icon pigg yet; send them when ready and we extract.
 3. **3 header bools** — roughly where do `FaceTarget` / `ShowPowerLabel` / `PowerLabelRankThreshold` serialize?
 4. Confirm **no Sentinel** is intentional (the lingering `sentinel_*` category defs in `powers.bin` are just leftovers).
 5. Confirm **Warshade / Arachnos cap** values (res 0.85 / HP cap 2409.5).
+6. Confirm intended **rarity tier** for the `ECElemental` sets — currently mapped to `rare` (the `ECParagon` ones map to `purple`).
 
 ## How to regenerate
 
@@ -167,7 +180,13 @@ node scripts/generate-archetypes.cjs      --dataset veracity
 COH_VERACITY_ASSETS="$PWD/Veracity Bins" PYTHONPATH="tools/pigg-wrangler:tools/bin-crawler" \
   python3 scripts/extract-rebirth-io-sets-v2.py --dataset veracity
 
-# 4. Verify
+# 4. Power icons (from the dev's icon pigg in Veracity Bins/)
+python3 scripts/extract-thunderspy-icons.py --dataset veracity
+
+# 5. Elemental IO-set icons → public/img/Enhancements/IO Sets/ (one-off; see
+#    "Icons" section). Re-run with Paragon_* once those textures land in the pigg.
+
+# 6. Verify
 npx tsc --noEmit && npx vitest run
 ```
 
