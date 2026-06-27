@@ -57,6 +57,7 @@ export {
   getTierTextColor,
   getTierBorderColor,
   // Factory functions
+  isInherentlyAttuned,
   createIOSetEnhancement,
   createGenericIOEnhancement,
   createSpecialEnhancement,

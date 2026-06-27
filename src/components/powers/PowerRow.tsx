@@ -17,7 +17,7 @@ import { SlottedSetBonuses } from './SlottedSetBonuses';
 import { PermaRing } from './PermaRing';
 import type { SlotSize } from './TouchableSlot';
 import { useBuildStore, useUIStore, type PowerCategory } from '@/stores';
-import { isMovableSlot, type SlotLevelRef } from '@/utils/slot-levels';
+import { isMovableSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
 
 type PowerRowSize = 'xs' | 'sm' | 'md' | 'lg';
 
@@ -164,14 +164,69 @@ export function PowerRow({
     !!slotMoveSource &&
     slotMoveSource.powerName === (internalName ?? name) &&
     slotMoveSource.slotIndex === index;
-  const moveHighlightFor = (index: number): 'source' | 'target' | null => {
-    if (!moveActive) return null;
-    if (isMoveSourceSlot(index)) return 'source';
-    return canMoveSlotLevel(slotMoveSource!, slotRef(index)) ? 'target' : null;
+
+  // --- Slot relocation (move a slot between powers) ---
+  // Armed via the context menu; the next eligible POWER the user clicks
+  // receives the slot (and its enhancement, when the destination allows it).
+  // See moveSlot / canRelocateSlot. Mutually exclusive with slot-level move.
+  const slotRelocateSource = useUIStore((s) => s.slotRelocateSource);
+  const beginSlotRelocate = useUIStore((s) => s.beginSlotRelocate);
+  const cancelSlotRelocate = useUIStore((s) => s.cancelSlotRelocate);
+  const moveSlot = useBuildStore((s) => s.moveSlot);
+  const canMoveSlot = useBuildStore((s) => s.canMoveSlot);
+  const showToast = useUIStore((s) => s.showToast);
+  const relocateActive = !!slotRelocateSource;
+
+  const powerRef = (): PowerRef => ({ powerName: internalName ?? name, category: powerCategory });
+  const isRelocateSourcePower = (): boolean =>
+    !!slotRelocateSource && slotRelocateSource.powerName === (internalName ?? name);
+  // Whether THIS power is a valid destination for the armed relocation.
+  const isRelocateTarget = (): boolean =>
+    relocateActive && !isRelocateSourcePower() && canMoveSlot(slotRelocateSource!, powerRef());
+
+  // Combined per-slot highlight. The two move modes are mutually exclusive, so
+  // at most one path is live. Relocation highlights whole powers: the source
+  // slot pulses magenta; every slot of an eligible target glows green.
+  const highlightFor = (index: number): 'source' | 'target' | null => {
+    if (moveActive) {
+      if (isMoveSourceSlot(index)) return 'source';
+      return canMoveSlotLevel(slotMoveSource!, slotRef(index)) ? 'target' : null;
+    }
+    if (relocateActive) {
+      if (isRelocateSourcePower()) return slotRelocateSource!.slotIndex === index ? 'source' : null;
+      return isRelocateTarget() ? 'target' : null;
+    }
+    return null;
+  };
+
+  // Complete the armed relocation onto THIS power, or cancel when this power
+  // isn't an eligible destination (source power / full power / wrong category).
+  const completeRelocationHere = () => {
+    if (isRelocateTarget()) {
+      const result = moveSlot(slotRelocateSource!, powerRef());
+      if (result.ok && result.enhancementDropped) {
+        showToast({
+          message: `Enhancement didn't fit ${name} — slot moved empty.`,
+          tone: 'warning',
+        });
+      }
+    }
+    cancelSlotRelocate();
+  };
+
+  // While a relocation is armed, the ENTIRE row is one click target: capture
+  // the click before any child (slot, toggle, +, name) can act on it.
+  const handleRowClickCapture = (e: React.MouseEvent) => {
+    if (!relocateActive) return;
+    e.stopPropagation();
+    completeRelocationHere();
   };
 
   const handleSlotClick = (index: number) => {
-    // In move mode, a click completes (valid target) or cancels (anything else).
+    // During a relocation the row-level capture handler owns the click; this
+    // path only runs for normal (non-relocation) interactions.
+    if (relocateActive) return;
+    // Slot-level move: a click completes (valid target) or cancels (anything else).
     if (moveActive) {
       if (!isMoveSourceSlot(index)) {
         moveSlotLevel(slotMoveSource!, slotRef(index));
@@ -181,6 +236,16 @@ export function PowerRow({
     }
     onOpenPicker?.(index);
   };
+
+  // Row-level relocation affordance: magenta ring on the source power, emerald
+  // ring + pointer on eligible destinations, dimmed for ineligible powers.
+  const rowRelocateClass = relocateActive
+    ? isRelocateSourcePower()
+      ? 'ring-1 ring-sk-magenta/70 cursor-pointer'
+      : isRelocateTarget()
+        ? 'ring-1 ring-emerald-400/70 cursor-pointer'
+        : 'opacity-60'
+    : '';
 
   // Remove multiple empty slots from the end (used by right-click drag on empty slots)
   const handleRemoveMultipleSlots = (count: number) => {
@@ -388,10 +453,15 @@ export function PowerRow({
           filledSlotCount={filledSlotCount}
           onDragStateChange={handleDragStateChange}
           highlightRemoval={highlightedSlots.get(index) ?? null}
-          moveHighlight={moveHighlightFor(index)}
+          moveHighlight={highlightFor(index)}
           onMoveSlotLevel={
-            internalName && !moveActive && isMovableSlot(build, slotRef(index))
+            internalName && !moveActive && !relocateActive && isMovableSlot(build, slotRef(index))
               ? () => beginSlotLevelMove(slotRef(index))
+              : undefined
+          }
+          onMoveSlotToPower={
+            internalName && !moveActive && !relocateActive && isMovableSlot(build, slotRef(index))
+              ? () => beginSlotRelocate(slotRef(index))
               : undefined
           }
         />
@@ -443,8 +513,9 @@ export function PowerRow({
     // Stacked layout: Level+Icon left column, Name+Slots right column
     return (
       <div
-        className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass} ${overCapClass}`}
+        className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass} ${overCapClass} ${rowRelocateClass}`}
         title={overCapTitle}
+        onClickCapture={handleRowClickCapture}
         onMouseEnter={hoverHandler}
         onMouseLeave={leaveHandler}
         data-info-hover="power"
@@ -481,8 +552,9 @@ export function PowerRow({
   // Inline layout: Row 1 = Level Icon Name X, Row 2 = indent Slots Toggle
   return (
     <div
-      className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass} ${overCapClass}`}
+      className={`flex flex-col px-1.5 py-1 ${bgClass} border rounded-sm group transition-colors ${borderClass} ${overCapClass} ${rowRelocateClass}`}
       title={overCapTitle}
+      onClickCapture={handleRowClickCapture}
       onMouseEnter={hoverHandler}
       onMouseLeave={leaveHandler}
       data-info-hover="power"

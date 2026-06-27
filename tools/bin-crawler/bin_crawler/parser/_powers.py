@@ -524,11 +524,18 @@ def _parse_effect_template(r: BinReader, *, veracity: bool = False) -> EffectTem
     # on any template that had one. The kExpression branch had this same bug
     # historically; it was fixed by reordering tokens-before-delay. The same
     # reorder is correct for non-kExpression templates too.
-    r.read_u4_array()  # dur_expr_tokens (almost always empty)
-    r.read_u4_array()  # mag_expr_tokens (almost always empty)
+    # Duration / magnitude expression RPN token lists. These are string_arrays
+    # (each token a string-table offset) — byte-identical on the wire to a
+    # u4_array, so reading them as strings doesn't shift alignment. Empty for
+    # ~99% of templates; non-empty on kExpression effects whose magnitude scales
+    # with a runtime value (e.g. Blazing Bolt's damage scaling with the caster's
+    # ToHit: "@StdResult * (0.211 * minmax(4.54 * source>cur.kToHit - 3.41, -1,
+    # 1) + 1)"). Joined with spaces to match the group-level requires_expression
+    # representation. Previously discarded, which left every Expression-type
+    # effect with a blank magnitude_expression in the export.
+    dur_expr = " ".join(r.read_string_array())
+    mag_expr = " ".join(r.read_string_array())
     delay = r.read_f4()
-    dur_expr = ''
-    mag_expr = ''
 
     # Tick fields
     app_period = r.read_f4()

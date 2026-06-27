@@ -845,7 +845,7 @@ const SPECIAL_ENH_PREFIXES: [string, SpecialEnhancement['category'], Record<stri
  * Try to resolve a UID as a special enhancement (HamiO, Titan, Hydra, D-Sync, Prestige).
  * Returns null if the UID doesn't match any special prefix.
  */
-function resolveSpecialEnhancement(uid: string, boost?: number): EnhancementResolveResult | null {
+function resolveSpecialEnhancement(uid: string, boost?: number, level?: number): EnhancementResolveResult | null {
   for (const [prefix, category, registry] of SPECIAL_ENH_PREFIXES) {
     if (!uid.startsWith(prefix)) continue;
 
@@ -853,8 +853,15 @@ function resolveSpecialEnhancement(uid: string, boost?: number): EnhancementReso
     const suffixMap = SPECIAL_SUFFIX_MAPS[category];
     const id = suffixMap?.[suffix];
     if (id && registry[id]) {
+      // Special IOs have no crafted level in our model — only boost scales them.
+      // The game text export encodes boost explicitly (e.g. "Hydra_… (50+3)" →
+      // boost=3), but the external .json export folds it into the level
+      // ("level": 53, "numCombines": null). Derive the boost from level-50 when
+      // no explicit boost is given so both formats preserve a level-53 special.
+      // createSpecialEnhancement caps the result at +3.
+      const effectiveBoost = boost ?? (level !== undefined && level > 50 ? level - 50 : undefined);
       return {
-        enhancement: createSpecialEnhancement(id, registry[id], category, boost),
+        enhancement: createSpecialEnhancement(id, registry[id], category, effectiveBoost),
         warning: null,
       };
     }
@@ -921,7 +928,7 @@ function resolveEnhancement(enh: GameExportEnhancement): EnhancementResolveResul
   }
 
   // Special enhancements: Hamidon, Titan, Hydra, D-Sync
-  const specialResult = resolveSpecialEnhancement(uid, boost);
+  const specialResult = resolveSpecialEnhancement(uid, boost, level);
   if (specialResult) return specialResult;
 
   // IO Set enhancement

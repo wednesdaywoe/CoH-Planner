@@ -311,6 +311,12 @@ describe('cast forms (tohit trigger — fast snipe)', () => {
     expect(acts.find((a) => a.pi === 1)!.formId).toBe('fast');
   });
 
+  it('fires fast when forceFastSnipe is set, even below threshold and with no window', () => {
+    const acts = replayChain([snipe], [0], 0, { permanentToHit: 0, forceFastSnipe: true });
+    expect(acts[0].formId).toBe('fast');
+    expect(acts[0].end - acts[0].start).toBeCloseTo(1.67, 5);
+  });
+
   it('a recharge-only buff (Hasten) does NOT make a snipe fast', () => {
     const acts = replayChain([hasten, snipe], [0, 1], 0, { permanentToHit: 0 });
     expect(acts.find((a) => a.pi === 1)!.formId).toBeUndefined();

@@ -13,7 +13,7 @@ import {
   getIOSetsForPower, lookupPower,
   getCommonIOValueAtLevel, ORIGIN_TIERS,
   sortCategoriesByPriority,
-  createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement,
+  createIOSetEnhancement, createGenericIOEnhancement, createSpecialEnhancement, createOriginEnhancement, isInherentlyAttuned,
   getAvailableGenericIOs, getAvailableHamidons, getAvailableTitans, getAvailableHydras, getAvailableDSyncs, getAvailablePrestige,
   getRarityColor, getTierTextColor, getTierBorderColor,
   findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage,
@@ -1380,7 +1380,7 @@ function ProcsContent({
             <div className="relative flex-shrink-0">
               <IOSetIcon
                 icon={set.icon || 'Unknown.png'}
-                attuned={attunementEnabled}
+                attuned={attunementEnabled || isInherentlyAttuned(set)}
                 category={set.category}
                 size={30}
                 alt={piece.name}
@@ -1481,8 +1481,11 @@ function IOSetRow({
   const isCompareMode = useUIStore((s) => s.enhancementPicker.virtualSlots) !== null;
   const trackedStats = useUIStore((s) => s.trackedStats);
 
-  // Level gating: set is unavailable if IO level is outside its range
-  const isLevelGated = !attunementEnabled && (set.minLevel > globalIOLevel || set.maxLevel < globalIOLevel);
+  // Level gating: set is unavailable if IO level is outside its range. ATO / event
+  // sets are always attuned (see isInherentlyAttuned), so the IO-level slider never
+  // applies to them — never gate or show a "will slot at Lv" hint for those.
+  const isLevelGated = !attunementEnabled && !isInherentlyAttuned(set)
+    && (set.minLevel > globalIOLevel || set.maxLevel < globalIOLevel);
 
   // Check if this set provides any tracked stat bonuses
   const hasTrackedMatch = useMemo(() => {
@@ -1589,7 +1592,7 @@ function IOSetRow({
               >
                 <IOSetIcon
                   icon={set.icon || 'Unknown.png'}
-                  attuned={attunementEnabled}
+                  attuned={attunementEnabled || isInherentlyAttuned(set)}
                   category={set.category}
                   size={30}
                   alt={piece.name}
@@ -1649,7 +1652,7 @@ function IOSetRow({
               <div className="relative flex-shrink-0">
                 <IOSetIcon
                   icon={set.icon || 'Unknown.png'}
-                  attuned={attunementEnabled}
+                  attuned={attunementEnabled || isInherentlyAttuned(set)}
                   category={set.category}
                   size={30}
                   alt={piece.name}
@@ -1957,7 +1960,10 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
   // (maxLevel <= 1) scale freely above their listed cap. Mirrors the calc engine
   // in enhancement-values.ts to keep the picker preview consistent with the actual
   // stat calculation (e.g. attuned Kinetic Combat caps at L35, not character level).
-  const rawLevel = attunementEnabled ? (build.level || 50) : globalIOLevel;
+  // ATO / event sets are always attuned (see isInherentlyAttuned) — preview them
+  // as attuned (character-level scaling, no boost) regardless of the slider.
+  const effectiveAttuned = attunementEnabled || isInherentlyAttuned(set);
+  const rawLevel = effectiveAttuned ? (build.level || 50) : globalIOLevel;
   const cappedLevel = set.maxLevel > 1 ? Math.min(rawLevel, set.maxLevel) : rawLevel;
   const effectiveLevel = Math.max(set.minLevel, cappedLevel);
   const rawAspectCount = piece.aspects.filter(a => normalizeAspectName(a) !== null).length || piece.aspects.length;
@@ -1974,7 +1980,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
 
   // Boost multiplier — pure procs (no aspects) can't be boosted, but hybrid procs can
   const isPureProc = piece.proc && piece.aspects.length === 0;
-  const boostMultiplier = (!isPureProc && globalBoostLevel > 0) ? 1 + globalBoostLevel * BOOST_MULTIPLIER_PER_LEVEL : 1;
+  const boostMultiplier = (!effectiveAttuned && !isPureProc && globalBoostLevel > 0) ? 1 + globalBoostLevel * BOOST_MULTIPLIER_PER_LEVEL : 1;
 
   // Purple and Superior sets get 25% higher enhancement values
   const rarityMultiplier = getSetRarityMultiplier(set.category, set.name);
@@ -1993,7 +1999,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
       <div className="flex items-center gap-2">
         <IOSetIcon
           icon={set.icon || 'Unknown.png'}
-          attuned={attunementEnabled}
+          attuned={effectiveAttuned}
           category={set.category}
           size={28}
           alt={piece.name}
@@ -2140,7 +2146,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
       {/* Level and flags */}
       <div className="text-[10px] flex gap-3">
         <span className="text-slate-400">
-          {attunementEnabled ? (
+          {effectiveAttuned ? (
             <span className="text-purple-400">Attuned</span>
           ) : (
             <>Level: <span className="text-slate-200">{effectiveLevel}</span>
@@ -2151,7 +2157,7 @@ function SetPieceTooltip({ set, piece }: SetPieceTooltipProps) {
           )}
         </span>
         <span className="text-slate-400">Range: {set.minLevel}-{set.maxLevel}</span>
-        {!(piece.proc && piece.aspects.length === 0) && globalBoostLevel > 0 && <span className="text-green-400">+{globalBoostLevel} Boosted</span>}
+        {!effectiveAttuned && !(piece.proc && piece.aspects.length === 0) && globalBoostLevel > 0 && <span className="text-green-400">+{globalBoostLevel} Boosted</span>}
         {piece.unique && <span className="text-red-400">Unique</span>}
       </div>
 

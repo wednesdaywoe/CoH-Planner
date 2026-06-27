@@ -217,7 +217,11 @@ def main() -> None:
     args = ap.parse_args()
 
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
-    url = f"http://localhost:{args.port}/"
+    # Use 127.0.0.1, not localhost: browsers that have cached an HTTP/2 (Alt-Svc
+    # / h2c prior-knowledge) association for the `localhost` hostname send an
+    # HTTP/2 request to this cleartext HTTP/1 server, which answers 505 HTTP
+    # Version Not Supported. IP literals never get that treatment.
+    url = f"http://127.0.0.1:{args.port}/"
     print(f"Sidekick Launcher running at {url}")
     if not args.no_browser:
         webbrowser.open(url)

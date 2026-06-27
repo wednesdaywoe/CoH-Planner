@@ -175,9 +175,19 @@ export function GeneralStatsBlock({
   // instead of the misleading "Single Target" — display-only, never mutates the
   // power's real effect_area. See parser_logs/BIN-PARSER-LOG.md.
   const patchArea = deriveSummonPatchArea(power, effects);
+  // For a cone, `radius` and `range` describe the same dimension — the cone's
+  // reach — and Range enhancements extend it (unlike sphere/PBAoE radii, which
+  // are fixed). Show the *enhanced* reach in the Effect Area row so it matches
+  // the Pwr Range row instead of the stale base radius. This is display-only:
+  // ProcChanceRow below still gets the base `effects.radius`, because a cone's
+  // enhanced reach must NOT inflate its proc-area denominator.
+  const areaEffects =
+    power.effectArea === 'Cone' && rng && rng.final > 0
+      ? { ...effects, radius: rng.final }
+      : effects;
   const effectAreaLabel = patchArea
     ? `${formatEffectArea(patchArea.area, patchArea)} (patch)`
-    : formatEffectArea(power.effectArea, effects);
+    : formatEffectArea(power.effectArea, areaEffects);
   const attackType = formatAttackType(power, effects, damageType);
 
   return (

@@ -298,6 +298,10 @@ export interface FormContext {
    *  global / set bonuses. A snipe fires its fast form whenever this meets the
    *  form's threshold, regardless of timeline position. */
   permanentToHit?: number;
+  /** Force every `tohit` form (fast snipe) to fire regardless of permanent
+   *  ToHit or buff windows — the user's "assume I'll Aim/Build Up first"
+   *  override. Set from the Attack Chain Builder's "Quick snipe" toggle. */
+  forceFastSnipe?: boolean;
 }
 
 export function replayChain(
@@ -331,9 +335,11 @@ export function replayChain(
         break;
       }
       if (f.trigger.type === 'tohit') {
-        // Fast snipe: permanent ToHit meets the threshold, OR this cast lands
-        // inside an earlier ToHit-buff window (Build Up / Aim) on the timeline.
-        const permanent = (formCtx.permanentToHit ?? 0) >= f.trigger.threshold;
+        // Fast snipe: the user forced it on, OR permanent ToHit meets the
+        // threshold, OR this cast lands inside an earlier ToHit-buff window
+        // (Build Up / Aim) on the timeline.
+        const permanent =
+          !!formCtx.forceFastSnipe || (formCtx.permanentToHit ?? 0) >= f.trigger.threshold;
         const inWindow =
           !permanent &&
           acts.some((a) => {

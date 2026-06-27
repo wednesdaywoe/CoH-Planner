@@ -710,6 +710,17 @@ const App = {
             `<span class="boost-tag">${esc(BOOST_SHORT[b] || b)}</span>`
         ).join(' ');
 
+        // boostsets.bin-derived IO set categories. null = not indexed (fall back
+        // to inference downstream); [] = game says no sets slot here.
+        const setCats = pw.allowed_set_categories;
+        const setCatsRow = setCats == null ? '' : `
+                <div class="boosts-row">
+                    <span class="label">Boostsets Allowed:</span>
+                    ${setCats.length
+                        ? setCats.map(c => `<span class="boost-tag">${esc(c)}</span>`).join(' ')
+                        : '<span class="dim">None</span>'}
+                </div>`;
+
         const shortHelp = pw.short_help && pw.short_help.length > 2
             ? `<div class="short-help">${esc(pw.short_help)}</div>` : '';
 
@@ -738,6 +749,7 @@ const App = {
                     <span class="label">Boosts Allowed:</span>
                     ${boostsList || '<span class="dim">None</span>'}
                 </div>
+                ${setCatsRow}
                 <div class="export-row">
                     <button class="btn-export" onclick="event.stopPropagation(); App.exportPower('${esc(pw.full_name)}')">Export JSON</button>
                 </div>

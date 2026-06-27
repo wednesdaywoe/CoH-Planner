@@ -104,6 +104,13 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const setPowerMetric = useUIStore((s) => s.setChainPowerMetric);
   const effectWindowsOn = useUIStore((s) => s.chainShowEffectWindows);
   const setEffectWindowsOn = useUIStore((s) => s.setChainShowEffectWindows);
+  // Combat Mode is the app-wide "in combat" (kEngaged) toggle. A snipe's quick
+  // form fires while in combat OR while the +22% ToHit Marksman buff is active —
+  // so Combat Mode drives the kEngaged half here, mirroring the InfoPanel which
+  // also swaps in quickSnipe stats when Combat Mode is on. The ToHit half stays
+  // in replayChain (permanent ToHit ≥ threshold / Build Up windows).
+  const combatMode = useUIStore((s) => s.combatMode);
+  const toggleCombatMode = useUIStore((s) => s.toggleCombatMode);
   const showToast = useUIStore((s) => s.showToast);
 
   // Saved chains live on the build (so they travel with the character).
@@ -196,9 +203,21 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   const metricVal = (p: ChainPower) => powerMetricValue(p, powerMetric, globalRech);
 
   const activations = useMemo(
-    () => replayChain(powers, sequence, globalRech, { permanentToHit }),
-    [powers, sequence, globalRech, permanentToHit],
+    () => replayChain(powers, sequence, globalRech, { permanentToHit, forceFastSnipe: combatMode }),
+    [powers, sequence, globalRech, permanentToHit, combatMode],
   );
+
+  // Snipe surfacing: if the chain holds a snipe (a power with a ToHit-gated fast
+  // form), expose its threshold so we can guide the user to the controls that
+  // make it cast quick — Combat Mode (in-combat) or enough always-on ToHit.
+  const fastSnipe = useMemo(() => {
+    for (const p of powers) {
+      const f = p.forms?.find((x) => x.kind === 'fast' && x.trigger.type === 'tohit');
+      if (f && f.trigger.type === 'tohit') return { threshold: f.trigger.threshold };
+    }
+    return null;
+  }, [powers]);
+  const toHitMeetsThreshold = fastSnipe != null && permanentToHit >= fastSnipe.threshold;
   const result = useMemo(
     () => computeChain(powers, activations, globalRech, endParams, powerMetric),
     [powers, activations, globalRech, endParams, powerMetric],
@@ -513,6 +532,25 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
               />
               Buff/debuff windows
             </label>
+            {fastSnipe && (
+              <label
+                className="flex items-center gap-1.5 text-[11px] text-gray-500 cursor-pointer select-none"
+                title={
+                  toHitMeetsThreshold
+                    ? `Your always-on ToHit (${permanentToHit.toFixed(1)}%) already clears the +${fastSnipe.threshold}% fast-snipe threshold, so snipes cast quick regardless of Combat Mode.`
+                    : `Snipes cast quick while in combat (kEngaged) or with +${fastSnipe.threshold}% ToHit. Turn on Combat Mode to use the quick form; otherwise the slow charged cast is shown. Your always-on ToHit is ${permanentToHit.toFixed(1)}%.`
+                }
+              >
+                <input
+                  type="checkbox"
+                  checked={combatMode || toHitMeetsThreshold}
+                  disabled={toHitMeetsThreshold}
+                  onChange={toggleCombatMode}
+                  className="w-3.5 h-3.5 rounded border-gray-600 bg-gray-800 accent-amber-500 disabled:opacity-50"
+                />
+                Combat Mode (quick snipe)
+              </label>
+            )}
           </div>
           <div className="flex items-center gap-1.5">
             <span className="text-[11px] text-gray-500 mr-1">Zoom</span>

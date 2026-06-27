@@ -17,7 +17,10 @@ from pathlib import Path
 from socketserver import ThreadingMixIn
 from urllib.parse import parse_qs, urlparse
 
-from .parser import parse_powers, parse_powersets, parse_powercats, parse_classes, load_messages, BinResolver
+from .parser import (
+    parse_powers, parse_powersets, parse_powercats, parse_classes, load_messages, BinResolver,
+    parse_boostsets, build_power_category_index,
+)
 from .assets_dir import is_assets_dir, saved_assets_dir, remember_assets_dir
 
 
@@ -361,6 +364,17 @@ def load_source(name: str, label: str, assets_dir: Path) -> DataSource:
         vcls_records = _timed("villain class records", parse_classes, "villain_classes.bin")
         src.villain_class_dicts = [asdict(c) for c in vcls_records]
 
+    # Parse boostsets.bin — the authoritative per-IO-set list of powers each set
+    # can slot into, reversed into a power full_name → planner-category index.
+    # The powers.bin record itself does NOT carry the slottable set categories
+    # (its `allowed_boostset_cats` field is always empty — see _powers.py), so
+    # without this the web view shows boosts_allowed but no set categories.
+    set_cats_index: dict[str, list[str]] = {}
+    if resolver.has("boostsets.bin"):
+        boost_sets = _timed("IO sets", parse_boostsets, "boostsets.bin")
+        set_cats_index = build_power_category_index(boost_sets)
+        print(f"  [{name}] {len(set_cats_index)} powers indexed to set categories.", flush=True)
+
     # Resolve P-hash display names
     if msgs:
         for pw in powers:
@@ -378,6 +392,9 @@ def load_source(name: str, label: str, assets_dir: Path) -> DataSource:
         d["powerset"] = pw.powerset
         d["power_name"] = pw.power_name
         d["effect_area_name"] = pw.effect_area_name
+        # boostsets.bin-derived set categories (None when not indexed / no
+        # boostsets.bin, mirroring export_powers.py's three-state contract).
+        d["allowed_set_categories"] = set_cats_index.get(pw.full_name) if set_cats_index else None
         powers_dicts.append(d)
         cat_set.add(pw.category)
         cat_to_ps.setdefault(pw.category, set()).add(pw.powerset)

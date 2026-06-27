@@ -2,7 +2,7 @@
  * TouchableSlot - Unified enhancement slot component with touch support
  *
  * Supports three sizes (xs, sm, md) and provides consistent interaction:
- * - Desktop: Click opens picker, right-click removes, Shift+right-click opens context menu
+ * - Desktop: Click opens picker, right-click removes, Shift+left-click opens context menu
  * - Desktop: Right-click drag removes multiple slots based on drag distance
  * - Mobile: Tap opens picker, touch-and-hold opens context menu
  */
@@ -53,8 +53,11 @@ interface TouchableSlotProps {
   /** Begin a slot-level move with this slot as the source. Omitted when the
    *  slot can't be a move source (base slot, auto-granted inherent slot). */
   onMoveSlotLevel?: () => void;
-  /** Slot-level-move highlight: this slot is the armed source, or a valid
-   *  destination to swap into. Null when not in move mode / not eligible. */
+  /** Begin relocating this slot to another power. Omitted when the slot can't
+   *  be a move source. */
+  onMoveSlotToPower?: () => void;
+  /** Slot-level-move / relocation highlight: this slot is the armed source, or
+   *  a valid destination. Null when not in move mode / not eligible. */
   moveHighlight?: 'source' | 'target' | null;
 }
 
@@ -78,6 +81,7 @@ export function TouchableSlot({
   onDragStateChange,
   highlightRemoval,
   onMoveSlotLevel,
+  onMoveSlotToPower,
   moveHighlight,
 }: TouchableSlotProps) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -124,13 +128,26 @@ export function TouchableSlot({
     setMenuOpen(true);
   };
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
     if (longPressTriggeredRef.current || menuOpen) return;
+    // Shift+left-click opens the slot options/comparison menu. We use the LEFT
+    // button rather than Shift+right-click because Brave/Chromium/Firefox force
+    // their native context menu whenever Shift is held during a right-click —
+    // that browser escape hatch ignores preventDefault(), so both menus appear.
+    // The left button has no native menu, so there is nothing to suppress.
+    if (e.shiftKey) {
+      openMenu(e.clientX, e.clientY);
+      return;
+    }
     onClick();
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 2) return; // Only right button
+    // Shift is reserved for the options menu (Shift+left-click); never start a
+    // bulk remove-drag on Shift+right-click — that gesture is the browser's
+    // native-menu escape hatch and is left alone.
+    if (e.shiftKey) return;
 
     // Determine drag mode based on what's under the cursor
     const mode = slot ? 'enhancements' : 'slots';
@@ -235,8 +252,11 @@ export function TouchableSlot({
       return;
     }
 
+    // Shift+right-click is the browser's native-menu escape hatch (it shows the
+    // native menu regardless of preventDefault). The options menu now lives on
+    // Shift+left-click, so don't fire the clear/remove action here — that would
+    // silently wipe the slot while the native menu pops up.
     if (e.shiftKey) {
-      openMenu(e.clientX, e.clientY);
       return;
     }
     if (slot) {
@@ -352,6 +372,7 @@ export function TouchableSlot({
         onRemoveAllSlots={onRemoveAllSlots}
         onCompareSlotting={onCompareSlotting}
         onMoveSlotLevel={onMoveSlotLevel}
+        onMoveSlotToPower={onMoveSlotToPower}
       />
     </>
   );

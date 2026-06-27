@@ -394,6 +394,31 @@ body {
   --color-link: #C58AE0;
 }
 
+/* --- Espresso — dark-roast coffee (crema gold on espresso brown) --- */
+[data-theme='espresso'] {
+  --color-gray-50:  #F5EEE3;  --color-slate-50:  #F5EEE3;
+  --color-gray-100: #EBE0CF;  --color-slate-100: #EBE0CF;
+  --color-gray-200: #DBCBB0;  --color-slate-200: #DBCBB0;
+  --color-gray-300: #C3AC88;  --color-slate-300: #C3AC88;
+  --color-gray-400: #A1855E;  --color-slate-400: #A1855E;
+  --color-gray-500: #7D6344;  --color-slate-500: #7D6344;
+  --color-gray-600: #5A4632;  --color-slate-600: #5A4632;
+  --color-gray-700: #3D2E20;  --color-slate-700: #3D2E20;
+  --color-gray-800: #2A1F16;  --color-slate-800: #2A1F16;
+  --color-gray-900: #1C140E;  --color-slate-900: #1C140E;
+  --color-gray-950: #120C08;  --color-slate-950: #120C08;
+
+  /* Action accent is crema GOLD on the espresso-brown ramp — a warm pop that
+     reads like a latte where the brown chrome would otherwise swallow it (same
+     gold-action-on-monochrome formula as Imperial/Hamidon). A lighter caramel
+     survives as --color-link for accent text on the dark panels. */
+  --color-sk-magenta: #CA8E42;
+  --color-primary: #CA8E42;
+  --color-primary-hover: #B07835;
+  --color-primary-fg: #1C140E;
+  --color-link: #E2B57A;
+}
+
 /* ============================================================
    LIGHT MODE  (orthogonal axis: data-mode='light' on <html>)
    ------------------------------------------------------------
@@ -581,4 +606,20 @@ body {
   --color-gray-950: #F4F1F8;  --color-slate-950: #F4F1F8;
   /* accent-as-text: dark shade of the theme accent for the light canvas. */
   --color-link: #4A1F6B;
+}
+
+[data-theme='espresso'][data-mode='light'] {
+  --color-gray-50: #120C08;  --color-slate-50: #120C08;
+  --color-gray-100: #1C140E;  --color-slate-100: #1C140E;
+  --color-gray-200: #2A1F16;  --color-slate-200: #2A1F16;
+  --color-gray-300: #3D2E20;  --color-slate-300: #3D2E20;
+  --color-gray-400: #5A4632;  --color-slate-400: #5A4632;
+  --color-gray-500: #7D6344;  --color-slate-500: #7D6344;
+  --color-gray-600: #A1855E;  --color-slate-600: #A1855E;
+  --color-gray-700: #C3AC88;  --color-slate-700: #C3AC88;
+  --color-gray-800: #DBCBB0;  --color-slate-800: #DBCBB0;
+  --color-gray-900: #EBE0CF;  --color-slate-900: #EBE0CF;
+  --color-gray-950: #F5EEE3;  --color-slate-950: #F5EEE3;
+  /* accent-as-text: dark shade of the theme accent for the light canvas. */
+  --color-link: #8A5A1E;
 }
