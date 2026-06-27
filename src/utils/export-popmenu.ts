@@ -8,7 +8,7 @@
 
 import type { Build, Enhancement } from '@/types';
 import type { IOSetEnhancement, GenericIOEnhancement, SpecialEnhancement } from '@/types/enhancement';
-import { getIOSet } from '@/data';
+import { getIOSet, isInherentlyAttuned } from '@/data';
 
 // ============================================
 // STAT NAME MAPPING (app stat → popmenu name)
@@ -159,11 +159,14 @@ function enhancementToBoostCmd(enh: Enhancement): string | null {
       const letter = pieceToLetter(ioSet.pieceNum);
       const setDef = getIOSet(ioSet.setId);
       const isAto = setDef?.category === 'ato';
-      const isEvent = setDef?.category === 'event';
       const isSuperior = ioSet.setId.startsWith('superior_');
+      // Use the shared attunement source of truth (maxLevel <= 1) instead of
+      // re-deriving it from category, so this can't drift from the picker/calc.
+      // Covers ATO + Winter/Summer/Anniversary event sets uniformly.
+      const inherentlyAttuned = setDef ? isInherentlyAttuned(setDef) : false;
 
       let prefix: string;
-      if (isAto || isEvent) {
+      if (inherentlyAttuned) {
         // ATOs and event sets don't have crafted versions — always attuned
         prefix = isSuperior ? 'Superior_Attuned_' : 'Attuned_';
       } else if (!ioSet.attuned) {
@@ -180,13 +183,17 @@ function enhancementToBoostCmd(enh: Enhancement): string | null {
       const pascal = toPascalUnderscore(baseId);
 
       const uid = `${prefix}${pascal}_${letter}`;
-      const level = ioSet.attuned ? 50 : (ioSet.level || 50);
+      const level = (ioSet.attuned || inherentlyAttuned) ? 50 : (ioSet.level || 50);
       return `boost ${uid} ${uid} ${level}`;
     }
 
     case 'io-generic': {
       const generic = enh as GenericIOEnhancement;
-      const statName = STAT_TO_POPMENU[generic.stat] || generic.stat;
+      const statName = STAT_TO_POPMENU[generic.stat];
+      // Skip stats with no popmenu boost UID — passing the raw stat through would
+      // emit a UID containing a space (e.g. "Crafted_Mez Duration"), which breaks
+      // the boost command's whitespace-delimited parsing.
+      if (!statName) return null;
       const uid = `Crafted_${statName}`;
       const level = generic.level || 50;
       return `boost ${uid} ${uid} ${level}`;
