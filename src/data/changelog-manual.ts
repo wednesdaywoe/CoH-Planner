@@ -21,9 +21,12 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-06-25',
+    date: '2026-06-26',
 
     items: [
+      { message: 'The attack chain tool can now use in-combat to gate Quicksnipe', type: 'feat'},
+      { message: 'Fixed an endurance display discrepancy between the info panel and tooltip', type: 'fix'},
+      { message: 'Fixed ATO/Event enhancements registering as level 1 if attunement is turned off', type: 'fix'},
       { message: 'Added espresso theme just because', type: 'feat' },
       { message: 'Added Move Slot feature to shift-leftclick menu', type: 'feat' },
       { message: 'Updated Homecoming dataset to Issue 28 Page 3 Panel 3', type: 'update'},
