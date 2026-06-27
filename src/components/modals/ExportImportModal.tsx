@@ -733,7 +733,10 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         </div>
       </ModalHeader>
 
-      <ModalBody>
+      {/* Fixed body height + internal scroll keeps the card a constant size, so
+          the centered modal doesn't jump when switching tabs or expanding inline
+          sections (popmenu, import warnings). Header/footer stay pinned. */}
+      <ModalBody className="h-[60vh] overflow-y-auto">
         {activeTab === 'save' ? (
           /* ========== SAVE TAB ========== */
           <div className="space-y-4">
