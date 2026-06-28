@@ -38,7 +38,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Fear"
+    "Fear",
+    "Psychic Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

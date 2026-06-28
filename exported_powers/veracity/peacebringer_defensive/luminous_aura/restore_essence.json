@@ -35,7 +35,8 @@
     "Heal"
   ],
   "allowed_set_categories": [
-    "Healing"
+    "Healing",
+    "Luminosity Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

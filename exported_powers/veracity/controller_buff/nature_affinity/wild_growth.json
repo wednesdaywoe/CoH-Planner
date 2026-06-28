@@ -40,6 +40,7 @@
   ],
   "allowed_set_categories": [
     "Healing",
+    "Nature Praxis",
     "Resist Damage"
   ],
   "cast_through": [],

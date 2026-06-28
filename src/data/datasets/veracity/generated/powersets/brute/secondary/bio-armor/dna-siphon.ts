@@ -40,6 +40,7 @@ export const DNASiphon: Power = {
     "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
+    "Life Praxis",
     "Melee AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"

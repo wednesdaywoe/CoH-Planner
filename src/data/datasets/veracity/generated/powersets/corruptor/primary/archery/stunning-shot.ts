@@ -34,6 +34,7 @@ export const StunningShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Corruptor Archetype Sets",
     "Ranged Damage",
     "Stuns",

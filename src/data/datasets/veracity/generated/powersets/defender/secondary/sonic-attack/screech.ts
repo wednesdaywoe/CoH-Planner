@@ -37,7 +37,8 @@ export const Screech: Power = {
     "Defender Archetype Sets",
     "Ranged Damage",
     "Stuns",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "damage": [

@@ -36,6 +36,7 @@ export const Impale: Power = {
   ],
   "allowedSetCategories": [
     "Immobilize",
+    "Life Praxis",
     "Ranged Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",

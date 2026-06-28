@@ -37,6 +37,7 @@ export const ExplosiveBlast: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Energy Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

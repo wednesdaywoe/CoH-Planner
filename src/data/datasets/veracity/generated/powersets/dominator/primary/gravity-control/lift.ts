@@ -36,7 +36,8 @@ export const Lift: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Ranged Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "damage": {

@@ -42,6 +42,7 @@ export const HeadSplitter: Power = {
     "Defense Debuff",
     "Knockback",
     "Melee AoE Damage",
+    "Might Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

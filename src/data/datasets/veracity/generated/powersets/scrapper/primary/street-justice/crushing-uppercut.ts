@@ -38,6 +38,7 @@ export const CrushingUppercut: Power = {
     "Holds",
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

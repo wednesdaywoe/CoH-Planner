@@ -41,7 +41,8 @@ export const ConcussiveMist: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "specialEffects": [

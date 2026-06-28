@@ -35,6 +35,7 @@ export const RingofFire: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Fire Praxis",
     "Immobilize",
     "Ranged Damage",
     "Universal Damage Sets"

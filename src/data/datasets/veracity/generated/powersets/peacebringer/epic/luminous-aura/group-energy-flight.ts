@@ -35,6 +35,7 @@ export const GroupEnergyFlight: Power = {
   ],
   "allowedSetCategories": [
     "Flight",
+    "Luminosity Praxis",
     "Universal Travel"
   ],
   "maxSlots": 6,

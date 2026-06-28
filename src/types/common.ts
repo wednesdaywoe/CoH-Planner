@@ -189,7 +189,27 @@ export type IOSetCategory =
   | 'Universal Debuff'
   // Rebirth resurrection event set (Return From The Grave) — slottable only
   // in resurrection powers (Revive, Rise of the Phoenix, Howling Twilight, …)
-  | 'Resurrection';
+  | 'Resurrection'
+  // Veracity Elemental/Paragon "Praxis" set families — themed sets gated by an
+  // explicit allowed-powers list (no EC category in the binary). Each element is
+  // its own slot family; the Elemental (rare) and Paragon (purple) variants share
+  // an identical power list. See _praxis_category in bin-crawler's _boostsets.py.
+  | 'Ballistic Praxis'
+  | 'Earth Praxis'
+  | 'Electricity Praxis'
+  | 'Energy Praxis'
+  | 'Finesse Praxis'
+  | 'Fire Praxis'
+  | 'Ice Praxis'
+  | 'Life Praxis'
+  | 'Luminosity Praxis'
+  | 'Might Praxis'
+  | 'Nature Praxis'
+  | 'Psychic Praxis'
+  | 'Umbral Praxis'
+  | 'Vacuum Praxis'
+  | 'Vibration Praxis'
+  | 'Water Praxis';
 
 // ============================================
 // IO SET RARITY

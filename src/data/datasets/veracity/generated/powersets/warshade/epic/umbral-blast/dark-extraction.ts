@@ -37,6 +37,7 @@ export const DarkExtraction: Power = {
     "Kheldian Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

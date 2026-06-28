@@ -33,6 +33,7 @@ export const SpectralWounds: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

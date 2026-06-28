@@ -36,6 +36,7 @@ export const SpeedBoost: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Energy Praxis",
     "Running & Sprints",
     "Universal Travel"
   ],

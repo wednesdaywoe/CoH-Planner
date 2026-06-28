@@ -38,6 +38,7 @@ export const Blackstar: Power = {
     "Corruptor Archetype Sets",
     "Melee AoE Damage",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

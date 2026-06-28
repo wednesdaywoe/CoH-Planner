@@ -36,6 +36,7 @@ export const TelekineticThrust: Power = {
     "Blaster Archetype Sets",
     "Knockback",
     "Melee Damage",
+    "Psychic Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

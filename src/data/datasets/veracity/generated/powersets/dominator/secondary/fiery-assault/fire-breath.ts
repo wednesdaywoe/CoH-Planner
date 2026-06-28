@@ -36,6 +36,7 @@ export const FireBreath: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

@@ -36,7 +36,8 @@
     "Res_Damage"
   ],
   "allowed_set_categories": [
-    "Resist Damage"
+    "Resist Damage",
+    "Umbral Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

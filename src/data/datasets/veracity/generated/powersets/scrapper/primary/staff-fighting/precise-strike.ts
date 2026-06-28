@@ -36,7 +36,8 @@ export const PreciseStrike: Power = {
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Stuns",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "damage": {

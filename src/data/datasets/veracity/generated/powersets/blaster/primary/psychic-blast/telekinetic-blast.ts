@@ -36,6 +36,7 @@ export const TelekineticBlast: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Knockback",
+    "Psychic Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

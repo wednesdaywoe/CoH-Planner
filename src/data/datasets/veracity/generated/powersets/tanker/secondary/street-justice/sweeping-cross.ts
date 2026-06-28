@@ -38,6 +38,7 @@ export const SweepingCross: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Might Praxis",
     "Stuns",
     "Tanker Archetype Sets",
     "Threat Duration",

@@ -36,6 +36,7 @@ export const DeathShroud: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -34,6 +34,7 @@ export const Spin: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Nature Praxis",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],

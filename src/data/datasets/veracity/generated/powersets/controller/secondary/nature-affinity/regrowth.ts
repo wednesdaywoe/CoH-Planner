@@ -35,7 +35,8 @@ export const Regrowth: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "damage": [

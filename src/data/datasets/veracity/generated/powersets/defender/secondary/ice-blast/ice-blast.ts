@@ -35,6 +35,7 @@ export const IceBlast: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Ice Praxis",
     "Ranged Damage",
     "Slow Movement",
     "Universal Damage Sets"

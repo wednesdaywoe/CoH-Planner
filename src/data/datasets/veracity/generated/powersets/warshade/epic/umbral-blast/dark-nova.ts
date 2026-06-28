@@ -39,6 +39,7 @@ export const DarkNova: Power = {
     "Endurance Modification",
     "Flight",
     "To Hit Buff",
+    "Umbral Praxis",
     "Universal Travel"
   ],
   "maxSlots": 6,

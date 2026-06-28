@@ -34,6 +34,7 @@ export const Decoy: Power = {
   ],
   "allowedSetCategories": [
     "Pet Damage",
+    "Psychic Praxis",
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],

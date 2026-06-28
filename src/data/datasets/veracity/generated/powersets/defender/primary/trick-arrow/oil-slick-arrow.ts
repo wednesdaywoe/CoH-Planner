@@ -33,6 +33,7 @@ export const OilSlickArrow: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Defender Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",

@@ -33,6 +33,7 @@ export const PoisonGasArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Controller Archetype Sets",
     "Sleep"
   ],

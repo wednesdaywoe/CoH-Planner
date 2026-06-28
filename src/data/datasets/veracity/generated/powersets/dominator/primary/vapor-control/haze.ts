@@ -34,7 +34,8 @@ export const Haze: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "effects": {

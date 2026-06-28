@@ -38,7 +38,8 @@ export const RegenerationAura: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Life Praxis"
   ],
   "maxSlots": 6,
   "damage": {

@@ -35,6 +35,7 @@ export const Soot: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Fire Praxis",
     "Holds",
     "Ranged Damage",
     "Universal Damage Sets"

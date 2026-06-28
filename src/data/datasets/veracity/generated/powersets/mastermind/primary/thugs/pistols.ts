@@ -33,6 +33,7 @@ export const Pistols: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Might Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

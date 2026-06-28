@@ -36,7 +36,8 @@ export const TotalDomination: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Holds"
+    "Holds",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -39,6 +39,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Electricity Praxis",
     "Knockback",
     "Stuns",
     "Threat Duration"

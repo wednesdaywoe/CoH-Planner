@@ -34,6 +34,7 @@ export const Caltrops: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Finesse Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

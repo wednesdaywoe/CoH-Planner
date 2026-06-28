@@ -36,6 +36,7 @@ export const Quills: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Life Praxis",
     "Melee AoE Damage",
     "Slow Movement",
     "Tanker Archetype Sets",

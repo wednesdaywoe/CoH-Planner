@@ -33,6 +33,7 @@ export const ThunderClap: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Stuns"
   ],
   "maxSlots": 6

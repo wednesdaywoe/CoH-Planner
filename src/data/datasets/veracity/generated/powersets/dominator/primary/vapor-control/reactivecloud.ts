@@ -36,7 +36,8 @@ export const ReactiveCloud: Power = {
   ],
   "allowedSetCategories": [
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Water Praxis"
   ],
   "maxSlots": 6
 };

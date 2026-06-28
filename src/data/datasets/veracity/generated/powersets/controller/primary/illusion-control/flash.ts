@@ -34,7 +34,8 @@ export const Flash: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Holds"
+    "Holds",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "effects": {

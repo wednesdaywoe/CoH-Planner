@@ -35,6 +35,7 @@ export const Mesmerize: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Psychic Praxis",
     "Ranged Damage",
     "Sleep",
     "Universal Damage Sets"

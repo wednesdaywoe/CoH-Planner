@@ -37,6 +37,7 @@ export const FeralCharge: Power = {
     "Dominator Archetype Sets",
     "Knockback",
     "Melee Damage",
+    "Nature Praxis",
     "Teleport",
     "Universal Damage Sets",
     "Universal Travel"

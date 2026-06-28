@@ -36,7 +36,8 @@ export const Rebirth: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Nature Praxis"
   ],
   "maxSlots": 6
 };

@@ -36,6 +36,7 @@ export const CrackWhip: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

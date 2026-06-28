@@ -35,7 +35,9 @@
     "Range",
     "Recharge"
   ],
-  "allowed_set_categories": null,
+  "allowed_set_categories": [
+    "Psychic Praxis"
+  ],
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
@@ -241,7 +243,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "Max.kHitPoints target> 0.9 * cur.kHitPoints target> -",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 0.0,

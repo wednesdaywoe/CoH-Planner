@@ -26,7 +26,8 @@ export const QuickRecovery: Power = {
     "EnduranceModification"
   ],
   "allowedSetCategories": [
-    "Endurance Modification"
+    "Endurance Modification",
+    "Life Praxis"
   ],
   "maxSlots": 6,
   "mechanicType": "parentMechanic"

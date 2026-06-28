@@ -35,6 +35,7 @@ export const PowerofthePhoenix: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Fire Praxis",
     "Healing",
     "Ranged AoE Damage",
     "Stuns",

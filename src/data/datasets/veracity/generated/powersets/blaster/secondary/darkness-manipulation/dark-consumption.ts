@@ -36,6 +36,7 @@ export const DarkConsumption: Power = {
     "Blaster Archetype Sets",
     "Endurance Modification",
     "Melee AoE Damage",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

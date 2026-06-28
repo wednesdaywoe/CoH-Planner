@@ -35,6 +35,7 @@ export const WhirlingHands: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Energy Praxis",
     "Melee AoE Damage",
     "Stuns",
     "Universal Damage Sets"

@@ -33,6 +33,7 @@ export const PlasmaShield: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

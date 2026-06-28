@@ -36,6 +36,7 @@ export const Burst: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Energy Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Threat Duration",

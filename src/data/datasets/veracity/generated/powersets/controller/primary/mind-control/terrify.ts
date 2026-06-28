@@ -40,6 +40,7 @@ export const Terrify: Power = {
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
     "Fear",
+    "Psychic Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

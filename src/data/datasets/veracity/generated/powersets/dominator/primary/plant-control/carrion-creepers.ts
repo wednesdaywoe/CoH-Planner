@@ -39,6 +39,7 @@ export const CarrionCreepers: Power = {
     "Dominator Archetype Sets",
     "Immobilize",
     "Knockback",
+    "Nature Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

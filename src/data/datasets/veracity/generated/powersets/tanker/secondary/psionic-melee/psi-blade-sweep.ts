@@ -38,6 +38,7 @@ export const PsiBladeSweep: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Psychic Praxis",
     "Stuns",
     "Tanker Archetype Sets",
     "Threat Duration",

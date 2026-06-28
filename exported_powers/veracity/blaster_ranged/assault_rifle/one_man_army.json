@@ -35,7 +35,9 @@
     "Recharge",
     "Buff_ToHit"
   ],
-  "allowed_set_categories": null,
+  "allowed_set_categories": [
+    "Ballistic Praxis"
+  ],
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,

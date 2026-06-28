@@ -37,6 +37,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Energy Praxis",
     "Stuns"
   ],
   "cast_through": [],

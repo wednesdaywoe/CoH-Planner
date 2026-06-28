@@ -34,7 +34,8 @@ export const OppressiveGloom: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Stuns"
+    "Stuns",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "damage": {

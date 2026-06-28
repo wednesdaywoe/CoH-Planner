@@ -36,6 +36,7 @@ export const CripplingAxeKick: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Finesse Praxis",
     "Immobilize",
     "Melee Damage",
     "Slow Movement",

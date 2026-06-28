@@ -33,6 +33,7 @@ export const OilSlickArrow: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Defense Debuff",
     "Ranged AoE Damage",
     "Slow Movement",

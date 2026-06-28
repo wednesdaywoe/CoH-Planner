@@ -39,6 +39,7 @@ export const DNASiphon: Power = {
     "Accurate Healing",
     "Endurance Modification",
     "Healing",
+    "Life Praxis",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

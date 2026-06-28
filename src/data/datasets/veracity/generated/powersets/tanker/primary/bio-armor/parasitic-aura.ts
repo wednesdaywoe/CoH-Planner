@@ -38,6 +38,7 @@ export const ParasiticAura: Power = {
     "Accurate Healing",
     "Endurance Modification",
     "Healing",
+    "Life Praxis",
     "Threat Duration"
   ],
   "maxSlots": 6,

@@ -36,6 +36,7 @@ export const SpectralTerror: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Fear",
+    "Psychic Praxis",
     "To Hit Debuff"
   ],
   "maxSlots": 6

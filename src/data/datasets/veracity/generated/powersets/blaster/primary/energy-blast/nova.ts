@@ -35,6 +35,7 @@ export const Nova: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Energy Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Universal Damage Sets"

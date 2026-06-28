@@ -37,6 +37,7 @@ export const KnockoutBlow: Power = {
     "Holds",
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,

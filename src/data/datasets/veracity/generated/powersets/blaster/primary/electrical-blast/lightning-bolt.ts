@@ -41,6 +41,7 @@ export const LightningBolt: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Ranged Damage",
     "Universal Damage Sets"

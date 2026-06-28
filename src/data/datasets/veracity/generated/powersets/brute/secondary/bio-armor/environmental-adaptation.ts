@@ -36,7 +36,8 @@ export const EnvironmentalAdaptation: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Life Praxis"
   ],
   "maxSlots": 6,
   "effects": {

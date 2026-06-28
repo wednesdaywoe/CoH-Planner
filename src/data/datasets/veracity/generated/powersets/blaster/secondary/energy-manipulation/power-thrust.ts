@@ -40,6 +40,7 @@ export const PowerThrust: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Energy Praxis",
     "Knockback",
     "Melee Damage",
     "Universal Damage Sets"

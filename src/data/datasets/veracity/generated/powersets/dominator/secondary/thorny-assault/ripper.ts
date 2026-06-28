@@ -41,6 +41,7 @@ export const Ripper: Power = {
     "Defense Debuff",
     "Knockback",
     "Melee AoE Damage",
+    "Nature Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

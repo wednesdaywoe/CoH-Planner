@@ -41,6 +41,7 @@ export const LuminousDetonation: Power = {
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Knockback",
+    "Luminosity Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

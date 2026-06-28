@@ -44,6 +44,7 @@ export const SummonWolves: Power = {
     "Healing",
     "Knockback",
     "Mastermind Archetype Sets",
+    "Nature Praxis",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Running & Sprints",

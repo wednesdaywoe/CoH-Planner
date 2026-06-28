@@ -28,5 +28,8 @@ export const FieryEmbrace: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Fire Praxis"
+  ],
   "maxSlots": 6
 };

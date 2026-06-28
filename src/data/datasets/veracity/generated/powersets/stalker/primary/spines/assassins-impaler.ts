@@ -33,6 +33,7 @@ export const AssassinsImpaler: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Life Praxis",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

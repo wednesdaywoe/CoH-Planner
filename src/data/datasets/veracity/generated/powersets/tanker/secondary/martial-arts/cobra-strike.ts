@@ -36,6 +36,7 @@ export const CobraStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Melee Damage",
     "Stuns",
     "Tanker Archetype Sets",

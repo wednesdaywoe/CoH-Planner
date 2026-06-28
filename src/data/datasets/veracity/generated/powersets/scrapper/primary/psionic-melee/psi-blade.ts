@@ -33,6 +33,7 @@ export const PsiBlade: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Psychic Praxis",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

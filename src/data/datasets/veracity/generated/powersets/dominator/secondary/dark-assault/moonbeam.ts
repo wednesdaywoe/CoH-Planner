@@ -37,6 +37,7 @@ export const Moonbeam: Power = {
     "Accurate To-Hit Debuff",
     "Melee AoE Damage",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

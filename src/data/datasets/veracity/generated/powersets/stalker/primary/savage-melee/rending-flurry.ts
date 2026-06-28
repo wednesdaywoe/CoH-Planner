@@ -35,6 +35,7 @@ export const RendingFlurry: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Nature Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

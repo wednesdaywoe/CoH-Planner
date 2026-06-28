@@ -34,7 +34,8 @@ export const SonicHaven: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Resist Damage"
+    "Resist Damage",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "effects": {

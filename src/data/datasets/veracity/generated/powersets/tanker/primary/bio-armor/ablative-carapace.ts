@@ -30,7 +30,8 @@ export const AblativeCarapace: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Life Praxis"
   ],
   "maxSlots": 6,
   "effects": {

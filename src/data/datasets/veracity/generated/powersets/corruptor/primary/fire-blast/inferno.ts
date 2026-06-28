@@ -34,6 +34,7 @@ export const Inferno: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Fire Praxis",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],

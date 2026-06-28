@@ -36,6 +36,7 @@ export const Soldiers: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Ballistic Praxis",
     "Defense Debuff",
     "Healing",
     "Knockback",

@@ -37,6 +37,7 @@ export const Blizzard: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Blaster Archetype Sets",
+    "Ice Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "To Hit Debuff",

@@ -38,6 +38,7 @@ export const GroundZero: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Healing",
     "Melee AoE Damage",
     "Tanker Archetype Sets",

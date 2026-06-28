@@ -36,7 +36,8 @@ export const DarkestNight: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

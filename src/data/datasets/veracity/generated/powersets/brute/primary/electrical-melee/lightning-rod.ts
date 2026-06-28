@@ -36,6 +36,7 @@ export const LightningRod: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Electricity Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Threat Duration",

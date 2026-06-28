@@ -34,6 +34,7 @@ export const FireSwordCircle: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

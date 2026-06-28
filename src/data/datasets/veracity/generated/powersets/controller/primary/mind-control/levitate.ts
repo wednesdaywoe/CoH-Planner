@@ -35,6 +35,7 @@ export const Levitate: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Psychic Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

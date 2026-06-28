@@ -32,7 +32,8 @@ export const SharePain: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "damage": [

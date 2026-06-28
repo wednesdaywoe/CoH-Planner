@@ -38,7 +38,8 @@
     "Recharge"
   ],
   "allowed_set_categories": [
-    "Resist Damage"
+    "Resist Damage",
+    "Vibration Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [

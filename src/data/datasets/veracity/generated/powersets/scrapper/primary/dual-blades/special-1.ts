@@ -33,6 +33,7 @@ export const Special1: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Knockback",
     "Melee Damage",
     "Scrapper Archetype Sets",

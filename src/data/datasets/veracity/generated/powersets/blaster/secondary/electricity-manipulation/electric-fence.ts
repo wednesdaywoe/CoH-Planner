@@ -42,6 +42,7 @@ export const ElectricFence: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Immobilize",
     "Ranged Damage",

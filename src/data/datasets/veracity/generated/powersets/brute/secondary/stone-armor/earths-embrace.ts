@@ -31,6 +31,7 @@ export const EarthsEmbrace: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Healing",
     "Resist Damage"
   ],

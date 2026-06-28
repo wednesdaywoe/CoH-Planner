@@ -35,6 +35,7 @@ export const Spin: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Finesse Praxis",
     "Melee AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"

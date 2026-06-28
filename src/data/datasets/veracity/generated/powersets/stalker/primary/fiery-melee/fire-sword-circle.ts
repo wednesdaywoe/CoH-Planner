@@ -33,6 +33,7 @@ export const FireSwordCircle: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Melee AoE Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

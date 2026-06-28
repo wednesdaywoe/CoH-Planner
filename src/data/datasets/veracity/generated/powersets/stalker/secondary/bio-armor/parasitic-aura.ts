@@ -36,7 +36,8 @@ export const ParasiticAura: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Life Praxis"
   ],
   "maxSlots": 6,
   "effects": {

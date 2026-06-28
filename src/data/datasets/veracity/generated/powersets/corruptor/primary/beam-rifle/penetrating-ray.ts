@@ -36,6 +36,7 @@ export const PenetratingRay: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Corruptor Archetype Sets",
     "Knockback",
     "Ranged Damage",

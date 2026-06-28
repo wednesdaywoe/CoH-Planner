@@ -40,6 +40,7 @@ export const TranquilizerDart: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Blaster Archetype Sets",
     "Knockback",
     "Ranged Damage",

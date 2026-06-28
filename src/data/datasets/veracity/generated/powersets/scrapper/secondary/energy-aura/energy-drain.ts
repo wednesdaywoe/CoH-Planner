@@ -34,7 +34,8 @@ export const EnergyDrain: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Endurance Modification"
+    "Endurance Modification",
+    "Energy Praxis"
   ],
   "maxSlots": 6,
   "effects": {

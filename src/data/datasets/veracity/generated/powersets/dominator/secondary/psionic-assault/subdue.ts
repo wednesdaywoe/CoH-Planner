@@ -36,6 +36,7 @@ export const Subdue: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Immobilize",
+    "Psychic Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

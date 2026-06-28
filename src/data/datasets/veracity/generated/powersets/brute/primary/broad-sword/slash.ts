@@ -38,6 +38,7 @@ export const Slash: Power = {
     "Brute Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
+    "Might Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

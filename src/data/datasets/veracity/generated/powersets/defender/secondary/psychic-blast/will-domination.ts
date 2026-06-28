@@ -35,6 +35,7 @@ export const WillDomination: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Psychic Praxis",
     "Ranged Damage",
     "Sleep",
     "Universal Damage Sets"

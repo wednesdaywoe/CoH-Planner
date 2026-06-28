@@ -39,6 +39,7 @@ export const Slice: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Might Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

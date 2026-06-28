@@ -36,6 +36,9 @@ export const EntropyShield: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Energy Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "debuffResistance": {

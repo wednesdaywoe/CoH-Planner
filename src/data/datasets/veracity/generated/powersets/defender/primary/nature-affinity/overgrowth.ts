@@ -32,6 +32,7 @@ export const Overgrowth: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Nature Praxis",
     "To Hit Buff"
   ],
   "maxSlots": 6,

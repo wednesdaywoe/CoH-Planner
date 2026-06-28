@@ -35,6 +35,7 @@ export const LightningRod: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Tanker Archetype Sets",

@@ -34,7 +34,8 @@ export const DistortionField: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
-    "Slow Movement"
+    "Slow Movement",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6
 };

@@ -41,7 +41,8 @@
   "allowed_set_categories": [
     "Accurate Healing",
     "Holds",
-    "Melee Damage"
+    "Melee Damage",
+    "Umbral Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

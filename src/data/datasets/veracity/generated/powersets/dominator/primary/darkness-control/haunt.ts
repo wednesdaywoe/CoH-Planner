@@ -38,6 +38,7 @@ export const Haunt: Power = {
     "Fear",
     "Pet Damage",
     "Recharge Intensive Pets",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

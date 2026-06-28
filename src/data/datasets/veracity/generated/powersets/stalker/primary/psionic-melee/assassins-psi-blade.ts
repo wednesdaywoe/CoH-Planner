@@ -34,6 +34,7 @@ export const AssassinsPsiBlade: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Psychic Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

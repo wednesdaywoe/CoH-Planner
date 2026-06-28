@@ -40,6 +40,7 @@ export const HeadSplitter: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Finesse Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Tanker Archetype Sets",

@@ -37,6 +37,7 @@ export const QuillThrowing: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Life Praxis",
     "Ranged AoE Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",

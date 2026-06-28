@@ -42,6 +42,7 @@ export const Subdual: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Immobilize",
+    "Psychic Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

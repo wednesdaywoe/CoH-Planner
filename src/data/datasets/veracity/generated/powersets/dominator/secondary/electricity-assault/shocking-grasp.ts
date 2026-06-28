@@ -34,6 +34,7 @@ export const ShockingGrasp: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Pet Damage",
     "Recharge Intensive Pets",

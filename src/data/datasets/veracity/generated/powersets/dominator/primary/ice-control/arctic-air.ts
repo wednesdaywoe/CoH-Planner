@@ -38,6 +38,7 @@ export const ArcticAir: Power = {
     "Confuse",
     "Dominator Archetype Sets",
     "Fear",
+    "Ice Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

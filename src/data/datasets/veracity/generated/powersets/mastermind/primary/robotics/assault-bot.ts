@@ -33,6 +33,7 @@ export const AssaultBot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Mastermind Archetype Sets",
     "Melee AoE Damage",

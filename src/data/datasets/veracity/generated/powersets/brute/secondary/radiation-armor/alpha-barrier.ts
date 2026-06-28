@@ -36,6 +36,7 @@ export const AlphaBarrier: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

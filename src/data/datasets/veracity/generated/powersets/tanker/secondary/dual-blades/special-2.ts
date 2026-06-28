@@ -36,6 +36,7 @@ export const Special2: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

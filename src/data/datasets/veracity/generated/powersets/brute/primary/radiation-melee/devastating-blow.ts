@@ -40,6 +40,7 @@ export const DevastatingBlow: Power = {
     "Accurate Defense Debuff",
     "Brute Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee Damage",
     "Stuns",
     "Threat Duration",

@@ -36,7 +36,8 @@ export const Plume: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Holds",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "damage": {

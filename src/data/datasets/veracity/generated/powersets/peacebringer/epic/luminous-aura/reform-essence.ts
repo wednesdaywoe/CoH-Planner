@@ -30,7 +30,8 @@ export const ReformEssence: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Luminosity Praxis"
   ],
   "maxSlots": 6
 };

@@ -36,6 +36,7 @@ export const ThroatStrike: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Might Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

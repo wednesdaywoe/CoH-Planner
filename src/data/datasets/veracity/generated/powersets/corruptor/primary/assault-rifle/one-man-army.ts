@@ -28,6 +28,9 @@ export const OneManArmy: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Ballistic Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "rechargeBuff": {

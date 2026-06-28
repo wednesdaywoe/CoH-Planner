@@ -33,7 +33,8 @@ export const PetrifyingGaze: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds"
+    "Holds",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

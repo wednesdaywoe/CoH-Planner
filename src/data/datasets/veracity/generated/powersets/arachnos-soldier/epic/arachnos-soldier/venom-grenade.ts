@@ -35,6 +35,7 @@ export const VenomGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Nature Praxis",
     "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

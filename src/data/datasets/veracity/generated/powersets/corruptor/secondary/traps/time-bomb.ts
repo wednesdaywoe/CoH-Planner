@@ -34,6 +34,7 @@ export const TimeBomb: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Finesse Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Universal Damage Sets"

@@ -41,7 +41,8 @@
   ],
   "allowed_set_categories": [
     "Confuse",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Might Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -34,6 +34,7 @@ export const Combustion: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Fire Praxis",
     "Melee Damage",
     "Threat Duration",
     "Universal Damage Sets"

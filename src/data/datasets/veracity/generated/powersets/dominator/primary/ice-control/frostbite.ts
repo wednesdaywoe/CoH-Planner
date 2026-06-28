@@ -38,6 +38,7 @@ export const Frostbite: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Ice Praxis",
     "Immobilize",
     "Ranged AoE Damage",
     "Slow Movement",

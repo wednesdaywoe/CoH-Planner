@@ -40,6 +40,7 @@ export const KnockoutBlow: Power = {
     "Holds",
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

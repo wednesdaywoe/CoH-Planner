@@ -39,6 +39,7 @@ export const ProtonSweep: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"

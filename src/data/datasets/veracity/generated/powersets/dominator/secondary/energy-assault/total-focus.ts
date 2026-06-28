@@ -34,6 +34,7 @@ export const TotalFocus: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Energy Praxis",
     "Melee Damage",
     "Stuns",
     "Universal Damage Sets"

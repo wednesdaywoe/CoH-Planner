@@ -40,7 +40,8 @@ export const FearsomeStare: Power = {
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
     "Fear",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

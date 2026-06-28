@@ -37,7 +37,8 @@ export const MercurialBlow: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Scrapper Archetype Sets",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "damage": {

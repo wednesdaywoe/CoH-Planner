@@ -32,7 +32,8 @@ export const Frostwork: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Ice Praxis"
   ],
   "maxSlots": 6,
   "effects": {

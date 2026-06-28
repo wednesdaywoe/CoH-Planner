@@ -38,7 +38,8 @@
     "Heal"
   ],
   "allowed_set_categories": [
-    "Healing"
+    "Healing",
+    "Vacuum Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

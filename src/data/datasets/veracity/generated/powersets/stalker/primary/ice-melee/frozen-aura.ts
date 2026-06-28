@@ -34,6 +34,7 @@ export const FrozenAura: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Melee AoE Damage",
     "Sleep",
     "Stalker Archetype Sets",

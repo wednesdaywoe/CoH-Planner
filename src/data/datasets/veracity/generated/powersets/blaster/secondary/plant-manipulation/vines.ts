@@ -35,7 +35,8 @@ export const Vines: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds"
+    "Holds",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "effects": {

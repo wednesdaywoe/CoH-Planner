@@ -35,6 +35,7 @@ export const ChargedBrawl: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Melee Damage",
     "Sleep",

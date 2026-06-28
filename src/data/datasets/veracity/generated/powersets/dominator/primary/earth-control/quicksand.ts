@@ -32,6 +32,7 @@ export const Quicksand: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6

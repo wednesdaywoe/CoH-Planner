@@ -34,7 +34,8 @@ export const Eclipse: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Resist Damage"
+    "Resist Damage",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

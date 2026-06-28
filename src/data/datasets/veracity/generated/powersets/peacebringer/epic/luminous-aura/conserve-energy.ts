@@ -28,5 +28,8 @@ export const ConserveEnergy: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Luminosity Praxis"
+  ],
   "maxSlots": 6
 };

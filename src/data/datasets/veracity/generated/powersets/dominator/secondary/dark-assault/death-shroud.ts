@@ -40,6 +40,7 @@ export const DeathShroud: Power = {
     "Ranged Damage",
     "Sniper Attacks",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

@@ -31,6 +31,7 @@ export const ParticleShielding: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Healing"
   ],
   "maxSlots": 6,

@@ -33,6 +33,7 @@ export const SummonDemonlings: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",

@@ -35,6 +35,7 @@ export const FRTDominate: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
+    "Psychic Praxis",
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

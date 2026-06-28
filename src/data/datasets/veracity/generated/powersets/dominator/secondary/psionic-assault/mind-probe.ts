@@ -33,6 +33,7 @@ export const MindProbe: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Psychic Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

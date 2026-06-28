@@ -38,6 +38,7 @@ export const PiercingRounds: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Finesse Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

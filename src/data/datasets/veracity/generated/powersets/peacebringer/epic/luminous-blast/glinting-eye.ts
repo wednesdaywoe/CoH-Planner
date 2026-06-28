@@ -37,6 +37,7 @@ export const GlintingEye: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Kheldian Archetype Sets",
+    "Luminosity Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

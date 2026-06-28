@@ -33,6 +33,7 @@ export const PsionicDart: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

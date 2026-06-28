@@ -33,6 +33,7 @@ export const ChillingEmbrace: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

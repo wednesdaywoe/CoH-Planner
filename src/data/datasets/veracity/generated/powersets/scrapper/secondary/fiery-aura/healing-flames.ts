@@ -31,6 +31,7 @@ export const HealingFlames: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Healing",
     "Resist Damage"
   ],

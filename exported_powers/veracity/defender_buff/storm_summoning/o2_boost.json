@@ -39,6 +39,7 @@
     "Heal"
   ],
   "allowed_set_categories": [
+    "Electricity Praxis",
     "Healing"
   ],
   "cast_through": [],

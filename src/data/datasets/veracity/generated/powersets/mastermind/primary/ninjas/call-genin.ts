@@ -35,6 +35,7 @@ export const CallGenin: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",

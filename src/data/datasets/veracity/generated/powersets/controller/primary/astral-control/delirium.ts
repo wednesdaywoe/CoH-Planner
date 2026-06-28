@@ -37,6 +37,7 @@ export const Delirium: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Fear",
+    "Psychic Praxis",
     "Ranged Damage",
     "Sleep"
   ],

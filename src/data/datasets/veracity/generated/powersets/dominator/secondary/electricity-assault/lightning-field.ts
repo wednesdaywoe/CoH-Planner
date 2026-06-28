@@ -34,6 +34,7 @@ export const LightningField: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Ranged Damage",
     "Universal Damage Sets"

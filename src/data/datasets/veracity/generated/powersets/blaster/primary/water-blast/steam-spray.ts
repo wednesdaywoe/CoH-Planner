@@ -41,7 +41,8 @@ export const SteamSpray: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "damage": [

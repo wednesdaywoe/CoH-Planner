@@ -34,7 +34,8 @@ export const AnguishingCry: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Defense Debuff"
+    "Defense Debuff",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "effects": {

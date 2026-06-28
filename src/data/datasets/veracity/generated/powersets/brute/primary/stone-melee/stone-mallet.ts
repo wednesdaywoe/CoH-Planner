@@ -35,6 +35,7 @@ export const StoneMallet: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Earth Praxis",
     "Knockback",
     "Melee Damage",
     "Threat Duration",

@@ -36,6 +36,7 @@ export const Tremor: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Earth Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Threat Duration",

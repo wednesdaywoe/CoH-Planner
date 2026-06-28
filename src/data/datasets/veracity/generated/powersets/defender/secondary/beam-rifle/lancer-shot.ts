@@ -34,6 +34,7 @@ export const LancerShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Defender Archetype Sets",
     "Ranged Damage",
     "Stuns",

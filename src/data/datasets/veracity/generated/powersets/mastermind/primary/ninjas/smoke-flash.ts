@@ -32,6 +32,9 @@ export const SmokeFlash: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Finesse Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "defenseBuff": {

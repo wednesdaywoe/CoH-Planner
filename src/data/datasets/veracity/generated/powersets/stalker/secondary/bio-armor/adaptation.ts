@@ -23,6 +23,9 @@ export const Adaptation: Power = {
     "activatePeriod": 99999
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Life Praxis"
+  ],
   "maxSlots": 0,
   "mechanicType": "parentMechanic"
 };

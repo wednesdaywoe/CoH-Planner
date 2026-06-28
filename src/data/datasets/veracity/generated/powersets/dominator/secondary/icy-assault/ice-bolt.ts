@@ -34,6 +34,7 @@ export const IceBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Ranged Damage",
     "Slow Movement",
     "Universal Damage Sets"

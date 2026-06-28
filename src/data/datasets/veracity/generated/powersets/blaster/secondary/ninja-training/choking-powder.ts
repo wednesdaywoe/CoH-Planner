@@ -35,6 +35,7 @@ export const ChokingPowder: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Finesse Praxis",
     "Holds",
     "Ranged Damage",
     "Universal Damage Sets"

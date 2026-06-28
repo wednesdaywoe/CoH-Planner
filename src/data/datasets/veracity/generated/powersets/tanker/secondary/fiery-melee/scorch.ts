@@ -35,6 +35,7 @@ export const Scorch: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

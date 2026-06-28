@@ -33,7 +33,8 @@ export const RepulsionField: Power = {
     "Knockback"
   ],
   "allowedSetCategories": [
-    "Knockback"
+    "Knockback",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

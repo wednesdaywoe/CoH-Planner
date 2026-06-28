@@ -38,6 +38,7 @@ export const DarkConsumption: Power = {
     "Endurance Modification",
     "Melee AoE Damage",
     "Threat Duration",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -628,6 +628,24 @@ _CHALLENGE_SET_OVERRIDES_BY_NAME = {
 }
 
 
+def _praxis_category(s: BoostSetRecord) -> str:
+    """Veracity's 'Elemental'/'Paragon' themed sets carry no EC category in the
+    binary — they gate slotting via an explicit allowed_powers list instead.
+    Each element is its own slot family (e.g. Fire_Elemental and Paragon_Fire
+    share an identical power list), so synthesize a per-element '{Element} Praxis'
+    category. Keyed on the Veracity-only ECElemental/ECParagon rarities, so
+    HC/Rebirth are untouched. Returns "" for any other set."""
+    if s.rarity not in ("ECElemental", "ECParagon"):
+        return ""
+    if s.name.endswith("_Elemental"):
+        element = s.name[: -len("_Elemental")]
+    elif s.name.startswith("Paragon_"):
+        element = s.name[len("Paragon_"):]
+    else:
+        return ""
+    return f"{element.replace('_', ' ')} Praxis"
+
+
 def _resolve_category(s: BoostSetRecord) -> str:
     """Map the set's EC-label to a planner category, accounting for the
     Running/Leaping split and the Rebirth Challenge Enhancement overrides.
@@ -644,6 +662,12 @@ def _resolve_category(s: BoostSetRecord) -> str:
         or _CHALLENGE_SET_OVERRIDES_BY_RARITY.get(s.rarity)
     if override:
         return override
+
+    # Veracity Elemental/Paragon Praxis sets (empty EC category, allowed_powers
+    # gated) — synthesize a per-element category.
+    praxis = _praxis_category(s)
+    if praxis:
+        return praxis
     base = EC_CATEGORY_TO_PLANNER.get(s.category, "")
     if base in ("Running", "Leaping") and _SPRINT_MARKER in s.allowed_powers:
         return f"{base} & Sprints"

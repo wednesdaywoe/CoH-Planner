@@ -34,6 +34,7 @@ export const Beanbag: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Corruptor Archetype Sets",
     "Ranged Damage",
     "Stuns",

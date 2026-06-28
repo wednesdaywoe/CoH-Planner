@@ -36,6 +36,7 @@ export const PsychicScream: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

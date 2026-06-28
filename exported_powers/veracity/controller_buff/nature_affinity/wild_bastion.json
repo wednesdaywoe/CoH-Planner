@@ -38,7 +38,8 @@
     "Heal"
   ],
   "allowed_set_categories": [
-    "Healing"
+    "Healing",
+    "Nature Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],
@@ -101,7 +102,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "Max.kHitPoints source> 0.25 * @Strength *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 0.0,

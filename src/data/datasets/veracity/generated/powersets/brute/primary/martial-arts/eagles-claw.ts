@@ -35,6 +35,7 @@ export const EaglesClaw: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Finesse Praxis",
     "Melee Damage",
     "Stuns",
     "Threat Duration",

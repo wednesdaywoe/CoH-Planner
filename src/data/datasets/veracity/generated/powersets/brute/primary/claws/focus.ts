@@ -36,6 +36,7 @@ export const Focus: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Finesse Praxis",
     "Knockback",
     "Ranged Damage",
     "Threat Duration",

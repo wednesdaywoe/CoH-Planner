@@ -40,7 +40,8 @@ export const Breathless: Power = {
     "Immobilize",
     "Ranged AoE Damage",
     "Slow Movement",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "damage": {

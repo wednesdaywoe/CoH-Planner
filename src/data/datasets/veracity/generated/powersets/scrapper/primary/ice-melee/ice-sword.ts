@@ -33,6 +33,7 @@ export const IceSword: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",

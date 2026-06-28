@@ -39,6 +39,7 @@ export const SpecOps: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
+    "Ballistic Praxis",
     "Defense Debuff",
     "Holds",
     "Immobilize",

@@ -38,6 +38,7 @@
   ],
   "allowed_set_categories": [
     "Healing",
+    "Ice Praxis",
     "Resist Damage"
   ],
   "cast_through": [],

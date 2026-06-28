@@ -38,6 +38,7 @@ export const FollowThrough: Power = {
     "Brute Archetype Sets",
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Stuns",
     "Threat Duration",
     "Universal Damage Sets"

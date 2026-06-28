@@ -37,6 +37,7 @@ export const FireBreath: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Fire Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

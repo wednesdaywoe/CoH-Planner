@@ -34,6 +34,7 @@ export const MaceBeam: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",

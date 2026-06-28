@@ -40,7 +40,8 @@ export const Shockwave: Power = {
     "Blaster Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "damage": [

@@ -36,6 +36,7 @@ export const GreaterIceSword: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Melee Damage",
     "Slow Movement",
     "Tanker Archetype Sets",

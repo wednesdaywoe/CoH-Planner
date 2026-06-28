@@ -41,6 +41,7 @@
     "Buff_ToHit"
   ],
   "allowed_set_categories": [
+    "Ballistic Praxis",
     "Endurance Modification",
     "Resist Damage",
     "To Hit Buff"

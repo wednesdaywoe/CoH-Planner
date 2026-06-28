@@ -34,7 +34,8 @@ export const SonicRepulsion: Power = {
     "Knockback"
   ],
   "allowedSetCategories": [
-    "Knockback"
+    "Knockback",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "effects": {

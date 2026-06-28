@@ -26,6 +26,7 @@ export const BoRyaku: Power = {
     "Resistance"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

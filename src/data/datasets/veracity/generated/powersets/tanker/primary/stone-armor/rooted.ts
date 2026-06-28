@@ -36,6 +36,7 @@ export const Rooted: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Healing"
   ],
   "maxSlots": 6,

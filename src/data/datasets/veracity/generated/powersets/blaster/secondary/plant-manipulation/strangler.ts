@@ -36,6 +36,7 @@ export const Strangler: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Holds",
+    "Nature Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

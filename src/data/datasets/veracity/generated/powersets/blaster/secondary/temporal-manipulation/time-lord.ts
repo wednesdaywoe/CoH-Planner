@@ -26,7 +26,8 @@ export const TimeLord: Power = {
     "Resistance"
   ],
   "allowedSetCategories": [
-    "Resist Damage"
+    "Resist Damage",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

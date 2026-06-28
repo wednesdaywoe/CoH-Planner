@@ -27,6 +27,7 @@ export const EnergyProtection: Power = {
     "Resistance"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

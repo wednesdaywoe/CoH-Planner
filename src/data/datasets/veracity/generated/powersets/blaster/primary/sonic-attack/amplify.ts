@@ -30,7 +30,8 @@ export const Amplify: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "To Hit Buff"
+    "To Hit Buff",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "effects": {

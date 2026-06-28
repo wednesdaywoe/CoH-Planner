@@ -34,7 +34,8 @@
     "Buff_Defense"
   ],
   "allowed_set_categories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Umbral Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

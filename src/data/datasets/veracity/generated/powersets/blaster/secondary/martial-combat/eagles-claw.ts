@@ -34,6 +34,7 @@ export const EaglesClaw: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Finesse Praxis",
     "Melee Damage",
     "Stuns",
     "Universal Damage Sets"

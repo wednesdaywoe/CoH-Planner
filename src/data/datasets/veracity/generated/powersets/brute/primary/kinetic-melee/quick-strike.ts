@@ -35,6 +35,7 @@ export const QuickStrike: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Energy Praxis",
     "Knockback",
     "Melee Damage",
     "Threat Duration",

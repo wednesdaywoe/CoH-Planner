@@ -33,6 +33,7 @@ export const WarriorsProvocation: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Threat Duration"
   ],
   "maxSlots": 6,

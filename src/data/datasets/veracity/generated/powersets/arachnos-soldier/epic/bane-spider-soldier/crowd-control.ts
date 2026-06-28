@@ -36,6 +36,7 @@ export const CrowdControl: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Soldiers of Arachnos Archetype Sets",

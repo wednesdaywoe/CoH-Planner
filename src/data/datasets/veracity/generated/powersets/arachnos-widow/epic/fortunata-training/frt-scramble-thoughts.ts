@@ -33,6 +33,7 @@ export const FRTScrambleThoughts: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",

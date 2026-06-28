@@ -37,6 +37,7 @@ export const ThunderStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

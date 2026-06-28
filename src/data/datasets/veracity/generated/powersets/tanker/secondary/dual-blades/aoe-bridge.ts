@@ -34,6 +34,7 @@ export const AoEBridge: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

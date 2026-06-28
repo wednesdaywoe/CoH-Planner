@@ -34,6 +34,7 @@ export const HurlBoulder: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Knockback",
     "Ranged Damage",
     "Universal Damage Sets"

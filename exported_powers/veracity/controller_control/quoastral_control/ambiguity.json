@@ -36,6 +36,7 @@
     "Debuff_ToHit"
   ],
   "allowed_set_categories": [
+    "Psychic Praxis",
     "To Hit Debuff"
   ],
   "cast_through": [],

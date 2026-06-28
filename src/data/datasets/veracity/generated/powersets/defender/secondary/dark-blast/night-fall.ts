@@ -41,6 +41,7 @@ export const NightFall: Power = {
     "Defender Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

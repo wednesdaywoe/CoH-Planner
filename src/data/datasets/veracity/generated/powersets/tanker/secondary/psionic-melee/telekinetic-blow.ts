@@ -38,6 +38,7 @@ export const TelekineticBlow: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Psychic Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

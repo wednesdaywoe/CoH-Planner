@@ -23,6 +23,9 @@ export const ReachfortheLimit: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Finesse Praxis"
+  ],
   "maxSlots": 0,
   "mechanicType": "parentMechanic"
 };

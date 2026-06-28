@@ -34,6 +34,7 @@ export const FireSword: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Fire Praxis",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

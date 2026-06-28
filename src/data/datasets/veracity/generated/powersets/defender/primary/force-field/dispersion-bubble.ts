@@ -38,7 +38,8 @@ export const DispersionBubble: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

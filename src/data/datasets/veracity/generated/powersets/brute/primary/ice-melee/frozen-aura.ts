@@ -36,6 +36,7 @@ export const FrozenAura: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Ice Praxis",
     "Melee AoE Damage",
     "Sleep",
     "Threat Duration",

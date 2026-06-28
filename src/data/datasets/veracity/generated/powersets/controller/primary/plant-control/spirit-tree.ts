@@ -32,7 +32,8 @@ export const SpiritTree: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Nature Praxis"
   ],
   "maxSlots": 6
 };

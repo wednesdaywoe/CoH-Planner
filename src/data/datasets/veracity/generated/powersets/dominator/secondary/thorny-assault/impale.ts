@@ -40,6 +40,7 @@ export const Impale: Power = {
     "Defense Debuff",
     "Dominator Archetype Sets",
     "Immobilize",
+    "Nature Praxis",
     "Ranged Damage",
     "Slow Movement",
     "Universal Damage Sets"

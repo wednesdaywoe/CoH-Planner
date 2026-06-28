@@ -36,6 +36,7 @@ export const BarbSwipe: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Life Praxis",
     "Melee Damage",
     "Slow Movement",
     "Tanker Archetype Sets",

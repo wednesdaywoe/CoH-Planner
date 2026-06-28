@@ -38,6 +38,7 @@ export const ThrowSand: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Finesse Praxis",
     "Stuns",
     "To Hit Debuff"
   ],

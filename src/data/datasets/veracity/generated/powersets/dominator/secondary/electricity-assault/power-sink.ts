@@ -37,6 +37,7 @@ export const PowerSink: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Electricity Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Stuns",

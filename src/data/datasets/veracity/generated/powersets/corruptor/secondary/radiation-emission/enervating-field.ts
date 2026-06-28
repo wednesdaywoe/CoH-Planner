@@ -33,6 +33,9 @@ export const EnervatingField: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Energy Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageDebuff": {

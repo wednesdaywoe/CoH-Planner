@@ -37,6 +37,7 @@ export const FragGrenade: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Nature Praxis",
     "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

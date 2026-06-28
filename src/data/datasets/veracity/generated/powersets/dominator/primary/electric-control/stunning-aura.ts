@@ -33,6 +33,7 @@ export const StunningAura: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Healing"
   ],

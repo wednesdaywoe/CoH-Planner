@@ -33,6 +33,7 @@ export const Repel: Power = {
     "Knockback"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback"
   ],
   "maxSlots": 6,

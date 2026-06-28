@@ -33,7 +33,8 @@ export const Benumb: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing"
+    "Accurate Healing",
+    "Ice Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -33,6 +33,9 @@ export const Telekinesis: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Psychic Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "stun": {

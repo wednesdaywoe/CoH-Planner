@@ -33,6 +33,7 @@ export const IncreaseDensity: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

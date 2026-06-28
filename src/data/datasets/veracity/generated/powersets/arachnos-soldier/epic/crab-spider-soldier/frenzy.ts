@@ -36,6 +36,7 @@ export const Frenzy: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

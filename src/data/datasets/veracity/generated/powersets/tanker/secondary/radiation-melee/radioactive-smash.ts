@@ -39,6 +39,7 @@ export const RadioactiveSmash: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Knockback",
     "Melee Damage",
     "Tanker Archetype Sets",

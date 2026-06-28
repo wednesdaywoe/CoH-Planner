@@ -45,6 +45,7 @@ export const BlackDwarf: Power = {
     "Endurance Modification",
     "Leaping & Sprints",
     "Resist Damage",
+    "Umbral Praxis",
     "Universal Travel"
   ],
   "maxSlots": 6,

@@ -38,6 +38,7 @@ export const Disembowel: Power = {
     "Defense Debuff",
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

@@ -34,6 +34,9 @@ export const BattleAgility: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Finesse Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "slow": {

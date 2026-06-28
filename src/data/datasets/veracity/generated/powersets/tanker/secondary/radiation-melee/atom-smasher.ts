@@ -39,6 +39,7 @@ export const AtomSmasher: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee AoE Damage",
     "Stuns",
     "Tanker Archetype Sets",

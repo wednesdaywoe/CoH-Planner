@@ -32,6 +32,7 @@ export const UmbralEssenceBifurcation: Power = {
   ],
   "allowedSetCategories": [
     "To Hit Buff",
+    "Umbral Praxis",
     "Universal Travel"
   ],
   "maxSlots": 6,

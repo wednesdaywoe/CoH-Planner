@@ -32,6 +32,7 @@ export const Incinerate: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"

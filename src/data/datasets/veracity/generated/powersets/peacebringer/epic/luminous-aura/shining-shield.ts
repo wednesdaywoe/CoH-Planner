@@ -36,6 +36,7 @@ export const ShiningShield: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Luminosity Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

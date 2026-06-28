@@ -34,6 +34,7 @@ export const Slug: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Knockback",
     "Ranged Damage",
     "Universal Damage Sets"

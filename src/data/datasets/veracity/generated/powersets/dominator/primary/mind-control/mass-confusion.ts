@@ -36,7 +36,8 @@ export const MassConfusion: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
-    "Dominator Archetype Sets"
+    "Dominator Archetype Sets",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "effects": {

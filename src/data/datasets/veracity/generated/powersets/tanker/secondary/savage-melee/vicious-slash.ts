@@ -36,6 +36,7 @@ export const ViciousSlash: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Nature Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

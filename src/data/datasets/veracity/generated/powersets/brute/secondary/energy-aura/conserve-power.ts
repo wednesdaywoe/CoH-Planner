@@ -30,6 +30,7 @@ export const ConservePower: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Healing"
   ],
   "maxSlots": 6,

@@ -41,6 +41,7 @@ export const CrushingUppercut: Power = {
     "Holds",
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Stuns",
     "Tanker Archetype Sets",
     "Threat Duration",

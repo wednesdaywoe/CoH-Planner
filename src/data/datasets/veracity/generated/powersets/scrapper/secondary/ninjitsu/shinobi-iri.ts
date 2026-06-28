@@ -38,6 +38,7 @@ export const ShinobiIri: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
+    "Finesse Praxis",
     "Leaping & Sprints",
     "Running & Sprints",
     "Universal Travel"

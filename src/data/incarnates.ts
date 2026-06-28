@@ -43,6 +43,14 @@ import hybridIndex from './incarnate-indices/hybrid.json';
 // export). The slot is hidden in the UI for datasets that don't have it.
 import genesisIndex from './incarnate-indices/genesis.json';
 
+// Per-dataset slot-index overrides. Most datasets share the global (HC-derived)
+// indices above; a dataset only vendors the slots whose option list actually
+// differs. Veracity adds extra Interface (Hypnotic/Imbalancing) and Hybrid
+// (Eductive) trees, so only those two slots are overridden — every other slot
+// falls back to the global index. Keyed by dataset id.
+import veracityInterfaceIndex from './datasets/veracity/incarnate-indices/interface.json';
+import veracityHybridIndex from './datasets/veracity/incarnate-indices/hybrid.json';
+
 // Bin-crawler index shape: `powers` is the full-name array; the parallel
 // `power_display_names` and `power_short_helps` arrays are populated
 // alongside it by export_powers.py.
@@ -55,7 +63,8 @@ interface RawSlotIndex {
   power_short_helps: string[];
 }
 
-// Map slot IDs to their raw data
+// Map slot IDs to their raw data (global default, used by every dataset unless
+// overridden in SLOT_INDEX_OVERRIDES below).
 const RAW_SLOT_INDICES: Record<IncarnateSlotId, RawSlotIndex> = {
   alpha: alphaIndex as RawSlotIndex,
   judgement: judgementIndex as RawSlotIndex,
@@ -65,6 +74,21 @@ const RAW_SLOT_INDICES: Record<IncarnateSlotId, RawSlotIndex> = {
   hybrid: hybridIndex as RawSlotIndex,
   genesis: genesisIndex as RawSlotIndex,
 };
+
+// Dataset-specific slot-index overrides. A dataset lists only the slots whose
+// option list differs from the global default; all other slots fall through.
+const SLOT_INDEX_OVERRIDES: Record<string, Partial<Record<IncarnateSlotId, RawSlotIndex>>> = {
+  veracity: {
+    interface: veracityInterfaceIndex as RawSlotIndex,
+    hybrid: veracityHybridIndex as RawSlotIndex,
+  },
+};
+
+/** Resolve the slot index for a slot under the active dataset (override → global). */
+function resolveSlotIndex(slotId: IncarnateSlotId): RawSlotIndex {
+  const datasetId = getActiveDataset().id;
+  return SLOT_INDEX_OVERRIDES[datasetId]?.[slotId] ?? RAW_SLOT_INDICES[slotId];
+}
 
 
 // ============================================
@@ -122,7 +146,7 @@ function getIconFromTier(slotId: IncarnateSlotId, treeId: string, tier: Incarnat
  * Build the slot definition from raw data
  */
 function buildSlotDefinition(slotId: IncarnateSlotId): IncarnateSlotDefinition {
-  const raw = RAW_SLOT_INDICES[slotId];
+  const raw = resolveSlotIndex(slotId);
   const treeMap = new Map<string, IncarnatePower[]>();
 
   // Process each power
@@ -200,11 +224,16 @@ function buildSlotDefinition(slotId: IncarnateSlotId): IncarnateSlotDefinition {
 
 let _slotDefinitions: IncarnateSlotDefinition[] | null = null;
 let _slotMap: Map<IncarnateSlotId, IncarnateSlotDefinition> | null = null;
+// The slot definitions depend on the active dataset (Interface/Hybrid options
+// differ on Veracity), so the cache is keyed by dataset id and rebuilt on switch.
+let _loadedDatasetId: string | null = null;
 
 function ensureDataLoaded(): void {
-  if (_slotDefinitions === null) {
+  const datasetId = getActiveDataset().id;
+  if (_slotDefinitions === null || _loadedDatasetId !== datasetId) {
     _slotDefinitions = INCARNATE_SLOT_ORDER.map(buildSlotDefinition);
     _slotMap = new Map(_slotDefinitions.map(s => [s.id, s]));
+    _loadedDatasetId = datasetId;
   }
 }
 

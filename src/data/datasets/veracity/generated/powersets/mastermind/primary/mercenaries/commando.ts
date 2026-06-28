@@ -35,6 +35,7 @@ export const Commando: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Ballistic Praxis",
     "Defense Debuff",
     "Knockback",
     "Mastermind Archetype Sets",

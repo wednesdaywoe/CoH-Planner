@@ -35,6 +35,7 @@ export const VolcanicGasses: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Earth Praxis",
     "Holds",
     "Ranged AoE Damage",
     "Universal Damage Sets"

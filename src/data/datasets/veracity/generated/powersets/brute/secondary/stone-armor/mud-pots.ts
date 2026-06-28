@@ -37,6 +37,7 @@ export const MudPots: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Earth Praxis",
     "Melee AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

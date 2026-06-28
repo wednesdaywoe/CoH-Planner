@@ -37,6 +37,7 @@ export const EMPArrow: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
+    "Ballistic Praxis",
     "Endurance Modification",
     "Holds"
   ],

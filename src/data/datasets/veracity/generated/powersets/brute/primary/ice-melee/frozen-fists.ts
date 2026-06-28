@@ -35,6 +35,7 @@ export const FrozenFists: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Ice Praxis",
     "Melee Damage",
     "Slow Movement",
     "Threat Duration",

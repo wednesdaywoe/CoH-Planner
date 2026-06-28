@@ -36,7 +36,8 @@ export const AstonishingLight: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Immobilize",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "damage": {

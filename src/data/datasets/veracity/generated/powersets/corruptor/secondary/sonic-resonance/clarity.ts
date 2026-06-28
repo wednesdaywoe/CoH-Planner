@@ -30,6 +30,9 @@ export const Clarity: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Vibration Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "slow": {

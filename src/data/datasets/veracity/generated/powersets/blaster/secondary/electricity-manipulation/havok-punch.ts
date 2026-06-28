@@ -36,6 +36,7 @@ export const HavokPunch: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Knockback",
     "Melee Damage",

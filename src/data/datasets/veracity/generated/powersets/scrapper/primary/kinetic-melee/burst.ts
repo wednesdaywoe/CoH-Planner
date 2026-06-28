@@ -34,6 +34,7 @@ export const Burst: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",

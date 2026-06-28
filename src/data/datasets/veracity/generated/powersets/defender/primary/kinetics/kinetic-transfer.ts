@@ -31,5 +31,8 @@ export const KineticTransfer: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Energy Praxis"
+  ],
   "maxSlots": 6
 };

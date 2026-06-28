@@ -28,6 +28,9 @@ export const IcePatch: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Ice Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageBuff": {

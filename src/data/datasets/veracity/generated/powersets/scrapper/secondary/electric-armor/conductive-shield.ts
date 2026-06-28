@@ -36,6 +36,7 @@ export const ConductiveShield: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

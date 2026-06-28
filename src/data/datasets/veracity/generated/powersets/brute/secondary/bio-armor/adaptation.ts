@@ -34,6 +34,7 @@ export const Adaptation: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Life Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

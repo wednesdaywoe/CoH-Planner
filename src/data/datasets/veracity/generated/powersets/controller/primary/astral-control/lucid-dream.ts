@@ -38,6 +38,7 @@ export const LucidDream: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Holds",
+    "Psychic Praxis",
     "Sleep"
   ],
   "maxSlots": 6,

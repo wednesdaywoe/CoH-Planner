@@ -44,7 +44,8 @@
     "Knockback",
     "Melee AoE Damage",
     "Stuns",
-    "Threat Duration"
+    "Threat Duration",
+    "Umbral Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -35,6 +35,7 @@ export const StrengthofWill: Power = {
     "EnduranceReduction"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

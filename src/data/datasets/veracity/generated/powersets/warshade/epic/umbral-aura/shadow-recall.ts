@@ -33,6 +33,7 @@ export const ShadowRecall: Power = {
   ],
   "allowedSetCategories": [
     "Teleport",
+    "Umbral Praxis",
     "Universal Travel"
   ],
   "maxSlots": 6,

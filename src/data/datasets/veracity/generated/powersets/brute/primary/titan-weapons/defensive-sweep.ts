@@ -40,6 +40,7 @@ export const DefensiveSweep: Power = {
     "Brute Archetype Sets",
     "Defense Sets",
     "Melee AoE Damage",
+    "Might Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

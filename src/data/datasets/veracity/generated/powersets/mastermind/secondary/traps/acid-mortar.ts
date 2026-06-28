@@ -34,6 +34,7 @@ export const AcidMortar: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Finesse Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

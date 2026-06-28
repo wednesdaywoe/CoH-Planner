@@ -34,6 +34,7 @@ export const SaltCrystals: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Earth Praxis",
     "Sleep"
   ],
   "maxSlots": 6,

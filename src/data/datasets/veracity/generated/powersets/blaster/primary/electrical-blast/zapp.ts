@@ -37,6 +37,7 @@ export const Zapp: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Ranged Damage",
     "Sniper Attacks",

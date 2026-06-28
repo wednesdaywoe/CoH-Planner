@@ -34,7 +34,8 @@ export const DimensionShift: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Immobilize"
+    "Immobilize",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6
 };

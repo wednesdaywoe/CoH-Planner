@@ -40,7 +40,8 @@
   ],
   "allowed_set_categories": [
     "Defense Sets",
-    "Healing"
+    "Healing",
+    "Nature Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],
@@ -78,7 +79,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "cur.kMeter source> .1 * .05 + @Strength *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 0.0,
@@ -112,7 +113,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "cur.kMeter source> .1 * .05 + @Strength *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 0.0,
@@ -153,7 +154,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "cur.kMeter source> 2 * 1 + @Strength *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 0.0,

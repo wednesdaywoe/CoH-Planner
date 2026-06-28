@@ -36,7 +36,8 @@ export const TemporalHealing: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -38,6 +38,7 @@ export const ActiveDefense: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
+    "Finesse Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

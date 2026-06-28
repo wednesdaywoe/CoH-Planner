@@ -30,6 +30,9 @@ export const EfficientAdaptation: Power = {
     "activatePeriod": 1
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Life Praxis"
+  ],
   "maxSlots": 0,
   "requires": "Tanker_Defense.Bio_Organic_Armor.Evolution"
 };

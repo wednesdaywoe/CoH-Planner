@@ -40,6 +40,7 @@ export const IncandescentStrike: Power = {
     "Holds",
     "Kheldian Archetype Sets",
     "Knockback",
+    "Luminosity Praxis",
     "Melee Damage",
     "Universal Damage Sets"
   ],

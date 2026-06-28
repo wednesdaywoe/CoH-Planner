@@ -35,7 +35,8 @@ export const DarkPit: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Stuns"
+    "Stuns",
+    "Umbral Praxis"
   ],
   "maxSlots": 6
 };

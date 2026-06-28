@@ -35,6 +35,7 @@ export const Hack: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Finesse Praxis",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

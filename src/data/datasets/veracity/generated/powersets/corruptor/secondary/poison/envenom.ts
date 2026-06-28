@@ -38,7 +38,8 @@ export const Envenom: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate Healing",
-    "Defense Debuff"
+    "Defense Debuff",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -34,6 +34,7 @@ export const InnerWill: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Healing"
   ],
   "maxSlots": 6,

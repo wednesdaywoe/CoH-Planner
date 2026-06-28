@@ -39,6 +39,7 @@ export const Smite: Power = {
     "Melee Damage",
     "Threat Duration",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -38,6 +38,7 @@ export const Hurl: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Might Praxis",
     "Ranged Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

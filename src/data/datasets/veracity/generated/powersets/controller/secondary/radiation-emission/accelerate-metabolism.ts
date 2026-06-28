@@ -34,6 +34,7 @@ export const AccelerateMetabolism: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Energy Praxis",
     "Running & Sprints",
     "Universal Travel"
   ],

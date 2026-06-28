@@ -34,6 +34,7 @@ export const HavocPunch: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Melee Damage",
     "Scrapper Archetype Sets",

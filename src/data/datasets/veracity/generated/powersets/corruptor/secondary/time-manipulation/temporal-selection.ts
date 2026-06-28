@@ -32,7 +32,8 @@ export const TemporalSelection: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

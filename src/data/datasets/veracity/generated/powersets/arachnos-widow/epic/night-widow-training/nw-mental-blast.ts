@@ -33,6 +33,7 @@ export const NWMentalBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

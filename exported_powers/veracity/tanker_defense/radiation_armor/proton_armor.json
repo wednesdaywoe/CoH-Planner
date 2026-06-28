@@ -38,6 +38,7 @@
     "Recharge"
   ],
   "allowed_set_categories": [
+    "Energy Praxis",
     "Resist Damage"
   ],
   "cast_through": [],

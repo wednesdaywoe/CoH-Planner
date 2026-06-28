@@ -36,7 +36,8 @@
     "Buff_ToHit"
   ],
   "allowed_set_categories": [
-    "To Hit Buff"
+    "To Hit Buff",
+    "Vacuum Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -38,6 +38,7 @@ export const CallBruiser: Power = {
     "Knockback",
     "Mastermind Archetype Sets",
     "Melee Damage",
+    "Might Praxis",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

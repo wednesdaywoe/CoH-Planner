@@ -36,6 +36,7 @@ export const BlazingAura: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Fire Praxis",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],

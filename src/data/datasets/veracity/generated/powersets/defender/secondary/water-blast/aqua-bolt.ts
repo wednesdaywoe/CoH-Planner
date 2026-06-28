@@ -38,7 +38,8 @@ export const AquaBolt: Power = {
     "Defender Archetype Sets",
     "Defense Debuff",
     "Ranged Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "damage": [

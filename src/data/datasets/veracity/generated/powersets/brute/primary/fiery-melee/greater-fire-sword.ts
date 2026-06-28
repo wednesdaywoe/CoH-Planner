@@ -36,6 +36,7 @@ export const GreaterFireSword: Power = {
     "Accurate Defense Debuff",
     "Brute Archetype Sets",
     "Defense Debuff",
+    "Fire Praxis",
     "Melee Damage",
     "Threat Duration",
     "Universal Damage Sets"

@@ -37,7 +37,8 @@
     "Recharge"
   ],
   "allowed_set_categories": [
-    "Slow Movement"
+    "Slow Movement",
+    "Umbral Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -35,6 +35,7 @@ export const Gremlins: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

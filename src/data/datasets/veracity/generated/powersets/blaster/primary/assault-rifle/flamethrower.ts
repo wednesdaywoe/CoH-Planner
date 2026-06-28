@@ -36,6 +36,7 @@ export const Flamethrower: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Blaster Archetype Sets",
     "Ranged AoE Damage",
     "Universal Damage Sets"

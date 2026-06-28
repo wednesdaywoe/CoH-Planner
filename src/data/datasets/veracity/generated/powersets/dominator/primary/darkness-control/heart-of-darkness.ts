@@ -40,6 +40,7 @@ export const HeartofDarkness: Power = {
     "Melee AoE Damage",
     "Stuns",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

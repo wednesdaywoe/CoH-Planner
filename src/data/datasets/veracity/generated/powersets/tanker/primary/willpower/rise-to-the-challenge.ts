@@ -36,6 +36,7 @@ export const RisetotheChallenge: Power = {
   ],
   "allowedSetCategories": [
     "Healing",
+    "Psychic Praxis",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

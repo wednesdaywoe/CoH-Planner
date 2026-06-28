@@ -33,6 +33,7 @@ export const PulseRifleBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

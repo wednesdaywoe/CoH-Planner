@@ -33,6 +33,7 @@ export const MentalBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

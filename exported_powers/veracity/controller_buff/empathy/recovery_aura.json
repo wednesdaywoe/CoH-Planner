@@ -39,7 +39,8 @@
     "Heal"
   ],
   "allowed_set_categories": [
-    "Endurance Modification"
+    "Endurance Modification",
+    "Life Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

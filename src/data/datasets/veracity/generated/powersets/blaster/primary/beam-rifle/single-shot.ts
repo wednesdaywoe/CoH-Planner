@@ -42,6 +42,7 @@ export const SingleShot: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
+    "Ballistic Praxis",
     "Blaster Archetype Sets",
     "Knockback",
     "Ranged Damage",

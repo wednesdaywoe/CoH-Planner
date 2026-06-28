@@ -109,6 +109,27 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   'Rest Buff': 'Rest Buff',
   'Universal Debuff': 'Universal Debuff',
   'Resurrection': 'Resurrection',
+
+  // Veracity Elemental/Paragon "Praxis" set families — one slot-family per
+  // element (the rare Elemental + purple Paragon variants share a power list).
+  // Identity entries, same as the categories above: without them the picker
+  // drops the sets even though the per-power allowedSetCategories lists them.
+  'Ballistic Praxis': 'Ballistic Praxis',
+  'Earth Praxis': 'Earth Praxis',
+  'Electricity Praxis': 'Electricity Praxis',
+  'Energy Praxis': 'Energy Praxis',
+  'Finesse Praxis': 'Finesse Praxis',
+  'Fire Praxis': 'Fire Praxis',
+  'Ice Praxis': 'Ice Praxis',
+  'Life Praxis': 'Life Praxis',
+  'Luminosity Praxis': 'Luminosity Praxis',
+  'Might Praxis': 'Might Praxis',
+  'Nature Praxis': 'Nature Praxis',
+  'Psychic Praxis': 'Psychic Praxis',
+  'Umbral Praxis': 'Umbral Praxis',
+  'Vacuum Praxis': 'Vacuum Praxis',
+  'Vibration Praxis': 'Vibration Praxis',
+  'Water Praxis': 'Water Praxis',
 };
 
 /**

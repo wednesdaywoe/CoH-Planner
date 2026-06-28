@@ -10,7 +10,7 @@
  *                     and bonus values (via Set_Bonus.X.X power records)
  *   - clientmessages-en.bin → display name resolution
  *
- * Total sets: 257
+ * Total sets: 253
  * Veracity's boostsets.bin parses ~257 IO sets. Shared sets reuse
  * HC's hand-curated entry (binary loses Accuracy aspects + uses auto
  * names); Veracity-only sets keep their binary extraction.
@@ -2093,7 +2093,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Ballistic Praxis"
   },
   "basilisks_gaze": {
     "bonuses": [
@@ -6772,7 +6772,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Earth Praxis"
   },
   "edict_of_the_master": {
     "bonuses": [
@@ -7316,7 +7316,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Electricity Praxis"
   },
   "encouraged_accuracy": {
     "bonuses": [
@@ -7636,7 +7636,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Energy Praxis"
   },
   "energy_manipulator": {
     "bonuses": [
@@ -9431,7 +9431,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Finesse Praxis"
   },
   "fire_elemental": {
     "bonuses": [
@@ -9689,7 +9689,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Fire Praxis"
   },
   "focused_smite": {
     "bonuses": [
@@ -12723,7 +12723,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Ice Praxis"
   },
   "ice_mistrals_torment": {
     "bonuses": [
@@ -14389,13 +14389,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -14419,13 +14419,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -14449,13 +14449,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -14479,13 +14479,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -14509,13 +14509,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -14539,13 +14539,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -14670,7 +14670,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Life Praxis"
   },
   "lockdown": {
     "bonuses": [
@@ -15197,7 +15197,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Luminosity Praxis"
   },
   "maelstroms_fury": {
     "bonuses": [
@@ -16113,7 +16113,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Might Praxis"
   },
   "might_of_the_tanker": {
     "bonuses": [
@@ -16950,7 +16950,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Nature Praxis"
   },
   "neuronic_shutdown": {
     "bonuses": [
@@ -17483,137 +17483,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "type": "Melee AoE Damage"
-  },
-  "opportunity_strikes": {
-    "bonuses": [
-      {
-        "effects": [
-          {
-            "desc": "+7.5% Range",
-            "stat": "range",
-            "value": 7.5
-          }
-        ],
-        "pieces": 2
-      },
-      {
-        "effects": [
-          {
-            "desc": "+2.25% Maximum Endurance",
-            "stat": "maximum_endurance",
-            "value": 2.25
-          }
-        ],
-        "pieces": 3
-      },
-      {
-        "effects": [
-          {
-            "desc": "+3.0% Damage",
-            "stat": "damage",
-            "value": 3.0
-          }
-        ],
-        "pieces": 4
-      },
-      {
-        "effects": [
-          {
-            "desc": "+7.5% Recharge",
-            "stat": "recharge",
-            "value": 7.5
-          }
-        ],
-        "pieces": 5
-      },
-      {
-        "effects": [
-          {
-            "desc": "+3.75% Defense (Energy)",
-            "stat": "defense_(energy)",
-            "value": 3.75
-          },
-          {
-            "desc": "+1.88% Defense (Ranged)",
-            "stat": "defense_(ranged)",
-            "value": 1.88
-          }
-        ],
-        "pieces": 6
-      }
-    ],
-    "category": "ato",
-    "icon": "AO_Sentinel_OpportunityStrikes.png",
-    "maxLevel": 1,
-    "minLevel": 1,
-    "name": "Opportunity Strikes",
-    "pieces": [
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage"
-        ],
-        "name": "Accuracy/Damage",
-        "num": 1,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Damage",
-          "Recharge"
-        ],
-        "name": "Damage/Recharge",
-        "num": 2,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Recharge"
-        ],
-        "name": "Accuracy/Damage/Recharge",
-        "num": 3,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Endurance"
-        ],
-        "name": "Accuracy/Damage/Endurance",
-        "num": 4,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Endurance",
-          "Recharge"
-        ],
-        "name": "Accuracy/Damage/Endurance/Recharge",
-        "num": 5,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Recharge"
-        ],
-        "name": "Recharge/Chance",
-        "num": 6,
-        "proc": true,
-        "totalAspects": 4,
-        "unique": true
-      }
-    ],
-    "type": "Sentinel Archetype Sets"
   },
   "overpowering_presence": {
     "bonuses": [
@@ -18502,7 +18371,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Ballistic Praxis"
   },
   "paragon_earth": {
     "bonuses": [
@@ -18764,7 +18633,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Earth Praxis"
   },
   "paragon_electricity": {
     "bonuses": [
@@ -19046,7 +18915,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Electricity Praxis"
   },
   "paragon_energy": {
     "bonuses": [
@@ -19298,7 +19167,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Energy Praxis"
   },
   "paragon_finesse": {
     "bonuses": [
@@ -19560,7 +19429,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Finesse Praxis"
   },
   "paragon_fire": {
     "bonuses": [
@@ -19812,7 +19681,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Fire Praxis"
   },
   "paragon_ice": {
     "bonuses": [
@@ -20034,20 +19903,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Ice Praxis"
   },
   "paragon_life": {
     "bonuses": [
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -20071,13 +19940,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -20101,13 +19970,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -20136,13 +20005,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -20171,13 +20040,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -20206,13 +20075,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Healing Strength",
+            "stat": "healing_strength",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Healing Strength",
-            "stat": "healing_strength",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -20311,7 +20180,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Life Praxis"
   },
   "paragon_luminosity": {
     "bonuses": [
@@ -20563,7 +20432,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Luminosity Praxis"
   },
   "paragon_might": {
     "bonuses": [
@@ -20855,7 +20724,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Might Praxis"
   },
   "paragon_nature": {
     "bonuses": [
@@ -21132,20 +21001,20 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Nature Praxis"
   },
   "paragon_psychic": {
     "bonuses": [
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -21169,13 +21038,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -21204,13 +21073,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -21239,13 +21108,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -21274,13 +21143,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -21309,13 +21178,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -21414,7 +21283,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Psychic Praxis"
   },
   "paragon_umbral": {
     "bonuses": [
@@ -21666,7 +21535,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Umbral Praxis"
   },
   "paragon_vacuum": {
     "bonuses": [
@@ -21958,7 +21827,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Vacuum Praxis"
   },
   "paragon_vibration": {
     "bonuses": [
@@ -22220,7 +22089,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Vibration Praxis"
   },
   "paragon_water": {
     "bonuses": [
@@ -22472,7 +22341,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": true
       }
     ],
-    "type": ""
+    "type": "Water Praxis"
   },
   "paralytic": {
     "bonuses": [
@@ -23576,13 +23445,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -23606,13 +23475,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -23636,13 +23505,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -23666,13 +23535,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -23696,13 +23565,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -23726,13 +23595,13 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+0.5% Endurance Discount",
-            "stat": "endurance_discount",
+            "desc": "+0.5% Tohit",
+            "stat": "tohit",
             "value": 0.5
           },
           {
-            "desc": "+0.5% Tohit",
-            "stat": "tohit",
+            "desc": "+0.5% Endurance Discount",
+            "stat": "endurance_discount",
             "value": 0.5
           },
           {
@@ -23857,7 +23726,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Psychic Praxis"
   },
   "pulverizing_fisticuffs": {
     "bonuses": [
@@ -25667,137 +25536,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "type": "Scrapper Archetype Sets"
-  },
-  "sentinels_ward": {
-    "bonuses": [
-      {
-        "effects": [
-          {
-            "desc": "+7.0% Accuracy",
-            "stat": "accuracy",
-            "value": 7.0
-          }
-        ],
-        "pieces": 2
-      },
-      {
-        "effects": [
-          {
-            "desc": "+7.5% Range",
-            "stat": "range",
-            "value": 7.5
-          }
-        ],
-        "pieces": 3
-      },
-      {
-        "effects": [
-          {
-            "desc": "+2.25% Maximum Hitpoints",
-            "stat": "maximum_hitpoints",
-            "value": 2.25
-          }
-        ],
-        "pieces": 4
-      },
-      {
-        "effects": [
-          {
-            "desc": "+3.13% Defense (Melee)",
-            "stat": "defense_(melee)",
-            "value": 3.13
-          },
-          {
-            "desc": "+1.56% Defense (Lethal)",
-            "stat": "defense_(lethal)",
-            "value": 1.56
-          }
-        ],
-        "pieces": 5
-      },
-      {
-        "effects": [
-          {
-            "desc": "+8.75% Recharge",
-            "stat": "recharge",
-            "value": 8.75
-          }
-        ],
-        "pieces": 6
-      }
-    ],
-    "category": "ato",
-    "icon": "AO_Sentinel_SentinelsWard.png",
-    "maxLevel": 1,
-    "minLevel": 1,
-    "name": "Sentinel's Ward",
-    "pieces": [
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage"
-        ],
-        "name": "Accuracy/Damage",
-        "num": 1,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Damage",
-          "Recharge"
-        ],
-        "name": "Damage/Recharge",
-        "num": 2,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Recharge"
-        ],
-        "name": "Accuracy/Damage/Recharge",
-        "num": 3,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Endurance"
-        ],
-        "name": "Accuracy/Damage/Endurance",
-        "num": 4,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Endurance",
-          "Recharge"
-        ],
-        "name": "Accuracy/Damage/Endurance/Recharge",
-        "num": 5,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Recharge"
-        ],
-        "name": "Recharge/Chance",
-        "num": 6,
-        "proc": true,
-        "totalAspects": 4,
-        "unique": true
-      }
-    ],
-    "type": "Sentinel Archetype Sets"
   },
   "serendipity": {
     "bonuses": [
@@ -30454,137 +30192,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "type": "Tanker Archetype Sets"
   },
-  "superior_opportunity_strikes": {
-    "bonuses": [
-      {
-        "effects": [
-          {
-            "desc": "+10.0% Range",
-            "stat": "range",
-            "value": 10.0
-          }
-        ],
-        "pieces": 2
-      },
-      {
-        "effects": [
-          {
-            "desc": "+3.6% Maximum Endurance",
-            "stat": "maximum_endurance",
-            "value": 3.6
-          }
-        ],
-        "pieces": 3
-      },
-      {
-        "effects": [
-          {
-            "desc": "+4.0% Damage",
-            "stat": "damage",
-            "value": 4.0
-          }
-        ],
-        "pieces": 4
-      },
-      {
-        "effects": [
-          {
-            "desc": "+10.0% Recharge",
-            "stat": "recharge",
-            "value": 10.0
-          }
-        ],
-        "pieces": 5
-      },
-      {
-        "effects": [
-          {
-            "desc": "+5.0% Defense (Energy)",
-            "stat": "defense_(energy)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Ranged)",
-            "stat": "defense_(ranged)",
-            "value": 2.5
-          }
-        ],
-        "pieces": 6
-      }
-    ],
-    "category": "ato",
-    "icon": "SAO_Sentinel_SuperiorOpportunityStrikes.png",
-    "maxLevel": 1,
-    "minLevel": 1,
-    "name": "Superior Opportunity Strikes",
-    "pieces": [
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage"
-        ],
-        "name": "Accuracy/Damage",
-        "num": 1,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Damage",
-          "Recharge"
-        ],
-        "name": "Damage/Recharge",
-        "num": 2,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Recharge"
-        ],
-        "name": "Accuracy/Damage/Recharge",
-        "num": 3,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Endurance"
-        ],
-        "name": "Accuracy/Damage/Endurance",
-        "num": 4,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Endurance",
-          "Recharge"
-        ],
-        "name": "Accuracy/Damage/Endurance/Recharge",
-        "num": 5,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Recharge"
-        ],
-        "name": "Recharge/Chance",
-        "num": 6,
-        "proc": true,
-        "totalAspects": 4,
-        "unique": true
-      }
-    ],
-    "type": "Sentinel Archetype Sets"
-  },
   "superior_overpowering_presence": {
     "bonuses": [
       {
@@ -31011,137 +30618,6 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "type": "Scrapper Archetype Sets"
-  },
-  "superior_sentinels_ward": {
-    "bonuses": [
-      {
-        "effects": [
-          {
-            "desc": "+15.0% Accuracy",
-            "stat": "accuracy",
-            "value": 15.0
-          }
-        ],
-        "pieces": 2
-      },
-      {
-        "effects": [
-          {
-            "desc": "+10.0% Range",
-            "stat": "range",
-            "value": 10.0
-          }
-        ],
-        "pieces": 3
-      },
-      {
-        "effects": [
-          {
-            "desc": "+3.0% Maximum Hitpoints",
-            "stat": "maximum_hitpoints",
-            "value": 3.0
-          }
-        ],
-        "pieces": 4
-      },
-      {
-        "effects": [
-          {
-            "desc": "+5.0% Defense (Melee)",
-            "stat": "defense_(melee)",
-            "value": 5.0
-          },
-          {
-            "desc": "+2.5% Defense (Lethal)",
-            "stat": "defense_(lethal)",
-            "value": 2.5
-          }
-        ],
-        "pieces": 5
-      },
-      {
-        "effects": [
-          {
-            "desc": "+10.0% Recharge",
-            "stat": "recharge",
-            "value": 10.0
-          }
-        ],
-        "pieces": 6
-      }
-    ],
-    "category": "ato",
-    "icon": "SAO_Sentinel_SuperiorSentinelsWard.png",
-    "maxLevel": 1,
-    "minLevel": 1,
-    "name": "Superior Sentinel's Ward",
-    "pieces": [
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage"
-        ],
-        "name": "Accuracy/Damage",
-        "num": 1,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Damage",
-          "Recharge"
-        ],
-        "name": "Damage/Recharge",
-        "num": 2,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Recharge"
-        ],
-        "name": "Accuracy/Damage/Recharge",
-        "num": 3,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Endurance"
-        ],
-        "name": "Accuracy/Damage/Endurance",
-        "num": 4,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Accuracy",
-          "Damage",
-          "Endurance",
-          "Recharge"
-        ],
-        "name": "Accuracy/Damage/Endurance/Recharge",
-        "num": 5,
-        "proc": false,
-        "unique": true
-      },
-      {
-        "aspects": [
-          "Recharge"
-        ],
-        "name": "Recharge/Chance",
-        "num": 6,
-        "proc": true,
-        "totalAspects": 4,
-        "unique": true
-      }
-    ],
-    "type": "Sentinel Archetype Sets"
   },
   "superior_spiders_bite": {
     "bonuses": [
@@ -33800,7 +33276,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Umbral Praxis"
   },
   "unbounded_leap": {
     "bonuses": [
@@ -34913,7 +34389,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Vacuum Praxis"
   },
   "vibration_elemental": {
     "bonuses": [
@@ -35171,7 +34647,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Vibration Praxis"
   },
   "vigilant_assault": {
     "bonuses": [
@@ -35769,7 +35245,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "unique": false
       }
     ],
-    "type": ""
+    "type": "Water Praxis"
   },
   "will_of_the_controller": {
     "bonuses": [

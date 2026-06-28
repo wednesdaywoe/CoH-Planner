@@ -37,6 +37,7 @@ export const ParalyzingBlast: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Electricity Praxis",
     "Holds"
   ],
   "maxSlots": 6,

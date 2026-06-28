@@ -36,7 +36,8 @@ export const ShadowCloak: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

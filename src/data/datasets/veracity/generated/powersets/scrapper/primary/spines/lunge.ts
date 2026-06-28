@@ -33,6 +33,7 @@ export const Lunge: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Life Praxis",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",

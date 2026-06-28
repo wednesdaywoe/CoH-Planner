@@ -26,6 +26,7 @@ export const ResistDisorientation: Power = {
     "Resistance"
   ],
   "allowedSetCategories": [
+    "Life Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

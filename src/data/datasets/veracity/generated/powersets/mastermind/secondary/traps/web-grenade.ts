@@ -33,6 +33,7 @@ export const WebGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Immobilize"
   ],
   "maxSlots": 6,

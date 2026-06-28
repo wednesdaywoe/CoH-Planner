@@ -37,7 +37,8 @@ export const SerpentsReach: Power = {
     "Knockback",
     "Ranged Damage",
     "Scrapper Archetype Sets",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "damage": {

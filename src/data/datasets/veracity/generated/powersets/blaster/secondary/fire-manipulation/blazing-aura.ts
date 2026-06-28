@@ -48,6 +48,7 @@ export const BlazingAura: Power = {
     "Accurate Healing",
     "Blaster Archetype Sets",
     "Endurance Modification",
+    "Fire Praxis",
     "Healing",
     "Melee AoE Damage",
     "Universal Damage Sets"

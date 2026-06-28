@@ -39,7 +39,8 @@ export const AerosolCurtain: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
-    "Fear"
+    "Fear",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "effects": {

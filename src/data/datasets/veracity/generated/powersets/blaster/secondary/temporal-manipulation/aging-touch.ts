@@ -34,7 +34,8 @@ export const AgingTouch: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Melee Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "damage": [

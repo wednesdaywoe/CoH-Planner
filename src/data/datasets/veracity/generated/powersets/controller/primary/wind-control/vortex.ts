@@ -42,7 +42,8 @@ export const Vortex: Power = {
     "Slow Movement",
     "Stuns",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "requires": "accesslevel char> 0 >="

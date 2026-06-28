@@ -34,7 +34,8 @@ export const Hide: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Electricity Praxis"
   ],
   "maxSlots": 6,
   "effects": {

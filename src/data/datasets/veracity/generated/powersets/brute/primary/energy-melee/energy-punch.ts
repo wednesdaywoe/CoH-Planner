@@ -35,6 +35,7 @@ export const EnergyPunch: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Energy Praxis",
     "Melee Damage",
     "Stuns",
     "Threat Duration",

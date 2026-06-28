@@ -35,6 +35,7 @@ export const FireSwordCircle: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Fire Praxis",
     "Melee AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"

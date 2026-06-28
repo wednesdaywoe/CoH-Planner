@@ -34,7 +34,8 @@ export const ChronoShift: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "damage": [

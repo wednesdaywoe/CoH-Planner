@@ -36,6 +36,7 @@ export const ExplosiveArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Defender Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",

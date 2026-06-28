@@ -39,6 +39,7 @@ export const Quasar: Power = {
     "Knockback",
     "Melee AoE Damage",
     "Slow Movement",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

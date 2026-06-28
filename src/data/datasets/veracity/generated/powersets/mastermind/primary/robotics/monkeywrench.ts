@@ -33,6 +33,7 @@ export const Monkeywrench: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets"

@@ -34,6 +34,7 @@ export const BoneSmasher: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Energy Praxis",
     "Melee Damage",
     "Stuns",
     "Universal Damage Sets"

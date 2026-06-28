@@ -40,7 +40,8 @@
   "allowed_set_categories": [
     "Controller Archetype Sets",
     "Immobilize",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Psychic Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

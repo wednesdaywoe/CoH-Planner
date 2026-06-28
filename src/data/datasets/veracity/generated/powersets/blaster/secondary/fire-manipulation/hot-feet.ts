@@ -36,6 +36,7 @@ export const HotFeet: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Fire Praxis",
     "Melee AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

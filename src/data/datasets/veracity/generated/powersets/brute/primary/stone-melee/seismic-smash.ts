@@ -35,6 +35,7 @@ export const SeismicSmash: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Earth Praxis",
     "Holds",
     "Melee Damage",
     "Threat Duration",

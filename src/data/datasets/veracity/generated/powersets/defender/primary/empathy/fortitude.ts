@@ -38,6 +38,7 @@ export const Fortitude: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Endurance Modification",
+    "Life Praxis",
     "To Hit Buff"
   ],
   "maxSlots": 6,

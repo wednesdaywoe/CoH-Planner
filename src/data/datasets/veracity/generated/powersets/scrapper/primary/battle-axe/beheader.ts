@@ -35,6 +35,7 @@ export const Beheader: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

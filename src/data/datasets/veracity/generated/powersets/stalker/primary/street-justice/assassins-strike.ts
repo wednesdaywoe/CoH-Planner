@@ -34,6 +34,7 @@ export const AssassinsStrike: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Might Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

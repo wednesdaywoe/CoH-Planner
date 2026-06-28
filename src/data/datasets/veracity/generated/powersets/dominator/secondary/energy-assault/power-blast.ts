@@ -34,6 +34,7 @@ export const PowerBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Ranged Damage",
     "Universal Damage Sets"

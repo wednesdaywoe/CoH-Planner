@@ -29,6 +29,7 @@ export const Grounded: Power = {
     "Resistance"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

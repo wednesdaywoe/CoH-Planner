@@ -33,6 +33,7 @@ export const QuickStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Melee Damage",
     "Stalker Archetype Sets",

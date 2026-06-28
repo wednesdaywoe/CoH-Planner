@@ -39,7 +39,8 @@ export const GuardedSpin: Power = {
     "Defense Sets",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "damage": {

@@ -38,6 +38,7 @@ export const Sleet: Power = {
     "Accurate Defense Debuff",
     "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Ice Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

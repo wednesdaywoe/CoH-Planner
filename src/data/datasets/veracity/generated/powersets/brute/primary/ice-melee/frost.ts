@@ -39,6 +39,7 @@ export const Frost: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Ice Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Threat Duration",

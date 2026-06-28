@@ -31,6 +31,9 @@ export const SonicCage: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Vibration Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "onlyAffectsSelf": {

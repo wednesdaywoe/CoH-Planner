@@ -38,6 +38,7 @@ export const CuttingBeam: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Ballistic Praxis",
     "Defender Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",

@@ -38,7 +38,8 @@
     "Buff_Defense"
   ],
   "allowed_set_categories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Vacuum Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [

@@ -38,6 +38,7 @@ export const SweepingStrike: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

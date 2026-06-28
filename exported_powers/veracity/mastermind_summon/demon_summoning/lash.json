@@ -38,6 +38,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Fire Praxis",
     "Knockback",
     "Melee Damage",
     "Universal Damage Sets"

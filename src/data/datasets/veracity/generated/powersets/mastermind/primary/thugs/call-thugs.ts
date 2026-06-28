@@ -35,6 +35,7 @@ export const CallThugs: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Mastermind Archetype Sets",
+    "Might Praxis",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

@@ -42,6 +42,7 @@ export const DualWield: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Finesse Praxis",
     "Knockback",
     "Ranged Damage",
     "Slow Movement",

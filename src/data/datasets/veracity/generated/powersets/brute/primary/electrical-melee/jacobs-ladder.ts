@@ -39,6 +39,7 @@ export const JacobsLadder: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Melee AoE Damage",
     "Sleep",

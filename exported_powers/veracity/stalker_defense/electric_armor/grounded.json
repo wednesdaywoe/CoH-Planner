@@ -34,6 +34,7 @@
     "Res_Damage"
   ],
   "allowed_set_categories": [
+    "Electricity Praxis",
     "Resist Damage"
   ],
   "cast_through": [],

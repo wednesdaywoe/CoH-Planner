@@ -40,7 +40,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Umbral Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -38,6 +38,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Energy Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",

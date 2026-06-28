@@ -30,7 +30,8 @@ export const TidalForces: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "To Hit Buff"
+    "To Hit Buff",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "effects": {

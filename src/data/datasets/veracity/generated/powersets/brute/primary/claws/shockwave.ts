@@ -39,6 +39,7 @@ export const Shockwave: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Finesse Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Threat Duration",

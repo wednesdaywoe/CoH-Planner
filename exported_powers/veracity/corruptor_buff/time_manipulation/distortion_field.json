@@ -39,7 +39,8 @@
   ],
   "allowed_set_categories": [
     "Holds",
-    "Slow Movement"
+    "Slow Movement",
+    "Vacuum Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

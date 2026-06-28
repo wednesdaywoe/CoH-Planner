@@ -33,6 +33,7 @@ export const ChokingCloud: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Holds"
   ],
   "maxSlots": 6,

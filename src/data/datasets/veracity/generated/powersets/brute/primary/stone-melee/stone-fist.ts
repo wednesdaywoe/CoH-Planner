@@ -35,6 +35,7 @@ export const StoneFist: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Earth Praxis",
     "Melee Damage",
     "Stuns",
     "Threat Duration",

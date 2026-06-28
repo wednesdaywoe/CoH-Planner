@@ -40,7 +40,8 @@ export const Thundergust: Power = {
     "Knockback",
     "Ranged AoE Damage",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "damage": {

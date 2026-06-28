@@ -35,6 +35,7 @@ export const GreaterPsiBlade: Power = {
   "allowedSetCategories": [
     "Holds",
     "Melee Damage",
+    "Psychic Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

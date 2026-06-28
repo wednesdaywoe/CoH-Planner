@@ -36,6 +36,7 @@ export const ElectricFence: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Immobilize",
     "Ranged Damage",

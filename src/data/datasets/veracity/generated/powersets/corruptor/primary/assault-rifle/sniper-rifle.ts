@@ -36,6 +36,7 @@ export const SniperRifle: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Corruptor Archetype Sets",
     "Knockback",
     "Ranged Damage",

@@ -36,7 +36,8 @@ export const TimeStop: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Controller Archetype Sets",
-    "Holds"
+    "Holds",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

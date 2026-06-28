@@ -37,6 +37,7 @@ export const FlashFreeze: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Ice Praxis",
     "Ranged AoE Damage",
     "Sleep",
     "Universal Damage Sets"

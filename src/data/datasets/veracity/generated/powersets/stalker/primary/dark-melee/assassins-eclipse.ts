@@ -35,6 +35,7 @@ export const AssassinsEclipse: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Stalker Archetype Sets",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

@@ -32,6 +32,7 @@ export const Confront: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Threat Duration"
   ],
   "maxSlots": 6,

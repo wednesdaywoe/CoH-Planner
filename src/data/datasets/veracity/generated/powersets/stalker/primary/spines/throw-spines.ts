@@ -37,6 +37,7 @@ export const ThrowSpines: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Life Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Stalker Archetype Sets",

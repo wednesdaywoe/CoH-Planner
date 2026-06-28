@@ -37,6 +37,7 @@
     "Debuff_ToHit"
   ],
   "allowed_set_categories": [
+    "Electricity Praxis",
     "Knockback",
     "To Hit Debuff"
   ],

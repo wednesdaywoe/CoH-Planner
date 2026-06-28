@@ -32,7 +32,8 @@ export const TarPatch: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Slow Movement"
+    "Slow Movement",
+    "Umbral Praxis"
   ],
   "maxSlots": 6
 };

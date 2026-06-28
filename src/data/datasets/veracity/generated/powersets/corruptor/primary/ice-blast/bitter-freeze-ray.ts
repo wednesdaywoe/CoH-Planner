@@ -37,6 +37,7 @@ export const BitterFreezeRay: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Holds",
+    "Ice Praxis",
     "Ranged Damage",
     "Slow Movement",
     "Universal Damage Sets"

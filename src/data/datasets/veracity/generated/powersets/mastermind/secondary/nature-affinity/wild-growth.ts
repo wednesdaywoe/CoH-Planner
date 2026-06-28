@@ -34,6 +34,7 @@ export const WildGrowth: Power = {
   ],
   "allowedSetCategories": [
     "Healing",
+    "Nature Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

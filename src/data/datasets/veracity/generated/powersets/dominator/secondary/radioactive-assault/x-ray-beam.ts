@@ -38,6 +38,7 @@ export const XRayBeam: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

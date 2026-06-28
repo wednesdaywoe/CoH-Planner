@@ -39,6 +39,7 @@ export const PowerSurge: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Holds",
     "Resist Damage"

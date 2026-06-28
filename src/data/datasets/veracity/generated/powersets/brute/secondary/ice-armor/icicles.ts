@@ -36,6 +36,7 @@ export const Icicles: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Ice Praxis",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],

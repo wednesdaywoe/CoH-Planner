@@ -35,6 +35,7 @@ export const HeavyBlow: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

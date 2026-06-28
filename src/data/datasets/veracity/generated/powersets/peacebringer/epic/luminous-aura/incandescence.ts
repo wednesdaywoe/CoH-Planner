@@ -28,6 +28,7 @@ export const Incandescence: Power = {
     "Resistance"
   ],
   "allowedSetCategories": [
+    "Luminosity Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

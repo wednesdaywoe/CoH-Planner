@@ -35,6 +35,7 @@ export const WhirlingHands: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Melee AoE Damage",
     "Stuns",
     "Tanker Archetype Sets",

@@ -34,6 +34,7 @@ export const EntanglingArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Immobilize",
     "Slow Movement"
   ],

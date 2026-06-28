@@ -36,6 +36,7 @@ export const MentalStrike: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Psychic Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

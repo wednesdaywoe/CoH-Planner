@@ -31,7 +31,8 @@ export const Reconstruction: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "damage": {

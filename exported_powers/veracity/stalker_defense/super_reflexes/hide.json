@@ -35,7 +35,8 @@
     "Buff_Defense"
   ],
   "allowed_set_categories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Vibration Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [

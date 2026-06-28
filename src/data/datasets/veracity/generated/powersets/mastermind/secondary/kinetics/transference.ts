@@ -33,7 +33,8 @@ export const Transference: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Endurance Modification"
+    "Endurance Modification",
+    "Energy Praxis"
   ],
   "maxSlots": 6,
   "effects": {

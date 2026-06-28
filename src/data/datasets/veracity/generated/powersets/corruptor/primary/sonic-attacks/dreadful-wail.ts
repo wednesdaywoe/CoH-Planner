@@ -37,7 +37,8 @@ export const DreadfulWail: Power = {
     "Corruptor Archetype Sets",
     "Melee AoE Damage",
     "Stuns",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "damage": [

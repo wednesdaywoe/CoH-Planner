@@ -35,6 +35,7 @@ export const Icicles: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Universal Damage Sets"

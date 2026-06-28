@@ -36,7 +36,8 @@ export const MineralArmor: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Earth Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -30,7 +30,8 @@ export const BloodCraze: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "damage": [

@@ -35,6 +35,7 @@ export const FRTTelekineticBlast: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Psychic Praxis",
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

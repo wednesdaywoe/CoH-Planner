@@ -33,6 +33,7 @@ export const Burn: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Universal Damage Sets"

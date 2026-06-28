@@ -29,5 +29,8 @@ export const NoxiousGas: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Nature Praxis"
+  ],
   "maxSlots": 6
 };

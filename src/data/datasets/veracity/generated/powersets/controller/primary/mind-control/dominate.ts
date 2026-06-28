@@ -36,6 +36,7 @@ export const Dominate: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Holds",
+    "Psychic Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

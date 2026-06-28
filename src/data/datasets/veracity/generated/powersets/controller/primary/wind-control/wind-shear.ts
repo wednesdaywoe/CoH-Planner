@@ -36,7 +36,8 @@ export const WindShear: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Slow Movement",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

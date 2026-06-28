@@ -32,6 +32,7 @@ export const Hoarfrost: Power = {
   ],
   "allowedSetCategories": [
     "Healing",
+    "Ice Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

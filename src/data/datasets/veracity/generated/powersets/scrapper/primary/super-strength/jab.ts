@@ -34,6 +34,7 @@ export const Jab: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets",
     "Stuns"
   ],

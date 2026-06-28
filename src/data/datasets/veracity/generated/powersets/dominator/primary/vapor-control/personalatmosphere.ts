@@ -40,7 +40,8 @@ export const PersonalAtmosphere: Power = {
   ],
   "allowedSetCategories": [
     "Leaping & Sprints",
-    "Slow Movement"
+    "Slow Movement",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "effects": {

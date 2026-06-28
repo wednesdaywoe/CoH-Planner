@@ -35,6 +35,7 @@ export const PowerBurst: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Energy Praxis",
     "Knockback",
     "Ranged Damage",
     "Universal Damage Sets"

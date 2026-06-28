@@ -32,6 +32,9 @@ export const DisruptionField: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Vibration Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistanceDebuff": {

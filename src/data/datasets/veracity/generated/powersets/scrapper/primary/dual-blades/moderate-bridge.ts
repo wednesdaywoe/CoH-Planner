@@ -35,6 +35,7 @@ export const ModerateBridge: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Finesse Praxis",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"

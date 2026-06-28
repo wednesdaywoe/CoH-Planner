@@ -40,6 +40,7 @@ export const StrangeGate: Power = {
     "Controller Archetype Sets",
     "Knockback",
     "Pet Damage",
+    "Psychic Praxis",
     "Recharge Intensive Pets",
     "Teleport"
   ],

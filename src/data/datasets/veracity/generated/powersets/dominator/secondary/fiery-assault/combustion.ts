@@ -33,6 +33,7 @@ export const Combustion: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],

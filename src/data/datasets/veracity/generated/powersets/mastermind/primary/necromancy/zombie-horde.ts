@@ -41,6 +41,7 @@ export const ZombieHorde: Power = {
     "Pet Damage",
     "Recharge Intensive Pets",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

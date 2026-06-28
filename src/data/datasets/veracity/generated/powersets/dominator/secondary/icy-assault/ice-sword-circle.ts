@@ -34,6 +34,7 @@ export const IceSwordCircle: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Melee AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

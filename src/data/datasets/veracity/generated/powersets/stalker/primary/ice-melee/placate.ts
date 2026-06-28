@@ -28,6 +28,9 @@ export const Placate: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Ice Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "fear": {

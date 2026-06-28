@@ -34,6 +34,7 @@ export const Repair: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Energy Praxis",
     "Healing"
   ],
   "maxSlots": 6,

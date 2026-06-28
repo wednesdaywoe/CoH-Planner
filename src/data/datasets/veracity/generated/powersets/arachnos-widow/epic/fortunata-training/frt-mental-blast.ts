@@ -33,6 +33,7 @@ export const FRTMentalBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

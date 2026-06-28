@@ -26,7 +26,8 @@ export const Dodge: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "effects": {

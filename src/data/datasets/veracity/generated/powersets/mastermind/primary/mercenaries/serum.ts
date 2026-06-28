@@ -34,6 +34,7 @@ export const Serum: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Endurance Modification",
     "Resist Damage",
     "To Hit Buff"

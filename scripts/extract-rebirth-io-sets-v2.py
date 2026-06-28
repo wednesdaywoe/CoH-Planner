@@ -1187,7 +1187,19 @@ def _apply_veracity_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict
             if preserved_icon:
                 out_sets[set_id]['icon'] = preserved_icon
             shared_overridden += 1
-    return {'shared_overridden': shared_overridden}
+    # Sentinel is deprecated on Veracity (AT + powersets dropped upstream), so
+    # remove its ATO sets too — the binary still defines the boostsets, but
+    # they're unselectable with no Sentinel AT.
+    dropped_sentinel = [
+        sid for sid, s in out_sets.items()
+        if s.get('type') == 'Sentinel Archetype Sets'
+    ]
+    for sid in dropped_sentinel:
+        del out_sets[sid]
+    return {
+        'shared_overridden': shared_overridden,
+        'dropped_sentinel': len(dropped_sentinel),
+    }
 
 
 def _apply_homecoming_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict]) -> dict:

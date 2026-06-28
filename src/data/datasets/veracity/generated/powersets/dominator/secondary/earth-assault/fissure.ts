@@ -38,6 +38,7 @@ export const Fissure: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Earth Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Stuns",

@@ -36,6 +36,7 @@ export const ArticAir: Power = {
   "allowedSetCategories": [
     "Confuse",
     "Controller Archetype Sets",
+    "Ice Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

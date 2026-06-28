@@ -37,6 +37,7 @@ export const RepulsingTorrent: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Scrapper Archetype Sets",

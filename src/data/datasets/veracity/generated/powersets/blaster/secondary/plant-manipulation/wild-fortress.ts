@@ -38,6 +38,7 @@ export const WildFortress: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
+    "Nature Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

@@ -39,6 +39,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Ballistic Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

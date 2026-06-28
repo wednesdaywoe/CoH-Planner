@@ -41,6 +41,7 @@ export const Disembowel: Power = {
     "Defense Debuff",
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

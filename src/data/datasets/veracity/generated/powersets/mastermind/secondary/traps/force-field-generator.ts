@@ -31,7 +31,8 @@ export const ForceFieldGenerator: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Finesse Praxis"
   ],
   "maxSlots": 6
 };

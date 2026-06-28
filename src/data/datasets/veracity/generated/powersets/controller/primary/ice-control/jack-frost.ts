@@ -35,6 +35,7 @@ export const JackFrost: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

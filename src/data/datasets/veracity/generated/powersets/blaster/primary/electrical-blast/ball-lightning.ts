@@ -37,6 +37,7 @@ export const BallLightning: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Ranged AoE Damage",
     "Universal Damage Sets"

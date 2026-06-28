@@ -34,7 +34,8 @@ export const Possess: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
-    "Dominator Archetype Sets"
+    "Dominator Archetype Sets",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

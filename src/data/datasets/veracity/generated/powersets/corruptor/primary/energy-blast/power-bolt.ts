@@ -35,6 +35,7 @@ export const PowerBolt: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Energy Praxis",
     "Knockback",
     "Ranged Damage",
     "Universal Damage Sets"

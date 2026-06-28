@@ -35,7 +35,8 @@ export const CruelJab: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "damage": [

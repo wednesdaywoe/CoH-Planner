@@ -36,6 +36,7 @@ export const PowerofthePhoenix: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Endurance Modification",
+    "Fire Praxis",
     "Healing",
     "Ranged AoE Damage",
     "Stuns",

@@ -28,6 +28,9 @@ export const QuantumStep: Power = {
     "EnduranceReduction",
     "Range"
   ],
+  "allowedSetCategories": [
+    "Luminosity Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "teleport": {

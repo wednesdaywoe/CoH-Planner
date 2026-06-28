@@ -31,6 +31,9 @@ export const CorrosiveSap: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Nature Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistanceDebuff": {

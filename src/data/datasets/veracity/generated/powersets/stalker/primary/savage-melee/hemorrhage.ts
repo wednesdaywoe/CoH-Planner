@@ -33,6 +33,7 @@ export const Hemorrhage: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Nature Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

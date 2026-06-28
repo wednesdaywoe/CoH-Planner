@@ -38,7 +38,8 @@ export const KeeningWinds: Power = {
   "allowedSetCategories": [
     "Confuse",
     "Controller Archetype Sets",
-    "Endurance Modification"
+    "Endurance Modification",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

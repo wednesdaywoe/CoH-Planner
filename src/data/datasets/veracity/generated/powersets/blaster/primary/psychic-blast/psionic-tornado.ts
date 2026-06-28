@@ -38,6 +38,7 @@ export const PsionicTornado: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Knockback",
+    "Psychic Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

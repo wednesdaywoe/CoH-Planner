@@ -32,6 +32,7 @@ export const RiseofthePhoenix: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Fire Praxis",
     "Healing",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",

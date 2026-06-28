@@ -39,6 +39,7 @@ export const Shred: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Nature Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

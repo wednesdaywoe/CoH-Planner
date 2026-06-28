@@ -37,6 +37,7 @@ export const PsychicScream: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Psychic Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

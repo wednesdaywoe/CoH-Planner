@@ -36,6 +36,7 @@ export const Glacier: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Holds",
+    "Ice Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

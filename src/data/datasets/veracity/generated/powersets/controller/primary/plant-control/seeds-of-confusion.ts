@@ -37,7 +37,8 @@ export const SeedsofConfusion: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
-    "Controller Archetype Sets"
+    "Controller Archetype Sets",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "effects": {

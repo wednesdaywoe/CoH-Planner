@@ -39,7 +39,8 @@ export const TimeShift: Power = {
     "Accurate To-Hit Debuff",
     "Slow Movement",
     "Stuns",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

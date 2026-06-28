@@ -36,6 +36,7 @@ export const DualWield: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Finesse Praxis",
     "Knockback",
     "Ranged Damage",
     "Slow Movement",

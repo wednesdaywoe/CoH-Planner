@@ -33,6 +33,7 @@ export const GangWar: Power = {
   ],
   "allowedSetCategories": [
     "Mastermind Archetype Sets",
+    "Might Praxis",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

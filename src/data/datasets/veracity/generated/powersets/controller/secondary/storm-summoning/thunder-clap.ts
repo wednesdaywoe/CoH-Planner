@@ -34,6 +34,7 @@ export const ThunderClap: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Electricity Praxis",
     "Stuns"
   ],
   "maxSlots": 6

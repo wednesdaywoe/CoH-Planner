@@ -40,6 +40,7 @@ export const Flares: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Fire Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

@@ -31,5 +31,8 @@ export const FulcrumShift: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Energy Praxis"
+  ],
   "maxSlots": 6
 };

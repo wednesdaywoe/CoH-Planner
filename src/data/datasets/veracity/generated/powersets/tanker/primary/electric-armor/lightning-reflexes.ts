@@ -26,6 +26,9 @@ export const LightningReflexes: Power = {
     "Run Speed",
     "Fly"
   ],
+  "allowedSetCategories": [
+    "Electricity Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "enduranceDiscount": {

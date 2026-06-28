@@ -32,6 +32,7 @@ export const Thaw: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

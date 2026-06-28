@@ -38,6 +38,7 @@ export const DarkConsumption: Power = {
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -37,6 +37,7 @@ export const SporeCloud: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
+    "Nature Praxis",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

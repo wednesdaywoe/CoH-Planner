@@ -36,6 +36,7 @@ export const M30Grenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Blaster Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",

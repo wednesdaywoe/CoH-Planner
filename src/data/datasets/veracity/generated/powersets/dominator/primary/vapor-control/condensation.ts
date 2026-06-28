@@ -38,7 +38,8 @@ export const Condensation: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Immobilize",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "damage": {

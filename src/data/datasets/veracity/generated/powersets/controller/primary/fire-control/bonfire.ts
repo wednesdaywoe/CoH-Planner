@@ -33,6 +33,7 @@ export const Bonfire: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

@@ -32,6 +32,7 @@ export const Antidote: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Nature Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

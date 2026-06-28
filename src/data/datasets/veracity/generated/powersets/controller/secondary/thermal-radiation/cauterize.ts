@@ -32,6 +32,7 @@ export const Cauterize: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Healing"
   ],
   "maxSlots": 6,

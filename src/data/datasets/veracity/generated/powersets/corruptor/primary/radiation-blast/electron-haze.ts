@@ -41,6 +41,7 @@ export const ElectronHaze: Power = {
     "Accurate Defense Debuff",
     "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

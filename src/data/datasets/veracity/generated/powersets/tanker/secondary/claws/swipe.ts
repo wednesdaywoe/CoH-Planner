@@ -34,6 +34,7 @@ export const Swipe: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

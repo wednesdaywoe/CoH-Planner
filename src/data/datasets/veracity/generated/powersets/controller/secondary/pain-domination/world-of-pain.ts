@@ -32,6 +32,7 @@ export const WorldofPain: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "Resist Damage",
     "To Hit Buff"
   ],

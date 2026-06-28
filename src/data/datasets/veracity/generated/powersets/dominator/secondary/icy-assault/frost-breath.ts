@@ -37,6 +37,7 @@ export const FrostBreath: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

@@ -34,6 +34,7 @@ export const PhotonSeekers: Power = {
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
     "Knockback",
+    "Luminosity Praxis",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

@@ -36,6 +36,7 @@ export const OrbitingDeath: Power = {
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
     "Melee AoE Damage",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

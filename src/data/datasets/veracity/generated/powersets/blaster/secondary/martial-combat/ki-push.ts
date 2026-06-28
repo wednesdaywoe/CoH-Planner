@@ -45,6 +45,7 @@ export const KiPush: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Finesse Praxis",
     "Knockback",
     "Melee Damage",
     "Universal Damage Sets"

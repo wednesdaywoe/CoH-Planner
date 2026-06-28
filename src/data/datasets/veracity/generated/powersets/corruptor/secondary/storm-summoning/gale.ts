@@ -38,6 +38,7 @@ export const Gale: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Electricity Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

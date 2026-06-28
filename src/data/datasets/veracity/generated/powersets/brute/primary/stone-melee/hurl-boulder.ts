@@ -36,6 +36,7 @@ export const HurlBoulder: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Earth Praxis",
     "Knockback",
     "Ranged Damage",
     "Threat Duration",

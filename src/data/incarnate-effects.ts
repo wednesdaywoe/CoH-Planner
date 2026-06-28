@@ -41,16 +41,29 @@ import {
   // Thunderspy also ships a Genesis slot.
   GENERATED_GENESIS_EFFECTS as THUNDERSPY_GENESIS,
 } from './datasets/thunderspy/generated/incarnate-effects';
+import {
+  GENERATED_ALPHA_EFFECTS as VERACITY_ALPHA,
+  GENERATED_DESTINY_EFFECTS as VERACITY_DESTINY,
+  GENERATED_HYBRID_EFFECTS as VERACITY_HYBRID,
+  GENERATED_INTERFACE_EFFECTS as VERACITY_INTERFACE,
+  GENERATED_JUDGEMENT_EFFECTS as VERACITY_JUDGEMENT,
+  GENERATED_LORE_EFFECTS as VERACITY_LORE,
+  // Veracity ships a Genesis slot too (matches Rebirth's options).
+  GENERATED_GENESIS_EFFECTS as VERACITY_GENESIS,
+} from './datasets/veracity/generated/incarnate-effects';
 import { getActiveDataset } from './dataset';
 
 /** Pick the per-dataset table for the active dataset (HC is the default). */
-function _pick3<T>(hc: T, rebirth: T, thunderspy: T): T {
+function _pick4<T>(hc: T, rebirth: T, thunderspy: T, veracity: T): T {
   const id = getActiveDataset().id;
-  return id === 'rebirth' ? rebirth : id === 'thunderspy' ? thunderspy : hc;
+  return id === 'rebirth' ? rebirth
+    : id === 'thunderspy' ? thunderspy
+    : id === 'veracity' ? veracity
+    : hc;
 }
 
 // Lazy per-dataset accessors. The active dataset isn't loaded yet at module
-// evaluation time, so we resolve on demand (see _pick3 above).
+// evaluation time, so we resolve on demand (see _pick4 above).
 
 // ============================================
 // TYPES
@@ -313,7 +326,7 @@ function alphaEffects(): Record<string, AlphaEffects> {
   const id = getActiveDataset().id;
   let r = _alphaCache.get(id);
   if (!r) {
-    r = _pick3(HC_ALPHA, REBIRTH_ALPHA, THUNDERSPY_ALPHA) as Record<string, AlphaEffects>;
+    r = _pick4(HC_ALPHA, REBIRTH_ALPHA, THUNDERSPY_ALPHA, VERACITY_ALPHA) as Record<string, AlphaEffects>;
     _alphaCache.set(id, r);
   }
   return r;
@@ -329,7 +342,7 @@ function destinyEffects(): Record<string, DestinyEffects> {
   const id = getActiveDataset().id;
   let r = _destinyCache.get(id);
   if (!r) {
-    r = _pick3(HC_DESTINY, REBIRTH_DESTINY, THUNDERSPY_DESTINY) as Record<string, DestinyEffects>;
+    r = _pick4(HC_DESTINY, REBIRTH_DESTINY, THUNDERSPY_DESTINY, VERACITY_DESTINY) as Record<string, DestinyEffects>;
     _destinyCache.set(id, r);
   }
   return r;
@@ -345,7 +358,7 @@ function hybridEffects(): Record<string, HybridEffects> {
   const id = getActiveDataset().id;
   let r = _hybridCache.get(id);
   if (!r) {
-    r = _pick3(HC_HYBRID, REBIRTH_HYBRID, THUNDERSPY_HYBRID) as unknown as Record<string, HybridEffects>;
+    r = _pick4(HC_HYBRID, REBIRTH_HYBRID, THUNDERSPY_HYBRID, VERACITY_HYBRID) as unknown as Record<string, HybridEffects>;
     _hybridCache.set(id, r);
   }
   return r;
@@ -361,7 +374,7 @@ function interfaceEffectsRegistry(): Record<string, InterfaceEffects> {
   const id = getActiveDataset().id;
   let r = _interfaceCache.get(id);
   if (!r) {
-    r = _pick3(HC_INTERFACE, REBIRTH_INTERFACE, THUNDERSPY_INTERFACE) as unknown as Record<string, InterfaceEffects>;
+    r = _pick4(HC_INTERFACE, REBIRTH_INTERFACE, THUNDERSPY_INTERFACE, VERACITY_INTERFACE) as unknown as Record<string, InterfaceEffects>;
     _interfaceCache.set(id, r);
   }
   return r;
@@ -377,7 +390,7 @@ function judgementEffectsRegistry(): Record<string, JudgementEffects> {
   const id = getActiveDataset().id;
   let r = _judgementCache.get(id);
   if (!r) {
-    r = _pick3(HC_JUDGEMENT, REBIRTH_JUDGEMENT, THUNDERSPY_JUDGEMENT) as unknown as Record<string, JudgementEffects>;
+    r = _pick4(HC_JUDGEMENT, REBIRTH_JUDGEMENT, THUNDERSPY_JUDGEMENT, VERACITY_JUDGEMENT) as unknown as Record<string, JudgementEffects>;
     _judgementCache.set(id, r);
   }
   return r;
@@ -396,7 +409,7 @@ function loreEffectsRegistry(): Record<string, LoreEffects> {
   const id = getActiveDataset().id;
   let r = _loreCache.get(id);
   if (!r) {
-    r = _pick3(HC_LORE, REBIRTH_LORE, THUNDERSPY_LORE) as unknown as Record<string, LoreEffects>;
+    r = _pick4(HC_LORE, REBIRTH_LORE, THUNDERSPY_LORE, VERACITY_LORE) as unknown as Record<string, LoreEffects>;
     _loreCache.set(id, r);
   }
   return r;
@@ -411,10 +424,11 @@ function loreEffectsRegistry(): Record<string, LoreEffects> {
 // Thunderspy both ship one.
 const _genesisEmpty: Record<string, GenesisEffects> = {};
 function genesisEffectsRegistry(): Record<string, GenesisEffects> {
-  return _pick3(
+  return _pick4(
     _genesisEmpty,
     REBIRTH_GENESIS as unknown as Record<string, GenesisEffects>,
     THUNDERSPY_GENESIS as unknown as Record<string, GenesisEffects>,
+    VERACITY_GENESIS as unknown as Record<string, GenesisEffects>,
   );
 }
 

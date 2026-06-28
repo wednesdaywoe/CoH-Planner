@@ -39,6 +39,7 @@ export const RadiationTherapy: Power = {
     "Accurate Healing",
     "Brute Archetype Sets",
     "Endurance Modification",
+    "Energy Praxis",
     "Healing",
     "Melee AoE Damage",
     "Threat Duration",

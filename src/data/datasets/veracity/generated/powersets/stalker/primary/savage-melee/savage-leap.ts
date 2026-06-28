@@ -34,6 +34,7 @@ export const SavageLeap: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Nature Praxis",
     "Stalker Archetype Sets",
     "Teleport",
     "Universal Damage Sets",

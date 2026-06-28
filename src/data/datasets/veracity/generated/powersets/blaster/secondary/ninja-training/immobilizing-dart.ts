@@ -41,6 +41,7 @@ export const ImmobilizingDart: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Finesse Praxis",
     "Immobilize",
     "Ranged Damage",
     "Universal Damage Sets"

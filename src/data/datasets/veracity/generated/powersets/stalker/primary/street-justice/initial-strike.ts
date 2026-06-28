@@ -34,6 +34,7 @@ export const InitialStrike: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Might Praxis",
     "Stalker Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

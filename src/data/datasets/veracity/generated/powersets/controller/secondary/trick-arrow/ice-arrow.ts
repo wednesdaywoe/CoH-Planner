@@ -34,6 +34,7 @@ export const IceArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Controller Archetype Sets",
     "Holds",
     "Slow Movement"

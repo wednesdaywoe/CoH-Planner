@@ -34,6 +34,7 @@ export const Hurl: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Might Praxis",
     "Ranged Damage",
     "Scrapper Archetype Sets"
   ],

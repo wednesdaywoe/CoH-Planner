@@ -7,9 +7,9 @@
  * composed facade at src/data/power-pools-raw.ts.
  * Run: node scripts/convert-pool-powers.cjs --apply
  *
- * Total pools: 12
- * Total powers: 63
- * Pool IDs: ["experimentation","fighting","flight","force_of_will","invisibility","leadership","leaping","presence","medicine","sorcery","speed","teleportation"]
+ * Total pools: 21
+ * Total powers: 112
+ * Pool IDs: ["experimentation","fighting","flight","force_of_will","invisibility","leadership","leaping","presence","medicine","sorcery","speed","teleportation","arsenal","bard","gadgetry","hierophany","ki","nocturne","pedigree","utility_belt","verdant"]
  */
 
 export const POWER_POOLS_RAW = {
@@ -3323,6 +3323,2256 @@ export const POWER_POOLS_RAW = {
           "endurance": 26,
           "activationTime": 5.93,
           "effectArea": "Map"
+        }
+      }
+    ]
+  },
+  "arsenal": {
+    "id": "arsenal",
+    "name": "Arsenal",
+    "displayName": "Arsenal",
+    "description": "",
+    "icon": "invisibility_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Parrying Blade",
+        "fullName": "Pool.Arsenal.Ornamental_Blade",
+        "rank": 1,
+        "available": 3,
+        "description": "This ornamental katana is not especially sharp, but it serves its purpose as an improvised weapon, and may fend off inbound attacks at close range.",
+        "shortHelp": "Minor Lethal Damage, Self +Def(Melee)",
+        "icon": "parryingblade.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets",
+          "Melee Damage"
+        ],
+        "effects": {
+          "accuracy": 1.05,
+          "range": 7,
+          "recharge": 12,
+          "endurance": 4.368,
+          "activationTime": 2.17,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.63,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.522,
+              "table": "Melee_Damage"
+            }
+          ],
+          "defenseBuff": {
+            "melee": {
+              "scale": 1.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 10
+          },
+          "buffDuration": 10
+        }
+      },
+      {
+        "name": "Sawed-Off",
+        "fullName": "Pool.Arsenal.Sawed_Off",
+        "rank": 2,
+        "available": 3,
+        "description": "This concealed shotgun fires a barrage of buckshot directly in front of you. The blast extends out 60 feet, in a 40 degree arc. It takes a while to reload your shotgun.",
+        "shortHelp": "Medium Lethal Damage Cone, Chance for Knockback",
+        "icon": "sawed-off.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged AoE Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 60,
+          "endurance": 13.12,
+          "activationTime": 1.87,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 0.6981316804885864,
+          "maxTargets": 8,
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 0.84,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Fire",
+              "scale": 0.522,
+              "table": "Melee_Damage"
+            }
+          ],
+          "accuracyBuff": {
+            "scale": 0.75,
+            "table": "Ranged_Knockback"
+          }
+        }
+      },
+      {
+        "name": "Pins and Needles",
+        "fullName": "Pool.Arsenal.Pins_and_Needles",
+        "rank": 3,
+        "available": 3,
+        "description": "You toss shrapnel onto the floor, impeding the movement of your enemies.",
+        "shortHelp": "Lethal Damage over Time, Movement Slow",
+        "icon": "pinsandneedles.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Slow Movement"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 20,
+          "recharge": 120,
+          "endurance": 10.5,
+          "activationTime": 1.07,
+          "effectArea": "SingleTarget"
+        }
+      },
+      {
+        "name": "Bulletproofing",
+        "fullName": "Pool.Arsenal.Bulletproofing",
+        "rank": 4,
+        "available": 3,
+        "description": "You've got body armor that provides modest protection from smashing and lethal attacks. The armor is extremely lightweight. It's always active and costs no endurance to use.",
+        "shortHelp": "Self +Def(Smashing, Lethal), +Res (Smashing, Lethal)",
+        "icon": "bulletproofing.png",
+        "powerType": "Auto",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets",
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "activatePeriod": 0.5,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Smashing",
+            "scale": 0.05,
+            "table": "Melee_Ones",
+            "duration": 0.75
+          },
+          "resistance": {
+            "smashing": {
+              "scale": 0.08,
+              "table": "Melee_Ones"
+            },
+            "lethal": {
+              "scale": 0.08,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "resistance": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Keen Edge",
+        "fullName": "Pool.Arsenal.Keen_Edge",
+        "rank": 5,
+        "available": 6,
+        "description": "You improve the offensive potential of a single ally, granting them a +7.5% chance for a Critical Hit, and +15% accumulation of Fury, for a short time. This power only improves existing abilities, and if your ally does not have a Critical Hit potential or Fury-based mechanic, this ability will not grant a new ability. It is best used on Brutes, Dominators, Scrappers, and Stalkers.",
+        "shortHelp": "Ally +Crit, +Fury",
+        "icon": "keenedge.png",
+        "powerType": "Click",
+        "targetType": "Ally (Alive)",
+        "requires": "Pool.Arsenal.Ornamental_Blade Pool.Arsenal.Sawed_Off || Pool.Arsenal.Pins_and_Needles || Pool.Arsenal.Bulletproofing ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "range": 40,
+          "recharge": 240,
+          "endurance": 22,
+          "activationTime": 2.5,
+          "effectArea": "SingleTarget",
+          "maxTargets": 1
+        }
+      }
+    ]
+  },
+  "bard": {
+    "id": "bard",
+    "name": "Bard",
+    "displayName": "Bard",
+    "description": "",
+    "icon": "invisibility_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Motivational Cheer",
+        "fullName": "Pool.Bard.Motivational_Cheer",
+        "rank": 1,
+        "available": 3,
+        "description": "You offer an upbeat song in support of your allies on the front lines of battle, elevating their mood and granting them mild protection from all sorts of Control effects. The song also gives them a small bonus to Recharge time. The bonus is short lived, lasting about 30 seconds.",
+        "shortHelp": "PBAoE Cone Mez Protection, +Recharge",
+        "icon": "motivationalcheer.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 60,
+          "endurance": 9,
+          "activationTime": 2.17,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 0.6981316804885864,
+          "maxTargets": 5,
+          "slow": {
+            "fly": {
+              "scale": 3,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "slow": 60,
+            "sleep": 60,
+            "stun": 60,
+            "fear": 60,
+            "immobilize": 60,
+            "enduranceDiscount": 60
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 3,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 60,
+          "stun": {
+            "mag": 1,
+            "scale": 3,
+            "table": "Melee_Ones"
+          },
+          "fear": {
+            "mag": 1,
+            "scale": 3,
+            "table": "Melee_Ones"
+          },
+          "immobilize": {
+            "mag": 1,
+            "scale": 3,
+            "table": "Melee_Ones"
+          },
+          "enduranceDiscount": {
+            "scale": 0.15,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 60
+        }
+      },
+      {
+        "name": "Drums of War",
+        "fullName": "Pool.Bard.War_Drums",
+        "rank": 2,
+        "available": 3,
+        "description": "You beat on the drums of war, motivating all allies within thirty feet to fight harder for your common cause.",
+        "shortHelp": "PBAoE Ally +Damage (All), +Endurance",
+        "icon": "drumsofwar.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 360,
+          "activationTime": 2,
+          "effectArea": "AoE",
+          "radius": 20,
+          "maxTargets": 8,
+          "enduranceGain": {
+            "scale": 0.25,
+            "table": "Ranged_Ones"
+          }
+        }
+      },
+      {
+        "name": "Exhausting Lullabye",
+        "fullName": "Pool.Bard.Lullabye",
+        "rank": 3,
+        "available": 3,
+        "description": "You sing a song that drains the energy and motivation from a single opponent. Your selected foe will suffer minor Psionic damage, a movement slow, and will have their damage debuffed.",
+        "shortHelp": "Foe Minor Psionic Damage, Slow, -Damage(All)",
+        "icon": "exhaustingmelody.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 24,
+          "endurance": 22,
+          "activationTime": 2.33,
+          "effectArea": "SingleTarget",
+          "maxTargets": 1,
+          "damage": {
+            "type": "Psionic",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          }
+        }
+      },
+      {
+        "name": "Verve",
+        "fullName": "Pool.Bard.Verve",
+        "rank": 4,
+        "available": 3,
+        "description": "You've got a natural sense of rhythm and movement that cannot be disrupted. You will naturally resist -Recharge and -Movement effects. This power is always on and costs no endurance.",
+        "shortHelp": "Auto: Resistance -Recharge, -Movespeed",
+        "icon": "verve.png",
+        "powerType": "Auto",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Jump",
+          "Recharge",
+          "Run Speed"
+        ],
+        "allowedSetCategories": [
+          "Running & Sprints",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "activatePeriod": 5,
+          "effectArea": "AoE",
+          "radius": 8,
+          "maxTargets": 8,
+          "debuffResistance": {
+            "movement": {
+              "scale": 0.25,
+              "table": "Ranged_ArchVillain_Res"
+            }
+          },
+          "durations": {
+            "debuffResistance": 5.25,
+            "enduranceDiscount": 5.25
+          },
+          "enduranceDiscount": {
+            "scale": 0.25,
+            "table": "Ranged_ArchVillain_Res"
+          },
+          "buffDuration": 5.25
+        }
+      },
+      {
+        "name": "Puretone Acoustics",
+        "fullName": "Pool.Bard.Puretone",
+        "rank": 5,
+        "available": 6,
+        "description": "You discern and manipulate the acoustic properties of an area, creating a small zone of control for your team. While standing within the Puretone, your Control, Healing, and ToHit are all increased. Puretone Acoustics takes a very long time to recharge.",
+        "shortHelp": "Targeted AOE +Control, +Healing, +ToHit",
+        "icon": "puretone.png",
+        "powerType": "Click",
+        "targetType": "Location",
+        "requires": "Pool.Bard.Verve Pool.Bard.War_Drums || Pool.Bard.Lullabye || Pool.Bard.Motivational_Cheer ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Healing",
+          "Recharge",
+          "ToHit"
+        ],
+        "allowedSetCategories": [
+          "Healing",
+          "To Hit Buff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 420,
+          "endurance": 35,
+          "activationTime": 2.03,
+          "effectArea": "Location"
+        }
+      }
+    ]
+  },
+  "gadgetry": {
+    "id": "gadgetry",
+    "name": "Gadgetry",
+    "displayName": "Gadgetry",
+    "description": "",
+    "icon": "gadgetry_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Nano Net",
+        "fullName": "Pool.Gadgetry.Nano_Net",
+        "rank": 1,
+        "available": 0,
+        "description": "You trap your foe in an energy net that significantly reduces their movement speed, attack rate and regeneration rate for a short time. Affected foes will also be knocked out of the sky. Recharge: Moderate",
+        "shortHelp": "Ranged, Foe -Speed, -Recharge, -Fly, -Regen",
+        "icon": "gadgetry_nanonet.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "accesslevel char> 0 >=",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Healing",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Accurate Healing",
+          "Slow Movement"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 7.8,
+          "activationTime": 1.37,
+          "effectArea": "SingleTarget",
+          "enduranceDiscount": {
+            "scale": 0.6,
+            "table": "Ranged_Slow"
+          },
+          "durations": {
+            "enduranceDiscount": 15,
+            "slow": 15,
+            "debuffResistance": 15,
+            "accuracyDebuff": 15,
+            "teleport": 15,
+            "recoveryDebuff": 30
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 0.6,
+              "table": "Ranged_Slow"
+            },
+            "flySpeed": {
+              "scale": 0.6,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
+              "table": "Ranged_Ones"
+            }
+          },
+          "debuffResistance": {
+            "accuracy": {
+              "scale": 100,
+              "table": "Ranged_Ones"
+            }
+          },
+          "accuracyDebuff": {
+            "scale": 100,
+            "table": "Ranged_Ones"
+          },
+          "teleport": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 15
+        }
+      },
+      {
+        "name": "Blaster Drone",
+        "fullName": "Pool.Gadgetry.Wrist_Blaster",
+        "rank": 2,
+        "available": 0,
+        "description": "You fire a series of blasts from a sophisticated energy drone. Wrist Blaster deals Moderate energy damage and will reduce the target's regeneration rate for a short time. Recharge: Fast",
+        "shortHelp": "Ranged, Moderate DMG(Energy), Foe -Regen",
+        "icon": "gadgetry_wristblaster.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "accesslevel char> 0 >=",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Healing",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Accurate Healing",
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 5,
+          "endurance": 6.032,
+          "activationTime": 1.67,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 1.16,
+            "table": "Ranged_Damage"
+          },
+          "recoveryDebuff": {
+            "scale": 0.066,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 20
+          },
+          "buffDuration": 20
+        }
+      },
+      {
+        "name": "Jetpack",
+        "fullName": "Pool.Gadgetry.Jetpack",
+        "rank": 3,
+        "available": 3,
+        "description": "By activating this power will you will be able to fly at high speeds. While this power is active you will have the ability to engage a Turbo Boost for a short time to further speed up your flight. Recharge: Moderate",
+        "shortHelp": "Toggle: Self Fly, (Special)",
+        "icon": "gadgetry_jetpack.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "$archtype @Class_Peacebringer == ! $archtype @Class_Warshade == ! && accesslevel char> 0 >= &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Fly"
+        ],
+        "allowedSetCategories": [
+          "Flight",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "endurance": 0.182,
+          "activatePeriod": 0.5,
+          "effectArea": "SingleTarget",
+          "teleport": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "teleport": 0.75,
+            "movement": 0.75,
+            "slow": 0.75
+          },
+          "movement": {
+            "flySpeed": {
+              "scale": 1,
+              "table": "Ranged_Ones"
+            },
+            "movementControl": {
+              "scale": 2,
+              "table": "Ranged_Control"
+            },
+            "movementFriction": {
+              "scale": 2,
+              "table": "Ranged_Friction"
+            }
+          },
+          "slow": {
+            "flySpeed": {
+              "scale": 1.01,
+              "table": "Ranged_Ones"
+            }
+          },
+          "selfPenalty": true,
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Drone Barrage",
+        "fullName": "Pool.Gadgetry.Blaster_Barrage",
+        "rank": 4,
+        "available": 13,
+        "description": "You fire off a barrage of energy blasts from an advanced energy drone dealing Moderate energy damage to foes in long cone in front of you. Drone Barrage requires you to have two other powers from the Gadgetry power pool. Damage: Moderate, Recharge: Moderate",
+        "shortHelp": "Ranged Cone, Moderate DMG(Energy), Foe -Regen",
+        "icon": "gadgetry_blasterbarrage.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "Pool.Gadgetry.Nano_Net Pool.Gadgetry.Wrist_Blaster && Pool.Gadgetry.Nano_Net Pool.Gadgetry.Jetpack && || Pool.Gadgetry.Wrist_Blaster Pool.Gadgetry.Jetpack && || accesslevel char> 0 >= &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Healing",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Accurate Healing",
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 15,
+          "endurance": 14.352,
+          "activationTime": 2.5,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 0.8726646304130554,
+          "maxTargets": 10,
+          "damage": {
+            "type": "Energy",
+            "scale": 0.96,
+            "table": "Ranged_Damage"
+          },
+          "accuracyBuff": {
+            "scale": 0.67,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 0.066,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 20
+          },
+          "buffDuration": 20
+        }
+      },
+      {
+        "name": "Force Barrier",
+        "fullName": "Pool.Gadgetry.Force_Barrier",
+        "rank": 5,
+        "available": 19,
+        "description": "You activate a force field around you for a short time that will absorb a high amount of damage before dissipating. Force Barrier requires you to have two other powers from the Gadgetry power pool. Recharge: Very Long",
+        "shortHelp": "Self, +Absorb",
+        "icon": "gadgetry_forcebarrier.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "Pool.Gadgetry.Nano_Net Pool.Gadgetry.Wrist_Blaster && Pool.Gadgetry.Nano_Net Pool.Gadgetry.Jetpack && || Pool.Gadgetry.Wrist_Blaster Pool.Gadgetry.Jetpack && || accesslevel char> 0 >= &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 150,
+          "endurance": 10.4,
+          "activationTime": 2.03,
+          "effectArea": "SingleTarget",
+          "absorb": {
+            "scale": 0.25,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "absorb": 30
+          },
+          "buffDuration": 30
+        }
+      },
+      {
+        "name": "Turbo Boost",
+        "fullName": "Pool.Gadgetry.Turbo_Boost",
+        "rank": 6,
+        "available": -1,
+        "description": "Activating this power will give you a massive burst to your flight speed for a short time. Recharge: Very Long",
+        "shortHelp": "Click, Self +Fly Speed",
+        "icon": "gadgetry_turboboost.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "accesslevel char> 0 >= Pool.Gadgetry.Jetpack &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 120,
+          "endurance": 6.5,
+          "effectArea": "SingleTarget",
+          "movement": {
+            "flySpeed": {
+              "scale": 1,
+              "table": "Ranged_Ones"
+            },
+            "movementControl": {
+              "scale": 15,
+              "table": "Ranged_Control"
+            },
+            "movementFriction": {
+              "scale": 15,
+              "table": "Ranged_Friction"
+            }
+          },
+          "durations": {
+            "movement": 30,
+            "teleport": 30
+          },
+          "teleport": {
+            "scale": 4,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 30
+        }
+      }
+    ]
+  },
+  "hierophany": {
+    "id": "hierophany",
+    "name": "Hierophany",
+    "displayName": "Hierophany",
+    "description": "",
+    "icon": "invisibility_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Motes of Light",
+        "fullName": "Pool.Hierophany.Mote_of_Light",
+        "rank": 1,
+        "available": 3,
+        "description": "You conjure up to three Motes of Light to aid you in battle. The Motes direct bursts of energy against single targets. Motes are elusive when dodging ranged attacks, but are otherwise frail. Motes can be summoned once every three minutes.",
+        "shortHelp": "Summon Mote of Light",
+        "icon": "hierophany_mote_of_light.png",
+        "powerType": "Click",
+        "targetType": "Location",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Recharge Intensive Pets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 19.5,
+          "activationTime": 2,
+          "effectArea": "Location"
+        }
+      },
+      {
+        "name": "Sword of Faith",
+        "fullName": "Pool.Hierophany.Sword_of_Faith",
+        "rank": 2,
+        "available": 3,
+        "description": "You draw upon holy energy, focusing it into the form of your sword before absorbing it into your body. Sword of Faith grants a 30s bonus to Damage and ToHit. When you use Sword of Faith, you will instantly regain 25 End and temporarily gain 15 Max Endurance. Sword of Faith also grants you mag 5 Terrorize protection for 30s. Sword of Faith has no endurance cost.",
+        "shortHelp": "Self: +Damage(All), +ToHit, +Endurance, Terrorize Protection",
+        "icon": "ki_sword_of_faith.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "Recharge",
+          "ToHit"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "To Hit Buff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 300,
+          "activationTime": 1.97,
+          "effectArea": "SingleTarget",
+          "damageBuff": {
+            "scale": 0.4,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "damageBuff": 30,
+            "tohitBuff": 30,
+            "maxEndBuff": 30,
+            "immobilize": 30
+          },
+          "tohitBuff": {
+            "scale": 0.3,
+            "table": "Melee_Ones"
+          },
+          "enduranceGain": {
+            "scale": 0.25,
+            "table": "Ranged_Ones"
+          },
+          "maxEndBuff": {
+            "scale": 0.15,
+            "table": "Ranged_Ones"
+          },
+          "immobilize": {
+            "mag": 1,
+            "scale": 5,
+            "table": "Ranged_Ones"
+          },
+          "effectDuration": 30,
+          "buffDuration": 30
+        }
+      },
+      {
+        "name": "Purification",
+        "fullName": "Pool.Hierophany.Purifier",
+        "rank": 3,
+        "available": 3,
+        "description": "You blast an opponent with consecrated energy, burning off their impurities, and healing allies nearby. Purification is a single target damage and minor regen debuff. A successful hit with Purification will cast a 15ft radius heal on your allies.",
+        "shortHelp": "ST Energy Damage, Foe -Regen, TAOE Accurate Heal",
+        "icon": "hierophany_purification.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Accurate Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 19.5,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 0.64,
+            "table": "Ranged_Damage"
+          },
+          "recoveryDebuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 60
+          },
+          "buffDuration": 60
+        }
+      },
+      {
+        "name": "Mists of Avalon",
+        "fullName": "Pool.Hierophany.Mists_of_Avalon",
+        "rank": 4,
+        "available": 3,
+        "description": "You gather divine mists of myth and legend in your presence, bringing fate's attention to your location. Your allies and their pets are granted +35ft Stealth that suppresses for 15 seconds if they attack, are damaged or mezzed, or click on a glowie objective. Additionally, your allies receive a small boost to Regeneration that suppresses in combat. It costs a lot of endurance to maintain Mists of Avalon, and if it is disabled, it takes time for the power to be usable again.",
+        "shortHelp": "Map Wide Stealth, +Regeneration",
+        "icon": "hierophany_mists_of_avalon.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 60,
+          "endurance": 0.8,
+          "activationTime": 2.03,
+          "activatePeriod": 1,
+          "effectArea": "Map",
+          "recoveryBuff": {
+            "scale": 0.5,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 1.25
+          },
+          "buffDuration": 1.25
+        }
+      },
+      {
+        "name": "Guardian Angel",
+        "fullName": "Pool.Hierophany.Guardian_Angel",
+        "rank": 5,
+        "available": 6,
+        "description": "You call upon the aid of a deity or supernatural force, granting a brief but potent bonus to Defense and limited Stun protection to all of your teammates. Guardian Angel can be cast while mezzed. This power costs a significant amount of endurance.",
+        "shortHelp": "Map Wide +Defense(S/L/F/C/E/N), +Stun Protection",
+        "icon": "hierophany_guardian_angel.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "Pool.Hierophany.Mote_of_Light Pool.Hierophany.Sword_of_Faith || Pool.Hierophany.Purifier || Pool.Hierophany.Mists_of_Avalon ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 420,
+          "endurance": 45,
+          "activationTime": 2.17,
+          "activatePeriod": 2,
+          "effectArea": "Map",
+          "damage": {
+            "type": "Smashing",
+            "scale": 0.15,
+            "table": "Ranged_Ones",
+            "duration": 30
+          },
+          "slow": {
+            "fly": {
+              "scale": 3,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "slow": 30
+          },
+          "buffDuration": 30
+        }
+      }
+    ]
+  },
+  "ki": {
+    "id": "ki",
+    "name": "Ki",
+    "displayName": "Ki",
+    "description": "",
+    "icon": "invisibility_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Unlocked Potential",
+        "fullName": "Pool.Ki.Unlocked_Potential",
+        "rank": 1,
+        "available": 3,
+        "description": "Through meditation, dedicated practice, and perseverance, you have unlocked your own inner potential. You are automatically better at defending against and resisting smashing, lethal, and psionic attacks. Additionally, you gain 10% to all Debuff resistance. This power is always on and costs no endurance.",
+        "shortHelp": "Auto: +Debuff Resist(All), +Def/Res(S/L/P)",
+        "icon": "ki_unlocked_potential.png",
+        "powerType": "Auto",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets",
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "activatePeriod": 0.5,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Smashing",
+            "scale": 0.02,
+            "table": "Melee_Ones",
+            "duration": 0.75
+          },
+          "resistance": {
+            "smashing": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "lethal": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "psionic": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "fire": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "cold": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "energy": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "negative": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "resistance": 0.75,
+            "debuffResistance": 0.75,
+            "enduranceDiscount": 0.75
+          },
+          "debuffResistance": {
+            "movement": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "range": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "endurance": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "defense": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "regeneration": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "recovery": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            }
+          },
+          "enduranceDiscount": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Bakuhatsuha",
+        "fullName": "Pool.Ki.Bakuhatsuha",
+        "rank": 2,
+        "available": 3,
+        "description": "You target a 30 foot cylinder and compress the natural energy in that space, smashing your foes and knocking them upward with a gravity flux. This power takes a fair amount of time to recharge.",
+        "shortHelp": "TAOE Smashing Damage, Knockup",
+        "icon": "ki_bakuhatsuha.png",
+        "powerType": "Click",
+        "targetType": "Location",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Knockback"
+        ],
+        "allowedSetCategories": [
+          "Knockback",
+          "Ranged AoE Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 240,
+          "endurance": 19.5,
+          "activationTime": 2,
+          "effectArea": "Location"
+        }
+      },
+      {
+        "name": "Kiai",
+        "fullName": "Pool.Ki.Kiai",
+        "rank": 3,
+        "available": 3,
+        "description": "You harness inner energy, increasing your damage and mez duration for thirty seconds. Kiai also grants you a Mag 3 Hold Protection buff, also lasting 30s. This power uses a considerable amount of endurance.",
+        "shortHelp": "Self: +Damage(All), +Mez Duration, +Hold Protection",
+        "icon": "ki_kiai.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 30,
+          "activationTime": 1.97,
+          "activatePeriod": 2,
+          "effectArea": "SingleTarget",
+          "maxTargets": 1,
+          "damageBuff": {
+            "scale": 0.3,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "damageBuff": 30,
+            "specialBuff": 30,
+            "stun": 30
+          },
+          "specialBuff": {
+            "fear": {
+              "scale": 0.2,
+              "table": "Ranged_Ones"
+            },
+            "immobilize": {
+              "scale": 0.2,
+              "table": "Ranged_Ones"
+            },
+            "sleep": {
+              "scale": 0.2,
+              "table": "Ranged_Ones"
+            },
+            "stun": {
+              "scale": 0.2,
+              "table": "Ranged_Ones"
+            }
+          },
+          "stun": {
+            "mag": 1,
+            "scale": 3,
+            "table": "Ranged_Ones"
+          },
+          "effectDuration": 30,
+          "buffDuration": 30
+        }
+      },
+      {
+        "name": "Solar Flash",
+        "fullName": "Pool.Ki.Solar_Flare",
+        "rank": 4,
+        "available": 3,
+        "description": "You project a bright flash of white hot energy in front of you. Opponents in a 90 degree arc extending 60 feet suffer minor Fire damage and a ToHit debuff. The fire damage increases by an incremental half damage scale per power in the Ki pool you own.",
+        "shortHelp": "Skillshot Cone: Moderate Fire Damage, -ToHit",
+        "icon": "ki_solar_flare.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Recharge",
+          "ToHit Debuff"
+        ],
+        "allowedSetCategories": [
+          "Accurate To-Hit Debuff",
+          "Ranged AoE Damage",
+          "To Hit Debuff"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 23,
+          "activationTime": 1.17,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 1.5707963705062866,
+          "maxTargets": 16,
+          "damage": {
+            "type": "Fire",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
+          "tohitDebuff": {
+            "scale": 0.625,
+            "table": "Ranged_DeBuff_ToHit"
+          },
+          "durations": {
+            "tohitDebuff": 120
+          },
+          "buffDuration": 120
+        }
+      },
+      {
+        "name": "Genki Dama",
+        "fullName": "Pool.Ki.Genki_Dama",
+        "rank": 5,
+        "available": 6,
+        "description": "You enter a trance state fundamentally in tune with life and reality. While Genki Damage is toggled, you gain two additional powers: <b>Charge Genki Dama</b> and <b>Throw Genki Dama</b>. Each use of Charge Genki Dama will grant you one stack of the Ki Accumulation temporary power per ally in 60 feet. Throw Genki Dama will discharge the energy on a single target, dealing extreme Energy damage with additional damage inflicted based on the number of Ki Sphere tokens you possessed when throwing it.<br><br>Genki Dama takes a long time to recharge, and costs a lot of endurance to maintain. It can be canceled if you are mezzed by an opponent.",
+        "shortHelp": "ST Special: Extreme Energy Damage",
+        "icon": "ki_genki_dama_a.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "Pool.Ki.Unlocked_Potential Pool.Ki.Bakuhatsuha || Pool.Ki.Kiai || Pool.Ki.Solar_Flare ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 60,
+          "endurance": 3,
+          "activationTime": 1.5,
+          "activatePeriod": 8,
+          "effectArea": "SingleTarget"
+        }
+      },
+      {
+        "name": "Charge Genki Dama",
+        "fullName": "Pool.Ki.Charge_Genki_Dama",
+        "rank": 6,
+        "available": 6,
+        "description": "Each use of Charge Genki Dama will grant you one stack of the Ki Accumulation temporary power per teammate in 60 feet. Each ally tapped to contribute to the Spirit Bomb commits 1 point of Max Endurance to the cause for 60s.",
+        "shortHelp": "Accumulate Ki",
+        "icon": "ki_genki_dama_b.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "Pool.Ki.Genki_Dama",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 10,
+          "endurance": 8,
+          "activationTime": 1.5,
+          "effectArea": "AoE",
+          "radius": 60,
+          "maxTargets": 8
+        }
+      },
+      {
+        "name": "Throw Genki Dama",
+        "fullName": "Pool.Ki.Throw_Genki_Dama",
+        "rank": 7,
+        "available": 6,
+        "description": "You blast a single foe with pure Ki energy. You need at least 5 points of Ki Accumulation to use the Spirit Bomb. For every 3 points above five (8, 11, 14, 17, and 20) the Spirit Bomb will deal additional damage after a brief delay. The 20-point strike deals unresistable damage.",
+        "shortHelp": "ST Special: Extreme Energy Damage",
+        "icon": "ki_genki_dama_c.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "Pool.Ki.Genki_Dama",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "range": 70,
+          "recharge": 360,
+          "endurance": 40,
+          "activationTime": 1.5,
+          "effectArea": "SingleTarget",
+          "maxTargets": 1,
+          "damage": {
+            "type": "Energy",
+            "scale": 4,
+            "table": "Ranged_Damage"
+          }
+        }
+      }
+    ]
+  },
+  "nocturne": {
+    "id": "nocturne",
+    "name": "Nocturne",
+    "displayName": "Nocturne",
+    "description": "",
+    "icon": "invisibility_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Unhallowed Presence",
+        "fullName": "Pool.Nocturne.Unhallowed_Presence",
+        "rank": 1,
+        "available": 2,
+        "description": "You move with uncanny and supernatural grace that is apparent to only the most observant. Unhallowed Presence is a travel power that grants a modest bonus to run speed and jump speed. You also gain a significant jump height bonus. The movement bonus is modest compared to other travel powers, but it never suppresses. Unhallowed Presence also grants you a 10% resistance to Endurance and Recharge debuffs.",
+        "shortHelp": "Toggle: Unsuppressed Run/Jump, +Debuff Resist(Endurance, Recharge)",
+        "icon": "nocturne_unhallowed_presence.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Jump",
+          "Run Speed"
+        ],
+        "allowedSetCategories": [
+          "Leaping & Sprints",
+          "Running & Sprints",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 20,
+          "endurance": 0.18,
+          "activationTime": 0.73,
+          "activatePeriod": 0.5,
+          "effectArea": "SingleTarget",
+          "movement": {
+            "jumpHeight": {
+              "scale": 1,
+              "table": "Melee_Leap"
+            },
+            "jumpSpeed": {
+              "scale": 0.45,
+              "table": "Melee_SpeedJumping"
+            },
+            "movementControl": {
+              "scale": 6,
+              "table": "Melee_Ones"
+            },
+            "movementFriction": {
+              "scale": 2,
+              "table": "Melee_Ones"
+            },
+            "runSpeed": {
+              "scale": 0.35,
+              "table": "Melee_SpeedRunning"
+            }
+          },
+          "durations": {
+            "movement": 0.75
+          },
+          "buffDuration": 0.75
+        }
+      },
+      {
+        "name": "Coterie",
+        "fullName": "Pool.Nocturne.Coterie",
+        "rank": 2,
+        "available": 3,
+        "description": "You summon a hungry, but loyal, wolf to your side. The wolf has a variety of melee attacks and will attempt to knock foes to the ground. However, the wolf is vulnerable to ranged attacks. Additionally, you will summon a Bat Swarm that is untargetable, but grants a 3% ToHit buff and a 15% ToHit Debuff Protection to allies in a 30ft radius, and deals Lethal damage every few seconds to any opponent in a 25ft radius. The Coterie can be summoned every three minutes, with the Hungry Wolf lasting indefinitely, and the Bat Swarm lasting for 60s.",
+        "shortHelp": "Summon Hungry Wolf, Bat Swarm",
+        "icon": "nocturne_coterie.png",
+        "powerType": "Click",
+        "targetType": "Location",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Recharge Intensive Pets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 180,
+          "endurance": 19.5,
+          "activationTime": 1.97,
+          "effectArea": "Location"
+        }
+      },
+      {
+        "name": "Seductive Mesmer",
+        "fullName": "Pool.Nocturne.Seductive_Mesmer",
+        "rank": 3,
+        "available": 3,
+        "description": "You exude supernatural allure, and those in your presence hesitate to strike you, often finding themselves enraptured. Opponents in a 15 foot radius will have their damage and mez resistance reduced. This power costs a fair amount of Endurance to maintain.",
+        "shortHelp": "Toggle PBAOE Foe -Damage(All), -Mez Resistance",
+        "icon": "nocturne_seductive_mesmer.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 5,
+          "endurance": 1.04,
+          "activationTime": 1.07,
+          "activatePeriod": 2,
+          "effectArea": "AoE",
+          "radius": 15,
+          "maxTargets": 16,
+          "damageDebuff": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "damageDebuff": 2.25
+          },
+          "buffDuration": 2.25
+        }
+      },
+      {
+        "name": "Bloodmoon",
+        "fullName": "Pool.Nocturne.Bloodmoon",
+        "rank": 4,
+        "available": 3,
+        "description": "You cry out as the sky reddens, preparing to hunt. Bloodmoon grants you a personal heal over time and recovery buff. Additionally, Bloodmoon grants a Mag 5 Sleep Protection benefit for 30s. Bloodmoon has a longer cooldown.",
+        "shortHelp": "Self: +Heal Over Time, +Recovery, +Sleep Protection",
+        "icon": "nocturne_bloodmoon.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceModification",
+          "EnduranceReduction",
+          "Healing",
+          "Recharge",
+          "ToHit"
+        ],
+        "allowedSetCategories": [
+          "Endurance Modification",
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 300,
+          "endurance": 10,
+          "activationTime": 2.03,
+          "activatePeriod": 2,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 0.125,
+            "table": "Melee_HealSelf",
+            "ignoreStrength": true,
+            "duration": 60,
+            "tickRate": 1.5
+          }
+        }
+      },
+      {
+        "name": "Deadly Lifetap",
+        "fullName": "Pool.Nocturne.Deadly_Lifetap",
+        "rank": 5,
+        "available": 6,
+        "description": "You strike out at the life force in your opponent's body and soul. When Deadly Lifetap is activated, you gain a 50% chance to instantly heal a base 4% of your Max HP on a successful attack. If the Lifetap is successful, your opponent will also suffer a small Lethal damage over time effect. Any offensive power making an Accuracy check against an opponent qualifies to potentially proc Deadly Lifetap. The effect lasts for 60 seconds following activation. Deadly Lifetap costs a lot of endurance to use.",
+        "shortHelp": "Self: Chance to Heal % of Max HP",
+        "icon": "nocturne_deadly_lifetap.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "Pool.Nocturne.Coterie Pool.Nocturne.Seductive_Mesmer || Pool.Nocturne.Bloodmoon || Pool.Nocturne.Unhallowed_Presence ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Accurate Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 420,
+          "endurance": 0.78,
+          "activationTime": 2,
+          "activatePeriod": 0.5,
+          "effectArea": "SingleTarget"
+        }
+      }
+    ]
+  },
+  "pedigree": {
+    "id": "pedigree",
+    "name": "Pedigree",
+    "displayName": "Pedigree",
+    "description": "",
+    "icon": "manipulation_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Noble Reassurance",
+        "fullName": "Pool.Pedigree.Bonedigger",
+        "rank": 1,
+        "available": 3,
+        "description": "Your community standing is so great that even a word of reassurance serves to protect an ally. You grant a +8% Defense bonus versus Smashing, Lethal, Energy, Negative, and Psychic damage to a single target. The protection lasts for 120 seconds. Subsequent casts of this ability on the same foe grant a +4% Defense bonus, with a maximum of three total stacks.",
+        "shortHelp": "+Def(S/L/E/N/P)",
+        "icon": "noblereassurance.png",
+        "powerType": "Click",
+        "targetType": "Ally (Alive)",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 50,
+          "recharge": 240,
+          "endurance": 14,
+          "activationTime": 1.17,
+          "effectArea": "SingleTarget",
+          "maxTargets": 1,
+          "damage": {
+            "type": "Smashing",
+            "scale": 0.04,
+            "table": "Melee_Ones",
+            "duration": 120
+          }
+        }
+      },
+      {
+        "name": "Esteem",
+        "fullName": "Pool.Pedigree.Esteem",
+        "rank": 2,
+        "available": 3,
+        "description": "You elevate and dignify your pet, treating them as an extension of yourself. Your pet will gain +1 Level Shift for 120s.",
+        "shortHelp": "Pet +Level Shift",
+        "icon": "esteem.png",
+        "powerType": "Click",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "range": 20,
+          "recharge": 420,
+          "endurance": 30,
+          "activationTime": 3,
+          "effectArea": "SingleTarget",
+          "maxTargets": 1
+        }
+      },
+      {
+        "name": "Guardianship",
+        "fullName": "Pool.Pedigree.Guardianship",
+        "rank": 3,
+        "available": 3,
+        "description": "You take great concern and care for those in your charge. While this power is active, all of your pets will receive a 10% bonus to Resistance.",
+        "shortHelp": "PBAOE Toggle: Pet +Resistance(All)",
+        "icon": "guardianship.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 15,
+          "endurance": 0.78,
+          "activationTime": 0.73,
+          "activatePeriod": 2,
+          "effectArea": "AoE",
+          "radius": 30,
+          "maxTargets": 8,
+          "resistance": {
+            "smashing": {
+              "scale": 0.08,
+              "table": "Melee_Ones"
+            },
+            "lethal": {
+              "scale": 0.08,
+              "table": "Melee_Ones"
+            },
+            "fire": {
+              "scale": 0.08,
+              "table": "Melee_Ones"
+            },
+            "cold": {
+              "scale": 0.08,
+              "table": "Melee_Ones"
+            },
+            "energy": {
+              "scale": 0.08,
+              "table": "Melee_Ones"
+            },
+            "negative": {
+              "scale": 0.08,
+              "table": "Melee_Ones"
+            },
+            "psionic": {
+              "scale": 0.08,
+              "table": "Melee_Ones"
+            },
+            "toxic": {
+              "scale": 0.08,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "resistance": 2.25
+          },
+          "buffDuration": 2.25
+        }
+      },
+      {
+        "name": "Reunite",
+        "fullName": "Pool.Pedigree.Reunite",
+        "rank": 4,
+        "available": 3,
+        "description": "Your pets are teleported to you with a simple command. This power activates quickly, and has a low cooldown, but will cost noticable endurance.",
+        "shortHelp": "Quick Summon Pets",
+        "icon": "reunite.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Teleport",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 10000,
+          "recharge": 6,
+          "endurance": 15,
+          "activationTime": 1.93,
+          "effectArea": "Map",
+          "radius": 100
+        }
+      },
+      {
+        "name": "Surefooted Eminence",
+        "fullName": "Pool.Pedigree.Surefooted_Eminence",
+        "rank": 5,
+        "available": 6,
+        "description": "Your allies are proud to serve you, and stand tall in pursuit of your common cause. While this power is active, you, your pets, and your team will gain a resistance to knockback so long as they are within 60 feet. You will also grant a slight +Damage bonus to everyone within 30 feet.",
+        "shortHelp": "PBAOE Toggle: +Resistance(KB), +Damage",
+        "icon": "surefootedeminence.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "Pool.Pedigree.Guardianship Pool.Pedigree.Bonedigger || Pool.Pedigree.Esteem || Pool.Pedigree.Reunite ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Recharge"
+        ],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 15,
+          "endurance": 0.69,
+          "activationTime": 3,
+          "activatePeriod": 4,
+          "effectArea": "AoE",
+          "radius": 60,
+          "maxTargets": 16,
+          "accuracyDebuff": {
+            "scale": 3,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "accuracyDebuff": 4.25
+          },
+          "buffDuration": 4.25
+        }
+      }
+    ]
+  },
+  "utility_belt": {
+    "id": "utility_belt",
+    "name": "Utility Belt",
+    "displayName": "Utility Belt",
+    "description": "",
+    "icon": "utility_belt_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Bolas",
+        "fullName": "Pool.Utility_Belt.Bolas",
+        "rank": 1,
+        "available": 0,
+        "description": "You hurl a pair of bolas at your target entangling them and rendering them immobilized. For the duration of the effect the target may become knocked down. Recharge: Moderate",
+        "shortHelp": "Ranged, Foe Immobilize, Knockdown",
+        "icon": "utilitybelt_bolas.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "accesslevel char> 0 >=",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Immobilize",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Immobilize"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 7.28,
+          "activationTime": 1.87,
+          "effectArea": "SingleTarget",
+          "sleep": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          },
+          "teleport": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "teleport": 15,
+            "accuracyBuff": 12
+          },
+          "accuracyBuff": {
+            "scale": 0.67,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
+        }
+      },
+      {
+        "name": "Poisoned Dagger",
+        "fullName": "Pool.Utility_Belt.Poisoned_Dagger",
+        "rank": 2,
+        "available": 0,
+        "description": "You throw an envenomed blade at your target causing a moderate amount of lethal damage and causing them to suffer a fair amount of toxic damage over time. Foes struck by the Poisoned Dagger will also have their damage decreased. Damage: Moderate, Recharge: Fast",
+        "shortHelp": "Ranged, Moderate DMG(Lethal), Foe Light DoT(Toxic), -DMG",
+        "icon": "utilitybelt_poisoneddagger.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "accesslevel char> 0 >=",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "activationTime": 1,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 1.1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 5,
+              "tickRate": 1
+            }
+          ],
+          "damageDebuff": {
+            "scale": 0.8,
+            "table": "Ranged_Debuff_Dam"
+          },
+          "durations": {
+            "damageDebuff": 5
+          },
+          "buffDuration": 5
+        }
+      },
+      {
+        "name": "Freerunning",
+        "fullName": "Pool.Utility_Belt.Freerunning",
+        "rank": 3,
+        "available": 3,
+        "description": "You are skilled at using your environment to your advantage to quickly traverse any obstacles that you come across. Freerunning grants you a considerable boost to both your jump height and run speed. While this power is active, you will also have access to the Athletics power which when clicked will boost this power's effects for a short time. Recharge: Moderate",
+        "shortHelp": "Toggle: Self, +Jump, +Run Speed, +Special",
+        "icon": "utilitybelt_freerunning.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "accesslevel char> 0 >=",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Jump",
+          "Recharge",
+          "Run Speed"
+        ],
+        "allowedSetCategories": [
+          "Leaping & Sprints",
+          "Running & Sprints",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 4,
+          "endurance": 0.182,
+          "activatePeriod": 0.5,
+          "effectArea": "SingleTarget"
+        }
+      },
+      {
+        "name": "Envenomed Barrage",
+        "fullName": "Pool.Utility_Belt.Flying_Kick",
+        "rank": 4,
+        "available": 13,
+        "description": "You unleash a barrage of throwing knives at foes in front of you dealing Moderate lethal damage and an additional amount of toxic damage over time.  Affected foes will also have their damage reduced slightly.  Damage: Moderate, Light DoT(Toxic), Recharge: Long",
+        "shortHelp": "Ranged(Cone), Moderate DMG(Lethal), Foe Light DoT(Toxic), -DMG",
+        "icon": "utilitybelt_envenomedbarrage.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "Pool.Utility_Belt.Bolas Pool.Utility_Belt.Poisoned_Dagger && Pool.Utility_Belt.Bolas Pool.Utility_Belt.Freerunning && || Pool.Utility_Belt.Poisoned_Dagger Pool.Utility_Belt.Freerunning && || accesslevel char> 0 >= &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage",
+          "Universal Damage Sets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 14,
+          "endurance": 13.52,
+          "activationTime": 1,
+          "effectArea": "Cone",
+          "radius": 60,
+          "arc": 0.6981316804885864,
+          "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Lethal",
+              "scale": 1.01,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Toxic",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 5,
+              "tickRate": 1
+            }
+          ],
+          "damageDebuff": {
+            "scale": 0.8,
+            "table": "Ranged_Debuff_Dam"
+          },
+          "durations": {
+            "damageDebuff": 8
+          },
+          "buffDuration": 8
+        }
+      },
+      {
+        "name": "Life Support System",
+        "fullName": "Pool.Utility_Belt.Life_Support_System",
+        "rank": 5,
+        "available": 19,
+        "description": "Life Support System immediately heals you and causes you to recover a moderate amount of health over time.  This power's potency increases as your health decreases.  Recharge: Very Long",
+        "shortHelp": "Self, +HP, +Heal Over Time, +Special",
+        "icon": "utilitybelt_lifesupportsystem.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "Pool.Utility_Belt.Bolas Pool.Utility_Belt.Poisoned_Dagger && Pool.Utility_Belt.Bolas Pool.Utility_Belt.Freerunning && || Pool.Utility_Belt.Poisoned_Dagger Pool.Utility_Belt.Freerunning && || accesslevel char> 0 >= &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 7.8,
+          "activationTime": 1.27,
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Heal",
+              "scale": 1,
+              "table": "Melee_HealSelf",
+              "ignoreStrength": true
+            },
+            {
+              "type": "Heal",
+              "scale": 1,
+              "table": "Melee_HealSelf",
+              "ignoreStrength": true,
+              "duration": 9.1,
+              "tickRate": 1
+            }
+          ]
+        }
+      },
+      {
+        "name": "Athletics",
+        "fullName": "Pool.Utility_Belt.Athletics",
+        "rank": 6,
+        "available": -1,
+        "description": "Activating this power will give you a massive burst of speed and jump power for a short time. Recharge: Very Long",
+        "shortHelp": "Click, Self +Run Speed, +Jump",
+        "icon": "utilitybelt_athletics.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "accesslevel char> 0 >= Pool.Utility_Belt.Freerunning &&",
+        "maxSlots": 6,
+        "allowedEnhancements": [],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 120,
+          "endurance": 6.5,
+          "effectArea": "SingleTarget",
+          "movement": {
+            "jumpHeight": {
+              "scale": 0.3,
+              "table": "Melee_Leap"
+            }
+          },
+          "durations": {
+            "movement": 30
+          },
+          "buffDuration": 30
+        }
+      }
+    ]
+  },
+  "verdant": {
+    "id": "verdant",
+    "name": "Verdant",
+    "displayName": "Verdant",
+    "description": "",
+    "icon": "teleportation_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Ethereal Panther",
+        "fullName": "Pool.Verdant.Ethereal_Panther",
+        "rank": 1,
+        "available": 3,
+        "description": "You summon one (or two at level 50) persisting Ethereal Panthers to serve as your ally. The Ethereal Panther has a variety of abilities: melee offense, ranged offense, and support. While it is resistant to physical damage, it is not strong enough to stand alone in large combats, and you have to take care of it. If your Ethereal Panther is defeated, it will take a long time before you can resummon it.",
+        "shortHelp": "Summon Feline Ally",
+        "icon": "verdant_etherealpanther.png",
+        "powerType": "Click",
+        "targetType": "Location",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Melee Damage",
+          "Pet Damage",
+          "Recharge Intensive Pets"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 360,
+          "endurance": 35,
+          "activationTime": 1.66,
+          "effectArea": "Location"
+        }
+      },
+      {
+        "name": "Gnarling Roots",
+        "fullName": "Pool.Verdant.Overgrowth",
+        "rank": 2,
+        "available": 3,
+        "description": "You call the roots of the earth to reach out and grasp foes in front of you. The thorny brambles deal minor toxic damage, and have a high chance to Immobilize your target. This power takes a long time to recharge.",
+        "shortHelp": "PBAOE Cone Minor Toxic DOT, Chance for Immobilize",
+        "icon": "verdant_overgrowth.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Immobilize",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Immobilize",
+          "Melee AoE Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 240,
+          "endurance": 15,
+          "activationTime": 1.2,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 1.0471975803375244,
+          "maxTargets": 16,
+          "damage": {
+            "type": "Toxic",
+            "scale": 0.0128,
+            "table": "Ranged_Damage",
+            "duration": 12,
+            "tickRate": 0.6000000238418579
+          },
+          "sleep": {
+            "mag": 2,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          }
+        }
+      },
+      {
+        "name": "Photosynthetic Healing",
+        "fullName": "Pool.Verdant.Photosynthetic_Healing",
+        "rank": 3,
+        "available": 3,
+        "description": "You bless an ally with the warm concern of nature, optimizing their healing and recovery. While under Photosynthetic Healing, an ally will gain a bonus to Regeneration and a Resistance to -Regeneration debuffs. They will also benefit from an outright heal over time effect for a short while.",
+        "shortHelp": "PBAOE Healing Over Time, +Regen, Resistance to -Regen",
+        "icon": "photosynthetichealing.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 60,
+          "recharge": 240,
+          "endurance": 15,
+          "activationTime": 2.03,
+          "effectArea": "AoE",
+          "radius": 30,
+          "maxTargets": 8,
+          "damage": {
+            "type": "Heal",
+            "scale": 0.22,
+            "table": "Ranged_Heal",
+            "ignoreStrength": true,
+            "duration": 30,
+            "tickRate": 3
+          },
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 30,
+            "debuffResistance": 30
+          },
+          "debuffResistance": {
+            "recovery": {
+              "scale": 0.15,
+              "table": "Ranged_ArchVillain_Res"
+            }
+          },
+          "buffDuration": 30
+        }
+      },
+      {
+        "name": "Skin of Bark",
+        "fullName": "Pool.Verdant.Barkskin",
+        "rank": 4,
+        "available": 3,
+        "description": "You grant an ally the durability of an ancient tree. The target of your choice will gain a considerable bonus to both defense and resistance versus smashing and lethal attacks.",
+        "shortHelp": "Single Target +Absorb, +Defense/Resistance(Smashing, Lethal)",
+        "icon": "claycocoon.png",
+        "powerType": "Click",
+        "targetType": "Ally (Alive)",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Defense",
+          "EnduranceReduction",
+          "Recharge",
+          "Resistance"
+        ],
+        "allowedSetCategories": [
+          "Defense Sets",
+          "Resist Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 40,
+          "recharge": 240,
+          "activationTime": 2.03,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Smashing",
+            "scale": 0.1,
+            "table": "Melee_Ones",
+            "duration": 60
+          },
+          "resistance": {
+            "smashing": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            },
+            "lethal": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            }
+          },
+          "durations": {
+            "resistance": 60,
+            "absorb": 60
+          },
+          "absorb": {
+            "scale": 0.2,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 60
+        }
+      },
+      {
+        "name": "Kindness Drops",
+        "fullName": "Pool.Verdant.Kindness_Drops",
+        "rank": 5,
+        "available": 6,
+        "description": "You call a sacred rain down on the area of your choice. The rainstorm will bestow a heal over time benefit on any ally who remains within its boundaries. Additionally, Kindness Drops interacts with certain other powers.",
+        "shortHelp": "Targeted Area Heal Over Time, Special",
+        "icon": "kindnessdrops.png",
+        "powerType": "Click",
+        "targetType": "Location",
+        "requires": "Pool.Verdant.Ethereal_Panther Pool.Verdant.Photosynthetic_Healing || Pool.Verdant.Barkskin || Pool.Verdant.Overgrowth ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 300,
+          "endurance": 35,
+          "activationTime": 2.03,
+          "effectArea": "Location"
         }
       }
     ]

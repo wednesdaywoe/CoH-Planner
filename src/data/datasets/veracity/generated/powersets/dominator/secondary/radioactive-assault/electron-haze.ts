@@ -40,6 +40,7 @@ export const ElectronHaze: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

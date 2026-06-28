@@ -36,6 +36,7 @@ export const HandClap: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Might Praxis",
     "Stuns"
   ],
   "maxSlots": 6,

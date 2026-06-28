@@ -39,6 +39,7 @@ export const FollowThrough: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Stuns",
     "Tanker Archetype Sets",
     "Threat Duration",

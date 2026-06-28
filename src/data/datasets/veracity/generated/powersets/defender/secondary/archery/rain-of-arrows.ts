@@ -33,6 +33,7 @@ export const RainofArrows: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Defender Archetype Sets",
     "Ranged AoE Damage",
     "Universal Damage Sets"

@@ -31,6 +31,9 @@ export const SonicSiphon: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Vibration Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "resistanceDebuff": {

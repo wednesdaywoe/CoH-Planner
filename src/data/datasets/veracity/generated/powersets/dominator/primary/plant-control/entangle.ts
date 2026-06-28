@@ -36,6 +36,7 @@ export const Entangle: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Immobilize",
+    "Nature Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

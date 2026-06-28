@@ -30,6 +30,7 @@ export const Energize: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Healing"
   ],
   "maxSlots": 6,

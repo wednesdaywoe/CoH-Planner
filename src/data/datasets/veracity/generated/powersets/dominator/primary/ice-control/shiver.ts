@@ -36,6 +36,7 @@ export const Shiver: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

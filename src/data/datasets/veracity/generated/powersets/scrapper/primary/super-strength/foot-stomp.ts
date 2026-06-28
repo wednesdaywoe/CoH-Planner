@@ -36,6 +36,7 @@ export const FootStomp: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,

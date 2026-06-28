@@ -29,6 +29,7 @@ export const IcePatch: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

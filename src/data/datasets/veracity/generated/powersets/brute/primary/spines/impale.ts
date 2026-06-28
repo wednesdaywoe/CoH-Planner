@@ -38,6 +38,7 @@ export const Impale: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Immobilize",
+    "Life Praxis",
     "Ranged Damage",
     "Slow Movement",
     "Threat Duration",

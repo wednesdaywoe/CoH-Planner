@@ -37,6 +37,7 @@ export const FRTPsionicLance: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Psychic Praxis",
     "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

@@ -33,6 +33,7 @@ export const ThunderKick: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Stuns",

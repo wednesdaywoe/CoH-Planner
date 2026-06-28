@@ -40,6 +40,7 @@ export const CallEnforcer: Power = {
     "Defense Sets",
     "Holds",
     "Mastermind Archetype Sets",
+    "Might Praxis",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Stuns",

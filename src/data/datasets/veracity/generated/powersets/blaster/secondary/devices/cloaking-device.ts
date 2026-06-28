@@ -38,6 +38,7 @@ export const CloakingDevice: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Endurance Modification",
+    "Finesse Praxis",
     "Healing"
   ],
   "maxSlots": 6,

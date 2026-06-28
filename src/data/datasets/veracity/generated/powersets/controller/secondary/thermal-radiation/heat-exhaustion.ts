@@ -33,7 +33,8 @@ export const HeatExhaustion: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Accurate Healing"
+    "Accurate Healing",
+    "Fire Praxis"
   ],
   "maxSlots": 6,
   "effects": {

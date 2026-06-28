@@ -34,6 +34,7 @@ export const Strike: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Finesse Praxis",
     "Melee Damage",
     "Threat Duration",
     "Universal Damage Sets"

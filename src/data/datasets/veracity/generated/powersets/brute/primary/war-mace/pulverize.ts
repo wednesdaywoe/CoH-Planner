@@ -36,6 +36,7 @@ export const Pulverize: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Melee Damage",
+    "Might Praxis",
     "Stuns",
     "Threat Duration",
     "Universal Damage Sets"

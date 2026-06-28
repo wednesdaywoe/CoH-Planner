@@ -36,6 +36,7 @@ export const ThornyDarts: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Nature Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

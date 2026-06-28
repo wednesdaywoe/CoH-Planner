@@ -30,6 +30,7 @@ export const PowerSiphon: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "To Hit Buff"
   ],
   "maxSlots": 6,

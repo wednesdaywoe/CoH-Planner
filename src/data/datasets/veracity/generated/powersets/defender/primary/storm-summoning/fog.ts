@@ -38,6 +38,7 @@ export const Fog: Power = {
     "Accurate Defense Debuff",
     "Defender Archetype Sets",
     "Defense Debuff",
+    "Electricity Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

@@ -33,7 +33,8 @@ export const ParalyticPoison: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Holds"
+    "Holds",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -36,6 +36,7 @@ export const FRTTotalDomination: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
+    "Psychic Praxis",
     "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,

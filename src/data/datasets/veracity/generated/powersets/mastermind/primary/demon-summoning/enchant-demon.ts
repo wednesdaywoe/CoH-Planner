@@ -25,7 +25,8 @@ export const EnchantDemon: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Fire Praxis"
   ],
   "maxSlots": 6,
   "effects": {

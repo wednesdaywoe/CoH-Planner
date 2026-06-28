@@ -31,6 +31,7 @@ export const KujiInSha: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Healing",
     "Resist Damage"
   ],

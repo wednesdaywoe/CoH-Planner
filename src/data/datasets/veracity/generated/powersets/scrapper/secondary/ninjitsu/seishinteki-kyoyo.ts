@@ -28,7 +28,8 @@ export const SeishintekiKyoyo: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Endurance Modification"
+    "Endurance Modification",
+    "Finesse Praxis"
   ],
   "maxSlots": 6,
   "effects": {

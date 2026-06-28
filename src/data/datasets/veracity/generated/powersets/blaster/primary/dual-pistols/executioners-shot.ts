@@ -39,6 +39,7 @@ export const ExecutionersShot: Power = {
     "Accurate Defense Debuff",
     "Blaster Archetype Sets",
     "Defense Debuff",
+    "Finesse Praxis",
     "Knockback",
     "Ranged Damage",
     "Slow Movement",

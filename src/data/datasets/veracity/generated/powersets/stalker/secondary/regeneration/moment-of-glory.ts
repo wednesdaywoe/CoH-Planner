@@ -40,6 +40,7 @@ export const MomentofGlory: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Endurance Modification",
+    "Life Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

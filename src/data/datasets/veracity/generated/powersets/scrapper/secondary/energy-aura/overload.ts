@@ -41,6 +41,7 @@ export const Overload: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Endurance Modification",
+    "Energy Praxis",
     "Healing"
   ],
   "maxSlots": 6,

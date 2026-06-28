@@ -38,6 +38,7 @@ export const Overcharge: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Ballistic Praxis",
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",

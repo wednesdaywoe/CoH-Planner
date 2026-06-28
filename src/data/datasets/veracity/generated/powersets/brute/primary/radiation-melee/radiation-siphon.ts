@@ -41,6 +41,7 @@ export const RadiationSiphon: Power = {
     "Accurate Healing",
     "Brute Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Healing",
     "Melee Damage",
     "Threat Duration",

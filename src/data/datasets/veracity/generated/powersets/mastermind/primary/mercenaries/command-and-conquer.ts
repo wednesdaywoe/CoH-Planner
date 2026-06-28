@@ -33,6 +33,7 @@ export const CommandandConquer: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Resist Damage",
     "To Hit Buff"
   ],

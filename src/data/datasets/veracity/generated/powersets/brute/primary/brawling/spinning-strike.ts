@@ -38,6 +38,7 @@ export const SpinningStrike: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Knockback",
+    "Might Praxis",
     "Ranged AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"

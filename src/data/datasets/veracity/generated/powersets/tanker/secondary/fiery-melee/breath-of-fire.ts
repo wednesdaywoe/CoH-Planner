@@ -37,6 +37,7 @@ export const BreathofFire: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Ranged AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

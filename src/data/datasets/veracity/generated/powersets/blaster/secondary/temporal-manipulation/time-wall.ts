@@ -43,7 +43,8 @@ export const TimeWall: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Immobilize",
-    "Slow Movement"
+    "Slow Movement",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -36,6 +36,7 @@ export const CauterizingBlaze: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Healing"
   ],
   "maxSlots": 6,

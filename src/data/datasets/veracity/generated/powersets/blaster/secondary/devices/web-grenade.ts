@@ -40,6 +40,7 @@ export const WebGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Immobilize",
     "Slow Movement"
   ],

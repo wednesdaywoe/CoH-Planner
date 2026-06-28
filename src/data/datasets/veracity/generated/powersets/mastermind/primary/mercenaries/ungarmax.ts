@@ -36,6 +36,7 @@ export const Ungarmax: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

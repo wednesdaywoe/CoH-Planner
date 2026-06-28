@@ -35,6 +35,7 @@ export const Char: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Fire Praxis",
     "Holds",
     "Ranged Damage",
     "Universal Damage Sets"

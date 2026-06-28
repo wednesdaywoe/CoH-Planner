@@ -31,6 +31,7 @@ export const Confront: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Might Praxis",
     "Scrapper Archetype Sets",
     "Threat Duration"
   ],

@@ -37,6 +37,7 @@ export const ContaminatedStrike: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee Damage",
     "Universal Damage Sets"
   ],

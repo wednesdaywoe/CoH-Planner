@@ -36,6 +36,7 @@ export const MassLevitate: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
+    "Psychic Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

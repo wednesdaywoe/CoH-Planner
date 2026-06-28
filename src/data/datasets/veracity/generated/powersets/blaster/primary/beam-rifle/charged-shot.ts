@@ -40,6 +40,7 @@ export const ChargedShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Blaster Archetype Sets",
     "Knockback",
     "Ranged Damage",

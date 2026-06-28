@@ -39,6 +39,7 @@ export const Disembowel: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Finesse Praxis",
     "Knockback",
     "Melee Damage",
     "Tanker Archetype Sets",

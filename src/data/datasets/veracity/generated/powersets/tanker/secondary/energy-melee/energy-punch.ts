@@ -36,6 +36,7 @@ export const EnergyPunch: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Melee Damage",
     "Stuns",
     "Tanker Archetype Sets",

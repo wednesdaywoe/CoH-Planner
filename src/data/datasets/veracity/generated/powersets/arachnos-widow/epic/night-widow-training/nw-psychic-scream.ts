@@ -36,6 +36,7 @@ export const NWPsychicScream: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

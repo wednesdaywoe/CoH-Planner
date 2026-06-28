@@ -33,6 +33,7 @@ export const Shatter: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Melee Damage",
     "Soldiers of Arachnos Archetype Sets",

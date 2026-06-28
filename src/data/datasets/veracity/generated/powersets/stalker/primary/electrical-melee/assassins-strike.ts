@@ -33,6 +33,7 @@ export const AssassinsStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

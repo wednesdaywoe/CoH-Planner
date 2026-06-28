@@ -36,6 +36,7 @@ export const Transfusion: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Endurance Modification",
+    "Energy Praxis",
     "Healing"
   ],
   "maxSlots": 6,

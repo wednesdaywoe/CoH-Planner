@@ -32,6 +32,7 @@ export const LuminousEssenceBifurcation: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Luminosity Praxis",
     "Resist Damage",
     "Universal Travel"
   ],

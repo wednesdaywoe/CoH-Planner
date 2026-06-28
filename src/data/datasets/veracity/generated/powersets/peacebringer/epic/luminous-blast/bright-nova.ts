@@ -38,6 +38,7 @@ export const BrightNova: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Flight",
+    "Luminosity Praxis",
     "To Hit Buff",
     "Universal Travel"
   ],

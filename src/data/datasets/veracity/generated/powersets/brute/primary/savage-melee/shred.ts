@@ -41,6 +41,7 @@ export const Shred: Power = {
     "Brute Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Nature Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

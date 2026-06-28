@@ -26,7 +26,8 @@ export const FastHealing: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "effects": {

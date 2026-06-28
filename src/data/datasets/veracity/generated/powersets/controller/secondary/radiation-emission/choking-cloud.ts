@@ -34,6 +34,7 @@ export const ChokingCloud: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Energy Praxis",
     "Holds"
   ],
   "maxSlots": 6,

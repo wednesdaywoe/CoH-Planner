@@ -37,6 +37,7 @@ export const DeathShroud: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Tanker Archetype Sets",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

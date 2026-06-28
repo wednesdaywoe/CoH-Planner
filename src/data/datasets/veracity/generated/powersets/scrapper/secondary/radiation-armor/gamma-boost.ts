@@ -28,6 +28,7 @@ export const GammaBoost: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Energy Praxis",
     "Healing"
   ],
   "maxSlots": 6,

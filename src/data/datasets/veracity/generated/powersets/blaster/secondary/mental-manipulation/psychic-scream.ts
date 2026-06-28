@@ -37,6 +37,7 @@ export const PsychicScream: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Psychic Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

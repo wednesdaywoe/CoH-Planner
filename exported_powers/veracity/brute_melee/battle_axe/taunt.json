@@ -37,6 +37,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Might Praxis",
     "Threat Duration"
   ],
   "cast_through": [],

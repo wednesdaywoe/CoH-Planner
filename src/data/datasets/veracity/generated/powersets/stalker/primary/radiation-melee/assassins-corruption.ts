@@ -33,6 +33,7 @@ export const AssassinsCorruption: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

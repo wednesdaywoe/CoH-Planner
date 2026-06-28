@@ -32,7 +32,8 @@ export const Mutation: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Endurance Modification"
+    "Endurance Modification",
+    "Energy Praxis"
   ],
   "maxSlots": 6,
   "damage": {

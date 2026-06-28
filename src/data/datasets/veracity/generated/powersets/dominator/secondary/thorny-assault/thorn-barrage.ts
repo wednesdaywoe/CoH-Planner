@@ -35,6 +35,7 @@ export const ThornBarrage: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Nature Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

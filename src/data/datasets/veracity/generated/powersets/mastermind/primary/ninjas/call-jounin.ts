@@ -43,6 +43,7 @@ export const CallJounin: Power = {
     "Accurate To-Hit Debuff",
     "Confuse",
     "Defense Debuff",
+    "Finesse Praxis",
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",

@@ -40,7 +40,8 @@ export const ChilloftheNight: Power = {
     "Healing",
     "Holds",
     "Immobilize",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Umbral Praxis"
   ],
   "maxSlots": 6
 };

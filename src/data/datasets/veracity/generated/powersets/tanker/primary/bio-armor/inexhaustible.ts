@@ -30,7 +30,8 @@ export const Inexhaustible: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Life Praxis"
   ],
   "maxSlots": 6,
   "effects": {

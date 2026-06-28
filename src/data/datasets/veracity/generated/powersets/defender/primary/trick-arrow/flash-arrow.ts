@@ -35,6 +35,7 @@ export const FlashArrow: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Ballistic Praxis",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

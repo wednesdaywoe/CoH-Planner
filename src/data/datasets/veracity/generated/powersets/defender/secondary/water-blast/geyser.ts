@@ -43,7 +43,8 @@ export const Geyser: Power = {
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "damage": [

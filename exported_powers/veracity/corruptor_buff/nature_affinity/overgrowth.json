@@ -38,6 +38,7 @@
     "Buff_ToHit"
   ],
   "allowed_set_categories": [
+    "Nature Praxis",
     "To Hit Buff"
   ],
   "cast_through": [],

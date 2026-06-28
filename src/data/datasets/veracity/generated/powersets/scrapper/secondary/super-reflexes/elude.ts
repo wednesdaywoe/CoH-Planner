@@ -42,7 +42,8 @@ export const Elude: Power = {
     "Defense Sets",
     "Endurance Modification",
     "Running & Sprints",
-    "Universal Travel"
+    "Universal Travel",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "effects": {

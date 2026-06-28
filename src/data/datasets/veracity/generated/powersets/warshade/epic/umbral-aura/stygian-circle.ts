@@ -34,7 +34,8 @@ export const StygianCircle: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -35,6 +35,7 @@ export const SavageStrike: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Melee Damage",
+    "Nature Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

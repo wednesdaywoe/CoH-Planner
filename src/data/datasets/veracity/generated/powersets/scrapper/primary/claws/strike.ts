@@ -32,6 +32,7 @@ export const Strike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"

@@ -35,6 +35,7 @@ export const IceStorm: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Ice Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

@@ -41,6 +41,7 @@ export const DarkMatterDetonation: Power = {
     "Knockback",
     "Ranged AoE Damage",
     "Slow Movement",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

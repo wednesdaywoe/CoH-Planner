@@ -33,6 +33,7 @@ export const PowerSink: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Threat Duration"
   ],

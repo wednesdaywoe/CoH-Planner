@@ -36,7 +36,8 @@ export const DrainPsyche: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "effects": {

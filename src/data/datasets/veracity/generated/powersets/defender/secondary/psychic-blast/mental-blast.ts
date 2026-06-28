@@ -34,6 +34,7 @@ export const MentalBlast: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Psychic Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

@@ -35,6 +35,7 @@ export const Fossilize: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Earth Praxis",
     "Holds",
     "Ranged Damage",
     "Universal Damage Sets"

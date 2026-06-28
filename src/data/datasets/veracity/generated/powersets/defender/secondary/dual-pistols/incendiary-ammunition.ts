@@ -30,6 +30,9 @@ export const IncendiaryAmmunition: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Finesse Praxis"
+  ],
   "maxSlots": 0,
   "requires": "Defender_Ranged.Dual_Pistols.Swap_Ammo"
 };

@@ -46,6 +46,7 @@ export const ReactionTime: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Endurance Modification",
+    "Finesse Praxis",
     "Healing",
     "Slow Movement"
   ],

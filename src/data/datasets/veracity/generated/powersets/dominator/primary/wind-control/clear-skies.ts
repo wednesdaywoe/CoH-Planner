@@ -29,6 +29,9 @@ export const ClearSkies: Power = {
     "activatePeriod": 2
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Vacuum Praxis"
+  ],
   "maxSlots": 0,
   "conditionalEffects": [
     {

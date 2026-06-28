@@ -37,6 +37,7 @@ export const Gloom: Power = {
     "Accurate To-Hit Debuff",
     "Ranged Damage",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

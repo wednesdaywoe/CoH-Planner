@@ -34,6 +34,7 @@ export const BurstofSpeed: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Finesse Praxis",
     "Melee AoE Damage",
     "Teleport",
     "Universal Damage Sets",

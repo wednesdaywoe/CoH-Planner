@@ -34,6 +34,7 @@ export const StormKick: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Finesse Praxis",
     "Melee Damage",
     "Threat Duration",
     "Universal Damage Sets"

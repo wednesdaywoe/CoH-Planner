@@ -33,6 +33,7 @@ export const NWSmokeGrenade: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

@@ -34,6 +34,7 @@ export const ThunderKick: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Finesse Praxis",
     "Melee Damage",
     "Stuns",
     "Universal Damage Sets"

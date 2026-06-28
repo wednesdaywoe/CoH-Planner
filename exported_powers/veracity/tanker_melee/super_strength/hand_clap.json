@@ -40,6 +40,7 @@
   ],
   "allowed_set_categories": [
     "Knockback",
+    "Might Praxis",
     "Stuns",
     "Threat Duration"
   ],

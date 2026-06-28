@@ -32,6 +32,9 @@ export const Resurrect: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Life Praxis"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Heal",

@@ -36,6 +36,7 @@ export const ThermalShield: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Luminosity Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

@@ -32,6 +32,7 @@ export const BattleDrones: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",

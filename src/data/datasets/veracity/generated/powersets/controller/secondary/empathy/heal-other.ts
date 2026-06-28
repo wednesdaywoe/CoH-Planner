@@ -32,7 +32,8 @@ export const HealOther: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Life Praxis"
   ],
   "maxSlots": 6,
   "damage": {

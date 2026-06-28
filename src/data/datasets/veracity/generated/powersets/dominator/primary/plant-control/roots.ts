@@ -38,6 +38,7 @@ export const Roots: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Immobilize",
+    "Nature Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

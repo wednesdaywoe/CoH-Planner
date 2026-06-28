@@ -39,6 +39,7 @@ export const Slice: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Finesse Praxis",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

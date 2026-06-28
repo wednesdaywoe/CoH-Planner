@@ -30,7 +30,8 @@ export const BuildUp: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "To Hit Buff"
+    "To Hit Buff",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

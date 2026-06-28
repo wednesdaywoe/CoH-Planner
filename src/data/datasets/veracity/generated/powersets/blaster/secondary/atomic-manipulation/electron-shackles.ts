@@ -43,6 +43,7 @@ export const ElectronShackles: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Endurance Modification",
+    "Energy Praxis",
     "Immobilize",
     "Ranged Damage",
     "Universal Damage Sets"

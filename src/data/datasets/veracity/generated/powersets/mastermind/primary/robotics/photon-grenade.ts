@@ -36,6 +36,7 @@ export const PhotonGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"

@@ -37,6 +37,7 @@ export const LightningClap: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
+    "Electricity Praxis",
     "Endurance Modification",
     "Healing",
     "Knockback",

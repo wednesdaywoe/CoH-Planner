@@ -28,6 +28,9 @@ export const GatherShadows: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Umbral Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "specialBuff": {

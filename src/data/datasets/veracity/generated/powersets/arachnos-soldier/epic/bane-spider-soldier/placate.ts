@@ -30,6 +30,9 @@ export const Placate: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Energy Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "fear": {

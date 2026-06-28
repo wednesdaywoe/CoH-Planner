@@ -38,6 +38,7 @@ export const FreezingRain: Power = {
     "Accurate Defense Debuff",
     "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Electricity Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

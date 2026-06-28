@@ -36,6 +36,7 @@ export const PsychicShockwave: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Melee AoE Damage",
+    "Psychic Praxis",
     "Stuns",
     "Universal Damage Sets"
   ],

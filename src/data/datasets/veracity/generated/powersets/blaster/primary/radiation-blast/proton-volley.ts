@@ -39,6 +39,7 @@ export const ProtonVolley: Power = {
     "Accurate Defense Debuff",
     "Blaster Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Ranged Damage",
     "Sniper Attacks",
     "Universal Damage Sets"

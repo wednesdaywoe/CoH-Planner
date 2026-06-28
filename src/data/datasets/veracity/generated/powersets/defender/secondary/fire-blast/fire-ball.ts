@@ -36,6 +36,7 @@ export const FireBall: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Fire Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

@@ -38,7 +38,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Endurance Modification"
+    "Endurance Modification",
+    "Energy Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

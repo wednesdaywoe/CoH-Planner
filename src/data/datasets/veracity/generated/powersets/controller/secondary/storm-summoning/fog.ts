@@ -37,6 +37,7 @@ export const Fog: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Electricity Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

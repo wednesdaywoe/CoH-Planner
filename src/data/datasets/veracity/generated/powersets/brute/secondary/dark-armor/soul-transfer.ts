@@ -38,6 +38,7 @@ export const SoulTransfer: Power = {
     "Healing",
     "Melee AoE Damage",
     "Stuns",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

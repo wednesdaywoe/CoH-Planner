@@ -37,6 +37,7 @@ export const Irradiate: Power = {
     "Accurate Defense Debuff",
     "Defender Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],

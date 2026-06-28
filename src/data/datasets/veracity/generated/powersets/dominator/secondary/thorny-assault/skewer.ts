@@ -36,6 +36,7 @@ export const Skewer: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee Damage",
+    "Nature Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

@@ -28,6 +28,7 @@ export const StoneSkin: Power = {
     "Resistance"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

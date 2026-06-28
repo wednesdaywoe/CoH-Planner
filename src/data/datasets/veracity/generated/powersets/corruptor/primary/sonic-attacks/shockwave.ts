@@ -40,7 +40,8 @@ export const Shockwave: Power = {
     "Corruptor Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "damage": [

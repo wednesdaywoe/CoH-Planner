@@ -39,6 +39,7 @@ export const AdrenalinBoost: Power = {
     "Defense Sets",
     "Endurance Modification",
     "Healing",
+    "Life Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6

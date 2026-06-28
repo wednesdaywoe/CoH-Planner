@@ -34,6 +34,7 @@ export const Parry: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
+    "Finesse Praxis",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"

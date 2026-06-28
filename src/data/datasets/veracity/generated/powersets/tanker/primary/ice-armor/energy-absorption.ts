@@ -36,6 +36,7 @@ export const EnergyAbsorption: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Endurance Modification",
+    "Ice Praxis",
     "Threat Duration"
   ],
   "maxSlots": 6,

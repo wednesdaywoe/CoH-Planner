@@ -35,6 +35,7 @@ export const Burst: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Ballistic Praxis",
     "Corruptor Archetype Sets",
     "Defense Debuff",
     "Ranged Damage",

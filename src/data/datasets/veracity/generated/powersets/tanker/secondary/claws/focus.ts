@@ -36,6 +36,7 @@ export const Focus: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Knockback",
     "Ranged Damage",
     "Tanker Archetype Sets",

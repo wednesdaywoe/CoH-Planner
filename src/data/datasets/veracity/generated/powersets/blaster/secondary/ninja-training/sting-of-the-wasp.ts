@@ -36,6 +36,7 @@ export const StingoftheWasp: Power = {
     "Accurate Defense Debuff",
     "Blaster Archetype Sets",
     "Defense Debuff",
+    "Finesse Praxis",
     "Melee Damage",
     "Universal Damage Sets"
   ],

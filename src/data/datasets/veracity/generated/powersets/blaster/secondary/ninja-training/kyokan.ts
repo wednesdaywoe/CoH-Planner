@@ -37,6 +37,7 @@ export const Kyokan: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
+    "Finesse Praxis",
     "To Hit Buff"
   ],
   "maxSlots": 6,

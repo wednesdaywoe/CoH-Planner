@@ -37,6 +37,7 @@ export const Shockwave: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Stalker Archetype Sets",

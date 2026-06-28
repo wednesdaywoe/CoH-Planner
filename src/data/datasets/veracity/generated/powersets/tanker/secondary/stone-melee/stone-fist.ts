@@ -36,6 +36,7 @@ export const StoneFist: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Melee Damage",
     "Stuns",
     "Tanker Archetype Sets",

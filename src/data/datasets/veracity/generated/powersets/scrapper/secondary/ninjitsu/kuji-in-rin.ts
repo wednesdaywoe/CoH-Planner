@@ -34,6 +34,9 @@ export const KujiInRin: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Finesse Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "slow": {

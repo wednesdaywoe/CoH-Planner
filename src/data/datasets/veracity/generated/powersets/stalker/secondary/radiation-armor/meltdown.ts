@@ -32,6 +32,7 @@ export const Meltdown: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Energy Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

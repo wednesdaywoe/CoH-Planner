@@ -30,5 +30,8 @@ export const DisruptionArrow: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Ballistic Praxis"
+  ],
   "maxSlots": 6
 };

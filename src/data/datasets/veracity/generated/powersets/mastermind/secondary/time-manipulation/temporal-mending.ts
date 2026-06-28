@@ -32,7 +32,8 @@ export const TemporalMending: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "damage": [

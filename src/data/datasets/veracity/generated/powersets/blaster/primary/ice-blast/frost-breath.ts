@@ -38,6 +38,7 @@ export const FrostBreath: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Ice Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

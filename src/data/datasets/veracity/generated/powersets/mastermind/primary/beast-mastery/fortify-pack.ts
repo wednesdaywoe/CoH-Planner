@@ -34,7 +34,8 @@ export const FortifyPack: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Healing"
+    "Healing",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "effects": {

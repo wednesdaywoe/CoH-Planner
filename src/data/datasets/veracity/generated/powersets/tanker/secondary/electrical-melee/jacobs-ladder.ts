@@ -38,6 +38,7 @@ export const JacobsLadder: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Melee AoE Damage",
     "Sleep",

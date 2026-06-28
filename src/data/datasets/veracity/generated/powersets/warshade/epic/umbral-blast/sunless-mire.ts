@@ -39,6 +39,7 @@ export const SunlessMire: Power = {
     "Melee AoE Damage",
     "Slow Movement",
     "To Hit Buff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

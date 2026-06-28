@@ -36,6 +36,7 @@ export const WhirlingHands: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Energy Praxis",
     "Melee AoE Damage",
     "Stuns",
     "Threat Duration",

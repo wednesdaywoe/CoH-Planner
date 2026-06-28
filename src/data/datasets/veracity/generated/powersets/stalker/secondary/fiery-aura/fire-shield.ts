@@ -36,6 +36,7 @@ export const FireShield: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

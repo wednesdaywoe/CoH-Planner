@@ -36,6 +36,7 @@ export const ProtonArmor: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

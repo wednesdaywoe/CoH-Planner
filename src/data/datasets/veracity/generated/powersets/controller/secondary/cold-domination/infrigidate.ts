@@ -36,6 +36,7 @@ export const Infrigidate: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Ice Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

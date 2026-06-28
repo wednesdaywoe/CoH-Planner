@@ -36,7 +36,8 @@
     "Heal"
   ],
   "allowed_set_categories": [
-    "Healing"
+    "Healing",
+    "Nature Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

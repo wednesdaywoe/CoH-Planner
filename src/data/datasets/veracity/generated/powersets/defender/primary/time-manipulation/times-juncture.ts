@@ -36,7 +36,8 @@ export const TimesJuncture: Power = {
   ],
   "allowedSetCategories": [
     "Slow Movement",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -31,6 +31,9 @@ export const RefractionShield: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Vacuum Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "onlyAffectsSelf": {

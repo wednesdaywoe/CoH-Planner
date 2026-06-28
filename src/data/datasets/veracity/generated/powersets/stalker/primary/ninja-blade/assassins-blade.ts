@@ -33,6 +33,7 @@ export const AssassinsBlade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

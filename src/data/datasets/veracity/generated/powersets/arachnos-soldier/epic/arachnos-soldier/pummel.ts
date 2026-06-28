@@ -34,6 +34,7 @@ export const Pummel: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Nature Praxis",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

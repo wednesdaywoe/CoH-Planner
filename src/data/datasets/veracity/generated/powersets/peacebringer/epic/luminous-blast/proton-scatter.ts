@@ -40,6 +40,7 @@ export const ProtonScatter: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Kheldian Archetype Sets",
+    "Luminosity Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

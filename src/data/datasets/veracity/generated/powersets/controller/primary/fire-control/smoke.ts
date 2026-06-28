@@ -34,6 +34,7 @@ export const Smoke: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

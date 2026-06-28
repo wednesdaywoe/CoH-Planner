@@ -38,6 +38,7 @@ export const ModerateBridge: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Finesse Praxis",
     "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

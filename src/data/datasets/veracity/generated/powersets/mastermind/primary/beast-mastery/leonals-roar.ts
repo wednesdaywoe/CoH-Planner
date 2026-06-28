@@ -31,6 +31,9 @@ export const LeonalsRoar: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Nature Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageBuff": {

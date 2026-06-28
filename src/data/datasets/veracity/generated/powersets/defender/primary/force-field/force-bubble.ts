@@ -31,6 +31,9 @@ export const ForceBubble: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Vacuum Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "accuracyBuff": {

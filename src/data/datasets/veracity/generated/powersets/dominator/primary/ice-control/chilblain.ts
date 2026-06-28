@@ -36,6 +36,7 @@ export const Chilblain: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Ice Praxis",
     "Immobilize",
     "Ranged Damage",
     "Slow Movement",

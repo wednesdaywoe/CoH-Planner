@@ -40,6 +40,7 @@ export const ProtonSweep: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

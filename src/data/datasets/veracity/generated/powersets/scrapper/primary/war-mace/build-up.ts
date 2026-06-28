@@ -30,6 +30,7 @@ export const BuildUp: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Might Praxis",
     "Scrapper Archetype Sets",
     "To Hit Buff"
   ],

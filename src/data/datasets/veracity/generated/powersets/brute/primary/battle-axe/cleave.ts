@@ -40,6 +40,7 @@ export const Cleave: Power = {
     "Brute Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
+    "Might Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

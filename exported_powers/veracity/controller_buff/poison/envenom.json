@@ -41,7 +41,8 @@
   "allowed_set_categories": [
     "Accurate Defense Debuff",
     "Accurate Healing",
-    "Defense Debuff"
+    "Defense Debuff",
+    "Nature Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -36,6 +36,7 @@ export const BrimstoneArmor: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

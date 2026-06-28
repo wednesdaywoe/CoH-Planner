@@ -32,6 +32,7 @@ export const Reconstruction: Power = {
   ],
   "allowedSetCategories": [
     "Healing",
+    "Life Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

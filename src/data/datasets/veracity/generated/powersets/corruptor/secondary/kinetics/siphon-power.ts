@@ -31,6 +31,9 @@ export const SiphonPower: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Energy Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "damageDebuff": {

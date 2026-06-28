@@ -33,6 +33,7 @@ export const CraneKick: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Knockback",
     "Melee Damage",
     "Scrapper Archetype Sets",

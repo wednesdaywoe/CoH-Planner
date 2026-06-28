@@ -30,6 +30,7 @@ export const Ionize: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "To Hit Buff"
   ],
   "maxSlots": 6,

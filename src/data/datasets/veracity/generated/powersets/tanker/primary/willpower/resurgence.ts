@@ -35,7 +35,8 @@ export const Resurgence: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Endurance Modification"
+    "Endurance Modification",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "damage": {

@@ -35,6 +35,7 @@ export const LightningStorm: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Knockback",
     "Ranged Damage",

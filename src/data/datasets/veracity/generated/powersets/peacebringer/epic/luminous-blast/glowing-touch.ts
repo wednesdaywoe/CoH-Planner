@@ -32,7 +32,8 @@ export const GlowingTouch: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Luminosity Praxis"
   ],
   "maxSlots": 6,
   "damage": [

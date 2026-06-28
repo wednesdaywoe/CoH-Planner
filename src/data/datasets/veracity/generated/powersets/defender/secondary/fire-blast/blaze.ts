@@ -34,6 +34,7 @@ export const Blaze: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Fire Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

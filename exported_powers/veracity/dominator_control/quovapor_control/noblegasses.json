@@ -40,7 +40,8 @@
   ],
   "allowed_set_categories": [
     "Holds",
-    "Knockback"
+    "Knockback",
+    "Water Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

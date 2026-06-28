@@ -36,6 +36,7 @@ export const Slash: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee Damage",
+    "Might Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

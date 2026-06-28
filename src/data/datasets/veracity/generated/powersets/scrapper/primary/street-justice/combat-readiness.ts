@@ -30,6 +30,7 @@ export const CombatReadiness: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Might Praxis",
     "To Hit Buff"
   ],
   "maxSlots": 6,

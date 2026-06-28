@@ -37,6 +37,7 @@ export const HighLow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Tanker Archetype Sets",

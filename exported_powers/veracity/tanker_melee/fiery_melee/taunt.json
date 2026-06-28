@@ -37,6 +37,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Fire Praxis",
     "Threat Duration"
   ],
   "cast_through": [],

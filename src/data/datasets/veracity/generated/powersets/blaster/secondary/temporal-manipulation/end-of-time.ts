@@ -38,7 +38,8 @@ export const EndofTime: Power = {
     "Accurate Healing",
     "Blaster Archetype Sets",
     "Melee AoE Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "damage": [

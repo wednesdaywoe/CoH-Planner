@@ -38,6 +38,7 @@ export const LowKick: Power = {
     "Brute Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
+    "Might Praxis",
     "Slow Movement",
     "Threat Duration",
     "Universal Damage Sets"

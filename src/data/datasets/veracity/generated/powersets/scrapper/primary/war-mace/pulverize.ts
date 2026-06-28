@@ -34,6 +34,7 @@ export const Pulverize: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

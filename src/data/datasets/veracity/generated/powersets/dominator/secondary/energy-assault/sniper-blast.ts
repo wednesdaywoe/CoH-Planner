@@ -36,6 +36,7 @@ export const SniperBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Ranged Damage",
     "Sniper Attacks",

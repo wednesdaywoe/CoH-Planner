@@ -39,6 +39,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Fire Praxis",
     "Ranged AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"

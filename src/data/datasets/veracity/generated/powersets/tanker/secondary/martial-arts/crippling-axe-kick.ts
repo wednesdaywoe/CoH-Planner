@@ -37,6 +37,7 @@ export const CripplingAxeKick: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Immobilize",
     "Melee Damage",
     "Slow Movement",

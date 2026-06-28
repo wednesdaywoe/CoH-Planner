@@ -35,7 +35,8 @@ export const GlacialShield: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Ice Praxis"
   ],
   "maxSlots": 6,
   "effects": {

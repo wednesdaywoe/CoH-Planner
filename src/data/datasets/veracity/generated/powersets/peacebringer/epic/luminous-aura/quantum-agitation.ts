@@ -32,6 +32,9 @@ export const QuantumAgitation: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Luminosity Praxis"
+  ],
   "maxSlots": 6,
   "damage": {
     "type": "Energy",

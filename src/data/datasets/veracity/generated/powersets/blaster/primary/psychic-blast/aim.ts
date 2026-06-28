@@ -30,6 +30,7 @@ export const Aim: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "To Hit Buff"
   ],
   "maxSlots": 6,

@@ -32,6 +32,7 @@ export const Ambiguity: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "To Hit Debuff"
   ],
   "maxSlots": 6

@@ -34,6 +34,7 @@ export const Repulse: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Stuns"
   ],
   "maxSlots": 6,

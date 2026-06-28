@@ -37,6 +37,7 @@ export const Consume: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Endurance Modification",
+    "Fire Praxis",
     "Melee AoE Damage",
     "Threat Duration",
     "Universal Damage Sets"

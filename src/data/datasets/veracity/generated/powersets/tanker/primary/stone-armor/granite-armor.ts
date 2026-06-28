@@ -38,6 +38,7 @@ export const GraniteArmor: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
+    "Earth Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

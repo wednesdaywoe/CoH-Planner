@@ -38,6 +38,7 @@ export const Cleave: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],

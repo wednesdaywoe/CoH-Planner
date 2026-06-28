@@ -34,6 +34,7 @@ export const SpiritualDawn: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Psychic Praxis",
     "Stuns"
   ],
   "maxSlots": 6,

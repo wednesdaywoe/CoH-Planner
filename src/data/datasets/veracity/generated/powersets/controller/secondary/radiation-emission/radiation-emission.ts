@@ -32,6 +32,7 @@ export const RadiationEmission: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Healing"
   ],
   "maxSlots": 6,

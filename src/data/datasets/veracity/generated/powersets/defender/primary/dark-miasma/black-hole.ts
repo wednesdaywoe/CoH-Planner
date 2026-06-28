@@ -33,6 +33,9 @@ export const BlackHole: Power = {
     "Recharge",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Umbral Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "taunt": {

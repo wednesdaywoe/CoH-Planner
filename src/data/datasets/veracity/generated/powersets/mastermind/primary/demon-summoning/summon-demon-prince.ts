@@ -35,6 +35,7 @@ export const SummonDemonPrince: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Holds",
     "Mastermind Archetype Sets",
     "Pet Damage",

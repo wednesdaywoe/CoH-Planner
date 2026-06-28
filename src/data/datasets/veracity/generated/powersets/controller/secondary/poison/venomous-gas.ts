@@ -36,6 +36,7 @@ export const VenomousGas: Power = {
   ],
   "allowedSetCategories": [
     "Defense Debuff",
+    "Nature Praxis",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

@@ -38,7 +38,8 @@ export const GravityDistortionField: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Holds",
-    "Slow Movement"
+    "Slow Movement",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

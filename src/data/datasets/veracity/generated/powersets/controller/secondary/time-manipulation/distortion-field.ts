@@ -35,7 +35,8 @@ export const DistortionField: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Holds",
-    "Slow Movement"
+    "Slow Movement",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6
 };

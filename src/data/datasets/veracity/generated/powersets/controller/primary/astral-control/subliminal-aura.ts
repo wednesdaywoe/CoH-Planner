@@ -35,6 +35,7 @@ export const SubliminalAura: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Psychic Praxis",
     "Sleep"
   ],
   "maxSlots": 6,

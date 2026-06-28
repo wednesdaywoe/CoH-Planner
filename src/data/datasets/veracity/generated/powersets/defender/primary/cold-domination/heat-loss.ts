@@ -35,6 +35,7 @@ export const HeatLoss: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Ice Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6

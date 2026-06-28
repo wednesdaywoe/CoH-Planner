@@ -36,6 +36,7 @@ export const Weaken: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Nature Praxis",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

@@ -37,6 +37,7 @@ export const Hurl: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Knockback",
+    "Might Praxis",
     "Ranged Damage",
     "Threat Duration",
     "Universal Damage Sets"

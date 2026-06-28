@@ -30,6 +30,7 @@ export const BuildUp: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Luminosity Praxis",
     "To Hit Buff"
   ],
   "maxSlots": 6,

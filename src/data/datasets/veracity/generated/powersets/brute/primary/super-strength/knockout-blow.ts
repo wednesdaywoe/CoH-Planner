@@ -39,6 +39,7 @@ export const KnockoutBlow: Power = {
     "Holds",
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

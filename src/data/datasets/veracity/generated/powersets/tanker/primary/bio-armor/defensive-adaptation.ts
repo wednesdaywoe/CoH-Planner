@@ -30,6 +30,9 @@ export const DefensiveAdaptation: Power = {
     "activatePeriod": 1
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Life Praxis"
+  ],
   "maxSlots": 0,
   "effects": {
     "damageDebuff": {

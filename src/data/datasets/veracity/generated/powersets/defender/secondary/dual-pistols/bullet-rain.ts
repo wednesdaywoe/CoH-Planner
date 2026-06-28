@@ -38,6 +38,7 @@ export const BulletRain: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Finesse Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Slow Movement",

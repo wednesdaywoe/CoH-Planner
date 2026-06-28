@@ -35,6 +35,7 @@ export const HotFeet: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Melee AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

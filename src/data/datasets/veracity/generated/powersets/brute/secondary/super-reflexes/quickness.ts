@@ -26,6 +26,9 @@ export const Quickness: Power = {
     "Run Speed",
     "Fly"
   ],
+  "allowedSetCategories": [
+    "Vibration Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "enduranceDiscount": {

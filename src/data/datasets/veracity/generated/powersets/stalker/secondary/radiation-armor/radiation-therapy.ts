@@ -37,6 +37,7 @@ export const RadiationTherapy: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Endurance Modification",
+    "Energy Praxis",
     "Healing",
     "Melee AoE Damage",
     "Stalker Archetype Sets",

@@ -38,6 +38,7 @@ export const Shockwave: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Tanker Archetype Sets",

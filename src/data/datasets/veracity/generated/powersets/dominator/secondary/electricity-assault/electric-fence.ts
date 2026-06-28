@@ -34,6 +34,7 @@ export const ElectricFence: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Ranged Damage",
     "Universal Damage Sets"

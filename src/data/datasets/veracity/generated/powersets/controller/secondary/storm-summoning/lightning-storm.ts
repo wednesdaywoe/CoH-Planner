@@ -34,6 +34,7 @@ export const LightningStorm: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Knockback",
     "Ranged Damage",

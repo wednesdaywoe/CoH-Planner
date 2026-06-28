@@ -35,7 +35,8 @@ export const NobleGasses: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
-    "Knockback"
+    "Knockback",
+    "Water Praxis"
   ],
   "maxSlots": 6
 };

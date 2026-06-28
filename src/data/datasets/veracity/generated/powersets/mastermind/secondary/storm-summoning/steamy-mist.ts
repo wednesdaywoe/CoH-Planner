@@ -40,6 +40,7 @@ export const SteamyMist: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
+    "Electricity Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

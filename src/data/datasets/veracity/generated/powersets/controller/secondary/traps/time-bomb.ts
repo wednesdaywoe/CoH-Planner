@@ -33,6 +33,7 @@ export const TimeBomb: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Universal Damage Sets"

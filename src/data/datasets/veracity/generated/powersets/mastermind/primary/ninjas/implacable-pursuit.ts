@@ -34,6 +34,7 @@ export const ImplacablePursuit: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Finesse Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

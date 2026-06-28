@@ -33,6 +33,7 @@ export const MentalStrike: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Psychic Praxis",
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],

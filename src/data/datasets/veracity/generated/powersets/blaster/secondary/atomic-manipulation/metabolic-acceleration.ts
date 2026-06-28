@@ -37,6 +37,7 @@ export const MetabolicAcceleration: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Energy Praxis",
     "Healing"
   ],
   "maxSlots": 6,

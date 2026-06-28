@@ -33,6 +33,7 @@ export const PoisonGasArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Sleep"
   ],
   "maxSlots": 6

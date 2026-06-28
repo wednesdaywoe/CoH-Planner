@@ -36,6 +36,7 @@ export const CSFragGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Soldiers of Arachnos Archetype Sets",

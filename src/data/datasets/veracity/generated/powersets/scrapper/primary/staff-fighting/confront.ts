@@ -31,7 +31,8 @@ export const Confront: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Threat Duration"
+    "Threat Duration",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "effects": {

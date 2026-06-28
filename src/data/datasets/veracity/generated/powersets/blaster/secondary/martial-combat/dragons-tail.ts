@@ -35,6 +35,7 @@ export const DragonsTail: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Finesse Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Universal Damage Sets"

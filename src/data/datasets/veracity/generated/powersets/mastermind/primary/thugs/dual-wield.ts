@@ -35,6 +35,7 @@ export const DualWield: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Might Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

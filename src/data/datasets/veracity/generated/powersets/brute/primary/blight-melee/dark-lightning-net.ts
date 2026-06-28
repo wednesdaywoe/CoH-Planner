@@ -39,7 +39,8 @@ export const DarkLightningNet: Power = {
     "Brute Archetype Sets",
     "Immobilize",
     "Melee AoE Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "damage": {

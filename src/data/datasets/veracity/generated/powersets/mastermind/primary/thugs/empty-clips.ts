@@ -38,6 +38,7 @@ export const EmptyClips: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Might Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

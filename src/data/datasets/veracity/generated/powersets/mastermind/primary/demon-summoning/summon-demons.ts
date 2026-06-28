@@ -35,6 +35,7 @@ export const SummonDemons: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Healing",
     "Knockback",
     "Mastermind Archetype Sets",

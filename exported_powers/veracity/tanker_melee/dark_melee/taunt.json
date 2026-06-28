@@ -37,7 +37,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Threat Duration"
+    "Threat Duration",
+    "Umbral Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

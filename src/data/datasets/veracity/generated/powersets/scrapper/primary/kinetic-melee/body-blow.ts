@@ -33,6 +33,7 @@ export const BodyBlow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Stuns",

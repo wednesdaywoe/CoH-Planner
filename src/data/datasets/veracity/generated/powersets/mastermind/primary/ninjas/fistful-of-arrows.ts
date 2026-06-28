@@ -36,6 +36,7 @@ export const FistfulofArrows: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

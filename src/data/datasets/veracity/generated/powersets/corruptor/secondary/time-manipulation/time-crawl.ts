@@ -35,7 +35,8 @@ export const TimeCrawl: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
-    "Slow Movement"
+    "Slow Movement",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -34,6 +34,7 @@ export const Caltrops: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Finesse Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

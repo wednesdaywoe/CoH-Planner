@@ -37,6 +37,7 @@ export const LightningField: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Melee AoE Damage",
     "Universal Damage Sets"

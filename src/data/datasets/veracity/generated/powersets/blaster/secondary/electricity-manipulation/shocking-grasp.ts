@@ -35,6 +35,7 @@ export const ShockingGrasp: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Holds",
     "Melee Damage",

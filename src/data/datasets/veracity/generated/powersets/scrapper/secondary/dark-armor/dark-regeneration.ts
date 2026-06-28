@@ -38,6 +38,7 @@ export const DarkRegeneration: Power = {
     "Healing",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

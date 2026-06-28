@@ -34,7 +34,8 @@ export const Farsight: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

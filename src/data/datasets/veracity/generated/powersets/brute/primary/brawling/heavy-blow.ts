@@ -37,6 +37,7 @@ export const HeavyBlow: Power = {
     "Brute Archetype Sets",
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

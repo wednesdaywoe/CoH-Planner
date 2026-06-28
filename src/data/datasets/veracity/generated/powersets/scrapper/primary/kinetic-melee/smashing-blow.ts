@@ -33,6 +33,7 @@ export const SmashingBlow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Stuns",

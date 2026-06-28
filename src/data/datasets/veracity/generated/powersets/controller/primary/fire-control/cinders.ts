@@ -34,6 +34,7 @@ export const Cinders: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Fire Praxis",
     "Holds"
   ],
   "maxSlots": 6,

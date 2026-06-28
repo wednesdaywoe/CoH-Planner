@@ -31,7 +31,8 @@ export const EquipThugs: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Might Praxis"
   ],
   "maxSlots": 6,
   "mechanicType": "parentMechanic"

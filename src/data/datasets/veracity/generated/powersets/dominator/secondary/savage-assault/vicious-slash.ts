@@ -36,6 +36,7 @@ export const ViciousSlash: Power = {
     "Dominator Archetype Sets",
     "Knockback",
     "Melee Damage",
+    "Nature Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

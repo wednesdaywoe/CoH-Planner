@@ -38,6 +38,7 @@ export const DarkBlast: Power = {
     "Defender Archetype Sets",
     "Ranged Damage",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

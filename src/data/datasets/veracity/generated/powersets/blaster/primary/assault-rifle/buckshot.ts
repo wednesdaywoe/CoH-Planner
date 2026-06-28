@@ -37,6 +37,7 @@ export const Buckshot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Blaster Archetype Sets",
     "Knockback",
     "Ranged AoE Damage",

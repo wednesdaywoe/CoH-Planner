@@ -28,7 +28,8 @@ export const Absorption: Power = {
     "Resistance"
   ],
   "allowedSetCategories": [
-    "Resist Damage"
+    "Resist Damage",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

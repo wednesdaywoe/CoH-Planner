@@ -39,6 +39,7 @@ export const AcidArrow: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate Healing",
+    "Ballistic Praxis",
     "Defender Archetype Sets",
     "Defense Debuff",
     "Ranged AoE Damage",

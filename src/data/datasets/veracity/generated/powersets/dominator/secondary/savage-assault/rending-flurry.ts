@@ -34,6 +34,7 @@ export const RendingFlurry: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Nature Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

@@ -37,6 +37,7 @@ export const EMPPulse: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Endurance Modification",
+    "Energy Praxis",
     "Holds"
   ],
   "maxSlots": 6,

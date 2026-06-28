@@ -34,6 +34,7 @@ export const FreezingTouch: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
+    "Ice Praxis",
     "Melee Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"

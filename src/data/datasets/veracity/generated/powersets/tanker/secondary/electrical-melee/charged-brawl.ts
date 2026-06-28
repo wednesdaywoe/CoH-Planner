@@ -37,6 +37,7 @@ export const ChargedBrawl: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Melee Damage",
     "Sleep",

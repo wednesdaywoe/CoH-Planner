@@ -38,6 +38,7 @@ export const Tornado: Power = {
     "Accurate Defense Debuff",
     "Controller Archetype Sets",
     "Defense Debuff",
+    "Electricity Praxis",
     "Knockback",
     "Pet Damage",
     "Recharge Intensive Pets",

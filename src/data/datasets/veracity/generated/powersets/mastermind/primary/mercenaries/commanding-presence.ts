@@ -25,6 +25,7 @@ export const CommandingPresence: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Defense Sets"
   ],
   "maxSlots": 6,

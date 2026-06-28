@@ -37,6 +37,7 @@ export const ShadowBolt: Power = {
     "Kheldian Archetype Sets",
     "Ranged Damage",
     "Slow Movement",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

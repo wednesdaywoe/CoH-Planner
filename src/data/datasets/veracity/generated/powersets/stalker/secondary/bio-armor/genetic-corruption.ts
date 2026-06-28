@@ -34,6 +34,7 @@ export const GeneticCorruption: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Life Praxis",
     "Sleep"
   ],
   "maxSlots": 6,

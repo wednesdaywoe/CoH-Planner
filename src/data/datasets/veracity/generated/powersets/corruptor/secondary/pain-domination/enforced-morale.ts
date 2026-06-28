@@ -30,6 +30,9 @@ export const EnforcedMorale: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Psychic Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "slow": {

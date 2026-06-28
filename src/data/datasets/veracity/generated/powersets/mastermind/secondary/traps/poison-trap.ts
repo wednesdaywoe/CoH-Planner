@@ -31,6 +31,7 @@ export const PoisonTrap: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Holds"
   ],
   "maxSlots": 6

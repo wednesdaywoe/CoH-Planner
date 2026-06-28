@@ -38,6 +38,7 @@ export const WorldofConfusion: Power = {
     "Blaster Archetype Sets",
     "Confuse",
     "Melee AoE Damage",
+    "Psychic Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

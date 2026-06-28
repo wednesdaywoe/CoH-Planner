@@ -41,7 +41,8 @@ export const RepulsionBomb: Power = {
     "Knockback",
     "Ranged AoE Damage",
     "Stuns",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "damage": {

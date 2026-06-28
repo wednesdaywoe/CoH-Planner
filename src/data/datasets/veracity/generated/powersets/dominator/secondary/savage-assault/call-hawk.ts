@@ -38,6 +38,7 @@ export const CallHawk: Power = {
     "Accurate To-Hit Debuff",
     "Dominator Archetype Sets",
     "Knockback",
+    "Nature Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

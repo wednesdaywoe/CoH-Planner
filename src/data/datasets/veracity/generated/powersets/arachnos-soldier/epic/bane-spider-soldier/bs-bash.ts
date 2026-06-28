@@ -33,6 +33,7 @@ export const BSBash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Melee Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Stuns",

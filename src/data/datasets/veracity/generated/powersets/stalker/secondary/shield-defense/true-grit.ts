@@ -27,6 +27,7 @@ export const TrueGrit: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Healing",
     "Resist Damage"
   ],

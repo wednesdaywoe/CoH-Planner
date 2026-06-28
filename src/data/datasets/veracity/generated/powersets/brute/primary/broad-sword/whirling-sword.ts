@@ -39,6 +39,7 @@ export const WhirlingSword: Power = {
     "Brute Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Might Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

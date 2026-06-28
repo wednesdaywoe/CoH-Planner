@@ -36,6 +36,7 @@ export const ChargedArmor: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

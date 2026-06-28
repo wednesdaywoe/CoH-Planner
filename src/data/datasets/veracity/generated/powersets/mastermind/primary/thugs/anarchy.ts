@@ -38,7 +38,8 @@ export const Anarchy: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Might Praxis"
   ],
   "maxSlots": 6,
   "damage": [

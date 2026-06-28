@@ -34,7 +34,8 @@
     "Heal"
   ],
   "allowed_set_categories": [
-    "Healing"
+    "Healing",
+    "Psychic Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

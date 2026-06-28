@@ -38,6 +38,7 @@ export const Slice: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Finesse Praxis",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
     "Universal Damage Sets"

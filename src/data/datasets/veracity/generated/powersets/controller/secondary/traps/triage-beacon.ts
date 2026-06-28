@@ -30,6 +30,7 @@ export const TriageBeacon: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Healing"
   ],
   "maxSlots": 6

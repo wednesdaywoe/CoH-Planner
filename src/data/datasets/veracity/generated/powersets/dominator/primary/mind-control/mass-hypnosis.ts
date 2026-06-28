@@ -36,6 +36,7 @@ export const MassHypnosis: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Psychic Praxis",
     "Sleep"
   ],
   "maxSlots": 6

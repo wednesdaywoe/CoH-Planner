@@ -39,6 +39,7 @@ export const EssenceDrain: Power = {
     "Kheldian Archetype Sets",
     "Melee Damage",
     "Slow Movement",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

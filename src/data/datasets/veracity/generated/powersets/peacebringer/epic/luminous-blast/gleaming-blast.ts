@@ -39,6 +39,7 @@ export const GleamingBlast: Power = {
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Knockback",
+    "Luminosity Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

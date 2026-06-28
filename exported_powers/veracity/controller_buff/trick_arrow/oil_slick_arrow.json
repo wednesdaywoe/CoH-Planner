@@ -38,6 +38,7 @@
     "Damage"
   ],
   "allowed_set_categories": [
+    "Ballistic Praxis",
     "Defense Debuff",
     "Ranged AoE Damage",
     "Slow Movement",

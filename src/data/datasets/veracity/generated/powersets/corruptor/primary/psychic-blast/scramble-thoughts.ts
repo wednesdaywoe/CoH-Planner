@@ -35,6 +35,7 @@ export const ScrambleThoughts: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Psychic Praxis",
     "Ranged Damage",
     "Stuns",
     "Universal Damage Sets"

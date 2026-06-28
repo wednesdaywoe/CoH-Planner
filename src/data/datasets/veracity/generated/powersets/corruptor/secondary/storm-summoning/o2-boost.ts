@@ -35,6 +35,7 @@ export const O2Boost: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Healing"
   ],
   "maxSlots": 6,

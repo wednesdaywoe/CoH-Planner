@@ -35,7 +35,8 @@ export const WSWideAreaWebGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Immobilize"
+    "Immobilize",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "effects": {

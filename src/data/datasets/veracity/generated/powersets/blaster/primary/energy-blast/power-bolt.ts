@@ -41,6 +41,7 @@ export const PowerBolt: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Energy Praxis",
     "Knockback",
     "Ranged Damage",
     "Universal Damage Sets"

@@ -33,6 +33,7 @@ export const FrozenAura: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Sleep"
   ],
   "maxSlots": 6,

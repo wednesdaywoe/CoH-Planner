@@ -35,6 +35,7 @@ export const HailofBullets: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Finesse Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Slow Movement",

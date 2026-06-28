@@ -38,6 +38,7 @@ export const BlindingPowder: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Confuse",
+    "Finesse Praxis",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

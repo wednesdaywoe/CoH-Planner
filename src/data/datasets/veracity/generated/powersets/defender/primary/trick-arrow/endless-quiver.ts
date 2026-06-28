@@ -27,6 +27,9 @@ export const EndlessQuiver: Power = {
   "allowedEnhancements": [
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Ballistic Praxis"
+  ],
   "maxSlots": 6,
   "requires": "VeracityT2TurninsCompleteBallistic owned?"
 };

@@ -33,6 +33,7 @@ export const Stun: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Stuns",

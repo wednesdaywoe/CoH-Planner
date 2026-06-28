@@ -37,6 +37,7 @@ export const FireCages: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Fire Praxis",
     "Immobilize",
     "Ranged AoE Damage",
     "Universal Damage Sets"

@@ -40,6 +40,7 @@ export const ArcticFog: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
+    "Ice Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

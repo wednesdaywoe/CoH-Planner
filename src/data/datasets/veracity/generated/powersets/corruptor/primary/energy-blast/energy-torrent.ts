@@ -38,6 +38,7 @@ export const EnergyTorrent: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Energy Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

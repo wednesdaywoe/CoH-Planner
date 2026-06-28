@@ -34,7 +34,8 @@ export const RagingTempest: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Holds"
+    "Holds",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "effects": {

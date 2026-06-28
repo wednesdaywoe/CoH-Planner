@@ -34,7 +34,8 @@ export const Fade: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Resist Damage"
+    "Resist Damage",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -36,7 +36,8 @@
     "Knockback"
   ],
   "allowed_set_categories": [
-    "Knockback"
+    "Knockback",
+    "Vacuum Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

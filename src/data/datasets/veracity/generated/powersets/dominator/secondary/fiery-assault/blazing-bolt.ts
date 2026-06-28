@@ -35,6 +35,7 @@ export const BlazingBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Ranged Damage",
     "Sniper Attacks",
     "Universal Damage Sets"

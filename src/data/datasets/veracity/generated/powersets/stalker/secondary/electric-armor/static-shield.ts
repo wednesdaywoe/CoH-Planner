@@ -36,6 +36,7 @@ export const StaticShield: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

@@ -37,6 +37,7 @@ export const Tornado: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Electricity Praxis",
     "Knockback",
     "Mastermind Archetype Sets",
     "Pet Damage",

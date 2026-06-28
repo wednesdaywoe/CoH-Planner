@@ -34,6 +34,7 @@ export const TripMine: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Finesse Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Universal Damage Sets"

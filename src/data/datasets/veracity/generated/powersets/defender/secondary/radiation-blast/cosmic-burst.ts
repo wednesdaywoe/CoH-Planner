@@ -38,6 +38,7 @@ export const CosmicBurst: Power = {
     "Accurate Defense Debuff",
     "Defender Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Ranged Damage",
     "Stuns",
     "Universal Damage Sets"

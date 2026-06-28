@@ -31,6 +31,7 @@ export const Rage: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Might Praxis",
     "To Hit Buff"
   ],
   "maxSlots": 6,

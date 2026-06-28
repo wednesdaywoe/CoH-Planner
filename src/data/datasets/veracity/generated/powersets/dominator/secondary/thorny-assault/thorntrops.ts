@@ -33,6 +33,7 @@ export const Thorntrops: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Nature Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

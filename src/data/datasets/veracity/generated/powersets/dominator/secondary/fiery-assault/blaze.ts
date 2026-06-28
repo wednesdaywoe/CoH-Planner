@@ -33,6 +33,7 @@ export const Blaze: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

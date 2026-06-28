@@ -44,6 +44,7 @@ export const GraviticEmanation: Power = {
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

@@ -38,6 +38,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Fire Praxis",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

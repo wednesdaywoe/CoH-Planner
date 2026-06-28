@@ -35,6 +35,7 @@ export const AstralGolem: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Pet Damage",
+    "Psychic Praxis",
     "Recharge Intensive Pets"
   ],
   "maxSlots": 6

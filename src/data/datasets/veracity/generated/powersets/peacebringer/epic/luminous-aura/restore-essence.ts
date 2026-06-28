@@ -28,7 +28,8 @@ export const RestoreEssence: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Luminosity Praxis"
   ],
   "maxSlots": 6,
   "damage": {

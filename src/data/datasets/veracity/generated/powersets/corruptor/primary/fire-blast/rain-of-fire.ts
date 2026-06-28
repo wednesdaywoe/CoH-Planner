@@ -34,6 +34,7 @@ export const RainofFire: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Fire Praxis",
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],

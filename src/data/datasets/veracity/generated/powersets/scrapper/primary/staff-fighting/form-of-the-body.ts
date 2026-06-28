@@ -30,6 +30,9 @@ export const FormoftheBody: Power = {
     "activatePeriod": 1
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Vibration Praxis"
+  ],
   "maxSlots": 0,
   "requires": "Scrapper_Melee.Staff_Fighting.Staff_Mastery"
 };

@@ -31,6 +31,7 @@ export const RadioactiveCloud: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Holds"
   ],
   "maxSlots": 6,

@@ -33,6 +33,7 @@ export const FireImps: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

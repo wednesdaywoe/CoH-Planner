@@ -34,6 +34,7 @@ export const Hemorrhage: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Nature Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

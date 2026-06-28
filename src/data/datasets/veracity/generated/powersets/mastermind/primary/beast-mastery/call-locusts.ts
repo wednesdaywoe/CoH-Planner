@@ -40,6 +40,7 @@ export const CallLocusts: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Nature Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

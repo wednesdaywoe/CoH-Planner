@@ -38,6 +38,7 @@ export const AtomSmasher: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee AoE Damage",
     "Stalker Archetype Sets",
     "Stuns",

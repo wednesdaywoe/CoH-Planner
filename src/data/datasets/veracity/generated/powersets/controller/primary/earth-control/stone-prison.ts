@@ -35,6 +35,7 @@ export const StonePrison: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Earth Praxis",
     "Immobilize",
     "Ranged Damage",
     "Universal Damage Sets"

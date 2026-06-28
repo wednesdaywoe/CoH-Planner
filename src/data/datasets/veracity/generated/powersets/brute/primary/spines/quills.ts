@@ -37,6 +37,7 @@ export const Quills: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Life Praxis",
     "Melee AoE Damage",
     "Slow Movement",
     "Universal Damage Sets"

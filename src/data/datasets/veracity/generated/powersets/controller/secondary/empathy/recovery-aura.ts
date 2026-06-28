@@ -33,7 +33,8 @@ export const RecoveryAura: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Endurance Modification"
+    "Endurance Modification",
+    "Life Praxis"
   ],
   "maxSlots": 6
 };

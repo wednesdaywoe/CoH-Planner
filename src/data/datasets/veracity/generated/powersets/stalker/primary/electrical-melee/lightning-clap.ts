@@ -36,6 +36,7 @@ export const LightningClap: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Stalker Archetype Sets",

@@ -38,6 +38,7 @@ export const ChainFences: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Immobilize",
     "Ranged AoE Damage",

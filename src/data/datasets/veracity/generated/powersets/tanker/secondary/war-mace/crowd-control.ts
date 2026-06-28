@@ -39,6 +39,7 @@ export const CrowdControl: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
+    "Might Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

@@ -32,6 +32,7 @@ export const KujiInToh: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Finesse Praxis",
     "Healing",
     "Resist Damage"
   ],

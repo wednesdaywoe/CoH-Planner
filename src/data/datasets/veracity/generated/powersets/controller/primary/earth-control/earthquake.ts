@@ -35,6 +35,7 @@ export const Earthquake: Power = {
   ],
   "allowedSetCategories": [
     "Defense Debuff",
+    "Earth Praxis",
     "Knockback",
     "To Hit Debuff"
   ],

@@ -35,6 +35,7 @@ export const Punch: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,

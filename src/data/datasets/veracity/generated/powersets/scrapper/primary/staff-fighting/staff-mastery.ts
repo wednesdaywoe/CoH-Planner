@@ -23,6 +23,9 @@ export const StaffMastery: Power = {
     "activatePeriod": 10
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Vibration Praxis"
+  ],
   "maxSlots": 0,
   "mechanicType": "parentMechanic"
 };

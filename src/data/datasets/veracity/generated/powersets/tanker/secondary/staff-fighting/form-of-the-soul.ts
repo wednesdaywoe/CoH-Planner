@@ -30,6 +30,9 @@ export const FormoftheSoul: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Vibration Praxis"
+  ],
   "maxSlots": 0,
   "requires": "Tanker_Melee.Staff_Fighting.Staff_Mastery"
 };

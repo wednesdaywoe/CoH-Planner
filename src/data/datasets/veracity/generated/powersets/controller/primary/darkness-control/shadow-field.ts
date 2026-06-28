@@ -37,7 +37,8 @@ export const ShadowField: Power = {
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
     "Holds",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Umbral Praxis"
   ],
   "maxSlots": 6
 };

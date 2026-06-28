@@ -37,6 +37,7 @@ export const LingeringRadiation: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
+    "Energy Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

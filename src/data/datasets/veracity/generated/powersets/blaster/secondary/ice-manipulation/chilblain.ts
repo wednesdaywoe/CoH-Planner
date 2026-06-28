@@ -42,6 +42,7 @@ export const Chilblain: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Ice Praxis",
     "Immobilize",
     "Ranged Damage",
     "Slow Movement",

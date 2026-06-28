@@ -36,7 +36,8 @@ export const TouchoftheGraveborn: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Holds",
-    "Melee Damage"
+    "Melee Damage",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "damage": [

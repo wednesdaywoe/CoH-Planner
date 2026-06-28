@@ -37,6 +37,7 @@ export const PositronCell: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Blaster Archetype Sets",
+    "Energy Praxis",
     "Holds",
     "Ranged Damage",
     "To Hit Debuff",

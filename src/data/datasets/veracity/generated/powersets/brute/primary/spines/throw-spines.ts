@@ -39,6 +39,7 @@ export const ThrowSpines: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Life Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Threat Duration",

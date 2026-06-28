@@ -40,6 +40,7 @@ export const IcyBastion: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
+    "Ice Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

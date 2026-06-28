@@ -36,6 +36,7 @@ export const NeurotoxicBreath: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Nature Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

@@ -28,6 +28,9 @@ export const PowerBoost: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Ice Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "specialBuff": {

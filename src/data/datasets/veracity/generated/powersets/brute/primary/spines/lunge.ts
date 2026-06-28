@@ -35,6 +35,7 @@ export const Lunge: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Life Praxis",
     "Melee Damage",
     "Slow Movement",
     "Threat Duration",

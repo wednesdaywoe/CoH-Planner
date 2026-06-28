@@ -42,6 +42,7 @@ export const ShadowMaul: Power = {
     "Tanker Archetype Sets",
     "Threat Duration",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

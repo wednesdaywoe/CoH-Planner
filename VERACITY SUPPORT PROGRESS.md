@@ -1,6 +1,6 @@
 # Veracity Support — Progress
 
-**Last updated:** 2026-06-26
+**Last updated:** 2026-06-28
 **Branch:** `veracity-test` (merged up to date with `main`)
 
 Adding **Veracity** as a fourth dataset source alongside HC (Homecoming), Rebirth, and Thunderspy. Veracity is a heavily-modified private server (SCoRE-Neptune lineage) whose dev is actively collaborating — providing raw data and answering schema questions. Recon piggs live at `Veracity Bins/` in the repo root: `bin.pigg`, `bin_powers.pigg`, and `veracity_sidekick_icons.pigg` (a dedicated icon archive the dev built for Sidekick, ~3,770 `.texture` icons).
@@ -12,11 +12,44 @@ See also the memory note `veracity-bin-recon` and `dataset-scope-final` (Veracit
 **Veracity is a fully selectable, experimental dataset in the planner.** It ships behind the amber "experimental" badge (same treatment as Thunderspy). End-to-end: parser → export → converters → dataset module → app wiring all complete and verified.
 
 - **tsc:** 0 errors
-- **Tests:** 586/586 pass (no regression on HC/Rebirth/Thunderspy)
+- **Tests:** 606/606 pass (no regression on HC/Rebirth/Thunderspy)
 - **Production build:** green (4-dataset bundle; PWA precache limit raised 16→24 MiB)
 - **Runtime:** `loadDataset('veracity')` loads and assembles; dev-server spot-check clean (no console complaints)
 
 Select it in the header server picker, or deep-link with `?serverId=veracity`.
+
+### Latest round (2026-06-28): dev feedback triage
+
+The dev reviewed the preview build. Triage of the 11 points:
+
+| Dev note | Outcome |
+|---|---|
+| Archetype/Powerset alignment, Power order, Power pick levels | ✅ Dev-confirmed correct — no action |
+| Sentinel deprecated, should come off the list | ✅ AT already absent; removed 4 lingering **Sentinel ATO IO sets** (257→**253**) |
+| "Have DSyncs, but not Elementals" | ✅ Root cause was **empty `type`** on the Elemental/Paragon sets (allowed-powers gated, no EC category), *not* icons — fixed via the `{Element} Praxis` system below |
+| Tenth power in sets missing | ⛔ **Binary-data gap, not ours** — proven below |
+| Power pools missing options | ✅ **Fixed** — 12→**21 pools** (9 custom pools were being dropped by the converter) |
+| Missing new Interface / Hybrid incarnates | ✅ **Phase 1 done** — incarnate slot indices + effects are now dataset-aware |
+| Second epic-pool rule missing | ⏳ Open — needs the dev's rule |
+| Missing new Interface/Hybrid (see above), new Accolades | ⏳ Accolades open |
+
+**Tenth power — proven a binary gap (not parser).** Audited every wired player set: the only power dropped anywhere is a hidden `Build_Up_Proc` auto-power (correct). At the binary level Water/Ice/Energy/Psychic Blast have exactly **9 powers in both the powerset array AND powers.bin** (zero orphans) — there is no 10th power to render. Fire/Dark genuinely have 10 and we show 10. → resolves when the dev sends a finalized pigg with the 10th power actually wired into those sets.
+
+#### Elemental/Paragon "Praxis" sets — the empty-`type` fix
+
+The 16 `*_Elemental` (rare) + 16 `Paragon_*` (purple) sets carry **`category=''` in `boostsets.bin`** — they gate slotting via an explicit **`allowed_powers` list** (e.g. Fire → all 180 fire powers) rather than a standard EC enhancement category. With no `type`, the picker couldn't match them to any power slot, so they never appeared ("Elementals missing"). All 16 set icons resolve fine — it was never an icon issue.
+
+Fix: `_praxis_category()` in `tools/bin-crawler/bin_crawler/parser/_boostsets.py` synthesizes a per-element `{Element} Praxis` category, keyed on the Veracity-only `ECElemental`/`ECParagon` rarities (HC/Rebirth untouched). Because the powers export and the IO-set extractor share `_resolve_category`, both the per-power `allowedSetCategories` and the set `type` get the same key — so matching is precise per element (Ice can't slot into a fire power). The Elemental + Paragon variants of an element share an **identical** power list, so they share the category (rare → sidebar group; purple → Purple tab). 16 families × 2 rarities; `type:""` count is now **0**. Added the 16 `… Praxis` entries to `IOSetCategory` (`src/types/common.ts`) and to `IO_SET_TYPE_TO_CATEGORY` (`src/data/io-sets.ts`).
+
+#### Power pools — 9 custom pools recovered
+
+The binary/export had all **21** pool powersets but `convert-pool-powers.cjs` only emitted **12** (it iterates a known-pool map). Added a `veracity` entry to `DATASET_EXTRA_POOLS` for the 9 custom pools — **Arsenal, Bard, Gadgetry, Hierophany, Ki, Nocturne, Pedigree, Utility Belt, Verdant**. Now **21 pools / 112 powers** (was 12/63). The picker enumerates pools dynamically, so they appear automatically. (Veracity renamed Presence→"Manipulation"; we map it to the `presence` id.)
+
+#### Incarnate Phase 1 — dataset-aware Interface/Hybrid
+
+Only **Interface (72→90)** and **Hybrid (36→45)** differ from the global indices on Veracity — every other slot matches HC. Made the slot indices dataset-aware via `SLOT_INDEX_OVERRIDES` (`incarnates.ts`) — vendored Veracity's `interface`/`hybrid` `index.json` into `src/data/datasets/veracity/incarnate-indices/`, falling back to the global index for all other slots. The effects picker became `_pick4` (added Veracity) in `incarnate-effects.ts` so the new powers resolve real effects. The slot-definition cache is now keyed by dataset id (rebuilds on switch). New trees: **Hypnotic, Imbalancing** (Interface) + **Eductive** (Hybrid); their tree icons are already on disk. Pinned by `src/data/veracity-incarnate-options.test.ts` (incl. a no-leak-into-HC check).
+
+**Phase 2 (deferred, pending dev confirm):** Veracity's standalone `fate`/`verdict`/`socket` incarnate export dirs are almost certainly the **Genesis sub-trees we already support** (Rebirth's Genesis trees are exactly `data/fate/socket/verdict`), not new slots — so Phase 2 may be nearly empty. Confirm with the dev before building new slots.
 
 ### Latest round (2026-06-26): updated bins + dev's icon pigg
 
@@ -36,7 +69,7 @@ Select it in the header server picker, or deep-link with `?serverId=veracity`.
 | `boostsets.bin` | 257 sets → **257 extracted (0 skipped)** | dev added clean rarity tokens (ECElemental/ECParagon) |
 | `clientmessages-en.bin` | strings | P-hash resolution works |
 
-**Exported:** ~9,162 player powers across 63 categories. **Shipped dataset:** 287 powersets, 12 power pools, 77 epic pools, incarnate (Interface/Judgement/Lore + a Veracity-specific **Genesis** slot), **257 IO sets**.
+**Exported:** ~9,162 player powers across 63 categories. **Shipped dataset:** 287 powersets, **21 power pools** (incl. 9 Veracity-custom), 77 epic pools, incarnate (standard slots + Genesis, with Veracity-specific Interface/Hybrid options), **253 IO sets** (4 Sentinel ATO sets dropped).
 
 ### Archetype roster (14, no Sentinel)
 
@@ -138,6 +171,7 @@ Both filters are dataset-agnostic in code (no other server ships these tokens, s
 1. ✅ ~~27 custom IO sets skipped~~ — RESOLVED (dev's rarity tokens; all 257 extract).
 2. ✅ ~~Custom power icons missing~~ — RESOLVED (dev's icon pigg; 0 power icons missing).
 2b. **16 Paragon ("purple") set-picker icons** still missing — not in the dev's icon pigg yet (placeholder fallback). Re-run the elemental-icon extraction for `Paragon_*` once they land.
+2c. **17 custom pool-power icons** (Hierophany / Ki / Nocturne) not in the icon pigg yet — placeholder fallback. Same fix as Paragon: re-run `extract-thunderspy-icons.py --dataset veracity` once the dev adds them.
 3. **3 new header bools** (`FaceTarget` / `ShowPowerLabel` / `PowerLabelRankThreshold`) the dev mentioned are *not* between accuracy and range (range hits the clean base offset) — they sit later (confirm-dialog region or post-effects) and are absorbed harmlessly. Pin exact positions when the dev sends the diff summary.
 4. **Warshade / Arachnos Soldier / Widow** caps parsed Kheldian-like (res 0.85, HP cap 2409.5) via the validated deltas — worth a dev spot-check whether that's Veracity's intended value.
 5. **`pet-entities.ts` empty** — no Veracity `VillainDef.bin` parser yet (Mastermind henchmen / Lore / pseudo-pet detail panels lack data). Same first-pass state as Thunderspy/Rebirth shipped with.
@@ -150,9 +184,13 @@ Both filters are dataset-agnostic in code (no other server ships these tokens, s
 1. ✅ ~~Texture piggs~~ — provided (`veracity_sidekick_icons.pigg`). ✅ ~~boostsets rarity~~ — fixed (clean tokens).
 2. **Paragon set icons** — the `Paragon_*` ("new purple") set icons aren't in the icon pigg yet; send them when ready and we extract.
 3. **3 header bools** — roughly where do `FaceTarget` / `ShowPowerLabel` / `PowerLabelRankThreshold` serialize?
-4. Confirm **no Sentinel** is intentional (the lingering `sentinel_*` category defs in `powers.bin` are just leftovers).
+4. ✅ ~~Confirm no Sentinel~~ — dev confirmed deprecated (AT + ATO sets now removed).
 5. Confirm **Warshade / Arachnos cap** values (res 0.85 / HP cap 2409.5).
 6. Confirm intended **rarity tier** for the `ECElemental` sets — currently mapped to `rare` (the `ECParagon` ones map to `purple`).
+7. **Tenth power** — several sets (Water/Ice/Energy/Psychic Blast, …) have only 9 powers in `powersets.bin`/`powers.bin`; the 10th isn't wired in the pigg sent. Send a finalized pigg once those are in.
+8. **Second epic-pool rule** — what's the rule? (Epic-pool gating is currently deferred for Veracity.)
+9. **New accolades** — where do they live / which are intended? (Accolade powers aren't yet surfaced for Veracity.)
+10. **Incarnate Phase 2** — are `fate` / `verdict` / `socket` standalone player slots, or the Genesis sub-trees (as on Rebirth)? If standalone: unlock level, prerequisites, recharge, and whether Fate is independent of Destiny.
 
 ## How to regenerate
 
@@ -185,6 +223,13 @@ python3 scripts/extract-thunderspy-icons.py --dataset veracity
 
 # 5. Elemental IO-set icons → public/img/Enhancements/IO Sets/ (one-off; see
 #    "Icons" section). Re-run with Paragon_* once those textures land in the pigg.
+
+# 5b. Vendor the dataset-specific incarnate slot indices (only the slots whose
+#     option list differs from the global/HC index — Interface + Hybrid for now).
+cp exported_powers/veracity/incarnate/interface/index.json \
+   src/data/datasets/veracity/incarnate-indices/interface.json
+cp exported_powers/veracity/incarnate/hybrid/index.json \
+   src/data/datasets/veracity/incarnate-indices/hybrid.json
 
 # 6. Verify
 npx tsc --noEmit && npx vitest run

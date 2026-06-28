@@ -34,6 +34,7 @@ export const ShieldCharge: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Stalker Archetype Sets",

@@ -35,6 +35,7 @@ export const Disintegrate: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
+    "Ballistic Praxis",
     "Blaster Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"

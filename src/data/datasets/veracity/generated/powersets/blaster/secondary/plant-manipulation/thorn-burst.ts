@@ -38,6 +38,7 @@ export const ThornBurst: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Nature Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

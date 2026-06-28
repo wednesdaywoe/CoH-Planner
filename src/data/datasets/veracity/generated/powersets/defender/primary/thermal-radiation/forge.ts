@@ -34,6 +34,7 @@ export const Forge: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "To Hit Buff"
   ],
   "maxSlots": 6,

@@ -32,6 +32,7 @@ export const EssenceBoost: Power = {
   ],
   "allowedSetCategories": [
     "Healing",
+    "Luminosity Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

@@ -30,6 +30,9 @@ export const CryoAmmunition: Power = {
     "activatePeriod": 0.5
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Finesse Praxis"
+  ],
   "maxSlots": 0,
   "requires": "Corruptor_Ranged.Dual_Pistols.Swap_Ammo"
 };

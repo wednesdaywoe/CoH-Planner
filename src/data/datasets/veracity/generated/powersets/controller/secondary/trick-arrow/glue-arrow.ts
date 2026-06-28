@@ -32,6 +32,7 @@ export const GlueArrow: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6

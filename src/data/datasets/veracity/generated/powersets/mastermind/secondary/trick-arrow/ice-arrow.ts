@@ -34,6 +34,7 @@ export const IceArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Holds",
     "Slow Movement"
   ],

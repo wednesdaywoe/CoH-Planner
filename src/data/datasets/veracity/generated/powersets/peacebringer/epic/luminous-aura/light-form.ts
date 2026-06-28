@@ -32,6 +32,7 @@ export const LightForm: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Luminosity Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

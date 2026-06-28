@@ -35,6 +35,7 @@ export const HavokPunch: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Knockback",
     "Melee Damage",

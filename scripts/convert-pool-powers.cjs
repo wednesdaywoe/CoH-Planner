@@ -99,6 +99,19 @@ const DATASET_EXTRA_POOLS = {
   rebirth: {
     gadgetry: { dir: 'gadgetry', displayName: 'Gadgetry' },
   },
+  // Veracity ships several custom power pools (plus Gadgetry/Utility Belt, which
+  // are unreleased on HC) as fully playable. Their export dirs match the pool id.
+  veracity: {
+    arsenal: { dir: 'arsenal', displayName: 'Arsenal' },
+    bard: { dir: 'bard', displayName: 'Bard' },
+    gadgetry: { dir: 'gadgetry', displayName: 'Gadgetry' },
+    hierophany: { dir: 'hierophany', displayName: 'Hierophany' },
+    ki: { dir: 'ki', displayName: 'Ki' },
+    nocturne: { dir: 'nocturne', displayName: 'Nocturne' },
+    pedigree: { dir: 'pedigree', displayName: 'Pedigree' },
+    utility_belt: { dir: 'utility_belt', displayName: 'Utility Belt' },
+    verdant: { dir: 'verdant', displayName: 'Verdant' },
+  },
 };
 
 for (const [poolId, info] of Object.entries(DATASET_EXTRA_POOLS[datasetId] || {})) {

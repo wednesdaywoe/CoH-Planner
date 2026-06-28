@@ -41,6 +41,7 @@ export const NightFall: Power = {
     "Corruptor Archetype Sets",
     "Ranged AoE Damage",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

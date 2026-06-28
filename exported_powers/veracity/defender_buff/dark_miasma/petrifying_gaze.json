@@ -38,7 +38,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Holds"
+    "Holds",
+    "Umbral Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -34,7 +34,8 @@ export const Painbringer: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Psychic Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -35,6 +35,7 @@ export const LightningField: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",

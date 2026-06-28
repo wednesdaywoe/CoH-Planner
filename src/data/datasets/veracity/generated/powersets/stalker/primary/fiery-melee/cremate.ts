@@ -32,6 +32,7 @@ export const Cremate: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

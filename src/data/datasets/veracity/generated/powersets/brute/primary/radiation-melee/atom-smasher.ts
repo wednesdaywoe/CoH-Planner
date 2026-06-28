@@ -40,6 +40,7 @@ export const AtomSmasher: Power = {
     "Accurate Defense Debuff",
     "Brute Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee AoE Damage",
     "Stuns",
     "Threat Duration",

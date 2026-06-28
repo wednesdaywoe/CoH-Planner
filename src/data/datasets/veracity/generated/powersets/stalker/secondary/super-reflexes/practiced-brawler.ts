@@ -34,6 +34,9 @@ export const PracticedBrawler: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Vibration Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "debuffResistance": {

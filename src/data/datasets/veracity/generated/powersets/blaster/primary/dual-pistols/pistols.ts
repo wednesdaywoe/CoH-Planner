@@ -43,6 +43,7 @@ export const Pistols: Power = {
     "Accurate Defense Debuff",
     "Blaster Archetype Sets",
     "Defense Debuff",
+    "Finesse Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

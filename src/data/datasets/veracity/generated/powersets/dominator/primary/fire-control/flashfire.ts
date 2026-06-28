@@ -37,6 +37,7 @@ export const Flashfire: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Fire Praxis",
     "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"

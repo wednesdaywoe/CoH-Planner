@@ -39,6 +39,7 @@ export const RepulsingTorrent: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Energy Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Threat Duration",

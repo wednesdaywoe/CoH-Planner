@@ -34,6 +34,7 @@ export const FocusedBurst: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Knockback",
     "Ranged Damage",
     "Stalker Archetype Sets",

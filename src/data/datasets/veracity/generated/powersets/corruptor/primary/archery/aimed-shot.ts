@@ -33,6 +33,7 @@ export const AimedShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Corruptor Archetype Sets",
     "Ranged Damage",
     "Universal Damage Sets"

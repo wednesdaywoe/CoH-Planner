@@ -37,6 +37,7 @@ export const XRayBeam: Power = {
     "Accurate Defense Debuff",
     "Defender Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

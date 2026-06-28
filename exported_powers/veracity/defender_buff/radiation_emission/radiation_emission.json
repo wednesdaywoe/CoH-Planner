@@ -38,6 +38,7 @@
     "Heal"
   ],
   "allowed_set_categories": [
+    "Energy Praxis",
     "Healing"
   ],
   "cast_through": [],

@@ -36,6 +36,7 @@ export const HavocPunch: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Melee Damage",
     "Sleep",

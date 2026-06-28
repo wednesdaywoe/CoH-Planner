@@ -36,6 +36,7 @@ export const BlazingBolt: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Fire Praxis",
     "Ranged Damage",
     "Sniper Attacks",
     "Universal Damage Sets"

@@ -36,7 +36,8 @@ export const MeltArmor: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Defense Debuff"
+    "Defense Debuff",
+    "Fire Praxis"
   ],
   "maxSlots": 6,
   "effects": {

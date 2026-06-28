@@ -35,6 +35,7 @@ export const Consume: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Fire Praxis",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],

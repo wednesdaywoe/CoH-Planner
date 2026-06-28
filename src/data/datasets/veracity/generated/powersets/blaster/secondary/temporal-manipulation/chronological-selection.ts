@@ -30,7 +30,8 @@ export const ChronologicalSelection: Power = {
     "ToHit"
   ],
   "allowedSetCategories": [
-    "To Hit Buff"
+    "To Hit Buff",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

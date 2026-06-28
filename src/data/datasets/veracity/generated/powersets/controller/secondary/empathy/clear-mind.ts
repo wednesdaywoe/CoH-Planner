@@ -32,6 +32,9 @@ export const ClearMind: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Life Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "slow": {

@@ -37,6 +37,7 @@ export const Hack: Power = {
     "Accurate Defense Debuff",
     "Brute Archetype Sets",
     "Defense Debuff",
+    "Finesse Praxis",
     "Melee Damage",
     "Threat Duration",
     "Universal Damage Sets"

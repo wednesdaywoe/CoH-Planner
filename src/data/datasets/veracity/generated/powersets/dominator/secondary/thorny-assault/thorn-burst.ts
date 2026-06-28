@@ -37,6 +37,7 @@ export const ThornBurst: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Nature Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

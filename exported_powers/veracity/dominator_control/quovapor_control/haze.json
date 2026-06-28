@@ -37,7 +37,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Water Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

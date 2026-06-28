@@ -36,6 +36,7 @@ export const ThunderousBlast: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Ranged AoE Damage",
     "Universal Damage Sets"

@@ -39,6 +39,7 @@ export const ShadowBlast: Power = {
     "Knockback",
     "Ranged Damage",
     "Slow Movement",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6

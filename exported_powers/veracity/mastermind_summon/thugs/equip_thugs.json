@@ -36,7 +36,8 @@
     "Recharge"
   ],
   "allowed_set_categories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Might Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

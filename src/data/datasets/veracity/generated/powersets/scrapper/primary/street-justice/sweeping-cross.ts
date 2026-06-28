@@ -37,6 +37,7 @@ export const SweepingCross: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Might Praxis",
     "Scrapper Archetype Sets",
     "Stuns",
     "Universal Damage Sets"

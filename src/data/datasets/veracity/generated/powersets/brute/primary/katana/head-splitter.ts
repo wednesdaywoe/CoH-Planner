@@ -41,6 +41,7 @@ export const HeadSplitter: Power = {
     "Accurate Defense Debuff",
     "Brute Archetype Sets",
     "Defense Debuff",
+    "Finesse Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Threat Duration",

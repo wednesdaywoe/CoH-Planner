@@ -34,6 +34,7 @@ export const EnergyPunch: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Energy Praxis",
     "Melee Damage",
     "Stuns",
     "Universal Damage Sets"

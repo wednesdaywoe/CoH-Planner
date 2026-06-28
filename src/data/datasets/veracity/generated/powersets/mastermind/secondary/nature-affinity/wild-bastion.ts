@@ -32,7 +32,8 @@ export const WildBastion: Power = {
     "Healing"
   ],
   "allowedSetCategories": [
-    "Healing"
+    "Healing",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "damage": {

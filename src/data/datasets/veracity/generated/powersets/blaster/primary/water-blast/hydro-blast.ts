@@ -45,7 +45,8 @@ export const HydroBlast: Power = {
     "Knockback",
     "Ranged Damage",
     "Slow Movement",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Water Praxis"
   ],
   "maxSlots": 6,
   "damage": [

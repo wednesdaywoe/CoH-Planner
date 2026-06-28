@@ -35,6 +35,7 @@ export const ChargedBolts: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Ranged Damage",
     "Universal Damage Sets"

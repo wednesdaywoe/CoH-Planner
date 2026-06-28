@@ -40,6 +40,7 @@ export const Ripper: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Knockback",
+    "Life Praxis",
     "Melee AoE Damage",
     "Slow Movement",
     "Threat Duration",

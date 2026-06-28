@@ -39,6 +39,7 @@ export const ContaminatedStrike: Power = {
     "Accurate Defense Debuff",
     "Brute Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee Damage",
     "Threat Duration",
     "Universal Damage Sets"

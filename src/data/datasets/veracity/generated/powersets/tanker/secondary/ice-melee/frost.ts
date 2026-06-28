@@ -38,6 +38,7 @@ export const Frost: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Ranged AoE Damage",
     "Slow Movement",
     "Tanker Archetype Sets",

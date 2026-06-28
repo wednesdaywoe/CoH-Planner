@@ -36,6 +36,7 @@ export const SporeBurst: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Nature Praxis",
     "Sleep"
   ],
   "maxSlots": 6

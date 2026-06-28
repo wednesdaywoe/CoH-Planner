@@ -33,6 +33,7 @@ export const SiphonSpeed: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

@@ -34,6 +34,7 @@ export const SnowStorm: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

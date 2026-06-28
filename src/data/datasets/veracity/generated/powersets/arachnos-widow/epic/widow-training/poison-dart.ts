@@ -33,6 +33,7 @@ export const PoisonDart: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Nature Praxis",
     "Ranged Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

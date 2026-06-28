@@ -36,7 +36,8 @@ export const SlowedResponse: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
-    "Defense Debuff"
+    "Defense Debuff",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "effects": {

@@ -36,6 +36,7 @@ export const MindOverBody: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

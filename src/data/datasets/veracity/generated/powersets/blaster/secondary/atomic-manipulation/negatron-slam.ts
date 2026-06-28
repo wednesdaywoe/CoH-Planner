@@ -37,6 +37,7 @@ export const NegatronSlam: Power = {
     "Accurate Defense Debuff",
     "Blaster Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Knockback",
     "Melee Damage",
     "Universal Damage Sets"

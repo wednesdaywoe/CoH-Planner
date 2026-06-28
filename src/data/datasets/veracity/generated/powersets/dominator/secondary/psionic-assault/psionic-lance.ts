@@ -35,6 +35,7 @@ export const PsionicLance: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Psychic Praxis",
     "Ranged Damage",
     "Sniper Attacks",
     "Universal Damage Sets"

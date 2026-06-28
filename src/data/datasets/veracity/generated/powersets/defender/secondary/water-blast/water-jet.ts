@@ -37,7 +37,8 @@ export const WaterJet: Power = {
     "Defender Archetype Sets",
     "Ranged Damage",
     "Slow Movement",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Water Praxis"
   ],
   "maxSlots": 6
 };

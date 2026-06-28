@@ -34,6 +34,7 @@ export const DragonsTail: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Universal Damage Sets"

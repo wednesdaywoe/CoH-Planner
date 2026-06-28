@@ -30,5 +30,8 @@ export const IceSlick: Power = {
     "Range",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Ice Praxis"
+  ],
   "maxSlots": 6
 };

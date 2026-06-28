@@ -44,7 +44,8 @@ export const Hibernate: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Ice Praxis"
   ],
   "maxSlots": 6,
   "effects": {

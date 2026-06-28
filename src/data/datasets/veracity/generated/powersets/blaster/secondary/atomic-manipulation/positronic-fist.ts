@@ -37,6 +37,7 @@ export const PositronicFist: Power = {
     "Accurate Defense Debuff",
     "Blaster Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee Damage",
     "Stuns",
     "Universal Damage Sets"

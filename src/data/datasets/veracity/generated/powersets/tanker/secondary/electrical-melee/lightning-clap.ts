@@ -35,6 +35,7 @@ export const LightningClap: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Knockback",
     "Stuns",
     "Threat Duration"

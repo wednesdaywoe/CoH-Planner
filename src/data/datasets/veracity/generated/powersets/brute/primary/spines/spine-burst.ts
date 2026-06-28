@@ -36,6 +36,7 @@ export const SpineBurst: Power = {
   ],
   "allowedSetCategories": [
     "Brute Archetype Sets",
+    "Life Praxis",
     "Melee AoE Damage",
     "Slow Movement",
     "Threat Duration",

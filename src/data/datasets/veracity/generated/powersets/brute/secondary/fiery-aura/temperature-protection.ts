@@ -26,6 +26,7 @@ export const TemperatureProtection: Power = {
     "Resistance"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

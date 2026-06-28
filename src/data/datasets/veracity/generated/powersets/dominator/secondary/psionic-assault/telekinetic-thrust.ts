@@ -35,6 +35,7 @@ export const TelekineticThrust: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Psychic Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

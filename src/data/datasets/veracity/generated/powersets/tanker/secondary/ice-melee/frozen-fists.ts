@@ -36,6 +36,7 @@ export const FrozenFists: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Melee Damage",
     "Slow Movement",
     "Tanker Archetype Sets",

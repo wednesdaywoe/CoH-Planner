@@ -38,7 +38,8 @@
   ],
   "allowed_set_categories": [
     "Endurance Modification",
-    "Healing"
+    "Healing",
+    "Ice Praxis"
   ],
   "cast_through": [
     "hold",

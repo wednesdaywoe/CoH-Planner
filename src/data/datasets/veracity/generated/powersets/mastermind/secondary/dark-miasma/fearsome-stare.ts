@@ -39,7 +39,8 @@ export const FearsomeStare: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Fear",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

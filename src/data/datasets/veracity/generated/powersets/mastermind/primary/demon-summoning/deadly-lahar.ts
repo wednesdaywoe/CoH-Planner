@@ -37,6 +37,7 @@ export const DeadlyLahar: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Fire Praxis",
     "Holds",
     "Ranged AoE Damage",
     "Slow Movement"

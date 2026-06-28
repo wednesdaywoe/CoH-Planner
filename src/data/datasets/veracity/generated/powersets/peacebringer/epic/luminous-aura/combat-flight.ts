@@ -36,6 +36,7 @@ export const CombatFlight: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Flight",
+    "Luminosity Praxis",
     "Universal Travel"
   ],
   "maxSlots": 6,

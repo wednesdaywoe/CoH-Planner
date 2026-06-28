@@ -36,7 +36,8 @@ export const KineticShield: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Defense Sets"
+    "Defense Sets",
+    "Energy Praxis"
   ],
   "maxSlots": 6,
   "effects": {

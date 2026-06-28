@@ -38,6 +38,7 @@ export const RadiantStrike: Power = {
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Knockback",
+    "Luminosity Praxis",
     "Melee Damage",
     "Universal Damage Sets"
   ],

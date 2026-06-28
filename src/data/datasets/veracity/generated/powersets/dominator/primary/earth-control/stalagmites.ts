@@ -37,6 +37,7 @@ export const Stalagmites: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Earth Praxis",
     "Ranged AoE Damage",
     "Stuns",
     "Universal Damage Sets"

@@ -35,6 +35,7 @@ export const Slice: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Energy Praxis",
     "Melee Damage",
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"

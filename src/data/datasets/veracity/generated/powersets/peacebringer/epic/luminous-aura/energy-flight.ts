@@ -35,6 +35,7 @@ export const EnergyFlight: Power = {
   ],
   "allowedSetCategories": [
     "Flight",
+    "Luminosity Praxis",
     "Universal Travel"
   ],
   "maxSlots": 6,

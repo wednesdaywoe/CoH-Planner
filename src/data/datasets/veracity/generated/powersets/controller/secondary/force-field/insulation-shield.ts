@@ -35,7 +35,8 @@ export const InsulationShield: Power = {
     "Defense"
   ],
   "allowedSetCategories": [
-    "Knockback"
+    "Knockback",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6
 };

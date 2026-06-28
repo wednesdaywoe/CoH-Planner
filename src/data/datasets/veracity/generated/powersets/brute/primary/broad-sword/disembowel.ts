@@ -40,6 +40,7 @@ export const Disembowel: Power = {
     "Defense Debuff",
     "Knockback",
     "Melee Damage",
+    "Might Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

@@ -34,6 +34,9 @@ export const WetIce: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
+  "allowedSetCategories": [
+    "Ice Praxis"
+  ],
   "maxSlots": 6,
   "effects": {
     "debuffResistance": {

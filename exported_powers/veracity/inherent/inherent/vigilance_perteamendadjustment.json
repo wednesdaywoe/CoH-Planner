@@ -68,7 +68,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "100 kHitPoints% target> - 0 100 minmax 100 / 0.75 *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 0.0,

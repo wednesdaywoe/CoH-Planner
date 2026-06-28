@@ -36,6 +36,7 @@ export const Consume: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Fire Praxis",
     "Melee AoE Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

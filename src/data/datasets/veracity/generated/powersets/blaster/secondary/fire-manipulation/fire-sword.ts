@@ -35,6 +35,7 @@ export const FireSword: Power = {
     "Accurate Defense Debuff",
     "Blaster Archetype Sets",
     "Defense Debuff",
+    "Fire Praxis",
     "Melee Damage",
     "Universal Damage Sets"
   ],

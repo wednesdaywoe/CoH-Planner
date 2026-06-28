@@ -36,7 +36,8 @@ export const SapWill: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
-    "Endurance Modification"
+    "Endurance Modification",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "damage": {

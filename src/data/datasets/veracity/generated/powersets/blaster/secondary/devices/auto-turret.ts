@@ -32,6 +32,7 @@ export const AutoTurret: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
+    "Finesse Praxis",
     "Ranged Damage",
     "Recharge Intensive Pets",
     "Universal Damage Sets"

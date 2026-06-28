@@ -37,6 +37,7 @@ export const Fault: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Knockback",
     "Stuns",
     "Threat Duration"

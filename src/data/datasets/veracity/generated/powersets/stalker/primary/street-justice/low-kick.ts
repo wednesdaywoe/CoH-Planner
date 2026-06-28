@@ -36,6 +36,7 @@ export const LowKick: Power = {
   "allowedSetCategories": [
     "Defense Debuff",
     "Melee Damage",
+    "Might Praxis",
     "Slow Movement",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

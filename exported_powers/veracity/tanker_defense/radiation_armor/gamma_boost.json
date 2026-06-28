@@ -36,6 +36,7 @@
   ],
   "allowed_set_categories": [
     "Endurance Modification",
+    "Energy Praxis",
     "Healing"
   ],
   "cast_through": [],
@@ -115,7 +116,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "75 kHitPoints% source> - 30 + 100 / @StdResult *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 0.0,
@@ -140,7 +141,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "1.2 kHitPoints% source> * 100 / .3 * @StdResult *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 0.0,

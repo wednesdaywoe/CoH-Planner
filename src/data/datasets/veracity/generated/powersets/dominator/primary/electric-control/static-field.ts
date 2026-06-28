@@ -36,6 +36,7 @@ export const StaticField: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
+    "Electricity Praxis",
     "Sleep",
     "Slow Movement"
   ],

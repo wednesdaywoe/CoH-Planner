@@ -35,6 +35,7 @@ export const FreezingTouch: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Holds",
+    "Ice Praxis",
     "Melee Damage",
     "Universal Damage Sets"
   ],

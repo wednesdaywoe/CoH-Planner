@@ -33,6 +33,7 @@ export const SnapShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

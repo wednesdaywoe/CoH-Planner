@@ -39,6 +39,7 @@ export const SoulDrain: Power = {
     "Tanker Archetype Sets",
     "Threat Duration",
     "To Hit Buff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

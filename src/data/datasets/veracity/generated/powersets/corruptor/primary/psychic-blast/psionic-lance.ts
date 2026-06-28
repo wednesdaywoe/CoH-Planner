@@ -36,6 +36,7 @@ export const PsionicLance: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Psychic Praxis",
     "Ranged Damage",
     "Sniper Attacks",
     "Universal Damage Sets"

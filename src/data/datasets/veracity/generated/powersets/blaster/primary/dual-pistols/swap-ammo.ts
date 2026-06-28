@@ -23,6 +23,9 @@ export const SwapAmmo: Power = {
     "activatePeriod": 2
   },
   "allowedEnhancements": [],
+  "allowedSetCategories": [
+    "Finesse Praxis"
+  ],
   "maxSlots": 0,
   "mechanicType": "parentMechanic"
 };

@@ -37,6 +37,7 @@ export const Gale: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Knockback",
     "Ranged AoE Damage",
     "Universal Damage Sets"

@@ -37,7 +37,8 @@ export const CruelKnockoutBlow: Power = {
     "Brute Archetype Sets",
     "Knockback",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "damage": [

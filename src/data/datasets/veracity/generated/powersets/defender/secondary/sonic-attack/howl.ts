@@ -38,7 +38,8 @@ export const Howl: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Ranged AoE Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "damage": [

@@ -37,7 +37,8 @@ export const AuraofDomination: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "damage": {

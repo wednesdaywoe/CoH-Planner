@@ -38,6 +38,7 @@ export const Disembowel: Power = {
     "Accurate Defense Debuff",
     "Brute Archetype Sets",
     "Defense Debuff",
+    "Finesse Praxis",
     "Knockback",
     "Melee Damage",
     "Threat Duration",

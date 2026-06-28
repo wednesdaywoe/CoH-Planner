@@ -37,6 +37,7 @@ export const NeutrinoBolt: Power = {
     "Accurate Defense Debuff",
     "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Energy Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

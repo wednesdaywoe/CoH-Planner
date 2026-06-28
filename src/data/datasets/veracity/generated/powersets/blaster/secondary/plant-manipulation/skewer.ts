@@ -37,6 +37,7 @@ export const Skewer: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
+    "Nature Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

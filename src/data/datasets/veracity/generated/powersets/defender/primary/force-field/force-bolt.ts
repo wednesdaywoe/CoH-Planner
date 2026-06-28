@@ -37,7 +37,8 @@ export const ForceBolt: Power = {
     "Defender Archetype Sets",
     "Knockback",
     "Ranged Damage",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6,
   "damage": {

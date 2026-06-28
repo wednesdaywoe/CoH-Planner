@@ -37,6 +37,7 @@ export const Clobber: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Might Praxis",
     "Stuns",
     "Tanker Archetype Sets",
     "Threat Duration",

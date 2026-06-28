@@ -36,6 +36,7 @@ export const GleamingColumn: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Holds",
+    "Psychic Praxis",
     "Ranged Damage"
   ],
   "maxSlots": 6,

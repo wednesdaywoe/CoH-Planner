@@ -47,6 +47,7 @@ export const ChillingEmbrace: Power = {
     "Accurate Healing",
     "Endurance Modification",
     "Healing",
+    "Ice Praxis",
     "Slow Movement"
   ],
   "maxSlots": 6,

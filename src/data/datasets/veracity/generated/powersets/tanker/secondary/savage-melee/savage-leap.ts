@@ -35,6 +35,7 @@ export const SavageLeap: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Nature Praxis",
     "Tanker Archetype Sets",
     "Teleport",
     "Threat Duration",

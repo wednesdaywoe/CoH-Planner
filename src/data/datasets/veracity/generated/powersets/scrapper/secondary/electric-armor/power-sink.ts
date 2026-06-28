@@ -32,6 +32,7 @@ export const PowerSink: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Endurance Modification"
   ],
   "maxSlots": 6,

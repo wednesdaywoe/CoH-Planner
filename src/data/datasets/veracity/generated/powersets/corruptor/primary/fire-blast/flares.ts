@@ -34,6 +34,7 @@ export const Flares: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Fire Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

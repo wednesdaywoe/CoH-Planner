@@ -41,7 +41,8 @@ export const SerpentsReach: Power = {
     "Ranged Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6,
   "damage": {

@@ -38,7 +38,8 @@ export const DarkEmbrace: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Resist Damage"
+    "Resist Damage",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

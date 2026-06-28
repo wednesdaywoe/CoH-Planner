@@ -42,6 +42,7 @@ export const Entangle: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Immobilize",
+    "Nature Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

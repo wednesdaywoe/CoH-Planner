@@ -39,6 +39,7 @@ export const SoulDrain: Power = {
     "Melee AoE Damage",
     "Threat Duration",
     "To Hit Buff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

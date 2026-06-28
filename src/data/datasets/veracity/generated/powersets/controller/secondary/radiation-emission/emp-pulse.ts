@@ -38,6 +38,7 @@ export const EMPPulse: Power = {
     "Accurate Healing",
     "Controller Archetype Sets",
     "Endurance Modification",
+    "Energy Praxis",
     "Holds"
   ],
   "maxSlots": 6,

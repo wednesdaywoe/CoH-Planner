@@ -37,6 +37,7 @@ export const FireSword: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Fire Praxis",
     "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",

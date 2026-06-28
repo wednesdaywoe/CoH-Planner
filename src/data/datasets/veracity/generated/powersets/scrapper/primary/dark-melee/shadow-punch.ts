@@ -37,6 +37,7 @@ export const ShadowPunch: Power = {
     "Melee Damage",
     "Scrapper Archetype Sets",
     "To Hit Debuff",
+    "Umbral Praxis",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

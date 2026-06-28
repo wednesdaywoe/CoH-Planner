@@ -39,6 +39,7 @@ export const ShatterArmor: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee Damage",
+    "Might Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

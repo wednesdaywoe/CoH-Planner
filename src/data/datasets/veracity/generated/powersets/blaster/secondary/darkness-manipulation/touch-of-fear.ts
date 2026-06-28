@@ -42,7 +42,8 @@ export const TouchofFear: Power = {
     "Endurance Modification",
     "Fear",
     "Healing",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "effects": {

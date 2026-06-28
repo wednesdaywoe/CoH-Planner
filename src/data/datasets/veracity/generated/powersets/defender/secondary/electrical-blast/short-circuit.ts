@@ -35,6 +35,7 @@ export const ShortCircuit: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Melee AoE Damage",
     "Universal Damage Sets"

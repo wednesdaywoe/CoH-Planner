@@ -33,6 +33,7 @@ export const RiseofthePhoenix: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Endurance Modification",
+    "Fire Praxis",
     "Healing",
     "Melee AoE Damage",
     "Stuns",

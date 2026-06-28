@@ -28,6 +28,7 @@ export const HighPainTolerance: Power = {
   ],
   "allowedSetCategories": [
     "Healing",
+    "Psychic Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

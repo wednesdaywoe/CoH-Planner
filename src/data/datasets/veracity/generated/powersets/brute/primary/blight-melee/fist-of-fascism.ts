@@ -41,7 +41,8 @@ export const FistofFascism: Power = {
     "Knockback",
     "Melee AoE Damage",
     "Stuns",
-    "Threat Duration"
+    "Threat Duration",
+    "Umbral Praxis"
   ],
   "maxSlots": 6,
   "damage": [

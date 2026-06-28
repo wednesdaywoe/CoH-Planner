@@ -32,6 +32,7 @@ export const InertialReduction: Power = {
     "Jump"
   ],
   "allowedSetCategories": [
+    "Energy Praxis",
     "Leaping & Sprints",
     "Universal Travel"
   ],

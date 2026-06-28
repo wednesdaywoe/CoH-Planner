@@ -35,6 +35,7 @@ export const AnimateStone: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Knockback",
     "Pet Damage",
     "Recharge Intensive Pets",

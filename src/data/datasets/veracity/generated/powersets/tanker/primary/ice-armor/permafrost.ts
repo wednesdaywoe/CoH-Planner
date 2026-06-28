@@ -28,6 +28,7 @@ export const Permafrost: Power = {
     "Resistance"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Resist Damage"
   ],
   "maxSlots": 6,

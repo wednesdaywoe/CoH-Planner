@@ -34,6 +34,7 @@ export const Tremor: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Knockback",
     "Melee AoE Damage",
     "Universal Damage Sets"

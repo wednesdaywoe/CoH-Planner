@@ -43,7 +43,8 @@ export const Liquefy: Power = {
     "Holds",
     "Ranged AoE Damage",
     "To Hit Debuff",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vibration Praxis"
   ],
   "maxSlots": 6
 };

@@ -34,6 +34,7 @@ export const FlingQuills: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Life Praxis",
     "Melee AoE Damage",
     "Scrapper Archetype Sets",
     "Slow Movement",

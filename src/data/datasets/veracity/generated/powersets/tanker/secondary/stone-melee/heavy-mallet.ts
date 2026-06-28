@@ -36,6 +36,7 @@ export const HeavyMallet: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Earth Praxis",
     "Knockback",
     "Melee Damage",
     "Tanker Archetype Sets",

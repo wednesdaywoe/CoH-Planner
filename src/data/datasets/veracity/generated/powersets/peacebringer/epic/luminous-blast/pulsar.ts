@@ -33,6 +33,7 @@ export const Pulsar: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Luminosity Praxis",
     "Stuns"
   ],
   "maxSlots": 6,

@@ -36,7 +36,8 @@ export const Vines: Power = {
   ],
   "allowedSetCategories": [
     "Dominator Archetype Sets",
-    "Holds"
+    "Holds",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "effects": {

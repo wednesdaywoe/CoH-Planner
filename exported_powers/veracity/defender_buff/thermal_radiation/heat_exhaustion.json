@@ -38,7 +38,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Accurate Healing"
+    "Accurate Healing",
+    "Fire Praxis"
   ],
   "cast_through": [],
   "toggle_ignore": [],

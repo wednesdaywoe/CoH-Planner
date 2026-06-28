@@ -36,6 +36,7 @@ export const PsychicWail: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Melee AoE Damage",
+    "Psychic Praxis",
     "Stuns",
     "Universal Damage Sets"
   ],

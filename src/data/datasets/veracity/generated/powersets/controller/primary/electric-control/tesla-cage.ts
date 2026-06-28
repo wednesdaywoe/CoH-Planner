@@ -36,6 +36,7 @@ export const TeslaCage: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Holds",
     "Ranged Damage",

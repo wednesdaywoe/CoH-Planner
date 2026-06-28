@@ -39,6 +39,7 @@ export const SolarFlare: Power = {
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Knockback",
+    "Luminosity Praxis",
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],

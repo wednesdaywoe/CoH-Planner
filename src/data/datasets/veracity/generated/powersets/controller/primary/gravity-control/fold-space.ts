@@ -40,7 +40,8 @@ export const FoldSpace: Power = {
     "Knockback",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Universal Damage Sets"
+    "Universal Damage Sets",
+    "Vacuum Praxis"
   ],
   "maxSlots": 6
 };

@@ -37,6 +37,7 @@ export const InitialStrike: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Might Praxis",
     "Stuns",
     "Tanker Archetype Sets",
     "Threat Duration",

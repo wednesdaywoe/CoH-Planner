@@ -41,7 +41,8 @@ export const VentilationLoop: Power = {
     "Immobilize",
     "Pet Damage",
     "Ranged Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Water Praxis"
   ],
   "maxSlots": 6
 };

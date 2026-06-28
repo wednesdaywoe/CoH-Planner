@@ -33,6 +33,7 @@ export const AssassinsIceSwords: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ice Praxis",
     "Melee Damage",
     "Stalker Archetype Sets",
     "Universal Damage Sets"

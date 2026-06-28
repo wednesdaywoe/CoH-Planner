@@ -36,6 +36,7 @@ export const SuppressiveFire: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
+    "Finesse Praxis",
     "Holds",
     "Ranged Damage",
     "Stuns",

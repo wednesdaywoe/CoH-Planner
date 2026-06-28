@@ -36,6 +36,7 @@ export const FreezeRay: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Holds",
+    "Ice Praxis",
     "Ranged Damage",
     "Universal Damage Sets"
   ],

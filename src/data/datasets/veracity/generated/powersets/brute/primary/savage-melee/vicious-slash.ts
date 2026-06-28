@@ -37,6 +37,7 @@ export const ViciousSlash: Power = {
     "Brute Archetype Sets",
     "Knockback",
     "Melee Damage",
+    "Nature Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

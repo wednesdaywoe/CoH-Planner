@@ -33,6 +33,7 @@ export const DepletedCoreDisposal: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Ballistic Praxis",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

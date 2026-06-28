@@ -34,6 +34,7 @@ export const LightningClap: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Knockback",
     "Scrapper Archetype Sets",
     "Stuns"

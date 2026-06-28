@@ -39,6 +39,7 @@ export const DefensiveSweep: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Melee AoE Damage",
+    "Might Praxis",
     "Tanker Archetype Sets",
     "Threat Duration",
     "Universal Damage Sets"

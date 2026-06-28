@@ -33,7 +33,8 @@ export const RagingTempest: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
-    "Holds"
+    "Holds",
+    "Nature Praxis"
   ],
   "maxSlots": 6,
   "effects": {

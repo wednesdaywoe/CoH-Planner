@@ -34,6 +34,7 @@ export const Oni: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Finesse Praxis",
     "Holds",
     "Immobilize",
     "Knockback",

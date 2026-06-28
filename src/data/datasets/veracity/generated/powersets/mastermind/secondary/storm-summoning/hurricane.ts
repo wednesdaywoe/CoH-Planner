@@ -34,6 +34,7 @@ export const Hurricane: Power = {
     "ToHit Debuff"
   ],
   "allowedSetCategories": [
+    "Electricity Praxis",
     "Knockback",
     "To Hit Debuff"
   ],

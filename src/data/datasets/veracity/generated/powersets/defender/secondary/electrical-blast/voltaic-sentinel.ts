@@ -35,6 +35,7 @@ export const VoltaicSentinel: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
+    "Electricity Praxis",
     "Endurance Modification",
     "Pet Damage",
     "Recharge Intensive Pets",

@@ -35,6 +35,7 @@ export const ThroatStrike: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Melee Damage",
+    "Might Praxis",
     "Threat Duration",
     "Universal Damage Sets"
   ],

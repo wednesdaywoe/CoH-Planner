@@ -36,7 +36,9 @@
     "Recharge",
     "Accuracy"
   ],
-  "allowed_set_categories": null,
+  "allowed_set_categories": [
+    "Nature Praxis"
+  ],
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
