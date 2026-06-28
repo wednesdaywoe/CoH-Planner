@@ -21,6 +21,7 @@ import type { Power, TargetType, EffectArea, SelectedPower, IOSetEnhancement, Re
 import type { PowerDamageResult } from '@/utils/calculations';
 import { calcThreeTier as calcThreeTierUtil } from './powerDisplayUtils';
 import { abbreviateDamageType, calculateArcanaTime } from '@/utils/calculations';
+import { resolveProcAreaGeometry } from '@/utils/calculations/pet-damage';
 import { Chip, type TagKind } from './TagsRow';
 import {
   findProcData,
@@ -175,6 +176,12 @@ export function GeneralStatsBlock({
   // instead of the misleading "Single Target" — display-only, never mutates the
   // power's real effect_area. See parser_logs/BIN-PARSER-LOG.md.
   const patchArea = deriveSummonPatchArea(power, effects);
+  // Proc area-factor geometry. `effects.arc` is already in degrees and
+  // `effects.radius` is the BASE radius (a cone's enhanced reach must not
+  // inflate the proc denominator). When the parent has no radius the resolver
+  // borrows the summoned pseudo-pet/patch footprint (Burn, rains, Caltrops).
+  const procAreaGeometry = resolveProcAreaGeometry(
+    effects.radius ?? 0, effects.arc, power.effects?.summon);
   // For a cone, `radius` and `range` describe the same dimension — the cone's
   // reach — and Range enhancements extend it (unlike sphere/PBAoE radii, which
   // are fixed). Show the *enhanced* reach in the Effect Area row so it matches
@@ -205,8 +212,11 @@ export function GeneralStatsBlock({
         selectedPower={selectedPower ?? null}
         baseRecharge={effects.recharge ?? 0}
         castTime={effects.castTime ?? 0}
-        radius={effects.radius ?? 0}
-        arcDegrees={effects.arc}
+        // Summon-shell AoEs (Burn, rains, Caltrops) have base radius 0 — pull the
+        // pseudo-pet/patch footprint so procs aren't scored single-target. Powers
+        // with a real radius (incl. cones, base reach not enhanced) are untouched.
+        radius={procAreaGeometry.radius}
+        arcDegrees={procAreaGeometry.arcDegrees}
         slottedRechargeBonus={enhancementBonuses.recharge ?? 0}
       />
     </div>

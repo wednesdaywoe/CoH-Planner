@@ -18,6 +18,7 @@
 import type { PowerDamageResult } from '@/utils/calculations';
 import { calculateArcanaTime, abbreviateDamageType } from '@/utils/calculations';
 import { arcToDegrees } from '@/data';
+import { resolveProcAreaGeometry } from '@/utils/calculations/pet-damage';
 import { calculateSlottedProcDamagePerCast } from '@/utils/calculations/power-proc-damage';
 import type { SelectedPower } from '@/types';
 import { useUIStore } from '@/stores';
@@ -46,6 +47,10 @@ export interface DamageBlockProps {
     radius?: number;
     /** Cone arc — radians from binary, or already in degrees from upstream conversion */
     arc?: number;
+    /** Summon block — lets summon-shell AoEs (Burn, rains) borrow the
+     *  pseudo-pet/patch radius for the proc area-factor instead of being scored
+     *  single-target. */
+    summon?: import('@/types/power').SummonEffect;
   };
   archetypeId?: string;
   buildLevel: number;
@@ -453,13 +458,14 @@ function computeProcDamagePerActivation(props: DamageBlockProps): number {
   if (!includeProcDamage) return 0;
   let total = incarnateProcDamage ?? 0;
   if (selectedPower?.slots) {
-    const radius = effects.radius ?? 0;
+    const { radius, arcDegrees } = resolveProcAreaGeometry(
+      effects.radius ?? 0, arcToDegrees(effects.arc) || undefined, effects.summon);
     total += calculateSlottedProcDamagePerCast({
       slots: selectedPower.slots,
       baseRecharge: effects.recharge ?? 0,
       castTime: effects.castTime ?? 0,
       radius,
-      arcDegrees: radius > 0 ? (arcToDegrees(effects.arc) || 360) : 360,
+      arcDegrees,
       rechargeEnh: enhancementBonuses.recharge ?? 0,
       buildLevel,
     });

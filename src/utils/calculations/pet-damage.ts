@@ -478,3 +478,70 @@ export function synthesizePseudoPetEffects(
     ? (out as Partial<import('@/types/power').PowerEffects>)
     : null;
 }
+
+/**
+ * Widest AoE footprint (radius + arc) carried by a power's summoned
+ * pseudo-pet / ground patch. Many AoE powers have radius 0 on the parent power
+ * because the real area of effect lives on a summon: Burn (Self/SingleTarget
+ * shell + PL_StaticObject pseudo-pet, radius 15) or the rains / Caltrops /
+ * Tar Patch (Location parent + a real PET_ENTITIES patch like Pets_RainofFire,
+ * radius 25). The PPM proc area-factor must use that footprint, otherwise these
+ * are scored as single-target and their proc chance is reported far too high.
+ *
+ * Mirrors synthesizePseudoPetEffects' dual iteration: real non-commandable
+ * PET_ENTITIES patches plus inline resolvedEntities. Commandable pets
+ * (Mastermind henchmen, Lore) are excluded — procs slotted in the SUMMON power
+ * don't roll against the pet's own attacks. Pet self-buffs (no radius) are
+ * skipped. Arc defaults to 360 (sphere/patch): the bin format stores no arc on
+ * pseudo-pet abilities and effectively all of these footprints are spheres.
+ *
+ * Returns null when the summon has no AoE footprint.
+ */
+export function getPseudoPetAoEGeometry(
+  summon: import('@/types/power').SummonEffect | undefined,
+): { radius: number; arcDegrees: number } | null {
+  if (!summon) return null;
+  let bestRadius = 0;
+  const consider = (radius: number | undefined, effectArea: string | undefined) => {
+    if (!radius || radius <= 0) return;
+    if (effectArea === 'SingleTarget' || effectArea === 'Self') return;
+    if (radius > bestRadius) bestRadius = radius;
+  };
+
+  const entityNames = summon.entities && summon.entities.length > 0
+    ? summon.entities.map((e) => e.entity)
+    : summon.entity ? [summon.entity] : [];
+  for (const entityName of entityNames) {
+    const entity = getPetEntity(entityName);
+    if (!entity || entity.commandable) continue; // patches / pseudo-pets only
+    for (const ability of entity.abilities) consider(ability.radius, ability.effectArea);
+  }
+  for (const resolved of summon.resolvedEntities ?? []) {
+    for (const ability of resolved.abilities) consider(ability.radius, ability.effectArea);
+  }
+
+  return bestRadius > 0 ? { radius: bestRadius, arcDegrees: 360 } : null;
+}
+
+/**
+ * Radius + arc the PPM proc area-factor should use for a power: its own AoE
+ * when it has one, else the summoned pseudo-pet / patch footprint (Burn, rains,
+ * Caltrops…), else single-target (radius 0).
+ *
+ * @param directRadius the parent power's own AoE radius (0 if none)
+ * @param directArcDegrees the parent power's arc IN DEGREES (caller converts
+ *   from the raw binary radians); ignored when directRadius is 0
+ */
+export function resolveProcAreaGeometry(
+  directRadius: number,
+  directArcDegrees: number | undefined,
+  summon: import('@/types/power').SummonEffect | undefined,
+): { radius: number; arcDegrees: number } {
+  if (directRadius > 0) {
+    return {
+      radius: directRadius,
+      arcDegrees: directArcDegrees && directArcDegrees > 0 ? directArcDegrees : 360,
+    };
+  }
+  return getPseudoPetAoEGeometry(summon) ?? { radius: 0, arcDegrees: 360 };
+}

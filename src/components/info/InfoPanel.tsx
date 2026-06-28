@@ -36,7 +36,7 @@ import type { IOSetEnhancement } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
 import { isPermaEligible, calculatePermaInfo } from '@/utils/calculations/perma';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
-import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
+import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
 import type { GenesisExemplarEffect } from '@/data';
@@ -744,9 +744,13 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     if (!selectedPower?.slots) return null;
     const baseRecharge = effectivePower?.stats?.recharge ?? effectivePower?.effects?.recharge ?? 0;
     const castTime = effectivePower?.stats?.castTime ?? effectivePower?.effects?.castTime ?? 0;
-    const radius = effectivePower?.stats?.radius ?? effectivePower?.effects?.radius ?? 0;
-    const rawArc = effectivePower?.stats?.arc ?? effectivePower?.effects?.arc;
-    const arcDegrees = radius > 0 ? (arcToDegrees(rawArc) || 360) : 360;
+    // AoE powers whose footprint lives on a summoned pseudo-pet/patch (Burn,
+    // rains, Caltrops) carry radius 0 on the parent — resolveProcAreaGeometry
+    // pulls the pet's radius so the proc area-factor isn't scored single-target.
+    const directRadius = effectivePower?.stats?.radius ?? effectivePower?.effects?.radius ?? 0;
+    const directArc = effectivePower?.stats?.arc ?? effectivePower?.effects?.arc;
+    const { radius, arcDegrees } = resolveProcAreaGeometry(
+      directRadius, arcToDegrees(directArc) || undefined, effectivePower?.effects?.summon);
     if (!baseRecharge && !castTime) return null;
 
     // Cycle time uses the *enhanced* recharge (slotted + global) and
@@ -906,9 +910,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     if (!archetypeId || !effectivePower || !powerCanSlotDamage) return 0;
     const baseRecharge = effectivePower.stats?.recharge ?? effectivePower.effects?.recharge ?? 0;
     const castTime = effectivePower.stats?.castTime ?? effectivePower.effects?.castTime ?? 0;
-    const radius = effectivePower.stats?.radius ?? effectivePower.effects?.radius ?? 0;
-    const rawArc = effectivePower.stats?.arc ?? effectivePower.effects?.arc;
-    const arcDegrees = radius > 0 ? (arcToDegrees(rawArc) || 360) : 360;
+    const directRadius = effectivePower.stats?.radius ?? effectivePower.effects?.radius ?? 0;
+    const directArc = effectivePower.stats?.arc ?? effectivePower.effects?.arc;
+    const { radius, arcDegrees } = resolveProcAreaGeometry(
+      directRadius, arcToDegrees(directArc) || undefined, effectivePower.effects?.summon);
     if (!baseRecharge && !castTime) return 0;
     const procs = getActiveIncarnateDamageProcs(build.incarnates, {
       hybrid: !!incarnateActive?.hybrid,
@@ -1200,6 +1205,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
             enduranceCost: effects?.enduranceCost,
             radius: effects?.radius,
             arc: effects?.arc,
+            summon: effectivePower.effects?.summon,
           }}
           archetypeId={archetypeId ?? undefined}
           buildLevel={build.level}
