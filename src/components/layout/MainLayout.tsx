@@ -3,6 +3,7 @@
  */
 
 import { useEffect, useState, type ReactNode } from 'react';
+import { DISCORD_INVITE_URL } from '@/lib/links';
 import { Header } from './Header';
 import { StatsDashboard } from './StatsDashboard';
 import { UpdateBanner } from './UpdateBanner';
@@ -142,7 +143,7 @@ export function MainLayout({ children }: MainLayoutProps) {
           </svg>
         </button>
         <a
-          href="https://discord.gg/Tf2nkeqcFy"
+          href={DISCORD_INVITE_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-9 h-9 bg-slate-700 hover:bg-slate-600 rounded-full shadow-lg transition-colors border border-[#5865F2]"

@@ -3,6 +3,7 @@
  */
 
 import { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
+import { DISCORD_INVITE_URL, DISCORD_FEEDBACK_DM_URL } from '@/lib/links';
 import { Button } from '@/components/ui';
 import { useUIStore } from '@/stores';
 import { APP_VERSION } from '@/buildTime';
@@ -60,7 +61,7 @@ export function WelcomeModal() {
             <p>
               If you have a question and would like a response, please contact{' '}
               <a
-                href="https://discord.com/channels/@me/570068130320220172"
+                href={DISCORD_FEEDBACK_DM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-amber-300 underline hover:text-amber-100"
@@ -78,7 +79,7 @@ export function WelcomeModal() {
               </a>
               {' '}or join the{' '}
               <a
-                href="https://discord.gg/Tf2nkeqcFy"
+                href={DISCORD_INVITE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-amber-300 underline hover:text-amber-100"

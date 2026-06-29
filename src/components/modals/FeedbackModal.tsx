@@ -4,6 +4,7 @@
  */
 
 import { useState } from 'react';
+import { DISCORD_INVITE_URL, DISCORD_FEEDBACK_DM_URL } from '@/lib/links';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 import { Button } from '../ui/Button';
 import { useBuildStore } from '@/stores/buildStore';
@@ -181,7 +182,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
               <p className="text-sm text-amber-200 font-medium">
                 If you have a question and would like a response, please contact{' '}
                 <a
-                  href="https://discord.com/channels/@me/570068130320220172"
+                  href={DISCORD_FEEDBACK_DM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber-300 underline hover:text-amber-100"
@@ -199,7 +200,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
                 </a>
                 {' '}or join the{' '}
                 <a
-                  href="https://discord.gg/5HmYsACBv6"
+                  href={DISCORD_INVITE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber-300 underline hover:text-amber-100"

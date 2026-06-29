@@ -17,6 +17,7 @@
  */
 
 import { useEffect, useState, type ReactNode } from 'react';
+import { DISCORD_INVITE_URL } from '@/lib/links';
 import { useUIStore, useBuildStore, useAuthStore } from '@/stores';
 import { useOnboardingStore } from '@/stores/onboardingStore';
 import { StatsDashboard } from './StatsDashboard';
@@ -367,7 +368,7 @@ function MobileMenuContent({
         {item('Changelog', openChangelogModal)}
         {item('Send feedback', openFeedbackModal)}
         <button
-          onClick={() => { window.open('https://discord.gg/Tf2nkeqcFy', '_blank', 'noopener,noreferrer'); onDone(); }}
+          onClick={() => { window.open(DISCORD_INVITE_URL, '_blank', 'noopener,noreferrer'); onDone(); }}
           className="w-full flex items-center gap-3 px-4 py-3 text-sm border-b border-slate-800 text-slate-100 font-medium hover:bg-[#5865F2]/10 active:bg-[#5865F2]/20 transition-colors"
         >
           <svg className="w-5 h-5 shrink-0" fill="#5865F2" viewBox="0 0 16 16" aria-hidden>
