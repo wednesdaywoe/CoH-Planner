@@ -24,7 +24,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-06-27',
 
     items: [
-      { message: 'Proc-DPS section, incarnate procs, and the DamageBlock "+proc" annotation should all agree now. If they don\'t, that\'s a paddlin\'.' type: 'fix'},
+      { message: 'Proc-DPS section, incarnate procs, and the DamageBlock "+proc" annotation should all agree now. If they don\'t, that\'s a paddlin\'.', type: 'fix'},
       { message: 'The attack chain tool can now use in-combat to gate Quicksnipe', type: 'feat'},
       { message: 'Fixed an endurance display discrepancy between the info panel and tooltip', type: 'fix'},
       { message: 'Fixed ATO/Event enhancements registering as level 1 if attunement is turned off', type: 'fix'},
