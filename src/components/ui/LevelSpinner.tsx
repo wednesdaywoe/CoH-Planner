@@ -154,7 +154,9 @@ export function LevelSpinner({
             else if (e.key === 'Escape') { e.preventDefault(); setEditing(false); }
           }}
           // Match the static cell's footprint so the row doesn't reflow.
-          className={`text-sm font-mono ${widthClass} text-center bg-transparent border border-[var(--color-primary)]/60 rounded outline-none ${valueColorClass} px-0.5`}
+          // Suppress the native number-input spinner buttons — in this
+          // narrow cell they overlap and hide the digits.
+          className={`text-sm font-mono ${widthClass} text-center bg-transparent border border-[var(--color-primary)]/60 rounded outline-none ${valueColorClass} px-0.5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
         />
       ) : (
         <div
