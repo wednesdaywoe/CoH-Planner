@@ -271,6 +271,11 @@ interface UIState {
   /** Whether incarnate level shifts are applied (independent from per-slot stat toggles) */
   incarnateLevelShiftActive: boolean;
 
+  /** Seconds after cast to evaluate the diminishing Destiny buff at. `null` = auto
+   *  = the equipped power's sustained floor (the conservative default a perma-
+   *  Destiny build relies on); 0 = additive peak (Mids-style time slider). */
+  destinyTime: number | null;
+
   /** Domination active state - for Dominators to see enhanced mez values */
   dominationActive: boolean;
 
@@ -551,6 +556,8 @@ interface UIActions {
   setIncarnateActive: (slotId: ToggleableIncarnateSlot, active: boolean) => void;
   resetIncarnateActive: () => void;
   toggleIncarnateLevelShift: () => void;
+  /** Set the Destiny time-slider position (seconds after cast; `null` = auto floor). */
+  setDestinyTime: (seconds: number | null) => void;
 
   // Domination Active State (Dominator inherent)
   toggleDomination: () => void;
@@ -802,6 +809,7 @@ export const useUIStore = create<UIStore>()(
       colorMode: DEFAULT_COLOR_MODE,
       incarnateActive: createDefaultIncarnateActiveState(),
       incarnateLevelShiftActive: true,
+      destinyTime: null,
       dominationActive: false,
       scourgeActive: false,
       furyLevel: 75, // Default to 75 fury (reasonable combat average)
@@ -1399,6 +1407,9 @@ export const useUIStore = create<UIStore>()(
           incarnateLevelShiftActive: !state.incarnateLevelShiftActive,
         })),
 
+      setDestinyTime: (seconds) =>
+        set({ destinyTime: seconds === null ? null : Math.max(0, seconds) }),
+
       // Domination Active State
       toggleDomination: () =>
         set((state) => ({
@@ -1642,6 +1653,7 @@ export const useUIStore = create<UIStore>()(
           globalAdjusters: {},
           incarnateActive: createDefaultIncarnateActiveState(),
           incarnateLevelShiftActive: true,
+          destinyTime: 0,
           dominationActive: false,
           scourgeActive: false,
           furyLevel: 0,
@@ -1697,6 +1709,7 @@ export const useUIStore = create<UIStore>()(
         colorMode: state.colorMode,
         incarnateActive: state.incarnateActive,
         incarnateLevelShiftActive: state.incarnateLevelShiftActive,
+        destinyTime: state.destinyTime,
         dominationActive: state.dominationActive,
         scourgeActive: state.scourgeActive,
         furyLevel: state.furyLevel,
@@ -1840,6 +1853,9 @@ export const useIncarnateActive = () => useUIStore((state) => state.incarnateAct
 /** Select if a specific incarnate slot is active */
 export const useIsIncarnateSlotActive = (slotId: ToggleableIncarnateSlot) =>
   useUIStore((state) => state.incarnateActive[slotId]);
+
+/** Select the Destiny time-slider position (seconds after cast). */
+export const useDestinyTime = () => useUIStore((state) => state.destinyTime);
 
 /** Select domination active state */
 export const useDominationActive = () => useUIStore((state) => state.dominationActive);

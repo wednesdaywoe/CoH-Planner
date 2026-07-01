@@ -262,6 +262,7 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   const combatMode = useUIStore((state) => state.combatMode);
   const globalAdjusters = useUIStore((state) => state.globalAdjusters);
   const mechanicAdjusters = useUIStore((state) => state.mechanicAdjusters);
+  const destinyTime = useUIStore((state) => state.destinyTime);
 
   // When master Proc toggle is off, disable all proc categories
   const effectiveProcSettings = procsEnabled ? procSettings : ALL_PROCS_DISABLED;
@@ -278,8 +279,9 @@ export function useCharacterCalculation(): CharacterCalculationResult {
       combatMode,
       globalAdjusters,
       mechanicAdjusters,
+      destinyTime,
     });
-  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters]);
+  }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime]);
 }
 
 /**

@@ -13,7 +13,7 @@ import { getArchetype } from '@/data';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal } from '@/components/modals';
-import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal } from '@/components/incarnate';
+import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal, DestinyTimeSlider } from '@/components/incarnate';
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
@@ -449,6 +449,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
               suppressed={incarnatesSuppressed}
               horizontal
             />
+            {!incarnatesSuppressed && incarnateActive.destiny && <DestinyTimeSlider />}
           </div>
         </div>
 

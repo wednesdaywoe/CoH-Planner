@@ -233,6 +233,12 @@ export type {
 export {
   getAlphaEffects,
   getDestinyEffects,
+  getDestinyEffectsAtTime,
+  getDestinyTimeline,
+  getDestinyTotalDuration,
+  getDestinySustainedFloorTime,
+  getDestinyBoostsAllowed,
+  applyAlphaToDestiny,
   getHybridEffects,
   getInterfaceEffects,
   getJudgementEffects,
@@ -245,6 +251,8 @@ export {
 export type {
   AlphaEffects,
   DestinyEffects,
+  DestinyTimeline,
+  DestinyTimelineTier,
   HybridEffects,
   InterfaceEffects,
   JudgementEffects,

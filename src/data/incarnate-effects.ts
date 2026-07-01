@@ -16,6 +16,8 @@ import type { IncarnateSlotId } from '@/types';
 import {
   GENERATED_ALPHA_EFFECTS as HC_ALPHA,
   GENERATED_DESTINY_EFFECTS as HC_DESTINY,
+  GENERATED_DESTINY_TIMELINE as HC_DESTINY_TIMELINE,
+  GENERATED_DESTINY_BOOSTS as HC_DESTINY_BOOSTS,
   GENERATED_HYBRID_EFFECTS as HC_HYBRID,
   GENERATED_INTERFACE_EFFECTS as HC_INTERFACE,
   GENERATED_JUDGEMENT_EFFECTS as HC_JUDGEMENT,
@@ -24,6 +26,8 @@ import {
 import {
   GENERATED_ALPHA_EFFECTS as REBIRTH_ALPHA,
   GENERATED_DESTINY_EFFECTS as REBIRTH_DESTINY,
+  GENERATED_DESTINY_TIMELINE as REBIRTH_DESTINY_TIMELINE,
+  GENERATED_DESTINY_BOOSTS as REBIRTH_DESTINY_BOOSTS,
   GENERATED_HYBRID_EFFECTS as REBIRTH_HYBRID,
   GENERATED_INTERFACE_EFFECTS as REBIRTH_INTERFACE,
   GENERATED_JUDGEMENT_EFFECTS as REBIRTH_JUDGEMENT,
@@ -34,6 +38,8 @@ import {
 import {
   GENERATED_ALPHA_EFFECTS as THUNDERSPY_ALPHA,
   GENERATED_DESTINY_EFFECTS as THUNDERSPY_DESTINY,
+  GENERATED_DESTINY_TIMELINE as THUNDERSPY_DESTINY_TIMELINE,
+  GENERATED_DESTINY_BOOSTS as THUNDERSPY_DESTINY_BOOSTS,
   GENERATED_HYBRID_EFFECTS as THUNDERSPY_HYBRID,
   GENERATED_INTERFACE_EFFECTS as THUNDERSPY_INTERFACE,
   GENERATED_JUDGEMENT_EFFECTS as THUNDERSPY_JUDGEMENT,
@@ -121,6 +127,9 @@ export interface DestinyEffects {
   // Max HP/End
   maxHP?: number;
   maxEndurance?: number;
+  // Instantaneous endurance refill on cast (e.g. Ageless) — not a sustained buff,
+  // so it isn't folded into dashboard totals; kept for tooltips/completeness.
+  endurance?: number;
   // Recharge
   recharge?: number;
   // Damage buff
@@ -135,6 +144,23 @@ export interface DestinyEffects {
   initialDuration?: number;  // Duration of peak effect
   totalDuration?: number;    // Total duration before recharge
 }
+
+/**
+ * One decay tier of a diminishing Destiny buff.
+ *
+ * Destiny click buffs (Barrier, Ageless, …) apply several independent,
+ * overlapping buffs at once, each with its own `value` and `duration`
+ * (seconds until it expires, measured from cast). The effective value at time
+ * `t` is the SUM of all tiers whose `duration > t` — so the buff starts at the
+ * additive peak and steps down as the shorter tiers expire. This matches Mids'
+ * time-slider and the in-game behaviour (verified: T4 Barrier resolves to
+ * 90% → 32.5% → 7.5% → 5% at its phase boundaries).
+ */
+export interface DestinyTimelineTier {
+  value: number;
+  duration: number;
+}
+export type DestinyTimeline = Record<string, DestinyTimelineTier[]>;
 
 /**
  * Stat bonuses from Hybrid slot (toggle powers)
@@ -335,6 +361,33 @@ function destinyEffects(): Record<string, DestinyEffects> {
   return r;
 }
 
+// Per-stat decay tiers for diminishing Destiny buffs. Only powers that
+// actually decay (a stat with >1 tier) appear here; everything else is fully
+// described by the flat peak values in destinyEffects().
+const _destinyTimelineCache = new Map<string, Record<string, DestinyTimeline>>();
+function destinyTimelines(): Record<string, DestinyTimeline> {
+  const id = getActiveDataset().id;
+  let r = _destinyTimelineCache.get(id);
+  if (!r) {
+    r = _pick3(HC_DESTINY_TIMELINE, REBIRTH_DESTINY_TIMELINE, THUNDERSPY_DESTINY_TIMELINE) as Record<string, DestinyTimeline>;
+    _destinyTimelineCache.set(id, r);
+  }
+  return r;
+}
+
+// Boost categories each Destiny power accepts — the game's rule for which Alpha
+// enhancement aspects can enhance it.
+const _destinyBoostsCache = new Map<string, Record<string, string[]>>();
+function destinyBoosts(): Record<string, string[]> {
+  const id = getActiveDataset().id;
+  let r = _destinyBoostsCache.get(id);
+  if (!r) {
+    r = _pick3(HC_DESTINY_BOOSTS, REBIRTH_DESTINY_BOOSTS, THUNDERSPY_DESTINY_BOOSTS) as Record<string, string[]>;
+    _destinyBoostsCache.set(id, r);
+  }
+  return r;
+}
+
 // ============================================
 // HYBRID EFFECTS DATA
 // ============================================
@@ -449,6 +502,137 @@ export function getAlphaEffects(powerId: string): AlphaEffects | null {
 export function getDestinyEffects(powerId: string): DestinyEffects | null {
   const normalized = normalizePowerId(powerId);
   return destinyEffects()[normalized] || null;
+}
+
+/**
+ * Raw decay timeline for a Destiny power, or null if the power doesn't
+ * diminish over time (single-tier buffs, instant heals, pure level shifts).
+ */
+export function getDestinyTimeline(powerId: string): DestinyTimeline | null {
+  const normalized = normalizePowerId(powerId);
+  return destinyTimelines()[normalized] || null;
+}
+
+/**
+ * Longest tier duration across every stat of a Destiny power — i.e. when the
+ * buff fully expires (0 if the power doesn't decay). Drives the max extent of
+ * the time slider.
+ */
+export function getDestinyTotalDuration(powerId: string): number {
+  const timeline = getDestinyTimeline(powerId);
+  if (!timeline) return 0;
+  let max = 0;
+  for (const tiers of Object.values(timeline)) {
+    for (const t of tiers) if (t.duration > max) max = t.duration;
+  }
+  return max;
+}
+
+/**
+ * Time (seconds after cast) at which a Destiny buff reaches its sustained floor
+ * — the start of the final plateau, i.e. the value a perma-Destiny build can
+ * rely on continuously. Returns 0 for powers that don't decay (the whole buff
+ * is one plateau). This is the conservative default for the time slider.
+ *
+ * Example: Barrier's tiers expire at 7.5/22.5/45/90s, so the floor phase is
+ * [45s, 90s) and this returns 45.
+ */
+export function getDestinySustainedFloorTime(powerId: string): number {
+  const timeline = getDestinyTimeline(powerId);
+  if (!timeline) return 0;
+  const durations = new Set<number>();
+  for (const tiers of Object.values(timeline)) {
+    for (const t of tiers) if (t.duration > 0) durations.add(t.duration);
+  }
+  const sorted = Array.from(durations).sort((a, b) => a - b);
+  // Fewer than two distinct expiries → no decay steps, floor === peak at t=0.
+  if (sorted.length <= 1) return 0;
+  return sorted[sorted.length - 2];
+}
+
+/**
+ * Destiny effects resolved at a point in time `timeSec` after cast.
+ *
+ * For any stat that decays, the value is the additive sum of the tiers still
+ * active at `timeSec` (`duration > timeSec`); stats without a timeline (level
+ * shift, non-decaying buffs) pass through from the flat peak values unchanged.
+ * With `timeSec` undefined or a power that doesn't decay, this returns the
+ * peak values — identical to getDestinyEffects().
+ */
+export function getDestinyEffectsAtTime(
+  powerId: string,
+  timeSec: number | undefined,
+): DestinyEffects | null {
+  const base = getDestinyEffects(powerId);
+  if (!base) return null;
+  const timeline = getDestinyTimeline(powerId);
+  if (!timeline || timeSec == null) return base;
+
+  const resolved: DestinyEffects = { ...base };
+  for (const [stat, tiers] of Object.entries(timeline)) {
+    let sum = 0;
+    for (const t of tiers) {
+      // A tier is active while `timeSec` is before its expiry. Instantaneous
+      // effects (duration 0 — e.g. Ageless's endurance refill) only exist at
+      // the moment of cast, so they count at t=0 only.
+      if (t.duration > timeSec || (t.duration === 0 && timeSec <= 0)) sum += t.value;
+    }
+    // Guard float drift from summing tiers like 0.575 + 0.25 + 0.025 + 0.05.
+    (resolved as Record<string, number>)[stat] = Math.round(sum * 1e6) / 1e6;
+  }
+  return resolved;
+}
+
+/** Boost categories a Destiny power accepts (e.g. ['Res_Damage','Buff_Defense']). */
+export function getDestinyBoostsAllowed(powerId: string): string[] {
+  const normalized = normalizePowerId(powerId);
+  return destinyBoosts()[normalized] || [];
+}
+
+/**
+ * Which Alpha enhancement aspect enhances which Destiny stat, and the boost
+ * category the game requires the power to accept for it to apply. This is the
+ * game-accurate, data-gated rule for "Alpha enhances Destiny" (something Mids
+ * doesn't model): Cardiac's resistance enhances Barrier because Barrier's
+ * boosts_allowed lists Res_Damage; Musculature's damage does not, because
+ * Barrier doesn't accept a damage boost.
+ */
+const ALPHA_DESTINY_ENHANCEMENT: ReadonlyArray<{
+  boost: string;
+  alphaAspect: keyof AlphaEffects;
+  destinyStat: keyof DestinyEffects;
+}> = [
+  { boost: 'Res_Damage', alphaAspect: 'resistance', destinyStat: 'resistanceAll' },
+  { boost: 'Buff_Defense', alphaAspect: 'defense', destinyStat: 'defenseAll' },
+  { boost: 'Heal', alphaAspect: 'heal', destinyStat: 'healPercent' },
+  { boost: 'Recovery', alphaAspect: 'enduranceModification', destinyStat: 'recovery' },
+];
+
+/**
+ * Enhance a Destiny buff by the equipped Alpha's enhancement, gated by the
+ * power's accepted boost categories. Returns a new object; unchanged when no
+ * Alpha, no matching boost, or no relevant enhancement aspect.
+ *
+ * A Destiny click buff carries no slotted enhancements, so the Alpha value is
+ * the only enhancement in that aspect and sits well below the ED knee — we
+ * apply it as a straight `× (1 + aspect)` with no ED penalty modelled.
+ */
+export function applyAlphaToDestiny(
+  effects: DestinyEffects,
+  boostsAllowed: string[],
+  alpha: AlphaEffects | null,
+): DestinyEffects {
+  if (!alpha || boostsAllowed.length === 0) return effects;
+  let out: DestinyEffects | null = null;
+  for (const m of ALPHA_DESTINY_ENHANCEMENT) {
+    if (!boostsAllowed.includes(m.boost)) continue;
+    const enh = alpha[m.alphaAspect];
+    const base = effects[m.destinyStat];
+    if (!enh || base === undefined) continue;
+    if (!out) out = { ...effects };
+    (out as Record<string, number>)[m.destinyStat] = Math.round(base * (1 + enh) * 1e6) / 1e6;
+  }
+  return out ?? effects;
 }
 
 /**

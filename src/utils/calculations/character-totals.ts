@@ -16,7 +16,7 @@ import type { Build, Accolade, ConditionalEffect, Enhancement, EnhancementStatTy
 import type { ProcSettings } from '@/stores/uiStore';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
 import { stanceAdjusterOverrides } from '@/data';
-import { getIOSet, getAlphaEffects, getDestinyEffects, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
+import { getIOSet, getAlphaEffects, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
@@ -2857,6 +2857,7 @@ function applyIncarnateBonuses(
   breakdown: Map<string, DashboardStatBreakdown>,
   levelShiftActive = true,
   incarnatesSuppressed = false,
+  destinyTime: number | null | undefined = undefined,
 ): void {
   if (!incarnates) return;
   const _debugBefore = isCalcDebugEnabled() ? { ...global } : null;
@@ -2892,15 +2893,35 @@ function applyIncarnateBonuses(
   // Destiny - Direct stat bonuses (defense, resistance, regen, recovery, etc.)
   // Note: These are initial/peak values since effects diminish over time
   if (incarnates.destiny && active.destiny) {
-    let destinyEffects = getDestinyEffects(incarnates.destiny.powerId);
+    // null → resolve at this power's sustained floor (the conservative default);
+    // a number → that exact time; undefined → legacy flat peak.
+    const effectiveDestinyTime = destinyTime === null
+      ? getDestinySustainedFloorTime(incarnates.destiny.powerId)
+      : destinyTime;
+    let destinyEffects = getDestinyEffectsAtTime(incarnates.destiny.powerId, effectiveDestinyTime);
     if (destinyEffects) {
+      // Alpha enhances Destiny buffs the game says accept its aspects — gated by
+      // the power's boosts_allowed (Cardiac's resistance boosts Barrier's res,
+      // etc.). Something Mids doesn't model. Only when the Alpha slot is active.
+      let alphaEnhanced = false;
+      if (incarnates.alpha && active.alpha) {
+        const before = destinyEffects;
+        destinyEffects = applyAlphaToDestiny(
+          destinyEffects,
+          getDestinyBoostsAllowed(incarnates.destiny.powerId),
+          getAlphaEffects(incarnates.alpha.powerId),
+        );
+        alphaEnhanced = destinyEffects !== before;
+      }
+
       // Fate Genesis (Rebirth) boosts Destiny ability effects by its tier %.
       if (fateMultiplier > 0) {
         destinyEffects = scaleDestinyEffects(destinyEffects, 1 + fateMultiplier);
       }
-      const powerName = fateMultiplier > 0
-        ? `${incarnates.destiny.displayName} (+${(fateMultiplier * 100).toFixed(1)}% Genesis)`
-        : incarnates.destiny.displayName;
+      const powerName =
+        (fateMultiplier > 0
+          ? `${incarnates.destiny.displayName} (+${(fateMultiplier * 100).toFixed(1)}% Genesis)`
+          : incarnates.destiny.displayName) + (alphaEnhanced ? ' (+Alpha)' : '');
 
       // Defense All
       if (destinyEffects.defenseAll !== undefined) {
@@ -3335,6 +3356,11 @@ export interface CalculationOptions {
   furyLevel?: number;
   /** Whether incarnate level shifts are applied (default: true, independent from per-slot toggles) */
   incarnateLevelShiftActive?: boolean;
+  /** Seconds after cast to evaluate the (diminishing) Destiny buff at. `null` =
+   *  the equipped power's sustained floor (default); 0 = additive peak; `undefined`
+   *  = legacy flat peak values. Only affects Destiny powers that diminish over
+   *  time (Mids-style time slider). */
+  destinyTime?: number | null;
   /** Combat mode: suppress defenseBuffSuppressible from stealth/travel powers */
   combatMode?: boolean;
   /** Active global Mechanic Adjuster state — caster-state toggles shared across
@@ -3540,7 +3566,7 @@ export function calculateCharacterTotals(
   // Step 9: Apply incarnate bonuses (Destiny, Hybrid - direct stats)
   // Note: Alpha bonuses were already applied in Step 7 as enhancement bonuses
   if (_debug) debugGroup('Step 9: Incarnate Bonuses');
-  applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown, options?.incarnateLevelShiftActive ?? true, incarnatesSuppressed);
+  applyIncarnateBonuses(build.incarnates, incarnateActive, globalBonuses, breakdown, options?.incarnateLevelShiftActive ?? true, incarnatesSuppressed, options?.destinyTime);
   if (_debug) debugGroupEnd();
 
   // Step 9.1: Apply archetype inherent damage bonuses (Vigilance, Fury)

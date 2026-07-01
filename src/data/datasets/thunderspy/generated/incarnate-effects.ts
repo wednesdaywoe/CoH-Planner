@@ -259,6 +259,85 @@ export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number>> =
   'rebirth_total_radial_invocation': {"levelShift":1},
 };
 
+export interface GeneratedDestinyTimelineTier { value: number; duration: number; }
+export const GENERATED_DESTINY_TIMELINE: Record<string, Record<string, GeneratedDestinyTimelineTier[]>> = {
+};
+
+export const GENERATED_DESTINY_BOOSTS: Record<string, string[]> = {
+  // Ageless Core Epiphany
+  'ageless_core_epiphany': ["Recovery"],
+  // Ageless Core Invocation
+  'ageless_core_invocation': ["Recovery"],
+  // Ageless Invocation
+  'ageless_invocation': ["Recovery"],
+  // Ageless Partial Core Invocation
+  'ageless_partial_core_invocation': ["Recovery"],
+  // Ageless Partial Radial Invocation
+  'ageless_partial_radial_invocation': ["Recovery"],
+  // Ageless Radial Epiphany
+  'ageless_radial_epiphany': ["Recovery"],
+  // Ageless Radial Invocation
+  'ageless_radial_invocation': ["Recovery"],
+  // Ageless Total Core Invocation
+  'ageless_total_core_invocation': ["Recovery"],
+  // Ageless Total Radial Invocation
+  'ageless_total_radial_invocation': ["Recovery"],
+  // Barrier Core Epiphany
+  'barrier_core_epiphany': ["Res_Damage","Buff_Defense"],
+  // Barrier Core Invocation
+  'barrier_core_invocation': ["Res_Damage","Buff_Defense"],
+  // Barrier Invocation
+  'barrier_invocation': ["Res_Damage","Buff_Defense"],
+  // Barrier Partial Core Invocation
+  'barrier_partial_core_invocation': ["Res_Damage","Buff_Defense"],
+  // Barrier Partial Radial Invocation
+  'barrier_partial_radial_invocation': ["Res_Damage","Buff_Defense"],
+  // Barrier Radial Epiphany
+  'barrier_radial_epiphany': ["Res_Damage","Buff_Defense"],
+  // Barrier Radial Invocation
+  'barrier_radial_invocation': ["Res_Damage","Buff_Defense"],
+  // Barrier Total Core Invocation
+  'barrier_total_core_invocation': ["Res_Damage","Buff_Defense"],
+  // Barrier Total Radial Invocation
+  'barrier_total_radial_invocation': ["Res_Damage","Buff_Defense"],
+  // Incandescence Core Epiphany
+  'incandescence_core_epiphany': ["Heal"],
+  // Incandescence Core Invocation
+  'incandescence_core_invocation': ["Heal"],
+  // Incandescence Invocation
+  'incandescence_invocation': ["Heal"],
+  // Incandescence Partial Core Invocation
+  'incandescence_partial_core_invocation': ["Heal"],
+  // Incandescence Partial Radial Invocation
+  'incandescence_partial_radial_invocation': ["Heal"],
+  // Incandescence Radial Epiphany
+  'incandescence_radial_epiphany': ["Heal"],
+  // Incandescence Radial Invocation
+  'incandescence_radial_invocation': ["Heal"],
+  // Incandescence Total Core Invocation
+  'incandescence_total_core_invocation': ["Heal"],
+  // Incandescence Total Radial Invocation
+  'incandescence_total_radial_invocation': ["Heal"],
+  // Rebirth Core Epiphany
+  'rebirth_core_epiphany': ["Heal"],
+  // Rebirth Core Invocation
+  'rebirth_core_invocation': ["Heal"],
+  // Rebirth Invocation
+  'rebirth_invocation': ["Heal"],
+  // Rebirth Partial Core Invocation
+  'rebirth_partial_core_invocation': ["Heal"],
+  // Rebirth Partial Radial Invocation
+  'rebirth_partial_radial_invocation': ["Heal"],
+  // Rebirth Radial Epiphany
+  'rebirth_radial_epiphany': ["Heal"],
+  // Rebirth Radial Invocation
+  'rebirth_radial_invocation': ["Heal"],
+  // Rebirth Total Core Invocation
+  'rebirth_total_core_invocation': ["Heal"],
+  // Rebirth Total Radial Invocation
+  'rebirth_total_radial_invocation': ["Heal"],
+};
+
 // ============================================
 // HYBRID EFFECTS
 // ============================================

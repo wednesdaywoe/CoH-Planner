@@ -383,11 +383,18 @@ function extractDestiny() {
       timeline[stat] = entries.map(e => ({ value: round(e.value), duration: e.duration }));
     }
 
+    // Boost categories the power accepts — the game's own statement of which
+    // Alpha enhancement aspects can enhance this Destiny buff (Res_Damage,
+    // Buff_Defense, Heal, Recovery). Drives Alpha→Destiny enhancement in the
+    // calc. Drop the universal Incarnate_Destiny slot marker (never mapped).
+    const boostsAllowed = (data.boosts_allowed || []).filter((b) => b !== 'Incarnate_Destiny');
+
     results[powerId] = {
       displayName,
       levelShift,
       peakEffects,
       timeline,
+      boostsAllowed,
     };
 
     const effectStr = Object.entries(peakEffects)
@@ -1253,6 +1260,41 @@ function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore, gene
     Object.assign(obj, data.peakEffects);
     lines.push(`  // ${data.displayName}`);
     lines.push(`  '${id}': ${JSON.stringify(obj)},`);
+  }
+  lines.push('};');
+  lines.push('');
+
+  // Diminishing-buff timeline: every stat's decay tiers as {value, duration}.
+  // Destiny buffs (Barrier, Ageless, …) apply several independent, overlapping
+  // buffs at once; the effective value at time t is the SUM of tiers whose
+  // duration is still > t. GENERATED_DESTINY_EFFECTS above stores only the
+  // single strongest tier (legacy "peak") — the timeline lets the calc resolve
+  // the true additive peak and the decayed value at any point (Mids-style).
+  // Only powers with at least one multi-tier stat are emitted (single-tier
+  // stats are already fully described by GENERATED_DESTINY_EFFECTS).
+  lines.push('export interface GeneratedDestinyTimelineTier { value: number; duration: number; }');
+  lines.push('export const GENERATED_DESTINY_TIMELINE: Record<string, Record<string, GeneratedDestinyTimelineTier[]>> = {');
+  for (const [id, data] of Object.entries(destiny)) {
+    const timeline = data.timeline || {};
+    const hasDecay = Object.values(timeline).some((tiers) => tiers.length > 1);
+    if (!hasDecay) continue;
+    lines.push(`  // ${data.displayName}`);
+    lines.push(`  '${id}': ${JSON.stringify(timeline)},`);
+  }
+  lines.push('};');
+  lines.push('');
+
+  // Boost categories each Destiny power accepts (Res_Damage, Buff_Defense,
+  // Heal, Recovery). The calc gates Alpha→Destiny enhancement on these — an
+  // Alpha aspect only enhances a Destiny stat when the game says the power
+  // accepts that boost type. Only powers with at least one enhanceable
+  // category are emitted.
+  lines.push('export const GENERATED_DESTINY_BOOSTS: Record<string, string[]> = {');
+  for (const [id, data] of Object.entries(destiny)) {
+    const ba = data.boostsAllowed || [];
+    if (ba.length === 0) continue;
+    lines.push(`  // ${data.displayName}`);
+    lines.push(`  '${id}': ${JSON.stringify(ba)},`);
   }
   lines.push('};');
   lines.push('');
