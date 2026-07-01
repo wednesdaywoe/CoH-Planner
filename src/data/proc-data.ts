@@ -2585,12 +2585,14 @@ export function isProcAlwaysOn(procData: ProcData): boolean {
 
 /**
  * AoE penalty denominator used by the PPM formula.
- * denom = 0.25 + 0.75 × (1 + radius × (11 × arc + 540) / 40,000)
- * Single target (radius 0) returns 1.0 regardless of arc.
+ * denom = 0.25 + 0.75 × (1 + radius × (11 × arc + 540) / 30,000)
+ * A full sphere (arc 360) reduces to 0.25 + 0.75 × (1 + 0.15 × radius); cones
+ * scale the radius term down linearly with arc. Single target (radius 0)
+ * returns 1.0 regardless of arc.
  */
-function getPPMAreaDenominator(radius: number, arcDegrees: number): number {
+export function getPPMAreaDenominator(radius: number, arcDegrees: number): number {
   if (radius <= 0) return 1.0;
-  return 0.25 + 0.75 * (1 + radius * (11 * arcDegrees + 540) / 40000);
+  return 0.25 + 0.75 * (1 + radius * (11 * arcDegrees + 540) / 30000);
 }
 
 /**
@@ -2627,7 +2629,7 @@ function clampProcChance(rawChance: number, ppm: number): number {
  *
  * Formula: Proc% = PPM × (ModifiedRecharge + CastTime) / (60 × AreaDenom)
  *   where ModifiedRecharge = BaseRecharge / (1 + EnhancedRechargeBonus)
- *   and AreaDenom = 0.25 + 0.75 × (1 + radius × (11 × arc + 540) / 40,000)
+ *   and AreaDenom = 0.25 + 0.75 × (1 + radius × (11 × arc + 540) / 30,000)
  *
  * Subject to clamps: min = 5% + PPM × 1.5%, max = 90%.
  *

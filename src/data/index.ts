@@ -312,6 +312,7 @@ export {
   interpolateProcDamage,
   // PPM calculation functions
   getPPMAreaFactor,
+  getPPMAreaDenominator,
   arcToDegrees,
   calculateProcChance,
   calculateProcsPerMinute,

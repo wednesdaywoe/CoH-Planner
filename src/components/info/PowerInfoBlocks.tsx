@@ -28,6 +28,7 @@ import {
   isProcAlwaysOn,
   calculateProcChance,
   calculateAutoToggleProcChance,
+  getPPMAreaDenominator,
   type ProcData,
 } from '@/data';
 
@@ -272,11 +273,6 @@ interface ProcEntry {
   chance?: number;
 }
 
-function ppmAreaDenom(radius: number, arcDegrees: number): number {
-  if (radius <= 0) return 1.0;
-  return 0.25 + 0.75 * (1 + radius * (11 * arcDegrees + 540) / 40000);
-}
-
 function ProcChanceRow({
   powerType,
   selectedPower,
@@ -303,7 +299,7 @@ function ProcChanceRow({
 
   const arcDeg = radius > 0 ? (arcDegrees && arcDegrees > 0 ? arcDegrees : 360) : 360;
   const modifiedRecharge = baseRecharge / (1 + slottedRechargeBonus);
-  const areaDenom = ppmAreaDenom(radius, arcDeg);
+  const areaDenom = getPPMAreaDenominator(radius, arcDeg);
 
   const entries: ProcEntry[] = [];
   const procDataByKey: Record<string, ProcData> = {};
