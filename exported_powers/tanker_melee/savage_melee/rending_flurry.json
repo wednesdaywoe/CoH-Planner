@@ -66,6 +66,7 @@
       "show_in_info": true
     }
   ],
+  "max_targets_expression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
   "available_level": 23,
   "powerset": "Tanker_Melee.Savage_Melee"
 }

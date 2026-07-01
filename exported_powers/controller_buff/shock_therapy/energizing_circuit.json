@@ -178,6 +178,9 @@
       ]
     }
   ],
+  "chain_eff_expression": "1 0.25 @ChainJump 1 - * - 0.5 1 minmax",
+  "chain_target_expression": "101 kEndurance% target> - enttype maintarget> enttype target> eq 99 * 1 + * 1 prevdistance / +",
+  "max_targets_expression": "4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +",
   "available_level": 9,
   "powerset": "Controller_Buff.Shock_Therapy"
 }

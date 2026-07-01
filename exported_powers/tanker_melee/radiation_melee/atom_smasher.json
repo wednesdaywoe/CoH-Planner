@@ -447,6 +447,7 @@
       ]
     }
   ],
+  "max_targets_expression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
   "available_level": 29,
   "powerset": "Tanker_Melee.Radiation_Melee"
 }

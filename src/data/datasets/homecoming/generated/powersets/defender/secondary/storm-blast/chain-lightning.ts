@@ -18,6 +18,7 @@ export const ChainLightning: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Chain",
+  "chainTargetExpression": "enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +",
   "stats": {
     "accuracy": 1.15,
     "range": 80,

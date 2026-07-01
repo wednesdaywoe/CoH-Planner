@@ -18,6 +18,7 @@ export const BreathofFire: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "maxTargetsExpression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
   "stats": {
     "accuracy": 1.2,
     "range": 15,

@@ -188,6 +188,7 @@
       ]
     }
   ],
+  "max_targets_expression": "16",
   "available_level": 0,
   "powerset": "Pets.Turret"
 }

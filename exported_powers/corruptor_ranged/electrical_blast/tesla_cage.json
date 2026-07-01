@@ -736,6 +736,8 @@
       ]
     }
   ],
+  "chain_eff_expression": "@ChainJump 1 4 minmax 2.33 *",
+  "max_targets_expression": "1 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? + 1 11 minmax",
   "available_level": 17,
   "powerset": "Corruptor_Ranged.Electrical_Blast"
 }

@@ -458,6 +458,7 @@
       ]
     }
   ],
+  "chain_eff_expression": "1 0.25 @ChainJump 1 - * - 0.25 1 minmax",
   "available_level": 21,
   "powerset": "Brute_Melee.Kinetic_Attack"
 }

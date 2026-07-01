@@ -18,6 +18,7 @@ export const HeadSplitter: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "maxTargetsExpression": "10 kDisable_GauntletTargetCap Source.Mode? 5 * -",
   "stats": {
     "accuracy": 1.05,
     "range": 10,

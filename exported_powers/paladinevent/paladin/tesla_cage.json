@@ -297,6 +297,8 @@
       ]
     }
   ],
+  "chain_eff_expression": "1 0.2 @ChainJump 1 - * - 0.6 1 minmax",
+  "chain_target_expression": "enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +",
   "available_level": 0,
   "powerset": "PaladinEvent.Paladin"
 }

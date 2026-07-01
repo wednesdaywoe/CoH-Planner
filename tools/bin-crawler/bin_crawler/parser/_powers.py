@@ -1018,13 +1018,11 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     effect_area = r.read_u4()
     # 37. max_targets_hit (u4)
     max_targets_hit = r.read_u4()
-    # 38. HC-only string_array (absent from Parse6). CANDIDATE: MaxTargetsExpr
-    # (the RPN cap expression on Gauntlet/Energy Store etc.) — it's the natural
-    # neighbour of max_targets_hit — but UNVERIFIED: Veracity is Parse6 and has
-    # no field 38, so the only local dataset can't confirm it. Captured under a
-    # neutral name for the HC probe (tools/bin-crawler/probe_chain_fields.py); do
-    # NOT export until a Parse7/HC run matches it to a known MaxTargetsExpr value.
-    field38_str = " ".join(r.read_string_array())
+    # 38. MaxTargetsExpr — HC-only string_array (absent from Parse6), the RPN
+    # target-cap expression on Gauntlet attacks / the Electrical Affinity circuits.
+    # VERIFIED 2026-07-01 against HC: `GauntletTargetCap` resolves here (59 powers),
+    # matching the `.powers` oracle. Empty on non-capped powers.
+    max_targets_expr = " ".join(r.read_string_array())
     # 38b-d. HC extra fields (3 × u4)
     r.skip(12)
     # 39. radius (f4)
@@ -1046,8 +1044,13 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # this is most likely an FX/ChainIntoPower array, and ChainTarget lives
     # elsewhere in Parse7. UNVERIFIED for HC — captured neutrally for the probe.
     field43_str = " ".join(r.read_string_array())
-    # 43b. HC extra: u4_array
-    r.read_u4_array()
+    # 43b. ChainTarget — next-target selection weighting for the Electrical Affinity
+    # circuits (`… kHitPoints% target> - … maintarget> … prevdistance / +`). Stored
+    # as a u4_array of string-table offsets — byte-identical to a string_array, so we
+    # read it as one to resolve the RPN tokens (no desync). VERIFIED 2026-07-01
+    # against the HC `.powers` oracle (circuits match exactly; 55 powers). Empty
+    # (count 0) on non-chain powers.
+    chain_target_expr = " ".join(r.read_string_array())
     # 43c. HC extra: u4_array (boost indices for chain powers; empty for non-chain)
     r.read_u4_array()
     # 44. box_offset (f4 × 3)
@@ -1219,8 +1222,8 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         toggle_ignore=toggle_ignore,
         slot_requires=slot_requires,
         chain_eff_expression=chain_eff_expr,
-        # Unverified Parse7 candidates — stashed for the HC probe, NOT exported.
-        _field38_str=field38_str,
+        chain_target_expression=chain_target_expr,
+        max_targets_expression=max_targets_expr,
         _field43_str=field43_str,
         effects=effects,
         activation_effects=activation_effects,

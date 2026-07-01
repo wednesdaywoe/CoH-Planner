@@ -283,6 +283,7 @@
       ]
     }
   ],
+  "max_targets_expression": "10 kDisable_GauntletTargetCap Source.Mode? 5 * -",
   "available_level": 27,
   "powerset": "Tanker_Melee.War_Mace"
 }

@@ -277,10 +277,17 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
         d['redirect'] = pw.redirects
     # ChainEff — per-jump chain-continue chance expression (e.g. Chain Induction,
     # Jolting Chain). Sparse (only chain powers), so emit only when present.
-    # NOTE: the sibling ChainTarget + MaxTargetsExpr expressions are NOT here yet
-    # — their Parse7 binary slots still need HC verification (see BIN-PARSER-LOG).
     if pw.chain_eff_expression:
         d['chain_eff_expression'] = pw.chain_eff_expression
+    # ChainTarget — next-target selection weighting (Electrical Affinity circuits:
+    # Rejuvenating/Energizing/Empowering/Insulating_Circuit, Chain_Lightning, …).
+    # Parse7 field 43b; verified against the HC `.powers` oracle. Sparse.
+    if pw.chain_target_expression:
+        d['chain_target_expression'] = pw.chain_target_expression
+    # MaxTargetsExpr — RPN target-cap (Gauntlet attacks, the circuits). Parse7
+    # field 38 (HC-only); verified via GauntletTargetCap. Sparse.
+    if pw.max_targets_expression:
+        d['max_targets_expression'] = pw.max_targets_expression
 
     return d
 

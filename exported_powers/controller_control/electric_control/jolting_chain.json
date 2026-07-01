@@ -379,6 +379,7 @@
       ]
     }
   ],
+  "chain_eff_expression": "1 0.25 @ChainJump 1 - * - 0.25 1 minmax",
   "available_level": 5,
   "powerset": "Controller_Control.Electric_Control"
 }

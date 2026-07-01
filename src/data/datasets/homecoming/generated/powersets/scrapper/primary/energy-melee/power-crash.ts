@@ -18,6 +18,7 @@ export const PowerCrash: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "maxTargetsExpression": "5 Redirects.Energy_Melee.Energy_Store source.ownPower? 5 * +",
   "stats": {
     "accuracy": 1,
     "range": 10,

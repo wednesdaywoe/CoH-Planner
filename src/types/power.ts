@@ -658,6 +658,21 @@ export interface Power {
    * power detoggles normally on any mez (the common case).
    */
   toggleIgnoreMez?: Array<'hold' | 'sleep' | 'stun'>;
+  /**
+   * ChainTarget — the raw RPN weighting that decides which target a chain power
+   * jumps to next (bin field 43b). Electrical Affinity circuits use it to pick
+   * the neediest ally (`kHitPoints%` / `kEndurance%` priority) or the nearest
+   * one (`prevdistance`). Carried verbatim from the binary; the Info panel
+   * humanizes the known patterns. Absent on non-chain powers.
+   */
+  chainTargetExpression?: string;
+  /**
+   * MaxTargetsExpr — a computed target-cap RPN (bin field 38) that overrides the
+   * static `stats.maxTargets` when its condition holds (e.g. the circuits' cap
+   * grows while the Static buff is stacked; a Tanker Gauntlet attack's cap).
+   * Absent unless the cap is conditional.
+   */
+  maxTargetsExpression?: string;
   /** Prerequisite power(s) - logical expression */
   requires?: string;
   /**

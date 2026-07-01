@@ -18,6 +18,7 @@ export const SpineBurst: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "maxTargetsExpression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
   "stats": {
     "accuracy": 1,
     "radius": 15,

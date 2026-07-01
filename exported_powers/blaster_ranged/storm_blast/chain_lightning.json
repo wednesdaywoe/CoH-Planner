@@ -623,6 +623,8 @@
       ]
     }
   ],
+  "chain_eff_expression": "1 0.18 @ChainJump 1 - * - 0.64 1 minmax",
+  "chain_target_expression": "enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +",
   "available_level": 17,
   "powerset": "Blaster_Ranged.Storm_Blast"
 }

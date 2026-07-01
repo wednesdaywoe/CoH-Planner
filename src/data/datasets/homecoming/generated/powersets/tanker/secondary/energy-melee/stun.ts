@@ -18,6 +18,7 @@ export const Stun: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "maxTargetsExpression": "10 kDisable_GauntletTargetCap Source.Mode? 5 * - Redirects.Energy_Melee.Energy_Store source.ownPower? 6 * +",
   "stats": {
     "accuracy": 1,
     "range": 10,

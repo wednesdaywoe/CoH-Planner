@@ -4790,6 +4790,21 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     power.toggleIgnoreMez = powerJson.toggle_ignore;
   }
 
+  // Chain / target-cap RPN expressions (bin fields 43b / 38 — Electrical Affinity
+  // circuits, Chain Lightning, Gauntlet, …). Raw token lists carried through for
+  // the Info panel to humanize; sparse (only chain / conditional-cap powers have
+  // them), so omit when absent to keep the vast majority of powers untouched.
+  //  - chain_target_expression: next-target selection weighting (who the chain
+  //    jumps to next — e.g. the most-injured ally for Rejuvenating Circuit).
+  //  - max_targets_expression: a computed target cap that overrides the static
+  //    `stats.maxTargets` when a condition holds (Static stacks, Gauntlet mode).
+  if (powerJson.chain_target_expression) {
+    power.chainTargetExpression = powerJson.chain_target_expression;
+  }
+  if (powerJson.max_targets_expression) {
+    power.maxTargetsExpression = powerJson.max_targets_expression;
+  }
+
   // Basic stats
   power.stats = {
     accuracy: powerJson.accuracy,

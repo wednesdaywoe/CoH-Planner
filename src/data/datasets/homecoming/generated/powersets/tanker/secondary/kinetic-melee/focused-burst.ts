@@ -18,6 +18,7 @@ export const FocusedBurst: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Chain",
+  "maxTargetsExpression": "10 kDisable_GauntletTargetCap Source.Mode? 5 * -",
   "stats": {
     "accuracy": 1,
     "range": 40,

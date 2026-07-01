@@ -18,6 +18,7 @@ export const SparklingField: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Chain",
+  "chainTargetExpression": "enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +",
   "stats": {
     "accuracy": 0.9,
     "range": 80,

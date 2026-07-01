@@ -830,6 +830,8 @@
       ]
     }
   ],
+  "chain_eff_expression": ".15",
+  "max_targets_expression": "1 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? + 1 7 minmax",
   "available_level": 11,
   "powerset": "Sentinel_Ranged.Electrical_Blast"
 }

@@ -20,26 +20,38 @@ token lists like the requires/duration/magnitude expressions already exported.
   `parser_logs/BIN-PARSER-LOG.md` (finding logged), + new `probe_chain_fields.py`.
 - Nothing committed (working-tree changes only).
 
-### FOLLOW-UP / TODO (the two fields the user actually wanted)
-`ChainTarget` + `MaxTargetsExpr` live in the **HC/Parse7** layout. Could NOT verify them
-here — the only local data is **Veracity/Parse6** (different layout §7: no field 38, and
-`prevdistance`/`maintarget>` absent entirely). Deliberately NOT shipped to avoid guessing.
+### FOLLOW-UP — RESOLVED 2026-07-01 (code done + verified; committed re-export pending)
 
-**To finish (needs HC `.pigg` data — on the PC/Laptop):**
+The blocker was wrong: the HC `.pigg` data is on **this Linux box**
+(`/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/live`, `bin_powers.pigg` 2026-06-18),
+not "the PC/Laptop." Ran the probe here and finished the mapping:
 
-1. Run the probe against HC:
-   `py -3 tools/bin-crawler/probe_chain_fields.py --assets-dir "G:/Homecoming/assets/live"`
-2. Read where the tokens land:
-   - `prevdistance` / `maintarget>` → that slot is **ChainTarget** (probably `_field43_str`)
-   - `GauntletTargetCap` (a Tanker Gauntlet attack) → that slot is **MaxTargetsExpr**
-     (probably `_field38_str`)
-3. Promote the confirmed candidates: `_field38_str` → `max_targets_expression`,
-   `_field43_str` (or wherever `prevdistance` lands) → `chain_target_expression`.
-4. Wire all three chain expressions into `export_powers.py` `power_to_dict` in ONE change
-   (avoids a double re-export, §6), add a focused test, then re-export + commit `.json`.
+- **MaxTargetsExpr = field 38** → `max_targets_expression` (verified: `GauntletTargetCap`,
+  59 powers).
+- **ChainTarget = field 43b** (NOT field 43!) → `chain_target_expression`. 43b was being
+  read as a discarded `u4_array`; string_array vs u4_array are byte-identical in Parse7, so
+  it read fine but threw away the strings. Circuits match the `.powers` oracle exactly
+  (`Rejuvenating` HP / `Energizing` End / `Empowering` proximity), 55 powers.
+- **ChainEff = field 42** → already shipped.
 
-Parser already stashes the two Parse7 candidates (`_field38_str`, `_field43_str`) for the
-probe. Full write-up: `parser_logs/BIN-PARSER-LOG.md` (top, NEW ISSUES).
+Code changes made (working tree, **uncommitted**): `parser/_dataclasses.py`,
+`parser/_powers.py`, `export_powers.py`, `probe_chain_fields.py` (now a regression check),
+`parser_logs/BIN-PARSER-LOG.md` (moved to RESOLVED with the full write-up). Scratch export
+(§6 de-risk) is clean — circuit JSONs carry all three fields, ordinary attacks carry none.
+
+**DONE (2026-07-01, follow-up session):** promoted + wired end-to-end.
+- Focused promotion into committed `exported_powers/`: 122 JSONs, purely additive
+  (+178/-0); the 6 files with incidental `duration/magnitude_expression` drift were
+  reverted and re-injected with just the 3 keys.
+- Planner wiring: `convert-powerset.cjs` carries both fields → regenerated the 51 affected
+  player powersets (**83 `generated/` .ts, +99/-0**, zero drift). `src/types/power.ts` gains
+  `chainTargetExpression`/`maxTargetsExpression`; Info panel shows humanized **Chain Target**
+  / **Target Cap** rows (raw RPN on hover) via `src/utils/chain-expressions.ts`.
+- Focused test `src/data/chain-target-expressions.test.ts` (7). `tsc` clean; full suite 655/655.
+
+Everything is **uncommitted** working-tree — ready for review/commit. Not exercised: a live
+app render of the new Info rows (low risk — same KvRow pattern, data + humanizer both tested).
+Not covered: pets/redirects/inherent internals (other converters), if ever needed.
 
 ### Launcher can't open Bin Crawler — ROOT CAUSE FOUND + FIXED (launcher UX)
 

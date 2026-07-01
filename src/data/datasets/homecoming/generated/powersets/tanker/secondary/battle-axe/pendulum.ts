@@ -18,6 +18,7 @@ export const Pendulum: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "maxTargetsExpression": "5 kDisable_GauntletTargetCap Source.Mode? 5 * -",
   "stats": {
     "accuracy": 1.05,
     "range": 7,

@@ -205,6 +205,7 @@
       ]
     }
   ],
+  "max_targets_expression": "16",
   "available_level": 3,
   "powerset": "Mastermind_Buff.Shock_Therapy"
 }

@@ -616,6 +616,7 @@
       ]
     }
   ],
+  "chain_eff_expression": "1 0.20 @ChainJump 1 - * - 0.20 1 minmax",
   "available_level": 17,
   "powerset": "Stalker_Melee.Electrical_Melee"
 }

@@ -18,6 +18,7 @@ export const TouchofFear: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "maxTargetsExpression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
   "stats": {
     "accuracy": 1,
     "range": 7,

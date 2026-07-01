@@ -1,6 +1,17 @@
 #!/usr/bin/env python3
 """Locate the chain / max-targets expression fields in the powers.bin layout.
 
+RESOLVED 2026-07-01 (HC/Parse7 run on this machine's Wine assets):
+  - MaxTargetsExpr = field 38  → PowerRecord.max_targets_expression
+    (GauntletTargetCap resolves here, 59 powers).
+  - ChainTarget    = field 43b → PowerRecord.chain_target_expression
+    (was read as a discarded u4_array; the circuits' `… prevdistance / +` RPN
+    matches the `.powers` oracle exactly, 55 powers).
+  - ChainEff       = field 42  → PowerRecord.chain_eff_expression (already shipped).
+This script now doubles as a regression check that those fields still carry the
+tokens; the historical "candidate/decision-rule" notes below are kept for context.
+
+
 Why this exists: the parser's chain region (fields 38/42/43) reads several
 string_arrays that were historically discarded under GUESSED labels. Field 42
 is confirmed `ChainEff`. The other two the planner wants —
@@ -75,22 +86,22 @@ def main():
     # Token → which captured field it lands in, across the whole dataset.
     print("token → field tally (across all powers):")
     for t in TOKENS:
-        n38 = sum(1 for p in powers if t in p._field38_str)
+        n38 = sum(1 for p in powers if t in p.max_targets_expression)
         n42 = sum(1 for p in powers if t in p.chain_eff_expression)
-        n43 = sum(1 for p in powers if t in p._field43_str)
-        print(f"   {t:20} field38={n38:5}  field42(ChainEff)={n42:5}  field43={n43:5}")
+        n43b = sum(1 for p in powers if t in p.chain_target_expression)
+        print(f"   {t:20} maxtargets(38)={n38:5}  chaineff(42)={n42:5}  chaintarget(43b)={n43b:5}")
 
     print("\nknown chain / cap powers:")
     for p in powers:
         leaf = p.full_name.rsplit(".", 1)[-1].lower()
         if not any(k in leaf for k in KNOWN):
             continue
-        if not (p._field38_str or p.chain_eff_expression or p._field43_str):
+        if not (p.max_targets_expression or p.chain_eff_expression or p.chain_target_expression):
             continue
         print("::", p.full_name, f"(MaxTargetsHit={p.max_targets_hit})")
-        if p._field38_str:            print("   field38          :", p._field38_str)
-        if p.chain_eff_expression:    print("   field42 ChainEff :", p.chain_eff_expression)
-        if p._field43_str:            print("   field43          :", p._field43_str)
+        if p.max_targets_expression:  print("   MaxTargetsExpr (38) :", p.max_targets_expression)
+        if p.chain_eff_expression:    print("   ChainEff (42)       :", p.chain_eff_expression)
+        if p.chain_target_expression: print("   ChainTarget (43b)   :", p.chain_target_expression)
 
 
 if __name__ == "__main__":

@@ -136,13 +136,25 @@ class PowerRecord:
     # and dropped; VERIFIED against Veracity/Parse6 (`@ChainJump`/`minmax`).
     chain_eff_expression: str = ""
 
-    # Unverified Parse7/HC probe scratch — the two string_arrays that MIGHT hold
-    # `MaxTargetsExpr` (field 38) and `ChainTarget` (field 43). Populated only by
-    # the Parse7 parser and NOT emitted to the export until an HC run confirms
-    # the mapping (Veracity is Parse6 and can't). Leading underscore + repr=False
-    # keeps them out of asdict()/JSON. See tools/bin-crawler probe_chain.py and
-    # BIN-PARSER-LOG.
-    _field38_str: str = field(default="", repr=False)
+    # ChainTarget — next-target selection weighting for the Electrical Affinity
+    # circuits (Rejuvenating/Energizing/Empowering/Insulating_Circuit, Chain_Lightning,
+    # …): `… kHitPoints% target> - … maintarget> … prevdistance / +`. Lives in
+    # Parse7 field 43b (a u4_array of string-table offsets the parser previously
+    # read and discarded). VERIFIED 2026-07-01 against the HC `.powers` oracle — the
+    # circuits match exactly (55 powers). Empty on non-chain powers and on Parse6
+    # (which has no field 43b string content). Sparse → exported only when present.
+    chain_target_expression: str = ""
+
+    # MaxTargetsExpr — RPN target-cap (Parse7 field 38, HC-only), e.g. a Tanker
+    # Gauntlet attack's `16 kDisable_GauntletTargetCap … -`, or the circuits'
+    # `4 Redirects.… source.ownPowerNum? 3 * +`. VERIFIED 2026-07-01 against HC
+    # (GauntletTargetCap resolves here, 59 powers). Empty on Parse6 (no field 38).
+    # Sparse → exported only when present.
+    max_targets_expression: str = ""
+
+    # Parse7/HC diagnostic scratch — field 43 is an FX / ChainIntoPower array, NOT
+    # ChainTarget (that's 43b → chain_target_expression above). Kept for probes,
+    # never emitted to the export (leading underscore + repr=False). See BIN-PARSER-LOG.
     _field43_str: str = field(default="", repr=False)
 
     # Effect data — the binary stores two parallel struct_arrays:

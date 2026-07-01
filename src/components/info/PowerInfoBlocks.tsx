@@ -22,6 +22,7 @@ import type { PowerDamageResult } from '@/utils/calculations';
 import { calcThreeTier as calcThreeTierUtil } from './powerDisplayUtils';
 import { abbreviateDamageType, calculateArcanaTime } from '@/utils/calculations';
 import { resolveProcAreaGeometry } from '@/utils/calculations/pet-damage';
+import { describeChainTarget, describeTargetCap } from '@/utils/chain-expressions';
 import { Chip, type TagKind } from './TagsRow';
 import {
   findProcData,
@@ -222,6 +223,20 @@ export function GeneralStatsBlock({
       )}
       {effectAreaLabel && <KvRow label="Effect Area" value={effectAreaLabel} />}
       {attackType && <KvRow label="Attack Type" value={attackType} />}
+      {power.chainTargetExpression && (
+        <KvRow
+          label="Chain Target"
+          value={describeChainTarget(power.chainTargetExpression)}
+          title={power.chainTargetExpression}
+        />
+      )}
+      {power.maxTargetsExpression && (
+        <KvRow
+          label="Target Cap"
+          value={describeTargetCap(power.maxTargetsExpression)}
+          title={power.maxTargetsExpression}
+        />
+      )}
       <ProcChanceRow
         powerType={power.powerType}
         selectedPower={selectedPower ?? null}

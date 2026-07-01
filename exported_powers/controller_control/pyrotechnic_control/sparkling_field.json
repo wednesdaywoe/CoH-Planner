@@ -651,6 +651,8 @@
       ]
     }
   ],
+  "chain_eff_expression": "1",
+  "chain_target_expression": "enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +",
   "available_level": 1,
   "powerset": "Controller_Control.Pyrotechnic_Control"
 }

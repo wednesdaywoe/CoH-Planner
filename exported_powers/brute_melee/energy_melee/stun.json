@@ -447,6 +447,7 @@
       ]
     }
   ],
+  "max_targets_expression": "5 Redirects.Energy_Melee.Energy_Store source.ownPower? 5 * +",
   "available_level": 21,
   "powerset": "Brute_Melee.Energy_Melee"
 }

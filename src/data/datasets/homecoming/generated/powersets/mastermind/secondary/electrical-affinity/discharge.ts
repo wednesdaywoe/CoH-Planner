@@ -18,6 +18,7 @@ export const Discharge: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "maxTargetsExpression": "16",
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -208,6 +208,9 @@
       ]
     }
   ],
+  "chain_eff_expression": "1 0.25 @ChainJump 1 - * - 0.5 1 minmax",
+  "chain_target_expression": "enttype maintarget> enttype target> eq 99 * 1 + 1 prevdistance / +",
+  "max_targets_expression": "4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +",
   "available_level": 49,
   "powerset": "V_Arachnos.Mu_Boss_High_HM"
 }

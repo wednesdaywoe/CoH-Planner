@@ -18,6 +18,8 @@ export const InsulatingCircuit: Power = {
   "powerType": "Click",
   "targetType": "Ally (Alive)",
   "effectArea": "Chain",
+  "chainTargetExpression": "101 kHitPoints% target> - enttype maintarget> enttype target> eq 99 * 1 + * 1 prevdistance / +",
+  "maxTargetsExpression": "4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +",
   "stats": {
     "accuracy": 1,
     "range": 80,
