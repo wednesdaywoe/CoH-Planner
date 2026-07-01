@@ -15,6 +15,8 @@
     --accent: #D62BCE;
     --accent-hover: #e879de;
     --green: #34d399;
+    --amber: #f59e0b;
+    --red: #f87171;
     --grey: #555c6a;
   }
   * { box-sizing: border-box; }
@@ -40,11 +42,13 @@
   .icon.placeholder { background: var(--bg); }
   .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; background: var(--grey); }
   .dot.running { background: var(--green); box-shadow: 0 0 8px rgba(52,211,153,0.6); }
+  .dot.busy { background: var(--amber); box-shadow: 0 0 8px rgba(245,158,11,0.6); }
   .info { flex: 1; min-width: 0; }
   .name { font-weight: 600; }
   .port { color: var(--muted); font-size: 12px; margin-left: 8px; font-family: ui-monospace, Menlo, monospace; }
   .desc { color: var(--muted); font-size: 13px; margin-top: 2px; }
-  .actions { display: flex; gap: 8px; }
+  .desc.warn { color: var(--amber); }
+  .actions { display: flex; gap: 8px; flex-shrink: 0; }
   button, a.btn { background: transparent; border: 1px solid var(--border);
     color: var(--text); padding: 6px 14px; border-radius: 5px;
     font: inherit; font-size: 13px; cursor: pointer; text-decoration: none;
@@ -53,6 +57,7 @@
   button:disabled { opacity: 0.5; cursor: not-allowed; }
   button.primary { background: var(--accent); color: #0f1115; border-color: var(--accent); }
   button.primary:hover { color: #0f1115; opacity: 0.9; }
+  button.danger:hover { border-color: var(--red); color: var(--red); }
   footer { color: var(--muted); font-size: 12px; padding: 16px 32px 32px; }
 </style>
 </head>
@@ -119,6 +124,35 @@ async function launchTool(id, btn) {
   btn.textContent = 'Starting…';
 }
 
+// Stop a healthy tool or clear a wedged/foreign process off its port.
+async function killTool(tool, btn, force) {
+  const verb = force ? 'Force-kill' : 'Stop';
+  const what = force
+    ? `whatever is using port ${tool.port}`
+    : `${tool.name} (port ${tool.port})`;
+  if (!confirm(`${verb} ${what}?`)) return;
+  btn.disabled = true;
+  btn.textContent = force ? 'Killing…' : 'Stopping…';
+  try {
+    const res = await fetch('/api/kill', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({id: tool.id}),
+    });
+    const data = await res.json();
+    if (!data.ok) {
+      btn.textContent = 'Failed';
+      console.error(data.message || data.error);
+    }
+  } catch (e) {
+    btn.textContent = 'Error';
+    console.error(e);
+  }
+  // Poll fast so the card flips to its new state (stopped → Launch) quickly.
+  fastPoll(10);
+  render();
+}
+
 let fastPollLeft = 0;
 let fastPollTimer = null;
 function fastPoll(ticks) {
@@ -151,22 +185,35 @@ function toolCard(tool) {
   const card = document.createElement('div');
   card.className = 'card';
   const icon = makeIcon(tool);
+  const state = tool.state || 'stopped';
   const dot = document.createElement('div');
-  dot.className = 'dot' + (tool.running ? ' running' : '');
+  dot.className = 'dot' + (state === 'running' ? ' running' : state === 'busy' ? ' busy' : '');
   const info = document.createElement('div');
   info.className = 'info';
-  info.innerHTML = `<div class="name">${tool.name}<span class="port">:${tool.port}</span></div>
-    <div class="desc">${tool.description || ''}</div>`;
+  const desc = state === 'busy'
+    ? `<div class="desc warn">⚠ Port ${tool.port} is in use but not responding as ${tool.name} — a stale instance or another app. Kill it, then Launch.</div>`
+    : `<div class="desc">${tool.description || ''}</div>`;
+  info.innerHTML = `<div class="name">${tool.name}<span class="port">:${tool.port}</span></div>${desc}`;
   const actions = document.createElement('div');
   actions.className = 'actions';
-  if (tool.running) {
+  if (state === 'running') {
     const open = document.createElement('a');
     open.className = 'btn';
     open.href = tool.url;
     open.target = '_blank';
     open.rel = 'noopener';
     open.textContent = 'Open';
-    actions.appendChild(open);
+    const stop = document.createElement('button');
+    stop.className = 'danger';
+    stop.textContent = 'Stop';
+    stop.onclick = () => killTool(tool, stop, false);
+    actions.append(open, stop);
+  } else if (state === 'busy') {
+    const kill = document.createElement('button');
+    kill.className = 'danger';
+    kill.textContent = 'Kill';
+    kill.onclick = () => killTool(tool, kill, true);
+    actions.appendChild(kill);
   } else {
     const launch = document.createElement('button');
     launch.className = 'primary';
@@ -209,7 +256,7 @@ async function render() {
     brandImg.hidden = true;
   }
   for (const tool of data.tools) {
-    if (tool.running && pendingOpen.has(tool.id)) {
+    if (tool.state === 'running' && pendingOpen.has(tool.id)) {
       pendingOpen.delete(tool.id);
       window.open(tool.url, '_blank', 'noopener');
     }

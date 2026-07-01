@@ -41,11 +41,34 @@ here — the only local data is **Veracity/Parse6** (different layout §7: no fi
 Parser already stashes the two Parse7 candidates (`_field38_str`, `_field43_str`) for the
 probe. Full write-up: `parser_logs/BIN-PARSER-LOG.md` (top, NEW ISSUES).
 
-### Separate item raised same session (NOT worked on)
+### Launcher can't open Bin Crawler — ROOT CAUSE FOUND + FIXED (launcher UX)
 
-Launcher can't open Bin Crawler — "127.0.0.1 unable to handle the request". Root cause
-confirmed: stdlib HTTP server returns **HTTP 505** when the browser leads with an HTTP/2
-preface (reproduced locally). The earlier localhost→127.0.0.1 change can't fix it because
-the user's browser has that origin cached as HTTP/2. Definitive fix is client-side (flush
-Chrome socket pools / restart browser); optional server mitigation is `Alt-Svc: clear`.
-Not implemented — deferred. (Boostset-export gap was the failed build; user said it's fixed.)
+Symptom: Bin Crawler shows a **green light + "Open"** without being launched this session;
+clicking Open does nothing (no terminal). Pigg Wrangler starts correctly (grey + Launch).
+
+**Real cause (not the browser):** the launcher decided "running" from a bare TCP
+`port_open(8090)` — so ANY process holding 8090 (a stale/wedged Bin Crawler that survives
+closing the launcher, or a foreign app) made it show green + "Open", and it never spawned
+the tool. The earlier HTTP/2-505 theory was a red herring — the socket-pool flush didn't
+help because the browser was never the problem. (505 IS reproducible if a client leads with
+an HTTP/2 preface, but that wasn't what was happening here.)
+
+**Fix (implemented in `tools/sidekick-launcher/`):**
+
+- `launcher.py`: replaced bare `port_open` with a real **HTTP health check** (`_http_ok`,
+  HTTP/1.1 GET). New 3-state `tool_state()`: `stopped` / `running` (our tool answers HTTP) /
+  `busy` (port held but not answering as our tool). Added `/api/kill` → `kill_port()`
+  (cross-platform: Windows `netstat`+`taskkill /F /T`, POSIX `lsof`+SIGKILL) with
+  `_pids_on_port` / `_proc_name`.
+- `static/index.html`: amber "busy" dot + warning, **Stop** button (running) and **Kill**
+  button (busy), `confirm()` before killing, state-based auto-open.
+- Verified end-to-end on macOS: stopped / running / busy states + kill all correct.
+
+So the user's fix now: relaunch the updated launcher → Bin Crawler will show an amber
+"busy" state with a **Kill** button (stale process on 8090) → click **Kill**, then
+**Launch**. No more PID hunting.
+
+**Still open / optional:** if a browser genuinely does lead with HTTP/2 to the tool (the
+separate 505 path), the durable server-side mitigations are a fresh port or an
+`Alt-Svc: clear` header on Bin Crawler's responses — not implemented. (Boostset-export gap
+was the failed build; user said that's fixed.)

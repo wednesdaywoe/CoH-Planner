@@ -9,8 +9,11 @@ launch them. Tool registry lives in tools.json next to this file.
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 import mimetypes
+import os
+import signal
 import socket
 import subprocess
 import sys
@@ -37,6 +40,136 @@ def port_open(port: int, host: str = "127.0.0.1", timeout: float = 0.25) -> bool
             return True
         except (OSError, socket.timeout):
             return False
+
+
+def _http_ok(port: int, host: str = "127.0.0.1", path: str = "/",
+             timeout: float = 0.6) -> bool:
+    """True if an HTTP/1.1 GET to host:port returns a non-server-error status.
+
+    A bare `port_open` only proves *some* socket is listening — a wedged tool,
+    a half-dead process, or an unrelated app squatting the port all pass it,
+    which is how a dead process showed as a green "running" tool. This actually
+    speaks HTTP and checks the response, so "running" means our tool is really
+    answering. HTTP/1.1 is used deliberately so a browser-side HTTP/2 quirk on
+    the client can't skew the launcher's own health signal."""
+    conn = http.client.HTTPConnection(host, port, timeout=timeout)
+    try:
+        conn.request("GET", path)
+        resp = conn.getresponse()
+        resp.read()
+        return resp.status < 400
+    except Exception:
+        return False
+    finally:
+        try:
+            conn.close()
+        except Exception:
+            pass
+
+
+def tool_state(tool: dict) -> str:
+    """Three-state health for a tool's port:
+      "stopped" — nothing listening (offer Launch)
+      "running" — our tool is answering HTTP (offer Open / Stop)
+      "busy"    — the port is held but not answering as our tool: a wedged
+                  instance or a foreign process (offer Kill)."""
+    port = tool["port"]
+    if not port_open(port):
+        return "stopped"
+    if _http_ok(port, path=tool.get("health_path", "/")):
+        return "running"
+    return "busy"
+
+
+def _pids_on_port(port: int) -> list[int]:
+    """Best-effort list of PIDs LISTENING on `port`, cross-platform.
+
+    Windows parses `netstat -ano`; POSIX uses `lsof`. Returns [] if the tools
+    are unavailable or nothing is found — the caller treats that as "couldn't
+    find it" rather than erroring."""
+    pids: set[int] = set()
+    try:
+        if sys.platform == "win32":
+            out = subprocess.run(["netstat", "-ano"], capture_output=True,
+                                 text=True, timeout=5)
+            for line in out.stdout.splitlines():
+                parts = line.split()
+                # TCP  <local>  <foreign>  LISTENING  <pid>
+                if (len(parts) >= 5 and parts[0].upper() == "TCP"
+                        and parts[3].upper() == "LISTENING"
+                        and parts[1].rsplit(":", 1)[-1] == str(port)):
+                    try:
+                        pids.add(int(parts[4]))
+                    except ValueError:
+                        pass
+        else:
+            out = subprocess.run(
+                ["lsof", "-nP", f"-iTCP:{port}", "-sTCP:LISTEN", "-t"],
+                capture_output=True, text=True, timeout=5)
+            for tok in out.stdout.split():
+                try:
+                    pids.add(int(tok))
+                except ValueError:
+                    pass
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return sorted(pids)
+
+
+def _proc_name(pid: int) -> str:
+    """Best-effort human label for a PID (for the kill confirmation/report)."""
+    try:
+        if sys.platform == "win32":
+            out = subprocess.run(
+                ["tasklist", "/FI", f"PID eq {pid}", "/NH", "/FO", "CSV"],
+                capture_output=True, text=True, timeout=5)
+            line = out.stdout.strip().splitlines()
+            if line:
+                return line[0].split(",")[0].strip('"') or f"pid {pid}"
+        else:
+            out = subprocess.run(["ps", "-p", str(pid), "-o", "comm="],
+                                 capture_output=True, text=True, timeout=5)
+            name = out.stdout.strip()
+            if name:
+                # `comm=` is the full executable path on macOS — show just the
+                # binary name (e.g. "Python", "node") for a readable label.
+                return os.path.basename(name)
+    except (OSError, subprocess.SubprocessError):
+        pass
+    return f"pid {pid}"
+
+
+def kill_port(port: int) -> tuple[bool, list[dict], str]:
+    """Force-kill whatever is LISTENING on `port`. Returns (ok, results, msg).
+
+    Force-terminates (Windows `taskkill /F /T`, POSIX SIGKILL) so a wedged
+    process that ignores a graceful stop still frees the port. Used both to
+    stop a healthy tool and to clear a foreign/stale squatter."""
+    pids = _pids_on_port(port)
+    if not pids:
+        return False, [], f"Nothing is listening on port {port}."
+    results: list[dict] = []
+    for pid in pids:
+        name = _proc_name(pid)
+        ok, err = False, ""
+        try:
+            if sys.platform == "win32":
+                r = subprocess.run(["taskkill", "/PID", str(pid), "/F", "/T"],
+                                   capture_output=True, text=True, timeout=10)
+                ok = r.returncode == 0
+                if not ok:
+                    err = (r.stderr or r.stdout).strip()
+            else:
+                os.kill(pid, signal.SIGKILL)
+                ok = True
+        except (OSError, subprocess.SubprocessError) as e:
+            err = str(e)
+        results.append({"pid": pid, "name": name, "ok": ok, "error": err})
+    killed = [r for r in results if r["ok"]]
+    if killed:
+        msg = "Killed " + ", ".join(f"{r['name']} (pid {r['pid']})" for r in killed)
+        return True, results, msg
+    return False, results, "Failed to kill the process holding the port."
 
 
 _PYTHON_HEADS = {"py", "py.exe", "python", "python.exe", "python3", "python3.exe"}
@@ -153,7 +286,7 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/status":
             config = load_config()
             statuses = [
-                {**t, "running": port_open(t["port"])} for t in config["tools"]
+                {**t, "state": tool_state(t)} for t in config["tools"]
             ]
             self._send_json(200, {
                 "tools": statuses,
@@ -206,6 +339,22 @@ class Handler(BaseHTTPRequestHandler):
                 return
             ok, msg = launch_tool(tool)
             self._send_json(200 if ok else 500, {"ok": ok, "message": msg})
+            return
+        if path == "/api/kill":
+            length = int(self.headers.get("Content-Length", "0"))
+            try:
+                payload = json.loads(self.rfile.read(length) or b"{}")
+            except json.JSONDecodeError:
+                self._send_json(400, {"ok": False, "error": "invalid json"})
+                return
+            tool_id = payload.get("id")
+            config = load_config()
+            tool = next((t for t in config["tools"] if t["id"] == tool_id), None)
+            if not tool:
+                self._send_json(404, {"ok": False, "error": "unknown tool id"})
+                return
+            ok, results, msg = kill_port(tool["port"])
+            self._send_json(200, {"ok": ok, "results": results, "message": msg})
             return
         self.send_error(404)
 
