@@ -1018,8 +1018,13 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     effect_area = r.read_u4()
     # 37. max_targets_hit (u4)
     max_targets_hit = r.read_u4()
-    # 38. chain_effect_array (string_array)
-    r.read_string_array()
+    # 38. HC-only string_array (absent from Parse6). CANDIDATE: MaxTargetsExpr
+    # (the RPN cap expression on Gauntlet/Energy Store etc.) — it's the natural
+    # neighbour of max_targets_hit — but UNVERIFIED: Veracity is Parse6 and has
+    # no field 38, so the only local dataset can't confirm it. Captured under a
+    # neutral name for the HC probe (tools/bin-crawler/probe_chain_fields.py); do
+    # NOT export until a Parse7/HC run matches it to a known MaxTargetsExpr value.
+    field38_str = " ".join(r.read_string_array())
     # 38b-d. HC extra fields (3 × u4)
     r.skip(12)
     # 39. radius (f4)
@@ -1031,10 +1036,16 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # 41b. HC experimental 2026: 8 bytes (likely f4 + u4, often (1.0f, 0))
     if has_field_41b:
         r.skip(8)
-    # 42. chain_eff (string_array)
-    r.read_string_array()
-    # 43. chain_fork (string_array)
-    r.read_string_array()
+    # 42. ChainEff (string_array) — per-jump chain-continue chance expression.
+    # VERIFIED on Veracity/Parse6: `@ChainJump`/`minmax` content resolves here.
+    chain_eff_expr = " ".join(r.read_string_array())
+    # 43. HC string_array, previously mislabeled "chain_fork" (the real ChainFork
+    # is a u4 int-array, not a string_array). On Parse6 the same slot resolves to
+    # VisualFX/power refs (…NictusFX), NOT the ChainTarget selection expression
+    # (`prevdistance`/`maintarget>`, which is absent from Veracity entirely). So
+    # this is most likely an FX/ChainIntoPower array, and ChainTarget lives
+    # elsewhere in Parse7. UNVERIFIED for HC — captured neutrally for the probe.
+    field43_str = " ".join(r.read_string_array())
     # 43b. HC extra: u4_array
     r.read_u4_array()
     # 43c. HC extra: u4_array (boost indices for chain powers; empty for non-chain)
@@ -1207,6 +1218,10 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         cast_through=cast_through,
         toggle_ignore=toggle_ignore,
         slot_requires=slot_requires,
+        chain_eff_expression=chain_eff_expr,
+        # Unverified Parse7 candidates — stashed for the HC probe, NOT exported.
+        _field38_str=field38_str,
+        _field43_str=field43_str,
         effects=effects,
         activation_effects=activation_effects,
         redirects=redirects,
@@ -1690,8 +1705,13 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     radius = r.read_f4()  # 39
     arc = r.read_f4()  # 40
     r.read_f4()  # 41 chain_delay
-    r.read_string_array()  # 42
-    r.read_string_array()  # 43
+    chain_eff_expr = " ".join(r.read_string_array())  # 42 ChainEff (verified:
+    # `@ChainJump`/`minmax` content resolves here on Veracity/Parse6 data)
+    # 43: string_array — NOT ChainTarget in Parse6. Verified against Veracity:
+    # `prevdistance`/`maintarget>` (the ChainTarget tokens) are absent from the
+    # whole bin, yet this slot returns VisualFX refs (…NictusFX). So Parse6's
+    # field 43 is an FX array; the Parse6 layout simply has no ChainTarget here.
+    r.read_string_array()  # 43 (FX array in Parse6, discarded)
     if has_43b:
         r.read_u4_array()  # 43b (present in Parse6/Rebirth + Veracity, absent in Thunderspy)
     if box_24:
@@ -1810,6 +1830,9 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
         cast_through=cast_through,
         toggle_ignore=toggle_ignore,
         slot_requires=slot_requires,
+        # Parse6 has no MaxTargetsExpr (field 38, HC-only) and no ChainTarget
+        # (field 43 is an FX array here — see the read above). Only ChainEff.
+        chain_eff_expression=chain_eff_expr,
         effects=effects,
         activation_effects=activation_effects,
         redirects=redirects,

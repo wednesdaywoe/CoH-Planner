@@ -275,6 +275,12 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
         d['activation_effects'] = [_eg_to_dict(eg) for eg in pw.activation_effects]
     if pw.redirects:
         d['redirect'] = pw.redirects
+    # ChainEff — per-jump chain-continue chance expression (e.g. Chain Induction,
+    # Jolting Chain). Sparse (only chain powers), so emit only when present.
+    # NOTE: the sibling ChainTarget + MaxTargetsExpr expressions are NOT here yet
+    # — their Parse7 binary slots still need HC verification (see BIN-PARSER-LOG).
+    if pw.chain_eff_expression:
+        d['chain_eff_expression'] = pw.chain_eff_expression
 
     return d
 

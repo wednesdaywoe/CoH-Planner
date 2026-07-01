@@ -131,6 +131,20 @@ class PowerRecord:
     # guessing from `is_proc`.
     slot_requires: str = ""
 
+    # `ChainEff` (space-joined RPN/infix token list) — per-jump chain-continue
+    # chance (e.g. `1 0.20 @ChainJump 1 - * - 0.20 1 minmax`). Previously read
+    # and dropped; VERIFIED against Veracity/Parse6 (`@ChainJump`/`minmax`).
+    chain_eff_expression: str = ""
+
+    # Unverified Parse7/HC probe scratch — the two string_arrays that MIGHT hold
+    # `MaxTargetsExpr` (field 38) and `ChainTarget` (field 43). Populated only by
+    # the Parse7 parser and NOT emitted to the export until an HC run confirms
+    # the mapping (Veracity is Parse6 and can't). Leading underscore + repr=False
+    # keeps them out of asdict()/JSON. See tools/bin-crawler probe_chain.py and
+    # BIN-PARSER-LOG.
+    _field38_str: str = field(default="", repr=False)
+    _field43_str: str = field(default="", repr=False)
+
     # Effect data — the binary stores two parallel struct_arrays:
     # - `Effect` blocks (main effects) go into `effects`
     # - `ActivationEffect` blocks (self-buff/redirect sources for toggles &

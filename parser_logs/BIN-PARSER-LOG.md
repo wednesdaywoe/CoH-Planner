@@ -20,6 +20,39 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 > --- NEW ISSUES / UNRESOLVED ---
 
+### Chain / max-targets expression fields — partially recovered, Parse7 mapping needs HC verification (2026-07-01)
+
+**Ask (user):** the export is missing the `ChainTarget` (chain next-target selection)
+and `MaxTargetsExpr` (target-cap) expressions, which CoD surfaces. Both are RPN token
+lists like requires/duration/magnitude.
+
+**Found:** the powers.bin chain region (fields 38/42/43 in `_powers.py`) reads several
+string_arrays that were **discarded under guessed labels** — and the guesses were wrong:
+- **Field 42 = `ChainEff`** (per-jump continue-chance, `… @ChainJump … minmax`).
+  **VERIFIED** against the local Veracity/Parse6 data (`@ChainJump` resolves here). Now
+  captured as `PowerRecord.chain_eff_expression` (not yet exported — see below).
+- **Field 43 was labeled `chain_fork`** — impossible, `ChainFork` is a u4 **int** array
+  (`1 2 … 16`), not a string_array. On Parse6 this slot resolves to VisualFX/power refs
+  (`…NictusFX`), and `prevdistance`/`maintarget>` (the real `ChainTarget` tokens) are
+  **absent from the entire Veracity bin** → field 43 is an FX/`ChainIntoPower` array on
+  Parse6, **not** `ChainTarget`.
+- **Field 38** (HC/Parse7-only string_array after `max_targets_hit`) is the natural home
+  of `MaxTargetsExpr`, but **UNVERIFIED**: Veracity is Parse6 and has no field 38.
+
+**Blocker:** the user's export is **HC/Parse7**, and both requested fields live in the
+Parse7 layout — which the only local dataset (Parse6/Veracity) cannot verify (§7). Need a
+run against HC `.pigg` data. `tools/bin-crawler/probe_chain_fields.py` captures the two
+Parse7 candidates (`_field38_str`, `_field43_str`) + ChainEff and prints them for known
+chain/cap powers (Chain Induction, Jolting Chain, Shock Therapy circuits, a Tanker Gauntlet
+attack) so the tokens (`prevdistance`, `GauntletTargetCap`) pinpoint the true slots.
+
+**State:** parser captures ChainEff (verified) + the two neutral Parse7 candidates; **no
+export change yet** (`.json` unchanged) — so we ship all three chain expressions in one
+verified change after the HC probe, avoiding a double re-export (§6). Once the probe
+confirms the slots: promote `_field38_str`→`max_targets_expression`,
+`_field43_str`(or wherever `prevdistance` lands)→`chain_target_expression`, wire all three
+into `export_powers.py` `power_to_dict`, and add a focused test.
+
 *(Sibling game-data finding from the I28P3 audit — NOT a parser issue, logged here only for
 cross-reference: Sentinel `Blinding_Powder` Confuse **scale is 10**, but the patch notes
 and the Scrapper/Stalker versions say **12**. The parser reads it correctly — Scr/Stk parse
