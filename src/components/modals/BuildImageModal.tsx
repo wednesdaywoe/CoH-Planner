@@ -229,6 +229,7 @@ export function BuildImageModal({ isOpen, onClose }: BuildImageModalProps) {
               <Check label="Character level" checked={options.showLevel} onChange={(v) => set({ showLevel: v })} />
               <Check label="Origin" checked={options.showOrigin} onChange={(v) => set({ showOrigin: v })} />
               <Check label="Inherent powers" checked={options.showInherents} onChange={(v) => set({ showInherents: v })} />
+              <Check label="Incarnates" checked={options.showIncarnates} onChange={(v) => set({ showIncarnates: v })} />
               <Check label="Only slotted powers" checked={options.onlySlotted} onChange={(v) => set({ onlySlotted: v })} />
               <Check label="Enhancement icons" checked={options.showEnhancements} onChange={(v) => set({ showEnhancements: v })} />
               <Check label="Set bonuses" checked={options.showSetBonuses} onChange={(v) => set({ showSetBonuses: v })} />

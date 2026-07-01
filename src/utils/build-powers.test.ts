@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getBuildPowers, getSelectedPowersByLevel, getSlottedInherents, getInherentPowers, isPowerSlotted } from './build-powers';
+import { getBuildPowers, getSelectedPowersByLevel, getSlottedInherents, getInherentPowers, getSelectedIncarnates, isPowerSlotted } from './build-powers';
 import type { Build } from '@/types/build';
 import type { SelectedPower } from '@/types/power';
 
@@ -83,6 +83,29 @@ describe('getInherentPowers', () => {
       ],
     });
     expect(getInherentPowers(build).map((p) => p.name)).toEqual(['Health', 'Sprint']);
+  });
+});
+
+describe('getSelectedIncarnates', () => {
+  it('returns non-null slots in canonical order, skipping empties', () => {
+    const inc = (slotId: string, displayName: string) => ({ slotId, displayName, icon: 'x' } as never);
+    const build = buildWith({
+      incarnates: {
+        alpha: inc('alpha', 'Musculature Core'),
+        judgement: null,
+        interface: null,
+        destiny: null,
+        lore: inc('lore', 'Cimeroran'),
+        hybrid: null,
+        genesis: null,
+      } as never,
+    });
+    const names = getSelectedIncarnates(build).map((i) => i.displayName);
+    expect(names).toEqual(['Musculature Core', 'Cimeroran']);
+  });
+
+  it('returns [] when there is no incarnate state', () => {
+    expect(getSelectedIncarnates(buildWith({}))).toEqual([]);
   });
 });
 

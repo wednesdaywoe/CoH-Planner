@@ -14,7 +14,8 @@ import type { Build } from '@/types/build';
 import type { SelectedPower, Enhancement } from '@/types';
 import { getPowerIconPath } from '@/data';
 import { resolvePath } from '@/utils/paths';
-import { getBuildPowers, getInherentPowers, isPowerSlotted } from '@/utils/build-powers';
+import { getBuildPowers, getInherentPowers, getSelectedIncarnates, isPowerSlotted } from '@/utils/build-powers';
+import type { SelectedIncarnatePower } from '@/types/incarnate';
 import { isNonZeroStat, type StatSection } from '@/utils/detailed-totals';
 import { SlottedEnhancementIcon } from '@/components/powers/SlottedEnhancementIcon';
 import type { ExportImageOptions } from './exportOptions';
@@ -114,6 +115,26 @@ function PowerTile({ power, showEnhancements }: { power: SelectedPower; showEnha
             {showEnhancements ? <SlotIcons slots={power.slots} /> : <SlotDots slots={power.slots} />}
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+function IncarnateTile({ inc }: { inc: SelectedIncarnatePower }) {
+  const slotLabel = inc.slotId.charAt(0).toUpperCase() + inc.slotId.slice(1);
+  return (
+    <div className="flex items-center gap-2 rounded-md bg-slate-800/60 border border-slate-700/70 px-2 py-1.5">
+      <img
+        src={getPowerIconPath(inc.icon)}
+        alt=""
+        className="w-9 h-9 rounded shrink-0"
+        onError={(e) => {
+          (e.target as HTMLImageElement).src = resolvePath('/img/Unknown.png');
+        }}
+      />
+      <div className="min-w-0 flex-1">
+        <div className="text-[12px] font-medium text-purple-200 leading-tight truncate">{inc.displayName}</div>
+        <div className="text-[10px] text-slate-400 leading-tight truncate">{slotLabel}</div>
       </div>
     </div>
   );
@@ -247,6 +268,7 @@ export const BuildImageCard = forwardRef<HTMLDivElement, BuildImageCardProps>(fu
   const slottedFilter = (list: SelectedPower[]) => (options.onlySlotted ? list.filter(isPowerSlotted) : list);
   const powers = slottedFilter(getBuildPowers(build));
   const inherents = options.showInherents ? slottedFilter(getInherentPowers(build)) : [];
+  const incarnates = options.showIncarnates ? getSelectedIncarnates(build) : [];
   const sections = allStats.filter((s) => options.statSections.includes(s.name));
   const hasTotals = sections.length > 0;
 
@@ -282,6 +304,17 @@ export const BuildImageCard = forwardRef<HTMLDivElement, BuildImageCardProps>(fu
           <div style={powerGridStyle}>
             {inherents.map((p) => (
               <PowerTile key={`inh:${p.internalName}`} power={p} showEnhancements={options.showEnhancements} />
+            ))}
+          </div>
+        </>
+      )}
+
+      {incarnates.length > 0 && (
+        <>
+          <ZoneLabel className="mt-3">Incarnates</ZoneLabel>
+          <div style={powerGridStyle}>
+            {incarnates.map((inc) => (
+              <IncarnateTile key={inc.slotId} inc={inc} />
             ))}
           </div>
         </>

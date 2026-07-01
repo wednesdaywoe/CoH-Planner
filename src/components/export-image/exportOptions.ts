@@ -43,6 +43,8 @@ export interface ExportImageOptions {
   showEnhancements: boolean;
   /** Include the inherent-powers row. */
   showInherents: boolean;
+  /** Include the incarnate-powers row. */
+  showIncarnates: boolean;
   /** Only show powers that have at least one enhancement slotted. */
   onlySlotted: boolean;
   // ── Totals ──
@@ -59,7 +61,7 @@ export interface ExportImageOptions {
 /** Fields a preset dictates. The rest (authorName, transparent, scale) persist across preset changes. */
 type PresetSeed = Pick<
   ExportImageOptions,
-  'showLevel' | 'showOrigin' | 'showCredit' | 'showEnhancements' | 'showInherents' | 'onlySlotted' | 'statSections' | 'showSetBonuses'
+  'showLevel' | 'showOrigin' | 'showCredit' | 'showEnhancements' | 'showInherents' | 'showIncarnates' | 'onlySlotted' | 'statSections' | 'showSetBonuses'
 >;
 
 const PRESET_SEEDS: Record<ExportPreset, PresetSeed> = {
@@ -70,6 +72,7 @@ const PRESET_SEEDS: Record<ExportPreset, PresetSeed> = {
     showCredit: true,
     showEnhancements: true,
     showInherents: true,
+    showIncarnates: true,
     onlySlotted: true,
     statSections: COMPACT_STAT_SECTIONS,
     showSetBonuses: false,
@@ -81,6 +84,7 @@ const PRESET_SEEDS: Record<ExportPreset, PresetSeed> = {
     showCredit: true,
     showEnhancements: true,
     showInherents: true,
+    showIncarnates: true,
     onlySlotted: true,
     statSections: [...ALL_STAT_SECTIONS],
     showSetBonuses: true,
@@ -92,6 +96,7 @@ const PRESET_SEEDS: Record<ExportPreset, PresetSeed> = {
     showCredit: true,
     showEnhancements: true,
     showInherents: true,
+    showIncarnates: true,
     onlySlotted: false,
     statSections: [...ALL_STAT_SECTIONS],
     showSetBonuses: true,
@@ -112,7 +117,8 @@ export function createDefaultOptions(authorName = ''): ExportImageOptions {
     showOrigin: false,
     showCredit: true,
     showEnhancements: true,
-    showInherents: false,
+    showInherents: true,
+    showIncarnates: true,
     onlySlotted: false,
     statSections: STANDARD_STAT_SECTIONS,
     showSetBonuses: false,

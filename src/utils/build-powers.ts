@@ -12,6 +12,8 @@
 
 import type { Build } from '@/types/build';
 import type { SelectedPower } from '@/types/power';
+import type { SelectedIncarnatePower } from '@/types/incarnate';
+import { INCARNATE_SLOT_ORDER } from '@/types/incarnate';
 
 export interface PowerLevelGroup {
   /** Pick level (1–50) shared by every power in this group. */
@@ -69,4 +71,13 @@ export function getInherentPowers(build: Build): SelectedPower[] {
  */
 export function getSlottedInherents(build: Build): SelectedPower[] {
   return getInherentPowers(build).filter(isPowerSlotted);
+}
+
+/** Selected incarnate powers in canonical slot order (Alpha → Genesis), skipping empty slots. */
+export function getSelectedIncarnates(build: Build): SelectedIncarnatePower[] {
+  const inc = build.incarnates;
+  if (!inc) return [];
+  return INCARNATE_SLOT_ORDER.map((slotId) => inc[slotId]).filter(
+    (p): p is SelectedIncarnatePower => !!p,
+  );
 }
