@@ -297,6 +297,7 @@ function MobileMenuContent({
   onRequestEnhancementTools: () => void;
 }) {
   const openExportImportModal = useUIStore((s) => s.openExportImportModal);
+  const openBuildImageModal = useUIStore((s) => s.openBuildImageModal);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
   const openHelpModal = useUIStore((s) => s.openHelpModal);
   const openWelcomeModal = useUIStore((s) => s.openWelcomeModal);
@@ -346,6 +347,7 @@ function MobileMenuContent({
         {item('Save build', () => openExportImportModal('save'))}
         {item('Load / Import', () => openExportImportModal('load-import'))}
         {item('Share / Export', () => openExportImportModal('share-export'))}
+        {item('Export as Image', () => openBuildImageModal())}
         {itemNoClose('New build (full reset)', onRequestNewBuild)}
         {itemNoClose('Clear powers', onRequestClearPowers, true)}
         {itemNoClose('Clear slots', onRequestClearSlots, true)}

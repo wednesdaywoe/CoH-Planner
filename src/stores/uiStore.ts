@@ -122,6 +122,9 @@ interface UIState {
   /** Which tab the Export/Import modal should open to */
   exportImportModalTab: 'save' | 'load-import' | 'share-export' | null;
 
+  /** Export-as-Image modal open state */
+  buildImageModalOpen: boolean;
+
   /** Feedback modal open state */
   feedbackModalOpen: boolean;
 
@@ -506,6 +509,10 @@ interface UIActions {
   openExportImportModal: (tab?: 'save' | 'load-import' | 'share-export') => void;
   closeExportImportModal: () => void;
 
+  // Export-as-Image Modal
+  openBuildImageModal: () => void;
+  closeBuildImageModal: () => void;
+
   // Feedback Modal
   openFeedbackModal: () => void;
   closeFeedbackModal: () => void;
@@ -766,6 +773,7 @@ export const useUIStore = create<UIStore>()(
       incarnateT4ComboIndex: {},
       exportImportModalOpen: false,
       exportImportModalTab: null,
+      buildImageModalOpen: false,
       feedbackModalOpen: false,
       changelogModalOpen: false,
       welcomeModalOpen: false,
@@ -1307,6 +1315,10 @@ export const useUIStore = create<UIStore>()(
 
       closeExportImportModal: () =>
         set({ exportImportModalOpen: false, exportImportModalTab: null }),
+
+      // Export-as-Image Modal
+      openBuildImageModal: () => set({ buildImageModalOpen: true }),
+      closeBuildImageModal: () => set({ buildImageModalOpen: false }),
 
       // Feedback Modal
       openFeedbackModal: () =>

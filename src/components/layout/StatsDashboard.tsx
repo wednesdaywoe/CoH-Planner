@@ -12,7 +12,7 @@ import { formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal, BuildImageModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal, DestinyTimeSlider } from '@/components/incarnate';
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
@@ -179,6 +179,8 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const detailedTotalsModalOpen = useUIStore((s) => s.detailedTotalsModalOpen);
   const openDetailedTotalsModal = useUIStore((s) => s.openDetailedTotalsModal);
   const closeDetailedTotalsModal = useUIStore((s) => s.closeDetailedTotalsModal);
+  const buildImageModalOpen = useUIStore((s) => s.buildImageModalOpen);
+  const closeBuildImageModal = useUIStore((s) => s.closeBuildImageModal);
   const openPowersetCompareModal = useUIStore((s) => s.openPowersetCompareModal);
   const openCompareSlotting = useUIStore((s) => s.openCompareSlotting);
   const procSettingsModalOpen = useUIStore((s) => s.procSettingsModalOpen);
@@ -628,6 +630,12 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
       <DetailedTotalsModal
         isOpen={detailedTotalsModalOpen}
         onClose={closeDetailedTotalsModal}
+      />
+
+      {/* Export as Image Modal */}
+      <BuildImageModal
+        isOpen={buildImageModalOpen}
+        onClose={closeBuildImageModal}
       />
 
       {/* Welcome Modal — opened from the update banner's "learn more" link */}

@@ -24,5 +24,6 @@ export { ProcSettingsModal } from './ProcSettingsModal';
 export { EnhancementToolsModal } from './EnhancementToolsModal';
 export { PoolPickerModal } from './PoolPickerModal';
 export { ForumExportModal } from './ForumExportModal';
+export { BuildImageModal } from './BuildImageModal';
 export { AttackChainModal } from './AttackChainModal';
 export { AnnouncementModal } from './AnnouncementModal';
