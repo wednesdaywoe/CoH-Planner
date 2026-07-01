@@ -636,6 +636,10 @@ interface ActivePowerEffect {
   };
   // Perception
   perceptionBuff?: ScalarOrScaled;
+  // Range buff (Boost Range, Aim's +Range, …). A caster +Range self-buff; the
+  // same field on Foe-targeted attacks is the per-power Fast Snipe range bump,
+  // which is NOT aggregated here (see applyActivePowerBonuses).
+  rangeBuff?: ScalarOrScaled;
   // Endurance cost per second (for toggles)
   enduranceCost?: number;
   // Endurance discount (e.g., Conserve Power — reduces end costs by a percentage)
@@ -1672,6 +1676,25 @@ function applyActivePowerBonuses(
       if (val > 0) {
         global.perceptionRadius += val;
         addToBreakdown(breakdown, 'perceptionRadius', {
+          name: power.name,
+          value: val,
+          type: 'active-power',
+        });
+      }
+    }
+
+    // Range Buff (Boost Range, Aim's +Range, …) → global +Range.
+    // Only aggregate Self-targeted buffs: the same `rangeBuff` field on a
+    // Foe-targeted attack (Blazing Bolt, Moonbeam, every snipe) is the per-power
+    // Fast Snipe range bump — gated on a ≥22% ToHit buff in game — not a
+    // persistent caster buff, so it must not feed the character's Range total.
+    // This mirrors the shouldShowToggle exclusion in power-row-utils.
+    if (effects.rangeBuff !== undefined && power.targetType?.toLowerCase() === 'self') {
+      const adjusted = adjustForStacking(effects.rangeBuff, targetsHitValues[power.internalName], effects.stacksLinear, 'rangeBuff', effects.maxStacks);
+      const val = resolveScaledEffect(adjusted, archetypeId, buildLevel) * 100;
+      if (val > 0) {
+        global.range += val;
+        addToBreakdown(breakdown, 'range', {
           name: power.name,
           value: val,
           type: 'active-power',

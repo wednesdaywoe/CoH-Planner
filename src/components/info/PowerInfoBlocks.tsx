@@ -169,7 +169,21 @@ export function GeneralStatsBlock({
     base != null ? calcThreeTierUtil(aspect, base, enhancementBonuses, globalBonusesForCalc) : null;
 
   const activation = tier('castTime', effects.castTime);
-  const rng = tier('range', effects.range);
+  // A power's Range is only extended by +Range strength (set bonuses, the Range
+  // Alpha, Boost Range, …) when the power actually accepts Range enhancement —
+  // i.e. its boostsAllowed lists "Range". Melee attacks carry a reach value
+  // (e.g. 5–7 ft) but are NOT range-enhanceable, so their Pwr Range must stay
+  // at base regardless of any global +Range bonus. Ranged attacks and ranged
+  // cones (which list "Range") still get the full three-tier treatment. This
+  // mirrors the game's per-power boostsAllowed gate rather than guessing from
+  // the numeric range value.
+  const rangeEnhanceable = power.allowedEnhancements?.includes('Range') ?? false;
+  const rng =
+    effects.range == null
+      ? null
+      : rangeEnhanceable
+        ? tier('range', effects.range)
+        : { base: effects.range, enhanced: effects.range, final: effects.range };
 
   // Ground-patch / summon-shell powers (Burn, Rain of Fire, Caltrops, …) carry
   // their shell's Self/SingleTarget/Location area with radius 0, so their real
