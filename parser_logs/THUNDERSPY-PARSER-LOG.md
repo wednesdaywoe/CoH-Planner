@@ -21,6 +21,60 @@ fixed, move it to the top of the RESOLVED section with the fix details.
 
 > --- NEW ISSUES / UNRESOLVED ---
 
+## ⚠️ Thunderspy `Ones`-attrib buffs lose their modified attribute — not in the binary — 2026-07-01
+
+**Symptom.** Thunderspy **Hasten** granted **no +recharge buff** and had **no
+`buffDuration`**, so it contributed nothing to recharge totals *and* the perma-tracking
+**"Track" button never appeared** (`isPermaEligible` needs a duration + a self-buff key).
+User-reported as "Track button missing on T-spy." Broad: **24,938** Thunderspy templates
+carry the attrib string `Ones`.
+
+**Root cause (verified by byte-level decode, NOT assumed).** Thunderspy predates the
+enum-coded AttribMod format and stores attribs as **generic string names**: `Damage`
+(20,855×), `Ones` (24,938×), etc. `Ones` is the catch-all for any magnitude effect that
+rides a `*_Ones` unit table — recharge buffs (Hasten), mez magnitudes, immobilize/KB, mez
+protection. The **specific modified attribute is not stored in the effect template at all.**
+Decoding Hasten's 308-byte template from `bin_powers.pigg`:
+- header parses cleanly: attrib count 1 → `"Ones"` (a genuine interned string, offset 170),
+  magnitude 1.0, then table `Melee_Ones` @ scale 0.7 / duration 120s;
+- the two "unknown u4s" after magnitude (hypothesised in the parser comment as "Aspect +
+  Target") are both **0** — aspect would resolve to `Current`, wrong for a Strength buff;
+- a scan of the **entire element** finds **no `Recharge`/attribute string anywhere** —
+  only `Ones`, `Melee_Ones`, and FX paths.
+
+So `extractEffects` can't classify the `Ones` template (no `RechargeTime` attrib, blank
+aspect/type) and drops it — losing both the buff magnitude and its duration. **`boosts_allowed`
+is not a discriminator** (Tough & Weave, resist/def toggles, also list `Recharge` — that's the
+*enhancement allowance*). **No bin-parser change can recover data that isn't in the binary.**
+
+**Temporary workaround (converter, shortHelp-driven — shipped 2026-07-01).**
+`recoverThunderspyOnesBuffs(power, powerJson)` in
+[convert-powerset.cjs](../scripts/convert-powerset.cjs), called from `convertPower`'s
+Thunderspy block **and** `convertPoolPower` ([convert-pool-powers.cjs](../scripts/convert-pool-powers.cjs)).
+The only recoverable signal is the resolved **shortHelp** — the same fallback the damage
+path already uses (`applyThunderspyDamageType`). Scoped tightly to the clear case:
+- **Click**, **`targetType === 'Self'`**, shortHelp matches `/\+\s*Recharge\b/`;
+- takes the first **positive-scale** `Ones` template **with a real duration** (skips
+  Hasten's negative-scale, 0-duration End-crash template, and instant powers like Burnout);
+- synthesises `rechargeBuff: {scale, table}` + `buffDuration`.
+
+Recovers exactly 3 pool powers — **Hasten** (0.7/120s), **Adrenal Booster** (0.3/30s),
+**Unleash Potential** (0.5/60s) — all Self, all with the recharge as their *only* `Ones`
+template (ToHit/Damage/Def ride their own attribs). Guard `thunderspy-ones-recharge-buff.test.ts`.
+
+**Known limitations (why this is a workaround, not a fix).**
+- **Ally/team-targeted** `+Recharge` buffs (Speed Boost, Chrono Shift, Adrenalin Boost — ~31
+  powerset powers) are intentionally **out of scope**: they're multi-buff and the single
+  `Ones` template is ambiguous among +Recharge/+Recovery/+Regen, so recovering them risks
+  mislabeling. Their recharge buff is still dropped.
+- Even for the 3 recovered powers, a multi-buff case (Unleash Potential) *assumes* the lone
+  `Ones` template is the recharge one; it's the best available guess given the shortHelp.
+- Other `Ones` effect kinds (mez magnitudes, etc.) remain unrecovered.
+
+**Proper fix.** Needs a Thunderspy attribute source that actually names the modified attribute
+— either a separate Thunderspy bin/table that maps these, or confirmation from the Thunderspy
+dev of where the runtime reads it. Until then the shortHelp workaround is the ceiling.
+
 ## ⚠️ `export_entities` (VillainDef.bin) overruns record boundary on Thunderspy — 2026-06-16
 
 **Symptom.** `python3 -m bin_crawler.export_entities --assets-dir <tspy>` crashes:

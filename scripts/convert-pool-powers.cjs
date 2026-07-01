@@ -20,6 +20,7 @@ const {
   BOOST_TYPE_MAP,
   SET_CATEGORY_MAP,
   extractEffects,
+  recoverThunderspyOnesBuffs,
   extractDamage,
   inferAllowedSetCategories,
   normalizeIconPath,
@@ -246,6 +247,13 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   }
 
   power.effects = effects;
+
+  // Thunderspy stores recharge buffs (Hasten) with a generic `Ones` attrib that
+  // extractEffects can't classify — recover them from the shortHelp so the
+  // buff + its duration (perma tracking) survive. Thunderspy-only; no-op else.
+  if (datasetId === 'thunderspy') {
+    recoverThunderspyOnesBuffs(power, rawJson);
+  }
 
   return power;
 }

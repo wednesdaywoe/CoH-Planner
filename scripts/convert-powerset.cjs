@@ -4706,6 +4706,54 @@ function applyThunderspyDamageType(damage, shortHelp) {
   return Array.isArray(damage) ? damage.map(fix) : fix(damage);
 }
 
+/**
+ * TEMPORARY WORKAROUND — Thunderspy `Ones`-attrib buff recovery.
+ *
+ * Thunderspy stores magnitude buffs that ride a `*_Ones` unit table (recharge
+ * buffs like Hasten, and other misc magnitude buffs) with a GENERIC `Ones`
+ * attrib and BLANK aspect/type. A byte-level decode of Hasten's effect template
+ * from `bin_powers.pigg` confirmed the modified attribute (e.g. RechargeTime) is
+ * NOT stored per-template at all — so no bin-parser change can recover it (see
+ * BIN-PARSER-LOG "Thunderspy `Ones`-attrib buffs lose their attribute"). Because
+ * `extractEffects` can't classify a `Ones` template, it drops the buff AND its
+ * duration → e.g. Thunderspy Hasten had no `rechargeBuff` (no +recharge applied)
+ * and no `buffDuration` (so the perma-tracking "Track" button never appeared).
+ *
+ * The only recoverable signal is the resolved shortHelp — the same fallback the
+ * damage path already uses (applyThunderspyDamageType). We scope this to the
+ * clear, high-value case: a clicky Self power whose shortHelp advertises
+ * "+Recharge" (Hasten). Other `Ones` buff kinds stay unrecovered until a proper
+ * Thunderspy attribute source is available. Thunderspy-only; no-op elsewhere.
+ */
+function recoverThunderspyOnesBuffs(power, powerJson) {
+  if (power.powerType !== 'Click') return;
+  // Self-targeted only. Ally/team-targeted +Recharge buffs (Speed Boost, Chrono
+  // Shift, …) also ride `Ones`, but they're multi-buff and the `Ones` template
+  // is ambiguous among +Recharge/+Recovery/+Regen — recovering them risks
+  // mislabeling, and they aren't the caster self-buffs perma tracking measures.
+  // Scope to Self (the reported case: Hasten, Adrenal Booster, Unleash Potential).
+  if (power.targetType !== 'Self') return;
+  const sh = power.shortHelp || '';
+  if (!/\+\s*Recharge\b/i.test(sh)) return;
+  if (power.effects && power.effects.rechargeBuff) return; // already classified — don't override
+
+  for (const eff of powerJson.effects || []) {
+    for (const t of eff.templates || []) {
+      if (!(t.attribs || []).includes('Ones')) continue;
+      const scale = t.scale || 0;
+      // Positive scale + a real duration = the buff itself; skips Hasten's
+      // negative-scale, zero-duration endurance-crash `Ones` template.
+      if (scale <= 0) continue;
+      const durSec = _parseDurationSeconds(t.duration);
+      if (!durSec || durSec <= 0) continue;
+      power.effects = power.effects || {};
+      power.effects.rechargeBuff = { scale: Math.abs(scale), table: t.table || undefined };
+      power.effects.buffDuration = durSec;
+      return;
+    }
+  }
+}
+
 function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // Map target type to valid TypeScript type (or undefined if unknown)
   const rawTargetType = powerJson.target_type;
@@ -5115,6 +5163,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     for (const ce of power.conditionalEffects || []) {
       if (ce.damage) ce.damage = applyThunderspyDamageType(ce.damage, power.shortHelp);
     }
+    recoverThunderspyOnesBuffs(power, powerJson);
   }
 
   return power;
@@ -5362,6 +5411,7 @@ export default powerset;
 // migrate-to-layered.cjs)
 module.exports = {
   applyThunderspyDamageType,
+  recoverThunderspyOnesBuffs,
   extractEffects,
   extractDamage,
   inferAllowedSetCategories,

@@ -171,7 +171,12 @@ export const POWER_POOLS_RAW = {
           "recharge": 240,
           "endurance": 5.2,
           "activationTime": 1.3,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "rechargeBuff": {
+            "scale": 0.3,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 30
         }
       },
       {
@@ -956,7 +961,12 @@ export const POWER_POOLS_RAW = {
           "recharge": 600,
           "endurance": 2.6,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "rechargeBuff": {
+            "scale": 0.5,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 60
         }
       },
       {
@@ -2067,7 +2077,12 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 450,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "rechargeBuff": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 120
         }
       },
       {
