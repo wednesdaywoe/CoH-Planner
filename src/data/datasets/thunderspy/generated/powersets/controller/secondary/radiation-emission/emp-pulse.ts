@@ -34,6 +34,7 @@ export const EMPPulse: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Endurance Modification",
     "Holds"
   ],

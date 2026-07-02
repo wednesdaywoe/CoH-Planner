@@ -36,6 +36,7 @@ export const Wormhole: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Knockback",
     "Stuns",
     "Teleport",

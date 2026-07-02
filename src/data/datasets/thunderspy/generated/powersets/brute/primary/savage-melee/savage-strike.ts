@@ -33,6 +33,7 @@ export const SavageStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Melee Damage",
     "Threat Duration"
   ],

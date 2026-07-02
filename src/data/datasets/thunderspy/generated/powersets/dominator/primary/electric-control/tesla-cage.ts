@@ -35,8 +35,10 @@ export const TeslaCage: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Endurance Modification",
     "Holds",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

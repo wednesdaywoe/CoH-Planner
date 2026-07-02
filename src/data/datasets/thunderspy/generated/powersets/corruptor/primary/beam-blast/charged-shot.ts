@@ -34,7 +34,9 @@ export const ChargedShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -42,18 +44,5 @@ export const ChargedShot: Power = {
     "type": "Energy",
     "scale": 1.64,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 1.64,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

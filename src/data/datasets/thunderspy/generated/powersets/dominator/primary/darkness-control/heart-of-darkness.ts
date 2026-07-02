@@ -36,7 +36,9 @@ export const HeartofDarkness: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Dominator Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns",
     "To Hit Debuff"
   ],

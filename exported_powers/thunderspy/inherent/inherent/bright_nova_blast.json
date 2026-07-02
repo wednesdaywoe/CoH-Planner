@@ -43,6 +43,7 @@
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "cast_through": [],
@@ -69,13 +70,15 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "SSDamage"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
-          "scale": 1.0,
+          "table": "Ranged_SSDamage",
+          "scale": 2.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -145,13 +148,15 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "SSDamage"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
-          "scale": 1.0,
+          "table": "Ranged_SSDamage",
+          "scale": 1.932,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,

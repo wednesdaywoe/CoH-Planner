@@ -36,5 +36,12 @@ export const ChronoShift: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeBuff": {
+      "scale": 1.066,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 30
+  }
 };

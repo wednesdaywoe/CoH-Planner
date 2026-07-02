@@ -35,7 +35,9 @@ export const GravityDistortion: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

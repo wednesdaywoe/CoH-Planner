@@ -34,6 +34,7 @@ export const FollowUp: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets",
     "To Hit Buff"
   ],
   "maxSlots": 6,

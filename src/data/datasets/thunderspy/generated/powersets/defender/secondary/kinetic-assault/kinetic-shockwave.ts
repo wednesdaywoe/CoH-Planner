@@ -35,8 +35,10 @@ export const KineticShockwave: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -47,8 +49,8 @@ export const KineticShockwave: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "kinetic_assault_impulse",
+      "label": "Impulse",
       "scope": "global",
       "defaultActive": false,
       "damage": {

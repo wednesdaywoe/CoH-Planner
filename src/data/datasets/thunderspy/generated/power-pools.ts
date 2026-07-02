@@ -73,6 +73,7 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -135,6 +136,7 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -425,7 +427,53 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.1137,
           "activationTime": 0.67,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "melee": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -451,6 +499,7 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -493,6 +542,7 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -658,7 +708,53 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "endurance": 0.0975,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -780,7 +876,53 @@ export const POWER_POOLS_RAW = {
           "recharge": 30,
           "endurance": 0.2275,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "melee": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       }
     ]
@@ -848,6 +990,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -913,6 +1056,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -962,11 +1106,20 @@ export const POWER_POOLS_RAW = {
           "endurance": 2.6,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "melee": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 60
+          },
+          "buffDuration": 60,
           "rechargeBuff": {
             "scale": 0.5,
             "table": "Melee_Ones"
-          },
-          "buffDuration": 60
+          }
         }
       },
       {
@@ -1029,7 +1182,53 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.05,
           "activationTime": 0.73,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -1061,7 +1260,53 @@ export const POWER_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "AoE",
-          "radius": 20
+          "radius": 20,
+          "defenseBuff": {
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 120
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -1147,7 +1392,53 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.05,
           "activationTime": 0.73,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       }
     ]
@@ -1188,7 +1479,53 @@ export const POWER_POOLS_RAW = {
           "activatePeriod": 2,
           "effectArea": "AoE",
           "radius": 60,
-          "maxTargets": 255
+          "maxTargets": 255,
+          "defenseBuff": {
+            "melee": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "aoe": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 2.25
+          },
+          "buffDuration": 2.25
         }
       },
       {
@@ -1280,7 +1617,17 @@ export const POWER_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "AoE",
           "radius": 100,
-          "maxTargets": 255
+          "maxTargets": 255,
+          "defenseBuff": {
+            "melee": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 120
+          },
+          "buffDuration": 120
         }
       },
       {
@@ -1391,7 +1738,53 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "endurance": 0.0325,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
@@ -1472,7 +1865,8 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage"
+          "Melee AoE Damage",
+          "Melee Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -1872,6 +2266,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1939,6 +2334,7 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -2031,6 +2427,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {

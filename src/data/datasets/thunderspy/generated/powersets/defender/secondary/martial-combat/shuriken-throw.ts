@@ -33,6 +33,8 @@ export const ShurikenThrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

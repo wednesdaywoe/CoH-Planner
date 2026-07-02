@@ -39,6 +39,7 @@
   ],
   "allowed_set_categories": [
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns"
   ],
   "cast_through": [],

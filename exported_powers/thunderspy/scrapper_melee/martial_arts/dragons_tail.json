@@ -39,7 +39,8 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "cast_through": [],
   "toggle_ignore": [],
@@ -221,7 +222,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "ECCritModPlayer"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -258,7 +261,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "ECCritModSmall"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -295,7 +300,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "ECCritModLarge"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -332,7 +339,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "FieryEmbrace"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

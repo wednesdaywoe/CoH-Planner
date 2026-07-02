@@ -35,6 +35,7 @@ export const Pulverize: Power = {
   "allowedSetCategories": [
     "Healing",
     "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,

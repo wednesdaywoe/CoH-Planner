@@ -35,7 +35,9 @@ export const FRTDominate: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
-    "Ranged Damage"
+    "Melee Damage",
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

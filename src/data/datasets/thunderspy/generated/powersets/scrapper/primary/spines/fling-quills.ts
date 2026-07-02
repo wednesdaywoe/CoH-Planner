@@ -35,6 +35,8 @@ export const FlingQuills: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6,

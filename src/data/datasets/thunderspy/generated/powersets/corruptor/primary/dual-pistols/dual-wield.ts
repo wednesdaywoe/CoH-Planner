@@ -35,7 +35,9 @@ export const DualWield: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],
@@ -50,19 +52,6 @@ export const DualWield: Power = {
       "type": "Lethal",
       "scale": 0.82,
       "table": "Ranged_Damage"
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.32,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

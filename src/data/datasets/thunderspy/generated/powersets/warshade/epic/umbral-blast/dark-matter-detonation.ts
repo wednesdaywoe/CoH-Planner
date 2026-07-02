@@ -37,7 +37,9 @@ export const DarkMatterDetonation: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Kheldian Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

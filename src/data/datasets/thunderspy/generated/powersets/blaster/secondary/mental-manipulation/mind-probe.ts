@@ -32,6 +32,7 @@ export const MindProbe: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Melee Damage"
   ],
   "maxSlots": 6,

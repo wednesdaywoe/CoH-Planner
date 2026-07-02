@@ -63,7 +63,7 @@
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
+          "table": "Melee_TempDamage",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,

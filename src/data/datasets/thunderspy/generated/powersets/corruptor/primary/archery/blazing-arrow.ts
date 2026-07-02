@@ -33,6 +33,8 @@ export const BlazingArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -48,19 +50,6 @@ export const BlazingArrow: Power = {
       "table": "Ranged_Damage",
       "duration": 4.12,
       "tickRate": 1
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.96,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

@@ -33,6 +33,7 @@ export const FreezingTouch: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Holds",
     "Melee Damage"
   ],

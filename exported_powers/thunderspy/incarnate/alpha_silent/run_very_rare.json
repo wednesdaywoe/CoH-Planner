@@ -60,7 +60,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "RunSpeed"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

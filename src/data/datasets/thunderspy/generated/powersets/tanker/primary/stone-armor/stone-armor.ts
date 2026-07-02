@@ -38,5 +38,21 @@ export const StoneArmor: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "smashing": {
+        "scale": 1.6,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.6,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75
+    },
+    "buffDuration": 0.75
+  }
 };

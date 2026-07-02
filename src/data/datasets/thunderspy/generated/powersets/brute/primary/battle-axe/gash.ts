@@ -34,6 +34,7 @@ export const Gash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Knockback",
     "Melee Damage",
     "Threat Duration"

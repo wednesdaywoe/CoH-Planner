@@ -37,6 +37,7 @@ export const PowerPush: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

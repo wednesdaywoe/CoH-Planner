@@ -35,7 +35,9 @@ export const Blackstar: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "To Hit Debuff"
   ],
   "maxSlots": 6,
@@ -43,18 +45,5 @@ export const Blackstar: Power = {
     "type": "Negative",
     "scale": 1.23,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 2,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

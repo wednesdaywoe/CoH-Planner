@@ -38,7 +38,9 @@ export const SweepingCross: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -56,29 +58,44 @@ export const SweepingCross: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "combo_level_1",
+      "label": "Combo Level 1",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 1.575,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 1.725,
-          "table": "Melee_Damage"
+      "mode": "replace",
+      "damage": {
+        "type": "Special",
+        "scale": 1.575,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "stun": {
+          "mag": 0.23000000417232513,
+          "scale": 6,
+          "table": "Melee_Stun"
         }
-      ],
+      },
+      "group": "combo-levels"
+    },
+    {
+      "id": "combo_level_2",
+      "label": "Combo Level 2",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "damage": {
+        "type": "Special",
+        "scale": 1.725,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "stun": {
           "mag": 0.25999999046325684,
           "scale": 6,
           "table": "Melee_Stun"
         }
-      }
+      },
+      "group": "combo-levels"
     },
     {
       "id": "combo_level_3",
@@ -97,7 +114,8 @@ export const SweepingCross: Power = {
           "scale": 6,
           "table": "Melee_Stun"
         }
-      }
+      },
+      "group": "combo-levels"
     }
   ]
 };

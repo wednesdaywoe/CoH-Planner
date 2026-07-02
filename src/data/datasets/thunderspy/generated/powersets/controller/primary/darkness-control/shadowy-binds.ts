@@ -41,7 +41,9 @@ export const ShadowyBinds: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Controller Archetype Sets",
     "Fear",
+    "Melee Damage",
     "Pet Damage",
     "Ranged Damage",
     "To Hit Debuff"

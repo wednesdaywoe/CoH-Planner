@@ -33,7 +33,9 @@ export const AcidMortar: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Defender Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6

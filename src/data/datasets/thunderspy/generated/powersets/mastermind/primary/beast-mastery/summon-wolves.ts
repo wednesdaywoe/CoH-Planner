@@ -42,6 +42,8 @@ export const SummonWolves: Power = {
     "Defense Debuff",
     "Healing",
     "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Running & Sprints",

@@ -32,6 +32,7 @@ export const FireSword: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Melee Damage"
   ],
   "maxSlots": 6,

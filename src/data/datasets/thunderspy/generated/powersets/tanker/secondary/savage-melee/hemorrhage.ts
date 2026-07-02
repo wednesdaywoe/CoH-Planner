@@ -36,6 +36,7 @@ export const Hemorrhage: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -46,8 +47,8 @@ export const Hemorrhage: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "savage_melee_blood_frenzy",
+      "label": "Blood Frenzy",
       "scope": "global",
       "defaultActive": false,
       "damage": [

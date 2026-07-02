@@ -60,7 +60,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Endurance"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -97,7 +99,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Recovery"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

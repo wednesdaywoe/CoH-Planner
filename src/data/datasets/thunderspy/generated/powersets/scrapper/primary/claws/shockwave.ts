@@ -38,7 +38,9 @@ export const Shockwave: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage"
+    "Melee Damage",
+    "Ranged AoE Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

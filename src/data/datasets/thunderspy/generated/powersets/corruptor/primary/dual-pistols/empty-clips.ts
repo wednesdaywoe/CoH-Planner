@@ -40,8 +40,10 @@ export const EmptyClips: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],
@@ -63,19 +65,6 @@ export const EmptyClips: Power = {
     }
   ],
   "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.26,
-        "table": "Ranged_Damage",
-        "duration": 1.6,
-        "tickRate": 0.5
-      }
-    },
     {
       "id": "lethalammo",
       "label": "Standard Ammo",

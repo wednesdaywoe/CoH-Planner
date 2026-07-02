@@ -34,6 +34,8 @@ export const LancerShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Stuns"
   ],
@@ -49,18 +51,5 @@ export const LancerShot: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 2.12,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

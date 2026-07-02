@@ -41,6 +41,8 @@ export const HeadSplitter: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

@@ -36,7 +36,9 @@ export const Breathless: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Immobilize",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

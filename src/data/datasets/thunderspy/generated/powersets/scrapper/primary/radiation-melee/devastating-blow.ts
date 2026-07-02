@@ -39,6 +39,7 @@ export const DevastatingBlow: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee Damage",
+    "Scrapper Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,

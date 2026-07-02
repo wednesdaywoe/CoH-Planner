@@ -36,6 +36,8 @@ export const Quills: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6,

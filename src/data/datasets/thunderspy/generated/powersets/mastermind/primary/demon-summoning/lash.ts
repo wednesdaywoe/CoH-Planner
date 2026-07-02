@@ -34,10 +34,17 @@ export const Lash: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee Damage"
   ],
   "maxSlots": 6,
   "damage": [
+    {
+      "type": "Smashing",
+      "scale": -1.25,
+      "table": "Ranged_Res_Dmg",
+      "duration": 10
+    },
     {
       "type": "Fire",
       "scale": 1.96,

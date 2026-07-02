@@ -63,7 +63,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Melee"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

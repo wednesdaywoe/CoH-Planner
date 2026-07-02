@@ -42,7 +42,9 @@ export const PenumbralGrasp: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Immobilize",
+    "Melee Damage",
     "Ranged Damage",
     "To Hit Debuff"
   ],

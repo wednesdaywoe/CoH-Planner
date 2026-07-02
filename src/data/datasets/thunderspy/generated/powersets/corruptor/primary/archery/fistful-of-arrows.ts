@@ -36,6 +36,8 @@ export const FistfulofArrows: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -43,18 +45,5 @@ export const FistfulofArrows: Power = {
     "type": "Lethal",
     "scale": 0.91,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.91,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

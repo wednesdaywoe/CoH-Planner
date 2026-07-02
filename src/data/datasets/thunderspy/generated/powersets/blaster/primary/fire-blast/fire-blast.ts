@@ -39,6 +39,8 @@ export const FireBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

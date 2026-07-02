@@ -53,14 +53,16 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Leap"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
+          "table": "Melee_Leap",
           "scale": 1.0,
-          "duration": "0 seconds",
+          "duration": "10 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
@@ -90,14 +92,16 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "SpeedJumping"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
+          "table": "Melee_SpeedJumping",
           "scale": 1.0,
-          "duration": "0 seconds",
+          "duration": "10 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

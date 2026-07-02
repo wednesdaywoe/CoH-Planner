@@ -35,25 +35,14 @@ export const Focus: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged Damage"
+    "Melee Damage",
+    "Ranged Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
     "scale": 1.64,
     "table": "Melee_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.64,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

@@ -32,7 +32,8 @@ export const NWSlash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage"
+    "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": [

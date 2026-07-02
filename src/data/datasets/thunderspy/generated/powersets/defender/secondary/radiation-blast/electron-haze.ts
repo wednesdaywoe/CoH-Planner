@@ -39,8 +39,10 @@ export const ElectronHaze: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Defender Archetype Sets",
     "Defense Debuff",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

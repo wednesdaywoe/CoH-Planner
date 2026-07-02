@@ -54,7 +54,8 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Energy",
+            "Negative_Energy"
           ],
           "type": "",
           "application_type": "",

@@ -33,6 +33,7 @@ export const ThunderClap: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,

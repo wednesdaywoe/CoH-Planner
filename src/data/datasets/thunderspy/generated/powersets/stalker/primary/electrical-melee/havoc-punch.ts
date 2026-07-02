@@ -36,7 +36,8 @@ export const HavocPunch: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Melee Damage",
-    "Sleep"
+    "Sleep",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -50,18 +51,5 @@ export const HavocPunch: Power = {
       "scale": 8,
       "table": "Melee_Sleep"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1.32,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

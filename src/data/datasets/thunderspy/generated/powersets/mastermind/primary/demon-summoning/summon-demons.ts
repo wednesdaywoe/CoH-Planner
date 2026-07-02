@@ -36,6 +36,8 @@ export const SummonDemons: Power = {
   "allowedSetCategories": [
     "Healing",
     "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Resist Damage"

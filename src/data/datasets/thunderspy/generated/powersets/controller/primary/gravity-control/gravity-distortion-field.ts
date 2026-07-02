@@ -36,6 +36,7 @@ export const GravityDistortionField: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Holds",
     "Slow Movement"
   ],

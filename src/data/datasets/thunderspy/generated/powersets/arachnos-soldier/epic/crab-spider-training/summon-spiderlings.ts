@@ -34,8 +34,10 @@ export const SummonSpiderlings: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6
 };

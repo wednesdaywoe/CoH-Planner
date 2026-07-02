@@ -61,7 +61,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "SummerIOTornado"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -98,7 +100,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "ReduceIfKD"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

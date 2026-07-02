@@ -35,7 +35,9 @@ export const Eviscerate: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Defender Archetype Sets",
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "maxSlots": 6,
   "damage": {

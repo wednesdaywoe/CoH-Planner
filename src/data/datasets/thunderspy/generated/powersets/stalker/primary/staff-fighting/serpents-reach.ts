@@ -35,25 +35,14 @@ export const SerpentsReach: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged Damage"
+    "Melee Damage",
+    "Ranged Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",
     "scale": 1.8,
     "table": "Melee_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1.8,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

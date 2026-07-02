@@ -37,8 +37,10 @@ export const DefensiveSweep: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Defense Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "Threat Duration"
   ],
   "maxSlots": 6,

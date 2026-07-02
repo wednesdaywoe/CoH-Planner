@@ -37,6 +37,7 @@ export const MidnightGrasp: Power = {
     "Accurate To-Hit Debuff",
     "Immobilize",
     "Melee Damage",
+    "Stalker Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,
@@ -60,18 +61,5 @@ export const MidnightGrasp: Power = {
       "scale": 15,
       "table": "Melee_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 2.76,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

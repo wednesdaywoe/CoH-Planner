@@ -37,6 +37,7 @@ export const NightFall: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],

@@ -32,7 +32,8 @@ export const MentalStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage"
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -42,10 +43,11 @@ export const MentalStrike: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "psionic_melee_insight",
+      "label": "Insight",
       "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Psionic",
         "scale": 0.084,

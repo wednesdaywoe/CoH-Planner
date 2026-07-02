@@ -38,6 +38,8 @@ export const RadiationTherapy: Power = {
     "Accurate Healing",
     "Healing",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

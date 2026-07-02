@@ -35,7 +35,8 @@ export const MassConfusion: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Confuse"
+    "Confuse",
+    "Controller Archetype Sets"
   ],
   "maxSlots": 6,
   "effects": {

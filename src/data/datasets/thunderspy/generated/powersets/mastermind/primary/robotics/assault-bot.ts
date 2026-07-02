@@ -34,6 +34,8 @@ export const AssaultBot: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

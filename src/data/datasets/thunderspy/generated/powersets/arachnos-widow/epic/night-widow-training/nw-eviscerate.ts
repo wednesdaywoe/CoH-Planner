@@ -35,7 +35,9 @@ export const NWEviscerate: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": [

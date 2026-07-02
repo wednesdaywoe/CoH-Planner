@@ -65,7 +65,10 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Smashing",
+            "Lethal"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

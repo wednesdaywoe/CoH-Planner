@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { getTotalSlotsAtLevel, getSlotsGrantedAtLevel, getSlotGrants } from './levels';
+import {
+  getTotalSlotsAtLevel,
+  getSlotsGrantedAtLevel,
+  getSlotGrants,
+  getMaxPowerPools,
+} from './levels';
 
 /**
  * Enhancement slot budget by server. Every server shares the 67-slot schedule
@@ -48,5 +53,22 @@ describe('slot grant schedule by server', () => {
       maxGap = Math.max(maxGap, gap);
     }
     expect(maxGap).toBe(4);
+  });
+});
+
+/**
+ * Power-pool cap by server. Every server allows 4 pools EXCEPT Thunderspy,
+ * which allows 5. Omitting serverId (or any non-Thunderspy id) yields the
+ * shared cap of 4.
+ */
+describe('max power pools by server', () => {
+  it('defaults to 4 pools on the shared schedule', () => {
+    expect(getMaxPowerPools()).toBe(4);
+    expect(getMaxPowerPools('homecoming')).toBe(4);
+    expect(getMaxPowerPools('rebirth')).toBe(4);
+  });
+
+  it('Thunderspy allows 5 pools', () => {
+    expect(getMaxPowerPools('thunderspy')).toBe(5);
   });
 });

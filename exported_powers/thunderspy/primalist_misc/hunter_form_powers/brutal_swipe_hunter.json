@@ -42,6 +42,7 @@
     "Defense Debuff",
     "Healing",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns"
   ],
   "cast_through": [],
@@ -185,7 +186,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBInactive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -222,7 +225,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

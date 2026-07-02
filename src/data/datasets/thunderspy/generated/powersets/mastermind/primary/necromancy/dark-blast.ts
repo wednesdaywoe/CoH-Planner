@@ -35,6 +35,8 @@ export const DarkBlast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "To Hit Debuff"
   ],

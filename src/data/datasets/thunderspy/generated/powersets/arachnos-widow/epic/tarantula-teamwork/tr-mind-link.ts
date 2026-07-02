@@ -34,5 +34,17 @@ export const TRMindLink: Power = {
     "Defense Sets",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 0.8,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 90
+    },
+    "buffDuration": 90
+  }
 };

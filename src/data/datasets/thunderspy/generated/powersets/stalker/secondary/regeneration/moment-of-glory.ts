@@ -35,5 +35,37 @@ export const MomentofGlory: Power = {
     "Endurance Modification",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "smashing": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 15
+    },
+    "buffDuration": 15
+  }
 };

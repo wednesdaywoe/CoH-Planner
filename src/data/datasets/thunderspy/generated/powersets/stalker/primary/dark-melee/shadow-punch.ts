@@ -35,6 +35,7 @@ export const ShadowPunch: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Melee Damage",
+    "Stalker Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,
@@ -42,18 +43,5 @@ export const ShadowPunch: Power = {
     "type": "Special",
     "scale": 0.25,
     "table": "Melee_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.84,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

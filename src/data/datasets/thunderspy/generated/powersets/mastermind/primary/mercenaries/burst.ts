@@ -36,6 +36,8 @@ export const Burst: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

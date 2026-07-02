@@ -37,7 +37,9 @@ export const DefensiveSweep: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "requires": "Scrapper_Defense.Shield_Defense !"

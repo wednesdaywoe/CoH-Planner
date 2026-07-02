@@ -37,6 +37,8 @@ export const FrostBreath: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

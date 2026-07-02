@@ -41,6 +41,7 @@
   "allowed_set_categories": [
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement"
   ],
   "cast_through": [],
@@ -926,7 +927,9 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Melee",
+            "Ranged",
+            "Area"
           ],
           "type": "",
           "application_type": "",

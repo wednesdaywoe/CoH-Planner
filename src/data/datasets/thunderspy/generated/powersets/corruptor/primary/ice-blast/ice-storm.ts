@@ -34,6 +34,8 @@ export const IceStorm: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

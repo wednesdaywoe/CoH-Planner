@@ -46,17 +46,31 @@ def norm(name: str) -> str:
 
 
 def index_pigg_icons(assets_dir: str) -> dict[str, tuple[str, str]]:
-    """norm(name) -> (pigg_path, entry_path) for every icon .texture in tspy piggs."""
+    """norm(name) -> (pigg_path, entry_path) for every icon .texture.
+
+    Scans the given tspy folder AND its sibling base `piggs/` folder. Custom
+    Thunderspy powersets reuse base icon packs whose textures live only in the
+    shared texture piggs (e.g. Telekinetic/Psychokinetic Assault's `awakened_*`
+    icons in Sweet Tea/piggs/stage1b.pigg's texture_library), NOT the tspy
+    folder — so scanning the tspy folder alone silently missed 149 referenced
+    power icons.
+    """
+    scan_dirs = [assets_dir]
+    sibling = os.path.join(os.path.dirname(os.path.normpath(assets_dir)), "piggs")
+    if os.path.isdir(sibling) and os.path.normpath(sibling) != os.path.normpath(assets_dir):
+        scan_dirs.append(sibling)
+
     idx: dict[str, tuple[str, str]] = {}
-    for pg in sorted(glob.glob(os.path.join(assets_dir, "*.pigg"))):
-        try:
-            arch = PiggArchive(pg)
-        except Exception:
-            continue
-        for p in arch.list_paths():
-            pl = p.lower()
-            if pl.endswith(".texture") and "/icons/" in pl:
-                idx.setdefault(norm(p), (pg, p))
+    for d in scan_dirs:
+        for pg in sorted(glob.glob(os.path.join(d, "*.pigg"))):
+            try:
+                arch = PiggArchive(pg)
+            except Exception:
+                continue
+            for p in arch.list_paths():
+                pl = p.lower()
+                if pl.endswith(".texture") and "/icons/" in pl:
+                    idx.setdefault(norm(p), (pg, p))
     return idx
 
 

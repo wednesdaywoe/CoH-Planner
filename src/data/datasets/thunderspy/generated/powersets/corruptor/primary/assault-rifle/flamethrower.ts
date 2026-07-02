@@ -36,6 +36,8 @@ export const Flamethrower: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -45,20 +47,5 @@ export const Flamethrower: Power = {
     "table": "Ranged_Damage",
     "duration": 3.55,
     "tickRate": 0.5
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.242,
-        "table": "Ranged_Damage",
-        "duration": 3.55,
-        "tickRate": 0.5
-      }
-    }
-  ]
+  }
 };

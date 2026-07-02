@@ -39,7 +39,9 @@ export const LuminousDetonation: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Kheldian Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

@@ -34,25 +34,13 @@ export const Special1: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
     "scale": 0.41,
     "table": "Melee_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.64,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

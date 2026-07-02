@@ -34,6 +34,7 @@ export const LowKick: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
     "Slow Movement"

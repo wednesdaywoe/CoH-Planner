@@ -38,6 +38,7 @@ export const SiphonLife: Power = {
     "Accurate To-Hit Debuff",
     "Healing",
     "Melee Damage",
+    "Stalker Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,
@@ -45,18 +46,5 @@ export const SiphonLife: Power = {
     "type": "Negative",
     "scale": 1.96,
     "table": "Melee_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 1.96,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

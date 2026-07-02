@@ -36,6 +36,8 @@ export const GlintingEye: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Kheldian Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

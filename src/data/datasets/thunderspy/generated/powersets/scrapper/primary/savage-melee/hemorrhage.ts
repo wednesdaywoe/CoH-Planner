@@ -32,7 +32,8 @@ export const Hemorrhage: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage"
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -42,8 +43,8 @@ export const Hemorrhage: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "savage_melee_blood_frenzy",
+      "label": "Blood Frenzy",
       "scope": "global",
       "defaultActive": false,
       "damage": [

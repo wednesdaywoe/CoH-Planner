@@ -36,7 +36,9 @@ export const StonePrison: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Immobilize",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

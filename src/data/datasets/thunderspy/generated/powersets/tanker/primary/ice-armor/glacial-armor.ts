@@ -40,5 +40,21 @@ export const GlacialArmor: Power = {
     "Defense Sets",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "energy": {
+        "scale": 1.7,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 1.7,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75
+    },
+    "buffDuration": 0.75
+  }
 };

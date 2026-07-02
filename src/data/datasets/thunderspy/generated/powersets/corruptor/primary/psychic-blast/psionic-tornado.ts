@@ -36,7 +36,9 @@ export const PsionicTornado: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -46,18 +48,5 @@ export const PsionicTornado: Power = {
     "table": "Ranged_Damage",
     "duration": 2.05,
     "tickRate": 0.5
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.89,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

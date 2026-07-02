@@ -33,9 +33,11 @@ export const SoulTransfer: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns"
   ],
   "maxSlots": 6,

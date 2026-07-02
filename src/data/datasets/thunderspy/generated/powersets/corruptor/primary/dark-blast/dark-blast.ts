@@ -35,6 +35,8 @@ export const DarkBlast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "To Hit Debuff"
   ],
@@ -43,18 +45,5 @@ export const DarkBlast: Power = {
     "type": "Negative",
     "scale": 1,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 1,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

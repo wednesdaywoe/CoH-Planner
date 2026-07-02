@@ -35,7 +35,9 @@ export const FRTTelekineticBlast: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged Damage"
+    "Melee Damage",
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

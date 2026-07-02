@@ -36,6 +36,7 @@ export const RadiantStrike: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Kheldian Archetype Sets",
     "Knockback",
     "Melee Damage"
   ],

@@ -38,5 +38,12 @@ export const SpeedBoost: Power = {
     "Running & Sprints",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 240
+  }
 };

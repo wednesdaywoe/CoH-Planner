@@ -34,7 +34,9 @@ export const Subdue: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Immobilize",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

@@ -42,6 +42,8 @@ export const Lich: Power = {
     "Accurate To-Hit Debuff",
     "Fear",
     "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "To Hit Debuff"

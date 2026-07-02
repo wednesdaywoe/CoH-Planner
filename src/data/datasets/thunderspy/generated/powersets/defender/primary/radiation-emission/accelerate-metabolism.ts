@@ -37,5 +37,12 @@ export const AccelerateMetabolism: Power = {
     "Running & Sprints",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 120
+  }
 };

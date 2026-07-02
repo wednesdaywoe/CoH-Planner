@@ -37,8 +37,10 @@ export const ThrowSpines: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -52,18 +54,5 @@ export const ThrowSpines: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.09,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

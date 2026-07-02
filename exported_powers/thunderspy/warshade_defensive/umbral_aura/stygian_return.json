@@ -37,7 +37,8 @@
   ],
   "allowed_set_categories": [
     "Healing",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "cast_through": [],
   "toggle_ignore": [],

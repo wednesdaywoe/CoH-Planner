@@ -36,7 +36,9 @@ export const BallLightning: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Endurance Modification",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -52,19 +54,6 @@ export const BallLightning: Power = {
       "table": "Ranged_Damage",
       "duration": 1.1,
       "tickRate": 1
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.91,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

@@ -38,7 +38,9 @@ export const Hurl: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

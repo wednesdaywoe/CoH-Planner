@@ -36,7 +36,9 @@ export const Whirlpool: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

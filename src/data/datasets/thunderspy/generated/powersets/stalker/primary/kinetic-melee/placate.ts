@@ -38,7 +38,9 @@ export const Placate: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage"
+    "Melee Damage",
+    "Ranged AoE Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

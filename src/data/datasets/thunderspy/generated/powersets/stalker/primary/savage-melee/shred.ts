@@ -38,25 +38,14 @@ export const Shred: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
     "scale": 1,
     "table": "Melee_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

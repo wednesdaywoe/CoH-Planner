@@ -35,6 +35,7 @@ export const Updraft: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

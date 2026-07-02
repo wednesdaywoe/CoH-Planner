@@ -41,6 +41,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

@@ -36,7 +36,9 @@ export const DarkGrasp: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Dominator Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage",
     "To Hit Debuff"
   ],

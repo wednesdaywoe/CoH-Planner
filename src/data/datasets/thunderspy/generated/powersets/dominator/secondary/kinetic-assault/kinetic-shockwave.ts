@@ -35,8 +35,10 @@ export const KineticShockwave: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -47,8 +49,8 @@ export const KineticShockwave: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "kinetic_assault_impulse",
+      "label": "Impulse",
       "scope": "global",
       "defaultActive": false,
       "damage": {
@@ -60,19 +62,6 @@ export const KineticShockwave: Power = {
         "immobilize": {
           "mag": 0.20000000298023224,
           "scale": 6,
-          "table": "Melee_Immobilize"
-        }
-      }
-    },
-    {
-      "id": "domination",
-      "label": "Domination Active",
-      "scope": "global",
-      "defaultActive": false,
-      "effects": {
-        "immobilize": {
-          "mag": 0.20000000298023224,
-          "scale": 9,
           "table": "Melee_Immobilize"
         }
       }

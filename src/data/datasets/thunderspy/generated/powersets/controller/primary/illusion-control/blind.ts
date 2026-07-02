@@ -35,7 +35,9 @@ export const Blind: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage",
     "Sleep"
   ],

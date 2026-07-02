@@ -35,7 +35,9 @@ export const MassLevitate: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -51,27 +53,17 @@ export const MassLevitate: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "psionic_melee_insight",
+      "label": "Insight",
       "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Smashing",
         "scale": 0.142,
         "table": "Melee_Damage",
         "duration": 3.1,
         "tickRate": 1
-      }
-    },
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1.42,
-        "table": "Melee_Damage"
       }
     }
   ]

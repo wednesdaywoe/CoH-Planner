@@ -57,7 +57,12 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -94,7 +99,14 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Stunned",
+            "Sleep",
+            "Immobilized",
+            "Held",
+            "Confused",
+            "Terrorized"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -131,7 +143,13 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Stunned",
+            "Immobilized",
+            "Held",
+            "Confused",
+            "Terrorized"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

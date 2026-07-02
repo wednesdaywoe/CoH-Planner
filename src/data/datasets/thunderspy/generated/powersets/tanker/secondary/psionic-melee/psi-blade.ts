@@ -36,6 +36,7 @@ export const PsiBlade: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -46,10 +47,11 @@ export const PsiBlade: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "psionic_melee_insight",
+      "label": "Insight",
       "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Psionic",
         "scale": 0.2285,

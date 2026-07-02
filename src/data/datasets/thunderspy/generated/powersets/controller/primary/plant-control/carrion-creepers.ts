@@ -36,8 +36,10 @@ export const CarrionCreepers: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Immobilize",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

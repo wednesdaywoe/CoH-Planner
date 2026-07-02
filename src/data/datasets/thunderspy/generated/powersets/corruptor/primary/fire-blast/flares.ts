@@ -33,6 +33,8 @@ export const Flares: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -46,19 +48,6 @@ export const Flares: Power = {
       "type": "Fire",
       "scale": 0.3,
       "table": "Ranged_Damage"
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Fire",
-        "scale": 0.71,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

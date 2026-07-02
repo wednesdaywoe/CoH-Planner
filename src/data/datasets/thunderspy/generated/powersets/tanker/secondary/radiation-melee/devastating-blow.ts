@@ -41,6 +41,7 @@ export const DevastatingBlow: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Stuns",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

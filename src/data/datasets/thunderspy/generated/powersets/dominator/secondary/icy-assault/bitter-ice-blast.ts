@@ -36,6 +36,7 @@ export const BitterIceBlast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement",
     "To Hit Debuff"

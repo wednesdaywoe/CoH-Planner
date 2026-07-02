@@ -37,6 +37,7 @@ export const Sleet: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

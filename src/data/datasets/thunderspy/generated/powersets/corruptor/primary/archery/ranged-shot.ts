@@ -35,6 +35,8 @@ export const RangedShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks"
   ],
@@ -43,18 +45,5 @@ export const RangedShot: Power = {
     "type": "Lethal",
     "scale": 2.76,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 2.76,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

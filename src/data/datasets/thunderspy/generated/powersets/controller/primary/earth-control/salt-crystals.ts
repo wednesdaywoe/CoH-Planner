@@ -33,6 +33,7 @@ export const SaltCrystals: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Sleep"
   ],
   "maxSlots": 6,

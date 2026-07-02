@@ -39,9 +39,11 @@ export const HeadSplitter: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Brute Archetype Sets",
     "Defense Debuff",
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -49,5 +51,26 @@ export const HeadSplitter: Power = {
     "type": "Lethal",
     "scale": 2.28,
     "table": "Melee_Damage"
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "bulletcut",
+      "label": "BulletCut",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "effects": {
+        "defenseBuff": {
+          "ranged": {
+            "scale": 2,
+            "table": "Melee_Buff_Def"
+          }
+        },
+        "durations": {
+          "defenseBuff": 5
+        },
+        "buffDuration": 5
+      }
+    }
+  ]
 };

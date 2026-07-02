@@ -36,6 +36,8 @@ export const FistfulofArrows: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

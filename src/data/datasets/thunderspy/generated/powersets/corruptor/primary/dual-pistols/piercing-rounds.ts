@@ -38,6 +38,8 @@ export const PiercingRounds: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],
@@ -52,19 +54,6 @@ export const PiercingRounds: Power = {
       "type": "Lethal",
       "scale": 1.055,
       "table": "Ranged_Damage"
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 2.11,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

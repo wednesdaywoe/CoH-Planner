@@ -37,7 +37,9 @@ export const BulletRain: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

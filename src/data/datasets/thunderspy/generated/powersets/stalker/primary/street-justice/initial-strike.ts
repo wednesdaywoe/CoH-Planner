@@ -34,6 +34,7 @@ export const InitialStrike: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -48,18 +49,5 @@ export const InitialStrike: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.84,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

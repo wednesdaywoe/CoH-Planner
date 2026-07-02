@@ -37,8 +37,10 @@ export const DawnStrike: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Kheldian Archetype Sets",
     "Knockback",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "maxSlots": 6,
   "damage": [

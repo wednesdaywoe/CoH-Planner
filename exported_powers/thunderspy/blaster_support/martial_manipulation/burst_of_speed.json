@@ -39,6 +39,7 @@
   ],
   "allowed_set_categories": [
     "Melee AoE Damage",
+    "Melee Damage",
     "Teleport",
     "Universal Travel"
   ],
@@ -102,7 +103,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "SpeedRefresh"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

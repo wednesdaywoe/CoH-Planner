@@ -35,7 +35,9 @@ export const FocusedBurst: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged Damage"
+    "Melee Damage",
+    "Ranged Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

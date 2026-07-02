@@ -35,6 +35,8 @@ export const Gloom: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "To Hit Debuff"
   ],
@@ -45,20 +47,5 @@ export const Gloom: Power = {
     "table": "Ranged_Damage",
     "duration": 1.5,
     "tickRate": 0.20000000298023224
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.22,
-        "table": "Ranged_Damage",
-        "duration": 1.5,
-        "tickRate": 0.20000000298023224
-      }
-    }
-  ]
+  }
 };

@@ -40,6 +40,8 @@ export const GroundZero: Power = {
     "Defense Debuff",
     "Healing",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

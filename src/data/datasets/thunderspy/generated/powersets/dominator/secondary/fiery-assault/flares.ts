@@ -33,6 +33,7 @@ export const Flares: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

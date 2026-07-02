@@ -34,6 +34,7 @@ export const Smite: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Melee Damage",
     "To Hit Debuff"
   ],

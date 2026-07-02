@@ -34,6 +34,7 @@ export const FollowUp: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Melee Damage",
     "Threat Duration",
     "To Hit Buff"

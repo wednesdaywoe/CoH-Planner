@@ -40,6 +40,7 @@ export const LowKick: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Slow Movement",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

@@ -38,6 +38,8 @@ export const ShadowMaul: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,
@@ -47,18 +49,5 @@ export const ShadowMaul: Power = {
     "table": "Melee_Damage",
     "duration": 2,
     "tickRate": 0.625
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 2.156,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

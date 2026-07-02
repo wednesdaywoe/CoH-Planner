@@ -35,7 +35,9 @@ export const ForceBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -53,18 +55,5 @@ export const ForceBolt: Power = {
       "knockback": 1
     },
     "buffDuration": 1
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

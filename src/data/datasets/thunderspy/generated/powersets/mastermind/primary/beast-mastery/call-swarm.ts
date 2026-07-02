@@ -37,6 +37,8 @@ export const CallSwarm: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

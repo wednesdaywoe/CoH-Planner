@@ -37,7 +37,9 @@ export const MightyShockwave: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

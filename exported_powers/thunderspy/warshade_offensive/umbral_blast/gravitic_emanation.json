@@ -42,6 +42,7 @@
   ],
   "allowed_set_categories": [
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns"

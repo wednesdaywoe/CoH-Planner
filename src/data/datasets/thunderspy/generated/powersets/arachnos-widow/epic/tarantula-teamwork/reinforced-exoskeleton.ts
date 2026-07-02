@@ -38,5 +38,11 @@ export const ReinforcedExoskeleton: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 2,
+    "table": "Melee_Res_DMG",
+    "duration": 0.75
+  }
 };

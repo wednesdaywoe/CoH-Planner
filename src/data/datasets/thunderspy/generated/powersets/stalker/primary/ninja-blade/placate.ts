@@ -36,7 +36,9 @@ export const Placate: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": [
@@ -55,14 +57,22 @@ export const Placate: Power = {
   ],
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "bulletcut",
+      "label": "BulletCut",
+      "scope": "global",
       "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1,
-        "table": "Melee_Damage"
+      "mode": "replace",
+      "effects": {
+        "defenseBuff": {
+          "ranged": {
+            "scale": 2,
+            "table": "Melee_Buff_Def"
+          }
+        },
+        "durations": {
+          "defenseBuff": 5
+        },
+        "buffDuration": 5
       }
     }
   ]

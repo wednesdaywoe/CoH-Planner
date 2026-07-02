@@ -33,7 +33,8 @@ export const Possess: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Confuse"
+    "Confuse",
+    "Controller Archetype Sets"
   ],
   "maxSlots": 6,
   "effects": {

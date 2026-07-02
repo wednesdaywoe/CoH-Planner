@@ -37,7 +37,8 @@ export const SpiritSunder: Power = {
     "Fear",
     "Melee Damage",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -51,18 +52,5 @@ export const SpiritSunder: Power = {
       "scale": 10,
       "table": "Melee_Fear"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 3.18,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

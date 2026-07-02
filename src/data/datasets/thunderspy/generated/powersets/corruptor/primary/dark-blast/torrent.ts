@@ -39,7 +39,9 @@ export const Torrent: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],
@@ -61,18 +63,5 @@ export const Torrent: Power = {
       "scale": 5,
       "table": "Ranged_Knockback"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 0.63,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

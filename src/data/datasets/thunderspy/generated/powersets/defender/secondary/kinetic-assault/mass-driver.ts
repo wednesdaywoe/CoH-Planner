@@ -34,21 +34,31 @@ export const MassDriver: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 0.26,
-    "table": "Ranged_Damage",
-    "duration": 2.1,
-    "tickRate": 1
-  },
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": -1.5,
+      "table": "Ranged_Res_Dmg",
+      "duration": 8
+    },
+    {
+      "type": "Special",
+      "scale": 0.26,
+      "table": "Ranged_Damage",
+      "duration": 2.1,
+      "tickRate": 1
+    }
+  ],
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "kinetic_assault_impulse",
+      "label": "Impulse",
       "scope": "global",
       "defaultActive": false,
       "damage": [

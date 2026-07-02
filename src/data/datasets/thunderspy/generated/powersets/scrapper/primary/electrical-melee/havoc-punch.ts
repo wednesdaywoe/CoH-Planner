@@ -36,6 +36,7 @@ export const HavocPunch: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Melee Damage",
+    "Scrapper Archetype Sets",
     "Sleep"
   ],
   "maxSlots": 6,

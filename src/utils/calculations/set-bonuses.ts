@@ -270,6 +270,11 @@ export const STAT_NAME_MAP: Record<string, string | null> = {
   // dropping it as an unknown stat. Modeling it fully would need a kbStrength
   // global applied to offensive KB magnitudes — see BIN-PARSER-LOG.md.
   'knockback_strength': null,
+
+  // Endurance-drain resistance (Thunderspy's Subaluwa 4pc). The calc has no
+  // end-drain-resistance stat, so explicitly ignore it (known, untracked)
+  // rather than logging it as an unknown stat.
+  'endurance_drain_resistance': null,
 };
 
 /**

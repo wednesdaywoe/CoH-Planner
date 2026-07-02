@@ -256,7 +256,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower? !",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -281,7 +281,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower? !",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -295,7 +295,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.BulletCut source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -303,7 +303,7 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Ranged"
           ],
           "type": "",
           "application_type": "",
@@ -320,7 +320,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.BulletCut source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

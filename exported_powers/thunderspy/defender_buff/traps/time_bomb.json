@@ -38,6 +38,7 @@
   ],
   "allowed_set_categories": [
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Recharge Intensive Pets"
   ],

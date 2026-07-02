@@ -36,6 +36,8 @@ export const DarkConsumption: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

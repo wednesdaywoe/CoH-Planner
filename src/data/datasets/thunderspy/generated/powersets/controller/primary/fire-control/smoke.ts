@@ -36,6 +36,7 @@ export const Smoke: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
+    "Controller Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

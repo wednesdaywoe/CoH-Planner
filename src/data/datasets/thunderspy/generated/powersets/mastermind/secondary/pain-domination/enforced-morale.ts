@@ -36,5 +36,17 @@ export const EnforcedMorale: Power = {
     "Running & Sprints",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.05,
+    "table": "Melee_Ones"
+  },
+  "effects": {
+    "rechargeBuff": {
+      "scale": 0.99,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 90
+  }
 };

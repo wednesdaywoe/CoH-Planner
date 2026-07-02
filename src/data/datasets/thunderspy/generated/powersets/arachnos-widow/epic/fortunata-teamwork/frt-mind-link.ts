@@ -34,5 +34,17 @@ export const FRTMindLink: Power = {
     "Defense Sets",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 90
+    },
+    "buffDuration": 90
+  }
 };

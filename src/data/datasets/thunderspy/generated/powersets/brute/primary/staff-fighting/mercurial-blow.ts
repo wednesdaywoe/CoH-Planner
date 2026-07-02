@@ -35,6 +35,7 @@ export const MercurialBlow: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Brute Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
     "Threat Duration"

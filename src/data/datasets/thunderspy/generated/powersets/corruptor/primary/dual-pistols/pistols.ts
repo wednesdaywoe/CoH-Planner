@@ -35,7 +35,9 @@ export const Pistols: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -52,17 +54,6 @@ export const Pistols: Power = {
     }
   ],
   "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.05,
-        "table": "Ranged_Damage"
-      }
-    },
     {
       "id": "lethalammo",
       "label": "Standard Ammo",

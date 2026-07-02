@@ -33,6 +33,7 @@ export const TelekineticThrust: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Knockback",
     "Melee Damage"
   ],

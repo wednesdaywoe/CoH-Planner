@@ -54,7 +54,8 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Smashing",
+            "Lethal"
           ],
           "type": "",
           "application_type": "",

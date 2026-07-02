@@ -37,7 +37,9 @@ export const Frostbite: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Immobilize",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

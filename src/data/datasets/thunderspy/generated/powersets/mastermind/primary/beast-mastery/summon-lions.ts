@@ -37,6 +37,8 @@ export const SummonLions: Power = {
   "allowedSetCategories": [
     "Defense Sets",
     "Healing",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Running & Sprints",

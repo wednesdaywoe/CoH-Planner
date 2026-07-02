@@ -37,7 +37,9 @@ export const BulletRain: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],
@@ -56,21 +58,6 @@ export const BulletRain: Power = {
       "table": "Ranged_Damage",
       "duration": 1.1,
       "tickRate": 0.5
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.333,
-        "table": "Ranged_Damage",
-        "duration": 1.1,
-        "tickRate": 0.5
-      }
     }
   ]
 };

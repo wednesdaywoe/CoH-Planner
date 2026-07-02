@@ -34,6 +34,8 @@ export const ShadowBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Kheldian Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

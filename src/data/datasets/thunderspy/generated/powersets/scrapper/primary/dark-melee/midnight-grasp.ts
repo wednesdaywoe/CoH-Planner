@@ -37,6 +37,7 @@ export const MidnightGrasp: Power = {
     "Accurate To-Hit Debuff",
     "Immobilize",
     "Melee Damage",
+    "Scrapper Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

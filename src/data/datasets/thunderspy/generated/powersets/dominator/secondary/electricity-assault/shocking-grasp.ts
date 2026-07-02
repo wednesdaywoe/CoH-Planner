@@ -40,6 +40,7 @@ export const ShockingGrasp: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

@@ -33,8 +33,10 @@ export const Caltrops: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6
 };

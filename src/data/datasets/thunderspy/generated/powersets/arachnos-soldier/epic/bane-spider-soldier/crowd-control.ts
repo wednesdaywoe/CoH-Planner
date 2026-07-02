@@ -38,7 +38,9 @@ export const CrowdControl: Power = {
   "allowedSetCategories": [
     "Healing",
     "Knockback",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": [

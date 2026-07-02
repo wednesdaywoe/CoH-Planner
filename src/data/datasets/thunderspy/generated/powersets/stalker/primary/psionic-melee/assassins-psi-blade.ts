@@ -33,7 +33,8 @@ export const AssassinsPsiBlade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage"
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6
 };

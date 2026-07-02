@@ -61,7 +61,15 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Melee",
+            "Ranged",
+            "Area",
+            "Smashing",
+            "Lethal",
+            "Energy",
+            "Negative_Energy"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -98,7 +106,15 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Melee",
+            "Ranged",
+            "Area",
+            "Smashing",
+            "Lethal",
+            "Energy",
+            "Negative_Energy"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

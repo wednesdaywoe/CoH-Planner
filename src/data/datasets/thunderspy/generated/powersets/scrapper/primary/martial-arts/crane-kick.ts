@@ -37,7 +37,8 @@ export const CraneKick: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

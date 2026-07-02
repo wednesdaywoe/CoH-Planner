@@ -36,6 +36,8 @@ export const FireBreath: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -45,20 +47,5 @@ export const FireBreath: Power = {
     "table": "Ranged_Damage",
     "duration": 2.1,
     "tickRate": 1
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.585,
-        "table": "Ranged_Damage",
-        "duration": 2.1,
-        "tickRate": 1
-      }
-    }
-  ]
+  }
 };

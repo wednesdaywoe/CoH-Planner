@@ -34,6 +34,7 @@ export const EnergyTransfer: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -48,18 +49,5 @@ export const EnergyTransfer: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 3,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

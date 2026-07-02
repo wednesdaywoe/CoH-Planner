@@ -38,6 +38,7 @@ export const Special1: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

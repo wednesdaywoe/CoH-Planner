@@ -37,8 +37,10 @@ export const ExecutionersShot: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],
@@ -56,17 +58,6 @@ export const ExecutionersShot: Power = {
     }
   ],
   "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 2.12,
-        "table": "Ranged_Damage"
-      }
-    },
     {
       "id": "lethalammo",
       "label": "Standard Ammo",

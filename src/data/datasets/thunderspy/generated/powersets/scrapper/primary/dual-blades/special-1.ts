@@ -34,7 +34,8 @@ export const Special1: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

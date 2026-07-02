@@ -40,25 +40,14 @@ export const HeadSplitter: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
     "scale": 2.6,
     "table": "Melee_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 2.6,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

@@ -34,6 +34,7 @@ export const Lunge: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Scrapper Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6,

@@ -39,6 +39,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],
@@ -138,7 +139,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "kHitPoints% target> - * - / 0 * < enttype target> critter eq &&",
+      "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
@@ -163,7 +164,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kHitPoints% target> - * - / 0 * < enttype target> critter eq &&",
+          "jit_requires": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> critter eq &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -177,7 +178,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "kHitPoints% target> - * - / 0 * < enttype target> player eq &&",
+      "requires_expression": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
@@ -202,7 +203,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kHitPoints% target> - * - / 0 * < enttype target> player eq &&",
+          "jit_requires": "kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * < enttype target> player eq &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

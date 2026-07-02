@@ -38,7 +38,9 @@ export const PsiBladeSweep: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -56,10 +58,11 @@ export const PsiBladeSweep: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "psionic_melee_insight",
+      "label": "Insight",
       "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Psionic",
         "scale": 0.236,

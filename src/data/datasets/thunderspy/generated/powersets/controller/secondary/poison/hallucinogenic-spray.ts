@@ -37,6 +37,7 @@ export const HallucinogenicSpray: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Fear",
     "Slow Movement"
   ],

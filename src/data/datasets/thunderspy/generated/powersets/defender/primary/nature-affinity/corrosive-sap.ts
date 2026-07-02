@@ -36,5 +36,11 @@ export const CorrosiveSap: Power = {
   "allowedSetCategories": [
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": -2.5,
+    "table": "Ranged_Res_Dmg",
+    "duration": 30
+  }
 };

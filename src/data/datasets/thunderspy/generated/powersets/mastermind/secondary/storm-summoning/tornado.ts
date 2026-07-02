@@ -38,6 +38,8 @@ export const Tornado: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Stuns"

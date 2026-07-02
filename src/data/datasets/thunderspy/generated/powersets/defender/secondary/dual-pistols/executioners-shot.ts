@@ -37,8 +37,10 @@ export const ExecutionersShot: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Defender Archetype Sets",
     "Defense Debuff",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

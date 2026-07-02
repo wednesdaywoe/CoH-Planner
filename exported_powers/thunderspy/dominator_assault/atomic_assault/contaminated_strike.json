@@ -67,7 +67,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Cancel_Effects"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

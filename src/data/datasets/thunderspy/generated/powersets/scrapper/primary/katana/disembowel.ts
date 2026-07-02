@@ -37,7 +37,8 @@ export const Disembowel: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -50,5 +51,26 @@ export const Disembowel: Power = {
       "scale": 2,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "bulletcut",
+      "label": "BulletCut",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "effects": {
+        "defenseBuff": {
+          "ranged": {
+            "scale": 2,
+            "table": "Melee_Buff_Def"
+          }
+        },
+        "durations": {
+          "defenseBuff": 5
+        },
+        "buffDuration": 5
+      }
+    }
+  ]
 };

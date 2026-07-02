@@ -33,7 +33,9 @@ export const Burn: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Brute Archetype Sets",
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "maxSlots": 6,
   "damage": {

@@ -37,7 +37,9 @@ export const Chilblain: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Immobilize",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

@@ -33,6 +33,7 @@ export const CallArcher: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Slow Movement"

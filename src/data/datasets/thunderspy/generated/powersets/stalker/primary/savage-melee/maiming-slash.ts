@@ -34,25 +34,13 @@ export const MaimingSlash: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
     "scale": 1.16,
     "table": "Melee_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.16,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

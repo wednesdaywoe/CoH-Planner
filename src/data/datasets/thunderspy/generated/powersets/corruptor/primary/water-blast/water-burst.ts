@@ -37,7 +37,9 @@ export const WaterBurst: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],
@@ -48,17 +50,6 @@ export const WaterBurst: Power = {
     "table": "Ranged_Damage"
   },
   "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Cold",
-        "scale": 0.9,
-        "table": "Ranged_Damage"
-      }
-    },
     {
       "id": "tidal_power-1",
       "label": "Tidal Power (1 stacks)",

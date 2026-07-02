@@ -36,6 +36,8 @@ export const SoulTransfer: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,

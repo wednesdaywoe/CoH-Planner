@@ -41,6 +41,7 @@
   ],
   "allowed_set_categories": [
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Threat Duration"
   ],
@@ -146,7 +147,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "FieryEmbrace"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -254,19 +257,21 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "target.HasTag? @ToHitRoll @ToHit < &&",
+      "requires_expression": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "InherentTaunt"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
+          "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
@@ -277,7 +282,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "target.HasTag? @ToHitRoll @ToHit < &&",
+          "jit_requires": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -291,19 +296,21 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "target.HasTag? ! enttype target> critter eq &&",
+      "requires_expression": "Raid target.HasTag? ! enttype target> critter eq &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "InherentTaunt"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
+          "table": "Melee_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
@@ -314,7 +321,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "target.HasTag? ! enttype target> critter eq &&",
+          "jit_requires": "Raid target.HasTag? ! enttype target> critter eq &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -328,7 +335,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "target.HasTag? enttype target> player eq || source> 70 < &&",
+      "requires_expression": "Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
@@ -353,7 +360,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "target.HasTag? enttype target> player eq || source> 70 < &&",
+          "jit_requires": "Raid target.HasTag? enttype target> player eq || kRage source> 70 < &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -367,14 +374,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower? ! source.ownPower? ! && source.ownPower? ! &&",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofBody"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -390,7 +399,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower? ! source.ownPower? ! && source.ownPower? ! &&",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -404,14 +413,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofBody"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -427,7 +438,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -441,14 +452,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofBody"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -464,7 +477,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_1 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -478,14 +491,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower? source.ownPower? ||",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower? ||",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofBody"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -501,7 +516,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower? source.ownPower? ||",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_3 source.ownPower? ||",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -515,14 +530,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofBody"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -538,7 +555,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Body_Level_2 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -552,14 +569,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower? ! source.ownPower? ! && source.ownPower? ! &&",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofMind"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -575,7 +594,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower? ! source.ownPower? ! && source.ownPower? ! &&",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -589,14 +608,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofMind"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -612,7 +633,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -626,14 +647,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofMind"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -649,7 +672,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_1 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -663,14 +686,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower? source.ownPower? ||",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower? ||",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofMind"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -686,7 +711,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower? source.ownPower? ||",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_3 source.ownPower? ||",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -700,14 +725,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofMind"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -723,7 +750,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Mind_Level_2 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -737,14 +764,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower? ! source.ownPower? ! && source.ownPower? ! &&",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofSoul"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -760,7 +789,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower? ! source.ownPower? ! && source.ownPower? ! &&",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -774,14 +803,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofSoul"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -797,7 +828,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -811,14 +842,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofSoul"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -834,7 +867,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_1 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -848,14 +881,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower? source.ownPower? ||",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower? ||",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofSoul"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -871,7 +906,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower? source.ownPower? ||",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_3 source.ownPower? ||",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -885,14 +920,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PerfectionofSoul"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -908,7 +945,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Perfection_of_Soul_Level_2 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

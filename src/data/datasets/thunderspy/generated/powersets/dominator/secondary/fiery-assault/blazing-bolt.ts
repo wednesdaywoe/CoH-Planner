@@ -35,6 +35,7 @@ export const BlazingBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks"
   ],

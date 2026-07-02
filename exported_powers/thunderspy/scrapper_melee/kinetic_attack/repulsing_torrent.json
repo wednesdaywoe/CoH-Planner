@@ -40,6 +40,7 @@
   ],
   "allowed_set_categories": [
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "cast_through": [],
@@ -223,7 +224,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "CritPlayer"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -260,7 +263,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "CritSmall"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -297,7 +302,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "CritLarge"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -334,7 +341,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "FieryEmbrace"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

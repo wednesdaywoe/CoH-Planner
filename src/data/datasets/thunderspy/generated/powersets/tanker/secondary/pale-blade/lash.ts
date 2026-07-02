@@ -36,6 +36,7 @@ export const Lash: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -48,8 +49,8 @@ export const Lash: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "pale_self_buff_plaguebearer",
+      "label": "Pale Self Buff Plaguebearer",
       "scope": "global",
       "defaultActive": false,
       "damage": {

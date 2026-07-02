@@ -34,7 +34,9 @@ export const Dominate: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

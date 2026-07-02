@@ -35,6 +35,8 @@ export const FireBall: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -50,19 +52,6 @@ export const FireBall: Power = {
       "table": "Ranged_Damage",
       "duration": 2.1,
       "tickRate": 1
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Fire",
-        "scale": 0.9,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

@@ -36,8 +36,10 @@ export const PowerSink: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns"
   ],
   "maxSlots": 6,

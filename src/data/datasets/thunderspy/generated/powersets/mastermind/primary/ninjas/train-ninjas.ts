@@ -31,6 +31,7 @@ export const TrainNinjas: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

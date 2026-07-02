@@ -36,7 +36,9 @@ export const Haunt: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Dominator Archetype Sets",
     "Fear",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "To Hit Debuff"

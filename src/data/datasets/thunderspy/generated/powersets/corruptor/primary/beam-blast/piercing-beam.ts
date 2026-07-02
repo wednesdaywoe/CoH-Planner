@@ -36,6 +36,8 @@ export const PiercingBeam: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -43,18 +45,5 @@ export const PiercingBeam: Power = {
     "type": "Energy",
     "scale": 1.84,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 1.84,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

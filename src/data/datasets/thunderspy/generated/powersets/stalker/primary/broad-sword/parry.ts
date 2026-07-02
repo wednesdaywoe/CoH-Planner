@@ -34,7 +34,8 @@ export const Parry: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Melee Damage"
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -42,17 +43,20 @@ export const Parry: Power = {
     "scale": 0.84,
     "table": "Melee_Damage"
   },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.84,
-        "table": "Melee_Damage"
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
       }
-    }
-  ]
+    },
+    "durations": {
+      "defenseBuff": 10
+    },
+    "buffDuration": 10
+  }
 };

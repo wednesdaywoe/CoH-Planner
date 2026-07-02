@@ -33,6 +33,7 @@ export const FollowUp: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Stalker Archetype Sets",
     "To Hit Buff"
   ],
   "maxSlots": 6,
@@ -41,18 +42,5 @@ export const FollowUp: Power = {
     "scale": 0.8,
     "table": "Melee_Damage"
   },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.8,
-        "table": "Melee_Damage"
-      }
-    }
-  ],
   "requires": "Stalker_Melee.Dual_Blades.Build_Up !"
 };

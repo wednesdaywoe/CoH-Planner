@@ -38,8 +38,21 @@ export const RallyTheMilitia: Power = {
     "Defense Sets",
     "Endurance Modification",
     "Healing",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 90
+    },
+    "buffDuration": 90
+  }
 };

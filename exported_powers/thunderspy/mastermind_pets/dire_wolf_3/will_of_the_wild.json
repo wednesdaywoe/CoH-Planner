@@ -96,14 +96,16 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "SpeedJumping"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
-          "scale": 1.0,
-          "duration": "0 seconds",
+          "table": "Ranged_SpeedJumping",
+          "scale": 0.15,
+          "duration": "45 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",

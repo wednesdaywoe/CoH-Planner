@@ -38,6 +38,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Melee Damage",
     "Ranged Damage"
   ],
   "cast_through": [],

@@ -34,6 +34,8 @@ export const ScrambleThoughts: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Stuns"
   ],

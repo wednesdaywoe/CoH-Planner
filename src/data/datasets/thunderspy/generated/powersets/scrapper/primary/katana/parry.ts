@@ -34,12 +34,50 @@ export const Parry: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Melee Damage"
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
     "type": "Lethal",
     "scale": 0.84,
     "table": "Melee_Damage"
-  }
+  },
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 10
+    },
+    "buffDuration": 10
+  },
+  "conditionalEffects": [
+    {
+      "id": "bulletcut",
+      "label": "BulletCut",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "effects": {
+        "defenseBuff": {
+          "ranged": {
+            "scale": 2,
+            "table": "Melee_Buff_Def"
+          }
+        },
+        "durations": {
+          "defenseBuff": 5
+        },
+        "buffDuration": 5
+      }
+    }
+  ]
 };

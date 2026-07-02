@@ -41,6 +41,7 @@
   ],
   "allowed_set_categories": [
     "Holds",
+    "Melee Damage",
     "Ranged Damage",
     "Sleep"
   ],
@@ -67,7 +68,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Cancel_Effects"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -253,7 +256,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq target> 0 > kHeld target> 0 > || kSleep target> 0 > || target> 0 > || target.HasTag? || &&",
+      "requires_expression": "enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
@@ -278,7 +281,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq target> 0 > kHeld target> 0 > || kSleep target> 0 > || target> 0 > || target.HasTag? || &&",
+          "jit_requires": "enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -331,7 +334,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq target> 0 > kHeld target> 0 > || kSleep target> 0 > || target> 0 > || &&",
+      "requires_expression": "enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
@@ -356,7 +359,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq target> 0 > kHeld target> 0 > || kSleep target> 0 > || target> 0 > || &&",
+          "jit_requires": "enttype target> player eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

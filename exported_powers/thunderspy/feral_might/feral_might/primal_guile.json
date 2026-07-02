@@ -56,7 +56,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Placate"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -93,7 +95,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Placate"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

@@ -65,7 +65,9 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Melee",
+            "Ranged",
+            "Area"
           ],
           "type": "",
           "application_type": "",

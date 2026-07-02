@@ -36,7 +36,9 @@ export const NightmarishGrasp: Power = {
   "allowedSetCategories": [
     "Fear",
     "Immobilize",
-    "Ranged Damage"
+    "Melee Damage",
+    "Ranged Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -55,18 +57,5 @@ export const NightmarishGrasp: Power = {
       "scale": 20,
       "table": "Melee_Fear"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 1.96,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

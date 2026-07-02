@@ -20,8 +20,25 @@ export const EPIC_POOL_LEVEL = 35;
 /** Level at which regular Power Pools become available */
 export const POOL_UNLOCK_LEVEL = 4;
 
-/** Maximum number of power pools that can be selected */
+/**
+ * Maximum number of power pools that can be selected on the shared schedule
+ * (Homecoming, Rebirth). Thunderspy allows one more — see
+ * {@link getMaxPowerPools}. Prefer the getter over this constant at any call
+ * site that has the build's `serverId`.
+ */
 export const MAX_POWER_POOLS = 4;
+
+/** Thunderspy lets characters slot a 5th power pool. */
+const THUNDERSPY_MAX_POWER_POOLS = 5;
+
+/**
+ * Maximum number of power pools selectable on a given server. Defaults to the
+ * shared cap of 4; Thunderspy allows 5. Pass `build.serverId` at the call site
+ * (mirrors {@link getSlotGrants}).
+ */
+export function getMaxPowerPools(serverId?: string): number {
+  return serverId === 'thunderspy' ? THUNDERSPY_MAX_POWER_POOLS : MAX_POWER_POOLS;
+}
 
 /** Maximum number of enhancement slots per power */
 export const MAX_SLOTS_PER_POWER = 6;

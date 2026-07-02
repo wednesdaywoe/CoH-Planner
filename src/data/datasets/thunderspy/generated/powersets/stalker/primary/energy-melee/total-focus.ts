@@ -34,6 +34,7 @@ export const TotalFocus: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -48,18 +49,5 @@ export const TotalFocus: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 1,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

@@ -34,7 +34,8 @@ export const Jawbreaker: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -38,5 +38,17 @@ export const PrimalistsCloak: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "aoe": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 1.25
+    },
+    "buffDuration": 1.25
+  }
 };

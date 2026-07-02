@@ -37,7 +37,8 @@ export const Disembowel: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -50,18 +51,5 @@ export const Disembowel: Power = {
       "scale": 2,
       "table": "Melee_Knockback"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.96,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

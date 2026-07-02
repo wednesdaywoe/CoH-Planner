@@ -35,7 +35,9 @@ export const SuppressiveFire: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage",
     "Stuns"
   ],

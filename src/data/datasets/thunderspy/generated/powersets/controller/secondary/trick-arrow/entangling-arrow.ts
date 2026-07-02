@@ -34,6 +34,7 @@ export const EntanglingArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Immobilize",
     "Slow Movement"
   ],
@@ -44,20 +45,5 @@ export const EntanglingArrow: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "effects": {
-        "immobilize": {
-          "mag": 1,
-          "scale": 15,
-          "table": "Ranged_Immobilize"
-        }
-      }
-    }
-  ]
+  }
 };

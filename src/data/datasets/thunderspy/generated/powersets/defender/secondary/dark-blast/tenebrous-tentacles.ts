@@ -39,7 +39,9 @@ export const TenebrousTentacles: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Defender Archetype Sets",
     "Immobilize",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],

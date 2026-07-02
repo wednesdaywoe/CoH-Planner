@@ -137,12 +137,14 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "InherentTaunt"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
+          "table": "Ranged_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,

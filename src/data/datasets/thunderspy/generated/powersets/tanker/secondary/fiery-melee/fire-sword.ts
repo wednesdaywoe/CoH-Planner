@@ -36,6 +36,7 @@ export const FireSword: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

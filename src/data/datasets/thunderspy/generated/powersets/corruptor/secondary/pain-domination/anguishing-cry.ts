@@ -36,5 +36,20 @@ export const AnguishingCry: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.05,
+    "table": "Melee_Ones"
+  },
+  "effects": {
+    "defenseDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 30
+    },
+    "buffDuration": 30
+  }
 };

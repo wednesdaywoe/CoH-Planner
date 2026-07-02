@@ -34,5 +34,19 @@ export const GlacialShield: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Cold",
+      "scale": 4.5,
+      "table": "Ranged_Res_Dmg",
+      "duration": 240
+    },
+    {
+      "type": "Cold",
+      "scale": 3.25,
+      "table": "Ranged_Res_Dmg",
+      "duration": 240
+    }
+  ]
 };

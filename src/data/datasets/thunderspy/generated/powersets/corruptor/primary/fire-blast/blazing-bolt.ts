@@ -35,6 +35,8 @@ export const BlazingBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks"
   ],
@@ -51,19 +53,6 @@ export const BlazingBolt: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Fire",
-        "scale": 2.76,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

@@ -33,6 +33,8 @@ export const Shriek: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -40,18 +42,5 @@ export const Shriek: Power = {
     "type": "Smashing",
     "scale": 0.42,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 0.84,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

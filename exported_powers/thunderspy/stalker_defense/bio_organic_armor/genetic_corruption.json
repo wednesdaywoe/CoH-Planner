@@ -57,14 +57,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq entref target> entref source> eq ! && Source.Mode? ! &&",
+      "requires_expression": "enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NormalDebuffGC"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -80,7 +82,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq entref target> entref source> eq ! && Source.Mode? ! &&",
+          "jit_requires": "enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -94,14 +96,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq entref target> entref source> eq ! && Source.Mode? ! &&",
+      "requires_expression": "enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NormalDebuffGC"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -117,7 +121,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq entref target> entref source> eq ! && Source.Mode? ! &&",
+          "jit_requires": "enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -131,14 +135,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq entref target> entref source> eq ! && Source.Mode? &&",
+      "requires_expression": "enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "OffensiveAdaptationGC"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -154,7 +160,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq entref target> entref source> eq ! && Source.Mode? &&",
+          "jit_requires": "enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -168,14 +174,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> player eq entref target> entref source> eq ! && Source.Mode? &&",
+      "requires_expression": "enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "OffensiveAdaptationGC"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -191,7 +199,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> player eq entref target> entref source> eq ! && Source.Mode? &&",
+          "jit_requires": "enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -205,14 +213,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "entref target> entref source> eq Source.Mode? &&",
+      "requires_expression": "entref target> entref source> eq kRestedAdaptation Source.Mode? &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "EfficientAdaptation"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -228,7 +238,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "entref target> entref source> eq Source.Mode? &&",
+          "jit_requires": "entref target> entref source> eq kRestedAdaptation Source.Mode? &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -242,14 +252,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "entref target> entref source> eq Source.Mode? &&",
+      "requires_expression": "entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "DefensiveAdaptation"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -265,7 +277,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "entref target> entref source> eq Source.Mode? &&",
+          "jit_requires": "entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -279,14 +291,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "entref target> entref source> eq ! Source.Mode? ! &&",
+      "requires_expression": "entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NormalDebuff"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -302,7 +316,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "entref target> entref source> eq ! Source.Mode? ! &&",
+          "jit_requires": "entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -316,14 +330,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "entref target> entref source> eq ! Source.Mode? &&",
+      "requires_expression": "entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "DefensiveAdaptation"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -339,7 +355,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "entref target> entref source> eq ! Source.Mode? &&",
+          "jit_requires": "entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

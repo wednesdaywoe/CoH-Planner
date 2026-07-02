@@ -34,6 +34,8 @@ export const DarkExtraction: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Kheldian Archetype Sets",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

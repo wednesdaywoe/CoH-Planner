@@ -34,7 +34,9 @@ export const Caltrops: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

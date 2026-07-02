@@ -40,5 +40,15 @@ export const PersonalForceField: Power = {
     "Defense Sets",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "scale": 7.5,
+      "table": "Melee_Buff_Def"
+    },
+    "durations": {
+      "defenseBuff": 0.75
+    },
+    "buffDuration": 0.75
+  }
 };

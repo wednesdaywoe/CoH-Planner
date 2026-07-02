@@ -31,7 +31,9 @@ export const TimeBomb: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Recharge Intensive Pets"
   ],

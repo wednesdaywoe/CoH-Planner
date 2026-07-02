@@ -38,6 +38,7 @@ export const FrozenFists: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Slow Movement",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

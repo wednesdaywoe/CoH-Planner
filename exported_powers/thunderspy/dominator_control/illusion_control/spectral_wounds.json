@@ -39,6 +39,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Melee Damage",
     "Ranged Damage",
     "Sleep"
   ],
@@ -65,7 +66,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Cancel_Effects"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

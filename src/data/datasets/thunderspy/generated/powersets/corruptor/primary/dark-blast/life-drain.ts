@@ -37,7 +37,9 @@ export const LifeDrain: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
     "Healing",
+    "Melee Damage",
     "Ranged Damage",
     "To Hit Debuff"
   ],
@@ -46,18 +48,5 @@ export const LifeDrain: Power = {
     "type": "Negative",
     "scale": 1.64,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 1.64,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

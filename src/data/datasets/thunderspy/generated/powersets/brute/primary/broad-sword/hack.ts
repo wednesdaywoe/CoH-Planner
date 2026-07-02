@@ -35,6 +35,7 @@ export const Hack: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Brute Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
     "Threat Duration"

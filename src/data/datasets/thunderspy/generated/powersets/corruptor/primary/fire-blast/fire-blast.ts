@@ -33,6 +33,8 @@ export const FireBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -48,19 +50,6 @@ export const FireBlast: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Fire",
-        "scale": 1,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

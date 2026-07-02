@@ -37,6 +37,7 @@ export const JoltingChain: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

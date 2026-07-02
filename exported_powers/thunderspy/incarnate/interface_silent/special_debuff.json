@@ -53,14 +53,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "!",
+      "requires_expression": "target.isFriend? !",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "InterfaceSpecial"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -76,7 +78,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "!",
+          "jit_requires": "target.isFriend? !",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

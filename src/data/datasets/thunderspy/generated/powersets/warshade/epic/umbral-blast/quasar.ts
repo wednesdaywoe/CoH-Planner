@@ -35,8 +35,10 @@ export const Quasar: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Kheldian Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement"
   ],
   "maxSlots": 6,

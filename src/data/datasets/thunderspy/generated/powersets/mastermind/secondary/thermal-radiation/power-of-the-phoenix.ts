@@ -36,6 +36,8 @@ export const PowerofthePhoenix: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Stuns"
   ],

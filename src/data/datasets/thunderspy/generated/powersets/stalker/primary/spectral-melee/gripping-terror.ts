@@ -39,7 +39,9 @@ export const GrippingTerror: Power = {
   "allowedSetCategories": [
     "Fear",
     "Immobilize",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -58,18 +60,5 @@ export const GrippingTerror: Power = {
       "scale": 10,
       "table": "Melee_Fear"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 1.5,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

@@ -39,6 +39,8 @@ export const AtomSmasher: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,

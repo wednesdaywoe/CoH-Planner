@@ -34,6 +34,8 @@ export const RiseofthePhoenix: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6

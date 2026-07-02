@@ -35,6 +35,7 @@ export const TotalDomination: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Holds"
   ],
   "maxSlots": 6,

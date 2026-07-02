@@ -38,7 +38,9 @@ export const Overcharge: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Stuns"
   ],
@@ -77,17 +79,6 @@ export const Overcharge: Power = {
           "scale": 8,
           "table": "Ranged_Stun"
         }
-      }
-    },
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 1.5,
-        "table": "Ranged_Damage"
       }
     }
   ]

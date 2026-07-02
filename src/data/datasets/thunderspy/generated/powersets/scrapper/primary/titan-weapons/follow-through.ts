@@ -36,6 +36,7 @@ export const FollowThrough: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Scrapper Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,

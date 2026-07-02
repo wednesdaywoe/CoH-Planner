@@ -38,6 +38,7 @@ export const Deluge: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

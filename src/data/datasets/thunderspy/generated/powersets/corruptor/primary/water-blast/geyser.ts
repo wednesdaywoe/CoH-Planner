@@ -38,7 +38,9 @@ export const Geyser: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns"
@@ -50,17 +52,6 @@ export const Geyser: Power = {
     "table": "Ranged_Damage"
   },
   "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Fire",
-        "scale": 1.5,
-        "table": "Ranged_Damage"
-      }
-    },
     {
       "id": "tidal_power-1",
       "label": "Tidal Power (1 stacks)",

@@ -33,7 +33,9 @@ export const OilSlickArrow: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

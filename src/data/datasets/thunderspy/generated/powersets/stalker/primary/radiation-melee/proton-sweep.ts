@@ -39,7 +39,9 @@ export const ProtonSweep: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -48,18 +50,5 @@ export const ProtonSweep: Power = {
     "table": "Melee_Damage",
     "duration": 1.5,
     "tickRate": 0.5
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 1.43,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

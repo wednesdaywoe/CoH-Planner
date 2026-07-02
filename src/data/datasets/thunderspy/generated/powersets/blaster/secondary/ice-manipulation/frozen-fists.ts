@@ -33,6 +33,7 @@ export const FrozenFists: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Melee Damage",
     "Slow Movement"
   ],

@@ -36,7 +36,9 @@ export const SniperBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks"
   ],

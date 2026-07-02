@@ -37,8 +37,10 @@ export const ThunderStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns",
     "Threat Duration"
   ],

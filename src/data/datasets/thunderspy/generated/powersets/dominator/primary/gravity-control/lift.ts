@@ -37,6 +37,7 @@ export const Lift: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -50,18 +51,5 @@ export const Lift: Power = {
       "scale": 6,
       "table": "Ranged_Knockback"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 0.33,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

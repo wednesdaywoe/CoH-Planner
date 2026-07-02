@@ -37,7 +37,9 @@ export const Vacuum: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Dominator Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement",
     "To Hit Debuff"
@@ -49,31 +51,5 @@ export const Vacuum: Power = {
       "scale": 10,
       "table": "Ranged_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "domination",
-      "label": "Domination Active",
-      "scope": "global",
-      "defaultActive": false,
-      "effects": {
-        "immobilize": {
-          "mag": 1,
-          "scale": 15,
-          "table": "Ranged_Immobilize"
-        }
-      }
-    },
-    {
-      "id": "self-affected",
-      "label": "Already Affected",
-      "scope": "global",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.15,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

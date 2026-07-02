@@ -35,7 +35,8 @@ export const Shatter: Power = {
   "allowedSetCategories": [
     "Healing",
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": [

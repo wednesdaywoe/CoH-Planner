@@ -37,6 +37,7 @@ export const HailofBullets: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement"
   ],
   "maxSlots": 6,
@@ -55,5 +56,25 @@ export const HailofBullets: Power = {
       "duration": 3.5,
       "tickRate": 0.30000001192092896
     }
-  ]
+  ],
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 5
+    },
+    "buffDuration": 5
+  }
 };

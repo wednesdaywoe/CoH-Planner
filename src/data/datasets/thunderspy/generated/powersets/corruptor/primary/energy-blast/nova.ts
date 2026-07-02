@@ -34,8 +34,10 @@ export const Nova: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "maxSlots": 6,
   "damage": {
@@ -48,18 +50,5 @@ export const Nova: Power = {
       "scale": 10,
       "table": "Ranged_Knockback"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 2,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

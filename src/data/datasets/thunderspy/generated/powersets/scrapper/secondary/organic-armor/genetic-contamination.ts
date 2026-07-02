@@ -34,7 +34,9 @@ export const GeneticContamination: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -44,9 +46,9 @@ export const GeneticContamination: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Special",

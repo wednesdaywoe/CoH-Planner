@@ -39,7 +39,9 @@ export const Microburst: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Controller Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns"

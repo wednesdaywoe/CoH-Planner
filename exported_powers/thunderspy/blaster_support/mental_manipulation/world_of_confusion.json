@@ -39,7 +39,8 @@
   ],
   "allowed_set_categories": [
     "Confuse",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "cast_through": [],
   "toggle_ignore": [

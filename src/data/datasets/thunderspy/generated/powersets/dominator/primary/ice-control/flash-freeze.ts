@@ -37,6 +37,8 @@ export const FlashFreeze: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Sleep",
     "Slow Movement"

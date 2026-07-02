@@ -34,8 +34,10 @@ export const Tremor: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

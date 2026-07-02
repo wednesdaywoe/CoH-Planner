@@ -31,6 +31,7 @@ export const PoisonTrap: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Holds"
   ],
   "maxSlots": 6

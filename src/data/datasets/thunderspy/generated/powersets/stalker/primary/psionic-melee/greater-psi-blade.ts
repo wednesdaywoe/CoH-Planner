@@ -34,7 +34,8 @@ export const GreaterPsiBlade: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
-    "Melee Damage"
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -51,10 +52,11 @@ export const GreaterPsiBlade: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "psionic_melee_insight",
+      "label": "Insight",
       "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Psionic",
         "scale": 1.34625,
@@ -66,17 +68,6 @@ export const GreaterPsiBlade: Power = {
           "scale": 12,
           "table": "Melee_Stun"
         }
-      }
-    },
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Psionic",
-        "scale": 2.6925,
-        "table": "Melee_Damage"
       }
     }
   ]

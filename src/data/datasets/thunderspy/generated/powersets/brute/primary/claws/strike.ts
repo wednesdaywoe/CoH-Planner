@@ -33,6 +33,7 @@ export const Strike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Melee Damage",
     "Threat Duration"
   ],

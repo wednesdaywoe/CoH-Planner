@@ -34,7 +34,9 @@ export const Subdue: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Immobilize",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -49,18 +51,5 @@ export const Subdue: Power = {
       "scale": 6,
       "table": "Ranged_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Psionic",
-        "scale": 1.32,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

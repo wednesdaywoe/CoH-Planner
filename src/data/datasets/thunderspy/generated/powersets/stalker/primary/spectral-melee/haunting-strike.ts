@@ -34,7 +34,8 @@ export const HauntingStrike: Power = {
   ],
   "allowedSetCategories": [
     "Fear",
-    "Melee Damage"
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -48,18 +49,5 @@ export const HauntingStrike: Power = {
       "scale": 6,
       "table": "Melee_Fear"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.84,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

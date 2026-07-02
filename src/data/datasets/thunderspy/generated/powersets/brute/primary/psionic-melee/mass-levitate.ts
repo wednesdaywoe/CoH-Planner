@@ -35,8 +35,10 @@ export const MassLevitate: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -53,10 +55,11 @@ export const MassLevitate: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "psionic_melee_insight",
+      "label": "Insight",
       "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Smashing",
         "scale": 0.142,

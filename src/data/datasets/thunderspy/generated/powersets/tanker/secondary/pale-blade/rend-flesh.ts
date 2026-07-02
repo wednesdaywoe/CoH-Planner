@@ -37,6 +37,8 @@ export const RendFlesh: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -47,27 +49,37 @@ export const RendFlesh: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "pale_self_buff_lash",
+      "label": "Pale Self Buff Lash",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 0.7,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.7,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.3,
-          "table": "Melee_Damage"
-        }
-      ]
+      "damage": {
+        "type": "Special",
+        "scale": 0.7,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "pale_self_buff_flay",
+      "label": "Pale Self Buff Flay",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.7,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "pale_self_buff_plaguebearer",
+      "label": "Pale Self Buff Plaguebearer",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.3,
+        "table": "Melee_Damage"
+      }
     }
   ]
 };

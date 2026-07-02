@@ -38,8 +38,10 @@ export const Slice: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Brute Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Melee Damage",
     "Threat Duration"
   ],
   "maxSlots": 6,

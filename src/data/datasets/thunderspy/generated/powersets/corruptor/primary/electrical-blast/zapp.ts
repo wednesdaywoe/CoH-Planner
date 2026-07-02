@@ -35,7 +35,9 @@ export const Zapp: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Endurance Modification",
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks"
   ],
@@ -44,18 +46,5 @@ export const Zapp: Power = {
     "type": "Energy",
     "scale": 2.28,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 2.28,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

@@ -25,10 +25,10 @@
   "target_type": "Self",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "Friend"
+    "Foe"
   ],
   "targets_affected": [
-    "Friend"
+    "Foe"
   ],
   "boosts_allowed": [],
   "allowed_set_categories": null,

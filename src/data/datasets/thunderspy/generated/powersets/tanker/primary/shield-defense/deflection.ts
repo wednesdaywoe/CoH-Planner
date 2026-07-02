@@ -39,5 +39,21 @@ export const Deflection: Power = {
     "Defense Sets"
   ],
   "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "ranged": {
+        "scale": 1.65,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 1.65,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75
+    },
+    "buffDuration": 0.75
+  },
   "requires": "Tanker_Melee.Staff_Fighting Tanker_Melee.Titan_Weapons || Tanker_Melee.Dual_Blades || Tanker_Melee.Pale_Blade || !"
 };

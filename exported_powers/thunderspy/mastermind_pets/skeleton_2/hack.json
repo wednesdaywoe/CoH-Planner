@@ -93,7 +93,11 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Smashing",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy"
           ],
           "type": "",
           "application_type": "",

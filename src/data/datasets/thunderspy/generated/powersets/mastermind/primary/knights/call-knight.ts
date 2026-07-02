@@ -36,6 +36,7 @@ export const CallKnight: Power = {
   ],
   "allowedSetCategories": [
     "Defense Debuff",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

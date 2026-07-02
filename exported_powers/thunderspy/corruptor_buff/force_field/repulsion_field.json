@@ -59,7 +59,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "SummerIOTornado"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

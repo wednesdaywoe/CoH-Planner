@@ -38,6 +38,7 @@ export const Jawbreaker: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

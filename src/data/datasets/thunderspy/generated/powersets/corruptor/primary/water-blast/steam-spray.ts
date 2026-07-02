@@ -38,7 +38,9 @@ export const SteamSpray: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -56,19 +58,6 @@ export const SteamSpray: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Fire",
-        "scale": 1.67,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

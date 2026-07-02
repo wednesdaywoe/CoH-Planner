@@ -36,5 +36,17 @@ export const Farsight: Power = {
     "Defense Sets",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 120
+    },
+    "buffDuration": 120
+  }
 };

@@ -34,6 +34,8 @@ export const IceBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],
@@ -42,18 +44,5 @@ export const IceBolt: Power = {
     "type": "Cold",
     "scale": 0.3,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Cold",
-        "scale": 1,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

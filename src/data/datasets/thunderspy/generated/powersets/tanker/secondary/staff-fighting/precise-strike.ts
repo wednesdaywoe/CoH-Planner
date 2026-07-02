@@ -38,6 +38,7 @@ export const PreciseStrike: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Stuns",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

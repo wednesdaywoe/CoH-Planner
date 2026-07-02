@@ -33,6 +33,8 @@ export const Caltrops: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

@@ -36,7 +36,9 @@ export const WhirlingSword: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": [
@@ -51,6 +53,27 @@ export const WhirlingSword: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 1
+    }
+  ],
+  "conditionalEffects": [
+    {
+      "id": "bulletcut",
+      "label": "BulletCut",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "effects": {
+        "defenseBuff": {
+          "ranged": {
+            "scale": 2,
+            "table": "Melee_Buff_Def"
+          }
+        },
+        "durations": {
+          "defenseBuff": 5
+        },
+        "buffDuration": 5
+      }
     }
   ]
 };

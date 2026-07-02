@@ -34,6 +34,7 @@ export const FreezingTouch: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Holds",
     "Melee Damage"
   ],

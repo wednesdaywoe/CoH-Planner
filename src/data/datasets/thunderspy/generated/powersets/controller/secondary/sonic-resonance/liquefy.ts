@@ -38,9 +38,11 @@ export const Liquefy: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
+    "Controller Archetype Sets",
     "Defense Debuff",
     "Holds",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],

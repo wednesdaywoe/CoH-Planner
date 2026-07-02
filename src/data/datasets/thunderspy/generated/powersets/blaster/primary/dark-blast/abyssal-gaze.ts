@@ -36,7 +36,9 @@ export const AbyssalGaze: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage",
     "To Hit Debuff"
   ],

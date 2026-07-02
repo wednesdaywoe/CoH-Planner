@@ -39,7 +39,9 @@ export const JacobsLadder: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Melee AoE Damage",
-    "Sleep"
+    "Melee Damage",
+    "Sleep",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -53,18 +55,5 @@ export const JacobsLadder: Power = {
       "scale": 6,
       "table": "Melee_Sleep"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 1.5,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

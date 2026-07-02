@@ -43,6 +43,7 @@ export const RadiationSiphon: Power = {
     "Defense Debuff",
     "Healing",
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

@@ -34,7 +34,8 @@ export const BarbSwipe: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -48,18 +49,5 @@ export const BarbSwipe: Power = {
       "scale": 8,
       "table": "Melee_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.84,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

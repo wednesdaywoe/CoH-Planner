@@ -40,5 +40,25 @@ export const KujiInRetsu: Power = {
     "Running & Sprints",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 90
+    },
+    "buffDuration": 90
+  }
 };

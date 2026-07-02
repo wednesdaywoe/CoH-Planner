@@ -37,7 +37,9 @@ export const QuillThrowing: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged AoE Damage",
+    "Scrapper Archetype Sets",
     "Slow Movement"
   ],
   "maxSlots": 6,

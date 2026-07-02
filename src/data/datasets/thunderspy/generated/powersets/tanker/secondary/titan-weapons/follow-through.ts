@@ -40,6 +40,7 @@ export const FollowThrough: Power = {
     "Knockback",
     "Melee Damage",
     "Stuns",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

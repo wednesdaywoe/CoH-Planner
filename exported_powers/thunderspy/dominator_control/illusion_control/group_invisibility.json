@@ -61,7 +61,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "StealthRadius_PVE"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -98,7 +100,18 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Smashing",
+            "Lethal",
+            "Energy",
+            "Negative_Energy",
+            "Fire",
+            "Cold",
+            "Psionic",
+            "Melee",
+            "Ranged",
+            "Area"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -135,7 +148,18 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Smashing",
+            "Lethal",
+            "Energy",
+            "Negative_Energy",
+            "Fire",
+            "Cold",
+            "Psionic",
+            "Melee",
+            "Ranged",
+            "Area"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

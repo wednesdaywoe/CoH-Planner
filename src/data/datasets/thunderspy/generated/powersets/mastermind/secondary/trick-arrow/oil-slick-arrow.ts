@@ -34,6 +34,8 @@ export const OilSlickArrow: Power = {
   ],
   "allowedSetCategories": [
     "Defense Debuff",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

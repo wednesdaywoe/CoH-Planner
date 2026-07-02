@@ -35,7 +35,9 @@ export const Blackstar: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

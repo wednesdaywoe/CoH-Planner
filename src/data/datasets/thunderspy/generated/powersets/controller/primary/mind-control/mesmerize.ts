@@ -34,6 +34,8 @@ export const Mesmerize: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Sleep"
   ],

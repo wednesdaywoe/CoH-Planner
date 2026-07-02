@@ -60,7 +60,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Range"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

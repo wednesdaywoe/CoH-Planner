@@ -35,6 +35,7 @@ export const FireBreath: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

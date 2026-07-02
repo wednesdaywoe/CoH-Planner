@@ -33,6 +33,7 @@ export const Scorch: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Melee Damage"
   ],
   "maxSlots": 6,

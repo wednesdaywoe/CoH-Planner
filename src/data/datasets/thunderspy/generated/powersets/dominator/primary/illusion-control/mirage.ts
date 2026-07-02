@@ -33,7 +33,8 @@ export const Mirage: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Confuse"
+    "Confuse",
+    "Dominator Archetype Sets"
   ],
   "maxSlots": 6
 };

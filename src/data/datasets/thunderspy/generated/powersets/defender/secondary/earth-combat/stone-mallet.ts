@@ -33,6 +33,7 @@ export const StoneMallet: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Knockback",
     "Melee Damage"
   ],

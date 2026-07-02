@@ -37,7 +37,9 @@ export const Singularity: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

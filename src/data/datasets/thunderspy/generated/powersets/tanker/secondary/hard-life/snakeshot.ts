@@ -35,7 +35,9 @@ export const Snakeshot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Tanker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

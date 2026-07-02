@@ -38,7 +38,9 @@ export const MightyShockwave: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage"
+    "Melee Damage",
+    "Ranged AoE Damage",
+    "Tanker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

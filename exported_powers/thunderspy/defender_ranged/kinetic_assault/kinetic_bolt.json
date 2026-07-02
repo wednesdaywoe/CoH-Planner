@@ -39,6 +39,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],
@@ -67,7 +68,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "JumpHeight"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -104,7 +107,11 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "JumpingSpeed",
+            "RunningSpeed",
+            "FlyingSpeed"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -212,7 +219,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPowerNum? 5 <",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -237,7 +244,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPowerNum? 5 <",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Kinetic_Assault_Impulse source.ownPowerNum? 5 <",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

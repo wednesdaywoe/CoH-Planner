@@ -29,7 +29,7 @@ import {
   getEpicPool,
   getTotalSlotsAtLevel,
   getPowerPicksAtLevel,
-  MAX_POWER_POOLS,
+  getMaxPowerPools,
   MAX_POWER_PICKS,
   EPIC_POOL_LEVEL,
   POOL_UNLOCK_LEVEL,
@@ -1513,7 +1513,7 @@ export const useBuildStore = create<BuildStore>()(
       // Pools
       addPool: (poolId) => {
         const state = get();
-        if (state.build.pools.length >= MAX_POWER_POOLS) return false;
+        if (state.build.pools.length >= getMaxPowerPools(state.build.serverId)) return false;
 
         const pool = getPowerPool(poolId);
         if (!pool) return false;
@@ -2334,7 +2334,7 @@ export const useBuildStore = create<BuildStore>()(
         );
       },
 
-      canAddPool: () => get().build.pools.length < MAX_POWER_POOLS,
+      canAddPool: () => get().build.pools.length < getMaxPowerPools(get().build.serverId),
 
       isUniqueEnhancementSlotted: (setId: string, pieceNum: number) =>
         isUniqueEnhancementSlotted(get().build, setId, pieceNum),

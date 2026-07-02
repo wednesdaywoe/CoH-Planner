@@ -38,7 +38,9 @@ export const CuttingBeam: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -46,18 +48,5 @@ export const CuttingBeam: Power = {
     "type": "Energy",
     "scale": 0.919,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 0.919,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

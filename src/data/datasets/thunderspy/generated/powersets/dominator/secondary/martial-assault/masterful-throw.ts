@@ -35,6 +35,7 @@ export const MasterfulThrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

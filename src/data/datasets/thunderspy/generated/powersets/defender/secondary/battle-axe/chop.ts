@@ -33,6 +33,7 @@ export const Chop: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Knockback",
     "Melee Damage"
   ],

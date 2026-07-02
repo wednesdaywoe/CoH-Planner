@@ -35,7 +35,9 @@ export const SpinningStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -46,22 +48,30 @@ export const SpinningStrike: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "combo_level_1",
+      "label": "Combo Level 1",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 0.8085,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.8624,
-          "table": "Melee_Damage"
-        }
-      ]
+      "mode": "replace",
+      "damage": {
+        "type": "Special",
+        "scale": 0.8085,
+        "table": "Melee_Damage"
+      },
+      "group": "combo-levels"
+    },
+    {
+      "id": "combo_level_2",
+      "label": "Combo Level 2",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "damage": {
+        "type": "Special",
+        "scale": 0.8624,
+        "table": "Melee_Damage"
+      },
+      "group": "combo-levels"
     },
     {
       "id": "combo_level_3",
@@ -80,7 +90,8 @@ export const SpinningStrike: Power = {
           "scale": 6,
           "table": "Melee_Fear"
         }
-      }
+      },
+      "group": "combo-levels"
     }
   ]
 };

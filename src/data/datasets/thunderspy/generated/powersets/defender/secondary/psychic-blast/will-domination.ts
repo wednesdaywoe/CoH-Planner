@@ -34,6 +34,8 @@ export const WillDomination: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Sleep"
   ],

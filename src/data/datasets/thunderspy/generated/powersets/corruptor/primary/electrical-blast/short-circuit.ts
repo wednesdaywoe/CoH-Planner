@@ -34,8 +34,10 @@ export const ShortCircuit: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Endurance Modification",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "maxSlots": 6,
   "damage": {
@@ -44,18 +46,5 @@ export const ShortCircuit: Power = {
     "table": "Melee_Damage",
     "duration": 2.1,
     "tickRate": 1
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.9,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

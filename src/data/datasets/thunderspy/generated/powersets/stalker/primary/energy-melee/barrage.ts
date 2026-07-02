@@ -34,6 +34,7 @@ export const Barrage: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -50,18 +51,5 @@ export const Barrage: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1.32,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

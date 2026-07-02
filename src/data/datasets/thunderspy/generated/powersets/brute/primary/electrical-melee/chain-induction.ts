@@ -34,6 +34,7 @@ export const ChainInduction: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Endurance Modification",
     "Melee Damage",
     "Threat Duration"

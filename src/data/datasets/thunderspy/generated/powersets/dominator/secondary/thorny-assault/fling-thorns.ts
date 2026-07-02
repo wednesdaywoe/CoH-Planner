@@ -39,6 +39,7 @@ export const FlingThorns: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

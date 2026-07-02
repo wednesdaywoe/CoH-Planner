@@ -41,6 +41,8 @@ export const SummonDireWolf: Power = {
     "Defense Debuff",
     "Fear",
     "Healing",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Resist Damage",

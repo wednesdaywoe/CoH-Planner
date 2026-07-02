@@ -36,6 +36,8 @@ export const Blizzard: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement",
     "To Hit Debuff"

@@ -39,5 +39,17 @@ export const EnergyAbsorption: Power = {
     "Slow Movement",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "smashing": {
+        "scale": 0.06,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 45
+    },
+    "buffDuration": 45
+  }
 };

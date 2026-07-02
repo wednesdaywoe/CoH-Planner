@@ -36,6 +36,7 @@ export const WebGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Immobilize"
   ],
   "maxSlots": 6,

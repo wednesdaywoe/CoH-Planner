@@ -36,7 +36,9 @@ export const PaleWind: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged AoE Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -49,8 +51,8 @@ export const PaleWind: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "target-affected",
-      "label": "Target Already Affected",
+      "id": "pale_enemy_fester",
+      "label": "Pale Enemy Fester",
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
@@ -62,8 +64,8 @@ export const PaleWind: Power = {
       }
     },
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "pale_self_buff_plaguebearer",
+      "label": "Pale Self Buff Plaguebearer",
       "scope": "global",
       "defaultActive": false,
       "damage": {

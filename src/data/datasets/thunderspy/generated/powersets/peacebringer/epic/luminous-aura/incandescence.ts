@@ -29,5 +29,11 @@ export const Incandescence: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 1.5,
+    "table": "Melee_Res_DMG",
+    "duration": 10.25
+  },
   "mechanicType": "parentMechanic"
 };

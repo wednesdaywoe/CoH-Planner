@@ -36,5 +36,17 @@ export const Fade: Power = {
     "Defense Sets",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 60
+    },
+    "buffDuration": 60
+  }
 };

@@ -34,6 +34,7 @@ export const EnergyPunch: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -48,18 +49,5 @@ export const EnergyPunch: Power = {
       "scale": 5,
       "table": "Melee_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

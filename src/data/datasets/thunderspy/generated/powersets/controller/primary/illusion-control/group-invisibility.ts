@@ -34,5 +34,60 @@ export const GroupInvisibility: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "stealth": {
+      "stealthPvE": {
+        "scale": 60,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 120,
+      "defenseBuff": 120
+    },
+    "defenseBuff": {
+      "smashing": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "aoe": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "buffDuration": 120
+  }
 };

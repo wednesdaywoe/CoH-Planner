@@ -35,6 +35,7 @@ export const GravityWell: Power = {
   ],
   "allowedSetCategories": [
     "Holds",
+    "Kheldian Archetype Sets",
     "Melee Damage",
     "Slow Movement"
   ],

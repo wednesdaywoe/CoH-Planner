@@ -379,6 +379,16 @@ export function areEpicPoolsUnlocked(level: number): boolean {
  * @param level - Current character level
  * @param selectedPowersInPool - Array of power names already selected from this pool
  */
+/**
+ * Whether a server's epic pools enforce Homecoming's rank-based tier
+ * prerequisites (deeper powers require prior picks + a higher level).
+ * Homecoming and Rebirth do; Thunderspy's epic pools are flat (no
+ * prerequisites). New servers default to the tiered model.
+ */
+function epicPoolsHaveTierPrereqs(datasetId: string): boolean {
+  return datasetId !== 'thunderspy';
+}
+
 export function isEpicPowerAvailable(
   power: Power,
   level: number,
@@ -390,6 +400,16 @@ export function isEpicPowerAvailable(
   // Powers with available=-1 are auto-granted powers that should never be shown in selection
   if (power.available < 0) {
     return false;
+  }
+
+  // Per-server rule: the rank-based tier prerequisites (deeper powers need
+  // prior picks + a higher level) are a Homecoming/Rebirth convention.
+  // Thunderspy's epic pools are FLAT — once epic pools unlock, any power is
+  // selectable with no prior-pick requirement (Tspy dev-confirmed: e.g. Body
+  // Mastery's Physical Perfection can be taken as your only pick). Enforcing the
+  // HC tiers uniformly wrongly blocked those picks on Thunderspy.
+  if (!epicPoolsHaveTierPrereqs(getActiveDataset().id)) {
+    return true;
   }
 
   const rank = power.rank || 1;

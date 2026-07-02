@@ -36,6 +36,8 @@ export const Commando: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

@@ -40,7 +40,8 @@
   "allowed_set_categories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "cast_through": [],
   "toggle_ignore": [],
@@ -183,7 +184,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PlayerCrit"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -259,7 +262,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "MLCrit"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -296,7 +301,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "BossCrit"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -333,7 +340,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "FieryEmbrace"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

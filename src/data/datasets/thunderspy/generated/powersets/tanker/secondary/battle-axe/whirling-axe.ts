@@ -37,6 +37,8 @@ export const WhirlingAxe: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

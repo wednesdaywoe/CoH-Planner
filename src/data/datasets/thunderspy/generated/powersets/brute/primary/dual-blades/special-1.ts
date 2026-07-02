@@ -34,6 +34,7 @@ export const Special1: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Knockback",
     "Melee Damage",
     "Threat Duration"

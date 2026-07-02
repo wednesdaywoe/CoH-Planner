@@ -38,8 +38,10 @@ export const JacobsLadder: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Endurance Modification",
     "Melee AoE Damage",
+    "Melee Damage",
     "Sleep",
     "Threat Duration"
   ],

@@ -37,23 +37,17 @@ export const DNASiphon: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Healing",
+    "Brute Archetype Sets",
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
+    "Melee Damage",
     "Threat Duration"
   ],
   "maxSlots": 6,
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.2,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.2,
+    "table": "Melee_Damage"
+  }
 };

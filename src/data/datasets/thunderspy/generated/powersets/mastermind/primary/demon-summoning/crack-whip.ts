@@ -37,10 +37,18 @@ export const CrackWhip: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
   "damage": [
+    {
+      "type": "Smashing",
+      "scale": -1.25,
+      "table": "Ranged_Res_Dmg",
+      "duration": 10
+    },
     {
       "type": "Fire",
       "scale": 1.13,

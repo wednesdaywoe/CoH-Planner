@@ -39,7 +39,9 @@ export const UmbralTorrent: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],

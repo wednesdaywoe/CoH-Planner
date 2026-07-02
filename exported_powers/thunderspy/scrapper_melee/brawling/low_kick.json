@@ -223,7 +223,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "PlayerCrit"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -260,7 +262,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "MLCrit"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -297,7 +301,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "BossCrit"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -373,7 +379,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "FieryEmbrace"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -403,7 +411,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower? ! source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -428,7 +436,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower? ! source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -442,7 +450,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -467,7 +475,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Combo_Level_1 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -481,7 +489,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower? Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ||",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ||",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -506,7 +514,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower? Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ||",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Combo_Level_3 source.ownPower? ||",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -520,7 +528,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -545,7 +553,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Combo_Level_2 source.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

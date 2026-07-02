@@ -33,19 +33,14 @@ export const Rebuke: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": -1,
-      "table": "Ranged_Damage"
-    }
-  ]
+  "damage": {
+    "type": "Fire",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  }
 };

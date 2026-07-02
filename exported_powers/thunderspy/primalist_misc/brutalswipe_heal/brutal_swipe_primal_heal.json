@@ -55,7 +55,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBInactive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -92,7 +94,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

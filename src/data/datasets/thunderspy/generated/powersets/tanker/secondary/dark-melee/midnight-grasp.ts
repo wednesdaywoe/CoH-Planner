@@ -40,6 +40,7 @@ export const MidnightGrasp: Power = {
     "Accurate To-Hit Debuff",
     "Immobilize",
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration",
     "To Hit Debuff"
   ],

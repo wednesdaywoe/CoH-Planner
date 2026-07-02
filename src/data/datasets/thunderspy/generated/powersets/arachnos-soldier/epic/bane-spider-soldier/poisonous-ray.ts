@@ -36,7 +36,9 @@ export const PoisonousRay: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Ranged Damage"
+    "Melee Damage",
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

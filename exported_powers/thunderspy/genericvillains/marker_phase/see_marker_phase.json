@@ -53,9 +53,7 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [
-            "Ones"
-          ],
+          "attribs": [],
           "type": "",
           "application_type": "",
           "aspect": "",

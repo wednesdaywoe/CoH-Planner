@@ -33,6 +33,7 @@ export const Incinerate: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Melee Damage",
     "Threat Duration"
   ],

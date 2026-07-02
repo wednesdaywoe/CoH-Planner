@@ -99,6 +99,7 @@ export const IO_SET_TYPE_TO_CATEGORY: Record<string, IOSetCategory> = {
   'Kheldian Archetype Sets': 'Kheldian Archetype Sets',
   'Soldiers of Arachnos Archetype Sets': 'Soldiers of Arachnos Archetype Sets',
   'Guardian Archetype Sets': 'Guardian Archetype Sets',
+  'Primalist Archetype Sets': 'Primalist Archetype Sets',
 
   // Rebirth Challenge Enhancement categories — universal mez set (Forced
   // Indoctrination) + the single-piece Rest enhancement (Inexhaustibility).
@@ -133,6 +134,9 @@ export const ARCHETYPE_ATO_CATEGORY: Record<string, IOSetCategory> = {
   // Guardian is a Rebirth-only AT; its ATOs (Guardian's Gift, Absolute
   // Resolution) slot into any Guardian power.
   guardian: 'Guardian Archetype Sets',
+  // Primalist is a Thunderspy-only AT; its ATOs (Primalist's Nature) slot into
+  // any Primalist power.
+  primalist: 'Primalist Archetype Sets',
 };
 
 // ============================================

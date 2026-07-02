@@ -31,42 +31,66 @@ export const FetidPresence: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Tanker Archetype Sets"
   ],
   "maxSlots": 6,
   "conditionalEffects": [
     {
-      "id": "target-affected",
-      "label": "Target Already Affected",
+      "id": "pale_enemy_lash",
+      "label": "Pale Enemy Lash",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 0.03,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.03,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.03,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.03,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.03,
-          "table": "Melee_Damage"
-        }
-      ]
+      "damage": {
+        "type": "Special",
+        "scale": 0.03,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "pale_enemy_flay",
+      "label": "Pale Enemy Flay",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.03,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "pale_enemy_rendflesh",
+      "label": "Pale Enemy RendFlesh",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.03,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "pale_enemy_khloros",
+      "label": "Pale Enemy Khloros",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.03,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "pale_enemy_paleblade",
+      "label": "Pale Enemy PaleBlade",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.03,
+        "table": "Melee_Damage"
+      }
     }
   ],
   "requires": "Tanker_Melee.Pale_Blade.Lash"

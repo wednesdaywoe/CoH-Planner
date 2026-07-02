@@ -33,6 +33,7 @@ export const FollowUp: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Melee Damage",
     "To Hit Buff"
   ],

@@ -36,6 +36,8 @@ export const PsychicScream: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -43,18 +45,5 @@ export const PsychicScream: Power = {
     "type": "Psionic",
     "scale": 1.04,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Psionic",
-        "scale": 1.04,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

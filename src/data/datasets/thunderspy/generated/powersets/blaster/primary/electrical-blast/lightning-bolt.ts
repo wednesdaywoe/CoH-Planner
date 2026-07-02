@@ -40,7 +40,9 @@ export const LightningBolt: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Endurance Modification",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

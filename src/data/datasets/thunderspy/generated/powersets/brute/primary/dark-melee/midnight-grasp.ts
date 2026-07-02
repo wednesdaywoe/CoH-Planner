@@ -36,6 +36,7 @@ export const MidnightGrasp: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Brute Archetype Sets",
     "Immobilize",
     "Melee Damage",
     "Threat Duration",

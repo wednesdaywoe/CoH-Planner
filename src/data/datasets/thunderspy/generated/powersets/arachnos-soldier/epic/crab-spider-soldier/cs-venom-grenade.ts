@@ -35,7 +35,9 @@ export const CSVenomGrenade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged AoE Damage"
+    "Melee Damage",
+    "Ranged AoE Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

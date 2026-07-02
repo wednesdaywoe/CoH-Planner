@@ -36,6 +36,7 @@ export const Phantasm: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

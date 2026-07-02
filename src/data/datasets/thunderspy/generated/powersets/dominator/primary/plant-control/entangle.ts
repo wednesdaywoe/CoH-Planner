@@ -34,7 +34,9 @@ export const Entangle: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

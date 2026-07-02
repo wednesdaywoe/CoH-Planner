@@ -33,6 +33,8 @@ export const Scream: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -42,20 +44,5 @@ export const Scream: Power = {
     "table": "Ranged_Damage",
     "duration": 1.05,
     "tickRate": 0.25
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.28,
-        "table": "Ranged_Damage",
-        "duration": 1.05,
-        "tickRate": 0.25
-      }
-    }
-  ]
+  }
 };

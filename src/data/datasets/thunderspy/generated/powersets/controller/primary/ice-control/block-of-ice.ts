@@ -35,7 +35,9 @@ export const BlockofIce: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

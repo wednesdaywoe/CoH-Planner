@@ -37,7 +37,9 @@ export const DisruptingTorrent: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -48,8 +50,8 @@ export const DisruptingTorrent: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "kinetic_assault_impulse",
+      "label": "Impulse",
       "scope": "global",
       "defaultActive": false,
       "damage": {

@@ -1256,7 +1256,14 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
     numbers the planner needs.
     """
     def _resolve_str(off: int) -> str | None:
-        if off == 0 or off >= 200000:
+        # Bound by the actual string-table length, not an arbitrary cap.
+        # Thunderspy's string table is ~38 MB, so legitimate attrib strings
+        # live at offsets well past any small heuristic ceiling — a 200000 cap
+        # here silently dropped the `Defense` attrib (and 8k others), which is
+        # why tspy defense/other-buff toggles lost their magnitude. abs_pos is
+        # re-checked against the buffer below, so this only rejects the obvious
+        # 0 / out-of-range cases.
+        if off == 0 or off >= len(strtab_data):
             return None
         abs_pos = strtab_base + off
         if abs_pos <= 0 or abs_pos >= len(strtab_data):
@@ -1275,7 +1282,8 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
             return None
         return s
 
-    # Attribs: u4_array of string offsets
+    # Attribs (front, string-offset form): populated for damage / single-attrib
+    # templates whose attrib carries a string name (Damage, Knockback, Ones, …).
     attrib_offs = r.read_u4_array()
     attribs = [n for n in (_resolve_str(o) for o in attrib_offs) if n]
 
@@ -1291,6 +1299,32 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
     req_offs = r.read_u4_array()
     req_parts = [n for n in (_resolve_str(o) for o in req_offs) if n]
     jit_requires = ' '.join(req_parts) if req_parts else ''
+
+    # Attribs (index form) — the CANONICAL affected-attribute list. Right after
+    # the requires array Thunderspy stores [pad, pad, marker, someval, count,
+    # count×(attribIndex*4)] (attrib index encoded as byte offset into the
+    # 4-byte-per-entry attrib table, per GAME-DATA-PRINCIPLES). Multi-type buffs
+    # — most importantly the +DEF(All) defense toggles (Maneuvers, Weave, Hover,
+    # armor sets) — leave the front string-attrib array EMPTY and list their
+    # affected attribs (Smashing, Lethal, Ranged, Melee, …) only here. Without
+    # reading it, those toggles lose every defense attrib and contribute 0 to the
+    # planner's Defense totals. Verified: 295/295 empty-front-attrib tspy
+    # templates carry this array; 273 decode fully to known attribs, the rest to
+    # known attribs plus a few unmapped-exotic indices. Read as a FALLBACK only
+    # (never overriding a resolved front string attrib), and PEEK it (no reader
+    # advance) so the table tail-scan below is unaffected.
+    _idx_attribs = []
+    try:
+        ipos = r._pos + 16  # skip pad, pad, marker, someval
+        icount = struct.unpack_from('<I', strtab_data, ipos)[0]
+        if 0 < icount <= 32 and ipos + 4 + icount * 4 <= r._end:
+            idxs = struct.unpack_from('<%dI' % icount, strtab_data, ipos + 4)
+            _idx_attribs = [ATTRIB_NAME[v // 4] for v in idxs
+                            if v % 4 == 0 and (v // 4) in ATTRIB_NAME]
+    except Exception:
+        pass
+    if not attribs:
+        attribs = _idx_attribs
 
     # Scan the remainder for the first table-name string, then read the
     # canonical CoH AttribMod numeric block that follows it. Thunderspy shares
@@ -1358,6 +1392,18 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
         app_period = 0.0
     if delay < 0:
         delay = 0.0
+    # Defense-buff templates: the front string-attrib is either empty or a bogus
+    # 'Buff_Def' meta-token, but the AFFECTED positional/type defense attribs
+    # (Melee, Ranged, Smashing, …) — what the converter needs to build the
+    # power's defenseBuff — live in the index array. Prefer it here so armor
+    # sets (Super Reflexes, Shield, Energy Aura, …) and the +DEF(All) toggles
+    # actually carry their defense. (Verified: 660/678 'Buff_Def'-front defense
+    # templates carry clean positional defense types in the index array; the
+    # converter's defense-position/type filter ignores any stray non-defense
+    # attrib, so this is safe for the handful that don't.)
+    if table and 'Buff_Def' in table and _idx_attribs:
+        attribs = _idx_attribs
+
     # For damage attacks, table-scale supersedes the template-level magnitude
     # default (which is the unscaled "1.0" placeholder). Magnitude only matters
     # for non-table effects like raw mez magnitudes.

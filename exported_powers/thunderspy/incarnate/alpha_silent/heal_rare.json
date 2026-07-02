@@ -99,7 +99,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Regeneration"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -136,7 +138,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "HitPoints"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

@@ -36,6 +36,7 @@ export const ThunderStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

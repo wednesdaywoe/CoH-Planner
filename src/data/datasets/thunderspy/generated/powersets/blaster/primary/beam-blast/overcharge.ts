@@ -38,7 +38,9 @@ export const Overcharge: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Stuns"
   ],

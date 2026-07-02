@@ -40,6 +40,7 @@ export const SkySplitter: Power = {
     "Knockback",
     "Melee Damage",
     "Stuns",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -59,27 +60,43 @@ export const SkySplitter: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "perfection_of_body_level_3",
+      "label": "Perfection of Body Level 3",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 0.828,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 0.828,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 0.828,
-          "table": "Melee_Damage"
-        }
-      ]
+      "mode": "replace",
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.828,
+        "table": "Melee_Damage"
+      },
+      "group": "staff-form"
+    },
+    {
+      "id": "perfection_of_mind_level_3",
+      "label": "Perfection of Mind Level 3",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.828,
+        "table": "Melee_Damage"
+      },
+      "group": "staff-form"
+    },
+    {
+      "id": "perfection_of_soul_level_3",
+      "label": "Perfection of Soul Level 3",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.828,
+        "table": "Melee_Damage"
+      },
+      "group": "staff-form"
     }
   ]
 };

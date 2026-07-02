@@ -34,6 +34,7 @@ export const IceBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

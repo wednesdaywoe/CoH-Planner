@@ -180,6 +180,8 @@ export type IOSetCategory =
   | 'Kheldian Archetype Sets'
   | 'Soldiers of Arachnos Archetype Sets'
   | 'Guardian Archetype Sets'
+  // Thunderspy-only AT (Primalist) ATO / superior-ATO category
+  | 'Primalist Archetype Sets'
   // Rebirth Challenge Enhancement categories — universal mez set (Forced
   // Indoctrination) and the single-piece Rest enhancement (Inexhaustibility)
   | 'Universal Control Duration'

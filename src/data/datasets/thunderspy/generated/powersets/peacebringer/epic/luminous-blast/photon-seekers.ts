@@ -32,7 +32,9 @@ export const PhotonSeekers: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Kheldian Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

@@ -38,7 +38,9 @@ export const Placate: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -54,18 +56,5 @@ export const Placate: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1.66,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

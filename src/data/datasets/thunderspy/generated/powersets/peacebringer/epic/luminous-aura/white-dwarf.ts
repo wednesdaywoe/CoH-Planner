@@ -44,5 +44,11 @@ export const WhiteDwarf: Power = {
     "Resist Damage",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 3,
+    "table": "Melee_Res_DMG",
+    "duration": 2
+  }
 };

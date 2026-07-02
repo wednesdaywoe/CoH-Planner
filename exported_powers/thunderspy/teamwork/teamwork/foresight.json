@@ -138,7 +138,9 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Area",
+            "Ranged",
+            "Melee"
           ],
           "type": "",
           "application_type": "",

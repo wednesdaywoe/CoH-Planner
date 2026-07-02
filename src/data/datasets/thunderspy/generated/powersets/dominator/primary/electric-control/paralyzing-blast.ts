@@ -36,6 +36,7 @@ export const ParalyzingBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Holds"
   ],
   "maxSlots": 6,

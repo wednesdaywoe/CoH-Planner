@@ -36,5 +36,53 @@ export const GraceofNature: Power = {
     "Defense Sets",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 45
+    },
+    "buffDuration": 45
+  }
 };

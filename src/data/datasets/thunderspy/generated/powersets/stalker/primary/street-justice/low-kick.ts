@@ -36,25 +36,13 @@ export const LowKick: Power = {
   "allowedSetCategories": [
     "Defense Debuff",
     "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
     "type": "Special",
     "scale": 1.64,
     "table": "Melee_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 1.64,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

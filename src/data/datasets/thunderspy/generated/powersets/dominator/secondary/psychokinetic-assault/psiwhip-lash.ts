@@ -33,6 +33,7 @@ export const PsiWhipLash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

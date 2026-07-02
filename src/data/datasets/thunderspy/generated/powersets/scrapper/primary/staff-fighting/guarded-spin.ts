@@ -37,7 +37,9 @@ export const GuardedSpin: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -46,5 +48,17 @@ export const GuardedSpin: Power = {
     "table": "Melee_Damage",
     "duration": 1.5,
     "tickRate": 0.30000001192092896
+  },
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 10
+    },
+    "buffDuration": 10
   }
 };

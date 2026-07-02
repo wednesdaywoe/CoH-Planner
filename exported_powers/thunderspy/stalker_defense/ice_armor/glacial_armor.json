@@ -65,7 +65,10 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Energy",
+            "Negative_Energy"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

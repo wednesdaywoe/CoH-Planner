@@ -34,8 +34,10 @@ export const HailofBullets: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement"
   ],
   "maxSlots": 6,
@@ -46,17 +48,24 @@ export const HailofBullets: Power = {
     "duration": 3.5,
     "tickRate": 0.30000001192092896
   },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1,
-        "table": "Ranged_Damage"
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 3,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 3,
+        "table": "Ranged_Buff_Def"
+      },
+      "aoe": {
+        "scale": 3,
+        "table": "Ranged_Buff_Def"
       }
-    }
-  ]
+    },
+    "durations": {
+      "defenseBuff": 5
+    },
+    "buffDuration": 5
+  }
 };

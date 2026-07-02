@@ -29,5 +29,53 @@ export const WolfSpiderArmor: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.3,
+    "table": "Melee_Res_DMG",
+    "duration": 10.25
+  },
+  "effects": {
+    "stun": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "effectDuration": 10.25,
+    "durations": {
+      "stun": 10.25,
+      "sleep": 10.25,
+      "immobilize": 10.25,
+      "hold": 10.25,
+      "confuse": 10.25,
+      "fear": 10.25
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "confuse": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "fear": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 10.25
+  },
   "mechanicType": "parentMechanic"
 };

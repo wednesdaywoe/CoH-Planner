@@ -35,6 +35,7 @@ export const Slash: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Brute Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
     "Threat Duration"
@@ -47,5 +48,26 @@ export const Slash: Power = {
     "duration": 0.3,
     "tickRate": 0.25
   },
+  "conditionalEffects": [
+    {
+      "id": "bulletcut",
+      "label": "BulletCut",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "effects": {
+        "defenseBuff": {
+          "ranged": {
+            "scale": 2,
+            "table": "Melee_Buff_Def"
+          }
+        },
+        "durations": {
+          "defenseBuff": 5
+        },
+        "buffDuration": 5
+      }
+    }
+  ],
   "requires": "Brute_Defense.Shield_Defense !"
 };

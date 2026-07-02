@@ -35,7 +35,9 @@ export const SuppressiveFire: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage",
     "Stuns"
   ],

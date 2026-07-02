@@ -33,7 +33,9 @@ export const FRTScrambleThoughts: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,

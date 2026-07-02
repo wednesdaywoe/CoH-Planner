@@ -34,6 +34,7 @@ export const Pulverize: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Scrapper Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,

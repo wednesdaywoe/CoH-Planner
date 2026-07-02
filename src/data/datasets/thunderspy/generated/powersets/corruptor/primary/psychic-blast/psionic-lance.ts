@@ -35,6 +35,8 @@ export const PsionicLance: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks"
   ],
@@ -43,18 +45,5 @@ export const PsionicLance: Power = {
     "type": "Psionic",
     "scale": 2.76,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Psionic",
-        "scale": 2.76,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

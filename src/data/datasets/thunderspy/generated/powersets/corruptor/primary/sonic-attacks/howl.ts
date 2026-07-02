@@ -36,6 +36,8 @@ export const Howl: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -43,18 +45,5 @@ export const Howl: Power = {
     "type": "Smashing",
     "scale": 0.5,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

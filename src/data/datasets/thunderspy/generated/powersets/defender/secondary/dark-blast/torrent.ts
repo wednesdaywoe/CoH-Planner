@@ -39,7 +39,9 @@ export const Torrent: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Defender Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],

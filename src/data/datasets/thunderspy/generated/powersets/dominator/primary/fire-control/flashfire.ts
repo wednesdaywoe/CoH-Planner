@@ -36,6 +36,8 @@ export const Flashfire: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Stuns"
   ],

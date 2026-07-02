@@ -41,6 +41,7 @@
   "allowed_set_categories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "cast_through": [
@@ -72,7 +73,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Cancel_Effects"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

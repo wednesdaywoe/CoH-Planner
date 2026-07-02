@@ -39,7 +39,9 @@ export const VoltaicSentinel: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Endurance Modification",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

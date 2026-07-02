@@ -36,7 +36,9 @@ export const SniperBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks"
   ],
@@ -51,18 +53,5 @@ export const SniperBlast: Power = {
       "scale": 0.7,
       "table": "Ranged_Knockback"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 2.76,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

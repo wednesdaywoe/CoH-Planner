@@ -33,5 +33,11 @@ export const EnervatingField: Power = {
     "Range",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": -3,
+    "table": "Ranged_Res_Dmg",
+    "duration": 5
+  }
 };

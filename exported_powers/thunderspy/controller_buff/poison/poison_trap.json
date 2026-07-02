@@ -41,7 +41,8 @@
   "allowed_set_categories": [
     "Endurance Modification",
     "Holds",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "cast_through": [],
   "toggle_ignore": [],

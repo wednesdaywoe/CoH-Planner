@@ -36,7 +36,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "cast_through": [
     "hold",

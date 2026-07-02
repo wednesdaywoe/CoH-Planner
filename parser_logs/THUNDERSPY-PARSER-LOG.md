@@ -21,7 +21,7 @@ fixed, move it to the top of the RESOLVED section with the fix details.
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-## ⚠️ Thunderspy `Ones`-attrib buffs lose their modified attribute — not in the binary — 2026-07-01
+## ⚠️ Thunderspy `Ones`-attrib buffs lose their modified attribute — recoverable via the index array (see CORRECTION) — 2026-07-01
 
 **Symptom.** Thunderspy **Hasten** granted **no +recharge buff** and had **no
 `buffDuration`**, so it contributed nothing to recharge totals *and* the perma-tracking
@@ -75,6 +75,22 @@ template (ToHit/Damage/Def ride their own attribs). Guard `thunderspy-ones-recha
 — either a separate Thunderspy bin/table that maps these, or confirmation from the Thunderspy
 dev of where the runtime reads it. Until then the shortHelp workaround is the ceiling.
 
+> **⚠️ CORRECTION (2026-07-02): the modified attribute IS in the binary.** The
+> "no attribute string anywhere in the element" scan above looked for a *string*; the
+> attribute is stored as an **enum index**, not a string. Right after the `requires` array,
+> every Thunderspy template carries a second attrib list —
+> `[pad, pad, marker, someval, count, count×(attribIndex*4)]` — where `attribIndex*4 →
+> ATTRIB_NAME`. This is the **affected/modified** attribute (distinct from the front
+> string-attrib, which is the *enhancement aspect*: front `Ones` ↔ index `Knockback` /
+> `Endurance` / `Recovery` / `Regeneration` / `Stunned` / `Held` / damage types / …; front
+> `Damage` ↔ index `Lethal_Dmg`). Decoded over all `['Ones']`-front templates, the index
+> array names the real effect for ~19k of them (≈4k genuinely carry no index array). So the
+> `Ones`/Hasten recharge loss is recoverable from the binary after all — the proper fix is to
+> read this index array, NOT the shortHelp. This was found + exploited for the **defense**
+> fix (see RESOLVED entry below); generalising it to recharge/mez/other `Ones` buffs is a
+> larger, separate change (front vs index are different fields, so a blanket swap would
+> change damage/mez representation — scope carefully per effect kind).
+
 ## ⚠️ `export_entities` (VillainDef.bin) overruns record boundary on Thunderspy — 2026-06-16
 
 **Symptom.** `python3 -m bin_crawler.export_entities --assets-dir <tspy>` crashes:
@@ -96,6 +112,48 @@ so Thunderspy can do the same: ship with `petEntities: {}` and fix the entity pa
 later. Player power math is unaffected; only summoned-pet detail panels are.
 
 > ---RESOLVED ---
+
+## ✅ Thunderspy Defense toggles contributed 0 to Defense totals — two attrib bugs — 2026-07-02
+
+**Symptom.** Every Thunderspy defense toggle (Weave, Maneuvers, Hover + all armor sets:
+Super Reflexes, Shield, Energy Aura, Ninjitsu, …) added **nothing** to the character's Defense
+totals; only proc IOs (Steadfast, Gladiator's) showed. The powers' POWER EFFECTS panels had
+**no Defense row** — the magnitude was absent from the generated data (no `defenseBuff`),
+because the parser lost the defense **attribs** (scale + table parsed fine).
+
+**Root cause — two bugs in `_parse_effect_template_thunderspy`
+([_powers.py](../tools/bin-crawler/bin_crawler/parser/_powers.py)):**
+
+1. **`_resolve_str` offset cap.** It rejected any string offset `>= 200000`. Thunderspy's
+   string table is ~38 MB, so valid attrib strings living past that (DefensiveAdaptation,
+   DefenseDebuff, ToHitBuff, EndMod, …) were silently dropped — **8,738** templates lost their
+   attribs. Fixed: bound by `len(strtab_data)` (abs-pos is re-checked against the buffer, so
+   the cap was pure heuristic and wrong for tspy's large table). This alone recovered
+   8,738→295 empty-attrib templates.
+
+2. **The affected-attrib INDEX array was never read.** Thunderspy stores TWO attrib fields per
+   template: the front string-offset array (the *enhancement aspect* — `Damage`/`Ones`/
+   `Buff_Def`) and, right after `requires`, an INDEX array
+   `[pad, pad, marker, someval, count, count×(attribIndex*4)]` = the **affected** attribs
+   (`Melee`/`Smashing`/`Lethal`/… — what HC and the converter key on). Multi-type defense
+   buffs leave the front EMPTY (Maneuvers, Danger Sense) or carry a bogus `Buff_Def` meta
+   (Focused Fighting, Deflection), putting the positional/type list only in the index array.
+   Fixed: decode the index array (`idx*4 → ATTRIB_NAME`) as a fallback when the front is empty,
+   **and** for `Buff_Def`-table templates prefer it over the bogus `Buff_Def` front.
+
+**Why scoped to defense.** The front and index arrays are DIFFERENT fields (front `Damage` ↔
+index `Lethal_Dmg`; front `Ones` ↔ index `Knockback`/`Endurance`/…), so a blanket swap would
+change damage/mez representation across the dataset. Only the empty-front fallback (safe — adds
+attribs where there were none) and the `Buff_Def`-specific override are applied. The broader
+`Ones` recovery (recharge/mez — see the corrected NEW-ISSUES entry) is left for a separate,
+per-effect-kind change.
+
+**Validated.** empty-attrib templates 8,738→**16**; Focused Fighting now `['Melee']` (HC
+parity, HC scale 1.85 vs tspy 2.0); Maneuvers/Weave/Hover full positional lists; **no** damage/
+DoT regression (Gloom intact). Re-exported (3,167 power JSONs, additive attrib/requires/category
+recovery, **0** value drift) + regenerated pools & all 305 powersets. Defense coverage
+19→**211** generated files. `tsc` clean; full suite 588 pass; guard
+[thunderspy-defense-data.test.ts](../src/data/thunderspy-defense-data.test.ts).
 
 ## ✅ Every Thunderspy DoT lost its `tickRate` — `application_period` was never read — 2026-06-18
 

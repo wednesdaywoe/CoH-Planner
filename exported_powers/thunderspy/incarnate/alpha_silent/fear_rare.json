@@ -60,7 +60,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Afraid"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -97,7 +99,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Terrorized"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

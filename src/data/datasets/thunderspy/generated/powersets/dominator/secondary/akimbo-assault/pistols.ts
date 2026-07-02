@@ -37,6 +37,7 @@ export const Pistols: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

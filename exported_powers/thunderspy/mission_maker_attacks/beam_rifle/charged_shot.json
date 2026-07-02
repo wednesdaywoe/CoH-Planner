@@ -134,7 +134,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Disintegrate Bonus"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

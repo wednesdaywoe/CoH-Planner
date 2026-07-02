@@ -35,7 +35,9 @@ export const Burst: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -45,20 +47,5 @@ export const Burst: Power = {
     "table": "Ranged_Damage",
     "duration": 0.7,
     "tickRate": 0.30000001192092896
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.546667,
-        "table": "Ranged_Damage",
-        "duration": 0.7,
-        "tickRate": 0.30000001192092896
-      }
-    }
-  ]
+  }
 };

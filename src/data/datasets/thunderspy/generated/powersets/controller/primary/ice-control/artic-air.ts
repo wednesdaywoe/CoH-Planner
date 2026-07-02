@@ -41,7 +41,9 @@ export const ArticAir: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
+    "Controller Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement"
   ],
   "maxSlots": 6,

@@ -37,8 +37,10 @@ export const ChainFences: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Endurance Modification",
     "Immobilize",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

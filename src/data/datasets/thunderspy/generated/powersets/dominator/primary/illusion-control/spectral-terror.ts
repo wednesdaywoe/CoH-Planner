@@ -34,6 +34,7 @@ export const SpectralTerror: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Fear",
     "Immobilize"
   ],

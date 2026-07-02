@@ -37,6 +37,8 @@ export const Moonbeam: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Blaster Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks",
     "To Hit Debuff"

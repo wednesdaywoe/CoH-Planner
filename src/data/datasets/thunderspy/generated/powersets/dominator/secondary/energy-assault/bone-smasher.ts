@@ -33,6 +33,7 @@ export const BoneSmasher: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Melee Damage",
     "Stuns"
   ],

@@ -34,6 +34,8 @@ export const SpectralWounds: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Sleep"
   ],

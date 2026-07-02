@@ -93,7 +93,8 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Melee",
+            "Psionic"
           ],
           "type": "",
           "application_type": "",

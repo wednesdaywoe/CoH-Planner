@@ -33,6 +33,8 @@ export const SnapShot: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -40,18 +42,5 @@ export const SnapShot: Power = {
     "type": "Lethal",
     "scale": 0.68,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.68,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

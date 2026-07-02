@@ -33,6 +33,7 @@ export const PistolWhip: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Melee Damage",
     "Stuns"
   ],

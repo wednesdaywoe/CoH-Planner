@@ -35,7 +35,9 @@ export const AquaBolt: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -43,18 +45,5 @@ export const AquaBolt: Power = {
     "type": "Cold",
     "scale": 0.21,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Cold",
-        "scale": 0.84,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

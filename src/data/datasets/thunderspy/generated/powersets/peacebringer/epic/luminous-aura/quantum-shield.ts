@@ -38,5 +38,11 @@ export const QuantumShield: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 3,
+    "table": "Melee_Res_DMG",
+    "duration": 0.75
+  }
 };

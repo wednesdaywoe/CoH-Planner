@@ -33,7 +33,9 @@ export const AoEBridge: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -45,8 +47,8 @@ export const AoEBridge: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "comboblade3",
+      "label": "ComboBlade3",
       "scope": "global",
       "defaultActive": false,
       "damage": {

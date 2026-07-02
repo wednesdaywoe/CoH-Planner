@@ -35,5 +35,10 @@ export const SharePain: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.025,
+    "table": "Melee_Ones"
+  }
 };

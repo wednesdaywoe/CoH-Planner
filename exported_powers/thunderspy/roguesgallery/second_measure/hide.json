@@ -93,7 +93,7 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Base_Defense"
           ],
           "type": "",
           "application_type": "",

@@ -34,7 +34,9 @@ export const SoulDrain: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "To Hit Buff"
   ],
   "maxSlots": 6,

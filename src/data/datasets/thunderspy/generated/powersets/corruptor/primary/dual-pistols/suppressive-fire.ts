@@ -35,7 +35,9 @@ export const SuppressiveFire: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage",
     "Stuns"
   ],
@@ -50,19 +52,6 @@ export const SuppressiveFire: Power = {
       "type": "Lethal",
       "scale": 0.05,
       "table": "Ranged_Damage"
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.1,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

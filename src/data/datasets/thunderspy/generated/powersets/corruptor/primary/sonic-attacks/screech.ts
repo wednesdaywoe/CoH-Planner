@@ -34,6 +34,8 @@ export const Screech: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Stuns"
   ],
@@ -49,18 +51,5 @@ export const Screech: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 0.2,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

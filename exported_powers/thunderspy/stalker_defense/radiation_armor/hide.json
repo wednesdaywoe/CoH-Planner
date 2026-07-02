@@ -140,7 +140,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "StealthOn"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -177,7 +179,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "StealthOn"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

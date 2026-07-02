@@ -37,6 +37,8 @@ export const FrostBreath: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],
@@ -47,20 +49,5 @@ export const FrostBreath: Power = {
     "table": "Ranged_Damage",
     "duration": 0.6,
     "tickRate": 0.5
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.7,
-        "table": "Ranged_Damage",
-        "duration": 0.6,
-        "tickRate": 0.5
-      }
-    }
-  ]
+  }
 };

@@ -34,6 +34,7 @@ export const EaglesClaw: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -48,25 +49,5 @@ export const EaglesClaw: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 2.92,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 2.92,
-          "table": "Melee_Damage"
-        }
-      ]
-    }
-  ]
+  }
 };

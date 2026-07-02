@@ -38,6 +38,7 @@ export const RagingTempest: Power = {
     "Recharge"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Holds"
   ],
   "maxSlots": 6

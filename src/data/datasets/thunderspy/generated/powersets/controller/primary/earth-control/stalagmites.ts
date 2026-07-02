@@ -36,6 +36,8 @@ export const Stalagmites: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Stuns"
   ],

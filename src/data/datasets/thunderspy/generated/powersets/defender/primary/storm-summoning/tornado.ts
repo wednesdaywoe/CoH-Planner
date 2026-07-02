@@ -36,8 +36,10 @@ export const Tornado: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Defender Archetype Sets",
     "Defense Debuff",
     "Knockback",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Stuns"

@@ -38,7 +38,9 @@ export const MaceBeamVolley: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage"
+    "Melee Damage",
+    "Ranged AoE Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -33,7 +33,9 @@ export const BurstofSpeed: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "Teleport",
     "Universal Travel"
   ],

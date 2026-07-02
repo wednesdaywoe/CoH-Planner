@@ -38,7 +38,9 @@ export const GroupEnergyFlight: Power = {
   ],
   "allowedSetCategories": [
     "Defense Debuff",
-    "Melee AoE Damage"
+    "Kheldian Archetype Sets",
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "maxSlots": 6,
   "damage": {

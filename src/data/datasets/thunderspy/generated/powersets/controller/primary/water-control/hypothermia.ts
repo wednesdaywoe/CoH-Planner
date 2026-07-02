@@ -37,6 +37,7 @@ export const Hypothermia: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Sleep",
     "Slow Movement"
   ],
@@ -55,10 +56,11 @@ export const Hypothermia: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "target-affected",
-      "label": "Target Already Affected",
+      "id": "water_control_drowning",
+      "label": "Drowning",
       "scope": "per-power",
       "defaultActive": false,
+      "mode": "replace",
       "effects": {
         "sleep": {
           "mag": 1,

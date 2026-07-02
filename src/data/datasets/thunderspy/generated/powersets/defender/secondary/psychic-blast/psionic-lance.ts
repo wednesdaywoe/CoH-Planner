@@ -35,6 +35,8 @@ export const PsionicLance: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks"
   ],

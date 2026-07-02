@@ -34,7 +34,9 @@ export const PowerBurst: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -48,18 +50,5 @@ export const PowerBurst: Power = {
       "scale": 2,
       "table": "Ranged_Knockback"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 2.12,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

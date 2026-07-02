@@ -35,6 +35,7 @@ export const Beheader: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
     "Melee Damage"
   ],
   "maxSlots": 6,

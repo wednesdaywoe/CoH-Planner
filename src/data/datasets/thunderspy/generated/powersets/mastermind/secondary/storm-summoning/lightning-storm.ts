@@ -42,6 +42,8 @@ export const LightningStorm: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Recharge Intensive Pets"
   ],

@@ -1,53 +1,56 @@
 # Thunderspy — Remaining Follow-ups
 
 Thunderspy is live and testable (all ATs incl. Primalist, correct levels, damage
-element types, custom icons, server selector). These are the **non-blocking**
-follow-ups, roughly in priority order. Full context lives in
+element types, custom icons, server selector, real IO sets). These are the
+**non-blocking** follow-ups, roughly in priority order. Full context lives in
 [THUNDERSPY SUPPORT PROGRESS.md](../THUNDERSPY%20SUPPORT%20PROGRESS.md) and
 [THUNDERSPY-PARSER-LOG.md](THUNDERSPY-PARSER-LOG.md).
 
-> Scope note: HC + Rebirth + Thunderspy is the **final** dataset roster (smaller
-> servers are too fragile to support). Don't build new dataset-extensibility
-> abstractions for these — see the `dataset-scope-final` memory.
+> Last verified 2026-07-02.
 
 ---
 
-## 1. Enhancements / IO sets — replace the HC stand-in (HIGH value, MED effort)
+## 1. `Ones`-attrib buffs lose their modified attribute — general recovery (HIGH value, MED effort) — PARSER
 
-**State:** `src/data/datasets/thunderspy/io-sets-raw.ts` currently **re-exports
-Homecoming's** IO set registry. Enhancement slotting, set bonuses, and the
-planner all *work*, but the data is HC's — any Thunderspy-specific sets,
-renames, or tuned bonus values are wrong.
+**State:** Thunderspy's older AttribMod schema stores TWO attrib fields per
+effect template: the FRONT string-offset array (the *enhancement aspect* —
+`Damage` / `Ones` / `Buff_Def`) and, right after the `requires` array, an INDEX
+array `[pad, pad, marker, someval, count, count×(attribIndex*4)]` = the
+**affected/modified** attribute (`attribIndex*4 → ATTRIB_NAME`; front `Ones` ↔
+index `Knockback` / `Endurance` / `Recovery` / `Regeneration` / `Stunned` /
+`Held` / damage types, front `Damage` ↔ index `Lethal_Dmg`). The parser
+historically read only the front array, so `Ones`-based buffs (Hasten's
+recharge, mez magnitudes, immob/KB, mez protection, …) lost their modified stat.
 
-**Why it matters:** enhancements are central to build planning; this is the most
-build-impacting gap.
+**Partly done (2026-07-02):** `_parse_effect_template_thunderspy`
+([_powers.py](../tools/bin-crawler/bin_crawler/parser/_powers.py)) now reads the
+index array (a) as a fallback when the front is empty and (b) for `Buff_Def`
+tables — that fixed **defense** (see the RESOLVED entry in the parser log). Also
+raised the `_resolve_str` 200000 offset cap to `len(strtab_data)` (tspy's string
+table is ~38 MB), recovering 8,738 templates' attribs. A shortHelp-driven
+converter workaround (`recoverThunderspyOnesBuffs`) recovers exactly 3 recharge
+pool powers (Hasten, Adrenal Booster, Unleash Potential).
 
-**Fix:** port `scripts/extract-rebirth-io-sets-v2.py` to a Thunderspy mode. It's
-hardcoded to HC/Rebirth asset paths (`REBIRTH_ASSETS = 'G:/…/rebirth'`, no
-CLI/env override) — add an `--assets-dir` / env override and point it at
-`…/Sweet Tea/tspy`. The bin parser already reads Thunderspy `boostsets.bin`
-(212 IO sets parse cleanly), so the work is mostly wiring the extractor's paths
-+ writing `io-sets-raw.ts`, then swapping the re-export.
+**Remaining:** generalise the index-array read to the other `Ones` effect kinds
+(recharge on ally/team buffs like Speed Boost/Chrono Shift, mez magnitudes,
+etc.). Front and index are DIFFERENT fields (front `Damage` ↔ index
+`Lethal_Dmg`), so a blanket swap would change damage/mez representation across
+the dataset — **scope per effect kind**. Decoded over all `['Ones']`-front
+templates the index array names the real effect for ~19k of them (~4k genuinely
+carry no index array). Once done, drop the shortHelp workaround.
 
-**Cross-check source:** the Discord Mids-DB drop (`Thunderspy/` — gitignored;
-`EnhDB.mhd`, `Recipe.mhd`, `Salvage.mhd`, `Images/Sets/`) is an authoritative
-reference for set names/bonuses.
+## 2. Pets / entities — fix the entity parser (MED value, HIGH effort) — PARSER
 
-**Verify:** spot-check a few set bonuses vs in-game / Mids; confirm slotting +
-set-bonus totals still compute; re-run the suite.
-
----
-
-## 2. Pets / entities — fix the entity parser (MED value, HIGH effort)
-
-**State:** `export_entities` (VillainDef.bin) crashes on Thunderspy's older i23
-record schema, so `pet-entities.ts` is an **empty stub**.
+**State (verified 2026-07-02 — still crashes):** `export_entities` (VillainDef.bin)
+throws `ValueError: Read of 4 bytes at offset 465012 would exceed record
+boundary` on Thunderspy's older i23 record schema, so `pet-entities.ts` is a
+14-line **empty stub**.
 
 **Impact:** Mastermind henchmen, Lore/incarnate pets, and pseudo-pet (rain/patch)
 **detail panels are empty**. Player power math is unaffected.
 
 **Fix:** add a Thunderspy entity-layout variant in
-`tools/bin-crawler/bin_crawler/parser/_entities.py`. Current crash:
+`tools/bin-crawler/bin_crawler/parser/_entities.py`. Crash path:
 `_parse_entity_parse7` → `_parse_level_sub` → `read_string_array` overruns the
 record boundary (the `levels` sub-record), i.e. a field count/order mismatch vs
 HC's Parse7 entity layout. Probe field-by-field like the powers/classes work
@@ -63,12 +66,14 @@ HC's Parse7 entity layout. Probe field-by-field like the powers/classes work
   `DMG(...)` (e.g. Pale Wind = "Repel, Fester", element only in prose) stay
   `Special`. Magnitudes are correct — this is label-only. A `display_help`
   prose-parse fallback could recover some, but it's fragile; treat as opt-in.
-- **~189 missing icons.** Lore-pet / NPC-group (`banishedpantheon_*`, `tsoo_*`,
-  …), enhancement (`e_icon_*`), and archetype (`archetypeicon_*`) icons aren't
-  in the tspy GUI piggs → some broken images on redirect/Lore powers. Most are
-  sourceable from the **HC** texture piggs — re-run
-  `scripts/extract-thunderspy-icons.py --assets-dir <…/Homecoming/assets/live>`
-  (archetype icons use a separate asset path).
+- **~40 missing icons (was ~189; 149 extracted 2026-07-02).** The remainder are
+  Lore-pet / NPC-group (`banishedpantheon_*`, `tsoo_*`, …), enhancement
+  (`e_icon_*`), and archetype (`archetypeicon_*`) icons that aren't in ANY local
+  Sweet Tea pigg (tspy folder or sibling `piggs/`). `extract-thunderspy-icons.py`
+  now scans the sibling base `piggs/` folder too (that's where the recovered 149,
+  incl. the `awakened_*` Psychokinetic/Telekinetic Assault icons, lived —
+  `piggs/stage1b.pigg` texture_library). The last 40 need HC/other texture piggs
+  (`--assets-dir <…/Homecoming/assets/live>`) — verify they're actually there.
 - **Bundle code-split (perf only).** All 3 datasets bundle into one ~14 MB chunk
   shipped to every visitor (drove the deploy heap bump to 6144 MB). Splitting
   datasets via dynamic import would cut initial page-load weight. Optional — not
@@ -80,6 +85,10 @@ HC's Parse7 entity layout. Probe field-by-field like the powers/classes work
 
 Parser: categories, custom powersets, class attribs (HP/caps/threat/dmg-cap),
 per-power available **levels**, damage **element types**, conditional-gate
-labels. App: Thunderspy selectable dataset, Primalist AT + form mechanics,
-Tarantula Widow branch, custom icon backfill (83), server-switch fix, CI deploy
-heap fix.
+labels, DoT `tickRate` (application_period), **defense magnitudes** (offset-cap +
+post-`requires` index array, 2026-07-02). App: Thunderspy selectable dataset,
+Primalist AT + form mechanics, Tarantula Widow branch, **real IO-set extraction**
+(212 sets — Subaluwa + Primalist ATOs, wrong HC-only sets removed, 2026-07-01),
+**ATO-category slotting** (tspy bin omits per-power ATOs → inferred, 2026-07-02),
+**per-server epic-pool prereqs** (tspy epic is flat, no tier gating, 2026-07-02),
+custom icon backfill (**~232**: 83 + 149), server-switch fix, CI deploy heap fix.

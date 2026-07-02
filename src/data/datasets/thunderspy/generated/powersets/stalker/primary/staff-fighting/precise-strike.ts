@@ -34,6 +34,7 @@ export const PreciseStrike: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -49,18 +50,5 @@ export const PreciseStrike: Power = {
       "table": "Melee_Stun"
     }
   },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1.32,
-        "table": "Melee_Damage"
-      }
-    }
-  ],
   "requires": "Scrapper_Defense.Shield_Defense !"
 };

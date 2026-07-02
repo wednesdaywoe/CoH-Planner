@@ -37,6 +37,8 @@ export const SirensSong: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Sleep"
   ],
@@ -52,18 +54,5 @@ export const SirensSong: Power = {
       "scale": 30,
       "table": "Ranged_Sleep"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 0.5,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

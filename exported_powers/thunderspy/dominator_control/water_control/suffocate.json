@@ -43,6 +43,7 @@
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Holds",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "cast_through": [],
@@ -257,14 +258,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq target.ownPower? &&",
+      "requires_expression": "enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Drowning"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -280,7 +283,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq target.ownPower? &&",
+          "jit_requires": "enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -333,7 +336,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "target.ownPower? !",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -358,7 +361,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "target.ownPower? !",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? !",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -372,14 +375,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "target.ownPower?",
+      "requires_expression": "Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Drowning"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -395,7 +400,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "target.ownPower?",
+          "jit_requires": "Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

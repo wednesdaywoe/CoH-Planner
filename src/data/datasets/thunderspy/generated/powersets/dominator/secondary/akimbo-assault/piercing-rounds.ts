@@ -38,6 +38,7 @@ export const PiercingRounds: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

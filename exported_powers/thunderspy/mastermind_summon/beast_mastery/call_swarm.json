@@ -42,6 +42,7 @@
   "allowed_set_categories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],
@@ -218,7 +219,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "source.ownPower? !",
+      "requires_expression": "temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -243,7 +244,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "source.ownPower? !",
+          "jit_requires": "temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

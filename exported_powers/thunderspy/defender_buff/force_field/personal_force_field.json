@@ -105,7 +105,7 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Base_Defense"
           ],
           "type": "",
           "application_type": "",
@@ -222,7 +222,13 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Smashing",
+            "Lethal",
+            "Cold",
+            "Fire",
+            "Psionic",
+            "Energy",
+            "Negative_Energy"
           ],
           "type": "",
           "application_type": "",

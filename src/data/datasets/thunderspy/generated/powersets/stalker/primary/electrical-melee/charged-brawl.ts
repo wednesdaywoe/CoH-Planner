@@ -36,7 +36,8 @@ export const ChargedBrawl: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Melee Damage",
-    "Sleep"
+    "Sleep",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -50,18 +51,5 @@ export const ChargedBrawl: Power = {
       "scale": 6,
       "table": "Melee_Sleep"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 0.84,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

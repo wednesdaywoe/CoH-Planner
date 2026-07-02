@@ -33,6 +33,10 @@ export const FireSwordCircle: Power = {
     "Damage",
     "Accuracy"
   ],
+  "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Melee Damage"
+  ],
   "maxSlots": 6,
   "damage": [
     {

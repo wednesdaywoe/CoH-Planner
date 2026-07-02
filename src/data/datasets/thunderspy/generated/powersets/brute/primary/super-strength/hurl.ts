@@ -35,7 +35,9 @@ export const Hurl: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Threat Duration"
   ],

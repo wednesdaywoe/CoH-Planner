@@ -34,6 +34,7 @@ export const Glacier: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Holds",
     "Slow Movement"
   ],

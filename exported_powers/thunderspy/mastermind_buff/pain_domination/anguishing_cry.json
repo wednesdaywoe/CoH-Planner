@@ -56,14 +56,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "arch target> eq arch target> Class_Boss_Reichsman eq || arch target> eq || arch target> eq || arch target> Class_Boss_Archvillain eq || arch target> eq || arch target> eq || arch target> eq || arch target> eq || arch target> eq || arch target> eq || arch target> eq || ! ! &&",
+      "requires_expression": "arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! target.isFriend? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Psionic_Dmg"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -79,7 +81,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "arch target> eq arch target> Class_Boss_Reichsman eq || arch target> eq || arch target> eq || arch target> Class_Boss_Archvillain eq || arch target> eq || arch target> eq || arch target> eq || arch target> eq || arch target> eq || arch target> eq || arch target> eq || ! ! &&",
+          "jit_requires": "arch target> Class_Boss_Monster eq arch target> Class_Boss_Reichsman eq || arch target> Class_Boss_Monster_Flying eq || arch target> Class_Boss_Archvillain_Flying eq || arch target> Class_Boss_Archvillain eq || arch target> Class_Boss_PraetorianArchvillain eq || arch target> Class_Boss_Mito eq || arch target> Class_Boss_Hamidon eq || arch target> Class_Boss_RularuuFM eq || arch target> Class_Boss_RularuuCoP eq || arch target> Class_Boss_Rularuu eq || arch target> Class_Boss_PraetorianAVLowPerception eq || ! target.isFriend? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -93,14 +95,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Max.kHitPoints target> 0.5 * target> > ! &&",
+      "requires_expression": "Max.kHitPoints target> 0.5 * Cur.kHitPoints target> > ! target.isFriend? &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Psionic_Dmg"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -116,7 +120,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Max.kHitPoints target> 0.5 * target> > ! &&",
+          "jit_requires": "Max.kHitPoints target> 0.5 * Cur.kHitPoints target> > ! target.isFriend? &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -130,14 +134,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "!",
+      "requires_expression": "target.isFriend? !",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Base_Defense"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -153,7 +159,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "!",
+          "jit_requires": "target.isFriend? !",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

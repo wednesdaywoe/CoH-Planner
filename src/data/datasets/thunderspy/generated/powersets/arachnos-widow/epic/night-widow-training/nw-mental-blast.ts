@@ -33,7 +33,9 @@ export const NWMentalBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Ranged Damage"
+    "Melee Damage",
+    "Ranged Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

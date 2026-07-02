@@ -358,6 +358,10 @@ const DAMAGE_ATO_BY_AT = {
   // "Guardian Archetype Sets" category the export already carries gets
   // stripped by the own-ATO filter below (ownAtos would be empty).
   guardian:     'Guardian Archetype Sets',
+  // Primalist is a Thunderspy-only AT; its ATOs (Primalist's Nature) attach to
+  // any Primalist damaging power. Regenerate the Primalist powersets after
+  // adding this so the category lands in their allowedSetCategories.
+  primalist:    'Primalist Archetype Sets',
 };
 
 // "Control ATO" — Controller/Dominator ATOs attach to mez/control powers.
@@ -365,6 +369,15 @@ const CONTROL_ATO_BY_AT = {
   controller: 'Controller Archetype Sets',
   dominator:  'Dominator Archetype Sets',
 };
+
+// Whether this dataset's boostsets.bin encodes ATO categories in the per-power
+// allowed_powers lists. Homecoming and Rebirth do (their export's
+// `allowed_set_categories` already carries e.g. "Controller Archetype Sets"),
+// so the preferred path below trusts them. Thunderspy's bin does NOT — ZERO of
+// its exported powers carry any "Archetype Sets" category — so for it we must
+// infer the AT's own ATO the same way the legacy path does, or no Thunderspy
+// power would ever accept its ATOs (reported for Illusion Control's holds).
+const BINS_OMIT_PER_POWER_ATOS = datasetId === 'thunderspy';
 
 // Union of every archetype-specific ATO category name. Used to filter out
 // wrong-AT ATOs that the binary's per-power allowed_set_categories list
@@ -4877,7 +4890,21 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
         if (!ALL_AT_ATO_CATEGORIES.has(cat)) return true; // not an AT ATO at all — keep
         return ownAtos.has(cat); // keep only own AT's ATOs
       });
-      power.allowedSetCategories = filtered.sort();
+      // Datasets whose bin omits per-power ATOs (Thunderspy): infer the AT's own
+      // ATO for qualifying powers — damage ATO on damaging powers, control ATO
+      // on mez powers — exactly as the legacy inference path does. Without this,
+      // no Thunderspy power accepts its ATOs (e.g. Illusion Control's Blind/Flash
+      // holds → Controller ATOs). No-op for HC/Rebirth (flag off).
+      if (BINS_OMIT_PER_POWER_ATOS) {
+        const bs = new Set(powerJson.boosts_allowed || []);
+        if (DAMAGE_ATO_BY_AT[archetypeId] && bs.has('Damage')) {
+          filtered.push(DAMAGE_ATO_BY_AT[archetypeId]);
+        }
+        if (CONTROL_ATO_BY_AT[archetypeId] && [...bs].some(b => MEZ_BOOSTS.has(b))) {
+          filtered.push(CONTROL_ATO_BY_AT[archetypeId]);
+        }
+      }
+      power.allowedSetCategories = [...new Set(filtered)].sort();
     }
     // else: leave allowedSetCategories unset — no IO sets slot here.
   } else {

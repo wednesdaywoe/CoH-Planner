@@ -37,7 +37,9 @@ export const PsiBladeSweep: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns",
     "Threat Duration"
   ],
@@ -56,10 +58,11 @@ export const PsiBladeSweep: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "psionic_melee_insight",
+      "label": "Insight",
       "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Psionic",
         "scale": 0.236,

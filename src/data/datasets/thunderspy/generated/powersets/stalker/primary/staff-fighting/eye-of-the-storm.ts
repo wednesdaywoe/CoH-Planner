@@ -35,7 +35,9 @@ export const EyeoftheStorm: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -47,33 +49,30 @@ export const EyeoftheStorm: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "perfection_of_body_level_3",
+      "label": "Perfection of Body Level 3",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 0.246,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 0.246,
-          "table": "Melee_Damage"
-        }
-      ]
-    },
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Smashing",
-        "scale": 1.23,
+        "scale": 0.246,
         "table": "Melee_Damage"
-      }
+      },
+      "group": "staff-form"
+    },
+    {
+      "id": "perfection_of_soul_level_3",
+      "label": "Perfection of Soul Level 3",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.246,
+        "table": "Melee_Damage"
+      },
+      "group": "staff-form"
     }
   ]
 };

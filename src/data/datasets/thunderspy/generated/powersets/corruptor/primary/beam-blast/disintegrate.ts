@@ -35,6 +35,8 @@ export const Disintegrate: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -52,27 +54,6 @@ export const Disintegrate: Power = {
       "table": "Ranged_Damage",
       "duration": 10.5,
       "tickRate": 1.1100000143051147
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 2.156,
-          "table": "Ranged_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 1.078,
-          "table": "Ranged_Damage",
-          "duration": 1
-        }
-      ]
     }
   ]
 };

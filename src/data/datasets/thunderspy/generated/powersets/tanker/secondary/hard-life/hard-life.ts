@@ -32,5 +32,12 @@ export const HardLife: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 30
+  }
 };

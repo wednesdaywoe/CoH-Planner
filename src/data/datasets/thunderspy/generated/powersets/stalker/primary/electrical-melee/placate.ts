@@ -36,6 +36,7 @@ export const Placate: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns"
   ],
   "maxSlots": 6,

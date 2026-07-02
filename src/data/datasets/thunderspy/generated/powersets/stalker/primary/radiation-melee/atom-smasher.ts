@@ -39,6 +39,8 @@ export const AtomSmasher: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -53,18 +55,5 @@ export const AtomSmasher: Power = {
       "scale": 6,
       "table": "Melee_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 1.55,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

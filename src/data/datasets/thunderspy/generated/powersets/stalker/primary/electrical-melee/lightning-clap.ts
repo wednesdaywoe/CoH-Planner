@@ -38,6 +38,8 @@ export const LightningClap: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -59,25 +61,5 @@ export const LightningClap: Power = {
       "scale": 5,
       "table": "Melee_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 0.588,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 1.372,
-          "table": "Melee_Damage"
-        }
-      ]
-    }
-  ]
+  }
 };

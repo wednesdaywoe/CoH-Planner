@@ -35,7 +35,9 @@ export const Slug: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Stuns"
   ],
@@ -55,18 +57,5 @@ export const Slug: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 2.28,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

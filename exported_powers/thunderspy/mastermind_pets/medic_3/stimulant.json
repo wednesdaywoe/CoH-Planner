@@ -48,14 +48,21 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "target.VillainName> target.VillainName> || target.VillainName> || target.VillainName> ||",
+      "requires_expression": "MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Stunned",
+            "Sleep",
+            "Immobilized",
+            "Held",
+            "Confused",
+            "Terrorized"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -71,7 +78,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "target.VillainName> target.VillainName> || target.VillainName> || target.VillainName> ||",
+          "jit_requires": "MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

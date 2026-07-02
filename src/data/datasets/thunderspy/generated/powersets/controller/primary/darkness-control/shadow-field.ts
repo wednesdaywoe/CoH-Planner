@@ -35,6 +35,7 @@ export const ShadowField: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Controller Archetype Sets",
     "Holds",
     "To Hit Debuff"
   ],

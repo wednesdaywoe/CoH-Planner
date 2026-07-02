@@ -39,7 +39,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "cast_through": [],
   "toggle_ignore": [],
@@ -136,7 +137,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "@ToHitRoll @ToHit < || entref source> entref target> == ! &&",
+      "requires_expression": "@ToHitRoll @ToHit < @ForceHit || entref source> entref target> == ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -161,7 +162,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "@ToHitRoll @ToHit < || entref source> entref target> == ! &&",
+          "jit_requires": "@ToHitRoll @ToHit < @ForceHit || entref source> entref target> == ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

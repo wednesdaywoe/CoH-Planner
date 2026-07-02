@@ -38,6 +38,8 @@ export const ShadowMaul: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets",
     "To Hit Debuff"
   ],
   "maxSlots": 6,

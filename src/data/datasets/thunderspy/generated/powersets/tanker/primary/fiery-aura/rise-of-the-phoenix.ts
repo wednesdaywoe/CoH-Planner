@@ -34,7 +34,9 @@ export const RiseofthePhoenix: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
-    "Stuns"
+    "Melee Damage",
+    "Stuns",
+    "Tanker Archetype Sets"
   ],
   "maxSlots": 6
 };

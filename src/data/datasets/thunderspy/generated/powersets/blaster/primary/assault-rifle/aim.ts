@@ -33,6 +33,8 @@ export const Aim: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Buff"
   ],

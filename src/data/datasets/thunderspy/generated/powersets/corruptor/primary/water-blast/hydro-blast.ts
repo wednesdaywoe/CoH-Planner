@@ -35,7 +35,9 @@ export const HydroBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],
@@ -44,18 +46,5 @@ export const HydroBlast: Power = {
     "type": "Cold",
     "scale": 0.37,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Cold",
-        "scale": 1.48,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

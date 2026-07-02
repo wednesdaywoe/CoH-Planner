@@ -35,8 +35,10 @@ export const TeslaCage: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Endurance Modification",
     "Holds",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -44,18 +46,5 @@ export const TeslaCage: Power = {
     "type": "Energy",
     "scale": 0.15,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 0.15,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

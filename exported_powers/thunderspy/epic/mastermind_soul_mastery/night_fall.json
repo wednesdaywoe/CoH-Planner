@@ -40,6 +40,7 @@
   ],
   "allowed_set_categories": [
     "Accurate To-Hit Debuff",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],

@@ -36,6 +36,8 @@ export const FullAuto: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -51,21 +53,6 @@ export const FullAuto: Power = {
       "table": "Ranged_Damage",
       "duration": 3.3,
       "tickRate": 0.20000000298023224
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.162,
-        "table": "Ranged_Damage",
-        "duration": 3.3,
-        "tickRate": 0.20000000298023224
-      }
     }
   ]
 };

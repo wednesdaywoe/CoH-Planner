@@ -37,7 +37,9 @@ export const FoldSpace: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

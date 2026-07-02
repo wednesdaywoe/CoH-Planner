@@ -36,7 +36,8 @@ export const CripplingAxeKick: Power = {
   "allowedSetCategories": [
     "Immobilize",
     "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -50,18 +51,5 @@ export const CripplingAxeKick: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1.64,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

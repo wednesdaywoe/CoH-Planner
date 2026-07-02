@@ -34,7 +34,9 @@ export const Placate: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
-    "Slow Movement"
+    "Melee Damage",
+    "Slow Movement",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6
 };

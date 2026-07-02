@@ -35,7 +35,9 @@ export const Beanbag: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -43,18 +45,5 @@ export const Beanbag: Power = {
     "type": "Lethal",
     "scale": 1,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

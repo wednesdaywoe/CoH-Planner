@@ -40,7 +40,9 @@ export const InnocuousStrikes: Power = {
   "allowedSetCategories": [
     "Immobilize",
     "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

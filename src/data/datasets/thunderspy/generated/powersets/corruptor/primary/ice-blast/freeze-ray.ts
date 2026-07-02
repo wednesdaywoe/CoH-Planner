@@ -34,7 +34,9 @@ export const FreezeRay: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
@@ -49,18 +51,5 @@ export const FreezeRay: Power = {
       "scale": 8,
       "table": "Ranged_Sleep"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Cold",
-        "scale": 0.1,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

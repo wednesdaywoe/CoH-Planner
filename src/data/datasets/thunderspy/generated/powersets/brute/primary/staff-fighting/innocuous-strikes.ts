@@ -38,8 +38,10 @@ export const InnocuousStrikes: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Immobilize",
     "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement",
     "Threat Duration"
   ],

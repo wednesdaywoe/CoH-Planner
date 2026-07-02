@@ -29,5 +29,17 @@ export const Grace: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 10.75
+    },
+    "buffDuration": 10.75
+  },
   "mechanicType": "parentMechanic"
 };

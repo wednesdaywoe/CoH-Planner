@@ -40,6 +40,7 @@ export const CripplingAxeKick: Power = {
     "Immobilize",
     "Melee Damage",
     "Slow Movement",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

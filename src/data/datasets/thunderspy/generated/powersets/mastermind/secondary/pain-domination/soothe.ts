@@ -34,7 +34,21 @@ export const Soothe: Power = {
   ],
   "allowedSetCategories": [
     "Healing",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Psionic",
+      "scale": 1.32,
+      "table": "Ranged_Damage"
+    },
+    {
+      "type": "Psionic",
+      "scale": 0.1,
+      "table": "Melee_Ones"
+    }
+  ]
 };

@@ -41,6 +41,8 @@ export const CallJounin: Power = {
   "allowedSetCategories": [
     "Defense Debuff",
     "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "To Hit Debuff"

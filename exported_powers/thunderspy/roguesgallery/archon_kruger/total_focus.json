@@ -174,13 +174,15 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "InherentTaunt"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
-          "scale": 0.5,
+          "table": "Melee_InherentTaunt",
+          "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 0.5,
           "delay": 0.0,

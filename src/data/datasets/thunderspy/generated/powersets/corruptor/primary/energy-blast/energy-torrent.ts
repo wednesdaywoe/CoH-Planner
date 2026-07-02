@@ -37,7 +37,9 @@ export const EnergyTorrent: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -51,18 +53,5 @@ export const EnergyTorrent: Power = {
       "scale": 3,
       "table": "Ranged_Knockback"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 0.96,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

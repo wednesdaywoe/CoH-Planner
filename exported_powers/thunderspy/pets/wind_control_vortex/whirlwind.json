@@ -98,7 +98,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "VortexCritical"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

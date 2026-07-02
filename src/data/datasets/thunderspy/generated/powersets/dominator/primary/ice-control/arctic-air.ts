@@ -41,8 +41,10 @@ export const ArcticAir: Power = {
   ],
   "allowedSetCategories": [
     "Confuse",
+    "Dominator Archetype Sets",
     "Fear",
     "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement"
   ],
   "maxSlots": 6,

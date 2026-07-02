@@ -156,6 +156,7 @@ export const SET_CATEGORY_TO_ENHANCEMENT: Record<string, EnhancementStatType[]> 
   'Sentinel Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
   'Kheldian Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
   'Soldiers of Arachnos Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
+  'Primalist Archetype Sets': ['Damage', 'Accuracy', 'Recharge', 'EnduranceReduction'],
 };
 
 /** Get the enhancement stat types implied by an IO set category */
@@ -238,6 +239,7 @@ export const CATEGORY_PRIORITY: IOSetCategory[] = [
   'Kheldian Archetype Sets',
   'Soldiers of Arachnos Archetype Sets',
   'Guardian Archetype Sets',
+  'Primalist Archetype Sets',
   // Single-piece Rebirth Challenge enhancement (Inexhaustibility) — niche
   // but kept in the priority list so the sidebar surfaces it predictably
   // alongside other special categories once the parser ships piece data.

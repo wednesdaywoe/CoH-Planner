@@ -37,6 +37,8 @@ export const Placate: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -54,10 +56,11 @@ export const Placate: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "psionic_melee_insight",
+      "label": "Insight",
       "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Psionic",
         "scale": 0.236,
@@ -71,17 +74,6 @@ export const Placate: Power = {
           "scale": 5,
           "table": "Melee_Stun"
         }
-      }
-    },
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Psionic",
-        "scale": 1.42,
-        "table": "Melee_Damage"
       }
     }
   ]

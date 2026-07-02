@@ -42,6 +42,7 @@ export const Crush: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement"
   ],
   "maxSlots": 6,

@@ -38,7 +38,9 @@ export const MudPots: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
-    "Slow Movement"
+    "Melee Damage",
+    "Slow Movement",
+    "Tanker Archetype Sets"
   ],
   "maxSlots": 6
 };

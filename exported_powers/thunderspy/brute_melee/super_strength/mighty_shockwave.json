@@ -40,6 +40,7 @@
   ],
   "allowed_set_categories": [
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "cast_through": [],
@@ -144,12 +145,14 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "InherentTaunt"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
           "target": "",
-          "table": "",
+          "table": "Ranged_InherentTaunt",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,

@@ -35,7 +35,9 @@ export const AnimateStone: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Controller Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

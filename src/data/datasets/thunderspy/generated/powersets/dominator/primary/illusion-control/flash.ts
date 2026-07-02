@@ -33,6 +33,7 @@ export const Flash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Holds"
   ],
   "maxSlots": 6,

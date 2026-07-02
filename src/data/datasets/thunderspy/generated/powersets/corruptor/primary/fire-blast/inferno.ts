@@ -33,7 +33,9 @@ export const Inferno: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Corruptor Archetype Sets",
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "maxSlots": 6,
   "damage": [
@@ -48,19 +50,6 @@ export const Inferno: Power = {
       "table": "Ranged_Damage",
       "duration": 8.1,
       "tickRate": 1
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Fire",
-        "scale": 2,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

@@ -38,6 +38,7 @@ export const HeavyBlow: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

@@ -264,7 +264,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Contamination"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

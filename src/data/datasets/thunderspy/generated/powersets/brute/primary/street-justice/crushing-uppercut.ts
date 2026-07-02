@@ -36,6 +36,7 @@ export const CrushingUppercut: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Holds",
     "Knockback",
     "Melee Damage",
@@ -61,29 +62,44 @@ export const CrushingUppercut: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "combo_level_1",
+      "label": "Combo Level 1",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 3.339,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 3.5616,
-          "table": "Melee_Damage"
-        }
-      ],
+      "mode": "replace",
+      "damage": {
+        "type": "Special",
+        "scale": 3.339,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "stun": {
           "mag": 1,
           "scale": 8.25,
           "table": "Melee_Stun"
         }
-      }
+      },
+      "group": "combo-levels"
+    },
+    {
+      "id": "combo_level_2",
+      "label": "Combo Level 2",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "damage": {
+        "type": "Special",
+        "scale": 3.5616,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "stun": {
+          "mag": 1,
+          "scale": 9.375,
+          "table": "Melee_Stun"
+        }
+      },
+      "group": "combo-levels"
     },
     {
       "id": "combo_level_3",
@@ -102,7 +118,8 @@ export const CrushingUppercut: Power = {
           "scale": 10.5,
           "table": "Melee_Stun"
         }
-      }
+      },
+      "group": "combo-levels"
     }
   ]
 };

@@ -35,7 +35,9 @@ export const Consume: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6
 };

@@ -39,7 +39,9 @@ export const TenebrousTentacles: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
     "Immobilize",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],
@@ -57,20 +59,5 @@ export const TenebrousTentacles: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 0.118,
-        "table": "Ranged_Damage",
-        "duration": 6.1,
-        "tickRate": 1
-      }
-    }
-  ]
+  }
 };

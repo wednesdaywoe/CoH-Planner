@@ -38,6 +38,7 @@ export const Thundergust: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],

@@ -33,6 +33,7 @@ export const EnergeticStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Melee Damage",
     "Stuns"
   ],
@@ -44,8 +45,8 @@ export const EnergeticStrike: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "kinetic_assault_impulse",
+      "label": "Impulse",
       "scope": "global",
       "defaultActive": false,
       "damage": {

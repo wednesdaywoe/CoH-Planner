@@ -38,6 +38,8 @@ export const LifeDrain: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Healing",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "To Hit Debuff"
   ],

@@ -34,6 +34,7 @@ export const Parry: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Defense Sets",
     "Melee Damage",
     "Threat Duration"
@@ -43,5 +44,21 @@ export const Parry: Power = {
     "type": "Lethal",
     "scale": 0.84,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 10
+    },
+    "buffDuration": 10
   }
 };

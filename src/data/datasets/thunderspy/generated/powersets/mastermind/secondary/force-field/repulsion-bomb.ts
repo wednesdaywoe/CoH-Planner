@@ -38,6 +38,8 @@ export const RepulsionBomb: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Stuns"
   ],

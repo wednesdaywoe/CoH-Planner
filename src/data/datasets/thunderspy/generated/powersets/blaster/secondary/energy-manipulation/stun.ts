@@ -33,6 +33,7 @@ export const Stun: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Melee Damage",
     "Stuns"
   ],

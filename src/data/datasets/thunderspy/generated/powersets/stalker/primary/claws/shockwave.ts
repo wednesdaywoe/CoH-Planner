@@ -38,7 +38,9 @@ export const Shockwave: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Ranged AoE Damage"
+    "Melee Damage",
+    "Ranged AoE Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -51,18 +53,5 @@ export const Shockwave: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.05,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

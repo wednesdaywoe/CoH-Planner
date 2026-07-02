@@ -34,6 +34,8 @@ export const WillDomination: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Sleep"
   ],
@@ -49,18 +51,5 @@ export const WillDomination: Power = {
       "scale": 16,
       "table": "Ranged_Sleep"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Psionic",
-        "scale": 1.96,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

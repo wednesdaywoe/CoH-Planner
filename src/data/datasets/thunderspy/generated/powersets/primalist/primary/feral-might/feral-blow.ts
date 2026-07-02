@@ -40,6 +40,7 @@ export const FeralBlow: Power = {
     "Defense Debuff",
     "Healing",
     "Melee Damage",
+    "Primalist Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6

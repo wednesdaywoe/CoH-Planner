@@ -37,7 +37,8 @@ export const CraneKick: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -50,18 +51,5 @@ export const CraneKick: Power = {
       "scale": 3,
       "table": "Melee_Knockback"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 2.28,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

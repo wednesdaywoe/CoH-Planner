@@ -35,6 +35,7 @@ export const LightningField: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

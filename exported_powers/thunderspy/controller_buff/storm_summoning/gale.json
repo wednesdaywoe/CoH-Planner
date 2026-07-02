@@ -40,6 +40,7 @@
   ],
   "allowed_set_categories": [
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "cast_through": [],
@@ -98,7 +99,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "target> 0 > kHeld target> 0 > || kSleep target> 0 > || target> 0 > ||",
+      "requires_expression": "kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > ||",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -123,7 +124,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "target> 0 > kHeld target> 0 > || kSleep target> 0 > || target> 0 > ||",
+          "jit_requires": "kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > ||",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

@@ -37,7 +37,8 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "cast_through": [],
   "toggle_ignore": [],
@@ -134,7 +135,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "target.HasTag? @ToHitRoll @ToHit < && Source.Mode? &&",
+      "requires_expression": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && kWarshade_Tanker_Mode Source.Mode? &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -159,7 +160,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "target.HasTag? @ToHitRoll @ToHit < && Source.Mode? &&",
+          "jit_requires": "Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && kWarshade_Tanker_Mode Source.Mode? &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -173,7 +174,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "target.HasTag? ! enttype target> critter eq && Source.Mode? &&",
+      "requires_expression": "Raid target.HasTag? ! enttype target> critter eq && kWarshade_Tanker_Mode Source.Mode? &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
@@ -198,7 +199,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "target.HasTag? ! enttype target> critter eq && Source.Mode? &&",
+          "jit_requires": "Raid target.HasTag? ! enttype target> critter eq && kWarshade_Tanker_Mode Source.Mode? &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

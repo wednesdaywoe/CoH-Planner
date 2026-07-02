@@ -36,6 +36,8 @@ export const GeneticContamination: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -46,9 +48,9 @@ export const GeneticContamination: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Special",

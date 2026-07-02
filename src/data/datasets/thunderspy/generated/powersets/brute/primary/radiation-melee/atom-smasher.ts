@@ -38,8 +38,10 @@ export const AtomSmasher: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Brute Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns",
     "Threat Duration"
   ],

@@ -36,7 +36,9 @@ export const ExplosiveArrow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -50,18 +52,5 @@ export const ExplosiveArrow: Power = {
       "scale": 2,
       "table": "Ranged_Knockback"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 0.9,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

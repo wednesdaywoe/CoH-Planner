@@ -64,7 +64,8 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Ranged",
+            "Area"
           ],
           "type": "",
           "application_type": "",
@@ -103,7 +104,8 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Ranged",
+            "Area"
           ],
           "type": "",
           "application_type": "",

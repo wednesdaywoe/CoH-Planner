@@ -57,7 +57,10 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Energy_Dmg",
+            "Negative_Energy_Dmg"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

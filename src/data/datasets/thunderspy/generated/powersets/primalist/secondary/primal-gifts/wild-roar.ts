@@ -41,14 +41,27 @@ export const WildRoar: Power = {
   "maxSlots": 6,
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "prowlermode",
+      "label": "Prowler Mode",
+      "scope": "global",
       "defaultActive": false,
       "effects": {
         "fear": {
           "mag": 1,
           "scale": 12,
+          "table": "Melee_Fear"
+        }
+      }
+    },
+    {
+      "id": "huntermode",
+      "label": "Hunter Mode",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "fear": {
+          "mag": 1,
+          "scale": 10,
           "table": "Melee_Fear"
         }
       }

@@ -36,5 +36,17 @@ export const FortifyPack: Power = {
     "Defense Sets",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 0,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 60
+    },
+    "buffDuration": 60
+  }
 };

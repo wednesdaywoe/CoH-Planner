@@ -35,6 +35,7 @@ export const LightningClap: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks"
   ],

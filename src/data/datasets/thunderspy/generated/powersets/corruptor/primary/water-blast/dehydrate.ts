@@ -38,8 +38,10 @@ export const Dehydrate: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate Healing",
+    "Corruptor Archetype Sets",
     "Defense Debuff",
     "Healing",
+    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],
@@ -56,19 +58,6 @@ export const Dehydrate: Power = {
       "table": "Ranged_Damage",
       "duration": 4.1,
       "tickRate": 1
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Cold",
-        "scale": 1.64,
-        "table": "Ranged_Damage"
-      }
     }
   ]
 };

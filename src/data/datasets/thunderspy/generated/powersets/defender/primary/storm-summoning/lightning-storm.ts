@@ -40,8 +40,10 @@ export const LightningStorm: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Endurance Modification",
     "Knockback",
+    "Melee Damage",
     "Ranged Damage",
     "Recharge Intensive Pets"
   ],

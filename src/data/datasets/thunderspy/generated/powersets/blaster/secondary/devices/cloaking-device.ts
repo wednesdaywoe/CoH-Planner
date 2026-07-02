@@ -39,5 +39,53 @@ export const CloakingDevice: Power = {
     "Defense Sets",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75
+    },
+    "buffDuration": 0.75
+  }
 };

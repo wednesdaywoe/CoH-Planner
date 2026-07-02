@@ -39,6 +39,7 @@ export const DevastatingBlow: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -53,18 +54,5 @@ export const DevastatingBlow: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 3.08,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

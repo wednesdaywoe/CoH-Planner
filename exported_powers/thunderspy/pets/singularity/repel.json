@@ -55,7 +55,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Repel"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

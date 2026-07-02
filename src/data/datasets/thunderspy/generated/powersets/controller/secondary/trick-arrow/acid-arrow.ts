@@ -38,6 +38,7 @@ export const AcidArrow: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

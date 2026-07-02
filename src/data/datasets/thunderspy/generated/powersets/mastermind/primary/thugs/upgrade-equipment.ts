@@ -30,6 +30,7 @@ export const UpgradeEquipment: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets"
   ],

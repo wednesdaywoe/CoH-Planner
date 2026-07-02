@@ -37,7 +37,9 @@ export const Vacuum: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Controller Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement",
     "To Hit Debuff"
@@ -49,18 +51,5 @@ export const Vacuum: Power = {
       "scale": 10,
       "table": "Ranged_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "self-affected",
-      "label": "Already Affected",
-      "scope": "global",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 0.15,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

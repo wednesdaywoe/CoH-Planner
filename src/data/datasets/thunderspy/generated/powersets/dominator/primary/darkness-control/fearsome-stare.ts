@@ -38,6 +38,7 @@ export const FearsomeStare: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Dominator Archetype Sets",
     "Fear",
     "To Hit Debuff"
   ],

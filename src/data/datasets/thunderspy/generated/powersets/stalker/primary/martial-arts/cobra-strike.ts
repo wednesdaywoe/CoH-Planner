@@ -35,6 +35,7 @@ export const CobraStrike: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee Damage",
+    "Stalker Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -49,18 +50,5 @@ export const CobraStrike: Power = {
       "scale": 10,
       "table": "Melee_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 1.96,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

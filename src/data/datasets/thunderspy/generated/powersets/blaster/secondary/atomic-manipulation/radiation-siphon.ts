@@ -35,6 +35,7 @@ export const RadiationSiphon: Power = {
   ],
   "allowedSetCategories": [
     "Accurate Defense Debuff",
+    "Blaster Archetype Sets",
     "Defense Debuff",
     "Healing",
     "Melee Damage"

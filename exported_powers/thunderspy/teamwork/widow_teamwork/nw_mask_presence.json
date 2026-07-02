@@ -103,7 +103,10 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold"
           ],
           "type": "",
           "application_type": "",
@@ -142,7 +145,11 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Energy",
+            "Negative_Energy",
+            "Melee",
+            "Ranged",
+            "Area"
           ],
           "type": "",
           "application_type": "",
@@ -181,7 +188,15 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy",
+            "Melee",
+            "Ranged",
+            "Area"
           ],
           "type": "",
           "application_type": "",

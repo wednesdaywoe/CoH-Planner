@@ -33,7 +33,8 @@ export const Bayonet: Power = {
   ],
   "allowedSetCategories": [
     "Healing",
-    "Melee Damage"
+    "Melee Damage",
+    "Soldiers of Arachnos Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": [

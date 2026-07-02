@@ -38,6 +38,7 @@ export const DrowningPool: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
+    "Dominator Archetype Sets",
     "Holds"
   ],
   "maxSlots": 6,

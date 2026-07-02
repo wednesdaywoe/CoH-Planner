@@ -35,5 +35,17 @@ export const InsulationShield: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "fire": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 240
+    },
+    "buffDuration": 240
+  }
 };

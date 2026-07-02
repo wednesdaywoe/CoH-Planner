@@ -32,7 +32,9 @@ export const CalloftheWild: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Pet Damage",
+    "Primalist Archetype Sets",
     "Recharge Intensive Pets"
   ],
   "maxSlots": 6

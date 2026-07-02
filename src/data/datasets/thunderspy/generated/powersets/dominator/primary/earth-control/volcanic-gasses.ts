@@ -34,7 +34,9 @@ export const VolcanicGasses: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6

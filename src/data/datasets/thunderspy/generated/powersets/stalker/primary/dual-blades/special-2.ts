@@ -35,7 +35,9 @@ export const Special2: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -45,19 +47,8 @@ export const Special2: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.7,
-        "table": "Melee_Damage"
-      }
-    },
-    {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "comboblade3",
+      "label": "ComboBlade3",
       "scope": "global",
       "defaultActive": false,
       "damage": {

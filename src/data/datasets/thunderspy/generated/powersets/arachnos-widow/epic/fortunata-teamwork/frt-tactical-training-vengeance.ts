@@ -36,5 +36,17 @@ export const FRTTacticalTrainingVengeance: Power = {
     "Healing",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 120
+    },
+    "buffDuration": 120
+  }
 };

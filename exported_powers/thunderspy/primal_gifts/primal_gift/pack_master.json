@@ -52,14 +52,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? ! Source.Mode? ! &&",
+      "requires_expression": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBInactive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -75,7 +77,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? ! Source.Mode? ! &&",
+          "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -89,14 +91,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? ! Source.Mode? ! &&",
+      "requires_expression": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -112,7 +116,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? ! Source.Mode? ! &&",
+          "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -126,14 +130,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? ! Source.Mode? ! &&",
+      "requires_expression": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -149,7 +155,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? ! Source.Mode? ! &&",
+          "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -163,14 +169,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? ! Source.Mode? ! && entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBInactive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -186,7 +194,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? ! Source.Mode? ! && entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -200,14 +208,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? ! Source.Mode? ! && entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -223,7 +233,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? ! Source.Mode? ! && entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -237,14 +247,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kHunterMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBInactive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -260,7 +272,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -274,14 +286,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBInactive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -297,7 +311,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -311,14 +325,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kHunterMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -334,7 +350,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -348,14 +364,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kHunterMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -371,7 +389,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -385,14 +403,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kHunterMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -408,7 +428,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -422,14 +442,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kHunterMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -445,7 +467,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -459,14 +481,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kHunterMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -482,7 +506,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -496,14 +520,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kHunterMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -519,7 +545,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -533,14 +559,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kHunterMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -556,7 +584,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -570,14 +598,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kHunterMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -593,7 +623,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kHunterMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -607,14 +637,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -630,7 +662,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -644,14 +676,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -667,7 +701,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -681,14 +715,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -704,7 +740,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -718,14 +754,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -741,7 +779,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -755,14 +793,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -778,7 +818,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -792,14 +832,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -815,7 +857,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -829,14 +871,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -852,7 +896,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -866,14 +910,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -889,7 +935,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kHunterMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -903,14 +949,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kProwlerMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBInactive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -926,7 +974,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kProwlerMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -940,14 +988,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kProwlerMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBInactive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -963,7 +1013,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kProwlerMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -977,14 +1027,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode?",
+      "requires_expression": "kProwlerMode Source.Mode?",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -1000,7 +1052,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode?",
+          "jit_requires": "kProwlerMode Source.Mode?",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -1014,14 +1066,16 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "Source.Mode? entref target> entref source> eq ! &&",
+      "requires_expression": "kProwlerMode Source.Mode? entref target> entref source> eq ! &&",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "NBActive"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -1037,7 +1091,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "Source.Mode? entref target> entref source> eq ! &&",
+          "jit_requires": "kProwlerMode Source.Mode? entref target> entref source> eq ! &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

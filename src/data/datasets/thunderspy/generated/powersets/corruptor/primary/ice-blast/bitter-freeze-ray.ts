@@ -36,7 +36,9 @@ export const BitterFreezeRay: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Holds",
+    "Melee Damage",
     "Ranged Damage",
     "Sleep",
     "Slow Movement"
@@ -58,18 +60,5 @@ export const BitterFreezeRay: Power = {
       "scale": 30,
       "table": "Ranged_Sleep"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Cold",
-        "scale": 1.32,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

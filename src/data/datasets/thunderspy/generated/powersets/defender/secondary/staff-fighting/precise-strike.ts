@@ -33,6 +33,7 @@ export const PreciseStrike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Melee Damage",
     "Stuns"
   ],

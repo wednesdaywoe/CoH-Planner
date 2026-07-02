@@ -36,6 +36,7 @@ export const PsychicScream: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

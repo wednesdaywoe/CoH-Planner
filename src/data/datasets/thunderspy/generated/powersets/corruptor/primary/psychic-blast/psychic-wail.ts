@@ -34,7 +34,9 @@ export const PsychicWail: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -49,18 +51,5 @@ export const PsychicWail: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Psionic",
-        "scale": 2,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

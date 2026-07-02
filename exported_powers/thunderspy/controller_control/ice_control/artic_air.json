@@ -40,6 +40,7 @@
   "allowed_set_categories": [
     "Confuse",
     "Melee AoE Damage",
+    "Melee Damage",
     "Slow Movement"
   ],
   "cast_through": [],
@@ -99,7 +100,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq target> 0 > kHeld target> 0 > || kSleep target> 0 > || target> 0 > || target.HasTag? || &&",
+      "requires_expression": "enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
@@ -124,7 +125,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq target> 0 > kHeld target> 0 > || kSleep target> 0 > || target> 0 > || target.HasTag? || &&",
+          "jit_requires": "enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

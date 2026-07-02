@@ -34,7 +34,9 @@ export const DreadfulWail: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Melee AoE Damage",
+    "Melee Damage",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -49,18 +51,5 @@ export const DreadfulWail: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 2,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

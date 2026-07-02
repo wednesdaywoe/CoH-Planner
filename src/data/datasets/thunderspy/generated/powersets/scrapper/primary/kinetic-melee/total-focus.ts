@@ -34,6 +34,7 @@ export const TotalFocus: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Scrapper Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,

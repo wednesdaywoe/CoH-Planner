@@ -36,7 +36,9 @@ export const BallLightning: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Blaster Archetype Sets",
     "Endurance Modification",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

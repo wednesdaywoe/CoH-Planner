@@ -45,8 +45,10 @@ from bin_crawler.parser._messages import load_messages
 # so committed output stays byte-identical across machines for the CI regen-diff.
 REBIRTH_ASSETS = os.environ.get('COH_REBIRTH_ASSETS', r'G:/Thunderspy Gaming/Sweet Tea/rebirth')
 HC_ASSETS = os.environ.get('COH_HC_ASSETS', r'G:/Homecoming/assets/live')
+THUNDERSPY_ASSETS = os.environ.get('COH_THUNDERSPY_ASSETS', r'G:/Thunderspy Gaming/Sweet Tea/tspy')
 OUTPUT_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'rebirth' / 'io-sets-raw.ts'
 HC_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'homecoming' / 'io-sets-raw.ts'
+THUNDERSPY_IO_SETS_PATH = PROJECT_ROOT / 'src' / 'data' / 'datasets' / 'thunderspy' / 'io-sets-raw.ts'
 
 
 def _load_hc_sets() -> dict[str, dict]:
@@ -1104,7 +1106,7 @@ def build_sets(
     return out_sets, skipped
 
 
-def _apply_rebirth_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict]) -> dict:
+def _apply_rebirth_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict], ctx: dict | None = None) -> dict:
     """Rebirth post-build passes: reuse HC's hand entry for shared sets, then
     layer the Rebirth-only piece curation. Returns a small stats dict."""
     # Override shared sets with HC's hand-curated entry. HC piece names
@@ -1166,7 +1168,7 @@ def _apply_rebirth_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict]
     return {'shared_overridden': shared_overridden, 'pieces_overridden': pieces_overridden}
 
 
-def _apply_homecoming_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict]) -> dict:
+def _apply_homecoming_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict], ctx: dict | None = None) -> dict:
     """Homecoming post-build passes. HC IS the source, so there's no shared-set
     reuse — only the targeted overrides for what the binary can't reproduce:
       - whole-set: cupids_crush / overwhelming_force (binary skips them).
@@ -1224,6 +1226,204 @@ def _apply_homecoming_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
     return stats
 
 
+# ---------------------------------------------------------------------------
+# Thunderspy-only set derivation (display-name based)
+#
+# Thunderspy's powers.bin uses an older AttribMod schema that DOESN'T carry the
+# enum `aspect` field HC/Rebirth store — so build_sets' aspect-based derivation
+# discards every tspy boost piece ("Chance"/"Empty", no aspects) and every set
+# bonus resolves empty. But Thunderspy DOES ship the authoritative display
+# strings in clientmessages, and those fully specify the data:
+#   - each boost piece's display_name → "SetName: Accuracy/Damage/Endurance"
+#   - each Set_Bonus power's internal name → the standard CoH bonus + its scale.
+# So for the (few) Thunderspy-only sets we rebuild pieces + bonuses from those
+# strings instead of the missing aspect enum. Shared sets still reuse HC's
+# curated entry, so this path only runs for genuinely tspy-only sets.
+# ---------------------------------------------------------------------------
+
+# Enhancement-aspect vocabulary (matches HC piece `aspects` tokens).
+_TSPY_ASPECT_TOKENS = {
+    'accuracy': 'Accuracy', 'damage': 'Damage', 'endurance': 'Endurance',
+    'recharge': 'Recharge', 'defense': 'Defense', 'tohit': 'ToHit',
+    'range': 'Range', 'heal': 'Healing', 'mez': 'Mez',
+}
+
+# Thunderspy stores each set bonus' scale on the 'Ones'/'HealSelf' pseudo-attrib;
+# the actual stat lives only in the Set_Bonus power's internal name. Map the
+# name stem (tier suffix _N stripped) → planner (stat_key, multiplier). Values
+# are scale × multiplier, cross-checked against HC's standard set bonuses:
+# Increased_Damage_5 (.03 → +3% Damage), Increased_Health_3 (.15×10 → +1.5% Max
+# HP), Increased_Energy_Neg_Ranged_Def_3 (.025 → +2.5% E/N def + 1.25% ranged,
+# matching Overwhelming Force), Improved_Recharge_Time_7 (.1 → +10% recharge).
+# ranged-def is half the energy value (×50). Endurance-drain-resistance and
+# offensive-knockback have no planner stat key (harmless — the planner ignores
+# unmapped keys); KB_Combo is the Slammed combo counter, no stat.
+_TSPY_BONUS_STEMS: dict[str, list[tuple[str, float]]] = {
+    'Increased_Damage':                [('damage', 100.0)],
+    'Increased_Health':                [('maximum_hitpoints', 10.0)],
+    'Increased_Energy_Neg_Ranged_Def': [('defense_(energy)', 100.0), ('defense_(ranged)', 50.0)],
+    'Improved_Recharge_Time':          [('recharge', 100.0)],
+    # Only the alpha-first of a paired resist (lethal↔smashing) — the planner's
+    # set-bonus math auto-adds the paired member, so emitting both double-counts.
+    'Lethal_Smash_Mez_Res':            [('damage_resistance_(lethal)', 100.0),
+                                        ('mez_resistance_(all)', 100.0)],
+    'Endurance_Drain_Resistance':      [('endurance_drain_resistance', 100.0)],
+    'Improved_Knockback':              [('knockback_strength', 100.0)],
+    # 'KB_Combo' — Slammed combo counter, no stat effect (intentionally absent).
+}
+
+_TSPY_STAT_DESC = {
+    'damage': 'Damage',
+    'maximum_hitpoints': 'Maximum HitPoints',
+    'defense_(energy)': 'Energy and Negative Energy',
+    'defense_(ranged)': 'Ranged Defense',
+    'recharge': 'Recharge Time',
+    'damage_resistance_(lethal)': 'Smashing and Lethal Resistance',
+    'damage_resistance_(smashing)': 'Smashing Resistance',
+    'mez_resistance_(all)': 'Mez Resistance',
+    'endurance_drain_resistance': 'Endurance Drain Resistance',
+    'knockback_strength': 'Knockback',
+}
+
+# Thunderspy-only sets → the slotting `type` (category) the binary can't map,
+# plus the display name / rarity for the rebuilt entry.
+_TSPY_ONLY_SETS: dict[str, dict] = {
+    'kb':                          {'type': 'Universal Damage Sets'},
+    'primalists_nature':           {'type': 'Primalist Archetype Sets'},
+    'superior_primalists_nature':  {'type': 'Primalist Archetype Sets'},
+}
+
+
+def _tspy_resolve_display(power, msgs) -> str:
+    dn = getattr(power, 'display_name', '') if power else ''
+    return msgs._keys.get(dn, '') if dn else ''
+
+
+def _tspy_piece_from_boost(boost_full_name: str, num: int, power_index, msgs) -> dict | None:
+    """Build one io-set piece from a Thunderspy boost power's authoritative
+    display name (e.g. 'Subaluwa: Accuracy/Damage/Endurance' → aspects
+    [Accuracy, Damage, Endurance]). Proc / special-global pieces ('Chance for
+    Knockback', 'Recharge/Primal Energy Bonus') are flagged proc=true."""
+    disp = _tspy_resolve_display(power_index.get(boost_full_name), msgs)
+    if not disp:
+        return None
+    part = disp.split(':', 1)[1].strip() if ':' in disp else disp.strip()
+    low = part.lower()
+    is_proc = ('chance for' in low) or low.endswith('bonus')
+    aspects: list[str] = []
+    for tok in part.split('/'):
+        key = _TSPY_ASPECT_TOKENS.get(tok.strip().lower())
+        if key:
+            aspects.append(key)
+    return {
+        'num': num,
+        'name': part,
+        'aspects': _sort_aspects_canonical(aspects) if aspects else [],
+        'proc': is_proc,
+        'unique': False,
+    }
+
+
+def _tspy_bonus_effects(bonus_full_name: str, power_index) -> list[dict]:
+    """Derive a Thunderspy set bonus' planner effects from its internal name
+    (the stat) + its readable binary scale (the value). Returns [] for
+    special/unmapped bonuses (e.g. the KB_Combo counter)."""
+    p = power_index.get(bonus_full_name)
+    if not p:
+        return []
+    stem = re.sub(r'_\d+$', '', bonus_full_name.split('.')[-1])
+    mapping = _TSPY_BONUS_STEMS.get(stem)
+    if not mapping:
+        return []
+    scale = 0.0
+    for eg in (p.effects or []):
+        for t in (eg.templates or []):
+            if t.scale:
+                scale = abs(t.scale)
+                break
+        if scale:
+            break
+    if not scale:
+        return []
+    effects = []
+    for stat, mult in mapping:
+        value = round(scale * mult, 4)
+        label = _TSPY_STAT_DESC.get(stat, stat.replace('_', ' ').title())
+        effects.append({'stat': stat, 'value': value, 'desc': f'+{value}% {label}'})
+    return effects
+
+
+def _tspy_build_only_set(set_id: str, record, power_index, msgs, prior: dict) -> dict:
+    """Rebuild a Thunderspy-only set entry from authoritative display strings."""
+    display = _tspy_resolve_display(
+        next((power_index.get(bl.boosts[0]) for bl in record.boostlists if bl.boosts), None),
+        msgs,
+    )
+    set_name = prior.get('name') or (display.split(':', 1)[0].strip() if ':' in display else record.name.replace('_', ' '))
+
+    pieces = []
+    for i, bl in enumerate(record.boostlists):
+        if not bl.boosts:
+            continue
+        piece = _tspy_piece_from_boost(bl.boosts[0], i + 1, power_index, msgs)
+        if piece:
+            pieces.append(piece)
+
+    bonuses = []
+    for b in record.bonuses:
+        for ap in b.auto_powers:
+            effects = _tspy_bonus_effects(ap, power_index)
+            if effects:
+                bonuses.append({'pieces': b.min_boosts, 'effects': effects})
+            break
+
+    return {
+        'name': set_name,
+        'category': prior.get('category', 'uncommon'),
+        'type': _TSPY_ONLY_SETS[set_id]['type'],
+        'minLevel': prior.get('minLevel', record.min_level or 1),
+        'maxLevel': prior.get('maxLevel', record.max_level or 50),
+        'bonuses': bonuses,
+        'pieces': pieces,
+        'icon': prior.get('icon') or f's{set_id}.png',
+    }
+
+
+def _apply_thunderspy_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict], ctx: dict | None = None) -> dict:
+    """Thunderspy post-build passes. Mirrors Rebirth's shared-set reuse (HC's
+    hand-curated entry wins for any set that also exists on HC, preserving
+    Mids-compatible piece names + complete bonus tiers), then REBUILDS the
+    Thunderspy-only sets (Subaluwa, the Primalist ATOs) from their authoritative
+    clientmessages display strings, since tspy's AttribMod format doesn't carry
+    the enum aspect field build_sets relies on. The 4 sets that shouldn't be on
+    Thunderspy (Sudden Acceleration, Synapse's Shock, Power Transfer, Hypersonic)
+    plus 13 other HC-only sets are absent automatically — they aren't in tspy's
+    boostsets.bin."""
+    shared_overridden = 0
+    for set_id in list(out_sets.keys()):
+        hc_entry = hc_sets.get(set_id)
+        if hc_entry:
+            preserved_icon = ICON_OVERRIDES.get(set_id)
+            out_sets[set_id] = dict(hc_entry)
+            if preserved_icon:
+                out_sets[set_id]['icon'] = preserved_icon
+            shared_overridden += 1
+
+    rebuilt = []
+    if ctx:
+        by_id = {s.name.lower().replace('-', '').replace('__', '_'): s for s in ctx['sets']}
+        for set_id in _TSPY_ONLY_SETS:
+            record = by_id.get(set_id)
+            if not record:
+                continue
+            out_sets[set_id] = _tspy_build_only_set(
+                set_id, record, ctx['power_index'], ctx['msgs'], out_sets.get(set_id, {}),
+            )
+            rebuilt.append(set_id)
+
+    return {'shared_overridden': shared_overridden, 'rebuilt_tspy_only': rebuilt}
+
+
 # Per-dataset wiring: assets dir, output path, source description for the file
 # header, and which override pass to run after build_sets().
 DATASET_CONFIG = {
@@ -1249,6 +1449,23 @@ DATASET_CONFIG = {
             ' * Targeted hand overrides (from the prior curated io-sets-raw) cover\n'
             ' * what the binary can\'t reproduce: the cupids_crush / overwhelming_force\n'
             ' * universal-damage sets, and the unique-global + PvP set bonuses.\n'
+        ),
+    },
+    'thunderspy': {
+        'assets': THUNDERSPY_ASSETS,
+        'output': THUNDERSPY_IO_SETS_PATH,
+        'pigg': 'G:/Thunderspy Gaming/Sweet Tea/tspy/bin.pigg',
+        'server': 'Thunderspy',
+        'apply_overrides': _apply_thunderspy_overrides,
+        'extra_notes': (
+            ' * Shared sets reuse HC\'s hand-curated entry. The 4 sets that are NOT on\n'
+            ' * Thunderspy (Sudden Acceleration, Synapse\'s Shock, Power Transfer,\n'
+            ' * Hypersonic) plus 13 other HC-only sets are absent because they aren\'t\n'
+            ' * in tspy\'s boostsets.bin. Thunderspy-only sets (Subaluwa, the Primalist\n'
+            ' * ATOs) are rebuilt from their clientmessages display strings — tspy\'s\n'
+            ' * AttribMod format lacks the enum aspect field, so piece aspects come\n'
+            ' * from the boost display names and bonus values from the Set_Bonus names\n'
+            ' * + binary scales (see _apply_thunderspy_overrides).\n'
         ),
     },
 }
@@ -1351,7 +1568,8 @@ def main(dataset: str | None = None) -> int:
     print(f'  {len(hc_sets)} HC hand sets loaded')
 
     out_sets, skipped = build_sets(msgs, sets, power_index, hc_sets)
-    stats = cfg['apply_overrides'](out_sets, hc_sets)
+    ctx = {'sets': sets, 'power_index': power_index, 'msgs': msgs}
+    stats = cfg['apply_overrides'](out_sets, hc_sets, ctx)
 
     print(f'\n[{dataset}] Extracted {len(out_sets)} sets ({len(skipped)} skipped)')
     for k, v in stats.items():

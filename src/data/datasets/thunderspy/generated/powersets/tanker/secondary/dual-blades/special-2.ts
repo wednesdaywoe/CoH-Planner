@@ -37,6 +37,8 @@ export const Special2: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -47,8 +49,8 @@ export const Special2: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "comboblade3",
+      "label": "ComboBlade3",
       "scope": "global",
       "defaultActive": false,
       "damage": {

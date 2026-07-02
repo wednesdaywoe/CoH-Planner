@@ -35,14 +35,15 @@ export const ParasiticAura: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Healing",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage"
   ],
   "maxSlots": 6,
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "scope": "global",
       "defaultActive": false,
       "damage": {
         "type": "Special",

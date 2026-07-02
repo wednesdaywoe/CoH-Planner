@@ -39,6 +39,7 @@
   ],
   "allowed_set_categories": [
     "Defense Debuff",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

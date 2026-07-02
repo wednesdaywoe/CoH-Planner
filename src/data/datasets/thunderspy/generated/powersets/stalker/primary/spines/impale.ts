@@ -36,8 +36,10 @@ export const Impale: Power = {
   ],
   "allowedSetCategories": [
     "Immobilize",
+    "Melee Damage",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -51,18 +53,5 @@ export const Impale: Power = {
       "scale": 15,
       "table": "Melee_Immobilize"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.64,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };

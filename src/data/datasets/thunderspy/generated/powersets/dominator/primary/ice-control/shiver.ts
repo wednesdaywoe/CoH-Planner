@@ -37,6 +37,7 @@ export const Shiver: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Slow Movement",
     "Stuns"
   ],

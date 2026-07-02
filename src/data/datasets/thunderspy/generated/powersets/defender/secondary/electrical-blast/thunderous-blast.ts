@@ -35,7 +35,9 @@ export const ThunderousBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
     "Endurance Modification",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,

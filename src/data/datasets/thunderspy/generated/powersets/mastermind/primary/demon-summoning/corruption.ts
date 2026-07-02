@@ -33,10 +33,18 @@ export const Corruption: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Mastermind Archetype Sets",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,
   "damage": [
+    {
+      "type": "Smashing",
+      "scale": -1.25,
+      "table": "Ranged_Res_Dmg",
+      "duration": 5
+    },
     {
       "type": "Fire",
       "scale": 1.32,

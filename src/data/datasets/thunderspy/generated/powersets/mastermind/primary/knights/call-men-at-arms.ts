@@ -36,6 +36,7 @@ export const CallMenAtArms: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
+    "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Resist Damage"

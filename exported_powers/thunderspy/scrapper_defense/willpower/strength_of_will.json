@@ -219,7 +219,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "GlobalCrash"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

@@ -37,7 +37,9 @@ export const GuardedSpin: Power = {
   ],
   "allowedSetCategories": [
     "Defense Sets",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -47,17 +49,16 @@ export const GuardedSpin: Power = {
     "duration": 1.5,
     "tickRate": 0.30000001192092896
   },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 1.39,
-        "table": "Melee_Damage"
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
       }
-    }
-  ]
+    },
+    "durations": {
+      "defenseBuff": 10
+    },
+    "buffDuration": 10
+  }
 };

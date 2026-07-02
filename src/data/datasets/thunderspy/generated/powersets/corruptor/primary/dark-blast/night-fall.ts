@@ -38,6 +38,8 @@ export const NightFall: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "To Hit Debuff"
   ],
@@ -48,20 +50,5 @@ export const NightFall: Power = {
     "table": "Ranged_Damage",
     "duration": 2.8,
     "tickRate": 0.30000001192092896
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 0.11,
-        "table": "Ranged_Damage",
-        "duration": 2.8,
-        "tickRate": 0.30000001192092896
-      }
-    }
-  ]
+  }
 };

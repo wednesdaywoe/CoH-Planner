@@ -38,6 +38,7 @@
     "Accuracy"
   ],
   "allowed_set_categories": [
+    "Melee Damage",
     "Ranged Damage"
   ],
   "cast_through": [],
@@ -174,7 +175,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "kMeter source> < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",
+      "requires_expression": "kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVP_ONLY",
@@ -199,7 +200,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "kMeter source> < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",
+          "jit_requires": "kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq && arch source> Class_Stalker eq &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
@@ -213,7 +214,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq kMeter source> < && arch source> Class_Stalker eq &&",
+      "requires_expression": "enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",
       "tags": [],
       "flags": [],
       "is_pvp": "PVE_ONLY",
@@ -238,7 +239,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq kMeter source> < && arch source> Class_Stalker eq &&",
+          "jit_requires": "enttype target> critter eq kMeter source> .9 < && arch source> Class_Stalker eq &&",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

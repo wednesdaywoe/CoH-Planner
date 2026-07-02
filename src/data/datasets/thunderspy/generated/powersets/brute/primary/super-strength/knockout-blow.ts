@@ -35,6 +35,7 @@ export const KnockoutBlow: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Holds",
     "Knockback",
     "Melee Damage",

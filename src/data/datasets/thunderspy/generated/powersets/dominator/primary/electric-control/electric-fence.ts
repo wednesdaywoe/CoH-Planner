@@ -29,6 +29,7 @@ export const ElectricFence: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
+    "Melee Damage",
     "Ranged Damage"
   ],
   "maxSlots": 6,

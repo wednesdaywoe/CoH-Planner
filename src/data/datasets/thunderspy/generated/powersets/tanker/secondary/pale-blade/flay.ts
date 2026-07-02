@@ -36,6 +36,7 @@ export const Flay: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -48,8 +49,8 @@ export const Flay: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "target-affected",
-      "label": "Target Already Affected",
+      "id": "pale_enemy_fester",
+      "label": "Pale Enemy Fester",
       "scope": "per-power",
       "defaultActive": false,
       "damage": {
@@ -61,8 +62,8 @@ export const Flay: Power = {
       }
     },
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "pale_self_buff_plaguebearer",
+      "label": "Pale Self Buff Plaguebearer",
       "scope": "global",
       "defaultActive": false,
       "damage": {

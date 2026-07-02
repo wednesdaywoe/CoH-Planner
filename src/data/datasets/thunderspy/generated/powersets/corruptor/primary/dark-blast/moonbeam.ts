@@ -37,6 +37,8 @@ export const Moonbeam: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Corruptor Archetype Sets",
+    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks",
     "To Hit Debuff"
@@ -46,18 +48,5 @@ export const Moonbeam: Power = {
     "type": "Negative",
     "scale": 2.76,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Negative",
-        "scale": 2.76,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

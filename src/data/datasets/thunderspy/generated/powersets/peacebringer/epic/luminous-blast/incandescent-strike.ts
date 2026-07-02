@@ -38,6 +38,7 @@ export const IncandescentStrike: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Holds",
+    "Kheldian Archetype Sets",
     "Knockback",
     "Melee Damage"
   ],

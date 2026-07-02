@@ -33,7 +33,8 @@ export const Strike: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage"
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": [
@@ -46,19 +47,6 @@ export const Strike: Power = {
       "type": "Lethal",
       "scale": 0.3,
       "table": "Melee_Damage"
-    }
-  ],
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.08,
-        "table": "Melee_Damage"
-      }
     }
   ]
 };

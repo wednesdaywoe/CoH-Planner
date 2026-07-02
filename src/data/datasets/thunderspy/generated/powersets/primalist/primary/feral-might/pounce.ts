@@ -34,6 +34,7 @@ export const Pounce: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Primalist Archetype Sets",
     "Stuns"
   ],
   "maxSlots": 6,
@@ -60,9 +61,9 @@ export const Pounce: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
+      "id": "prowlercloakmode",
+      "label": "Prowler Cloak Mode",
+      "scope": "global",
       "defaultActive": false,
       "damage": [
         {

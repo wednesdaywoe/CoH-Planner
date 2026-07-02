@@ -60,7 +60,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "SpeedJumping"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",
@@ -97,7 +99,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "JumpHeight"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

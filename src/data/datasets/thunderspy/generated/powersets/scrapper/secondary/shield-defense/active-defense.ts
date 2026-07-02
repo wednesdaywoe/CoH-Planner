@@ -41,5 +41,17 @@ export const ActiveDefense: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 1.65,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75
+    },
+    "buffDuration": 0.75
+  },
   "requires": "Scrapper_Melee.Dual_Blades Scrapper_Melee.Claws || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Katana || Scrapper_Melee.Titan_Weapons || !"
 };

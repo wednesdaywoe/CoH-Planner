@@ -36,7 +36,9 @@ export const RadiationTherapy: Power = {
   "allowedSetCategories": [
     "Accurate Healing",
     "Healing",
-    "Melee AoE Damage"
+    "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -37,7 +37,9 @@ export const Shockwave: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Knockback",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -51,18 +53,5 @@ export const Shockwave: Power = {
       "scale": 3,
       "table": "Ranged_Knockback"
     }
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 0.64,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

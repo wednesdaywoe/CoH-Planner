@@ -32,25 +32,21 @@ export const Placate: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage"
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Special",
-    "scale": 1.32,
-    "table": "Melee_Damage"
-  },
-  "conditionalEffects": [
+  "damage": [
     {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Special",
-        "scale": 1.32,
-        "table": "Melee_Damage"
-      }
+      "type": "Smashing",
+      "scale": -1,
+      "table": "Melee_Res_DMG",
+      "duration": 5
+    },
+    {
+      "type": "Special",
+      "scale": 1.32,
+      "table": "Melee_Damage"
     }
   ]
 };

@@ -36,6 +36,7 @@ export const WaterGolem: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Slow Movement"

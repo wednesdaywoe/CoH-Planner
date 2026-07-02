@@ -142,7 +142,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "Knockup"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

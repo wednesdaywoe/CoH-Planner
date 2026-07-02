@@ -60,7 +60,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "InterruptTime"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

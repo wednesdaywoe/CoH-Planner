@@ -37,5 +37,17 @@ export const EnergyDrain: Power = {
     "Endurance Modification",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "smashing": {
+        "scale": 0.05,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 45
+    },
+    "buffDuration": 45
+  }
 };

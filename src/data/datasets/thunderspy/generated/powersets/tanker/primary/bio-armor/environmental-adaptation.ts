@@ -38,5 +38,69 @@ export const EnvironmentalAdaptation: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "fire": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75
+    },
+    "buffDuration": 0.75
+  },
+  "conditionalEffects": [
+    {
+      "id": "defensiveadaptation",
+      "label": "Defensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "defenseBuff": {
+          "smashing": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "lethal": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "fire": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "cold": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "energy": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          },
+          "negative": {
+            "scale": 0.45,
+            "table": "Melee_Buff_Def"
+          }
+        },
+        "durations": {
+          "defenseBuff": 0.75
+        },
+        "buffDuration": 0.75
+      }
+    }
+  ]
 };

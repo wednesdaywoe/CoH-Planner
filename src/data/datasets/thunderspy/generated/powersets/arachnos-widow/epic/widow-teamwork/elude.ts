@@ -38,5 +38,25 @@ export const Elude: Power = {
     "Healing",
     "Running & Sprints"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "defenseBuff": {
+      "melee": {
+        "scale": 3,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 3,
+        "table": "Melee_Buff_Def"
+      },
+      "aoe": {
+        "scale": 3,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 60
+    },
+    "buffDuration": 60
+  }
 };

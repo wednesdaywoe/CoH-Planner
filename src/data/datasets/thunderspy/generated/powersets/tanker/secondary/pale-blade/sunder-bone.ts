@@ -37,6 +37,7 @@ export const SunderBone: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,
@@ -47,47 +48,75 @@ export const SunderBone: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "target-affected",
-      "label": "Target Already Affected",
+      "id": "pale_enemy_lash",
+      "label": "Pale Enemy Lash",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Special",
-          "scale": 0.5,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.5,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.5,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.5,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.5,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Special",
-          "scale": 0.5,
-          "table": "Melee_Damage",
-          "tickRate": 0.5
-        }
-      ]
+      "damage": {
+        "type": "Special",
+        "scale": 0.5,
+        "table": "Melee_Damage"
+      }
     },
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "pale_enemy_flay",
+      "label": "Pale Enemy Flay",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.5,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "pale_enemy_rendflesh",
+      "label": "Pale Enemy RendFlesh",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.5,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "pale_enemy_khloros",
+      "label": "Pale Enemy Khloros",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.5,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "pale_enemy_paleblade",
+      "label": "Pale Enemy PaleBlade",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.5,
+        "table": "Melee_Damage"
+      }
+    },
+    {
+      "id": "pale_enemy_fester",
+      "label": "Pale Enemy Fester",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.5,
+        "table": "Melee_Damage",
+        "tickRate": 0.5
+      }
+    },
+    {
+      "id": "pale_self_buff_plaguebearer",
+      "label": "Pale Self Buff Plaguebearer",
       "scope": "global",
       "defaultActive": false,
       "damage": {

@@ -38,8 +38,10 @@ export const Frost: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement",
+    "Tanker Archetype Sets",
     "Threat Duration"
   ],
   "maxSlots": 6,

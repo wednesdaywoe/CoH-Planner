@@ -34,6 +34,7 @@ export const GreaterPsiBlade: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Brute Archetype Sets",
     "Holds",
     "Melee Damage",
     "Threat Duration"
@@ -53,10 +54,11 @@ export const GreaterPsiBlade: Power = {
   },
   "conditionalEffects": [
     {
-      "id": "self-affected",
-      "label": "Already Affected",
+      "id": "psionic_melee_insight",
+      "label": "Insight",
       "scope": "global",
       "defaultActive": false,
+      "mode": "replace",
       "damage": {
         "type": "Psionic",
         "scale": 1.34625,

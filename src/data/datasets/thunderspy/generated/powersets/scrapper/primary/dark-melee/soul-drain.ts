@@ -35,6 +35,8 @@ export const SoulDrain: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
+    "Melee Damage",
+    "Scrapper Archetype Sets",
     "To Hit Buff"
   ],
   "maxSlots": 6,

@@ -35,7 +35,9 @@ export const ThunderousBlast: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
+    "Corruptor Archetype Sets",
     "Endurance Modification",
+    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "maxSlots": 6,
@@ -43,18 +45,5 @@ export const ThunderousBlast: Power = {
     "type": "Energy",
     "scale": 1,
     "table": "Ranged_Damage"
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Energy",
-        "scale": 2,
-        "table": "Ranged_Damage"
-      }
-    }
-  ]
+  }
 };

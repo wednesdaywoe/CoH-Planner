@@ -105,7 +105,12 @@
       "templates": [
         {
           "attribs": [
-            "Buff_Def"
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy"
           ],
           "type": "",
           "application_type": "",
@@ -253,7 +258,7 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "eq !",
+      "requires_expression": "@CustomFX NoTransform eq !",
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -278,7 +283,7 @@
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
-          "jit_requires": "eq !",
+          "jit_requires": "@CustomFX NoTransform eq !",
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,

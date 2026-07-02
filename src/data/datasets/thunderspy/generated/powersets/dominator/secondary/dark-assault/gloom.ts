@@ -35,6 +35,7 @@ export const Gloom: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
+    "Melee Damage",
     "Ranged Damage",
     "To Hit Debuff"
   ],

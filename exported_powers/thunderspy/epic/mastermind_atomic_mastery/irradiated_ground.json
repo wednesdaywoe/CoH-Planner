@@ -39,7 +39,8 @@
   ],
   "allowed_set_categories": [
     "Accurate Defense Debuff",
-    "Defense Debuff"
+    "Defense Debuff",
+    "Melee Damage"
   ],
   "cast_through": [],
   "toggle_ignore": [],

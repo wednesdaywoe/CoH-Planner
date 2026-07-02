@@ -33,6 +33,7 @@ export const DimensionShift: Power = {
     "Immobilize"
   ],
   "allowedSetCategories": [
+    "Dominator Archetype Sets",
     "Immobilize"
   ],
   "maxSlots": 6

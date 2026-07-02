@@ -36,6 +36,8 @@ export const HowlingTwilight: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
+    "Defender Archetype Sets",
+    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement",
     "Stuns"

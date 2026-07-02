@@ -34,6 +34,7 @@ export const FollowUp: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
+    "Scrapper Archetype Sets",
     "To Hit Buff"
   ],
   "maxSlots": 6,

@@ -37,7 +37,8 @@ export const ModerateBridge: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Defense Debuff",
-    "Melee Damage"
+    "Melee Damage",
+    "Stalker Archetype Sets"
   ],
   "maxSlots": 6,
   "damage": {
@@ -46,18 +47,5 @@ export const ModerateBridge: Power = {
     "table": "Melee_Damage",
     "duration": 0.6,
     "tickRate": 0.4000000059604645
-  },
-  "conditionalEffects": [
-    {
-      "id": "conditional",
-      "label": "Conditional",
-      "scope": "per-power",
-      "defaultActive": false,
-      "damage": {
-        "type": "Lethal",
-        "scale": 1.32,
-        "table": "Melee_Damage"
-      }
-    }
-  ]
+  }
 };
