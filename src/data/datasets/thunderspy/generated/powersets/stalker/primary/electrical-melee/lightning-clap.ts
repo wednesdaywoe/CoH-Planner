@@ -60,6 +60,18 @@ export const LightningClap: Power = {
       "mag": 0.5,
       "scale": 5,
       "table": "Melee_Stun"
-    }
+    },
+    "enduranceDrain": {
+      "scale": 0.14,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4
+    },
+    "buffDuration": 4
   }
 };

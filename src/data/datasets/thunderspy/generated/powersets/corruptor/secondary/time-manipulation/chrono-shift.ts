@@ -38,10 +38,9 @@ export const ChronoShift: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 1.066,
+    "enduranceGain": {
+      "scale": 0.15,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 30
+    }
   }
 };

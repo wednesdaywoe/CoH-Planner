@@ -31,5 +31,15 @@ export const GammaBoost: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 1.25
+    },
+    "buffDuration": 1.25
+  },
   "mechanicType": "parentMechanic"
 };

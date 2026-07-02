@@ -38,5 +38,15 @@ export const Consume: Power = {
     "Melee AoE Damage",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceGain": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "enduranceGain": 120
+    },
+    "buffDuration": 120
+  }
 };

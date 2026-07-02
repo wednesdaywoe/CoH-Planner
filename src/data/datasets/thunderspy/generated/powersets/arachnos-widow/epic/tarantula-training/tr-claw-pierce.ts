@@ -47,6 +47,14 @@ export const TRClawPierce: Power = {
     "taunt": {
       "scale": 20,
       "table": "Melee_Taunt"
-    }
+    },
+    "regenDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
   }
 };

@@ -34,5 +34,15 @@ export const TemporalSelection: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "rechargeBuff": 120
+    },
+    "buffDuration": 120
+  }
 };

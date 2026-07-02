@@ -29,5 +29,15 @@ export const QuickRecovery: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 10.25
+    },
+    "buffDuration": 10.25
+  },
   "mechanicType": "parentMechanic"
 };

@@ -36,5 +36,23 @@ export const DisciplineAllies: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "regenBuff": {
+          "scale": 2.5,
+          "table": "Ranged_Ones"
+        },
+        "durations": {
+          "regenBuff": 30
+        },
+        "buffDuration": 30
+      }
+    }
+  ]
 };

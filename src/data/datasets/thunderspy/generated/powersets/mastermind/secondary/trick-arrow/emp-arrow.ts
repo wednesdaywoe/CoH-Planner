@@ -44,6 +44,14 @@ export const EMPArrow: Power = {
       "mag": 1,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "regenDebuff": {
+      "scale": 10,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
   }
 };

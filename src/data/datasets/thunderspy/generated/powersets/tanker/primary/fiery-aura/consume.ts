@@ -41,5 +41,15 @@ export const Consume: Power = {
     "Tanker Archetype Sets",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceGain": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "enduranceGain": 120
+    },
+    "buffDuration": 120
+  }
 };

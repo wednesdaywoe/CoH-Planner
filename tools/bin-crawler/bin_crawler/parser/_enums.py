@@ -314,6 +314,25 @@ ATTRIB_NAME_REBIRTH: dict[int, str] = {
     116: "Create_Entity",
 }
 
+
+# Thunderspy (Parse6-derived schema, Parse7 frame) keeps yet another attrib-index
+# layout in its upper band. Its front string-attribs are decoded directly, but the
+# post-`requires` affected-attribute INDEX array (see _parse_effect_template_thunderspy)
+# is decoded via this map. The one player-visible divergence proven so far is
+# **RechargeTime at 89** (HC/Rebirth: 90). Empirically confirmed: 837 index-array
+# entries resolve to 89 and EVERY power carrying it is recharge-related — +recharge
+# buffs (Hasten 0.7, Quickness/Lightning Reflexes 0.2, Accelerate Metabolism 0.3,
+# Speed Boost 0.5, the Recharge_* temp powers) and -recharge slows (Siphon Speed,
+# Cryonic Judgement, Liquefy). Without this, those all decoded as `Unknown(89)` and
+# their recharge effect was silently dropped. Everything else matches HC's ATTRIB_NAME
+# (defense positions, damage types, mez, Recovery/Regeneration/Endurance all verified
+# to land on their HC indices), so we only override the single confirmed divergence
+# rather than guess the rest of the band.
+ATTRIB_NAME_THUNDERSPY: dict[int, str] = {
+    **ATTRIB_NAME,
+    89: "RechargeTime",
+}
+
 ATTRIB_MOD_TYPE: dict[int, str] = {
     # Verified via Ghidra keyword table at 0x1408eb958 in cityofheroes.exe —
     # values 0/1 were swapped in the old parser (the .ksy spec had them backwards),

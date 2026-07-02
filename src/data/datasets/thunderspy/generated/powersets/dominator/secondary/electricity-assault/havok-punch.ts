@@ -56,7 +56,19 @@ export const HavokPunch: Power = {
     "knockback": {
       "scale": 0.01,
       "table": "Melee_Knockback"
-    }
+    },
+    "enduranceDrain": {
+      "scale": 0.1,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4
+    },
+    "buffDuration": 4
   },
   "conditionalEffects": [
     {

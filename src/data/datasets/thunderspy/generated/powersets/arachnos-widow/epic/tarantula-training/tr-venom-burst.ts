@@ -44,5 +44,15 @@ export const TRVenomBurst: Power = {
     "type": "Special",
     "scale": 1.0923,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "regenDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 30
+    },
+    "buffDuration": 30
   }
 };

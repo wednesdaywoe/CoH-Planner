@@ -45,5 +45,19 @@ export const ChargedBrawl: Power = {
     "table": "Melee_Damage",
     "duration": 2,
     "tickRate": 1
+  },
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.35,
+      "table": "Ranged_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 10
+    },
+    "buffDuration": 10
   }
 };

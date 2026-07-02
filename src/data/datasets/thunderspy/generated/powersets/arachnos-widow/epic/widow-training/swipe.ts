@@ -49,5 +49,15 @@ export const Swipe: Power = {
       "duration": 2.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
+  }
 };

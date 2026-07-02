@@ -47,6 +47,14 @@ export const TouchofFear: Power = {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Fear"
-    }
+    },
+    "regenBuff": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 60
+    },
+    "buffDuration": 60
   }
 };

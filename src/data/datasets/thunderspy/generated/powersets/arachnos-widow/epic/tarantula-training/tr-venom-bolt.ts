@@ -42,5 +42,15 @@ export const TRVenomBolt: Power = {
     "type": "Special",
     "scale": 0.6072,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
   }
 };

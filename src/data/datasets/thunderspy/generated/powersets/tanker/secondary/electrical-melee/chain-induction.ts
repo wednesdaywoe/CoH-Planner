@@ -46,5 +46,19 @@ export const ChainInduction: Power = {
     "type": "Smashing",
     "scale": 0.396,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4
+    },
+    "buffDuration": 4
   }
 };

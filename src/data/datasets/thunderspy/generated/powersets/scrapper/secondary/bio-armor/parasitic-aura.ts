@@ -37,5 +37,15 @@ export const ParasiticAura: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 45
+    },
+    "buffDuration": 45
+  }
 };

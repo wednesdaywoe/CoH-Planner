@@ -30,6 +30,24 @@ export const ClearSkies: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "conditionalEffects": [
+    {
+      "id": "clearskies",
+      "label": "Clear Skies",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "rechargeBuff": {
+          "scale": 0.25,
+          "table": "Ranged_Ones"
+        },
+        "durations": {
+          "rechargeBuff": 2.1
+        },
+        "buffDuration": 2.1
+      }
+    }
+  ],
   "requires": "Controller_Control.Wind_Control.Vortex Controller_Control.Wind_Control.Vacuum &&",
   "mechanicType": "parentMechanic"
 };

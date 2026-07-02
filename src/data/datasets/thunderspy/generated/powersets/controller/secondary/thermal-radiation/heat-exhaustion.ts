@@ -31,5 +31,15 @@ export const HeatExhaustion: Power = {
     "Recharge",
     "Accuracy"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenDebuff": {
+      "scale": 5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 40
+    },
+    "buffDuration": 40
+  }
 };

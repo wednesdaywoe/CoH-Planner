@@ -20,7 +20,8 @@ from pathlib import Path
 from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import PowerRecord, EffectGroup, EffectTemplate
 from ._enums import (
-    BOOST_TYPE, BOOST_TYPE_REBIRTH, TARGET_TYPE, ATTRIB_NAME, ATTRIB_NAME_REBIRTH, EVENT_NAME,
+    BOOST_TYPE, BOOST_TYPE_REBIRTH, TARGET_TYPE, ATTRIB_NAME, ATTRIB_NAME_REBIRTH,
+    ATTRIB_NAME_THUNDERSPY, EVENT_NAME,
     ATTRIB_MOD_TYPE, ATTRIB_MOD_ASPECT, ATTRIB_MOD_APPLICATION,
     ATTRIB_MOD_TARGET, ATTRIB_MOD_STACK, ATTRIB_MOD_CASTER_STACK,
     PVP_FLAG,
@@ -1239,6 +1240,22 @@ _TSPY_TABLE_PREFIXES = (
     "Defense_", "Resist_", "Buff_", "Debuff_",
 )
 
+# Front-attrib `Ones` is Thunderspy's catch-all magnitude token on the `*_Ones`
+# unit tables; the REAL modified stat lives only in the post-`requires` index
+# array. These are the attribs we recover from that index array when the front
+# is exactly `['Ones']` — the high-confidence resource/recharge buffs+debuffs
+# that route unambiguously by SIGN alone (positive→buff, negative→debuff) with no
+# magnitude/aspect semantics the Thunderspy schema can't supply. Deliberately
+# EXCLUDED (left as unclassifiable `['Ones']`, i.e. no behaviour change): damage
+# types (on `Ones` fronts these are AttackType/combo TAG templates on non-damage
+# powers like Aim/Assault — relabeling would inject phantom damage), mez
+# (needs a magnitude the `Ones` template doesn't carry — `magnitude` is a flat
+# 1.0), knockback (sign-vs-protection nuance), and exotic mechanic attribs
+# (Set_Mode/Rage/Taunt/Create_Entity/…). See THUNDERSPY_TODO.md item 1.
+_TSPY_ONES_RECOVERABLE = frozenset(
+    {"RechargeTime", "Recovery", "Regeneration", "Endurance"}
+)
+
 
 def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) -> EffectTemplate:
     """Parse a Thunderspy AttribMod template.
@@ -1314,16 +1331,27 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
     # (never overriding a resolved front string attrib), and PEEK it (no reader
     # advance) so the table tail-scan below is unaffected.
     _idx_attribs = []
+    _idx_count = 0  # raw entry count (before dropping unmapped indices)
     try:
         ipos = r._pos + 16  # skip pad, pad, marker, someval
         icount = struct.unpack_from('<I', strtab_data, ipos)[0]
         if 0 < icount <= 32 and ipos + 4 + icount * 4 <= r._end:
+            _idx_count = icount
             idxs = struct.unpack_from('<%dI' % icount, strtab_data, ipos + 4)
-            _idx_attribs = [ATTRIB_NAME[v // 4] for v in idxs
-                            if v % 4 == 0 and (v // 4) in ATTRIB_NAME]
+            _idx_attribs = [ATTRIB_NAME_THUNDERSPY[v // 4] for v in idxs
+                            if v % 4 == 0 and (v // 4) in ATTRIB_NAME_THUNDERSPY]
     except Exception:
         pass
     if not attribs:
+        attribs = _idx_attribs
+    elif (attribs == ['Ones'] and _idx_count == 1 and len(_idx_attribs) == 1
+          and _idx_attribs[0] in _TSPY_ONES_RECOVERABLE):
+        # `Ones` front + a lone recoverable index attrib → surface the real stat
+        # (recharge / recovery / regen / endurance) so the converter can classify
+        # it. Requiring the index array to name EXACTLY ONE attrib keeps this off
+        # the multi-attrib mez-protection / status-block templates that also carry
+        # `Ones` fronts. This replaces the shortHelp-driven `recoverThunderspyOnesBuffs`
+        # converter workaround with the actual binary datum.
         attribs = _idx_attribs
 
     # Scan the remainder for the first table-name string, then read the

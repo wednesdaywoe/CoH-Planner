@@ -48,6 +48,16 @@ export const PaleBlade: Power = {
     "duration": 1,
     "tickRate": 0.4000000059604645
   },
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
+  },
   "conditionalEffects": [
     {
       "id": "pale_self_buff_lash",

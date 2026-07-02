@@ -47,6 +47,7 @@ export const DisruptingTorrent: Power = {
     "scale": 0.819,
     "table": "Ranged_Damage"
   },
+  "effects": {},
   "conditionalEffects": [
     {
       "id": "kinetic_assault_impulse",

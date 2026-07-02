@@ -37,5 +37,15 @@ export const Lingeringradiation: Power = {
   "allowedSetCategories": [
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenDebuff": {
+      "scale": 5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 30
+    },
+    "buffDuration": 30
+  }
 };

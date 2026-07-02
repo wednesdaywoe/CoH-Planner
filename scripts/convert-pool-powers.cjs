@@ -20,8 +20,8 @@ const {
   BOOST_TYPE_MAP,
   SET_CATEGORY_MAP,
   extractEffects,
-  recoverThunderspyOnesBuffs,
   extractDamage,
+  guardThunderspyOnesBuffs,
   inferAllowedSetCategories,
   normalizeIconPath,
   collectTemplatesDeep,
@@ -248,11 +248,10 @@ function convertPoolPower(rawJson, rank, availableLevel) {
 
   power.effects = effects;
 
-  // Thunderspy stores recharge buffs (Hasten) with a generic `Ones` attrib that
-  // extractEffects can't classify — recover them from the shortHelp so the
-  // buff + its duration (perma tracking) survive. Thunderspy-only; no-op else.
+  // Thunderspy: veto the `Ones`-relabel false positives (resistance-as-recharge,
+  // foe-attack self-buffs) the binary can't disambiguate. No-op elsewhere.
   if (datasetId === 'thunderspy') {
-    recoverThunderspyOnesBuffs(power, rawJson);
+    guardThunderspyOnesBuffs(power);
   }
 
   return power;

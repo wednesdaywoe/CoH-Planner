@@ -41,7 +41,12 @@ export const ConserveEnergy: Power = {
     },
     "effectDuration": 60,
     "durations": {
-      "stun": 60
+      "stun": 60,
+      "regenBuff": 60
+    },
+    "regenBuff": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
     },
     "buffDuration": 60
   }

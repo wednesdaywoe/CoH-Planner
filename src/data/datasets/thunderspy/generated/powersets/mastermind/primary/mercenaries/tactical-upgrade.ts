@@ -36,5 +36,15 @@ export const TacticalUpgrade: Power = {
     "Recharge Intensive Pets"
   ],
   "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.15,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 240
+    },
+    "buffDuration": 240
+  },
   "mechanicType": "parentMechanic"
 };

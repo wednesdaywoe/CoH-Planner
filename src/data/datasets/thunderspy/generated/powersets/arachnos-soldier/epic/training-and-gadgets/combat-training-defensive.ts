@@ -39,9 +39,14 @@ export const CombatTrainingDefensive: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "rechargeBuff": 10.25
     },
-    "buffDuration": 0.75
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 10.25
   },
   "mechanicType": "parentMechanic"
 };

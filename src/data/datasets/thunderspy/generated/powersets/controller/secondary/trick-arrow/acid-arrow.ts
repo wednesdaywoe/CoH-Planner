@@ -48,5 +48,15 @@ export const AcidArrow: Power = {
     "table": "Ranged_Damage",
     "duration": 20,
     "tickRate": 1
+  },
+  "effects": {
+    "regenDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 20
+    },
+    "buffDuration": 20
   }
 };

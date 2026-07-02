@@ -49,7 +49,12 @@ export const TimeStop: Power = {
     },
     "effectDuration": 20,
     "durations": {
-      "stun": 20
+      "stun": 20,
+      "regenDebuff": 20
+    },
+    "regenDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 20
   },

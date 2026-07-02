@@ -36,5 +36,15 @@ export const AdrenalinBoost: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 8,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 60
+    },
+    "buffDuration": 60
+  }
 };

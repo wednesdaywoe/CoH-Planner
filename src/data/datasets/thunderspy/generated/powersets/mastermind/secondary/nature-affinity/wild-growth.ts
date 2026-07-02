@@ -36,5 +36,15 @@ export const WildGrowth: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenBuff": 90
+    },
+    "buffDuration": 90
+  }
 };

@@ -46,6 +46,14 @@ export const KineticBolt: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
+    "durations": {
+      "rechargeDebuff": 8,
+      "slow": 8
+    },
     "slow": {
       "jumpHeight": {
         "scale": 0.15,
@@ -63,9 +71,6 @@ export const KineticBolt: Power = {
         "scale": 0.15,
         "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 8
     },
     "buffDuration": 8
   }

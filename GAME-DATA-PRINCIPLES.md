@@ -224,6 +224,31 @@ feature must work on both. Worked example: Dual Pistols Swap Ammo keys on
 `defenseDebuff`/`rechargeDebuff`/`damageDebuff`, not HC ammo `Tag`s — see the DP
 entry in [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md).
 
+**When a format DROPS a discriminator field, a byte-level relabel can't reconstruct
+the semantic — you need an out-of-band signal, and an adversarial audit to find where
+it's missing.** Thunderspy's `Ones`-attrib templates carry the *affected* stat only as an
+index array, but the schema **drops both the AttribMod `aspect` and the per-template
+`target`** — exactly the two fields that separate a buff from a resistance and a
+self-effect from a foe-effect. Recovering the attrib from the index is honest, but routing
+it by *sign alone* then silently mislabels (a) "resistance to recharge slow" as a +recharge
+buff (aspect gone) and (b) a foe attack's positive template as a caster self-buff (target
+gone). The trap is that **structural/additive-diff checks all pass** — the export is purely
+additive, no field drifts, only the intended attribs appear — while the *semantic* output is
+wrong on a minority of powers. Two durable rules from this (2026-07-02, recharge/recovery
+recovery):
+- **Run an adversarial audit, not just a structural diff, on any relabel/recovery.** A
+  Workflow of independent skeptics (each given one lens: "find a wrong buff," "find a dropped
+  effect," "find a leak") caught the resistance-as-buff and foe-as-self classes that the
+  additive-diff sweep certified "clean." Byte-level additivity proves you didn't *drop* data;
+  it says nothing about whether your *interpretation* is right.
+- **The resolved shortHelp / power `target_type` may be the only surviving disambiguator, and
+  that's OK as a VETO (not a source).** The retired `recoverThunderspyOnesBuffs` hack was fragile
+  because it *invented* the buff from shortHelp; `guardThunderspyOnesBuffs` uses the binary for
+  the value (scale/table/sign/duration) and shortHelp/target only to *reject* the false-positive
+  classes (keep `rechargeBuff` only if shortHelp advertises `+Recharge`; drop resource buffs on
+  foe-targeted powers). Using a text field to disambiguate what the binary genuinely can't encode
+  is legitimate; using it as the primary source is the §5 anti-pattern.
+
 ## 8. Determinism (committed `generated/` must be reproducible)
 
 `generated/` is committed and CI re-derives it (regen-diff guard). So converters must be

@@ -36,5 +36,11 @@ export const Eclipse: Power = {
     "Endurance Modification",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.33,
+      "table": "Melee_Ones"
+    }
+  }
 };

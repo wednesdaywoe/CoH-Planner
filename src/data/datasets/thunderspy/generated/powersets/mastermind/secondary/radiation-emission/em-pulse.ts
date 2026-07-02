@@ -43,6 +43,10 @@ export const EMPulse: Power = {
       "mag": 1,
       "scale": 15,
       "table": "Ranged_Immobilize"
+    },
+    "enduranceDrain": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
     }
   }
 };

@@ -35,5 +35,15 @@ export const Meltdown: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 60
+    },
+    "buffDuration": 60
+  },
   "requires": "accesslevel char> 0 >="
 };

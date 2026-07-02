@@ -46,6 +46,16 @@ export const Khloros: Power = {
     "scale": 0.1,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
+  },
   "conditionalEffects": [
     {
       "id": "pale_self_buff_plaguebearer",

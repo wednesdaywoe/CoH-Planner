@@ -36,5 +36,15 @@ export const ChillingEmbrace: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 30
+    },
+    "buffDuration": 30
+  }
 };

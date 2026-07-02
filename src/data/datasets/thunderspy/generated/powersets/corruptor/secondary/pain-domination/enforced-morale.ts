@@ -41,12 +41,5 @@ export const EnforcedMorale: Power = {
     "type": "Psionic",
     "scale": 0.05,
     "table": "Melee_Ones"
-  },
-  "effects": {
-    "rechargeBuff": {
-      "scale": 0.99,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 90
   }
 };

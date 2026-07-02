@@ -33,5 +33,15 @@ export const Rage: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 15,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "enduranceDrain": 90
+    },
+    "buffDuration": 90
+  }
 };

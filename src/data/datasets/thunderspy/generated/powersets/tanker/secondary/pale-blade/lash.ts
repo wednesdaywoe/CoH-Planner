@@ -47,6 +47,16 @@ export const Lash: Power = {
     "duration": 0.5,
     "tickRate": 0.33000001311302185
   },
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
+  },
   "conditionalEffects": [
     {
       "id": "pale_self_buff_plaguebearer",

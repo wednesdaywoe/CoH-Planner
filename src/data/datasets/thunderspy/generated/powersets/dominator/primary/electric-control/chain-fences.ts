@@ -57,9 +57,18 @@ export const ChainFences: Power = {
     },
     "effectDuration": 1,
     "durations": {
-      "immobilize": 1
+      "immobilize": 1,
+      "recoveryDebuff": 6
     },
-    "buffDuration": 1
+    "enduranceDrain": {
+      "scale": 0.1,
+      "table": "Ranged_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 6
   },
   "conditionalEffects": [
     {

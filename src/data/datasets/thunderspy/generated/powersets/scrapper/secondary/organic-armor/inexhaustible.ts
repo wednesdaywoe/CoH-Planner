@@ -31,6 +31,16 @@ export const Inexhaustible: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 5.25
+    },
+    "buffDuration": 5.25
+  },
   "requires": "accesslevel char> 0 >",
   "mechanicType": "parentMechanic"
 };

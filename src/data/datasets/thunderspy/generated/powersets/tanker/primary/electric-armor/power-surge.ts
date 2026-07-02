@@ -37,5 +37,15 @@ export const PowerSurge: Power = {
     "Holds",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 90
+    },
+    "buffDuration": 90
+  }
 };

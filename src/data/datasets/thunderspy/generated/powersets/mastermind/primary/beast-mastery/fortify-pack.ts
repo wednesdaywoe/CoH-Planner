@@ -45,7 +45,12 @@ export const FortifyPack: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 60
+      "defenseBuff": 60,
+      "regenBuff": 60
+    },
+    "regenBuff": {
+      "scale": 0,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 60
   }

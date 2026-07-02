@@ -43,5 +43,11 @@ export const Placate: Power = {
     "type": "Negative",
     "scale": 0.848,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "enduranceGain": {
+      "scale": 2.5,
+      "table": "Melee_Ones"
+    }
   }
 };

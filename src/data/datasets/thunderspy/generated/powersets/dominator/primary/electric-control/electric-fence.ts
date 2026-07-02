@@ -33,5 +33,6 @@ export const ElectricFence: Power = {
     "Ranged Damage"
   ],
   "maxSlots": 6,
+  "effects": {},
   "mechanicType": "parentMechanic"
 };

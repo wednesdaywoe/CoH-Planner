@@ -37,5 +37,15 @@ export const SporeCloud: Power = {
   "allowedSetCategories": [
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenDebuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 5
+    },
+    "buffDuration": 5
+  }
 };

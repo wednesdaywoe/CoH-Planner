@@ -10,34 +10,64 @@ element types, custom icons, server selector, real IO sets). These are the
 
 ---
 
-## 1. `Ones`-attrib buffs lose their modified attribute — general recovery (HIGH value, MED effort) — PARSER
+## 1. `Ones`-attrib buffs lose their modified attribute — recharge/recovery DONE, mez/KB remaining — PARSER
 
 **State:** Thunderspy's older AttribMod schema stores TWO attrib fields per
 effect template: the FRONT string-offset array (the *enhancement aspect* —
 `Damage` / `Ones` / `Buff_Def`) and, right after the `requires` array, an INDEX
 array `[pad, pad, marker, someval, count, count×(attribIndex*4)]` = the
-**affected/modified** attribute (`attribIndex*4 → ATTRIB_NAME`; front `Ones` ↔
-index `Knockback` / `Endurance` / `Recovery` / `Regeneration` / `Stunned` /
-`Held` / damage types, front `Damage` ↔ index `Lethal_Dmg`). The parser
-historically read only the front array, so `Ones`-based buffs (Hasten's
-recharge, mez magnitudes, immob/KB, mez protection, …) lost their modified stat.
+**affected/modified** attribute. The parser historically read only the front
+array, so `Ones`-based buffs (Hasten's recharge, mez magnitudes, immob/KB, …)
+lost their modified stat.
 
-**Partly done (2026-07-02):** `_parse_effect_template_thunderspy`
-([_powers.py](../tools/bin-crawler/bin_crawler/parser/_powers.py)) now reads the
-index array (a) as a fallback when the front is empty and (b) for `Buff_Def`
-tables — that fixed **defense** (see the RESOLVED entry in the parser log). Also
-raised the `_resolve_str` 200000 offset cap to `len(strtab_data)` (tspy's string
-table is ~38 MB), recovering 8,738 templates' attribs. A shortHelp-driven
-converter workaround (`recoverThunderspyOnesBuffs`) recovers exactly 3 recharge
-pool powers (Hasten, Adrenal Booster, Unleash Potential).
+**DONE — defense (2026-07-02):** index-array fallback for empty-front / `Buff_Def`
+tables (see the defense RESOLVED entry in the parser log).
 
-**Remaining:** generalise the index-array read to the other `Ones` effect kinds
-(recharge on ally/team buffs like Speed Boost/Chrono Shift, mez magnitudes,
-etc.). Front and index are DIFFERENT fields (front `Damage` ↔ index
-`Lethal_Dmg`), so a blanket swap would change damage/mez representation across
-the dataset — **scope per effect kind**. Decoded over all `['Ones']`-front
-templates the index array names the real effect for ~19k of them (~4k genuinely
-carry no index array). Once done, drop the shortHelp workaround.
+**DONE — recharge / recovery / regeneration / endurance (2026-07-02):**
+`_parse_effect_template_thunderspy`
+([_powers.py](../tools/bin-crawler/bin_crawler/parser/_powers.py)) relabels a lone
+`['Ones']` front to the index-array attrib when the index names EXACTLY ONE stat in
+`{RechargeTime, Recovery, Regeneration, Endurance}` (`ATTRIB_NAME_THUNDERSPY` adds the
+verified **RechargeTime = index 89** divergence; HC/Rebirth use 90). Recovered the whole
+recharge-buff/debuff class — Hasten, Quickness, Accelerate Metabolism, Speed Boost (incl.
+its ally +recovery), Siphon Speed / Cryonic -recharge, the Alpha `Recharge_*` incarnates —
+plus +/- recovery/regen/endurance. The shortHelp workaround `recoverThunderspyOnesBuffs`
+is **retired** (it had mislabeled Enforced Morale's ally +99% Knockback template as a
+caster +99% recharge — that bug is gone).
+
+**The catch — Thunderspy drops BOTH the AttribMod `aspect` AND the per-template `target`.**
+Those are exactly the fields HC uses to tell a buff from a resistance and a self-effect from
+a foe-effect, so the relabel alone can't (an adversarial audit caught this): a `Ones`
+"resistance to recharge slow" (Grant Cover's +RES(Recharge Debuff), the Kheldian
+Absorption/Incandescence passives, Cosmic/Dark Balance slow-resist, stray placeholders like
+Boost Range / Temporal Manipulator) is byte-identical to a real +recharge buff (**aspect-trap**),
+and a positive Recovery/Regen template on a FOE attack (Disrupting Torrent, Touch of Fear)
+reads as a caster self-buff (**target-trap**). The only signals that survive into the export
+are the power's `target_type` and resolved shortHelp, so `guardThunderspyOnesBuffs`
+([convert-powerset.cjs](../scripts/convert-powerset.cjs)) vetoes both classes: keep a
+recovered `rechargeBuff` only if shortHelp advertises `+Recharge`/`+Rech`; drop
+`recoveryBuff`/`regenBuff` on Foe/Location powers (`enduranceGain` exempt — a foe Electric
+attack's +End is a genuine drain-to-self). Guard test:
+[thunderspy-ones-recharge-buff.test.ts](../src/data/thunderspy-ones-recharge-buff.test.ts).
+See the RESOLVED entry in the parser log for the diff / verification detail.
+
+**Remaining — mez magnitudes & knockback (MED value, MED effort).** The index
+array ALSO names ~1,300 player `['Ones']`-front **mez** templates (Blind→Held,
+Freeze Ray→Held, Tesla Cage→Held, Terrify→Terrorized, …) and ~1,650 **knockback**
+templates. Both are deliberately still excluded:
+- **Mez** needs a magnitude the `Ones` template doesn't carry — its `magnitude`
+  is a flat 1.0 and the real Mag rides `scale × table`; the converter's
+  `makeMezEffect` reads `template.magnitude`, so a naive relabel would emit Mag-1
+  holds. Recovering it means teaching the converter the tspy `*_Ones` mez
+  scale→magnitude convention (validate against in-game Mags, not HC — tspy
+  rebalances).
+- **Knockback** needs sign-vs-protection care (offensive KB vs -KB immob
+  protection — GAME-DATA-PRINCIPLES §3).
+- **Damage-type** index on a `['Ones']` front is an AttackType/combo TAG template
+  (appears on Aim/Assault/Build Up — powers with no direct damage) and must STAY
+  excluded, or it injects phantom damage.
+Scope per effect kind; never a blanket front→index swap (front `Damage` ↔ index
+`Lethal_Dmg` etc.).
 
 ## 2. Pets / entities — fix the entity parser (MED value, HIGH effort) — PARSER
 
@@ -86,7 +116,9 @@ HC's Parse7 entity layout. Probe field-by-field like the powers/classes work
 Parser: categories, custom powersets, class attribs (HP/caps/threat/dmg-cap),
 per-power available **levels**, damage **element types**, conditional-gate
 labels, DoT `tickRate` (application_period), **defense magnitudes** (offset-cap +
-post-`requires` index array, 2026-07-02). App: Thunderspy selectable dataset,
+post-`requires` index array, 2026-07-02), **`Ones`-front recharge/recovery/regen/
+endurance recovery** (index-array relabel + `RechargeTime`=idx 89; shortHelp
+`recoverThunderspyOnesBuffs` retired, 2026-07-02). App: Thunderspy selectable dataset,
 Primalist AT + form mechanics, Tarantula Widow branch, **real IO-set extraction**
 (212 sets — Subaluwa + Primalist ATOs, wrong HC-only sets removed, 2026-07-01),
 **ATO-category slotting** (tspy bin omits per-power ATOs → inferred, 2026-07-02),

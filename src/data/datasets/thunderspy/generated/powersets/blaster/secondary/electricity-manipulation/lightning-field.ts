@@ -49,5 +49,11 @@ export const LightningField: Power = {
     "type": "Special",
     "scale": 0.17,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.02,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -39,5 +39,15 @@ export const PracticedBrawler: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 120
+    },
+    "buffDuration": 120
+  }
 };

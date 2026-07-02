@@ -44,5 +44,23 @@ export const ThunderStrike: Power = {
     "type": "Special",
     "scale": 0.25,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.07,
+      "table": "Ranged_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4
+    },
+    "enduranceGain": {
+      "scale": 4.29,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 4
   }
 };

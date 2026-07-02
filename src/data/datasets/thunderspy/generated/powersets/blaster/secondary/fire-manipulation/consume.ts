@@ -44,5 +44,15 @@ export const Consume: Power = {
     "type": "Fire",
     "scale": 0.4,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "enduranceGain": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "enduranceGain": 120
+    },
+    "buffDuration": 120
   }
 };

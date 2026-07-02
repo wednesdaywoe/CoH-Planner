@@ -29,5 +29,6 @@ export const Absorption: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {},
   "mechanicType": "parentMechanic"
 };

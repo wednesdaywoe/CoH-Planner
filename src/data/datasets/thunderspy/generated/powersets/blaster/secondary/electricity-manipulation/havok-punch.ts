@@ -63,6 +63,22 @@ export const HavokPunch: Power = {
     "knockback": {
       "scale": 0.75,
       "table": "Melee_Knockback"
-    }
+    },
+    "enduranceDrain": {
+      "scale": 0.1,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4
+    },
+    "enduranceGain": {
+      "scale": 6.76,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 4
   }
 };

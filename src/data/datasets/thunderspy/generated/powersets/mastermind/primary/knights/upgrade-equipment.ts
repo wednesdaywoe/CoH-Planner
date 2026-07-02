@@ -36,5 +36,15 @@ export const UpgradeEquipment: Power = {
     "Recharge Intensive Pets"
   ],
   "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.15,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 5.25
+    },
+    "buffDuration": 5.25
+  },
   "mechanicType": "parentMechanic"
 };

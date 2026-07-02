@@ -40,5 +40,15 @@ export const SonicRepulsion: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenBuff": 10
+    },
+    "buffDuration": 10
+  }
 };

@@ -38,5 +38,33 @@ export const TemporalHealing: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 0.75
+    },
+    "buffDuration": 0.75
+  },
+  "conditionalEffects": [
+    {
+      "id": "temporal_selection_buff",
+      "label": "Temporal Selection Buff",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "recoveryBuff": {
+          "scale": 0.3,
+          "table": "Ranged_Ones"
+        },
+        "durations": {
+          "recoveryBuff": 0.75
+        },
+        "buffDuration": 0.75
+      }
+    }
+  ]
 };

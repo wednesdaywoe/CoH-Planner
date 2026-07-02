@@ -45,7 +45,19 @@ export const ParalyzingBlast: Power = {
       "mag": 1,
       "scale": 10,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "enduranceDrain": {
+      "scale": 0.07,
+      "table": "Ranged_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 8
+    },
+    "buffDuration": 8
   },
   "conditionalEffects": [
     {

@@ -45,5 +45,11 @@ export const ThunderousBlast: Power = {
     "type": "Energy",
     "scale": 1,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "enduranceDrain": {
+      "scale": 1.05,
+      "table": "Ranged_Ones"
+    }
   }
 };

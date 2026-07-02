@@ -47,5 +47,15 @@ export const MetabolicAura: Power = {
     "Healing",
     "Running & Sprints"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 2.25
+    },
+    "buffDuration": 2.25
+  }
 };

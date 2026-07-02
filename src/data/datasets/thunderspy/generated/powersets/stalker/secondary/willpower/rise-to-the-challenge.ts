@@ -37,5 +37,15 @@ export const RisetotheChallenge: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 1
+    },
+    "buffDuration": 1
+  },
   "requires": "Stalker_Defense.Willpower.Reconstruction !"
 };

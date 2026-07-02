@@ -35,5 +35,6 @@ export const Incandescence: Power = {
     "table": "Melee_Res_DMG",
     "duration": 10.25
   },
+  "effects": {},
   "mechanicType": "parentMechanic"
 };

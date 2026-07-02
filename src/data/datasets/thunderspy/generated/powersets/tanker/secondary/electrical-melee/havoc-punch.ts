@@ -54,6 +54,22 @@ export const HavocPunch: Power = {
       "mag": 0.30000001192092896,
       "scale": 8,
       "table": "Melee_Sleep"
-    }
+    },
+    "enduranceDrain": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4
+    },
+    "enduranceGain": {
+      "scale": 3.432,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 4
   }
 };

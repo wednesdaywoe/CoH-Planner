@@ -52,5 +52,15 @@ export const BlackDwarf: Power = {
     "scale": 3,
     "table": "Melee_Res_DMG",
     "duration": 2
+  },
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 2
+    },
+    "buffDuration": 2
   }
 };

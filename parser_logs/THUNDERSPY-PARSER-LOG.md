@@ -21,7 +21,15 @@ fixed, move it to the top of the RESOLVED section with the fix details.
 
 > --- NEW ISSUES / UNRESOLVED ---
 
-## ⚠️ Thunderspy `Ones`-attrib buffs lose their modified attribute — recoverable via the index array (see CORRECTION) — 2026-07-01
+## ⚠️ Thunderspy `Ones`-attrib buffs lose their modified attribute — recharge/recovery RESOLVED (see below); mez/KB still open — 2026-07-01
+
+> **UPDATE 2026-07-02: recharge / recovery / regeneration / endurance are now
+> recovered data-driven from the index array — see the RESOLVED entry below.**
+> Mez magnitudes and knockback remain unrecovered (scoped follow-up, THUNDERSPY_TODO
+> item 1): mez needs a scale→magnitude convention the `Ones` template's flat `magnitude`
+> can't supply, and KB needs sign-vs-protection care. Damage-type index on a `['Ones']`
+> front is an AttackType/combo TAG template (Aim/Assault/Build Up) and stays excluded.
+> The historical byte-decode narrative below is kept for context.
 
 **Symptom.** Thunderspy **Hasten** granted **no +recharge buff** and had **no
 `buffDuration`**, so it contributed nothing to recharge totals *and* the perma-tracking
@@ -112,6 +120,93 @@ so Thunderspy can do the same: ship with `petEntities: {}` and fix the entity pa
 later. Player power math is unaffected; only summoned-pet detail panels are.
 
 > ---RESOLVED ---
+
+## ✅ Thunderspy `Ones`-front recharge / recovery / regen / endurance buffs recovered from the index array — 2026-07-02
+
+**Symptom.** Every Thunderspy `Ones`-front recharge buff (Hasten, Quickness, Accelerate
+Metabolism, Speed Boost, the Alpha `Recharge_*` incarnates, …) and +/- recovery/regen/
+endurance buff was silently dropped — `extractEffects` can't classify a bare `['Ones']`
+attrib. A shortHelp workaround (`recoverThunderspyOnesBuffs`) reconstructed exactly 3
+Self recharge powers and *mislabeled* Enforced Morale's ally +99% Knockback template as a
+caster +99% recharge buff.
+
+**Root cause (verified — the modified attrib IS in the binary, as an INDEX not a string).**
+Right after the `requires` array each template carries an affected-attrib index array
+(`idx*4 → attrib`). For `['Ones']`-front templates it names the real stat. TWO findings
+by byte-level recon over all 56,467 tspy templates:
+1. **Thunderspy stores `RechargeTime` at index 89** (HC/Rebirth: 90) — so it decoded as
+   `Unknown(89)` and was dropped. Confirmed: 837 index entries hit 89 and EVERY carrying
+   power is recharge-related (Hasten 0.7, Quickness 0.2, AM 0.3, Speed Boost 0.5, +the
+   `Recharge_*` temps; -recharge on Siphon Speed / Cryonic / Liquefy).
+2. The `['Ones']`-front index bucket is otherwise **heterogeneous and noisy** (damage
+   types, mez, KB, `Set_Mode`/`Rage`/`Taunt`/`Create_Entity`, and combo-marker
+   `Unknown(465–478)`), so a blanket front→index swap is unsafe.
+
+**Fix.** `ATTRIB_NAME_THUNDERSPY = {**ATTRIB_NAME, 89: "RechargeTime"}`
+([_enums.py](../tools/bin-crawler/bin_crawler/parser/_enums.py)); the tspy template parser
+([_powers.py](../tools/bin-crawler/bin_crawler/parser/_powers.py)) decodes the index array
+with it and relabels a lone `['Ones']` front to the index attrib **only when the index
+names EXACTLY ONE stat in `{RechargeTime, Recovery, Regeneration, Endurance}`** (raw index
+count == 1). Sign routes buff vs debuff. Damage/mez/KB/exotic/multi-attrib indices are left
+as `['Ones']` (dropped, exactly as before → zero regression). The shortHelp hack + its two
+call sites + module export were removed.
+
+**The aspect/target trap (found by adversarial audit) + the converter guard.** The relabel is
+honest at the ATTRIB level, but Thunderspy's schema **drops both the AttribMod `aspect` and the
+per-template `target`** — precisely the fields HC uses to separate a buff from a resistance and a
+self-effect from a foe-effect. So the relabel alone mis-emits two classes:
+- **Aspect-trap.** A `Ones` "resistance to recharge slow" is byte-identical to a +recharge buff
+  once aspect is gone (the two u4s after magnitude decode to `(0,0)` for BOTH). Casualties: Grant
+  Cover (+RES(Recharge Debuff)), Kheldian **Absorption**/**Incandescence** passives, Cosmic/Dark
+  Balance slow-resist, and stray placeholders (Boost Range, Temporal Manipulator scale 10,
+  Interrupt_* incarnates) — all emitted a phantom +recharge buff.
+- **Target-trap.** A positive `Recovery`/`Regeneration` template on a FOE attack (Disrupting
+  Torrent, Touch of Fear) becomes a caster self-buff — the converter's RESOURCES branch keys on
+  scale sign with no `isSelfTargeting` guard (unlike its KB/movement siblings), and tspy's
+  `target=''` never trips it.
+
+The only discriminators that survive into the export are the power's `target_type` and resolved
+shortHelp. `guardThunderspyOnesBuffs`
+([convert-powerset.cjs](../scripts/convert-powerset.cjs), run from both `convertPower` and
+`convertPoolPower`) vetoes both: keep a recovered `rechargeBuff` **only if shortHelp advertises
+`+Recharge`/`+Rech`** (every true positive does — Hasten "Self +Recharge", Quickness, Speed Boost,
+AM, Clear Skies "+Rech"; no resistance/placeholder one does); drop `recoveryBuff`/`regenBuff` on
+**Foe/Location** powers (`enduranceGain` exempt — a foe Electric attack's +End is a genuine
+drain-to-self, confirmed against HC). Recharge DEBUFFS are untouched (sign/`*_Slow` table already
+routes them). Guard removals: **24 phantom `rechargeBuff` + 6 phantom `regenBuff`**, nothing else.
+
+**De-risk / verification.** Baseline export was byte-identical to committed
+`exported_powers/thunderspy` (zero drift), so the change diff is isolated: **834 export
+files, purely additive** — the only new template attribs are `RechargeTime` (87),
+`Recovery` (346), `Regeneration` (299), `Endurance` (452); **zero non-attrib fields
+changed**; no `Ones`→damage/mez/defense relabel. Generated layer (post-guard): only
+`recharge/recovery/regen/endurance` buff+debuff keys added, minus the 30 guarded false
+positives (`damage`/`defenseBuff`/`stun`/`immobilize` all net-zero). A 5-agent adversarial
+workflow over the export surfaced the aspect/target traps; the guard was derived from a full
+dump of every recharge/resource relabel (scale-sign × target × shortHelp) and re-verified over
+the post-guard generated layer. Marquee values confirmed (Hasten +0.7/120s Track button intact
+via the normal `durations`→`buffDuration` path; Speed Boost +0.5 recharge & +0.25 recovery;
+Siphon Speed -0.2 → rechargeDebuff; Absorption/Grant Cover/Disrupting Torrent phantom buffs gone).
+Retiring the hack also removed Enforced Morale's bogus +99% recharge. `tsc` clean (pre-existing
+`html-to-image` env gap aside); full suite **677 pass**. Guard test:
+[thunderspy-ones-recharge-buff.test.ts](../src/data/thunderspy-ones-recharge-buff.test.ts).
+**Remaining:** mez magnitudes + knockback (THUNDERSPY_TODO item 1) — the SAME aspect/target
+limitation applies, so they'll need the same shortHelp/target discipline, not just a relabel.
+
+**One residual to verify in-game (kept, not dropped).** The post-guard audit flagged **15
+Mastermind pet-upgrade powers** (Equip Robot / Upgrade Robot / Train Beasts / Enchant Undead /
+…) each carrying an identical `recoveryBuff` scale 0.15 / 240s on a Self template. HC has no
+caster effect there and the shortHelp is silent, BUT the recon shows a genuine `target=Self`,
+empty-`requires` template structurally identical to Black Dwarf's real +0.15 Recovery — so it
+may be a real (undocumented) Thunderspy rebalance rather than a mis-parse or aspect-trap. Per §5
+(the binary is the oracle; Thunderspy rebalances freely) it is **kept**, not dropped on an
+HC-absence guess. Verify in-game whether upgrading henchmen grants the Mastermind +15% Recovery;
+if not, it's an aspect-trap the shortHelp guard can't see (Self + no advertised stat) and would
+need an explicit exclusion. Also minor (kept, ally-excluded from totals so display-only): Conduit
+of Pain / Repair label an ally/pet endurance restore as caster `enduranceGain` via the endurance
+exemption; and the guard intentionally does not recurse into `conditionalEffects`, so Primalist
+form-gated buffs (Pack Frenzy huntermode recharge, Rejuvenate prowlermode recovery) are unguarded
+— correct today (they're legit and the base shortHelp doesn't describe form effects).
 
 ## ✅ Thunderspy Defense toggles contributed 0 to Defense totals — two attrib bugs — 2026-07-02
 

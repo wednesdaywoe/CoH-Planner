@@ -27,7 +27,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Chilblain",
         "fullName": "Epic.Arctic_Mastery.Chilblain",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Immobilizes your target in an icy trap. Deals some damage over time and slightly Slows the target's attack and movement speed. Useful for keeping villains at bay. Damage: Moderate(DoT),  Recharge: Fast",
         "shortHelp": "Ranged, Moderate DoT(Cold), Foe Immobilize, -SPD, -Recharge",
         "icon": "arcticmastery_chillblains.png",
@@ -45,6 +45,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -54,6 +55,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.2,
+            "table": "Melee_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -65,7 +73,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Block of Ice",
         "fullName": "Epic.Arctic_Mastery.Block_of_Ice",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You can freeze a single foe in a Block of Ice. The target is frozen solid, helpless, and can be attacked. More powerful foes may not be held, but all affected targets will be Slowed. Recharge: Moderate",
         "shortHelp": "Ranged, Foe Hold, -SPD, -Recharge",
         "icon": "arcticmastery_blockofice.png",
@@ -83,6 +91,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -92,6 +101,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 12,
@@ -103,7 +117,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Ice Blast",
         "fullName": "Epic.Arctic_Mastery.Ice_Blast",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage. Damage: Moderate, Recharge: Moderate",
         "shortHelp": "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
         "icon": "iceblast_iceblast.png",
@@ -120,6 +134,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage",
           "Slow Movement"
         ],
@@ -129,14 +144,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 8.528,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.501,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Shiver",
         "fullName": "Epic.Arctic_Mastery.Shiver",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "You can blast forth a wide cone of chilling air that dramatically Slows the movement and attack rate of nearby foes. Recharge: Slow",
         "shortHelp": "Ranged (Cone), Foe -SPD, -Recharge",
         "icon": "arcticmastery_shiver.png",
@@ -170,7 +190,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Ice Storm",
         "fullName": "Epic.Arctic_Mastery.Ice_Storm",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed. Damage: Minor(DoT), Recharge: Long",
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Recharge, -SPD",
         "icon": "iceblast_freezingrain.png",
@@ -186,6 +206,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -214,7 +235,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Web Envelope",
         "fullName": "Epic.Blaster_Mace_Mastery.Web_Envelope",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The Nullifier Mace can lob a modified Web Grenade.  Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping. Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE) Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -253,7 +274,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Scorpion Shield",
         "fullName": "Epic.Blaster_Mace_Mastery.Scorpion_Shield",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion's technologies are impressive indeed.  This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
@@ -275,14 +296,24 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.1625,
           "activationTime": 2,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Mace Beam Volley",
         "fullName": "Epic.Blaster_Mace_Mastery.Mace_Beam_Volley",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Fires a volley of multiple kinetic energy blasts from your Nullifier Mace. These blast spread out in a wide cone and are powerful enough to knock down some foes. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -300,6 +331,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -312,6 +344,11 @@ export const EPIC_POOLS_RAW = {
           "radius": 50,
           "arc": 0.6108652353286743,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 1,
             "table": "Ranged_Knockback"
@@ -322,7 +359,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Spiderlings",
         "fullName": "Epic.Blaster_Mace_Mastery.Power_Boost",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion has granted you access to a small squadron of Arachnobot Spiderlings. Recharge: Extremely Long",
         "shortHelp": "Summon Spiderlings: Ranged Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -341,6 +378,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -357,7 +395,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Web Cocoon",
         "fullName": "Epic.Blaster_Mace_Mastery.Web_Cocoon",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "The Bane Mace can fire a more powerful version the common web grenade.  The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed.  Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 44 and have Web Envelope or Web Cocoon before selecting this power. Recharge: Long",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
         "icon": "arachnos_patron_targetedhold.png",
@@ -407,7 +445,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Static Discharge",
         "fullName": "Epic.Blaster_Mu_Mastery.Static_Discharge",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -425,6 +463,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -436,14 +475,35 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.96,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Charged Armor",
         "fullName": "Epic.Blaster_Mu_Mastery.Charged_Armor",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -472,7 +532,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Adept",
         "fullName": "Epic.Blaster_Mu_Mastery.Thunder_Strike",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Your access to this Adept is very limited. You can only summon him once every 15 minutes and he will leave after 4 minutes, or if you exit a zone or mission. Recharge: Extremely Long",
         "shortHelp": "Summon Mu Adept: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -492,6 +552,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -508,7 +569,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Electrifying Fences",
         "fullName": "Epic.Blaster_Mu_Mastery.Electrifying_Fences",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Minor DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -528,6 +589,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -539,18 +601,38 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          }
+          },
+          "enduranceDrain": {
+            "scale": 0.04,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "enduranceDrain": 6.2,
+            "recoveryDebuff": 2
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 6.2
         }
       },
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Blaster_Mu_Mastery.Electric_Shackles",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. Damage: Minor, Recharge: Long",
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
@@ -570,6 +652,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -578,7 +661,26 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.15,
+            "table": "Ranged_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8
         }
       }
     ]
@@ -597,7 +699,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Ring of Fire",
         "fullName": "Epic.Blaze_Mastery.Ring_of_Fire",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay. Damage: Moderate(DoT), Recharge: Fast",
         "shortHelp": "Ranged, Moderate DoT(Fire), Foe Immobilize",
         "icon": "pyremastery_ringoffire.png",
@@ -615,6 +717,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -624,6 +727,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 8,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.22,
+            "table": "Melee_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -635,7 +745,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Char",
         "fullName": "Epic.Blaze_Mastery.Char",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char. Damage: Minor(DoT), Recharge: Moderate",
         "shortHelp": "Ranged, Minor DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
@@ -653,6 +763,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -662,6 +773,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 10,
@@ -673,7 +791,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Fire Blast",
         "fullName": "Epic.Blaze_Mastery.Fire_Blast",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Fire)",
         "icon": "fireblast_fireblast.png",
@@ -689,6 +807,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -697,14 +816,28 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 5.2,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.15,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
         "name": "Melt Armor",
         "fullName": "Epic.Blaze_Mastery.Melt_Armor",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
@@ -738,7 +871,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Fire Ball",
         "fullName": "Epic.Blaze_Mastery.Fire_Ball",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
@@ -754,6 +887,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -764,7 +898,21 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 0.2,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            }
+          ]
         }
       }
     ]
@@ -783,7 +931,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Superior Conditioning",
         "fullName": "Epic.Body_Mastery.Conserve_Power",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Your Superior Condition has increased your maximum endurance by 5%.",
         "shortHelp": "Self +Endurance",
         "icon": "energymastery_conservepower.png",
@@ -801,14 +949,22 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 10,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceGain": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "enduranceGain": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Body_Mastery.Focused_Accuracy",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. Recharge: Slow",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "gadgets_targetingdrone.png",
@@ -837,7 +993,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Body_Mastery.Laser_Beam_Eyes",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can reduce the target's Defense. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Energy/Toxic), Foe -DEF",
         "icon": "bodymastery_laserbeameyes.png",
@@ -856,6 +1012,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -864,14 +1021,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Body_Mastery.Physical_Perfection",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal.  This power is always active and consumes no endurance.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
@@ -890,14 +1052,22 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "activatePeriod": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Body_Mastery.Energy_Torrent",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. Damage: Minor, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Minor DMG(Energy/Smash), Foe Knockback",
         "icon": "bodymastery_energytorrent.png",
@@ -915,6 +1085,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -926,7 +1097,12 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.3,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]
@@ -945,7 +1121,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Superior Conditioning",
         "fullName": "Epic.Body_Mastery_Stalker.Conserve_Power",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Your Superior Condition has increased your maximum endurance by 5%.",
         "shortHelp": "Self +Endurance",
         "icon": "bodymastery_conservepower.png",
@@ -962,14 +1138,22 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceGain": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "enduranceGain": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Body_Mastery_Stalker.Focused_Accuracy",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. Recharge: Slow",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "gadgets_targetingdrone.png",
@@ -998,7 +1182,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Body_Mastery_Stalker.Laser_Beam_Eyes",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can reduce the target's Defense. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Energy/Toxic), Foe -DEF",
         "icon": "bodymastery_laserbeameyes.png",
@@ -1017,6 +1201,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1025,14 +1210,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Body_Mastery_Stalker.Physical_Perfection",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal.  This power is always active and consumes no endurance.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
@@ -1051,14 +1241,22 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "activatePeriod": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Body_Mastery_Stalker.Energy_Torrent",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. Damage: Minor, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Minor DMG(Energy/Smash), Foe Knockback",
         "icon": "bodymastery_energytorrent.png",
@@ -1076,6 +1274,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1087,7 +1286,12 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.3,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]
@@ -1106,7 +1310,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Spirit Shark",
         "fullName": "Epic.Brute_Leviathan_Mastery.Spirit_Shark",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. Damage: Heavy(DoT), Recharge: Fast",
         "shortHelp": "Ranged, Heavy DoT(Lethal), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -1124,6 +1328,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1133,6 +1338,20 @@ export const EPIC_POOLS_RAW = {
           "endurance": 8.58,
           "activationTime": 3,
           "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          ],
           "knockback": {
             "scale": 0.7,
             "table": "Melee_Knockback"
@@ -1143,7 +1362,7 @@ export const EPIC_POOLS_RAW = {
         "name": "School of Sharks",
         "fullName": "Epic.Brute_Leviathan_Mastery.School_of_Sharks",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -1161,6 +1380,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1173,6 +1393,11 @@ export const EPIC_POOLS_RAW = {
           "radius": 50,
           "arc": 0.5235987901687622,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.135,
+            "table": "Melee_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -1184,7 +1409,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Bile Spray",
         "fullName": "Epic.Brute_Leviathan_Mastery.Chum_Spray",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -1200,6 +1425,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1211,14 +1437,19 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.7,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Arctic Breath",
         "fullName": "Epic.Brute_Leviathan_Mastery.Arctic_Breath",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this freezing acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take cold damage over time, and have their damage resistance, Defense, movement rate, and recharge rate reduced.  This ice will stick to foes, causing them to fall down occasionally. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Cone), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
         "icon": "arachnos_patron_coneslow.png",
@@ -1238,6 +1469,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -1250,14 +1482,19 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Summon Guardian",
         "fullName": "Epic.Brute_Leviathan_Mastery.Summon_Guardian",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Captain Mako has shown you how to summon a Coralax Guardian Sentinel to do your bidding. These creatures are composed of living coral made from the sea-goddess Merulina. Recharge: Extremely Long",
         "shortHelp": "Summon Sentinel: Ranged Moderate DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
@@ -1277,6 +1514,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -1305,7 +1543,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Mace Blast",
         "fullName": "Epic.Brute_Mace_Mastery.Mace_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The Executioner's Mace is capable of firing a powerful bolt of kinetic energy. The blast is powerful enough that it may knock some foes back. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term. Damage: Heavy, Recharge: Fast",
         "shortHelp": "Ranged, Heavy DMG(Energy/Smash), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -1323,6 +1561,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1331,14 +1570,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 9,
           "endurance": 8.58,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.66,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Web Envelope",
         "fullName": "Epic.Brute_Mace_Mastery.Web_Envelope",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "The Executioner's Mace can lob a modified Web Grenade.  Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping. Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE) Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -1377,7 +1621,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Focused Accuracy",
         "fullName": "Epic.Brute_Mace_Mastery.Focused_Accuracy",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When this power is activated, the Villain focuses their senses to dramatically improve their accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. Recharge: Slow",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
@@ -1406,7 +1650,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Disruptor Blast",
         "fullName": "Epic.Brute_Mace_Mastery.Disruptor_Blast",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes.  Some affected foes may be knocked back by the force of the blast. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -1424,6 +1668,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1435,6 +1680,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Melee_Damage"
+          },
           "knockback": {
             "scale": 1,
             "table": "Melee_Knockback"
@@ -1445,7 +1695,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Blaster",
         "fullName": "Epic.Brute_Mace_Mastery.Summon_Blaster",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion has granted you an Arachnobot Blaster for you to command. Arachnobot Blasters were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Recharge: Extremely Long",
         "shortHelp": "Summon Arachnobot: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -1464,6 +1714,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -1492,7 +1743,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Mu Lightning",
         "fullName": "Epic.Brute_Mu_Mastery.Mu_Lightning",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you. Damage: High, Recharge: Fast",
         "shortHelp": "Ranged, High DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -1510,6 +1761,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1518,14 +1770,35 @@ export const EPIC_POOLS_RAW = {
           "recharge": 9,
           "endurance": 8.58,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.32,
+            "table": "Melee_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 3,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Electrifying Fences",
         "fullName": "Epic.Brute_Mu_Mastery.Electrifying_Fences",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Minor DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -1545,6 +1818,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1556,18 +1830,38 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
             "table": "Melee_Immobilize"
-          }
+          },
+          "enduranceDrain": {
+            "scale": 0.04,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "enduranceDrain": 6.2,
+            "recoveryDebuff": 2
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 6.2
         }
       },
       {
         "name": "Ball Lightning",
         "fullName": "Epic.Brute_Mu_Mastery.Ball_Lightning",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -1585,6 +1879,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1595,14 +1890,31 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.3,
+            "table": "Melee_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Static Discharge",
         "fullName": "Epic.Brute_Mu_Mastery.Static_Discharge",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -1620,6 +1932,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1631,14 +1944,35 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.96,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Summon Striker",
         "fullName": "Epic.Brute_Mu_Mastery.Summon_Striker",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Scirocco has shown you how to call upon a mystical Mu Striker to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Recharge: Extremely Long",
         "shortHelp": "Summon Mu Strike: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -1657,6 +1991,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -1685,7 +2020,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Gloom",
         "fullName": "Epic.Brute_Soul_Mastery.Gloom",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Gloom slowly drains a target of life, while reducing his Accuracy. Slower than Dark Blast, but deals more damage over time. Damage: High(DoT), Recharge: Moderate",
         "shortHelp": "Ranged, High DoT(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -1703,6 +2038,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Melee Damage",
           "Ranged Damage",
           "To Hit Debuff"
         ],
@@ -1712,14 +2048,21 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 8.528,
           "activationTime": 1.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.22,
+            "table": "Melee_Damage",
+            "duration": 1.5,
+            "tickRate": 0.20000000298023224
+          }
         }
       },
       {
         "name": "Soul Tentacles",
         "fullName": "Epic.Brute_Soul_Mastery.Soul_Tentacles",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -1737,6 +2080,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1749,6 +2093,13 @@ export const EPIC_POOLS_RAW = {
           "radius": 40,
           "arc": 0.4363323152065277,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -1760,7 +2111,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Darkest Night",
         "fullName": "Epic.Brute_Soul_Mastery.Darkest_Night",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "While active, you channel Negative Energy onto a targeted foe. While Darkest Night is active the target, and all foes nearby, will have their chance to hit and Damage potential reduced as long as you keep the power active. Recharge: Moderate",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG, -To Hit",
         "icon": "arachnos_patron_aoedamagedebuff.png",
@@ -1793,7 +2144,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Dark Obliteration",
         "fullName": "Epic.Brute_Soul_Mastery.Dark_Obliteration",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -1811,6 +2162,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -1822,14 +2174,19 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.9,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Summon Widow",
         "fullName": "Epic.Brute_Soul_Mastery.Summon_Widow",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Ghost Widow has assigned a beautiful but deadly Blood Widow assassins for you to command. Their weapons of choice include wrist retractable mounted razors and darts, all tipped in deadly poison. Recharge: Extremely Long",
         "shortHelp": "Summon Blood Widow: Melee Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -1845,6 +2202,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff"
@@ -1874,7 +2232,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Static Discharge",
         "fullName": "Epic.Charge_Mastery.Static_Discharge",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "electrical_mastery_static_discharge.png",
@@ -1892,6 +2250,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1903,14 +2262,19 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.91,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Charge_Mastery.Electric_Shackles",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you.  Damage: Minor, Recharge: Moderate",
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "chargemastery_electricshackles.png",
@@ -1930,6 +2294,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1938,14 +2303,33 @@ export const EPIC_POOLS_RAW = {
           "recharge": 16,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.15,
+            "table": "Melee_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 8
         }
       },
       {
         "name": "Thunder Strike",
         "fullName": "Epic.Charge_Mastery.Thunder_Strike",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. Damage: High, Recharge: Slow",
         "shortHelp": "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "chargemastery_thunderstrike.png",
@@ -1965,6 +2349,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -1976,18 +2361,42 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 7,
           "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.96,
+              "table": "Melee_Damage"
+            }
+          ],
           "stun": {
             "mag": 0.5,
             "scale": 5,
             "table": "Melee_Stun"
-          }
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Surge of Power",
         "fullName": "Epic.Charge_Mastery.Surge_of_Power",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics.  However, expending all this energy will leave you exhausted, and drained of all endurance. Unrelenting from the Presence pool can be used to prevent this crash from occurring. Recharge: Very Long",
         "shortHelp": "Self, +Res(Special)",
         "icon": "electrical_mastery_powersurge.png",
@@ -2010,14 +2419,22 @@ export const EPIC_POOLS_RAW = {
           "recharge": 540,
           "endurance": 3.25,
           "activationTime": 1.96,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 90
+          },
+          "buffDuration": 90
         }
       },
       {
         "name": "EM Pulse",
         "fullName": "Epic.Charge_Mastery.EM_Pulse",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and leave them incapacitated and Disoriented for a while. Additionally, most machines and robots will take moderate high damage. However, this power uses a lot of endurance and leaves you unable to recover endurance for a while. Recharge: Very Long",
         "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
         "icon": "electrical_mastery_em_pulse.png",
@@ -2048,7 +2465,20 @@ export const EPIC_POOLS_RAW = {
             "mag": 1,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          }
+          },
+          "regenDebuff": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "regenDebuff": 15,
+            "recoveryDebuff": 15
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       }
     ]
@@ -2067,7 +2497,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Ice Blast",
         "fullName": "Epic.Chill_Mastery.Ice_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage. Damage: Moderate, Recharge: Moderate",
         "shortHelp": "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
         "icon": "icemastery_iceblast.png",
@@ -2084,6 +2514,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage",
           "Slow Movement"
         ],
@@ -2093,14 +2524,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 8.528,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.49,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Flash Freeze",
         "fullName": "Epic.Chill_Mastery.Flash_Freeze",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected. Damage: Minor, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Minor DMG(Cold/Lethal), Foe Sleep",
         "icon": "coldmastery_flashfreeze.png",
@@ -2117,6 +2553,7 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage",
           "Sleep"
         ],
@@ -2129,6 +2566,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Ranged_Damage"
+          },
           "sleep": {
             "mag": 1,
             "scale": 15,
@@ -2140,7 +2582,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Hoarfrost",
         "fullName": "Epic.Chill_Mastery.Hoarfrost",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. Recharge: Very Long",
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "icearmor_hoarfrost.png",
@@ -2170,7 +2612,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Frozen Armor",
         "fullName": "Epic.Chill_Mastery.Snow_Storm",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. Recharge: Very Fast",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "icearmor_icearmor.png",
@@ -2194,14 +2636,24 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.1625,
           "activationTime": 0.73,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Hibernate",
         "fullName": "Epic.Chill_Mastery.Hibernate",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power. you cannot Hibernate for more than 30 seconds while in a PvP zone and will be locked out from hibernating again for 60 seconds. If you activate this power while in the air, you will fall. Recharge: Long",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "icearmor_hybernate.png",
@@ -2244,7 +2696,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Snow Storm",
         "fullName": "Epic.Cold_Mastery.Snow_Storm",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "While active, the chill from this Snow Storm can dramatically Slow the attack and movement speed of the target and all nearby foes. Recharge: Slow",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -Speed, -Recharge",
         "icon": "coldmastery_snowstorm.png",
@@ -2276,7 +2728,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Flash Freeze",
         "fullName": "Epic.Cold_Mastery.Flash_Freeze",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You can Flash Freeze a large patch of ground beneath a targeted foe, instantly forming dozens of deadly ice shards that do Cold damage to all enemies in the area. The victims are left trapped within the icicles, but can break free if disturbed. Only targets near the ground can be affected. Damage: Minor, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Minor DMG(Cold/Lethal), Foe Sleep",
         "icon": "coldmastery_flashfreeze.png",
@@ -2293,6 +2745,7 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage",
           "Sleep"
         ],
@@ -2305,6 +2758,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Ranged_Damage"
+          },
           "sleep": {
             "mag": 1,
             "scale": 15,
@@ -2316,7 +2774,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Hoarfrost",
         "fullName": "Epic.Cold_Mastery.Hoarfrost",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. Recharge: Very Long",
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "icearmor_hoarfrost.png",
@@ -2346,7 +2804,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Frozen Armor",
         "fullName": "Epic.Cold_Mastery.Frozen_Armor",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. Recharge: Very Fast",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "icearmor_icearmor.png",
@@ -2370,14 +2828,24 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.1625,
           "activationTime": 0.73,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Hibernate",
         "fullName": "Epic.Cold_Mastery.Hibernate",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power. you cannot Hibernate for more than 30 seconds while in a PvP zone and will be locked out from hibernating again for 60 seconds. If you activate this power while in the air, you will fall. Recharge: Long",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "icearmor_hybernate.png",
@@ -2420,7 +2888,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Water Spout",
         "fullName": "Epic.Controller_Leviathan_Mastery.Water_Spout",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes. Recharge: Long",
         "shortHelp": "Summon Water Spout: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
         "icon": "arachnos_patron_dropknockback.png",
@@ -2441,6 +2909,7 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -2457,7 +2926,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Bile Spray",
         "fullName": "Epic.Controller_Leviathan_Mastery.Chum_Spray",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -2473,6 +2942,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -2484,14 +2954,19 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.7,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Hibernate",
         "fullName": "Epic.Controller_Leviathan_Mastery.Hibernate",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power. you cannot Hibernate for more than 30 seconds while in a PvP zone and will be locked out from hibernating again for 60 seconds. If you activate this power while in the air, you will fall. Recharge: Long",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -2522,7 +2997,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Shark Skin",
         "fullName": "Epic.Controller_Leviathan_Mastery.Shark_Skin",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing Fire, and Cold damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold, Fire)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -2551,7 +3026,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Coralax",
         "fullName": "Epic.Controller_Leviathan_Mastery.Summon_Coralax",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Captain Mako has shown you how to summon a Coralax Blue Hybrid to do your bidding. The Coralax are humans who have been infected with living coral. Recharge: Extremely Long",
         "shortHelp": "Summon Hybrid: Ranged Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -2597,7 +3072,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Poisonous Ray",
         "fullName": "Epic.Controller_Mace_Mastery.Poisonous_Ray",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The Bane Mace can fire a nasty Poison Ray.  This toxin is suspended in a polarized plasma field and delivered like an energy blast.  Upon impact, the toxin directly attacks the immune system, reducing the affected targets Defense and Damage Resistance as it deals toxic damage. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
@@ -2616,6 +3091,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -2624,14 +3100,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 9.1,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Scorpion Shield",
         "fullName": "Epic.Controller_Mace_Mastery.Scorpion_Shield",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion's technologies are impressive indeed.  This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
@@ -2653,14 +3134,24 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.1625,
           "activationTime": 2,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Disruptor Blast",
         "fullName": "Epic.Controller_Mace_Mastery.Disruptor_Blast",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Fires a tremendous charge of kinetic energy from your Bane Mace. This charge is so powerful it will explode on impact, blasting all nearby foes.  Some affected foes may be knocked back by the force of the blast. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -2678,6 +3169,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -2689,6 +3181,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 1,
             "table": "Ranged_Knockback"
@@ -2699,7 +3196,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Focused Accuracy",
         "fullName": "Epic.Controller_Mace_Mastery.Personal_Force_Field",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "When this power is activated, the Villain focuses their senses to dramatically improve their accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. Recharge: Slow",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
@@ -2728,7 +3225,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Tarantula",
         "fullName": "Epic.Controller_Mace_Mastery.Summon_Tarantula",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion has granted you an Toxic Tarantula for you to command. Weaver One developed the Tarantula Exoskeleton Armor, which so radically transforms an Arachnos troop that hardly anything human is recognizable. Recharge: Extremely Long",
         "shortHelp": "Summon Tarantula: Ranged Moderate DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -2747,6 +3244,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Debuff",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -2775,7 +3273,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Sink",
         "fullName": "Epic.Controller_Mu_Mastery.Power_Sink",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance. Recharge: Long",
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "arachnos_patron_pbaoedrain.png",
@@ -2799,14 +3297,30 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "enduranceDrain": {
+            "scale": 0.35,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Charged Armor",
         "fullName": "Epic.Controller_Mu_Mastery.Charged_Armor",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -2835,7 +3349,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Ball Lightning",
         "fullName": "Epic.Controller_Mu_Mastery.Ball_Lightning",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -2853,6 +3367,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -2863,14 +3378,31 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.3,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Surge of Power",
         "fullName": "Epic.Controller_Mu_Mastery.Surge_of_Power",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics, and your endurance recovery is also increased.  Expending all this energy will leave you exhausted, drained of all your endurance and unable to recover endurance for a short time. Unrelenting from the Presence pool can be used to prevent this crash from occurring. Recharge: Very Long",
         "shortHelp": "Self, +Res(Special)",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -2893,14 +3425,22 @@ export const EPIC_POOLS_RAW = {
           "recharge": 540,
           "endurance": 2.6,
           "activationTime": 1.96,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 90
+          },
+          "buffDuration": 90
         }
       },
       {
         "name": "Summon Guardian",
         "fullName": "Epic.Controller_Mu_Mastery.Summon_Guardian",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Scirocco has shown you how to call upon a mystical Mu Guardian to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Recharge: Extremely Long",
         "shortHelp": "Summon Mu Guardian: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -2947,7 +3487,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Burst",
         "fullName": "Epic.Controller_Munitions_Mastery.Burst",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Quickly fires a Burst of rounds at a single target at very long range. Damage is average, but the fire rate is fast. Can also reduce the target's defense. Damage: Moderate(DoT), Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Lethal), Foe -DEF",
         "icon": "assaultweapons_arburst.png",
@@ -2966,6 +3506,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -2974,14 +3515,21 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 7.48,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.4175,
+            "table": "Ranged_Damage",
+            "duration": 0.91,
+            "tickRate": 0.30000001192092896
+          }
         }
       },
       {
         "name": "M30 Grenade",
         "fullName": "Epic.Controller_Munitions_Mastery.M30_Grenade",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Launches a Grenade at long range from beneath the barrel of your Assault Rifle. This explosion affects all within the blast radius, and can knock them back. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal/Smash), Knockback",
         "icon": "assaultweapons_arm30grenade.png",
@@ -2999,6 +3547,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -3010,6 +3559,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 2,
             "table": "Ranged_Knockback"
@@ -3020,7 +3574,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Body Armor",
         "fullName": "Epic.Controller_Munitions_Mastery.Body_Armor",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You have Body Armor that will reduce all Smashing and Lethal damage. This power is always on, and costs no Endurance.",
         "shortHelp": "Auto: Self +Res (Smash, Lethal)",
         "icon": "munitionsmastery_bodyarmor.png",
@@ -3044,7 +3598,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Serum",
         "fullName": "Epic.Controller_Munitions_Mastery.Serum",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "You can activate this power to increase your maximum Hit Points for a short time. Recharge: Very Long",
         "shortHelp": "Self Heal, +Max HP",
         "icon": "crabspidertraining_serum.png",
@@ -3072,7 +3626,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Targeting Drone",
         "fullName": "Epic.Controller_Munitions_Mastery.Targeting_Drone",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit and increase your perception, allowing you to better see stealthy foes. Targeting Drone also grants you resistance to powers that debuff your chance to hit. While in use, any sniper rifle shots you make will do additional damage. This is a toggle power and must be activated and deactivated manually. Like all toggle powers, the Targeting Drone costs endurance while active. Recharge: Slow",
         "shortHelp": "Toggle: Self +To Hit, +Perception, Res(DeBuff To Hit)",
         "icon": "gadgets_targetingdrone.png",
@@ -3113,7 +3667,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Dark Consumption",
         "fullName": "Epic.Controller_Soul_Mastery.Dark_Consumption",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance. Damage: Moderate, Recharge: Very Long",
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +End",
         "icon": "arachnos_patron_pbaoedrain.png",
@@ -3130,7 +3684,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage"
+          "Melee AoE Damage",
+          "Melee Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -3139,14 +3694,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.8,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
         "name": "Dark Embrace",
         "fullName": "Epic.Controller_Soul_Mastery.Dark_Embrace",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -3175,7 +3739,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Dark Obliteration",
         "fullName": "Epic.Controller_Soul_Mastery.Dark_Obliteration",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -3194,6 +3758,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Melee AoE Damage",
+          "Melee Damage",
           "Pet Damage",
           "To Hit Buff",
           "To Hit Debuff"
@@ -3206,14 +3771,19 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.9,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Soul Drain",
         "fullName": "Epic.Controller_Soul_Mastery.Soul_Drain",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. Damage: Moderate, Recharge: Very Long",
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
         "icon": "arachnos_patron_pbaoebuffdamage.png",
@@ -3239,14 +3809,19 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Summon Seer",
         "fullName": "Epic.Controller_Soul_Mastery.Summon_Seer",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Ghost Widow has assigned a Fortunata Seer for you to command.  Fortunata Seers can glimpse moments into the future. They use this ability to increase the Perception of their teammate. Recharge: Extremely Long",
         "shortHelp": "Summon Fortunata Seer: Ranged Moderate DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -3291,7 +3866,7 @@ export const EPIC_POOLS_RAW = {
         "name": "School of Sharks",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.School_of_Sharks",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time.",
         "shortHelp": "Ranged (Cone), Moderate DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -3309,6 +3884,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -3321,6 +3897,13 @@ export const EPIC_POOLS_RAW = {
           "radius": 60,
           "arc": 1.0471975803375244,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.15,
+            "table": "Ranged_Damage",
+            "duration": 3,
+            "tickRate": 0.5
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -3332,7 +3915,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Shark Skin",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Shark_Skin",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing Fire, and Cold damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold, Fire)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -3361,7 +3944,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Hibernate",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Hibernate",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power. you cannot Hibernate for more than 30 seconds while in a PvP zone and will be locked out from hibernating again for 60 seconds. If you activate this power while in the air, you will fall. Recharge: Long",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -3392,7 +3975,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Spirit Shark Jaws",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Spirit_Shark_Jaws",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "You can summon a massive Spirit Shark that will attack your foe from below.  The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. Recharge: Slow",
         "shortHelp": "Ranged, Moderate DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
@@ -3410,6 +3993,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -3419,6 +4003,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.15,
+            "table": "Ranged_Damage",
+            "duration": 3,
+            "tickRate": 0.5
+          },
           "immobilize": {
             "mag": 1,
             "scale": 10,
@@ -3430,7 +4021,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Guardian",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Summon_Coralax",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Captain Mako has shown you how to summon a Coralax Guardian Sentinel to do your bidding. These creatures are composed of living coral made from the sea-goddess Merulina. Recharge: Extremely Long",
         "shortHelp": "Summon Sentinel: Ranged Moderate DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
@@ -3450,6 +4041,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff"
@@ -3479,7 +4071,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Web Envelope",
         "fullName": "Epic.Corruptor_Mace_Mastery.Web_Envelope",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The Executioner's Mace can lob a modified Web Grenade.  Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping. Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE) Immobilize, -Recharge, -Fly",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -3518,7 +4110,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Scorpion Shield",
         "fullName": "Epic.Corruptor_Mace_Mastery.Scorpion_Shield",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion's technologies are impressive indeed.  This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
@@ -3540,14 +4132,24 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.1625,
           "activationTime": 2,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Corruptor_Mace_Mastery.Focused_Accuracy",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When this power is activated, the Villain focuses their senses to dramatically improve their accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. Recharge: Slow",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "arachnos_patron_selftohitbuff.png",
@@ -3576,7 +4178,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Web Cocoon",
         "fullName": "Epic.Corruptor_Mace_Mastery.Web_Cocoon",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The Bane Mace can fire a more powerful version the common web grenade.  The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed.  Web Cocoon can also bring down flying targets and prevent foes from jumping. Recharge: Long",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
         "icon": "arachnos_patron_targetedhold.png",
@@ -3614,7 +4216,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Disruptor",
         "fullName": "Epic.Corruptor_Mace_Mastery.Summon_Disruptor",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion has granted you an Arachnobot Disruptor for you to command. Arachnobots were created by Arachnos Orb Weavers to take down particularly powerful super-powered threats. Recharge: Extremely Long",
         "shortHelp": "Summon Arachnobot: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -3633,6 +4235,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -3661,7 +4264,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Sink",
         "fullName": "Epic.Corruptor_Mu_Mastery.Power_Sink",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance. Recharge: Long",
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "arachnos_patron_pbaoedrain.png",
@@ -3685,14 +4288,30 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "enduranceDrain": {
+            "scale": 0.35,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Charged Armor",
         "fullName": "Epic.Corruptor_Mu_Mastery.Charged_Armor",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -3721,7 +4340,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Electric Shackles",
         "fullName": "Epic.Corruptor_Mu_Mastery.Electric_Shackles",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. Damage: Minor, Recharge: Long",
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
@@ -3741,6 +4360,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -3749,14 +4369,33 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.15,
+            "table": "Ranged_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8
         }
       },
       {
         "name": "Energize",
         "fullName": "Epic.Corruptor_Mu_Mastery.Conserve_Power",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "You can channel a tremendous amount of electricity through your body for a short period of time.  Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time.",
         "shortHelp": "Self Endurance Discount, Heal, +Regen",
         "icon": "arachnos_patron_conservepower.png",
@@ -3794,7 +4433,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Adept",
         "fullName": "Epic.Corruptor_Mu_Mastery.Summon_Adept",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Recharge: Extremely Long",
         "shortHelp": "Summon Mu Adept: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -3814,6 +4453,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -3842,7 +4482,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Soul Drain",
         "fullName": "Epic.Corruptor_Soul_Mastery.Soul_Drain",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. Damage: Moderate, Recharge: Very Long",
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
         "icon": "arachnos_patron_pbaoebuffdamage.png",
@@ -3859,6 +4499,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
+          "Melee Damage",
           "To Hit Buff"
         ],
         "effects": {
@@ -3868,14 +4509,19 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 7
+          "maxTargets": 7,
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Dark Embrace",
         "fullName": "Epic.Corruptor_Soul_Mastery.Dark_Embrace",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -3904,7 +4550,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Boost",
         "fullName": "Epic.Corruptor_Soul_Mastery.Power_Boost",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. Recharge: Long",
         "shortHelp": "Self +Special",
         "icon": "arachnos_patron_powerboost.png",
@@ -3929,7 +4575,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Soul Storm",
         "fullName": "Epic.Corruptor_Soul_Mastery.Soul_Storm",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding.  Soul Storm enraptures a single target Holding them while their life-force is drained from their body. Recharge: Slow",
         "shortHelp": "Ranged, Moderate DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
@@ -3947,6 +4593,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -3956,6 +4603,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.11,
+            "table": "Ranged_Damage",
+            "duration": 10,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 10,
@@ -3967,7 +4621,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Mistress",
         "fullName": "Epic.Corruptor_Soul_Mastery.Summon_Mistress",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Ghost Widow has assigned a Fortunata Mistress for you to command.  Arguably, the most powerful of the Fortunatas, these rare few have mastered numerous psychic abilities and risen to the top of Lord Recluse's beautiful Black Widows. Recharge: Extremely Long",
         "shortHelp": "Summon Fortunata Mistress: Ranged Moderate DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -3988,6 +4642,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -4016,7 +4671,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Oppressive Gloom",
         "fullName": "Epic.Dark_Mastery.Oppressive_Gloom",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use. Recharge: Moderate",
         "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
         "icon": "darkmastery_oppressivegloom.png",
@@ -4042,6 +4697,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 12,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Melee_Damage"
+          },
           "stun": {
             "mag": 1,
             "scale": 6,
@@ -4053,7 +4713,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Dark Consumption",
         "fullName": "Epic.Dark_Mastery.Dark_Consumption",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance. Damage: Moderate, Recharge: Very Long",
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +End",
         "icon": "shadowfighting_darkconsumption.png",
@@ -4069,7 +4729,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage"
+          "Melee AoE Damage",
+          "Melee Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -4078,14 +4739,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.8,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
         "name": "Dark Embrace",
         "fullName": "Epic.Dark_Mastery.Dark_Embrace",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Toxic, and Negative Energy damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "darkmastery_darkembrace.png",
@@ -4114,7 +4784,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Soul Transfer",
         "fullName": "Epic.Dark_Mastery.Soul_Transfer",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Should you fall in battle, you can perform a Soul Transfer, sucking the life force of all foes around you to bring yourself back from the brink of death. The more foes nearby, the more life is restored to you. Drained foes are left Disoriented. The dark effects of this Soul Transfer will actually leave you invulnerable for a brief time, and protected from XP Debt for 90 seconds. There must be at least one foe nearby to fuel the Transfer and revive yourself.  Damage: Moderate, Recharge: Very Long",
         "shortHelp": "Self Rez, Special",
         "icon": "darkmastery_soultransfer.png",
@@ -4133,6 +4803,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -4142,6 +4813,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
           "stun": {
             "mag": 1,
             "scale": 8,
@@ -4153,7 +4829,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Soul Drain",
         "fullName": "Epic.Dark_Mastery.Soul_Drain",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. Damage: Moderate, Recharge: Very Long",
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
         "icon": "shadowfighting_stealpower.png",
@@ -4170,6 +4846,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
+          "Melee Damage",
           "To Hit Buff"
         ],
         "effects": {
@@ -4179,7 +4856,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]
@@ -4198,7 +4880,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Torrent",
         "fullName": "Epic.Darkness_Mastery.Torrent",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You summon a wave of mire that sweeps away foes within its arc. The attack deals minimal Negative Energy damage, but sends foes flying and reduces their chance to hit.  Damage: Minor, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Minor DMG(Smashing), Foe -To Hit, Knockback",
         "icon": "darkcast_torrent.png",
@@ -4218,6 +4900,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -4231,6 +4914,11 @@ export const EPIC_POOLS_RAW = {
           "radius": 60,
           "arc": 0.5235987901687622,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.4,
+            "table": "Melee_Damage"
+          },
           "knockback": {
             "scale": 5,
             "table": "Melee_Knockback"
@@ -4241,7 +4929,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Petrifying Gaze",
         "fullName": "Epic.Darkness_Mastery.Petrifying_Gaze",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Petrifies a single targeted foe with a terrifying gaze. The victim is Held and defenseless. Recharge: Slow",
         "shortHelp": "Ranged Hold",
         "icon": "darknessmastery_petrifyinggaze.png",
@@ -4277,7 +4965,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Dark Blast",
         "fullName": "Epic.Darkness_Mastery.Dark_Blast",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Negative), Foe -ACC",
         "icon": "darkcast_darkblast.png",
@@ -4295,6 +4983,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Melee Damage",
           "Ranged Damage",
           "To Hit Debuff"
         ],
@@ -4304,14 +4993,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 4.5,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Night Fall",
         "fullName": "Epic.Darkness_Mastery.Night_Fall",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced chance to hit. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe -To Hit",
         "icon": "darkcast_nightfall.png",
@@ -4329,6 +5023,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -4341,14 +5036,21 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.3490658700466156,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.11,
+            "table": "Ranged_Damage",
+            "duration": 2.8,
+            "tickRate": 0.30000001192092896
+          }
         }
       },
       {
         "name": "Tenebrous Tentacles",
         "fullName": "Epic.Darkness_Mastery.Tenebrous_Tentacles",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "You can create a cone shaped rift to the Netherworld that allows its native creatures to slip their oily Tentacles into our reality. These creatures will snare all foes within range, Immobilizing them while the Tentacles drain their life and reduce their Accuracy. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative/Smash), Foe Immobilize, -ACC",
         "icon": "darkcast_tenebroustentacles.png",
@@ -4368,6 +5070,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -4381,6 +5084,13 @@ export const EPIC_POOLS_RAW = {
           "radius": 40,
           "arc": 0.5235987901687622,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -4404,7 +5114,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Alpha Barrier",
         "fullName": "Epic.Dominator_Atomic_Mastery.Alpha_Barrier",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You cloak yourself in a field of protective radiation that grants you a good deal of resistance to Lethal, Smashing and Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Lethal, Smash, Toxic)",
         "icon": "radiationarmor_alphabarrier.png",
@@ -4433,7 +5143,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Accelerate Metabolism",
         "fullName": "Epic.Dominator_Atomic_Mastery.Accelerate_Metabolism",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Activating this power emits radiation that increases the running speed, attack speed, Endurance recovery, and damage potential of all nearby allies. Affected heroes' metabolisms are increased so much that they become resistant to effects such as Sleep, Hold, Disorient, Immobilization and Endurance Drain. Recharge: Very Long",
         "shortHelp": "Close (AoE), Ally +SPD, +Recharge, +Recovery, +DMG +Res(Effects)",
         "icon": "radiationpoisoning_acceleratemetabolism.png",
@@ -4458,14 +5168,22 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 25,
-          "maxTargets": 255
+          "maxTargets": 255,
+          "rechargeBuff": {
+            "scale": 0.3,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "rechargeBuff": 120
+          },
+          "buffDuration": 120
         }
       },
       {
         "name": "Particle Shielding",
         "fullName": "Epic.Dominator_Atomic_Mastery.Particle_Shielding",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You channel a tremendous amount of radiation into a barrier around you. For a short time you will gain a small absorption shield every few seconds and gain a powerful regeneration buff. Recharge: Very Long",
         "shortHelp": "Self, +Absorb, +Regeneration",
         "icon": "radiationarmor_particleshielding.png",
@@ -4493,7 +5211,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Choking Cloud",
         "fullName": "Epic.Dominator_Atomic_Mastery.Choking_Cloud",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "While active, you generate toxic radioactive gas around yourself. Any nearby foes may be overcome by the gas, leaving them choking and helpless. Recharge: Long",
         "shortHelp": "Toggle: PBAoE, Foe Hold",
         "icon": "radiationpoisoning_chokingcloud.png",
@@ -4529,7 +5247,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Electron Haze",
         "fullName": "Epic.Dominator_Atomic_Mastery.Neutron_Bomb",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "A short range conical blast of free electrons. This attack can bypass some of a target's defenses and reduce the target's Defense. It can also knock some targets down. Affected enemies have a small chance to be affected by the Contaminated effect. Hitting Contaminated foes with single target Radioactive Assault powers cause a small burst of damage to foes near the target. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Close, Moderate Cone DMG(Energy/Toxic), Foe -DEF, Knockback",
         "icon": "radioactiveassault_electronhaze.png",
@@ -4550,6 +5268,7 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -4562,6 +5281,11 @@ export const EPIC_POOLS_RAW = {
           "radius": 60,
           "arc": 0.7853981852531433,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.945,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 1,
             "table": "Ranged_Knockback"
@@ -4584,7 +5308,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Water Spout",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Water_Spout",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes. Recharge: Long",
         "shortHelp": "Summon Water Spout: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
         "icon": "arachnos_patron_dropknockback.png",
@@ -4604,6 +5328,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -4620,7 +5345,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Bile Spray",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Chum_Spray",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -4636,6 +5361,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -4647,14 +5373,19 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.7,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Hibernate",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Hibernate",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power. you cannot Hibernate for more than 30 seconds while in a PvP zone and will be locked out from hibernating again for 60 seconds. If you activate this power while in the air, you will fall. Recharge: Long",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -4685,7 +5416,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Shark Skin",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Shark_Skin",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing Fire, and Cold damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold, Fire)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -4714,7 +5445,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Coralax",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Summon_Coralax",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Captain Mako has shown you how to summon a Coralax Blue Hybrid to do your bidding. The Coralax are humans who have been infected with living coral. Recharge: Extremely Long",
         "shortHelp": "Summon Hybrid: Ranged Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -4733,6 +5464,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Knockback",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -4761,7 +5493,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Poisonous Ray",
         "fullName": "Epic.Dominator_Mace_Mastery.Poisonous_Ray",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The Bane Mace can fire a nasty Poison Ray.  This toxin is suspended in a polarized plasma field and delivered like an energy blast.  Upon impact, the toxin directly attacks the immune system, reducing the affected targets Defense and Damage Resistance as it deals toxic damage. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged DoT(Poison), Foe -RES, -DEF",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
@@ -4780,6 +5512,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -4788,14 +5521,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 9.1,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Scorpion Shield",
         "fullName": "Epic.Dominator_Mace_Mastery.Scorpion_Shield",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion's technologies are impressive indeed.  This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
@@ -4817,14 +5555,24 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.13,
           "activationTime": 2,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Disruptor Blast",
         "fullName": "Epic.Dominator_Mace_Mastery.Disruptor_Blast",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Fires a tremendous charge of kinetic energy from your Bane Mace. This charge is so powerful it will explode on impact, blasting all nearby foes.  Some affected foes may be knocked back by the force of the blast. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -4842,6 +5590,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -4853,6 +5602,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 1,
             "table": "Ranged_Knockback"
@@ -4863,7 +5617,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Personal Force Field",
         "fullName": "Epic.Dominator_Mace_Mastery.Personal_Force_Field",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through.  The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest. Recharge: Slow",
         "shortHelp": "Toggle: Self +Def, Res(All except Toxic)",
         "icon": "arachnos_patron_megabuff.png",
@@ -4887,14 +5641,22 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.13,
           "activationTime": 2.03,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "scale": 7.5,
+            "table": "Melee_Buff_Def"
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Summon Tarantula",
         "fullName": "Epic.Dominator_Mace_Mastery.Summon_Tarantula",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion has granted you an Toxic Tarantula for you to command. Weaver One developed the Tarantula Exoskeleton Armor, which so radically transforms an Arachnos troop that hardly anything human is recognizable. Recharge: Extremely Long",
         "shortHelp": "Summon Tarantula: Ranged Moderate DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -4913,6 +5675,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Debuff",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -4941,7 +5704,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Sink",
         "fullName": "Epic.Dominator_Mu_Mastery.Power_Sink",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance. Recharge: Long",
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "arachnos_patron_pbaoedrain.png",
@@ -4965,14 +5728,30 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "enduranceDrain": {
+            "scale": 0.35,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Charged Armor",
         "fullName": "Epic.Dominator_Mu_Mastery.Charged_Armor",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -5001,7 +5780,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Static Discharge",
         "fullName": "Epic.Dominator_Mu_Mastery.Ball_Lightning",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -5019,6 +5798,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -5030,14 +5810,35 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 1.23,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Surge of Power",
         "fullName": "Epic.Dominator_Mu_Mastery.Surge_of_Power",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics, and your endurance recovery is also increased.  Expending all this energy will leave you exhausted, drained of all your endurance and unable to recover endurance for a short time. Unrelenting from the Presence pool can be used to prevent this crash from occurring. Recharge: Very Long",
         "shortHelp": "Self, +Res(Special)",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -5060,14 +5861,22 @@ export const EPIC_POOLS_RAW = {
           "recharge": 540,
           "endurance": 2.6,
           "activationTime": 1.96,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 90
+          },
+          "buffDuration": 90
         }
       },
       {
         "name": "Summon Guardian",
         "fullName": "Epic.Dominator_Mu_Mastery.Summon_Guardian",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Scirocco has shown you how to call upon a mystical Mu Guardian to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Recharge: Extremely Long",
         "shortHelp": "Summon Mu Guardian: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -5086,6 +5895,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -5114,7 +5924,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Dark Consumption",
         "fullName": "Epic.Dominator_Soul_Mastery.Dark_Consumption",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The dark power of the Netherworld allows you to tap the essence of your foe's soul and transfer it to yourself. This will drain the Hit Points of your enemy and add to your Endurance. Damage: Moderate, Recharge: Very Long",
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +End",
         "icon": "arachnos_patron_pbaoedrain.png",
@@ -5131,7 +5941,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage"
+          "Melee AoE Damage",
+          "Melee Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -5140,14 +5951,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.03,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.8,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
         "name": "Dark Embrace",
         "fullName": "Epic.Dominator_Soul_Mastery.Dark_Embrace",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -5176,7 +5996,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Soul Tentacles",
         "fullName": "Epic.Dominator_Soul_Mastery.Dark_Obliteration",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -5195,6 +6015,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -5208,6 +6029,13 @@ export const EPIC_POOLS_RAW = {
           "radius": 60,
           "arc": 0.7853981852531433,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.16875,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -5219,7 +6047,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Soul Drain",
         "fullName": "Epic.Dominator_Soul_Mastery.Soul_Drain",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Using this power, you can drain the essence of all nearby foes' souls, thus increasing your own strength. Each affected foe will lose some Hit Points and add to your Damage and Accuracy. Damage: Moderate, Recharge: Very Long",
         "shortHelp": "PBAoE Moderate DMG(Negative), Self +DMG, +ACC",
         "icon": "arachnos_patron_pbaoebuffdamage.png",
@@ -5236,6 +6064,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
+          "Melee Damage",
           "To Hit Buff"
         ],
         "effects": {
@@ -5245,14 +6074,19 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.37,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Summon Seer",
         "fullName": "Epic.Dominator_Soul_Mastery.Summon_Seer",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Ghost Widow has assigned a Fortunata Seer for you to command.  Fortunata Seers can glimpse moments into the future. They use this ability to increase the Perception of their teammate. Recharge: Extremely Long",
         "shortHelp": "Summon Fortunata Seer: Ranged Moderate DMG(Psionic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -5269,6 +6103,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -5297,7 +6132,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Stone Prison",
         "fullName": "Epic.Earth_Mastery.Stone_Prison",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Immobilizes a single target within an earthy formation and deals some Smashing damage over time. Some more resilient foes may require multiple attacks to Immobilize. Stone Prison can also reduce a target's Defense. Damage: Moderate(DoT), Recharge: Fast",
         "shortHelp": "Ranged, Moderate DoT(Smash), Foe Immobilize, -DEF, -Fly",
         "icon": "earthgrasp_stoneprison.png",
@@ -5315,6 +6150,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -5324,6 +6160,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.93,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.2,
+            "table": "Melee_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -5335,7 +6178,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Salt Crystals",
         "fullName": "Epic.Earth_Mastery.Salt_Crystals",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Attempts to encrust all nearby foes in a Pillar of Salt. The victims will remain encased within the salt for quite a while, but will automatically break free if attacked. Affected targets have reduced defense for a while, even if they break free. Recharge: Slow",
         "shortHelp": "PBAoE, Foe Sleep, -DEF",
         "icon": "earthgrasp_saltpillars.png",
@@ -5371,7 +6214,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Fossilize",
         "fullName": "Epic.Earth_Mastery.Fossilize",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Encases a single target within solid stone. The stone slowly crushes the victim, dealing Smashing damage. The Fossilized victim is held helpless and unable to defend himself. Damage, Moderate, Recharge: Moderate",
         "shortHelp": "Ranged, Moderate DMG(Smash), Foe Hold, -DEF",
         "icon": "earthgrasp_fossilize.png",
@@ -5389,6 +6232,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -5398,6 +6242,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.07,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 12,
@@ -5409,7 +6258,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Quick Sand",
         "fullName": "Epic.Earth_Mastery.Quick_Sand",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "You can cause the ground to liquefy like Quicksand at a targeted location. Any foes that pass through the Quicksand will become snared, their movement will be dramatically Slowed, and their Defense reduced. Foes trapped in the Quicksand will be pulled towards the center and cannot jump or Fly. Recharge: Slow",
         "shortHelp": "Ranged (Location AoE), Foe Attract, -Speed, -Jump, -Fly, -DEF",
         "icon": "quicksandrework.png",
@@ -5439,7 +6288,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Stalagmites",
         "fullName": "Epic.Earth_Mastery.Stalagmites",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "You can cause Stalagmites to erupt all around an enemy, slicing all nearby foes. The Stalagmites deal Lethal damage, and reduce the affected targets Defense. Some affected foes may be Disorient for a short while. You must be on the ground to activate this power. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal), Foe -DEF, Minor Disorient",
         "icon": "earthgrasp_stalagmites.png",
@@ -5456,6 +6305,7 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -5468,6 +6318,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.9,
+            "table": "Melee_Damage"
+          },
           "stun": {
             "mag": 0.10000000149011612,
             "scale": 8,
@@ -5491,7 +6346,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Static Discharge",
         "fullName": "Epic.Electrical_Mastery.Static_Discharge",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Discharges a cone of Static Electricity that deals damage and drains Endurance from all affected foes in the area. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "electrical_mastery_static_discharge.png",
@@ -5509,6 +6364,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -5520,14 +6376,19 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 1.23,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Shocking Bolt",
         "fullName": "Epic.Electrical_Mastery.Shocking_Bolt",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Holds a distant foe by shocking him with electricity. The seized target is left writhing in agony and is unable to defend himself. Shocking Bolt also drains some Endurance from the target over time. A portion of drained Endurance may be returned to you. Damage: Minor(DoT), Recharge: Moderate",
         "shortHelp": "Ranged, Minor DoT(Energy), Foe Hold, -END",
         "icon": "electrical_mastery_shocking_bolt.png",
@@ -5547,6 +6408,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -5556,10 +6418,21 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 12,
             "table": "Ranged_Immobilize"
+          },
+          "enduranceGain": {
+            "scale": 5.33,
+            "table": "Ranged_Ones"
           }
         }
       },
@@ -5567,7 +6440,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Charged Armor",
         "fullName": "Epic.Electrical_Mastery.Charged_Armor",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "electrical_mastery_charged_armor.png",
@@ -5596,7 +6469,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Surge of Power",
         "fullName": "Epic.Electrical_Mastery.Surge_of_Power",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you transform your body into living Electricity and become extremely resistant to all damage but Psionics.  However, expending all this energy will leave you exhausted, and drained of all endurance. Unrelenting from the Presence pool can be used to prevent this crash from occurring. Recharge: Very Long",
         "shortHelp": "Self, +Res(Special)",
         "icon": "electrical_mastery_powersurge.png",
@@ -5619,14 +6492,22 @@ export const EPIC_POOLS_RAW = {
           "recharge": 540,
           "endurance": 2.6,
           "activationTime": 1.96,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 90
+          },
+          "buffDuration": 90
         }
       },
       {
         "name": "EM Pulse",
         "fullName": "Epic.Electrical_Mastery.EM_Pulse",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and leave them incapacitated and Disoriented for a while. Additionally, most machines and robots will take moderate high damage. However, this power uses a lot of endurance and leaves you unable to recover endurance for a while. Recharge: Very Long",
         "shortHelp": "PBAoE, Foe Disorient, -END, -Regen, Special vs. Robots; Self -Recovery",
         "icon": "electrical_mastery_em_pulse.png",
@@ -5657,7 +6538,20 @@ export const EPIC_POOLS_RAW = {
             "mag": 1,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          }
+          },
+          "regenDebuff": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "regenDebuff": 15,
+            "recoveryDebuff": 15
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 15
         }
       }
     ]
@@ -5676,7 +6570,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Electric Fence",
         "fullName": "Epic.Electricity_Mastery.Electric_Fence",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Surrounds and Immobilizes a single target in an Electric Fence. Deals some damage over time and slowly drains some Endurance. Useful for keeping villains at bay. Damage: Minor(DoT), Recharge: Fast",
         "shortHelp": "Ranged, Moderate DoT(Energy), Foe Immobilize, -End",
         "icon": "electricitymanipulation_electricfence.png",
@@ -5696,6 +6590,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -5705,18 +6600,33 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.2,
+            "table": "Ranged_Damage",
+            "duration": 8.2,
+            "tickRate": 2
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          }
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 2
+          },
+          "buffDuration": 2
         }
       },
       {
         "name": "Thunder Strike",
         "fullName": "Epic.Electricity_Mastery.Thunder_Strike",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave. Damage: High, Recharge: Slow",
         "shortHelp": "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback",
         "icon": "electricitymanipulation_thunderstrike.png",
@@ -5735,6 +6645,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -5746,6 +6657,18 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 12,
           "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 0.89,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 2.09,
+              "table": "Melee_Damage"
+            }
+          ],
           "stun": {
             "mag": 0.5,
             "scale": 5,
@@ -5754,14 +6677,22 @@ export const EPIC_POOLS_RAW = {
           "knockback": {
             "scale": 5,
             "table": "Melee_Knockback"
-          }
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Charged Armor",
         "fullName": "Epic.Electricity_Mastery.Charged_Armor",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "electricitymastery_chargedarmor.png",
@@ -5790,7 +6721,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Shocking Bolt",
         "fullName": "Epic.Electricity_Mastery.Shocking_Bolt",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Holds a distant foe by shocking him with electricity. The seized target is left writhing in agony and is unable to defend himself. Shocking Bolt also drains some Endurance from the target over time. A portion of drained Endurance may be returned to you. Damage: Minor(DoT), Recharge: Moderate",
         "shortHelp": "Ranged, Minor DoT(Energy), Foe Hold, -END",
         "icon": "electricitymastery_shockingbolt.png",
@@ -5811,6 +6742,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Melee AoE Damage",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -5820,10 +6752,21 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 12,
             "table": "Ranged_Immobilize"
+          },
+          "enduranceGain": {
+            "scale": 5.33,
+            "table": "Ranged_Ones"
           }
         }
       },
@@ -5831,7 +6774,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Sink",
         "fullName": "Epic.Electricity_Mastery.Power_Sink",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Power Sink leeches energy directly from the bodies of all nearby foes, draining their Endurance. Each foe you draw energy from increases your Endurance. If there are no foes within range, you will not gain any Endurance. Recharge: Long",
         "shortHelp": "PBAoE, Self +End, Foe -End",
         "icon": "electricitymanipulation_powersink.png",
@@ -5854,7 +6797,19 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 12,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       }
     ]
@@ -5873,7 +6828,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Superior Conditioning",
         "fullName": "Epic.Energy_Mastery.Conserve_Power",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Your Superior Condition has increased your maximum endurance by 5%.",
         "shortHelp": "Self +Endurance",
         "icon": "energymastery_conservepower.png",
@@ -5890,14 +6845,22 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceGain": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "enduranceGain": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Energy_Mastery.Focused_Accuracy",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. Recharge: Slow",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "energymastery_focusedaccuracy.png",
@@ -5926,7 +6889,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Energy_Mastery.Laser_Beam_Eyes",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can reduce the target's Defense. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Energy/Toxic), Foe -DEF",
         "icon": "energymastery_laserbeameyes.png",
@@ -5945,6 +6908,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -5953,14 +6917,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Energy_Mastery.Physical_Perfection",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal.  This power is always active and consumes no endurance.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "energymastery_physicalperfection.png",
@@ -5979,14 +6948,22 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "activatePeriod": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Energy_Mastery.Energy_Torrent",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. Damage: Minor, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Minor DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_energytorrent.png",
@@ -6004,6 +6981,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -6015,7 +6993,12 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.29,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]
@@ -6034,7 +7017,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Superior Conditioning",
         "fullName": "Epic.Energy_Mastery_Brute.Conserve_Power",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Your Superior Condition has increased your maximum endurance by 5%.",
         "shortHelp": "Self +Endurance",
         "icon": "energymastery_conservepower.png",
@@ -6051,14 +7034,22 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "recharge": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "enduranceGain": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "enduranceGain": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
         "name": "Focused Accuracy",
         "fullName": "Epic.Energy_Mastery_Brute.Focused_Accuracy",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When this power is activated, the Hero focuses his senses to dramatically improve his accuracy. Additionally, Focused Accuracy increase your Perception, allowing you to better see stealthy foes. It also grants you resistance to powers that DeBuff your Accuracy. Focused Accuracy is a toggle power and must be activated and deactivated manually. Like all toggle powers, while active, Focused Accuracy drains Endurance while active. Recharge: Slow",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "energymastery_focusedaccuracy.png",
@@ -6087,7 +7078,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Laser Beam Eyes",
         "fullName": "Epic.Energy_Mastery_Brute.Laser_Beam_Eyes",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You can emit Laser Beams from your eyes, dealing moderate Energy damage. This attack can reduce the target's Defense. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Energy/Toxic), Foe -DEF",
         "icon": "energymastery_laserbeameyes.png",
@@ -6106,6 +7097,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -6114,14 +7106,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Physical Perfection",
         "fullName": "Epic.Energy_Mastery_Brute.Physical_Perfection",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal.  This power is always active and consumes no endurance.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "energymastery_physicalperfection.png",
@@ -6140,14 +7137,22 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "activatePeriod": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
         "name": "Energy Torrent",
         "fullName": "Epic.Energy_Mastery_Brute.Energy_Torrent",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. Damage: Minor, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Minor DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_energytorrent.png",
@@ -6165,6 +7170,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -6176,7 +7182,12 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.29,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]
@@ -6195,7 +7206,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Field_Mastery.Personal_Force_Field",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "fieldmastery_tempinvulnerability.png",
@@ -6224,7 +7235,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Blast",
         "fullName": "Epic.Field_Mastery.Power_Blast",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock him back. Damage: Moderate, Recharge: Moderate",
         "shortHelp": "Ranged, Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_powerblast.png",
@@ -6242,6 +7253,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -6251,6 +7263,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 7.46,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.49,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 1,
             "table": "Ranged_Knockback"
@@ -6261,7 +7278,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Energy Torrent",
         "fullName": "Epic.Field_Mastery.Energy_Torrent",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
@@ -6279,6 +7296,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -6291,6 +7309,11 @@ export const EPIC_POOLS_RAW = {
           "radius": 40,
           "arc": 0.7853981852531433,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.29,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 0.3,
             "table": "Ranged_Knockback"
@@ -6301,7 +7324,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Explosive Blast",
         "fullName": "Epic.Field_Mastery.Repulsion_Bomb",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "You hurl a blast of charged energy that violently explodes on impact, damaging all foes near the target. Explosive Blast may knock targets backwards. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash/Energy), Foe Knockback",
         "icon": "powerblast_explosion.png",
@@ -6319,6 +7342,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -6330,6 +7354,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 2,
             "table": "Ranged_Knockback"
@@ -6340,7 +7369,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Force of Nature",
         "fullName": "Epic.Field_Mastery.Foce_of_Nature",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your endurance recovery is also increased. Force of Nature costs little endurance to activate, but when it wears off you are left exhausted, and drained of almost all endurance, and unable to recover endurance for a short while. Unrelenting from the Presence pool can be used to prevent this crash from occurring. Recharge: Very Long",
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "fieldmastery_forceofnature.png",
@@ -6363,7 +7392,15 @@ export const EPIC_POOLS_RAW = {
           "recharge": 540,
           "endurance": 3.25,
           "activationTime": 3.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 90
+          },
+          "buffDuration": 90
         }
       }
     ]
@@ -6382,7 +7419,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Fire Blast",
         "fullName": "Epic.Fire_Mastery.Fire_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Fire)",
         "icon": "fireblast_fireblast.png",
@@ -6398,6 +7435,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -6406,14 +7444,28 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 4.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 1.1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
         "name": "Fire Ball",
         "fullName": "Epic.Fire_Mastery.Fire_Ball",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
@@ -6429,6 +7481,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -6439,14 +7492,28 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 0.15,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
         "name": "Fire Shield",
         "fullName": "Epic.Fire_Mastery.Fire_Shield",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "While this power is active, you get a good resistance to Lethal, Smashing, Fire, and Cold damage. Recharge: Very Fast",
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "firemastery_flamingshield.png",
@@ -6475,7 +7542,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Fire_Mastery.Rise_of_the_Phoenix",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. Recharge: Very Long",
         "shortHelp": "Self Rez, Special",
         "icon": "firemastery_riseofthephoenix.png",
@@ -6494,6 +7561,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -6507,7 +7575,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Consume",
         "fullName": "Epic.Fire_Mastery.Consume",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "You can drain body heat from all nearby foes in order to replenish your own Endurance. The more foes affected, the more Endurance is gained. Foes suffer minimal Fire damage. Damage: Minor, Recharge: Very Long",
         "shortHelp": "PBAoE, Minor DMG(Fire), Self +End",
         "icon": "firemastery_consume.png",
@@ -6524,7 +7592,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage"
+          "Melee AoE Damage",
+          "Melee Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -6533,7 +7602,16 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "AoE",
           "radius": 20,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.4,
+            "table": "Melee_Damage"
+          },
+          "enduranceGain": {
+            "scale": 20,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -6552,7 +7630,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Rain of Fire",
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Summons a Rain of Fire over a targeted location, burning foes and reducing their movement speed within a large area. Damage: Minor(DoT), Recharge: Long",
         "shortHelp": "Ranged (Location AoE), Minor DoT(Fire), -SPD",
         "icon": "fireblast_rainoffire.png",
@@ -6568,6 +7646,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -6583,7 +7662,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Fire Breath",
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Ball",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You can breathe forth a torrent of fire that burns all foes within its narrow cone. Very accurate and very deadly at medium range. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Close (Cone), Moderate DoT(Fire)",
         "icon": "fireassault_breathoffire.png",
@@ -6599,6 +7678,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -6610,14 +7690,21 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 1.1344640254974365,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.585,
+            "table": "Ranged_Damage",
+            "duration": 2.1,
+            "tickRate": 1
+          }
         }
       },
       {
         "name": "Fire Shield",
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Shield",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "While this power is active, you get a good resistance to Lethal, Smashing and Fire damage. Fire Shield also provides minimal resistance to Cold damage. Recharge: Very Fast",
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "firemastery_flamingshield.png",
@@ -6646,7 +7733,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Fire_Mastery_Dominator.Rise_of_the_Phoenix",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. Recharge: Very Long",
         "shortHelp": "Self Rez, Special",
         "icon": "firemastery_riseofthephoenix.png",
@@ -6665,6 +7752,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -6678,7 +7766,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Melt Armor",
         "fullName": "Epic.Fire_Mastery_Dominator.Consume",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
@@ -6724,7 +7812,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Bonfire",
         "fullName": "Epic.Flame_Mastery.Bonfire",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You can create a Bonfire that knocks back and burns any foes who try to pass through it. Recharge: Long",
         "shortHelp": "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
         "icon": "flamemastery_bonfire.png",
@@ -6741,6 +7829,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -6756,7 +7845,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Char",
         "fullName": "Epic.Flame_Mastery.Char",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. Damage: Moderate(DoT), Recharge: Moderate",
         "shortHelp": "Ranged, Moderate DoT(Fire), Foe Hold",
         "icon": "flamemastery_soot.png",
@@ -6774,6 +7863,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -6783,6 +7873,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.22,
+            "table": "Ranged_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 12,
@@ -6794,7 +7891,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Fire Shield",
         "fullName": "Epic.Flame_Mastery.Fire_Shield",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "While this power is active, you gain resistance to Lethal, Smashing Fire, and Cold damage. Recharge: Very Fast",
         "shortHelp": "Toggle: Self +Res(Fire, Lethal, Smash, Cold)",
         "icon": "flamingshield_flamingshield.png",
@@ -6823,7 +7920,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Melt Armor",
         "fullName": "Epic.Flame_Mastery.Melt_Armor",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The searing heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "flamemastery_meltarmor.png",
@@ -6857,7 +7954,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Flame_Mastery.Rise_of_the_Phoenix",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. Recharge: Very Long",
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
@@ -6876,6 +7973,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -6901,7 +7999,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Personal Force Field",
         "fullName": "Epic.Force_Mastery.Personal_Force_Field",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through.  The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest. Recharge: Slow",
         "shortHelp": "Toggle: Self +Def, Res(All except Toxic)",
         "icon": "forcefield_personalforcefield.png",
@@ -6925,14 +8023,22 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.1625,
           "activationTime": 2.03,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "scale": 7.5,
+            "table": "Melee_Buff_Def"
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Repulsion Field",
         "fullName": "Epic.Force_Mastery.Repulsion_Field",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "This Toggle power creates a field that violently repels nearby foes. Each villain that is repelled costs you additional Endurance. Recharge: Slow",
         "shortHelp": "Toggle: PBAoE Knockback",
         "icon": "forcefield_repulsionfield.png",
@@ -6963,7 +8069,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Force_Mastery.Temp_Invulnerability",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "forcemastery_temporaryinvulnerabilty.png",
@@ -6992,7 +8098,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Repulsion Bomb",
         "fullName": "Epic.Force_Mastery.Repulsion_Bomb",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "A powerful Repulsion Bomb is hurled at your foes dealing a moderate amount of damage and knocking them off of their feet. Foes struck by Repulsion Bomb have a good chance to become disoriented. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smash), Foe Knockdown, Disorient",
         "icon": "forcefield_repulsionbomb.png",
@@ -7011,6 +8117,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -7023,6 +8130,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
           "stun": {
             "mag": 0.4000000059604645,
             "scale": 8,
@@ -7034,7 +8146,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Force of Nature",
         "fullName": "Epic.Force_Mastery.Foce_of_Nature",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your endurance recovery is also increased. Force of Nature costs little endurance to activate, but when it wears off you are left exhausted, and drained of almost all endurance, and unable to recover endurance for a short while. Unrelenting from the Presence pool can be used to prevent this crash from occurring. Recharge: Very Long",
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "forcemastery_unstoppable.png",
@@ -7057,7 +8169,15 @@ export const EPIC_POOLS_RAW = {
           "recharge": 540,
           "endurance": 3.25,
           "activationTime": 3.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 90
+          },
+          "buffDuration": 90
         }
       }
     ]
@@ -7076,7 +8196,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Bonfire",
         "fullName": "Epic.Heat_Mastery_Stalker.Bonfire",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You can create a Bonfire that knocks back and burns any foes who try to pass through it. Cannot do critical hits. Recharge: Long",
         "shortHelp": "Ranged (Location AoE), Minor DMG(Fire), Foe Knockback",
         "icon": "flamemastery_bonfire.png",
@@ -7093,6 +8213,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7108,7 +8229,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Fire Blast",
         "fullName": "Epic.Heat_Mastery_Stalker.Fire_Blast",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Fire)",
         "icon": "fireblast_fireblast.png",
@@ -7124,6 +8245,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -7132,14 +8254,28 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 5.2,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 1.1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
         "name": "Fire Ball",
         "fullName": "Epic.Heat_Mastery_Stalker.Fire_Ball",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
@@ -7155,6 +8291,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7165,14 +8302,28 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 0.15,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.1,
+              "table": "Ranged_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
         "name": "Char",
         "fullName": "Epic.Heat_Mastery_Stalker.Melt_Armor",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char, but the damage is very trivial. Damage: Minor(DoT), Recharge: Moderate",
         "shortHelp": "Ranged, Minor DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
@@ -7190,6 +8341,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -7199,6 +8351,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 8,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 12,
@@ -7210,7 +8369,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Rise of the Phoenix",
         "fullName": "Epic.Heat_Mastery_Stalker.Rise_of_the_Phoenix",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "If you are defeated, you can rise from the ashes. The fiery resurrection blasts nearby foes with an explosion and knocks them down. You will revive with about half of your Hit Points and Endurance. Rise of the Phoenix will actually leave you invulnerable for a brief time and protected from XP Debt for 20 seconds. Recharge: Very Long",
         "shortHelp": "Self Rez, Special",
         "icon": "flamingshield_riseofthephoenix.png",
@@ -7229,6 +8388,7 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -7254,7 +8414,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Ice Blast",
         "fullName": "Epic.Ice_Mastery.Ice_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Ice Blast hurls shards of ice at foes and Slows their attacks and movement for a time. Slower recharge than Ice Bolt, but more damage. Damage: Moderate, Recharge: Moderate",
         "shortHelp": "Ranged, Moderate DMG(Cold/Smash), Foe -Recharge, -SPD",
         "icon": "icemastery_iceblast.png",
@@ -7271,6 +8431,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage",
           "Slow Movement"
         ],
@@ -7280,14 +8441,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 7.46,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Hibernate",
         "fullName": "Epic.Ice_Mastery.Hibernate",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power. you cannot Hibernate for more than 30 seconds while in a PvP zone and will be locked out from hibernating again for 60 seconds. If you activate this power while in the air, you will fall. Recharge: Long",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "icearmor_hybernate.png",
@@ -7318,7 +8484,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Frozen Armor",
         "fullName": "Epic.Ice_Mastery.Frozen_Armor",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. Recharge: Very Fast",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "icearmor_icearmor.png",
@@ -7342,14 +8508,24 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.1625,
           "activationTime": 0.73,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Frost Breath",
         "fullName": "Epic.Ice_Mastery.Frost_Breath",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Unleashes a cone of frosty breath that can Slow your opponents' movement and attacks. Very accurate and very deadly at medium range. You must have two other Ice Mastery power to select this power. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Close (Cone), Moderate DoT(Cold), Foe -Recharge, -SPD",
         "icon": "icemastery_frostbreath.png",
@@ -7366,6 +8542,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -7378,14 +8555,21 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.5235987901687622,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.7,
+            "table": "Ranged_Damage",
+            "duration": 0.6,
+            "tickRate": 0.5
+          }
         }
       },
       {
         "name": "Ice Storm",
         "fullName": "Epic.Ice_Mastery.Ice_Storm",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed. Damage: Minor(DoT), Recharge: Long",
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Recharge, -SPD",
         "icon": "icemastery_freezingrain.png",
@@ -7401,6 +8585,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -7429,7 +8614,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Sleet",
         "fullName": "Epic.Ice_Mastery_Dominator.Ice_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Summons a Sleet Storm at a targeted location. Sleet deals minimal Cold damage to anything that passes through the storm. It also Slows the affected foes and severely reduces their Defense and resistance to damage. Many foes may even slip and fall trying to escape the storm. Damage: Minor(DoT), Recharge: Long",
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res",
         "icon": "colddomination_sleet.png",
@@ -7449,6 +8634,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -7465,7 +8651,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Hibernate",
         "fullName": "Epic.Ice_Mastery_Dominator.Hibernate",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power. you cannot Hibernate for more than 30 seconds while in a PvP zone and will be locked out from hibernating again for 60 seconds. If you activate this power while in the air, you will fall. Recharge: Long",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "icearmor_hybernate.png",
@@ -7496,7 +8682,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Frozen Armor",
         "fullName": "Epic.Ice_Mastery_Dominator.Frozen_Armor",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "While this power is active, you coat yourself in rock hard Frozen Armor. The hardness of the Frozen Armor offers good defense to Smashing and Lethal attack as well as reduces Cold damage. Also, Fire attacks deal slightly less damage. Recharge: Very Fast",
         "shortHelp": "Toggle: Self +Def(Smash, Lethal), +Res(Cold, Fire)",
         "icon": "icearmor_icearmor.png",
@@ -7520,14 +8706,24 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.13,
           "activationTime": 0.73,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Hoarfrost",
         "fullName": "Epic.Ice_Mastery_Dominator.Frost_Breath",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Activating this power covers you in a thick layer of Hoarfrost. The frost can absorb the impact from enemy attacks, effectively increasing your maximum Hit Points for a short time. Hoarfrost also grants you resistance to Toxic Damage. Recharge: Very Long",
         "shortHelp": "Self Heal, +Max HP, Res(Toxic)",
         "icon": "icearmor_hoarfrost.png",
@@ -7557,7 +8753,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Ice Storm",
         "fullName": "Epic.Ice_Mastery_Dominator.Ice_Storm",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Shred your foes with this Ice Storm. This power deals a lot of damage in a large area and can Slow all affected targets movement and attack speed. Damage: Minor(DoT), Recharge: Long",
         "shortHelp": "Ranged (Location AoE), Minor DoT(Cold), Foe -Recharge, -SPD",
         "icon": "icemastery_freezingrain.png",
@@ -7573,6 +8769,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -7601,7 +8798,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Alpha Barrier",
         "fullName": "Epic.Mastermind_Atomic_Mastery.Alpha_Barrier",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You cloak yourself in a field of protective radiation that grants you a good deal of resistance to Lethal, Smashing and Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Lethal, Smash, Toxic)",
         "icon": "radiationarmor_alphabarrier.png",
@@ -7630,7 +8827,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Build Up",
         "fullName": "Epic.Mastermind_Atomic_Mastery.Power_Build_Up",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Your mastery of power and energy allows you to greatly increase the damage you deal for a few seconds, as well as slightly increasing your Accuracy  Additionally, Power Build Up greatly boosts the secondary effects of your powers. Your powers effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved. Recharge: Long",
         "shortHelp": "Self +DMG, +ACC, +Special",
         "icon": "radiationmelee_buildup.png",
@@ -7658,7 +8855,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Devastating Blow",
         "fullName": "Epic.Mastermind_Atomic_Mastery.Devastating_Blow",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You hammer your foe with a brutal smashing attack charged with a lethal dose of radiation. Your target will suffer Extreme Energy and Smashing damage, will have its defense reduced and will be disoriented for a short time. Affected enemies will be affected by the Contaminated effect. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. Damage: Extreme, Recharge: Long",
         "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe -Def, Disorient, Special",
         "icon": "radiationmelee_devastatingblow.png",
@@ -7689,6 +8886,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 8,
           "maxTargets": 5,
+          "damage": {
+            "type": "Special",
+            "scale": 0.77,
+            "table": "Melee_Damage"
+          },
           "immobilize": {
             "mag": 0.6000000238418579,
             "scale": 10,
@@ -7700,7 +8902,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Irradiated Ground",
         "fullName": "Epic.Mastermind_Atomic_Mastery.Irradiated_Ground",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "While active you will scorch the earth beneath you leaving toxic clouds of radioactive gas in your wake. Foes that enter these clouds will suffer Minor Toxic damage, have their defense reduced and also have a tiny chance of being Contaminated. Hitting Contaminated foes with single target Radiation Melee powers cause a small burst of damage to foes near the target. This power does not benefit from Proc invention enhancements. Damage: Minor, Recharge: Moderate",
         "shortHelp": "Toggle, Minor DoT(Toxic) Patch, Foe -Def, Special",
         "icon": "radiationmelee_irradiatedground.png",
@@ -7717,7 +8919,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Defense Debuff"
+          "Defense Debuff",
+          "Melee Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -7732,7 +8935,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Neutron Bomb",
         "fullName": "Epic.Mastermind_Atomic_Mastery.Neutron_Bomb",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "This devastating attack lobs an explosive sphere of deadly radiation, damaging the target and all nearby foes. Neutron Bomb can bypass some of a target's defenses and reduce the target's Defense. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Energy), Foe -DEF",
         "icon": "radiationburst_radiationblast.png",
@@ -7751,6 +8954,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7761,7 +8965,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.77,
+            "table": "Ranged_Damage"
+          }
         }
       }
     ]
@@ -7780,7 +8989,7 @@ export const EPIC_POOLS_RAW = {
         "name": "School of Sharks",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.School_of_Sharks",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -7798,6 +9007,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7810,6 +9020,11 @@ export const EPIC_POOLS_RAW = {
           "radius": 50,
           "arc": 0.5235987901687622,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.135,
+            "table": "Ranged_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -7821,7 +9036,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Bile Spray",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.Chum_Spray",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -7837,6 +9052,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7848,14 +9064,19 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.5235987901687622,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.7,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Knockout Blow",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.Knockout_Blow",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target. Damage: Extreme, Recharge: Slow",
         "shortHelp": "Melee, Extreme DMG(Smash), Foe Hold",
         "icon": "arachnos_patron_koblow.png",
@@ -7884,6 +9105,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 16.2,
           "activationTime": 2.23,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 3.56,
+            "table": "Melee_Damage"
+          },
           "stun": {
             "mag": 1,
             "scale": 10,
@@ -7899,7 +9125,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Shark Skin",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.Shark_Skin",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The power of the Leviathan Mako has shown you seems to have no end. Shark Skin improves your damage resistance to Lethal, Smashing Fire, and Cold damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Cold, Fire)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -7928,7 +9154,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Spirit Shark Jaws",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.Spirit_Shark_Jaws",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "You can summon a massive Spirit Shark that will attack your foe from below.  The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. Recharge: Slow",
         "shortHelp": "Ranged, Moderate DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
@@ -7946,6 +9172,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -7955,6 +9182,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.135,
+            "table": "Ranged_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 10,
@@ -7978,7 +9210,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Web Envelope",
         "fullName": "Epic.Mastermind_Mace_Mastery.Web_Envelope",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The Nullifier Mace can lob a modified Web Grenade.  Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping. Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE) Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -8017,7 +9249,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Scorpion Shield",
         "fullName": "Epic.Mastermind_Mace_Mastery.Scorpion_Shield",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion's technologies are impressive indeed.  This energy shield grants you Defense to Lethal, Smashing and Energy attacks, as well as improves your damage resistance to Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self, +Def(Smash,Lethal,Energy), +Res(Toxic)",
         "icon": "arachnos_patron_defensebuff.png",
@@ -8039,14 +9271,24 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.1625,
           "activationTime": 2,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Mace Beam Volley",
         "fullName": "Epic.Mastermind_Mace_Mastery.Mace_Beam_Volley",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Fires a volley of multiple kinetic energy blasts from your Nullifier Mace. These blast spread out in a wide cone and are powerful enough to knock down some foes. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -8064,6 +9306,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -8076,6 +9319,11 @@ export const EPIC_POOLS_RAW = {
           "radius": 50,
           "arc": 0.6108652353286743,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 1,
             "table": "Ranged_Knockback"
@@ -8086,7 +9334,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Boost",
         "fullName": "Epic.Mastermind_Mace_Mastery.Power_Boost",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. Recharge: Long",
         "shortHelp": "Self +Special",
         "icon": "arachnos_patron_powerboost.png",
@@ -8111,7 +9359,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Web Cocoon",
         "fullName": "Epic.Mastermind_Mace_Mastery.Web_Cocoon",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "The Bane Mace can fire a more powerful version the common web grenade.  The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed.  Web Cocoon can also bring down flying targets and prevent foes from jumping. You must be level 44 and have Web Envelope or Web Cocoon before selecting this power. Recharge: Long",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
         "icon": "arachnos_patron_targetedhold.png",
@@ -8161,7 +9409,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Static Discharge",
         "fullName": "Epic.Mastermind_Mu_Mastery.Static_Discharge",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -8179,6 +9427,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -8190,14 +9439,35 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 40,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.96,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Charged Armor",
         "fullName": "Epic.Mastermind_Mu_Mastery.Charged_Armor",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you are surrounded in a charged field that makes you highly resistant to Smashing, Lethal and Energy damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Energy)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -8226,7 +9496,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Thunder Strike",
         "fullName": "Epic.Mastermind_Mu_Mastery.Thunder_Strike",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. Damage: High, Recharge: Slow",
         "shortHelp": "Melee (AoE), High DMG(Smash, Energy), Foe Disorient, Knockback, -End",
         "icon": "arachnos_patron_meleetargetedaoe.png",
@@ -8246,6 +9516,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Melee AoE Damage",
+          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -8257,18 +9528,42 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 7,
           "maxTargets": 10,
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 0.29,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 1.37,
+              "table": "Melee_Damage"
+            }
+          ],
           "stun": {
             "mag": 0.5,
             "scale": 5,
             "table": "Melee_Stun"
-          }
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Electrifying Fences",
         "fullName": "Epic.Mastermind_Mu_Mastery.Electrifying_Fences",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Minor DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -8288,6 +9583,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -8299,18 +9595,38 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
             "table": "Ranged_Immobilize"
-          }
+          },
+          "enduranceDrain": {
+            "scale": 0.04,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "enduranceDrain": 6.2,
+            "recoveryDebuff": 2
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 6.2
         }
       },
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Mastermind_Mu_Mastery.Electric_Shackles",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. Damage: Minor, Recharge: Long",
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
@@ -8330,6 +9646,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -8338,7 +9655,26 @@ export const EPIC_POOLS_RAW = {
           "recharge": 16,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.15,
+            "table": "Ranged_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 8
         }
       }
     ]
@@ -8357,7 +9693,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Night Fall",
         "fullName": "Epic.Mastermind_Soul_Mastery.Night_Fall",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Unleashes a cone shaped burst of particles from the Netherworld. All targets within the modest range of this power take Negative Energy damage and have a reduced Accuracy. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_conedot.png",
@@ -8375,6 +9711,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -8387,14 +9724,21 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.3490658700466156,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.11,
+            "table": "Ranged_Damage",
+            "duration": 2.8,
+            "tickRate": 0.30000001192092896
+          }
         }
       },
       {
         "name": "Dark Embrace",
         "fullName": "Epic.Mastermind_Soul_Mastery.Dark_Embrace",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You tap into the energy of the Netherworld to protect yourself from damage. This Dark Embrace shrouds you and grants resistance to Lethal, Smashing, Negative Energy and Toxic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Negative, Toxic)",
         "icon": "arachnos_patron_resistbuff.png",
@@ -8423,7 +9767,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Oppressive Gloom",
         "fullName": "Epic.Mastermind_Soul_Mastery.Oppressive_Gloom",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "The Netherworld has many mutable properties, such as the Oppressive Gloom. This power allows you to use your own Hit Points to keep enemies near you Disoriented and unable to use any powers. Endurance cost for this is minimal, but the power can be dangerous to use. Recharge: Moderate",
         "shortHelp": "Toggle: PBAoE, Foe Disorient, Self -HP",
         "icon": "arachnos_patron_pbaoestun.png",
@@ -8449,6 +9793,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 12,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Melee_Damage"
+          },
           "stun": {
             "mag": 1,
             "scale": 6,
@@ -8460,7 +9809,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Soul Tentacles",
         "fullName": "Epic.Mastermind_Soul_Mastery.Soul_Tentacles",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -8478,6 +9827,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -8490,6 +9840,13 @@ export const EPIC_POOLS_RAW = {
           "radius": 40,
           "arc": 0.4363323152065277,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Ranged_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -8501,7 +9858,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Soul Storm",
         "fullName": "Epic.Mastermind_Soul_Mastery.Soul_Storm",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding.  Soul Storm enraptures a single target Holding them while their life-force is drained from their body. Recharge: Slow",
         "shortHelp": "Ranged, Moderate DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
@@ -8519,6 +9876,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -8528,6 +9886,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.11,
+            "table": "Ranged_Damage",
+            "duration": 10,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 10,
@@ -8551,7 +9916,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Body Armor",
         "fullName": "Epic.Munitions_Mastery.Body_Armor",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You have Body Armor that will reduce all Smashing and Lethal damage. This power is always on, and costs no Endurance.",
         "shortHelp": "Auto: Self +Res (Smash, Lethal)",
         "icon": "munitionsmastery_bodyarmor.png",
@@ -8575,7 +9940,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Cryo Freeze Ray",
         "fullName": "Epic.Munitions_Mastery.Cryo_Freeze_Ray",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Although this weapon deals very little damage, the Cryo Freeze Ray encases your foe in a block of ice, holding him helpless in place for a while. Damage: Minor, Recharge: Moderate",
         "shortHelp": "Ranged, Minor DMG(Cold), Foe Hold",
         "icon": "munitionsmastery_cryofreezeray.png",
@@ -8593,6 +9958,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -8602,6 +9968,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 8.58,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Ranged_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 10,
@@ -8613,7 +9984,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Sleep Grenade",
         "fullName": "Epic.Munitions_Mastery.Sleep_Grenade",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Launches a Sleep Grenade at long range from beneath the barrel of your Assault Rifle. This small blast does minor smashing damage but affects all foes within the blast radius, and can knock them back. Damage: Minor, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Minor DMG(Smash), Foe Sleep",
         "icon": "munitionsmastery_sleepgrenade.png",
@@ -8630,6 +10001,7 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage",
           "Sleep"
         ],
@@ -8642,6 +10014,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Ranged_Damage"
+          },
           "sleep": {
             "mag": 1,
             "scale": 20,
@@ -8653,7 +10030,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Surveillance",
         "fullName": "Epic.Munitions_Mastery.Surveillance",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "When this power is activated, you focus your senses to analyze your target's defensive capabilities and discover their weaknesses.  By sharing your knowledge of the target's weaknesses with your team mates, you effectively reduce their defense and resistance to damage. Your Combat Attributes Window will also show the combat attributes of the target. Recharge: Slow",
         "shortHelp": "Ranged Foe -DEF, -RES (All)",
         "icon": "munitionsmastery_surveillance.png",
@@ -8684,7 +10061,7 @@ export const EPIC_POOLS_RAW = {
         "name": "LRM Rocket",
         "fullName": "Epic.Munitions_Mastery.LRM_Rocket",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "The LRM Rocket is a powerful piece of hardware. It is very accurate and has a very long range. The impressive round can knock down its target. The LRM Rocket is bulky, awkward to use and you must take your time to aim, so this attack can be interrupted. Damage: Superior, Recharge: Slow",
         "shortHelp": "Interruptible (Targeted AoE), Superior DMG(Lethal/Smash), Foe Knockback",
         "icon": "munitionsmastery_lrmrocket.png",
@@ -8703,6 +10080,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -8714,6 +10092,18 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 20,
           "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 1.49,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            }
+          ],
           "knockback": {
             "scale": 0.7,
             "table": "Ranged_Knockback"
@@ -8736,7 +10126,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Energize",
         "fullName": "Epic.Power_Mastery.Conserve_Power",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You can channel a tremendous amount of electricity through your body for a short period of time.  Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time.",
         "shortHelp": "Self Endurance Discount, Heal, +Regen",
         "icon": "energymanipulation_conservepower.png",
@@ -8765,7 +10155,12 @@ export const EPIC_POOLS_RAW = {
           },
           "effectDuration": 30,
           "durations": {
-            "stun": 30
+            "stun": 30,
+            "regenBuff": 30
+          },
+          "regenBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
           },
           "buffDuration": 30
         }
@@ -8774,7 +10169,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Build Up",
         "fullName": "Epic.Power_Mastery.Power_Build_Up",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Your mastery of power and energy allows you to greatly increase the damage you deal for a few seconds, as well as slightly increasing your Accuracy  Additionally, Power Build Up greatly boosts the secondary effects of your powers. Your powers effects like Heals, Defense Buffs, Endurance Drains, Disorients, Holds, Immobilizes, Knockbacks and more, are all improved. Recharge: Long",
         "shortHelp": "Self +DMG, +ACC, +Special",
         "icon": "powermastery_powerbuildup.png",
@@ -8802,7 +10197,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Power_Mastery.Temp_Invulnerability",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "powermastery_tempinvulnerability.png",
@@ -8831,7 +10226,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Force of Nature",
         "fullName": "Epic.Power_Mastery.Force_of_Nature",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your Endurance recovery is also increased. Force of Nature costs little Endurance to activate, but when it wears off you are left exhausted, and drained of almost all Endurance, and unable to recover Endurance for a short while. Unrelenting from the Presence pool can be used to prevent this crash from occurring. Recharge: Very Long",
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "powermastery_forceofnature.png",
@@ -8854,14 +10249,22 @@ export const EPIC_POOLS_RAW = {
           "recharge": 540,
           "endurance": 2.6,
           "activationTime": 3.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 90
+          },
+          "buffDuration": 90
         }
       },
       {
         "name": "Total Focus",
         "fullName": "Epic.Power_Mastery.Total_Focus",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Total Focus is complete mastery over Energy Melee. This is a very slow, but incredibly devastating attack that can knock out most opponents, leaving them Disoriented. Due to the exhausting nature of Total Focus, recharge time is very long. Damage: Extreme, Recharge: Long",
         "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient",
         "icon": "energymanipulation_totalfocus.png",
@@ -8887,6 +10290,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 18.512,
           "activationTime": 2.5,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 10,
@@ -8910,7 +10318,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Blast",
         "fullName": "Epic.Primal_Forces_Mastery.Power_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "A much more powerful, yet slower version of Power Bolt. Power Blast sends a focused beam of energy at a foe that can knock him back. Damage: Moderate, Recharge: Moderate",
         "shortHelp": "Ranged, Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "powerblast_powerblast.png",
@@ -8928,6 +10336,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -8937,6 +10346,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 7.48,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 1,
             "table": "Ranged_Knockback"
@@ -8947,7 +10361,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Energize",
         "fullName": "Epic.Primal_Forces_Mastery.Conserve_Power",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You can channel a tremendous amount of electricity through your body for a short period of time.  Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time.",
         "shortHelp": "Self Endurance Discount, Heal, +Regen",
         "icon": "primalforcesmastery_conservepower.png",
@@ -8976,7 +10390,12 @@ export const EPIC_POOLS_RAW = {
           },
           "effectDuration": 30,
           "durations": {
-            "stun": 30
+            "stun": 30,
+            "regenBuff": 30
+          },
+          "regenBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
           },
           "buffDuration": 30
         }
@@ -8985,7 +10404,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Primal_Forces_Mastery.Temp_Invulnerability",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
@@ -9014,7 +10433,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Energy Torrent",
         "fullName": "Epic.Primal_Forces_Mastery.Energy_Torrent",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
@@ -9032,6 +10451,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9044,6 +10464,11 @@ export const EPIC_POOLS_RAW = {
           "radius": 40,
           "arc": 0.7853981852531433,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.29,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 0.3,
             "table": "Ranged_Knockback"
@@ -9054,7 +10479,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Power Boost",
         "fullName": "Epic.Primal_Forces_Mastery.Power_Boost",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Greatly boosts the secondary effects of your powers. Your powers effects like Disorients, Holds, Immobilizes, Heals, Defense Buffs, Endurance Drains, Knockbacks and more, are all improved. The effects of Power Boost last a short while, and only the next couple of attacks will be boosted. Recharge: Long",
         "shortHelp": "Self +Special",
         "icon": "primalforcesmastery_powerboost.png",
@@ -9091,7 +10516,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Energy Transfer",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Energy_Transfer",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target. Damage: Extreme, Recharge: Slow",
         "shortHelp": "Melee, Extreme DMG(Energy/Smash), Foe Disorient, Self -HP",
         "icon": "primalforcesmasterydominator_energytransfer.png",
@@ -9118,6 +10543,18 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.19,
           "activationTime": 1.8,
           "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 1.56,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 3,
+              "table": "Melee_Damage"
+            }
+          ],
           "stun": {
             "mag": 0.6000000238418579,
             "scale": 8,
@@ -9129,7 +10566,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Energize",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Conserve_Power",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You can channel a tremendous amount of energy through your body for a short period of time.  Doing so will heal some hit points, reduce the endurance cost of your powers and boost your regeneration for a short time.  Recharge: Very Long",
         "shortHelp": "Self Endurance Discount, Heal, +Regen",
         "icon": "energyaura_energize.png",
@@ -9158,7 +10595,12 @@ export const EPIC_POOLS_RAW = {
           },
           "effectDuration": 30,
           "durations": {
-            "stun": 30
+            "stun": 30,
+            "regenBuff": 30
+          },
+          "regenBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
           },
           "buffDuration": 30
         }
@@ -9167,7 +10609,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Temp Invulnerability",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Temp_Invulnerability",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you become highly resistant to Smashing and Lethal damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal)",
         "icon": "primalforcesmastery_temporaryinvulnerabilty.png",
@@ -9196,7 +10638,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Energy Torrent",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Energy_Torrent",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Energy Torrent unleashes a cone of powerful energy that can smash foes and possibly send them flying.  Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "primalforcesmastery_energytorrent.png",
@@ -9214,6 +10656,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9226,6 +10669,11 @@ export const EPIC_POOLS_RAW = {
           "radius": 40,
           "arc": 0.7853981852531433,
           "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.3,
+            "table": "Ranged_Damage"
+          },
           "knockback": {
             "scale": 0.3,
             "table": "Ranged_Knockback"
@@ -9236,7 +10684,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Force of Nature",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Explosive_Blast",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you become highly resistant to all damage types except psionics. Your Endurance recovery is also increased. Force of Nature costs little Endurance to activate, but when it wears off you are left exhausted, and drained of almost all Endurance, and unable to recover Endurance for a short while. Unrelenting from the Presence pool can be used to prevent this crash from occurring. Recharge: Very Long",
         "shortHelp": "Self, +Res(All DMG but Psionics)",
         "icon": "powermastery_forceofnature.png",
@@ -9259,7 +10707,20 @@ export const EPIC_POOLS_RAW = {
           "recharge": 540,
           "endurance": 2.6,
           "activationTime": 3.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "recoveryBuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryBuff": 120,
+            "enduranceDrain": 30
+          },
+          "enduranceDrain": {
+            "scale": 15,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 120
         }
       }
     ]
@@ -9278,7 +10739,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Mental Blast",
         "fullName": "Epic.Psionic_Mastery.Mental_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "This basic attack does moderate Psionic damage, and can slightly reduce a target's attack speed. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Psionic), Target -Recharge",
         "icon": "psychicblast_mentalblast.png",
@@ -9294,6 +10755,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -9302,14 +10764,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 4.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
         "name": "Indomitable Will",
         "fullName": "Epic.Psionic_Mastery.Indomitable_Will",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Activating this power greatly boosts your resistance to Sleep, Disorient, Fear and Hold effects for 90 seconds. Indomitable Will also grants a high defense to Psionic based attacks. Recharge: Very Long",
         "shortHelp": "Self Res( Disorient, Hold, Sleep, Fear). DEF(Psionics)",
         "icon": "psionicmastery_indomitablewill.png",
@@ -9330,14 +10797,24 @@ export const EPIC_POOLS_RAW = {
           "recharge": 180,
           "endurance": 13.65,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "psionic": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 90
+          },
+          "buffDuration": 90
         }
       },
       {
         "name": "Mind Over Body",
         "fullName": "Epic.Psionic_Mastery.Mind_Over_Body",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you empower your Mind Over Body to become highly resistant to Smashing, Lethal and Psionic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psionicmastery_mindoverbody.png",
@@ -9366,7 +10843,7 @@ export const EPIC_POOLS_RAW = {
         "name": "World of Confusion",
         "fullName": "Epic.Psionic_Mastery.World_of_Confusion",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies. Recharge: Moderate",
         "shortHelp": "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse",
         "icon": "mentalcontrol_worldofconfusion.png",
@@ -9383,7 +10860,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Confuse",
-          "Melee AoE Damage"
+          "Melee AoE Damage",
+          "Melee Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -9393,14 +10871,20 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 4,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.12,
+            "table": "Ranged_Damage",
+            "tickRate": 2
+          }
         }
       },
       {
         "name": "Psionic Tornado",
         "fullName": "Epic.Psionic_Mastery.Psionic_Tornado",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Unleashes a whirlwind of Psionic energy on a target, tossing nearby foes into the air. The Psionic Tornado damages foes and Slows their attack speed. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Psionic), Foe Knockback",
         "icon": "psychicblast_psionictornado.png",
@@ -9418,6 +10902,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9428,7 +10913,14 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "effectArea": "AoE",
           "radius": 20,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.178,
+            "table": "Ranged_Damage",
+            "duration": 2.05,
+            "tickRate": 0.5
+          }
         }
       }
     ]
@@ -9447,7 +10939,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Indomitable Will",
         "fullName": "Epic.Psionic_Mastery_Domingator.Indomitable_Will",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Activating this power greatly boosts your resistance to Sleep, Disorient, Fear and Hold effects for 90 seconds. Indomitable Will also grants a high defense to Psionic based attacks. Recharge: Very Long",
         "shortHelp": "Self Res( Disorient, Hold, Sleep, Fear). DEF(Psionics)",
         "icon": "psionicmastery_indomitablewill.png",
@@ -9468,14 +10960,24 @@ export const EPIC_POOLS_RAW = {
           "recharge": 180,
           "endurance": 13.65,
           "activationTime": 0.73,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "psionic": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 90
+          },
+          "buffDuration": 90
         }
       },
       {
         "name": "Mind Over Body",
         "fullName": "Epic.Psionic_Mastery_Domingator.Mind_Over_Body",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you empower your Mind Over Body to become highly resistant to Smashing, Lethal and Psionic damage. You must be level 41 and have Link Minds or Indomitable Will before selecting this power. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psionicmastery_mindoverbody.png",
@@ -9504,7 +11006,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Link Minds",
         "fullName": "Epic.Psionic_Mastery_Domingator.Link_Minds",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Your Mind Link Power will enable you to link the minds of all your teammates who are near you for the next 90 seconds.  This shared link improves your team's chance to hit foes, your defensive abilities and dramatically reduces psionic damage.  Recharge: Long",
         "shortHelp": "PBAoE Team +To Hit, +DEF (All), +RES (Psionic)",
         "icon": "widowteamwork_mindlink.png",
@@ -9527,14 +11029,24 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 35,
-          "maxTargets": 255
+          "maxTargets": 255,
+          "defenseBuff": {
+            "melee": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 90
+          },
+          "buffDuration": 90
         }
       },
       {
         "name": "World of Confusion",
         "fullName": "Epic.Psionic_Mastery_Domingator.World_of_Confusion",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies. Recharge: Moderate",
         "shortHelp": "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse",
         "icon": "mentalcontrol_worldofconfusion.png",
@@ -9562,14 +11074,20 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 4,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.12,
+            "table": "Ranged_Damage",
+            "tickRate": 2
+          }
         }
       },
       {
         "name": "Psychic Scream",
         "fullName": "Epic.Psionic_Mastery_Domingator.Psionic_Tornado",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "This howl of Psionic energy resonates in the minds of all foes within its conical area of effect, inflicting moderate damage. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Psionic), Foe -Recharge",
         "icon": "psionicassault_psychicscream.png",
@@ -9597,7 +11115,12 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.7853981852531433,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 1.3,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]
@@ -9616,7 +11139,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Dominate",
         "fullName": "Epic.Psychic_Mastery.Dominate",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Painfully tears at the mind of a single foe. Dominate deals Psionic damage and renders a foe helpless, lost in his own mind and unable to defend himself. Damage: Moderate, Recharge: Moderate",
         "shortHelp": "Ranged, Moderate DMG(Psionic), Foe Hold",
         "icon": "mentalcontrol_command.png",
@@ -9634,6 +11157,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -9643,6 +11167,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.1,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Ranged_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 12,
@@ -9654,7 +11183,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Mass Hypnosis",
         "fullName": "Epic.Psychic_Mastery.Mass_Hypnosis",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Hypnotizes a group of foes at a distance and puts them to Sleep. The targets will remain asleep for some time, but will awaken if attacked. This power deals no damage, but if done discreetly, the targets will never be aware of your presence. Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Foe Sleep",
         "icon": "mentalcontrol_masshypnosis.png",
@@ -9692,7 +11221,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Mind Over Body",
         "fullName": "Epic.Psychic_Mastery.Mind_Over_Body",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you toggle on this power, you empower your Mind Over Body to become highly resistant to Smashing, Lethal and Psionic damage. Recharge: Fast",
         "shortHelp": "Toggle: Self +Res(Smash, Lethal, Psionics)",
         "icon": "psychicmastery_mindoverbody.png",
@@ -9721,7 +11250,7 @@ export const EPIC_POOLS_RAW = {
         "name": "World of Confusion",
         "fullName": "Epic.Psychic_Mastery.World_of_Confusion",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "This toggle power allows you to cause psionic damage and cause confusion within a group of foes, creating chaos. The chance of confusing an enemy is lower than then chance of damaging them, and it may take multiple hits to affect stronger opponents. All affected foes within the area will turn and attack each other, ignoring all heroes. You will not receive any Experience Points for foes defeated by Confused enemies. Recharge: Moderate",
         "shortHelp": "Toggle: PBAoE, Minor DoT(Psionic), Foe Confuse",
         "icon": "mentalcontrol_worldofconfusion.png",
@@ -9738,7 +11267,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Confuse",
-          "Melee AoE Damage"
+          "Melee AoE Damage",
+          "Melee Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -9748,14 +11278,20 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 4,
           "effectArea": "AoE",
           "radius": 8,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.12,
+            "table": "Ranged_Damage",
+            "tickRate": 2
+          }
         }
       },
       {
         "name": "Telekinesis",
         "fullName": "Epic.Psychic_Mastery.Telekinesis",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Lifts a foe, and any nearby foes, off the ground and repels them.  The targets are helpless, unable to take action, and will continue to hover away, picking up any passing targets, as long as you keep this power active. Keeping up this level of concentration costs a lot of Endurance. Recharge: Slow",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe Hold, Repel",
         "icon": "mentalcontrol_telekinesis.png",
@@ -9802,7 +11338,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Ring of Fire",
         "fullName": "Epic.Pyre_Mastery.Ring_of_Fire",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Immobilizes your target in a Ring of Fire. Deals some damage over time. Useful for keeping villains at bay. Damage: Moderate(DoT), Recharge: Fast",
         "shortHelp": "Ranged, Moderate DoT(Fire), Foe Immobilize",
         "icon": "pyremastery_ringoffire.png",
@@ -9820,6 +11356,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -9829,6 +11366,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.22,
+            "table": "Melee_Damage",
+            "duration": 9.2,
+            "tickRate": 2
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -9840,7 +11384,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Char",
         "fullName": "Epic.Pyre_Mastery.Char",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Incapacitates a distant foe by Charring him with smoldering soot and cinders. The target is left helpless, choking on the soot. The target will take some fire damage from char. Damage: Minor(DoT), Recharge: Moderate",
         "shortHelp": "Ranged, Minor DoT(Fire), Foe Hold",
         "icon": "pyremastery_soot.png",
@@ -9858,6 +11402,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -9867,6 +11412,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.07,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.1,
+            "table": "Melee_Damage",
+            "duration": 4.2,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 12,
@@ -9878,7 +11430,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Fire Blast",
         "fullName": "Epic.Pyre_Mastery.Fire_Blast",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Sends a Blast of Fire at a targeted foe and sets the target on fire for a short period of time. Slower recharge rate than Flares, but more damage. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Fire)",
         "icon": "fireblast_fireblast.png",
@@ -9894,6 +11446,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -9902,14 +11455,28 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 4.5,
           "activationTime": 1.67,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 3.1,
+              "tickRate": 1
+            }
+          ]
         }
       },
       {
         "name": "Melt Armor",
         "fullName": "Epic.Pyre_Mastery.Melt_Armor",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The searing Heat from this power is enough to melt the armor and defenses of all targets in the affected area. Melt Armor significantly weakens the Defense and Damage Resistance of the affected targets. Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Foe -Res, -DEF",
         "icon": "pyremastery_meltarmor.png",
@@ -9943,7 +11510,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Fire Ball",
         "fullName": "Epic.Pyre_Mastery.Fire_Ball",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Hurls an exploding Fireball that consumes a targeted foe, and all nearby enemies. Anyone in that explosion is burned and set ablaze. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Fire/Smash)",
         "icon": "fireblast_fireball.png",
@@ -9959,6 +11526,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9969,7 +11537,21 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 0.2,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 2.1,
+              "tickRate": 1
+            }
+          ]
         }
       }
     ]
@@ -9988,7 +11570,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Spirit Shark",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Spirit_Shark",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing moderate lethal damage over time. Damage: Moderate(DoT), Recharge: Fast",
         "shortHelp": "Ranged, Moderate DoT(Lethal), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
@@ -10006,6 +11588,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10015,6 +11598,20 @@ export const EPIC_POOLS_RAW = {
           "endurance": 6.5,
           "activationTime": 3,
           "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 0.7,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          ],
           "knockback": {
             "scale": 0.7,
             "table": "Melee_Knockback"
@@ -10025,7 +11622,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Water Spout",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Water_Spout",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Conjures up a Water Spout at a targeted location. The Water Spout will chase down your foes, tossing them into the air and hurling them great distances. The victims are left Disoriented and with reduced Defense. The Water Spout is a menacing sight, and can even cause panic among your foes. Recharge: Long",
         "shortHelp": "Summon Water Spout: PBAoE Minor DMG(Smash), Foe Knockback, Fear, Disorient",
         "icon": "arachnos_patron_dropknockback.png",
@@ -10045,6 +11642,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -10061,7 +11659,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Hibernate",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Hibernate",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "When you activate this power, you encase yourself in a block of solid ice, making yourself invulnerable, though you are frozen solid and cannot act. While Hibernating within this block of ice, you heal damage and recover endurance at an incredible rate. You can emerge at will by deactivating the power. you cannot Hibernate for more than 30 seconds while in a PvP zone and will be locked out from hibernating again for 60 seconds. If you activate this power while in the air, you will fall. Recharge: Long",
         "shortHelp": "Toggle: Self +Regeneration, +Recovery, Invulnerable; Self Hold",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -10092,7 +11690,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Spirit Shark Jaws",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Spirit_Shark_Jaws",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "You can summon a massive Spirit Shark that will attack your foe from below.  The Shark will grip your foe with its massive jaws and attempt to hold the target while it mauls it, dealing lethal Damage over Time. Flying Targets will likely be pulled to the ground. Note that you cannot get Critical strikes using this power, though it still enables your other attacks to Critical. Recharge: Slow",
         "shortHelp": "Ranged, Moderate DoT(Lethal), Foe Hold, -Fly",
         "icon": "arachnos_patron_targetedhold.png",
@@ -10110,6 +11708,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10119,6 +11718,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.135,
+            "table": "Melee_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 10,
@@ -10130,7 +11734,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Guardian",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Summon_Guardian",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Captain Mako has shown you how to summon a Coralax Guardian Warder to do your bidding. These creatures are composed of living coral made from the sea-goddess Merulina. Recharge: Long",
         "shortHelp": "Summon Warder: Ranged Moderate DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
@@ -10150,6 +11754,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -10178,7 +11783,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Mace Blast",
         "fullName": "Epic.Stalker_Mace_Mastery.Mace_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The Bane Mace is capable of firing a bolt of kinetic energy. The blast is powerful enough that it may knockback some foes. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Energy/Smash), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
@@ -10196,6 +11801,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10204,14 +11810,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Mace Beam",
         "fullName": "Epic.Stalker_Mace_Mastery.Mace_Beam",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "Fires an extremely long range and accurate beam of kinetic Energy from the Bane Mace that deals tremendous damage and knocks the target back. This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
         "shortHelp": "Sniper, Superior DMG(Energy/Smash), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
@@ -10230,6 +11841,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage",
           "Sniper Attacks"
         ],
@@ -10239,14 +11851,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 16,
           "endurance": 12.56,
           "activationTime": 7,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.15,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Disruptor Blast",
         "fullName": "Epic.Stalker_Mace_Mastery.Disruptor_Blast",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes.  Some affected foes may be knocked back by the force of the blast. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -10264,6 +11881,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -10275,6 +11893,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Melee_Damage"
+          },
           "knockback": {
             "scale": 1,
             "table": "Melee_Knockback"
@@ -10285,7 +11908,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Web Cocoon",
         "fullName": "Epic.Stalker_Mace_Mastery.Web_Cocoon",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "The Bane Mace can fire a more powerful version the common web grenade.  The sinewy fibers of this grenade are strong enough to completely Hold one target. Targets able to resist the Hold are still likely to have their attack and movement speed dramatically slowed.  Web Cocoon can also bring down flying targets and prevent foes from jumping. Recharge: Long",
         "shortHelp": "Ranged, Foe Hold, -Recharge, -Fly, -Jump, Slow",
         "icon": "arachnos_patron_targetedhold.png",
@@ -10323,7 +11946,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Spiderlings",
         "fullName": "Epic.Stalker_Mace_Mastery.Summon_Spiderlings",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion has granted you access to a small squadron of Arachnobot Spiderlings. Recharge: Extremely Long",
         "shortHelp": "Summon Spiderlings: Ranged Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -10342,6 +11965,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -10370,7 +11994,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Mu Bolts",
         "fullName": "Epic.Stalker_Mu_Mastery.Mu_Bolts",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You can quickly hurl small bolts of Mu electricity at foes, dealing some damage and draining some Endurance. Some of this Endurance may transfer back to you. Mu Bolts deals light damage but recharges quickly. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
@@ -10388,6 +12012,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10396,14 +12021,35 @@ export const EPIC_POOLS_RAW = {
           "recharge": 6,
           "endurance": 6.5,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 2
+          },
+          "enduranceGain": {
+            "scale": 3.25,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 2
         }
       },
       {
         "name": "Zapp",
         "fullName": "Epic.Stalker_Mu_Mastery.Zapp",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "A focused blast of Mu electrical energy that can travel great distances with high Accuracy. Zapp drains Endurance, some of which may transfer back to you. This is a sniper attack, and is best fired from a distance as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Superior, Recharge: Slow",
         "shortHelp": "Sniper, Extreme DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
@@ -10422,6 +12068,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged Damage",
           "Sniper Attacks"
         ],
@@ -10431,14 +12078,35 @@ export const EPIC_POOLS_RAW = {
           "recharge": 12,
           "endurance": 12.56,
           "activationTime": 7.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 2.3,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.14,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 8.97,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Ball Lightning",
         "fullName": "Epic.Stalker_Mu_Mastery.Ball_Lightning",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -10456,6 +12124,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -10466,14 +12135,31 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.3,
+            "table": "Melee_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Electric Shackles",
         "fullName": "Epic.Stalker_Mu_Mastery.Electric_Shackles",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Electric Shackles binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance and some of that Endurance may be transferred back to you. Note that you cannot get Critical strikes using this power, though it still enables your other attacks to Critical. Damage: Minor, Recharge: Moderate",
         "shortHelp": "Ranged, Minor DMG(Energy), Foe Hold, -End",
         "icon": "arachnos_patron_targetedhold.png",
@@ -10493,6 +12179,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10501,14 +12188,33 @@ export const EPIC_POOLS_RAW = {
           "recharge": 32,
           "endurance": 8.58,
           "activationTime": 2.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.15,
+            "table": "Melee_Damage",
+            "duration": 6.3,
+            "tickRate": 1
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 8
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 8
         }
       },
       {
         "name": "Summon Adept",
         "fullName": "Epic.Stalker_Mu_Mastery.Summon_Adept",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Scirocco has shown you how to call upon a mystical Mu Adept to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Recharge: Extremely Long",
         "shortHelp": "Summon Mu Adept: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -10528,6 +12234,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -10556,7 +12263,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Dark Blast",
         "fullName": "Epic.Stalker_Soul_Mastery.Dark_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "A long range blast of dark energy. Deals moderate Negative Energy damage and reduces the target's Accuracy. Damage: Moderate, Recharge: Fast",
         "shortHelp": "Ranged, Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedmoddmg.png",
@@ -10574,6 +12281,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Melee Damage",
           "Ranged Damage",
           "To Hit Debuff"
         ],
@@ -10583,14 +12291,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 4,
           "endurance": 4.5,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Moonbeam",
         "fullName": "Epic.Stalker_Soul_Mastery.Moonbeam",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "An extremely long range and accurate beam of Negative Energy that deals tremendous damage and reduces the target's Accuracy. This is a sniper attack, and like most sniper attacks, is best fired from a distance as it can be interrupted. If you have more than 97% To-Hit, this attack becomes instant-cast. Damage: Extreme, Recharge: Slow",
         "shortHelp": "Sniper, Superior DMG(Negative), Target -ACC",
         "icon": "arachnos_patron_targetedrangedsnipe.png",
@@ -10609,6 +12322,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Melee Damage",
           "Ranged Damage",
           "Sniper Attacks",
           "To Hit Debuff"
@@ -10619,14 +12333,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 12,
           "endurance": 12.59,
           "activationTime": 7.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 2.3,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Shadow Meld",
         "fullName": "Epic.Stalker_Soul_Mastery.Shadow_Meld",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Your mastery over the shadows allows you to become a living shadow entity for a short time, increasing your defense to all attacks. You must be level 41 and have Dark Blast or Moonbeam before selecting this power.Recharge: Long",
         "shortHelp": "Self: +Def(All)",
         "icon": "arachnos_patron_selfbuffresistancephysical.png",
@@ -10647,14 +12366,24 @@ export const EPIC_POOLS_RAW = {
           "recharge": 90,
           "endurance": 5.2,
           "activationTime": 3,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "melee": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 15
+          },
+          "buffDuration": 15
         }
       },
       {
         "name": "Soul Storm",
         "fullName": "Epic.Stalker_Soul_Mastery.Soul_Storm",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Like Ghost Widow, you can summon the souls of your victims to do your bidding.  Soul Storm enraptures a single target Holding them while their life-force is drained from their body. Note that you cannot get Critical strikes using this power, though it still enables your other attacks to Critical. Recharge: Slow",
         "shortHelp": "Ranged, Moderate DoT(Negative), Foe Hold",
         "icon": "arachnos_patron_targetedhold.png",
@@ -10672,6 +12401,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10681,6 +12411,13 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2.17,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.11,
+            "table": "Melee_Damage",
+            "duration": 10,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 10,
@@ -10692,7 +12429,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Widow",
         "fullName": "Epic.Stalker_Soul_Mastery.Summon_Widow",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Ghost Widow has assigned a beautiful but deadly Blood Widow assassins for you to command. Their weapons of choice include wrist retractable mounted razors and darts, all tipped in deadly poison. Recharge: Extremely Long",
         "shortHelp": "Summon Night Widow: Melee Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -10710,6 +12447,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff"
@@ -10739,7 +12477,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Hurl Boulder",
         "fullName": "Epic.Stone_Mastery.Hurl_Boulder",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You are able to tear up a chunk of ground beneath your feet and Hurl it at an enemy. This attack is close ranged, deals high damage, and can knock foes back. Damage: High, Recharge: Moderate",
         "shortHelp": "Ranged, High DMG(Smash), Foe Knockback",
         "icon": "stonemastery_hurlboulder.png",
@@ -10757,6 +12495,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10766,6 +12505,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 8.19,
           "activationTime": 2.5,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.64,
+            "table": "Melee_Damage"
+          },
           "knockback": {
             "scale": 3,
             "table": "Melee_Knockback"
@@ -10776,7 +12520,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Fissure",
         "fullName": "Epic.Stone_Mastery.Fissure",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "This powerful stomp can cause a seismic disturbance. This will crack the Earth itself and send a Fault towards a targeted foe.  Affected targets take moderate damage and may be thrown in the air and possibly Disoriented. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Close (Targeted AoE), Moderate DMG(Lethal/Smash), Foe Knockback, Disorient",
         "icon": "stonemastery_fissure.png",
@@ -10795,6 +12539,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -10807,6 +12552,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.9,
+            "table": "Melee_Damage"
+          },
           "stun": {
             "mag": 0.5,
             "scale": 8,
@@ -10818,7 +12568,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Rock Armor",
         "fullName": "Epic.Stone_Mastery.Stone_Armor",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Your skin becomes stone while this power is active. Stone Armor makes you highly resistant to Smashing and Lethal attacks. They are less likely to land and affect you. Recharge: Fast",
         "shortHelp": "Toggle: Self +DEF(Lethal, Smashing)",
         "icon": "stonearmor_stonearmor.png",
@@ -10840,14 +12590,28 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.1625,
           "activationTime": 0.73,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "defenseBuff": {
+            "smashing": {
+              "scale": 1.6,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.6,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75
+          },
+          "buffDuration": 0.75
         }
       },
       {
         "name": "Seismic Smash",
         "fullName": "Epic.Stone_Mastery.Seismic_Smash",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright. Damage: Extreme, Recharge: Slow",
         "shortHelp": "Melee, Extreme DMG(Smash), Foe Hold",
         "icon": "stonemastery_seismicsmash.png",
@@ -10873,6 +12637,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 12.96,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 2.6,
+            "table": "Melee_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 8,
@@ -10884,7 +12653,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Earth's Embrace",
         "fullName": "Epic.Stone_Mastery.Earths_Embrace",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "You are so connected to the Earth, you can draw upon its power to add to your own health. Activating this power increases your maximum Hit Points, and grants you resistance to Toxic Damage. Recharge: Very Long",
         "shortHelp": "Self +HP",
         "icon": "stonearmor_earthsembrace.png",
@@ -10926,7 +12695,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Spirit Shark",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Spirit_Shark",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You are empowered with the Spirit of the Mako Shark. You can project this spirit to attack and maul your opponent. The Shark Spirit will manifest and attack your foe, quickly dealing heavy lethal damage over time. Damage: Heavy(DoT), Recharge: Fast",
         "shortHelp": "Ranged, Heavy DoT(Lethal), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -10944,6 +12713,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10953,6 +12723,20 @@ export const EPIC_POOLS_RAW = {
           "endurance": 8.58,
           "activationTime": 3,
           "effectArea": "SingleTarget",
+          "damage": [
+            {
+              "type": "Special",
+              "scale": 1.1,
+              "table": "Melee_Damage"
+            },
+            {
+              "type": "Special",
+              "scale": 0.1,
+              "table": "Melee_Damage",
+              "duration": 3.2,
+              "tickRate": 1
+            }
+          ],
           "knockback": {
             "scale": 0.7,
             "table": "Melee_Knockback"
@@ -10963,7 +12747,7 @@ export const EPIC_POOLS_RAW = {
         "name": "School of Sharks",
         "fullName": "Epic.VEAT_Leviathan_Mastery.School_of_Sharks",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You can call forth a school of vicious Shark Spirits that will swim out in a cone formation and will encircle your foes, draining their spirit energy. The encircling Shark Spirits will immobilize most foes while they deal negative energy damage over time. Both you and the target must be Near the Ground for this power to activate. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DoT(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -10981,6 +12765,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -10993,6 +12778,11 @@ export const EPIC_POOLS_RAW = {
           "radius": 60,
           "arc": 0.8726646304130554,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.15,
+            "table": "Melee_Damage"
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -11004,7 +12794,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Bile Spray",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Chum_Spray",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take toxic damage over time. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DoT(Toxic)",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -11020,6 +12810,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -11031,14 +12822,19 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.8726646304130554,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.75,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Arctic Breath",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Arctic_Breath",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Sharks will eat anything, so their stomach acid must be powerful indeed. You can regurgitate this freezing acid and spew a corrosive spray of bile at a foe. Affected foes in the cone area will take cold damage over time, and have their damage resistance, Defense, movement rate, and recharge rate reduced.  This ice will stick to foes, causing them to fall down occasionally. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Cone), Minor DoT(Cold), Foe -Speed, -Recharge, -DEF -Res, knock down",
         "icon": "arachnos_patron_coneslow.png",
@@ -11058,6 +12854,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
+          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -11070,14 +12867,19 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.8726646304130554,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.75,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Summon Guardian",
         "fullName": "Epic.VEAT_Leviathan_Mastery.Summon_Guardian",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Captain Mako has shown you how to summon a Coralax Guardian Sentinel to do your bidding. These creatures are composed of living coral made from the sea-goddess Merulina. Recharge: Extremely Long",
         "shortHelp": "Summon Sentinel: Ranged Moderate DMG(Smashing)",
         "icon": "arachnos_patron_summononepet.png",
@@ -11097,6 +12899,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -11125,7 +12928,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Mace Blast",
         "fullName": "Epic.VEAT_Mace_Mastery.Mace_Blast",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "The Executioner's Mace is capable of firing a powerful bolt of kinetic energy. The blast is powerful enough that it may knock some foes back. Arachnos Bane Spider Troopers call this the Power Blast. The Arbiters who invented it scoff at this simple term. Damage: Heavy, Recharge: Fast",
         "shortHelp": "Ranged, Heavy DMG(Energy/Smash), Foe Knockback",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -11143,6 +12946,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11151,14 +12955,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 9,
           "endurance": 8.58,
           "activationTime": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.66,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Web Envelope",
         "fullName": "Epic.VEAT_Mace_Mastery.Web_Envelope",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "The Executioner's Mace can lob a modified Web Grenade.  Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets in a wide area. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping. Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE) Immobilize, -Recharge, -Fly, -Jump",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -11197,7 +13006,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Disruptor Blast",
         "fullName": "Epic.VEAT_Mace_Mastery.Disruptor_Blast",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Fires a tremendous charge of kinetic energy from your Executioner's Mace. This charge is so powerful it will explode on impact, blasting all nearby foes.  Some affected foes may be knocked back by the force of the blast. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Smashing/Energy), Foe Knockback",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -11215,6 +13024,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -11226,6 +13036,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Melee_Damage"
+          },
           "knockback": {
             "scale": 1,
             "table": "Melee_Knockback"
@@ -11236,7 +13051,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Shatter Armor",
         "fullName": "Epic.VEAT_Mace_Mastery.Focused_Accuracy",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "You deliver a punishing blow with your Arachnos Mace dealing superior damage and reducing the target's resistance to damage for a short time.  Damage: Superior Recharge: Slow",
         "shortHelp": "Melee, Superior DMG(Smash/Toxic), Foe -Res",
         "icon": "arachnos_patron_targeteddebuffdefense.png",
@@ -11259,14 +13074,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 15,
           "endurance": 17.94,
           "activationTime": 2.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.932,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Summon Tarantula",
         "fullName": "Epic.VEAT_Mace_Mastery.Summon_Blaster",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Black Scorpion has granted you an Toxic Tarantula for you to command. Weaver One developed the Tarantula Exoskeleton Armor, which so radically transforms an Arachnos troop that hardly anything human is recognizable. Recharge: Extremely Long",
         "shortHelp": "Summon Tarantula: Ranged Moderate DMG(Toxic)",
         "icon": "arachnos_patron_summononepet.png",
@@ -11285,6 +13105,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -11313,7 +13134,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Mu Lightning",
         "fullName": "Epic.VEAT_Mu_Mastery.Mu_Lightning",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "You can send a large blast of Mu electrical energy at a foe, dealing heavy damage and draining some Endurance. Some of this Endurance may transfer back to you. Damage: High, Recharge: Fast",
         "shortHelp": "Ranged, High DMG(Energy), Foe -End",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -11331,6 +13152,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11339,14 +13161,35 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 7.58,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.42,
+            "table": "Melee_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 3,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Electrifying Fences",
         "fullName": "Epic.VEAT_Mu_Mastery.Electrifying_Fences",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "The Electrifying Fences attempts to Immobilize a group of foes in an area. This power deals some energy damage over time as it slowly drains some Endurance. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Minor DoT(Energy), Foe Immobilize, -END",
         "icon": "arachnos_patron_rangedaoeimmobilize.png",
@@ -11366,6 +13209,7 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -11377,18 +13221,38 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 20,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.11,
+            "table": "Melee_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
             "table": "Melee_Immobilize"
-          }
+          },
+          "enduranceDrain": {
+            "scale": 0.04,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "enduranceDrain": 6.2,
+            "recoveryDebuff": 2
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "buffDuration": 6.2
         }
       },
       {
         "name": "Ball Lightning",
         "fullName": "Epic.VEAT_Mu_Mastery.Ball_Lightning",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "Hurls a highly charged ball of Mu lightning that explodes on contact. Ball Lightning deals good damage in an area of effect, and drains some Endurance from each target it hits. Damage: Moderate(DoT), Recharge: Long",
         "shortHelp": "Ranged (Targeted AoE), Moderate DoT(Energy), Foe -End",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -11406,6 +13270,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -11416,14 +13281,31 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.4,
+            "table": "Melee_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Static Discharge",
         "fullName": "Epic.VEAT_Mu_Mastery.Static_Discharge",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area. Damage: Moderate, Recharge: Long",
         "shortHelp": "Ranged (Cone), Moderate DMG(Energy), -END",
         "icon": "arachnos_patron_rangedconemoderatedmg.png",
@@ -11441,6 +13323,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -11452,14 +13335,35 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 60,
           "arc": 0.8726646304130554,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.96,
+            "table": "Ranged_Damage"
+          },
+          "enduranceDrain": {
+            "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceGain": {
+            "scale": 4.29,
+            "table": "Ranged_Ones"
+          },
+          "buffDuration": 4
         }
       },
       {
         "name": "Summon Striker",
         "fullName": "Epic.VEAT_Mu_Mastery.Summon_Striker",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Scirocco has shown you how to call upon a mystical Mu Striker to assist you. The Mu pulse with the blood of their slaughtered ancestors in their veins, and are well practiced in the dark arts. Recharge: Extremely Long",
         "shortHelp": "Summon Mu Strike: Ranged Moderate DMG(Energy)",
         "icon": "arachnos_patron_summononepet.png",
@@ -11478,6 +13382,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -11506,7 +13411,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Gloom",
         "fullName": "Epic.VEAT_Soul_Mastery.Gloom",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Gloom slowly drains a target of life, while reducing his Accuracy. Slower than Dark Blast, but deals more damage over time. Damage: High(DoT), Recharge: Moderate",
         "shortHelp": "Ranged, High DoT(Negative), Foe -ACC",
         "icon": "arachnos_patron_targetedrangedhighdmg.png",
@@ -11524,6 +13429,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Melee Damage",
           "Ranged Damage",
           "To Hit Debuff"
         ],
@@ -11533,14 +13439,21 @@ export const EPIC_POOLS_RAW = {
           "recharge": 8,
           "endurance": 8.528,
           "activationTime": 1.1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.22,
+            "table": "Melee_Damage",
+            "duration": 1.5,
+            "tickRate": 0.20000000298023224
+          }
         }
       },
       {
         "name": "Soul Tentacles",
         "fullName": "Epic.VEAT_Soul_Mastery.Soul_Tentacles",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You can create a cone shaped rift to the Netherworld that allows the souls of the damned to slip into our reality. These Soul Tentacles will snare all foes within range, Immobilizing them while they drain their life. Damage: Moderate(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Cone), Moderate DMG(Negative), Foe Immobilize",
         "icon": "arachnos_patron_coneimmobilize.png",
@@ -11558,6 +13471,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -11570,6 +13484,13 @@ export const EPIC_POOLS_RAW = {
           "radius": 60,
           "arc": 0.8726646304130554,
           "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 0.11,
+            "table": "Melee_Damage",
+            "duration": 7.1,
+            "tickRate": 1
+          },
           "immobilize": {
             "mag": 1,
             "scale": 15,
@@ -11581,7 +13502,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Dark Obliteration",
         "fullName": "Epic.VEAT_Soul_Mastery.Dark_Obliteration",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "You hurl a large blast of negative energy that violently explodes on impact, exposing the dark power of the Netherworld to all foes near the target. Dark Obliteration can reduce the Accuracy of all affected targets. Damage: Moderate, Recharge: Slow",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Negative), Foe -ACC",
         "icon": "arachnos_patron_rangedaoemoderatedmg.png",
@@ -11599,6 +13520,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
+          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -11610,14 +13532,19 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1,
           "effectArea": "AoE",
           "radius": 15,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": {
+            "type": "Special",
+            "scale": 1.24,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Darkest Night",
         "fullName": "Epic.VEAT_Soul_Mastery.Darkest_Night",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "While active, you channel Negative Energy onto a targeted foe. While Darkest Night is active the target, and all foes nearby, will have their chance to hit and Damage potential reduced as long as you keep the power active. Recharge: Moderate",
         "shortHelp": "Toggle: Ranged (Targeted AoE), Foe -DMG, -To Hit",
         "icon": "arachnos_patron_aoedamagedebuff.png",
@@ -11650,7 +13577,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Summon Widow",
         "fullName": "Epic.VEAT_Soul_Mastery.Summon_Widow",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "Ghost Widow has assigned a beautiful but deadly Blood Widow assassins for you to command. Their weapons of choice include wrist retractable mounted razors and darts, all tipped in deadly poison. Recharge: Extremely Long",
         "shortHelp": "Summon Blood Widow: Melee Moderate DMG(Lethal)",
         "icon": "arachnos_patron_summononepet.png",
@@ -11666,6 +13593,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -11694,7 +13622,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Web Grenade",
         "fullName": "Epic.Weapon_Mastery.Web_Grenade",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping. Recharge: Fast",
         "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
         "icon": "gadgets_webgrenade.png",
@@ -11732,7 +13660,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Caltrops",
         "fullName": "Epic.Weapon_Mastery.Caltrops",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "You toss a handful of Caltrops at a targeted location and spread the tiny metal spikes over a large area. Any villains that pass over the Caltrops will be forced to move at a slower rate. They will also take some trivial Lethal damage over time. Damage: Minor(DoT), Recharge: Slow",
         "shortHelp": "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
         "icon": "gadgets_caltrops.png",
@@ -11748,6 +13676,7 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -11764,7 +13693,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Shuriken",
         "fullName": "Epic.Weapon_Mastery.Shuriken",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "A classic small throwing weapon, you can throw Shurikens at a pretty fast rate of fire. Damage: Minor, Recharge: Fast",
         "shortHelp": "Ranged, Minor DMG(Lethal)",
         "icon": "weaponmastery_shuriken.png",
@@ -11780,6 +13709,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11788,14 +13718,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 3,
           "endurance": 5.46,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.84,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Targeting Drone",
         "fullName": "Epic.Weapon_Mastery.Targeting_Drone",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit and increase your perception, allowing you to better see stealthy foes. Targeting Drone also grants you resistance to powers that debuff your chance to hit. This is a toggle power and must be activated and deactivated manually. Like all toggle powers, Targeting Drone costs endurance while active. Recharge: Slow",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "weaponmastery_targetingdrone.png",
@@ -11824,7 +13759,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Exploding Shuriken",
         "fullName": "Epic.Weapon_Mastery.Exploding_Shuriken",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "This small throwing star is rigged to explode on impact. Damage: Moderate, Recharge: Moderate",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal)",
         "icon": "weaponmastery_explodingshuriken.png",
@@ -11840,6 +13775,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -11850,7 +13786,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 1,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]
@@ -11869,7 +13810,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Web Grenade",
         "fullName": "Epic.Weapon_Mastery_Stalker.Web_Grenade",
         "rank": 1,
-        "available": 0,
+        "available": 34,
         "description": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping. Recharge: Fast",
         "shortHelp": "Ranged, Target Immobilize, -Recharge, -Fly",
         "icon": "gadgets_webgrenade.png",
@@ -11907,7 +13848,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Physical Perfection",
         "fullName": "Epic.Weapon_Mastery_Stalker.Caltrops",
         "rank": 2,
-        "available": 0,
+        "available": 34,
         "description": "By achieving perfect harmony of body, mind and spirit you are able to regenerate health and endurance slightly faster than normal.  This power is always active and consumes no endurance.",
         "shortHelp": "Auto: Self, +Regeneration, +Recovery",
         "icon": "bodymastery_physicalperfection.png",
@@ -11926,14 +13867,22 @@ export const EPIC_POOLS_RAW = {
         "effects": {
           "accuracy": 1,
           "activatePeriod": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "durations": {
+            "regenBuff": 10.25
+          },
+          "buffDuration": 10.25
         }
       },
       {
         "name": "Shuriken",
         "fullName": "Epic.Weapon_Mastery_Stalker.Shuriken",
         "rank": 3,
-        "available": 0,
+        "available": 34,
         "description": "A classic small throwing weapon, you can throw Shurikens at a pretty fast rate of fire. Damage: Minor, Recharge: Fast",
         "shortHelp": "Ranged, Minor DMG(Lethal)",
         "icon": "weaponmastery_shuriken.png",
@@ -11949,6 +13898,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11957,14 +13907,19 @@ export const EPIC_POOLS_RAW = {
           "recharge": 3,
           "endurance": 5.46,
           "activationTime": 1.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 1.64,
+            "table": "Melee_Damage"
+          }
         }
       },
       {
         "name": "Targeting Drone",
         "fullName": "Epic.Weapon_Mastery_Stalker.Targeting_Drone",
         "rank": 4,
-        "available": 0,
+        "available": 34,
         "description": "When this device is activated, the small Targeting Drone hovers around your head and emits targeting laser sights. The lasers can dramatically improve your chance to hit and increase your perception, allowing you to better see stealthy foes. Targeting Drone also grants you resistance to powers that debuff your chance to hit. This is a toggle power and must be activated and deactivated manually. Like all toggle powers, Targeting Drone costs endurance while active. Recharge: Slow",
         "shortHelp": "Toggle: Self +To Hit, +ACC, +Perception, Res(DeBuff To Hit)",
         "icon": "weaponmastery_targetingdrone.png",
@@ -11993,7 +13948,7 @@ export const EPIC_POOLS_RAW = {
         "name": "Exploding Shuriken",
         "fullName": "Epic.Weapon_Mastery_Stalker.Exploding_Shuriken",
         "rank": 5,
-        "available": 0,
+        "available": 34,
         "description": "This small throwing star is rigged to explode on impact. Damage: Moderate, Recharge: Moderate",
         "shortHelp": "Ranged (Targeted AoE), Moderate DMG(Lethal)",
         "icon": "weaponmastery_explodingshuriken.png",
@@ -12009,6 +13964,7 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
+          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -12019,7 +13975,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 0.5,
+            "table": "Melee_Damage"
+          }
         }
       }
     ]

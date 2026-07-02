@@ -34,5 +34,15 @@ export const IdentifyWeakness: Power = {
     "Recharge",
     "Accuracy"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenDebuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 30
+    },
+    "buffDuration": 30
+  }
 };

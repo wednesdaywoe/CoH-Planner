@@ -46,6 +46,16 @@ export const SunderBone: Power = {
     "scale": 2.28,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
+  },
   "conditionalEffects": [
     {
       "id": "pale_enemy_lash",

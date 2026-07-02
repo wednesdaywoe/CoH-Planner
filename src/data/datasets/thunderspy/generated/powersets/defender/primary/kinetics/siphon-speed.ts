@@ -37,5 +37,15 @@ export const SiphonSpeed: Power = {
   "allowedSetCategories": [
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "rechargeDebuff": 60
+    },
+    "buffDuration": 60
+  }
 };

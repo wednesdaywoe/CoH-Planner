@@ -343,7 +343,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Endurance"
           ],
           "type": "",
           "application_type": "",
@@ -460,7 +460,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Recovery"
           ],
           "type": "",
           "application_type": "",
@@ -499,7 +499,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Endurance"
           ],
           "type": "",
           "application_type": "",

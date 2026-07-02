@@ -55,5 +55,19 @@ export const BallLightning: Power = {
       "duration": 2,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.07,
+      "table": "Ranged_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 4
+    },
+    "buffDuration": 4
+  }
 };

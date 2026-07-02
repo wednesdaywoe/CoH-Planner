@@ -37,5 +37,20 @@ export const EntropyShield: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "rechargeBuff": {
+      "scale": 0.035,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "rechargeBuff": 2.25,
+      "rechargeDebuff": 2.25
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
+    "buffDuration": 2.25
+  }
 };

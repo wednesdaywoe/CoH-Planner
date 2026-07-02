@@ -36,5 +36,23 @@ export const Rejuvenate: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "conditionalEffects": [
+    {
+      "id": "prowlermode",
+      "label": "Prowler Mode",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "recoveryBuff": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "recoveryBuff": 30
+        },
+        "buffDuration": 30
+      }
+    }
+  ]
 };

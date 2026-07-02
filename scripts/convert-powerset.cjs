@@ -4719,51 +4719,76 @@ function applyThunderspyDamageType(damage, shortHelp) {
   return Array.isArray(damage) ? damage.map(fix) : fix(damage);
 }
 
-/**
- * TEMPORARY WORKAROUND — Thunderspy `Ones`-attrib buff recovery.
- *
- * Thunderspy stores magnitude buffs that ride a `*_Ones` unit table (recharge
- * buffs like Hasten, and other misc magnitude buffs) with a GENERIC `Ones`
- * attrib and BLANK aspect/type. A byte-level decode of Hasten's effect template
- * from `bin_powers.pigg` confirmed the modified attribute (e.g. RechargeTime) is
- * NOT stored per-template at all — so no bin-parser change can recover it (see
- * BIN-PARSER-LOG "Thunderspy `Ones`-attrib buffs lose their attribute"). Because
- * `extractEffects` can't classify a `Ones` template, it drops the buff AND its
- * duration → e.g. Thunderspy Hasten had no `rechargeBuff` (no +recharge applied)
- * and no `buffDuration` (so the perma-tracking "Track" button never appeared).
- *
- * The only recoverable signal is the resolved shortHelp — the same fallback the
- * damage path already uses (applyThunderspyDamageType). We scope this to the
- * clear, high-value case: a clicky Self power whose shortHelp advertises
- * "+Recharge" (Hasten). Other `Ones` buff kinds stay unrecovered until a proper
- * Thunderspy attribute source is available. Thunderspy-only; no-op elsewhere.
- */
-function recoverThunderspyOnesBuffs(power, powerJson) {
-  if (power.powerType !== 'Click') return;
-  // Self-targeted only. Ally/team-targeted +Recharge buffs (Speed Boost, Chrono
-  // Shift, …) also ride `Ones`, but they're multi-buff and the `Ones` template
-  // is ambiguous among +Recharge/+Recovery/+Regen — recovering them risks
-  // mislabeling, and they aren't the caster self-buffs perma tracking measures.
-  // Scope to Self (the reported case: Hasten, Adrenal Booster, Unleash Potential).
-  if (power.targetType !== 'Self') return;
-  const sh = power.shortHelp || '';
-  if (!/\+\s*Recharge\b/i.test(sh)) return;
-  if (power.effects && power.effects.rechargeBuff) return; // already classified — don't override
+// Foe/location target types where a positive caster resource SELF-buff can't be real.
+const TSPY_FOE_TARGETS = new Set(['Foe', 'Location', 'DeadFoe']);
 
-  for (const eff of powerJson.effects || []) {
-    for (const t of eff.templates || []) {
-      if (!(t.attribs || []).includes('Ones')) continue;
-      const scale = t.scale || 0;
-      // Positive scale + a real duration = the buff itself; skips Hasten's
-      // negative-scale, zero-duration endurance-crash `Ones` template.
-      if (scale <= 0) continue;
-      const durSec = _parseDurationSeconds(t.duration);
-      if (!durSec || durSec <= 0) continue;
-      power.effects = power.effects || {};
-      power.effects.rechargeBuff = { scale: Math.abs(scale), table: t.table || undefined };
-      power.effects.buffDuration = durSec;
-      return;
+/**
+ * Disambiguate Thunderspy `Ones`-relabel recoveries (recharge / recovery / regen /
+ * endurance) that the binary can't classify on its own.
+ *
+ * The parser recovers the modified stat from the post-`requires` index array, but
+ * Thunderspy's AttribMod schema drops BOTH the effect's **aspect** and its
+ * **per-template target** — the two fields HC uses to separate a real caster buff
+ * from a resistance or a foe-side effect. Two false-positive classes result, and the
+ * only signals that survive into the export are the power's `target_type` and its
+ * resolved shortHelp:
+ *
+ *  - **Aspect-trap (recharge).** A `Ones` "resistance to recharge slow" template
+ *    (Grant Cover's +RES Recharge Debuff, the Kheldian Absorption/Incandescence
+ *    passives, Cosmic/Dark Balance's slow-resist, plus stray placeholder templates
+ *    like Boost Range / Temporal Manipulator) is byte-identical to a real +recharge
+ *    buff once the aspect is gone. Every genuine +recharge power advertises it in
+ *    shortHelp ("+Recharge"/"+Rech"); none of the resistance/placeholder ones do — so
+ *    keep a recovered recharge BUFF only when the shortHelp advertises it. Recharge
+ *    DEBUFFS (foe -recharge) are unaffected: sign/`*_Slow` table already routes them.
+ *  - **Target-trap (recovery/regen).** A positive Recovery/Regeneration template on a
+ *    FOE attack (Disrupting Torrent, Touch of Fear) reads as a caster self-buff. Drop
+ *    those on foe/location-targeted powers. Endurance is intentionally exempt — a foe
+ *    Electric attack's +Endurance IS a genuine self end-gain (drain-to-self), matching
+ *    the HC data.
+ *
+ * Thunderspy-only; callers gate on datasetId. See parser_logs/THUNDERSPY_TODO.md item 1.
+ */
+function guardThunderspyOnesBuffs(power) {
+  const e = power.effects;
+  if (!e) return;
+  let changed = false;
+  const drop = (k) => {
+    if (e[k] !== undefined) {
+      delete e[k];
+      if (e.durations) delete e.durations[k];
+      changed = true;
     }
+  };
+
+  const sh = power.shortHelp || '';
+  if (e.rechargeBuff && !/\+\s*rech/i.test(sh)) drop('rechargeBuff');
+  // Resource target-trap, but shortHelp-aware so a genuine self-buff-on-a-foe-attack
+  // survives: Touch of the Beyond (a foe fear attack) explicitly advertises
+  // "Self +Regeneration", so its regenBuff is real even though the power targets a foe.
+  // Only Disrupting Torrent / Dark-Melee Touch of Fear (foe, no self-buff advertised)
+  // are the phantom cases. `+Rec\b`/`+Recovery` matches recovery without catching
+  // `+Recharge`; `+Regen(eration)` matches regen.
+  if (TSPY_FOE_TARGETS.has(power.targetType)) {
+    if (e.recoveryBuff && !/\+\s*rec(?:overy|\b)/i.test(sh)) drop('recoveryBuff');
+    if (e.regenBuff && !/\+\s*regen/i.test(sh)) drop('regenBuff');
+  }
+
+  if (!changed) return;
+  // Re-derive the perma `buffDuration` from whatever durations survive, so a removed
+  // effect can't leave a stale Track duration behind (mirrors the main derivation).
+  if (e.durations && Object.keys(e.durations).length) {
+    const counts = {};
+    for (const d of Object.values(e.durations)) counts[d] = (counts[d] || 0) + 1;
+    let best = null, bestCount = 0;
+    for (const [d, c] of Object.entries(counts)) {
+      const v = parseFloat(d);
+      if (c > bestCount || (c === bestCount && v > (best || 0))) { best = v; bestCount = c; }
+    }
+    if (best && best > 0) e.buffDuration = best; else delete e.buffDuration;
+  } else {
+    if (e.durations) delete e.durations;
+    delete e.buffDuration;
   }
 }
 
@@ -5205,7 +5230,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     for (const ce of power.conditionalEffects || []) {
       if (ce.damage) ce.damage = applyThunderspyDamageType(ce.damage, power.shortHelp);
     }
-    recoverThunderspyOnesBuffs(power, powerJson);
+    guardThunderspyOnesBuffs(power);
   }
 
   return power;
@@ -5453,7 +5478,7 @@ export default powerset;
 // migrate-to-layered.cjs)
 module.exports = {
   applyThunderspyDamageType,
-  recoverThunderspyOnesBuffs,
+  guardThunderspyOnesBuffs,
   extractEffects,
   extractDamage,
   inferAllowedSetCategories,

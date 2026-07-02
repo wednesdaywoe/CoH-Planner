@@ -43,5 +43,11 @@ export const DarkConsumption: Power = {
     "type": "Negative",
     "scale": 0.8,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "enduranceGain": {
+      "scale": 25,
+      "table": "Melee_Ones"
+    }
   }
 };

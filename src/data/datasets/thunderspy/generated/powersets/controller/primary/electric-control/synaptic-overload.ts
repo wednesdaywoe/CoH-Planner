@@ -45,6 +45,18 @@ export const SynapticOverload: Power = {
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "enduranceDrain": {
+      "scale": 0.1,
+      "table": "Ranged_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 8
+    },
+    "buffDuration": 8
   }
 };

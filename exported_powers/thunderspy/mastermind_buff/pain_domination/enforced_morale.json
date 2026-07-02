@@ -229,7 +229,9 @@
       "eval_flags": 0,
       "templates": [
         {
-          "attribs": [],
+          "attribs": [
+            "RechargeTime"
+          ],
           "type": "",
           "application_type": "",
           "aspect": "",

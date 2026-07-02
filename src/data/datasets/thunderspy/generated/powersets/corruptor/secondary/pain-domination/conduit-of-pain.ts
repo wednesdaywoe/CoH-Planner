@@ -33,5 +33,11 @@ export const ConduitofPain: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceGain": {
+      "scale": 4,
+      "table": "Ranged_Ones"
+    }
+  }
 };

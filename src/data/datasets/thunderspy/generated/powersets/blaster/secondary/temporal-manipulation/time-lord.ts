@@ -42,5 +42,6 @@ export const TimeLord: Power = {
     "Slow Movement",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {}
 };

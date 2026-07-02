@@ -41,6 +41,16 @@ export const ParasiticAura: Power = {
     "Threat Duration"
   ],
   "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 45
+    },
+    "buffDuration": 45
+  },
   "conditionalEffects": [
     {
       "id": "offensiveadaptation",

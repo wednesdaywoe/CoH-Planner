@@ -32,5 +32,15 @@ export const Hoarfrost: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 30
+    },
+    "buffDuration": 30
+  }
 };

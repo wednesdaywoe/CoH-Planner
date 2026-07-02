@@ -51,5 +51,15 @@ export const NWSlash: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
+  }
 };

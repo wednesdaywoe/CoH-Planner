@@ -43,5 +43,15 @@ export const FollowUp: Power = {
     "scale": 0.6384,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
+  },
   "requires": "Widow_Training.Night_Widow_Training.Build_Up !"
 };

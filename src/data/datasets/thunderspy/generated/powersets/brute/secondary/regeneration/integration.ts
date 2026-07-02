@@ -41,5 +41,15 @@ export const Integration: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 2.25
+    },
+    "buffDuration": 2.25
+  }
 };

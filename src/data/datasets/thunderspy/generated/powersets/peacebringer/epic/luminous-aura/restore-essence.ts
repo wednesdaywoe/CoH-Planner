@@ -30,5 +30,11 @@ export const RestoreEssence: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceGain": {
+      "scale": 50,
+      "table": "Melee_Ones"
+    }
+  }
 };

@@ -44,6 +44,14 @@ export const SpeedBoost: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "rechargeBuff": 240,
+      "recoveryBuff": 240
+    },
+    "recoveryBuff": {
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    },
     "buffDuration": 240
   }
 };

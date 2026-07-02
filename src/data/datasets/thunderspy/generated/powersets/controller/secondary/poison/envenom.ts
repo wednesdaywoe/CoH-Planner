@@ -38,5 +38,15 @@ export const Envenom: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 30
+    },
+    "buffDuration": 30
+  }
 };

@@ -34,5 +34,23 @@ export const PackFrenzy: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "conditionalEffects": [
+    {
+      "id": "huntermode",
+      "label": "Hunter Mode",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "rechargeBuff": {
+          "scale": 0.25,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "rechargeBuff": 15
+        },
+        "buffDuration": 15
+      }
+    }
+  ]
 };

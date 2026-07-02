@@ -52,6 +52,22 @@ export const TeslaCage: Power = {
       "mag": 1,
       "scale": 12,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "enduranceDrain": {
+      "scale": 0.07,
+      "table": "Ranged_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "recoveryDebuff": 8
+    },
+    "enduranceGain": {
+      "scale": 3.43,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 8
   }
 };

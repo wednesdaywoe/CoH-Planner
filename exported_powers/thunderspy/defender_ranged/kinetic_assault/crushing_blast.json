@@ -69,6 +69,7 @@
       "templates": [
         {
           "attribs": [
+            "RechargeTime",
             "JumpHeight"
           ],
           "type": "",

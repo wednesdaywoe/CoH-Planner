@@ -45,5 +45,15 @@ export const RadiationTherapy: Power = {
     "type": "Energy",
     "scale": 0.1,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "regenDebuff": {
+      "scale": 1.5,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenDebuff": 30
+    },
+    "buffDuration": 30
   }
 };

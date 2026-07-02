@@ -38,5 +38,11 @@ export const Transfusion: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.1,
+      "table": "Ranged_Ones"
+    }
+  }
 };

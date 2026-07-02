@@ -40,5 +40,19 @@ export const StunningAura: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "enduranceDrain": {
+      "scale": 0.075,
+      "table": "Ranged_Ones"
+    },
+    "regenBuff": {
+      "scale": 0.15,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenBuff": 2.25
+    },
+    "buffDuration": 2.25
+  }
 };

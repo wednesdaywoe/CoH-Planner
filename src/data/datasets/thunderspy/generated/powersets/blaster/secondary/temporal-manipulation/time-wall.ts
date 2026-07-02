@@ -49,6 +49,14 @@ export const TimeWall: Power = {
       "mag": 1,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "regenDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 20
+    },
+    "buffDuration": 20
   }
 };

@@ -51,6 +51,14 @@ export const AtomicBlast: Power = {
       "mag": 1,
       "scale": 10,
       "table": "Ranged_Stun"
-    }
+    },
+    "regenDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 30
+    },
+    "buffDuration": 30
   }
 };

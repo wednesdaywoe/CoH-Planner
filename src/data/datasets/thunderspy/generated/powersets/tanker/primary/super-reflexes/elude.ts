@@ -56,7 +56,12 @@ export const Elude: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 60
+      "defenseBuff": 60,
+      "recoveryBuff": 60
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "buffDuration": 60
   }

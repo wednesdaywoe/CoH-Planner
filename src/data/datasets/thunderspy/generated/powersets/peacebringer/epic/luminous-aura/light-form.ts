@@ -34,5 +34,15 @@ export const LightForm: Power = {
     "Endurance Modification",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "recoveryBuff": 90
+    },
+    "buffDuration": 90
+  }
 };

@@ -51,7 +51,12 @@ export const RallyTheMilitia: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 90
+      "defenseBuff": 90,
+      "regenBuff": 90
+    },
+    "regenBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 90
   }

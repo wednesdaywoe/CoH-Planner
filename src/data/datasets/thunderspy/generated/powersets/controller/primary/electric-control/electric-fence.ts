@@ -62,6 +62,23 @@ export const ElectricFence: Power = {
       "mag": 1,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    }
+    },
+    "enduranceDrain": {
+      "scale": 0.028,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "enduranceDrain": 6.2,
+      "recoveryDebuff": 2
+    },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "enduranceGain": {
+      "scale": 2.6,
+      "table": "Ranged_Ones"
+    },
+    "buffDuration": 6.2
   }
 };

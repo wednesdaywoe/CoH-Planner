@@ -38,6 +38,9 @@ export const HardLife: Power = {
       "scale": 0.3,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "rechargeBuff": 30
+    },
     "buffDuration": 30
   }
 };

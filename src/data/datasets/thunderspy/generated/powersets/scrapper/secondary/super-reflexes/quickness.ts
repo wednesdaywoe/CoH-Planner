@@ -32,5 +32,15 @@ export const Quickness: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
+  "effects": {
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "rechargeBuff": 10.25
+    },
+    "buffDuration": 10.25
+  },
   "mechanicType": "parentMechanic"
 };

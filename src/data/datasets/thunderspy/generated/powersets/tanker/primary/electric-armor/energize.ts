@@ -41,7 +41,12 @@ export const Energize: Power = {
     },
     "effectDuration": 30,
     "durations": {
-      "stun": 30
+      "stun": 30,
+      "regenBuff": 30
+    },
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "buffDuration": 30
   }

@@ -47,6 +47,16 @@ export const Flay: Power = {
     "duration": 0.6,
     "tickRate": 0.4000000059604645
   },
+  "effects": {
+    "regenDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 15
+    },
+    "buffDuration": 15
+  },
   "conditionalEffects": [
     {
       "id": "pale_enemy_fester",

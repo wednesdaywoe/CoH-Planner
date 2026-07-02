@@ -43,6 +43,9 @@ export const AccelerateMetabolism: Power = {
       "scale": 0.3,
       "table": "Ranged_Ones"
     },
+    "durations": {
+      "rechargeBuff": 120
+    },
     "buffDuration": 120
   }
 };
