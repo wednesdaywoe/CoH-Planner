@@ -59,11 +59,7 @@ export const KeeningWinds: Power = {
       "table": "Ranged_EndDrain",
       "perTarget": 10
     },
-    "buffDuration": 2.1,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
+    "buffDuration": 2.1
   },
   "specialEffects": [
     {

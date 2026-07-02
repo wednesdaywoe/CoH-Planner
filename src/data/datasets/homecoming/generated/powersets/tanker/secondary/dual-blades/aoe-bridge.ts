@@ -57,12 +57,6 @@ export const AoEBridge: Power = {
       "tickRate": 0.4000000059604645
     }
   ],
-  "effects": {
-    "maxStacks": 2,
-    "stacksLinear": [
-      "specialBuff"
-    ]
-  },
   "conditionalEffects": [
     {
       "id": "dd_debuffmode_2",

@@ -71,13 +71,7 @@ export const ParasiticAura: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 45,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "absorb",
-      "recoveryBuff",
-      "regenBuff"
-    ]
+    "buffDuration": 45
   },
   "conditionalEffects": [
     {

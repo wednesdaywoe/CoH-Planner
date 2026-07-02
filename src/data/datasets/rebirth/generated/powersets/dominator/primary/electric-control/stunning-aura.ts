@@ -56,11 +56,6 @@ export const StunningAura: Power = {
       "table": "Ranged_Ones",
       "perTarget": 0.03125
     },
-    "buffDuration": 2.25,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "recoveryBuff",
-      "regenBuff"
-    ]
+    "buffDuration": 2.25
   }
 };

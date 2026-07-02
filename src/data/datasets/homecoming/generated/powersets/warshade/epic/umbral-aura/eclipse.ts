@@ -98,11 +98,6 @@ export const Eclipse: Power = {
         "perTarget": 1.5
       }
     },
-    "buffDuration": 90,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain",
-      "resistance"
-    ]
+    "buffDuration": 90
   }
 };

@@ -13,7 +13,7 @@ import type { MidsImportResult } from '@/utils/mids-import';
 import { parseMxdText, importMxdBuild } from '@/utils/mxd-import';
 import { importGameExport } from '@/utils/game-importer';
 import type { GameImportResult } from '@/utils/game-importer';
-import { shareBuild, getOwnedBuildIds, getOwnerToken, getMyBuilds, RateLimitError, formatRateLimitMessage, rateLimitHint } from '@/services/sharedBuilds';
+import { shareBuild, getSharedBuild, getOwnedBuildIds, getOwnerToken, getMyBuilds, RateLimitError, formatRateLimitMessage, rateLimitHint } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
 import type { SharedBuild } from '@/types/shared';
 import { generatePopmenu } from '@/utils/export-popmenu';
@@ -142,6 +142,34 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const accountIds = accountBuilds.map((b) => b.id);
   const allOwnedIds = [...new Set([...tokenIds, ...accountIds])];
   const accountBuildMap = new Map(accountBuilds.map((b) => [b.id, b]));
+
+  // When the user selects an existing build to update, pre-fill the metadata
+  // fields with that build's current details. The public share form overwrites
+  // ALL metadata columns wholesale on update (server-side `updateFields`), so
+  // without this a blank field would silently wipe the saved description/
+  // author/server/tags — forcing the user to retype them every time. Account-
+  // owned builds are already loaded (instant); token-only anonymous builds are
+  // fetched by ID. Keyed only on updateExistingId so a late account-list load
+  // doesn't clobber edits the user made after selecting.
+  useEffect(() => {
+    if (!updateExistingId) return;
+    let cancelled = false;
+    const apply = (b: SharedBuild) => {
+      if (cancelled) return;
+      setShareDescription(b.description ?? '');
+      setShareAuthor(b.author_name ?? '');
+      setShareServer(b.server ?? '');
+      setShareTags((b.tags ?? []).join(', '));
+    };
+    const known = accountBuilds.find((b) => b.id === updateExistingId);
+    if (known) {
+      apply(known);
+    } else {
+      getSharedBuild(updateExistingId).then((b) => { if (b) apply(b); }).catch(() => {});
+    }
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateExistingId]);
 
   // ============================================
   // SAVE HANDLERS
@@ -1232,7 +1260,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                                 return <option key={id} value={id}>{label}</option>;
                               })}
                             </select>
-                            <p className="text-xs text-gray-500 mt-1">This will replace the build data at the existing URL.</p>
+                            <p className="text-xs text-gray-500 mt-1">Replaces the build at the existing URL. Its current details are pre-filled below — edit only what you want to change.</p>
                           </div>
                         )}
                       </div>

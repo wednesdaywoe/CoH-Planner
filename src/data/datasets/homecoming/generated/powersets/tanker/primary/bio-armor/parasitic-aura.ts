@@ -67,13 +67,7 @@ export const ParasiticAura: Power = {
       "scale": 2,
       "table": "Melee_Debuff_Dam"
     },
-    "buffDuration": 45,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "absorb",
-      "recoveryBuff",
-      "regenBuff"
-    ]
+    "buffDuration": 45
   },
   "conditionalEffects": [
     {

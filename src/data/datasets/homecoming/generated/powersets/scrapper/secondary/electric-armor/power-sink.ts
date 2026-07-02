@@ -55,11 +55,6 @@ export const PowerSink: Power = {
       "scale": 10,
       "table": "Melee_EndDrain"
     },
-    "buffDuration": 45,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain",
-      "regenBuff"
-    ]
+    "buffDuration": 45
   }
 };

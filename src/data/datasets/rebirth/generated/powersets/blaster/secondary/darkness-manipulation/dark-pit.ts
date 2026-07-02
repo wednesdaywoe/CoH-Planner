@@ -53,10 +53,6 @@ export const DarkPit: Power = {
     "durations": {
       "damageBuff": 7.5
     },
-    "buffDuration": 7.5,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+    "buffDuration": 7.5
   }
 };

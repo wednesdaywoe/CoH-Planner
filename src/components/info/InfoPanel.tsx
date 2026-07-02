@@ -255,8 +255,15 @@ function adjustEffectsForTargets(
   let changed = false;
   for (const [key, value] of Object.entries(effects)) {
     let adj = adjustScaledValue(value, targetsHit);
-    if (stacksLinear.has(key)) {
-      adj = multiplyScale(adj, targetsHit);
+    // Linear self-stack multiply — but only for keys NOT already driven by
+    // perTarget (adjustScaledValue above handles those); applying both would
+    // double-scale. Honor a per-effect cap so a lower-cap key (Psychokinetic
+    // Barrier's absorb, cap 2) doesn't over-multiply when the slider (maxStacks
+    // 3) is dragged past its own limit.
+    if (stacksLinear.has(key) && !hasPerTargetField(value)) {
+      const cap = effects.stackCaps?.[key] ?? effects.maxStacks;
+      const n = cap ? Math.min(targetsHit, cap) : targetsHit;
+      adj = multiplyScale(adj, n);
     }
     adjusted[key] = adj;
     if (adj !== value) changed = true;

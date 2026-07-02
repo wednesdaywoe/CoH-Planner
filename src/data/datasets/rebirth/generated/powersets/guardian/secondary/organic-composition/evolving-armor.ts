@@ -117,10 +117,6 @@ export const EvolvingArmor: Power = {
         "perTarget": 0.05
       }
     },
-    "buffDuration": 0.75,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "resistance"
-    ]
+    "buffDuration": 0.75
   }
 };

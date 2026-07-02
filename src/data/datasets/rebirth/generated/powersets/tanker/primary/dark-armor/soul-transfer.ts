@@ -91,12 +91,6 @@ export const SoulTransfer: Power = {
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "buffDuration": 90,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain",
-      "recoveryBuff",
-      "regenBuff"
-    ]
+    "buffDuration": 90
   }
 };

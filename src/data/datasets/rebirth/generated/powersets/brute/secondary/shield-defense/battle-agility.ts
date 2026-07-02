@@ -112,6 +112,10 @@ export const BattleAgility: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 120
+    "buffDuration": 120,
+    "maxStacks": 2,
+    "stacksLinear": [
+      "debuffResistance"
+    ]
   }
 };

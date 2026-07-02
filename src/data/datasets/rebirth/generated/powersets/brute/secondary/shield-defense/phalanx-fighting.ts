@@ -52,11 +52,7 @@ export const PhalanxFighting: Power = {
     "durations": {
       "defenseBuff": 1.25
     },
-    "buffDuration": 1.25,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "defenseBuff"
-    ]
+    "buffDuration": 1.25
   },
   "mechanicType": "parentMechanic"
 };

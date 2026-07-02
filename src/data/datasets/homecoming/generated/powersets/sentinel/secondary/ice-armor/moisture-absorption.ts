@@ -85,10 +85,6 @@ export const MoistureAbsorption: Power = {
     "durations": {
       "defenseBuff": 100
     },
-    "buffDuration": 100,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
+    "buffDuration": 100
   }
 };

@@ -113,7 +113,7 @@ export const EntropyShield: Power = {
       "table": "Melee_Ones"
     },
     "rechargeBuff": {
-      "scale": 0.385,
+      "scale": 0.085,
       "table": "Melee_Ones",
       "perTarget": 0.035
     },
@@ -121,10 +121,6 @@ export const EntropyShield: Power = {
       "scale": 0.2,
       "table": "Melee_Slow"
     },
-    "buffDuration": 2.25,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "rechargeBuff"
-    ]
+    "buffDuration": 2.25
   }
 };

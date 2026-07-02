@@ -71,10 +71,14 @@ export const FortifyMind: Power = {
       }
     },
     "buffDuration": 45,
-    "maxStacks": 2,
+    "maxStacks": 3,
     "stacksLinear": [
-      "absorb"
-    ]
+      "absorb",
+      "debuffResistance"
+    ],
+    "stackCaps": {
+      "absorb": 2
+    }
   },
   "specialEffects": [
     {

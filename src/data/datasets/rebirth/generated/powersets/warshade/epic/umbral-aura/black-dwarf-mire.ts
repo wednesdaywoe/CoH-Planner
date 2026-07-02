@@ -89,12 +89,7 @@ export const BlackDwarfMire: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 10,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
+    "buffDuration": 10
   },
   "requires": "0"
 };

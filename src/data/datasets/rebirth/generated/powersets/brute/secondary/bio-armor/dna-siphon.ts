@@ -93,13 +93,7 @@ export const DNASiphon: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 30,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain",
-      "recoveryBuff",
-      "regenBuff"
-    ]
+    "buffDuration": 30
   },
   "conditionalEffects": [
     {

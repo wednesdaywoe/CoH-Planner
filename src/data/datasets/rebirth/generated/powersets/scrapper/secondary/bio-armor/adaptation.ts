@@ -123,13 +123,6 @@ export const Adaptation: Power = {
       }
     },
     "buffDuration": 0.75,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "defenseBuff",
-      "recoveryBuff",
-      "regenBuff",
-      "resistance"
-    ],
     "regenBuff": {
       "scale": 0.36,
       "table": "Melee_Ones",

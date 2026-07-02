@@ -58,10 +58,6 @@ export const RisetotheChallenge: Power = {
       "table": "Melee_Ones",
       "perTarget": 0.5
     },
-    "buffDuration": 1.12,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "regenBuff"
-    ]
+    "buffDuration": 1.12
   }
 };

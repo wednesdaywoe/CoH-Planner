@@ -50,11 +50,6 @@ export const Consume: Power = {
       "debuffResistance": 120
     },
     "buffDuration": 120,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain",
-      "recoveryBuff"
-    ],
     "enduranceGain": {
       "scale": 20,
       "table": "Melee_Ones",

@@ -47,10 +47,6 @@ export const StygianCircle: Power = {
       "scale": 20,
       "table": "Melee_Ones",
       "perTarget": 20
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
+    }
   }
 };

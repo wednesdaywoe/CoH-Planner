@@ -77,11 +77,7 @@ export const HighLow: Power = {
     "knockback": {
       "scale": 1.34,
       "table": "Melee_Ones"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "specialBuff"
-    ]
+    }
   },
   "conditionalEffects": [
     {

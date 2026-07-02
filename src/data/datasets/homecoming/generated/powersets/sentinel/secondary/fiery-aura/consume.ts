@@ -82,11 +82,6 @@ export const Consume: Power = {
       "scale": 1.5,
       "table": "Melee_HealSelf"
     },
-    "buffDuration": 120,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain",
-      "recoveryBuff"
-    ]
+    "buffDuration": 120
   }
 };

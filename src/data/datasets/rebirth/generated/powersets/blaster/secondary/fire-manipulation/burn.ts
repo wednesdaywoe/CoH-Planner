@@ -68,10 +68,6 @@ export const Burn: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 9.53,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+    "buffDuration": 9.53
   }
 };

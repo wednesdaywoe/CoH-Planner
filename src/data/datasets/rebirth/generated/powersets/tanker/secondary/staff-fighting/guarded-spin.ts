@@ -71,10 +71,6 @@ export const GuardedSpin: Power = {
     "durations": {
       "defenseBuff": 10
     },
-    "buffDuration": 10,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "defenseBuff"
-    ]
+    "buffDuration": 10
   }
 };

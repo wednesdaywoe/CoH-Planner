@@ -79,11 +79,7 @@ export const ThunderStrike: Power = {
       "table": "Melee_Ones",
       "perTarget": 0.624
     },
-    "buffDuration": 10.8,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+    "buffDuration": 10.8
   },
   "specialEffects": [
     {

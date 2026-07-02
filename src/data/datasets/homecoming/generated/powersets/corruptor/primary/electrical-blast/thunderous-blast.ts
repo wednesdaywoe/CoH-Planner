@@ -72,10 +72,6 @@ export const ThunderousBlast: Power = {
       "recoveryDebuff": 20
     },
     "buffDuration": 20,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ],
     "enduranceGain": {
       "scale": 13.86,
       "table": "Ranged_EndDrain",

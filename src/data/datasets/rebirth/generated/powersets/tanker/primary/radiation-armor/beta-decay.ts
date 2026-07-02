@@ -65,10 +65,6 @@ export const BetaDecay: Power = {
       "table": "Melee_Ones",
       "perTarget": 0.025
     },
-    "buffDuration": 1,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "rechargeBuff"
-    ]
+    "buffDuration": 1
   }
 };

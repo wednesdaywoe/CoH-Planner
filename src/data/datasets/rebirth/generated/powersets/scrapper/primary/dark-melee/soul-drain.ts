@@ -60,12 +60,7 @@ export const SoulDrain: Power = {
       "table": "Melee_Buff_Dmg",
       "perTarget": 5.6
     },
-    "buffDuration": 30,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
+    "buffDuration": 30
   },
   "specialEffects": [
     {

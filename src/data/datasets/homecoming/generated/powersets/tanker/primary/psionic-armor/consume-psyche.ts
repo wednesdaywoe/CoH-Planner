@@ -42,7 +42,8 @@ export const ConsumePsyche: Power = {
   "effects": {
     "regenBuff": {
       "scale": 0.85,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.35
     },
     "durations": {
       "regenBuff": 45,
@@ -53,7 +54,8 @@ export const ConsumePsyche: Power = {
     },
     "recoveryBuff": {
       "scale": 0.15000000000000002,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "perTarget": 0.05
     },
     "resistance": {
       "heal": {

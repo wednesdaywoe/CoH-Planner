@@ -105,11 +105,6 @@ export const EnergyAbsorption: Power = {
       "scale": 16.5,
       "table": "Melee_EndDrain"
     },
-    "buffDuration": 45,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "defenseBuff",
-      "enduranceGain"
-    ]
+    "buffDuration": 45
   }
 };

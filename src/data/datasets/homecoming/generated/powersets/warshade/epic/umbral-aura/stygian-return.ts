@@ -76,10 +76,6 @@ export const StygianReturn: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 15,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
+    "buffDuration": 15
   }
 };

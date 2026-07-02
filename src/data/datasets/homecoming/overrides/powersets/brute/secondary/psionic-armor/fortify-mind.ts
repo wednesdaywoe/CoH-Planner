@@ -1,26 +1,19 @@
 /**
  * Psychokinetic Barrier (Fortify_Mind) — OVERRIDES LAYER
  *
- * Hand-written deltas applied on top of
- * src/data/generated/powersets/brute/secondary/psionic-armor/fortify-mind.ts
- * via `withOverrides()`. Survives regeneration of the generated layer.
- *
- * What's overridden:
- *   - effects.maxStacks: 3 — Psychokinetic Barrier stacks 3× per caster.
- *     Verified manually from the .def file (RefreshToCount + StackLimit 3 on
- *     the resistance template). The bin-crawler parser surfaces this in
- *     stack_limit on the right template, but the convert script's effects
- *     extractor doesn't translate it to the planner's maxStacks field yet.
- *   - effects.stacksLinear: which sub-effects scale linearly with stacks.
- *     Self-confirmed in-game: absorb stacks (per-cast Absorb adds), debuff
- *     resistance stacks (Endurance/Recovery/Recharge/Regen res stack); but
- *     maxHP and regen do NOT stack with self.
- *
- * Both are planner-side display fields with no equivalent in the binary —
- * they tell the dashboard's stacking slider what to do.
- *
- * The `withOverrides` helper deep-merges the `effects` field, so this object
- * augments the generated effects rather than replacing it.
+ * No hand-written deltas. The stacking metadata this power needs is now emitted
+ * DATA-DRIVEN by the converter (`scripts/convert-powerset.cjs`), which since the
+ * RefreshToCount fix produces:
+ *   - effects.maxStacks: 3 — the debuff-resistance template is RefreshToCount,
+ *     StackLimit 3 (recognized by detectSelfStacking).
+ *   - effects.stacksLinear: ['absorb', 'debuffResistance'] — the two effects
+ *     that scale with stacks (Absorb via its Stack template; the -Regen/-Recovery/
+ *     -Recharge/-Endurance debuff-resistance via RefreshToCount). maxHP and the
+ *     +Regen buff are `Replace`, so they do NOT stack and are excluded.
+ *   - effects.stackCaps: { absorb: 2 } — absorb caps at 2 while the slider
+ *     ranges to 3 for the debuff-resistance.
+ * This matches the previously hand-verified intent; the override is empty because
+ * the generator now covers it. See stacking-flaw-fix.verify.test.ts.
  */
 import type { Power } from '@/types';
 

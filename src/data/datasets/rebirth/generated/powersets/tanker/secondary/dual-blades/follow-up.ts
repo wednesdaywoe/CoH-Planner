@@ -67,12 +67,7 @@ export const FollowUp: Power = {
       "table": "Melee_Buff_Dmg",
       "perTarget": 32
     },
-    "buffDuration": 10,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
+    "buffDuration": 10
   },
   "conditionalEffects": [
     {

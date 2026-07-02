@@ -68,10 +68,6 @@ export const PhoenixAwakening: Power = {
         }
       ]
     },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ],
     "enduranceGain": {
       "scale": 1,
       "table": "Melee_Ones",

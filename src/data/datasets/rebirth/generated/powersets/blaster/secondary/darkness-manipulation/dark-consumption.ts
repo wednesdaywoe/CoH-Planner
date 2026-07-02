@@ -58,11 +58,6 @@ export const DarkConsumption: Power = {
     "durations": {
       "damageBuff": 7.5
     },
-    "buffDuration": 7.5,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "enduranceGain"
-    ]
+    "buffDuration": 7.5
   }
 };

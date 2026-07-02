@@ -87,12 +87,7 @@ export const SunlessMire: Power = {
       "table": "Melee_Buff_Dmg",
       "perTarget": 20
     },
-    "buffDuration": 30,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
+    "buffDuration": 30
   },
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Warshade_Defensive.Umbral_Aura.Black_Dwarf_Mire ! && Inherent.Inherent.Black_Dwarf_Mire ! &&"
 };

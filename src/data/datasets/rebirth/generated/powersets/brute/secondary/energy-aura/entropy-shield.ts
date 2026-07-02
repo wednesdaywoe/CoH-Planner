@@ -110,7 +110,7 @@ export const EntropyShield: Power = {
       }
     },
     "rechargeBuff": {
-      "scale": 0.385,
+      "scale": 0.085,
       "table": "Melee_Ones",
       "perTarget": 0.035
     },
@@ -122,10 +122,6 @@ export const EntropyShield: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 2.25,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "rechargeBuff"
-    ]
+    "buffDuration": 2.25
   }
 };

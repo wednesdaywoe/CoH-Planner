@@ -74,10 +74,6 @@ export const ShadowMaul: Power = {
       "table": "Melee_Ones",
       "perTarget": 1.304
     },
-    "buffDuration": 10.57,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+    "buffDuration": 10.57
   }
 };

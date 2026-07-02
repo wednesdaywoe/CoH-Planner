@@ -136,6 +136,14 @@ function hasSelfStateToKeepUp(effects: PowerEffects): boolean {
     ) return true;
   }
 
+  // Absorb shields whose magnitude the converter couldn't fully model still
+  // record a duration (Nature Affinity's Wild Bastion delivers its absorb via
+  // an Expression-typed template, so only `durations.absorb` survives). An
+  // absorb duration is unambiguously a caster/ally buff window — never a foe
+  // debuff — so it's a legitimate self-state to perma-track even when the
+  // top-level `absorb` value is absent.
+  if (effects.durations?.absorb && effects.durations.absorb > 0) return true;
+
   return false;
 }
 

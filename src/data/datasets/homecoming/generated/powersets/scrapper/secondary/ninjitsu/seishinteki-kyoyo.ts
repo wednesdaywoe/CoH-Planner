@@ -57,6 +57,7 @@ export const SeishintekiKyoyo: Power = {
     "buffDuration": 30,
     "maxStacks": 2,
     "stacksLinear": [
+      "debuffResistance",
       "enduranceGain",
       "recoveryBuff"
     ]

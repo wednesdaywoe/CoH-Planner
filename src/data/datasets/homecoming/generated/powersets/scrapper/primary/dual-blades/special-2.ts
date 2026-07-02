@@ -67,12 +67,6 @@ export const Special2: Power = {
       "table": "Melee_InherentDamage"
     }
   ],
-  "effects": {
-    "maxStacks": 2,
-    "stacksLinear": [
-      "specialBuff"
-    ]
-  },
   "conditionalEffects": [
     {
       "id": "dd_bonusdotmode_2",

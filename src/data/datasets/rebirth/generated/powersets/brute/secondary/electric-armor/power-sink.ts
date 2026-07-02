@@ -58,11 +58,7 @@ export const PowerSink: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 4,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "enduranceGain"
-    ]
+    "buffDuration": 4
   },
   "specialEffects": [
     {

@@ -68,11 +68,7 @@ export const Stun: Power = {
     "durations": {
       "damageBuff": 9.3
     },
-    "buffDuration": 9.3,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+    "buffDuration": 9.3
   },
   "specialEffects": [
     {

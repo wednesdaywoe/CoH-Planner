@@ -93,12 +93,7 @@ export const EnergyDrain: Power = {
       "table": "Melee_Ones",
       "perTarget": 25
     },
-    "buffDuration": 45,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "defenseBuff",
-      "enduranceGain"
-    ]
+    "buffDuration": 45
   },
   "specialEffects": [
     {

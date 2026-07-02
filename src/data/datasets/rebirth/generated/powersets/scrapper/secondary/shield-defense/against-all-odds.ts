@@ -51,10 +51,6 @@ export const AgainstallOdds: Power = {
       "scale": 1,
       "table": "Melee_Debuff_Dam"
     },
-    "buffDuration": 1,
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff"
-    ]
+    "buffDuration": 1
   }
 };

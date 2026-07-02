@@ -508,6 +508,43 @@ function resolveRedirectPath(powerName) {
 }
 
 /**
+ * For a redirect-only power (empty base effects + a top-level `redirect` array),
+ * load the JSON of its default/unconditional redirect target. Prefers the
+ * `Always` condition, else the first non-dead-state target — mirroring the
+ * selection `collectRedirectTemplates`/extractEffects already used, so stacking
+ * detection sees exactly the templates that produced the effects. Returns the
+ * parsed redirect JSON or null.
+ */
+function loadDefaultRedirectJson(powerJson) {
+  if (!powerJson.redirect?.length) return null;
+  const def = powerJson.redirect.find(r => r.condition_expression === 'Always')
+    || powerJson.redirect.find(r => !(r.condition_expression || '').includes('kHitPoints'))
+    || powerJson.redirect[0];
+  if (!def?.name) return null;
+  const p = resolveRedirectPath(def.name);
+  if (!fs.existsSync(p)) return null;
+  try { return JSON.parse(fs.readFileSync(p, 'utf-8')); } catch { return null; }
+}
+
+/**
+ * True when a resolved redirect JSON carries at least one Self-targeted,
+ * RefreshToCount, stack_limit>1 template that classifies as a real buff.
+ * This is the narrow signature of the accumulate-per-foe self-buff mechanic
+ * (Consume/Devour Psyche) that the base-effects stacking detector can't see —
+ * gating the redirect substitution on it keeps ordinary Stack/Replace redirect
+ * powers (rezzes, utility) out of the AoE per-target heuristic entirely.
+ */
+function redirectHasSelfRefreshStacking(redirectJson) {
+  const templates = collectTemplatesWithMeta(redirectJson.effects || []);
+  return templates.some(({ template: t }) =>
+    t.target === 'Self' &&
+    t.stack === 'RefreshToCount' &&
+    (t.stack_limit || 0) > 1 &&
+    classifyTemplateForStacking(t).length > 0
+  );
+}
+
+/**
  * Some powers redirect to `<AT>_Aux.<Set>.<Power>_AoE`-style refs (Savage
  * Leap, Feral Charge, etc.) — those auxiliary categories aren't in the bin
  * export, but the bin parser rewrites them to `Redirects.<AT>.<Power>` and
@@ -4258,6 +4295,19 @@ function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
 
   const results = [];
 
+  // Debuff-resistance (Res to -Regen/-Recovery/-Endurance/-Recharge/-ToHit/
+  // -Defense) is a genuine stacking self-buff for powers like Psychokinetic
+  // Barrier (RefreshToCount ×3). It rides on aspect=Resistance resource/combat
+  // attribs. extractEffects routes all of them onto the single `debuffResistance`
+  // container, so stacking metadata must reference that one key — deduped, since
+  // a single template carries all four attribs (Endurance+Regeneration+Recovery+
+  // RechargeTime share one template and one stack_limit).
+  const pushDebuffRes = () => {
+    if (!results.some(r => r.effectKey === 'debuffResistance')) {
+      results.push({ effectKey: 'debuffResistance' });
+    }
+  };
+
   for (const rawAttrib of template.attribs) {
     const attrib = rawAttrib?.toLowerCase();
     if (!attrib) continue;
@@ -4290,9 +4340,9 @@ function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
       continue;
     }
 
-    // Resources — skip resistance aspect (debuff resistance, not a stacking buff)
+    // Resources — resistance aspect is debuff-resistance (stacks as one key)
     if (RESOURCE_TYPES[attrib]) {
-      if (aspect === 'resistance') continue;
+      if (aspect === 'resistance') { pushDebuffRes(); continue; }
       const resType = RESOURCE_TYPES[attrib];
       if (resType === 'hitPoints') {
         if (aspect === 'maximum') return [{ effectKey: 'maxHPBuff' }];
@@ -4310,6 +4360,12 @@ function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
     // Combat modifiers
     if (COMBAT_MODIFIERS[attrib]) {
       const modType = COMBAT_MODIFIERS[attrib];
+      // Resistance aspect on a combat modifier is debuff-resistance (Res to
+      // -Recharge/-ToHit/-Defense), NOT a positive buff. Route it to the
+      // debuffResistance key BEFORE the buff branches below — otherwise a
+      // positive-scale -Recharge-resistance (Psychokinetic Barrier's
+      // RechargeTime@Resistance) leaks through as a fake `rechargeBuff`.
+      if (aspect === 'resistance') { pushDebuffRes(); continue; }
       if (modType === 'toHit' && !isDebuff) return [{ effectKey: 'tohitBuff' }];
       if (modType === 'accuracy' && !isDebuff) return [{ effectKey: 'accuracyBuff' }];
       if (modType === 'rechargeTime' && !isDebuff && !tableLower.includes('slow')) return [{ effectKey: 'rechargeBuff' }];
@@ -4388,38 +4444,61 @@ function collectRedirectStackingTemplates(redirectName, visited = new Set(), dep
 
 /**
  * Detect self-stacking from `stack_limit` on caster-targeted templates.
- * Used when a power applies a buff to itself with `StackType kStack` and
+ * Used when a power applies a buff to itself with a self-stacking StackType and
  * a stack_limit > 1 (e.g. Siphon Speed caster recharge/movement buffs,
- * Healing Flames toxic resist). Returns:
+ * Healing Flames toxic resist, Psychokinetic Barrier debuff-resistance).
+ *
+ * Two self-stacking StackTypes accumulate magnitude up to stack_limit:
+ *   - `kStack`          — N independent instances (each own timer)
+ *   - `kRefreshToCount` — one shared counter refreshed on each recast; still
+ *                         N× magnitude up to the cap (Psychokinetic Barrier's
+ *                         RefreshToCount ×3 debuff-resistance rode this and was
+ *                         previously invisible). `kReplace`/`kContinuous` do NOT
+ *                         accumulate (replace / single toggle instance) and stay out.
+ *
+ * `excludeKeys` skips effect keys already claimed by the AoE per-target path
+ * (which models them via `perTarget`), so a key is never both perTarget AND
+ * stacksLinear — that would double-scale (N² in the InfoPanel).
+ *
+ * Returns:
  *   - maxStacks: the largest stack_limit across qualifying Self templates
- *   - stacksLinear: distinct top-level effect keys whose magnitude grows
- *     linearly with stack count
+ *   - stacksLinear: distinct top-level effect keys that grow linearly with stacks
+ *   - stackCaps: per-key cap for keys whose own stack_limit is BELOW maxStacks
+ *     (Psychokinetic Barrier: absorb caps at 2 while debuff-res reaches 3), so
+ *     the slider can range to maxStacks without over-multiplying the lower-cap key.
  * or null if no qualifying templates.
  */
-function detectSelfStacking(allTemplatesWithMeta) {
+function detectSelfStacking(allTemplatesWithMeta, excludeKeys = new Set()) {
   let maxStacks = 0;
   const stacksLinearSet = new Set();
+  const capByKey = {};
 
   for (const { template } of allTemplatesWithMeta) {
     if (template.target !== 'Self') continue;
-    if (template.stack !== 'Stack') continue;
+    if (template.stack !== 'Stack' && template.stack !== 'RefreshToCount') continue;
     const limit = template.stack_limit;
     if (!limit || limit <= 1) continue;
 
-    const classifications = classifyTemplateForStacking(template);
+    const classifications = classifyTemplateForStacking(template)
+      .filter(c => !excludeKeys.has(c.effectKey));
     if (classifications.length === 0) continue;
 
     if (limit > maxStacks) maxStacks = limit;
     for (const c of classifications) {
       stacksLinearSet.add(c.effectKey);
+      capByKey[c.effectKey] = Math.max(capByKey[c.effectKey] || 0, limit);
     }
   }
 
   if (maxStacks === 0) return null;
-  return {
-    maxStacks,
-    stacksLinear: [...stacksLinearSet].sort(),
-  };
+  const stacksLinear = [...stacksLinearSet].sort();
+  const stackCaps = {};
+  for (const key of stacksLinear) {
+    if (capByKey[key] && capByKey[key] < maxStacks) stackCaps[key] = capByKey[key];
+  }
+  const result = { maxStacks, stacksLinear };
+  if (Object.keys(stackCaps).length > 0) result.stackCaps = stackCaps;
+  return result;
 }
 
 /**
@@ -4458,7 +4537,11 @@ function detectStackingEffects(rawJson) {
   const selfBuffs = [];
   if (isAoEWithTargets) for (const { template, tags, requires } of allTemplatesWithMeta) {
     if (template.target !== 'Self') continue;
-    if (template.stack !== 'Stack' && template.stack !== 'Continuous' && template.stack !== 'Replace') continue;
+    // Stack/Continuous/RefreshToCount are per-target increments; Replace is the
+    // always-on base. RefreshToCount is the accumulate-per-foe self-buff behind
+    // Consume/Devour Psyche (self +Regen/+Recovery grows per foe hit, ×10).
+    if (template.stack !== 'Stack' && template.stack !== 'Continuous'
+        && template.stack !== 'Replace' && template.stack !== 'RefreshToCount') continue;
 
     const isDefiance = tags.some(t =>
       typeof t === 'string' && t.toLowerCase().includes('defiance')
@@ -4489,8 +4572,8 @@ function detectStackingEffects(rawJson) {
 
   // Compute perTarget for each group
   for (const [, entries] of Object.entries(groups)) {
-    // Stack/Continuous = per-target increment; Replace = base
-    const stacks = entries.filter(e => (e.stack === 'Stack' || e.stack === 'Continuous') && !e.isDefiance);
+    // Stack/Continuous/RefreshToCount = per-target increment; Replace = base
+    const stacks = entries.filter(e => (e.stack === 'Stack' || e.stack === 'Continuous' || e.stack === 'RefreshToCount') && !e.isDefiance);
     const replaces = entries.filter(e => e.stack === 'Replace' && !e.isDefiance);
 
     if (stacks.length === 0) continue;
@@ -4578,19 +4661,26 @@ function detectStackingEffects(rawJson) {
 
   // === Self-stacking via stack_limit (e.g., Siphon Speed, Healing Flames) ===
   // Independent of AoE per-target detection: applies whenever the power has
-  // Self-targeted Stack templates with stack_limit > 1. Composes with the
-  // Execute_Power redirect path by taking max(maxStacks, ...).
-  const selfStacking = detectSelfStacking(allTemplatesWithMeta);
+  // Self-targeted Stack/RefreshToCount templates with stack_limit > 1. Composes
+  // with the Execute_Power redirect path by taking max(maxStacks, ...).
+  //
+  // Exclude keys already modeled as `perTarget` by the AoE branch above — a key
+  // must not be BOTH perTarget and stacksLinear or the InfoPanel double-scales it
+  // (Consume Psyche's regen/recovery are perTarget; without this they'd also be
+  // stacksLinear → ~N² at 10 foes).
+  const selfStacking = detectSelfStacking(allTemplatesWithMeta, new Set(Object.keys(patches)));
   let stacksLinear = null;
+  let stackCaps = null;
   if (selfStacking) {
     if (maxStacks === null || selfStacking.maxStacks > maxStacks) {
       maxStacks = selfStacking.maxStacks;
     }
     stacksLinear = selfStacking.stacksLinear;
+    stackCaps = selfStacking.stackCaps || null;
   }
 
   if (Object.keys(patches).length === 0 && maxStacks === null && !stacksLinear) return null;
-  return { patches, maxStacks, stacksLinear };
+  return { patches, maxStacks, stacksLinear, stackCaps };
 }
 
 /**
@@ -4600,14 +4690,35 @@ function detectStackingEffects(rawJson) {
 function mergeStackingPatches(effects, stackingResult) {
   if (!stackingResult) return;
 
-  const { patches, maxStacks, stacksLinear } = stackingResult;
+  const { patches, maxStacks, stacksLinear, stackCaps } = stackingResult;
 
+  // MERGE (not overwrite): the absorb pre-scan / an earlier detector may have
+  // already set maxStacks/stacksLinear (Psychokinetic Barrier's absorb via the
+  // Stack path). Take the larger cap and the union of keys so no earlier entry
+  // is lost when the RefreshToCount debuff-resistance bumps maxStacks 2 → 3.
   if (maxStacks) {
-    effects.maxStacks = maxStacks;
+    effects.maxStacks = Math.max(effects.maxStacks || 0, maxStacks);
   }
 
   if (stacksLinear && stacksLinear.length > 0) {
-    effects.stacksLinear = stacksLinear;
+    const merged = new Set([...(effects.stacksLinear || []), ...stacksLinear]);
+    effects.stacksLinear = [...merged].sort();
+  }
+
+  if (stackCaps && Object.keys(stackCaps).length > 0) {
+    effects.stackCaps = { ...(effects.stackCaps || {}), ...stackCaps };
+  }
+
+  // Prune caps that no longer diverge from the final maxStacks (== or > it are
+  // redundant — min(n, cap) already collapses to min(n, maxStacks)).
+  if (effects.stackCaps) {
+    for (const key of Object.keys(effects.stackCaps)) {
+      if (!effects.stacksLinear?.includes(key)
+          || effects.stackCaps[key] >= (effects.maxStacks || Infinity)) {
+        delete effects.stackCaps[key];
+      }
+    }
+    if (Object.keys(effects.stackCaps).length === 0) delete effects.stackCaps;
   }
 
   for (const [key, patchValue] of Object.entries(patches)) {
@@ -5182,8 +5293,27 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
 
     const effects = extractEffects(allTemplates, powerJson.name);
 
-    // Detect per-target stacking (Stack/Continuous templates, Execute_Power redirects)
-    const stackingResult = detectStackingEffects(powerJson);
+    // Detect per-target stacking (Stack/Continuous/RefreshToCount templates,
+    // Execute_Power redirects). For redirect-only powers (Consume/Devour Psyche:
+    // empty base effects + an "Always" redirect to Redirects.Psionic_Armor.*),
+    // the base powerJson carries no templates — feed the resolved redirect JSON
+    // instead so its self-buff stacking is seen (it also carries the AoE
+    // geometry — effect_area/max_targets/targets_affected — the detector reads).
+    let stackingSource = powerJson;
+    if ((!powerJson.effects || powerJson.effects.length === 0) && powerJson.redirect?.length) {
+      const redirectJson = loadDefaultRedirectJson(powerJson);
+      // Only reach into the redirect when it carries a self RefreshToCount buff —
+      // the accumulate-per-foe mechanic the base-effects detector can't see
+      // (Consume/Devour Psyche's +Regen/+Recovery ×10). Redirects whose self-
+      // buffs are plain Stack/Replace were already invisible to stacking
+      // detection; keep them that way rather than newly surfacing the AoE
+      // per-target heuristic on rez/utility redirects — a fixed self-restore in
+      // a foe-AoE (Memento Mori's +30 End rez) is NOT genuinely per-foe.
+      if (redirectJson?.effects?.length && redirectHasSelfRefreshStacking(redirectJson)) {
+        stackingSource = redirectJson;
+      }
+    }
+    const stackingResult = detectStackingEffects(stackingSource);
     if (stackingResult) {
       mergeStackingPatches(effects, stackingResult);
     }
