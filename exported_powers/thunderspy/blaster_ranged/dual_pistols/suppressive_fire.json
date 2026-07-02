@@ -304,7 +304,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -313,7 +313,7 @@
           "table": "Ranged_Sleep",
           "scale": 10.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -343,7 +343,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -352,7 +352,7 @@
           "table": "Ranged_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -616,7 +616,7 @@
       "templates": [
         {
           "attribs": [
-            "FireDamage"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -625,7 +625,7 @@
           "table": "Ranged_Sleep",
           "scale": 8.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -655,7 +655,7 @@
       "templates": [
         {
           "attribs": [
-            "FireDamage"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -664,7 +664,7 @@
           "table": "Ranged_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -928,7 +928,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -937,7 +937,7 @@
           "table": "Ranged_Sleep",
           "scale": 8.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -967,7 +967,7 @@
       "templates": [
         {
           "attribs": [
-            "ToxicDamage"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -976,7 +976,7 @@
           "table": "Ranged_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

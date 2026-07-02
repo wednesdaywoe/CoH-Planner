@@ -261,7 +261,7 @@ export const POWER_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "stun": {
-            "mag": 0.3499999940395355,
+            "mag": 3,
             "scale": 4,
             "table": "Melee_Stun"
           },
@@ -307,7 +307,7 @@ export const POWER_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "stun": {
-            "mag": 0.3499999940395355,
+            "mag": 3,
             "scale": 4,
             "table": "Melee_Stun"
           },
@@ -352,6 +352,10 @@ export const POWER_POOLS_RAW = {
             "scale": 1.96,
             "table": "Melee_Damage"
           },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          },
           "enduranceDrain": {
             "scale": 0.03,
             "table": "Melee_Ones"
@@ -392,6 +396,10 @@ export const POWER_POOLS_RAW = {
             "type": "Special",
             "scale": 1.96,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
           },
           "enduranceDrain": {
             "scale": 0.03,
@@ -543,6 +551,15 @@ export const POWER_POOLS_RAW = {
             "type": "Special",
             "scale": 1.3434,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          },
+          "stun": {
+            "mag": 3,
+            "scale": 6,
+            "table": "Melee_Ones"
           }
         }
       },
@@ -586,6 +603,15 @@ export const POWER_POOLS_RAW = {
             "type": "Special",
             "scale": 1.3636,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          },
+          "stun": {
+            "mag": 3,
+            "scale": 6,
+            "table": "Melee_Ones"
           }
         }
       }
@@ -832,6 +858,10 @@ export const POWER_POOLS_RAW = {
             "type": "Special",
             "scale": 1.64,
             "table": "Melee_Damage"
+          },
+          "knockup": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
           }
         }
       },
@@ -1047,6 +1077,10 @@ export const POWER_POOLS_RAW = {
             "type": "Special",
             "scale": 0.64,
             "table": "Ranged_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Ranged_Ones"
           }
         }
       },
@@ -1116,6 +1150,10 @@ export const POWER_POOLS_RAW = {
             "type": "Special",
             "scale": 0.181818,
             "table": "Ranged_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Ranged_Ones"
           }
         }
       },
@@ -1187,7 +1225,11 @@ export const POWER_POOLS_RAW = {
           "activationTime": 2.1,
           "effectArea": "AoE",
           "radius": 10,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "knockback": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -2026,7 +2068,7 @@ export const POWER_POOLS_RAW = {
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
           "fear": {
-            "mag": 1,
+            "mag": 3,
             "scale": 10,
             "table": "Melee_Fear"
           }
@@ -2062,7 +2104,7 @@ export const POWER_POOLS_RAW = {
           "radius": 20,
           "maxTargets": 10,
           "fear": {
-            "mag": 1,
+            "mag": 3,
             "scale": 10,
             "table": "Melee_Fear"
           }
@@ -2492,7 +2534,7 @@ export const POWER_POOLS_RAW = {
             "tickRate": 0.25
           },
           "stun": {
-            "mag": 0.20000000298023224,
+            "mag": 2,
             "scale": 4,
             "table": "Melee_Stun"
           }

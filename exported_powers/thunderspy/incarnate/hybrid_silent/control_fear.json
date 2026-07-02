@@ -61,7 +61,7 @@
       "templates": [
         {
           "attribs": [
-            "HybridCC"
+            "Terrorized"
           ],
           "type": "",
           "application_type": "",
@@ -70,7 +70,7 @@
           "table": "Melee_Ones",
           "scale": 10.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -100,7 +100,7 @@
       "templates": [
         {
           "attribs": [
-            "HybridCC"
+            "Terrorized"
           ],
           "type": "",
           "application_type": "",
@@ -109,7 +109,7 @@
           "table": "Melee_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

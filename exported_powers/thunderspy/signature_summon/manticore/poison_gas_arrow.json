@@ -104,7 +104,7 @@
           "table": "Melee_Sleep",
           "scale": 6.0,
           "duration": "0 seconds",
-          "magnitude": 0.05000000074505806,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

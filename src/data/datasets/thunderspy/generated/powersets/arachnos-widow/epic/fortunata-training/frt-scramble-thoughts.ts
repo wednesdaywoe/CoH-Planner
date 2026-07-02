@@ -46,7 +46,7 @@ export const FRTScrambleThoughts: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 4,
       "scale": 10,
       "table": "Ranged_Stun"
     }

@@ -44,5 +44,11 @@ export const Special1: Power = {
     "type": "Lethal",
     "scale": 0.41,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   }
 };

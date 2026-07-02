@@ -37,24 +37,17 @@ export const TimeStop: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 0.25,
-      "table": "Ranged_Stun"
-    },
-    "effectDuration": 20,
-    "durations": {
-      "stun": 20,
-      "regenDebuff": 20
     },
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
+    },
+    "durations": {
+      "regenDebuff": 20
     },
     "buffDuration": 20
   },
@@ -65,7 +58,7 @@ export const TimeStop: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
-        "immobilize": {
+        "hold": {
           "mag": 1,
           "scale": 4,
           "table": "Ranged_Immobilize"

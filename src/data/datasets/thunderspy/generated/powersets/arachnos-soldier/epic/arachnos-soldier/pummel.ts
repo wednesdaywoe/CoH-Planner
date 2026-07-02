@@ -45,7 +45,7 @@ export const Pummel: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 0.6600000262260437,
+      "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
     }

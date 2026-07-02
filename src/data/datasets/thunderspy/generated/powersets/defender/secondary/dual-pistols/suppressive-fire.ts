@@ -53,5 +53,12 @@ export const SuppressiveFire: Power = {
       "scale": 0.05,
       "table": "Ranged_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Sleep"
+    }
+  }
 };

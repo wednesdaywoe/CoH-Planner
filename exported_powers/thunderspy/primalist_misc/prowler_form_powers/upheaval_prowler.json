@@ -109,7 +109,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Knockback"
           ],
           "type": "",
           "application_type": "",
@@ -499,7 +499,7 @@
       "templates": [
         {
           "attribs": [
-            "NBProwlerPrimalStrikeStun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -508,7 +508,7 @@
           "table": "Melee_Stun",
           "scale": 5.0,
           "duration": "0 seconds",
-          "magnitude": 0.30000001192092896,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -538,7 +538,7 @@
       "templates": [
         {
           "attribs": [
-            "NBProwlerPrimalStrikeStun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -547,7 +547,7 @@
           "table": "Melee_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.30000001192092896,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

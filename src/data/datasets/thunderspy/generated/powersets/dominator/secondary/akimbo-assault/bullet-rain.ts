@@ -58,5 +58,12 @@ export const BulletRain: Power = {
       "duration": 1.1,
       "tickRate": 0.5
     }
-  ]
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 0.75,
+      "scale": 10.1,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

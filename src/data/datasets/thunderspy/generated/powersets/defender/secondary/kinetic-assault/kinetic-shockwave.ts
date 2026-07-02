@@ -59,8 +59,8 @@ export const KineticShockwave: Power = {
         "table": "Melee_Damage"
       },
       "effects": {
-        "immobilize": {
-          "mag": 0.20000000298023224,
+        "stun": {
+          "mag": 2,
           "scale": 6,
           "table": "Melee_Immobilize"
         }

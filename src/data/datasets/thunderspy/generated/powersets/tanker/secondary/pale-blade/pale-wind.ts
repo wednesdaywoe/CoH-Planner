@@ -51,7 +51,7 @@ export const PaleWind: Power = {
       "regenDebuff": 15
     },
     "fear": {
-      "mag": 1,
+      "mag": 3,
       "scale": 0.5,
       "table": "Melee_Fear"
     },

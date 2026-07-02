@@ -28,17 +28,5 @@ export const NaturesBoon: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6,
-  "effects": {
-    "stun": {
-      "mag": 1,
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
-    "effectDuration": 30,
-    "durations": {
-      "stun": 30
-    },
-    "buffDuration": 30
-  }
+  "maxSlots": 6
 };

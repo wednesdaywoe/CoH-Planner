@@ -42,5 +42,12 @@ export const MudPots: Power = {
     "Slow Movement",
     "Tanker Archetype Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "immobilize": {
+      "mag": 2,
+      "scale": 2.25,
+      "table": "Melee_Ones"
+    }
+  }
 };

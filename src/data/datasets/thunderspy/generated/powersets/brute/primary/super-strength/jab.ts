@@ -47,7 +47,7 @@ export const Jab: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 0.10000000149011612,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
     }

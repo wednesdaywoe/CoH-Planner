@@ -45,5 +45,11 @@ export const PsiWhipThrash: Power = {
     "type": "Special",
     "scale": 0.5,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    }
   }
 };

@@ -96,7 +96,7 @@
       "templates": [
         {
           "attribs": [
-            "Sleep"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -105,7 +105,7 @@
           "table": "Ranged_Sleep",
           "scale": 10.0,
           "duration": "0 seconds",
-          "magnitude": 0.800000011920929,
+          "magnitude": 2.0,
           "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",

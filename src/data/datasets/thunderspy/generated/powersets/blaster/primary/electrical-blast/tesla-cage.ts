@@ -48,6 +48,11 @@ export const TeslaCage: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Ones"
+    },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"

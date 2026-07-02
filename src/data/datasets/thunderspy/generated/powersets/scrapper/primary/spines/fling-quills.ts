@@ -56,7 +56,7 @@ export const FlingQuills: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 0.33000001311302185,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

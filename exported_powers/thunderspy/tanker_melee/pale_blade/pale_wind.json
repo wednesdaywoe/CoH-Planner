@@ -378,7 +378,7 @@
       "templates": [
         {
           "attribs": [
-            "Fear"
+            "Terrorized"
           ],
           "type": "",
           "application_type": "",
@@ -387,7 +387,7 @@
           "table": "Melee_Fear",
           "scale": 0.5,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

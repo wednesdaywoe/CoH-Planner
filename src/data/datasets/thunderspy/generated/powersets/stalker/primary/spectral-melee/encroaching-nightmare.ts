@@ -49,12 +49,12 @@ export const EncroachingNightmare: Power = {
   },
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
     "fear": {
-      "mag": 1,
+      "mag": 0.75,
       "scale": 10,
       "table": "Melee_Fear"
     }

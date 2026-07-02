@@ -47,7 +47,7 @@ export const CripplingAxeKick: Power = {
   },
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 2,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

@@ -54,7 +54,7 @@ export const BarbSwipe: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 0.33000001311302185,
       "scale": 8,
       "table": "Melee_Immobilize"
     }

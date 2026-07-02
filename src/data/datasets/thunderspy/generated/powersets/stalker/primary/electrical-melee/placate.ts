@@ -42,7 +42,7 @@ export const Placate: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"
     },

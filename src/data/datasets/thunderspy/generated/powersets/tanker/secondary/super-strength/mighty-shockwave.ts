@@ -48,5 +48,11 @@ export const MightyShockwave: Power = {
     "scale": 0.876923,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    }
+  },
   "requires": "Tanker_Melee.Super_Strength.Hand_Clap !"
 };

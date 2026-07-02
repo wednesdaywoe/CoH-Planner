@@ -103,7 +103,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -112,7 +112,7 @@
           "table": "Ranged_Immobilize",
           "scale": 3.0,
           "duration": "0 seconds",
-          "magnitude": 0.25,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -142,7 +142,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -151,7 +151,7 @@
           "table": "Ranged_Ones",
           "scale": 0.3,
           "duration": "0 seconds",
-          "magnitude": 0.25,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

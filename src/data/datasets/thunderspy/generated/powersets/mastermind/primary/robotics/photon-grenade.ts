@@ -49,7 +49,7 @@ export const PhotonGrenade: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 0.30000001192092896,
+      "mag": 2,
       "scale": 4,
       "table": "Ranged_Stun"
     }

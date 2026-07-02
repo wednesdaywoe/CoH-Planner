@@ -44,7 +44,7 @@ export const Shiver: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Stun"
     }

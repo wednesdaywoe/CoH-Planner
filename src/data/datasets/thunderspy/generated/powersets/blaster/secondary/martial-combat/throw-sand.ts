@@ -43,8 +43,8 @@ export const ThrowSand: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "sleep": {
-      "mag": 1,
+    "stun": {
+      "mag": 2,
       "scale": 10,
       "table": "Ranged_Sleep"
     }

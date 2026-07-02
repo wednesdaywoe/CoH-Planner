@@ -35,5 +35,11 @@ export const SuspensionBubble: Power = {
     "Knockback"
   ],
   "maxSlots": 6,
+  "effects": {
+    "knockback": {
+      "scale": 0.1,
+      "table": "Ranged_Ones"
+    }
+  },
   "requires": "Defender_Buff.Force_Field.Force_Bubble !"
 };

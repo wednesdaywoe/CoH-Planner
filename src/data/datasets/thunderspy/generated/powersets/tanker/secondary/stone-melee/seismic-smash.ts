@@ -48,8 +48,8 @@ export const SeismicSmash: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 4,
       "scale": 8,
       "table": "Melee_Immobilize"
     }

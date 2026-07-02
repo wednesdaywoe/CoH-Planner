@@ -37,5 +37,11 @@ export const AgingTouch: Power = {
   "allowedSetCategories": [
     "Knockback"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "knockback": {
+      "scale": 2.54,
+      "table": "Melee_Ones"
+    }
+  }
 };

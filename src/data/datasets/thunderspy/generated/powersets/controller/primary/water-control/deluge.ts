@@ -55,5 +55,11 @@ export const Deluge: Power = {
       "table": "Ranged_Damage",
       "duration": 1
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    }
+  }
 };

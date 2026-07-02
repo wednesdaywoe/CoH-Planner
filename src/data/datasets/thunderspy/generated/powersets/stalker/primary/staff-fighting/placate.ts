@@ -52,7 +52,7 @@ export const Placate: Power = {
   },
   "effects": {
     "immobilize": {
-      "mag": 0.6000000238418579,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

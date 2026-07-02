@@ -699,7 +699,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",
@@ -708,7 +708,7 @@
           "table": "Ranged_Immobilize",
           "scale": 10.1,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 0.75,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -738,7 +738,7 @@
       "templates": [
         {
           "attribs": [
-            "ColdDamage"
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",
@@ -747,7 +747,7 @@
           "table": "Ranged_Immobilize",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 0.75,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

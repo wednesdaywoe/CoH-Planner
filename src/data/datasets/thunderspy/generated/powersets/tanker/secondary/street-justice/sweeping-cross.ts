@@ -51,7 +51,7 @@ export const SweepingCross: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 0.20000000298023224,
+      "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
     }
@@ -70,7 +70,7 @@ export const SweepingCross: Power = {
       },
       "effects": {
         "stun": {
-          "mag": 0.23000000417232513,
+          "mag": 3,
           "scale": 6,
           "table": "Melee_Stun"
         }
@@ -90,7 +90,7 @@ export const SweepingCross: Power = {
       },
       "effects": {
         "stun": {
-          "mag": 0.25999999046325684,
+          "mag": 3,
           "scale": 6,
           "table": "Melee_Stun"
         }
@@ -110,9 +110,13 @@ export const SweepingCross: Power = {
       },
       "effects": {
         "stun": {
-          "mag": 0.30000001192092896,
+          "mag": 3,
           "scale": 6,
           "table": "Melee_Stun"
+        },
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
         }
       },
       "group": "combo-levels"

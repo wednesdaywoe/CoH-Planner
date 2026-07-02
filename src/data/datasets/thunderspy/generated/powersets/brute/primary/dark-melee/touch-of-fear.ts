@@ -42,7 +42,7 @@ export const TouchofFear: Power = {
   "maxSlots": 6,
   "effects": {
     "fear": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Melee_Fear"
     }

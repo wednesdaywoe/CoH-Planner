@@ -49,8 +49,8 @@ export const DevastatingBlow: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "immobilize": {
-      "mag": 0.6000000238418579,
+    "stun": {
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

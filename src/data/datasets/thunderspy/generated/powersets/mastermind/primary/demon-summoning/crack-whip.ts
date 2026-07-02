@@ -61,5 +61,11 @@ export const CrackWhip: Power = {
       "duration": 1.05,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "knockback": {
+      "scale": 0.64,
+      "table": "Ranged_Ones"
+    }
+  }
 };

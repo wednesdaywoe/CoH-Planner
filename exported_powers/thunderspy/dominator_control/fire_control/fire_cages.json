@@ -107,7 +107,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",
@@ -116,7 +116,7 @@
           "table": "Ranged_Immobilize",
           "scale": 15.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 4.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -146,7 +146,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",
@@ -155,7 +155,7 @@
           "table": "Ranged_Immobilize",
           "scale": 15.0,
           "duration": "1 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -224,7 +224,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",
@@ -233,7 +233,7 @@
           "table": "Ranged_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 5.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -263,7 +263,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",
@@ -272,7 +272,7 @@
           "table": "Ranged_Immobilize",
           "scale": 22.5,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -302,7 +302,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",

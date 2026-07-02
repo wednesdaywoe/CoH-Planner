@@ -32,5 +32,11 @@ export const ForceBubble: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
+  "effects": {
+    "knockback": {
+      "scale": 0.1,
+      "table": "Ranged_Ones"
+    }
+  },
   "requires": "Defender_Buff.Force_Field.Suspension_Bubble !"
 };

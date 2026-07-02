@@ -44,5 +44,11 @@ export const StoneSpears: Power = {
     "type": "Lethal",
     "scale": 1.5,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockup": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    }
   }
 };

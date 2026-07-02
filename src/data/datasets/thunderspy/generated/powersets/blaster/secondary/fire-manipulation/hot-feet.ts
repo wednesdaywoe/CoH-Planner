@@ -40,5 +40,12 @@ export const HotFeet: Power = {
     "Melee Damage",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "fear": {
+      "mag": 3,
+      "scale": 4,
+      "table": "Melee_Ones"
+    }
+  }
 };

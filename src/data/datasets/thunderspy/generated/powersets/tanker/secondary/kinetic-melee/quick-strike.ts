@@ -46,5 +46,11 @@ export const QuickStrike: Power = {
     "type": "Smashing",
     "scale": 0.63,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.7,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -49,7 +49,7 @@ export const Placate: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 0.33000001311302185,
+      "mag": 2,
       "scale": 5,
       "table": "Melee_Stun"
     }
@@ -70,7 +70,7 @@ export const Placate: Power = {
       },
       "effects": {
         "stun": {
-          "mag": 0.5,
+          "mag": 3,
           "scale": 5,
           "table": "Melee_Stun"
         }

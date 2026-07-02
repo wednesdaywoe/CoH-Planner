@@ -47,5 +47,17 @@ export const HowlingTwilight: Power = {
     "type": "Negative",
     "scale": 0.25,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 2,
+      "scale": 15,
+      "table": "Ranged_Ones"
+    },
+    "fear": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Ones"
+    }
   }
 };

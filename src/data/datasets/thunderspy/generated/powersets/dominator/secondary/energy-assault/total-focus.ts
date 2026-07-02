@@ -44,8 +44,8 @@ export const TotalFocus: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "stun": {
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     }
@@ -57,8 +57,8 @@ export const TotalFocus: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "immobilize": {
-          "mag": 1,
+        "stun": {
+          "mag": 3,
           "scale": 15,
           "table": "Melee_Immobilize"
         }

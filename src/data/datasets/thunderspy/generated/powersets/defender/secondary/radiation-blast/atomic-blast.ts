@@ -47,8 +47,8 @@ export const AtomicBlast: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     }

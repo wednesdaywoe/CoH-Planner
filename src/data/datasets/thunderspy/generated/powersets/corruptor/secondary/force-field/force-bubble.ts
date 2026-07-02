@@ -31,5 +31,11 @@ export const ForceBubble: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "knockback": {
+      "scale": 0.1,
+      "table": "Ranged_Ones"
+    }
+  }
 };

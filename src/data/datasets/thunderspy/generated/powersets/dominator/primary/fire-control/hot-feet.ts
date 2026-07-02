@@ -48,5 +48,12 @@ export const HotFeet: Power = {
     "type": "Special",
     "scale": 0.25,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "fear": {
+      "mag": 3,
+      "scale": 4,
+      "table": "Ranged_Ones"
+    }
   }
 };

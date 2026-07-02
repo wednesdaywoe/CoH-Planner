@@ -259,6 +259,28 @@ recovery):
   Self-advertised stat survives. Note the earlier audit *missed* this by comparing only the template
   (Self target, empty requires) to a known-real buff and never reading `targets_affected` — the
   adversarial pass is only as good as the fields the skeptics are told to look at.
+- **A format's "front" attrib may be a CATEGORY/label, not the effect — the authoritative effect
+  can live in a secondary array, and its magnitude in a slot you're discarding.** Thunderspy stores
+  TWO attrib fields per template: a front string (the *enhancement/duration category*) and a
+  post-`requires` INDEX array (the *applied* attribute). They routinely disagree — a Hold reads front
+  `Immobilize`/`Sleep` but index `Held` (verified: index == HC's mez type on 415/422 shared powers,
+  while the front is the wrong effect on ~40% of mez). Reading the front mislabelled every control
+  power (Blind emitted `immobilize`, not `hold`) *and* the real Magnitude rode the post-table slot
+  (`table scale duration MAGNITUDE`, the k+12 float) — the flat header `magnitude` was a 1.0
+  placeholder, so even correctly-typed mez read Mag 1. Two durable rules: (a) when a schema carries a
+  secondary/index attrib list, prove which one is authoritative per effect kind (front `Damage` ↔
+  index `Smashing_Dmg` is a type refinement; front `Immobilize` ↔ index `Held` is a *different
+  effect*) — never a blanket swap. (b) The magnitude/scale you surface may be the wrong field of
+  several similar floats; cross-check the surfaced value against a correctly-decoded reference
+  (k+12 == HC magnitude exactly where the server didn't rebalance) before trusting it.
+- **The §3 sign rule applies to mez, not just KB — but PROTECTION is table-encoded, so scope the
+  guard.** A negative-scale mez on a *duration* table is a debuff/duration artifact, not an applied
+  mez (Thunderspy Time Stop's scale -0.25 `Stun` on Ranged_Stun surfaced as a phantom Mag-1 stun on a
+  pure Hold). But mez PROTECTION rides a `*_Res_Boolean` table at *any* sign and the dashboard's
+  `isProtectionMez` re-reads it — so a blanket "skip negative mez" drops all protection. Skip only
+  negative-scale mez on NON-`Res_Boolean` tables. (This bit cross-dataset: HC/Rebirth encode some
+  armor mez-protection as negative-scale `*_Ones` — a separate question, so the guard was scoped to
+  the one server whose dropped-aspect made it necessary rather than changed globally.)
 
 ## 8. Determinism (committed `generated/` must be reproducible)
 

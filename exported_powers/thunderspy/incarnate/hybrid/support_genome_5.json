@@ -192,7 +192,7 @@
       "templates": [
         {
           "attribs": [
-            "PowerBoost"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -348,7 +348,7 @@
       "templates": [
         {
           "attribs": [
-            "PowerBoost"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",

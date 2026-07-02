@@ -3589,6 +3589,19 @@ function extractEffects(templates, powerName) {
           if (!effects.specialBuff) effects.specialBuff = {};
           effects.specialBuff[mezType] = makeEffect();
           recordDuration('specialBuff');
+        } else if (datasetId === 'thunderspy' && scale < 0
+                   && !(table || '').toLowerCase().includes('res_boolean')) {
+          // Thunderspy: a negative-scale mez on a DURATION table is a debuff /
+          // duration artifact, NOT an applied mez — applied control uses a positive
+          // duration scale (GAME-DATA-PRINCIPLES §3 sign rule, mirroring the KB
+          // branch's `scale<=0` skip). Mez PROTECTION rides a `*_Res_Boolean` table
+          // (kept above at any sign — the dashboard's isProtectionMez re-reads it),
+          // so this only drops the artifact: Time Stop carried a scale -0.25 `Stun`
+          // on Ranged_Stun that surfaced as a phantom Mag-1 stun on a pure Hold.
+          // Scoped to Thunderspy: HC/Rebirth encode some armor mez-protection as
+          // negative-scale `*_Ones` (a separate pre-existing question, not touched
+          // here) — this schema drops the aspect, so tspy can't reuse that path.
+          continue;
         } else {
           const newMez = makeMezEffect();
           const cur = effects[mezType];
@@ -4726,6 +4739,18 @@ const TSPY_FOE_TARGETS = new Set(['Foe', 'Location', 'DeadFoe']);
 // power is really a PET buff whose per-template target the binary dropped.
 const TSPY_PET_TARGETS = new Set(['MyPet']);
 
+// Foe-facing recipients for the applied-mez target-trap guard. Thunderspy's schema
+// drops the per-template target, so an applied mez/KB whose index the parser recovers
+// is routed by the power's `targets_affected` instead (the §7 discipline). Applied
+// control is always foe-facing (even PBAoE controls the caster casts on Self —
+// Psychic Wail, EMP Pulse, Mud Pots — carry `targets_affected=['Foe']`); a mez/KB on
+// a Self/ally-only power is a self-buff whose index merely names a mez (the Incarnate
+// `+mez-strength` / Alpha-slot definitions), not an applied effect.
+const TSPY_MEZ_FOE_TARGETS = new Set(['Foe', 'DeadFoe', 'DeadOrAliveFoe', 'Any']);
+// The applied-control keys the parser recovers from the tspy index array. Dropped by
+// guardThunderspyAppliedMez on a power that affects no foe.
+const TSPY_APPLIED_MEZ_KEYS = ['hold', 'stun', 'immobilize', 'sleep', 'confuse', 'fear', 'knockback', 'knockup'];
+
 /**
  * Disambiguate Thunderspy `Ones`-relabel recoveries (recharge / recovery / regen /
  * endurance) that the binary can't classify on its own.
@@ -4818,6 +4843,47 @@ function guardThunderspyOnesBuffs(power, targetsAffected) {
     if (e.durations) delete e.durations;
     delete e.buffDuration;
   }
+}
+
+/**
+ * Veto the Thunderspy applied-mez / offensive-KB target-trap.
+ *
+ * The parser recovers the APPLIED mez/knockback attrib from the post-`requires`
+ * index array (the front string is only the enhancement/duration category), but
+ * this schema drops the per-template TARGET — so a Self/ally-only power whose index
+ * happens to name a mez (the Incarnate `+mez-strength` Hybrid buffs, the Alpha-slot
+ * `Hold`/`Immobilize` enhancement definitions) is byte-indistinguishable from a real
+ * applied hold once recovered. `targets_affected` is the surviving discriminator: a
+ * genuine control always affects a foe (even a PBAoE nuke the caster casts on Self —
+ * Psychic Wail, EMP Pulse — lists `Foe`), while the self-buff traps affect only
+ * `Self`/`Leaguemate`. Drop the recovered control keys when the power affects no foe.
+ *
+ * Thunderspy-only; caller gates on datasetId. See parser_logs/THUNDERSPY_TODO.md item 1.
+ */
+function guardThunderspyAppliedMez(power, targetsAffected) {
+  const e = power.effects;
+  if (!e) return;
+  const ta = targetsAffected || [];
+  // Empty/unknown recipient list → keep (the vast majority of mez is foe control;
+  // only an explicit non-foe list marks a trap).
+  if (ta.length === 0) return;
+  if (ta.some((t) => TSPY_MEZ_FOE_TARGETS.has(t))) return;
+  let changed = false;
+  for (const k of TSPY_APPLIED_MEZ_KEYS) {
+    if (e[k] !== undefined) {
+      delete e[k];
+      if (e.durations) delete e.durations[k];
+      changed = true;
+    }
+  }
+  if (!changed) return;
+  // A dropped mez leaves behind the effectDuration / durations / buffDuration it
+  // seeded (Power Boost / Build Up have no other captured effect). Clean the empty
+  // durations map, and if only duration/stacking metadata remains, drop the now-
+  // hollow effects object — mirrors the Swap-Ammo META_ONLY cleanup below.
+  if (e.durations && Object.keys(e.durations).length === 0) delete e.durations;
+  const META_ONLY = new Set(['durations', 'buffDuration', 'effectDuration', 'maxStacks', 'stacksLinear']);
+  if (Object.keys(e).every((k) => META_ONLY.has(k))) delete power.effects;
 }
 
 function convertPower(powerJson, availableLevel, archetypeId, powerType) {
@@ -5259,6 +5325,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
       if (ce.damage) ce.damage = applyThunderspyDamageType(ce.damage, power.shortHelp);
     }
     guardThunderspyOnesBuffs(power, powerJson.targets_affected);
+    guardThunderspyAppliedMez(power, powerJson.targets_affected);
   }
 
   return power;
@@ -5507,6 +5574,7 @@ export default powerset;
 module.exports = {
   applyThunderspyDamageType,
   guardThunderspyOnesBuffs,
+  guardThunderspyAppliedMez,
   extractEffects,
   extractDamage,
   inferAllowedSetCategories,

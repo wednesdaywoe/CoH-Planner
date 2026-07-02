@@ -40,5 +40,12 @@ export const RagingTempest: Power = {
   "allowedSetCategories": [
     "Holds"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "hold": {
+      "mag": 2,
+      "scale": 4,
+      "table": "Ranged_Ones"
+    }
+  }
 };

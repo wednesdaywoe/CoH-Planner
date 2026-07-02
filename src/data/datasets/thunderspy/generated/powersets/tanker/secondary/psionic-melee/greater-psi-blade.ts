@@ -48,8 +48,8 @@ export const GreaterPsiBlade: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
     }
@@ -67,8 +67,8 @@ export const GreaterPsiBlade: Power = {
         "table": "Melee_Damage"
       },
       "effects": {
-        "stun": {
-          "mag": 1,
+        "hold": {
+          "mag": 3,
           "scale": 12,
           "table": "Melee_Stun"
         }

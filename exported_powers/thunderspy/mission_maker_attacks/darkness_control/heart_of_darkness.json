@@ -142,7 +142,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -151,7 +151,7 @@
           "table": "Ranged_Stun",
           "scale": 8.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -181,7 +181,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -190,7 +190,7 @@
           "table": "Ranged_Stun",
           "scale": 6.0,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

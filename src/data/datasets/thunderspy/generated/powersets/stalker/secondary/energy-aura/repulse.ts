@@ -41,7 +41,7 @@ export const Repulse: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 4,
       "table": "Melee_Stun"
     }

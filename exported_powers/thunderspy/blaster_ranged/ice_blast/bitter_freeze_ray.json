@@ -149,7 +149,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -158,7 +158,7 @@
           "table": "Ranged_Immobilize",
           "scale": 8.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -188,7 +188,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -197,7 +197,7 @@
           "table": "Ranged_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -236,7 +236,7 @@
           "table": "Ranged_Sleep",
           "scale": 30.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -266,7 +266,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Sleep"
           ],
           "type": "",
           "application_type": "",
@@ -275,7 +275,7 @@
           "table": "Ranged_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",

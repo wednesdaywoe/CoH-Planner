@@ -55,8 +55,8 @@ export const EnergeticStrike: Power = {
         "table": "Melee_Damage"
       },
       "effects": {
-        "immobilize": {
-          "mag": 1,
+        "stun": {
+          "mag": 3,
           "scale": 10,
           "table": "Melee_Immobilize"
         }

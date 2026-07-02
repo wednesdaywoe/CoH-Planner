@@ -43,5 +43,11 @@ export const PsiBladeSlam: Power = {
     "type": "Psionic",
     "scale": 0.91,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    }
   }
 };

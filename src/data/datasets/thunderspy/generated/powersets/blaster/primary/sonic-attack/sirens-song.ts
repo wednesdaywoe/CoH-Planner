@@ -50,7 +50,7 @@ export const SirensSong: Power = {
   },
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 3,
       "scale": 30,
       "table": "Ranged_Sleep"
     }

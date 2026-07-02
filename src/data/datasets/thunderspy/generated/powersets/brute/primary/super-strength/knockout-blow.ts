@@ -48,8 +48,8 @@ export const KnockoutBlow: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Stun"
     },

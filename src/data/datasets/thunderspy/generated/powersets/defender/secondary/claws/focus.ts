@@ -44,5 +44,11 @@ export const Focus: Power = {
     "type": "Lethal",
     "scale": 2.0496,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -50,5 +50,12 @@ export const MudPots: Power = {
     "type": "Special",
     "scale": 0.18,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "immobilize": {
+      "mag": 2,
+      "scale": 2.25,
+      "table": "Melee_Ones"
+    }
   }
 };

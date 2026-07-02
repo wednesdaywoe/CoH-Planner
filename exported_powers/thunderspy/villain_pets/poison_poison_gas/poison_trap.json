@@ -63,7 +63,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -72,7 +72,7 @@
           "table": "Melee_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 3.0,
           "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -102,7 +102,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -111,7 +111,7 @@
           "table": "Melee_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 3.0,
           "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",

@@ -48,7 +48,7 @@ export const PsychicShockwave: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 0.25,
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
     },
@@ -65,7 +65,7 @@ export const PsychicShockwave: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
-          "mag": 0.25,
+          "mag": 2,
           "scale": 9,
           "table": "Melee_Stun"
         }

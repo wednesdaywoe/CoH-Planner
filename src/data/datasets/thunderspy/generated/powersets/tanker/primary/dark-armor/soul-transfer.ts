@@ -48,7 +48,7 @@ export const SoulTransfer: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 30,
       "scale": 10,
       "table": "Melee_Stun"
     }

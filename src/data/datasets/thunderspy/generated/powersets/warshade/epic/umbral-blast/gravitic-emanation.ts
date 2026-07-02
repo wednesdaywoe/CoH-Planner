@@ -58,7 +58,7 @@ export const GraviticEmanation: Power = {
       "table": "Ranged_Knockback"
     },
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     }

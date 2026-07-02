@@ -52,5 +52,12 @@ export const DualWield: Power = {
       "scale": 0.82,
       "table": "Ranged_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 0.75,
+      "scale": 10.1,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

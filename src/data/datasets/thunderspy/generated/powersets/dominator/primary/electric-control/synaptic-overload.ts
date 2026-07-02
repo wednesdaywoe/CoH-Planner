@@ -41,8 +41,8 @@ export const SynapticOverload: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "confuse": {
+      "mag": 3,
       "scale": 20,
       "table": "Ranged_Immobilize"
     },
@@ -66,8 +66,8 @@ export const SynapticOverload: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "immobilize": {
-          "mag": 1,
+        "confuse": {
+          "mag": 3,
           "scale": 30,
           "table": "Ranged_Immobilize"
         }

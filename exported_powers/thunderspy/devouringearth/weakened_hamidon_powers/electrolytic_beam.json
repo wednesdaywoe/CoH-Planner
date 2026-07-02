@@ -137,7 +137,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -146,7 +146,7 @@
           "table": "Ranged_Immobilize",
           "scale": 12.0,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

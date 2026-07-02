@@ -47,7 +47,7 @@ export const WhirlingMace: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 0.30000001192092896,
+      "mag": 2,
       "scale": 5,
       "table": "Melee_Stun"
     }

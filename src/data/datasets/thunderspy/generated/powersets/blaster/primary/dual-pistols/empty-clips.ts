@@ -64,6 +64,14 @@ export const EmptyClips: Power = {
       "tickRate": 0.5
     }
   ],
+  "effects": {
+    "immobilize": {
+      "mag": 0.75,
+      "scale": 10.1,
+      "table": "Ranged_Immobilize"
+    },
+    "buffDuration": 8
+  },
   "conditionalEffects": [
     {
       "id": "lethalammo",

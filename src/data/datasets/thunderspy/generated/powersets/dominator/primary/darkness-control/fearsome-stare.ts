@@ -45,7 +45,7 @@ export const FearsomeStare: Power = {
   "maxSlots": 6,
   "effects": {
     "fear": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Fear"
     }
@@ -58,7 +58,7 @@ export const FearsomeStare: Power = {
       "defaultActive": false,
       "effects": {
         "fear": {
-          "mag": 1,
+          "mag": 3,
           "scale": 22.5,
           "table": "Ranged_Fear"
         }

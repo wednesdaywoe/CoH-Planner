@@ -34,14 +34,8 @@ export const ConserveEnergy: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Stun"
-    },
     "effectDuration": 60,
     "durations": {
-      "stun": 60,
       "regenBuff": 60
     },
     "regenBuff": {

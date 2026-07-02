@@ -43,7 +43,7 @@ export const Hypothermia: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 3,
       "scale": 4,
       "table": "Ranged_Sleep"
     },
@@ -61,7 +61,7 @@ export const Hypothermia: Power = {
       "defaultActive": false,
       "effects": {
         "sleep": {
-          "mag": 1,
+          "mag": 3,
           "scale": 6,
           "table": "Ranged_Sleep"
         },
@@ -80,7 +80,7 @@ export const Hypothermia: Power = {
       "mode": "replace",
       "effects": {
         "sleep": {
-          "mag": 1,
+          "mag": 3,
           "scale": 4,
           "table": "Ranged_Sleep"
         },

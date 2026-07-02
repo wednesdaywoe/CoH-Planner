@@ -37,8 +37,8 @@ export const ParalyticPoison: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     }

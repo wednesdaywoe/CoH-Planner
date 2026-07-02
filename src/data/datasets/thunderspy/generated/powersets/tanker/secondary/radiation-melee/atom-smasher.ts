@@ -52,8 +52,8 @@ export const AtomSmasher: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "immobilize": {
-      "mag": 0.25,
+    "stun": {
+      "mag": 2,
       "scale": 6,
       "table": "Melee_Immobilize"
     }

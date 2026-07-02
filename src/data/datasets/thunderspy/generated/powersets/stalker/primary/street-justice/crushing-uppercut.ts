@@ -49,7 +49,7 @@ export const CrushingUppercut: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 7.5,
       "table": "Melee_Stun"
     },
@@ -72,7 +72,7 @@ export const CrushingUppercut: Power = {
       },
       "effects": {
         "stun": {
-          "mag": 1,
+          "mag": 3,
           "scale": 8.625,
           "table": "Melee_Stun"
         }
@@ -92,7 +92,7 @@ export const CrushingUppercut: Power = {
       },
       "effects": {
         "stun": {
-          "mag": 1,
+          "mag": 3,
           "scale": 9.375,
           "table": "Melee_Stun"
         }
@@ -111,8 +111,8 @@ export const CrushingUppercut: Power = {
         "table": "Melee_Damage"
       },
       "effects": {
-        "stun": {
-          "mag": 1,
+        "hold": {
+          "mag": 3,
           "scale": 10.5,
           "table": "Melee_Stun"
         }

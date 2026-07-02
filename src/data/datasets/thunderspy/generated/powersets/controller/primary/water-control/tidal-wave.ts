@@ -54,9 +54,13 @@ export const TidalWave: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Stun"
+    },
+    "knockup": {
+      "scale": 3,
+      "table": "Ranged_Ones"
     }
   }
 };

@@ -45,5 +45,11 @@ export const RadiantStrike: Power = {
     "type": "Smashing",
     "scale": 1,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockup": {
+      "scale": 2,
+      "table": "Melee_Ones"
+    }
   }
 };

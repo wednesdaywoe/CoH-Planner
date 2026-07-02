@@ -42,7 +42,7 @@ export const CloakofFear: Power = {
   "maxSlots": 6,
   "effects": {
     "fear": {
-      "mag": 1,
+      "mag": 2,
       "scale": 5,
       "table": "Melee_Fear"
     }

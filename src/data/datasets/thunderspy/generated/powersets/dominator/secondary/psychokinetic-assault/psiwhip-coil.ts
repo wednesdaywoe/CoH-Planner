@@ -48,8 +48,8 @@ export const PsiWhipCoil: Power = {
     "tickRate": 0.25
   },
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 6,
       "table": "Ranged_Immobilize"
     }
@@ -61,8 +61,8 @@ export const PsiWhipCoil: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "immobilize": {
-          "mag": 1,
+        "hold": {
+          "mag": 3,
           "scale": 9,
           "table": "Ranged_Immobilize"
         }

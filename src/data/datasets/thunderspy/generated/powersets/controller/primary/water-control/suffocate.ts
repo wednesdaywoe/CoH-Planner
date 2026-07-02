@@ -51,8 +51,8 @@ export const Suffocate: Power = {
     "tickRate": 1
   },
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
     }

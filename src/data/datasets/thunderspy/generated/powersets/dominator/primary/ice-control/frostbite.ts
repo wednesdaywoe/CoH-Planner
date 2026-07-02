@@ -53,7 +53,7 @@ export const Frostbite: Power = {
   },
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
@@ -71,7 +71,7 @@ export const Frostbite: Power = {
       "defaultActive": false,
       "effects": {
         "immobilize": {
-          "mag": 1,
+          "mag": 3,
           "scale": 22.5,
           "table": "Ranged_Immobilize"
         }

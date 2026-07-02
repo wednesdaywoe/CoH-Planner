@@ -49,7 +49,7 @@ export const Entangle: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Stun"
     },
@@ -66,7 +66,7 @@ export const Entangle: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
-          "mag": 1,
+          "mag": 3,
           "scale": 22,
           "table": "Ranged_Stun"
         }

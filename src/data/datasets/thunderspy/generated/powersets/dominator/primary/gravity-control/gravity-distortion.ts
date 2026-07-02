@@ -50,8 +50,8 @@ export const GravityDistortion: Power = {
     "tickRate": 1
   },
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
     }
@@ -63,8 +63,8 @@ export const GravityDistortion: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "immobilize": {
-          "mag": 1,
+        "hold": {
+          "mag": 3,
           "scale": 18,
           "table": "Ranged_Immobilize"
         }

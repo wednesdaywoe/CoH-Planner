@@ -46,7 +46,7 @@ export const Taser: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Stun"
     }

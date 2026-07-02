@@ -47,7 +47,7 @@ export const FRTSubdue: Power = {
   },
   "effects": {
     "immobilize": {
-      "mag": 0.800000011920929,
+      "mag": 3,
       "scale": 6,
       "table": "Ranged_Immobilize"
     }

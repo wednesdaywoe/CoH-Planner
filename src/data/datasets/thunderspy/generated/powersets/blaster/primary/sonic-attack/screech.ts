@@ -47,7 +47,7 @@ export const Screech: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     }

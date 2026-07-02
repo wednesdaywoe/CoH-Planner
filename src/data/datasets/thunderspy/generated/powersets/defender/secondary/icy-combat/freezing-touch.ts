@@ -47,8 +47,8 @@ export const FreezingTouch: Power = {
     "tickRate": 1
   },
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     }

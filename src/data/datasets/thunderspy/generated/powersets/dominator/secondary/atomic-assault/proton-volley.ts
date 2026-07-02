@@ -50,7 +50,7 @@ export const ProtonVolley: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
     }
@@ -63,7 +63,7 @@ export const ProtonVolley: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
-          "mag": 1,
+          "mag": 3,
           "scale": 12,
           "table": "Ranged_Stun"
         }

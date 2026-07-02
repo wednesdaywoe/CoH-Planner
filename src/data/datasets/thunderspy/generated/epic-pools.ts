@@ -63,7 +63,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 2
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           }
@@ -106,8 +106,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 12,
             "table": "Melee_Immobilize"
           }
@@ -264,7 +264,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 15,
           "maxTargets": 10,
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
@@ -422,8 +422,8 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1,
           "effectArea": "SingleTarget",
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
@@ -609,7 +609,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
@@ -668,6 +668,11 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage",
             "duration": 6.3,
             "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
           },
           "recoveryDebuff": {
             "scale": 1,
@@ -735,7 +740,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 2
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           }
@@ -780,8 +785,8 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.2,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
           }
@@ -1102,6 +1107,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Special",
             "scale": 0.3,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
           }
         }
       }
@@ -1291,6 +1300,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Special",
             "scale": 0.3,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
           }
         }
       }
@@ -1399,7 +1412,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           }
@@ -1575,6 +1588,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Special",
             "scale": 0.66,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
           }
         }
       },
@@ -1611,7 +1628,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 15,
           "maxTargets": 10,
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
@@ -1838,7 +1855,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           },
@@ -2101,7 +2118,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           }
@@ -2311,6 +2328,11 @@ export const EPIC_POOLS_RAW = {
             "duration": 6.3,
             "tickRate": 1
           },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Ones"
+          },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
@@ -2374,7 +2396,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "stun": {
-            "mag": 0.5,
+            "mag": 3,
             "scale": 5,
             "table": "Melee_Stun"
           },
@@ -2388,6 +2410,10 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "recoveryDebuff": 4
+          },
+          "knockback": {
+            "scale": 0.64,
+            "table": "Melee_Ones"
           },
           "buffDuration": 4
         }
@@ -2461,8 +2487,8 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 60,
           "maxTargets": 16,
-          "immobilize": {
-            "mag": 1,
+          "stun": {
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
@@ -2572,7 +2598,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "sleep": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Sleep"
           }
@@ -2764,7 +2790,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "sleep": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Sleep"
           }
@@ -3905,7 +3931,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 0.5
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
@@ -4010,8 +4036,8 @@ export const EPIC_POOLS_RAW = {
             "duration": 3,
             "tickRate": 0.5
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
@@ -4100,7 +4126,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 15,
           "maxTargets": 10,
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
@@ -4205,8 +4231,8 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1,
           "effectArea": "SingleTarget",
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
@@ -4376,6 +4402,11 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage",
             "duration": 6.3,
             "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
           },
           "recoveryDebuff": {
             "scale": 1,
@@ -4568,7 +4599,17 @@ export const EPIC_POOLS_RAW = {
           "recharge": 90,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 15,
+          "durations": {
+            "stun": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -4610,8 +4651,8 @@ export const EPIC_POOLS_RAW = {
             "duration": 10,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
@@ -4703,7 +4744,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "stun": {
-            "mag": 1,
+            "mag": 2,
             "scale": 6,
             "table": "Melee_Stun"
           }
@@ -4819,7 +4860,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "stun": {
-            "mag": 1,
+            "mag": 30,
             "scale": 8,
             "table": "Melee_Stun"
           }
@@ -4954,8 +4995,8 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.67,
           "effectArea": "SingleTarget",
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 8,
             "table": "Ranged_Immobilize"
           }
@@ -5092,7 +5133,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           }
@@ -5236,8 +5277,8 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 16,
-          "immobilize": {
-            "mag": 0.800000011920929,
+          "hold": {
+            "mag": 2,
             "scale": 4,
             "table": "Ranged_Immobilize"
           }
@@ -6037,7 +6078,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
@@ -6168,7 +6209,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 2
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 4,
             "scale": 15,
             "table": "Melee_Immobilize"
           }
@@ -6204,7 +6245,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 30,
           "maxTargets": 10,
           "sleep": {
-            "mag": 1,
+            "mag": 3,
             "scale": 20,
             "table": "Ranged_Sleep"
           }
@@ -6247,8 +6288,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 12,
             "table": "Melee_Immobilize"
           }
@@ -6324,7 +6365,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "stun": {
-            "mag": 0.10000000149011612,
+            "mag": 3,
             "scale": 8,
             "table": "Melee_Stun"
           }
@@ -6425,8 +6466,8 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.2,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 12,
             "table": "Ranged_Immobilize"
           },
@@ -6534,8 +6575,8 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 40,
           "maxTargets": 16,
-          "immobilize": {
-            "mag": 1,
+          "stun": {
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
@@ -6608,7 +6649,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 2
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
@@ -6670,7 +6711,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "stun": {
-            "mag": 0.5,
+            "mag": 3,
             "scale": 5,
             "table": "Melee_Stun"
           },
@@ -6759,8 +6800,8 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.2,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 12,
             "table": "Ranged_Immobilize"
           },
@@ -6998,6 +7039,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Special",
             "scale": 0.29,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
           }
         }
       }
@@ -7187,6 +7232,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Special",
             "scale": 0.29,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
           }
         }
       }
@@ -7880,8 +7929,8 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.2,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 12,
             "table": "Ranged_Immobilize"
           }
@@ -8135,8 +8184,12 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Ranged_Damage"
           },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Ranged_Ones"
+          },
           "stun": {
-            "mag": 0.4000000059604645,
+            "mag": 2,
             "scale": 8,
             "table": "Ranged_Stun"
           }
@@ -8358,8 +8411,8 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.2,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 12,
             "table": "Melee_Immobilize"
           }
@@ -8848,7 +8901,17 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 7.8,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 0.5,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 10,
+          "durations": {
+            "stun": 10
+          },
+          "buffDuration": 10
         }
       },
       {
@@ -8891,8 +8954,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.77,
             "table": "Melee_Damage"
           },
-          "immobilize": {
-            "mag": 0.6000000238418579,
+          "stun": {
+            "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
           }
@@ -9026,7 +9089,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
@@ -9110,8 +9173,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 3.56,
             "table": "Melee_Damage"
           },
-          "stun": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Melee_Stun"
           },
@@ -9187,8 +9250,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.135,
             "table": "Ranged_Damage"
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
@@ -9239,7 +9302,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 15,
           "maxTargets": 10,
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
@@ -9352,7 +9415,17 @@ export const EPIC_POOLS_RAW = {
           "recharge": 90,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 15,
+          "durations": {
+            "stun": 15
+          },
+          "buffDuration": 15
         }
       },
       {
@@ -9386,8 +9459,8 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1,
           "effectArea": "SingleTarget",
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
@@ -9541,7 +9614,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "stun": {
-            "mag": 0.5,
+            "mag": 3,
             "scale": 5,
             "table": "Melee_Stun"
           },
@@ -9555,6 +9628,10 @@ export const EPIC_POOLS_RAW = {
           },
           "durations": {
             "recoveryDebuff": 4
+          },
+          "knockback": {
+            "scale": 0.64,
+            "table": "Melee_Ones"
           },
           "buffDuration": 4
         }
@@ -9603,7 +9680,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
@@ -9662,6 +9739,11 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage",
             "duration": 6.3,
             "tickRate": 1
+          },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
           },
           "recoveryDebuff": {
             "scale": 1,
@@ -9799,7 +9881,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "stun": {
-            "mag": 1,
+            "mag": 2,
             "scale": 6,
             "table": "Melee_Stun"
           }
@@ -9848,7 +9930,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
@@ -9893,8 +9975,8 @@ export const EPIC_POOLS_RAW = {
             "duration": 10,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
@@ -9973,8 +10055,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.1,
             "table": "Ranged_Damage"
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
@@ -10020,7 +10102,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage"
           },
           "sleep": {
-            "mag": 1,
+            "mag": 3,
             "scale": 20,
             "table": "Ranged_Sleep"
           }
@@ -10190,7 +10272,17 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 7.8,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 0.5,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 12.5,
+          "durations": {
+            "stun": 12.5
+          },
+          "buffDuration": 12.5
         }
       },
       {
@@ -10295,8 +10387,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "immobilize": {
-            "mag": 1,
+          "stun": {
+            "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
           }
@@ -10497,7 +10589,17 @@ export const EPIC_POOLS_RAW = {
           "recharge": 90,
           "endurance": 9.75,
           "activationTime": 1.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "stun": {
+            "mag": 1,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "effectDuration": 15,
+          "durations": {
+            "stun": 15
+          },
+          "buffDuration": 15
         }
       }
     ]
@@ -10556,7 +10658,7 @@ export const EPIC_POOLS_RAW = {
             }
           ],
           "stun": {
-            "mag": 0.6000000238418579,
+            "mag": 3,
             "scale": 8,
             "table": "Melee_Stun"
           }
@@ -10877,6 +10979,11 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.12,
             "table": "Ranged_Damage",
             "tickRate": 2
+          },
+          "confuse": {
+            "mag": 2,
+            "scale": 1.5,
+            "table": "Ranged_Ones"
           }
         }
       },
@@ -10920,6 +11027,10 @@ export const EPIC_POOLS_RAW = {
             "table": "Ranged_Damage",
             "duration": 2.05,
             "tickRate": 0.5
+          },
+          "knockup": {
+            "scale": 1.4,
+            "table": "Ranged_Ones"
           }
         }
       }
@@ -11080,6 +11191,11 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.12,
             "table": "Ranged_Damage",
             "tickRate": 2
+          },
+          "confuse": {
+            "mag": 2,
+            "scale": 1.5,
+            "table": "Ranged_Ones"
           }
         }
       },
@@ -11172,8 +11288,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Ranged_Damage"
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 12,
             "table": "Ranged_Immobilize"
           }
@@ -11211,7 +11327,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 25,
           "maxTargets": 10,
           "sleep": {
-            "mag": 1,
+            "mag": 3,
             "scale": 20,
             "table": "Ranged_Sleep"
           }
@@ -11284,6 +11400,11 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.12,
             "table": "Ranged_Damage",
             "tickRate": 2
+          },
+          "confuse": {
+            "mag": 2,
+            "scale": 1.5,
+            "table": "Ranged_Ones"
           }
         }
       },
@@ -11315,8 +11436,8 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 5,
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 0.75,
             "table": "Melee_Immobilize"
           }
@@ -11374,7 +11495,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 2
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           }
@@ -11419,8 +11540,8 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.2,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 12,
             "table": "Melee_Immobilize"
           }
@@ -11723,8 +11844,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.135,
             "table": "Melee_Damage"
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
           }
@@ -11815,6 +11936,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Special",
             "scale": 0.5,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
           }
         }
       },
@@ -11856,6 +11981,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Special",
             "scale": 1.15,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 2,
+            "table": "Melee_Ones"
           }
         }
       },
@@ -11935,8 +12064,8 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1,
           "effectArea": "SingleTarget",
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Ranged_Immobilize"
           }
@@ -12196,6 +12325,11 @@ export const EPIC_POOLS_RAW = {
             "duration": 6.3,
             "tickRate": 1
           },
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Ones"
+          },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
@@ -12418,8 +12552,8 @@ export const EPIC_POOLS_RAW = {
             "duration": 10,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 3,
             "scale": 10,
             "table": "Melee_Immobilize"
           }
@@ -12557,8 +12691,12 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.9,
             "table": "Melee_Damage"
           },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Melee_Ones"
+          },
           "stun": {
-            "mag": 0.5,
+            "mag": 2,
             "scale": 8,
             "table": "Melee_Stun"
           }
@@ -12642,8 +12780,8 @@ export const EPIC_POOLS_RAW = {
             "scale": 2.6,
             "table": "Melee_Damage"
           },
-          "immobilize": {
-            "mag": 1,
+          "hold": {
+            "mag": 4,
             "scale": 8,
             "table": "Melee_Immobilize"
           }
@@ -12784,7 +12922,7 @@ export const EPIC_POOLS_RAW = {
             "table": "Melee_Damage"
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           }
@@ -12960,6 +13098,10 @@ export const EPIC_POOLS_RAW = {
             "type": "Special",
             "scale": 0.66,
             "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
           }
         }
       },
@@ -12996,7 +13138,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 15,
           "maxTargets": 10,
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
@@ -13229,7 +13371,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           },
@@ -13492,7 +13634,7 @@ export const EPIC_POOLS_RAW = {
             "tickRate": 1
           },
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           }
@@ -13650,7 +13792,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.37,
           "effectArea": "SingleTarget",
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }
@@ -13838,7 +13980,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.37,
           "effectArea": "SingleTarget",
           "immobilize": {
-            "mag": 1,
+            "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           }

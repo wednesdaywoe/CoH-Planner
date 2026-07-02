@@ -48,5 +48,11 @@ export const HighLow: Power = {
     "table": "Melee_Damage",
     "duration": 2.05,
     "tickRate": 0.20000000298023224
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   }
 };

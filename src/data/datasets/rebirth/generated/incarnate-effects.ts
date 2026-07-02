@@ -968,13 +968,13 @@ export const GENERATED_JUDGEMENT_EFFECTS: Record<string, {
   // Cryonic Partial Radial Judgement
   'cryonic_partial_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow"]},
   // Cryonic Radial Final Judgement
-  'cryonic_radial_final_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow","Held Mag 12","Held Mag 4"]},
+  'cryonic_radial_final_judgement': {"damageType":"Cold","effectArea":"Cone","range":120,"radius":120,"arc":0.8,"maxTargets":32,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow","Held Mag 4"]},
   // Cryonic Radial Judgement
   'cryonic_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":16,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow"]},
   // Cryonic Total Core Judgement
   'cryonic_total_core_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Cryonic Total Radial Judgement
-  'cryonic_total_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow","Held Mag 12","Held Mag 4"]},
+  'cryonic_total_radial_judgement': {"damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Slow","Held Mag 4"]},
   // Ion Core Final Judgement
   'ion_core_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Core Judgement
@@ -986,13 +986,13 @@ export const GENERATED_JUDGEMENT_EFFECTS: Record<string, {
   // Ion Partial Radial Judgement
   'ion_partial_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Radial Final Judgement
-  'ion_radial_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 12","Held Mag 4"]},
+  'ion_radial_final_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
   // Ion Radial Judgement
   'ion_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Total Core Judgement
   'ion_total_core_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Ion Total Radial Judgement
-  'ion_total_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 12","Held Mag 4"]},
+  'ion_total_radial_judgement': {"damageType":"Energy","effectArea":"Chain","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 4"]},
   // Pyronic Core Final Judgement
   'pyronic_core_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.2 scale/10.6s"]},
   // Pyronic Core Judgement
@@ -1004,13 +1004,13 @@ export const GENERATED_JUDGEMENT_EFFECTS: Record<string, {
   // Pyronic Partial Radial Judgement
   'pyronic_partial_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Pyronic Radial Final Judgement
-  'pyronic_radial_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 12","Stunned Mag 4"]},
+  'pyronic_radial_final_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":32,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 4"]},
   // Pyronic Radial Judgement
   'pyronic_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Pyronic Total Core Judgement
   'pyronic_total_core_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":25,"arc":0,"maxTargets":16,"activationTime":1,"rechargeTime":90,"damageScale":3.5,"tableName":"Ranged_Tempdamage","secondaryEffects":["DoT(Fire) 0.25 scale/10.6s"]},
   // Pyronic Total Radial Judgement
-  'pyronic_total_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 12","Stunned Mag 4"]},
+  'pyronic_total_radial_judgement': {"damageType":"Fire","effectArea":"Targeted AoE","range":80,"radius":40,"arc":0,"maxTargets":24,"activationTime":1,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":["Stunned Mag 4"]},
   // Void Core Final Judgement
   'void_core_final_judgement': {"damageType":"Negative Energy","effectArea":"PBAoE","range":0,"radius":50,"arc":0,"maxTargets":24,"activationTime":2,"rechargeTime":90,"damageScale":4,"tableName":"Ranged_Tempdamage","secondaryEffects":[]},
   // Void Core Judgement
@@ -1517,5 +1517,5 @@ export const GENERATED_GENESIS_EFFECTS: Record<string, {
   // Verdict Total Core Genesis
   'verdict_total_core_genesis': {"displayName":"Verdict Total Core Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Ion_Total_Core_Verdict","exemplarEffect":{"kind":"attack","damageType":"Energy","effectArea":"AoE","range":80,"radius":0,"arc":0,"maxTargets":0,"activationTime":2.5,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":[]}},
   // Verdict Total Radial Genesis
-  'verdict_total_radial_genesis': {"displayName":"Verdict Total Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Cryonic_Total_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 12","Held Mag 4"]}},
+  'verdict_total_radial_genesis': {"displayName":"Verdict Total Radial Genesis","tree":"verdict","enhancesSlot":"judgement","tierPercent":0.075,"exemplarPower":"Incarnate.Verdict.Cryonic_Total_Radial_Verdict","exemplarEffect":{"kind":"attack","damageType":"Cold","effectArea":"Cone","range":80,"radius":80,"arc":0.5,"maxTargets":24,"activationTime":2,"recharge":180,"damageScale":2,"tableName":"Ranged_Tempdamage","secondaryEffects":["Held Mag 2"]}},
 };

@@ -42,7 +42,7 @@ export const FuturePain: Power = {
   "maxSlots": 6,
   "effects": {
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
     },
@@ -59,7 +59,7 @@ export const FuturePain: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
-          "mag": 1,
+          "mag": 3,
           "scale": 22,
           "table": "Ranged_Stun"
         }

@@ -43,5 +43,12 @@ export const SuckerPunch: Power = {
     "type": "Special",
     "scale": 1,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "stun": {
+      "mag": 3,
+      "scale": 4,
+      "table": "Melee_Ones"
+    }
   }
 };

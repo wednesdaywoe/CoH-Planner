@@ -56,7 +56,7 @@ export const HavokPunch: Power = {
   ],
   "effects": {
     "sleep": {
-      "mag": 0.5,
+      "mag": 3,
       "scale": 15,
       "table": "Melee_Sleep"
     },

@@ -46,5 +46,11 @@ export const Buckshot: Power = {
     "type": "Special",
     "scale": 0.7,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   }
 };

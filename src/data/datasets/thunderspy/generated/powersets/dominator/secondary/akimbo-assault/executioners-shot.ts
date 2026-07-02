@@ -55,6 +55,14 @@ export const ExecutionersShot: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "effects": {
+    "immobilize": {
+      "mag": 0.75,
+      "scale": 10.1,
+      "table": "Ranged_Immobilize"
+    },
+    "buffDuration": 8
+  },
   "conditionalEffects": [
     {
       "id": "lethalammo",

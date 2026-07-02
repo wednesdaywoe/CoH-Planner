@@ -50,8 +50,12 @@ export const RepulsionBomb: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    },
     "stun": {
-      "mag": 1,
+      "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"
     }

@@ -177,7 +177,7 @@
       "templates": [
         {
           "attribs": [
-            "Sleep"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -186,7 +186,7 @@
           "table": "Melee_Sleep",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.019999999552965164,
+          "magnitude": 3.0,
           "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -216,7 +216,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -225,7 +225,7 @@
           "table": "Melee_Ones",
           "scale": 0.3,
           "duration": "0 seconds",
-          "magnitude": 0.019999999552965164,
+          "magnitude": 3.0,
           "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -255,7 +255,7 @@
       "templates": [
         {
           "attribs": [
-            "Sleep"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -264,7 +264,7 @@
           "table": "Melee_Sleep",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.029999999329447746,
+          "magnitude": 3.0,
           "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -294,7 +294,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -303,7 +303,7 @@
           "table": "Melee_Ones",
           "scale": 0.3,
           "duration": "0 seconds",
-          "magnitude": 0.029999999329447746,
+          "magnitude": 3.0,
           "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",

@@ -47,7 +47,7 @@ export const PsychicShockwave: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 0.25,
+      "mag": 2,
       "scale": 5,
       "table": "Ranged_Stun"
     }

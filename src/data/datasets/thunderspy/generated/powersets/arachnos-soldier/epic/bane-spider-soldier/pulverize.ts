@@ -55,7 +55,7 @@ export const Pulverize: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 0.20000000298023224,
+      "mag": 2,
       "scale": 5,
       "table": "Melee_Stun"
     }

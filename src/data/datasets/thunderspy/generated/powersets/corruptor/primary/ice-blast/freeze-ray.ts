@@ -46,8 +46,8 @@ export const FreezeRay: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "sleep": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Sleep"
     }

@@ -48,5 +48,11 @@ export const FocusedBurst: Power = {
     "type": "Smashing",
     "scale": 1.23,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   }
 };

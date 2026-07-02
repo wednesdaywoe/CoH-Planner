@@ -48,7 +48,7 @@ export const Birdshot: Power = {
       "table": "Melee_Taunt"
     },
     "immobilize": {
-      "mag": 1,
+      "mag": 1.5,
       "scale": 15,
       "table": "Melee_Immobilize"
     }

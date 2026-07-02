@@ -220,7 +220,7 @@
       "templates": [
         {
           "attribs": [
-            "Fear"
+            "Terrorized"
           ],
           "type": "",
           "application_type": "",
@@ -229,7 +229,7 @@
           "table": "Melee_Fear",
           "scale": 12.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 4.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -259,7 +259,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Terrorized"
           ],
           "type": "",
           "application_type": "",
@@ -268,7 +268,7 @@
           "table": "Melee_Ones",
           "scale": 3.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -298,7 +298,7 @@
       "templates": [
         {
           "attribs": [
-            "Fear"
+            "Terrorized"
           ],
           "type": "",
           "application_type": "",
@@ -307,7 +307,7 @@
           "table": "Melee_Fear",
           "scale": 10.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -337,7 +337,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Terrorized"
           ],
           "type": "",
           "application_type": "",
@@ -346,7 +346,7 @@
           "table": "Melee_Ones",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

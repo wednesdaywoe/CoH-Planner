@@ -61,7 +61,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -100,7 +100,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",

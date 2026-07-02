@@ -105,7 +105,7 @@
           "table": "Ranged_Sleep",
           "scale": 16.0,
           "duration": "0 seconds",
-          "magnitude": 0.800000011920929,
+          "magnitude": 3.0,
           "delay": 0.25,
           "duration_expression": "",
           "magnitude_expression": "",

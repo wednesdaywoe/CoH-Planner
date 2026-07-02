@@ -41,7 +41,7 @@ export const MassHypnosis: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 4,
       "scale": 12,
       "table": "Ranged_Sleep"
     },
@@ -59,7 +59,7 @@ export const MassHypnosis: Power = {
       "defaultActive": false,
       "effects": {
         "sleep": {
-          "mag": 1,
+          "mag": 3,
           "scale": 18,
           "table": "Ranged_Sleep"
         }

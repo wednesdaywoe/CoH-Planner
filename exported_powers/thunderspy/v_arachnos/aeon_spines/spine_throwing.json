@@ -135,7 +135,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",
@@ -144,7 +144,7 @@
           "table": "Ranged_Immobilize",
           "scale": 10.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 0.3400000035762787,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

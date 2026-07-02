@@ -60,23 +60,53 @@ recovery/regen/endurance/defense when `targets_affected` is pet-only, shortHelp-
 Militia ("Self, Pets +Defense, +Regeneration") keeps its genuine Self buff. 18 generated files,
 deterministic, full suite 682 pass.
 
-**Remaining — mez magnitudes & knockback (MED value, MED effort).** The index
-array ALSO names ~1,300 player `['Ones']`-front **mez** templates (Blind→Held,
-Freeze Ray→Held, Tesla Cage→Held, Terrify→Terrorized, …) and ~1,650 **knockback**
-templates. Both are deliberately still excluded:
-- **Mez** needs a magnitude the `Ones` template doesn't carry — its `magnitude`
-  is a flat 1.0 and the real Mag rides `scale × table`; the converter's
-  `makeMezEffect` reads `template.magnitude`, so a naive relabel would emit Mag-1
-  holds. Recovering it means teaching the converter the tspy `*_Ones` mez
-  scale→magnitude convention (validate against in-game Mags, not HC — tspy
-  rebalances).
-- **Knockback** needs sign-vs-protection care (offensive KB vs -KB immob
-  protection — GAME-DATA-PRINCIPLES §3).
-- **Damage-type** index on a `['Ones']` front is an AttackType/combo TAG template
-  (appears on Aim/Assault/Build Up — powers with no direct damage) and must STAY
-  excluded, or it injects phantom damage.
-Scope per effect kind; never a blanket front→index swap (front `Damage` ↔ index
-`Lethal_Dmg` etc.).
+**DONE — mez magnitudes & offensive knockback (2026-07-02).** The applied mez is
+named ONLY in the index array; the front string is the enhancement/duration
+CATEGORY, so front != applied mez (Blind/Fossilize front `Immobilize` → **Held**,
+Freeze Ray front `Sleep` → **Held**, Cobra front `Stun` → `Stunned`). The parser
+was reading the front, so every mez was **mislabelled at a flat Mag 1** (Blind
+emitted `immobilize Mag 1`), not merely the `Ones`-front ones. Two binary facts
+recovered `_parse_effect_template_thunderspy`:
+- **Type from the index array.** Relabel `attribs` to the lone index mez attrib
+  (`Held/Immobilized/Stunned/Sleep/Confused/Terrorized/Afraid`). Verified: index
+  type == HC on **415/422** shared powers (the 7 are genuine tspy reworks, e.g.
+  Future_Pain Fear→Stun). `*_Res_Boolean` tables are mez PROTECTION, not applied —
+  excluded.
+- **Magnitude from the post-table slot (k+12), not the flat header `magnitude`.**
+  This is the HC Parse7 `table scale duration MAGNITUDE` slot the parser used to
+  discard. Verified == HC's magnitude **exactly** where tspy didn't rebalance (338
+  exact; the 80 "misses" are all the systematic HC Controller +1 Mag, `hc=4 tspy=3`).
+- **Offensive KB/KU** relabeled from a `Ones` front only when INSTANT (duration 0)
+  and positive — the AoE knockdowns/ups (Foot Stomp / Tremor / Dragon's Tail 0.67,
+  Geyser / Tidal Wave). Durational / negative / huge-scale KB (anti-KB protection,
+  held-target ground-lock, self KB-protection) stays `Ones`, excluded (GAME-DATA §3).
+  Front-real `Knockback` (Power Push) already routed through the converter.
+
+**The traps (an adversarial Workflow of 5 skeptics vetted the recovery):**
+- **Target-trap** — a Self/ally-only self-buff whose index names a mez (Power Boost /
+  Build Up / Aim = +mez-strength; the Incarnate `+mez-strength` defs) reads as an
+  applied hold once the schema drops the per-template target. `guardThunderspyAppliedMez`
+  ([convert-powerset.cjs](../scripts/convert-powerset.cjs)) drops the applied-mez/KB
+  keys when the power's `targets_affected` names no foe — kept for PBAoE controls the
+  caster casts on Self (Psychic Wail, EMP Pulse, Mud Pots) which still list `Foe` (§7).
+  Audit: 891/891 recovered mez/KB powers are foe-facing, 0 leaks.
+- **Sign-trap** — a negative-scale mez on a DURATION table is a debuff/duration
+  artifact, not applied (Time Stop's scale -0.25 `Stun` on Ranged_Stun surfaced as a
+  phantom Mag-1 stun on a pure Hold). The direct-mez branch now skips it (tspy-scoped;
+  mez PROTECTION on `*_Res_Boolean` is kept at any sign).
+- **Incarnate mez-mag bug (cross-dataset, fixed).** `convert-incarnate-effects.cjs`
+  labelled `Held Mag ${scale}` (the DURATION slot) → every Judgement hold read "Mag 12"
+  for a real Mag 4 on HC, Rebirth AND tspy; now reads `magnitude`.
+
+Guard test: [thunderspy-mez-knockback.test.ts](../src/data/thunderspy-mez-knockback.test.ts).
+
+**Residual (small, non-blocking):** Taunt/Placate/Untouchable/Intangible index mez are
+relabeled-but-inert (the converter has no applied path for them); Spectral Wounds /
+Poison Gas Arrow advertise Sleep but their tspy template is scale-0 / stripped (no
+magnitude to surface); the **damage-type** combo TAG on `['Ones']` fronts stays excluded
+(idx_count>1) so it can't inject phantom damage. HC/Rebirth encode some armor
+mez-PROTECTION as negative-scale `*_Ones` (shown as phantom applied mez) — a **separate**
+pre-existing question, deliberately NOT touched here (the sign-guard is tspy-scoped).
 
 ## 2. Pets / entities — fix the entity parser (MED value, HIGH effort) — PARSER
 
@@ -127,7 +157,10 @@ per-power available **levels**, damage **element types**, conditional-gate
 labels, DoT `tickRate` (application_period), **defense magnitudes** (offset-cap +
 post-`requires` index array, 2026-07-02), **`Ones`-front recharge/recovery/regen/
 endurance recovery** (index-array relabel + `RechargeTime`=idx 89; shortHelp
-`recoverThunderspyOnesBuffs` retired, 2026-07-02). App: Thunderspy selectable dataset,
+`recoverThunderspyOnesBuffs` retired, 2026-07-02), **applied mez type+magnitude &
+offensive knockback** (index-array type + k+12 magnitude; target-trap + sign-trap
+guards; incarnate mez-mag `scale`→`magnitude` cross-dataset fix, 2026-07-02). App:
+Thunderspy selectable dataset,
 Primalist AT + form mechanics, Tarantula Widow branch, **real IO-set extraction**
 (212 sets — Subaluwa + Primalist ATOs, wrong HC-only sets removed, 2026-07-01),
 **ATO-category slotting** (tspy bin omits per-power ATOs → inferred, 2026-07-02),

@@ -46,5 +46,11 @@ export const TurbulentAura: Power = {
     "Melee AoE Damage",
     "Melee Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "knockback": {
+      "scale": 0.2,
+      "table": "Ranged_Ones"
+    }
+  }
 };

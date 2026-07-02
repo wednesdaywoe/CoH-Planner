@@ -53,7 +53,7 @@ export const UnchainEssence: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 0.5,
+      "mag": 3,
       "scale": 5,
       "table": "Ranged_Stun"
     },

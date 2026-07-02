@@ -58,6 +58,11 @@ export const HailofBullets: Power = {
     }
   ],
   "effects": {
+    "immobilize": {
+      "mag": 1,
+      "scale": 10.1,
+      "table": "Ranged_Immobilize"
+    },
     "defenseBuff": {
       "melee": {
         "scale": 1,

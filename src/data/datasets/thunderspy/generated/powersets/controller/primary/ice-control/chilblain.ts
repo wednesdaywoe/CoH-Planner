@@ -59,7 +59,7 @@ export const Chilblain: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
     }

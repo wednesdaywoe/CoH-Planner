@@ -47,5 +47,11 @@ export const ModerateBridge: Power = {
     "table": "Melee_Damage",
     "duration": 0.6,
     "tickRate": 0.4000000059604645
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -54,5 +54,12 @@ export const PiercingRounds: Power = {
       "scale": 1.3,
       "table": "Ranged_Damage"
     }
-  ]
+  ],
+  "effects": {
+    "immobilize": {
+      "mag": 0.75,
+      "scale": 10.1,
+      "table": "Ranged_Immobilize"
+    }
+  }
 };

@@ -48,7 +48,7 @@ export const Quills: Power = {
   },
   "effects": {
     "immobilize": {
-      "mag": 1,
+      "mag": 0.33000001311302185,
       "scale": 3,
       "table": "Melee_Immobilize"
     }

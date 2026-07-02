@@ -47,7 +47,7 @@ export const WildRoar: Power = {
       "defaultActive": false,
       "effects": {
         "fear": {
-          "mag": 1,
+          "mag": 4,
           "scale": 12,
           "table": "Melee_Fear"
         }
@@ -60,7 +60,7 @@ export const WildRoar: Power = {
       "defaultActive": false,
       "effects": {
         "fear": {
-          "mag": 1,
+          "mag": 3,
           "scale": 10,
           "table": "Melee_Fear"
         }

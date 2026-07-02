@@ -40,8 +40,8 @@ export const Glacier: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Immobilize"
     }
@@ -53,8 +53,8 @@ export const Glacier: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "immobilize": {
-          "mag": 1,
+        "hold": {
+          "mag": 3,
           "scale": 15,
           "table": "Ranged_Immobilize"
         }

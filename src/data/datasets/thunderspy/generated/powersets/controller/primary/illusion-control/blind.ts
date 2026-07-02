@@ -48,8 +48,8 @@ export const Blind: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 10,
       "table": "Ranged_Immobilize"
     }

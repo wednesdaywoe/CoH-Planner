@@ -47,7 +47,7 @@ export const ChargedBrawl: Power = {
   },
   "effects": {
     "sleep": {
-      "mag": 0.20000000298023224,
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Sleep"
     },

@@ -109,7 +109,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Knockback"
           ],
           "type": "",
           "application_type": "",
@@ -148,7 +148,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Knockback"
           ],
           "type": "",
           "application_type": "",
@@ -187,7 +187,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -196,7 +196,7 @@
           "table": "Ranged_Stun",
           "scale": 8.0,
           "duration": "0 seconds",
-          "magnitude": 0.33000001311302185,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -226,7 +226,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -235,7 +235,7 @@
           "table": "Ranged_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.33000001311302185,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -265,7 +265,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -274,7 +274,7 @@
           "table": "Ranged_Stun",
           "scale": 12.0,
           "duration": "0 seconds",
-          "magnitude": 0.33000001311302185,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -304,7 +304,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -313,7 +313,7 @@
           "table": "Ranged_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.33000001311302185,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

@@ -61,7 +61,7 @@ export const Overcharge: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 0.6000000238418579,
+      "mag": 3,
       "scale": 4,
       "table": "Ranged_Stun"
     }
@@ -75,7 +75,7 @@ export const Overcharge: Power = {
       "mode": "replace",
       "effects": {
         "stun": {
-          "mag": 1,
+          "mag": 3,
           "scale": 8,
           "table": "Ranged_Stun"
         }

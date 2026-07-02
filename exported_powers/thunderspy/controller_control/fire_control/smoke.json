@@ -219,7 +219,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Confused"
           ],
           "type": "",
           "application_type": "",
@@ -228,7 +228,7 @@
           "table": "Ranged_Immobilize",
           "scale": 10.0,
           "duration": "0 seconds",
-          "magnitude": 0.30000001192092896,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -258,7 +258,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Confused"
           ],
           "type": "",
           "application_type": "",
@@ -267,7 +267,7 @@
           "table": "Ranged_Immobilize",
           "scale": 7.5,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

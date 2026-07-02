@@ -55,8 +55,13 @@ export const ArcticAir: Power = {
   },
   "effects": {
     "fear": {
-      "mag": 0.5,
+      "mag": 3,
       "scale": 2,
+      "table": "Ranged_Fear"
+    },
+    "confuse": {
+      "mag": 3,
+      "scale": 4,
       "table": "Ranged_Fear"
     }
   }

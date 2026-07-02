@@ -96,7 +96,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",
@@ -105,7 +105,7 @@
           "table": "Melee_Immobilize",
           "scale": 10.0,
           "duration": "0 seconds",
-          "magnitude": 0.75,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

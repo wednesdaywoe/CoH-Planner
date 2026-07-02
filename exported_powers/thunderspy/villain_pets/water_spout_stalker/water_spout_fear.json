@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Afraid"
           ],
           "type": "",
           "application_type": "",
@@ -63,7 +63,7 @@
           "table": "Ranged_Ones",
           "scale": 0.5,
           "duration": "0 seconds",
-          "magnitude": 0.0,
+          "magnitude": 10.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

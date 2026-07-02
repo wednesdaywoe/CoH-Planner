@@ -45,7 +45,7 @@ export const SmashingBlow: Power = {
   },
   "effects": {
     "stun": {
-      "mag": 0.33000001311302185,
+      "mag": 3,
       "scale": 6,
       "table": "Melee_Stun"
     }

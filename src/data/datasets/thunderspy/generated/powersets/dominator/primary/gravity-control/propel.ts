@@ -48,8 +48,8 @@ export const Propel: Power = {
   },
   "effects": {
     "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
+      "scale": 0.67,
+      "table": "Ranged_Ones"
     }
   }
 };

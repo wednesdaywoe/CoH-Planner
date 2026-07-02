@@ -39,8 +39,8 @@ export const EMPPulse: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },

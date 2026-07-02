@@ -147,7 +147,7 @@
       "templates": [
         {
           "attribs": [
-            "Fear"
+            "Afraid"
           ],
           "type": "",
           "application_type": "",
@@ -156,7 +156,7 @@
           "table": "Ranged_Fear",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -186,7 +186,7 @@
       "templates": [
         {
           "attribs": [
-            "Fear"
+            "Confused"
           ],
           "type": "",
           "application_type": "",
@@ -195,7 +195,7 @@
           "table": "Ranged_Fear",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -225,7 +225,7 @@
       "templates": [
         {
           "attribs": [
-            "Fear"
+            "Confused"
           ],
           "type": "",
           "application_type": "",
@@ -234,7 +234,7 @@
           "table": "Ranged_Fear",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

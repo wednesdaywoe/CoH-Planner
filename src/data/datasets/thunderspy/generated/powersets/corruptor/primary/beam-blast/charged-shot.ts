@@ -44,5 +44,11 @@ export const ChargedShot: Power = {
     "type": "Energy",
     "scale": 1.64,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    }
   }
 };

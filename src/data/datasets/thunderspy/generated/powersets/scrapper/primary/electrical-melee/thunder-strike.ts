@@ -57,7 +57,7 @@ export const ThunderStrike: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 0.5,
+      "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"
     },
@@ -71,6 +71,10 @@ export const ThunderStrike: Power = {
     },
     "durations": {
       "recoveryDebuff": 4
+    },
+    "knockback": {
+      "scale": 0.64,
+      "table": "Melee_Ones"
     },
     "buffDuration": 4
   }

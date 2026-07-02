@@ -48,5 +48,11 @@ export const PsionicTornado: Power = {
     "table": "Ranged_Damage",
     "duration": 2.05,
     "tickRate": 0.5
+  },
+  "effects": {
+    "knockup": {
+      "scale": 1.4,
+      "table": "Ranged_Ones"
+    }
   }
 };

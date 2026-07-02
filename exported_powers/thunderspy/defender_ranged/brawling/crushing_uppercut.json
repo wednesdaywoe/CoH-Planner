@@ -382,7 +382,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -391,7 +391,7 @@
           "table": "Melee_Stun",
           "scale": 7.5,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -421,7 +421,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -430,7 +430,7 @@
           "table": "Melee_Stun",
           "scale": 8.25,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -460,7 +460,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -469,7 +469,7 @@
           "table": "Melee_Stun",
           "scale": 9.375,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -499,7 +499,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -508,7 +508,7 @@
           "table": "Melee_Stun",
           "scale": 10.5,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -538,7 +538,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -547,7 +547,7 @@
           "table": "Melee_Stun",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -577,7 +577,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -586,7 +586,7 @@
           "table": "Melee_Stun",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -616,7 +616,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -625,7 +625,7 @@
           "table": "Melee_Stun",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -655,7 +655,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Held"
           ],
           "type": "",
           "application_type": "",
@@ -664,7 +664,7 @@
           "table": "Melee_Stun",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 1.0,
+          "magnitude": 3.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

@@ -50,8 +50,12 @@ export const Fissure: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    },
     "stun": {
-      "mag": 0.33000001311302185,
+      "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"
     }
@@ -64,7 +68,7 @@ export const Fissure: Power = {
       "defaultActive": false,
       "effects": {
         "stun": {
-          "mag": 0.33000001311302185,
+          "mag": 1,
           "scale": 12,
           "table": "Ranged_Stun"
         }

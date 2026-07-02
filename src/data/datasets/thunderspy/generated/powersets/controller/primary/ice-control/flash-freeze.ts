@@ -50,7 +50,7 @@ export const FlashFreeze: Power = {
   },
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 3,
       "scale": 12,
       "table": "Ranged_Sleep"
     }

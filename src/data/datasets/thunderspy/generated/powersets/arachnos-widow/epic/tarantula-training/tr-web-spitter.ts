@@ -39,8 +39,13 @@ export const TRWebSpitter: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "hold": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Immobilize"
+    },
     "immobilize": {
-      "mag": 1,
+      "mag": 2,
       "scale": 15,
       "table": "Ranged_Immobilize"
     }

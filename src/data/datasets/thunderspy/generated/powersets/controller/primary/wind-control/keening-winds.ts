@@ -42,8 +42,8 @@ export const KeeningWinds: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "fear": {
-      "mag": 1,
+    "confuse": {
+      "mag": 3,
       "scale": 15,
       "table": "Ranged_Fear"
     },

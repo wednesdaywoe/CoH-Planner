@@ -41,8 +41,8 @@ export const Smoke: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "immobilize": {
-      "mag": 0.30000001192092896,
+    "confuse": {
+      "mag": 2,
       "scale": 10,
       "table": "Ranged_Immobilize"
     }
@@ -54,8 +54,8 @@ export const Smoke: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "immobilize": {
-          "mag": 0.30000001192092896,
+        "confuse": {
+          "mag": 2,
           "scale": 20,
           "table": "Ranged_Immobilize"
         }

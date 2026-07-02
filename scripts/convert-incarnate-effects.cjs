@@ -780,8 +780,12 @@ function extractJudgement() {
           }
         } else if (attrib === 'Held' || attrib === 'Stunned' || attrib === 'Immobilized' ||
                    attrib === 'Knocked' || attrib === 'Sleep') {
+          // Mez Magnitude rides the `magnitude` field; `scale` is the DURATION
+          // multiplier (scale × table = seconds). Using scale here mislabeled every
+          // incarnate hold (Cryonic/Ion "Held Mag 12" for a real Mag 4) across all
+          // three datasets. `scale > 0` still gates out zero-scale metadata rows.
           if (scale > 0) {
-            secondaryEffects.push(`${attrib} Mag ${round(scale, 1)}`);
+            secondaryEffects.push(`${attrib} Mag ${round(t.magnitude || scale, 1)}`);
           }
         } else if ((attrib === 'JumpHeight' || attrib === 'RunningSpeed') && scale < 0) {
           secondaryEffects.push('Slow');
@@ -944,7 +948,8 @@ function parseExemplarAttack(data) {
         if (durSec === 0 && scale > damageScale) { damageType = DAMAGE_TYPE_MAP[attrib]; damageScale = scale; }
         else if (durSec > 0) secondaryEffects.push(`DoT(${DAMAGE_TYPE_MAP[attrib]}) ${round(scale, 2)} scale/${round(durSec, 1)}s`);
       } else if (['Held', 'Stunned', 'Immobilized', 'Knocked', 'Sleep'].includes(attrib) && scale > 0) {
-        secondaryEffects.push(`${attrib} Mag ${round(scale, 1)}`);
+        // Mag rides `magnitude`; `scale` is the duration multiplier (see parseJudgement).
+        secondaryEffects.push(`${attrib} Mag ${round(t.magnitude || scale, 1)}`);
       }
     }
   }

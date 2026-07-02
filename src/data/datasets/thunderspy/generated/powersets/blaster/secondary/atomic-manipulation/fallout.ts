@@ -39,8 +39,8 @@ export const Fallout: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
-      "mag": 1,
+    "hold": {
+      "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"
     }

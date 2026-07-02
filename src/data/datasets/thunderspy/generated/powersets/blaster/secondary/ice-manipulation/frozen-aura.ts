@@ -38,7 +38,7 @@ export const FrozenAura: Power = {
   "maxSlots": 6,
   "effects": {
     "sleep": {
-      "mag": 1,
+      "mag": 2,
       "scale": 20,
       "table": "Ranged_Sleep"
     }

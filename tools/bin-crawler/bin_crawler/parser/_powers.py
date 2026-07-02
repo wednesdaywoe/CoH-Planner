@@ -1256,6 +1256,32 @@ _TSPY_ONES_RECOVERABLE = frozenset(
     {"RechargeTime", "Recovery", "Regeneration", "Endurance"}
 )
 
+# Applied-mez attribs recoverable from the index array. Thunderspy names the
+# APPLIED mez only in the post-`requires` index array — the front string is the
+# enhancement/duration CATEGORY, so a Hold reads front `Immobilize`/`Sleep`, a
+# Stun reads front `Stun` (verified: Blind/Freeze Ray/Fossilize front != index,
+# index == HC's mez type on 415/422 shared powers). Relabel to the index type and
+# adopt the post-table Magnitude (`mag_post_table`) — the flat template `magnitude`
+# is a placeholder. EXCLUDED here (handled by table/target guards, not this set):
+# `*_Res_Boolean` tables (mez PROTECTION thresholds, e.g. Shadowy_Binds), and the
+# self/ally target-trap (an incarnate self-buff whose index names a mez) which is
+# vetoed in the converter's guardThunderspyAppliedMez via `targets_affected`.
+# Taunt/Placate/Untouchable/Intangible are deliberately omitted — the converter has
+# no applied-effect path for them yet (relabel would be an inert no-op).
+_TSPY_MEZ_INDEX = frozenset(
+    {"Held", "Immobilized", "Stunned", "Sleep", "Confused", "Terrorized", "Afraid"}
+)
+
+# Offensive knockback/knockup recoverable from a `Ones`-front index array. The
+# instant (duration 0), positive-scale ones are the attack knock-effects (Foot
+# Stomp / Tremor / Dragon's Tail knockdown 0.67, Geyser / Tidal Wave knockup).
+# A KB index carrying a DURATION or a non-positive / huge scale is anti-KB
+# PROTECTION applied to the foe (immobilize's -KB, held-target ground-lock) or the
+# caster's own KB protection — left as `Ones` (excluded), per GAME-DATA-PRINCIPLES
+# §3. Front-real `Knockback` templates (Power Push, Energy Torrent) already flow
+# through the converter's KB path, so only the `Ones`-front offensive ones need it.
+_TSPY_KB_OFFENSIVE = frozenset({"Knockback", "Knockup"})
+
 
 def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) -> EffectTemplate:
     """Parse a Thunderspy AttribMod template.
@@ -1377,6 +1403,12 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
     duration = 0.0
     app_period = 0.0
     delay = 0.0
+    # Post-table magnitude (HC Parse7 layout: table scale duration MAGNITUDE).
+    # For damage this is the ~1.0 per-tick multiplier; for MEZ it is the real
+    # applied Magnitude (Mag 3 hold, Mag 4 taunt, …) — the template-level
+    # `magnitude` read from the header above is only a flat placeholder on this
+    # schema. Adopted below when we relabel a mez template to its index attrib.
+    mag_post_table = 0.0
     for k in range(0, len(tail) - 4, 4):
         u = struct.unpack_from('<I', tail, k)[0]
         candidate = _resolve_str(u)
@@ -1400,9 +1432,8 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
 
         scale = _f4(k + 4)
         duration = _f4(k + 8)
-        # magnitude override at k+12 (post-table); the template-level magnitude
-        # default read earlier is what we surface, so this slot is consumed only
-        # to walk past it to the expression arrays.
+        mag_post_table = _f4(k + 12)  # real applied Magnitude (see note above)
+        # k+12 is the post-table magnitude; walk past it to the expression arrays.
         pos = k + 16
         pos = _skip_u4_array(pos)   # dur_expr tokens (count=0 → +4)
         pos = _skip_u4_array(pos)   # mag_expr tokens (count=0 → +4)
@@ -1436,6 +1467,28 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
     # default (which is the unscaled "1.0" placeholder). Magnitude only matters
     # for non-table effects like raw mez magnitudes.
     final_scale = scale if table else magnitude
+
+    # Applied mez: relabel the front (an enhancement/duration category) to the
+    # index array's real mez attrib and adopt the post-table Magnitude. Fires for
+    # both `Ones` fronts (Tesla Cage) and mismatched real-mez fronts (Blind's
+    # `Immobilize`-front Hold). `Res_Boolean` tables are protection thresholds, not
+    # applied mez, so they're excluded; the self/ally target-trap is vetoed in the
+    # converter (this schema drops the per-template target). `scale` here is the
+    # duration multiplier, left untouched — only the Magnitude is corrected.
+    if (_idx_count == 1 and len(_idx_attribs) == 1
+            and _idx_attribs[0] in _TSPY_MEZ_INDEX
+            and 'Res_Boolean' not in table
+            and final_scale > 0):
+        attribs = _idx_attribs
+        if mag_post_table > 0:
+            magnitude = mag_post_table
+    # Offensive knockback/knockup: `Ones`-front, lone KB index, instant + positive
+    # → the attack's knockdown/knockup. Durational / negative / protection KB stays
+    # `Ones` (excluded). Front-real `Knockback` already routes through the converter.
+    elif (attribs == ['Ones'] and _idx_count == 1 and len(_idx_attribs) == 1
+            and _idx_attribs[0] in _TSPY_KB_OFFENSIVE
+            and duration == 0 and final_scale > 0):
+        attribs = _idx_attribs
 
     r.skip_to_end()
     return EffectTemplate(

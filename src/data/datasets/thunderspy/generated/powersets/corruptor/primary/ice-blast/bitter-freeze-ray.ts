@@ -50,13 +50,13 @@ export const BitterFreezeRay: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
     "sleep": {
-      "mag": 1,
+      "mag": 3,
       "scale": 30,
       "table": "Ranged_Sleep"
     }

@@ -186,7 +186,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Knockback"
           ],
           "type": "",
           "application_type": "",
@@ -225,7 +225,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -234,7 +234,7 @@
           "table": "Melee_Ones",
           "scale": 6.0,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 3.0,
           "delay": 0.5,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -264,7 +264,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -273,7 +273,7 @@
           "table": "Melee_Ones",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.20000000298023224,
+          "magnitude": 2.0,
           "delay": 0.5,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -303,7 +303,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -312,7 +312,7 @@
           "table": "Melee_Stun",
           "scale": 6.0,
           "duration": "0 seconds",
-          "magnitude": 0.10000000149011612,
+          "magnitude": 3.0,
           "delay": 0.5,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -342,7 +342,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -351,7 +351,7 @@
           "table": "Melee_Stun",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.10000000149011612,
+          "magnitude": 2.0,
           "delay": 0.5,
           "duration_expression": "",
           "magnitude_expression": "",

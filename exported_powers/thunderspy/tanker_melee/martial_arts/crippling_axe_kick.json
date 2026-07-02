@@ -109,7 +109,46 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Immobilized"
+          ],
+          "type": "",
+          "application_type": "",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Immobilize",
+          "scale": 10.0,
+          "duration": "0 seconds",
+          "magnitude": 2.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> critter eq",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> critter eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVE_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",
@@ -140,45 +179,6 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": "enttype target> critter eq",
-      "tags": [],
-      "flags": [],
-      "is_pvp": "PVE_ONLY",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Immobilize"
-          ],
-          "type": "",
-          "application_type": "",
-          "aspect": "",
-          "target": "",
-          "table": "Melee_Immobilize",
-          "scale": 10.0,
-          "duration": "0 seconds",
-          "magnitude": 0.5,
-          "delay": 0.0,
-          "duration_expression": "",
-          "magnitude_expression": "",
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": "enttype target> critter eq",
-          "caster_stack": "",
-          "stack": "",
-          "stack_limit": 0,
-          "stack_key": null
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
       "requires_expression": "enttype target> player eq",
       "tags": [],
       "flags": [],
@@ -187,7 +187,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Immobilized"
           ],
           "type": "",
           "application_type": "",
@@ -196,7 +196,7 @@
           "table": "Melee_Immobilize",
           "scale": 2.0,
           "duration": "0 seconds",
-          "magnitude": 0.5,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

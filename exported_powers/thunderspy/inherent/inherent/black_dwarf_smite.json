@@ -149,7 +149,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Knockback"
           ],
           "type": "",
           "application_type": "",
@@ -266,7 +266,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -275,7 +275,7 @@
           "table": "Melee_Immobilize",
           "scale": 6.0,
           "duration": "0 seconds",
-          "magnitude": 0.10000000149011612,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -305,7 +305,7 @@
       "templates": [
         {
           "attribs": [
-            "Immobilize"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -314,7 +314,7 @@
           "table": "Melee_Immobilize",
           "scale": 4.0,
           "duration": "0 seconds",
-          "magnitude": 0.10000000149011612,
+          "magnitude": 2.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

@@ -51,6 +51,12 @@ export const Geyser: Power = {
     "scale": 0.5,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "knockup": {
+      "scale": 1.5,
+      "table": "Ranged_Ones"
+    }
+  },
   "conditionalEffects": [
     {
       "id": "tidal_power-1",
@@ -73,7 +79,7 @@ export const Geyser: Power = {
       ],
       "effects": {
         "stun": {
-          "mag": 0.33000001311302185,
+          "mag": 3,
           "scale": 5,
           "table": "Ranged_Stun"
         }
@@ -101,7 +107,7 @@ export const Geyser: Power = {
       ],
       "effects": {
         "stun": {
-          "mag": 0.6000000238418579,
+          "mag": 3,
           "scale": 5,
           "table": "Ranged_Stun"
         }
@@ -129,7 +135,7 @@ export const Geyser: Power = {
       ],
       "effects": {
         "stun": {
-          "mag": 1,
+          "mag": 3,
           "scale": 5,
           "table": "Ranged_Stun"
         }

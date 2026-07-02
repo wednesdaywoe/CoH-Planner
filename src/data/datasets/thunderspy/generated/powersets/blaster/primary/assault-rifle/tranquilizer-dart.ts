@@ -53,7 +53,7 @@ export const TranquilizerDart: Power = {
       "table": "Ranged_Knockback"
     },
     "stun": {
-      "mag": 1,
+      "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
     }

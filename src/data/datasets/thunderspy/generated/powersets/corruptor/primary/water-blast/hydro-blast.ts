@@ -46,5 +46,11 @@ export const HydroBlast: Power = {
     "type": "Cold",
     "scale": 0.37,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    }
   }
 };

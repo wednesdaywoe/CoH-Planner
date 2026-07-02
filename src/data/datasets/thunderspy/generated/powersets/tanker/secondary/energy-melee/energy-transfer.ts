@@ -56,7 +56,7 @@ export const EnergyTransfer: Power = {
   ],
   "effects": {
     "stun": {
-      "mag": 0.6000000238418579,
+      "mag": 3,
       "scale": 8,
       "table": "Melee_Stun"
     }

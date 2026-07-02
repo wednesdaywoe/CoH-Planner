@@ -96,7 +96,7 @@
       "templates": [
         {
           "attribs": [
-            "Stun"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -105,7 +105,7 @@
           "table": "Ranged_Stun",
           "scale": 8.0,
           "duration": "0 seconds",
-          "magnitude": 0.699999988079071,
+          "magnitude": 4.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -135,7 +135,7 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Stunned"
           ],
           "type": "",
           "application_type": "",
@@ -144,7 +144,7 @@
           "table": "Ranged_Ones",
           "scale": 8.0,
           "duration": "0 seconds",
-          "magnitude": 0.699999988079071,
+          "magnitude": 4.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",

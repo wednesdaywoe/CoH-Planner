@@ -46,8 +46,8 @@ export const GravityWell: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "immobilize": {
-      "mag": 1,
+    "hold": {
+      "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     }
