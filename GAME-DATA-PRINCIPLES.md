@@ -99,7 +99,7 @@ These are why a naïve `flags.includes('X')` or attrib match over-fires:
   own modifiers. **Exclude both** from "the player's enhanceable effect" analysis.
 - **Offensive vs protection knockback.** Positive-magnitude `aspect=Current` KB is the
   attack knocking the foe (emit as `knockback`); `aspect=Resistance` **or negative scale**
-  is KB *protection* applied to the foe (immobilize -KB) — a different thing. Sign and
+  is KB *protection* appliRefactor code structure for improved readability and maintainabilityed to the foe (immobilize -KB) — a different thing. Sign and
   aspect matter.
 - **Mez tables: prefer PvE over PvP.** A power's mez may exist on both `*_PvPMez` and a
   PvE table; prefer the PvE one. A small allowlist grandfathers genuinely PvP-only powers.

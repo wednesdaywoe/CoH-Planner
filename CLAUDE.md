@@ -1,4 +1,5 @@
 # CoH-Planner Development Notes
+> document formatting: /home/jiiwii/Github/CoH-Sidekick/format_instructions.md
 
 ## Development Philosophy
 
