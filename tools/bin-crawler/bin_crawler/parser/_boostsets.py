@@ -377,6 +377,38 @@ def _parse_boostsets_parse6(r: Parse6BinReader) -> list[BoostSetRecord]:
     ]
 
 
+# ----------------------------------------------------------------------------
+# Placeholder / template boostset records — exclude from the category index.
+# ----------------------------------------------------------------------------
+# Some server datasets ship malformed dev/template boostset records in
+# boostsets.bin. On Thunderspy (2026-06 bins) two records carry the literal
+# placeholder display name "SumoBoostName" instead of a real P-hash string:
+#
+#   KB                 — EC="ECMelee", pieces are Crafted_KB_* (KNOCKBACK), and
+#                        its allowed_powers is a 1905-entry catch-all mixing
+#                        ranged/melee/toggle powers. Because it resolves to
+#                        "Melee Damage", it wrongly grants Melee-set slotting to
+#                        ~1387 powers that are not melee attacks (every Archery /
+#                        Beam Rifle / Fire Blast / etc. ranged attack in the set,
+#                        plus the Psychokinetic Assault whip attacks). The live
+#                        client ignores this record (its display name is unset),
+#                        so the planner must too.
+#   Overwhelming_Force — a 3-power stub with an empty EC category (the REAL
+#                        universal-damage set of the same name on HC has a
+#                        1627-power pool + "ECUniversalDamage"); harmless on its
+#                        own since it resolves to nothing, but excluded for the
+#                        same reason.
+#
+# Filtering by the placeholder display name is dataset-safe: real sets (incl.
+# HC's genuine Overwhelming_Force) never use "SumoBoostName", so this is a
+# no-op on HC/Rebirth bins. See BIN-PARSER-LOG / Psychokinetic Assault report.
+_PLACEHOLDER_SET_DISPLAY_NAMES = frozenset({"SumoBoostName"})
+
+
+def _is_placeholder_set(s: BoostSetRecord) -> bool:
+    return s.display_name in _PLACEHOLDER_SET_DISPLAY_NAMES
+
+
 # Maps a power's category prefix (first segment of "Cat.Set.Power") to the
 # planner-recognized EC* AT category. Used only as a fallback for Rebirth
 # ATOs whose binary record omits the category string.
@@ -658,6 +690,11 @@ def build_power_category_index(sets: Iterable[BoostSetRecord]) -> dict[str, list
     """
     idx: dict[str, set[str]] = {}
     for s in sets:
+        # Malformed dev/template records (e.g. Thunderspy's "KB" set tagged
+        # ECMelee over a 1905-power catch-all) would contaminate a whole
+        # category. Skip them — see _PLACEHOLDER_SET_DISPLAY_NAMES.
+        if _is_placeholder_set(s):
+            continue
         planner_cat = _resolve_category(s)
         if not planner_cat:
             continue

@@ -5022,6 +5022,16 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
         if (CONTROL_ATO_BY_AT[archetypeId] && [...bs].some(b => MEZ_BOOSTS.has(b))) {
           filtered.push(CONTROL_ATO_BY_AT[archetypeId]);
         }
+        // Universal Damage sets slot into ANY damaging power. HC/Rebirth get
+        // this from boostsets.bin's ECUniversalDamage set (Overwhelming Force,
+        // 1627-power pool). Thunderspy's boostsets.bin ships that set as a
+        // broken 3-power placeholder stub (display "SumoBoostName", empty EC),
+        // so no Thunderspy power picks up "Universal Damage Sets" from the
+        // per-power index. Infer it here from the Damage boost — matching the
+        // legacy inference rule in inferAllowedSetCategories.
+        if (bs.has('Damage')) {
+          filtered.push('Universal Damage Sets');
+        }
       }
       power.allowedSetCategories = [...new Set(filtered)].sort();
     }
