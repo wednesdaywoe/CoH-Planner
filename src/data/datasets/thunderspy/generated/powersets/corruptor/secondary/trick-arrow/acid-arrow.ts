@@ -39,8 +39,8 @@ export const AcidArrow: Power = {
     "Accurate Defense Debuff",
     "Corruptor Archetype Sets",
     "Defense Debuff",
-    "Melee Damage",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

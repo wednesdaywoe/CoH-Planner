@@ -40,7 +40,8 @@ export const DevastatingBlow: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Stalker Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

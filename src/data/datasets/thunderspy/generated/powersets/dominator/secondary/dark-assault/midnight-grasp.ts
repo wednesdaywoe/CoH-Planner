@@ -38,7 +38,8 @@ export const MidnightGrasp: Power = {
     "Dominator Archetype Sets",
     "Immobilize",
     "Melee Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

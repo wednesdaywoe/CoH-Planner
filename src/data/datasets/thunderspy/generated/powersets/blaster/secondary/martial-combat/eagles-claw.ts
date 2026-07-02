@@ -35,7 +35,8 @@ export const EaglesClaw: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Melee Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

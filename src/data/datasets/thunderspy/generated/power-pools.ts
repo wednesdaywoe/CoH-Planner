@@ -81,7 +81,6 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -144,7 +143,6 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -534,7 +532,6 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -586,7 +583,6 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -1063,7 +1059,6 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1133,7 +1128,6 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1951,8 +1945,7 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee AoE Damage",
-          "Melee Damage"
+          "Melee AoE Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -2352,7 +2345,6 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -2420,7 +2412,6 @@ export const POWER_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -2513,7 +2504,6 @@ export const POWER_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {

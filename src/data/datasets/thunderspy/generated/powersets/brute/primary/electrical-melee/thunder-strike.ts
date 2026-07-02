@@ -40,9 +40,9 @@ export const ThunderStrike: Power = {
     "Brute Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
-    "Melee Damage",
     "Stuns",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

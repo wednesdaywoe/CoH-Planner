@@ -37,9 +37,9 @@ export const PowerofthePhoenix: Power = {
     "Corruptor Archetype Sets",
     "Endurance Modification",
     "Healing",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -36,7 +36,8 @@ export const SpinningKick: Power = {
     "Defender Archetype Sets",
     "Melee AoE Damage",
     "Melee Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

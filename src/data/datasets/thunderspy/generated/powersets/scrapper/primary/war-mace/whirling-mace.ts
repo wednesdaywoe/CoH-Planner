@@ -35,9 +35,9 @@ export const WhirlingMace: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
-    "Melee Damage",
     "Scrapper Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

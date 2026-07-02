@@ -35,9 +35,9 @@ export const FreezingRain: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

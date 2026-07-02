@@ -37,7 +37,8 @@ export const LashingLife: Power = {
   "allowedSetCategories": [
     "Melee AoE Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

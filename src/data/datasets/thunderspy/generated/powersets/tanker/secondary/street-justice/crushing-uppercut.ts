@@ -43,7 +43,8 @@ export const CrushingUppercut: Power = {
     "Melee Damage",
     "Stuns",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

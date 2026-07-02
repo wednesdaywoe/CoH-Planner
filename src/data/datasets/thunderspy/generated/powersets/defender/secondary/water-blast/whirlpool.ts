@@ -38,9 +38,9 @@ export const Whirlpool: Power = {
     "Accurate Defense Debuff",
     "Defender Archetype Sets",
     "Defense Debuff",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

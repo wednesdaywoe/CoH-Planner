@@ -34,8 +34,8 @@ export const RainofFire: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
-    "Melee Damage",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "requires": "Defender_Ranged.Fire_Blast.Fire_Sword_Circle !"

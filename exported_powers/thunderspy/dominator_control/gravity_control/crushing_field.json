@@ -41,7 +41,6 @@
   ],
   "allowed_set_categories": [
     "Immobilize",
-    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement"
   ],

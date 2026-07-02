@@ -40,8 +40,8 @@ export const InnocuousStrikes: Power = {
     "Defender Archetype Sets",
     "Immobilize",
     "Melee AoE Damage",
-    "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

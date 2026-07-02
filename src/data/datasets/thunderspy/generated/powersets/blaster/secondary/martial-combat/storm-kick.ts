@@ -35,7 +35,8 @@ export const StormKick: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

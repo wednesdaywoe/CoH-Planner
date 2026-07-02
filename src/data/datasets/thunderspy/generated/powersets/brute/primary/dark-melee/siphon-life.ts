@@ -41,7 +41,8 @@ export const SiphonLife: Power = {
     "Healing",
     "Melee Damage",
     "Threat Duration",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

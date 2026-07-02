@@ -37,7 +37,8 @@ export const SkySplitter: Power = {
     "Defender Archetype Sets",
     "Knockback",
     "Melee Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

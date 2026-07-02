@@ -40,9 +40,9 @@ export const Impale: Power = {
     "Defender Archetype Sets",
     "Defense Debuff",
     "Immobilize",
-    "Melee Damage",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

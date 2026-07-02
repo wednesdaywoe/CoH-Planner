@@ -34,8 +34,8 @@ export const Flares: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
-    "Melee Damage",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

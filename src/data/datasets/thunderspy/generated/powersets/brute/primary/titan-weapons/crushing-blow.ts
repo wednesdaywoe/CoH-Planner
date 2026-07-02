@@ -38,7 +38,8 @@ export const CrushingBlow: Power = {
     "Brute Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "requires": "Brute_Defense.Shield_Defense !"

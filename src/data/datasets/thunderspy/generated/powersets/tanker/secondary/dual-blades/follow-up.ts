@@ -39,7 +39,8 @@ export const FollowUp: Power = {
     "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

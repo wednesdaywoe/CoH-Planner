@@ -34,9 +34,9 @@ export const TripMine: Power = {
     "Knockback",
     "Mastermind Archetype Sets",
     "Melee AoE Damage",
-    "Melee Damage",
     "Ranged Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

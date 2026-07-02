@@ -34,7 +34,8 @@ export const TremblingEarth: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
-    "Tanker Archetype Sets"
+    "Tanker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

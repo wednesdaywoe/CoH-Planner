@@ -35,9 +35,9 @@ export const FRTPsychicWail: Power = {
   ],
   "allowedSetCategories": [
     "Melee AoE Damage",
-    "Melee Damage",
     "Soldiers of Arachnos Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

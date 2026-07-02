@@ -37,10 +37,10 @@ export const HowlingTwilight: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
-    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

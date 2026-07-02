@@ -36,8 +36,8 @@ export const EyeoftheStorm: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
-    "Melee Damage",
-    "Stalker Archetype Sets"
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

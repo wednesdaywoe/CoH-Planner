@@ -36,7 +36,7 @@ export const Consume: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Melee AoE Damage",
-    "Melee Damage"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

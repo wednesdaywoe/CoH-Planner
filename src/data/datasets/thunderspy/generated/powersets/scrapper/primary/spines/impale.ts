@@ -36,10 +36,10 @@ export const Impale: Power = {
   ],
   "allowedSetCategories": [
     "Immobilize",
-    "Melee Damage",
     "Ranged Damage",
     "Scrapper Archetype Sets",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

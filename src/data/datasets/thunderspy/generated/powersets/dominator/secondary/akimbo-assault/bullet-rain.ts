@@ -38,9 +38,9 @@ export const BulletRain: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

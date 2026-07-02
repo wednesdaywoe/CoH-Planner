@@ -88,6 +88,11 @@ class BinReader:
         self._pos += 4
         return val
 
+    def peek_u4(self) -> int:
+        """Read the next u4 without advancing the cursor."""
+        self._check(4)
+        return struct.unpack_from("<I", self._data, self._pos)[0]
+
     def read_f4(self) -> float:
         self._check(4)
         val = struct.unpack_from("<f", self._data, self._pos)[0]

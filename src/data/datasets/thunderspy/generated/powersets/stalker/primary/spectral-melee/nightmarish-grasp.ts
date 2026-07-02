@@ -36,9 +36,9 @@ export const NightmarishGrasp: Power = {
   "allowedSetCategories": [
     "Fear",
     "Immobilize",
-    "Melee Damage",
     "Ranged Damage",
-    "Stalker Archetype Sets"
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -41,7 +41,6 @@
   "allowed_set_categories": [
     "Fear",
     "Immobilize",
-    "Melee Damage",
     "Ranged Damage"
   ],
   "cast_through": [],

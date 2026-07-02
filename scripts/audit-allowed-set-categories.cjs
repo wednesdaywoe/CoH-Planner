@@ -38,19 +38,37 @@ const {
   CATEGORY_MAP,
   EFFECT_AREA_MAP,
   toKebabCase,
+  RAW_DATA_PATH,
 } = require('./convert-powerset.cjs');
+const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
 
-const REPO_ROOT = path.resolve(__dirname, '..');
-const RAW_DATA = path.join(REPO_ROOT, 'exported_powers');
-const GEN_ROOT = path.join(REPO_ROOT, 'src', 'data', 'generated', 'powersets');
-const OVR_ROOT = path.join(REPO_ROOT, 'src', 'data', 'overrides', 'powersets');
+// Dataset-aware roots. `--dataset <id>` (default homecoming) selects both the
+// export input and the generated/override output trees. Previously these were
+// hardcoded to the pre-migration HC layout (`exported_powers/`,
+// `src/data/generated/powersets`), which no longer exists — so the audit
+// silently skipped EVERY power on EVERY dataset ("no generated .ts"). That dead
+// guardrail is why the Thunderspy "KB"/SumoBoostName Melee pollution went
+// uncaught. RAW_DATA_PATH is imported from convert-powerset.cjs so the export
+// root resolves identically to the converter (HC → `exported_powers/`, others →
+// `exported_powers/<id>/`).
+const datasetId = parseDatasetArg();
+const RAW_DATA = RAW_DATA_PATH;
+const GEN_ROOT = datasetPath(datasetId, 'generated', 'powersets');
+const OVR_ROOT = datasetPath(datasetId, 'overrides', 'powersets');
 
 const args = process.argv.slice(2);
 const SHOW_ALL = args.includes('--all');
 const ONLY_DRIFT = args.includes('--drift');
 const ONLY_INVARIANTS = args.includes('--invariants');
 const ONLY_FALLBACK = args.includes('--fallback');
-const LIMIT = SHOW_ALL ? Infinity : 30;
+// --gate: CI mode. Exits non-zero ONLY on high-confidence "contradiction"
+// invariants (a genuine ranged attack carrying single-target Melee, or vice
+// versa) — the broad-pollution signature of a malformed boostset like the
+// Thunderspy "KB" placeholder set. Suppresses the noisy informational sections
+// (augmentation-drift, inference fallback, heuristic missing-category checks)
+// so CI logs show only the actionable failures.
+const GATE = args.includes('--gate');
+const LIMIT = SHOW_ALL || GATE ? Infinity : 30;
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
@@ -144,6 +162,9 @@ const RANGED_DAMAGE_CATEGORIES = new Set([
 const MELEE_DAMAGE_CATEGORIES = new Set([
   'Melee Damage', 'Melee AoE Damage',
 ]);
+// Below this range a single-target attack is melee/reach (which legitimately
+// takes Melee Damage), not ranged. Ranged blasts are 40-100; snipes 150.
+const RANGED_MIN_RANGE = 40;
 
 const ARCHETYPE_DAMAGE_ATO = {
   blaster: 'Blaster Archetype Sets',
@@ -204,7 +225,16 @@ function checkInvariants(powerJson, archetypeId, composed) {
   const hasCreateEntity = (powerJson.effects || []).some(eff =>
     (eff.templates || []).some(t => (t.attribs?.[0] || '').toLowerCase() === 'create_entity')
   );
-  const isLeapOrTeleportAttack = hasTeleportAttrib || hasExecutePower;
+  // Execute_Power redirects (Lightning Rod, Savage Leap) and location-teleport
+  // AoEs (Shield Charge) deliver Melee AoE damage around a landing point while
+  // the host power carries a Range boost for the travel. The top-level attrib
+  // scan above misses redirect-delivered damage, so also consult the converter's
+  // own redirect probe — inferEffectiveArea returns a Cone/AoE area for these.
+  // Without this, the "ranged → no melee flavor" invariant false-positives on
+  // every charge/leap attack across all datasets.
+  const redirectArea = inferEffectiveArea(powerJson);
+  const isRedirectAoE = redirectArea === 'AoE' || redirectArea === 'Cone';
+  const isLeapOrTeleportAttack = hasTeleportAttrib || hasExecutePower || isRedirectAoE;
   // Pet summons / self-targeted placements (Auto Turret, Acid Mortar) have
   // range 0 and target_type Self, but the pet itself does ranged AoE. Skip
   // the melee/ranged flavor check on these — the category describes the
@@ -256,12 +286,22 @@ function checkInvariants(powerJson, archetypeId, composed) {
         if (RANGED_DAMAGE_CATEGORIES.has(c)) issues.push(`melee power has ranged damage category "${c}"`);
       }
     }
-    // Ranged shouldn't carry Melee flavor. Skip leap/teleport/redirect-AoE
-    // attacks, which have a Range boost for travel but do melee damage on
-    // arrival (Shield Charge, Lightning Rod, Savage Leap, etc.).
-    if (hasRange && range > 0 && !isLeapOrTeleportAttack) {
-      for (const c of cats) {
-        if (MELEE_DAMAGE_CATEGORIES.has(c)) issues.push(`ranged power has melee damage category "${c}"`);
+    // A genuine single-target ranged attack must not carry the single-target
+    // "Melee Damage" category — that pairing is impossible in-game and is the
+    // exact signature of the Thunderspy "KB" placeholder-set pollution (a
+    // Knockback set mis-tagged ECMelee that handed "Melee Damage" to ~1387
+    // ranged blasts). We check only the SINGLE-TARGET flavor on SINGLE-TARGET
+    // powers: "Melee AoE Damage" is legitimate on melee cones (Breath of Fire,
+    // range 15) and location-teleport PBAoEs (Lightning Rod, Savage Leap) that
+    // also carry a Range boost, so those must not trip this. Leap/Execute_Power
+    // redirects are excluded outright.
+    // range >= RANGED_MIN_RANGE distinguishes a true ranged attack (blasts are
+    // 40-100, snipes 150) from short-range melee/reach attacks that also carry
+    // a Range boost (Executioner's Shot range 10, Warshade Essence Drain 7,
+    // Point Blank 9) — those legitimately take Melee Damage and must not flag.
+    if (hasRange && range >= RANGED_MIN_RANGE && area === 'SingleTarget' && !isLeapOrTeleportAttack) {
+      if (cats.has('Melee Damage')) {
+        issues.push('single-target ranged power has "Melee Damage" (KB-pollution signature)');
       }
     }
 
@@ -345,14 +385,21 @@ for (const category of fs.readdirSync(RAW_DATA).sort()) {
         fallbackRows.push({ category, powerset: psSlug, power: powerSlug });
       }
 
-      // INVARIANTS — on the composed (final) value. Skip when the power has
-      // authoritative data (even empty — game says no sets). Invariants are
-      // only for the inference-fallback case where we can't trust composed.
-      if (!hasAuthField) {
-        const issues = checkInvariants(pJson, catInfo.archetype, composed);
-        if (issues.length > 0) {
-          invariantRows.push({ category, powerset: psSlug, power: powerSlug, issues });
-        }
+      // INVARIANTS — physical sanity checks on the composed (final) value,
+      // run for EVERY power regardless of whether it had authoritative data.
+      // Authoritative data is reversed from boostsets.bin, which can itself be
+      // malformed: Thunderspy ships a placeholder "KB" set mis-tagged ECMelee
+      // over a 1905-power junk pool, which handed "Melee Damage" to ~1387
+      // ranged attacks. The drift check can't catch that (composed == the bad
+      // authoritative value), so these invariants — e.g. "a ranged attack must
+      // not carry a Melee flavor" — are the backstop. Previously gated to
+      // inference-fallback powers only, which is precisely why KB went uncaught.
+      const issues = checkInvariants(pJson, catInfo.archetype, composed);
+      if (issues.length > 0) {
+        invariantRows.push({
+          category, powerset: psSlug, power: powerSlug, issues,
+          hadAuthoritative: hasAuthField,
+        });
       }
     }
   }
@@ -375,35 +422,81 @@ console.log(`Scanned ${stats.powersScanned} archetype powers ` +
             `${stats.overriddenCats} with allowedSetCategories override, ` +
             `${stats.skippedNoTs} skipped — no generated .ts).`);
 
-if (!ONLY_INVARIANTS && !ONLY_FALLBACK) {
-  // Drift = composed differs from authoritative. Split by whether an override
-  // is masking it (likely stale) vs. the generated layer just needs regen.
-  const bugs = driftRows.filter(r => !r.hasOverride);
-  const overridden = driftRows.filter(r => r.hasOverride);
+// Contradiction invariants = the high-confidence, broad-pollution signature a
+// malformed boostset produces (a real ranged attack carrying single-target
+// Melee, or a melee attack carrying a ranged flavor). These are the only class
+// the CI gate fails on: they can't be false-positived by the heuristic
+// "missing category" checks, and they're exactly what the Thunderspy "KB" set
+// tripped across ~1387 powers.
+const CONTRADICTION_MARKERS = ['KB-pollution signature', 'melee power has ranged'];
 
-  printRows('DRIFT — generated disagrees with authoritative (regen candidates)', bugs, r =>
-    `  ${r.category}/${r.powerset}/${r.power}` +
-    (r.missing.length ? `\n    + add:    ${r.missing.join(', ')}` : '') +
-    (r.extra.length   ? `\n    - remove: ${r.extra.join(', ')}` : '')
-  );
-  printRows('DRIFT — override masks authoritative value (likely stale)', overridden, r =>
-    `  ${r.category}/${r.powerset}/${r.power}` +
-    (r.missing.length ? `\n    + add:    ${r.missing.join(', ')}` : '') +
-    (r.extra.length   ? `\n    - remove: ${r.extra.join(', ')}` : '')
-  );
+// Individually-reviewed exceptions, keyed `<dataset>:<category>/<powerset>/<power>`.
+// The gate exists to catch a malformed set poisoning HUNDREDS of powers; a lone
+// reviewed anomaly is baselined here so it neither blocks CI nor masks a future
+// flood (a real polluter re-adds hundreds, dwarfing this list). Revisit each
+// when that dataset's bins are re-extractable.
+const CONTRADICTION_ALLOWLIST = new Set([
+  // Rebirth Warshade Gravimetric Snare (range-80 immobilize) is listed under a
+  // single-target Melee set in Rebirth's boostsets.bin. Isolated (1 of ~2800
+  // Rebirth powers), so not the broad-polluter pattern; Rebirth bins aren't
+  // on-hand here to root-cause. Baselined pending re-extraction.
+  'rebirth:warshade_offensive/umbral-blast/gravimetric-snare',
+]);
+
+const contradictionRows = invariantRows.filter(r =>
+  r.issues.some(i => CONTRADICTION_MARKERS.some(m => i.includes(m))) &&
+  !CONTRADICTION_ALLOWLIST.has(`${datasetId}:${r.category}/${r.powerset}/${r.power}`));
+
+if (!GATE) {
+  if (!ONLY_INVARIANTS && !ONLY_FALLBACK) {
+    // Drift = composed differs from authoritative. Split by whether an override
+    // is masking it (likely stale) vs. the generated layer just needs regen.
+    // NB for datasets whose converter augments per-power categories (Thunderspy
+    // adds its AT ATOs + Universal Damage that the bin omits), most "extra"
+    // drift is expected, not a bug — hence drift is informational, not gated.
+    const bugs = driftRows.filter(r => !r.hasOverride);
+    const overridden = driftRows.filter(r => r.hasOverride);
+
+    printRows('DRIFT — generated disagrees with authoritative (regen candidates)', bugs, r =>
+      `  ${r.category}/${r.powerset}/${r.power}` +
+      (r.missing.length ? `\n    + add:    ${r.missing.join(', ')}` : '') +
+      (r.extra.length   ? `\n    - remove: ${r.extra.join(', ')}` : '')
+    );
+    printRows('DRIFT — override masks authoritative value (likely stale)', overridden, r =>
+      `  ${r.category}/${r.powerset}/${r.power}` +
+      (r.missing.length ? `\n    + add:    ${r.missing.join(', ')}` : '') +
+      (r.extra.length   ? `\n    - remove: ${r.extra.join(', ')}` : '')
+    );
+  }
+
+  if (!ONLY_DRIFT && !ONLY_INVARIANTS) {
+    printRows('INFERENCE FALLBACK — power not present in any IO set', fallbackRows, r =>
+      `  ${r.category}/${r.powerset}/${r.power}`
+    );
+  }
+
+  if (!ONLY_DRIFT && !ONLY_FALLBACK) {
+    printRows('INVARIANT VIOLATIONS — composed value fails a sanity check', invariantRows, r =>
+      `  ${r.category}/${r.powerset}/${r.power}\n    - ${r.issues.join('\n    - ')}`
+    );
+  }
 }
 
-if (!ONLY_DRIFT && !ONLY_INVARIANTS) {
-  printRows('INFERENCE FALLBACK — power not present in any IO set', fallbackRows, r =>
-    `  ${r.category}/${r.powerset}/${r.power}`
-  );
+// The gate fails on contradiction invariants only. Drift and heuristic
+// missing-category invariants are informational (printed above in non-gate
+// mode). Staleness of generated files is separately covered by the
+// regen-and-diff CI guard.
+printRows(
+  'GATE — malformed-boostset contradictions (fails CI)',
+  contradictionRows,
+  r => `  ${r.category}/${r.powerset}/${r.power}\n    - ` +
+       r.issues.filter(i => CONTRADICTION_MARKERS.some(m => i.includes(m))).join('\n    - '),
+);
+if (contradictionRows.length === 0) {
+  console.log('\nGATE PASS — no malformed-boostset category contradictions.');
+} else {
+  console.log(`\nGATE FAIL — ${contradictionRows.length} contradiction(s). A boostset is ` +
+              `likely mis-categorized (see _boostsets.py placeholder handling).`);
 }
 
-if (!ONLY_DRIFT && !ONLY_FALLBACK) {
-  printRows('INVARIANT VIOLATIONS — composed value fails a sanity check', invariantRows, r =>
-    `  ${r.category}/${r.powerset}/${r.power}\n    - ${r.issues.join('\n    - ')}`
-  );
-}
-
-const exitCode = (driftRows.some(r => !r.hasOverride) || invariantRows.length > 0) ? 1 : 0;
-process.exit(exitCode);
+process.exit(contradictionRows.length > 0 ? 1 : 0);

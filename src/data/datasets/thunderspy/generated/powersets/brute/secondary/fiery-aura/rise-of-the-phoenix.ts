@@ -35,8 +35,8 @@ export const RiseofthePhoenix: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
-    "Melee Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -41,7 +41,6 @@
   ],
   "allowed_set_categories": [
     "Holds",
-    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

@@ -35,8 +35,8 @@ export const Soothe: Power = {
   "allowedSetCategories": [
     "Healing",
     "Mastermind Archetype Sets",
-    "Melee Damage",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

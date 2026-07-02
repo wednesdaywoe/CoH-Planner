@@ -38,7 +38,8 @@ export const ViciousStrike: Power = {
     "Healing",
     "Melee Damage",
     "Primalist Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

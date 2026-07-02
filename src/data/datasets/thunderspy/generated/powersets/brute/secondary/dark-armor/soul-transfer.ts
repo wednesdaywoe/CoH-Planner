@@ -37,8 +37,8 @@ export const SoulTransfer: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
-    "Melee Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

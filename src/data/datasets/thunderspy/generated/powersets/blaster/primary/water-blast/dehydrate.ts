@@ -41,9 +41,9 @@ export const Dehydrate: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Healing",
-    "Melee Damage",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

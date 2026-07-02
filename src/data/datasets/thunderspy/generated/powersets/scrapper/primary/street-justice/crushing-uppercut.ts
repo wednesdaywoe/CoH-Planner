@@ -39,7 +39,8 @@ export const CrushingUppercut: Power = {
     "Knockback",
     "Melee Damage",
     "Scrapper Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

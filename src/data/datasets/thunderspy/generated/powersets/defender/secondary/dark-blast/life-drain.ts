@@ -39,9 +39,9 @@ export const LifeDrain: Power = {
     "Accurate To-Hit Debuff",
     "Defender Archetype Sets",
     "Healing",
-    "Melee Damage",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

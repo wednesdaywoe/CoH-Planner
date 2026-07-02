@@ -38,8 +38,8 @@ export const Consume: Power = {
     "Brute Archetype Sets",
     "Endurance Modification",
     "Melee AoE Damage",
-    "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {

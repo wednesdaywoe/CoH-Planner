@@ -35,7 +35,8 @@ export const HeavyMallet: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Knockback",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

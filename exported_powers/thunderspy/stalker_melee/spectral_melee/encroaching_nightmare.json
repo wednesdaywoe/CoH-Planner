@@ -41,8 +41,7 @@
   "allowed_set_categories": [
     "Fear",
     "Immobilize",
-    "Melee AoE Damage",
-    "Melee Damage"
+    "Melee AoE Damage"
   ],
   "cast_through": [],
   "toggle_ignore": [],

@@ -37,7 +37,6 @@ export const ParasiticAura: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
-    "Melee Damage",
     "Threat Duration"
   ],
   "maxSlots": 6,

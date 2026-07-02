@@ -37,8 +37,8 @@ export const GleamingBolt: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Kheldian Archetype Sets",
-    "Melee Damage",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

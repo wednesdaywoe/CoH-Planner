@@ -41,7 +41,6 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Melee Damage",
     "Ranged Damage",
     "Threat Duration"
   ],

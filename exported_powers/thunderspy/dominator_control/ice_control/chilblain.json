@@ -39,7 +39,6 @@
   ],
   "allowed_set_categories": [
     "Immobilize",
-    "Melee Damage",
     "Ranged Damage",
     "Slow Movement"
   ],

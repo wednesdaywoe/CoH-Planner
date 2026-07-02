@@ -33,7 +33,8 @@ export const GreaterFireSword: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
-    "Scrapper Archetype Sets"
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

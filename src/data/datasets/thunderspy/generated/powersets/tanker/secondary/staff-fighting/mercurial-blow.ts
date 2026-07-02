@@ -40,7 +40,8 @@ export const MercurialBlow: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

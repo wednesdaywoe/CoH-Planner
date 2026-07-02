@@ -35,7 +35,8 @@ export const SeismicSmash: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Holds",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

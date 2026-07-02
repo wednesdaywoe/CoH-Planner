@@ -36,10 +36,10 @@ export const WaterGolem: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -35,7 +35,8 @@ export const Pounce: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Primalist Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

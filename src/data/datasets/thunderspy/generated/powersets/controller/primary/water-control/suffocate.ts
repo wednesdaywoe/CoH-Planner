@@ -39,8 +39,8 @@ export const Suffocate: Power = {
     "Controller Archetype Sets",
     "Defense Debuff",
     "Holds",
-    "Melee Damage",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

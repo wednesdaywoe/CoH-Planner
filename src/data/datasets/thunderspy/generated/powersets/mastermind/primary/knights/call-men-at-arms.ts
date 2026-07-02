@@ -39,7 +39,8 @@ export const CallMenAtArms: Power = {
     "Mastermind Archetype Sets",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Resist Damage"
+    "Resist Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

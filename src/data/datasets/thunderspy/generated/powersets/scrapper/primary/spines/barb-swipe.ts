@@ -35,7 +35,8 @@ export const BarbSwipe: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Scrapper Archetype Sets",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

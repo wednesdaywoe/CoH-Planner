@@ -35,7 +35,8 @@ export const Clobber: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Scrapper Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

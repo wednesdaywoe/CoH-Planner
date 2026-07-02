@@ -37,9 +37,9 @@ export const GravimetricSnare: Power = {
   "allowedSetCategories": [
     "Immobilize",
     "Kheldian Archetype Sets",
-    "Melee Damage",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

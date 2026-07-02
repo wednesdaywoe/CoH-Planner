@@ -37,7 +37,8 @@ export const LowKick: Power = {
     "Defender Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

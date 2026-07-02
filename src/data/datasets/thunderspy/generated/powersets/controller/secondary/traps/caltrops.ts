@@ -33,9 +33,9 @@ export const Caltrops: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

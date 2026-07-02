@@ -34,7 +34,8 @@ export const GreaterIceSword: Power = {
   ],
   "allowedSetCategories": [
     "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

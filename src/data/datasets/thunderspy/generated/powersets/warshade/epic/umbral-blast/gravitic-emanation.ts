@@ -41,10 +41,10 @@ export const GraviticEmanation: Power = {
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged AoE Damage",
     "Slow Movement",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -38,8 +38,8 @@ export const TeslaCage: Power = {
     "Blaster Archetype Sets",
     "Endurance Modification",
     "Holds",
-    "Melee Damage",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

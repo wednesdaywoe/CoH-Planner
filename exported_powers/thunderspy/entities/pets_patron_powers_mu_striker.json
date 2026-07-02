@@ -1,0 +1,653 @@
+{
+  "name": "Pets_Patron_Powers_Mu_Striker",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [
+    "Humanoid"
+  ],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Base",
+    "character_class_name": "minion_pets",
+    "description": "Mu pulse with the blood of their slaughtered ancestors in their veins. They have read unholy tomes, visited other planes of existence, and performed dark sacrifices too terrible to mention to become masters of the mystic arts.",
+    "display_name": "",
+    "display_class_name": "",
+    "power_full_names": [
+      "Villain_Pets.Mu_Striker.Resistance",
+      "Villain_Pets.Mu_Striker.Self_Destruct",
+      "Villain_Pets.Mu_Striker.Lightning_Bolt",
+      "Villain_Pets.Mu_Striker.Lightning_Blast",
+      "Villain_Pets.Mu_Striker.Static_Discharge",
+      "Villain_Pets.Mu_Striker.Ball_Lightning",
+      "Villain_Pets.Mu_Striker.EM_Pulse",
+      "Villain_Pets.Mu_Striker.Fly"
+    ],
+    "power_display_names": [
+      "Resistance",
+      "Self Destruct",
+      "Lightning Bolt",
+      "Lightning Blast",
+      "Static Discharge",
+      "Ball Lightning",
+      "EM Pulse",
+      "Fly"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Villain_Pets",
+        "power_set": "Mu_Striker",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 2,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 3,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 4,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 5,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 6,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 7,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 8,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 9,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 10,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 11,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 12,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 13,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 14,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 15,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 16,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 17,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 18,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 19,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 20,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 21,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 22,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 23,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 24,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 25,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 26,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 27,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 28,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 29,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 30,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 31,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 32,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 33,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 34,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 35,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 36,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 37,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 38,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 39,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 40,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 41,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 42,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 43,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 44,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 45,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 46,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 47,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 48,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 49,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 50,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 51,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 52,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 53,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    },
+    {
+      "min_level": 54,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Mu Striker"
+      ],
+      "costumes": [
+        "Arachnos_MuMystic_02_Tintable"
+      ]
+    }
+  ],
+  "source_file": "DEFS/VILLAINS/PETS.VILLAIN"
+}

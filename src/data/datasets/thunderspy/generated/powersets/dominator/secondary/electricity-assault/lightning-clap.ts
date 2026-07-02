@@ -35,9 +35,9 @@ export const LightningClap: Power = {
   ],
   "allowedSetCategories": [
     "Endurance Modification",
-    "Melee Damage",
     "Ranged Damage",
-    "Sniper Attacks"
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

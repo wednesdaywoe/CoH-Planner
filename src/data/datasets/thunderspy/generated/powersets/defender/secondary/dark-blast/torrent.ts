@@ -41,9 +41,9 @@ export const Torrent: Power = {
     "Accurate To-Hit Debuff",
     "Defender Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

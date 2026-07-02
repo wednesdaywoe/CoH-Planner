@@ -32,8 +32,8 @@ export const Riptide: Power = {
     "Damage"
   ],
   "allowedSetCategories": [
-    "Melee Damage",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

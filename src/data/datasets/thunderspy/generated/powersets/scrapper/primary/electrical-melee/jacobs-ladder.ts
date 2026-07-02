@@ -39,9 +39,9 @@ export const JacobsLadder: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Melee AoE Damage",
-    "Melee Damage",
     "Scrapper Archetype Sets",
-    "Sleep"
+    "Sleep",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

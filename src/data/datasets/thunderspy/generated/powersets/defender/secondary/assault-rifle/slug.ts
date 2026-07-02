@@ -37,9 +37,9 @@ export const Slug: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

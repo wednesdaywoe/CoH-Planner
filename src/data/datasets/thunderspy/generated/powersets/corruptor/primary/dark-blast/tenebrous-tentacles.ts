@@ -41,9 +41,9 @@ export const TenebrousTentacles: Power = {
     "Accurate To-Hit Debuff",
     "Corruptor Archetype Sets",
     "Immobilize",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

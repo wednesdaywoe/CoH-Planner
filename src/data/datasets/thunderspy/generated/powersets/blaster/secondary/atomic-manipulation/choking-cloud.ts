@@ -42,7 +42,7 @@ export const ChokingCloud: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",
-    "Melee Damage"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

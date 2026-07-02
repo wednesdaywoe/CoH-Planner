@@ -39,7 +39,8 @@ export const KnockoutBlow: Power = {
     "Holds",
     "Knockback",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

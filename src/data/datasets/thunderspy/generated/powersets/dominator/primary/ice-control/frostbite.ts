@@ -39,9 +39,9 @@ export const Frostbite: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Immobilize",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

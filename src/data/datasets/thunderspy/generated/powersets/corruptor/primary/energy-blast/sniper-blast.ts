@@ -38,9 +38,9 @@ export const SniperBlast: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged Damage",
-    "Sniper Attacks"
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

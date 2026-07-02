@@ -34,7 +34,8 @@ export const FollowUp: Power = {
   ],
   "allowedSetCategories": [
     "Stalker Archetype Sets",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

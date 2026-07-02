@@ -38,7 +38,8 @@ export const BackhandSlap: Power = {
     "Accurate To-Hit Debuff",
     "Mastermind Archetype Sets",
     "Melee AoE Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

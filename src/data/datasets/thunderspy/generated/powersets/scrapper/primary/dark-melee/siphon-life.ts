@@ -39,7 +39,8 @@ export const SiphonLife: Power = {
     "Healing",
     "Melee Damage",
     "Scrapper Archetype Sets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

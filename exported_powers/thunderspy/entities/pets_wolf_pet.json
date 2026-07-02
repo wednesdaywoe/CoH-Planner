@@ -1,0 +1,639 @@
+{
+  "name": "Pets_Wolf_Pet",
+  "group_name": "Pets",
+  "commandable_pet": 0,
+  "power_tags": [],
+  "copy_creator_mods": false,
+  "can_zone": false,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Default_PassiveFollower",
+    "character_class_name": "minion_unkillablenpc",
+    "description": "This wolf has taken a liking to you and will keep you company.  However, it won't engage in combat and cannot be attacked.",
+    "display_name": "",
+    "display_class_name": "P4001086911",
+    "power_full_names": [
+      "NPC_Pets.Civilian_Panic.Panic",
+      "Pets.ResistAll_NoFly_Fast.ResistAll"
+    ],
+    "power_display_names": [
+      "Panic",
+      "ResistAll"
+    ],
+    "power_levels": [
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "NPC_Pets",
+        "power_set": "Civilian_Panic",
+        "power": "Panic",
+        "level": 0
+      },
+      {
+        "power_category": "Pets",
+        "power_set": "ResistAll_NoFly_Fast",
+        "power": "*",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 2,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 3,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 4,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 5,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 6,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 7,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 8,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 9,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 10,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 11,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 12,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 13,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 14,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 15,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 16,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 17,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 18,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 19,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 20,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 21,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 22,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 23,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 24,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 25,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 26,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 27,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 28,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 29,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 30,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 31,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 32,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 33,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 34,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 35,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 36,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 37,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 38,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 39,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 40,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 41,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 42,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 43,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 44,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 45,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 46,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 47,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 48,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 49,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 50,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 51,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 52,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 53,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    },
+    {
+      "min_level": 54,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Wolf Companion"
+      ],
+      "costumes": [
+        "Wolf_Pet"
+      ]
+    }
+  ],
+  "source_file": "DEFS/VILLAINS/PETS.VILLAIN"
+}

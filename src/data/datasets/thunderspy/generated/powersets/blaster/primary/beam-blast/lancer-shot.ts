@@ -35,9 +35,9 @@ export const LancerShot: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Melee Damage",
     "Ranged Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

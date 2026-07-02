@@ -35,7 +35,8 @@ export const Parry: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Defense Sets",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

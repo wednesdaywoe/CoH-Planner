@@ -39,9 +39,9 @@ export const SweepingStrike: Power = {
   "allowedSetCategories": [
     "Knockback",
     "Melee AoE Damage",
-    "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

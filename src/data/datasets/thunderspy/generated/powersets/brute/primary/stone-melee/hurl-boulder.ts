@@ -37,9 +37,9 @@ export const HurlBoulder: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

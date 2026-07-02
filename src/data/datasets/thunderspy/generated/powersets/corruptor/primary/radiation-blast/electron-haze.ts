@@ -42,8 +42,8 @@ export const ElectronHaze: Power = {
     "Corruptor Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Melee Damage",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

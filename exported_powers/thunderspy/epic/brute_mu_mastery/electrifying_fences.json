@@ -42,7 +42,6 @@
   "allowed_set_categories": [
     "Endurance Modification",
     "Immobilize",
-    "Melee Damage",
     "Ranged AoE Damage"
   ],
   "cast_through": [],

@@ -36,9 +36,9 @@ export const Soldiers: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Mastermind Archetype Sets",
-    "Melee Damage",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

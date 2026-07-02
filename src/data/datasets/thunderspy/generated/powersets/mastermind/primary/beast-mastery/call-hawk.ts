@@ -38,9 +38,9 @@ export const CallHawk: Power = {
     "Accurate To-Hit Debuff",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Melee Damage",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

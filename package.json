@@ -11,6 +11,7 @@
     "lint": "tsc --noEmit",
     "regen": "node scripts/regen-all.cjs",
     "regen:generated": "node scripts/regen-all.cjs --generated-only",
+    "audit:set-categories": "for ds in homecoming rebirth thunderspy; do node scripts/audit-allowed-set-categories.cjs --dataset \"$ds\" --gate || exit 1; done",
     "test": "vitest run",
     "test:watch": "vitest",
     "import-mids": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/bulk-import-mids.ts",

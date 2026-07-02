@@ -31,8 +31,8 @@ export const TimeBomb: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

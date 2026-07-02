@@ -35,9 +35,9 @@ export const SpectralWounds: Power = {
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
-    "Melee Damage",
     "Ranged Damage",
-    "Sleep"
+    "Sleep",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

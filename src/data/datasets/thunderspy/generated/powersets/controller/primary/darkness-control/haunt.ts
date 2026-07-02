@@ -38,10 +38,10 @@ export const Haunt: Power = {
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
     "Fear",
-    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

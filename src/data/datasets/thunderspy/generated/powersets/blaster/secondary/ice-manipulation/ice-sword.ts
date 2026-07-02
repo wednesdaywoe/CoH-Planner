@@ -35,7 +35,8 @@ export const IceSword: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

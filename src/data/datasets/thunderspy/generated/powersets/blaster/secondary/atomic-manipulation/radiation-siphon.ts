@@ -38,7 +38,8 @@ export const RadiationSiphon: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Healing",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

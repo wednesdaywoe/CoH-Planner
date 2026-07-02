@@ -38,7 +38,8 @@ export const ShadowPunch: Power = {
     "Brute Archetype Sets",
     "Melee Damage",
     "Threat Duration",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

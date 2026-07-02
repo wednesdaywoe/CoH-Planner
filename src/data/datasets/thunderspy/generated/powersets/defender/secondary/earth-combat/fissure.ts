@@ -39,9 +39,9 @@ export const Fissure: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

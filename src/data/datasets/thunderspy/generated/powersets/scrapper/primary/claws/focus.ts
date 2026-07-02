@@ -35,9 +35,9 @@ export const Focus: Power = {
   ],
   "allowedSetCategories": [
     "Knockback",
-    "Melee Damage",
     "Ranged Damage",
-    "Scrapper Archetype Sets"
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -62,6 +62,10 @@ const STEPS = [
   { script: 'convert-incarnate-effects.cjs',  args: [],          generated: true },
   { script: 'convert-salvage.cjs',            args: [],          generated: true },
   { script: 'convert-pet-entities.cjs',       args: [],          generated: false },
+  // Guard: fail the regen if a malformed boostset poisoned a whole IO-set
+  // category (the Thunderspy "KB"/SumoBoostName pollution class). Runs on the
+  // freshly-generated output, so it also gates the CI regen-and-diff pass.
+  { script: 'audit-allowed-set-categories.cjs', args: ['--gate'], generated: true },
 ];
 
 const steps = generatedOnly ? STEPS.filter((s) => s.generated) : STEPS;

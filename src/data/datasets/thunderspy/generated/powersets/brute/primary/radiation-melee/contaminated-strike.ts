@@ -40,7 +40,8 @@ export const ContaminatedStrike: Power = {
     "Brute Archetype Sets",
     "Defense Debuff",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

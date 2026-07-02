@@ -38,8 +38,8 @@ export const FireCages: Power = {
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Immobilize",
-    "Melee Damage",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

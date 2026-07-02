@@ -34,10 +34,10 @@ export const CallReinforcements: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Soldiers of Arachnos Archetype Sets"
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

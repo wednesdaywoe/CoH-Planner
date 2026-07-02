@@ -40,7 +40,6 @@
   ],
   "allowed_set_categories": [
     "Knockback",
-    "Melee Damage",
     "Ranged Damage"
   ],
   "cast_through": [],

@@ -37,9 +37,9 @@ export const SuppressiveFire: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Holds",
-    "Melee Damage",
     "Ranged Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

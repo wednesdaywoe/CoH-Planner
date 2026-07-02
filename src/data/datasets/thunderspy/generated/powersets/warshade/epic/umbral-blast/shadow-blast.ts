@@ -37,9 +37,9 @@ export const ShadowBlast: Power = {
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

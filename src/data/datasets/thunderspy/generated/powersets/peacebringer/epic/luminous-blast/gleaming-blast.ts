@@ -39,8 +39,8 @@ export const GleamingBlast: Power = {
     "Defense Debuff",
     "Kheldian Archetype Sets",
     "Knockback",
-    "Melee Damage",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

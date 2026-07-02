@@ -35,8 +35,8 @@ export const BurstofSpeed: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Melee AoE Damage",
-    "Melee Damage",
     "Teleport",
+    "Universal Damage Sets",
     "Universal Travel"
   ],
   "maxSlots": 6

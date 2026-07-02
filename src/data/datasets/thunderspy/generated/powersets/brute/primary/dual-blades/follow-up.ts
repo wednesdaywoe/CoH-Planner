@@ -37,7 +37,8 @@ export const FollowUp: Power = {
     "Brute Archetype Sets",
     "Melee Damage",
     "Threat Duration",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

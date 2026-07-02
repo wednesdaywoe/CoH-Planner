@@ -40,9 +40,9 @@ export const ExecutionersShot: Power = {
     "Blaster Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Melee Damage",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

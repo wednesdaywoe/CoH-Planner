@@ -41,7 +41,8 @@ export const FeralBlow: Power = {
     "Healing",
     "Melee Damage",
     "Primalist Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -35,7 +35,8 @@ export const TotalFocus: Power = {
   "allowedSetCategories": [
     "Dominator Archetype Sets",
     "Melee Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -34,8 +34,8 @@ export const RainofArrows: Power = {
   ],
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
-    "Melee Damage",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

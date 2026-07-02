@@ -37,8 +37,8 @@ export const FullAuto: Power = {
   ],
   "allowedSetCategories": [
     "Blaster Archetype Sets",
-    "Melee Damage",
-    "Ranged AoE Damage"
+    "Ranged AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

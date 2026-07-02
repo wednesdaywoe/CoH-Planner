@@ -35,7 +35,8 @@ export const TRClawPierce: Power = {
   "allowedSetCategories": [
     "Defense Debuff",
     "Melee Damage",
-    "Soldiers of Arachnos Archetype Sets"
+    "Soldiers of Arachnos Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

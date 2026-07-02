@@ -36,9 +36,9 @@ export const Caltrops: Power = {
   "allowedSetCategories": [
     "Mastermind Archetype Sets",
     "Melee AoE Damage",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

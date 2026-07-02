@@ -35,9 +35,9 @@ export const DarkBlast: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Melee Damage",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

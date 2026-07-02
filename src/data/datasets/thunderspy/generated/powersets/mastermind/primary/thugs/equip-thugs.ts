@@ -33,7 +33,8 @@ export const EquipThugs: Power = {
     "Endurance Modification",
     "Mastermind Archetype Sets",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "effects": {},

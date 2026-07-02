@@ -42,7 +42,6 @@
   "allowed_set_categories": [
     "Defense Debuff",
     "Knockback",
-    "Melee Damage",
     "Ranged AoE Damage",
     "Stuns"
   ],

@@ -35,7 +35,8 @@ export const EnergyTransfer: Power = {
   "allowedSetCategories": [
     "Melee Damage",
     "Stalker Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

@@ -37,10 +37,10 @@ export const SeekerDrones: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
-    "Melee Damage",
     "Ranged Damage",
     "Stuns",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

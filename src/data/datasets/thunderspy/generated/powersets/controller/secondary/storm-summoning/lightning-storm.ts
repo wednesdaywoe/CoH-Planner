@@ -42,9 +42,9 @@ export const LightningStorm: Power = {
   "allowedSetCategories": [
     "Endurance Modification",
     "Knockback",
-    "Melee Damage",
     "Ranged Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

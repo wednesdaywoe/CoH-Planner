@@ -36,7 +36,8 @@ export const ShatterArmor: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee Damage",
-    "Scrapper Archetype Sets"
+    "Scrapper Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

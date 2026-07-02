@@ -39,9 +39,9 @@ export const ProtonVolley: Power = {
     "Accurate Defense Debuff",
     "Blaster Archetype Sets",
     "Defense Debuff",
-    "Melee Damage",
     "Ranged Damage",
-    "Sniper Attacks"
+    "Sniper Attacks",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

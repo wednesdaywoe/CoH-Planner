@@ -115,15 +115,50 @@ def _parse_power_sub(r: BinReader) -> EntityPower:
     return EntityPower(power_category=cat, power_set=pset, power=power, level=level)
 
 
-def _parse_level_sub(r: BinReader) -> EntityLevel:
-    """Levels sub-record (28 bytes for the common 1-display-name case):
-    min, max, string_array display_names, string_array costumes, experience.
+# A genuine string-array count in a level record is tiny (0-2 display names /
+# costumes). A string-table offset is thousands+. So when the u4 where a count
+# is expected exceeds this bound, we're actually looking at a bare string
+# offset — the Thunderspy encoding, which drops the display_names array count.
+_MAX_LEVEL_STRING_ARRAY_COUNT = 64
+
+
+def _read_level_display_names(r: BinReader) -> list[str]:
+    """Read levels[].display_names, tolerating both known encodings:
+
+      - HC / Rebirth: a length-prefixed string_array (u4 count + offsets).
+      - Thunderspy:   a single bare string offset — the count u4 is ABSENT.
+
+    Discriminate on the leading u4: a real array count is tiny, a string-table
+    offset is far larger. The level element is length-bounded by the caller's
+    sub_reader, so a wrong guess can only mis-read this one element — it can
+    never desync the rest of the file.
     """
-    min_lvl = r.read_u4()
-    max_lvl = r.read_u4()
-    display_names = r.read_string_array()
-    costumes = r.read_string_array()
-    experience = r.read_u4() if r.remaining() >= 4 else 0
+    if r.remaining() < 4:
+        return []
+    if r.peek_u4() <= _MAX_LEVEL_STRING_ARRAY_COUNT:
+        return r.read_string_array()          # HC/Rebirth: count-prefixed
+    return [r.read_string()]                  # Thunderspy: bare single offset
+
+
+def _parse_level_sub(r: BinReader) -> EntityLevel:
+    """Levels sub-record. HC (28 bytes, 1-display-name case):
+    min, max, string_array display_names, string_array costumes, experience.
+
+    Thunderspy (24 bytes) drops the display_names array count — it stores a
+    single bare string offset — so display_names is read tolerantly (see
+    `_read_level_display_names`). Never raises: a malformed element yields a
+    best-effort record so one bad entry can't abort the whole parse. The outer
+    read_struct_array advances past the element by its length regardless, so
+    under-consuming here is safe.
+    """
+    min_lvl = r.read_u4() if r.remaining() >= 4 else 0
+    max_lvl = r.read_u4() if r.remaining() >= 4 else 0
+    try:
+        display_names = _read_level_display_names(r)
+        costumes = r.read_string_array() if r.remaining() >= 4 else []
+        experience = r.read_u4() if r.remaining() >= 4 else 0
+    except ValueError:
+        display_names, costumes, experience = [], [], 0
     return EntityLevel(
         min_level=min_lvl,
         max_level=max_lvl,

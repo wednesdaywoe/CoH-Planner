@@ -43,9 +43,9 @@ export const EmptyClips: Power = {
     "Defender Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

@@ -43,9 +43,9 @@ export const DualWield: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

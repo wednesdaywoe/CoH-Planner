@@ -35,9 +35,9 @@ export const ShadowBolt: Power = {
   ],
   "allowedSetCategories": [
     "Kheldian Archetype Sets",
-    "Melee Damage",
     "Ranged Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

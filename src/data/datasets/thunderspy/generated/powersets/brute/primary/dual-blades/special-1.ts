@@ -37,7 +37,8 @@ export const Special1: Power = {
     "Brute Archetype Sets",
     "Knockback",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

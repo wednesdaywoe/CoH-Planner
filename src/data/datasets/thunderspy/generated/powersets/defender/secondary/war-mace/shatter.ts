@@ -39,7 +39,7 @@ export const Shatter: Power = {
     "Defender Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
-    "Melee Damage"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

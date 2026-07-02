@@ -41,8 +41,8 @@ export const SpeedSiphon: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Melee AoE Damage",
-    "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

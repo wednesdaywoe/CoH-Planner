@@ -38,7 +38,7 @@ export const WhirlingAxe: Power = {
     "Knockback",
     "Mastermind Archetype Sets",
     "Melee AoE Damage",
-    "Melee Damage"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

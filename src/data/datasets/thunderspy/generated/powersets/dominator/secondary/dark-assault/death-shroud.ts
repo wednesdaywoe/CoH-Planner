@@ -35,10 +35,10 @@ export const DeathShroud: Power = {
   ],
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
-    "Melee Damage",
     "Ranged Damage",
     "Sniper Attacks",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

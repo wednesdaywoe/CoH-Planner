@@ -45,7 +45,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -91,7 +90,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -134,7 +132,6 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage",
           "Slow Movement"
         ],
@@ -206,7 +203,6 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -331,7 +327,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -378,7 +373,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -463,7 +457,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -552,7 +545,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -589,7 +581,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -652,7 +643,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -722,7 +712,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -768,7 +757,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -812,7 +800,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -892,7 +879,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1017,7 +1003,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1090,7 +1075,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1210,7 +1194,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1283,7 +1266,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1341,7 +1323,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1393,7 +1374,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1438,7 +1418,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1482,7 +1461,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -1527,7 +1505,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -1574,7 +1551,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1685,7 +1661,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1731,7 +1706,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -1778,7 +1752,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -1835,7 +1808,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1896,7 +1868,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -1949,7 +1920,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -2008,7 +1978,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -2055,7 +2024,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee Damage",
           "Ranged Damage",
           "To Hit Debuff"
         ],
@@ -2097,7 +2065,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -2179,7 +2146,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -2219,7 +2185,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff"
@@ -2267,7 +2232,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -2311,7 +2275,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -2371,7 +2334,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -2540,7 +2502,6 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage",
           "Slow Movement"
         ],
@@ -2579,7 +2540,6 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage",
           "Sleep"
         ],
@@ -2771,7 +2731,6 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage",
           "Sleep"
         ],
@@ -2935,7 +2894,6 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -2968,7 +2926,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -3117,7 +3074,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -3195,7 +3151,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -3270,7 +3225,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Debuff",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -3393,7 +3347,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -3532,7 +3485,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -3573,7 +3525,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -3710,8 +3661,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Melee Damage"
+          "Melee AoE Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -3784,7 +3734,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Melee AoE Damage",
-          "Melee Damage",
           "Pet Damage",
           "To Hit Buff",
           "To Hit Debuff"
@@ -3910,7 +3859,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -4019,7 +3967,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -4067,7 +4014,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff"
@@ -4261,7 +4207,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -4386,7 +4331,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -4484,7 +4428,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -4530,7 +4473,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
-          "Melee Damage",
           "To Hit Buff"
         ],
         "effects": {
@@ -4634,7 +4576,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -4683,7 +4624,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -4770,8 +4710,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Melee Damage"
+          "Melee AoE Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -4844,7 +4783,6 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -4887,7 +4825,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
-          "Melee Damage",
           "To Hit Buff"
         ],
         "effects": {
@@ -4941,7 +4878,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -5024,7 +4960,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee Damage",
           "Ranged Damage",
           "To Hit Debuff"
         ],
@@ -5064,7 +4999,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -5111,7 +5045,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -5309,7 +5242,6 @@ export const EPIC_POOLS_RAW = {
           "Accurate Defense Debuff",
           "Defense Debuff",
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -5369,7 +5301,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -5402,7 +5333,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -5505,7 +5435,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Knockback",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -5553,7 +5482,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -5631,7 +5559,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -5716,7 +5643,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Defense Debuff",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -5839,7 +5765,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -5936,7 +5861,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -5982,8 +5906,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Melee Damage"
+          "Melee AoE Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -6056,7 +5979,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -6105,7 +6027,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Melee AoE Damage",
-          "Melee Damage",
           "To Hit Buff"
         ],
         "effects": {
@@ -6144,7 +6065,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -6191,7 +6111,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -6273,7 +6192,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -6346,7 +6264,6 @@ export const EPIC_POOLS_RAW = {
           "Stun"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -6405,7 +6322,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -6449,7 +6365,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -6631,7 +6546,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -6686,7 +6600,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -6783,7 +6696,6 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Holds",
           "Melee AoE Damage",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -6949,7 +6861,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -7022,7 +6933,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7142,7 +7052,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -7215,7 +7124,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7302,7 +7210,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -7345,7 +7252,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7391,7 +7297,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7484,7 +7389,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -7530,7 +7434,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7610,7 +7513,6 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -7641,8 +7543,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee AoE Damage",
-          "Melee Damage"
+          "Melee AoE Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -7695,7 +7596,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7727,7 +7627,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7801,7 +7700,6 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -7878,7 +7776,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -7912,7 +7809,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -8022,7 +7918,6 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -8166,7 +8061,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -8266,7 +8160,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -8298,7 +8191,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -8344,7 +8236,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -8394,7 +8285,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -8441,7 +8331,6 @@ export const EPIC_POOLS_RAW = {
           "Endurance Modification",
           "Healing",
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -8484,7 +8373,6 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage",
           "Slow Movement"
         ],
@@ -8595,7 +8483,6 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -8638,7 +8525,6 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -8687,7 +8573,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -8822,7 +8707,6 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -8982,8 +8866,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate Defense Debuff",
-          "Defense Debuff",
-          "Melee Damage"
+          "Defense Debuff"
         ],
         "effects": {
           "accuracy": 1,
@@ -9017,7 +8900,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9070,7 +8952,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9115,7 +8996,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9235,7 +9115,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -9369,7 +9248,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9500,7 +9378,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9589,7 +9466,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Knockback",
           "Melee AoE Damage",
-          "Melee Damage",
           "Stuns"
         ],
         "effects": {
@@ -9660,7 +9536,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9723,7 +9598,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -9793,7 +9667,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -9909,7 +9782,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -9958,7 +9830,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10040,7 +9911,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10083,7 +9953,6 @@ export const EPIC_POOLS_RAW = {
           "Sleep"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage",
           "Sleep"
         ],
@@ -10162,7 +10031,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -10428,7 +10296,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10543,7 +10410,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -10758,7 +10624,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -10857,7 +10722,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -10962,8 +10826,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Confuse",
-          "Melee AoE Damage",
-          "Melee Damage"
+          "Melee AoE Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -11009,7 +10872,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -11273,7 +11135,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11383,8 +11244,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Confuse",
-          "Melee AoE Damage",
-          "Melee Damage"
+          "Melee AoE Damage"
         ],
         "effects": {
           "accuracy": 1,
@@ -11477,7 +11337,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11523,7 +11382,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11567,7 +11425,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11647,7 +11504,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -11709,7 +11565,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11763,7 +11618,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Defense Debuff",
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -11829,7 +11683,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11875,7 +11728,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -11922,7 +11774,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -11966,7 +11817,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage",
           "Sniper Attacks"
         ],
@@ -12010,7 +11860,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -12094,7 +11943,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -12141,7 +11989,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -12197,7 +12044,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged Damage",
           "Sniper Attacks"
         ],
@@ -12253,7 +12099,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -12308,7 +12153,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -12368,7 +12212,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -12415,7 +12258,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee Damage",
           "Ranged Damage",
           "To Hit Debuff"
         ],
@@ -12456,7 +12298,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee Damage",
           "Ranged Damage",
           "Sniper Attacks",
           "To Hit Debuff"
@@ -12535,7 +12376,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Holds",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -12581,7 +12421,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets",
           "To Hit Debuff"
@@ -12629,7 +12468,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -12673,7 +12511,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage",
           "Stuns"
         ],
@@ -12851,7 +12688,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -12903,7 +12739,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -12948,7 +12783,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -12992,7 +12826,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Accurate Defense Debuff",
           "Defense Debuff",
-          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -13037,7 +12870,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -13084,7 +12916,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -13166,7 +12997,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -13247,7 +13077,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Knockback",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -13294,7 +13123,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -13351,7 +13179,6 @@ export const EPIC_POOLS_RAW = {
         "allowedSetCategories": [
           "Endurance Modification",
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -13412,7 +13239,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -13465,7 +13291,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -13524,7 +13349,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Endurance Modification",
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -13571,7 +13395,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee Damage",
           "Ranged Damage",
           "To Hit Debuff"
         ],
@@ -13613,7 +13436,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Immobilize",
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -13662,7 +13484,6 @@ export const EPIC_POOLS_RAW = {
         ],
         "allowedSetCategories": [
           "Accurate To-Hit Debuff",
-          "Melee Damage",
           "Ranged AoE Damage",
           "To Hit Debuff"
         ],
@@ -13735,7 +13556,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Pet Damage",
           "Recharge Intensive Pets"
         ],
@@ -13818,7 +13638,6 @@ export const EPIC_POOLS_RAW = {
           "Slow"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage",
           "Slow Movement"
         ],
@@ -13851,7 +13670,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -13917,7 +13735,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {
@@ -14040,7 +13857,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged Damage"
         ],
         "effects": {
@@ -14106,7 +13922,6 @@ export const EPIC_POOLS_RAW = {
           "Recharge"
         ],
         "allowedSetCategories": [
-          "Melee Damage",
           "Ranged AoE Damage"
         ],
         "effects": {

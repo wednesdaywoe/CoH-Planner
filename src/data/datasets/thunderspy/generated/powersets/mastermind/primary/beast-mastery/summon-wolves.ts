@@ -43,12 +43,12 @@ export const SummonWolves: Power = {
     "Healing",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Running & Sprints",
     "To Hit Buff",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

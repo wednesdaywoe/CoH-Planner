@@ -42,9 +42,9 @@ export const BrutalSwipe: Power = {
     "Defense Debuff",
     "Healing",
     "Melee AoE Damage",
-    "Melee Damage",
     "Primalist Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

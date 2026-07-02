@@ -38,9 +38,9 @@ export const HeartofDarkness: Power = {
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
     "Melee AoE Damage",
-    "Melee Damage",
     "Stuns",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

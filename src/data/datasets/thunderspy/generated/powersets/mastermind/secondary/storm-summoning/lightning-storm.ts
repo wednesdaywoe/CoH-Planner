@@ -43,9 +43,9 @@ export const LightningStorm: Power = {
     "Endurance Modification",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Melee Damage",
     "Ranged Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

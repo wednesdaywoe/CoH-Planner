@@ -39,9 +39,9 @@ export const Upheaval: Power = {
     "Healing",
     "Knockback",
     "Melee AoE Damage",
-    "Melee Damage",
     "Primalist Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

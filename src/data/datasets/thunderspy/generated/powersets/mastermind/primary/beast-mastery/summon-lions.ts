@@ -38,11 +38,11 @@ export const SummonLions: Power = {
     "Defense Sets",
     "Healing",
     "Mastermind Archetype Sets",
-    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Running & Sprints",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

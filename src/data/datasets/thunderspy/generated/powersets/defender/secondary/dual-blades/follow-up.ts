@@ -35,7 +35,8 @@ export const FollowUp: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Melee Damage",
-    "To Hit Buff"
+    "To Hit Buff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

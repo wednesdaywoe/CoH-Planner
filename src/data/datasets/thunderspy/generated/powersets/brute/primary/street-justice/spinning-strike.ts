@@ -38,9 +38,9 @@ export const SpinningStrike: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

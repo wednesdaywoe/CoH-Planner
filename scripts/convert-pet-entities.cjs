@@ -20,6 +20,7 @@ const datasetId = parseDatasetArg();
 const EXPORT_ROOTS = {
   homecoming: path.join(__dirname, '../tools/bin-crawler/exported_powers/live'),
   rebirth: path.join(__dirname, '../exported_powers/rebirth'),
+  thunderspy: path.join(__dirname, '../exported_powers/thunderspy'),
 };
 const ROOT = EXPORT_ROOTS[datasetId];
 if (!ROOT || !fs.existsSync(ROOT)) {

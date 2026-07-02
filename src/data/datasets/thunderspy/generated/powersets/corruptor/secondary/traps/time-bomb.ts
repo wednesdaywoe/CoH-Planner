@@ -33,9 +33,9 @@ export const TimeBomb: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

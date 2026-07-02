@@ -39,10 +39,10 @@ export const Tornado: Power = {
     "Controller Archetype Sets",
     "Defense Debuff",
     "Knockback",
-    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

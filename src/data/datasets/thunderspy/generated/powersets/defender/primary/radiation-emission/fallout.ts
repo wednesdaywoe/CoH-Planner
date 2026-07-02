@@ -38,9 +38,9 @@ export const Fallout: Power = {
     "Accurate To-Hit Debuff",
     "Defender Archetype Sets",
     "Defense Debuff",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

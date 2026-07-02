@@ -40,7 +40,8 @@ export const ShadowPunch: Power = {
     "Melee Damage",
     "Tanker Archetype Sets",
     "Threat Duration",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

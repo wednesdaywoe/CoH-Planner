@@ -37,7 +37,8 @@ export const OneWithAll: Power = {
     "Healing",
     "Melee AoE Damage",
     "Resist Damage",
-    "Tanker Archetype Sets"
+    "Tanker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

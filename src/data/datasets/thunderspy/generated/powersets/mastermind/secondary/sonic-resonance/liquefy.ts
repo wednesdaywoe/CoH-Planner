@@ -42,9 +42,9 @@ export const Liquefy: Power = {
     "Holds",
     "Knockback",
     "Mastermind Archetype Sets",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -34,9 +34,9 @@ export const Thorntrops: Power = {
   ],
   "allowedSetCategories": [
     "Defender Archetype Sets",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

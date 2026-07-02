@@ -38,9 +38,9 @@ export const DarkGrasp: Power = {
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
     "Holds",
-    "Melee Damage",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

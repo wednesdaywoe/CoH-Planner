@@ -41,9 +41,9 @@ export const UmbralTorrent: Power = {
     "Accurate To-Hit Debuff",
     "Blaster Archetype Sets",
     "Knockback",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

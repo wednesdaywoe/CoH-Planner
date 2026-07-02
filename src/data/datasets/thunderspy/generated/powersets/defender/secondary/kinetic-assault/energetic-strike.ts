@@ -35,7 +35,8 @@ export const EnergeticStrike: Power = {
   "allowedSetCategories": [
     "Defender Archetype Sets",
     "Melee Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

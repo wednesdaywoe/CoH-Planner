@@ -41,7 +41,6 @@
   "allowed_set_categories": [
     "Immobilize",
     "Melee AoE Damage",
-    "Melee Damage",
     "Slow Movement"
   ],
   "cast_through": [],

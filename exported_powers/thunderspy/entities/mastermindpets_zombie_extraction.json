@@ -1,0 +1,756 @@
+{
+  "name": "MastermindPets_Zombie_Extraction",
+  "group_name": "MastermindPets",
+  "commandable_pet": 1,
+  "power_tags": [
+    "HumanSkeleton",
+    "Undead"
+  ],
+  "copy_creator_mods": false,
+  "can_zone": true,
+  "defaults": {
+    "rank": 0,
+    "ai_config": "Pets_Melee",
+    "character_class_name": "minion_henchman",
+    "description": "The walking dead may be slow and stupid, but wise heroes know better than to underestimate them. Even when a person survives an encounter with a zombie, he rarely escapes entirely unscathed. He will often find himself waking in the night, shuddering at the memory of a dry and lifeless touch.",
+    "display_name": "Necromancy",
+    "display_class_name": "",
+    "power_full_names": [
+      "Mastermind_Pets.Zombie.Resistance",
+      "Mastermind_Pets.Zombie.Zombie_Brawl",
+      "Mastermind_Pets.Zombie.Super_Leap",
+      "Mastermind_Pets.Extraction.Self_Destruct"
+    ],
+    "power_display_names": [
+      "Resistance",
+      "Zombie Brawl",
+      "Super Leap",
+      "Self Destruct"
+    ],
+    "power_levels": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "powers": [
+      {
+        "power_category": "Mastermind_Pets",
+        "power_set": "Zombie",
+        "power": "*",
+        "level": 0
+      },
+      {
+        "power_category": "Mastermind_Pets",
+        "power_set": "Extraction",
+        "power": "Self_Destruct",
+        "level": 0
+      }
+    ]
+  },
+  "levels": [
+    {
+      "min_level": 1,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 2,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 3,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 4,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 5,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 6,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 7,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 8,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 9,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 10,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 11,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 12,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 13,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 14,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 15,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 16,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 17,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 18,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 19,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 20,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 21,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 22,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 23,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 24,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 25,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 26,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 27,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 28,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 29,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 30,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 31,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 32,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 33,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 34,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 35,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 36,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 37,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 38,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 39,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 40,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 41,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 42,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 43,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 44,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 45,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 46,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 47,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 48,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 49,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 50,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 51,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 52,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 53,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    },
+    {
+      "min_level": 54,
+      "max_level": 1,
+      "experience": 0,
+      "display_names": [
+        "Zombie"
+      ],
+      "costumes": [
+        "Necromancy_Zombie_01_Base",
+        "Necromancy_Zombie_02_Base",
+        "Necromancy_Zombie_03_Base"
+      ]
+    }
+  ],
+  "source_file": "DEFS/VILLAINS/MASTERMINDPETS.VILLAIN"
+}

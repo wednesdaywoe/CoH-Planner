@@ -36,7 +36,8 @@ export const ModerateBridge: Power = {
     "Accurate Defense Debuff",
     "Defender Archetype Sets",
     "Defense Debuff",
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

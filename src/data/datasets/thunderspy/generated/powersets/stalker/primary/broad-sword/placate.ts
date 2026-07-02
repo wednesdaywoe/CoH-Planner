@@ -37,8 +37,8 @@ export const Placate: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff",
     "Melee AoE Damage",
-    "Melee Damage",
-    "Stalker Archetype Sets"
+    "Stalker Archetype Sets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

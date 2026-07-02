@@ -39,10 +39,10 @@ export const BitterFreezeRay: Power = {
   "allowedSetCategories": [
     "Blaster Archetype Sets",
     "Holds",
-    "Melee Damage",
     "Ranged Damage",
     "Sleep",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

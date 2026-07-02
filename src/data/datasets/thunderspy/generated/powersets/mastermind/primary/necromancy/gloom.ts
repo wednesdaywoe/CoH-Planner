@@ -36,9 +36,9 @@ export const Gloom: Power = {
   "allowedSetCategories": [
     "Accurate To-Hit Debuff",
     "Mastermind Archetype Sets",
-    "Melee Damage",
     "Ranged Damage",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

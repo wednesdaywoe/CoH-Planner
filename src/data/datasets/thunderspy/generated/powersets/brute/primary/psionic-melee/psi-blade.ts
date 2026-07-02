@@ -35,7 +35,8 @@ export const PsiBlade: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

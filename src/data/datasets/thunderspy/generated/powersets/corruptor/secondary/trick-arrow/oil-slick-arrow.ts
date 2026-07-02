@@ -35,9 +35,9 @@ export const OilSlickArrow: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Defense Debuff",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

@@ -36,8 +36,8 @@ export const AoEBridge: Power = {
   "allowedSetCategories": [
     "Brute Archetype Sets",
     "Melee AoE Damage",
-    "Melee Damage",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

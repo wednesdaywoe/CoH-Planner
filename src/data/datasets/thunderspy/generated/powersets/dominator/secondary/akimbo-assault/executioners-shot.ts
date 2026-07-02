@@ -40,7 +40,8 @@ export const ExecutionersShot: Power = {
     "Defense Debuff",
     "Knockback",
     "Melee Damage",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

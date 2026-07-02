@@ -36,7 +36,8 @@ export const Smite: Power = {
     "Accurate To-Hit Debuff",
     "Melee Damage",
     "Stalker Archetype Sets",
-    "To Hit Debuff"
+    "To Hit Debuff",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

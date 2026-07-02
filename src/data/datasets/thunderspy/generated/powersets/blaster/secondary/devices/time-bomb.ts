@@ -35,7 +35,7 @@ export const TimeBomb: Power = {
     "Blaster Archetype Sets",
     "Knockback",
     "Melee AoE Damage",
-    "Melee Damage"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

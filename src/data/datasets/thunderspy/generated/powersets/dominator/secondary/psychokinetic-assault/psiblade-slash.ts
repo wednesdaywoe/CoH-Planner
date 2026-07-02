@@ -32,7 +32,8 @@ export const PsiBladeSlash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Melee Damage"
+    "Melee Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": [

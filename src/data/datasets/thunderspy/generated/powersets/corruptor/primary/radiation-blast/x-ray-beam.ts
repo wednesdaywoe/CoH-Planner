@@ -37,8 +37,8 @@ export const XRayBeam: Power = {
     "Accurate Defense Debuff",
     "Corruptor Archetype Sets",
     "Defense Debuff",
-    "Melee Damage",
-    "Ranged Damage"
+    "Ranged Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "damage": {

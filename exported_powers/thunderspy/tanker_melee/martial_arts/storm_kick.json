@@ -39,7 +39,6 @@
   ],
   "allowed_set_categories": [
     "Melee AoE Damage",
-    "Melee Damage",
     "Threat Duration"
   ],
   "cast_through": [],

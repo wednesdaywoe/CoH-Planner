@@ -35,6 +35,13 @@ jobs:
       - name: Tests
         run: npm test
 
+      # Fails if a malformed boostset poisoned a whole IO-set category across
+      # many powers (the Thunderspy "KB"/SumoBoostName pollution class — it
+      # handed "Melee Damage" to ~1387 ranged attacks). Covers all datasets
+      # incl. Thunderspy, which the regen-diff guard does not.
+      - name: Audit IO-set categories (all datasets)
+        run: npm run audit:set-categories
+
   # ── FUTURE: regen-and-diff guard ─────────────────────────────────────────────
   # Now that exported_powers/ (the converter input) is committed, CI can run the
   # convert-*.cjs pipeline and assert src/data/datasets/*/generated/ is byte-

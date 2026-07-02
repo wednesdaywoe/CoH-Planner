@@ -37,9 +37,9 @@ export const PowerofthePhoenix: Power = {
     "Endurance Modification",
     "Healing",
     "Mastermind Archetype Sets",
-    "Melee Damage",
     "Ranged AoE Damage",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

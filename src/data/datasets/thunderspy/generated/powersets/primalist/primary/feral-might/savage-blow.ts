@@ -37,7 +37,8 @@ export const SavageBlow: Power = {
     "Healing",
     "Melee Damage",
     "Primalist Archetype Sets",
-    "Stuns"
+    "Stuns",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

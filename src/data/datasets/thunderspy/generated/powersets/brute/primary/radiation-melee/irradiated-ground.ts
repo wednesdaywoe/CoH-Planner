@@ -37,7 +37,7 @@ export const IrradiatedGround: Power = {
     "Brute Archetype Sets",
     "Defense Debuff",
     "Melee AoE Damage",
-    "Melee Damage"
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

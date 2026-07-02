@@ -40,7 +40,8 @@ export const ShatterArmor: Power = {
     "Defense Debuff",
     "Melee Damage",
     "Tanker Archetype Sets",
-    "Threat Duration"
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

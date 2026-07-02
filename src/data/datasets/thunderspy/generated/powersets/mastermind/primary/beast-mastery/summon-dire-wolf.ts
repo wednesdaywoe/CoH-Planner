@@ -42,12 +42,12 @@ export const SummonDireWolf: Power = {
     "Fear",
     "Healing",
     "Mastermind Archetype Sets",
-    "Melee Damage",
     "Pet Damage",
     "Recharge Intensive Pets",
     "Resist Damage",
     "Running & Sprints",
-    "Slow Movement"
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };

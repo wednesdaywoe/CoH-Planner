@@ -41,9 +41,9 @@ export const VoltaicSentinel: Power = {
   "allowedSetCategories": [
     "Corruptor Archetype Sets",
     "Endurance Modification",
-    "Melee Damage",
     "Pet Damage",
-    "Recharge Intensive Pets"
+    "Recharge Intensive Pets",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6
 };
