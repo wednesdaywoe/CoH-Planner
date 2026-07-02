@@ -188,25 +188,39 @@ the post-guard generated layer. Marquee values confirmed (Hasten +0.7/120s Track
 via the normal `durations`→`buffDuration` path; Speed Boost +0.5 recharge & +0.25 recovery;
 Siphon Speed -0.2 → rechargeDebuff; Absorption/Grant Cover/Disrupting Torrent phantom buffs gone).
 Retiring the hack also removed Enforced Morale's bogus +99% recharge. `tsc` clean (pre-existing
-`html-to-image` env gap aside); full suite **677 pass**. Guard test:
+`html-to-image` env gap aside); full suite **682 pass**. Guard test:
 [thunderspy-ones-recharge-buff.test.ts](../src/data/thunderspy-ones-recharge-buff.test.ts).
 **Remaining:** mez magnitudes + knockback (THUNDERSPY_TODO item 1) — the SAME aspect/target
 limitation applies, so they'll need the same shortHelp/target discipline, not just a relabel.
 
-**One residual to verify in-game (kept, not dropped).** The post-guard audit flagged **15
-Mastermind pet-upgrade powers** (Equip Robot / Upgrade Robot / Train Beasts / Enchant Undead /
-…) each carrying an identical `recoveryBuff` scale 0.15 / 240s on a Self template. HC has no
-caster effect there and the shortHelp is silent, BUT the recon shows a genuine `target=Self`,
-empty-`requires` template structurally identical to Black Dwarf's real +0.15 Recovery — so it
-may be a real (undocumented) Thunderspy rebalance rather than a mis-parse or aspect-trap. Per §5
-(the binary is the oracle; Thunderspy rebalances freely) it is **kept**, not dropped on an
-HC-absence guess. Verify in-game whether upgrading henchmen grants the Mastermind +15% Recovery;
-if not, it's an aspect-trap the shortHelp guard can't see (Self + no advertised stat) and would
-need an explicit exclusion. Also minor (kept, ally-excluded from totals so display-only): Conduit
-of Pain / Repair label an ally/pet endurance restore as caster `enduranceGain` via the endurance
-exemption; and the guard intentionally does not recurse into `conditionalEffects`, so Primalist
-form-gated buffs (Pack Frenzy huntermode recharge, Rejuvenate prowlermode recovery) are unguarded
-— correct today (they're legit and the base shortHelp doesn't describe form effects).
+**✅ Pet target-trap RESOLVED (2026-07-02, follow-up).** The earlier audit had *kept* the **15
+Mastermind pet-upgrade powers'** identical `recoveryBuff` 0.15 / 240s "pending in-game check,"
+hypothesising a real Thunderspy rebalance (it looked structurally like Black Dwarf's genuine +0.15
+Recovery). That hypothesis was **wrong**, and the miss is instructive: the audit compared the
+*template* (Self target, empty requires) but never consulted the *power-level* `targets_affected`,
+which reads **`['MyPet']`** — the effect recipients are the henchmen, not the MM. The dev confirmed
+the rework: these are auto-pulse 30' PBAoEs that upgrade pets every 5s; there is no MM Recovery
+buff. So the +15% was a pet buff leaking to the caster because `target_type='Self'` (the MM casts
+it on themselves) while the per-template target that would have said "pet" was dropped by the
+format. Same leak hit the `MyPet`-*cast* buffs (Repair's `enduranceGain`, Fortify Pack's `regenBuff`
+**and** `defenseBuff`) because `MyPet` has no targetType mapping, so the totals' ally filter can't
+exclude them either.
+
+Fix: extended `guardThunderspyOnesBuffs` with a **pet-only veto** — when every `targets_affected`
+entry is a pet (`MyPet`), drop the caster-facing recovery/regen/endurance/defense. It is
+shortHelp-aware for the same reason the foe veto is: `targets_affected` **under-reports**. Rally the
+Militia is also `['MyPet']` yet advertises "**Self**, Pets +Defense, +Regeneration" — it genuinely
+buffs the MM, so a stat named for Self survives (the guard's first pass wrongly stripped it; the
+`\bself\b` + `+stat` gate restores it). Net: 18 generated files change (15 recovery + Repair
+endurance + Fortify regen&defense), Rally untouched, deterministic re-run, full suite **682 pass**.
+**Lesson (added to §7):** when the per-template target is dropped, the power-level `targets_affected`
+is the authoritative recipient list — consult it, not just the Self-vs-Foe `target_type`.
+
+Still minor (kept, ally-excluded from totals so display-only): Conduit of Pain labels an ally/pet
+endurance restore as caster `enduranceGain` via the endurance exemption; and the guard intentionally
+does not recurse into `conditionalEffects`, so Primalist form-gated buffs (Pack Frenzy huntermode
+recharge, Rejuvenate prowlermode recovery) are unguarded — correct today (they're legit and the base
+shortHelp doesn't describe form effects).
 
 ## ✅ Thunderspy Defense toggles contributed 0 to Defense totals — two attrib bugs — 2026-07-02
 

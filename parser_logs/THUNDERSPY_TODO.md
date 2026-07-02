@@ -51,6 +51,15 @@ attack's +End is a genuine drain-to-self). Guard test:
 [thunderspy-ones-recharge-buff.test.ts](../src/data/thunderspy-ones-recharge-buff.test.ts).
 See the RESOLVED entry in the parser log for the diff / verification detail.
 
+**Also RESOLVED — pet target-trap (the flagged "verify in-game" residual).** The 15 MM
+pet-upgrade powers' identical +15% `recoveryBuff` (plus Repair's `enduranceGain` and Fortify
+Pack's `regenBuff`/`defenseBuff`) were pet buffs leaking to the caster: the power's
+`target_type='Self'` (the MM casts the auto-pulse PBAoE on itself) but `targets_affected=['MyPet']`
+— the effects land on the henchmen. `guardThunderspyOnesBuffs` now drops caster-facing
+recovery/regen/endurance/defense when `targets_affected` is pet-only, shortHelp-aware so Rally the
+Militia ("Self, Pets +Defense, +Regeneration") keeps its genuine Self buff. 18 generated files,
+deterministic, full suite 682 pass.
+
 **Remaining — mez magnitudes & knockback (MED value, MED effort).** The index
 array ALSO names ~1,300 player `['Ones']`-front **mez** templates (Blind→Held,
 Freeze Ray→Held, Tesla Cage→Held, Terrify→Terrorized, …) and ~1,650 **knockback**

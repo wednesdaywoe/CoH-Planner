@@ -248,6 +248,17 @@ recovery):
   classes (keep `rechargeBuff` only if shortHelp advertises `+Recharge`; drop resource buffs on
   foe-targeted powers). Using a text field to disambiguate what the binary genuinely can't encode
   is legitimate; using it as the primary source is the §5 anti-pattern.
+- **When the per-template `target` is dropped, the power-level `targets_affected` is the
+  authoritative recipient list — consult it, not just `target_type`.** The MM pet-upgrade powers
+  set `target_type='Self'` (the MM casts the auto-pulse PBAoE on itself) yet `targets_affected=['MyPet']`
+  (the effects land on the henchmen). Routing by `target_type` alone leaked a pet +15% Recovery
+  (and Fortify Pack's pet +Defense/+Regen, Repair's pet Endurance) into the MM's totals. A pet-only
+  `targets_affected` means *no* effect on that power is a caster buff — drop them — but stay
+  shortHelp-aware because `targets_affected` **under-reports**: Rally the Militia is also `['MyPet']`
+  yet its shortHelp is "Self, Pets +Defense, +Regeneration" and genuinely buffs the MM, so a
+  Self-advertised stat survives. Note the earlier audit *missed* this by comparing only the template
+  (Self target, empty requires) to a known-real buff and never reading `targets_affected` — the
+  adversarial pass is only as good as the fields the skeptics are told to look at.
 
 ## 8. Determinism (committed `generated/` must be reproducible)
 

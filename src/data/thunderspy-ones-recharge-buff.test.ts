@@ -12,6 +12,10 @@ import { DisruptingTorrent } from './datasets/thunderspy/generated/powersets/dom
 // Melee fear attack (no self-buff). The guard must keep the former, drop the latter.
 import { TouchofFear as TouchOfTheBeyond } from './datasets/thunderspy/generated/powersets/blaster/secondary/darkness-manipulation/touch-of-fear';
 import { TouchofFear as DarkMeleeTouchOfFear } from './datasets/thunderspy/generated/powersets/brute/primary/dark-melee/touch-of-fear';
+import { EquipRobot } from './datasets/thunderspy/generated/powersets/mastermind/primary/robotics/equip-robot';
+import { Repair } from './datasets/thunderspy/generated/powersets/mastermind/primary/robotics/repair';
+import { FortifyPack } from './datasets/thunderspy/generated/powersets/mastermind/primary/beast-mastery/fortify-pack';
+import { RallyTheMilitia } from './datasets/thunderspy/generated/powersets/mastermind/primary/knights/rally-the-militia';
 
 /**
  * Thunderspy `Ones`-attrib buff recovery — the DATA-DRIVEN fix.
@@ -106,5 +110,36 @@ describe('Thunderspy Ones-attrib buff recovery (data-driven)', () => {
     expect(TouchOfTheBeyond.shortHelp).toMatch(/\+\s*Regeneration/i);
     expect(TouchOfTheBeyond.effects?.regenBuff).toBeDefined();
     expect(DarkMeleeTouchOfFear.effects?.regenBuff).toBeUndefined();
+  });
+
+  // --- Pet target-trap (guardThunderspyOnesBuffs, `targets_affected=['MyPet']`) ------
+  // The MM pet-upgrade powers are auto-pulse PBAoEs cast on Self whose effects land on
+  // the henchmen (the binary's `targets_affected` says MyPet, but the per-template target
+  // is dropped). Their uniform, unadvertised +15% Recovery therefore reads as a caster
+  // self-buff and leaked into the MM's Recovery. Drop it — but shortHelp-aware, so a power
+  // that genuinely buffs Self+Pets keeps its buff.
+
+  it('Equip Robot does NOT leak the pets’ +15% Recovery into the MM (pet target-trap)', () => {
+    // Auto PBAoE, target_type=Self but targets_affected=['MyPet'], shortHelp names no Self buff.
+    expect(EquipRobot.effects?.recoveryBuff).toBeUndefined();
+    expect(EquipRobot.effects?.buffDuration).toBeUndefined();
+  });
+
+  it('Repair does NOT leak its pet Endurance heal into the MM', () => {
+    expect(Repair.effects?.enduranceGain).toBeUndefined();
+  });
+
+  it('Fortify Pack (Pets-only +Def/+Regen, no Self) drops BOTH the phantom regen and defense', () => {
+    expect(FortifyPack.shortHelp).not.toMatch(/\bself\b/i);
+    expect(FortifyPack.effects?.regenBuff).toBeUndefined();
+    expect(FortifyPack.effects?.defenseBuff).toBeUndefined();
+  });
+
+  it('the pet-target veto is shortHelp-aware: Rally the Militia keeps its Self +Def/+Regen', () => {
+    // Same targets_affected=['MyPet'] as the phantom cases, but its shortHelp is
+    // "Self, Pets +Defense, +Regeneration" — it genuinely buffs the MM, so both survive.
+    expect(RallyTheMilitia.shortHelp).toMatch(/\bself\b/i);
+    expect(RallyTheMilitia.effects?.regenBuff).toBeDefined();
+    expect(RallyTheMilitia.effects?.defenseBuff).toBeDefined();
   });
 });

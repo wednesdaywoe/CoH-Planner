@@ -35,10 +35,5 @@ export const Repair: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {
-    "enduranceGain": {
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    }
-  }
+  "effects": {}
 };

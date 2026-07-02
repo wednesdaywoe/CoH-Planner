@@ -251,7 +251,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   // Thunderspy: veto the `Ones`-relabel false positives (resistance-as-recharge,
   // foe-attack self-buffs) the binary can't disambiguate. No-op elsewhere.
   if (datasetId === 'thunderspy') {
-    guardThunderspyOnesBuffs(power);
+    guardThunderspyOnesBuffs(power, rawJson.targets_affected);
   }
 
   return power;

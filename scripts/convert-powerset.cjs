@@ -4721,6 +4721,10 @@ function applyThunderspyDamageType(damage, shortHelp) {
 
 // Foe/location target types where a positive caster resource SELF-buff can't be real.
 const TSPY_FOE_TARGETS = new Set(['Foe', 'Location', 'DeadFoe']);
+// `targets_affected` entries that mean "only the caster's henchmen" — never the
+// caster. When every affected target is a pet, a caster-facing resource buff on the
+// power is really a PET buff whose per-template target the binary dropped.
+const TSPY_PET_TARGETS = new Set(['MyPet']);
 
 /**
  * Disambiguate Thunderspy `Ones`-relabel recoveries (recharge / recovery / regen /
@@ -4746,10 +4750,22 @@ const TSPY_FOE_TARGETS = new Set(['Foe', 'Location', 'DeadFoe']);
  *    those on foe/location-targeted powers. Endurance is intentionally exempt — a foe
  *    Electric attack's +Endurance IS a genuine self end-gain (drain-to-self), matching
  *    the HC data.
+ *  - **Pet target-trap (recovery/regen/endurance/defense).** The Mastermind pet-upgrade
+ *    powers are auto-pulse PBAoEs the MM casts on Self (`target_type='Self'`) but whose
+ *    effects land on the henchmen: the binary flags this with `targets_affected=['MyPet']`.
+ *    Every one carries an identical, unadvertised `Recovery` 0.15 / 240s template that,
+ *    with its per-template target dropped, reads as a caster self-buff and leaks +15%
+ *    Recovery into the MM's totals; Fortify Pack likewise leaks a pet +Defense/+Regen,
+ *    and the `MyPet`-cast pet buffs (Repair, Serum) leak because `MyPet` has no targetType
+ *    mapping so the totals' ally filter can't exclude them. When EVERY affected target is
+ *    a pet, drop the caster-facing recovery/regen/endurance/defense — BUT shortHelp-aware,
+ *    because `targets_affected` under-reports: Rally the Militia is `['MyPet']` yet its
+ *    shortHelp is "Self, Pets +Defense, +Regeneration" — it genuinely buffs the MM too, so
+ *    a stat advertised for Self survives (mirrors the Touch-of-the-Beyond foe exception).
  *
  * Thunderspy-only; callers gate on datasetId. See parser_logs/THUNDERSPY_TODO.md item 1.
  */
-function guardThunderspyOnesBuffs(power) {
+function guardThunderspyOnesBuffs(power, targetsAffected) {
   const e = power.effects;
   if (!e) return;
   let changed = false;
@@ -4772,6 +4788,18 @@ function guardThunderspyOnesBuffs(power) {
   if (TSPY_FOE_TARGETS.has(power.targetType)) {
     if (e.recoveryBuff && !/\+\s*rec(?:overy|\b)/i.test(sh)) drop('recoveryBuff');
     if (e.regenBuff && !/\+\s*regen/i.test(sh)) drop('regenBuff');
+  }
+  // Pet target-trap: effects on a pet-only power buff the henchmen, not the MM — unless
+  // the shortHelp advertises the caster (`Self`) as a beneficiary of that same stat, in
+  // which case `targets_affected` merely under-reports (Rally the Militia buffs Self+Pets).
+  const ta = targetsAffected || [];
+  const petOnly = ta.length > 0 && ta.every((t) => TSPY_PET_TARGETS.has(t));
+  if (petOnly) {
+    const hasSelf = /\bself\b/i.test(sh);
+    if (e.recoveryBuff && !(hasSelf && /\+\s*rec(?:overy|\b)/i.test(sh))) drop('recoveryBuff');
+    if (e.regenBuff && !(hasSelf && /\+\s*regen/i.test(sh))) drop('regenBuff');
+    if (e.enduranceGain && !(hasSelf && /\+\s*end/i.test(sh))) drop('enduranceGain');
+    if (e.defenseBuff && !(hasSelf && /\+\s*def/i.test(sh))) drop('defenseBuff');
   }
 
   if (!changed) return;
@@ -5230,7 +5258,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     for (const ce of power.conditionalEffects || []) {
       if (ce.damage) ce.damage = applyThunderspyDamageType(ce.damage, power.shortHelp);
     }
-    guardThunderspyOnesBuffs(power);
+    guardThunderspyOnesBuffs(power, powerJson.targets_affected);
   }
 
   return power;
