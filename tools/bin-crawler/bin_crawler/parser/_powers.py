@@ -292,7 +292,7 @@ def _is_message_key(s: str) -> bool:
     all-alnum) and lead the Params block, so the heuristic otherwise grabs the
     message key as `entity_def` and pushes the real EntityDef down into
     `priority_list`. Filter them out so entity_def/priority_list land on the real
-    strings. See BIN-PARSER-LOG "P-hash entity_def — ROOT SOLVED" (2026-06-12)."""
+    strings. See HOMECOMING_PARSER "P-hash entity_def — ROOT SOLVED" (2026-06-12)."""
     return len(s) > 1 and s[0] == 'P' and s[1:].isdigit()
 
 
@@ -339,7 +339,7 @@ def _extract_params(tail_bytes: bytes, attribs: list[str],
         # Drop float/combat-text message keys (P<digits>) — the EntCreate's
         # DisplayMessage, not the entity. Otherwise the message key (which leads
         # the Params block) is grabbed as entity_def and the real EntityDef is
-        # pushed into priority_list. See BIN-PARSER-LOG (2026-06-12).
+        # pushed into priority_list. See HOMECOMING_PARSER (2026-06-12).
         ent = [s for s in found if not _is_message_key(s)]
         # Entity defs typically lead the Params block. DisplayName is free text
         # (often title-cased with spaces), PriorityList is short identifier.
@@ -441,7 +441,7 @@ def _extract_params_parse6(tail_bytes: bytes, attribs: list[str]) -> dict | None
 
     if is_create_entity:
         # Drop float/combat-text message keys (P<digits>) — see the Parse7
-        # branch + BIN-PARSER-LOG (2026-06-12).
+        # branch + HOMECOMING_PARSER (2026-06-12).
         ent = [s for s in found if not _is_message_key(s)]
         entity_def = next((s for s in ent if _looks_like_entity_def(s)), None)
         if not entity_def:
@@ -1155,7 +1155,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # the root of the ~265 entity/pet powers (Trip Mine, Mastermind/Lore/Kheldian
     # pet abilities) that lost their entire effects array. Reading it as an array
     # is byte-identical for the empty case (no regression) and correct otherwise.
-    # See GAME-DATA-PRINCIPLES §5 / BIN-PARSER-LOG.
+    # See GAME-DATA-PRINCIPLES §5 / HOMECOMING_PARSER.
     r.read_u4_array()  # mode/recharge-group array (usually empty; non-empty on pet powers)
 
     # Redirect struct_array — top-level Redirect{Power..Requires..} blocks from

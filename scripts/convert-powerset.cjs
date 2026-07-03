@@ -1488,7 +1488,7 @@ function _parseDurationSeconds(str) {
  * Correct multi-pet summon COUNTS from the EntCreate template list.
  *
  * The flat EntCreate handler counts one pet per template, which is wrong for two
- * shapes (BIN-PARSER-LOG "Pseudo-pet summon residuals"):
+ * shapes (HOMECOMING_PARSER "Pseudo-pet summon residuals"):
  *
  *  1. **Mutually-exclusive FX-variant groups** — Phantom Army ("Decoy") carries
  *     its 3 staggered decoys in TWO effect groups with complementary requires
@@ -3680,7 +3680,7 @@ function extractEffects(templates, powerName) {
           // which is encoded as aspect=Resistance (+100) paired with a negative
           // aspect=Current (-100) on the *_Ones table. Neither is offensive KB.
           // (Modeling that foe KB-protection as its own effect is a separate gap;
-          // see BIN-PARSER-LOG.md.)
+          // see HOMECOMING_PARSER.md.)
           if (aspect === 'resistance' || scale <= 0) continue;
           if (effects[kbType] && effects[kbType].table === table) {
             effects[kbType].scale += Math.abs(scale);
@@ -4062,7 +4062,7 @@ function extractEffects(templates, powerName) {
           // only inflates a *display* stat, never affects slotting) until live
           // Rebirth is observed to confirm stealth is max-wins, not additive —
           // the Jounin lesson, that Rebirth genuinely diverges from HC. The
-          // membership + mechanism are recorded in BIN-PARSER-LOG / the stealth
+          // membership + mechanism are recorded in HOMECOMING_PARSER / the stealth
           // memory for re-application if/when in-client confirms suppression.
           recordDuration('stealth');
         }
@@ -5331,7 +5331,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // dropped + pose-collapse/chance-weight → 9). Runs OUTSIDE the allTemplates
   // guard above because Gang War's summon templates are dropped by the
   // activation_effects buff filter, leaving allTemplates empty — the corrected
-  // summon is rebuilt directly from powerJson. See BIN-PARSER-LOG.
+  // summon is rebuilt directly from powerJson. See HOMECOMING_PARSER.
   {
     const eff = power.effects || {};
     normalizeSummonEntities(powerJson, eff);

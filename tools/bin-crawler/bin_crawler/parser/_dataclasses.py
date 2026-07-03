@@ -154,7 +154,7 @@ class PowerRecord:
 
     # Parse7/HC diagnostic scratch — field 43 is an FX / ChainIntoPower array, NOT
     # ChainTarget (that's 43b → chain_target_expression above). Kept for probes,
-    # never emitted to the export (leading underscore + repr=False). See BIN-PARSER-LOG.
+    # never emitted to the export (leading underscore + repr=False). See HOMECOMING_PARSER.
     _field43_str: str = field(default="", repr=False)
 
     # Effect data — the binary stores two parallel struct_arrays:

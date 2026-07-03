@@ -71,7 +71,7 @@ describe('multi-pet summon counts (homecoming)', () => {
     // (Pets_RainofArrows_Visual) AND a static-object sibling (Pets_RainofArrows)
     // — distinct entities that must NOT collapse into one. Since the P-hash
     // entity_def is now resolved at the parser (it was the float-message key, not
-    // an entity — see BIN-PARSER-LOG "P-hash entity_def — ROOT SOLVED"), the
+    // an entity — see HOMECOMING_PARSER "P-hash entity_def — ROOT SOLVED"), the
     // visual pet shows its real name instead of a raw P-hash.
     const t = gen('homecoming', 'blaster/primary/archery/rain-of-arrows.ts');
     expect(t).not.toMatch(/"P\d{6,}"/);             // P-hash resolved away

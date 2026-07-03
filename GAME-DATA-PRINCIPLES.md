@@ -13,7 +13,7 @@ of these; treat "power" in older examples as "whatever game data you're touching
 derived data) learned extending this beyond powers.
 
 This is the **principles reference**. The chronological issue log lives in
-[BIN-PARSER-LOG.md](BIN-PARSER-LOG.md); project setup is in CLAUDE.md.
+[HOMECOMING_PARSER.md](streams/HOMECOMING_PARSER.md); project setup is in CLAUDE.md.
 
 ---
 
@@ -30,7 +30,7 @@ The recurring failure mode that has bitten us many times: decide a field is
 later it mattered. Examples: offensive knockback, foe -KB protection, brute modifiers,
 Kinetic Melee, Kheldian effects, `IgnoreStrength`.
 
-> Examples of 'low value data' turns out to be signifcant (BIN-PARSER-LOG.md)
+> Examples of 'low value data' turns out to be signifcant (HOMECOMING_PARSER.md)
 > 6/11/26
 
   Three log items filed as "low-value leftovers" → on
@@ -222,7 +222,7 @@ silently no-ops on Rebirth.
 Both formats land the same effect **keys** in base, so attribute by key when a
 feature must work on both. Worked example: Dual Pistols Swap Ammo keys on
 `defenseDebuff`/`rechargeDebuff`/`damageDebuff`, not HC ammo `Tag`s — see the DP
-entry in [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md).
+entry in [HOMECOMING_PARSER.md](streams/HOMECOMING_PARSER.md).
 
 **When a format DROPS a discriminator field, a byte-level relabel can't reconstruct
 the semantic — you need an out-of-band signal, and an adversarial audit to find where
@@ -482,7 +482,7 @@ of them (DIVERGENT 140 → 9, the 9 being genuine enrichments). The durable meth
   extract *yet* (e.g. `summon.copyBoosts`, consumed by pet-damage). Discriminate by which
   side matches the oracle: generated-matches-oracle ⇒ stale pin (drop); override-matches-
   oracle-while-generated-is-missing/wrong ⇒ real correction (keep, and log the parser gap
-  in BIN-PARSER-LOG so it can be sourced from the binary later, §0).
+  in HOMECOMING_PARSER so it can be sourced from the binary later, §0).
 
 **Corollary — silent fallbacks hide wrong values, not just missing ones.** When a value
 isn't found the calc usually substitutes a flat default rather than erroring, and that

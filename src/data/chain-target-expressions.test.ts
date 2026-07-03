@@ -7,7 +7,7 @@ import { describeChainTarget, describeTargetCap } from '@/utils/chain-expression
  * Guards the two chain-power RPN expressions recovered from powers.bin
  * (fields 43b / 38 → `chainTargetExpression` / `maxTargetsExpression`) and the
  * Info-panel humanizers that render them. The oracle values are the HC dev's
- * `.powers` source — see parser_logs/BIN-PARSER-LOG.md ("Chain / max-targets
+ * `.powers` source — see streams/HOMECOMING_PARSER.md ("Chain / max-targets
  * expression fields"). The Electrical Affinity circuits are the canonical
  * carriers: Rejuvenating = HP-priority, Energizing = End-priority, Empowering =
  * proximity-only; every circuit's cap grows with the Static buff.

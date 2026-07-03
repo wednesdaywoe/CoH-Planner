@@ -15,7 +15,7 @@ import { calculateDamageWithATTable } from '@/utils/calculations';
  * (Stalker Hide) grant the *enhanceable* Fire DoT the I28P3 note describes;
  * Toxins / Envenomed Blades grant non-enhanceable (`IgnoreStrength`) damage.
  * Powers that grant MORE THAN ONE distinct proc (Bio Armor adaptations, a
- * mode system) are deliberately NOT resolved here. See BIN-PARSER-LOG.
+ * mode system) are deliberately NOT resolved here. See HOMECOMING_PARSER.
  */
 function gen(dataset: string, rel: string): string {
   const p = fileURLToPath(new URL(`./datasets/${dataset}/generated/powersets/${rel}`, import.meta.url));

@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
  * Structural invariants on the COMMITTED generated data.
  *
  * These run in CI with NO raw data (the `exported_powers` source is gitignored —
- * see BIN-PARSER-LOG.md), by scanning the generated `.ts` files directly. They
+ * see HOMECOMING_PARSER.md), by scanning the generated `.ts` files directly. They
  * lock in the converter-regression classes that have repeatedly bitten us, so a
  * bad converter change is caught at PR time instead of months later on a manual
  * regen:

@@ -1,0 +1,21 @@
+---
+project: coh-sidekick
+kind: plan
+title: Varios to-dos
+relates:
+  - THUNDERSPY_SUPPORT_PROGRESS.md
+  - HOMECOMING_PARSER.md
+  - REBIRTH_PARSER.md
+---
+
+- [ ] Epic gating — "Still open (noted, not fixed)" (2026-07-02 epic pools):
+
+- [ ] HC/Rebirth epic still on the rank heuristic, not fully data-driven
+
+- [ ] Rebirth patron-Owned? gates unmodeled
+
+- [ ] tspy epic export has 2 mis-ordered pools (harmless now)
+
+- [ ] ~40 missing icons (2026-07-02 icons) — Lore-pet / NPC / enhancement / archetype icons not in any local pigg; need HC (or other) texture piggs. (Already tracked as TSPY2 in the plan doc.)
+
+- [ ] Launcher HTTP/2-505 mitigation (2026-07-01 launcher, "Still open / optional") — if a browser genuinely leads with an HTTP/2 preface, the durable fix (fresh port, or an Alt-Svc: clear header on Bin Crawler responses) is not implemented. Optional.

@@ -13,7 +13,7 @@
  *
  * Source of truth: Utpal's mapping (community member familiar with
  * Rebirth internals), captured 2026-05-04. See
- * [REBIRTH_DATA_GAPS.md](../../../REBIRTH_DATA_GAPS.md) §3 for full
+ * [REBIRTH_PARSER.md](../../../../streams/REBIRTH_PARSER.md) §3 for full
  * context and the deferred Parse6 parser work that would let us
  * extract this from `powers.bin` directly.
  *

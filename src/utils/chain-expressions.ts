@@ -9,7 +9,7 @@
  * The raw token lists (e.g. `101 kHitPoints% target> - … prevdistance / +`) are
  * meaningless to players, so the Info panel shows these short descriptions and
  * keeps the raw expression on hover. Verified against the HC `.powers` oracle —
- * see parser_logs/BIN-PARSER-LOG.md ("Chain / max-targets expression fields").
+ * see streams/HOMECOMING_PARSER.md ("Chain / max-targets expression fields").
  */
 
 /** Describe the next-jump rule of a ChainTarget expression. The Electrical

@@ -401,7 +401,7 @@ def _parse_boostsets_parse6(r: Parse6BinReader) -> list[BoostSetRecord]:
 #
 # Filtering by the placeholder display name is dataset-safe: real sets (incl.
 # HC's genuine Overwhelming_Force) never use "SumoBoostName", so this is a
-# no-op on HC/Rebirth bins. See BIN-PARSER-LOG / Psychokinetic Assault report.
+# no-op on HC/Rebirth bins. See HOMECOMING_PARSER / Psychokinetic Assault report.
 _PLACEHOLDER_SET_DISPLAY_NAMES = frozenset({"SumoBoostName"})
 
 
@@ -644,7 +644,7 @@ _CHALLENGE_SET_OVERRIDES_BY_NAME = {
     # aspect. The binary tags them ECToHitDeBuff (one of their aspects), which
     # wrongly implied Tar Patch accepts ToHit-debuff sets. Real single-aspect
     # ToHit sets (Cloud Senses, Dark Watcher's Despair, Siphon Insight) stay
-    # "To Hit Debuff". See BIN-PARSER-LOG.
+    # "To Hit Debuff". See HOMECOMING_PARSER.
     "Witchcraft": "Universal Debuff",
     "Superior_Witchcraft": "Universal Debuff",
     # Return From The Grave — Rebirth's "first-ever Rez IO Set" (Halloween

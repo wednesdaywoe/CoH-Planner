@@ -1,4 +1,14 @@
-# Thunderspy Parser Log
+---
+project: coh-sidekick
+kind: plan
+title: Thunderspy Parser
+relates:
+  - THUNDERSPY_SUPPORT_PROGRESS.md
+  - HOMECOMING_PARSER.md
+  - REBIRTH_PARSER.md
+---
+
+# Thunderspy Parser
 
 Running log of bugs and gaps specific to the **Thunderspy** dataset in the binary
 parser → JSON conversion pipeline (`tools/bin-crawler/` + `scripts/convert-*.cjs`),
@@ -6,12 +16,12 @@ with diagnoses and recommended fixes. Newest entries at top. When an open issue 
 fixed, move it to the top of the RESOLVED section with the fix details.
 
 > **Remaining follow-ups** (enhancements/IO sets, pets/entities, minor icons) are
-> tracked in [THUNDERSPY_TODO.md](THUNDERSPY_TODO.md).
+> tracked in the `## Deferred` section of [THUNDERSPY_SUPPORT_PROGRESS.md](THUNDERSPY_SUPPORT_PROGRESS.md).
 
 > **Before you make any edits** read [GAME-DATA-PRINCIPLES.md](../GAME-DATA-PRINCIPLES.md).
-> General (non-Thunderspy) findings live in [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md);
+> General (non-Thunderspy) findings live in [HOMECOMING_PARSER.md](HOMECOMING_PARSER.md);
 > the broader Thunderspy support narrative is in
-> [THUNDERSPY SUPPORT PROGRESS.md](../THUNDERSPY%20SUPPORT%20PROGRESS.md).
+> [THUNDERSPY_SUPPORT_PROGRESS.md](THUNDERSPY_SUPPORT_PROGRESS.md).
 
 > **Format orientation:** Thunderspy is **Parse7-framed** (CrypticS magic, string
 > table, u4 string offsets — same framing as Homecoming) but uses a **Parse6-derived
@@ -19,9 +29,14 @@ fixed, move it to the top of the RESOLVED section with the fix details.
 > predates HC's schema additions and Rebirth's enum extensions, so it sits in its own
 > corner of the format space. Source: `…/Thunderspy Gaming/Sweet Tea/tspy/bin.pigg`.
 
-> --- NEW ISSUES / UNRESOLVED ---
+## Active
 
-## ⚠️ Thunderspy `Ones`-attrib buffs lose their modified attribute — ALL RESOLVED (recharge/recovery, mez, KB — see below) — 2026-07-01
+_No open Thunderspy parser issues. The two former NEW-ISSUES entries below are both
+resolved (the `Ones`-attrib recovery and the `export_entities` record-boundary crash)._
+
+## Resolved
+
+- [x] Thunderspy `Ones`-attrib buffs lose their modified attribute — ALL RESOLVED (recharge/recovery, mez, KB — see below) — 2026-07-01
 
 > **UPDATE 2026-07-02: recharge / recovery / regeneration / endurance, AND applied
 > mez type+magnitude AND offensive knockback are now all recovered data-driven from
@@ -96,7 +111,15 @@ dev of where the runtime reads it. Until then the shortHelp workaround is the ce
 > larger, separate change (front vs index are different fields, so a blanket swap would
 > change damage/mez representation — scope carefully per effect kind).
 
-## ⚠️ `export_entities` (VillainDef.bin) overruns record boundary on Thunderspy — 2026-06-16
+- [x] `export_entities` (VillainDef.bin) record-boundary overrun — RESOLVED 2026-07-02 (filed 2026-06-16)   verify: file:src/data/datasets/thunderspy/pet-entities.ts
+
+**RESOLVED 2026-07-02.** A tolerant `_parse_level_sub` (peek count-vs-offset) handles
+Thunderspy's `levels[].display_names` being a single bare-string offset vs HC/Rebirth's
+length-prefixed `string_array` — the field that overran the record boundary. All **619**
+Thunderspy pets now parse and `pet-entities.ts` is populated (Lore/MM/pseudo-pet ability
+data). See the `VillainDef.bin` line in
+[THUNDERSPY_SUPPORT_PROGRESS.md](THUNDERSPY_SUPPORT_PROGRESS.md) and memory
+`thunderspy-villaindef-format`. Original diagnosis kept below.
 
 **Symptom.** `python3 -m bin_crawler.export_entities --assets-dir <tspy>` crashes:
 `ValueError: Read of 4 bytes at offset 465012 would exceed record boundary` in
@@ -116,9 +139,8 @@ Thunderspy entity layout variant (probe field-by-field like the powers/classes w
 so Thunderspy can do the same: ship with `petEntities: {}` and fix the entity parser
 later. Player power math is unaffected; only summoned-pet detail panels are.
 
-> ---RESOLVED ---
 
-## ✅ Thunderspy applied mez type+magnitude & offensive knockback recovered from the index array — 2026-07-02
+- [x] Thunderspy applied mez type+magnitude & offensive knockback recovered from the index array — 2026-07-02
 
 **Symptom.** Every Thunderspy control power was wrong. Blind / Fossilize / Block of Ice /
 Tesla Cage emitted `immobilize Mag 1` when they are **Mag-3 Holds**; Cobra Strike kept its
@@ -166,7 +188,7 @@ Residual: Taunt/Placate/Untouchable/Intangible index mez relabel-but-inert (no c
 Spectral Wounds / Poison Gas Arrow advertise Sleep but their tspy template is scale-0/stripped;
 the damage-type combo TAG on `['Ones']` fronts stays excluded (idx_count>1) — no phantom damage.
 
-## ✅ Thunderspy `Ones`-front recharge / recovery / regen / endurance buffs recovered from the index array — 2026-07-02
+- [x] Thunderspy `Ones`-front recharge / recovery / regen / endurance buffs recovered from the index array — 2026-07-02
 
 **Symptom.** Every Thunderspy `Ones`-front recharge buff (Hasten, Quickness, Accelerate
 Metabolism, Speed Boost, the Alpha `Recharge_*` incarnates, …) and +/- recovery/regen/
@@ -235,8 +257,9 @@ Siphon Speed -0.2 → rechargeDebuff; Absorption/Grant Cover/Disrupting Torrent 
 Retiring the hack also removed Enforced Morale's bogus +99% recharge. `tsc` clean (pre-existing
 `html-to-image` env gap aside); full suite **682 pass**. Guard test:
 [thunderspy-ones-recharge-buff.test.ts](../src/data/thunderspy-ones-recharge-buff.test.ts).
-**Remaining:** mez magnitudes + knockback (THUNDERSPY_TODO item 1) — the SAME aspect/target
+**Remaining (at the time of this entry):** mez magnitudes + knockback — the SAME aspect/target
 limitation applies, so they'll need the same shortHelp/target discipline, not just a relabel.
+Since resolved — see the applied-mez / knockback entry above.
 
 **✅ Pet target-trap RESOLVED (2026-07-02, follow-up).** The earlier audit had *kept* the **15
 Mastermind pet-upgrade powers'** identical `recoveryBuff` 0.15 / 240s "pending in-game check,"
@@ -267,7 +290,7 @@ does not recurse into `conditionalEffects`, so Primalist form-gated buffs (Pack 
 recharge, Rejuvenate prowlermode recovery) are unguarded — correct today (they're legit and the base
 shortHelp doesn't describe form effects).
 
-## ✅ Thunderspy Defense toggles contributed 0 to Defense totals — two attrib bugs — 2026-07-02
+- [x] Thunderspy Defense toggles contributed 0 to Defense totals — two attrib bugs — 2026-07-02
 
 **Symptom.** Every Thunderspy defense toggle (Weave, Maneuvers, Hover + all armor sets:
 Super Reflexes, Shield, Energy Aura, Ninjitsu, …) added **nothing** to the character's Defense
@@ -309,7 +332,7 @@ recovery, **0** value drift) + regenerated pools & all 305 powersets. Defense co
 19→**211** generated files. `tsc` clean; full suite 588 pass; guard
 [thunderspy-defense-data.test.ts](../src/data/thunderspy-defense-data.test.ts).
 
-## ✅ Every Thunderspy DoT lost its `tickRate` — `application_period` was never read — 2026-06-18
+- [x] Every Thunderspy DoT lost its `tickRate` — `application_period` was never read — 2026-06-18
 
 **Symptom.** No DoT line / no DoT-aware damage totals for ANY Thunderspy DoT
 (Gloom, Fire Breath, Tenebrous Tentacles, …). Across the export, ~372 damage
@@ -356,7 +379,7 @@ and `period` are both 0 in the binary; the `duration: 1` they export is the
 header `duration_default` fallback, and having no tickRate is correct (they're
 not multi-tick DoTs on Thunderspy).
 
-## ✅ Damage element type was generic `Special` (Thunderspy uses a single `Damage` attrib) — 2026-06-16
+- [x] Damage element type was generic `Special` (Thunderspy uses a single `Damage` attrib) — 2026-06-16
 
 **Context.** Thunderspy effect templates store damage with one generic `Damage`
 attrib + table + scale; the element (Fire/Smashing/…) is NOT in the attrib —
@@ -381,7 +404,7 @@ Special; pet-summon powers have no direct damage entry (damage lives on the pet)
 genuine `DMG(Special)`/`DMG(All)`. Damage magnitudes were always correct — this
 only refines the element label.
 
-## ✅ Every Thunderspy power showed as level 1 (per-power `available` levels all 0) — 2026-06-16
+- [x] Every Thunderspy power showed as level 1 (per-power `available` levels all 0) — 2026-06-16
 
 **Symptom.** In the planner, every Thunderspy powerset had all its powers
 selectable at level 1 — no level progression. The exported powerset
@@ -408,7 +431,7 @@ gate label for Thunderspy's bare `<side>.ownPower?` self-reference gates —
 — so Pale Blade's Fester/Plaguebearer conditional damage is findable in the
 InfoPanel's Mechanic Adjusters.)
 
-## ✅ Class `attribs` (HP / caps / threat) did not parse for ANY Thunderspy class — 2026-06-16
+- [x] Class `attribs` (HP / caps / threat) did not parse for ANY Thunderspy class — 2026-06-16
 
 **Symptom.** Every Thunderspy class (`parse_classes` on `classes.bin`) returned an
 **empty `attribs` block** — no `hit_points` curve, `hp_cap` curve, `resistance_cap`,
@@ -456,7 +479,7 @@ Verified the values survive into JSON via `export_classes` (Primalist's `tables`
 carries the full block). **TODO when wiring the app dataset:** add a Thunderspy
 archetype-stats test mirroring the HC one.
 
-## ✅ `Class_Primalist` parsed with empty primary/secondary/pool categories — 2026-06-16
+- [x] `Class_Primalist` parsed with empty primary/secondary/pool categories — 2026-06-16
 
 **Symptom.** Thunderspy's custom **Primalist** archetype (`Class_Primalist`, the 15th
 class in `classes.bin` = 14 standard + Primalist) parsed with **empty** `primary_category`

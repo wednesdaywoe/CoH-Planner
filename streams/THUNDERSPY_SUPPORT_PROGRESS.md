@@ -4,8 +4,8 @@ kind: plan
 title: Thunderspy Support
 id-prefix: TSPY
 relates:
-  - parser_logs/THUNDERSPY_TODO.md
-  - parser_logs/THUNDERSPY-PARSER-LOG.md
+  - THUNDERSPY_PARSER.md
+  - HOMECOMING_PARSER.md
 ---
 
 # Thunderspy Support
@@ -15,7 +15,8 @@ Source of truth for adding Thunderspy as a third dataset source alongside Homeco
 i23-era fork with a custom **Primalist** form-shifter archetype and many custom
 powersets; it reads directly from `…/Thunderspy Gaming/Sweet Tea/tspy/bin.pigg`.
 As of 2026-07-02 it is a fully selectable dataset in the planner. This doc tracks
-the work items; deep binary-format RE lives in the parser logs under `relates`.
+the work items (the former `THUNDERSPY_TODO.md` follow-ups are folded into `## Deferred`
+below); deep binary-format RE lives in the parser logs under `relates`.
 Numbers below reflect the current export: **8,532 player powers / 1,906 powersets /
 58 categories**, 212 IO sets, 619 pet entities, 15 archetypes incl. Primalist.
 
@@ -28,6 +29,10 @@ Numbers below reflect the current export: **8,532 player powers / 1,906 powerset
 - [x] Class attribs (HP / caps / threat / dmg-cap) for all 15 ATs incl. Primalist (50-entry parse7-framed tables)   verify: file:src/data/datasets/thunderspy/generated/archetype-stats.generated.ts
 - [x] `boostsets.bin` placeholder-pollution guard — skips broken `SumoBoostName` sets (the `KB`→ECMelee record that leaked "Melee Damage" onto ~1,387 ranged powers)   verify: fn:_is_placeholder_set
 - [x] `VillainDef.bin` pet-entity parse — tolerant level display-names reader handling Thunderspy's single bare-string offset vs HC/Rebirth's length-prefixed string_array (decision 2026-07-02: peek count-vs-offset; the level element is length-bounded so a wrong guess can only mis-read one element). All 619 pets parse; HC re-parse unchanged (744 pets)   verify: fn:_read_level_display_names, fn:peek_u4
+- [x] Effect-template attribs recovered — `_resolve_str` string-table cap widened to the full ~38 MB table + post-`requires` **index-array** read (the affected-attrib list multi-type buffs leave only in the index array). Recovers **defense** magnitudes on every toggle/armor set (was 0)   verify: fn:_parse_effect_template_thunderspy, file:src/data/thunderspy-defense-data.test.ts
+- [x] `Ones`-front recharge / recovery / regeneration / endurance buffs recovered from the index array (`ATTRIB_NAME_THUNDERSPY` adds the verified `RechargeTime = index 89` divergence; shortHelp `recoverThunderspyOnesBuffs` hack retired) + converter aspect-/target-trap guard   verify: fn:guardThunderspyOnesBuffs, file:src/data/thunderspy-ones-recharge-buff.test.ts
+- [x] Applied **mez type + magnitude** & **offensive knockback** recovered from the index array (type from the lone index mez attrib, magnitude from the post-table `k+12` slot; target-/sign-trap guards; cross-dataset incarnate mez-mag `scale`→`magnitude` fix)   verify: fn:guardThunderspyAppliedMez, file:src/data/thunderspy-mez-knockback.test.ts
+- [x] DoT `tickRate` — `application_period` read from the shared HC-Parse7 post-table block (array-aware walk past the two expr arrays)   verify: file:src/data/thunderspy-dot-tickrate.test.ts
 
 ### Export
 - [x] Powers / powersets / classes export — 8,532 powers, 1,906 powersets, 58 categories, 59 class tables   verify: file:exported_powers/thunderspy
@@ -39,20 +44,21 @@ Numbers below reflect the current export: **8,532 player powers / 1,906 powerset
 - [x] Primalist modeled as a Kheldian-style form-shifter (Primal / Hunter / Prowler); empty attack shells overlay per-form variant data at display time (Rejected: baking variants into the base power — loses the slots-stay-on-shell model HC/Rebirth use for Kheldians)   verify: fn:resolvePrimalistRedirect, file:src/data/datasets/thunderspy/primalist-form-variants.ts
 - [x] Dataset-wide damage extraction — Thunderspy's generic `Damage` attrib (element lives only in shortHelp `DMG(...)`) maps to a typeless `Special` damage entry with correct scale/table magnitude; HC/Rebirth unaffected
 - [x] Tarantula Widow branch (`tarantula-training` + `tarantula-teamwork`) rostered via a Thunderspy-specific branch injection   verify: file:scripts/generate-archetypes.cjs
-- [x] 83 custom power icons backfilled from tspy `.texture` piggs (referenced-but-missing customs: Obedience Training, Spectral Aura/Melee, Knights, Pale Blade, Tarantula, …)   verify: file:scripts/extract-thunderspy-icons.py
+- [x] ~232 custom power icons backfilled from tspy `.texture` piggs — 83 core customs (Obedience Training, Spectral Aura/Melee, Knights, Pale Blade, Tarantula, …) + a later 149 from the sibling base `piggs/` (incl. the `awakened_*` Psychokinetic/Telekinetic Assault set)   verify: file:scripts/extract-thunderspy-icons.py
 
 ### Guardrails
 - [x] `audit-allowed-set-categories --gate` covers all 3 datasets in CI (catches the malformed-boostset category-pollution class)   verify: file:scripts/audit-allowed-set-categories.cjs
 - [x] `convert-pet-entities` wired for thunderspy; `regen-all --dataset thunderspy` completes green end-to-end incl. the audit gate   verify: file:scripts/regen-all.cjs
 
 ## Deferred
-- [ ] **TSPY1** — refine damage `Special` label to the real element (Fire / Smashing / …) parsed from the power's shortHelp `DMG(...)`. Magnitudes already correct; this is cosmetic + resistance-grouping only.
-- [ ] **TSPY2** — backfill the 189 still-missing icons (Lore-pet / NPC-group `banishedpantheon_*`/`tsoo_*`/…, enhancement `e_icon_*`, archetype `archetypeicon_*`). Not in tspy piggs; most sourceable from HC texture piggs. These are redirect / Lore / temp powers, not player customs.
+- [ ] **TSPY1** — refine damage element labels: multi-type powers collapse to the **primary** element (`DMG(Energy/Toxic)` → Energy) and powers whose tooltip lacks `DMG(...)` (e.g. Pale Wind) stay `Special`. Primary-element typing already ships (from shortHelp `DMG(...)`); magnitudes are correct — label-only. A `display_help` prose-parse fallback is possible but fragile.
+- [ ] **TSPY2** — backfill the ~40 still-missing icons (was ~189; 149 extracted 2026-07-02). Remainder are Lore-pet / NPC-group (`banishedpantheon_*`, `tsoo_*`, …), enhancement (`e_icon_*`), and archetype (`archetypeicon_*`) icons absent from every local Sweet Tea pigg — sourceable from HC texture piggs (`--assets-dir <…/Homecoming/assets/live>`). These are redirect / Lore / temp powers, not player customs.
 - [ ] **TSPY3** — 92 powerset records (1.4%) still fail to parse — likely a fourth rare layout variant. Not investigated.
 - [ ] **TSPY4** — populate tspy `pet-lifespans.json` / `self-destruct-delays.json` (currently 0 entries). These come from pet-power *effect* parsing, a separate path from `VillainDef.bin`; only affects temp-pet despawn timing.
 - [ ] **TSPY5** — add a Thunderspy archetype-stats test mirroring the HC one (`src/data/archetype-stats.test.ts` currently covers HC/Rebirth only).
 - [ ] **TSPY6** — extract effect-template tail fields (cancel_events, suppress_events, stacking metadata). Variable tail layout; the fields the planner uses for damage/heal/mez math are already extracted reliably.
 - [ ] **TSPY7** — decide whether to add thunderspy to `regen-all.cjs`'s default dataset list + the CI regen-diff (currently `[homecoming, rebirth]`; thunderspy is covered by the dedicated ci.yml audit step instead). Precondition: its full generated tree must be committed byte-stable first.
+- [ ] **TSPY8** — code-split the dataset bundles. All 3 datasets ship in one ~14 MB chunk to every visitor (drove the deploy heap bump to 6144 MB); a dynamic-import split would cut initial page-load weight. Perf-only — not a scaling need now that the roster is final.
 
 ---
 

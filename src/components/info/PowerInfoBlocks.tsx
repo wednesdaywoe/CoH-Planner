@@ -190,7 +190,7 @@ export function GeneralStatsBlock({
   // their shell's Self/SingleTarget/Location area with radius 0, so their real
   // AoE footprint lives on the pseudo-pet. Surface that as the display area
   // instead of the misleading "Single Target" — display-only, never mutates the
-  // power's real effect_area. See parser_logs/BIN-PARSER-LOG.md.
+  // power's real effect_area. See streams/HOMECOMING_PARSER.md.
   const patchArea = deriveSummonPatchArea(power, effects);
   // Proc area-factor geometry. `effects.arc` is already in degrees and
   // `effects.radius` is the BASE radius (a cone's enhanced reach must not
@@ -600,7 +600,7 @@ function formatEffectArea(area: EffectArea | undefined, effects: { radius?: numb
  * AoE ability (callers then fall back to the power's own effect_area).
  *
  * Display-only: the real effect_area is never mutated — downstream calc/targeting
- * depends on the literal Self/SingleTarget value. See parser_logs/BIN-PARSER-LOG.md.
+ * depends on the literal Self/SingleTarget value. See streams/HOMECOMING_PARSER.md.
  */
 function deriveSummonPatchArea(
   power: Power,

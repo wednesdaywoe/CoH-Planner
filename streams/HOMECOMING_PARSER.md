@@ -1,16 +1,26 @@
-# Bin Parser Log
+---
+project: coh-sidekick
+kind: plan
+title: Homecoming Parser
+relates:
+  - REBIRTH_PARSER.md
+  - THUNDERSPY_PARSER.md
+  - THUNDERSPY_SUPPORT_PROGRESS.md
+---
+
+# Homecoming Parser
 
 Running log of bugs and gaps in the binary parser → JSON conversion pipeline
-(`tools/bin-crawler/` + `scripts/convert-powerset.cjs` + `scripts/convert-epic-pools.cjs`), with diagnoses and recommended fixes. Newest entries at top, in the "NEW ISSUES/UNRESOLVED" section. When completed, move the entry to the top of "RESOLVED" section with details of the fix or any other relevant information.
+(`tools/bin-crawler/` + `scripts/convert-powerset.cjs` + `scripts/convert-epic-pools.cjs`), with diagnoses and recommended fixes. Newest entries at top as `- [ ]` items under `## Active`. When completed, move the entry into `## Resolved` (checkbox `- [x]`) with the fix details.
 
 > **Before you make any edits** Be sure to read `GAME-DATA-PRINCIPLES.md`
 
-> **Rebirth-specific gaps** are indexed in [to-do/REBIRTH_DATA_GAPS.md](to-do/REBIRTH_DATA_GAPS.md)
+> **Rebirth-specific gaps** are indexed in [REBIRTH_PARSER.md](REBIRTH_PARSER.md)
 > (the front door for the Rebirth dataset — most trace to one root: Parse6 drops AttribMod
 > tail/condition fields that Parse7 decodes). Rebirth findings still get their detailed
 > write-up *here*; that doc links back to them.
 
-> **Thunderspy-specific gaps** are logged in [THUNDERSPY-PARSER-LOG.md](THUNDERSPY-PARSER-LOG.md)
+> **Thunderspy-specific gaps** are logged in [THUNDERSPY_PARSER.md](THUNDERSPY_PARSER.md)
 > (Parse7 framing + Parse6-derived 50-level schema; home of the custom **Primalist** AT).
 > Resolved there: `Class_Primalist` empty-categories (`.texture` icon anchor) + export
 > filter; class `attribs` (HP/caps/threat/dmg-cap) via a new Parse7+50-level layout. No
@@ -18,7 +28,7 @@ Running log of bugs and gaps in the binary parser → JSON conversion pipeline
 
 >Agent note: One small flag for your separate task: when you pick up the parser work, the verification tooling I built is at c:\tmp\ (oracle-verify.mjs, override-audit.mjs, etc.) — handy if you end up retiring the Discharge overrides after the parser fix, to confirm the audit goes 9 → 7.
 
-> --- NEW ISSUES / UNRESOLVED ---
+## Active
 
 *(Sibling game-data finding from the I28P3 audit — NOT a parser issue, logged here only for
 cross-reference: Sentinel `Blinding_Powder` Confuse **scale is 10**, but the patch notes
@@ -26,9 +36,163 @@ and the Scrapper/Stalker versions say **12**. The parser reads it correctly — 
 as 12 — so the binary genuinely contains 10 on the Sentinel record. Flagged to the dev team;
 data pushed as-is.)*
 
-> ---RESOLVED ---
+- [~] `.powers` extraction-completeness audit
 
-## ✅ Chain / max-targets expression fields — ChainTarget + MaxTargetsExpr recovered & verified against HC oracle — 2026-07-01
+Decision (2026-06-04): stop omitting *mechanically-relevant* data for file size. The
+naïve early choice to skip "build-irrelevant" fields keeps surprising us (knockback,
+foe -KB, brute mods, Kheldian effects). New rule: **capture everything that affects what
+a power does; skip only asset references** (`VisualFX`/`.PFX` paths, animation `include`s,
+combat-text message IDs, icon internals).
+
+Oracle: the HC dev's authoritative `.powers` source defs (`raw defs/`, 4,943 powers,
+same category structure, gitignored). Confirmed OK to use (public game data, anon source).
+
+**Framework built + one-time sweep done (2026-06-04):** `tools/extraction-audit/` —
+`parse_powers.py` (parses the brace-nested `.powers` format) + `audit.py` (Phase-1
+comparator: `.powers` vs `exported_powers`). Sweep covered 4,943 raw defs — **3,686
+audited**, 1,257 skipped (no export; NPC/Temporary_Powers categories we don't extract).
+Report snapshot: `tools/extraction-audit/gap-report.json`.
+
+### Sweep findings — Phase 1 (parser/export gaps)
+
+**Power-level fields genuinely absent from our export (clean signal — distinct names,
+no normalization ambiguity). Several are mechanically relevant:**
+
+| `.powers` field | # powers | relevance |
+|---|---|---|
+| `ModesDisallowed` | 3,475 | power disabled in certain modes (mez'd/phased/etc.) |
+| `TimeToRoot` | 2,340 | animation root/lock time — affects DPS & rotation |
+| `StrengthsDisallowed` | 951 | which enhancement aspects can't affect the power |
+| `BuyRequires` | 631 | power prerequisites — build legality |
+| `ToggleIgnoreHold/Sleep/Stun` | 524 | **toggle persists through mez** |
+| `IgnoreStrength` | 438 | effect unaffected by enh strength — **currently sourced from CoD2**; capturing natively closes that dependency |
+| `CastThroughHold/Sleep/Stun/Terrorize` | ~48+ | **power usable while mez'd** |
+
+**Attrib comparison is NOT yet trustworthy** — its top entries are *normalization
+artifacts*, not gaps. Verified: `.powers` `kDefense` = our `Base_Defense`,
+`kSpeedFlying/Running/Jumping` = `FlyingSpeed`/`RunningSpeed`/`JumpingSpeed`,
+`kEntCreate` = `Create_Entity`, the damage types = `*_Dmg`. `audit.py`'s `norm_attrib`
+needs a real `.powers`↔export attrib name-map before its numbers mean anything. The
+*real* attrib gaps underneath match the known unmapped-exotic class (CLAUDE.md ~7%):
+`*_Elusivity` (`*elude`), `revoke_power`, `grant_power`/`grant_boosted_power`,
+`silent_kill`, `cancel_mods`, `set_costume`, `jump_pack`, `xp_debt_protection`,
+`null_bool`. (Note: Energy Torrent is faithful at the effect-group level — 5 vs 5,
+not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
+
+### Progress
+- [x] **`cast_through` (Blaster Defiance — "Cast While Mez'd")** surfaced
+  (`418f3ec82`). Was already in the export, just unused — a Phase-2 captured-but-
+  unused gap. Converter→model→display, 177 powers. No parser/re-export needed.
+- [x] **`toggle_ignore` ("Stays On While Mez'd")** captured (`542c9baea`). DID need
+  parser work: `_parse_cast_flags` read `cast_through` then skipped the next 6
+  bools — now reads the 3 `toggle_ignore_*` ones (alignment preserved). Re-exported
+  both datasets (de-risked: `toggle_ignore`-only, no drift; sole incidental change
+  was Rest gaining `allowed_set_categories ['Rest Buff']`). 784 powers. This proved
+  the full parser→export→converter→model→display path and the re-export workflow.
+- [~] **`IgnoreStrength` — CONFIRMED CALC GAP (not "moot" — that earlier call was
+  wrong).** The data is captured (`template.flags`), so nothing is lost; the gap is
+  that the **converter only honors `IgnoreStrength` for regeneration** (the
+  `resType === 'regeneration'` branch → `regenBuffUnenhanced`/`effects.n`). Every
+  other real-stat effect that ignores strength is mishandled. After filtering the
+  traps (the `aspect=Strength, scale=0` damage **meta-template**; `aspect=Resistance`
+  -Res/debuff-resistance templates that merely use `*_Dmg`/`Base_Defense` attribs;
+  procs; pets), **288 player-powerset effects** remain with a genuine
+  `aspect=Current/Absolute` `IgnoreStrength`: Endurance 120, Recovery 90, ToHit 50,
+  Base_Defense 10, RechargeTime 8, Heal 7, Absorb 3. Two failure modes:
+  - **Over-enhance** (main `effects`): emitted as a normal enhanceable effect.
+    *Confirmed:* Bio Armor **Environmental Adaptation**'s +ToHit (0.75, `IgnoreStrength`
+    in game) → generated `tohitBuff: 0.75`, and `tohitBuff` has
+    `enhancementAspect: 'tohit'`, so the calc boosts it with ToHit IOs / global +ToHit.
+  - **Dropped entirely** (`activation_effects` toggles/autos): the converter drops
+    non-regen `IgnoreStrength` templates there (`isDropForActivationEffects`) — the
+    very "missing data" pattern we keep getting bitten by.
+  **Fix:** generalize the unenhanceable handling beyond regen — route the effect to a
+  `…Unenhanced` key and add it to its global total WITHOUT the enhancement multiplier.
+  Calc-affecting; needs care (the meta-template / resistance traps above show how a
+  naïve `flags.includes('IgnoreStrength')` over-fires). Scope with the
+  `aspect ∈ {Current,Absolute,Magnitude}` + non-proc discriminator validated here.
+  The discipline: the data was never the problem — our *use* of it was.
+
+  **Status (2026-06-04):**
+  - [x] **Recovery + ToHit FIXED** (`940d89dbb`): `recoveryBuffUnenhanced` /
+    `tohitBuffUnenhanced` keys; 65 powers reclassified; confirmed Env Adaptation +ToHit
+    no longer enhanced. tsc + 84 tests.
+  - [~] **Refinement** — the original "288" over-counted on two fronts:
+    - `recharge`, `absorb`, `endurance` (`enduranceGain`) carry `IgnoreStrength` but
+      are **not enhanced in the calc** (a +recharge buff isn't boosted by Recharge IOs,
+      etc.) → **no over-enhance bug**; correctly left as-is.
+    - [x] **Defense is NOT a bug either** (verified by inspecting all 10): every
+      `Base_Defense` `IgnoreStrength` case is a **debuff or self-penalty**, not a buff
+      — Eye of the Storm is a foe `-Def` (`Melee_Debuff_Def` table); Rage (−0.2), Rest
+      (−1000), Vulnerability (−0.1125) are negative-scale self-crashes already routed
+      to `defenseDebuff`. No genuine defense **buff** carries `IgnoreStrength`. The
+      earlier "Defense (10)" count was debuffs caught by a too-loose filter.
+  - [x] **Heal FIXED** (single-portion heals). Heal flows `extractDamage` → a
+    `type:'Heal'` damage entry → re-extracted into a `healing` effect, which was
+    duplicated in three places. Consolidated into one helper
+    (`src/utils/calculations/healing.ts` `extractHealingFromDamage`, replacing the
+    copies in `InfoPanel.tsx`, `PowerInfoTooltip.tsx`, `CompareSlottingModal.tsx`),
+    then threaded `IgnoreStrength`: the converter tags `Heal` entries with
+    `ignoreStrength`, the helper carries it, and `power-stats.ts` skips Healing enh /
+    global +Heal for it. Fixed the genuine single-IgnoreStrength-heal powers —
+    **Inner Will, Restore Essence (7.5), Energy Transfer** — no longer over-enhanced.
+  - [x] **Both-portions heal SUMMED** (`extractHealingFromDamage` now combines same-table
+    `type:'Heal'` entries into `scale` + `unenhancedScale`; `power-stats` enhances only
+    `scale − unenhancedScale`). This unified single-portion / fully-unenhanced /
+    both-portions handling and **fixed Inner Will** (it actually pairs a 0.075
+    IgnoreStrength heal with a 0.075 enhanceable one — the old "take first entry" logic
+    showed only 0.075; now 0.15 with enh on half). Runtime-only (the entries were
+    already in `generated`), tsc + 84 tests.
+  - [x] **FIXED — per-target HP-state leech effects (DNA Siphon etc.) were dropped.**
+    Distinct from IgnoreStrength: leech powers gate effects on the *target's* HP state
+    — `Cur.kHitPoints target> 0 >` (per **living** foe) / `... ==` (per **defeated**
+    foe). The converter's conditional-gate filter treated these as positive-state
+    gates and dropped the effects, so DNA Siphon showed **no heal/+End/+Regen/
+    +Recovery**, Phoenix Awakening no Heal-over-Time, Glitz no damage, Soul Absorption
+    no -ToHit. Per-case analysis showed they're the powers' **advertised base effects**
+    (DNA Siphon's "Self +HP, +End, +Special"), NOT toggle conditions. Fix: add the
+    `Cur.kHitPoints target> 0 (>|==)` clause to `_stripIgnoredClauses`, so pure HP-state
+    gates fold into the base display (with `perTarget` preserving the per-foe scaling)
+    while a trailing **mode** clause (`kDefensiveAdaptation Source.Mode?`) survives and
+    keeps that portion an Adaptation conditional. Self-rez (`kHitPoints == 0`, no
+    `target>`) untouched. 15 generated files (the ~9 leech/state powers × datasets);
+    tsc + 84 tests. (The Warshade dead-enemy mechanic the user flagged — Stygian Circle
+    — uses a *different* gate and isn't affected here.)
+    - *Minor remaining:* DNA Siphon's mode-gated **heal** bonus (Defensive +0.375),
+      being a heal-via-`damage` entry, doesn't surface in the Adaptation
+      `conditionalEffects` (the heal-from-damage / mode-conditional paths don't meet).
+      Base heal is correct; only the mode bonus is under-shown.
+  - [x] **`activation_effects` drop — verified harmless (no action).** Audited every
+    non-regen `IgnoreStrength` self template the filter drops: **0** are real
+    enhanceable buffs (aspect=Current/Absolute on recovery/tohit/heal/defense/etc.).
+    The non-duplicate drops are all meta-templates (the all-damage-types strength row,
+    `Set_Mode`, `Grant_Power`, `Create_Entity`, `Global_Chance_Mod` — correctly
+    dropped / skipped by `extractEffects` anyway) or protection (mez/KB/debuff-
+    resistance) that is **also captured from the power's main `effects`** (confirmed:
+    Entropy Shield's `mezResistance` etc. are present). So the drop loses nothing real
+    — the earlier "duplicate-vs-genuine" worry didn't survive verification.
+
+### Next steps
+- [x] **`IgnoreStrength` DONE**; **per-target HP-state leech effects DONE** (DNA Siphon /
+   Phoenix Awakening / Glitz / Soul Absorption now surface their advertised effects).
+   Minor leftover: DNA Siphon's mode-gated *heal* bonus (heal-via-damage + mode) doesn't
+   reach the Adaptation conditionalEffects — needs the heal/mode-conditional paths joined.
+- [ ] **Other clean power-field captures** (same pattern as the mez fields):
+  `TimeToRoot` (2,340 — animation lock, affects DPS/rotation), `ModesDisallowed`
+  (3,475), `StrengthsDisallowed` (951), `BuyRequires` (631). All genuinely absent,
+  distinct names. Need parser reads + re-export (the toggle_ignore workflow).
+- [ ] **Add the `.powers`↔export attrib name-map** to `audit.py` → produce a clean
+  attrib-gap list → then close the genuinely-dropped exotic attribs.
+- [ ] **Phase 2 — converter completeness**: diff `exported_powers` vs `generated` (the
+  class the knockback bug belonged to — parser captured it, converter dropped it);
+  ensure every mechanically-relevant template/field incl. `requires_expression`
+  gating is emitted. Also fold in the un-parsed template tail (`suppress_events`,
+  `flags`, `fx`).
+- [ ] **Later**: a `.powers ⊆ extraction` guard, once the sweep backlog is worked down.
+
+## Resolved
+
+- [x] Chain / max-targets expression fields — ChainTarget + MaxTargetsExpr recovered & verified against HC oracle — 2026-07-01
 
 **Ask (user):** the export was missing the `ChainTarget` (next-target selection) and
 `MaxTargetsExpr` (target-cap) RPN expressions that CoD surfaces.
@@ -87,7 +251,7 @@ Not covered (internal, non-Info-facing): the pets/redirects/inherent powers that
 fields in the export use other converters (`convert-pet-entities`, `reconvert-redirect-powersets`,
 …) — regenerate those if the fields are ever needed there.
 
-## ✅ Summon-shell "ground patch" powers now surface the pseudo-pet's AoE footprint (Burn et al.) — display-only, bin untouched — 2026-06-24
+- [x] Summon-shell "ground patch" powers now surface the pseudo-pet's AoE footprint (Burn et al.) — display-only, bin untouched — 2026-06-24
 
 **Was.** Burn showed as **Single Target** with no radius/cap; Location patches (Tar Patch,
 Rain of Fire, Caltrops, Ice Storm, …) showed a bare "Location AoE" with the radius/cap hidden —
@@ -116,7 +280,7 @@ downstream calc/targeting depends on it).** New `deriveSummonPatchArea(power, ef
 Types: `ResolvedPseudoPet`/`ResolvedPseudoPetAbility` re-exported from `@/types`. `tsc` clean;
 44 pseudo-pet data/calc tests still green (display change touches no calc path).
 
-## ✅ Burn / Lightning Rod showed ZERO damage — a gated FieryEmbrace bonus beside the base DoT flipped the whole ability to `conditionalDamage` — 2026-06-24
+- [x] Burn / Lightning Rod showed ZERO damage — a gated FieryEmbrace bonus beside the base DoT flipped the whole ability to `conditionalDamage` — 2026-06-24
 
 **Symptom.** Burn displayed **no damage at all** (and Lightning Rod likewise). The summon
 shell's resolved pseudo-pet carried the right scales, but the Damage block was empty.
@@ -147,7 +311,7 @@ Sentinel/Stalker Fiery Aura) and Lightning Rod ×4 (Electric Melee) — each dif
 never hitting the all-gated branch). `tsc` clean; full suite **577/577** green (the
 `pseudopet-redirect` Burn FE-variant test now passes for the right reason).
 
-## ✅ `Grant_Power → Temporary_Powers` DoT procs resolved end-to-end — Molten Embrace / Hidden Flame DoT now visible + enhanceable-aware (full 3-layer fix, 2026-06-24)
+- [x] `Grant_Power → Temporary_Powers` DoT procs resolved end-to-end — Molten Embrace / Hidden Flame DoT now visible + enhanceable-aware (full 3-layer fix, 2026-06-24)
 
 **Gap (from the I28P3 audit).** The note "Molten Embrace [Sentinels] — the DoT damage proc
 is now affected by damage enhancements and buffs" was unverifiable from `exported_powers/`:
@@ -214,7 +378,7 @@ player's attack chain) is a separate calc feature, not a data gap.
 Blinding Powder's "+30% crit chance for 10s" `Global_Chance_Mod`) — any ad-hoc tooling reading
 these JSONs must walk both or it under-reads.
 
-## ✅ Thunderspy Primalist orphan-power LEAK into the HC export — source-aware category gating (2026-06-24)
+- [x] Thunderspy Primalist orphan-power LEAK into the HC export — source-aware category gating (2026-06-24)
 
 **Bug (found during the I28P3 export regen).** The HC export contained three
 Thunderspy-only Primalist categories — `feral_might` (14), `primal_gifts` (12),
@@ -271,7 +435,7 @@ Rebirth pet-entities unchanged. Exhaustive post-sweep of all HC surfaces (export
 datasets/homecoming, generated, entities, tables) = clean; remaining "primal" hits are the
 Kheldian **Primal Energy** inherent and the Sorcery **Enflame** pet (not the Primalist AT).
 
-## ✅ HC P-hash "entity_def" FIXED — it was the EntCreate float/combat-text message, now resolved to the real entity at the parser — 2026-06-12
+- [x] HC P-hash "entity_def" FIXED — it was the EntCreate float/combat-text message, now resolved to the real entity at the parser — 2026-06-12
 
 **The premise was wrong.** This was filed as "an opaque entity-def reference needing a
 separate villain/entity-def bin's name table (new parser, high effort)." It is none of
@@ -336,7 +500,7 @@ committed P-hash entity_def** (no collateral). Applied + regenerated HC powerset
 Guards: `multipet-summon-count.test.ts` (Rain-of-Arrows assertion updated: P-hash resolved →
 assert the two distinct resolved names) + the pseudopet suites. tsc clean, 476 tests.
 
-## ✅ Rebirth Parse6 AttribMod flags decoded — IgnoreStrength/Resistance/CombatMods (bundled full re-export) (2026-06-12)
+- [x] Rebirth Parse6 AttribMod flags decoded — IgnoreStrength/Resistance/CombatMods (bundled full re-export) (2026-06-12)
 
 **Gap.** Rebirth template `flags` were always `[]` — the calc never saw `IgnoreStrength`,
 so 81 player powers (Bio Armor, Stone Armor toggles, Unstoppable, Meltdown, Power Surge,
@@ -362,7 +526,7 @@ changes. Applied + regenerated: 69 generated files change (all legit IgnoreStren
 splits / `ignoreStrength:true`), **HC untouched**, `tags: null→[]` refreshed, `entities/`
 already current (separate `export_entities.py` path, 0 changes). tsc clean, 480 tests.
 
-## ⏸️ Rebirth stealth suppression (NictusFX) — fix BUILT then REVERTED to additive (deliberate, 2026-06-12)
+- [x] Rebirth stealth suppression (NictusFX) — fix BUILT then REVERTED to additive (deliberate, 2026-06-12)
 
 > **OUTCOME: Rebirth stealth is kept ADDITIVE.** The cross-server-oracle fix below was built,
 > validated, and then **deliberately reverted** (user call) — per the Jounin lesson (Rebirth
@@ -404,7 +568,7 @@ powers) gain `stackKey: "NictusFX"`; Hide / Grant Invis / Mask Presence / IO pro
 additive. Guard: [rebirth-stealth-suppress.test.ts](src/data/rebirth-stealth-suppress.test.ts).
 tsc clean, 480 tests.
 
-## ✅ Rebirth "Return From The Grave" resurrection set — mislabeled "Brute Archetype Sets" → new "Resurrection" category (2026-06-12)
+- [x] Rebirth "Return From The Grave" resurrection set — mislabeled "Brute Archetype Sets" → new "Resurrection" category (2026-06-12)
 
 **Bug (Rebirth).** Return From The Grave / Superior (Rebirth's first-ever Rez IO
 set, Halloween event) showed up as a **Brute Archetype Set**. Its 60-power pool
@@ -445,10 +609,10 @@ byte-identical to the standard Melee(511)/Knockback(608)/Resist(314) pools, so
 pool-matching assigns them right. Replaced the false TODOs with the verified note.
 (b) The Call Jounin "missing Accurate Defense Debuff" question is now PROVEN a
 genuine Rebirth client `boostsets.bin` omission (not a dropped field/parser gap) —
-see [to-do/REBIRTH_DATA_GAPS.md](to-do/REBIRTH_DATA_GAPS.md) §1 and
+see [REBIRTH_PARSER.md](REBIRTH_PARSER.md) §1 and
 `memory/io-set-category-plumbing.md`; parked pending live-client confirmation.
 
-## ✅ SYSTEMIC parser misalignment FIXED — 1133 powers' dropped effects restored (incl. Trip Mine) — 2026-06-11
+- [x] SYSTEMIC parser misalignment FIXED — 1133 powers' dropped effects restored (incl. Trip Mine) — 2026-06-11
 
 **One-line root fix** in [_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py):
 the field before the redirect block was read as a lone `read_u4()` ("redirect
@@ -532,7 +696,7 @@ bin.
 
 </details>
 
-## ✅ Remote Bomb shows damage — `*_Info` display-power resolution (4 powers) — 2026-06-11
+- [x] Remote Bomb shows damage — `*_Info` display-power resolution (4 powers) — 2026-06-11
 
 Surfaced right after the Trip Mine fix (user: "Trip Mine shows damage, Remote Bomb does
 not"). **Different root** — not the parser, and not a pet: **Remote Bomb** (Blaster
@@ -558,7 +722,7 @@ gated to the redirect-shell+`_Info` shape so nothing else is touched. Guard:
 tests. *(Traps damage values worth an in-game spot-check — they come from the generic
 `Remote_Bomb_Info`/"Temporal Bomb" display power.)*
 
-## ✅ Rebirth Tar Patch no longer shows "To Hit Debuff" — Witchcraft recategorized "Universal Debuff" (2026-06-11)
+- [x] Rebirth Tar Patch no longer shows "To Hit Debuff" — Witchcraft recategorized "Universal Debuff" (2026-06-11)
 
 **Bug (user, Rebirth):** Tar Patch's slotting offered "To Hit Debuff" sets, but in-game
 it only takes Slow, **Universal Debuff**, Range, Endurance, Recharge.
@@ -595,7 +759,7 @@ AND gain "Universal Debuff" — the discriminator is exact. Regen changed Rebirt
 [rebirth-universal-debuff.test.ts](src/data/rebirth-universal-debuff.test.ts). tsc clean,
 466 tests. See [[epic-pool-availability-class-gate]] for the sibling Rebirth-slotting work.
 
-## ✅ "Low-value leftovers" were two real bugs + one near-miss (skeptic pass, 2026-06-11)
+- [x] "Low-value leftovers" were two real bugs + one near-miss (skeptic pass, 2026-06-11)
 
 A skeptic re-investigation of the three items the log had filed as "cosmetic / low
 priority / can't fix." Two were genuinely-wrong player-facing bugs with clean fixes;
@@ -653,7 +817,7 @@ closed by this.)
 tsc clean; 458/458 tests (was 455 + 3 multipet). See [[pseudo-pet-resolution]],
 [[proc-piece-name-misresolution]].
 
-## ✅ regen-all now refreshes pools/epics — orchestrator dry-run fixed, stranded converter drift landed (2026-06-11)
+- [x] regen-all now refreshes pools/epics — orchestrator dry-run fixed, stranded converter drift landed (2026-06-11)
 
 **Root cause (as diagnosed).** `scripts/regen-all.cjs` ran `convert-pool-powers.cjs`
 and `convert-epic-pools.cjs` with `args: []`, but both DRY-RUN unless given `--apply`.
@@ -702,7 +866,7 @@ pool/epic generated layer is current, any `overrides/power-pools.ts` /
 natively are candidate **dead pins** — worth an MSOT-4-style audit pass, but left
 untouched to keep this diff attributable. See [[adversarial-remediation-campaign]].
 
-## ✅ Stealth radius binary-sourced stacking groups — `stack_key` carried, suppress-group max model (2026-06-11)
+- [x] Stealth radius binary-sourced stacking groups — `stack_key` carried, suppress-group max model (2026-06-11)
 
 **Symptom.** Celerity / Unbounded Leap +Stealth IO procs didn't count toward the
 stealth-radius dashboard stat (DP/NIN Sentinel report). The proximate cause was a calc
@@ -766,7 +930,7 @@ Rebirth over-counts builds running 2+ suppress-group stealth powers. See
 tests incl. "Shinobi-Iri (35.5) + Super Speed (35) = 35.5, not 70.5" (suppress group)
 and "+ Celerity = 65.5" (IO adds on top). tsc clean.
 
-## ✅ Multi-pet summon counts — Phantom Army (6→3) + Gang War (dropped→9) fixed (2026-06-11)
+- [x] Multi-pet summon counts — Phantom Army (6→3) + Gang War (dropped→9) fixed (2026-06-11)
 
 `normalizeSummonEntities` ([convert-powerset.cjs](scripts/convert-powerset.cjs),
 runs after the effect loop) corrects the two genuine count bugs the flat
@@ -804,13 +968,13 @@ Gang War); Rebirth changes Gang War only (Phantom Army's Parse6 shape lacks the 
 pattern → no-op). Guard: [multipet-summon-count.test.ts](src/data/multipet-summon-count.test.ts)
 (incl. a Soul-Extraction-not-inflated regression assertion). tsc clean, 446 tests.
 
-## ✅ Pseudo-pet `summon.powers` redirect chains resolved (~32 powers, path C) — log reconciled 2026-06-11
+- [x] Pseudo-pet `summon.powers` redirect chains resolved (~32 powers, path C) — log reconciled 2026-06-11
 
 This was completed across seven follow-ups (Storm Cell / Category Five reference
 cases first, then full generalization to both datasets) — the `⬜` entry here was
 just never flipped. Full implementation history, worked examples, in-game-verified
 numbers, and the remaining smaller gaps live in
-**[to-do/PSEUDO-PET-POWER-RESOLUTION.md](to-do/PSEUDO-PET-POWER-RESOLUTION.md)**.
+**PSEUDO-PET-POWER-RESOLUTION.md** (no longer in the tree).
 
 Summary of what shipped (verified present + committed 2026-06-11):
 - **Resolver** `resolveSummonRedirects` + `collectTemplatesWithChance` +
@@ -842,7 +1006,7 @@ Remaining items are smaller and explicitly non-blocking (Burn's Fiery-Embrace bo
 patch toggle, Voltaic Sentinel's secondary bolt component under-count, base-aura
 face-value AoE fuzziness) — tracked in the to-do doc, not reopened.
 
-## ✅ Rebirth `is_pvp` — Phalanx Fighting ally scaling restored; Parse6 ally-buff vs PvP-split disambiguated (2026-06-11)
+- [x] Rebirth `is_pvp` — Phalanx Fighting ally scaling restored; Parse6 ally-buff vs PvP-split disambiguated (2026-06-11)
 
 **Root cause (confirmed against the Rebirth `.pigg`, now on the machine).** Parse6
 has **no explicit `is_pvp` flag** — the parser *synthesizes* it from each
@@ -901,7 +1065,7 @@ to keep the diff attributable.
 **Guard:** [rebirth-phalanx-ally-scaling.test.ts](src/data/rebirth-phalanx-ally-scaling.test.ts).
 tsc clean, 442/442 tests pass. See [[rebirth-assets-and-parse6]].
 
-## ✅ Summon `copy_boosts` binary-sourced — second AttribMod flags word decoded; Discharge overrides retired (2026-06-11)
+- [x] Summon `copy_boosts` binary-sourced — second AttribMod flags word decoded; Discharge overrides retired (2026-06-11)
 
 **Root cause.** AttribMod flags are stored across **two** consecutive u4 words.
 `flags_raw` (the first) was decoded by `_FLAG_BITS`; the **second** word — holding
@@ -964,7 +1128,7 @@ Rebirth summon's pet DPS is reported wrong.
 **Guard:** [summon-copyboosts.test.ts](src/data/summon-copyboosts.test.ts).
 tsc clean, 439/439 tests pass.
 
-## ✅ Archetype defs binary-sourced from classes.bin — HP curves/caps + baseThreat + damageCap, both servers (2026-06-06)
+- [x] Archetype defs binary-sourced from classes.bin — HP curves/caps + baseThreat + damageCap, both servers (2026-06-06)
 
 Campaign leg #2, done in three phases. The `classes.bin` parser (`_classes.py`) now
 reads the class struct's CharacterAttributes region (not just `named_tables`),
@@ -1000,9 +1164,9 @@ Pipeline: parser `attribs` → `export_classes.py` → `convert-archetypes.cjs` 
 `src/data/archetype-stats.test.ts` (60 tests, both datasets, incl. baseThreat +
 damageCap). `threat_delta` is a *negative* delta (header sits before the anchor),
 so a future HC header-field insertion would shift it — the sane-range guards + CI
-test catch a gross misread. Full write-up: **[ARCHETYPE-DEFS-BINARY-SOURCING.md](ARCHETYPE-DEFS-BINARY-SOURCING.md)**.
+test catch a gross misread. Full write-up: **ARCHETYPE-DEFS-BINARY-SOURCING.md** (no longer in the tree).
 
-## ✅ `perception` / `knockback_strength` set bonuses modeled (2026-06-06)
+- [x] `perception` / `knockback_strength` set bonuses modeled (2026-06-06)
 
 `perception` set bonuses were emitted by the source but dropped by the calc (absent from
 `STAT_NAME_MAP`). Now mapped (`perception → perceptionradius`), routed through
@@ -1011,7 +1175,7 @@ test catch a gross misread. Full write-up: **[ARCHETYPE-DEFS-BINARY-SOURCING.md]
 (intentionally ignored — KB *magnitude* bonuses aren't a tracked player stat; KB
 protection/resistance already are). Merged via `fix/io-set-bonus-followups`.
 
-## ✅ Pseudo-pet summon entities resolve from priority_list (Glue Arrow et al.) (2026-06-06)
+- [x] Pseudo-pet summon entities resolve from priority_list (Glue Arrow et al.) (2026-06-06)
 
 Location / rain / patch powers (Glue Arrow, Rain of Fire, Blizzard, Caltrops, Sleet,
 Tornado, Lightning Storm, Ice Patch, Jack Frost, Phantasm, …) deal their damage + debuffs
@@ -1025,7 +1189,7 @@ pet name (Pets_StickyArrow_Blaster, Pets_RainofFire, …), but ONLY for single-e
 resolves entity_defs (no-op there). Guard: `pseudopet-summon-entity.test.ts`. Residual gaps
 (HC exporter root cause, Phantom Army count) tracked in the unresolved section above.
 
-## ✅ IO sets are binary-sourced for both servers; bonuses fixed (2026-06-05)
+- [x] IO sets are binary-sourced for both servers; bonuses fixed (2026-06-05)
 
 `io-sets-raw.ts` (HC + Rebirth) now generates from `boostsets.bin` + `powers.bin` via
 `extract-rebirth-io-sets-v2.py --dataset <id>`; dead `convert-io-sets.js` +
@@ -1046,10 +1210,10 @@ Verifying the data (GAME-DATA-PRINCIPLES §2) caught two bug classes the prior t
 
 Validated tier-by-tier vs the trusted HC hand-data: only diffs are 20 damage display-
 rounding fixes + 1 Aegis psi/tox de-dup, 0 aspect-count regressions. Durable mechanics in
-[GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md) §11; guarded by `io-sets-bonus-keys.test.ts`
+[GAME-DATA-PRINCIPLES.md](../GAME-DATA-PRINCIPLES.md) §11; guarded by `io-sets-bonus-keys.test.ts`
 + `io-sets-heal-absorb.test.ts`. tsc clean, 110/110 tests.
 
-## ✅ Offensive knockback was dropped from ALL attacks (FIXED 2026-06-04)
+- [x] Offensive knockback was dropped from ALL attacks (FIXED 2026-06-04)
 
 Root cause of the kheldian "drops knockback" symptom: in `extractEffects`
 ([convert-powerset.cjs](scripts/convert-powerset.cjs)) the knockback handler had
@@ -1082,161 +1246,7 @@ conditional and get descriptive labels. tsc clean, 84/84 tests.
 - `homecoming/kheldian-form-variants.ts` is dead output (`InfoPanel` imports the
   **rebirth** map unconditionally); make the lookup dataset-aware when modeling resumes.
 
-## 🎯 GOAL (active) — `.powers` extraction-completeness audit
-
-Decision (2026-06-04): stop omitting *mechanically-relevant* data for file size. The
-naïve early choice to skip "build-irrelevant" fields keeps surprising us (knockback,
-foe -KB, brute mods, Kheldian effects). New rule: **capture everything that affects what
-a power does; skip only asset references** (`VisualFX`/`.PFX` paths, animation `include`s,
-combat-text message IDs, icon internals).
-
-Oracle: the HC dev's authoritative `.powers` source defs (`raw defs/`, 4,943 powers,
-same category structure, gitignored). Confirmed OK to use (public game data, anon source).
-
-**Framework built + one-time sweep done (2026-06-04):** `tools/extraction-audit/` —
-`parse_powers.py` (parses the brace-nested `.powers` format) + `audit.py` (Phase-1
-comparator: `.powers` vs `exported_powers`). Sweep covered 4,943 raw defs — **3,686
-audited**, 1,257 skipped (no export; NPC/Temporary_Powers categories we don't extract).
-Report snapshot: `tools/extraction-audit/gap-report.json`.
-
-### Sweep findings — Phase 1 (parser/export gaps)
-
-**Power-level fields genuinely absent from our export (clean signal — distinct names,
-no normalization ambiguity). Several are mechanically relevant:**
-
-| `.powers` field | # powers | relevance |
-|---|---|---|
-| `ModesDisallowed` | 3,475 | power disabled in certain modes (mez'd/phased/etc.) |
-| `TimeToRoot` | 2,340 | animation root/lock time — affects DPS & rotation |
-| `StrengthsDisallowed` | 951 | which enhancement aspects can't affect the power |
-| `BuyRequires` | 631 | power prerequisites — build legality |
-| `ToggleIgnoreHold/Sleep/Stun` | 524 | **toggle persists through mez** |
-| `IgnoreStrength` | 438 | effect unaffected by enh strength — **currently sourced from CoD2**; capturing natively closes that dependency |
-| `CastThroughHold/Sleep/Stun/Terrorize` | ~48+ | **power usable while mez'd** |
-
-**Attrib comparison is NOT yet trustworthy** — its top entries are *normalization
-artifacts*, not gaps. Verified: `.powers` `kDefense` = our `Base_Defense`,
-`kSpeedFlying/Running/Jumping` = `FlyingSpeed`/`RunningSpeed`/`JumpingSpeed`,
-`kEntCreate` = `Create_Entity`, the damage types = `*_Dmg`. `audit.py`'s `norm_attrib`
-needs a real `.powers`↔export attrib name-map before its numbers mean anything. The
-*real* attrib gaps underneath match the known unmapped-exotic class (CLAUDE.md ~7%):
-`*_Elusivity` (`*elude`), `revoke_power`, `grant_power`/`grant_boosted_power`,
-`silent_kill`, `cancel_mods`, `set_costume`, `jump_pack`, `xp_debt_protection`,
-`null_bool`. (Note: Energy Torrent is faithful at the effect-group level — 5 vs 5,
-not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
-
-### Progress
-- ✅ **`cast_through` (Blaster Defiance — "Cast While Mez'd")** surfaced
-  (`418f3ec82`). Was already in the export, just unused — a Phase-2 captured-but-
-  unused gap. Converter→model→display, 177 powers. No parser/re-export needed.
-- ✅ **`toggle_ignore` ("Stays On While Mez'd")** captured (`542c9baea`). DID need
-  parser work: `_parse_cast_flags` read `cast_through` then skipped the next 6
-  bools — now reads the 3 `toggle_ignore_*` ones (alignment preserved). Re-exported
-  both datasets (de-risked: `toggle_ignore`-only, no drift; sole incidental change
-  was Rest gaining `allowed_set_categories ['Rest Buff']`). 784 powers. This proved
-  the full parser→export→converter→model→display path and the re-export workflow.
-- ⚠️ **`IgnoreStrength` — CONFIRMED CALC GAP (not "moot" — that earlier call was
-  wrong).** The data is captured (`template.flags`), so nothing is lost; the gap is
-  that the **converter only honors `IgnoreStrength` for regeneration** (the
-  `resType === 'regeneration'` branch → `regenBuffUnenhanced`/`effects.n`). Every
-  other real-stat effect that ignores strength is mishandled. After filtering the
-  traps (the `aspect=Strength, scale=0` damage **meta-template**; `aspect=Resistance`
-  -Res/debuff-resistance templates that merely use `*_Dmg`/`Base_Defense` attribs;
-  procs; pets), **288 player-powerset effects** remain with a genuine
-  `aspect=Current/Absolute` `IgnoreStrength`: Endurance 120, Recovery 90, ToHit 50,
-  Base_Defense 10, RechargeTime 8, Heal 7, Absorb 3. Two failure modes:
-  - **Over-enhance** (main `effects`): emitted as a normal enhanceable effect.
-    *Confirmed:* Bio Armor **Environmental Adaptation**'s +ToHit (0.75, `IgnoreStrength`
-    in game) → generated `tohitBuff: 0.75`, and `tohitBuff` has
-    `enhancementAspect: 'tohit'`, so the calc boosts it with ToHit IOs / global +ToHit.
-  - **Dropped entirely** (`activation_effects` toggles/autos): the converter drops
-    non-regen `IgnoreStrength` templates there (`isDropForActivationEffects`) — the
-    very "missing data" pattern we keep getting bitten by.
-  **Fix:** generalize the unenhanceable handling beyond regen — route the effect to a
-  `…Unenhanced` key and add it to its global total WITHOUT the enhancement multiplier.
-  Calc-affecting; needs care (the meta-template / resistance traps above show how a
-  naïve `flags.includes('IgnoreStrength')` over-fires). Scope with the
-  `aspect ∈ {Current,Absolute,Magnitude}` + non-proc discriminator validated here.
-  The discipline: the data was never the problem — our *use* of it was.
-
-  **Status (2026-06-04):**
-  - ✅ **Recovery + ToHit FIXED** (`940d89dbb`): `recoveryBuffUnenhanced` /
-    `tohitBuffUnenhanced` keys; 65 powers reclassified; confirmed Env Adaptation +ToHit
-    no longer enhanced. tsc + 84 tests.
-  - 🔎 **Refinement** — the original "288" over-counted on two fronts:
-    - `recharge`, `absorb`, `endurance` (`enduranceGain`) carry `IgnoreStrength` but
-      are **not enhanced in the calc** (a +recharge buff isn't boosted by Recharge IOs,
-      etc.) → **no over-enhance bug**; correctly left as-is.
-    - ✅ **Defense is NOT a bug either** (verified by inspecting all 10): every
-      `Base_Defense` `IgnoreStrength` case is a **debuff or self-penalty**, not a buff
-      — Eye of the Storm is a foe `-Def` (`Melee_Debuff_Def` table); Rage (−0.2), Rest
-      (−1000), Vulnerability (−0.1125) are negative-scale self-crashes already routed
-      to `defenseDebuff`. No genuine defense **buff** carries `IgnoreStrength`. The
-      earlier "Defense (10)" count was debuffs caught by a too-loose filter.
-  - ✅ **Heal FIXED** (single-portion heals). Heal flows `extractDamage` → a
-    `type:'Heal'` damage entry → re-extracted into a `healing` effect, which was
-    duplicated in three places. Consolidated into one helper
-    (`src/utils/calculations/healing.ts` `extractHealingFromDamage`, replacing the
-    copies in `InfoPanel.tsx`, `PowerInfoTooltip.tsx`, `CompareSlottingModal.tsx`),
-    then threaded `IgnoreStrength`: the converter tags `Heal` entries with
-    `ignoreStrength`, the helper carries it, and `power-stats.ts` skips Healing enh /
-    global +Heal for it. Fixed the genuine single-IgnoreStrength-heal powers —
-    **Inner Will, Restore Essence (7.5), Energy Transfer** — no longer over-enhanced.
-  - ✅ **Both-portions heal SUMMED** (`extractHealingFromDamage` now combines same-table
-    `type:'Heal'` entries into `scale` + `unenhancedScale`; `power-stats` enhances only
-    `scale − unenhancedScale`). This unified single-portion / fully-unenhanced /
-    both-portions handling and **fixed Inner Will** (it actually pairs a 0.075
-    IgnoreStrength heal with a 0.075 enhanceable one — the old "take first entry" logic
-    showed only 0.075; now 0.15 with enh on half). Runtime-only (the entries were
-    already in `generated`), tsc + 84 tests.
-  - ✅ **FIXED — per-target HP-state leech effects (DNA Siphon etc.) were dropped.**
-    Distinct from IgnoreStrength: leech powers gate effects on the *target's* HP state
-    — `Cur.kHitPoints target> 0 >` (per **living** foe) / `... ==` (per **defeated**
-    foe). The converter's conditional-gate filter treated these as positive-state
-    gates and dropped the effects, so DNA Siphon showed **no heal/+End/+Regen/
-    +Recovery**, Phoenix Awakening no Heal-over-Time, Glitz no damage, Soul Absorption
-    no -ToHit. Per-case analysis showed they're the powers' **advertised base effects**
-    (DNA Siphon's "Self +HP, +End, +Special"), NOT toggle conditions. Fix: add the
-    `Cur.kHitPoints target> 0 (>|==)` clause to `_stripIgnoredClauses`, so pure HP-state
-    gates fold into the base display (with `perTarget` preserving the per-foe scaling)
-    while a trailing **mode** clause (`kDefensiveAdaptation Source.Mode?`) survives and
-    keeps that portion an Adaptation conditional. Self-rez (`kHitPoints == 0`, no
-    `target>`) untouched. 15 generated files (the ~9 leech/state powers × datasets);
-    tsc + 84 tests. (The Warshade dead-enemy mechanic the user flagged — Stygian Circle
-    — uses a *different* gate and isn't affected here.)
-    - *Minor remaining:* DNA Siphon's mode-gated **heal** bonus (Defensive +0.375),
-      being a heal-via-`damage` entry, doesn't surface in the Adaptation
-      `conditionalEffects` (the heal-from-damage / mode-conditional paths don't meet).
-      Base heal is correct; only the mode bonus is under-shown.
-  - ✅ **`activation_effects` drop — verified harmless (no action).** Audited every
-    non-regen `IgnoreStrength` self template the filter drops: **0** are real
-    enhanceable buffs (aspect=Current/Absolute on recovery/tohit/heal/defense/etc.).
-    The non-duplicate drops are all meta-templates (the all-damage-types strength row,
-    `Set_Mode`, `Grant_Power`, `Create_Entity`, `Global_Chance_Mod` — correctly
-    dropped / skipped by `extractEffects` anyway) or protection (mez/KB/debuff-
-    resistance) that is **also captured from the power's main `effects`** (confirmed:
-    Entropy Shield's `mezResistance` etc. are present). So the drop loses nothing real
-    — the earlier "duplicate-vs-genuine" worry didn't survive verification.
-
-### Next steps (priority order)
-1. **`IgnoreStrength` DONE**; **per-target HP-state leech effects DONE** (DNA Siphon /
-   Phoenix Awakening / Glitz / Soul Absorption now surface their advertised effects).
-   Minor leftover: DNA Siphon's mode-gated *heal* bonus (heal-via-damage + mode) doesn't
-   reach the Adaptation conditionalEffects — needs the heal/mode-conditional paths joined.
-2. **Other clean power-field captures** (same pattern as the mez fields):
-   `TimeToRoot` (2,340 — animation lock, affects DPS/rotation), `ModesDisallowed`
-   (3,475), `StrengthsDisallowed` (951), `BuyRequires` (631). All genuinely absent,
-   distinct names. Need parser reads + re-export (the toggle_ignore workflow).
-3. **Add the `.powers`↔export attrib name-map** to `audit.py` → produce a clean
-   attrib-gap list → then close the genuinely-dropped exotic attribs.
-4. **Phase 2 — converter completeness**: diff `exported_powers` vs `generated` (the
-   class the knockback bug belonged to — parser captured it, converter dropped it);
-   ensure every mechanically-relevant template/field incl. `requires_expression`
-   gating is emitted. Also fold in the un-parsed template tail (`suppress_events`,
-   `flags`, `fx`).
-5. **Later**: a `.powers ⊆ extraction` guard, once the sweep backlog is worked down.
-
-## ✅ Rebirth Blaster ToHit-buff AT modifiers were stale (FIXED 2026-06-03)
+- [x] Rebirth Blaster ToHit-buff AT modifiers were stale (FIXED 2026-06-03)
 
 `rebirth/at-tables.ts` carried Homecoming's Blaster ToHit-buff base modifiers (0.10)
 instead of Rebirth's rebalanced `Melee_Buff_ToHit` 0.075 / `Ranged_Buff_ToHit` 0.07
@@ -1245,57 +1255,7 @@ it's a genuine Rebirth divergence, not a parse bug). The planner was overstating
 Blaster ToHit buffs (Aim/Tactics/Build Up). Regenerated; no other AT table drifted.
 Surfaced by the full `npm run regen` while validating the regen-diff guard.
 
-## 🎯 GOAL (deferred) — commit the converter input so CI can regenerate + byte-diff
-
-**Shipped now (the lightweight half):** [converter-invariants.test.ts](src/data/converter-invariants.test.ts)
-— a structural invariant scan over the **committed `generated/`** data that runs in CI
-with **zero raw data**. It locks in the converter-regression classes that have repeatedly
-bitten us: export const === `PascalCase(internalName)` (the bio-armor naming saga), no
-malformed bare `specialBuff` (the RechargeTime/Strength stacking regression), no unsigned
-`0xFFFFFFFF` sentinels, and no NEW `*_PvPMez` tables (prefer-PvE mez fix; a 5-entry
-allowlist grandfathers the genuinely-PvP-only powers — scramble-thoughts ×3, arctic-air,
-and `Epic.Field_Mastery.Repulsion_Bomb`). Cheap, no repo-footprint cost, catches the
-*known* failure shapes at PR time.
-
-**The deferred end-state (the heavy half):** commit the **converter input** —
-`exported_powers/` for both datasets (**~233 MB / ~25k files**, vs the 30 MB / 6,176-file
-committed `generated/` output) — so CI can run the converters **end-to-end** and byte-diff
-the regenerated `generated/` against what's committed. That catches **any** converter drift,
-not just the four known classes, and closes two gaps the current setup has:
-
-- **Reproducibility:** today a fresh clone / CI **cannot** rebuild `generated/` — the
-  converter input is gitignored, so the strongest possible guard (regenerate-and-diff) is
-  impossible. The invariant scan is a proxy for it.
-- **Two-machine fragility:** the raw source lives only on the PC + laptop local copies
-  (see CLAUDE.md "Source Data"); there is no canonical, versioned input.
-
-**Why it's the full ~233 MB, not a prunable subset.** The exporter is **not** a blind dump
-— [`export_powers.py`](tools/bin-crawler/bin_crawler/export_powers.py) already filters
-204 → ~60 categories. The 34 player AT/pool/epic categories are the core; the other ~25 are
-a *documented, genuinely-consumed dependency closure* the converters dereference:
-`*_Aux` (leap/charge hit-data via `Execute_Power`), `Pets`/`Villain_Pets`/`Mastermind_Pets`/
-`Kheldian_Pets` (snipe & redirect targets, henchman powers), and the **villain-group block**
-(Rularuu, Council, Crey, Rikti, DevouringEarth, CircleOfThorns…) that **Lore incarnate pets
-"mimic"**. That last block is why the export is full of enemy types — and it lands in the
-committed `incarnate-effects.ts` (both datasets) via `convert-pet-entities.cjs` /
-`convert-incarnate-effects.cjs`. So a CI regen needs the **whole closure**, not the 34 AT
-categories. (The real over-export is *granularity within* those categories — a whole 302-file
-`council/` is pulled for ~3-4 Lore-referenced attacks — but tightening that needs the full
-transitive entity/redirect closure, fragile and not worth it.)
-
-**Decision (2026-06-03): commit the full ~233 MB as-is.** Acceptable because GitHub allows
-it — no single file approaches the 100 MB hard limit (every power JSON is KB-scale; biggest
-is ~44 KB), the ~233 MB total is well under GitHub's ~1 GB soft recommendation and the 2 GB
-per-push limit, and our files are tiny JSON, not large blobs. The cost is permanent git-history
-weight + slower clones + a ~25k-file working tree — tolerable for the reproducibility win.
-*Optional* later shrink, if history weight bites: drop the ~10 unread template fields
-(`duration_expression`, `magnitude_expression`, `flags_raw`, `tick_*`…) at export time — the
-only prune that preserves regen, but bounded by the "fully replace CoD2" goal that wants some
-of them (`suppress_events`, `flags`). git LFS is **not** needed (no large individual files).
-
----
-
-## ✅ Powerset/pool deep regen — converter `specialBuff` regression fixed, layers brought current (FIXED 2026-06-03)
+- [x] Powerset/pool deep regen — converter `specialBuff` regression fixed, layers brought current (FIXED 2026-06-03)
 
 Brought the stale `generated/powersets` + `generated/power-pools` layers current for
 both datasets, materializing the accuracy + mez-PvE fixes and every other accumulated
@@ -1358,7 +1318,7 @@ composed files byte-unchanged, bio-armor now `adaptation.ts → export const Ada
 
 ---
 
-## ✅ Focused Accuracy missing its +Accuracy self-buff (FIXED 2026-06-03)
+- [x] Focused Accuracy missing its +Accuracy self-buff (FIXED 2026-06-03)
 
 **✅ RESOLUTION (2026-06-03).** Root cause confirmed exactly as diagnosed: the raw
 template `Accuracy / aspect=Strength / Melee_Ones / scale 0.2` (= +20%) was
@@ -1399,7 +1359,7 @@ Alpha-incarnate accuracy path is unaffected (special-cased).
 **Not done:** powerset/pool accuracy powers (Combat Training: Offensive, Eagle Eye,
 Terra Firma, …) — see the ⚠️ entry at top.
 
-## ✅ Epic-pools PvE-mez staleness (FIXED 2026-06-03, via the regen above)
+- [x] Epic-pools PvE-mez staleness (FIXED 2026-06-03, via the regen above)
 
 The committed `epic-pools.ts` was built before the converter's "prefer the PvE mez
 table over PvP" fix (`convert-powerset.cjs` ~line 2244: `*_PvPMez` tables have no
@@ -1526,7 +1486,7 @@ works), and any boost-style accuracy buffs in Epic pools.
 
 ---OLD ISSUES---
 
-## ✅ Rebirth Inexhaustibility — no-rarity `boostsets.bin` record variant (FIXED 2026-06-02)
+- [x] Rebirth Inexhaustibility — no-rarity `boostsets.bin` record variant (FIXED 2026-06-02)
 
 **Symptom.** Inexhaustibility (Secret Master 5th Column TF/SF reward, single-piece special that slots only into the Rest inherent) shipped with empty `pieces: []` and `bonuses: []`, so it couldn't be slotted. The other three Rebirth Challenge Enhancements (Liberty's Belt, Imperial Might, Forced Indoctrination) all use the standard layout and extract cleanly.
 
@@ -1542,7 +1502,7 @@ works), and any boost-style accuracy buffs in Epic pools.
 
 **Not done:** surfacing the Rest-proc effect numerically. The planner doesn't model "while resting" procs; the set is now functional (slottable) and labeled `Rest Buff`.
 
-## ✅ Non-kExpression template `delay` field offset (FIXED 2026-05-21)
+- [x] Non-kExpression template `delay` field offset (FIXED 2026-05-21)
 
 **Symptom.** Pet/pseudopet summon powers shipped with no `summon.duration` because the bin parser was reading `delay = 0` for every Silent_Kill template (the AttribMod that despawns the pet after a set time). Affected 11 player Click powers with EntCreate templates whose own Duration is 0 (Haunt, Hell on Earth, Dark Extraction, etc.). Without `summon.duration`, the perma tracker eligibility check skipped these powers, and Power Info couldn't show the pet's stay-alive time.
 
@@ -1567,7 +1527,7 @@ This is the same kind of bug the kExpression branch had originally; that one was
 
 ---
 
-## ✅ Pseudopet lifespans (PL_StaticObject / Vines patches) (FIXED 2026-05-21)
+- [x] Pseudopet lifespans (PL_StaticObject / Vines patches) (FIXED 2026-05-21)
 
 **Symptom.** After the Silent_Kill fix above, four player Click powers still shipped without `summon.duration`:
 
@@ -1592,7 +1552,7 @@ This is the same kind of bug the kExpression branch had originally; that one was
 
 **Verified live.** All four powers now ship with `summon.duration` set, and the perma-tracker eligibility check includes them.
 
-## ✅ Dual Pistols Swap Ammo — per-ammo secondary effects (FIXED 2026-06-04)
+- [x] Dual Pistols Swap Ammo — per-ammo secondary effects (FIXED 2026-06-04)
 
 **Symptom.** Every Dual Pistols attack showed all three ammo secondary effects at once, always-on in base `effects`: -Def (Standard), -Recharge (Cryo), -Damage (Chemical). In-game these are **mutually exclusive** — the loaded ammo selects exactly one (Standard -Def by default; Incendiary's is a fire DoT, already a damage entry).
 
@@ -1619,3 +1579,53 @@ unchanged).
 <!-- Summon `copy_boosts` (found + RESOLVED 2026-06-11) — see the ✅ entry at the
      top of the RESOLVED section. The second AttribMod flags word is now decoded;
      CopyBoosts is binary-sourced and the Discharge overrides are retired. -->
+
+## Deferred
+
+- [ ] Commit the converter input so CI can regenerate + byte-diff
+
+**Shipped now (the lightweight half):** [converter-invariants.test.ts](src/data/converter-invariants.test.ts)
+— a structural invariant scan over the **committed `generated/`** data that runs in CI
+with **zero raw data**. It locks in the converter-regression classes that have repeatedly
+bitten us: export const === `PascalCase(internalName)` (the bio-armor naming saga), no
+malformed bare `specialBuff` (the RechargeTime/Strength stacking regression), no unsigned
+`0xFFFFFFFF` sentinels, and no NEW `*_PvPMez` tables (prefer-PvE mez fix; a 5-entry
+allowlist grandfathers the genuinely-PvP-only powers — scramble-thoughts ×3, arctic-air,
+and `Epic.Field_Mastery.Repulsion_Bomb`). Cheap, no repo-footprint cost, catches the
+*known* failure shapes at PR time.
+
+**The deferred end-state (the heavy half):** commit the **converter input** —
+`exported_powers/` for both datasets (**~233 MB / ~25k files**, vs the 30 MB / 6,176-file
+committed `generated/` output) — so CI can run the converters **end-to-end** and byte-diff
+the regenerated `generated/` against what's committed. That catches **any** converter drift,
+not just the four known classes, and closes two gaps the current setup has:
+
+- **Reproducibility:** today a fresh clone / CI **cannot** rebuild `generated/` — the
+  converter input is gitignored, so the strongest possible guard (regenerate-and-diff) is
+  impossible. The invariant scan is a proxy for it.
+- **Two-machine fragility:** the raw source lives only on the PC + laptop local copies
+  (see CLAUDE.md "Source Data"); there is no canonical, versioned input.
+
+**Why it's the full ~233 MB, not a prunable subset.** The exporter is **not** a blind dump
+— [`export_powers.py`](tools/bin-crawler/bin_crawler/export_powers.py) already filters
+204 → ~60 categories. The 34 player AT/pool/epic categories are the core; the other ~25 are
+a *documented, genuinely-consumed dependency closure* the converters dereference:
+`*_Aux` (leap/charge hit-data via `Execute_Power`), `Pets`/`Villain_Pets`/`Mastermind_Pets`/
+`Kheldian_Pets` (snipe & redirect targets, henchman powers), and the **villain-group block**
+(Rularuu, Council, Crey, Rikti, DevouringEarth, CircleOfThorns…) that **Lore incarnate pets
+"mimic"**. That last block is why the export is full of enemy types — and it lands in the
+committed `incarnate-effects.ts` (both datasets) via `convert-pet-entities.cjs` /
+`convert-incarnate-effects.cjs`. So a CI regen needs the **whole closure**, not the 34 AT
+categories. (The real over-export is *granularity within* those categories — a whole 302-file
+`council/` is pulled for ~3-4 Lore-referenced attacks — but tightening that needs the full
+transitive entity/redirect closure, fragile and not worth it.)
+
+**Decision (2026-06-03): commit the full ~233 MB as-is.** Acceptable because GitHub allows
+it — no single file approaches the 100 MB hard limit (every power JSON is KB-scale; biggest
+is ~44 KB), the ~233 MB total is well under GitHub's ~1 GB soft recommendation and the 2 GB
+per-push limit, and our files are tiny JSON, not large blobs. The cost is permanent git-history
+weight + slower clones + a ~25k-file working tree — tolerable for the reproducibility win.
+*Optional* later shrink, if history weight bites: drop the ~10 unread template fields
+(`duration_expression`, `magnitude_expression`, `flags_raw`, `tick_*`…) at export time — the
+only prune that preserves regen, but bounded by the "fully replace CoD2" goal that wants some
+of them (`suppress_events`, `flags`). git LFS is **not** needed (no large individual files).

@@ -1,81 +1,50 @@
-# Rebirth Data Gaps & Bugs
+---
+project: coh-sidekick
+kind: plan
+title: Rebirth Parser
+id-prefix: REB
+relates:
+  - HOMECOMING_PARSER.md
+  - THUNDERSPY_PARSER.md
+---
 
-**Status:** Open — this doc is the **front door / index for all Rebirth-specific data gaps.**
-Deep workstreams (§1–§3) live here in full; items whose detailed diagnosis lives in the
-chronological parser log are *linked, not duplicated.*
-**Affects:** Rebirth dataset only — except items tagged "both servers."
-**Started:** 2026-05-04 · **Updated:** 2026-06-11
+# Rebirth Parser
+
+The **front door / index for all Rebirth-specific data gaps.** Deep workstreams (§1–§3)
+live here in full as reference prose; items whose detailed diagnosis lives in the
+chronological parser log are *linked, not duplicated*. Affects the **Rebirth dataset only**
+except items noted "both servers." Started 2026-05-04.
 
 > **The recurring root cause.** Most Rebirth gaps trace to one thing: **Parse6 (Rebirth's
 > binary format) drops a class of AttribMod tail/condition fields that Parse7 (HC) decodes.**
 > When a Rebirth-only bug surfaces, suspect a Parse6 field gap first. Full diagnoses for the
-> logged items are in [BIN-PARSER-LOG.md](BIN-PARSER-LOG.md); the map below is the index.
+> logged items are in [HOMECOMING_PARSER.md](HOMECOMING_PARSER.md); the map below is the index.
 
-## Rebirth gap map
+## Active
 
-### Parse6 parser limitations (the recurring theme)
-- **Stealth `stack_key` not resolved → Rebirth stealth kept ADDITIVE (deliberate, 2026-06-12).**
-  Diagnosed: NOT a droppable field — Parse6's `stack_key` is a per-power integer and can't carry
-  HC's global "NictusFX" string (Parse7-only; Thunderspy's `coxg` Parse7 has it, Rebirth's Parse6
-  can't), so the suppression grouping is runtime engine behavior absent from Rebirth's binary. A
-  cross-server-oracle fix (re-applying HC's 12-leaf NictusFX membership in the converter) was
-  built + validated, then **REVERTED to additive**: per the Jounin lesson (Rebirth genuinely
-  diverges from HC), additive is the **safer inference** — its only failure mode is an inflated
-  *display* stat, and it never affects slotting — until live Rebirth is observed to confirm
-  stealth is max-wins. Membership + mechanism preserved in BIN-PARSER-LOG / the stealth memory
-  for re-application if in-client confirms suppression. (The double-check also corrected a prose
-  error: Mask Presence is additive, NOT a NictusFX member.)
-- **`flags` not decoded** → **PARTIALLY RESOLVED 2026-06-12.** The calc-relevant flags
-  (`IgnoreStrength` 60k / `IgnoreResistance` 65k / `IgnoreCombatMods` 7k + NearGround/
-  CancelOnMiss) were being read-and-discarded as the inverse `Allow*` 9-bool block — now
-  decoded in `_parse_effect_template_parse6` (validated 97–99.9% precision/recall vs HC;
-  fixes 81 player powers over-enhancing +Recovery/+ToHit). **Still deferred:** `copyBoosts`/
-  `PseudoPet` — those live in the not-yet-decoded post-magnitude **tail**, NOT the bool block;
-  real RE. Detail: BIN-PARSER-LOG *"Rebirth Parse6 AttribMod flags decoded"* (2026-06-12).
-- **Form-redirect data in tail bytes dropped** (Kheldian Human/Nova/Dwarf) — worked around
-  with a hand-curated map. Detail: **§3 below** + `memory/project_parse6_redirects.md`. **Open.**
-- **`is_pvp` has no explicit flag** — synthesized from the RPN `requires`; the ally-buff-vs-
-  PvP-split heuristic mis-fired on Phalanx Fighting. Detail: BIN-PARSER-LOG *"Rebirth is_pvp —
-  Phalanx Fighting"* (2026-06-11). **Fixed.**
+- [ ] **REB2** — extract the missing Rebirth-unique power pools (research + extraction). Detail: [§2 below](#2-missing-rebirth-unique-power-pools).
+- [ ] **REB3** — Kheldian (Warshade / Peacebringer) form-redirect model (PowerRedirector); the planner currently auto-grants form-variant powers as separate picks, which is wrong (slots on the human power apply to whichever variant fires). Shipped as a hand-curated `KHELDIAN_REDIRECTS` map; native Parse6 parse deferred (below). Detail: [§3 below](#3-warshade--peacebringer-form-mechanic--wrong-model).
+- [~] **`flags` partial** — the calc-relevant AttribMod flags (`IgnoreStrength` / `IgnoreResistance` / `IgnoreCombatMods` + NearGround / CancelOnMiss) are decoded (2026-06-12, fixing 81 player powers that over-enhanced +Recovery/+ToHit); `copyBoosts` / `PseudoPet` still live in the not-yet-decoded post-magnitude **tail** (real RE). Detail: HOMECOMING_PARSER *"Rebirth Parse6 AttribMod flags decoded"*.
 
-### Committed-export staleness / pipeline
-- **`regen-all` dry-runs pools/epics** (the `convert-pool-powers` / `convert-epic-pools` STEPS
-  lack `--apply`) → Rebirth `power-pools.ts` / `epic-pools.ts` never regenerate via the
-  orchestrator and silently drift. Detail: BIN-PARSER-LOG *"regen-all silently DRY-RUNS
-  pools/epics"* (2026-06-11). **Open.**
-- ~~**Committed `exported_powers/rebirth` is stale vs the current parser**~~ **RESOLVED
-  2026-06-12.** Full re-export done (bundled with the `flags` decode above): de-risked per §6
-  (scratch export → leaf-level diff PROVED the entire delta was ONLY `{flags, tags}` across
-  7823 files — zero game drift), then applied + regenerated (69 generated files, all legit
-  IgnoreStrength→Unenhanced splits; HC untouched). `tags: null→[]` refreshed. Entity files
-  (`entities/`) were already current (separate `export_entities.py` parser path, 0 changes).
+## Resolved
 
-### Resolved Rebirth divergences (logged in BIN-PARSER-LOG)
-- **Return From The Grave** resurrection set was mislabeled "Brute Archetype Sets"
-  (AT-prefix fallback off its first rez power) → new bespoke **"Resurrection"**
-  category; 59 rez powers re-tagged. Same sweep VERIFIED Vampire's Bite/Imperial
-  Might/Liberty's Belt are correctly ECMelee/ECKnockback/ECResist (pool-identical to
-  standard sets — the old "mis-tagged" TODOs were false). — 2026-06-12.
-- **Call Jounin "missing Accurate Defense Debuff"** — **RESOLVED, NO FIX NEEDED (2026-06-12).**
-  In-client confirmed (@Redlynne, live Rebirth): Jounin slotting = Pet ×2, Universal ×2, ATO,
-  Defense Debuff, Knockback, ToHit Debuff — **NO Accurate Defense Debuff**, matching our parse
-  EXACTLY. Our boostsets-inversion data was correct; the original bug report was in error. The
-  HC-oracle cross-fill we **correctly PARKED** would have ADDED a category the live game doesn't
-  have. Lesson: Rebirth's client data is authoritative — don't impose HC parity (even when the
-  pet "obviously" has the -Def attack). See `memory/io-set-category-plumbing.md`.
-- **Phalanx Fighting ally scaling** restored (is_pvp) — 2026-06-11.
-- **Archetype defs** — Guardian baseThreat 1.0→2.0, Brute HP, per-server damageCap (both servers) — 2026-06-06.
-- **IO sets binary-sourced both servers** (≈196 Rebirth-only bonus entries recovered) — 2026-06-05.
-- **Blaster ToHit AT modifiers** were HC's 0.10, not Rebirth's rebalanced 0.075/0.07 — 2026-06-03.
-- **`boosts_allowed` off-by-one** (BOOST_TYPE enum divergence) — **§1 below** — 2026-05-04.
-- **Inexhaustibility** no-rarity boostsets record — 2026-06-02 (a `Set_Mode` piece-shape
-  workaround is still open — see BIN-PARSER-LOG *"Inexhaustibility piece"*).
+- [x] **Stealth `stack_key` → kept additive** (decision 2026-06-12, user-chosen). Not a droppable field: Parse6's `stack_key` is a per-power integer that can't carry HC's global "NictusFX" string, so the suppression grouping is runtime engine behavior absent from Rebirth's binary. A cross-server-oracle re-application was built + validated, then reverted — additive's only failure mode is an inflated *display* stat, never slotting. Membership + mechanism preserved in HOMECOMING_PARSER / the stealth memory for re-application if in-client confirms max-wins. (Also corrected: Mask Presence is additive, not a NictusFX member.)
+- [x] **`is_pvp` synthesis** — Phalanx Fighting ally-scaling mis-fire fixed (synthesized from the RPN `requires`; there is no explicit PvP flag). Detail: HOMECOMING_PARSER *"Rebirth is_pvp — Phalanx Fighting"* (2026-06-11).
+- [x] **`regen-all` dry-runs pools/epics** — the `convert-pool-powers` / `convert-epic-pools` STEPS gained `--apply`; the orchestrator now regenerates Rebirth `power-pools.ts` / `epic-pools.ts` (previously they silently drifted). Detail: HOMECOMING_PARSER *"regen-all now refreshes pools/epics"* (2026-06-11).
+- [x] **Committed `exported_powers/rebirth` staleness** — full re-export done (bundled with the `flags` decode); de-risked, the entire delta was only `{flags, tags}` across 7,823 files (zero game drift); 69 generated files regenerated. Entity files were already current. (2026-06-12)
+- [x] **Return From The Grave** resurrection set was mislabeled "Brute Archetype Sets" (AT-prefix fallback off its first rez power) → new bespoke **"Resurrection"** category; 59 rez powers re-tagged. Same sweep verified Vampire's Bite / Imperial Might / Liberty's Belt are correctly ECMelee / ECKnockback / ECResist. (2026-06-12)
+- [x] **Call Jounin "missing Accurate Defense Debuff"** — no fix needed. In-client confirmed (@Redlynne, live Rebirth) the slotting has **no** Accurate Defense Debuff, matching our parse exactly; the HC-oracle cross-fill was correctly parked. Rebirth's client data is authoritative — don't impose HC parity. (2026-06-12)
+- [x] **Archetype defs** binary-sourced — Guardian baseThreat 1.0→2.0, Brute HP, per-server damageCap (both servers). (2026-06-06)
+- [x] **IO sets binary-sourced both servers** (~196 Rebirth-only bonus entries recovered). (2026-06-05)
+- [x] **Blaster ToHit AT modifiers** were HC's 0.10, not Rebirth's rebalanced 0.075 / 0.07. (2026-06-03)
+- [x] **`boosts_allowed` off-by-one** (BOOST_TYPE enum divergence — +1 insertions at positions 10 & 42). Detail: [§1 below](#1-boosts_allowed-extraction-bug--fixed-2026-05-04). (2026-05-04)
+- [x] **Inexhaustibility** no-rarity `boostsets.bin` record variant (a `Set_Mode` piece-shape workaround remains — see HOMECOMING_PARSER *"Inexhaustibility piece"*). (2026-06-02)
 
-### Open Rebirth data workstreams (detailed below)
-- **[§2 — Missing Rebirth-unique power pools](#2-missing-rebirth-unique-power-pools).**
-- **[§3 — Warshade / Peacebringer form mechanic](#3-warshade--peacebringer-form-mechanic--wrong-model)** (PowerRedirector model).
+## Deferred
 
-> **See also** [HEAL-ABSORB-AND-EXPORT-GAPS.md](HEAL-ABSORB-AND-EXPORT-GAPS.md) — IO-set
+- [ ] **Native Parse6 redirect parse** — extract Kheldian form-redirect data directly from `powers.bin` (the post-effects tail bytes) instead of maintaining the hand-curated `KHELDIAN_REDIRECTS` map. The tail format does not match HC's `_parse_redirects` `(target, condition_array)` shape (a flat RPN string-array); real RE. Detail: [§3 "Deferred: Parse6 redirect format"](#deferred-parse6-redirect-format).
+
+> **See also** `HEAL-ABSORB-AND-EXPORT-GAPS.md` (currently absent from the tree) — IO-set
 > aspect/Absorb export gaps + the Guardian AT (Rebirth-only) missing from
 > `extract-at-tables.cjs`'s `PLAYER_ARCHETYPES` allow-list (surfaced 2026-06-05).
 
@@ -110,14 +79,14 @@ which affect player power enhancement filtering.
 
 ### Original details (kept for reference)
 
-## Symptom
+### Symptom
 
 Rebirth power-pool (and likely powerset) powers show wrong values in their
 `allowedEnhancements` arrays. The wrong types appear in the planner's
 "common IO" picker — e.g. Flight powers offer Healing instead of Flight
 Speed / Endurance Reduction.
 
-## Confirmed Examples
+### Confirmed Examples
 
 From [src/data/datasets/rebirth/generated/power-pools.ts](src/data/datasets/rebirth/generated/power-pools.ts):
 
@@ -134,7 +103,7 @@ Pattern: every pool checked has the wrong values, often missing entries
 and substituting unrelated boost types. Not yet checked across primary /
 secondary / epic powersets, but assume the same systemic issue.
 
-## Where the bug is NOT
+### Where the bug is NOT
 
 - The conversion script [scripts/convert-pool-powers.cjs](scripts/convert-pool-powers.cjs) (lines 149–152)
   reads `rawJson.boosts_allowed` and maps via `BOOST_TYPE_MAP` /
@@ -146,7 +115,7 @@ secondary / epic powersets, but assume the same systemic issue.
   / Universal Travel sets), so set bonuses work — only the single-IO
   picker is wrong.
 
-## Likely root cause
+### Likely root cause
 
 The Rebirth raw JSON's `boosts_allowed` array itself contains the wrong
 boost-type strings. That output comes from the bin-crawler parser
@@ -161,7 +130,7 @@ about for post-2025 HC patches ("field 45b" between `box_size` and
 a new field the parser doesn't auto-detect, throwing off subsequent
 field offsets.
 
-## Reproduction (for whoever picks this up on the PC)
+### Reproduction (for whoever picks this up on the PC)
 
 1. Make sure `raw_data_rebirth` is present and `bin_powers.pigg` is
    loadable by `tools/bin-crawler/`.
@@ -178,7 +147,7 @@ field offsets.
    boost-type array in the binary layout is the most likely culprit
    (size mismatch shifts every field after it).
 
-## Workaround in production
+### Workaround in production
 
 None applied. A welcome-modal "known issue" note has been added so
 users see it. We considered shipping per-power overrides in
@@ -191,20 +160,19 @@ When the parser fix lands, regenerate Rebirth via the standard pipeline
 and verify a handful of pool powers (Hover, Fly, Hasten, Combat Jumping,
 Super Jump) before declaring it fixed.
 
-## Related
+### Related
 
-- [CLAUDE.md](CLAUDE.md) — "Note on format changes" warning about
+- [CLAUDE.md](../CLAUDE.md) — "Note on format changes" warning about
   binary layout drift between HC patches.
-- [PARSER_TODO.md](PARSER_TODO.md) — general parser TODO list.
-- [MULTI_DATASET_PLAN.md](MULTI_DATASET_PLAN.md) — Rebirth integration
-  plan; this is one more workstream item under verification.
+
+(The former `PARSER_TODO.md` and `MULTI_DATASET_PLAN.md` references were dropped —
+neither doc remains in the tree.)
 
 ---
 
 ## 2. Missing Rebirth-Unique Power Pools
 
-**Status:** Open — needs research + extraction
-**Affects:** Rebirth dataset
+**Affects:** Rebirth dataset. Tracked as **REB2** (`## Active`).
 
 Our generated [src/data/datasets/rebirth/generated/power-pools.ts](src/data/datasets/rebirth/generated/power-pools.ts)
 currently exposes only the 13 standard pools shared with HC:
@@ -243,8 +211,7 @@ likely gate. Update that filter and regenerate.
 
 ## 3. Warshade / Peacebringer Form Mechanic — Wrong Model
 
-**Status:** Open — model mismatch identified, parser work + UI refactor needed
-**Affects:** Rebirth Peacebringer / Warshade builds (and likely HC too — see notes)
+**Affects:** Rebirth Peacebringer / Warshade builds (and likely HC too — see notes). Tracked as **REB3** (`## Active`).
 
 ### The actual mechanic (confirmed against the binary, 2026-05-04)
 
@@ -363,8 +330,7 @@ purity for shipping today.
 Future work — extract Rebirth's redirect data natively from `powers.bin`
 instead of maintaining the hand-curated table.
 
-What we know so far (saved at
-[memory/project_parse6_redirects.md](memory/project_parse6_redirects.md)):
+What we know so far (saved in the `project_parse6_redirects` memory note):
 
 - Redirect data lives in the post-effects tail bytes that
   `_parse_power_parse6` currently discards via `skip_to_end()`.

@@ -14,7 +14,7 @@ import { fileURLToPath } from 'node:url';
  * mechanical redirect produced no damage, stripping the redundant
  * `arch source> Class_<AT>` selector and the PvP `enttype` KB variant, and
  * bypassing the Fiery-Embrace-bonus heuristic (which would wrongly strip the
- * genuine base Fire damage). See BIN-PARSER-LOG.
+ * genuine base Fire damage). See HOMECOMING_PARSER.
  */
 function gen(dataset: string, rel: string): string {
   const p = fileURLToPath(new URL(`./datasets/${dataset}/generated/powersets/${rel}`, import.meta.url));

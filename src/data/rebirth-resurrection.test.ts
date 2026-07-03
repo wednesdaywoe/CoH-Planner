@@ -15,7 +15,7 @@ import { IO_SET_TYPE_TO_CATEGORY } from './io-sets';
  * power (Brute_Defense.Dark_Armor.Soul_Transfer). Recategorized to a bespoke
  * "Resurrection" category (a `_CHALLENGE_SET_OVERRIDES_BY_NAME` entry in
  * _boostsets.py), surgically re-applied to `exported_powers/rebirth`
- * allowed_set_categories, and plumbed through the planner. See BIN-PARSER-LOG.
+ * allowed_set_categories, and plumbed through the planner. See HOMECOMING_PARSER.
  */
 function gen(rel: string): string {
   const p = fileURLToPath(new URL(`./datasets/rebirth/generated/powersets/${rel}`, import.meta.url));

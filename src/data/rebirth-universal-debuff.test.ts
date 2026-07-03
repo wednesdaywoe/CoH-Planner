@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
  * with NO to-hit debuff) takes ToHit-debuff sets. Recategorized to "Universal
  * Debuff" (a `_CHALLENGE_SET_OVERRIDES_BY_NAME` entry in _boostsets.py), surgically
  * re-applied to `exported_powers/rebirth` allowed_set_categories, and plumbed
- * through the planner. See BIN-PARSER-LOG.
+ * through the planner. See HOMECOMING_PARSER.
  */
 function gen(rel: string): string {
   const p = fileURLToPath(new URL(`./datasets/rebirth/generated/powersets/${rel}`, import.meta.url));
