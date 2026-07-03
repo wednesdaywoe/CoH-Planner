@@ -53,6 +53,22 @@ comparator: `.powers` vs `exported_powers`). Sweep covered 4,943 raw defs — **
 audited**, 1,257 skipped (no export; NPC/Temporary_Powers categories we don't extract).
 Report snapshot: `tools/extraction-audit/gap-report.json`.
 
+### Knockback + Knockup protection erroneously rolled into the same value
+**STATUS: Resolved**
+Root cause
+In CoH, knockback protection is a single physical stat that always applies equally to Knockback and Knockup. The binary stores it as one template with attribs: ["Knockup", "Knockback"], and the converter faithfully splits that into two effect fields. But the calculation layer then summed both into the same accumulator:
+
+In `character-totals.ts`, the `mezProtTypes` loop ran `global.protKnockback` += mag for both knockback and knockup. The author's own comment ("Both feed the same protKnockback stat") shows the pairing was known — but += on both doubles it.
+
+The systemic sweep (12 agents, adversarially verified) found the KB doubling was the sole confirmed add/duplicate flaw:
+
+The converter's += Math.abs(scale) accumulation is correct — it sums the aspect-paired Resistance(+5)/Current(−15) templates, which is the intended KB-protection encoding (that's where the 20 comes from).
+Display/export layers read protKnockback once — no downstream re-summing.
+
+The fix: Both KB paths now fold the Knockback/Knockup pair into one per-power contribution via `Math.max` (they're always equal), added once — while different powers still stack (Unyielding + Bo Ryaku + Acrobatics all add up). I also hardened the parallel `effects.protection` path (latent — no data reaches it today, but same shape). The converter stays untouched: emitting both fields is a faithful representation of the binary; aggregation semantics is where the fix belongs, and this avoids regenerating ~197 data files.
+
+
+
 ### Sweep findings — Phase 1 (parser/export gaps)
 
 **Power-level fields genuinely absent from our export (clean signal — distinct names,

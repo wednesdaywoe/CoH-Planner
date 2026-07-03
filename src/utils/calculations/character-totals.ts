@@ -1524,9 +1524,15 @@ function applyActivePowerBonuses(
         knockback: 'protKnockback',
         knockup: 'protKnockback', // knockup maps to KB protection
       };
+      // Knockback and Knockup map to the same protKnockback stat and must be
+      // counted once per power, not summed (see the mezProtTypes note below).
+      let kbProtFromObj = 0;
       for (const [type, mag] of Object.entries(effects.protection)) {
         const key = protMapping[type.toLowerCase()];
-        if (key && key in global) {
+        if (!key || !(key in global)) continue;
+        if (key === 'protKnockback') {
+          kbProtFromObj = Math.max(kbProtFromObj, mag);
+        } else {
           global[key] += mag;
           addToBreakdown(breakdown, key, {
             name: power.name,
@@ -1534,6 +1540,14 @@ function applyActivePowerBonuses(
             type: 'active-power',
           });
         }
+      }
+      if (kbProtFromObj > 0) {
+        global.protKnockback += kbProtFromObj;
+        addToBreakdown(breakdown, 'protKnockback', {
+          name: power.name,
+          value: kbProtFromObj,
+          type: 'active-power',
+        });
       }
     }
 
@@ -1554,6 +1568,15 @@ function applyActivePowerBonuses(
       { field: 'knockup', key: 'protKnockback' },
     ];
 
+    // Knockback and Knockup protection are the SAME physical stat in CoH: a
+    // single power grants both at an equal magnitude, and the bin emits paired
+    // Knockup/Knockback templates with identical scale (see the {field:'knockup'}
+    // entry above). Summing them via `+=` would DOUBLE this power's KB protection
+    // (e.g. Bo Ryaku showing ~14 instead of ~7, Unyielding ~20 instead of ~10).
+    // Accumulate the pair's contribution into a single per-power value (take the
+    // max — they are always equal) and add it once after the loop. Different
+    // powers still stack because each power runs this block separately.
+    let kbProtFromThisPower = 0;
     for (const { field, key } of mezProtTypes) {
       const mezVal = effects[field];
       if (mezVal === undefined || typeof mezVal === 'number') continue;
@@ -1578,14 +1601,27 @@ function applyActivePowerBonuses(
           if (isKbSelfProt && !isResBoolean) {
             mag *= (1 + (enhBonuses.knockback || 0));
           }
-          global[key] += mag;
-          addToBreakdown(breakdown, key, {
-            name: power.name,
-            value: mag,
-            type: 'active-power',
-          });
+          if (key === 'protKnockback') {
+            // Fold the Knockback/Knockup pair into one contribution (see note above).
+            kbProtFromThisPower = Math.max(kbProtFromThisPower, mag);
+          } else {
+            global[key] += mag;
+            addToBreakdown(breakdown, key, {
+              name: power.name,
+              value: mag,
+              type: 'active-power',
+            });
+          }
         }
       }
+    }
+    if (kbProtFromThisPower > 0) {
+      global.protKnockback += kbProtFromThisPower;
+      addToBreakdown(breakdown, 'protKnockback', {
+        name: power.name,
+        value: kbProtFromThisPower,
+        type: 'active-power',
+      });
     }
 
     // Repel Protection (e.g., Increase Density)
