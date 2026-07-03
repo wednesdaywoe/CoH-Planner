@@ -25,6 +25,54 @@ describe('effectiveRecharge', () => {
     expect(effectiveRecharge(p, 0)).toBeCloseTo(5, 5); // 10 / (1 + 1)
     expect(effectiveRecharge(p, 100)).toBeCloseTo(10 / 3, 5); // 10 / (1 + 1 + 1)
   });
+
+  it('a recharge DEBUFF (negative global) slows the power', () => {
+    const p = mk({ baseRecharge: 10, rechargeEnh: 0 });
+    expect(effectiveRecharge(p, -20)).toBeCloseTo(12.5, 5); // 10 / (1 − 0.2)
+    expect(effectiveRecharge(p, -50)).toBeCloseTo(20, 5); // 10 / (1 − 0.5)
+  });
+
+  it('slotting + build recharge absorb the debuff before it slows below base', () => {
+    // +200% slotted: a −100% debuff still leaves net strength +1 → 2× base speed.
+    // This is the "am I over-built for recharge" case the debuff slider exists for.
+    const p = mk({ baseRecharge: 10, rechargeEnh: 2 });
+    expect(effectiveRecharge(p, -100)).toBeCloseTo(5, 5); // 10 / (1 + 2 − 1)
+  });
+
+  it('clamps to the CoH −75% net floor: at most 4× base, never Infinity/negative', () => {
+    const p = mk({ baseRecharge: 10, rechargeEnh: 0 });
+    // Denominator would be 0 (→Infinity) at −100 and negative below; floored at 0.25.
+    expect(effectiveRecharge(p, -100)).toBeCloseTo(40, 5); // 10 / 0.25 = 4× base
+    expect(effectiveRecharge(p, -300)).toBeCloseTo(40, 5); // still capped at 4× base
+    expect(Number.isFinite(effectiveRecharge(p, -300))).toBe(true);
+    expect(effectiveRecharge(p, -300)).toBeGreaterThan(0);
+  });
+});
+
+describe('recharge debuff (negative what-if) scheduling', () => {
+  it('lengthens the cycle and lowers DPS without producing NaN/Infinity', () => {
+    const A = mk({ id: 'A', cast: 1, baseRecharge: 4, damage: 10 });
+    const B = mk({ id: 'B', cast: 1, baseRecharge: 4, damage: 10 });
+    const powers = [A, B];
+    const seq = [0, 1, 0, 1];
+    const base = computeChain(powers, replayChain(powers, seq, 0), 0, null)!;
+    const debuffed = computeChain(powers, replayChain(powers, seq, -200), -200, null)!;
+    expect(debuffed.cycleSec).toBeGreaterThan(base.cycleSec);
+    expect(debuffed.dps).toBeLessThan(base.dps);
+    expect(Number.isFinite(debuffed.cycleSec)).toBe(true);
+    expect(Number.isFinite(debuffed.dps)).toBe(true);
+    // compactness must stay finite (or null), never NaN, under the floor.
+    expect(debuffed.compactness == null || Number.isFinite(debuffed.compactness)).toBe(true);
+  });
+
+  it('a −100% debuff floors an un-slotted power at 4× base recharge (finite timeline)', () => {
+    const A = mk({ id: 'A', cast: 1, baseRecharge: 4, rechargeEnh: 0 });
+    const acts = replayChain([A], [0, 0], -100);
+    expect(acts.every((a) => Number.isFinite(a.start) && Number.isFinite(a.end))).toBe(true);
+    // effRech floored to 4 / 0.25 = 16; the second cast can't start before
+    // cast-end(1) + 16 = 17.
+    expect(acts[1].start).toBeCloseTo(17, 5);
+  });
 });
 
 describe('chain packer', () => {

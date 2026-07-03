@@ -36,6 +36,7 @@ import {
   computeChain,
   effectiveRecharge,
   powerMetricValue,
+  MIN_RECHARGE_DENOM,
   type ChainPower,
   type PowerMetric,
 } from '@/utils/calculations/attack-chain';
@@ -50,6 +51,20 @@ const LABEL_W = 116;
 const LANE_H = 24;
 const MIN_PX = 4; // low enough to fit very long recharges (e.g. 50s+ nukes)
 const MAX_PX = 80;
+
+// What-if global-recharge slider. Spans a heavy stacked enemy −recharge debuff
+// (Heat Loss alone ≈ −300%) through the +400% recharge-strength buff cap. 0 = the
+// build exactly as slotted. Values are % points added to the build's global
+// recharge; the per-power −75% net floor (MIN_RECHARGE_DENOM in attack-chain.ts)
+// keeps every result honest no matter how deep the debuff is dialled.
+const WHATIF_RECH_MIN = -300;
+const WHATIF_RECH_MAX = 400;
+const WHATIF_RECH_STEP = 5;
+// Labelled/clickable ticks along the track (0 is emphasized as the build anchor).
+const WHATIF_RECH_TICKS = [-300, -200, -100, 0, 100, 200, 300, 400];
+/** Fraction (0–100%) along the slider track for a what-if value. */
+const whatIfTrackPct = (v: number) =>
+  ((v - WHATIF_RECH_MIN) / (WHATIF_RECH_MAX - WHATIF_RECH_MIN)) * 100;
 
 /** Short label for the power-ranking metric (legend + palette tooltips). See
  *  powerMetricValue in attack-chain.ts. */
@@ -197,6 +212,28 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
   };
 
   const globalRech = buildGlobalRech + extraRech;
+
+  // How many distinct chain powers are pinned at the game's 4× recharge floor
+  // (net strength ≤ −75%, i.e. the divisor is already at MIN_RECHARGE_DENOM)
+  // under the current what-if. Once a power is floored, more −recharge can't slow
+  // it further — surfacing it keeps a correct cap from reading as a stuck slider
+  // (the "why did it stop at −75%?" gotcha on a low-recharge build).
+  const rechargeFloor = useMemo(() => {
+    const seen = new Set<number>();
+    let total = 0;
+    let floored = 0;
+    for (const pi of sequence) {
+      if (seen.has(pi)) continue;
+      seen.add(pi);
+      const p = powers[pi];
+      if (!p || p.baseRecharge <= 0) continue;
+      total += 1;
+      if (extraRech < 0 && 1 + p.rechargeEnh + globalRech / 100 <= MIN_RECHARGE_DENOM + 1e-9) {
+        floored += 1;
+      }
+    }
+    return { total, floored, all: total > 0 && floored === total };
+  }, [sequence, powers, globalRech, extraRech]);
 
   // A power's ranking value under the chosen metric (closes over the live
   // global recharge so DPS tracks the what-if slider).
@@ -507,22 +544,6 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
         {/* Toolbar */}
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3 flex-wrap">
-            <span className="text-[11px] text-gray-500">
-              Build recharge <span className="text-emerald-400 font-medium">+{fmt(buildGlobalRech, 0)}%</span>
-            </span>
-            <label className="flex items-center gap-1.5 text-[11px] text-gray-500">
-              What-if
-              <input
-                type="number"
-                value={extraRech}
-                min={0}
-                max={400}
-                step={5}
-                onChange={(e) => setExtraRech(Math.max(0, Number(e.target.value) || 0))}
-                className="w-16 h-7 px-2 bg-gray-800 border border-gray-700 rounded text-gray-200 text-xs"
-              />
-              <span>%</span>
-            </label>
             <label className="flex items-center gap-1.5 text-[11px] text-gray-500 cursor-pointer select-none">
               <input
                 type="checkbox"
@@ -587,6 +608,116 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
               Clear
             </button>
           </div>
+        </div>
+
+        {/* Simulates recharge buffs and debuffs. Drag to simulate a global recharge buff (right) or an enemy −recharge debuff (left) and watch the rotation's cycle/DPS respond live. Check how much −recharge your build can eat before the chain degrades. */}
+        <div className="rounded-lg border border-gray-800 bg-gray-900/40 p-3">
+          <div className="flex items-baseline justify-between gap-2 mb-2">
+            <div className="flex items-baseline gap-2">
+              <span className="text-[10px] font-semibold uppercase tracking-wide text-gray-500">
+                +/- Recharge Simulation
+              </span>
+              <span className="text-[11px] text-gray-600">
+                Build <span className="text-emerald-400 font-medium">+{fmt(buildGlobalRech, 0)}%</span>
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] tabular-nums">
+                {extraRech === 0 ? (
+                  <span className="text-gray-500">No adjustment</span>
+                ) : extraRech > 0 ? (
+                  <span className="text-emerald-400">
+                    +{fmt(extraRech, 0)}% → <span className="font-medium">+{fmt(globalRech, 0)}%</span> global
+                  </span>
+                ) : (
+                  <span className="text-amber-400">
+                    −{fmt(-extraRech, 0)}% debuff → <span className="font-medium">{globalRech >= 0 ? '+' : ''}{fmt(globalRech, 0)}%</span> global
+                  </span>
+                )}
+              </span>
+              {extraRech !== 0 && (
+                <button
+                  onClick={() => setExtraRech(0)}
+                  className="h-5 px-1.5 rounded border border-gray-700 text-gray-400 text-[10px] hover:border-gray-500"
+                  title="Reset the what-if recharge to your build's value"
+                >
+                  Reset
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Track: amber (debuff) ← 0 → emerald (buff), with a range input over it. */}
+          <div className="relative h-5">
+            <div
+              className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-1.5 rounded-full"
+              style={{
+                background: `linear-gradient(90deg, rgba(224,160,46,0.55) 0%, rgba(224,160,46,0.18) ${whatIfTrackPct(0).toFixed(1)}%, rgba(52,211,153,0.18) ${whatIfTrackPct(0).toFixed(1)}%, rgba(52,211,153,0.55) 100%)`,
+              }}
+            />
+            {WHATIF_RECH_TICKS.map((t) => (
+              <div
+                key={t}
+                className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full ${
+                  t === 0 ? 'w-0.5 h-4 bg-gray-300' : 'w-px h-2.5 bg-gray-600'
+                }`}
+                style={{ left: `${whatIfTrackPct(t)}%` }}
+              />
+            ))}
+            <input
+              type="range"
+              min={WHATIF_RECH_MIN}
+              max={WHATIF_RECH_MAX}
+              step={WHATIF_RECH_STEP}
+              value={extraRech}
+              onChange={(e) =>
+                setExtraRech(
+                  Math.max(WHATIF_RECH_MIN, Math.min(WHATIF_RECH_MAX, Number(e.target.value) || 0)),
+                )
+              }
+              aria-label="What-if global recharge (negative simulates an enemy recharge debuff)"
+              className="absolute inset-0 w-full h-5 appearance-none bg-transparent cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-gray-400 [&::-webkit-slider-thumb]:shadow [&::-webkit-slider-thumb]:cursor-pointer [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-gray-400 [&::-moz-range-thumb]:cursor-pointer"
+            />
+          </div>
+
+          {/* Tick labels — click to jump to a preset debuff/buff amount. */}
+          <div className="relative h-4 mt-1">
+            {WHATIF_RECH_TICKS.map((t) => (
+              <button
+                key={t}
+                onClick={() => setExtraRech(t)}
+                className={`absolute -translate-x-1/2 text-[9px] tabular-nums hover:text-gray-200 ${
+                  t === 0
+                    ? 'text-gray-300 font-medium'
+                    : t < 0
+                      ? 'text-amber-500/70'
+                      : 'text-emerald-500/70'
+                }`}
+                style={{ left: `${whatIfTrackPct(t)}%` }}
+                title={`Set what-if recharge to ${t > 0 ? '+' : ''}${t}%`}
+              >
+                {t > 0 ? '+' : ''}
+                {t}
+              </button>
+            ))}
+          </div>
+          <div className="flex justify-between items-center mt-0.5 gap-2">
+            <span className="text-[9px] text-amber-500/60 whitespace-nowrap">◄ enemy −recharge</span>
+            <span className="text-[9px] text-gray-600 text-center">
+              −recharge floors at 4× base (−75%) — a power never fully stops
+            </span>
+            <span className="text-[9px] text-emerald-500/60 whitespace-nowrap">recharge buff ►</span>
+          </div>
+
+          {/* At-the-floor notice: a correct 4× cap otherwise reads as a stuck
+              slider, so say so plainly. */}
+          {rechargeFloor.floored > 0 && (
+            <div className="mt-2 rounded border border-amber-500/30 bg-amber-500/10 px-2 py-1.5 text-[10px] leading-snug text-amber-300">
+              {rechargeFloor.all
+                ? 'Ooof. You’ve hit the −recharge floor. Every power in the chain is capped at 4× its base recharge (the game’s −75% net-strength limit), Add global recharge or slot recharge for more punishment.'
+                : `You’re at your −recharge floor on ${rechargeFloor.floored} of ${rechargeFloor.total} chain powers. They are capped at 4× base recharge and won’t slow further; the rest still have recharge headroom before they cap.`}
+            </div>
+          )}
         </div>
 
         {/* Palette */}

@@ -183,9 +183,28 @@ const EPS = 0.001;
  */
 export type PowerMetric = 'damage' | 'dpa' | 'dps';
 
-/** Effective recharge after enhancement + (build + what-if) global recharge. */
+/**
+ * Smallest the recharge divisor `(1 + strength)` may reach. City of Heroes
+ * clamps *net* recharge strength (all buffs − all debuffs) to a minimum of
+ * −75%, so the divisor floors at 0.25 and a power can be slowed to AT MOST 4×
+ * its base recharge — it never stops recharging or goes negative, however deep
+ * the −recharge debuff. This is what makes the what-if debuff slider safe: the
+ * denominator can't cross zero.
+ *
+ * Note this is DELIBERATELY different from perma.ts's `Math.max(1, …)`, which is
+ * a buff-only view where a debuff is a no-op (a perma power can't be pushed
+ * above base by an enemy). It's also distinct from the −90% movement-speed floor
+ * — recharge and movement clamp independently. Source: Homecoming/Fandom wikis
+ * "Recharge" & "Limits" (net strength ∈ [−0.75, +4.0]).
+ */
+export const MIN_RECHARGE_DENOM = 0.25;
+
+/** Effective recharge after enhancement + (build + what-if) global recharge,
+ *  with the game's −75% net-strength floor so a recharge debuff can slow a power
+ *  to at most 4× base rather than blowing the divisor past zero. */
 export function effectiveRecharge(p: ChainPower, globalRechargePct: number): number {
-  return p.baseRecharge / (1 + p.rechargeEnh + globalRechargePct / 100);
+  const denom = Math.max(MIN_RECHARGE_DENOM, 1 + p.rechargeEnh + globalRechargePct / 100);
+  return p.baseRecharge / denom;
 }
 
 /** Per-cast effective stats: the activation's chosen form, else the base power.
