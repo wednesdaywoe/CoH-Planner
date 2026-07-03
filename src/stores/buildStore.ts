@@ -50,6 +50,7 @@ import { computeSetTracking } from '@/utils/calculations/set-tracking';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
 import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, canRelocateSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
 import { enhancementAllowedInPower } from '@/utils/enhancement-eligibility';
+import { dedupePools } from '@/utils/build-powers';
 import { useHistoryStore } from './historyStore';
 import { useUIStore } from './uiStore';
 
@@ -383,6 +384,17 @@ function syncBuildDefinitions(build: Build): void {
       }
     }
   }
+
+  // Enforce the pool-uniqueness invariant before any pool processing below.
+  // A build may hold at most getMaxPowerPools(serverId) distinct pools, each id
+  // once. Duplicate pool objects can enter from importers that trust the
+  // source's powerset list (a Mids .mbd whose PowerSets array names the same
+  // pool twice) and can even share one powers-array reference. Deduping here —
+  // the single funnel every import AND localStorage rehydrate passes through —
+  // both stops new corruption and self-heals already-saved builds on next load.
+  // Must run before the misplaced-power redistribution below, whose id→bucket
+  // Map collapses (and aliases) on duplicate ids.
+  build.pools = dedupePools(build.pools, getMaxPowerPools(build.serverId));
 
   // Fix misplaced pool powers — move powers to their correct pool container
   if (build.pools.length > 1) {

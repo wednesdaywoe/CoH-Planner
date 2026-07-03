@@ -291,7 +291,12 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     if (path.startsWith('Pool.')) {
       const poolId = resolvePoolId(path);
       if (poolId && getPowerPool(poolId)) {
-        poolIds.push(poolId);
+        // Guard against a source .mbd that lists the same pool twice (or two
+        // name variants that resolvePoolId collapses to one id). Without this,
+        // poolIds gets duplicate entries and the pools .map below emits two
+        // identical PoolSelection objects. Mirrors the guarded push at the
+        // PowerEntries stage (see `if (!poolIds.includes(poolId))` below).
+        if (!poolIds.includes(poolId)) poolIds.push(poolId);
       } else if (poolId) {
         warnings.push({ type: 'pool', midsName: path, message: `Pool not found: ${poolId}` });
       }
@@ -521,7 +526,10 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     return {
       id,
       name: pool?.name ?? id,
-      powers: poolPowersMap[id] ?? [],
+      // Fresh array per pool: never let two PoolSelection objects alias the
+      // same poolPowersMap[id] array (defense-in-depth if a duplicate id ever
+      // slips past the guard above).
+      powers: [...(poolPowersMap[id] ?? [])],
     };
   });
 

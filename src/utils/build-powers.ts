@@ -10,7 +10,7 @@
  * live in their own tray.
  */
 
-import type { Build } from '@/types/build';
+import type { Build, PoolSelection } from '@/types/build';
 import type { SelectedPower } from '@/types/power';
 import type { SelectedIncarnatePower } from '@/types/incarnate';
 import { INCARNATE_SLOT_ORDER } from '@/types/incarnate';
@@ -71,6 +71,45 @@ export function getInherentPowers(build: Build): SelectedPower[] {
  */
 export function getSlottedInherents(build: Build): SelectedPower[] {
   return getInherentPowers(build).filter(isPowerSlotted);
+}
+
+/**
+ * Enforce the pool-uniqueness invariant: a build may hold at most `maxPools`
+ * DISTINCT power pools, and each pool id may appear only once.
+ *
+ * Duplicate pool objects can slip into `build.pools` from any import path that
+ * trusts the source's powerset list — e.g. a Mids `.mbd` whose `PowerSets`
+ * array names the same pool twice yields two `flight` entries. Those duplicate
+ * `PoolSelection` objects may even share a single `powers` array reference (the
+ * mids importer maps every id to the same `poolPowersMap[id]`), which is why a
+ * duplicated pool can serialize byte-for-byte identical AND why editing one
+ * would silently mutate the other in memory.
+ *
+ * This collapses same-id pools keeping the FIRST occurrence, merges any powers
+ * from later duplicates that the first is missing (so no slotted power is lost),
+ * caps the result to `maxPools`, and gives every surviving pool a FRESH powers
+ * array to break any inherited shared reference. Pure — returns a new array.
+ *
+ * It runs inside `syncBuildDefinitions`, the single funnel every import AND
+ * localStorage rehydrate passes through, so it both prevents new corruption and
+ * self-heals already-saved builds (a duplicated pool in an existing `.skif`) on
+ * their next load.
+ */
+export function dedupePools(pools: PoolSelection[], maxPools: number): PoolSelection[] {
+  const byId = new Map<string, PoolSelection>();
+  for (const pool of pools) {
+    const existing = byId.get(pool.id);
+    if (existing) {
+      for (const power of pool.powers) {
+        if (!existing.powers.some((p) => p.internalName === power.internalName)) {
+          existing.powers.push(power);
+        }
+      }
+    } else {
+      byId.set(pool.id, { ...pool, powers: [...pool.powers] });
+    }
+  }
+  return [...byId.values()].slice(0, Math.max(0, maxPools));
 }
 
 /** Selected incarnate powers in canonical slot order (Alpha → Genesis), skipping empty slots. */

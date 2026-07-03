@@ -87,7 +87,12 @@ export function importMxdBuild(parsed: MxdParsedBuild): MidsImportResult {
   for (const poolName of parsed.pools) {
     const poolId = findPoolByDisplayName(poolName);
     if (poolId) {
-      build.pools.push({ id: poolId, name: poolName, powers: [] });
+      // Guard against a malformed/hand-edited .mxd that lists the same pool
+      // header twice — a second same-id entry would consume a pool slot and
+      // (since powers route to the first match) sit empty forever.
+      if (!build.pools.some((p) => p.id === poolId)) {
+        build.pools.push({ id: poolId, name: poolName, powers: [] });
+      }
     } else {
       warnings.push({ type: 'powerset', midsName: poolName, message: `Could not find pool: ${poolName}` });
     }
