@@ -10,7 +10,7 @@
  *                     and bonus values (via Set_Bonus.X.X power records)
  *   - clientmessages-en.bin → display name resolution
  *
- * Total sets: 212
+ * Total sets: 213
  * Shared sets reuse HC's hand-curated entry. The 4 sets that are NOT on
  * Thunderspy (Sudden Acceleration, Synapse's Shock, Power Transfer,
  * Hypersonic) plus 13 other HC-only sets are absent because they aren't
@@ -11399,7 +11399,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "uncommon",
-    "icon": "skb.png",
+    "icon": "UD_Subaluwa.png",
     "maxLevel": 50,
     "minLevel": 1,
     "name": "Subaluwa",
@@ -14244,6 +14244,137 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
     ],
     "type": "Controller Archetype Sets"
   },
+  "overwhelming_force": {
+    "bonuses": [
+      {
+        "effects": [
+          {
+            "desc": "+12.0% Regeneration",
+            "stat": "regeneration",
+            "value": 12
+          }
+        ],
+        "pieces": 2
+      },
+      {
+        "effects": [
+          {
+            "desc": "+3.0% Damage",
+            "stat": "damage",
+            "value": 3
+          }
+        ],
+        "pieces": 3
+      },
+      {
+        "effects": [
+          {
+            "desc": "+1.5% Maximum HitPoints",
+            "stat": "maximum_hitpoints",
+            "value": 1.5
+          }
+        ],
+        "pieces": 4
+      },
+      {
+        "effects": [
+          {
+            "desc": "+2% Energy and Negative Energy",
+            "stat": "defense_(energy)",
+            "value": 2.5
+          },
+          {
+            "desc": "+1.25% Ranged Defense",
+            "stat": "defense_(ranged)",
+            "value": 1.25
+          }
+        ],
+        "pieces": 5
+      },
+      {
+        "effects": [
+          {
+            "desc": "+400.0% Knockback Protection",
+            "stat": "knockback_protection",
+            "value": 400
+          }
+        ],
+        "pieces": 6
+      }
+    ],
+    "category": "uncommon",
+    "icon": "UD_Overwhelming_Force.png",
+    "maxLevel": 50,
+    "minLevel": 10,
+    "name": "Overwhelming Force",
+    "pieces": [
+      {
+        "aspects": [
+          "Accuracy",
+          "Damage"
+        ],
+        "name": "Accuracy/Damage",
+        "num": 1,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Endurance",
+          "Recharge"
+        ],
+        "name": "Endurance/Recharge",
+        "num": 2,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Damage",
+          "Endurance"
+        ],
+        "name": "Accuracy/Damage/Endurance",
+        "num": 3,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "Endurance",
+          "Recharge"
+        ],
+        "name": "Damage/Endurance/Recharge",
+        "num": 4,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Accuracy",
+          "Damage",
+          "Endurance",
+          "Recharge"
+        ],
+        "name": "Accuracy/Damage/Endurance/Recharge",
+        "num": 5,
+        "proc": false,
+        "unique": true
+      },
+      {
+        "aspects": [
+          "Damage",
+          "KnockToKnockDown"
+        ],
+        "name": "Damage/KnockToKnockDown/Chance for Knockback",
+        "num": 6,
+        "proc": true,
+        "unique": true
+      }
+    ],
+    "type": "Universal Damage Sets"
+  },
   "pacing_of_the_turtle": {
     "bonuses": [
       {
@@ -15455,7 +15586,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "sprimalists_nature.png",
+    "icon": "AO_Primalists_Nature.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Primalist's Nature",
@@ -22090,7 +22221,7 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       }
     ],
     "category": "ato",
-    "icon": "ssuperior_primalists_nature.png",
+    "icon": "SAO_Primalists_Nature.png",
     "maxLevel": 1,
     "minLevel": 1,
     "name": "Superior Primalist's Nature",

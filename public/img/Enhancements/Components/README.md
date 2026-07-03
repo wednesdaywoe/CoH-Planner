@@ -16,8 +16,8 @@ icon.**
 ```
   symbol.png        E_POG_*.png         saved as s<Name>.png       (planner adds)
  ┌─────────┐       ┌─────────┐         ┌─────────┐               ┌─────────┐
- │  ╱◇╲    │   +   │ ███████ │    =    │ ●▓◇▓●   │   ──render──▶ │ ◍▓◇▓◍   │
- │  ╲◇╱    │       │ ███████ │         │ ●▓▓▓●   │   + frame     │ ◍▓▓▓◍   │
+ │  ╱◇╲   │   +   │ ███████ │    =    │ ●▓◇▓●  │   ──render──▶│ ◍▓◇▓◍│
+ │  ╲◇╱   │       │ ███████ │         │ ●▓▓▓●   │   + frame     │ ◍▓▓▓◍ │
  └─────────┘       └─────────┘         └─────────┘               └─────────┘
   Components/        Components/         IO Sets/ (etc.)           Overlay/e_frame_*
   IO Set Icons/      POGS/                                         (dynamic)

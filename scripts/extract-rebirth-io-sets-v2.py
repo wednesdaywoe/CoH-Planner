@@ -145,6 +145,21 @@ ICON_OVERRIDES = {
     # texture_gui.pigg (e_icon_preemptive_optimization.texture) and composited
     # into public/img/Enhancements/IO Sets/sPreemptiveOptimization.png.
     'preemptive_optimization':         'sPreemptiveOptimization.png',
+    # Thunderspy-only sets rebuilt by _apply_thunderspy_overrides. They aren't on
+    # HC, so the set_id icon match (hc_sets[set_id].icon) never fires and without
+    # an override they fall to the bogus `s{set_id}.png` fallback — a filename
+    # never in our curated asset library, so EnhancementIcon shows Unknown.png
+    # (reported: "Subaluwa missing icons"). These are DISTINCT tspy sets with
+    # their OWN in-game icons (NOT Overwhelming Force — that's a separate set that
+    # tspy also ships, injected below). Symbols were extracted from tspy's
+    # gui.pigg (texture_library/gui/icons/enhancements/e_icon_{subaluwa,
+    # primalistsnature}.texture) and composited on the red E_POG_DAMAGE disc per
+    # public/img/Enhancements/Components/README.md (Subaluwa = universal damage;
+    # Primalist ATOs are damage attack sets — all ATOs use the red POG). Superior
+    # shares the standard base composite; the planner adds the superior frame.
+    'kb':                              'UD_Subaluwa.png',
+    'primalists_nature':               'AO_Primalists_Nature.png',
+    'superior_primalists_nature':      'SAO_Primalists_Nature.png',
 }
 
 # ---------------------------------------------------------------------
@@ -1385,7 +1400,10 @@ def _tspy_build_only_set(set_id: str, record, power_index, msgs, prior: dict) ->
         'maxLevel': prior.get('maxLevel', record.max_level or 50),
         'bonuses': bonuses,
         'pieces': pieces,
-        'icon': prior.get('icon') or f's{set_id}.png',
+        # ICON_OVERRIDES first: tspy-only sets have no HC set_id to inherit an
+        # icon from, so without this they'd fall to the bogus `s{set_id}.png`
+        # (never in our asset library → broken icon).
+        'icon': ICON_OVERRIDES.get(set_id) or prior.get('icon') or f's{set_id}.png',
     }
 
 
@@ -1410,8 +1428,26 @@ def _apply_thunderspy_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
             shared_overridden += 1
 
     rebuilt = []
+    wholeset = 0
     if ctx:
         by_id = {s.name.lower().replace('-', '').replace('__', '_'): s for s in ctx['sets']}
+
+        # Whole-set injection (mirrors _apply_rebirth_overrides). build_sets can't
+        # yield the universal-damage sets: HC/Rebirth skip them as ECUniversalDamage,
+        # and on tspy the `Overwhelming_Force` record is a gutted SumoBoostName stub
+        # (0 pieces, garbage rarity 'reign_Right_F') so it's dropped as unmapped-
+        # rarity. But tspy DOES ship Overwhelming Force in-game (a natively-attuned
+        # universal-damage set, verified in the AH), so restore it from HC's hand
+        # entry. Gate on the record actually existing in tspy's boostsets.bin — OF
+        # does, Cupid's Crush does NOT (don't inject a set that isn't on the server).
+        # This is SEPARATE from Subaluwa (a distinct tspy-only crafted knockback set,
+        # rebuilt below) — both are real, so both must appear.
+        for set_id in HC_WHOLESET_SETS:
+            hand = hc_sets.get(set_id)
+            if hand and set_id in by_id:
+                out_sets[set_id] = dict(hand)
+                wholeset += 1
+
         for set_id in _TSPY_ONLY_SETS:
             record = by_id.get(set_id)
             if not record:
@@ -1421,7 +1457,8 @@ def _apply_thunderspy_overrides(out_sets: dict[str, dict], hc_sets: dict[str, di
             )
             rebuilt.append(set_id)
 
-    return {'shared_overridden': shared_overridden, 'rebuilt_tspy_only': rebuilt}
+    return {'shared_overridden': shared_overridden, 'wholeset': wholeset,
+            'rebuilt_tspy_only': rebuilt}
 
 
 # Per-dataset wiring: assets dir, output path, source description for the file

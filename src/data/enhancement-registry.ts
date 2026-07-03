@@ -301,14 +301,34 @@ export function getTierBorderColor(tier: string): string {
 // ============================================
 
 /**
+ * Reward / event sets that are ATTUNED-ONLY in-game but whose data carries a
+ * 10–50 level range instead of the usual attuned `maxLevel <= 1` marker. They're
+ * obtained already-attuned (Summer Blockbuster, Valentine, Winter events + reward-
+ * merit vendors) and are NOT craftable at a fixed level — the range in the data is
+ * never exposed to players as a craft option. (Verified in-game 2026-07-02:
+ * Overwhelming Force. Winter's Gift is the lone `SEO_` set with maxLevel>1 — same
+ * anomaly.) Keyed by display name, which is stable across datasets.
+ *
+ * NB this is deliberately a name list, NOT an icon-prefix rule: Thunderspy's
+ * Subaluwa is a `UD_` universal-damage set that IS crafted-only (verified in the
+ * in-game AH), so it must stay OFF this list and remain level-craftable.
+ */
+const ATTUNED_ONLY_SET_NAMES: ReadonlySet<string> = new Set([
+  'Overwhelming Force',
+  "Cupid's Crush",
+  "Winter's Gift",
+]);
+
+/**
  * ATO and event (Winter/Summer/Anniversary) sets are always attuned in-game —
- * they have no fixed level and can't be boosted. The data encodes this as
- * `maxLevel <= 1` (they scale freely above their listed cap). Slotting one at a
- * fixed level would bork its enhancement values and let it be erroneously
+ * they have no fixed level and can't be boosted. The data encodes most as
+ * `maxLevel <= 1` (they scale freely above their listed cap); the reward sets in
+ * ATTUNED_ONLY_SET_NAMES keep a 10–50 range but are equally attuned-only. Slotting
+ * one at a fixed level would bork its enhancement values and let it be erroneously
  * boosted, so we always treat these as attuned regardless of the picker slider.
  */
-export function isInherentlyAttuned(set: Pick<IOSet, 'maxLevel'>): boolean {
-  return set.maxLevel <= 1;
+export function isInherentlyAttuned(set: Pick<IOSet, 'maxLevel' | 'name'>): boolean {
+  return set.maxLevel <= 1 || ATTUNED_ONLY_SET_NAMES.has(set.name);
 }
 
 /** Create an IO Set Enhancement object */

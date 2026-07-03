@@ -29,8 +29,20 @@ describe('Thunderspy IO-set roster', () => {
     }
   });
 
-  it('drops Overwhelming Force (Thunderspy reworked it into Subaluwa)', () => {
-    expect(TSPY_SETS).not.toHaveProperty('overwhelming_force');
+  it('has Overwhelming Force AND Subaluwa as distinct Universal Damage sets', () => {
+    // Both exist on Thunderspy (verified in-game 2026-07-02): Overwhelming Force
+    // is the natively-attuned universal-damage set — its boostsets.bin record is
+    // a gutted `SumoBoostName` stub (0 pieces, garbage rarity) so build_sets drops
+    // it and it's re-injected from HC's hand entry (HC_WHOLESET_SETS). Subaluwa is
+    // a SEPARATE tspy-only crafted knockback set (record `kb`). An earlier pass
+    // wrongly assumed OF had been reworked *into* Subaluwa and dropped it.
+    expect(TSPY_SETS, 'Overwhelming Force should be present').toHaveProperty('overwhelming_force');
+    expect(TSPY_SETS['overwhelming_force']).toEqual(HC_SETS['overwhelming_force']);
+    // Distinct sets, distinct icons.
+    expect(TSPY_SETS['overwhelming_force'].name).toBe('Overwhelming Force');
+    expect(TSPY_SETS['kb'].name).toBe('Subaluwa');
+    expect(TSPY_SETS['overwhelming_force'].icon).toBe('UD_Overwhelming_Force.png');
+    expect(TSPY_SETS['kb'].icon).toBe('UD_Subaluwa.png');
   });
 
   it('keeps sets shared with Homecoming, reusing HC\'s curated data', () => {
