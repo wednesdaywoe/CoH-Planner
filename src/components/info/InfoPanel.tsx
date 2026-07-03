@@ -39,6 +39,7 @@ import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, synthesizePseudoPetEffects, resolveProcAreaGeometry, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { calculateIncarnateDamage } from '@/data/at-tables';
+import { getBaselineHealth } from '@/utils/calculations/stats';
 import type { GenesisExemplarEffect } from '@/data';
 import { getActiveIncarnateDamageProcs, computeIncarnateProcContributions } from '@/data/incarnate-procs';
 import { resolvePath } from '@/utils/paths';
@@ -1631,6 +1632,8 @@ function renderGenesisExemplar(ex: GenesisExemplarEffect, archetypeId: string, l
 
 function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
   const build = useBuildStore((s) => s.build);
+  const globalBonuses = useGlobalBonuses();
+  const archetypeId = build.archetype.id;
   const incarnateActive = useUIStore((s) => s.incarnateActive);
   const exemplarMode = useUIStore((s) => s.exemplarMode);
   const exemplarLevel = useUIStore((s) => s.exemplarLevel);
@@ -1835,6 +1838,9 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
             {destinyEffects.debuffResistance !== undefined && (
               <IncarnateEffectRow label="Debuff Resistance" value={destinyEffects.debuffResistance} colorClass="text-cyan-400" />
             )}
+            {destinyEffects.statusResistance !== undefined && (
+              <IncarnateEffectRow label="Status Resistance" value={destinyEffects.statusResistance} colorClass="text-cyan-300" />
+            )}
             {destinyEffects.regeneration !== undefined && (
               <IncarnateEffectRow label="Regeneration" value={destinyEffects.regeneration} colorClass="text-green-400" />
             )}
@@ -1853,11 +1859,46 @@ function IncarnateInfo({ slotId, powerId }: IncarnateInfoProps) {
             {destinyEffects.healPercent !== undefined && (
               <IncarnateEffectRow label="Heal" value={destinyEffects.healPercent} colorClass="text-green-400" />
             )}
+            {destinyEffects.healReceived !== undefined && (
+              <IncarnateEffectRow label="Healing Received" value={destinyEffects.healReceived} colorClass="text-green-400" />
+            )}
+            {/* Rebirth's click heal: raw scale × AT table → HP, shown vs the
+                build's (buffed) Max HP. */}
+            {destinyEffects.healScale !== undefined && destinyEffects.healScale > 0 && (() => {
+              const hp = calculateIncarnateDamage(
+                destinyEffects.healScale,
+                destinyEffects.healTable ?? 'Ranged_Tempdamage',
+                archetypeId ?? '',
+                build.level,
+              );
+              if (!hp) return null;
+              const { baseHealth } = getBaselineHealth(archetypeId as ArchetypeId | undefined, build.level);
+              const buffedMax = baseHealth * (1 + (globalBonuses.maxHP ?? 0) / 100);
+              const pct = buffedMax > 0 ? Math.round((hp / buffedMax) * 100) : 0;
+              return (
+                <div className="flex justify-between text-sm">
+                  <span className="text-green-400">Heal</span>
+                  <span className="text-green-400">~{Math.round(hp)} HP{pct > 0 ? ` (${pct}% Max HP)` : ''}</span>
+                </div>
+              );
+            })()}
+            {destinyEffects.maxHP !== undefined && (
+              <IncarnateEffectRow label="Max HP" value={destinyEffects.maxHP} colorClass="text-red-300" />
+            )}
             {destinyEffects.mezProtection !== undefined && (
               <div className="flex justify-between text-sm">
                 <span className="text-purple-400">Mez Protection</span>
                 <span className="text-purple-400">Mag {destinyEffects.mezProtection}</span>
               </div>
+            )}
+            {destinyEffects.kbProtection !== undefined && (
+              <div className="flex justify-between text-sm">
+                <span className="text-purple-400">Knockback Protection</span>
+                <span className="text-purple-400">Mag {destinyEffects.kbProtection}</span>
+              </div>
+            )}
+            {destinyEffects.runSpeed !== undefined && (
+              <IncarnateEffectRow label="Run/Jump/Fly Speed" value={destinyEffects.runSpeed} colorClass="text-sky-300" />
             )}
             {destinyEffects.levelShift !== undefined && destinyEffects.levelShift > 0 && (
               <div className="flex justify-between text-sm">

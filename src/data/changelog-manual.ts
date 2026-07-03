@@ -21,9 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-07-02',
+    date: '2026-07-03',
 
     items: [
+      { message: 'Large audit and update to Incarnate powers: a lot of effects were being silently dropped before reaching the display layers, others were attributed incorrectly', type: 'fix'},
       { message: 'Fix for the stacking detector, it only saw stack-type and not RefreshToCount', type: 'fix'},
       { message: 'The planner will now pre-fill metadata fields the moment a build is selected for update', type: 'feat'},
       { message: 'Added Export build image feature. Menu > Export as Image, choose the amount of detail you want to include', type: 'feat'},

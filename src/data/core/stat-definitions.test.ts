@@ -31,6 +31,7 @@ describe('stat section placement (single source of truth)', () => {
     // The moves: End Reduction + Heal Other → Health & Endurance, Level Shift → General/Offense.
     expect(STAT_CATEGORY['endreduction']).toBe('health-endurance');
     expect(STAT_CATEGORY['heal_other']).toBe('health-endurance');
+    expect(STAT_CATEGORY['heal_received']).toBe('health-endurance');
     expect(STAT_CATEGORY['level_shift']).toBe('offense');
   });
 
@@ -92,7 +93,7 @@ describe('GLOBAL_BONUS_OVERRIDES', () => {
   });
 
   it('overrides placeholder (() => 0) stats that read from globalBonuses', () => {
-    for (const id of ['range_bonus', 'heal_other', 'level_shift', 'endcost', 'netend']) {
+    for (const id of ['range_bonus', 'heal_other', 'heal_received', 'level_shift', 'endcost', 'netend']) {
       expect(GLOBAL_BONUS_OVERRIDES[id]).toBeDefined();
     }
   });

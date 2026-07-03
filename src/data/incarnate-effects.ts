@@ -119,8 +119,28 @@ export interface DestinyEffects {
   // Distinct from `resistanceAll` — Ageless Radial Epiphany grants 50%
   // debuff resistance, not 50% damage resistance.
   debuffResistance?: number;
+  // Mez/status DURATION resistance (Clarion). Distinct from debuffResistance —
+  // Clarion's Confused/Held/… Resistance templates were being flattened into
+  // debuffResistance, which showed a bogus "300% Debuff Resistance". Display-only
+  // (decimal, e.g. 2.1 = +210% status resistance).
+  statusResistance?: number;
+  // Healing Received — Res(Heal) buff (e.g. Incandescence Destiny). Stored
+  // POSITIVE = more healing received (the raw Res(Heal) template is negative
+  // and is inverted by the converter). Distinct from `healPercent` (heal
+  // OUTPUT strength) and from set-bonus healOther. See convert-incarnate-effects.cjs.
+  healReceived?: number;
   // Healing
   healPercent?: number;
+  // Instantaneous click heal (Rebirth Destiny), stored as raw scale + AT table
+  // (like Judgement damage). Resolved to actual HP at display time against the
+  // build's archetype — no dashboard total (a click heal isn't a passive stat).
+  healScale?: number;
+  healTable?: string;
+  // Knockback/Knockup protection magnitude (Clarion). Its own field so it feeds
+  // the Knockback-protection total, not the six status-protection types.
+  kbProtection?: number;
+  // Run/jump/fly speed buff (Incandescence Radial), decimal (0.35 = +35%).
+  runSpeed?: number;
   // Recovery/Regeneration
   recovery?: number;
   regeneration?: number;
@@ -628,7 +648,9 @@ export function applyAlphaToDestiny(
     if (!boostsAllowed.includes(m.boost)) continue;
     const enh = alpha[m.alphaAspect];
     const base = effects[m.destinyStat];
-    if (!enh || base === undefined) continue;
+    // destinyStat is always a numeric aspect (resistanceAll/defenseAll/…), but
+    // DestinyEffects now includes the string `healTable`, so narrow explicitly.
+    if (!enh || typeof base !== 'number') continue;
     if (!out) out = { ...effects };
     (out as Record<string, number>)[m.destinyStat] = Math.round(base * (1 + enh) * 1e6) / 1e6;
   }

@@ -92,6 +92,11 @@ export function DestinyTimeSlider() {
               {resolved?.resistanceAll !== undefined && (
                 <span className="text-emerald-300">+{pct(resolved.resistanceAll)} Res</span>
               )}
+              {(resolved?.defenseAll !== undefined || resolved?.resistanceAll !== undefined) &&
+                resolved?.healReceived !== undefined && ' · '}
+              {resolved?.healReceived !== undefined && (
+                <span className="text-green-300">+{pct(resolved.healReceived)} Heal Rcv</span>
+              )}
             </>
           )}
         </span>

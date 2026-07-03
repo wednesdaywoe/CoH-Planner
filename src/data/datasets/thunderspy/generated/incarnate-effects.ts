@@ -166,7 +166,7 @@ export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
 // ============================================
 // Peak stat bonuses (decimals). These diminish over the 120s duration.
 
-export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number>> = {
+export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number | string>> = {
   // Ageless Core Epiphany
   'ageless_core_epiphany': {"levelShift":1},
   // Ageless Core Invocation

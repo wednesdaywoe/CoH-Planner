@@ -139,6 +139,10 @@ export interface GlobalBonuses {
   debuffResistPerception: number;
   // Special
   healOther: number;
+  // Healing Received — Res(Heal) buff (percent). Positive = more healing
+  // received (e.g. Incandescence Destiny +50%). Distinct from healOther, which
+  // is heal *strength* (boosts heals you cast). Populated by incarnate Destiny.
+  healReceived: number;
   threatLevel: number;
   // Stealth
   stealthRadiusPvE: number;
@@ -286,6 +290,7 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     debuffResistRegeneration: 0,
     debuffResistPerception: 0,
     healOther: 0,
+    healReceived: 0,
     threatLevel: 0,
     stealthRadiusPvE: 0,
     stealthRadiusPvP: 0,
@@ -2880,7 +2885,9 @@ function scaleDestinyEffects(fx: DestinyEffects, factor: number): DestinyEffects
  * PBAoE ally buff: +Recharge / +Recovery, applied to self here as peak values
  * like Destiny). It's the only incarnate contribution that survives below 45 —
  * Verdict/Socket/Data exemplar powers are attacks/procs/pets (display-only).
- * Clarion's mez protection is display-only (matching Destiny's mezProtection).
+ * The exemplar Fate buff feeds only +Recharge/+Recovery here; its mez protection
+ * stays display-only (the full Destiny slot DOES wire mez protection into the
+ * status-protection totals — see the Destiny block in applyIncarnateBonuses).
  */
 function applyGenesisExemplarBuff(
   incarnates: IncarnateBuildState | undefined,
@@ -3091,6 +3098,58 @@ function applyIncarnateBonuses(
           value,
           type: 'incarnate',
         });
+      }
+
+      // Healing Received (Res(Heal) buff, e.g. Incandescence). Stored positive
+      // = more healing received. Its own total — NOT damage resistance (the
+      // pre-fix `resistanceAll` mapping wrongly subtracted this from all 8 res
+      // types).
+      if (destinyEffects.healReceived !== undefined) {
+        const value = destinyEffects.healReceived * 100;
+        global.healReceived += value;
+        addToBreakdown(breakdown, 'healReceived', {
+          name: powerName,
+          value,
+          type: 'incarnate',
+        });
+      }
+
+      // Mez Protection (Clarion) — a flat magnitude to all six control types.
+      // Raw Mag points, NOT ×100 (that scaling is for percent stats only). This
+      // was previously dropped by the converter and treated as display-only;
+      // Clarion's whole purpose is mez protection, so it now feeds the
+      // status-protection totals like any protection source.
+      if (destinyEffects.mezProtection !== undefined) {
+        const mag = destinyEffects.mezProtection;
+        const protKeys: (keyof GlobalBonuses)[] = [
+          'protHold', 'protStun', 'protImmobilize', 'protSleep', 'protConfuse', 'protFear',
+        ];
+        for (const key of protKeys) {
+          (global[key] as number) += mag;
+          addToBreakdown(breakdown, key, { name: powerName, value: mag, type: 'incarnate' });
+        }
+      }
+
+      // Knockback/Knockup protection (Clarion) — its own total, raw Mag.
+      if (destinyEffects.kbProtection !== undefined) {
+        global.protKnockback += destinyEffects.kbProtection;
+        addToBreakdown(breakdown, 'protKnockback', {
+          name: powerName,
+          value: destinyEffects.kbProtection,
+          type: 'incarnate',
+        });
+      }
+
+      // Run/Jump/Fly speed (Incandescence Radial) — one buff over all three
+      // movement axes (decimal → percent).
+      if (destinyEffects.runSpeed !== undefined) {
+        const value = destinyEffects.runSpeed * 100;
+        global.runSpeed += value;
+        global.flySpeed += value;
+        global.jumpHeight += value;
+        addToBreakdown(breakdown, 'runSpeed', { name: powerName, value, type: 'incarnate' });
+        addToBreakdown(breakdown, 'flySpeed', { name: powerName, value, type: 'incarnate' });
+        addToBreakdown(breakdown, 'jumpHeight', { name: powerName, value, type: 'incarnate' });
       }
     }
   }

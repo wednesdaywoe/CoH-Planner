@@ -993,12 +993,27 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   heal_other: {
     id: 'heal_other',
-    label: 'Heal Other',
+    // "Heal Bonus" (was "Heal Other"): +Heal *strength* — scales up the heals
+    // you cast, including heals that land on yourself. Distinct from
+    // heal_received below (incoming healing). Renamed to match the in-game
+    // convention and because it isn't limited to heals cast on others.
+    label: 'Heal Bonus',
     getValue: () => 0, // Requires globalBonuses, handled via override
     format: (v) => `+${pct2(Number(v))}%`,
     color: STAT_COLORS.health,
-    tooltip: 'Healing bonus for heals cast on others',
+    tooltip: 'Bonus to the strength of heals you cast (including on yourself)',
     breakdownKey: 'healOther',
+  },
+  heal_received: {
+    id: 'heal_received',
+    label: 'Healing Received',
+    getValue: () => 0, // Requires globalBonuses, handled via override
+    // Positive = more healing received (Res(Heal) buff, e.g. Incandescence
+    // Destiny +50%). Can be negative if a power reduces healing received.
+    format: (v) => `${Number(v) >= 0 ? '+' : ''}${pct2(Number(v))}%`,
+    color: STAT_COLORS.health,
+    tooltip: 'Bonus to healing you receive from any source (Resistance to Heal)',
+    breakdownKey: 'healReceived',
   },
   threat_level: {
     id: 'threat_level',
@@ -1126,6 +1141,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
 export const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
   range_bonus: 'range',
   heal_other: 'healOther',
+  heal_received: 'healReceived',
   threat_level: 'threatLevel',
   stealth_pve: 'stealthRadiusPvE',
   stealth_pvp: 'stealthRadiusPvP',
@@ -1186,7 +1202,7 @@ export type StatCategory =
  */
 export const STAT_SECTIONS: { category: StatCategory; stats: string[] }[] = [
   { category: 'offense', stats: ['damage', 'accuracy', 'tohit', 'recharge', 'range_bonus', 'threat_level', 'level_shift'] },
-  { category: 'health-endurance', stats: ['health', 'regeneration', 'heal_other', 'maxend', 'recovery', 'endreduction', 'endcost', 'netend'] },
+  { category: 'health-endurance', stats: ['health', 'regeneration', 'heal_other', 'heal_received', 'maxend', 'recovery', 'endreduction', 'endcost', 'netend'] },
   { category: 'movement', stats: ['runspeed', 'flyspeed', 'jumpspeed', 'jumpheight'] },
   { category: 'stealth-perception', stats: ['stealth_pve', 'stealth_pvp', 'perception_bonus'] },
   { category: 'defense', stats: ['defense_melee', 'defense_ranged', 'defense_aoe', 'def_smashing', 'def_lethal', 'def_fire', 'def_cold', 'def_energy', 'def_negative', 'def_psionic', 'def_toxic'] },

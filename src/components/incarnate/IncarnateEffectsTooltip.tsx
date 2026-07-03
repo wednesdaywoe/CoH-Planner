@@ -37,10 +37,34 @@ const ALPHA_LABELS: Record<string, string> = {
 
 const DESTINY_LABELS: Record<string, string> = {
   defenseAll: 'Defense (All)', resistanceAll: 'Resistance (All)',
-  healPercent: 'Heal', recovery: 'Recovery', regeneration: 'Regeneration',
+  debuffResistance: 'Debuff Resistance', statusResistance: 'Status Resistance',
+  healPercent: 'Heal', healReceived: 'Healing Received',
+  recovery: 'Recovery', regeneration: 'Regeneration', endurance: 'Endurance',
   maxHP: 'Max HP', maxEndurance: 'Max End', recharge: 'Recharge',
-  damage: 'Damage', toHit: 'ToHit', mezProtection: 'Mez Protection',
+  damage: 'Damage', toHit: 'ToHit',
+  mezProtection: 'Mez Protection', kbProtection: 'Knockback Protection',
+  runSpeed: 'Run/Jump/Fly Speed',
 };
+
+// Destiny keys handled specially (not rendered by the generic label map):
+// the click heal (healScale/healTable → computed HP) and the diminishing-buff
+// metadata. `mezProtection`/`kbProtection` render as "Mag N", everything else
+// as a percent.
+const DESTINY_SKIP_KEYS = new Set(['levelShift', 'initialDuration', 'totalDuration', 'healScale', 'healTable']);
+
+/** Format one Destiny stat entry's value (Mag for protection, else percent). */
+function formatDestinyValue(key: string, val: number): string {
+  return key === 'mezProtection' || key === 'kbProtection' ? `Mag ${val}` : formatEffectValue(val);
+}
+
+/** The click-heal row (Rebirth): raw scale × AT table → HP, or null if none. */
+function destinyHealEntry(fx: DestinyEffects, archetypeId?: string, level?: number): { label: string; value: string } | null {
+  if (!fx.healScale) return null;
+  const hp = archetypeId
+    ? calculateIncarnateDamage(fx.healScale, fx.healTable ?? 'Ranged_Tempdamage', archetypeId, level ?? 50)
+    : null;
+  return { label: 'Heal', value: hp ? `~${Math.round(hp)} HP` : 'on cast' };
+}
 
 const HYBRID_LABELS: Record<string, string> = {
   damage: 'Damage', regeneration: 'Regeneration', recovery: 'Recovery',
@@ -157,8 +181,10 @@ export function getIncarnateEffectData(slotId: IncarnateSlotId, powerId: string,
       const fx = getDestinyEffects(powerId);
       if (!fx) return null;
       const entries: EffectEntry[] = (Object.entries(fx) as [string, number][])
-        .filter(([k]) => k !== 'levelShift' && k !== 'initialDuration' && k !== 'totalDuration')
-        .map(([k, v]) => ({ label: DESTINY_LABELS[k] || k, value: k === 'mezProtection' ? `Mag ${v}` : formatEffectValue(v) }));
+        .filter(([k]) => !DESTINY_SKIP_KEYS.has(k))
+        .map(([k, v]) => ({ label: DESTINY_LABELS[k] || k, value: formatDestinyValue(k, v) }));
+      const heal = destinyHealEntry(fx, archetypeId, level);
+      if (heal) entries.push(heal);
       if (fx.levelShift !== undefined && fx.levelShift > 0)
         entries.push({ label: 'Level Shift', value: `+${fx.levelShift}` });
       const footer = fx.totalDuration !== undefined ? `Duration: ${fx.totalDuration}s (peak ${fx.initialDuration}s)` : undefined;
@@ -254,7 +280,7 @@ export function IncarnateEffectsTooltip({ slotId, powerId }: { slotId: Incarnate
     case 'destiny': {
       const fx = getDestinyEffects(powerId);
       if (!fx) return null;
-      return <DestinyTooltip fx={fx} />;
+      return <DestinyTooltip fx={fx} archetypeId={archetypeId} level={level} />;
     }
     case 'hybrid': {
       const fx = getHybridEffects(powerId);
@@ -314,10 +340,11 @@ function AlphaTooltip({ fx }: { fx: AlphaEffects }) {
   );
 }
 
-function DestinyTooltip({ fx }: { fx: DestinyEffects }) {
+function DestinyTooltip({ fx, archetypeId, level }: { fx: DestinyEffects; archetypeId?: string; level?: number }) {
   const statEntries = Object.entries(fx).filter(
-    ([k]) => k !== 'levelShift' && k !== 'initialDuration' && k !== 'totalDuration'
+    ([k]) => !DESTINY_SKIP_KEYS.has(k)
   ) as [string, number][];
+  const heal = destinyHealEntry(fx, archetypeId, level);
 
   return (
     <div className="text-[11px] mt-2 border-t border-gray-600 pt-1.5 space-y-0.5">
@@ -326,9 +353,10 @@ function DestinyTooltip({ fx }: { fx: DestinyEffects }) {
         <EffectRow
           key={key}
           label={DESTINY_LABELS[key] || key}
-          value={key === 'mezProtection' ? `Mag ${val}` : formatEffectValue(val)}
+          value={formatDestinyValue(key, val)}
         />
       ))}
+      {heal && <EffectRow label={heal.label} value={heal.value} />}
       {fx.levelShift !== undefined && fx.levelShift > 0 && (
         <EffectRow label="Level Shift" value={`+${fx.levelShift}`} />
       )}

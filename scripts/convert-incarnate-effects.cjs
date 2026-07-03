@@ -148,6 +148,23 @@ const ATTRIB_MAP = {
   'Level_Shift': 'levelShift',
 };
 
+// The six control (mez) attribs, used to discriminate Destiny effects:
+//   - aspect=Current, negative scale → mez PROTECTION for the caster (Clarion).
+//   - aspect=Resistance             → mez/status duration RESISTANCE (Clarion),
+//     which is NOT generic debuff resistance (that mislabel showed Clarion as a
+//     bogus "300% Debuff Resistance"). HC packs all six into one multi-attrib
+//     template; Rebirth/Parse6 splits them into one template each.
+const MEZ_ATTRIBS = new Set([
+  'Held', 'Stunned', 'Immobilized', 'Sleep', 'Confused', 'Afraid', 'Terrorized',
+]);
+// Knockback/Knockup protection attribs (aspect=Current, negative). `Knocked`
+// lives in ATTRIB_MAP → protKnockback and is routed to kbProtection below;
+// `Knockup`/`Knockback` are the raw attribs the bin actually uses (Clarion).
+const KB_ATTRIBS = new Set(['Knockback', 'Knockup', 'Knocked']);
+// Movement attribs Incandescence Radial grants (one multi-attrib template);
+// surfaced as a single run-speed buff rather than dropped.
+const MOVEMENT_ATTRIBS = new Set(['RunningSpeed', 'FlyingSpeed', 'JumpHeight', 'JumpSpeed']);
+
 /** Map alpha_silent filename bases to enhancement aspect keys */
 const ALPHA_FILENAME_MAP = {
   'damage': 'damage',
@@ -310,6 +327,13 @@ function extractDestiny() {
     // Destiny powers have multiple copies of the same effect at different durations
     // We want the peak (shortest duration) values
     const effects = {};
+    // Rebirth's heal (Heal_Dmg/Absolute) is an instantaneous, table-scaled
+    // click heal — it has no dashboard total and doesn't decay, so it is kept
+    // aside (scale + table) and resolved to actual HP at display time via the
+    // build's archetype (like Judgement damage), rather than folded into the
+    // diminishing timeline.
+    let healScale = 0;
+    let healTable = '';
     for (const eff of data.effects || []) {
       for (const t of eff.templates || []) {
         const attrib = (t.attribs || [])[0];
@@ -325,36 +349,70 @@ function extractDestiny() {
         const durMatch = duration.match(/([\d.]+)\s*seconds?/i);
         if (durMatch) durSec = parseFloat(durMatch[1]);
 
+        // Instantaneous click heal (Rebirth). Negative Absolute Heal_Dmg = a
+        // heal; keep the strongest one (all tiers of a power share one heal).
+        if (aspect === 'Absolute' && attrib === 'Heal_Dmg') {
+          if (Math.abs(scale) > Math.abs(healScale)) {
+            healScale = Math.abs(scale);
+            healTable = (t.table && typeof t.table === 'object') ? (t.table.column_name || '') : (t.table || '');
+          }
+          continue;
+        }
+
         // Determine the stat key
         let statKey = null;
         if (aspect === 'Resistance') {
-          // `aspect: Resistance` covers two distinct game concepts:
-          //   - "Resistance to damage of type X" when the attrib is a damage
-          //     type (suffixed `_Dmg`). Routes to `resistanceAll` for
-          //     damage resistance display (Barrier Radial Epiphany etc.).
-          //   - "Resistance to debuffs of stat X" for everything else
-          //     (Ranged/Melee/Area defense positions, Endurance, ToHit,
-          //     Regeneration, Recovery, RechargeTime, etc.). Routes to
-          //     `debuffResistance` — this is what Ageless Radial Epiphany
-          //     actually grants (50% Debuff Resistance, not 50% Damage
-          //     Resistance).
-          statKey = attrib.endsWith('_Dmg') ? 'resistanceAll' : 'debuffResistance';
+          // `aspect: Resistance` reuses stat attribs for several distinct game
+          // concepts — discriminate by ATTRIB, never a bare `_Dmg` suffix
+          // (GAME-DATA §3):
+          //   - `Heal_Dmg` → Res(Heal) = "Healing Received" (Incandescence),
+          //     inverted below to a positive buff. MUST precede the `_Dmg`
+          //     test (flattening it into resistanceAll was the "-res(all)" bug).
+          //   - a true damage type (Smashing_Dmg …) → `resistanceAll`.
+          //   - a mez attrib (Held, Confused …) → `statusResistance` (mez
+          //     DURATION resistance, Clarion). Bucketing this into
+          //     debuffResistance is what showed Clarion as a bogus 300% Debuff
+          //     Resistance — same distinct-stat-collapsed-into-broader-bucket
+          //     class as the KB/KU and Incandescence bugs.
+          //   - everything else (defense positions, Repel, Taunt/Placate,
+          //     ToHit, Recharge, movement, …) → `debuffResistance` (Ageless
+          //     Radial grants 50% Debuff Resistance).
+          if (attrib === 'Heal_Dmg') statKey = 'healReceived';
+          else if (attrib.endsWith('_Dmg')) statKey = 'resistanceAll';
+          else if (MEZ_ATTRIBS.has(attrib)) statKey = 'statusResistance';
+          else statKey = 'debuffResistance';
+        } else if (aspect === 'Maximum' && attrib === 'HitPoints') {
+          // Max HP buff (Rebirth Core). The bin stores it negated like a heal;
+          // invert to positive. Game convention: displayed % = scale × 10, and
+          // the Destiny totals consumer multiplies the stored fraction by 100,
+          // so store scale × 0.1 (scale 2 → 0.2 → +20% Max HP).
+          statKey = 'maxHP';
         } else if (aspect === 'Current' && ATTRIB_MAP[attrib]) {
           const mapped = ATTRIB_MAP[attrib];
           if (mapped.startsWith('def')) {
             statKey = 'defenseAll';
           } else if (mapped.startsWith('prot')) {
-            // skip mez effects on destiny (they target enemies)
-            continue;
+            // Mez PROTECTION for the caster (Clarion) — previously skipped with
+            // an incorrect "targets enemies" comment, which dropped Clarion's
+            // entire identity. Knockback protection is its own total.
+            statKey = (mapped === 'protKnockback') ? 'kbProtection' : 'mezProtection';
           } else {
             statKey = mapped;
           }
+        } else if (aspect === 'Current' && KB_ATTRIBS.has(attrib)) {
+          statKey = 'kbProtection'; // Knockup/Knockback (raw attribs, not in ATTRIB_MAP)
+        } else if (aspect === 'Current' && MOVEMENT_ATTRIBS.has(attrib)) {
+          statKey = 'runSpeed'; // Incandescence Radial travel buff
         } else if (aspect === 'Strength') {
-          // Enhancement-style buffs (recharge, recovery)
+          // Enhancement-style buffs (recharge, recovery, regen). Anything else
+          // at aspect=Strength is a "+buff-strength" amplifier (Rebirth's
+          // Clarion Radial buffs def/res/mez/heal STRENGTH across ~20 attribs)
+          // with no player total — DROP it rather than leak lowercased junk
+          // keys (`melee`, `tohit`, `absorb`, …) via the old catch-all.
           if (attrib === 'RechargeTime') statKey = 'recharge';
           else if (attrib === 'Recovery') statKey = 'recovery';
           else if (attrib === 'Regeneration') statKey = 'regeneration';
-          else statKey = attrib.toLowerCase();
+          else statKey = null;
         } else if (attrib === 'Endurance' && aspect === 'Current') {
           statKey = 'endurance'; // Endurance refill
         }
@@ -364,23 +422,45 @@ function extractDestiny() {
           continue;
         }
 
-        // Track by stat+duration — we'll pick the peak later
+        // Track by stat+duration — we'll collapse and pick the peak later.
+        //   - healReceived: Res(Heal) is stored negative → invert to positive.
+        //   - maxHP: scale × 0.1 fraction (see above).
+        //   - mez/KB protection: magnitude = |scale| (positive).
+        //   - everything else: raw scale.
+        let value;
+        if (statKey === 'healReceived') value = -scale;
+        else if (statKey === 'maxHP') value = Math.abs(scale) * 0.1;
+        else if (statKey === 'mezProtection' || statKey === 'kbProtection') value = Math.abs(scale);
+        else value = scale;
         const key = `${statKey}`;
         if (!effects[key]) effects[key] = [];
-        effects[key].push({ value: round(scale), duration: durSec });
+        effects[key].push({ value: round(value), duration: durSec });
       }
     }
 
-    // For each stat, extract peak value and build diminishing timeline
+    // For each stat, collapse duplicate same-duration tiers, then extract the
+    // peak value and diminishing timeline.
     const peakEffects = {};
     const timeline = {};
     for (const [stat, entries] of Object.entries(effects)) {
-      // Sort by duration ascending
-      entries.sort((a, b) => a.duration - b.duration);
+      // A uniform multi-type buff (all 11 defense positions, all 6 mez types,
+      // Ageless's ~15 debuff-resistance attribs) arrives as many identical
+      // templates — one multi-attrib row in HC, one row per attrib in Parse6.
+      // Summing them would N× the magnitude (Parse6 Clarion mez would read 6×).
+      // Collapse each duration to its single strongest component so the timeline
+      // sums real decay tiers, not duplicate attribs.
+      const byDur = new Map();
+      for (const e of entries) {
+        const cur = byDur.get(e.duration);
+        if (cur === undefined || Math.abs(e.value) > Math.abs(cur)) byDur.set(e.duration, e.value);
+      }
+      const collapsed = Array.from(byDur.entries())
+        .map(([dur, value]) => ({ value, duration: dur }))
+        .sort((a, b) => a.duration - b.duration);
       // Peak = highest absolute value
-      const peak = entries.reduce((best, e) => Math.abs(e.value) > Math.abs(best.value) ? e : best, entries[0]);
+      const peak = collapsed.reduce((best, e) => Math.abs(e.value) > Math.abs(best.value) ? e : best, collapsed[0]);
       peakEffects[stat] = round(peak.value);
-      timeline[stat] = entries.map(e => ({ value: round(e.value), duration: e.duration }));
+      timeline[stat] = collapsed.map(e => ({ value: round(e.value), duration: e.duration }));
     }
 
     // Boost categories the power accepts — the game's own statement of which
@@ -395,12 +475,15 @@ function extractDestiny() {
       peakEffects,
       timeline,
       boostsAllowed,
+      healScale,   // instantaneous click heal (0 = none); resolved to HP at display
+      healTable,
     };
 
     const effectStr = Object.entries(peakEffects)
       .map(([k, v]) => `${k}:${round(v * 100, 1)}%`)
       .join(', ');
-    console.log(`  ${displayName}: lvlShift=${levelShift} peak=[${effectStr}]`);
+    const healStr = healScale ? ` heal=${healScale}×${healTable}` : '';
+    console.log(`  ${displayName}: lvlShift=${levelShift} peak=[${effectStr}]${healStr}`);
   }
 
   console.log(`  Total: ${Object.keys(results).length} powers`);
@@ -473,41 +556,53 @@ function extractHybrid() {
           continue;
         }
 
+        if (scale === 0) continue;
+
+        // Collect the DISTINCT stat keys this template maps to. A uniform
+        // multi-attrib buff — e.g. Support Hybrid's aspect=Strength row over all
+        // eight `*_Dmg` types — is one buff and must count ONCE; summing per
+        // attrib would read +48% damage for a +6% buff. Distinct positions
+        // (Melee/Ranged/Area) map to distinct keys and all apply.
+        const templateKeys = new Set();
         for (const attrib of attribs) {
           if (attrib === 'Revoke_Power' || attrib === 'Set_Mode') continue;
-          if (scale === 0) continue;
-
-          // Determine stat key based on attrib + aspect
           let statKey = null;
           if (aspect === 'Resistance' && ATTRIB_MAP[attrib]) {
             statKey = ATTRIB_MAP[attrib]; // e.g., resSmashing
           } else if (aspect === 'Current') {
-            if (ATTRIB_MAP[attrib]) {
-              statKey = ATTRIB_MAP[attrib];
-            }
+            if (ATTRIB_MAP[attrib]) statKey = ATTRIB_MAP[attrib];
           } else if (aspect === 'Strength') {
             // Enhancement-type buffs. Accept both 'Endurance' (legacy CoD2
             // name) and 'EnduranceDiscount' (current bin export name —
             // attrib index 92 vs Endurance's 22, they're distinct in the
             // game enum but Mids/CoD2 used the shorter name).
             if (attrib === 'Endurance' || attrib === 'EnduranceDiscount') statKey = 'enduranceDiscount';
+            // Support Hybrid buffs the strength of your damage and accuracy —
+            // previously dropped (only endurance was mapped at Strength), which
+            // made the Support tree read nearly empty. The heal-strength and
+            // mez-strength parts of the same row are team-oriented with no
+            // standard self total, so they stay out.
+            else if (attrib === 'Accuracy') statKey = 'accuracy';
+            else if (attrib.endsWith('_Dmg') && attrib !== 'Heal_Dmg') statKey = 'damage';
           }
+          if (!statKey || statKey === 'taunt') continue; // taunt isn't a player stat
+          templateKeys.add(statKey);
+        }
+        if (templateKeys.size === 0) continue;
 
-          if (!statKey) continue;
-          if (statKey === 'taunt') continue; // Skip taunt — not a player stat
+        // Classify as front-loaded or per-target (per-effect requires, shared by
+        // all attribs in the template). Two requires_expression dialects exist:
+        //   - Legacy raw_data_homecoming: `Ne(target,source)` for per-target,
+        //     `source>entref` for self.
+        //   - bin-crawler export (RPN): `entref target> entref source> eq`
+        //     for self (target equals source), same plus trailing ` !` for
+        //     per-target (target NOT source).
+        const isSelfRPN = /entref\s+target>\s+entref\s+source>\s+eq\s*$/.test(req);
+        const isPerTargetRPN = /entref\s+target>\s+entref\s+source>\s+eq\s+!/.test(req);
+        const isPerTarget = isPerTargetRPN || req.includes('Ne(target');
+        const isSelfOnly = isSelfRPN || req.includes('source>entref') || req === '';
 
-          // Classify as front-loaded or per-target. Two requires_expression
-          // dialects exist:
-          //   - Legacy raw_data_homecoming: `Ne(target,source)` for per-target,
-          //     `source>entref` for self.
-          //   - bin-crawler export (RPN): `entref target> entref source> eq`
-          //     for self (target equals source), same plus trailing ` !` for
-          //     per-target (target NOT source).
-          const isSelfRPN = /entref\s+target>\s+entref\s+source>\s+eq\s*$/.test(req);
-          const isPerTargetRPN = /entref\s+target>\s+entref\s+source>\s+eq\s+!/.test(req);
-          const isPerTarget = isPerTargetRPN || req.includes('Ne(target');
-          const isSelfOnly = isSelfRPN || req.includes('source>entref') || req === '';
-
+        for (const statKey of templateKeys) {
           if (isPerTarget) {
             if (!perTarget[statKey]) perTarget[statKey] = 0;
             perTarget[statKey] = round(perTarget[statKey] + Math.abs(scale));
@@ -1258,11 +1353,15 @@ function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore, gene
   lines.push('// ============================================');
   lines.push('// Peak stat bonuses (decimals). These diminish over the 120s duration.');
   lines.push('');
-  lines.push('export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number>> = {');
+  // Values are numeric percents/mags, EXCEPT `healTable` (a string): Rebirth's
+  // click heal is stored as `healScale` (raw scale) + `healTable` and resolved
+  // to actual HP against the build's archetype at display time.
+  lines.push('export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number | string>> = {');
   for (const [id, data] of Object.entries(destiny)) {
     const obj = {};
     if (data.levelShift) obj.levelShift = data.levelShift;
     Object.assign(obj, data.peakEffects);
+    if (data.healScale) { obj.healScale = round(data.healScale); obj.healTable = data.healTable; }
     lines.push(`  // ${data.displayName}`);
     lines.push(`  '${id}': ${JSON.stringify(obj)},`);
   }
