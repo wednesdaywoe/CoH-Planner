@@ -44,7 +44,12 @@ export const SynapticOverload: Power = {
     "confuse": {
       "mag": 3,
       "scale": 10,
-      "table": "Ranged_Immobilize"
+      "table": "Ranged_Immobilize",
+      "domination": {
+        "mag": 3,
+        "scale": 15,
+        "table": "Ranged_Immobilize"
+      }
     },
     "enduranceDrain": {
       "scale": 2,

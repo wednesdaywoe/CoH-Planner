@@ -65,7 +65,12 @@ export const TotalFocus: Power = {
     "stun": {
       "mag": 3,
       "scale": 10,
-      "table": "Melee_Immobilize"
+      "table": "Melee_Immobilize",
+      "domination": {
+        "mag": 3,
+        "scale": 15,
+        "table": "Melee_Immobilize"
+      }
     }
   }
 };

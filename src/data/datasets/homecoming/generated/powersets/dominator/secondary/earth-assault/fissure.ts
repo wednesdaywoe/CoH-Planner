@@ -64,7 +64,12 @@ export const Fissure: Power = {
     "stun": {
       "mag": 2,
       "scale": 8,
-      "table": "Ranged_Stun"
+      "table": "Ranged_Stun",
+      "domination": {
+        "mag": 1,
+        "scale": 12,
+        "table": "Ranged_Stun"
+      }
     }
   },
   "specialEffects": [

@@ -59,7 +59,12 @@ export const EnfeeblingLullaby: Power = {
     "sleep": {
       "mag": 3,
       "scale": 12,
-      "table": "Ranged_Sleep"
+      "table": "Ranged_Sleep",
+      "domination": {
+        "mag": 3,
+        "scale": 18,
+        "table": "Ranged_Sleep"
+      }
     },
     "buffDuration": 15
   }

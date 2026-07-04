@@ -63,7 +63,12 @@ export const HymnofDissonance: Power = {
     "hold": {
       "mag": 3,
       "scale": 12,
-      "table": "Melee_Immobilize"
+      "table": "Melee_Immobilize",
+      "domination": {
+        "mag": 3,
+        "scale": 18,
+        "table": "Ranged_Immobilize"
+      }
     },
     "buffDuration": 18
   }

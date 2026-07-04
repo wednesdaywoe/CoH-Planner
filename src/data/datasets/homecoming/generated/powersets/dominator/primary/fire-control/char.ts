@@ -60,7 +60,12 @@ export const Char: Power = {
     "hold": {
       "mag": 3,
       "scale": 12,
-      "table": "Ranged_Immobilize"
+      "table": "Ranged_Immobilize",
+      "domination": {
+        "mag": 3,
+        "scale": 18,
+        "table": "Ranged_Immobilize"
+      }
     }
   }
 };

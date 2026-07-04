@@ -70,7 +70,12 @@ export const ChargedBrawl: Power = {
     "sleep": {
       "mag": 3,
       "scale": 10,
-      "table": "Melee_Sleep"
+      "table": "Melee_Sleep",
+      "domination": {
+        "mag": 3,
+        "scale": 15,
+        "table": "Melee_Sleep"
+      }
     },
     "recoveryDebuff": {
       "scale": 1,

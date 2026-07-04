@@ -60,7 +60,12 @@ export const Wormhole: Power = {
     "stun": {
       "mag": 3,
       "scale": 10,
-      "table": "Ranged_Stun"
+      "table": "Ranged_Stun",
+      "domination": {
+        "mag": 3,
+        "scale": 15,
+        "table": "Ranged_Stun"
+      }
     },
     "knockback": {
       "scale": 14,

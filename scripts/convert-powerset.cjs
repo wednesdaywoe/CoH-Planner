@@ -661,6 +661,11 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
         && (!effect.templates || effect.templates.length === 0)
         && (!effect.child_effects || effect.child_effects.length === 0)) continue;
     if (effect.tags && effect.tags.includes('Containment')) continue;
+    // `Tag "Domination"` groups carry the Dominator inherent's control bonus.
+    // Unlike Containment (dropped above), we KEEP these but stamp their
+    // templates so extractEffects can route them into the mez `domination`
+    // sub-field rather than merging them into the base mez.
+    const isDomination = !!(effect.tags && effect.tags.includes('Domination'));
     // Skip conditional effects that represent archetype inherent mechanics
     // (these are handled separately by the planner's toggle system)
     let combatGated = parentCombatGated;
@@ -714,6 +719,7 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
           }
         } else {
           if (combatGated) _tagCombatGated(template);
+          if (isDomination) _tagDomination(template);
           templates.push(template);
         }
       }
@@ -2074,6 +2080,17 @@ function _tagCombatGated(template) {
   template._combatGated = true;
 }
 
+/** Tag templates that come from a `Tag "Domination"` effect group. These are
+ *  the Dominator inherent's per-power control bonus (an extra mez that stacks
+ *  onto the base while Domination is active). extractEffects reads this to
+ *  capture the bonus into the mez effect's `domination` sub-field instead of
+ *  merging it into (and being discarded by) the base one-per-type mez. Only
+ *  powers whose data actually carries the tag get the sub-field — a blast
+ *  power with an untagged control effect correctly gets none. */
+function _tagDomination(template) {
+  template._domination = true;
+}
+
 /**
  * Detect whether an Effect's `requires_expression` is a *positive state gate*
  * representing a conditional bonus that should NOT be folded into the power's
@@ -3276,6 +3293,11 @@ function extractDamage(templates) {
 function extractEffects(templates, powerName) {
   const effects = {};
   const unmappedAttribs = new Set();
+  // Domination inherent bonus (from `Tag "Domination"` groups, stamped in
+  // collectTemplatesDeep). Collected here by mez type and attached to the
+  // matching base mez effect's `domination` sub-field after the main loop, so
+  // ordering and the base one-per-type dedup can't drop it. PvE only.
+  const pendingDomination = {};
 
   // Pre-scan for repeated-template absorb stacks. The Rebirth Spirit Ward
   // rework emits 5 identical Absorb/Current/Magnitude templates (one per
@@ -3638,6 +3660,18 @@ function extractEffects(templates, powerName) {
           // Scoped to Thunderspy: HC/Rebirth encode some armor mez-protection as
           // negative-scale `*_Ones` (a separate pre-existing question, not touched
           // here) — this schema drops the aspect, so tspy can't reuse that path.
+          continue;
+        } else if (template._domination) {
+          // Dominator inherent bonus: a `Tag "Domination"` mez that stacks onto
+          // the base while Domination is active. Capture (PvE only) into a
+          // pending bucket; attached to effects[mezType].domination after the
+          // loop. Prefer the higher-magnitude PvE variant among same-kind.
+          if (!/pvp/i.test(table || '')) {
+            const prev = pendingDomination[mezType];
+            if (!prev || magnitude > prev.mag) {
+              pendingDomination[mezType] = { mag: magnitude, scale: Math.abs(scale), table };
+            }
+          }
           continue;
         } else {
           const newMez = makeMezEffect();
@@ -4170,6 +4204,15 @@ function extractEffects(templates, powerName) {
     effects.summon.conditionalEntities = [
       { entity: ignitedVariant, toggleId: 'oilslick_ignited', label: 'Oil Slick Ignited' },
     ];
+  }
+
+  // Attach captured Domination bonuses to the matching base mez effect. A power
+  // only gets the sub-field if it has both a base mez AND a Domination-tagged
+  // bonus for that type — a power that tags a mez it doesn't apply as a base
+  // (rare) is skipped rather than inventing a base mez.
+  for (const [mezType, dom] of Object.entries(pendingDomination)) {
+    const base = effects[mezType];
+    if (base && typeof base === 'object') base.domination = dom;
   }
 
   return effects;

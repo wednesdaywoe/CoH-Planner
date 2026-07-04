@@ -63,7 +63,12 @@ export const SpectralWall: Power = {
     "immobilize": {
       "mag": 4,
       "scale": 15,
-      "table": "Ranged_Immobilize"
+      "table": "Ranged_Immobilize",
+      "domination": {
+        "mag": 4,
+        "scale": 22.5,
+        "table": "Ranged_Immobilize"
+      }
     },
     "tohitDebuff": {
       "scale": 0.75,

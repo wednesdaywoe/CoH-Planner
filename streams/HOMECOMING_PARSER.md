@@ -98,16 +98,62 @@ was not mounted at investigation time.
 
 *(2) Do mode STAT EFFECTS (the "what does mode N do" multipliers) exist as data? **NO —
 modes are pure flags.*** A mode carries only `name` + `display` — no magnitude/duration
-modifiers. Effects that happen "in a mode" are implemented either as separate
-`requires`-gated AttribMods on other powers (data-driven — Bio/DP/etc.), or by engine
-C-code (hardcoded). **Domination's ×2/×1.5 is the C-code case, now confirmed at the
-oracle level** (stronger than the earlier export-only check): `Dominate` (Mind Control
-Hold) is a flat `kHeld Mag 3.0` PvE / `4.0` PvP with **no** Domination-mode gate and **no**
-magnitude expression, and **zero** of the Dominator control `.powers` reference
-`kDomination`/`Domination_Active`. So resolving the index recovers the *name*
-(`Domination_Active`) but **not** the multiplier — the `getDominationInfo()` hardcode is
-correct and should stay. The task's own caveat ("may be hardcoded in the client's C
-code") is the confirmed outcome for the motivating case.
+modifiers. But the effects that happen "in a mode" ARE data-driven, via one of three
+mechanisms: (a) separate `requires`-gated AttribMods on other powers (Bio/DP/etc.), (b)
+**`Tag`-gated nested effect groups baked into the affected powers** — the engine's
+universal AT-mechanic system — or (c) engine C-code.
+
+**CORRECTION (2026-07-04) — Domination is mechanism (b), NOT C-code. The earlier
+"C-code / hardcode is correct" conclusion below was WRONG.** It was reached by checking
+whether the control `.powers` reference `kDomination` / the `Domination_Active` mode / a
+magnitude expression — they don't — but it never checked the **`Tag` field** on effect
+groups, which is where the boost actually lives. Every Dominator control power carries a
+**nested `Effect { Tag "Domination" … }`** group that duplicates the control with extra
+mag/duration; the engine enables `Tag "Domination"` groups while Domination is active.
+Concretely, `Dominator_Control.Mind_Control.Dominate` has a base `kHeld mag 3.0 scale 12`
+group **plus** a child `Tag "Domination"` group `kHeld mag 3.0 scale 18` — they stack, so
+under Domination the target eats mag 6 (×2) and the added piece runs scale-18 vs scale-12
+(×1.5). Verified against the live measurement (Dazzle 3.0/17.88s → +3.0/26.82s; 26.82/17.88
+= 1.500). Scope: **205 `Domination`-tagged groups across 106 Dominator powers**; the values
+are **already in the export** (`export_powers.py` emits `tags`, and `dominate.json` carries
+the tag). The pattern is *mostly* ×1.5 duration / ×2 mag but **not uniform** — Cryo Freeze
+Ray is ×1.8, PvP variants add only +1 mag, and some powers tag a *different* mez than their
+base — so the flat `getDominationInfo()` 2.0/1.5 hardcode is an approximation, not exact.
+
+This is the same `Tag` mechanism behind every AT gimmick (tag histogram, HC 2026-06):
+`ScrapperCrit_ST` 387 · `SentCrit` 410 · `StealthCrit` 277 · `Containment` 264 ·
+`Overpower` 215 (Controller bonus-mag) · `FieryEmbrace` 605 · `Defiance` 128 ·
+`Domination` 205. Lesson for future "where does mode/AT effect N come from" hunts: **check
+`EffectGroup.tags` before concluding C-code** — a search over `requires`/`.Mode?`/attrib
+names will miss tag-gated effects entirely.
+
+**SHIPPED (2026-07-04) — per-effect Domination wiring.** Replaced the blanket ×2/×1.5
+(gated on `category === 'control'`) with the real per-power data. Converter
+([convert-powerset.cjs](scripts/convert-powerset.cjs)) stamps `Tag "Domination"` templates
+(`_tagDomination` in `collectTemplatesDeep`) and routes them to a `MezEffect.domination`
+`{mag,scale,table}` sub-field (PvE only) instead of letting the base one-per-type mez
+discard them; type in [power.ts](src/types/power.ts); both Dominator categories regenerated
+(**80 powers** gained the field — clean diff, only additive). Display
+([SharedPowerComponents.tsx](src/components/info/SharedPowerComponents.tsx)) now shows
+`mag = base + domination.mag` and duration from `domination.scale` when Domination is active,
+per-power — so it boosts tagged **assault** mez the category gate missed (Total Focus Stun),
+honours outliers (Cryo Freeze Ray ×1.8 dur), and leaves untagged control effects alone
+(**0** epic/patron holds carry the tag — a Widow's FRT Dominate is not boosted). Guard:
+[domination-per-effect.test.ts](src/data/domination-per-effect.test.ts) (4 cases incl. the
+untagged-not-boosted regression). `calculateDominationMagnitude`/`Duration` are now unused by
+the display; the summary badge still shows getDominationInfo's typical ×2/×1.5. Verified:
+`tsc` clean, 761 tests. Committed export already carried the tags, so this needed no
+attrib-118-style re-export — only the Dominator powerset regen.
+
+<details><summary>Original (WRONG) conclusion, kept for history</summary>
+
+> **Domination's ×2/×1.5 is the C-code case, now confirmed at the oracle level**: `Dominate`
+> is a flat `kHeld Mag 3.0` PvE / `4.0` PvP with no Domination-mode gate and no magnitude
+> expression, and zero Dominator control `.powers` reference `kDomination`/`Domination_Active`,
+> so the `getDominationInfo()` hardcode is correct and should stay. — This missed the `Tag`
+> field; see the correction above.
+
+</details>
 
 **BONUS BUG surfaced — attrib-index-118 collision (separate from modes).** ~957 of 2,402
 `Set_Mode` templates carry **mag=1**, and mag=1 → mode #1 = `Peacebringer_Blaster_Mode`,

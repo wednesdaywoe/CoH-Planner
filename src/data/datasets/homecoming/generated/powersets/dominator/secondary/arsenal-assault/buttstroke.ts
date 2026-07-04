@@ -55,7 +55,12 @@ export const Buttstroke: Power = {
     "stun": {
       "mag": 3,
       "scale": 8,
-      "table": "Melee_Stun"
+      "table": "Melee_Stun",
+      "domination": {
+        "mag": 3,
+        "scale": 12,
+        "table": "Melee_Stun"
+      }
     }
   },
   "specialEffects": [

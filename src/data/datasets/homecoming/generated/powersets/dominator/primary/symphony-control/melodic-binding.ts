@@ -79,7 +79,12 @@ export const MelodicBinding: Power = {
     "immobilize": {
       "mag": 4,
       "scale": 15,
-      "table": "Ranged_Immobilize"
+      "table": "Ranged_Immobilize",
+      "domination": {
+        "mag": 3,
+        "scale": 22.5,
+        "table": "Ranged_Immobilize"
+      }
     },
     "buffDuration": 15
   }

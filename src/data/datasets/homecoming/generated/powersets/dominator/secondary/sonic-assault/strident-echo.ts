@@ -73,7 +73,12 @@ export const StridentEcho: Power = {
     "hold": {
       "mag": 3,
       "scale": 5,
-      "table": "Melee_Immobilize"
+      "table": "Melee_Immobilize",
+      "domination": {
+        "mag": 3,
+        "scale": 7.5,
+        "table": "Melee_Immobilize"
+      }
     }
   },
   "specialEffects": [

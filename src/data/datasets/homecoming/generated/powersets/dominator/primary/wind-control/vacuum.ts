@@ -55,7 +55,12 @@ export const Vacuum: Power = {
     "hold": {
       "mag": 4,
       "scale": 4,
-      "table": "Ranged_Ones"
+      "table": "Ranged_Ones",
+      "domination": {
+        "mag": 3,
+        "scale": 12,
+        "table": "Ranged_Immobilize"
+      }
     }
   },
   "requires": "accesslevel char> 0 >="

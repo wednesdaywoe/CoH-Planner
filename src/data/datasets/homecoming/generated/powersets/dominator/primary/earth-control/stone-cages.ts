@@ -60,9 +60,14 @@ export const StoneCages: Power = {
   ],
   "effects": {
     "immobilize": {
-      "mag": 4,
-      "scale": 22.5,
-      "table": "Ranged_Immobilize"
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize",
+      "domination": {
+        "mag": 4,
+        "scale": 22.5,
+        "table": "Ranged_Immobilize"
+      }
     },
     "defenseDebuff": {
       "scale": 2,

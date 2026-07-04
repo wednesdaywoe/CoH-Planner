@@ -63,11 +63,10 @@ describe('Domination inherent perma classification', () => {
       expect(info.rechargeTime).toBe(200);
     });
 
-    it('mez magnitude/duration multipliers are engine constants (not in bin data)', () => {
-      const info = getDominationInfo();
-      expect(info.magnitudeMultiplier).toBe(2.0);
-      expect(info.durationMultiplier).toBe(1.5);
-    });
+    // The mez magnitude/duration BONUS is per-power data (`Tag "Domination"` →
+    // MezEffect.domination), not a getDominationInfo constant — covered by
+    // domination-per-effect.test.ts. getDominationInfo carries only the
+    // data-backed active-window + recharge.
   });
 
   it('passive archetype inherents still default to Auto and are not perma-eligible', () => {

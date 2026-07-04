@@ -44,7 +44,12 @@ export const SeedsofConfusion: Power = {
     "confuse": {
       "mag": 3,
       "scale": 8,
-      "table": "Ranged_Stun"
+      "table": "Ranged_Stun",
+      "domination": {
+        "mag": 3,
+        "scale": 12,
+        "table": "Ranged_Immobilize"
+      }
     }
   }
 };

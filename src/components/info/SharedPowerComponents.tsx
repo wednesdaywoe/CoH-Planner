@@ -15,7 +15,7 @@ import {
 } from './powerDisplayUtils';
 import { calculateBuffDebuffFraction } from '@/utils/calculations';
 import type { ThreeTierValues } from './powerDisplayUtils';
-import { abbreviateDamageType, calculateDominationMagnitude, type PowerDamageResult } from '@/utils/calculations';
+import { abbreviateDamageType, type PowerDamageResult } from '@/utils/calculations';
 import {
   EFFECT_REGISTRY,
   CATEGORY_CONFIG,
@@ -226,6 +226,10 @@ interface DisplayableEffect {
   tiers: ThreeTierValues;
   byTypeLabel?: string;
   expandedLabel?: string;
+  /** Dominator inherent bonus for this mez, from the power's `Tag "Domination"`
+   *  data (MezEffect.domination). Present only on powers that actually carry the
+   *  tag; drives the "+mag while Domination active" display. */
+  dominationBonus?: { mag: number; scale: number; table: string };
 }
 
 /** A group of effects that share the same base config from expandByType */
@@ -300,7 +304,7 @@ function CollapsibleEffectGroup({
       </div>
 
       {/* Expanded entries */}
-      {!collapsed && items.map(({ effect, tiers, expandedLabel: elabel }) => {
+      {!collapsed && items.map(({ effect, tiers, expandedLabel: elabel, dominationBonus }) => {
         const { key, config } = effect;
         const enhanceable = !!config.enhancementAspect;
         const hasEnh = Math.abs(tiers.enhanced - tiers.base) > 0.001;
@@ -316,9 +320,14 @@ function CollapsibleEffectGroup({
           : baseLabel;
 
         if (config.format === 'mag') {
-          const rawMag = dominationActive && config.category === 'control' ? calculateDominationMagnitude(tiers.base) : tiers.base;
+          // Domination inherent: add this power's actual `Tag "Domination"` mez
+          // bonus (data-driven, per-power) when Domination is active. Only powers
+          // that carry the tag have `dominationBonus`; a control effect without
+          // it (e.g. an epic hold) is correctly left unboosted.
+          const dom = dominationActive ? dominationBonus : undefined;
+          const rawMag = dom ? tiers.base + dom.mag : tiers.base;
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
-          const magColorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
+          const magColorClass = dom ? 'text-pink-400' : config.colorClass;
           return (
             <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize} ml-2`}>
               <span className={magColorClass}>{itemLabel}</span>
@@ -897,7 +906,8 @@ export function RegistryEffectsDisplay({
         byTypeLabel = getByTypeAbbreviations(value as Record<string, unknown>);
       }
 
-      displayableEffects.push({ effect, baseValue, tiers, byTypeLabel });
+      const dominationBonus = isMezEffect(value) && value.domination ? value.domination : undefined;
+      displayableEffects.push({ effect, baseValue, tiers, byTypeLabel, dominationBonus });
     }
   }
 
@@ -1255,14 +1265,23 @@ export function RegistryEffectsDisplay({
 
         // Handle mez effects (magnitude format)
         if (config.format === 'mag') {
-          const rawMag = dominationActive && config.category === 'control' ? calculateDominationMagnitude(tiers.base) : tiers.base;
+          // Domination inherent: add this power's actual `Tag "Domination"` bonus
+          // (per-power data) when active — extra magnitude AND longer duration (the
+          // tagged mez stacks onto the base). Only tagged powers have `.domination`,
+          // so an untagged control effect is correctly left alone.
+          const dom = dominationActive && isMezEffect(rawValue) ? rawValue.domination : undefined;
+          const rawMag = dom ? tiers.base + dom.mag : tiers.base;
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
-          const colorClass = dominationActive && config.category === 'control' ? 'text-pink-400' : config.colorClass;
+          const colorClass = dom ? 'text-pink-400' : config.colorClass;
 
           // Duration-based mez (stun, hold, etc.) — magnitude is fixed, duration is enhanceable
           if (isMezEffect(rawValue) && archetypeId && level) {
-            const tableVal = getTableValue(archetypeId, rawValue.table, level);
-            const baseDuration = tableVal !== undefined ? Math.abs(rawValue.scale * tableVal) : undefined;
+            // Under Domination the effective hold is the tagged bonus (it stacks
+            // onto the base with a longer duration), so display uses its scale/table.
+            const durScale = dom ? dom.scale : rawValue.scale;
+            const durTable = dom ? dom.table : rawValue.table;
+            const tableVal = getTableValue(archetypeId, durTable, level);
+            const baseDuration = tableVal !== undefined ? Math.abs(durScale * tableVal) : undefined;
 
             if (baseDuration !== undefined && baseDuration > 0) {
               const enhBonus = enhancementBonuses[key] || 0;
@@ -1278,8 +1297,8 @@ export function RegistryEffectsDisplay({
                   <span className={colorClass}>{label}</span>
                   <span className="text-slate-200">
                     Mag {magStr} ({baseDuration.toFixed(1)}s)
-                    {dominationActive && config.category === 'control' && (
-                      <span className="text-pink-300 text-[10px] ml-1">[2×]</span>
+                    {dom && (
+                      <span className="text-pink-300 text-[10px] ml-1">[Dom]</span>
                     )}
                   </span>
                   <span className={hasEnh ? 'text-green-400' : 'text-slate-300'}>
@@ -1329,8 +1348,8 @@ export function RegistryEffectsDisplay({
                 {mezDuration != null && (
                   <span className="text-slate-300 ml-1">({mezDuration.toFixed(1)}s)</span>
                 )}
-                {dominationActive && config.category === 'control' && (
-                  <span className="text-pink-300 text-[10px] ml-1">[2×]</span>
+                {dom && (
+                  <span className="text-pink-300 text-[10px] ml-1">[Dom]</span>
                 )}
               </span>
               <span className="text-slate-500">—</span>

@@ -6,6 +6,7 @@
  */
 
 import type { PowerEffects, EffectArea } from '@/types';
+import { isMezEffect } from '@/types/power';
 import { getArchetype } from '@/data';
 
 // ============================================
@@ -130,36 +131,45 @@ export function isBlasterAttackPower(powersetId: string): boolean {
  * Domination grants enhanced control effects when activated.
  *
  * When Domination is active:
- * - Mez magnitude is doubled (2x)
- * - Mez duration is increased by 50% (1.5x)
+ * - Each Dominator control/assault mez gains an extra stacking mez (typically
+ *   +base magnitude → ×2, and a longer duration) — provided the power carries it
  * - Provides mez protection (Knockback, Knockup, Repel, Stun, Hold, Sleep, Immobilize, Fear, Confuse)
  * - Full endurance recovery on activation
  *
  * Data provenance:
- * - `activeDuration` (90s) and `rechargeTime` (200s) are real, data-backed
- *   values — sourced from the Dominator inherent metadata, which mirrors the
- *   HC bins (domination.json: recharge_time 200, Set_Mode duration 90). These
- *   are read from the active dataset below rather than hardcoded, so they track
- *   whatever the loaded server ships.
- * - `magnitudeMultiplier` (2x) and `durationMultiplier` (1.5x) are Domination
- *   *mode* behaviour applied by the game engine — they are NOT present anywhere
- *   in the structured power data. Verified: no mez magnitude/duration multiplier
- *   template exists in domination.json, the Domination_Mode power, or any of the
- *   118 Dominator control powers (the Set_Mode 45/46 attrib the engine keys off
- *   is opaque to the bin export). The only reference is the display_help prose
- *   ("50 percent longer"). They therefore remain documented constants — there is
- *   nothing in the bins to derive them from.
+ * - `activeDuration` (90s) and `rechargeTime` (200s) are data-backed — sourced
+ *   from the Dominator inherent metadata (HC domination.json: recharge_time 200,
+ *   Set_Mode duration 90), read from the active dataset so they track the server.
+ * - The mez magnitude/duration BONUS is ALSO data-backed and PER-POWER: it comes
+ *   from each control's `Tag "Domination"` effect group (the engine enables tagged
+ *   effects while in the Domination mode), captured by the converter onto
+ *   `MezEffect.domination`. It is NOT a uniform ×2/×1.5 — e.g. Cryo Freeze Ray is
+ *   ×1.8 duration, and untagged control effects (epic/patron holds) get nothing.
+ *   Read it per-power with `getPowerDominationSummary`, not a global constant.
+ *   (Earlier code hardcoded 2.0/1.5 here believing it wasn't in the data; that was
+ *   wrong — the `Tag` field was never checked. See HOMECOMING_PARSER.md.)
  */
 
 export interface DominationInfo {
-  /** Mez magnitude multiplier when active (engine mode constant — not in bin data) */
-  magnitudeMultiplier: number;
-  /** Mez duration multiplier when active (engine mode constant — not in bin data) */
-  durationMultiplier: number;
   /** Duration of Domination in seconds (data-backed, from the inherent metadata) */
   activeDuration: number;
   /** Base recharge time in seconds (data-backed, from the inherent metadata) */
   rechargeTime: number;
+}
+
+/** Per-power Domination summary derived from the power's own `Tag "Domination"`
+ *  mez bonuses (`MezEffect.domination`). Returns null for powers that carry no
+ *  tag (e.g. epic/patron holds), so callers can hide the Domination badge for
+ *  powers Domination doesn't actually enhance. Reports the primary (first) tagged
+ *  mez — a power's tagged mezzes share a magnitude pattern; only the duration
+ *  ratio can differ. */
+export interface PowerDominationSummary {
+  /** Extra magnitude added while active (e.g. +3). */
+  magBonus: number;
+  /** Effective magnitude multiplier (e.g. 2 when the bonus equals the base). */
+  magMultiplier: number;
+  /** Duration multiplier (e.g. 1.5, or 1.8 for Cryo Freeze Ray). */
+  durMultiplier: number;
 }
 
 /** Mez types that Domination provides protection against */
@@ -186,37 +196,35 @@ export type DominationMezType = (typeof DOMINATION_MEZ_PROTECTION)[number];
 export function getDominationInfo(): DominationInfo {
   const domEffects = getArchetype('dominator')?.inherent?.effects;
   return {
-    magnitudeMultiplier: 2.0,
-    durationMultiplier: 1.5,
     activeDuration: domEffects?.buffDuration ?? 90,
     rechargeTime: domEffects?.recharge ?? 200,
   };
 }
 
-/**
- * Calculate enhanced mez magnitude when Domination is active
- * @param baseMagnitude - The base mez magnitude
- * @returns The doubled magnitude
- */
-export function calculateDominationMagnitude(baseMagnitude: number): number {
-  return baseMagnitude * 2;
-}
+/** Mez keys, in display-priority order, that can carry a Domination bonus. */
+const DOMINATION_MEZ_KEYS = ['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear'] as const;
 
 /**
- * Calculate enhanced mez duration when Domination is active
- * @param baseDuration - The base mez duration in seconds
- * @returns The duration with 50% bonus
+ * Summarise a power's Domination bonus from its `MezEffect.domination` data.
+ * Returns null when the power carries no `Tag "Domination"` mez (so Domination
+ * does not enhance it — e.g. epic/patron holds), letting callers skip the badge.
  */
-export function calculateDominationDuration(baseDuration: number): number {
-  return baseDuration * 1.5;
-}
-
-/**
- * Check if a power is a Dominator primary or secondary power
- * (Domination mez bonuses only apply to these)
- */
-export function isDominatorControlPower(powersetId: string): boolean {
-  return powersetId.startsWith('dominator/');
+export function getPowerDominationSummary(
+  effects: PowerEffects | undefined,
+): PowerDominationSummary | null {
+  if (!effects) return null;
+  for (const key of DOMINATION_MEZ_KEYS) {
+    const e = effects[key];
+    if (isMezEffect(e) && e.domination && e.mag) {
+      const dom = e.domination;
+      return {
+        magBonus: dom.mag,
+        magMultiplier: (e.mag + dom.mag) / e.mag,
+        durMultiplier: e.scale ? dom.scale / e.scale : 1,
+      };
+    }
+  }
+  return null;
 }
 
 // ============================================

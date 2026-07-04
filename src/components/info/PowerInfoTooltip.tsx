@@ -18,7 +18,7 @@ import {
   calculatePowerDamage,
   calculateDefiance,
   getDominationInfo,
-  isDominatorControlPower,
+  getPowerDominationSummary,
   getScourgeInfo,
   calculateScourgeDamage,
   isCorruptorAttackPower,
@@ -418,10 +418,6 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const buffDebuffMod = archetype?.stats?.buffDebuffModifier ?? 1.0;
   const effectiveMod = getEffectiveBuffDebuffModifier(powerSet, buffDebuffMod);
 
-  // Check for mez effects
-  const hasMez = effects?.stun || effects?.hold || effects?.immobilize ||
-                 effects?.sleep || effects?.fear || effects?.confuse || effects?.knockback;
-
   // Check if power has any enhancements
   const hasEnhancements = selectedPower && selectedPower.slots.some(s => s !== null);
 
@@ -683,13 +679,16 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
         );
       })()}
 
-      {/* Dominator Domination - show when viewing Dominator control powers */}
+      {/* Dominator Domination — show only for powers that actually carry a
+          `Tag "Domination"` mez bonus (per-power data), so it appears on tagged
+          assault powers too and stays hidden on untagged holds. */}
       {(() => {
-        // Only show for Dominator archetype and dominator powersets with mez effects
-        if (archetypeId !== 'dominator' || !isDominatorControlPower(powerSet)) return null;
-        if (!hasMez) return null;
+        if (archetypeId !== 'dominator') return null;
+        const domSummary = getPowerDominationSummary(effects);
+        if (!domSummary) return null;
 
         const dominationInfo = getDominationInfo();
+        const fmt = (n: number) => (Number.isInteger(n) ? String(n) : parseFloat(n.toFixed(2)).toString());
 
         return (
           <div className={`text-xs mt-1 rounded px-1.5 py-1 border ${
@@ -711,8 +710,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
             </div>
             {dominationActive && (
               <div className="mt-1 text-[11px]">
-                <span className="text-pink-300">×{dominationInfo.magnitudeMultiplier} Mag, </span>
-                <span className="text-pink-300">×{dominationInfo.durationMultiplier} Dur</span>
+                <span className="text-pink-300">×{fmt(domSummary.magMultiplier)} Mag, </span>
+                <span className="text-pink-300">×{fmt(domSummary.durMultiplier)} Dur</span>
                 <span className="text-slate-400 ml-1">({dominationInfo.activeDuration}s)</span>
               </div>
             )}

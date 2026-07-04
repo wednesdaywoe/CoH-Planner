@@ -72,7 +72,12 @@ export const HavokPunch: Power = {
     "sleep": {
       "mag": 3,
       "scale": 15,
-      "table": "Melee_Sleep"
+      "table": "Melee_Sleep",
+      "domination": {
+        "mag": 3,
+        "scale": 22.5,
+        "table": "Melee_Sleep"
+      }
     },
     "knockback": {
       "scale": 1.5,
