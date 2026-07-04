@@ -21,7 +21,7 @@ from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import PowerRecord, EffectGroup, EffectTemplate
 from ._enums import (
     BOOST_TYPE, BOOST_TYPE_REBIRTH, TARGET_TYPE, ATTRIB_NAME, ATTRIB_NAME_REBIRTH,
-    ATTRIB_NAME_THUNDERSPY, EVENT_NAME,
+    ATTRIB_NAME_THUNDERSPY, EVENT_NAME, resolve_attrib,
     ATTRIB_MOD_TYPE, ATTRIB_MOD_ASPECT, ATTRIB_MOD_APPLICATION,
     ATTRIB_MOD_TARGET, ATTRIB_MOD_STACK, ATTRIB_MOD_CASTER_STACK,
     PVP_FLAG,
@@ -254,9 +254,15 @@ def _resolve_offset(strtab_data, strtab_base, offset: int) -> str | None:
 # Attribs that carry a Params Power { Power Redirects.X } block — the ones
 # the planner's redirect-following logic in convert-powerset.cjs cares about.
 # Source: scripts/convert-powerset.cjs:188 (execute_power follow), :594 (create_entity).
+# Union across both parser paths: HC/Parse7 (resolve_attrib) now emits the
+# byte-granular names — Revoke_Power (raw 482) and Cancel_Mods (raw 511) — while
+# the Parse6/Rebirth path still uses the collapsed ATTRIB_NAME_REBIRTH labels
+# (Grant_Power for both grant+revoke, Cancel_Effects for 127). Keep the legacy
+# 'cancel_effects' key so Rebirth param extraction isn't silently dropped until
+# its sub-index decode is fixed too (HOMECOMING_PARSER.md deferred item 2).
 _POWER_PARAM_ATTRIBS = frozenset({
-    'execute_power', 'grant_power', 'recharge_power', 'add_behavior',
-    'cancel_effects', 'global_chance_mod', 'set_mode',
+    'execute_power', 'grant_power', 'revoke_power', 'recharge_power',
+    'add_behavior', 'cancel_mods', 'cancel_effects', 'global_chance_mod', 'set_mode',
 })
 
 # Heuristic: a string looks like a power name if it has dotted form
@@ -361,12 +367,12 @@ def _extract_params(tail_bytes: bytes, attribs: list[str],
              and all(c.isalnum() or c == '_' for c in s)),
             None,
         )
-        # Only emit a result if we found a real entity_def — without one this
-        # is almost certainly a non-EntCreate use of attrib index 117 (binary
-        # index 117 is shared between Create_Entity, Translucency, Silent_Kill,
-        # Clear_Damagers per the ATTRIB_NAME enum note). Returning a result
-        # with just `priority_list` would feed a stray P-hash to the convert
-        # script as if it were a real Pet PriorityList.
+        # Only emit a result if we found a real entity_def. Create_Entity is now
+        # resolved cleanly at the source (raw 469, distinct from its former index-117
+        # siblings Translucency/Silent_Kill/Clear_Damagers — see resolve_attrib), so
+        # this no longer guards against a misdecode; it just rejects malformed/empty
+        # EntCreate tails whose only string is a stray P-hash the convert script
+        # would otherwise treat as a real Pet PriorityList.
         if not entity_def:
             return None
         result = {'type': 'EntCreate', 'entity_def': entity_def}
@@ -481,9 +487,12 @@ def _parse_effect_template(r: BinReader, *, veracity: bool = False) -> EffectTem
     server dev and verified by hand-decoding Jab/Fire_Blast (the inserted fields
     keep the downstream tick_mul/tick_add/stack reads aligned).
     """
-    # Attribs: u4_array where values are enum_index * 4
+    # Attribs: u4_array. Normal attribs are stored as enum_index * 4; the
+    # special "meta/scripting" region (indices 117-128) is byte-granular, so we
+    # resolve the raw value directly (resolve_attrib) instead of `// 4` — that
+    # truncation was the root of the attrib-118 misdecode. See _enums.py.
     raw_attribs = r.read_u4_array()
-    attribs = [ATTRIB_NAME.get(v // 4, f"Unknown({v // 4})") for v in raw_attribs]
+    attribs = [resolve_attrib(v) for v in raw_attribs]
 
     # Aspect is encoded as value * 8 (byte offset into aspect table)
     aspect_raw = r.read_u4()

@@ -267,14 +267,16 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None) -> dict:
                 tmpl_dict['boost_mod_allowed_id'] = t.boost_mod_allowed_id
             # Resolve a Set_Mode template's opaque magnitude (a mode index) to
             # its mode name via attrib_names.bin, e.g. magnitude 46 -> mode
-            # "Domination_Active". Gated on magnitude >= 2: mode index 1
-            # (Peacebringer_Blaster_Mode) collides with an attrib-118 misdecode
-            # (kXPDebtProtection / kSetCostume also decode as Set_Mode with a
-            # placeholder magnitude of 1), so mag==1 is left unresolved. See
-            # parser/_attrib_names.py.
+            # "Domination_Active", magnitude 1 -> "Peacebringer_Blaster_Mode"
+            # (Bright Nova). Gated on magnitude >= 1: mode index 0 is the
+            # ServerTrayOverride system slot (no gameplay meaning). The old
+            # mag >= 2 gate was a workaround for the attrib-118 misdecode
+            # (kXPDebtProtection / kSetCostume collapsing onto Set_Mode with a
+            # placeholder magnitude of 1); that misdecode is now fixed at the
+            # source (resolve_attrib), so genuine mode-1 sets resolve correctly.
             if mode_table and 'Set_Mode' in t.attribs:
                 idx = int(round(t.magnitude))
-                if idx >= 2:
+                if idx >= 1:
                     mode = mode_table.get(idx)
                     if mode:
                         tmpl_dict['mode_name'] = mode

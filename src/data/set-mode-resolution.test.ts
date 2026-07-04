@@ -13,10 +13,16 @@ import { fileURLToPath } from 'node:url';
  * Guards the committed HC `exported_powers/` data. Mode indices are per-server;
  * only HC is resolved so far (Rebirth/Thunderspy ship no `attrib_names.bin`).
  *
- * Resolution is gated on magnitude >= 2: mode index 1 (Peacebringer_Blaster_Mode)
- * collides with an attrib-118 misdecode (kXPDebtProtection / kSetCostume also
- * decode as Set_Mode with a placeholder magnitude of 1), so mag==1 stays
- * unresolved. See HOMECOMING_PARSER.md.
+ * NOTE (2026-07-04): the committed data here still predates the attrib-118 fix.
+ * The exporter used to gate resolution on magnitude >= 2 because index 118
+ * collapsed three engine attribs (kXPDebtProtection / kSetMode / kSetCostume)
+ * onto `Set_Mode`, making a mag==1 Set_Mode ambiguous. That truncation is now
+ * fixed at the parser source (resolve_attrib reads the byte-granular sub-index),
+ * so a re-export will (a) relabel the mag==1 impostors as XPDebtProtection /
+ * Set_Costume and (b) resolve the one genuine mag==1 mode set, Bright Nova ->
+ * Peacebringer_Blaster_Mode. The `mag==1 NOT resolved` case below guards the
+ * current (pre-regen) committed data and should be updated when it is re-exported.
+ * See HOMECOMING_PARSER.md "attrib-118 misdecode".
  */
 type Template = { attribs?: string[]; magnitude?: number; mode_name?: string };
 
@@ -88,9 +94,11 @@ describe('Set_Mode magnitude → mode-name resolution (HC)', () => {
     expect(m[37]).toBe('Suppress_JumpToggles');
   });
 
-  it('mag==1 Set_Mode templates are NOT resolved (attrib-118 misdecode guard)', () => {
+  it('mag==1 Set_Mode templates are NOT resolved (pre-regen attrib-118 data)', () => {
     // Empathy Resurrect's exported Set_Mode mag=1 is really a misdecoded
-    // kXPDebtProtection — it must carry no mode_name.
+    // kXPDebtProtection — in the current (pre-fix) committed data it must carry
+    // no mode_name. After a re-export this template becomes attribs:
+    // ['XPDebtProtection'] (no Set_Mode at all) and this expectation flips.
     const modes = setModes(loadPower('controller_buff/empathy/resurrect.json'));
     const magOne = modes.filter(([mag]) => mag === 1);
     expect(magOne.length).toBeGreaterThan(0);

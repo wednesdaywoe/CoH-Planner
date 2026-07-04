@@ -36,12 +36,16 @@ a mode that postdates the oracle snapshot, not a mapping error). Mode indices ar
 **per-server** — each server's ``attrib_names.bin`` reorders them, so parse the
 table from the same source you parsed ``powers.bin`` from.
 
-Note on mag==1: mode #1 (``Peacebringer_Blaster_Mode``) is the only mode at
-index 1, and it collides with an unrelated parser artifact — attrib index 118 is
-a shared "special" slot, so ``kXPDebtProtection`` / ``kSetCostume`` templates
-also decode as ``Set_Mode`` with a placeholder ``magnitude`` of 1. Callers that
-resolve modes should therefore gate on ``magnitude >= 2`` to stay clear of that
-ambiguity; the only mode this omits is ``Peacebringer_Blaster_Mode``.
+Note on mag==1: mode #1 is ``Peacebringer_Blaster_Mode`` (Bright Nova). This
+used to be unresolvable because attrib index 118 collapsed three distinct
+engine attribs — ``kXPDebtProtection`` / ``kSetMode`` / ``kSetCostume`` — onto
+``Set_Mode`` (the ``raw // 4`` truncation bug), so a mag==1 ``Set_Mode`` could
+be a genuine mode set OR a misdecoded costume/XP-debt template. That is now
+fixed at the source: ``resolve_attrib`` reads the byte-granular sub-index, so
+only genuine ``kSetMode`` templates (raw 473) are labeled ``Set_Mode`` and
+mag==1 resolves correctly to ``Peacebringer_Blaster_Mode``. Callers no longer
+need a ``mag >= 2`` gate (mode #0 ``ServerTrayOverride`` is the only system slot
+to skip). See HOMECOMING_PARSER.md "attrib-118 misdecode".
 """
 
 from __future__ import annotations

@@ -163,10 +163,59 @@ not swept in** (surgical apply kept committed values). Guard:
 `tsc` clean; `audit_stack_alignment` parses all 26,313 powers (byte-identical consumption —
 the change only captures return values of reads already made).
 
-**Deferred follow-ups.** (1) The **attrib-118 mag=1 misdecode** — `kXPDebtProtection` /
-`kSetCostume` decode as `Set_Mode`; the root fix is disambiguating index 118 via the main
-`attrib_names.bin` attrib array (would also recover XP-debt-protection on ~190 HC powers,
-and let mode #1 `Peacebringer_Blaster_Mode` be emitted). (2) **Rebirth (Parse6) /
+**SHIPPED (2026-07-04) — attrib-118 misdecode ROOT FIX (whole special region).** The
+deferred "disambiguate index 118 via `attrib_names.bin`" theory was **wrong** —
+`attrib_names.bin` holds only categorised sub-arrays (Damage/Defense/Boost/Group/Mode),
+no per-attrib master list, and (verified from raw bytes) index 118 is **not** a real
+collision to break: `kXPDebtProtection`, `kSetMode`, `kSetCostume` are stored as **three
+distinct raw u4 values 472/473/474** and the parser's `v // 4` was **truncating the low 2
+bits**. The whole "special/meta-scripting" region (collapsed indices **117–128**, raw
+468–515) is **byte-granular sub-indexed** — `raw % 4` is a real sub-index — so `// 4`
+merged 2–4 unrelated engine attribs into each index. *This is the actual cause of the
+CLAUDE.md "these indices are multi-purpose / CoD2 relabels by context" note: CoD2 never
+needed context, we discarded the discriminating bits.* Fix: new `resolve_attrib()` +
+`SPECIAL_ATTRIB_BY_RAW` in [_enums.py](tools/bin-crawler/bin_crawler/parser/_enums.py)
+resolve the special window by raw value before the `// 4` lookup; wired at
+[_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py) `_parse_effect_template`
+(HC/Parse7 + Veracity path). **Authoritative map cross-referenced against the `.powers`
+oracle (1,905 matched powers):** 468 Translucency · 469 Create_Entity · 470 Clear_Damagers ·
+471 Silent_Kill · **472 XPDebtProtection · 473 Set_Mode · 474 Set_Costume** · 476 Null ·
+477 Avoid · 478 Reward · 480 Drop_Toggles · 481 Grant_Power · **482 Revoke_Power** (the
+*opposite* of 481, formerly both `Grant_Power`) · 483 Unset_Mode · 484 Global_Chance_Mod ·
+486 Grant_Boosted_Power · 487 View_Attributes · 489 Reward_Source_Team · 491 Combat_Phase ·
+492 Combat_Mod_Shift · 493 Recharge_Power · 494 Vision_Phase · 495 Ninja_Run · 498
+Steam_Jump · 499 Designer_Status · 500 Exclusive_Vision_Phase · 502 Set_Script_Value · 503
+Add_Behavior · 505 Token_Add · 506 Token_Set · 508 Script_Notify · 509 Force_Move · 511
+Cancel_Mods (was mislabeled `Cancel_Effects`) · 512 Execute_Power. Five rare raw values
+(475/479/485/490/501, all count≤10 NPC/prestige/proc) resolve to honest `Special(<raw>)`
+rather than borrow a sibling's name. **Verified against fresh binary (26,313 powers, no
+parse errors):** old collapsed `Set_Mode` 2306 → **XPDebtProtection 251 + Set_Mode 1365 +
+Set_Costume 689** (+1 Special); old `Grant_Power` → **2413 grant + 1910 Revoke_Power**;
+Empathy/Resurrect now `['XPDebtProtection']`, Granite RockSuit now `['Set_Costume']` (no
+phantom mode), and **Bright Nova mag=1 → `Peacebringer_Blaster_Mode`** — the *one* genuine
+player mode-1 set (the oracle's 4,943-power sample omits Peacebringer_Offensive, but the
+binary has it). Because `Set_Mode` is now **only** raw 473, the mag==1 impostors are gone,
+so the exporter's `mag≥2` mode-resolution guard was relaxed to **`≥1`**
+([export_powers.py](tools/bin-crawler/bin_crawler/export_powers.py); skips only mode 0
+`ServerTrayOverride`), `_extract_params`' index-117 collision guard is now moot (comment
+updated), and `_POWER_PARAM_ATTRIBS` picked up `revoke_power`/`cancel_mods`. Guard:
+[test_special_attribs.py](tools/bin-crawler/tests/test_special_attribs.py) (7 pure-function
+cases — no bin needed). `tsc` clean; the 11-case
+[set-mode-resolution.test.ts](src/data/set-mode-resolution.test.ts) still green (its comments
+updated to flag the mag==1 case as pre-regen data that flips on re-export).
+
+**Deferred (regen, not re-swept per user's defer-regen decision 2026-07-04):** the committed
+`exported_powers/` + `src/data` still carry the pre-fix labels. A re-export (de-risk per §6)
+will relabel ~hundreds of player files (Set_Mode 692 / Grant_Power 1316 / Create_Entity 1383
+files touched, only the mislabeled sub-slots changing) and **should be paired with deleting
+the downstream collision workarounds this fix obviates** —
+[convert-pet-entities.cjs](scripts/convert-pet-entities.cjs) ("Silent_Kill labeled
+Create_Entity"), [convert-incarnate-effects.cjs](scripts/convert-incarnate-effects.cjs)
+("index 123 collapses Recharge/Vision/Ninja"), and the `extract-proc-data.py` special-attrib
+exclusion lists — plus verifying converters that key on `Grant_Power` don't silently swallow
+the newly-split `Revoke_Power`. Same batch as the `magnitude_expression` re-export ((4) below).
+
+**Deferred follow-ups.** (1) *DONE — see the SHIPPED root-fix above.* (2) **Rebirth (Parse6) /
 Thunderspy** mode tables — the parser now *captures* the mode-gate arrays on those paths,
 but resolution still needs their own `attrib_names.bin` mode table (Rebirth's pigg ships
 one; the Parse7 `parse_mode_table` heuristic may need a Parse6 variant). (3) Converter

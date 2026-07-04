@@ -258,23 +258,93 @@ ATTRIB_NAME: dict[int, str] = {
     104: "Psionic_Elusivity",
     115: "ElusivityBase",
 
-    # Meta/scripting (117-128)
-    # These indices are multi-purpose: the binary engine uses one index for several
-    # CoD2-distinct attrib names. CoD2 disambiguates by context (effect type, aspect, etc.).
-    # Names here are the most common CoD2 match for each index.
-    117: "Create_Entity",        # CoD2 also: Translucency, Silent_Kill, Clear_Damagers
-    118: "Set_Mode",             # CoD2 also: Set_Costume, Debt_Protection
-    119: "Null",                 # CoD2 also: Avoid, Reward, Debt
-    120: "Grant_Power",          # CoD2 also: Revoke_Power, Drop_Toggles
-    121: "Global_Chance_Mod",    # CoD2 also: View_Attributes, Grant_Boosted_Power
-    122: "Combat_Phase",         # CoD2 also: Reward_Source_Team, Clear_Fog
-    123: "Recharge_Power",       # CoD2 also: Level_Shift, Vision_Phase, Ninja_Run
-    124: "Designer_Status",      # CoD2 also: Steam_Jump
-    125: "Add_Behavior",         # CoD2 also: Exclusive_Vision_Phase, Set_Script_Value
-    126: "Set_Token",            # CoD2 also: Add_Token
-    127: "Cancel_Effects",       # CoD2 also: Script_Notify, Force_Move
+    # Meta/scripting region (indices 117-128) — SUPERSEDED. These entries look
+    # "multi-purpose" only because `raw // 4` collapses them: unlike normal
+    # (4-byte-aligned) attribs, the engine packs several distinct "special"
+    # attribs into each of these indices and discriminates them with the low
+    # 2 bits of the raw value (raw % 4). Dividing by 4 throws that sub-index
+    # away and merges 2-4 unrelated attribs into one. Resolve special attribs
+    # via SPECIAL_ATTRIB_BY_RAW / resolve_attrib() below (keyed on the RAW
+    # value), NOT these collapsed entries — kept only for reference / any direct
+    # index reader. See HOMECOMING_PARSER.md "attrib-118 misdecode".
+    117: "Create_Entity",        # really the +1 slot; see SPECIAL_ATTRIB_BY_RAW
+    118: "Set_Mode",             # really the +1 slot
+    119: "Null",
+    120: "Grant_Power",          # NB: the +2 slot (raw 482) is the OPPOSITE, Revoke_Power
+    121: "Global_Chance_Mod",
+    122: "Combat_Phase",
+    123: "Recharge_Power",
+    124: "Designer_Status",
+    125: "Add_Behavior",
+    126: "Set_Token",
+    127: "Cancel_Effects",       # really Cancel_Mods (raw 511)
     128: "Execute_Power",
 }
+
+
+# ---------------------------------------------------------------------------
+# Special-attrib region — byte-granular sub-index (HC / Parse7 & Veracity)
+# ---------------------------------------------------------------------------
+# Attrib indices 117-128 (raw u4 values 468-515) are NOT plain float-offset
+# attribs. The engine packs several distinct "special" attribs into each
+# collapsed `raw // 4` index and uses the low 2 bits (`raw % 4`) as a real
+# sub-index. The normal decode path divides by 4 and so merges 2-4 unrelated
+# attribs into one — the root cause of the historic "attrib-118 misdecode"
+# (kXPDebtProtection / kSetCostume / kSetMode all landing on index 118) and of
+# the broader "these indices are multi-purpose" note. This map keys the RAW u4
+# value directly and MUST be consulted before the `// 4` lookup.
+#
+# Verified by cross-referencing every occurring special raw value against the
+# HC `.powers` oracle (1,905 matched powers, 2026-07-04). A handful of rare
+# raw values still lack an oracle name (475, 479, 485, 490, 501 — all count<=10
+# NPC/prestige/proc edge cases) and fall through to "Special(<raw>)" rather than
+# borrow a sibling's (wrong) name.
+SPECIAL_ATTRIB_BY_RAW: dict[int, str] = {
+    # idx 117
+    468: "Translucency", 469: "Create_Entity", 470: "Clear_Damagers", 471: "Silent_Kill",
+    # idx 118 (all three formerly collapsed to "Set_Mode")
+    472: "XPDebtProtection", 473: "Set_Mode", 474: "Set_Costume",
+    # idx 119
+    476: "Null", 477: "Avoid", 478: "Reward",
+    # idx 120 (482 Revoke_Power is the opposite of 481 Grant_Power)
+    480: "Drop_Toggles", 481: "Grant_Power", 482: "Revoke_Power", 483: "Unset_Mode",
+    # idx 121
+    484: "Global_Chance_Mod", 486: "Grant_Boosted_Power", 487: "View_Attributes",
+    # idx 122
+    489: "Reward_Source_Team", 491: "Combat_Phase",
+    # idx 123
+    492: "Combat_Mod_Shift", 493: "Recharge_Power", 494: "Vision_Phase", 495: "Ninja_Run",
+    # idx 124
+    498: "Steam_Jump", 499: "Designer_Status",
+    # idx 125
+    500: "Exclusive_Vision_Phase", 502: "Set_Script_Value", 503: "Add_Behavior",
+    # idx 126
+    505: "Token_Add", 506: "Token_Set",
+    # idx 127
+    508: "Script_Notify", 509: "Force_Move", 511: "Cancel_Mods",
+    # idx 128
+    512: "Execute_Power",
+}
+
+# Raw-value window of the special region: 117*4 .. 128*4+3. A raw attrib value
+# in this window is byte-granular and resolved via SPECIAL_ATTRIB_BY_RAW;
+# everything else uses the 4-aligned ATTRIB_NAME lookup.
+SPECIAL_ATTRIB_MIN = 468
+SPECIAL_ATTRIB_MAX = 515
+
+
+def resolve_attrib(raw: int) -> str:
+    """Resolve a raw AttribMod attrib value (u4) to its attrib name.
+
+    Normal attribs are stored as ``index * 4`` (4-byte-aligned); the special
+    region (indices 117-128) is byte-granular, so those raw values are looked
+    up directly. Unmapped special values become ``Special(<raw>)`` (honest
+    unknown) rather than borrowing a collapsed-index sibling's name; unmapped
+    normal values become ``Unknown(<index>)`` as before.
+    """
+    if SPECIAL_ATTRIB_MIN <= raw <= SPECIAL_ATTRIB_MAX:
+        return SPECIAL_ATTRIB_BY_RAW.get(raw, f"Special({raw})")
+    return ATTRIB_NAME.get(raw // 4, f"Unknown({raw // 4})")
 
 
 # Rebirth (Parse6) keeps a slightly different attrib index layout. Empirically,
