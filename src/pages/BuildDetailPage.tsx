@@ -3,9 +3,9 @@
  */
 
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from '@tanstack/react-router';
+import { useParams, useNavigate, useSearch, Link } from '@tanstack/react-router';
 import { Button } from '@/components/ui/Button';
-import { getSharedBuild, incrementViews, isOwnedBuild, deleteBuild, reclaimBuild, updateBuildVisibility } from '@/services/sharedBuilds';
+import { getSharedBuild, incrementViews, isOwnedBuild, deleteBuild, reclaimBuild, updateBuildVisibility, updateBuildMetadata } from '@/services/sharedBuilds';
 import { useBuildStore } from '@/stores/buildStore';
 import { useAuthStore } from '@/stores/authStore';
 import { getActiveDataset } from '@/data/dataset';
@@ -13,6 +13,7 @@ import type { SharedBuild } from '@/types/shared';
 
 export function BuildDetailPage() {
   const { id } = useParams({ from: '/builds/$id' });
+  const { edit: editParam } = useSearch({ from: '/builds/$id' });
   const navigate = useNavigate();
   const importBuild = useBuildStore((s) => s.importBuild);
   const setVaultId = useBuildStore((s) => s.setVaultId);
@@ -32,6 +33,15 @@ export function BuildDetailPage() {
   const [owned, setOwned] = useState(false);
   const [visibilityLoading, setVisibilityLoading] = useState(false);
   const [visibilityError, setVisibilityError] = useState<string | null>(null);
+
+  // Metadata edit form (owners only)
+  const [editing, setEditing] = useState(false);
+  const [editName, setEditName] = useState('');
+  const [editDescription, setEditDescription] = useState('');
+  const [editServer, setEditServer] = useState('');
+  const [editTags, setEditTags] = useState('');
+  const [editLoading, setEditLoading] = useState(false);
+  const [editError, setEditError] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -131,6 +141,48 @@ export function BuildDetailPage() {
     }
   };
 
+  const enterEdit = (b: SharedBuild) => {
+    setEditName(b.name);
+    setEditDescription(b.description ?? '');
+    setEditServer(b.server ?? '');
+    setEditTags((b.tags ?? []).join(', '));
+    setEditError(null);
+    setEditing(true);
+  };
+
+  const closeEdit = () => {
+    setEditing(false);
+    setEditError(null);
+    // Drop the ?edit deep-link so a refresh doesn't reopen the form.
+    if (editParam) navigate({ to: '/builds/$id', params: { id }, search: {}, replace: true });
+  };
+
+  const handleSaveEdit = async () => {
+    if (!build) return;
+    setEditLoading(true);
+    setEditError(null);
+    try {
+      const tags = editTags.split(',').map((t) => t.trim()).filter(Boolean);
+      const name = editName.trim() || build.name;
+      await updateBuildMetadata(build, { name, description: editDescription, server: editServer, tags });
+      setBuild({ ...build, name, description: editDescription, server: editServer, tags });
+      closeEdit();
+    } catch (e) {
+      setEditError(e instanceof Error ? e.message : 'Failed to save changes');
+    } finally {
+      setEditLoading(false);
+    }
+  };
+
+  // Deep-link (?edit=1) from a My Builds card auto-opens the edit form once the
+  // build has loaded and the viewer is confirmed as an owner.
+  useEffect(() => {
+    if (editParam && owned && build && !editing) {
+      enterEdit(build);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editParam, owned, build]);
+
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto p-6 text-center py-12">
@@ -182,6 +234,17 @@ export function BuildDetailPage() {
             >
               {copied ? 'Copied!' : 'Copy Link'}
             </Button>
+            {/* Edit metadata — any owner (token or account) */}
+            {owned && !editing && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => enterEdit(build)}
+                className="text-gray-400 hover:text-gray-200"
+              >
+                Edit
+              </Button>
+            )}
             {/* Visibility toggle — only for Discord-linked owners */}
             {owned && user && build?.user_id === user.id && (
               <Button
@@ -251,6 +314,73 @@ export function BuildDetailPage() {
           <span>{build.views} views</span>
         </div>
       </div>
+
+      {/* Edit metadata form (owners) */}
+      {editing && (
+        <div className="bg-gray-800 border border-gray-700 rounded-lg p-4 mb-6 space-y-3">
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-gray-300">Edit Details</h2>
+            <span className="text-xs text-gray-500">The build's powers aren't changed — only its details.</span>
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-gray-400 mb-1">Name</label>
+            <input
+              type="text"
+              value={editName}
+              onChange={(e) => setEditName(e.target.value)}
+              placeholder="Build name"
+              className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
+              maxLength={200}
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-gray-400 mb-1">Description</label>
+            <textarea
+              value={editDescription}
+              onChange={(e) => setEditDescription(e.target.value)}
+              placeholder="What it's for, how to play it, etc."
+              className="w-full h-24 bg-gray-700 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
+              maxLength={500}
+            />
+            <p className="text-xs text-gray-500 mt-1">{editDescription.length}/500</p>
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-gray-400 mb-1">Server</label>
+            <input
+              type="text"
+              value={editServer}
+              onChange={(e) => setEditServer(e.target.value)}
+              placeholder="e.g., Homecoming"
+              className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
+              maxLength={50}
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-gray-400 mb-1">
+              Tags <span className="text-gray-500">(comma-separated)</span>
+            </label>
+            <input
+              type="text"
+              value={editTags}
+              onChange={(e) => setEditTags(e.target.value)}
+              placeholder="e.g., PvP, farming, budget, softcap"
+              className="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
+              maxLength={200}
+            />
+          </div>
+          {editError && (
+            <p className="text-xs text-red-300">{editError}</p>
+          )}
+          <div className="flex gap-2 justify-end">
+            <Button variant="secondary" size="sm" onClick={closeEdit} disabled={editLoading}>
+              Cancel
+            </Button>
+            <Button variant="primary" size="sm" onClick={handleSaveEdit} isLoading={editLoading}>
+              Save Changes
+            </Button>
+          </div>
+        </div>
+      )}
 
       {/* Private build badge */}
       {build && !build.is_public && (

@@ -41,11 +41,15 @@ const buildsRoute = createRoute({
   component: BuildsPage,
 });
 
-// Build detail route (shared build preview)
+// Build detail route (shared build preview). `?edit=1` deep-links owners
+// straight into the metadata edit form (used by the pencil on My Builds cards).
 const buildDetailRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/builds/$id',
   component: BuildDetailPage,
+  validateSearch: (search: Record<string, unknown>): { edit?: boolean } => ({
+    edit: search.edit === true || search.edit === '1' || search.edit === 'true' || undefined,
+  }),
 });
 
 // Author public profile route. The handle is the URL slug; we display it as

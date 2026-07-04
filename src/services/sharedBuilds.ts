@@ -280,6 +280,38 @@ export async function shareBuild(input: ShareBuildInput): Promise<{ id: string; 
   };
 }
 
+/** Editable metadata fields on a saved build (everything except the build itself). */
+export interface BuildMetadataPatch {
+  name?: string;
+  description?: string;
+  server?: string;
+  tags?: string[];
+  author_name?: string;
+}
+
+/**
+ * Update only the editable metadata of an owned build (name/description/server/
+ * tags/author), leaving the build_json and current visibility untouched.
+ *
+ * The share-build edge function's update branch overwrites ALL metadata columns
+ * wholesale, so we resend the existing build_json plus any fields the caller
+ * isn't changing (falling back to the build's current values) — otherwise an
+ * omitted field would be blanked. `is_public` is deliberately omitted so the
+ * update preserves the row's public/private state (and is metered as a cheap
+ * vault action rather than a public share).
+ */
+export async function updateBuildMetadata(existing: SharedBuild, patch: BuildMetadataPatch): Promise<void> {
+  await shareBuild({
+    name: patch.name ?? existing.name,
+    description: patch.description ?? existing.description ?? '',
+    author_name: patch.author_name ?? existing.author_name ?? '',
+    server: patch.server ?? existing.server ?? '',
+    tags: patch.tags ?? existing.tags ?? [],
+    build_json: existing.build_json,
+    existingId: existing.id,
+  });
+}
+
 // ---- Quick share (one-click unlisted short link) ----
 
 interface QuickShareCache {

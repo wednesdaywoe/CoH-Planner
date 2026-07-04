@@ -28,6 +28,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Large audit and update to Incarnate powers: a lot of effects were being silently dropped before reaching the display layers, others were attributed incorrectly', type: 'fix'},
       { message: 'Fix for the stacking detector, it only saw stack-type and not RefreshToCount', type: 'fix'},
       { message: 'The planner will now pre-fill metadata fields the moment a build is selected for update', type: 'feat'},
+      { message: 'You can now add a description, server, and tags when saving a private build to your library — and edit those details anytime from the build\'s page or the pencil on your My Builds cards', type: 'feat'},
       { message: 'Added Export build image feature. Menu > Export as Image, choose the amount of detail you want to include', type: 'feat'},
       { message: 'Proc-DPS section, incarnate procs, and the DamageBlock "+proc" annotation should all agree now. If they don\'t, that\'s a paddlin\'.', type: 'fix'},
     ]

@@ -16,6 +16,7 @@ import type { GameImportResult } from '@/utils/game-importer';
 import { shareBuild, getSharedBuild, getOwnedBuildIds, getOwnerToken, getMyBuilds, RateLimitError, formatRateLimitMessage, rateLimitHint } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
 import type { SharedBuild } from '@/types/shared';
+import { getAllDatasetMetadata } from '@/data/dataset';
 import { generatePopmenu } from '@/utils/export-popmenu';
 import { openPrintView } from '@/utils/export-print';
 import { exportToMids } from '@/utils/mids-export';
@@ -28,6 +29,14 @@ interface ExportImportModalProps {
 type TabType = 'save' | 'load-import' | 'share-export';
 type LoadSource = 'local' | 'mids' | 'game';
 type ShareExportSubTab = 'share' | 'export';
+
+/** Human-readable label for a build's dataset, used to seed the free-text
+ *  `server` field on a fresh library save (e.g. 'homecoming' → 'Homecoming'). */
+function serverLabel(serverId: string | undefined): string {
+  if (!serverId) return '';
+  const meta = getAllDatasetMetadata().find((d) => d.id === serverId);
+  return meta?.displayName ?? serverId.charAt(0).toUpperCase() + serverId.slice(1);
+}
 
 export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [activeTab, setActiveTab] = useState<TabType>('save');
@@ -101,6 +110,16 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   const [vaultSaveError, setVaultSaveError] = useState<string | null>(null);
   const [vaultSaveLoading, setVaultSaveLoading] = useState(false);
 
+  // Vault (private library) metadata. Description/server/tags are surfaced in an
+  // optional details panel; author is preserved silently on update (the edge
+  // function overwrites all metadata columns wholesale, so an un-sent field
+  // would be blanked). Server seeds from the build's dataset on a fresh save.
+  const [vaultDescription, setVaultDescription] = useState('');
+  const [vaultServer, setVaultServer] = useState('');
+  const [vaultTags, setVaultTags] = useState('');
+  const [vaultAuthor, setVaultAuthor] = useState('');
+  const [vaultDetailsOpen, setVaultDetailsOpen] = useState(false);
+
   // Last-known remaining quota for this hour (from the server, after a save).
   const [vaultRemaining, setVaultRemaining] = useState<number | null>(null);
   const [shareRemaining, setShareRemaining] = useState<number | null>(null);
@@ -136,6 +155,40 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     // every time the user types or the build state changes after open.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
+
+  // Seed the vault metadata fields when the modal opens. If the build is linked
+  // to an existing library entry, prefill from that row so a re-save doesn't
+  // wipe the saved description/server/tags/author (the edge function overwrites
+  // all metadata columns wholesale on update) — and auto-open the details panel
+  // when there's existing metadata to show. For a brand-new save, seed the
+  // free-text server from the build's dataset. Keyed on the vault link only so a
+  // late account-list load doesn't clobber edits the user made after opening.
+  useEffect(() => {
+    if (!isOpen) return;
+    if (canUpdateVault && linkedVaultId) {
+      let cancelled = false;
+      const apply = (b: SharedBuild) => {
+        if (cancelled) return;
+        setVaultDescription(b.description ?? '');
+        setVaultServer(b.server ?? '');
+        setVaultTags((b.tags ?? []).join(', '));
+        setVaultAuthor(b.author_name ?? '');
+        if ((b.description ?? '') || (b.server ?? '') || (b.tags ?? []).length) {
+          setVaultDetailsOpen(true);
+        }
+      };
+      const known = accountBuilds.find((b) => b.id === linkedVaultId);
+      if (known) apply(known);
+      else getSharedBuild(linkedVaultId).then((b) => { if (b) apply(b); }).catch(() => {});
+      return () => { cancelled = true; };
+    }
+    // Fresh entry — default the server label from the build's dataset, clear the rest.
+    setVaultDescription('');
+    setVaultServer(serverLabel(build.serverId));
+    setVaultTags('');
+    setVaultAuthor('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, linkedVaultId]);
 
   // Merge token-owned IDs with account-owned IDs (deduplicated)
   const tokenIds = getOwnedBuildIds();
@@ -225,12 +278,13 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
       // can authorize it (owner token or login session). asNew=true
       // forks: drop the link and create a fresh entry.
       const updateExisting = !asNew && canUpdateVault && linkedVaultId;
+      const tags = vaultTags.split(',').map((t) => t.trim()).filter(Boolean);
       const result = await shareBuild({
         name: vaultName,
-        description: '',
-        author_name: '',
-        server: '',
-        tags: [],
+        description: vaultDescription,
+        author_name: vaultAuthor,
+        server: vaultServer,
+        tags,
         build_json: exportData,
         // Force private only when creating a fresh vault entry. On an update,
         // omit is_public so the backend preserves the current visibility —
@@ -836,6 +890,65 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                           This build is linked to a saved entry in your library. Saving will overwrite the existing entry; choose "Save as new" to fork it instead.
                         </p>
                       )}
+
+                      {/* Optional metadata — description / server / tags. Kept
+                          collapsed so a quick save stays one click, but these are
+                          saved with the private build (and editable later from the
+                          build's page). */}
+                      <div className="border border-gray-700 rounded">
+                        <button
+                          type="button"
+                          onClick={() => setVaultDetailsOpen((o) => !o)}
+                          className="w-full flex items-center justify-between px-3 py-2 text-xs text-gray-400 hover:text-gray-200 transition-colors"
+                        >
+                          <span>Add description, server &amp; tags (optional)</span>
+                          <svg
+                            className={`w-4 h-4 transition-transform ${vaultDetailsOpen ? 'rotate-180' : ''}`}
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+                        {vaultDetailsOpen && (
+                          <div className="px-3 pb-3 pt-1 space-y-3 border-t border-gray-700">
+                            <div>
+                              <label className="block text-xs font-medium text-gray-400 mb-1">Description</label>
+                              <textarea
+                                value={vaultDescription}
+                                onChange={(e) => setVaultDescription(e.target.value)}
+                                placeholder="What it's for, how to play it, etc."
+                                className="w-full h-20 bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
+                                maxLength={500}
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-medium text-gray-400 mb-1">Server</label>
+                              <input
+                                type="text"
+                                value={vaultServer}
+                                onChange={(e) => setVaultServer(e.target.value)}
+                                placeholder="e.g., Homecoming"
+                                className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
+                                maxLength={50}
+                              />
+                            </div>
+                            <div>
+                              <label className="block text-xs font-medium text-gray-400 mb-1">
+                                Tags <span className="text-gray-500">(comma-separated)</span>
+                              </label>
+                              <input
+                                type="text"
+                                value={vaultTags}
+                                onChange={(e) => setVaultTags(e.target.value)}
+                                placeholder="e.g., PvP, farming, budget, softcap"
+                                className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--color-ring)] text-sm"
+                                maxLength={200}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
                       <Button
                         variant="primary"
                         onClick={() => handleVaultSave(false)}

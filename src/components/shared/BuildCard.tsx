@@ -127,6 +127,22 @@ export function BuildCard({ build, showDelete, onDeleted, onAuthorClick, onVisib
                 )}
               </span>
             )}
+            {/* Edit details (My Builds tab) — deep-links into the edit form */}
+            {owned && !deleteConfirm && (
+              <span
+                role="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate({ to: '/builds/$id', params: { id: build.id }, search: { edit: true } });
+                }}
+                className="p-0.5 text-gray-600 hover:text-gray-300 transition-colors rounded"
+                title="Edit details"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </span>
+            )}
             {/* Delete (My Builds tab) */}
             {owned && !deleteConfirm && (
               <span
