@@ -1292,20 +1292,27 @@ export function RegistryEffectsDisplay({
               const hasEnh = Math.abs(enhancedDuration - baseDuration) > 0.001;
               const hasFinal = Math.abs(finalDuration - enhancedDuration) > 0.001;
 
+              // Magnitude rides with the stat label (a fixed quantity that
+              // identifies which ranks the mez grabs), leaving Base/Enhanced/Final
+              // to carry only the duration — the value that actually changes across
+              // tiers. Under Domination the boosted mag + [Dom] tag go pink.
               return (
                 <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
-                  <span className={colorClass}>{label}</span>
-                  <span className="text-slate-200">
-                    Mag {magStr} ({baseDuration.toFixed(1)}s)
-                    {dom && (
-                      <span className="text-pink-300 text-[10px] ml-1">[Dom]</span>
-                    )}
+                  <span className={`${colorClass} flex flex-col leading-tight`}>
+                    <span>{label}</span>
+                    <span className="text-[10px]">
+                      <span className={dom ? 'text-pink-300' : 'text-slate-400'}>Mag {magStr}</span>
+                      {dom && (
+                        <span className="text-pink-300 ml-1">[Dom]</span>
+                      )}
+                    </span>
                   </span>
+                  <span className="text-slate-200">{baseDuration.toFixed(1)}s</span>
                   <span className={hasEnh ? 'text-green-400' : 'text-slate-300'}>
-                    ({enhancedDuration.toFixed(1)}s)
+                    {enhancedDuration.toFixed(1)}s
                   </span>
                   <span className={hasFinal ? finalColumnColor : 'text-slate-300'}>
-                    ({finalDuration.toFixed(1)}s)
+                    {finalDuration.toFixed(1)}s
                   </span>
                 </div>
               );

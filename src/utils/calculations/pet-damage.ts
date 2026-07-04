@@ -427,6 +427,22 @@ const PSEUDO_PET_ENHANCEABLE_EFFECT: Record<string, keyof import('@/types/power'
   DamageDebuff: 'damageDebuff',
 };
 
+// PetEffect.type → PowerEffects mez key. These carry magnitude + duration
+// (scale × table), so they hoist as a MezEffect { mag, scale, table } — the same
+// shape a directly-applied control effect uses. That lets the Power Effects block
+// render the control (Mag N, duration) and scale the duration by the summoner's
+// mez enhancements (pseudo-pets inherit them via CopyBoosts). Location AoE holds
+// (Shadow Field, Volcanic Gasses, …) apply ALL their control through the summon,
+// so this is the only place a player would otherwise see it in Power Effects.
+const PSEUDO_PET_MEZ_EFFECT: Record<string, keyof import('@/types/power').PowerEffects> = {
+  Hold: 'hold',
+  Stun: 'stun',
+  Sleep: 'sleep',
+  Fear: 'fear',
+  Confuse: 'confuse',
+  Immobilize: 'immobilize',
+};
+
 /**
  * Synthesize a PowerEffects fragment from a pseudo-pet's enhanceable debuffs so
  * the parent summon power can surface them in its Power Effects block — scaled
@@ -434,14 +450,16 @@ const PSEUDO_PET_ENHANCEABLE_EFFECT: Record<string, keyof import('@/types/power'
  *
  * Mirrors the pseudo-pet DAMAGE unify: only NON-commandable entities (patches /
  * rains / location pseudo-pets) qualify; commandable pets (MM henchmen, Phantom
- * Army, Lore) keep their own Summons block. Returns null when there's nothing
- * enhanceable to surface. Same-key effects sum their scale (additive debuffs).
+ * Army, Lore) keep their own Summons block. Returns null when there's nothing to
+ * surface. Additive debuffs sum their scale on a key collision; mez instead keeps
+ * the single strongest instance (control doesn't stack into one bigger number).
  */
 export function synthesizePseudoPetEffects(
   summon: import('@/types/power').SummonEffect | undefined,
 ): Partial<import('@/types/power').PowerEffects> | null {
   if (!summon) return null;
   const out: Record<string, { scale: number; table: string }> = {};
+  const outMez: Record<string, { mag: number; scale: number; table: string }> = {};
 
   const addEnhanceable = (type: string, scale: number | undefined, table: string | undefined) => {
     const key = PSEUDO_PET_ENHANCEABLE_EFFECT[type];
@@ -450,7 +468,30 @@ export function synthesizePseudoPetEffects(
     else out[key] = { scale, table };
   };
 
-  // Real PET_ENTITIES-backed pseudo-pets (Glue Arrow's StickyArrow, rains, …).
+  const addMez = (
+    type: string,
+    mag: number | undefined,
+    scale: number | undefined,
+    table: string | undefined,
+    chance: number | undefined,
+  ) => {
+    const key = PSEUDO_PET_MEZ_EFFECT[type];
+    if (!key || mag === undefined || scale === undefined || !table) return;
+    // Only surface reliably-applied control. A low-chance mez (e.g. Shadow
+    // Field's 5% aura hold proc) would read as a guaranteed Hold here; those stay
+    // in the Summons block where their chance is shown alongside.
+    if (chance !== undefined && chance < 1) return;
+    // Mez doesn't sum like additive debuffs — keep the single strongest instance:
+    // higher magnitude wins, then longer duration (scale is a table-agnostic
+    // proxy; the true duration is computed against the AT table at display time).
+    const prev = outMez[key];
+    if (!prev || mag > prev.mag || (mag === prev.mag && scale > prev.scale)) {
+      outMez[key] = { mag, scale, table };
+    }
+  };
+
+  // Real PET_ENTITIES-backed pseudo-pets (Glue Arrow's StickyArrow, rains,
+  // Shadow Field's Pets_Shadow_Field_Controller, …).
   const entityNames = summon.entities && summon.entities.length > 0
     ? summon.entities.map((e) => e.entity)
     : summon.entity ? [summon.entity] : [];
@@ -458,24 +499,30 @@ export function synthesizePseudoPetEffects(
     const entity = getPetEntity(entityName);
     if (!entity || entity.commandable) continue; // pseudo-pets / patches only
     for (const ability of entity.abilities) {
-      for (const eff of ability.effects ?? []) addEnhanceable(eff.type, eff.scale, eff.table);
+      for (const eff of ability.effects ?? []) {
+        addEnhanceable(eff.type, eff.scale, eff.table);
+        addMez(eff.type, eff.magnitude, eff.scale, eff.table, eff.chance);
+      }
     }
   }
 
   // Synthesized location pseudo-pets (Storm Cell, Category Five, …) — only the
-  // ENHANCEABLE debuffs merge into Power Effects (scaled by the summoner's
-  // enhancements). IgnoreStrength debuffs are surfaced informationally elsewhere.
+  // ENHANCEABLE debuffs / control merge into Power Effects (scaled by the
+  // summoner's enhancements). IgnoreStrength effects are surfaced informationally
+  // elsewhere.
   for (const resolved of summon.resolvedEntities ?? []) {
     for (const ability of resolved.abilities) {
       for (const eff of ability.effects ?? []) {
         if (eff.ignoreStrength) continue;
         addEnhanceable(eff.type, eff.scale, eff.table);
+        addMez(eff.type, eff.magnitude, eff.scale, eff.table, eff.chance);
       }
     }
   }
 
-  return Object.keys(out).length > 0
-    ? (out as Partial<import('@/types/power').PowerEffects>)
+  const merged = { ...out, ...outMez };
+  return Object.keys(merged).length > 0
+    ? (merged as Partial<import('@/types/power').PowerEffects>)
     : null;
 }
 
