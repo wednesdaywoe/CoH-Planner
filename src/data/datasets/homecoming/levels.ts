@@ -992,7 +992,7 @@ export function getInherentPowerDef(name: string): InherentPowerDef | undefined 
  */
 export function createArchetypeInherentPower(
   archetypeName: string,
-  inherent: { name: string; description: string; icon?: string; effects?: import('@/types').PowerEffects }
+  inherent: { name: string; description: string; icon?: string; powerType?: import('@/types').PowerType; effects?: import('@/types').PowerEffects }
 ): InherentPowerDef {
   // Use explicit icon if provided, otherwise generate from archetype and power name
   // e.g., "Blaster" + "Defiance" -> "inherent_blaster_defiance.png"
@@ -1006,7 +1006,10 @@ export function createArchetypeInherentPower(
     fullName: `Inherent.${archetypeName}.${inherent.name.replace(/\s+/g, '')}`,
     description: inherent.description,
     icon: iconName,
-    powerType: 'Auto',
+    // Most archetype inherents are passive (Fury, Containment, Gauntlet, …);
+    // honour an explicit type for the click-activated exceptions (Domination)
+    // so they stay perma-trackable instead of being flattened to Auto.
+    powerType: inherent.powerType ?? 'Auto',
     available: -1,
     maxSlots: 0, // Archetype inherents cannot have slots
     allowedEnhancements: [],

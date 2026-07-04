@@ -6,6 +6,7 @@
  */
 
 import type { PowerEffects, EffectArea } from '@/types';
+import { getArchetype } from '@/data';
 
 // ============================================
 // BLASTER - DEFIANCE
@@ -134,18 +135,30 @@ export function isBlasterAttackPower(powersetId: string): boolean {
  * - Provides mez protection (Knockback, Knockup, Repel, Stun, Hold, Sleep, Immobilize, Fear, Confuse)
  * - Full endurance recovery on activation
  *
- * Duration: 90 seconds
- * Recharge: 200 seconds
+ * Data provenance:
+ * - `activeDuration` (90s) and `rechargeTime` (200s) are real, data-backed
+ *   values — sourced from the Dominator inherent metadata, which mirrors the
+ *   HC bins (domination.json: recharge_time 200, Set_Mode duration 90). These
+ *   are read from the active dataset below rather than hardcoded, so they track
+ *   whatever the loaded server ships.
+ * - `magnitudeMultiplier` (2x) and `durationMultiplier` (1.5x) are Domination
+ *   *mode* behaviour applied by the game engine — they are NOT present anywhere
+ *   in the structured power data. Verified: no mez magnitude/duration multiplier
+ *   template exists in domination.json, the Domination_Mode power, or any of the
+ *   118 Dominator control powers (the Set_Mode 45/46 attrib the engine keys off
+ *   is opaque to the bin export). The only reference is the display_help prose
+ *   ("50 percent longer"). They therefore remain documented constants — there is
+ *   nothing in the bins to derive them from.
  */
 
 export interface DominationInfo {
-  /** Mez magnitude multiplier when active */
+  /** Mez magnitude multiplier when active (engine mode constant — not in bin data) */
   magnitudeMultiplier: number;
-  /** Mez duration multiplier when active */
+  /** Mez duration multiplier when active (engine mode constant — not in bin data) */
   durationMultiplier: number;
-  /** Duration of Domination in seconds */
+  /** Duration of Domination in seconds (data-backed, from the inherent metadata) */
   activeDuration: number;
-  /** Base recharge time in seconds */
+  /** Base recharge time in seconds (data-backed, from the inherent metadata) */
   rechargeTime: number;
 }
 
@@ -165,14 +178,18 @@ export const DOMINATION_MEZ_PROTECTION = [
 export type DominationMezType = (typeof DOMINATION_MEZ_PROTECTION)[number];
 
 /**
- * Get Domination stats (constant values)
+ * Get Domination stats. Recharge and active-window duration are pulled from the
+ * active dataset's Dominator inherent metadata (data-backed); the mez
+ * magnitude/duration multipliers are engine mode constants (see the provenance
+ * note above). Fallbacks match the HC bin values in case a server omits them.
  */
 export function getDominationInfo(): DominationInfo {
+  const domEffects = getArchetype('dominator')?.inherent?.effects;
   return {
     magnitudeMultiplier: 2.0,
     durationMultiplier: 1.5,
-    activeDuration: 90,
-    rechargeTime: 200,
+    activeDuration: domEffects?.buffDuration ?? 90,
+    rechargeTime: domEffects?.recharge ?? 200,
   };
 }
 

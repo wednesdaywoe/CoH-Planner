@@ -514,9 +514,17 @@ export const ARCHETYPES: ArchetypeRegistry = {
     inherent: {
       name: 'Domination',
       description: 'Build meter by attacking, activate at 90%+ for 2× mez magnitude, 1.5× mez duration, mez protection, and full endurance. Lasts 90s.',
+      // Click power on a recharge/duration cycle (subject to global recharge),
+      // NOT a passive — this drives the perma-tracker in the info panel.
+      powerType: 'Click',
       effects: {
         recharge: 200,
         buffDuration: 90,
+        // Full endurance restore on activation. Marks Domination as a self-buff
+        // for perma eligibility; the 2×/1.5× mez and mez protection are modelled
+        // separately in getDominationInfo(). Excluded from always-on totals by
+        // the archetype-inherent category filter, so it never pollutes Recovery.
+        enduranceGain: 100,
       },
     },
     stats: {

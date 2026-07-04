@@ -2,7 +2,7 @@
  * Archetype type definitions
  */
 
-import type { Faction } from './common';
+import type { Faction, PowerType } from './common';
 
 // ============================================
 // DAMAGE MODIFIERS
@@ -56,6 +56,14 @@ export interface InherentPower {
   description: string;
   /** Optional icon override (defaults to auto-generated from archetype + power name) */
   icon?: string;
+  /**
+   * Activation type. Most archetype inherents are passive/always-on ('Auto'),
+   * which is the default when this is omitted. Set explicitly for the rare
+   * player-activated inherent — e.g. Dominator's Domination is a 'Click' with
+   * a recharge/duration cycle, so it must be perma-trackable rather than
+   * treated as an auto power.
+   */
+  powerType?: PowerType;
   /** Optional effects data (recharge, duration, etc.) for display in the info panel */
   effects?: import('./power').PowerEffects;
 }
