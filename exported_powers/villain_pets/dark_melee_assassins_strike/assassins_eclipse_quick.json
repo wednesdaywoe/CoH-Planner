@@ -638,6 +638,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Villain_Pets.Dark_Melee_Assassins_Strike"
 }

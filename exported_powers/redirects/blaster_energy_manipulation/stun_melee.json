@@ -293,6 +293,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Redirects.Blaster_Energy_Manipulation"
 }

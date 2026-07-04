@@ -230,7 +230,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Chain_Confuse_Mode"
         },
         {
           "attribs": [
@@ -264,6 +265,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 0,
   "powerset": "Pets.Chain_Confuse_Controller_Jump3"

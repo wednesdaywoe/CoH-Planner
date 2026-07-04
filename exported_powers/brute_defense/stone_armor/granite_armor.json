@@ -764,7 +764,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Suppress_FlyToggles"
         },
         {
           "attribs": [
@@ -795,7 +796,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Suppress_RunToggles"
         },
         {
           "attribs": [
@@ -826,7 +828,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Suppress_JumpToggles"
         },
         {
           "attribs": [
@@ -857,10 +860,14 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Granite_Mode"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 29,
   "powerset": "Brute_Defense.Stone_Armor"

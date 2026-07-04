@@ -246,7 +246,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Peacebringer_Light_Mode"
         },
         {
           "attribs": [
@@ -573,6 +574,11 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
   ],
   "available_level": 31,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"

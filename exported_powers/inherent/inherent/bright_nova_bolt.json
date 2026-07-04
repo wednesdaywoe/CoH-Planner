@@ -184,6 +184,15 @@
       ]
     }
   ],
+  "modes_required": [
+    "Peacebringer_Blaster_Mode"
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 4294967295,
   "powerset": "Inherent.Inherent"
 }

@@ -266,7 +266,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "FocusFire_Slug"
         },
         {
           "attribs": [
@@ -297,10 +298,14 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "PersonalAttack2"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 1,
   "powerset": "Mastermind_Summon.Mercenaries"

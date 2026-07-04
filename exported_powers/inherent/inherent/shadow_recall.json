@@ -62,6 +62,14 @@
       "show_in_info": true
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Recall",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 9,
   "powerset": "Inherent.Inherent"
 }

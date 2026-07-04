@@ -105,6 +105,11 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Epic",
+    "Disable_Pool"
+  ],
   "available_level": 43,
   "powerset": "Epic.Scrapper_Ice_Mastery"
 }

@@ -598,6 +598,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 9,
   "powerset": "Blaster_Support.Electricity_Manipulation"
 }

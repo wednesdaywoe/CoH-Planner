@@ -183,7 +183,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "DD_StatusMode_1"
         }
       ]
     },
@@ -462,6 +463,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 0,
   "powerset": "Tanker_Melee.Spines"

@@ -1140,10 +1140,13 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     allowed_boostset_cats: list[str] = []
 
     # 75-78. exclusion_groups, modes_required, modes_disallowed, modes_suspended (u4_arrays)
+    # The three mode arrays are indices into the global mode registry (same table
+    # Set_Mode magnitudes index — attrib_names.bin ppchMode); captured raw here and
+    # resolved to names at export. Empty on almost all powers.
     r.read_u4_array()  # exclusion_groups
-    r.read_u4_array()  # modes_required
-    r.read_u4_array()  # modes_disallowed
-    r.read_u4_array()  # modes_suspended
+    modes_required = r.read_u4_array()
+    modes_disallowed = r.read_u4_array()
+    modes_suspended = r.read_u4_array()
 
     # The field here was previously read as a single u4 "redirect pre-field
     # (always 0 in samples)" — but it is actually a u4_array (a mode/recharge-
@@ -1229,6 +1232,9 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         effects=effects,
         activation_effects=activation_effects,
         redirects=redirects,
+        modes_required=modes_required,
+        modes_disallowed=modes_disallowed,
+        modes_suspended=modes_suspended,
     )
 
 
@@ -1900,13 +1906,16 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     effects: list[EffectGroup] = []
     activation_effects: list[EffectGroup] = []
     redirects: list[dict] = []
+    modes_required: list[int] = []
+    modes_disallowed: list[int] = []
+    modes_suspended: list[int] = []
     try:
         # Field 74 (GroupMembership) was already consumed in the loop
         # above; resume from RechargeGroup.
         r.read_u4_array()  # RechargeGroup
-        r.read_u4_array()  # ModesRequired
-        r.read_u4_array()  # ModesDisallowed
-        r.read_u4_array()  # ModesSuspended
+        modes_required = r.read_u4_array()
+        modes_disallowed = r.read_u4_array()
+        modes_suspended = r.read_u4_array()
         try:
             if veracity:
                 # Veracity uses HC-style EffectGroup effects (no Redirect /
@@ -1966,4 +1975,7 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
         effects=effects,
         activation_effects=activation_effects,
         redirects=redirects,
+        modes_required=modes_required,
+        modes_disallowed=modes_disallowed,
+        modes_suspended=modes_suspended,
     )

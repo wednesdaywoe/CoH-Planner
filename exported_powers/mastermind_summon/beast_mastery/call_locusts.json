@@ -417,10 +417,14 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "PersonalAttack3"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 7,
   "powerset": "Mastermind_Summon.Beast_Mastery"

@@ -82,7 +82,8 @@
             "IgnoreCombatMods",
             "KeepThroughDeath"
           ],
-          "flags_raw": 16496
+          "flags_raw": 16496,
+          "mode_name": "Shivan_Mode"
         },
         {
           "attribs": [
@@ -114,7 +115,8 @@
             "IgnoreCombatMods",
             "KeepThroughDeath"
           ],
-          "flags_raw": 16496
+          "flags_raw": 16496,
+          "mode_name": "Arena"
         },
         {
           "attribs": [
@@ -146,7 +148,8 @@
             "IgnoreCombatMods",
             "KeepThroughDeath"
           ],
-          "flags_raw": 16496
+          "flags_raw": 16496,
+          "mode_name": "Disable_Portals"
         },
         {
           "attribs": [
@@ -178,7 +181,8 @@
             "IgnoreCombatMods",
             "KeepThroughDeath"
           ],
-          "flags_raw": 16496
+          "flags_raw": 16496,
+          "mode_name": "Disable_Incarnate"
         }
       ]
     }

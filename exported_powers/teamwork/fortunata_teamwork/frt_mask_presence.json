@@ -513,6 +513,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Teamwork.Fortunata_Teamwork"
 }

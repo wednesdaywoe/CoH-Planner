@@ -117,7 +117,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Chain_Stun_Mode"
         },
         {
           "attribs": [
@@ -277,6 +278,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 0,
   "powerset": "Pets.Chain_Stun_Controller_Jump1"

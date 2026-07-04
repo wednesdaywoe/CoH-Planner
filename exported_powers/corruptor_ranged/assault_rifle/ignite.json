@@ -429,6 +429,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 21,
   "powerset": "Corruptor_Ranged.Assault_Rifle"
 }

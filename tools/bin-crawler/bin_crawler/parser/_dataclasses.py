@@ -173,6 +173,18 @@ class PowerRecord:
     # variants, etc.). Each element: {name, condition_expression, show_in_info}.
     redirects: list[dict] = field(default_factory=list)
 
+    # Power-level mode gates (`ModesRequired` / `ModesDisallowed` /
+    # `ModesSuspended` in the .def) — u4 arrays of mode indices into the same
+    # global mode registry that `Set_Mode` magnitudes index (attrib_names.bin's
+    # ppchMode sub-array). A power with `modes_required=[45]` only fires while
+    # the caster is in mode 45 (Domination); `modes_disallowed` blocks it in
+    # those modes; `modes_suspended` auto-detoggles it. Stored raw here (the
+    # per-server index) and resolved to names at export via the mode table —
+    # same mechanism as `EffectTemplate.mode_name`. Empty on ~all powers.
+    modes_required: list[int] = field(default_factory=list)
+    modes_disallowed: list[int] = field(default_factory=list)
+    modes_suspended: list[int] = field(default_factory=list)
+
     # Fields kept from before for backward compat
     @property
     def power_type_name(self) -> str:

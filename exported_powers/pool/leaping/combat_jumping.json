@@ -391,6 +391,15 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_JumpToggles",
+    "Disable_Pool"
+  ],
+  "modes_suspended": [
+    "Suppress_JumpToggles",
+    "Suppress_PoolToggles"
+  ],
   "available_level": 0,
   "powerset": "Pool.Leaping"
 }

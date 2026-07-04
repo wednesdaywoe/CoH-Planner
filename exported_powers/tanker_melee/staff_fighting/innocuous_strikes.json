@@ -524,6 +524,9 @@
     }
   ],
   "max_targets_expression": "10 kDisable_GauntletTargetCap Source.Mode? 5 * -",
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Tanker_Melee.Staff_Fighting"
 }

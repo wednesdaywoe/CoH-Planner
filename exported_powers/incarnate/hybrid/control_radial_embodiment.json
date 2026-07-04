@@ -385,6 +385,12 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Epic",
+    "Disable_Incarnate",
+    "HybridLockout"
+  ],
   "available_level": 0,
   "powerset": "Incarnate.Hybrid"
 }

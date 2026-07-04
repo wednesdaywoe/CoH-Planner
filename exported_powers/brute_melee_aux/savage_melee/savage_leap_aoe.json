@@ -231,6 +231,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Brute_Melee_Aux.Savage_Melee"
 }

@@ -282,6 +282,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Corruptor_Buff.Marine_Affinity"
 }

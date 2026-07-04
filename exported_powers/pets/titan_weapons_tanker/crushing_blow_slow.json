@@ -264,7 +264,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "FastMode"
         },
         {
           "attribs": [
@@ -304,6 +305,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 0,
   "powerset": "Pets.Titan_Weapons_Tanker"

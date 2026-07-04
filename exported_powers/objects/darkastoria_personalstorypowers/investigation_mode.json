@@ -81,7 +81,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Disable_All"
         },
         {
           "attribs": [
@@ -112,7 +113,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Disable_Walk"
         },
         {
           "attribs": [
@@ -143,7 +145,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Disable_Travel"
         },
         {
           "attribs": [
@@ -174,7 +177,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Disable_Temp"
         },
         {
           "attribs": [
@@ -205,7 +209,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Disable_Portals"
         }
       ]
     }

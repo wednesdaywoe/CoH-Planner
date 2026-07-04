@@ -69,6 +69,9 @@
       "show_in_info": true
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 17,
   "powerset": "Corruptor_Ranged.Beam_Rifle"
 }

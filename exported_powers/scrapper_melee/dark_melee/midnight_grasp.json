@@ -517,6 +517,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 25,
   "powerset": "Scrapper_Melee.Dark_Melee"
 }

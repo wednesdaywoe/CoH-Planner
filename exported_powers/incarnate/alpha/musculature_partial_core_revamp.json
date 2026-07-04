@@ -327,10 +327,16 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Incarnate_Equipped"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Alpha",
+    "Disable_Epic"
   ],
   "available_level": 0,
   "powerset": "Incarnate.Alpha"

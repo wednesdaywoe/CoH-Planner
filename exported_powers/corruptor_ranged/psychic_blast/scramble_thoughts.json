@@ -1139,6 +1139,9 @@
     }
   ],
   "chain_eff_expression": "1 0.25 @ChainJump 1 - * - 0.5 1 minmax",
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 21,
   "powerset": "Corruptor_Ranged.Psychic_Blast"
 }

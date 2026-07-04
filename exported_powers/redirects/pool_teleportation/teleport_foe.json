@@ -496,6 +496,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Pool"
+  ],
   "available_level": 0,
   "powerset": "Redirects.Pool_Teleportation"
 }

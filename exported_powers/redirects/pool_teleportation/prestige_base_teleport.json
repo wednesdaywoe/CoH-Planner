@@ -214,6 +214,16 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Temp",
+    "Disable_Toggle",
+    "Disable_Travel",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 0,
   "powerset": "Redirects.Pool_Teleportation"
 }

@@ -69,6 +69,9 @@
       "show_in_info": true
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 29,
   "powerset": "Stalker_Defense.Dark_Armor"
 }

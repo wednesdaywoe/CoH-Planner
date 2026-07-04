@@ -29,6 +29,7 @@ from bin_crawler.parser._powercats import parse_powercats
 from bin_crawler.parser._classes import parse_classes
 from bin_crawler.parser._boostsets import parse_boostsets, build_power_category_index
 from bin_crawler.parser._messages import load_messages
+from bin_crawler.parser._attrib_names import parse_mode_table
 from bin_crawler.parser._pigg import BinResolver
 from bin_crawler.assets_dir import resolve_assets_dir
 from bin_crawler.parser._enums import POWER_TYPE, EFFECT_AREA, TARGET_TYPE, PVP_FLAG
@@ -143,7 +144,7 @@ def format_duration(seconds: float) -> str:
     return f"{seconds:.2f} seconds"
 
 
-def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
+def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None) -> dict:
     """Convert a PowerRecord to CoD2-compatible JSON dict.
 
     set_cats_index maps `full_name` → list of planner set-category strings
@@ -264,6 +265,19 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
                 tmpl_dict['flags_raw'] = t.flags_raw
             if t.boost_mod_allowed_id:
                 tmpl_dict['boost_mod_allowed_id'] = t.boost_mod_allowed_id
+            # Resolve a Set_Mode template's opaque magnitude (a mode index) to
+            # its mode name via attrib_names.bin, e.g. magnitude 46 -> mode
+            # "Domination_Active". Gated on magnitude >= 2: mode index 1
+            # (Peacebringer_Blaster_Mode) collides with an attrib-118 misdecode
+            # (kXPDebtProtection / kSetCostume also decode as Set_Mode with a
+            # placeholder magnitude of 1), so mag==1 is left unresolved. See
+            # parser/_attrib_names.py.
+            if mode_table and 'Set_Mode' in t.attribs:
+                idx = int(round(t.magnitude))
+                if idx >= 2:
+                    mode = mode_table.get(idx)
+                    if mode:
+                        tmpl_dict['mode_name'] = mode
             out['templates'].append(tmpl_dict)
         children = getattr(eg, 'child_groups', None) or []
         if children:
@@ -288,6 +302,26 @@ def power_to_dict(pw, msgs=None, set_cats_index=None) -> dict:
     # field 38 (HC-only); verified via GauntletTargetCap. Sparse.
     if pw.max_targets_expression:
         d['max_targets_expression'] = pw.max_targets_expression
+
+    # Power-level mode gates (ModesRequired / ModesDisallowed / ModesSuspended)
+    # resolved to mode names via the same registry Set_Mode magnitudes index.
+    # These gate a power to/from a caster mode: `modes_required` fires it only
+    # in those modes (Domination, Titan Weapons FastMode/Momentum, DP LethalAmmo
+    # swaps, Primalist Hunter/Prowler forms), `modes_disallowed` blocks it, and
+    # `modes_suspended` auto-detoggles it (Stone Armor toggles under Granite,
+    # Kheldian travel powers in Blaster/Tanker forms). Resolved-and-sparse: only
+    # emitted when non-empty; unresolved indices are dropped, and the whole block
+    # is skipped when no mode table was loaded (non-HC sources) so raw per-server
+    # indices never leak into the export. Mirrors `EffectTemplate.mode_name`.
+    if mode_table:
+        for field_name, idxs in (
+            ('modes_required', pw.modes_required),
+            ('modes_disallowed', pw.modes_disallowed),
+            ('modes_suspended', pw.modes_suspended),
+        ):
+            names = [mode_table[i] for i in idxs if i in mode_table]
+            if names:
+                d[field_name] = names
 
     return d
 
@@ -362,6 +396,16 @@ def main():
         print('Loading message table...', flush=True)
         msgs = load_messages(resolver.read('clientmessages-en.bin'))
         print(f'  {len(msgs)} messages loaded.', flush=True)
+
+    # Load the mode-name table (attrib_names.bin) used to resolve Set_Mode
+    # template magnitudes (mode indices) to mode names. Per-server; absent on
+    # some sources (Rebirth/Thunderspy piggs that don't ship attrib_names.bin),
+    # in which case Set_Mode templates simply carry no `mode` field.
+    mode_table = {}
+    if resolver.has('attrib_names.bin'):
+        print('Loading mode table (attrib_names.bin)...', flush=True)
+        mode_table = parse_mode_table(resolver.read('attrib_names.bin'))
+        print(f'  {len(mode_table)} modes loaded.', flush=True)
 
     # Parse powers
     print('Parsing powers.bin...', flush=True)
@@ -493,7 +537,8 @@ def main():
 
             # Write individual power files
             for pw in powers_in_set:
-                pw_dict = power_to_dict(pw, msgs, set_cats_index=set_cats_index)
+                pw_dict = power_to_dict(pw, msgs, set_cats_index=set_cats_index,
+                                        mode_table=mode_table)
                 pw_dict['available_level'] = ps_available.get(pw.full_name, 0)
                 pw_dict['powerset'] = ps_key
 

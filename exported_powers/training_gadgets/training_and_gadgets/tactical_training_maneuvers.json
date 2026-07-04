@@ -168,6 +168,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 9,
   "powerset": "Training_Gadgets.Training_and_Gadgets"
 }

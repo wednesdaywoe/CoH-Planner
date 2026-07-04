@@ -391,6 +391,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Stalker_Defense.Stone_Armor"
 }

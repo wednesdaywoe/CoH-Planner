@@ -269,7 +269,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Domination_Active"
         },
         {
           "attribs": [
@@ -300,7 +301,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Domination"
         },
         {
           "attribs": [
@@ -461,6 +463,9 @@
         }
       ]
     }
+  ],
+  "modes_required": [
+    "Domination"
   ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"

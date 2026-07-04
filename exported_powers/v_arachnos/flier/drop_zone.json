@@ -92,6 +92,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Pool"
+  ],
   "available_level": 0,
   "powerset": "V_Arachnos.Flier"
 }

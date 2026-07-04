@@ -153,6 +153,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Blaster_Ranged.Fire_Blast"
 }

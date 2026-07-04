@@ -257,6 +257,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 3,
   "powerset": "Dominator_Assault.Arsenal_Assault"
 }

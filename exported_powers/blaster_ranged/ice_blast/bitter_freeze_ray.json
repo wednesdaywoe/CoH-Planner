@@ -431,6 +431,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 21,
   "powerset": "Blaster_Ranged.Ice_Blast"
 }

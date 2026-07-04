@@ -191,7 +191,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "FlyOn"
         },
         {
           "attribs": [
@@ -566,6 +567,17 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_FlyToggles",
+    "Disable_Travel"
+  ],
+  "modes_suspended": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Suppress_FlyToggles",
+    "Suppress_TravelToggles"
   ],
   "available_level": 0,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"

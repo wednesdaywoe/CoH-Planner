@@ -208,6 +208,13 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Teleport",
+    "Disable_Travel",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 7,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

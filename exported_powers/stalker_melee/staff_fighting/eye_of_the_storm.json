@@ -908,6 +908,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 17,
   "powerset": "Stalker_Melee.Staff_Fighting"
 }

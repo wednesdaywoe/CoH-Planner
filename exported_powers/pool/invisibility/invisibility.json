@@ -575,7 +575,8 @@
             "DeepSleep",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 265264
+          "flags_raw": 265264,
+          "mode_name": "Hidden_Attack"
         }
       ]
     },
@@ -833,6 +834,19 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_JumpToggles",
+    "Disable_Pool",
+    "Disable_RunToggles",
+    "Disable_Travel"
+  ],
+  "modes_suspended": [
+    "Suppress_JumpToggles",
+    "Suppress_PoolToggles",
+    "Suppress_RunToggles",
+    "Suppress_TravelToggles"
   ],
   "available_level": 3,
   "powerset": "Pool.Invisibility"

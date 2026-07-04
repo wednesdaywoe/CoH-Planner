@@ -171,6 +171,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Controller_Buff.Shock_Therapy"
 }

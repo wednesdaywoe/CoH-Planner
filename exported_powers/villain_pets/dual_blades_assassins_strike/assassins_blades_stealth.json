@@ -801,6 +801,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Villain_Pets.Dual_Blades_Assassins_Strike"
 }

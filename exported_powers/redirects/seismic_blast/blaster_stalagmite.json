@@ -479,6 +479,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 21,
   "powerset": "Redirects.Seismic_Blast"
 }

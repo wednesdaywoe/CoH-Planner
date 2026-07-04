@@ -527,6 +527,9 @@
     }
   ],
   "max_targets_expression": "10 kDisable_GauntletTargetCap Source.Mode? 5 * -",
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 1,
   "powerset": "Tanker_Melee.Broad_Sword"
 }

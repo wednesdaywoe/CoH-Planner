@@ -80,7 +80,8 @@
             "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "mode_name": "Disable_Portals"
         }
       ]
     }

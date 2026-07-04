@@ -561,6 +561,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Pets.Epic_AR_Snipe"
 }

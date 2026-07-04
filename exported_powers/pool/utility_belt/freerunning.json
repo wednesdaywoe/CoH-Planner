@@ -132,7 +132,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "FreeRunningOn"
         },
         {
           "attribs": [
@@ -626,6 +627,19 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_JumpToggles",
+    "Disable_Pool",
+    "Disable_RunToggles",
+    "Disable_Travel"
+  ],
+  "modes_suspended": [
+    "Suppress_JumpToggles",
+    "Suppress_PoolToggles",
+    "Suppress_RunToggles",
+    "Suppress_TravelToggles"
   ],
   "available_level": 3,
   "powerset": "Pool.Utility_Belt"

@@ -327,6 +327,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 11,
   "powerset": "Pets.Blaster_AR_Snipe"
 }

@@ -181,7 +181,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "DD_StatusMode_1"
         }
       ],
       "child_effects": [
@@ -641,6 +642,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 0,
   "powerset": "Stalker_Melee.Spines"

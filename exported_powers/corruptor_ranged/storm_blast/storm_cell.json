@@ -165,7 +165,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "StormCell"
         }
       ]
     }
@@ -318,6 +319,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 5,
   "powerset": "Corruptor_Ranged.Storm_Blast"

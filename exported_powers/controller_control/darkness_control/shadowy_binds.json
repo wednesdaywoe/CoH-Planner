@@ -460,6 +460,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Controller_Control.Darkness_Control"
 }

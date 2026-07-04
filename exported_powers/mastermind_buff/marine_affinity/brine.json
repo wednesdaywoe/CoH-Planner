@@ -282,6 +282,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Mastermind_Buff.Marine_Affinity"
 }

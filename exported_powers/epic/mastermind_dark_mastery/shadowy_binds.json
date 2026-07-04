@@ -330,6 +330,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 34,
   "powerset": "Epic.Mastermind_Dark_Mastery"
 }

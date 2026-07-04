@@ -275,6 +275,11 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Epic",
+    "Disable_Pool"
+  ],
   "available_level": 37,
   "powerset": "Epic.Field_Mastery"
 }

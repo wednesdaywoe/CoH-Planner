@@ -226,6 +226,21 @@
       ]
     }
   ],
+  "modes_required": [
+    "MightyLeapOn"
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Pool",
+    "Disable_Travel",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
+  "modes_suspended": [
+    "Suppress_TravelToggles"
+  ],
   "available_level": 4294967295,
   "powerset": "Pool.Force_of_Will"
 }

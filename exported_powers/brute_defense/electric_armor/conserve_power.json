@@ -146,6 +146,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Brute_Defense.Electric_Armor"
 }

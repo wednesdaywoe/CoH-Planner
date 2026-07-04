@@ -1154,6 +1154,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 21,
   "powerset": "Stalker_Melee.Electrical_Melee"
 }

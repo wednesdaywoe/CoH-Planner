@@ -131,6 +131,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Villain_Pets.Dominator_RadioactiveAssault_Snipe"
 }

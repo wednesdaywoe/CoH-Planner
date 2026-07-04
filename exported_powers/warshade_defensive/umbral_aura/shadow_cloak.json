@@ -205,7 +205,8 @@
             "DeepSleep",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 265264
+          "flags_raw": 265264,
+          "mode_name": "Hidden_Attack"
         }
       ]
     },
@@ -498,6 +499,13 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ],
   "available_level": 13,
   "powerset": "Warshade_Defensive.Umbral_Aura"

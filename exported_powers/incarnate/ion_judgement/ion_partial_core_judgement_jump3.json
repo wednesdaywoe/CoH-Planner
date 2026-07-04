@@ -203,7 +203,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Chain_Induction"
         },
         {
           "attribs": [
@@ -317,6 +318,11 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Epic",
+    "Disable_Incarnate"
   ],
   "available_level": 0,
   "powerset": "Incarnate.Ion_Judgement"

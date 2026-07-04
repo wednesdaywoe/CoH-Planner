@@ -125,6 +125,15 @@
       ]
     }
   ],
+  "modes_required": [
+    "JetpackOn"
+  ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Suppress_PoolToggles"
+  ],
   "available_level": 4294967295,
   "powerset": "Pool.Gadgetry"
 }

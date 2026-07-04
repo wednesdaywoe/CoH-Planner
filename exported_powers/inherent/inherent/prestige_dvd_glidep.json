@@ -247,10 +247,22 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Disable_Stance"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_RunToggles"
+  ],
+  "modes_suspended": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Suppress_RunToggles",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
   ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"

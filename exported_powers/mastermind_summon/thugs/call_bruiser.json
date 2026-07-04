@@ -155,6 +155,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 21,
   "powerset": "Mastermind_Summon.Thugs"
 }

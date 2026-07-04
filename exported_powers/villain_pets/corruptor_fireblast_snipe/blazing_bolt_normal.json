@@ -261,6 +261,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 21,
   "powerset": "Villain_Pets.Corruptor_FireBlast_Snipe"
 }

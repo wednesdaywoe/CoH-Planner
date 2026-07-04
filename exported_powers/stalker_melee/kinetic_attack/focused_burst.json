@@ -584,6 +584,9 @@
     }
   ],
   "chain_eff_expression": "1 0.25 @ChainJump 1 - * - 0.25 1 minmax",
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 21,
   "powerset": "Stalker_Melee.Kinetic_Attack"
 }

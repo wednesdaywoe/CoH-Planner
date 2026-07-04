@@ -358,6 +358,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Pets.Water_Blast_Defender"
 }

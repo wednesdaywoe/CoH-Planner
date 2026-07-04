@@ -445,6 +445,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Temporary_Powers.Temporary_Powers"
 }

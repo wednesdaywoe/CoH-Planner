@@ -101,6 +101,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Dominator_Assault.Sonic_Assault"
 }

@@ -585,6 +585,13 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
+  ],
   "available_level": 25,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

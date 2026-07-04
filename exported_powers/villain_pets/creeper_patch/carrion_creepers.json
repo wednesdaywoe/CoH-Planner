@@ -121,10 +121,14 @@
             "IgnoreCombatMods",
             "KeepThroughDeath"
           ],
-          "flags_raw": 16496
+          "flags_raw": 16496,
+          "mode_name": "CreeperLockout"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 0,
   "powerset": "Villain_Pets.Creeper_Patch"

@@ -182,6 +182,9 @@
     }
   ],
   "max_targets_expression": "5 Redirects.Energy_Melee.Energy_Store source.ownPower? 5 * +",
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 17,
   "powerset": "Mission_Maker_Attacks.Energy_Melee"
 }

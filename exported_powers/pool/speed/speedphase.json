@@ -116,6 +116,20 @@
       ]
     }
   ],
+  "modes_required": [
+    "SuperSpeedOn"
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Pool",
+    "Disable_Teleport",
+    "Disable_Travel"
+  ],
+  "modes_suspended": [
+    "Suppress_PoolToggles",
+    "Suppress_RunToggles",
+    "Suppress_TravelToggles"
+  ],
   "available_level": 4294967295,
   "powerset": "Pool.Speed"
 }

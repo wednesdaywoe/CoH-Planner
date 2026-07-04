@@ -230,7 +230,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Chain_Jolt_Mode"
         }
       ]
     },
@@ -274,6 +275,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 5,
   "powerset": "Mission_Maker_Attacks.Electric_Control"

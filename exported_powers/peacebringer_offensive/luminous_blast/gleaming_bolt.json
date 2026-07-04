@@ -68,6 +68,10 @@
       "show_in_info": true
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Peacebringer_Blaster_Mode"
+  ],
   "available_level": 0,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

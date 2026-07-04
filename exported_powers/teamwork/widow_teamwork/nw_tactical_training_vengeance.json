@@ -294,7 +294,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Vengeance_Mode"
         }
       ]
     },
@@ -425,6 +426,10 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Pool"
   ],
   "available_level": 27,
   "powerset": "Teamwork.Widow_Teamwork"

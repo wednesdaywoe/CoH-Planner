@@ -192,6 +192,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Stalker_Defense.Shield_Defense"
 }

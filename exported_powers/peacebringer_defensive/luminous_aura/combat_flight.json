@@ -518,6 +518,15 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_FlyToggles"
+  ],
+  "modes_suspended": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Suppress_FlyToggles"
+  ],
   "available_level": 9,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

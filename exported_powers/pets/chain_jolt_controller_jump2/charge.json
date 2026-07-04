@@ -353,7 +353,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Chain_Jolt_Mode"
         },
         {
           "attribs": [
@@ -387,6 +388,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 0,
   "powerset": "Pets.Chain_Jolt_Controller_Jump2"

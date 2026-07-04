@@ -585,6 +585,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Villain_Pets.Staff_Fighting_Assassins_Strike"
 }

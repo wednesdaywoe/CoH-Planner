@@ -276,6 +276,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Granite_Mode"
+  ],
   "available_level": 0,
   "powerset": "Redirects.Stone_Armor"
 }

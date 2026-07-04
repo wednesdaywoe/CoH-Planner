@@ -110,6 +110,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Mission_Maker_Attacks.Dark_Assault"
 }

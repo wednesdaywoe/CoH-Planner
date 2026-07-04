@@ -88,7 +88,8 @@
             "IgnoreEfficiency",
             "DeepSleep"
           ],
-          "flags_raw": 3248
+          "flags_raw": 3248,
+          "mode_name": "SiphonMode"
         },
         {
           "attribs": [
@@ -161,6 +162,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 19,
   "powerset": "Tanker_Melee.Kinetic_Attack"

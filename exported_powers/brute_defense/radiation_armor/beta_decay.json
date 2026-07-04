@@ -346,6 +346,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Brute_Defense.Radiation_Armor"
 }

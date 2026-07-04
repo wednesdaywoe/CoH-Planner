@@ -551,6 +551,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Stalker_Defense.Bio_Organic_Armor"
 }

@@ -329,6 +329,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Dominator_Control.Gravity_Control"
 }

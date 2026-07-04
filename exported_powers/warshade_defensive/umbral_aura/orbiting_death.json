@@ -123,6 +123,13 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 3,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

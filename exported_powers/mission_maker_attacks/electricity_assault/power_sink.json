@@ -273,6 +273,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 25,
   "powerset": "Mission_Maker_Attacks.Electricity_Assault"
 }

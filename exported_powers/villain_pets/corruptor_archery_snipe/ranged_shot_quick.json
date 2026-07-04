@@ -216,6 +216,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_All"
+  ],
   "available_level": 17,
   "powerset": "Villain_Pets.Corruptor_Archery_Snipe"
 }

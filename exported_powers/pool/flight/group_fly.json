@@ -484,6 +484,17 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_FlyToggles",
+    "Disable_Pool",
+    "Disable_Travel"
+  ],
+  "modes_suspended": [
+    "Suppress_FlyToggles",
+    "Suppress_PoolToggles",
+    "Suppress_TravelToggles"
+  ],
   "available_level": 13,
   "powerset": "Pool.Flight"
 }

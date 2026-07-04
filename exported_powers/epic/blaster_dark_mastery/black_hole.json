@@ -455,6 +455,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 40,
   "powerset": "Epic.Blaster_Dark_Mastery"
 }

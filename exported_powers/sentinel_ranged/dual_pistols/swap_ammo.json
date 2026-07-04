@@ -81,10 +81,14 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "LethalAmmo"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 7,
   "powerset": "Sentinel_Ranged.Dual_Pistols"

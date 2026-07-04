@@ -68,6 +68,11 @@
       "show_in_info": true
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Epic",
+    "Disable_Pool"
+  ],
   "available_level": 34,
   "powerset": "Epic.Stalker_Mace_Mastery"
 }

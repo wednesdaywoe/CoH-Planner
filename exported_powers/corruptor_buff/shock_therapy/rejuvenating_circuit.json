@@ -195,6 +195,9 @@
   "chain_eff_expression": "1 0.25 @ChainJump 1 - * - 0.5 1 minmax",
   "chain_target_expression": "101 kHitPoints% target> - enttype maintarget> enttype target> eq 99 * 1 + * 1 prevdistance / +",
   "max_targets_expression": "4 Redirects.Shock_Therapy.Shock_Therapy_Static source.ownPowerNum? 3 * +",
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Corruptor_Buff.Shock_Therapy"
 }

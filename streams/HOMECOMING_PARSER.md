@@ -36,6 +36,145 @@ and the Scrapper/Stalker versions say **12**. The parser reads it correctly — 
 as 12 — so the binary genuinely contains 10 on the Sentinel record. Flagged to the dev team;
 data pushed as-is.)*
 
+- [~] **Resolve `Set_Mode` indices → mode stat-multiplier definitions** — RE complete;
+  mode-**name** resolution SHIPPED (HC); the Domination ×2/×1.5 is confirmed engine-side
+  (hardcode stays). Deferred: the attrib-118 mag=1 misdecode fix + Rebirth/Thunderspy tables.
+
+The parser captures `Set_Mode` templates but leaves their magnitude values (mode
+indices, e.g. Domination's 45/46) **opaque** — the "what does mode N actually do"
+mapping is never extracted (see the note at
+[_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py) ~L1254:
+`Set_Mode/Rage/Taunt/Create_Entity` values index into a table we don't resolve).
+
+**Motivating case: Dominator Domination's ×2 mez magnitude / ×1.5 duration.**
+Investigated exhaustively (2026-07-04) and CONFIRMED these multipliers are **not in
+the exported power data**: not in any of the six `domination_*.json` sub-powers (they
+are a `Rage`-meter system + `Set_Mode` + mez/KB protection + endurance/ToHit — no mez
+magnitude/duration buff), not on any of the 118 Dominator control powers (no
+mode-conditional template, no redirect field), and not reachable via the redirects
+category. Positive proof the mechanism *could* be data-driven but isn't: "+mez
+magnitude" IS representable — Power Boost encodes it as a `Strength`-aspect buff on the
+mez attribs (`Held/Stunned/… scale 0.66`) — yet Domination carries no such template.
+So the ×2/×1.5 are applied by the engine's **mode 45/46 handler**, whose multipliers
+live in the mode/attrib-mod definitions the engine keys off `Set_Mode`, outside the
+player-power JSON. Currently hardcoded as documented constants in
+[getDominationInfo()](src/utils/calculations/inherents.ts) (`magnitudeMultiplier: 2.0`,
+`durationMultiplier: 1.5`) with a provenance note; `activeDuration`/`rechargeTime` are
+already data-backed from the inherent metadata.
+
+**Task.** Investigate whether the mode definitions (index → attribute strength/duration
+modifiers) exist as parseable data in the bins (a modes/attribmod table distinct from
+`powers.bin`) and, if so, resolve `Set_Mode` index values into their stat effects so
+the Domination boost (and any other mode-gated mechanic — Bio Armor adaptations,
+Dual-Pistols ammo, Wind Control weather modes) can be derived rather than hardcoded.
+**Genuinely uncertain to pay off** — the multipliers may be hardcoded in the game
+client's C code rather than stored as data, in which case there is nothing to extract.
+Scope this as exploratory RE, not a guaranteed win. Cross-ref: the
+`ModesDisallowed` (3,475 powers) clean-field capture in Next steps is a related but
+distinct mode surface (which powers are *disabled* in a mode, not what a mode *does*).
+
+**RE COMPLETE (2026-07-04) — findings, all oracle-verified.** The investigation
+resolved the mechanism end-to-end. Two questions, two answers:
+
+*(1) Do mode NAME definitions exist as parseable data? **YES.*** The global mode-name
+registry lives in **`attrib_names.bin`** (which the parser currently **does not read at
+all** — `ATTRIB_NAME` is a hardcoded dict). It is the `ppchMode` sub-array of the
+`AttribNames` struct: a table of 16-byte records `{u4 flag=0, u4 type=12, str name,
+str display}` — 213 modes on the current HC bin. A `Set_Mode` template's **`magnitude`
+field *is* the 1-based mode index**: `mode = modeTable[magnitude − 1]`. Confirmed against
+the HC `.powers` oracle, where `kSetMode`'s `Magnitude` field is literally the mode
+token (`Magnitude kRestedAdaptation`, `Magnitude kGranite_Mode`, …). **Broad oracle
+validation: 183 MATCH / 1 MISMATCH** over all HC `Set_Mode` templates with mag≥2 — the
+lone "mismatch" is Shifting_Tides (Seismic Blast) mag186 → `ShiftingTides`, correct in
+the current bin but postdating the 4,943-power oracle snapshot (stale oracle, not a
+mapping error). Sample anchors: Domination mags 45/46 → `Domination` + `Domination_Active`;
+Bio Efficient/Defensive/Offensive → `RestedAdaptation`(153)/`DefensiveAdaptation`(154)/
+`OffensiveAdaptation`(155) — note **there is no `EfficientAdaptation` mode; Efficient sets
+`RestedAdaptation`**, verified in the oracle, not a bug; DP ammo 89–92 →
+`Lethal/Ice/Fire/ToxicAmmo`; Granite → `Granite_Mode`(6) + `Suppress_{Fly,Run,Jump}Toggles`
+(35/36/37). Mode indices are **per-server** (each server's `attrib_names.bin` reorders
+them); HC is Parse7. Rebirth (Parse6) / Thunderspy need their own read — Rebirth's pigg
+was not mounted at investigation time.
+
+*(2) Do mode STAT EFFECTS (the "what does mode N do" multipliers) exist as data? **NO —
+modes are pure flags.*** A mode carries only `name` + `display` — no magnitude/duration
+modifiers. Effects that happen "in a mode" are implemented either as separate
+`requires`-gated AttribMods on other powers (data-driven — Bio/DP/etc.), or by engine
+C-code (hardcoded). **Domination's ×2/×1.5 is the C-code case, now confirmed at the
+oracle level** (stronger than the earlier export-only check): `Dominate` (Mind Control
+Hold) is a flat `kHeld Mag 3.0` PvE / `4.0` PvP with **no** Domination-mode gate and **no**
+magnitude expression, and **zero** of the Dominator control `.powers` reference
+`kDomination`/`Domination_Active`. So resolving the index recovers the *name*
+(`Domination_Active`) but **not** the multiplier — the `getDominationInfo()` hardcode is
+correct and should stay. The task's own caveat ("may be hardcoded in the client's C
+code") is the confirmed outcome for the motivating case.
+
+**BONUS BUG surfaced — attrib-index-118 collision (separate from modes).** ~957 of 2,402
+`Set_Mode` templates carry **mag=1**, and mag=1 → mode #1 = `Peacebringer_Blaster_Mode`,
+which **0** real player powers set (oracle). These are **misdecodes**: attrib index 118 is
+a shared "special" slot (CLAUDE.md's own note on 118: "CoD2 also: Set_Costume,
+Debt_Protection"), so `kXPDebtProtection` / `kSetCostume` decode to `Set_Mode` with a
+placeholder mag=1. Proof: `Empathy/Resurrect` exports `attribs:['Set_Mode'] mag=1` in the
+exact slot the oracle has `kXPDebtProtection` (its `kHeal`/`kEndurance`/`kStealthRadius`
+neighbours decode fine). Net effect: XP-debt-protection is currently invisible/mislabeled
+on ~190 HC player powers, and any consumer treating mag=1 `Set_Mode` as a real mode gets
+a phantom "Bright Nova". Root fix = disambiguate index 118 via the main `attrib_names.bin`
+attrib array (out of scope for mode resolution; the practical mode-feature guard is
+**mag≥2**).
+
+**SHIPPED (2026-07-04) — mode-NAME resolution, HC.** New parser
+[_attrib_names.py](tools/bin-crawler/bin_crawler/parser/_attrib_names.py)
+(`parse_mode_table`) reads the `ppchMode` array (the parser's first-ever read of
+`attrib_names.bin`); the exporter resolves a `Set_Mode` template's `magnitude` to a
+`mode_name` (guard **mag≥2**; the magnitude is a **direct index** — `ServerTrayOverride`
+is index 0, so `Domination`=45, `Domination_Active`=46, `RestedAdaptation`=153).
+Wired into [export_powers.py](tools/bin-crawler/bin_crawler/export_powers.py)
+(`power_to_dict(..., mode_table=…)`). **De-risked per §6:** a with-modes vs no-modes
+re-export from the same bin differed in **exactly** the added `mode_name` keys (0 non-mode
+drift). Focused apply to committed HC data → **394 files, +463 `mode_name` keys, purely
+additive** (each key adds one trailing-comma flip; no content change). Guard:
+[set-mode-resolution.test.ts](src/data/set-mode-resolution.test.ts) (5 cases incl. the
+mag==1-not-resolved regression). `tsc` clean, 751 tests. Downstream consumers ignore the
+new key (converter reads specific fields); wiring the converter to *use* `mode_name` (match
+Bio/DP conditional effects by name; resolve `modes_required`/`modes_disallowed`) is
+follow-on, not part of this slice.
+
+**SHIPPED (2026-07-04) — power-level mode gates, HC** (closes the `ModesDisallowed`
+Next-step). The `.def` **ModesRequired / ModesDisallowed / ModesSuspended** u4-arrays
+(powers.bin fields 76–78, previously read-and-discarded) are now captured on
+`PowerRecord` (both the Parse7/HC and Parse6/Rebirth+Thunderspy paths) and resolved to
+names at export via the **same `mode_table`** the `Set_Mode` magnitudes use — verified the
+index base is identical: **all 79 distinct indices across 26,313 HC powers resolve with 0
+unresolved**, and the reference `domination.json` cross-checks exactly (`Domination`
+inherent → `modes_required: ["Domination"]`, index 45). Unlike Set_Mode magnitudes these
+are dedicated arrays with **no attrib-118 collision, so every index resolves incl. mode 1**
+(no mag≥2 gate). Semantics confirmed: Titan `FastMode`/Momentum, DP `LethalAmmo` swap gate,
+Granite auto-suppress of Stone toggles, Kheldian/Primalist form gates, Domination meter
+plumbing. Emitted **faithfully and sparse** — including the engine's generic system gates
+(`Disable_All` on ~5,300 attacks, `Disable_Epic`/`Incarnate`/`Pool`/`Alpha`, Kheldian
+`*_Mode` disallows); no editorializing prefix-filter (user decision 2026-07-04).
+**De-risked per §6:** a structural HEAD-vs-working deep-diff over all 5,916 changed files
+proved the cumulative diff is **exactly** the added top-level `modes_*` keys (5,837 files)
+plus the prior slice's template `mode_name` keys (463) — **0 other value changes**; the
+unrelated pre-existing `magnitude_expression` drift in a fresh re-export (516 files, snipe
+ToHit / foresight HP scaling — committed data is stale on that field) was **deliberately
+not swept in** (surgical apply kept committed values). Guard:
+[set-mode-resolution.test.ts](src/data/set-mode-resolution.test.ts) +6 cases (11 total);
+`tsc` clean; `audit_stack_alignment` parses all 26,313 powers (byte-identical consumption —
+the change only captures return values of reads already made).
+
+**Deferred follow-ups.** (1) The **attrib-118 mag=1 misdecode** — `kXPDebtProtection` /
+`kSetCostume` decode as `Set_Mode`; the root fix is disambiguating index 118 via the main
+`attrib_names.bin` attrib array (would also recover XP-debt-protection on ~190 HC powers,
+and let mode #1 `Peacebringer_Blaster_Mode` be emitted). (2) **Rebirth (Parse6) /
+Thunderspy** mode tables — the parser now *captures* the mode-gate arrays on those paths,
+but resolution still needs their own `attrib_names.bin` mode table (Rebirth's pigg ships
+one; the Parse7 `parse_mode_table` heuristic may need a Parse6 variant). (3) Converter
+consumption of the new `mode_name` + `modes_*` fields (match Bio/DP conditional effects by
+name; gate powers by caster mode). (4) The **`magnitude_expression` staleness** surfaced by
+this slice's re-export — committed HC data lacks snipe/foresight scaling expressions a fresh
+export now produces; a full re-export is due (separate, user-reviewed change).
+
 - [~] `.powers` extraction-completeness audit
 
 Decision (2026-06-04): stop omitting *mechanically-relevant* data for file size. The
@@ -194,9 +333,11 @@ not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
    Minor leftover: DNA Siphon's mode-gated *heal* bonus (heal-via-damage + mode) doesn't
    reach the Adaptation conditionalEffects — needs the heal/mode-conditional paths joined.
 - [ ] **Other clean power-field captures** (same pattern as the mez fields):
-  `TimeToRoot` (2,340 — animation lock, affects DPS/rotation), `ModesDisallowed`
-  (3,475), `StrengthsDisallowed` (951), `BuyRequires` (631). All genuinely absent,
-  distinct names. Need parser reads + re-export (the toggle_ignore workflow).
+  `TimeToRoot` (2,340 — animation lock, affects DPS/rotation), ~~`ModesDisallowed`
+  (3,475)~~ **DONE 2026-07-04** (+`ModesRequired`/`ModesSuspended`, resolved to names —
+  see the power-level mode-gates SHIPPED note above), `StrengthsDisallowed` (951),
+  `BuyRequires` (631). Remaining are genuinely absent, distinct names. Need parser reads
+  + re-export (the toggle_ignore workflow).
 - [ ] **Add the `.powers`↔export attrib name-map** to `audit.py` → produce a clean
   attrib-gap list → then close the genuinely-dropped exotic attribs.
 - [ ] **Phase 2 — converter completeness**: diff `exported_powers` vs `generated` (the

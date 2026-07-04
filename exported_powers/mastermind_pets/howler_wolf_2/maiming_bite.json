@@ -215,6 +215,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Mastermind_Pets.Howler_Wolf_2"
 }

@@ -252,6 +252,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Blaster_Support.Plant_Manipulation"
 }

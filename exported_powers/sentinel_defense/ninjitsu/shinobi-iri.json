@@ -258,7 +258,8 @@
             "DeepSleep",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 265264
+          "flags_raw": 265264,
+          "mode_name": "Hidden_Attack"
         },
         {
           "attribs": [
@@ -567,6 +568,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 3,
   "powerset": "Sentinel_Defense.Ninjitsu"

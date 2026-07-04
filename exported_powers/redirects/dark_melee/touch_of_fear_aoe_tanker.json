@@ -221,6 +221,9 @@
     }
   ],
   "max_targets_expression": "16 kDisable_GauntletTargetCap Source.Mode? 6 * -",
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Redirects.Dark_Melee"
 }

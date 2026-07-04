@@ -82,7 +82,8 @@
             "IgnoreEfficiency",
             "DeepSleep"
           ],
-          "flags_raw": 3248
+          "flags_raw": 3248,
+          "mode_name": "SiphonMode"
         },
         {
           "attribs": [
@@ -116,6 +117,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 5,
   "powerset": "Mission_Maker_Attacks.Kinetic_Attack"

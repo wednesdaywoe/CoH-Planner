@@ -98,6 +98,11 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Epic",
+    "Disable_Pool"
+  ],
   "available_level": 34,
   "powerset": "Epic.Fire_Mastery_Dominator"
 }

@@ -335,7 +335,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "Wet"
         }
       ],
       "child_effects": [
@@ -438,6 +439,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 0,
   "powerset": "Corruptor_Ranged.Water_Blast"

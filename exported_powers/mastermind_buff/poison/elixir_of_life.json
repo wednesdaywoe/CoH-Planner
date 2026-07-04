@@ -536,6 +536,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Mastermind_Buff.Poison"
 }

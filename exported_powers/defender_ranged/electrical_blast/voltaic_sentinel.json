@@ -108,6 +108,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Defender_Ranged.Electrical_Blast"
 }

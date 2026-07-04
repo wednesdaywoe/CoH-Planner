@@ -529,6 +529,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 21,
   "powerset": "Brute_Melee.Psionic_Melee"
 }

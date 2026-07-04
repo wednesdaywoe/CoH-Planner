@@ -265,6 +265,16 @@
       ]
     }
   ],
+  "modes_required": [
+    "FreeRunningOn"
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 4294967295,
   "powerset": "Pool.Utility_Belt"
 }

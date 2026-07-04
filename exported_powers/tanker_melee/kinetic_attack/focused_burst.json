@@ -460,6 +460,9 @@
   ],
   "chain_eff_expression": "1 0.25 @ChainJump 1 - * - 0.25 1 minmax",
   "max_targets_expression": "10 kDisable_GauntletTargetCap Source.Mode? 5 * -",
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Tanker_Melee.Kinetic_Attack"
 }

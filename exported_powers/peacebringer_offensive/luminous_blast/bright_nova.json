@@ -366,7 +366,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Suppress_PoolToggles"
         },
         {
           "attribs": [
@@ -397,7 +398,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Disable_Walk"
         },
         {
           "attribs": [
@@ -553,6 +555,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 3,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"

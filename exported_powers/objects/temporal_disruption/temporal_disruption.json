@@ -273,7 +273,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Temporal_Disruption"
         }
       ]
     }

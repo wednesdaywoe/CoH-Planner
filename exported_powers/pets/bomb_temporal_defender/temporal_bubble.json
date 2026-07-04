@@ -180,6 +180,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "FastMode"
+  ],
   "available_level": 0,
   "powerset": "Pets.Bomb_Temporal_Defender"
 }

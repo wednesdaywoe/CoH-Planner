@@ -253,6 +253,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 11,
   "powerset": "Arachnos_Soldiers.Arachnos_Soldier"
 }

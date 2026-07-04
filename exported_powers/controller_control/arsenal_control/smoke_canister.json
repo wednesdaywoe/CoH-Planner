@@ -112,6 +112,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 11,
   "powerset": "Controller_Control.Arsenal_Control"
 }

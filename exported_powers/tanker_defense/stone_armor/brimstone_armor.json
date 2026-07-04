@@ -299,6 +299,12 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Granite_Mode"
+  ],
   "available_level": 21,
   "powerset": "Tanker_Defense.Stone_Armor"
 }

@@ -481,7 +481,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "ClearSkies"
         }
       ]
     },
@@ -526,7 +527,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "CloudedSkies"
         }
       ]
     },
@@ -611,6 +613,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 21,
   "powerset": "Controller_Control.Wind_Control"

@@ -529,6 +529,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 17,
   "powerset": "Pets.Water_Blast_Corruptor"
 }

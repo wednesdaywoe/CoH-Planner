@@ -86,6 +86,9 @@
       ]
     }
   ],
+  "modes_suspended": [
+    "Domination_Active"
+  ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

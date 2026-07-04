@@ -161,6 +161,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Epic"
+  ],
   "available_level": 0,
   "powerset": "Pets.DisintegrateSpread"
 }

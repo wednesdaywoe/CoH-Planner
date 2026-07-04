@@ -83,7 +83,8 @@
             "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1072,
+          "mode_name": "BoostPower"
         }
       ]
     },
@@ -202,6 +203,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 23,
   "powerset": "Blaster_Support.Energy_Manipulation"

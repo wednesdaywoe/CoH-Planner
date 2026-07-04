@@ -303,7 +303,8 @@
             "IgnoreResistance",
             "IgnoreCombatMods"
           ],
-          "flags_raw": 112
+          "flags_raw": 112,
+          "mode_name": "FastMode"
         },
         {
           "attribs": [
@@ -343,6 +344,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 17,
   "powerset": "Villain_Pets.Titan_Weapons_Brute"

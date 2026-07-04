@@ -941,7 +941,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Suppress_PoolToggles"
         },
         {
           "attribs": [
@@ -972,7 +973,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Disable_Walk"
         },
         {
           "attribs": [
@@ -1003,7 +1005,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Peacebringer_Tanker_Mode"
         },
         {
           "attribs": [
@@ -1038,6 +1041,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 19,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"

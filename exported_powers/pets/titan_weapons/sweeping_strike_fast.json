@@ -438,6 +438,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 1,
   "powerset": "Pets.Titan_Weapons"
 }

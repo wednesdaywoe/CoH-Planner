@@ -240,6 +240,11 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Epic",
+    "Disable_Pool"
+  ],
   "available_level": 40,
   "powerset": "Epic.Weapon_Mastery_Stalker"
 }

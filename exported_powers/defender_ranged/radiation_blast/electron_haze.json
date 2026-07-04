@@ -307,6 +307,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 9,
   "powerset": "Defender_Ranged.Radiation_Blast"
 }

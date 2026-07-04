@@ -321,6 +321,12 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Epic",
+    "Disable_Pool",
+    "Disable_Toggle"
+  ],
   "available_level": 34,
   "powerset": "Epic.Ice_Mastery_Dominator"
 }

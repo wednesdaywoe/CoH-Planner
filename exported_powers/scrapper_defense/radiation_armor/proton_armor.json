@@ -274,6 +274,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 3,
   "powerset": "Scrapper_Defense.Radiation_Armor"
 }

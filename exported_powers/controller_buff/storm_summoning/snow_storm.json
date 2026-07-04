@@ -197,6 +197,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 3,
   "powerset": "Controller_Buff.Storm_Summoning"
 }

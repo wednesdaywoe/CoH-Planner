@@ -463,10 +463,14 @@
             "DeepSleep",
             "StackByAttribAndKey"
           ],
-          "flags_raw": 265264
+          "flags_raw": 265264,
+          "mode_name": "Hidden_Attack"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 9,
   "powerset": "Corruptor_Buff.Storm_Summoning"

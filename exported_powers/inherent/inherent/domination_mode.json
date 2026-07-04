@@ -81,7 +81,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Domination"
         },
         {
           "attribs": [
@@ -116,6 +117,9 @@
         }
       ]
     }
+  ],
+  "modes_suspended": [
+    "Domination_Active"
   ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"

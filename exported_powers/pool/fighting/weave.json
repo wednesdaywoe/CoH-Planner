@@ -214,6 +214,13 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Pool"
+  ],
+  "modes_suspended": [
+    "Suppress_PoolToggles"
+  ],
   "available_level": 13,
   "powerset": "Pool.Fighting"
 }

@@ -932,6 +932,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Defender_Ranged.Dual_Pistols"
 }

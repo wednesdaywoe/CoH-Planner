@@ -270,6 +270,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Arachnos_Soldiers.Bane_Spider_Soldier"
 }

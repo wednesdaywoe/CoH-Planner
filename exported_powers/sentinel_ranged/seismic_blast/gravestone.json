@@ -517,6 +517,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 17,
   "powerset": "Sentinel_Ranged.Seismic_Blast"
 }

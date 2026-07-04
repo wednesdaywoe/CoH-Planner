@@ -91,6 +91,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Temp"
+  ],
   "available_level": 0,
   "powerset": "Redirects.Shock_Therapy"
 }

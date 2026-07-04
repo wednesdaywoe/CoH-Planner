@@ -81,7 +81,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "EntangledA"
         },
         {
           "attribs": [
@@ -200,7 +201,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "EntangledB"
         },
         {
           "attribs": [

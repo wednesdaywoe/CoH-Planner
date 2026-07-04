@@ -1340,6 +1340,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 25,
   "powerset": "Corruptor_Ranged.Dual_Pistols"
 }

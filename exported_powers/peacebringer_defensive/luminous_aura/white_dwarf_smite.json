@@ -560,6 +560,15 @@
       ]
     }
   ],
+  "modes_required": [
+    "Peacebringer_Tanker_Mode"
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Peacebringer_Blaster_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 19,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

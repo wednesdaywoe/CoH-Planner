@@ -153,6 +153,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 9,
   "powerset": "Controller_Buff.Cold_Domination"
 }

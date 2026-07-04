@@ -222,6 +222,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Mission_Maker_Attacks.Beam_Rifle"
 }

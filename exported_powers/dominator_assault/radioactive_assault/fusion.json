@@ -157,6 +157,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Dominator_Assault.Radioactive_Assault"
 }

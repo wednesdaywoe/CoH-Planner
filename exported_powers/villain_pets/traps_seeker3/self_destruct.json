@@ -114,6 +114,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Villain_Pets.Traps_Seeker3"
 }

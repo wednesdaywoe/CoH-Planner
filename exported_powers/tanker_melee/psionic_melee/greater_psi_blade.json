@@ -529,6 +529,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Tanker_Melee.Psionic_Melee"
 }

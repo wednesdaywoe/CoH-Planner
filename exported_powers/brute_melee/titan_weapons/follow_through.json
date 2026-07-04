@@ -359,6 +359,12 @@
       ]
     }
   ],
+  "modes_required": [
+    "FastMode"
+  ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Brute_Melee.Titan_Weapons"
 }

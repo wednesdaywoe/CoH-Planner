@@ -201,7 +201,8 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "ChainTeleport"
         }
       ],
       "child_effects": [
@@ -391,6 +392,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 0,
   "powerset": "Redirects.Pool_Teleportation"

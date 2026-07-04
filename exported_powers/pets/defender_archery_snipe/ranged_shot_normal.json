@@ -136,6 +136,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Pets.Defender_Archery_Snipe"
 }
