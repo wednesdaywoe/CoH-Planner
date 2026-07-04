@@ -39,5 +39,11 @@ export const BurstofSpeed: Power = {
     "Universal Damage Sets",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Burst_of_Speed"
+    }
+  }
 };

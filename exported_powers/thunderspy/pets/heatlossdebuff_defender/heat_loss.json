@@ -331,10 +331,10 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
@@ -352,7 +352,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_HeatLossBuff_Defender",
+            "priority_list": "PL_StaticObject"
+          }
         }
       ]
     }

@@ -46,6 +46,11 @@ export const PowerSurge: Power = {
     "durations": {
       "recoveryBuff": 90
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Power_Surge",
+      "duration": 90
+    },
     "buffDuration": 90
   }
 };

@@ -96,17 +96,17 @@
       "templates": [
         {
           "attribs": [
-            "Level"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Level",
           "scale": 1.0,
           "duration": "10 seconds",
           "magnitude": 1.0,
-          "delay": 0.5,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -117,7 +117,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Pets_FlameThrower",
+            "priority_list": "PL_StaticObject"
+          }
         }
       ]
     }

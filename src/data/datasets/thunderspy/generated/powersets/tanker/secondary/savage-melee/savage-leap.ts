@@ -39,5 +39,11 @@ export const SavageLeap: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Savage_Melee_Savage_Leap"
+    }
+  }
 };

@@ -39,5 +39,11 @@ export const LightningRod: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Lightning_Rod_Stalker"
+    }
+  }
 };

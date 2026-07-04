@@ -41,5 +41,12 @@ export const WaterGolem: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Water_Control_Water_Golem",
+      "duration": 99999
+    }
+  }
 };

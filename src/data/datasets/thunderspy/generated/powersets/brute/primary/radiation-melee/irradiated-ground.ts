@@ -39,5 +39,11 @@ export const IrradiatedGround: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet"
+    }
+  }
 };

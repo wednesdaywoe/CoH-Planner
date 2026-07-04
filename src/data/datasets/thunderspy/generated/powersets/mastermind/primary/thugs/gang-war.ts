@@ -37,5 +37,12 @@ export const GangWar: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Thug_Pose_01",
+      "entityCount": 13
+    }
+  }
 };

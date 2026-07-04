@@ -37,5 +37,28 @@ export const Decoy: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Decoy",
+      "duration": 60,
+      "entityCount": 3
+    }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_Decoy",
+          "duration": 60
+        }
+      }
+    }
+  ]
 };

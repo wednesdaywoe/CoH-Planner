@@ -42,5 +42,12 @@ export const ChilloftheNight: Power = {
     "Immobilize",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_DarkServant",
+      "duration": 99999
+    }
+  }
 };

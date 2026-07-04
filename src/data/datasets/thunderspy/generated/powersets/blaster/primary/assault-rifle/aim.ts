@@ -38,5 +38,12 @@ export const Aim: Power = {
     "To Hit Buff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_FlameThrower",
+      "duration": 10
+    }
+  }
 };

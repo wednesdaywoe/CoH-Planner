@@ -42,5 +42,12 @@ export const MoteOfLight: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_HolyLightMote",
+      "duration": 60
+    }
+  }
 };

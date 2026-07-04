@@ -1297,6 +1297,103 @@ _TSPY_MEZ_INDEX = frozenset(
 # through the converter's KB path, so only the `Ones`-front offensive ones need it.
 _TSPY_KB_OFFENSIVE = frozenset({"Knockback", "Knockup"})
 
+# Create_Entity (pet/pseudo-pet summon) marker in Thunderspy's effect elements.
+# Unlike HC/Rebirth — which carry Create_Entity as the template's *front* attrib
+# (enum 469 / 116) and one AttribMod per pet — Thunderspy packs the summon list
+# into a NESTED struct-array inside a single effect element. Each nested EntCreate
+# sub-entry LEADS with the byte-granular raw value 465 ( = index 116 << 2 | 1:
+# Rebirth's -1 Create_Entity index shift PLUS HC's byte-granular +1 special-region
+# sub-index) and carries its own `Ranged_Ones`/`Ranged_Level` table + the EntityDef
+# / PriorityList / redirect string offsets. The element's *front* attrib is a bare
+# `Ones`/`Level` summon shell. Verified against the binary: the count of 465 markers
+# equals the pet count exactly (Summon_Wolves 3, Rally_The_Militia 6, Hell_on_Earth
+# 10, Haunt 2 shades), and 1863 elements across 1512 player-relevant powers carry
+# it. The affected-attrib index array (`_idx_attribs`) never names Create_Entity for
+# these — the marker lives in the nested params block, not the index array — which is
+# why the recharge/mez index-array recovery above leaves summons untouched.
+_TSPY_CREATE_ENTITY_MARKER = 465
+
+# The `Ones`/`Level`(minus) front attribs on a summon element are pure summon
+# SHELLS (the level-setting placeholder), carrying no player-facing effect of their
+# own — HC emits only the Create_Entity template(s), no shell. So for these fronts we
+# REPLACE the shell with the extracted Create_Entity templates. A summon element with
+# any OTHER front (a real Damage/Knockback/… effect that also summons — e.g. an attack
+# with an incidental pet) keeps its header template AND gains the Create_Entity ones.
+_TSPY_SUMMON_SHELL_FRONTS = frozenset(
+    {"Ones", "Level", "Levelminus", "Levelminus2"}
+)
+
+# Front-attrib / table / control tokens that resolve as entity-def-shaped strings
+# (leading uppercase, underscores, no dots) but are NOT summoned EntityDefs. The
+# table prefixes are filtered separately via `_TSPY_TABLE_PREFIXES`.
+_TSPY_NON_ENTITYDEF = frozenset(
+    {"Ones", "Damage", "Level", "Levelminus", "Levelminus2", "Heal", "Endurance",
+     "PFX", "Combat", "Pet"}
+)
+
+
+def _extract_thunderspy_summons(strtab_data, start: int, end: int,
+                                strtab_base: int, front: str, table: str) -> list[dict]:
+    """Extract EntCreate params from a Thunderspy summon element.
+
+    Splits the element `[start, end)` into one region per `465` Create_Entity
+    marker and pulls each nested sub-entry's EntityDef (+ PriorityList + redirect
+    power names) — mirroring HC's `_extract_params` string-scan, but scoped per
+    region so a multi-pet summon yields one `{type:'EntCreate', entity_def, ...}`
+    per pet (matching HC's one-template-per-pet convention that the converter
+    counts). Returns [] when the element carries no marker.
+
+    The EntityDef is the region's first entity-def-shaped string that isn't the
+    front attrib, the modifier table, a `PL_` priority list, a `P<digits>` combat-
+    text message key, or a known non-entity token; PriorityList is the first `PL_`
+    / `Pet` identifier after it; redirects are 3-part dotted power names that
+    aren't FX asset paths (`…FX` / `…Fail_Safe` / `PFX`). Verified clean over all
+    809 player-category summon sub-entries (0 missing EntityDef); the residual
+    mismatches are NPC/critter powers dropped by the export's PLAYER_CATEGORIES.
+    """
+    markers = [off for off in range(start, end - 3, 4)
+               if struct.unpack_from('<I', strtab_data, off)[0] == _TSPY_CREATE_ENTITY_MARKER]
+    if not markers:
+        return []
+    bounds = markers + [end]
+    out: list[dict] = []
+    for i, mpos in enumerate(markers):
+        r_start, r_end = mpos, bounds[i + 1]
+        entity_def = None
+        priority_list = None
+        redirects: list[str] = []
+        for off in range(r_start, r_end - 3, 4):
+            u = struct.unpack_from('<I', strtab_data, off)[0]
+            s = _resolve_offset(strtab_data, strtab_base, u)
+            if not s:
+                continue
+            if '.' in s:
+                # power-name redirect (3-part dotted) vs FX asset path — skip FX
+                if (s.count('.') == 2 and not s.endswith(('FX', 'Fail_Safe'))
+                        and 'PFX' not in s and s not in redirects):
+                    redirects.append(s)
+                continue
+            if s.startswith('PL_') or s == 'Pet':
+                if priority_list is None and entity_def is not None:
+                    priority_list = s
+                continue
+            if _is_message_key(s):
+                continue
+            if (entity_def is None and _looks_like_entity_def(s)
+                    and s not in _TSPY_NON_ENTITYDEF
+                    and not s.startswith(_TSPY_TABLE_PREFIXES)
+                    and s != front and s != table):
+                entity_def = s
+        if not entity_def:
+            continue  # NPC edge cases (digit-leading / classref) — dropped downstream
+        params: dict = {'type': 'EntCreate', 'entity_def': entity_def}
+        if priority_list:
+            params['priority_list'] = priority_list
+        if redirects:
+            params['redirects'] = redirects
+        out.append(params)
+    return out
+
 
 def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) -> EffectTemplate:
     """Parse a Thunderspy AttribMod template.
@@ -1717,6 +1814,7 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False) -> tuple[li
         elem_len = r.read_u4()
         if elem_len > r.remaining():
             raise ValueError(f"Parse6 effect elem_len {elem_len} > remaining")
+        elem_start = r._pos  # sub_reader is a view; r._pos stays at the element start
         elem_reader = r.sub_reader(elem_len)
         try:
             if thunderspy:
@@ -1770,6 +1868,42 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False) -> tuple[li
                 is_pvp=is_pvp,
                 templates=[tmpl],
             ))
+            # Thunderspy summon (Create_Entity) expansion. Thunderspy packs the
+            # EntCreate list into a nested struct-array the single-template
+            # parser above doesn't surface, so summon powers carry only a bare
+            # `Ones`/`Level` shell and lose their pet linkage. Emit one
+            # Create_Entity template (with `params` EntCreate) per nested pet —
+            # matching HC's shape so the existing converter/display path
+            # (`params.entity_def` → PET_ENTITIES) works unchanged. See
+            # `_extract_thunderspy_summons` + THUNDERSPY_PARSER.md.
+            if thunderspy:
+                summons = _extract_thunderspy_summons(
+                    r._data, elem_start, elem_start + elem_len,
+                    r._strtab_base, tmpl.attribs[0] if tmpl.attribs else '',
+                    tmpl.table,
+                )
+                if summons:
+                    front = tmpl.attribs[0] if tmpl.attribs else ''
+                    if front in _TSPY_SUMMON_SHELL_FRONTS:
+                        effects.pop()  # drop the summon shell (HC emits no shell)
+                    for params in summons:
+                        ce = EffectTemplate(
+                            attribs=['Create_Entity'],
+                            type='Magnitude',
+                            application_type='Immediate',
+                            table=tmpl.table,
+                            scale=tmpl.scale,
+                            duration=tmpl.duration,
+                            magnitude=tmpl.magnitude or 1.0,
+                            jit_requires=tmpl.jit_requires,
+                            params=params,
+                        )
+                        effects.append(EffectGroup(
+                            chance=tmpl.tick_chance if tmpl.tick_chance > 0 else 1.0,
+                            requires_expression=req,
+                            is_pvp=is_pvp,
+                            templates=[ce],
+                        ))
         except Exception:
             pass  # Skip unparseable templates
         r.skip(elem_len)

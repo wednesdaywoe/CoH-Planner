@@ -54,10 +54,10 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus2"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus2",
@@ -75,7 +75,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_01",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -93,17 +98,369 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus2"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_02",
+            "priority_list": "PL_FightPreferMelee"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_03",
+            "priority_list": "PL_FightPreferMelee"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_04",
+            "priority_list": "PL_FightPreferMelee"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_05",
+            "priority_list": "PL_FightPreferMelee"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_06",
+            "priority_list": "PL_FightPreferMelee"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_07",
+            "priority_list": "PL_FightPreferMelee"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_08",
+            "priority_list": "PL_FightPreferMelee"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_09",
+            "priority_list": "PL_FightPreferMelee"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 0.5,
-          "delay": 1.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -114,7 +471,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_02",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -132,17 +494,17 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus2"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 0.25,
-          "delay": 2.5,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -153,7 +515,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_04",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -171,17 +538,17 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus2"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 0.10000000149011612,
-          "delay": 4.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -192,7 +559,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_06",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -210,17 +582,17 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus2"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus2",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 0.10000000149011612,
-          "delay": 6.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -231,7 +603,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Thug_Pose_09",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     }

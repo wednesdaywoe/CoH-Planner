@@ -51,6 +51,11 @@ export const JoltingChain: Power = {
       "scale": 0.66,
       "table": "Ranged_Ones"
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Chain_Jolt_Dominator_Jump1",
+      "entityCount": 2
+    },
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Ranged_Ones"

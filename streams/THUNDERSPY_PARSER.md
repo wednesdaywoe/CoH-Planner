@@ -31,10 +31,64 @@ fixed, move it to the top of the RESOLVED section with the fix details.
 
 ## Active
 
-_No open Thunderspy parser issues. The two former NEW-ISSUES entries below are both
-resolved (the `Ones`-attrib recovery and the `export_entities` record-boundary crash)._
+_No open Thunderspy parser issues in the powers pipeline._ Pet **ability** extraction
+(TSPY9) is now resolved (the `convert-pet-entities` generic-`Damage` fix — see the
+resolved entry below; coverage 35%→55%). One **entity-detail follow-up** remains,
+`TSPY10` in [THUNDERSPY_SUPPORT_PROGRESS.md](THUNDERSPY_SUPPORT_PROGRESS.md):
+**pseudo-pet redirect** resolution isn't wired for tspy shells (Caltrops / Burn /
+Disintegrate-spread carry their damage in `Redirects.*`, not an entity record), so those
+summon links show no damage. It doesn't block the summon→entity link.
 
 ## Resolved
+
+- [x] Thunderspy summon powers surfaced NO pet — `Create_Entity` / `EntCreate` params never extracted — 2026-07-04   verify: file:src/data/thunderspy-pet-summon.test.ts, fn:_extract_thunderspy_summons
+
+**Symptom (user-reported).** Pet powers and pet-redirect powers showed nothing in the
+info panel — **Umbra Beast** (a summon), **Shadow Field** (a location pseudo-pet), every
+Mastermind henchman, every rain / chain-jump / teleport-strike pseudo-pet. The whole
+converter→display summon path is gated on a template with `attribs:['Create_Entity']` +
+`params:{type:'EntCreate', entity_def}` (→ `PET_ENTITIES[entity_def]`); Thunderspy's
+export carried **zero** of these, so `effects.summon` was never built and the panel was
+blank. This is the §1 layer-1 gap (data never extracted), not a converter bug — **no
+converter/display change was needed.**
+
+**Root cause (verified byte-level, not assumed).** HC/Rebirth carry Create_Entity as a
+template *front* attrib (enum 469 / 116) with one AttribMod per pet. Thunderspy's
+Parse6-derived schema instead packs the EntCreate list into a **nested struct-array**
+inside a single effect element: each pet sub-entry LEADS with the byte-granular raw
+marker **465** ( = index 116 << 2 | 1 — Rebirth's −1 Create_Entity index shift PLUS HC's
+byte-granular +1 special-region sub-index) and carries its own `Ranged_Ones`/`Ranged_Level`
+table + the EntityDef / PriorityList / redirect string offsets. The element's *front*
+attrib is a bare `Ones`/`Level` summon shell. `_parse_effect_template_thunderspy` only
+surfaced that shell — the nested list (and every entity_def) was dropped. The
+affected-attrib INDEX array (`_idx_attribs`) never names Create_Entity for these — the
+marker lives in the params block, not the index array — which is why the earlier
+recharge/mez index-array recovery left summons untouched.
+
+**Fix (`_powers.py`).** New `_extract_thunderspy_summons` splits the element at each 465
+marker (one region per pet) and pulls each region's EntityDef (+ PriorityList + redirect
+power-names, filtering FX asset paths), mirroring HC's `_extract_params` string-scan but
+scoped per region. `_parse_effects_parse6` emits one `Create_Entity` template per pet
+(params `{type:'EntCreate', entity_def, priority_list?, redirects?}`) — the exact HC
+shape the converter counts (one template per pet → `entityCount`). The `Ones`/`Level`
+summon shell is dropped for those fronts (HC emits no shell); a summon element with a
+real-effect front (an attack that also summons — Beam's Disintegrate spread) keeps its
+header AND gains the Create_Entity templates.
+
+**Verification.** The **465-marker count == the pet count** exactly (Haunt 2 shades,
+Summon Wolves 3, Rally the Militia 6, Hell on Earth 10); **809 player summon sub-entries,
+0 missing EntityDef** (the only markerless edge cases are 2 NPC 5thColumn transforms with
+a digit-leading entity_def, dropped by PLAYER_CATEGORIES). Re-export → the diff is
+**purely additive**: +1474 `Create_Entity` templates, −1070 `Ones`/`Level`/`Levelminus*`
+shells, **nothing else changed** (isolated from a pre-existing 4831-file `modes_required`
+drift — the committed export predates `be736f4` — by diffing a fresh baseline, then
+overlaying only the 880 summon files with the modes drift stripped). Regen → 299 generated
+files, **every one a summon addition** (0 converter drift), deterministic. Marquee links
+confirmed end-to-end: Umbra Beast → `Pets_Umbra_Beast`, Shadow Field → `Pets_Shadow_Field_Controller`
+(auto-pulse Hold rides the entity), Haunt → `Pets_Shade` ×2. **241/687 distinct summon
+entity_defs resolve to full ability data (35%); the rest surface the pet NAME** (vs nothing
+before) pending the two entity-detail follow-ups above. `tsc` clean; full suite **767 pass**
+(+5). Guard: [thunderspy-pet-summon.test.ts](../src/data/thunderspy-pet-summon.test.ts).
 
 - [x] Thunderspy `Ones`-attrib buffs lose their modified attribute — ALL RESOLVED (recharge/recovery, mez, KB — see below) — 2026-07-01
 

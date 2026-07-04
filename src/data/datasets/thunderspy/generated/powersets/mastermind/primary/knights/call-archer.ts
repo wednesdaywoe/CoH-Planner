@@ -39,5 +39,12 @@ export const CallArcher: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MastermindPets_Knight_Minion",
+      "duration": 99999
+    }
+  }
 };

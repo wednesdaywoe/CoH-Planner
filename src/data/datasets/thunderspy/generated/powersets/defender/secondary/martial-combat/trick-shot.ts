@@ -42,5 +42,12 @@ export const TrickShot: Power = {
     "type": "Special",
     "scale": 1.64,
     "table": "Ranged_Damage"
+  },
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Trick_Shot_Jump1",
+      "duration": 2
+    }
   }
 };

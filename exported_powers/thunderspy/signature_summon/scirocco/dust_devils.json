@@ -54,10 +54,10 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Ones",
@@ -75,7 +75,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Arachnos_Dust_Devil1",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
+          }
         }
       ]
     },
@@ -93,16 +98,16 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "20 seconds",
-          "magnitude": 0.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
@@ -114,7 +119,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Arachnos_Dust_Devil2",
+            "priority_list": "PL_Untargetable_FightPreferRanged"
+          }
         }
       ]
     }

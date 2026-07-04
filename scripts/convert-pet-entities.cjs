@@ -54,6 +54,32 @@ const DAMAGE_ATTRIBS = new Set([
   'energy_dmg', 'negative_energy_dmg', 'toxic_dmg', 'psionic_dmg',
 ]);
 
+// Thunderspy stores pet damage with a single generic `Damage` attrib on a
+// `*_Damage` table (the element lives only in the shortHelp `DMG(...)`), and its
+// AttribMod schema DROPS the aspect — so neither the specific-`*_Dmg`-attrib gate
+// nor the `aspect === 'Absolute'` gate below can fire. Without a tspy branch every
+// melee/attack pet extracted ZERO damage, so ~287 of 619 pets (the pure-attack ones
+// like Howler Wolf, Demonlings, Knight Minion) were dropped as "no combat abilities"
+// and their summoning power surfaced only the pet NAME. This mirrors the player-power
+// `applyThunderspyDamageType` handling in convert-powerset.cjs.
+const _TSPY = datasetId === 'thunderspy';
+const _DMG_TYPE_MAP = {
+  smash: 'Smashing', smashing: 'Smashing', lethal: 'Lethal', fire: 'Fire',
+  cold: 'Cold', energy: 'Energy', negative: 'Negative', 'negative energy': 'Negative',
+  psionic: 'Psionic', toxic: 'Toxic', special: 'Special',
+};
+// Primary damage element from a shortHelp `DMG(...)` clause (e.g.
+// "Melee, Light DMG(Lethal)" → "Lethal"); null when absent. Multi-type collapses
+// to the primary element, matching the player-power path (element label only —
+// the scale/table drive the actual damage math).
+function _tspyDamageType(shortHelp) {
+  if (!shortHelp) return null;
+  const m = shortHelp.match(/DMG\(([^)]+)\)/i);
+  if (!m) return null;
+  const first = m[1].split(/[/,]/)[0].trim().toLowerCase();
+  return _DMG_TYPE_MAP[first] || null;
+}
+
 // Mez/control attributes
 const MEZ_ATTRIBS = {
   'sleep': 'Sleep',
@@ -145,8 +171,19 @@ function isUtilityPower(powerData) {
  * Check if an effect template is PvE-relevant damage
  */
 function isPvEDamageTemplate(template, effectGroup) {
-  // Must be a damage attribute
   const attribs = (template.attribs || []).map(a => a.toLowerCase());
+
+  // Thunderspy: generic `Damage` attrib with the aspect dropped. Accept a
+  // positive-scale `Damage` on a `*_Damage` table — this excludes the negative
+  // `*_Ones` summon-shell / -res templates, the scale-0 strength meta-templates,
+  // and the `CritActive` crit rider (not a `damage` attrib). Element is resolved
+  // from the shortHelp at extract time.
+  if (_TSPY && attribs.includes('damage')) {
+    if (effectGroup.is_pvp === 'PVP_ONLY') return false;
+    return /_damage$/i.test(template.table || '') && template.scale > 0;
+  }
+
+  // Must be a damage attribute
   if (!attribs.some(a => DAMAGE_ATTRIBS.has(a))) return false;
 
   // Must be absolute aspect (actual damage, not resistance/strength)
@@ -167,6 +204,8 @@ function isPvEDamageTemplate(template, effectGroup) {
  */
 function extractDamage(powerData) {
   const damageEntries = [];
+  // Thunderspy: element for the generic `Damage` attrib lives in the shortHelp.
+  const tspyType = _TSPY ? (_tspyDamageType(powerData.display_short_help) || 'Special') : null;
 
   for (const effectGroup of (powerData.effects || [])) {
     // Skip PvP-only effect groups
@@ -181,6 +220,14 @@ function extractDamage(powerData) {
             const damageType = attrib.replace(/_Dmg$/i, '').replace(/_/g, ' ');
             damageEntries.push({
               damageType,
+              scale: template.scale,
+              table: template.table || 'Melee_Damage',
+            });
+          } else if (_TSPY && attribLower === 'damage') {
+            // Generic tspy Damage — element from the shortHelp (falls back to
+            // Special when the tooltip has no DMG(...) clause).
+            damageEntries.push({
+              damageType: tspyType,
               scale: template.scale,
               table: template.table || 'Melee_Damage',
             });

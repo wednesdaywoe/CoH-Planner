@@ -37,5 +37,12 @@ export const RainofFire: Power = {
     "Ranged AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Corruptor_RainofFire",
+      "duration": 15
+    }
+  }
 };

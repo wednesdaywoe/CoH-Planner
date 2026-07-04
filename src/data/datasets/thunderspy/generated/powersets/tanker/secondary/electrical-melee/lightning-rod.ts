@@ -41,5 +41,20 @@ export const LightningRod: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entities": [
+        {
+          "entity": "Pets_Lightning_Rod_Tanker",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Embraced_Lightning_Rod_Tanker",
+          "count": 1
+        }
+      ]
+    }
+  }
 };

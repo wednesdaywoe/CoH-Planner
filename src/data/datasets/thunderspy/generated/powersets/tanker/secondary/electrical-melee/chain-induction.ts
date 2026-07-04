@@ -49,6 +49,11 @@ export const ChainInduction: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Chain_Induction_Jump1_Scrapper",
+      "duration": 2
+    },
     "enduranceDrain": {
       "scale": 0.15,
       "table": "Melee_Ones"

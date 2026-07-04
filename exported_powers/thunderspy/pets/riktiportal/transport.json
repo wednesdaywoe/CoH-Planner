@@ -54,17 +54,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 3.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -75,7 +75,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Monkey",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -93,17 +98,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
-          "magnitude": 0.5,
-          "delay": 5.0,
+          "magnitude": 1.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -114,7 +119,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Rikti_Drone",
+            "priority_list": "PL_FightPreferRanged"
+          }
         }
       ]
     },
@@ -132,17 +142,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
-          "magnitude": 0.5,
-          "delay": 5.0,
+          "magnitude": 1.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -153,7 +163,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Unarmored_Rikti_Infantry",
+            "priority_list": "PL_FightPreferRanged"
+          }
         }
       ]
     },
@@ -171,17 +186,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
-          "magnitude": 0.5,
-          "delay": 5.0,
+          "magnitude": 1.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -192,7 +207,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Unarmored_Rikti_Conscript",
+            "priority_list": "PL_FightPreferRanged"
+          }
         }
       ]
     },
@@ -210,17 +230,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
-          "magnitude": 0.5,
-          "delay": 5.0,
+          "magnitude": 1.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -231,7 +251,188 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Unarmored_Rikti_Defender",
+            "priority_list": "PL_FightPreferRanged"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.5,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Armoured_Rikti_Gunman",
+            "priority_list": "PL_FightPreferRanged"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.5,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Armoured_Rikti_Boss_Soldier",
+            "priority_list": "PL_FightPreferRanged"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.5,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Armoured_Rikti_Mentalist_Lt",
+            "priority_list": "PL_FightPreferRanged"
+          }
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "",
+          "target": "",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 0.5,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "",
+          "stack": "",
+          "stack_limit": 0,
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Armoured_Rikti_Mesmerist",
+            "priority_list": "PL_FightPreferRanged"
+          }
         }
       ]
     },
@@ -249,17 +450,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
           "magnitude": 0.10000000149011612,
-          "delay": 5.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -270,7 +471,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Unarmored_Rikti_Defender",
+            "priority_list": "PL_FightPreferRanged"
+          }
         }
       ]
     },
@@ -288,17 +494,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
           "scale": -1.0,
           "duration": "0 seconds",
           "magnitude": 0.10000000149011612,
-          "delay": 5.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -309,7 +515,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "Rikti_Portal_Armoured_Rikti_Gunman",
+            "priority_list": "PL_FightPreferRanged"
+          }
         }
       ]
     }

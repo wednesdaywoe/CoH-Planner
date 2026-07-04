@@ -49,5 +49,12 @@ export const SummonDireWolf: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MastermindPets_Dire_Wolf",
+      "duration": 99999
+    }
+  }
 };

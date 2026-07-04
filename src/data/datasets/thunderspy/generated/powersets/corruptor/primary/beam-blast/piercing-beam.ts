@@ -45,5 +45,20 @@ export const PiercingBeam: Power = {
     "type": "Energy",
     "scale": 1.84,
     "table": "Ranged_Damage"
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_DisintegrateSpread",
+          "duration": 6
+        }
+      }
+    }
+  ]
 };

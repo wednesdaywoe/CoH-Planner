@@ -36,5 +36,12 @@ export const DistortionField: Power = {
     "Holds",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_DistortionField_Mastermind",
+      "duration": 45
+    }
+  }
 };

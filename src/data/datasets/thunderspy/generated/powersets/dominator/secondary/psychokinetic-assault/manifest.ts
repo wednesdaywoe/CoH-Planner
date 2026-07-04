@@ -32,5 +32,15 @@ export const Manifest: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "effectDuration": 10,
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Telekinetic_Sword",
+      "duration": 10,
+      "entityCount": 3
+    },
+    "buffDuration": 10
+  }
 };

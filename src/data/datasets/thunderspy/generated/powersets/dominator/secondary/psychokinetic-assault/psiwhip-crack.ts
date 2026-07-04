@@ -48,6 +48,11 @@ export const PsiWhipCrack: Power = {
     "knockback": {
       "scale": 0.3,
       "table": "Ranged_Knockback"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Telekinetic_Sword",
+      "duration": 15
     }
   }
 };

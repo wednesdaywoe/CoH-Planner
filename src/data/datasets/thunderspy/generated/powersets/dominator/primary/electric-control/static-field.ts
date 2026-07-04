@@ -39,5 +39,12 @@ export const StaticField: Power = {
     "Sleep",
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Static_Field_Dominator",
+      "duration": 25
+    }
+  }
 };

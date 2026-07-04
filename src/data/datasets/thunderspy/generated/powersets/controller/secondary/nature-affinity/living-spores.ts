@@ -42,5 +42,12 @@ export const LivingSpores: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Lifegiving_Spores_Defender",
+      "duration": 5
+    }
+  },
   "requires": "Controller_Buff.Nature_Affinity.Lifegiving_Spores !"
 };

@@ -34,5 +34,12 @@ export const DisruptionArrow: Power = {
   "allowedSetCategories": [
     "Defense Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_SonicDebuffArrow",
+      "duration": 30
+    }
+  }
 };

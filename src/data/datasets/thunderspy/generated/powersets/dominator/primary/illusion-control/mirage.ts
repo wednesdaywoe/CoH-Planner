@@ -36,5 +36,21 @@ export const Mirage: Power = {
     "Confuse",
     "Dominator Archetype Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "MirageAttackerHit",
+          "duration": 10,
+          "entityCount": 2
+        }
+      }
+    }
+  ]
 };

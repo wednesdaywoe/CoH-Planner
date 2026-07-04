@@ -37,5 +37,12 @@ export const TripMine: Power = {
     "Melee AoE Damage",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Mine",
+      "duration": 260
+    }
+  }
 };

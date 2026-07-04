@@ -36,5 +36,12 @@ export const PoisonGasArrow: Power = {
     "Controller Archetype Sets",
     "Sleep"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_PoisonGasArrow",
+      "duration": 20
+    }
+  }
 };

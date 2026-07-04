@@ -44,5 +44,12 @@ export const Tornado: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Tornado",
+      "duration": 30
+    }
+  }
 };

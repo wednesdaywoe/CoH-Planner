@@ -47,5 +47,12 @@ export const CallJounin: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MastermindPets_Jonin",
+      "duration": 99999
+    }
+  }
 };

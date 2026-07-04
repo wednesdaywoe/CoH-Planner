@@ -43,5 +43,12 @@ export const CarrionCreepers: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Creeper_Patch",
+      "duration": 120
+    }
+  }
 };

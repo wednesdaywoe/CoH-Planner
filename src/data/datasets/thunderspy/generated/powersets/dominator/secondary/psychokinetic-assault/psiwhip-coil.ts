@@ -52,6 +52,12 @@ export const PsiWhipCoil: Power = {
       "mag": 3,
       "scale": 6,
       "table": "Ranged_Immobilize"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Telekinetic_Sword",
+      "duration": 6,
+      "entityCount": 3
     }
   },
   "conditionalEffects": [

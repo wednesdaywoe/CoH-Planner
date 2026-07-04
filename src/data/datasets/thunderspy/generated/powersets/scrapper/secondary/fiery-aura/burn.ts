@@ -42,5 +42,12 @@ export const Burn: Power = {
     "type": "Special",
     "scale": 1.44,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Burn",
+      "duration": 10
+    }
   }
 };

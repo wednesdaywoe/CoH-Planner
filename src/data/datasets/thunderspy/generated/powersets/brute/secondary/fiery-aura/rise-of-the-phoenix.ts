@@ -38,5 +38,12 @@ export const RiseofthePhoenix: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Phoenix",
+      "duration": 5
+    }
+  }
 };

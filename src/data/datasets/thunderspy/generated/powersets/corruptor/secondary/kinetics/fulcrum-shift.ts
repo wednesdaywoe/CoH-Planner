@@ -31,5 +31,12 @@ export const FulcrumShift: Power = {
     "Recharge",
     "Accuracy"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_KineticTransferDebuff_Controller",
+      "duration": 1
+    }
+  }
 };

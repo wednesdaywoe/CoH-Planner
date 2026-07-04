@@ -30,5 +30,12 @@ export const IceSlick: Power = {
     "Range",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_IceSlick",
+      "duration": 30
+    }
+  }
 };

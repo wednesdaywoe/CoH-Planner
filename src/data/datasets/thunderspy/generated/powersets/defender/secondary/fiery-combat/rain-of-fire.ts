@@ -38,5 +38,12 @@ export const RainofFire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Defender_RainofFire",
+      "duration": 15
+    }
+  },
   "requires": "Defender_Ranged.Fire_Blast.Fire_Sword_Circle !"
 };

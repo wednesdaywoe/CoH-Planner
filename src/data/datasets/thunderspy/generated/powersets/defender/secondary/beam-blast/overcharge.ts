@@ -78,6 +78,11 @@ export const Overcharge: Power = {
           "mag": 3,
           "scale": 8,
           "table": "Ranged_Stun"
+        },
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_DisintegrateSpread",
+          "duration": 6
         }
       }
     }

@@ -39,5 +39,29 @@ export const ShadowField: Power = {
     "Holds",
     "To Hit Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "summon": {
+          "isPseudoPet": false,
+          "duration": 45,
+          "entities": [
+            {
+              "entity": "Pets_Shadow_Field_Dominator",
+              "count": 1
+            },
+            {
+              "entity": "Pets_Shadow_Field_Dominator_Domination",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  ]
 };

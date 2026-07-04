@@ -51,5 +51,12 @@ export const VoltaicSentinel: Power = {
     "Recharge Intensive Pets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_VoltaicSentinel",
+      "duration": 60
+    }
+  }
 };

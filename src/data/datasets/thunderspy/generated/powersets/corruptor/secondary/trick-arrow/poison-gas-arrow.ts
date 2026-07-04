@@ -35,5 +35,12 @@ export const PoisonGasArrow: Power = {
   "allowedSetCategories": [
     "Sleep"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_PoisonGasArrow",
+      "duration": 20
+    }
+  }
 };

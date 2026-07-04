@@ -48,5 +48,12 @@ export const PsiBladeSlash: Power = {
       "table": "Melee_Damage",
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Telekinetic_Sword",
+      "duration": 15
+    }
+  }
 };

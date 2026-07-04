@@ -40,5 +40,21 @@ export const Caltrops: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "duration": 45,
+      "entities": [
+        {
+          "entity": "Pets_Caltrops",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Traps_Mine",
+          "count": 1
+        }
+      ]
+    }
+  }
 };

@@ -50,5 +50,20 @@ export const ChargedShot: Power = {
       "scale": 0.67,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_DisintegrateSpread",
+          "duration": 6
+        }
+      }
+    }
+  ]
 };

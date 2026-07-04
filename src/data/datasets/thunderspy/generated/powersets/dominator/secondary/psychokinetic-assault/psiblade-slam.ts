@@ -49,6 +49,11 @@ export const PsiBladeSlam: Power = {
     "knockback": {
       "scale": 0.3,
       "table": "Ranged_Ones"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Telekinetic_Sword",
+      "duration": 15
     }
   }
 };

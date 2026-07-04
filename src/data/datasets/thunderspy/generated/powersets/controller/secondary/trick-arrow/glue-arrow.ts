@@ -34,5 +34,12 @@ export const GlueArrow: Power = {
   "allowedSetCategories": [
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_StickyArrow",
+      "duration": 30
+    }
+  }
 };

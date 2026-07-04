@@ -53,5 +53,20 @@ export const PenetratingRay: Power = {
       "scale": 0.7,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "beam_rifle_debuff",
+      "label": "Disintegrating",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "summon": {
+          "isPseudoPet": false,
+          "entity": "Pets_DisintegrateSpread",
+          "duration": 6
+        }
+      }
+    }
+  ]
 };

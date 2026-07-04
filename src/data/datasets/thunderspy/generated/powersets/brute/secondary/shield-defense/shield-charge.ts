@@ -41,5 +41,11 @@ export const ShieldCharge: Power = {
     "Threat Duration",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Shield_Charge_Brute"
+    }
+  }
 };

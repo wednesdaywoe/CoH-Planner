@@ -38,5 +38,12 @@ export const SummonDemonlings: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MastermindPets_Fiery_Demonling",
+      "duration": 99999
+    }
+  }
 };

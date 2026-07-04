@@ -54,17 +54,17 @@
       "templates": [
         {
           "attribs": [
-            "Level"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Level",
           "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
-          "delay": 19.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -75,7 +75,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarth_Cytoplasm",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },

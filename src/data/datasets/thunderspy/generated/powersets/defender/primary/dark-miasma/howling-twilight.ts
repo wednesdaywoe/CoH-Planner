@@ -58,6 +58,10 @@ export const HowlingTwilight: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Ones"
+    },
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Howling"
     }
   }
 };

@@ -38,5 +38,12 @@ export const SpectralTerror: Power = {
     "Fear",
     "Immobilize"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Terror",
+      "duration": 45
+    }
+  }
 };

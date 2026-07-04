@@ -34,5 +34,12 @@ export const SpiritTree: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Spirit_Tree",
+      "duration": 90
+    }
+  }
 };

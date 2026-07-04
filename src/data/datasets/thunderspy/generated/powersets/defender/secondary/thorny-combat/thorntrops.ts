@@ -38,5 +38,12 @@ export const Thorntrops: Power = {
     "Slow Movement",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Thorntrops",
+      "duration": 45
+    }
+  }
 };

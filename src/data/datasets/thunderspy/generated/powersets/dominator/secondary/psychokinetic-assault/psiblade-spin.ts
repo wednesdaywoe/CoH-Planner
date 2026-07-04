@@ -41,5 +41,12 @@ export const PsiBladeSpin: Power = {
     "type": "Psionic",
     "scale": 0.5,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Telekinetic_Sword",
+      "duration": 15
+    }
   }
 };

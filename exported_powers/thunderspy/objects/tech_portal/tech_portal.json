@@ -54,10 +54,10 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Ones",
@@ -75,7 +75,11 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "FreedomCorps_Rifle_high_noexp"
+          }
         }
       ]
     },
@@ -93,17 +97,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "99999 seconds",
           "magnitude": 0.4000000059604645,
-          "delay": 15.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -114,7 +118,11 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "FreedomCorps_Minigun_high_noexp"
+          }
         }
       ]
     },
@@ -132,17 +140,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "99999 seconds",
           "magnitude": 0.800000011920929,
-          "delay": 5.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -153,7 +161,11 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "FreedomCorps_Flamethrower_high_noexp"
+          }
         }
       ]
     },
@@ -171,17 +183,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "99999 seconds",
           "magnitude": 0.20000000298023224,
-          "delay": 20.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -192,7 +204,11 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "FreedomCorps_Eagle_high_noexp"
+          }
         }
       ]
     },
@@ -210,17 +226,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "99999 seconds",
           "magnitude": 0.6000000238418579,
-          "delay": 10.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -231,7 +247,11 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "FreedomCorps_SpecOps_high_noexp"
+          }
         }
       ]
     },
@@ -249,17 +269,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "99999 seconds",
           "magnitude": 0.10000000149011612,
-          "delay": 25.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -270,7 +290,11 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "FreedomCorps_Nullifier_high_noexp"
+          }
         }
       ]
     },
@@ -288,17 +312,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Ones",
           "scale": -1.0,
           "duration": "99999 seconds",
           "magnitude": 0.05000000074505806,
-          "delay": 30.0,
+          "delay": 0.0,
           "duration_expression": "",
           "magnitude_expression": "",
           "application_period": 0.0,
@@ -309,7 +333,11 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "FreedomCorps_Officer_high_noexp"
+          }
         }
       ]
     }

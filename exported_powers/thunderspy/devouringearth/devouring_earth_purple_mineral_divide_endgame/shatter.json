@@ -54,10 +54,10 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus",
@@ -75,7 +75,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarth_Endgame_Purple_Crystal_Beast_Shard",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -93,10 +98,10 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus",
@@ -114,7 +119,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarth_Endgame_Purple_Crystal_Beast_Shard",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -132,10 +142,10 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus",
@@ -153,7 +163,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarth_Endgame_Purple_Crystal_Beast_Shard",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -171,10 +186,10 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus",
@@ -192,7 +207,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarthInfestedLow_Purple_Crystal_Beast_Shard",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -210,10 +230,10 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus",
@@ -231,7 +251,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarthInfestedLow_Purple_Crystal_Beast_Shard",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -249,10 +274,10 @@
       "templates": [
         {
           "attribs": [
-            "Levelminus"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Ranged_Levelminus",
@@ -270,7 +295,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarthInfestedLow_Purple_Crystal_Beast_Shard",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     }

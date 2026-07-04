@@ -59,6 +59,27 @@ export const RallyTheMilitia: Power = {
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
+    "summon": {
+      "isPseudoPet": false,
+      "entities": [
+        {
+          "entity": "Pets_Militia_01",
+          "count": 2
+        },
+        {
+          "entity": "Pets_Militia_02",
+          "count": 2
+        },
+        {
+          "entity": "Pets_Militia_03",
+          "count": 1
+        },
+        {
+          "entity": "Pets_Militia_04",
+          "count": 1
+        }
+      ]
+    },
     "buffDuration": 90
   }
 };

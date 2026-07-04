@@ -43,5 +43,11 @@ export const TimeLord: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "effects": {}
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Time",
+      "duration": 120
+    }
+  }
 };

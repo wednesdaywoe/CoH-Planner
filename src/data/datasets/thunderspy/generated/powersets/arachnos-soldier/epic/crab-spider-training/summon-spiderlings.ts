@@ -39,5 +39,13 @@ export const SummonSpiderlings: Power = {
     "Soldiers of Arachnos Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+      "duration": 240,
+      "entityCount": 3
+    }
+  }
 };

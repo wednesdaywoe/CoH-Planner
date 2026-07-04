@@ -54,10 +54,10 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
@@ -75,7 +75,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarth_Mushroom_Beast_Summon",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -93,10 +98,10 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
@@ -114,7 +119,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarth_Rock_Beast_Summon",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -132,10 +142,10 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
@@ -153,7 +163,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarth_Plant_Beast_Summon",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -171,10 +186,10 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
@@ -192,7 +207,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarth_Mushroom_Beast_Lieutenant_Summon",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     },
@@ -210,10 +230,10 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Create_Entity"
           ],
-          "type": "",
-          "application_type": "",
+          "type": "Magnitude",
+          "application_type": "Immediate",
           "aspect": "",
           "target": "",
           "table": "Melee_Ones",
@@ -231,7 +251,12 @@
           "caster_stack": "",
           "stack": "",
           "stack_limit": 0,
-          "stack_key": null
+          "stack_key": null,
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "DevouringEarth_Rock_Beast_Lieutenant_Summon",
+            "priority_list": "PL_FightPreferMelee"
+          }
         }
       ]
     }

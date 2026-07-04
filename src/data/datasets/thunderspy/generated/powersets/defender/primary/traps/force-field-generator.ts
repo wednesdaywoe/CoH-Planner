@@ -32,5 +32,12 @@ export const ForceFieldGenerator: Power = {
   "allowedSetCategories": [
     "Defense Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Traps_FF_Generator_Defender",
+      "duration": 99999
+    }
+  }
 };
