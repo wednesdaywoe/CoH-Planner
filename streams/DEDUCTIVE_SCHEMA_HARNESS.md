@@ -219,7 +219,7 @@ validates the whole differential approach before any converter rewrite.
   (94 files / 801 tests), tsc clean. **This unblocks DSH6** (its `needs` DSH4+DSH5 are met).
   verify: file:tools/mids-oracle/diff_harness.py, file:tools/mids-oracle/emit_canonical.ts
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH1, DEDUCTIVE_SCHEMA_HARNESS#DSH4
-- [ ] **DSH6** — Converter repair: rework `extractEffects()` to build the DSH4
+- [~] **DSH6** — Converter repair: rework `extractEffects()` to build the DSH4
   internal effect list first (one record per template × attrib × pvMode ×
   resistibility, sign preserved), then project to `PowerEffects` at the end. The
   merge rules operate on matching identity keys only, dissolving collapse sites
@@ -228,6 +228,53 @@ validates the whole differential approach before any converter rewrite.
   diffs must go to zero before the next. Fold DSH2 table validation into the
   converter so it fails loudly at emit time.
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH4, DEDUCTIVE_SCHEMA_HARNESS#DSH5
+  - [x] **DSH6a** — General per-slot collapse detector (the one DSH3 deferred here
+    for want of the DSH4 attrib→slot map). **Shipped 2026-07-05** as
+    [`scripts/dsh6-collapse-detector.cjs`](scripts/dsh6-collapse-detector.cjs) +
+    committable worklist `scripts/dsh6-collapse-worklist.json`. Single-source: the
+    input side reuses the DSH4 bridge (`ingestExportPower`) via `tsx/cjs` (never
+    re-ported); the output side deep-walks the whole generated Power object
+    (effects + damage + specialEffects + conditionalEffects), and it can run in CI
+    (all inputs committed — unlike DSH5's gitignored `.mhd`). **FP-hardened** the
+    hard way (2,017 raw flags → **33**, via 5 fixes each traced to a concrete power,
+    verify-don't-assume): mez/movement sub-type normalization (`Run`↔`runSpeed`,
+    `Confused`↔`confuse`), exclude `aspect=Str` (Power-Boost→specialBuff) and
+    `aspect=Res` movement (→`debuffResistance`), and — the load-bearing insight —
+    **sign follows the converter's rule** (`scale<0` OR table matches `/debuff/`),
+    because a foe −Def/−Res debuff is stored as POSITIVE scale on a `*_Debuff_*`
+    table (Low Kick's `Base_Defense +1` on `Melee_Debuff_Def`). **Finding that
+    reshapes DSH6:** clean by-type sibling collapse (the most-cited "site B")
+    **essentially does not occur in HC** — the by-type maps already prevent it.
+    The 33 residual + 69 class-absent are all **target-directed** (ally/foe buffs
+    the caster-centric converter drops — Speed Boost / Inertial Reduction +run/fly,
+    `convert-powerset.cjs:3930`) or **conditional-pipeline / dual-representation**
+    (Enforced Morale's `kMeter`/`isPVPMap`-gated mez-resist, kept only for `sleep`
+    while all 6 mez show as applied-mez protection). NONE is a last-write-wins
+    clobber. The historical collapse family (PvP-clobber, resistible-twin,
+    duration) lives on the scalar/pvMode/resistible axes this v1 folds OUT — those
+    are already covered by DSH5 (bridge↔Mids) + DSH3 (twin gate); a converter-output
+    scalar-identity gate is DSH6b.
+    verify: file:scripts/dsh6-collapse-detector.cjs, file:scripts/dsh6-collapse-worklist.json
+  - [~] **DSH6b** — Scalar-identity gate + converter fixes. **Ally/foe-targeted buff
+    *display* is IN SCOPE** (decision 2026-07-05, user-chosen) — so the 69 class-absent
+    + target-directed by-type flags (Speed Boost / Inertial Reduction +movement,
+    Enforced Morale ally mez-resist) are real gaps to fix, not by-design drops.
+    - [x] **Scalar-identity gate** — the site-A *table*-variant collapse the by-type
+      gate folds out, added to the same detector: two same-`(effectType,sign)` SCALAR
+      templates on DIFFERENT tables where last-write-wins keeps one. resistible folded
+      out (buffs have no twin; DSH3 gates debuff twins) — that fix alone cut it
+      815→86. **Finds real collapses:** Lightning Field/Tesla Cage/Power Drain/Benumb
+      drop the main `*_EndDrain` drain and keep a tiny `*_Ones` value (38 of 86); the
+      rest are `res_boolean`/`ones` pairs the bin resolves real-vs-helper (DSH7). A
+      TRIAGE REPORT, not yet a CI-hard gate.
+      verify: file:scripts/dsh6-collapse-detector.cjs
+    - [ ] Fix the EndDrain table-variant collapse in `addOrAccumulate` (same-key,
+      different-table currently overwrites → keeps the wrong one), harness-gated.
+    - [ ] Emit ally/foe-targeted buffs for Info-panel display (the in-scope decision)
+      — Speed Boost movement, Enforced Morale conditional mez-resist.
+    - [ ] Rework extractEffects→project for the conditional/dual-representation gaps;
+      retire the `unresistable`/`durationVariants`/`domination`/`selfPenalty` bolt-ons.
+    needs: DEDUCTIVE_SCHEMA_HARNESS#DSH6
 - [ ] **DSH7** — Numeric resolution + full sweep + CI: resolve oracle numbers by
   joining each effect's `scale × modifierTable` against committed `AttribMod.json`
   at a pinned level/AT (enables value-level diffing as an advisory tier); run the
