@@ -166,16 +166,29 @@ validates the whole differential approach before any converter rewrite.
 
 ## Backlog
 
-- [ ] **DSH4** — Closed effect schema: encode the Mids atomic model as a
-  converter-internal effect record + TS type. Add the fields Sidekick lacks today:
-  `pvMode` (Any|PvE|PvP), first-class `resistible`, per-type `damageType`/`mezType`
-  (one record per type), `effectType`, `attribType`, `aspect`, `toWho`
-  (replaces ad-hoc `selfPenalty`), validated `modifierTable`, `stacking`+`stackCap`,
-  `effectId`, `buffable`/`ignoreED`/`ignoreScaling`, `specialCase`+`conditionals`;
-  keep sign on `scale` internally (stop `Math.abs` at ingest). Define the canonical
-  identity key `(effectType, damageType|mezType, pvMode, resistible, toWho,
-  attribType, aspect, modifierTable, round(scale,4))` — shared by the harness and
-  the collapse detector.
+- [x] **DSH4** — Closed effect schema. **Shipped 2026-07-05** as
+  [`src/data/core/atomic-effect.ts`](src/data/core/atomic-effect.ts) + guard
+  [`atomic-effect.test.ts`](src/data/atomic-effect.test.ts) (rides `npm test` → CI).
+  Defines the `AtomicEffect` record (one atom = one attrib × damage/mez subType ×
+  pvMode × resistibility) with the fields Sidekick's bag-of-slots lacked — `pvMode`,
+  first-class `resistible`, per-type `subType`, `effectType`, `attribType`, `aspect`,
+  `toWho` (retires `selfPenalty`), `modifierTable`, `stacking`+`stackCap`,
+  `specialCase`+`requiresExpression` (retires the `domination` bolt-on), enh flags —
+  and keeps SIGNED `scale` (stops the converter's `Math.abs` at ingest). Two keys:
+  full `identityKey` (incl. `round(scale,4)` — for dedup/collapse) and reduced
+  `structuralKey` `(effectType, subType, pvMode, resistible, modifierTable)` (for the
+  DSH5 oracle diff, scale-agnostic). Includes the **attrib→(effectType,subType)
+  bridge** (the [[DSH1]] blocker) grounded in the committed HC export's 95-attrib
+  vocabulary + a reference `ingestExportPower`. **Verified against the Mids oracle**
+  (`tools/mids-oracle/crosscheck_bridge.ts`): the cross-check found + fixed real
+  mis-maps — `aspect=Str` is a *buff* discriminator (`_Dmg`+Str ⇒ DamageBuff not
+  Damage; mez+Str ⇒ Enhancement; mez+Res ⇒ MezResist), lifting agreement to 88.5% and
+  mapped-coverage to 98.8% of 67,409 HC atomic records. **Known residual (documented,
+  not a defect):** the `aspect=Str` scalar/movement Enhancement-vs-keep-type split is
+  a Mids-internal table-context call not cleanly derivable from (attrib,aspect,table)
+  — deferred to DSH6 rather than over-fit. This unblocks DSH5 (both its `needs` are
+  now met).
+  verify: file:src/data/core/atomic-effect.ts, file:src/data/atomic-effect.test.ts
 - [ ] **DSH5** — Oracle-backed differential harness `tools/mids-oracle/diff_harness.py`:
   key powers by `full_name`, effects by the DSH4 identity key; check the structural
   invariants (set/count equality, multi-damage-type completeness, PvE/PvP twin
