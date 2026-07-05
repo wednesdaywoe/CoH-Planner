@@ -80,8 +80,21 @@ const RELEVANT_TABLES = [
   'ranged_debuff_tohit',
   'melee_debuff_def',
   'melee_debuff_tohit',
-  // Damage-strength debuff (no melee_debuff_dmg exists in the binary)
+  // Damage-strength debuff. NB spelling asymmetry in the binary: the ranged
+  // table is `Ranged_Debuff_Dmg` (`_Dmg`) while the melee table is
+  // `Melee_Debuff_Dam` (`_Dam`). The old "no melee_debuff_dmg exists" note was
+  // literally true but misleading — the melee table exists under the `_Dam`
+  // spelling and was simply never extracted, so melee -Damage debuffs (Kinetic
+  // Melee, Chilling Embrace, Parasitic Aura) fell back to the generic half-rate.
+  // Powers reference both as `..._Dam`; getTableValue's `_dam`→`_dmg` alias
+  // covers ranged, while melee now resolves its `_Dam` table directly.
   'ranged_debuff_dmg',
+  'melee_debuff_dam',
+
+  // Endurance-drain magnitude tables. Both exist in the binary; omitting them
+  // made every table-referenced -Endurance value fall back to the generic rate.
+  'ranged_enddrain',
+  'melee_enddrain',
 
   // Buff tables
   'ranged_buff_def',

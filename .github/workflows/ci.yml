@@ -42,6 +42,14 @@ jobs:
       - name: Audit IO-set categories (all datasets)
         run: npm run audit:set-categories
 
+      # DSH3 (SC-2) collapse gate: fails if a resistible/unresistable debuff twin
+      # in the parser export lost its `unresistable` companion in generated output
+      # — the exact 2026-07-05 effect-collapse class, kept from silently
+      # regressing. (DSH2 / SC-1, the AT-table referential-integrity guard, rides
+      # the `npm test` step above as src/data/converter-table-integrity.test.ts.)
+      - name: Validate converter output (collapse gate, all datasets)
+        run: npm run validate:converter
+
   # ── FUTURE: regen-and-diff guard ─────────────────────────────────────────────
   # Now that exported_powers/ (the converter input) is committed, CI can run the
   # convert-*.cjs pipeline and assert src/data/datasets/*/generated/ is byte-

@@ -107,17 +107,37 @@ validates the whole differential approach before any converter rewrite.
   desync risk; (2) on `main`, ~50 known-answer powers (Trick Arrow, Arachnos
   epics, Build Up) show 0 structural diff vs oracle; (3) checked out at a pre-fix
   commit, the harness **reproduces** the exact collapse those commits fixed.
-- [ ] **DSH2** — SC-1 self-check: `scripts/validate-converter-output.cjs` asserts
-  every emitted `effect.table` resolves to a real AT table (after the same
-  normalization cascade [`getTableValue`](src/data/datasets/homecoming/at-tables.ts)
-  ~L8890 uses). A miss is a **hard fail** — no silent fall-through to
-  `TABLE_BASE_VALUES['default']` (0.10) or `scale×1.0`. Converts every future
-  `_dam`/`_dmg`-class typo from a believable wrong number into a CI break. No Mids
-  dependency.
-- [ ] **DSH3** — SC-2 self-check (collapse detector): in the same validator, count
-  per power the distinct-identity input templates vs output slots; if N siblings
-  collapse to <N at any A–J site, emit `COLLAPSE {power, attrib, lost_keys}` and
-  fail. General detector for the entire family. No Mids dependency.
+- [x] **DSH2** — SC-1 AT-table referential integrity. **Shipped 2026-07-05** as a
+  vitest guard [`converter-table-integrity.test.ts`](src/data/converter-table-integrity.test.ts)
+  (decision: a `.test.ts`, not the planned `.cjs` — it imports the REAL
+  `getTableValue`/`getTableBaseValue`/`EFFECT_REGISTRY`, so zero cascade drift, and
+  rides `npm test` → already gated by `ci.yml`). Registry-driven and **slot-aware**:
+  validates a table only on slots the app resolves as `scale × table` (buff/debuff-%
+  + by-type protection), skipping magnitude/damage slots whose table is vestigial
+  (repel `Ones`, taunt, Kheldian InherentDamage) — FP-free. **Found + fixed a real
+  bug on first run:** [`extract-at-tables.cjs`](scripts/extract-at-tables.cjs)'s
+  fixed allowlist (45 of 110 binary tables) omitted real tables — `Melee_Debuff_Dam`
+  (the melee twin of the ranged `_dam` bug; a binary spelling asymmetry melee-`_Dam`
+  vs ranged-`_Dmg`, hidden behind a misleading "no melee_debuff_dmg exists" comment)
+  and `Melee_EndDrain`/`Ranged_EndDrain`. Fixed at root (added them, re-extracted —
+  purely additive; corrected the comment). The hand-maintained allowlist is itself
+  an inductive-schema smell → backlog.
+  verify: file:src/data/converter-table-integrity.test.ts
+- [x] **DSH3** — SC-2 collapse detector. **Shipped 2026-07-05** as
+  [`validate-converter-output.cjs`](scripts/validate-converter-output.cjs) (npm
+  `validate:converter`, wired into `ci.yml`, all 3 datasets). Two tiers. **GATE** =
+  resistible/unresistable-twin regression: mirrors the converter's own twin
+  detection ([convert-powerset.cjs](scripts/convert-powerset.cjs) L3403-3452) on the
+  input — if a debuff twin exists, output MUST carry `unresistable`, else fail.
+  Green on an 8-power cohort = the exact Trick Arrow Flash/Poison-Gas-Arrow powers
+  the 2026-07-05 fix touched (real teeth). Made FP-free by archetype-disambiguated
+  matching + excluding pseudo-pets/pools (killed a Dimension_Shift name-collision
+  false positive). **REPORT** = collapse-risk groups (~4,800 HC powers) for triage,
+  non-failing. **Discovery:** a *fully-general* per-slot detector is blocked on the
+  DSH4 attrib→slot routing map — output has already discarded the attrib identity,
+  so input siblings can't be re-aligned to output slots black-box. The general
+  detector therefore folds into **DSH6** (which already `needs` DSH4).
+  verify: file:scripts/validate-converter-output.cjs, fn:hasResistibleTwin
 - [ ] SC-3 — every emitted damage/debuff effect carries an explicit `resistible`
   disposition (absence of `IgnoreResistance` ⇒ resistible); none silently agnostic.
 - [ ] SC-4 — every kept PvE effect has its PvP sibling accounted for
@@ -162,6 +182,14 @@ validates the whole differential approach before any converter rewrite.
   case, every legitimate divergence → typed rule; wire DSH2/DSH3 + the harness into
   CI so the next collapse or table-name regression breaks the build.
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH5
+- [ ] Replace the AT-table extractor's hand-maintained 45-name allowlist
+  ([`extract-at-tables.cjs`](scripts/extract-at-tables.cjs)) with a principled
+  filter (extract every player-referenced table, or all 110 binary tables with a
+  documented skip-list). The allowlist is the **same inductive-schema anti-pattern**
+  as the converter's bag-of-slots — it silently omits real tables until a power
+  references one on a fatal slot. DSH2 found `Melee_Debuff_Dam` + `*_EndDrain` this
+  way; there are ~62 more unextracted tables that only escape notice because no
+  fatal-slot power references them yet.
 
 ## Deferred
 
