@@ -61,8 +61,7 @@ Mostly exotic attribs like `Toxic_Elusivity`, `Revoke_Power`, `InterruptTime`. T
 **Map remaining `type`/`application_type`/`target` enum values (82.9% match)**
 ~17% of templates have values beyond the common 0-1 range — unusual effect types (Expression-based, AoE targets, pet targets). Medium priority; some edge cases in damage/heal calculations could be affected.
 
-**Parse template tail fields (cancel_events, suppress_events, flags, fx)**
-`suppress_events` controls things like Hide's AoE defense suppression. `flags` contains `IgnoreStrength`, `CombatModMagnitude`, etc. The planner's conversion script currently gets this from CoD2. **Only becomes important when we fully replace the CoD2 dependency.**
+**Parse template tail fields** — **largely DONE (2026-07-05).** The parser now captures the tail natively in `EffectTemplate` (`tools/bin-crawler/bin_crawler/parser/_dataclasses.py`): `cancel_events`, `suppress_events`, `required_events`, and `flags` (with `flags_raw`/`flags2_raw` — `IgnoreResistance` 0x420, `IgnoreStrength` 0x430, and `CopyBoosts`/`PseudoPet` in the second word). The converter honors `IgnoreStrength`/`IgnoreResistance` from this native parse, **no longer from CoD2.** Remaining: only `fx` (cosmetic visual effects, irrelevant to the planner) is genuinely unparsed, and the converter does not yet *fold in* `suppress_events` (Hide's AoE-defense suppression) — a converter-side task tracked in [HOMECOMING_PARSER.md](streams/HOMECOMING_PARSER.md).
 
 **Enum naming alignment**
 Cosmetic — "Caster" vs "Self", "Character" vs "SingleTarget". No functional impact.
