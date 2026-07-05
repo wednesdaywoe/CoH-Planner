@@ -7,6 +7,9 @@ import { Haunt } from './datasets/thunderspy/generated/powersets/controller/prim
 import { SingleShot } from './datasets/thunderspy/generated/powersets/blaster/primary/beam-blast/single-shot';
 // Negative case: a plain single-target Hold must NOT gain a phantom summon.
 import { DarkGrasp } from './datasets/thunderspy/generated/powersets/controller/primary/darkness-control/dark-grasp';
+// Dominator Shadow Field: its base/Domination summon variants are the complementary
+// `kStealth <= / > 0.5` branches — the base (Domination-off) must live at effects.summon.
+import { ShadowField as DominatorShadowField } from './datasets/thunderspy/generated/powersets/dominator/primary/darkness-control/shadow-field';
 // TSPY10 pseudo-pet debuff powers (player power → summon.entity → PET_ENTITIES).
 import { Sleet } from './datasets/thunderspy/generated/powersets/defender/primary/cold-domination/sleet';
 import { TarPatch } from './datasets/thunderspy/generated/powersets/defender/primary/dark-miasma/tar-patch';
@@ -175,5 +178,24 @@ describe('Thunderspy pseudo-pet debuff recovery (TSPY10)', () => {
     // Debuff: the -ToHit (the TSPY10 addition) rides a real Debuff_ToHit table.
     expect(synth!.tohitDebuff).toBeDefined();
     expect((synth!.tohitDebuff as { table: string }).table).toMatch(/debuff_tohit/i);
+  });
+
+  // The DOMINATOR Shadow Field splits its summon into two complementary
+  // `kStealth source> 0.5` branches — `<=` (Domination OFF = base/default) and
+  // `>` (Domination ON = the `_Domination` variant). `_isConditionalGate` used to
+  // treat the `<=` branch as conditional too, so the BASE summon was swallowed
+  // into the "Domination Active" conditional and the power rendered nothing by
+  // default. The base must sit at effects.summon; the boosted variant stays a
+  // conditional. Without the base at effects.summon, neither the pet block nor the
+  // hoisted control/debuff show unless Domination is toggled on.
+  it('Dominator Shadow Field surfaces its BASE summon by default (Domination off)', () => {
+    // Base summon shown by default → the pet block + hoist fire with Domination off.
+    expect(DominatorShadowField.effects?.summon?.entity).toBe('Pets_Shadow_Field_Dominator');
+    const synth = synthesizePseudoPetEffects(DominatorShadowField.effects?.summon);
+    expect(synth?.hold).toBeDefined();
+    expect(synth?.tohitDebuff).toBeDefined();
+    // The Domination-boosted variant is preserved as a conditional, not lost.
+    const dom = DominatorShadowField.conditionalEffects?.find(c => c.id === 'domination');
+    expect(dom?.effects?.summon?.entity).toBe('Pets_Shadow_Field_Dominator_Domination');
   });
 });

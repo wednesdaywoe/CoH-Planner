@@ -2464,6 +2464,18 @@ function _isConditionalGate(req) {
   // when target is NOT drowning is the default; the larger -14% applies as
   // a bonus when target IS drowning).
   if (stripped.endsWith('!')) return false;
+  // A Domination-meter (kStealth) test AT/BELOW its activation threshold —
+  // `kStealth source> N <=` — is the INACTIVE / default state: the base case,
+  // exactly like the RPN `!` negation above. Its positively-gated sibling
+  // (`kStealth source> N >`, Domination active) stays the conditional. Without
+  // this, a Dominator power whose base (Domination-off) and Domination-boosted
+  // variants are the complementary `<=` / `>` branches of one summon — Shadow
+  // Field, Mirage — has its BASE summon swallowed into the "Domination Active"
+  // conditional, so with Domination off (the default) the power renders no
+  // pet block and no hoisted control/debuff at all. The `$` anchor keeps this
+  // conservative: only a bare threshold test folds to base; a `<=` chained with
+  // a further positive gate stays conditional.
+  if (/kstealth\s+source(?:\.owner)?>\s+[\d.]+\s+<=$/i.test(stripped)) return false;
   return true;
 }
 

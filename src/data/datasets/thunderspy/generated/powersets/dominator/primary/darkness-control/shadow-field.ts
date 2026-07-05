@@ -40,6 +40,13 @@ export const ShadowField: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "Pets_Shadow_Field_Dominator",
+      "duration": 45
+    }
+  },
   "conditionalEffects": [
     {
       "id": "domination",
@@ -49,17 +56,8 @@ export const ShadowField: Power = {
       "effects": {
         "summon": {
           "isPseudoPet": false,
-          "duration": 45,
-          "entities": [
-            {
-              "entity": "Pets_Shadow_Field_Dominator",
-              "count": 1
-            },
-            {
-              "entity": "Pets_Shadow_Field_Dominator_Domination",
-              "count": 1
-            }
-          ]
+          "entity": "Pets_Shadow_Field_Dominator_Domination",
+          "duration": 45
         }
       }
     }

@@ -37,6 +37,13 @@ export const Mirage: Power = {
     "Dominator Archetype Sets"
   ],
   "maxSlots": 6,
+  "effects": {
+    "summon": {
+      "isPseudoPet": false,
+      "entity": "MirageAttackerHit",
+      "duration": 10
+    }
+  },
   "conditionalEffects": [
     {
       "id": "domination",
@@ -47,8 +54,7 @@ export const Mirage: Power = {
         "summon": {
           "isPseudoPet": false,
           "entity": "MirageAttackerHit",
-          "duration": 10,
-          "entityCount": 2
+          "duration": 10
         }
       }
     }
