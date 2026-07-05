@@ -107,6 +107,47 @@ const DEBUFF_ATTRIBS = {
   'rechargetime': 'Slow',
 };
 
+// Thunderspy pet debuff vocabulary. Its Parse6-derived schema names the APPLIED
+// attrib directly (Slow, Debuff_Def, DeBuff_ToHit, Res_DMG, …) — NOT the HC
+// position/resource attribs DEBUFF_ATTRIBS keys on — AND drops the per-template
+// target. So the HC map never fires and every location/patch pseudo-pet
+// (Freezing Rain, Sleet, Tar Patch, Caltrops, Ice Slick, Fallout, …) surfaced
+// only its damage, dropping the -res / -def / -speed that IS the point of the
+// power (the player power carries just Create_Entity; all the debuffs live on
+// the summoned pet). Mez already works — tspy's Held/Stunned/Confused/… lower-
+// case-match MEZ_ATTRIBS — so this covers only the debuffs. Mirrors the generic-
+// `Damage` handling (extractDamage) and the player-power tspy path in
+// convert-powerset.cjs (target-drop + sign-trap guards).
+//
+// Two families, discriminated the way the shipped player path does it (tspy
+// drops the aspect, so name + table + sign are the only signals — GAME-DATA §3):
+//  • Name-encoded foe debuffs — the attrib name itself carries the debuff, so
+//    it is always foe-facing; surfaced at |scale| regardless of stored sign
+//    (Caltrops stores Slow +0.8 but SpeedRunning -1.0 — both foe slows). Slow /
+//    Speed* route to the app's single movement `Slow` (-Speed) bucket, matching
+//    how convert-powerset.cjs classifies a mod on a `*_Slow` table.
+//  • Sign-discriminated resource attribs — Res_DMG is +N for a pet SELF-buff
+//    (survivability, e.g. blaster_time Res_DMG +2.0) and -N for a foe debuff
+//    (Freezing Rain Res_DMG -1.0). Positive = self-buff → dropped (matches HC
+//    dropping pet ResistAll self-buffs); negative = the foe debuff we surface.
+//    These are further gated to a REAL magnitude table: Thunderspy also carries
+//    Recovery / Endurance as bare MARKERS on a `*_Ones` placeholder table (the
+//    actual -End rides the separate `EndDrain` attrib on a real `*_EndDrain`
+//    table) whose scale is not a computable percentage — surfacing those printed
+//    a meaningless ~100% (and mislabeled +Recovery ally-buffs like Adrenalin
+//    Boost / Guardianship as "-Recovery"). The `*_Ones` guard drops the markers
+//    while keeping the real-table debuffs (Res_DMG→ResistanceDebuff,
+//    EndDrain→EndDrain). -Regeneration is intentionally absent: the pet panel has
+//    no RegenDebuff display, so there's nothing to show.
+const _TSPY_DEBUFF_NAMED = {
+  'slow': 'Slow', 'speedrunning': 'Slow', 'speedflying': 'Slow', 'speedjumping': 'Slow',
+  'debuff_def': 'DefenseDebuff', 'debuff_tohit': 'ToHitDebuff', 'debuff_dam': 'DamageDebuff',
+};
+const _TSPY_DEBUFF_SIGNED = {
+  'res_dmg': 'ResistanceDebuff', 'recovery': 'RecoveryDebuff',
+  'endurance': 'EndDrain', 'enddrain': 'EndDrain',
+};
+
 // Attrib cache values that indicate non-attack utility powers
 const UTILITY_ATTRIBS = new Set([
   'fly', 'untouchable', 'translucency', 'stealth',
@@ -291,6 +332,49 @@ function extractEffects(powerData) {
               effect.table = template.table;
             }
             effects.push(effect);
+          }
+
+          // Check debuff effects. Thunderspy uses its own attrib vocabulary and
+          // drops the target, so it takes a dedicated classification (name-encoded
+          // debuffs at |scale|; resource debuffs only when negative — see the
+          // _TSPY_DEBUFF_* maps) INSTEAD of the HC DEBUFF_ATTRIBS block, so a pet
+          // self-buff (Res_DMG +N) can't leak in as a foe -Resistance.
+          if (_TSPY) {
+            let debuffType = _TSPY_DEBUFF_NAMED[attribLower];
+            if (!debuffType) {
+              const signed = _TSPY_DEBUFF_SIGNED[attribLower];
+              // Resource attrib: only the draining/foe direction (negative scale)
+              // is a debuff; the positive direction is a pet self-buff (dropped).
+              // AND only when it rides a real magnitude table — a `*_Ones`
+              // placeholder is a marker, not a computable percent (see the map).
+              if (signed && template.scale < 0
+                  && !/_ones$/i.test(template.table || '')) debuffType = signed;
+            }
+            if (debuffType && !seenTypes.has(debuffType)) {
+              // Skip a scale-0 slow tag row (a marker, not a real slow).
+              if (!(debuffType === 'Slow' && Math.abs(template.scale || 0) < 0.001)) {
+                seenTypes.add(debuffType);
+                const effect = { type: debuffType };
+                if (chance < 1.0) effect.chance = chance;
+                if (template.scale && template.table) {
+                  effect.scale = Math.abs(template.scale);
+                  effect.table = template.table;
+                }
+                effects.push(effect);
+              }
+            }
+            // tspy ally heal (support pseudo-pets) — positive-scale `Heal` attrib.
+            if (attribLower === 'heal' && template.scale > 0 && !seenTypes.has('Heal')) {
+              seenTypes.add('Heal');
+              const effect = { type: 'Heal' };
+              if (chance < 1.0) effect.chance = chance;
+              if (template.scale && template.table) {
+                effect.scale = Math.abs(template.scale);
+                effect.table = template.table;
+              }
+              effects.push(effect);
+            }
+            continue; // tspy handled; skip the HC debuff/heal blocks below
           }
 
           // Check debuff effects

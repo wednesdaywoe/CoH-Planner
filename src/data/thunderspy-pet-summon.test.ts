@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 // Read straight from the committed generated base (pre-override) so a future regen
 // can't silently undo the summon→pet linkage (GAME-DATA-PRINCIPLES §9).
 import { UmbraBeast } from './datasets/thunderspy/generated/powersets/controller/primary/darkness-control/umbra-beast';
@@ -7,7 +7,13 @@ import { Haunt } from './datasets/thunderspy/generated/powersets/controller/prim
 import { SingleShot } from './datasets/thunderspy/generated/powersets/blaster/primary/beam-blast/single-shot';
 // Negative case: a plain single-target Hold must NOT gain a phantom summon.
 import { DarkGrasp } from './datasets/thunderspy/generated/powersets/controller/primary/darkness-control/dark-grasp';
+// TSPY10 pseudo-pet debuff powers (player power → summon.entity → PET_ENTITIES).
+import { Sleet } from './datasets/thunderspy/generated/powersets/defender/primary/cold-domination/sleet';
+import { TarPatch } from './datasets/thunderspy/generated/powersets/defender/primary/dark-miasma/tar-patch';
+import { Caltrops } from './datasets/thunderspy/generated/powersets/blaster/secondary/devices/caltrops';
 import { PET_ENTITIES } from './datasets/thunderspy/pet-entities';
+import { loadDataset } from './dataset';
+import { calculatePetDamage, synthesizePseudoPetEffects } from '@/utils/calculations/pet-damage';
 
 /**
  * Thunderspy pet / pseudo-pet summon recovery — the DATA-DRIVEN fix.
@@ -88,5 +94,86 @@ describe('Thunderspy pet / pseudo-pet summon recovery (data-driven)', () => {
     expect(bite!.damage).toEqual([
       { damageType: 'Lethal', scale: 0.84, table: 'Melee_Damage' },
     ]);
+  });
+});
+
+/**
+ * TSPY10: pseudo-pet DEBUFF recovery.
+ *
+ * The player-facing location/patch powers (Sleet, Freezing Rain, Tar Patch,
+ * Caltrops, Ice Slick, …) carry ONLY a Create_Entity summon — every debuff that
+ * IS the power (-Resistance / -Defense / -Speed) lives on the summoned pet's
+ * ability. TSPY9 gave those pets their damage, but extractEffects keyed on the
+ * HC attrib names (base_defense / runningspeed / …); Thunderspy names the applied
+ * attrib directly (Debuff_Def / Slow / Res_DMG) and drops the target, so every
+ * pseudo-pet surfaced its damage but NOT its debuffs. The fix teaches
+ * extractEffects tspy's vocabulary: name-encoded debuffs at |scale| (Slow /
+ * Debuff_Def / DeBuff_ToHit), and sign-discriminated resource debuffs on a REAL
+ * table (Res_DMG<0 → -Resistance; a `*_Ones` marker is dropped as uncomputable,
+ * which also stops +Recovery ally-buffs — Adrenalin Boost / Victory Rush — from
+ * being mislabeled as -Recovery).
+ */
+describe('Thunderspy pseudo-pet debuff recovery (TSPY10)', () => {
+  beforeAll(async () => { await loadDataset('thunderspy'); });
+
+  const entityEffects = (key: string) =>
+    (PET_ENTITIES[key]?.abilities || []).flatMap(a => a.effects || []);
+
+  it('Sleet: player power → Pets_Sleet_Defender carrying -Res, -Def and -Speed', () => {
+    expect(Sleet.effects?.summon?.entity).toBe('Pets_Sleet_Defender');
+    const types = new Set(entityEffects('Pets_Sleet_Defender').map(e => e.type));
+    expect(types).toContain('ResistanceDebuff');
+    expect(types).toContain('DefenseDebuff');
+    expect(types).toContain('Slow');
+  });
+
+  it('Tar Patch: its -Resistance (the point of the power) is on the pet', () => {
+    expect(TarPatch.effects?.summon?.entity).toBe('Pets_TarPatch');
+    const res = entityEffects('Pets_TarPatch').find(e => e.type === 'ResistanceDebuff');
+    expect(res).toBeDefined();
+    expect(res!.scale).toBeGreaterThan(0);
+    expect(res!.table).toMatch(/res_dmg/i);
+  });
+
+  it('Caltrops: surfaces its -Speed slow, and NO phantom -Res/-Def', () => {
+    expect(Caltrops.effects?.summon?.entity).toBe('Pets_Caltrops');
+    const types = new Set(entityEffects('Pets_Caltrops').map(e => e.type));
+    expect(types).toContain('Slow');
+    expect(types.has('ResistanceDebuff')).toBe(false);
+    expect(types.has('DefenseDebuff')).toBe(false);
+  });
+
+  it('the -Resistance actually COMPUTES to a percent (table resolves, not "—")', () => {
+    const r = calculatePetDamage('Pets_Sleet_Defender', 50);
+    const res = r?.allEffects.find(e => e.type === 'ResistanceDebuff');
+    expect(res).toBeDefined();
+    // A resolved table yields a real fraction; an unresolved one leaves value undefined.
+    expect(res!.value).toBeGreaterThan(0);
+  });
+
+  it('sign-trap + Ones-marker guard: no pet carries a (bogus) -Recovery debuff', () => {
+    // +Recovery self/ally-buffs (Adrenalin Boost, Victory Rush) rode `*_Ones`
+    // markers the old HC map mislabeled as RecoveryDebuff; the fix drops them all.
+    const withRecoveryDebuff = Object.values(PET_ENTITIES).filter(ent =>
+      (ent.abilities || []).some(a => (a.effects || []).some(e => e.type === 'RecoveryDebuff')),
+    );
+    expect(withRecoveryDebuff).toHaveLength(0);
+  });
+
+  // Shadow Field is a LOCATION AoE Hold: the player power carries only the summon,
+  // so its control (Hold) AND debuff (-ToHit) live entirely on the pseudo-pet.
+  // synthesizePseudoPetEffects hoists a non-commandable summon's mez + enhanceable
+  // debuffs into the parent power's Power Effects block (so they show as the power's
+  // own control/debuff, not just a Summons chip). Before TSPY10 the -ToHit (tspy
+  // `DeBuff_ToHit`) was unmapped, so only the Hold surfaced; now both do.
+  it('Shadow Field hoists BOTH its Hold control and -ToHit debuff to Power Effects', () => {
+    const synth = synthesizePseudoPetEffects(ShadowField.effects?.summon);
+    expect(synth).not.toBeNull();
+    // Control: the location hold surfaces as the power's own mez (Mag 3).
+    expect(synth!.hold).toBeDefined();
+    expect((synth!.hold as { mag: number }).mag).toBe(3);
+    // Debuff: the -ToHit (the TSPY10 addition) rides a real Debuff_ToHit table.
+    expect(synth!.tohitDebuff).toBeDefined();
+    expect((synth!.tohitDebuff as { table: string }).table).toMatch(/debuff_tohit/i);
   });
 });

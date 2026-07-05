@@ -32,12 +32,19 @@ fixed, move it to the top of the RESOLVED section with the fix details.
 ## Active
 
 _No open Thunderspy parser issues in the powers pipeline._ Pet **ability** extraction
-(TSPY9) is now resolved (the `convert-pet-entities` generic-`Damage` fix — see the
-resolved entry below; coverage 35%→55%). One **entity-detail follow-up** remains,
-`TSPY10` in [THUNDERSPY_SUPPORT_PROGRESS.md](THUNDERSPY_SUPPORT_PROGRESS.md):
-**pseudo-pet redirect** resolution isn't wired for tspy shells (Caltrops / Burn /
-Disintegrate-spread carry their damage in `Redirects.*`, not an entity record), so those
-summon links show no damage. It doesn't block the summon→entity link.
+(TSPY9, generic-`Damage`) and pseudo-pet **debuff** extraction (TSPY10, the debuff
+vocabulary) are both resolved in `convert-pet-entities` — see the resolved entries below.
+The only remaining follow-up is `TSPY4` (pet lifespans / `self-destruct-delays.json`,
+still 0 entries — despawn timing only, low priority).
+
+**Correction to the old TSPY10 theory:** the earlier note claimed tspy pseudo-pets
+"carry their damage in `Redirects.*`, not an entity record" (the HC `attachResolvedPseudoPets`
+model). That is FALSE for Thunderspy — verified: tspy pseudo-pets (Caltrops, Sleet, Tar
+Patch, Freezing Rain, Ice Slick, …) DO resolve to real `PET_ENTITIES` records
+(`Pets_Caltrops`, `Pets_Sleet_Defender`, `Pets_TarPatch`, …), and the player power carries
+only `Create_Entity`. tspy has **no `params.redirects`-style pseudo-pet chains**, so the HC
+redirect path was never the right tool. The real gap was the debuff **vocabulary** — see
+the TSPY10 resolved entry.
 
 ## Resolved
 
