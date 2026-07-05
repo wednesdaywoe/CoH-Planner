@@ -645,6 +645,18 @@ const COMBAT_SUPPRESS_EVENTS = new Set([
  * @param {number} depth - Current recursion depth
  * @returns {Array} - Flat array of all template objects
  */
+// A PvE/PvP `enttype` pair is split into `enttype target> critter eq` (PvE) and
+// `enttype target> player eq` (PvP) groups, BOTH tagged is_pvp='EITHER', so the
+// PVP_ONLY flag never catches the PvP half — this requires clause does. The planner
+// has no PvP mode, so the `player eq` variant is always dropped in favor of its PvE
+// twin (GAME-DATA-PRINCIPLES §3). SINGLE SOURCE for every collector — base,
+// redirect, AND conditional/special. The conditional pipeline used to omit this
+// check, so a conditional PvE/PvP pair (Beam Rifle's Disintegrate -regen) kept the
+// PvP -3/Ranged_Res_Boolean value instead of the PvE -0.75/Ranged_Ones one.
+function isPvpEnttypeVariant(requiresExpression) {
+  return /\benttype\s+target>\s+player\s+eq/.test(requiresExpression || '');
+}
+
 function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCombatGated = false) {
   const templates = [];
   const MAX_DEPTH = 3;
@@ -663,8 +675,7 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
     // matching collectInfoRedirectTemplates (~line 1023) and
     // GAME-DATA-PRINCIPLES §3 "prefer PvE". There is no per-power PvP mode in
     // the planner, so PvP-only content is correctly omitted, not surfaced.
-    if (effect.requires_expression
-        && /\benttype\s+target>\s+player\s+eq/.test(effect.requires_expression)) continue;
+    if (isPvpEnttypeVariant(effect.requires_expression)) continue;
     // Skip chance=0 ONLY when the effect carries nothing real — those
     // are proc placeholders the binary leaves around. Effects with
     // chance=0 plus actual templates or child_effects are Tag-gated
@@ -1034,7 +1045,7 @@ function collectInfoRedirectTemplates(powerJson) {
   // 4.0 each; collecting both sums to 8). Prefer PvE, matching the rest of the
   // converter (GAME-DATA-PRINCIPLES §3).
   const clean = (effs) => effs
-    .filter(e => !/\benttype\s+target>\s+player\s+eq/.test(e.requires_expression || ''))
+    .filter(e => !isPvpEnttypeVariant(e.requires_expression))
     .map(e => {
       const c = { ...e };
       if (typeof c.requires_expression === 'string'
@@ -2565,6 +2576,10 @@ function collectConditionalsGrouped(effects, powersetKey) {
 
   function visit(effect) {
     if (effect.is_pvp === 'PVP_ONLY') return;
+    // Same PvE/PvP `enttype`-pair drop the base collectors apply — the conditional
+    // pipeline omitted it, so a conditional PvE/PvP pair (Beam Rifle's Disintegrate
+    // -regen) kept the PvP -3/Ranged_Res_Boolean value over the PvE -0.75/Ranged_Ones.
+    if (isPvpEnttypeVariant(effect.requires_expression)) return;
     if (effect.chance === 0 || effect.chance === 0.0) return;
     if (effect.tags && effect.tags.includes('Containment')) return;
 

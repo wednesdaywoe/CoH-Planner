@@ -86,21 +86,14 @@ export const WaterBurst: Power = {
       "label": "Tidal Power (1 stacks)",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Cold",
-          "scale": 0.045,
-          "table": "Ranged_Damage"
-        },
-        {
-          "type": "Cold",
-          "scale": 0.0346,
-          "table": "Ranged_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Cold",
+        "scale": 0.045,
+        "table": "Ranged_Damage"
+      },
       "effects": {
         "knockback": {
-          "scale": 1.34,
+          "scale": 0.67,
           "table": "Ranged_Ones"
         }
       },
@@ -111,21 +104,14 @@ export const WaterBurst: Power = {
       "label": "Tidal Power (2 stacks)",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Cold",
-          "scale": 0.108,
-          "table": "Ranged_Damage"
-        },
-        {
-          "type": "Cold",
-          "scale": 0.0831,
-          "table": "Ranged_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Cold",
+        "scale": 0.108,
+        "table": "Ranged_Damage"
+      },
       "effects": {
         "knockback": {
-          "scale": 1.34,
+          "scale": 0.67,
           "table": "Ranged_Ones"
         }
       },
@@ -136,21 +122,14 @@ export const WaterBurst: Power = {
       "label": "Tidal Power (3 stacks)",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Cold",
-          "scale": 0.225,
-          "table": "Ranged_Damage"
-        },
-        {
-          "type": "Cold",
-          "scale": 0.1732,
-          "table": "Ranged_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Cold",
+        "scale": 0.225,
+        "table": "Ranged_Damage"
+      },
       "effects": {
         "knockback": {
-          "scale": 1.34,
+          "scale": 0.67,
           "table": "Ranged_Ones"
         }
       },
@@ -163,7 +142,7 @@ export const WaterBurst: Power = {
       "defaultActive": false,
       "effects": {
         "knockback": {
-          "scale": 1.34,
+          "scale": 0.67,
           "table": "Ranged_Ones"
         }
       },

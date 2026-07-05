@@ -58,18 +58,11 @@ export const LancerShot: Power = {
       "label": "Disintegrating",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Energy",
-          "scale": 0.424,
-          "table": "Ranged_Damage"
-        },
-        {
-          "type": "Energy",
-          "scale": 0.434,
-          "table": "Ranged_PvPDamage"
-        }
-      ]
+      "damage": {
+        "type": "Energy",
+        "scale": 0.424,
+        "table": "Ranged_Damage"
+      }
     }
   ]
 };

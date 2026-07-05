@@ -76,8 +76,8 @@ export const ParasiticLeech: Power = {
       "defaultActive": false,
       "effects": {
         "regenDebuff": {
-          "scale": 2.6,
-          "table": "Melee_Res_Boolean"
+          "scale": 1.3,
+          "table": "Melee_Ones"
         },
         "durations": {
           "regenDebuff": 30

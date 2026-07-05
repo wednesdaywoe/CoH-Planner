@@ -180,6 +180,15 @@ const CANON_SUB = {
 const normSub = (s) => (s == null ? '' : (CANON_SUB[String(s).toLowerCase()] ?? String(s).toLowerCase()));
 const tableNorm = (t) => (t == null ? '' : String(t).toLowerCase());
 
+// Mirror the converter's PvP-variant drop EXACTLY (convert-powerset.cjs:667,1037):
+// HC splits many powers into `enttype target> critter eq` (PvE) and
+// `enttype target> player eq` (PvP) groups, BOTH tagged is_pvp='EITHER', so the
+// is_pvp='PVP_ONLY' flag doesn't catch them — the requires clause does. The bridge
+// doesn't evaluate requires, so without this every such PvP twin false-positives
+// (Lightning Field's -0.5 Melee_EndDrain is the `player eq` variant; the -0.03
+// Melee_Ones `critter eq` PvE value is what correctly survives).
+const isPvpVariant = (a) => /\benttype\s+target>\s+player\s+eq/.test(a.requiresExpression || '');
+
 // Allowed (checkable) subtypes per effectType — anything else is coverage, not a flag.
 const STD_TYPE = new Set(['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'toxic', 'psionic', 'melee', 'ranged', 'aoe']);
 const MEZ_SUB = new Set(['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear', 'taunt', 'placate', 'teleport', 'untouchable', 'onlyaffectsself']);
@@ -296,7 +305,7 @@ function scalarInputIdentities(sourceJson) {
   try { atoms = ingestExportPower(sourceJson); } catch { return []; }
   const out = [];
   for (const a of atoms) {
-    if (a.pvMode === 'PvP') continue;
+    if (a.pvMode === 'PvP' || isPvpVariant(a)) continue;      // PvP-only group (flag OR `player eq` requires)
     if (!a.scale) continue;
     if (a.attribType === 'Expression') continue;
     if (a.aspect === 'Str' || a.aspect === 'Res') continue;   // specialBuff / debuffResistance families
@@ -318,7 +327,7 @@ function inputIdentities(sourceJson) {
   const out = [];
   for (const a of atoms) {
     // ---- by-design drop filter (generous → FP-safe) ----
-    if (a.pvMode === 'PvP') continue;                 // converter drops PvP-only group
+    if (a.pvMode === 'PvP' || isPvpVariant(a)) continue; // PvP-only group (flag OR `player eq` requires)
     if (!a.scale) continue;                            // scale 0 = marker/no-op
     if (a.attribType === 'Expression') continue;       // engine phantoms / caps
     if (a.aspect === 'Str') continue;                  // Power-Boost → specialBuff (Enhancement boundary)
@@ -444,11 +453,12 @@ function main() {
               'collapse does not occur in HC; residual is target-directed / conditional.',
       scalarGate: 'site-A table-variant collapse over scalar effectTypes (ToHit/Recovery/Regen/' +
               'Endurance/…): two same-(effectType,sign) templates on DIFFERENT tables where ' +
-              'last-write-wins keeps one (Lightning Field drops -0.5 Melee_EndDrain, keeps ' +
-              '-0.03 Melee_Ones). resistible folded OUT (buffs have no twin; DSH3 gates debuff ' +
-              'twins). This is a TRIAGE REPORT, not yet a CI-hard gate — some pairs are helper ' +
-              'templates (Ones/Res_Boolean markers) whose drop is correct; the bin resolves ' +
-              'real-vs-helper at DSH7-numeric.',
+              'last-write-wins keeps one. resistible folded OUT (buffs have no twin; DSH3 gates ' +
+              'debuff twins); the PvP `enttype target> player eq` variant is dropped exactly as ' +
+              'the converter does (mirrors convert-powerset.cjs:667). NOW AT ZERO: this surfaced ' +
+              'one real bug — the conditional pipeline (collectConditionalsGrouped) omitted that ' +
+              'PvP-drop, so Beam Rifle Disintegrate kept the PvP -3/Ranged_Res_Boolean regen over ' +
+              'the PvE -0.75/Ranged_Ones (Mids-confirmed). Fixed 2026-07-05 → gate green (0).',
       excluded: 'aspect=Str (→specialBuff Enhancement), aspect=Res (→debuffResistance), PvP-only, ' +
                 'scale-0 markers, Expression phantoms, exotic resist types, KB protection.',
       signRule: 'sign follows the converter (scale<0 OR table matches /debuff/), not scale alone.',

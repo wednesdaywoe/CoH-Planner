@@ -74,18 +74,11 @@ export const GreaterPsiBlade: Power = {
       "label": "Insight",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Psionic",
-          "scale": 1.656,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Psionic",
-          "scale": 1.65,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Psionic",
+        "scale": 1.656,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "hold": {
           "mag": 1,

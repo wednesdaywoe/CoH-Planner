@@ -65,8 +65,8 @@ export const SingleShot: Power = {
       "defaultActive": false,
       "effects": {
         "regenDebuff": {
-          "scale": 3,
-          "table": "Ranged_Res_Boolean"
+          "scale": 0.75,
+          "table": "Ranged_Ones"
         },
         "durations": {
           "regenDebuff": 10

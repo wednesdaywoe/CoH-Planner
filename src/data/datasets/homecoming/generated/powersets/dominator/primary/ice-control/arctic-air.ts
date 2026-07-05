@@ -101,21 +101,6 @@ export const ArcticAir: Power = {
     "effectDuration": 2,
     "buffDuration": 2.25
   },
-  "conditionalEffects": [
-    {
-      "id": "domination",
-      "label": "Domination Active",
-      "scope": "global",
-      "defaultActive": false,
-      "effects": {
-        "confuse": {
-          "mag": 1,
-          "scale": 1,
-          "table": "Ranged_PvPMez"
-        }
-      }
-    }
-  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

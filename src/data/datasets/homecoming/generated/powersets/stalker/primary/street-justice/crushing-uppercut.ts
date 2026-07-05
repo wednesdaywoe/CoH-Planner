@@ -66,18 +66,11 @@ export const CrushingUppercut: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 3.339,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 3.0649,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Smashing",
+        "scale": 3.339,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "stun": {
           "mag": 3,
@@ -93,18 +86,11 @@ export const CrushingUppercut: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 3.5616,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 3.2692,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Smashing",
+        "scale": 3.5616,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "stun": {
           "mag": 3,
@@ -120,18 +106,11 @@ export const CrushingUppercut: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 3.975,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 3.6486,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Smashing",
+        "scale": 3.975,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "stun": {
           "mag": 3,

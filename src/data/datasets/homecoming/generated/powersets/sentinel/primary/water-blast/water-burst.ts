@@ -98,7 +98,7 @@ export const WaterBurst: Power = {
       "defaultActive": false,
       "effects": {
         "knockback": {
-          "scale": 1.34,
+          "scale": 0.67,
           "table": "Ranged_Ones"
         }
       },
@@ -111,7 +111,7 @@ export const WaterBurst: Power = {
       "defaultActive": false,
       "effects": {
         "knockback": {
-          "scale": 1.34,
+          "scale": 0.67,
           "table": "Ranged_Ones"
         }
       },
@@ -124,7 +124,7 @@ export const WaterBurst: Power = {
       "defaultActive": false,
       "effects": {
         "knockback": {
-          "scale": 1.34,
+          "scale": 0.67,
           "table": "Ranged_Ones"
         }
       },
@@ -137,7 +137,7 @@ export const WaterBurst: Power = {
       "defaultActive": false,
       "effects": {
         "knockback": {
-          "scale": 1.34,
+          "scale": 0.67,
           "table": "Ranged_Ones"
         }
       },

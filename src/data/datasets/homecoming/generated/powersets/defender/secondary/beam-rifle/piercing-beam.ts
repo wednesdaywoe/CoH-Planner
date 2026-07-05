@@ -92,18 +92,11 @@ export const PiercingBeam: Power = {
       "label": "Disintegrating",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Energy",
-          "scale": 0.7161,
-          "table": "Ranged_Damage"
-        },
-        {
-          "type": "Energy",
-          "scale": 0.4752,
-          "table": "Ranged_PvPDamage"
-        }
-      ]
+      "damage": {
+        "type": "Energy",
+        "scale": 0.7161,
+        "table": "Ranged_Damage"
+      }
     }
   ]
 };

@@ -261,15 +261,25 @@ validates the whole differential approach before any converter rewrite.
     Enforced Morale ally mez-resist) are real gaps to fix, not by-design drops.
     - [x] **Scalar-identity gate** — the site-A *table*-variant collapse the by-type
       gate folds out, added to the same detector: two same-`(effectType,sign)` SCALAR
-      templates on DIFFERENT tables where last-write-wins keeps one. resistible folded
-      out (buffs have no twin; DSH3 gates debuff twins) — that fix alone cut it
-      815→86. **Finds real collapses:** Lightning Field/Tesla Cage/Power Drain/Benumb
-      drop the main `*_EndDrain` drain and keep a tiny `*_Ones` value (38 of 86); the
-      rest are `res_boolean`/`ones` pairs the bin resolves real-vs-helper (DSH7). A
-      TRIAGE REPORT, not yet a CI-hard gate.
-      verify: file:scripts/dsh6-collapse-detector.cjs
-    - [ ] Fix the EndDrain table-variant collapse in `addOrAccumulate` (same-key,
-      different-table currently overwrites → keeps the wrong one), harness-gated.
+      templates on DIFFERENT tables where last-write-wins keeps one. Two FP-fixes
+      (verify-don't-assume): fold `resistible` out (buffs have no twin; DSH3 gates
+      debuff twins) cut 815→86, then mirror the converter's PvP `enttype target>
+      player eq` drop cut 86→4. **The EndDrain "collapse" (Lightning Field) was a FP**
+      — Mids confirmed `*_EndDrain` is the PvP (`player eq`) variant the converter
+      *correctly* drops; my `addOrAccumulate` hypothesis was wrong. **Gate now at 0.**
+      verify: file:scripts/dsh6-collapse-detector.cjs, tests:src>=801
+    - [x] **Conditional-pipeline PvP-variant leak — FIXED 2026-07-05.** The real bug
+      the scalar gate surfaced: `collectConditionalsGrouped` (and the redirect/special
+      collectors) only dropped `is_pvp==='PVP_ONLY'`, NOT the `enttype target> player
+      eq` PvP twin the base `collectTemplatesDeep` drops — so a conditional PvE/PvP
+      pair kept the PvP value (Beam Rifle Disintegrate showed PvP -3/Ranged_Res_Boolean
+      regen over PvE -0.75/Ranged_Ones; Mids-confirmed). Fix = single shared
+      `isPvpEnttypeVariant()` predicate applied at all collectors
+      ([convert-powerset.cjs](scripts/convert-powerset.cjs), the two inline copies
+      de-duped). Regen: 65 HC files (94 PvP damage/mez entries dropped, 9 PvP→PvE
+      debuff-table flips, no PvE content lost); rebirth/thunderspy unaffected. Lint +
+      DSH3 gate + 801 tests + scalar gate all green.
+      verify: fn:isPvpEnttypeVariant, tests:src>=801
     - [ ] Emit ally/foe-targeted buffs for Info-panel display (the in-scope decision)
       — Speed Boost movement, Enforced Morale conditional mez-resist.
     - [ ] Rework extractEffects→project for the conditional/dual-representation gaps;

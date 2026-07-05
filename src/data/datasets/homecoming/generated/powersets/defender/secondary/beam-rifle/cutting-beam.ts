@@ -65,22 +65,13 @@ export const CuttingBeam: Power = {
       "label": "Disintegrating",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Energy",
-          "scale": 0.101,
-          "table": "Ranged_Damage",
-          "duration": 2.1,
-          "tickRate": 1
-        },
-        {
-          "type": "Energy",
-          "scale": 0.0956,
-          "table": "Ranged_PvPDamage",
-          "duration": 2.1,
-          "tickRate": 1
-        }
-      ]
+      "damage": {
+        "type": "Energy",
+        "scale": 0.101,
+        "table": "Ranged_Damage",
+        "duration": 2.1,
+        "tickRate": 1
+      }
     }
   ]
 };

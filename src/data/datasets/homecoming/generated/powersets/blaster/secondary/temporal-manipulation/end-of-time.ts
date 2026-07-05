@@ -72,18 +72,11 @@ export const EndofTime: Power = {
       "label": "Time Crawl Debuff",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Energy",
-          "scale": 0.308,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Energy",
-          "scale": 0.2501,
-          "table": "Melee_PvPDamage"
-        }
-      ]
+      "damage": {
+        "type": "Energy",
+        "scale": 0.308,
+        "table": "Melee_Damage"
+      }
     }
   ]
 };

@@ -61,18 +61,11 @@ export const EyeoftheStorm: Power = {
       "label": "Perfection of Body Level 3",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 0.492,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 0.0335,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.492,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "resistanceDebuff": {
           "smashing": {
@@ -120,18 +113,11 @@ export const EyeoftheStorm: Power = {
       "label": "Perfection of Mind Level 3",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Psionic",
-          "scale": 0.492,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Psionic",
-          "scale": 0.0335,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Psionic",
+        "scale": 0.492,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "slow": {
           "jumpHeight": {
@@ -168,18 +154,11 @@ export const EyeoftheStorm: Power = {
       "label": "Perfection of Soul Level 3",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Energy",
-          "scale": 0.492,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Energy",
-          "scale": 0.0335,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Energy",
+        "scale": 0.492,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "defenseDebuff": {
           "scale": 1,

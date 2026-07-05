@@ -63,22 +63,13 @@ export const SpinningStrike: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 0.8085,
-          "table": "Melee_Damage",
-          "duration": 0.45,
-          "tickRate": 0.4000000059604645
-        },
-        {
-          "type": "Smashing",
-          "scale": 0.6355,
-          "table": "Melee_PvPDamage",
-          "duration": 0.45,
-          "tickRate": 0.4000000059604645
-        }
-      ],
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.8085,
+        "table": "Melee_Damage",
+        "duration": 0.45,
+        "tickRate": 0.4000000059604645
+      },
       "group": "combo-levels"
     },
     {
@@ -87,22 +78,13 @@ export const SpinningStrike: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 0.8624,
-          "table": "Melee_Damage",
-          "duration": 0.45,
-          "tickRate": 0.4000000059604645
-        },
-        {
-          "type": "Smashing",
-          "scale": 0.6779,
-          "table": "Melee_PvPDamage",
-          "duration": 0.45,
-          "tickRate": 0.4000000059604645
-        }
-      ],
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.8624,
+        "table": "Melee_Damage",
+        "duration": 0.45,
+        "tickRate": 0.4000000059604645
+      },
       "group": "combo-levels"
     },
     {
@@ -111,22 +93,13 @@ export const SpinningStrike: Power = {
       "scope": "global",
       "defaultActive": false,
       "mode": "replace",
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 0.9625,
-          "table": "Melee_Damage",
-          "duration": 0.45,
-          "tickRate": 0.4000000059604645
-        },
-        {
-          "type": "Smashing",
-          "scale": 0.7566,
-          "table": "Melee_PvPDamage",
-          "duration": 0.45,
-          "tickRate": 0.4000000059604645
-        }
-      ],
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.9625,
+        "table": "Melee_Damage",
+        "duration": 0.45,
+        "tickRate": 0.4000000059604645
+      },
       "group": "combo-levels"
     }
   ],

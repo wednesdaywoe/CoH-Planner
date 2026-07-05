@@ -75,18 +75,11 @@ export const SkySplitter: Power = {
       "label": "Perfection of Body Level 3",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 1.656,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 0.8943,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Smashing",
+        "scale": 1.656,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "resistance": {
           "smashing": {
@@ -134,18 +127,11 @@ export const SkySplitter: Power = {
       "label": "Perfection of Mind Level 3",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Psionic",
-          "scale": 1.656,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Psionic",
-          "scale": 0.8943,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Psionic",
+        "scale": 1.656,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "tohitBuffUnenhanced": {
           "scale": 2,
@@ -163,21 +149,14 @@ export const SkySplitter: Power = {
       "label": "Perfection of Soul Level 3",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Energy",
-          "scale": 1.656,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Energy",
-          "scale": 0.8943,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Energy",
+        "scale": 1.656,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "regenBuffUnenhanced": {
-          "scale": 2.5,
+          "scale": 1.25,
           "table": "Melee_Ones"
         },
         "durations": {
@@ -185,7 +164,7 @@ export const SkySplitter: Power = {
           "recoveryBuffUnenhanced": 15
         },
         "recoveryBuffUnenhanced": {
-          "scale": 1.66,
+          "scale": 0.83,
           "table": "Melee_Ones"
         },
         "buffDuration": 15

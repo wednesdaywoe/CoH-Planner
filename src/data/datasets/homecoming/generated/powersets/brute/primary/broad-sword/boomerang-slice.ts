@@ -110,18 +110,11 @@ export const BoomerangSlice: Power = {
       "label": "Rending Slice Cooldown",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Lethal",
-          "scale": 0.6148,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Lethal",
-          "scale": 0.4509,
-          "table": "Melee_PvPDamage"
-        }
-      ]
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.6148,
+        "table": "Melee_Damage"
+      }
     }
   ],
   "requires": "Brute_Melee.Broad_Sword.Slice !"
