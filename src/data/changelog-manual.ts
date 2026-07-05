@@ -25,6 +25,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
 
     items: [
       { message: 'Comprehensive overhaul of Domination to make it data-driven', type: 'fix'},
+      { message: 'Pet and Pseudopet effects are now wired up for Thunderspy dataset', type: 'fix'},
       { message: 'Added a recharge buff/debuff simulation to the attack chain builder', type: 'feat'},
       { message: 'Large audit and update to Incarnate powers: a lot of effects were being silently dropped before reaching the display layers, others were attributed incorrectly', type: 'fix'},
       { message: 'Fix for the stacking detector, it only saw stack-type and not RefreshToCount', type: 'fix'},
