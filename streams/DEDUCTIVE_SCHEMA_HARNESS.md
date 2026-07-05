@@ -98,15 +98,34 @@ Fastest-signal, dependency-free work. The self-checks (DSH2/DSH3) need no Mids
 data and catch both historical bug classes on their own; the oracle PoC (DSH1)
 validates the whole differential approach before any converter rewrite.
 
-- [ ] **DSH1** — Oracle-reader PoC: port the `I12.mhd` Power+Effect BinaryReader
-  layout to `tools/mids-oracle/read_i12.py` (5 LE primitives + .NET 7-bit string
-  prefix; seek `\x0cBEGIN:POWERS`; read `count+1` Powers, inline `Effects[n+1]`;
-  map enums via `MidsReborn-master/MidsReborn/Core/Enums.cs`). Emit one JSON line
-  per power at template granularity. **Exit gates (all three):** (1) parses clean
-  to end-of-stream — proves the `+1`/`setTypeCount <=` layout is right, the one
-  desync risk; (2) on `main`, ~50 known-answer powers (Trick Arrow, Arachnos
-  epics, Build Up) show 0 structural diff vs oracle; (3) checked out at a pre-fix
-  commit, the harness **reproduces** the exact collapse those commits fixed.
+- [x] **DSH1** — Oracle-reader PoC. **Shipped 2026-07-05** as
+  [`tools/mids-oracle/read_i12.py`](tools/mids-oracle/read_i12.py) (reader) +
+  [`diff_oracle.py`](tools/mids-oracle/diff_oracle.py) (PoC comparator) +
+  [`README.md`](tools/mids-oracle/README.md). The reader ports the `I12.mhd`
+  BinaryReader layout verbatim (top-level `LoadMainDatabase`; `Power.cs:213`;
+  `Effect.cs:87`; `Requirement.cs:67`; `Enums.cs` ordinals), seeks `\x0cBEGIN:POWERS`,
+  reads `count+1` Powers with inline `count+1` Effects, and emits one JSON line per
+  power at template granularity. **All three exit gates met:**
+  **(1)** parses the full HC DB — **10,986 powers / 73,553 effects** — and lands
+  exactly on `BEGIN:SUMMONS`, proving the `+1`/`setTypeCount <=` layout is byte-correct
+  (a single misread field would desync across 73k effects).
+  **(2)** oracle vs parser export on the known-answer cohort: Single Shot, Flash
+  Arrow, Poison Gas Arrow match **exactly** under combat canonicalization; every
+  other divergence buckets into an enumerated *modeling* class (PVP_MODELING,
+  MULTI_TYPE_GRANULARITY, MEZ_PVP_RESIDUAL, INHERENT_EXTRA, REDIRECT, small OTHER) —
+  **zero Sidekick/parser defects.** These buckets are DSH5's canonicalizer worklist
+  (README table).
+  **(3)** the resistible/unresistable-twin cohort (Flash Arrow, Poison Gas Arrow —
+  the 2026-07-05 converter-fix targets) matches the oracle exactly; Mids independently
+  shows Flash Arrow's resistible + `IgnoreResistance` ToHit twin, and the pre-fix
+  generated output (`d94431fe0d^`) had **0** `unresistable` markers vs **1** post-fix —
+  the oracle reproduces exactly the effect the collapse dropped.
+  **Discovery:** the export is NOT as atomic as Mids for multi-damage-type buff/debuff
+  (one multi-attrib record vs Mids' one-record-per-type) — reconciling that in the
+  harness (MULTI_TYPE_GRANULARITY) **needs the DSH4 attrib→type bridge**, confirming
+  the DSH5-after-DSH4 sequencing. Local-only: `MidsReborn-master/`+`.mhd` are
+  gitignored, so these do not run in CI (that is DSH5/DSH7).
+  verify: file:tools/mids-oracle/read_i12.py, file:tools/mids-oracle/diff_oracle.py
 - [x] **DSH2** — SC-1 AT-table referential integrity. **Shipped 2026-07-05** as a
   vitest guard [`converter-table-integrity.test.ts`](src/data/converter-table-integrity.test.ts)
   (decision: a `.test.ts`, not the planned `.cjs` — it imports the REAL
