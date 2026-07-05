@@ -59,5 +59,18 @@ export const ChargedBrawl: Power = {
       "recoveryDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "vs-electronic",
+      "label": "vs Machines/Robots",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 0.5,
+        "table": "Melee_Damage"
+      }
+    }
+  ]
 };

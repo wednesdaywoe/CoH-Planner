@@ -298,7 +298,23 @@ validates the whole differential approach before any converter rewrite.
       by-type 33→2 (isPVPMap? filter added, mirroring the `player eq` PvP drop);
       residual 2 = NPC display-name aggregation, not player collapse.
       verify: file:src/data/datasets/homecoming/generated/powersets/defender/primary/kinetics/speed-boost.ts, tests:src>=801
-    - [ ] Rework extractEffects→project for the conditional/dual-representation gaps;
+    - [x] **CONDTAG** — Surface target-tag conditional effects as `vs <type>`
+      Mechanic Adjusters. `_classifyConditionalGate` now matches an allowlisted
+      `<Tag> target.HasTag?` (on the stripped, anchored expression) → a per-power
+      (target-side) conditional; the base collector still drops them (they're gated)
+      but `extractConditionalEffects` re-surfaces them with their damage + effects.
+      **ESD Arrow** (`EMP_Arrow`) now shows its "vs Machines/Robots" bonus — +1.64
+      Energy damage + Mag-2 Hold — matching the in-game description; base Stun +
+      End-drain unchanged. Allowlist is a CLOSED semantic set (`SURFACEABLE_TARGET_TAGS`
+      = `{Electronic: 'Machines/Robots'}`): the dominant `.HasTag?` gates — `Raid`
+      (4,185×) / `IncarnateBoss` (367×) — are internal engine mechanics (chained with
+      `@ToHitRoll`/`kRage`), never a player bonus, and stay untoggleable. Blast radius
+      is exactly the EMP/electric family (ESD Arrow, EM Pulse, Short Circuit, EMP
+      Arrow, EM Wave — HC+Rebirth+tspy); DSH6 by-type 2→1 (ESD Arrow Mez|hold flag
+      cleared). Undead/Demon/Ghost/Human/Generator are candidate allowlist additions
+      pending per-power verification. Lint + DSH3 + 801 tests green.
+      verify: fn:_classifyConditionalGate, tests:src>=801
+    - [~] Rework extractEffects→project for the conditional/dual-representation gaps;
       retire the `unresistable`/`durationVariants`/`domination`/`selfPenalty` bolt-ons.
     needs: DEDUCTIVE_SCHEMA_HARNESS#DSH6
 - [ ] **DSH7** — Numeric resolution + full sweep + CI: resolve oracle numbers by

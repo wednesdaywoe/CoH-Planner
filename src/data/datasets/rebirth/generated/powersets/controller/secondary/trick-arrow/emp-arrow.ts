@@ -91,6 +91,17 @@ export const EMPArrow: Power = {
         },
         "buffDuration": 15
       }
+    },
+    {
+      "id": "vs-electronic",
+      "label": "vs Machines/Robots",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 1.64,
+        "table": "Ranged_Damage"
+      }
     }
   ],
   "specialEffects": [

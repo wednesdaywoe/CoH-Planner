@@ -49,5 +49,18 @@ export const Hide: Power = {
       "table": "Melee_Taunt"
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "vs-electronic",
+      "label": "vs Machines/Robots",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Special",
+        "scale": 1.64,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

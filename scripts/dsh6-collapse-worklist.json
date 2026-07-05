@@ -15,8 +15,8 @@
     "scalarChecked": 1126
   },
   "summary": {
-    "highConfidenceCollapses": 2,
-    "distinctCollapseGroups": 2,
+    "highConfidenceCollapses": 1,
+    "distinctCollapseGroups": 1,
     "classAbsent": 22,
     "scalarCollapses": 0,
     "scalarDistinctGroups": 0,
@@ -30,15 +30,6 @@
       "count": 1,
       "powers": [
         "Focused Fighting"
-      ]
-    },
-    {
-      "et": "Mez",
-      "sub": "hold",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "ESD Arrow"
       ]
     }
   ],

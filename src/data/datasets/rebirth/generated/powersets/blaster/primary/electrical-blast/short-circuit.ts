@@ -65,5 +65,18 @@ export const ShortCircuit: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 10.5
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "vs-electronic",
+      "label": "vs Machines/Robots",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.5,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

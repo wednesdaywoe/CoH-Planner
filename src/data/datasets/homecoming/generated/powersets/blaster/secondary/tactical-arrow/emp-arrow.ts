@@ -52,5 +52,25 @@ export const EMPArrow: Power = {
       "scale": 0.55,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "vs-electronic",
+      "label": "vs Machines/Robots",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 1.64,
+        "table": "Ranged_Damage"
+      },
+      "effects": {
+        "hold": {
+          "mag": 2,
+          "scale": 8,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

@@ -2344,8 +2344,30 @@ function _isUntoggleableGate(req) {
   return false;
 }
 
+// Target content-type tags surfaced as "vs <type>" conditional bonuses. A
+// CLOSED, semantic allowlist: only tags that name a user-meaningful enemy
+// CONTENT category (a "does extra vs machines / undead / …" bonus) belong here.
+// Deliberately NOT syntactic — the dominant `.HasTag?` gates are `Raid`
+// (4,185×) and `IncarnateBoss` (367×), which are internal engine mechanics
+// (streakbreaker / accuracy caps / AV resistance, always chained with
+// `@ToHitRoll` / `kRage`), never a player bonus; those stay untoggleable. Each
+// entry is verified against a concrete power before being added. Value = label.
+//   Electronic — ESD Arrow's +1.64 Energy dmg + Mag-2 Hold "vs machines and
+//   robots" (matches the in-game description). Undead/Demon/Ghost/Human/Generator
+//   are candidate future additions pending per-power verification.
+const SURFACEABLE_TARGET_TAGS = { Electronic: 'Machines/Robots' };
+
 function _classifyConditionalGate(req, powersetKey) {
   if (!_isConditionalGate(req)) return null;
+  // Allowlisted target content-type tag (`<Tag> target.HasTag?`) → a "vs <type>"
+  // bonus. Matched on the STRIPPED, anchored expression so it fires only when the
+  // tag check is the WHOLE gate (the enttype PvE filter is stripped; a tag chained
+  // with a real second mechanic won't match and falls through). Checked before the
+  // untoggleable pass below, whose `.HasTag?` rule rejects every non-allowlisted tag.
+  const tagMatch = _stripIgnoredClauses(req).trim().match(/^([A-Za-z_]+)\s+target\.HasTag\?$/);
+  if (tagMatch && SURFACEABLE_TARGET_TAGS[tagMatch[1]]) {
+    return { id: `vs-${tagMatch[1].toLowerCase()}`, label: `vs ${SURFACEABLE_TARGET_TAGS[tagMatch[1]]}`, side: 'target' };
+  }
   // Test untoggleability on the STRIPPED expression so a strippable game-state
   // clause (per-target HP-state, PvE/PvP enttype) chained with a real toggle
   // doesn't sink the whole gate. DNA Siphon's Defensive/Efficient leech bonuses
