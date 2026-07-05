@@ -189,14 +189,35 @@ validates the whole differential approach before any converter rewrite.
   — deferred to DSH6 rather than over-fit. This unblocks DSH5 (both its `needs` are
   now met).
   verify: file:src/data/core/atomic-effect.ts, file:src/data/atomic-effect.test.ts
-- [ ] **DSH5** — Oracle-backed differential harness `tools/mids-oracle/diff_harness.py`:
-  key powers by `full_name`, effects by the DSH4 identity key; check the structural
-  invariants (set/count equality, multi-damage-type completeness, PvE/PvP twin
-  integrity, resistibility present+correct, table resolves + table-name matches
-  oracle, attribType/aspect agreement). Tiered classifier writing typed suppression
-  rules to `oracle_divergence_rules.json` (STRUCTURAL=defect · NUMERIC_DRIFT=skew ·
-  BY_DESIGN PvP-drop · relabel · cosmetic · UNCLASSIFIED=triage-blocks). Filter
-  oracle to HC+PvE/Any; SKIP non-HC with a coverage manifest.
+- [x] **DSH5** — Oracle-backed differential harness. **Shipped 2026-07-05** as
+  [`tools/mids-oracle/emit_canonical.ts`](tools/mids-oracle/emit_canonical.ts) (export-side
+  canonicalizer — reuses the tested DSH4 `ingestExportPower`, so the app schema and the
+  oracle diff can never drift; resolves redirect shells) +
+  [`diff_harness.py`](tools/mids-oracle/diff_harness.py) (joins all **5,668** HC powers to
+  the Mids oracle by `full_name`, keys effects by the DSH4 `(effectType,subType,resistible)`
+  identity, tiered classifier → `oracle_divergence_rules.json` schema
+  `dsh5-oracle-divergence-rules/1` + coverage manifest). Filters oracle to HC; Thunderspy/
+  Rebirth excluded on the export side (Mids has no answer) with the exclusion tracked.
+  **Structural invariants implemented** with FOUR modeling-difference canonicalizations,
+  each verified against a concrete power before folding (verify-don't-assume, no
+  over-fit): **complete-type-set fold** (Poison Gas Arrow — Mids' all-damage `None` record
+  vs our per-attrib split; twin folded independently so R/U stay distinct),
+  **ResEffect fold** (Acid Arrow — Mids' secondary-attrib resistance catch-all ↔ our
+  `aspect=Res` scalars, the DSH4/DSH6 boundary), **set-not-multiset INV1** (Claw Swipe —
+  Mids enumerates conditional/DoT scale-tiers on one key; collapse drops a whole *distinct*
+  sibling key, never duplicate copies → compare presence, count-deltas are advisory
+  MULTIPLICITY), and **INV4 resistibility-flip** as its own class (Power Surge). Table-name
+  (INV5, 97.0% agree) + numeric are advisory-only against the ~5-wk-stale oracle — gating on
+  them would be a false positive (the cardinal sin). **Gate green:** the known-answer cohort
+  matches (Flash Arrow + Poison Gas Arrow twin-exact; Single Shot/Acid Arrow/Build Up zero
+  UNCLASSIFIED) and `--baseline` regression-gates on any *new* UNCLASSIFIED signature (both
+  PASS, exit 0). **Result:** BY_DESIGN 1,157 / RELABEL 547 / **UNCLASSIFIED 6,245 = the DSH6
+  worklist** — spot-verified genuine (Mids `aspect=Str`→Enhancement relabel, incarnate/epic
+  scope, 289 resistibility-flips, ~160 scattered "Mids has a damage type we lack" e.g. Mace
+  Beam Blast → bin-tiebreaker candidates for DSH7). Local-only (`.mhd` gitignored → CI is
+  DSH7); `.oracle_cache/` gitignored, the rules baseline committable. Full suite still green
+  (94 files / 801 tests), tsc clean. **This unblocks DSH6** (its `needs` DSH4+DSH5 are met).
+  verify: file:tools/mids-oracle/diff_harness.py, file:tools/mids-oracle/emit_canonical.ts
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH1, DEDUCTIVE_SCHEMA_HARNESS#DSH4
 - [ ] **DSH6** — Converter repair: rework `extractEffects()` to build the DSH4
   internal effect list first (one record per template × attrib × pvMode ×

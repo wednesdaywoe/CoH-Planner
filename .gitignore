@@ -49,6 +49,10 @@ texture_library/
 raw_data_homecoming-20251209_7415/
 MidsReborn-master/
 texture_library2/
+# DSH5 harness transient cache (canonical export dump derived from the gitignored
+# .mhd + parser export). The distilled baseline (oracle_divergence_rules.json) is
+# committable; the raw intermediates are not.
+tools/mids-oracle/.oracle_cache/
 # Thunderspy Mids' Reborn DB reference drop (44MB binaries + icon dumps).
 # Reference asset only — useful icons are already extracted into
 # public/img/powers/ via scripts/extract-thunderspy-icons.py. Not app data.
