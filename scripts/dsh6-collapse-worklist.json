@@ -1,7 +1,7 @@
 {
   "schema": "dsh6-collapse-worklist/1",
   "scope": {
-    "byTypeGate": "by-type sibling collapse (multi-type explosion) over Defense/Resistance/Elusivity/Mez/MezResist/Movement — an input sub-type with no output slot while the effectType is present. FP-free (5 traced fixes). Finding: clean by-type collapse does not occur in HC; residual is target-directed / conditional.",
+    "byTypeGate": "by-type sibling collapse (multi-type explosion) over Defense/Resistance/Elusivity/Mez/MezResist/Movement — an input sub-type with no output slot while the effectType is present. FP-free (5 traced fixes). Finding: clean by-type collapse does not occur in HC; residual is target-directed / conditional. 2026-07-05: ally/team MOVEMENT buffs are now emitted (converter movement branch routes non-Self aspect=Current buffs to effects.movement — Speed Boost/Accelerate Metabolism +run/fly, Inertial Reduction +jump, Group Fly team fly; calc ALLY_ONLY_TARGET_TYPES gate keeps ally-only powers off caster totals), clearing the Movement flags. isPVPMap? PvP-map atoms now filtered like `player eq` (Enforced Morale mez-RESIST is PvP-map-only; its PvE sleep-resist + full mez PROTECTION already render). Remaining 2 collapses = display-name aggregation across NPC variants (Focused Fighting/ESD Arrow), not player last-write-wins; class-absent = control/ combo/self-conditional edge cases (Telekinesis, Genetic Corruption, Savage Leap).",
     "scalarGate": "site-A table-variant collapse over scalar effectTypes (ToHit/Recovery/Regen/Endurance/…): two same-(effectType,sign) templates on DIFFERENT tables where last-write-wins keeps one. resistible folded OUT (buffs have no twin; DSH3 gates debuff twins); the PvP `enttype target> player eq` variant is dropped exactly as the converter does (mirrors convert-powerset.cjs:667). NOW AT ZERO: this surfaced one real bug — the conditional pipeline (collectConditionalsGrouped) omitted that PvP-drop, so Beam Rifle Disintegrate kept the PvP -3/Ranged_Res_Boolean regen over the PvE -0.75/Ranged_Ones (Mids-confirmed). Fixed 2026-07-05 → gate green (0).",
     "excluded": "aspect=Str (→specialBuff Enhancement), aspect=Res (→debuffResistance), PvP-only, scale-0 markers, Expression phantoms, exotic resist types, KB protection.",
     "signRule": "sign follows the converter (scale<0 OR table matches /debuff/), not scale alone."
@@ -11,103 +11,18 @@
     "powersChecked": 3359,
     "sourceMissing": 5,
     "requireFail": 0,
-    "atomsChecked": 6007,
+    "atomsChecked": 5983,
     "scalarChecked": 1126
   },
   "summary": {
-    "highConfidenceCollapses": 33,
-    "distinctCollapseGroups": 11,
-    "classAbsent": 69,
+    "highConfidenceCollapses": 2,
+    "distinctCollapseGroups": 2,
+    "classAbsent": 22,
     "scalarCollapses": 0,
     "scalarDistinctGroups": 0,
     "scalarClassAbsent": 12
   },
   "collapseGroups": [
-    {
-      "et": "MezResist",
-      "sub": "immobilize",
-      "sign": null,
-      "count": 5,
-      "powers": [
-        "Focused Fighting",
-        "Enforced Morale",
-        "Enforced Morale",
-        "Enforced Morale",
-        "Enforced Morale"
-      ]
-    },
-    {
-      "et": "MezResist",
-      "sub": "confuse",
-      "sign": null,
-      "count": 4,
-      "powers": [
-        "Enforced Morale",
-        "Enforced Morale",
-        "Enforced Morale",
-        "Enforced Morale"
-      ]
-    },
-    {
-      "et": "MezResist",
-      "sub": "fear",
-      "sign": null,
-      "count": 4,
-      "powers": [
-        "Enforced Morale",
-        "Enforced Morale",
-        "Enforced Morale",
-        "Enforced Morale"
-      ]
-    },
-    {
-      "et": "MezResist",
-      "sub": "hold",
-      "sign": null,
-      "count": 4,
-      "powers": [
-        "Enforced Morale",
-        "Enforced Morale",
-        "Enforced Morale",
-        "Enforced Morale"
-      ]
-    },
-    {
-      "et": "MezResist",
-      "sub": "stun",
-      "sign": null,
-      "count": 4,
-      "powers": [
-        "Enforced Morale",
-        "Enforced Morale",
-        "Enforced Morale",
-        "Enforced Morale"
-      ]
-    },
-    {
-      "et": "Movement",
-      "sub": "run",
-      "sign": null,
-      "count": 4,
-      "powers": [
-        "Speed Boost",
-        "Speed Boost",
-        "Speed Boost",
-        "Speed Boost"
-      ]
-    },
-    {
-      "et": "Movement",
-      "sub": "fly",
-      "sign": null,
-      "count": 4,
-      "powers": [
-        "Speed Boost",
-        "Speed Boost",
-        "Speed Boost",
-        "Speed Boost"
-      ]
-    },
     {
       "et": "Mez",
       "sub": "immobilize",
@@ -115,24 +30,6 @@
       "count": 1,
       "powers": [
         "Focused Fighting"
-      ]
-    },
-    {
-      "et": "Movement",
-      "sub": "control",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Group Energy Flight"
-      ]
-    },
-    {
-      "et": "Movement",
-      "sub": "friction",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Group Energy Flight"
       ]
     },
     {
@@ -147,70 +44,6 @@
   ],
   "classAbsentGroups": [
     {
-      "et": "Movement",
-      "sub": "jumpheight",
-      "sign": null,
-      "count": 12,
-      "powers": [
-        "Enforced Morale",
-        "Toroidal Bubble",
-        "mastermind_buff/kinetics/inertial_reduction.json",
-        "Enforced Morale",
-        "Toroidal Bubble",
-        "defender_buff/kinetics/inertial_reduction.json",
-        "Enforced Morale",
-        "Toroidal Bubble"
-      ]
-    },
-    {
-      "et": "Movement",
-      "sub": "run",
-      "sign": null,
-      "count": 8,
-      "powers": [
-        "Accelerate Metabolism",
-        "Enforced Morale",
-        "Accelerate Metabolism",
-        "Enforced Morale",
-        "Accelerate Metabolism",
-        "Enforced Morale",
-        "Accelerate Metabolism",
-        "Enforced Morale"
-      ]
-    },
-    {
-      "et": "Movement",
-      "sub": "fly",
-      "sign": null,
-      "count": 8,
-      "powers": [
-        "Accelerate Metabolism",
-        "Enforced Morale",
-        "Accelerate Metabolism",
-        "Enforced Morale",
-        "Accelerate Metabolism",
-        "Enforced Morale",
-        "Accelerate Metabolism",
-        "Enforced Morale"
-      ]
-    },
-    {
-      "et": "Movement",
-      "sub": "jump",
-      "sign": null,
-      "count": 8,
-      "powers": [
-        "Enforced Morale",
-        "mastermind_buff/kinetics/inertial_reduction.json",
-        "Enforced Morale",
-        "defender_buff/kinetics/inertial_reduction.json",
-        "Enforced Morale",
-        "corruptor_buff/kinetics/inertial_reduction.json",
-        "Enforced Morale",
-        "controller_buff/kinetics/inertial_reduction.json"
-      ]
-    },
-    {
       "et": "Mez",
       "sub": "teleport",
       "sign": null,
@@ -221,30 +54,6 @@
         "scrapper_melee/savage_melee/savage_leap.json",
         "dominator_assault/savage_assault/feral_charge.json",
         "brute_melee/savage_melee/savage_leap.json"
-      ]
-    },
-    {
-      "et": "Movement",
-      "sub": "control",
-      "sign": null,
-      "count": 4,
-      "powers": [
-        "mastermind_buff/kinetics/inertial_reduction.json",
-        "defender_buff/kinetics/inertial_reduction.json",
-        "corruptor_buff/kinetics/inertial_reduction.json",
-        "controller_buff/kinetics/inertial_reduction.json"
-      ]
-    },
-    {
-      "et": "Movement",
-      "sub": "friction",
-      "sign": null,
-      "count": 4,
-      "powers": [
-        "mastermind_buff/kinetics/inertial_reduction.json",
-        "defender_buff/kinetics/inertial_reduction.json",
-        "corruptor_buff/kinetics/inertial_reduction.json",
-        "controller_buff/kinetics/inertial_reduction.json"
       ]
     },
     {
@@ -360,33 +169,6 @@
     },
     {
       "et": "Mez",
-      "sub": "sleep",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Senses"
-      ]
-    },
-    {
-      "et": "MezResist",
-      "sub": "hold",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Senses"
-      ]
-    },
-    {
-      "et": "MezResist",
-      "sub": "stun",
-      "sign": null,
-      "count": 1,
-      "powers": [
-        "Focused Senses"
-      ]
-    },
-    {
-      "et": "MezResist",
       "sub": "sleep",
       "sign": null,
       "count": 1,

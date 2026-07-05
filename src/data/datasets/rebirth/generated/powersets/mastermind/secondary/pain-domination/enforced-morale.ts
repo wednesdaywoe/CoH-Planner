@@ -46,6 +46,7 @@ export const EnforcedMorale: Power = {
       "hold": 90,
       "confuse": 90,
       "fear": 90,
+      "movement": 90,
       "debuffResistance": 90,
       "perceptionBuff": 90
     },
@@ -79,6 +80,24 @@ export const EnforcedMorale: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
+    },
+    "movement": {
+      "runSpeed": {
+        "scale": 0.05,
+        "table": "Ranged_SpeedRunning"
+      },
+      "flySpeed": {
+        "scale": 0.05,
+        "table": "Ranged_SpeedFlying"
+      },
+      "jumpSpeed": {
+        "scale": 0.05,
+        "table": "Ranged_SpeedJumping"
+      },
+      "jumpHeight": {
+        "scale": 0.05,
+        "table": "Ranged_Leap"
+      }
     },
     "debuffResistance": {
       "perception": {

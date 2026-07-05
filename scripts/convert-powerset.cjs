@@ -3941,11 +3941,27 @@ function extractEffects(templates, powerName) {
           // -Recharge half is already captured as `rechargeDebuff`; this is the
           // movement half, which used to be dropped. No `selfPenalty`, so the
           // calc treats it as a foe debuff (doesn't slow the player) — it's a
-          // first-class debuff for display. (Foe movement *buffs* — rare/ally —
-          // still fall through and are skipped.)
+          // first-class debuff for display.
           if (!effects.slow) effects.slow = {};
           effects.slow[moveType] = makeEffect();
           recordDuration('slow');
+        } else if (aspect === 'current') {
+          // ALLY/TEAM movement BUFF — a positive (non-slow) Current-aspect
+          // movement mod on a non-Self target: Speed Boost / Accelerate
+          // Metabolism +run/+fly, Inertial Reduction +jump, Group Fly's team
+          // fly. Route to effects.movement exactly like the self buff above.
+          // The calc's ALLY_ONLY_TARGET_TYPES gate (character-totals.ts) keeps
+          // these off the CASTER's own totals for ally-only powers — mirroring
+          // how this same power's rechargeBuff/recoveryBuff are shown-but-not-
+          // self-applied — while self/team-castable powers (Group Fly,
+          // targetType Self) still buff the caster. Previously dropped, so the
+          // "Allies +SPD" these powers advertise never rendered in Power Info.
+          // Restricted to aspect=Current (the genuine movement-speed buff);
+          // Strength (Power Boost-style multiplier, self-only above) and other
+          // aspects still fall through.
+          if (!effects.movement) effects.movement = {};
+          effects.movement[moveType] = makeEffect();
+          recordDuration('movement');
         }
         continue;
       }

@@ -42,6 +42,18 @@ export const ToroidalBubble: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "movement": {
+      "jumpHeight": {
+        "scale": 0.25,
+        "table": "Melee_Leap"
+      }
+    },
+    "durations": {
+      "movement": 60,
+      "resistance": 60,
+      "debuffResistance": 60,
+      "recoveryBuff": 60
+    },
     "resistance": {
       "smashing": {
         "scale": 2.5,
@@ -75,11 +87,6 @@ export const ToroidalBubble: Power = {
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 60,
-      "debuffResistance": 60,
-      "recoveryBuff": 60
     },
     "debuffResistance": {
       "endurance": {

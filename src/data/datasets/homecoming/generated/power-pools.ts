@@ -1036,8 +1036,20 @@ export const POWER_POOLS_RAW = {
           "maxTargets": 255,
           "movement": {
             "fly": {
-              "scale": 0.1,
+              "scale": 2,
               "table": "Melee_Ones"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Melee_SpeedFlying"
+            },
+            "movementControl": {
+              "scale": 10,
+              "table": "Melee_Control"
+            },
+            "movementFriction": {
+              "scale": 10,
+              "table": "Melee_Friction"
             }
           },
           "durations": {
@@ -3967,6 +3979,16 @@ export const POWER_POOLS_RAW = {
             "scale": 3.1,
             "table": "Ranged_Ones"
           },
+          "movement": {
+            "fly": {
+              "scale": 1,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "movement": 4,
+            "slow": 4
+          },
           "slow": {
             "flySpeed": {
               "scale": 1,
@@ -3980,9 +4002,6 @@ export const POWER_POOLS_RAW = {
               "scale": 1,
               "table": "Ranged_Ones"
             }
-          },
-          "durations": {
-            "slow": 4
           },
           "buffDuration": 4
         }

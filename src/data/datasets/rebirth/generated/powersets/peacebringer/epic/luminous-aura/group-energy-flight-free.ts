@@ -33,5 +33,29 @@ export const GroupEnergyFlightFree: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "effects": {
+    "movement": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "movementControl": {
+        "scale": 10,
+        "table": "Melee_Control"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedFlying"
+      },
+      "movementFriction": {
+        "scale": 10,
+        "table": "Melee_Friction"
+      }
+    },
+    "durations": {
+      "movement": 10
+    },
+    "buffDuration": 10
+  },
   "requires": "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight"
 };

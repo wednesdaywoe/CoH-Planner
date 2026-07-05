@@ -43,8 +43,20 @@ export const GroupEnergyFlight: Power = {
   "effects": {
     "movement": {
       "fly": {
-        "scale": 0.1,
+        "scale": 2,
         "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedFlying"
+      },
+      "movementControl": {
+        "scale": 10,
+        "table": "Melee_Control"
+      },
+      "movementFriction": {
+        "scale": 10,
+        "table": "Melee_Friction"
       }
     },
     "durations": {

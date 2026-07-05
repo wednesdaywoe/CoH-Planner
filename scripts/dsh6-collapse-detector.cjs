@@ -187,7 +187,19 @@ const tableNorm = (t) => (t == null ? '' : String(t).toLowerCase());
 // doesn't evaluate requires, so without this every such PvP twin false-positives
 // (Lightning Field's -0.5 Melee_EndDrain is the `player eq` variant; the -0.03
 // Melee_Ones `critter eq` PvE value is what correctly survives).
-const isPvpVariant = (a) => /\benttype\s+target>\s+player\s+eq/.test(a.requiresExpression || '');
+//
+// A second PvP-split shape gates on `isPVPMap?` — a template that only applies on
+// PvP maps. The PvE twin negates it (`isPVPMap? !`); the PvP twin uses it straight.
+// The PvE planner shows the PvE branch, so drop the straight (non-negated) form.
+// Enforced Morale is the exemplar: its confuse/fear/hold/immob/stun mez-RESISTANCE
+// lives ONLY on the `isPVPMap?` branch (+3), while PvE keeps just sleep-resist (+5,
+// `isPVPMap? !`) — the converter drops the former, so the detector must too or every
+// one of those 5 resist attribs false-positives. The negative lookahead `(?!\s+!)`
+// matches `isPVPMap?` used positively (PvP) and spares the negated `isPVPMap? !` (PvE).
+const isPvpVariant = (a) => {
+  const req = a.requiresExpression || '';
+  return /\benttype\s+target>\s+player\s+eq/.test(req) || /\bisPVPMap\?(?!\s+!)/.test(req);
+};
 
 // Allowed (checkable) subtypes per effectType — anything else is coverage, not a flag.
 const STD_TYPE = new Set(['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'toxic', 'psionic', 'melee', 'ranged', 'aoe']);
@@ -450,7 +462,16 @@ function main() {
       byTypeGate: 'by-type sibling collapse (multi-type explosion) over Defense/Resistance/' +
               'Elusivity/Mez/MezResist/Movement — an input sub-type with no output slot while ' +
               'the effectType is present. FP-free (5 traced fixes). Finding: clean by-type ' +
-              'collapse does not occur in HC; residual is target-directed / conditional.',
+              'collapse does not occur in HC; residual is target-directed / conditional. ' +
+              '2026-07-05: ally/team MOVEMENT buffs are now emitted (converter movement branch ' +
+              'routes non-Self aspect=Current buffs to effects.movement — Speed Boost/Accelerate ' +
+              'Metabolism +run/fly, Inertial Reduction +jump, Group Fly team fly; calc ' +
+              'ALLY_ONLY_TARGET_TYPES gate keeps ally-only powers off caster totals), clearing the ' +
+              'Movement flags. isPVPMap? PvP-map atoms now filtered like `player eq` (Enforced ' +
+              'Morale mez-RESIST is PvP-map-only; its PvE sleep-resist + full mez PROTECTION already ' +
+              'render). Remaining 2 collapses = display-name aggregation across NPC variants ' +
+              '(Focused Fighting/ESD Arrow), not player last-write-wins; class-absent = control/ ' +
+              'combo/self-conditional edge cases (Telekinesis, Genetic Corruption, Savage Leap).',
       scalarGate: 'site-A table-variant collapse over scalar effectTypes (ToHit/Recovery/Regen/' +
               'Endurance/…): two same-(effectType,sign) templates on DIFFERENT tables where ' +
               'last-write-wins keeps one. resistible folded OUT (buffs have no twin; DSH3 gates ' +

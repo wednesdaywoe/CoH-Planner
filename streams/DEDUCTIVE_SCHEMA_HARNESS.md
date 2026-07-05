@@ -245,12 +245,14 @@ validates the whole differential approach before any converter rewrite.
     table (Low Kick's `Base_Defense +1` on `Melee_Debuff_Def`). **Finding that
     reshapes DSH6:** clean by-type sibling collapse (the most-cited "site B")
     **essentially does not occur in HC** — the by-type maps already prevent it.
-    The 33 residual + 69 class-absent are all **target-directed** (ally/foe buffs
-    the caster-centric converter drops — Speed Boost / Inertial Reduction +run/fly,
-    `convert-powerset.cjs:3930`) or **conditional-pipeline / dual-representation**
-    (Enforced Morale's `kMeter`/`isPVPMap`-gated mez-resist, kept only for `sleep`
-    while all 6 mez show as applied-mez protection). NONE is a last-write-wins
-    clobber. The historical collapse family (PvP-clobber, resistible-twin,
+    The 33 residual + 69 class-absent were all **target-directed** (ally/team buffs
+    the caster-centric converter dropped — Speed Boost / Inertial Reduction +movement)
+    or **conditional-pipeline / dual-representation** (Enforced Morale's
+    `kMeter`/`isPVPMap`-gated mez-resist, kept only for `sleep` while all 6 mez show
+    as applied-mez protection). NONE is a last-write-wins clobber. **DSH6b then
+    emitted the ally movement buffs** (33→2 by-type; the 2 left are NPC display-name
+    aggregation, class-absent = control/self-conditional edge cases). The historical
+    collapse family (PvP-clobber, resistible-twin,
     duration) lives on the scalar/pvMode/resistible axes this v1 folds OUT — those
     are already covered by DSH5 (bridge↔Mids) + DSH3 (twin gate); a converter-output
     scalar-identity gate is DSH6b.
@@ -280,8 +282,22 @@ validates the whole differential approach before any converter rewrite.
       debuff-table flips, no PvE content lost); rebirth/thunderspy unaffected. Lint +
       DSH3 gate + 801 tests + scalar gate all green.
       verify: fn:isPvpEnttypeVariant, tests:src>=801
-    - [ ] Emit ally/foe-targeted buffs for Info-panel display (the in-scope decision)
-      — Speed Boost movement, Enforced Morale conditional mez-resist.
+    - [x] Emit ally/team-targeted **movement** buffs for Info-panel display (the
+      in-scope decision). Converter movement branch now routes non-Self,
+      aspect=Current, positive (non-slow) movement mods to `effects.movement`
+      (previously dropped): Speed Boost / Accelerate Metabolism +run/fly, Inertial
+      Reduction +jump, Group Fly / Group Energy Flight team fly, Toroidal Bubble
+      +jump. The calc's `ALLY_ONLY_TARGET_TYPES` gate ([character-totals.ts:956](src/utils/calculations/character-totals.ts#L956))
+      keeps ally-only powers off the caster's totals — same as this power's existing
+      `rechargeBuff`/`recoveryBuff` — while Self-target team powers correctly buff the
+      caster (Inertial Reduction now grants Kinetics its +jump). Regen: 37 HC+Rebirth
+      files; leak audit clean (no active foe-toggle gains +speed); tspy unaffected.
+      **Enforced Morale mez-resist was NOT a real gap** — its PvE mez PROTECTION
+      (all 6) + sleep-resist already render; the confuse/fear/hold/immob/stun
+      *resistance* is `isPVPMap?` PvP-map-only (correctly dropped). DSH6 detector
+      by-type 33→2 (isPVPMap? filter added, mirroring the `player eq` PvP drop);
+      residual 2 = NPC display-name aggregation, not player collapse.
+      verify: file:src/data/datasets/homecoming/generated/powersets/defender/primary/kinetics/speed-boost.ts, tests:src>=801
     - [ ] Rework extractEffects→project for the conditional/dual-representation gaps;
       retire the `unresistable`/`durationVariants`/`domination`/`selfPenalty` bolt-ons.
     needs: DEDUCTIVE_SCHEMA_HARNESS#DSH6
