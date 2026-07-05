@@ -46,12 +46,12 @@ export const Transfusion: Power = {
   },
   "effects": {
     "enduranceDrain": {
-      "scale": 3.43,
+      "scale": 0.1,
       "table": "Ranged_EndDrain"
     },
     "regenDebuff": {
-      "scale": 11.5,
-      "table": "Ranged_Res_Boolean"
+      "scale": 0.5,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "regenDebuff": 20

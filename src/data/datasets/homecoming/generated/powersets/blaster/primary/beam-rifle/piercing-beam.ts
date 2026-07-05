@@ -41,18 +41,11 @@ export const PiercingBeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 2.17,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.591,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 2.17,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "resistanceDebuff": {
       "smashing": {

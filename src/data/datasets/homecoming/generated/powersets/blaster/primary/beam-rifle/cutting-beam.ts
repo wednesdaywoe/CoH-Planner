@@ -44,18 +44,11 @@ export const CuttingBeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.919,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8695,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.919,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

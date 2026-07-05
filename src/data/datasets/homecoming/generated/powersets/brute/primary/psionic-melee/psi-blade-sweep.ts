@@ -54,21 +54,6 @@ export const PsiBladeSweep: Power = {
       "type": "Psionic",
       "scale": 1.08,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.402,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.206,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.351,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

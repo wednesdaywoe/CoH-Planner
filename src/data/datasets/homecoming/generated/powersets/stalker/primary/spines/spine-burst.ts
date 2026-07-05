@@ -47,11 +47,6 @@ export const SpineBurst: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 0.6058,
-      "table": "Melee_PvPDamage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",

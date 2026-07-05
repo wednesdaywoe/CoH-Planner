@@ -51,11 +51,6 @@ export const EaglesClaw: Power = {
       "table": "Melee_Damage",
       "duration": 5,
       "tickRate": 0.5
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.8907,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

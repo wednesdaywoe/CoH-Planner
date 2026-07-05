@@ -38,21 +38,14 @@ export const HeavyBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2.28,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.629,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 2.28,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 3.34,
+      "scale": 1.67,
       "table": "Melee_Ones"
     }
   }

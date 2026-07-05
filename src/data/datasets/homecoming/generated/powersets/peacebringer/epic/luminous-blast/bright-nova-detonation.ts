@@ -55,21 +55,11 @@ export const BrightNovaDetonation: Power = {
       "type": "Smashing",
       "scale": 0.3,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6871,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.343,
-      "table": "Ranged_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Ranged_Knockback"
     },
     "defenseDebuff": {

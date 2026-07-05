@@ -39,18 +39,11 @@ export const FollowUp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.912,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.461,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.912,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "tohitBuff": {
       "scale": 1,

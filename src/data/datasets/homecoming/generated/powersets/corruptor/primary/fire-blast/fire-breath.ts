@@ -41,27 +41,11 @@ export const FireBreath: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.585,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.4444,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.9697,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
-    }
-  ]
+  "damage": {
+    "type": "Fire",
+    "scale": 0.585,
+    "table": "Ranged_Damage",
+    "duration": 2.1,
+    "tickRate": 1
+  }
 };

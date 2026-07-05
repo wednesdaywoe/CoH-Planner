@@ -58,23 +58,6 @@ export const BoomerangSlice: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.3513,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.0701,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.1,
-      "table": "Melee_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
     }
   ],
   "effects": {

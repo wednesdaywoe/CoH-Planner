@@ -41,25 +41,18 @@ export const ChainInduction: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.6599,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.32,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "enduranceDrain": {
-      "scale": 2,
-      "table": "Melee_EndDrain"
+      "scale": 0.1,
+      "table": "Melee_Ones"
     },
     "recoveryDebuff": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "durations": {

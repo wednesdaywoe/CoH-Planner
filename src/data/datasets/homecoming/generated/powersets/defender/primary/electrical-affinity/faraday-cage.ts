@@ -64,26 +64,55 @@ export const FaradayCage: Power = {
               "damage": [],
               "effects": [
                 {
-                  "type": "RecoveryDebuff",
+                  "type": "ResistanceBuff",
+                  "scale": 1.5,
+                  "table": "Ranged_Res_Dmg"
+                },
+                {
+                  "type": "EndDrainResist",
                   "scale": 0.7,
                   "table": "Ranged_Res_Boolean",
                   "ignoreStrength": true
                 },
                 {
-                  "type": "Immobilize",
-                  "magnitude": 1,
+                  "type": "RecoveryDebuffResist",
+                  "scale": 0.7,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "RechargeDebuffResist",
+                  "scale": 0.7,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "ImmobilizeProtection",
                   "scale": 15,
                   "table": "Ranged_Res_Boolean"
                 },
                 {
-                  "type": "Hold",
-                  "magnitude": 1,
+                  "type": "HoldProtection",
                   "scale": 30,
                   "table": "Ranged_Res_Boolean"
                 },
                 {
-                  "type": "Knockup",
-                  "magnitude": 1,
+                  "type": "StunProtection",
+                  "scale": 30,
+                  "table": "Ranged_Res_Boolean"
+                },
+                {
+                  "type": "SleepProtection",
+                  "scale": 30,
+                  "table": "Ranged_Res_Boolean"
+                },
+                {
+                  "type": "KnockupProtection",
+                  "scale": 10,
+                  "table": "Ranged_Ones"
+                },
+                {
+                  "type": "KnockbackProtection",
                   "scale": 10,
                   "table": "Ranged_Ones"
                 }

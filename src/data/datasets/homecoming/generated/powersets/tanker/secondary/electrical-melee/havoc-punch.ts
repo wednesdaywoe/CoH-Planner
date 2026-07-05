@@ -53,29 +53,19 @@ export const HavocPunch: Power = {
       "type": "Smashing",
       "scale": 0.52,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.0139,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.676,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 2,
-      "table": "Melee_EndDrain"
+      "scale": 0.1,
+      "table": "Melee_Ones"
     },
     "enduranceGain": {
-      "scale": 6.864,
+      "scale": 3.432,
       "table": "Melee_Ones"
     },
     "recoveryDebuff": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "durations": {

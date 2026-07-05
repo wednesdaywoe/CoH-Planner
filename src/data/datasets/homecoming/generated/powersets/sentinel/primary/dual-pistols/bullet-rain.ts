@@ -107,74 +107,11 @@ export const BulletRain: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 1.1,
       "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2348,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2348,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2348,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2348,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2348,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.2348,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Cold",
-      "scale": 0.2348,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.2348,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.2348,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.1,
-      "tickRate": 0.5
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

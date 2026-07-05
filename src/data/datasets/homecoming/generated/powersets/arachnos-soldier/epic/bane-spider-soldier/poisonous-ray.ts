@@ -41,22 +41,13 @@ export const PoisonousRay: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Toxic",
-      "scale": 0.4,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.48,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 0.5
-    }
-  ],
+  "damage": {
+    "type": "Toxic",
+    "scale": 0.4,
+    "table": "Ranged_Damage",
+    "duration": 2.1,
+    "tickRate": 0.5
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

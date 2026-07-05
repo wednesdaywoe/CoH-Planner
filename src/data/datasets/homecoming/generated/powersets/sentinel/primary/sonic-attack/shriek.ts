@@ -58,16 +58,6 @@ export const Shriek: Power = {
       "type": "Energy",
       "scale": 0.42,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.22,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.22,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

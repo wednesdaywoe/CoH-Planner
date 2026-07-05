@@ -54,16 +54,6 @@ export const WaterBurst: Power = {
       "type": "Cold",
       "scale": 0.675,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.1732,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.5195,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

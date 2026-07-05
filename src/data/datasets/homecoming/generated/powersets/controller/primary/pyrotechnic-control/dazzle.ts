@@ -50,16 +50,6 @@ export const Dazzle: Power = {
       "type": "Energy",
       "scale": 0.5,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.3134,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3134,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
@@ -71,10 +61,6 @@ export const Dazzle: Power = {
     "knockback": {
       "scale": 20,
       "table": "Ranged_Ones"
-    },
-    "knockup": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
     },
     "resistanceDebuff": {
       "smashing": {

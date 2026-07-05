@@ -45,23 +45,11 @@ export const Slice: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.2346,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.4946,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.5064,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.2346,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 0.5,

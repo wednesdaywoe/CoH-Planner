@@ -49,21 +49,11 @@ export const PowerBurst: Power = {
       "type": "Energy",
       "scale": 1.82,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.8516,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2774,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Ranged_Knockback"
     }
   },

@@ -41,8 +41,8 @@ export const EnergyDrain: Power = {
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {
-      "scale": 10,
-      "table": "Melee_EndDrain"
+      "scale": 0.33,
+      "table": "Melee_Ones"
     },
     "defenseBuff": {
       "smashing": {

@@ -46,13 +46,6 @@ export const NWSlash: Power = {
       "tickRate": 0.4000000059604645
     },
     {
-      "type": "Lethal",
-      "scale": 0.9855,
-      "table": "Melee_PvPDamage",
-      "duration": 0.6,
-      "tickRate": 0.4000000059604645
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",

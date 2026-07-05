@@ -40,18 +40,11 @@ export const PsychicShockwave: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.0954,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.4737,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.0954,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 2,

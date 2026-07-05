@@ -55,20 +55,6 @@ export const Gloom: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 3.6,
       "tickRate": 0.5
-    },
-    {
-      "type": "Negative",
-      "scale": 0.2361,
-      "table": "Ranged_PvPDamage",
-      "duration": 3.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Negative",
-      "scale": 0.2361,
-      "table": "Ranged_PvPDamage",
-      "duration": 3.6,
-      "tickRate": 0.5
     }
   ],
   "effects": {

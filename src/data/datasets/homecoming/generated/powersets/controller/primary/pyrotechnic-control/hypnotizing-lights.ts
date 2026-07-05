@@ -45,22 +45,13 @@ export const HypnotizingLights: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 0.1,
-      "table": "Ranged_Damage",
-      "duration": 5,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.0627,
-      "table": "Ranged_PvPDamage",
-      "duration": 5,
-      "tickRate": 0.5
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.1,
+    "table": "Ranged_Damage",
+    "duration": 5,
+    "tickRate": 0.5
+  },
   "effects": {
     "sleep": {
       "mag": 3,

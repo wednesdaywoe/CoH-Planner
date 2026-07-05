@@ -45,18 +45,11 @@ export const AriaofStasis: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 0.5206,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.4824,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.4824,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "slow": {
       "runSpeed": {

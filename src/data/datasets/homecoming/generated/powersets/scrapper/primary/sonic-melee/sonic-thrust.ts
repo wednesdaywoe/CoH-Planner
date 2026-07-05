@@ -49,26 +49,6 @@ export const SonicThrust: Power = {
       "type": "Energy",
       "scale": 0.38,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -106,7 +86,7 @@ export const SonicThrust: Power = {
       "debuffResistance": 15
     },
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "buffDuration": 15

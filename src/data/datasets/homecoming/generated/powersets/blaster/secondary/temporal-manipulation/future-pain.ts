@@ -39,18 +39,11 @@ export const FuturePain: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 3.24,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.2862,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 3.24,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "fear": {
       "mag": 3,

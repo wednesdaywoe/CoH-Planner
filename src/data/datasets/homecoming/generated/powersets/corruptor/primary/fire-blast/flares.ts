@@ -50,11 +50,6 @@ export const Flares: Power = {
       "table": "Ranged_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 1.1871,
-      "table": "Ranged_PvPDamage"
     }
   ]
 };

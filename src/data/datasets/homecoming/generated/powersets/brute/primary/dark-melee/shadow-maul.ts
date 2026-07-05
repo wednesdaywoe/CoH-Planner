@@ -59,27 +59,6 @@ export const ShadowMaul: Power = {
       "table": "Melee_Damage",
       "duration": 2,
       "tickRate": 0.625
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2385,
-      "table": "Melee_PvPDamage",
-      "duration": 2,
-      "tickRate": 0.625
-    },
-    {
-      "type": "Negative",
-      "scale": 0.2385,
-      "table": "Melee_PvPDamage",
-      "duration": 2,
-      "tickRate": 0.625
-    },
-    {
-      "type": "Negative",
-      "scale": 0.2955,
-      "table": "Melee_PvPDamage",
-      "duration": 2,
-      "tickRate": 1.25
     }
   ],
   "effects": {

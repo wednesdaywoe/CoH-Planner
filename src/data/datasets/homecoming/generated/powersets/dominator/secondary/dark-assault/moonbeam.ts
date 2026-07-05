@@ -52,11 +52,6 @@ export const Moonbeam: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.864,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

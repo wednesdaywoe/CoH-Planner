@@ -45,12 +45,12 @@ export const EMPulse: Power = {
       "table": "Ranged_Immobilize"
     },
     "enduranceDrain": {
-      "scale": 17.12,
+      "scale": 0.45,
       "table": "Ranged_EndDrain"
     },
     "regenDebuff": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
+      "scale": 10,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "regenDebuff": 15,

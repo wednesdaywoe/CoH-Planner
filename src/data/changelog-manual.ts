@@ -21,9 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-07-04',
+    date: '2026-07-05',
 
     items: [
+      { message: 'Fixed an issue that was flattening power effects that split into enhancable and non-enhanceable', type: 'fix'},
       { message: 'Comprehensive overhaul of Domination to make it data-driven', type: 'fix'},
       { message: 'Pet and Pseudopet effects are now wired up for Thunderspy dataset', type: 'fix'},
       { message: 'Added a recharge buff/debuff simulation to the attack chain builder', type: 'feat'},

@@ -83,46 +83,11 @@ export const EmptyClips: Power = {
       "table": "Ranged_Damage",
       "duration": 1.6,
       "tickRate": 0.5
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2612,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2612,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0919,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.2612,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.2612,
-      "table": "Ranged_PvPDamage",
-      "duration": 1.6,
-      "tickRate": 0.5
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.8,
+      "scale": 0.4,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 8

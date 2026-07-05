@@ -55,7 +55,7 @@ export const Shock: Power = {
       "table": "Ranged_Ones"
     },
     "enduranceDrain": {
-      "scale": 5.16,
+      "scale": 0.16,
       "table": "Ranged_EndDrain"
     },
     "buffDuration": 25

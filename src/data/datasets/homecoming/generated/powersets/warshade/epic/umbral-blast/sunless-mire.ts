@@ -42,18 +42,11 @@ export const SunlessMire: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.1105,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 1,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "slow": {
       "jumpHeight": {

@@ -61,21 +61,11 @@ export const Geyser: Power = {
       "type": "Smashing",
       "scale": 0.928,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4538,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.0589,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockup": {
-      "scale": 3,
+      "scale": 1.5,
       "table": "Ranged_Ones"
     },
     "slow": {

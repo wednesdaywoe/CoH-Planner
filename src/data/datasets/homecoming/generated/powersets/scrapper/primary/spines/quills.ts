@@ -46,23 +46,11 @@ export const Quills: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.1183,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.15,
-      "table": "Melee_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.15,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "rechargeDebuff": {
       "scale": 0.1,

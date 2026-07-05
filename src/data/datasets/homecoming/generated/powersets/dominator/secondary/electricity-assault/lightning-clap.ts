@@ -42,22 +42,15 @@ export const LightningClap: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.531,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "enduranceDrain": {
-      "scale": 3,
-      "table": "Ranged_EndDrain"
+      "scale": 0.15,
+      "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -82,11 +75,6 @@ export const LightningClap: Power = {
         "type": "Energy",
         "scale": 3.56,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Energy",
-        "scale": 2.131,
-        "table": "Ranged_PvPDamage"
       }
     ]
   }

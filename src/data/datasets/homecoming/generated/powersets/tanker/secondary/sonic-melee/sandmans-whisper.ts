@@ -52,16 +52,6 @@ export const SandmansWhisper: Power = {
       "type": "Energy",
       "scale": 0.82,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.9795,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.9795,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

@@ -50,16 +50,6 @@ export const WhirlingHands: Power = {
       "type": "Energy",
       "scale": 0.6901,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6743,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.0114,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

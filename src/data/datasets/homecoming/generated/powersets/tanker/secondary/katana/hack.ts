@@ -42,18 +42,11 @@ export const Hack: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.16,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.419,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.16,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

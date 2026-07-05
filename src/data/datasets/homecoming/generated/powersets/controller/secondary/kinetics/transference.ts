@@ -43,7 +43,7 @@ export const Transference: Power = {
       "perTarget": 40
     },
     "enduranceDrain": {
-      "scale": 17.12,
+      "scale": 0.45,
       "table": "Ranged_EndDrain"
     }
   }

@@ -50,21 +50,11 @@ export const ChargedBolts: Power = {
       "type": "Energy",
       "scale": 1,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.26,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.26,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 1.32,
+      "scale": 0.07,
       "table": "Ranged_EndDrain"
     },
     "maxStacks": 2,

@@ -38,18 +38,11 @@ export const FRTMentalBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.3908,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.8089,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.3908,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "rechargeDebuff": {
       "scale": 0.3,

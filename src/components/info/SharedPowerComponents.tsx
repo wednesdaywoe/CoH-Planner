@@ -6,7 +6,7 @@
 import { useState } from 'react';
 import type { PowerEffects, NumberOrScaled, SpecialEffect } from '@/types';
 import type { ExtraInstance } from './powerDisplayUtils';
-import { getScaleValue } from '@/types';
+import { getScaleValue, isScaledEffect } from '@/types';
 import {
   calculateResistancePercent,
   calcThreeTier,
@@ -30,6 +30,7 @@ import {
   type GroupedEffect,
 } from '@/data/effect-registry';
 import { getTableValue } from '@/data/at-tables';
+import { Tooltip } from '@/components/ui/Tooltip';
 
 // ============================================
 // THREE-TIER DISPLAY COMPONENTS
@@ -400,6 +401,25 @@ function sectionPriorityForCategory(cat: EffectCategory): number {
  * can see the simultaneous instances. Format mirrors the base row but
  * dimmed and prefixed with `+` and suffixed with `(from <Source>)`.
  */
+/**
+ * Compact "unresistable" marker for HC's split-debuff twin rows. The full word
+ * overflowed the fixed-width label column, so the second (unresistable) half is
+ * now flagged with a small superscript-style asterisk carrying a hover/touch
+ * tooltip instead. The trigger is focusable so it also surfaces on keyboard
+ * focus and on touch (tap → focus).
+ */
+function UnresistableMark() {
+  return (
+    <Tooltip
+      content="Unresistable — this half ignores the target's debuff resistance. Both halves apply."
+      position="top"
+      triggerClassName="inline-block align-baseline"
+    >
+      <span tabIndex={0} aria-label="unresistable" className="text-slate-400 cursor-help ml-0.5">*</span>
+    </Tooltip>
+  );
+}
+
 function renderExtraInstanceRow(params: {
   key: string;
   baseKey: string;
@@ -1369,6 +1389,14 @@ export function RegistryEffectsDisplay({
         // config (see formatEffectValueForConfig).
         const formatValue = (v: number) => formatEffectValueForConfig(v, config);
 
+        // When this debuff applies as multiple instances at different durations
+        // (EMP -Regen 15s + 45s), annotate the primary row with its own duration
+        // so it reads unambiguously against the sibling variant rows appended
+        // below. Only for effects that carry `durationVariants`.
+        const primaryVariantDur = (isScaledEffect(rawValue) && rawValue.durationVariants?.length)
+          ? durations?.[key]
+          : undefined;
+
         return (
           <div key={key} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
             <span
@@ -1376,6 +1404,11 @@ export function RegistryEffectsDisplay({
               title={byTypeLabel ? `Affects: ${byTypeLabel}` : undefined}
             >
               {label}
+              {primaryVariantDur != null && (
+                <span className="text-slate-400 font-normal text-[11px] ml-0.5">
+                  ({Number.isInteger(primaryVariantDur) ? primaryVariantDur : primaryVariantDur.toFixed(1)}s)
+                </span>
+              )}
             </span>
             <span className="text-slate-200">{formatValue(tiers.base)}</span>
             {enhanceable ? (
@@ -1445,6 +1478,85 @@ export function RegistryEffectsDisplay({
         if (sectionHeader) result.push(sectionHeader);
         result.push(itemNode);
         result.push(...extraRows);
+        // Second "(unresistable)" row for HC's split debuffs (Flash Arrow -ToHit,
+        // Poison Gas -DMG): the power applies an equal half that ignores the
+        // target's debuff resistance. Same value/tiers as the resistable half —
+        // only the label differs. The converter tags the effect `unresistable`.
+        if (group.type === 'single') {
+          const gi = group.item;
+          const gv = gi.effect.value;
+          if (
+            gi.effect.config.format === 'percent' &&
+            gv && typeof gv === 'object' && 'unresistable' in gv &&
+            (gv as { unresistable?: boolean }).unresistable
+          ) {
+            const cfg = gi.effect.config;
+            const fv = (v: number) => formatEffectValueForConfig(v, cfg);
+            const enh = !!cfg.enhancementAspect;
+            const hasE = Math.abs(gi.tiers.enhanced - gi.tiers.base) > 0.001;
+            const hasF = Math.abs(gi.tiers.final - gi.tiers.enhanced) > 0.001;
+            result.push(
+              <div key={`${gi.effect.key}-unres-${groupIdx}`} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+                <span className={cfg.colorClass}>
+                  {cfg.label}
+                  <UnresistableMark />
+                </span>
+                <span className="text-slate-200">{fv(gi.tiers.base)}</span>
+                {enh
+                  ? <span className={hasE ? 'text-green-400' : 'text-slate-300'}>{fv(gi.tiers.enhanced)}</span>
+                  : <span className="text-slate-500">—</span>}
+                {enh
+                  ? <span className={hasF ? finalColumnColor : 'text-slate-300'}>{fv(gi.tiers.final)}</span>
+                  : <span className="text-slate-500">—</span>}
+              </div>
+            );
+          }
+        }
+        // Duration-variant rows for debuffs the power applies more than once at
+        // different durations (EMP -Regen 15s + 45s, Thunderous Blast -Recovery
+        // 10s + 20s). The primary row (annotated with its own duration above)
+        // holds the longest-lived instance; each variant is the same debuff on
+        // the same table at a shorter duration, so its value scales linearly
+        // from the primary's tiers — keeping formatting identical without
+        // re-deriving the AT-table math.
+        if (group.type === 'single') {
+          const gi = group.item;
+          const gv = gi.effect.value;
+          if (
+            gi.effect.config.format === 'percent' &&
+            isScaledEffect(gv) && gv.durationVariants?.length && gv.scale
+          ) {
+            const cfg = gi.effect.config;
+            const fv = (v: number) => formatEffectValueForConfig(v, cfg);
+            const enh = !!cfg.enhancementAspect;
+            for (const [vi, variant] of gv.durationVariants.entries()) {
+              const ratio = variant.scale / gv.scale;
+              const vBase = gi.tiers.base * ratio;
+              const vEnh = gi.tiers.enhanced * ratio;
+              const vFinal = gi.tiers.final * ratio;
+              const hasE = Math.abs(vEnh - vBase) > 0.001;
+              const hasF = Math.abs(vFinal - vEnh) > 0.001;
+              const durStr = Number.isInteger(variant.duration)
+                ? variant.duration
+                : variant.duration.toFixed(1);
+              result.push(
+                <div key={`${gi.effect.key}-durvar-${groupIdx}-${vi}`} className={`grid ${gridCols} gap-1 items-baseline ${fontSize}`}>
+                  <span className={cfg.colorClass}>
+                    {cfg.label}
+                    <span className="text-slate-400 font-normal text-[11px] ml-0.5">({durStr}s)</span>
+                  </span>
+                  <span className="text-slate-200">{fv(vBase)}</span>
+                  {enh
+                    ? <span className={hasE ? 'text-green-400' : 'text-slate-300'}>{fv(vEnh)}</span>
+                    : <span className="text-slate-500">—</span>}
+                  {enh
+                    ? <span className={hasF ? finalColumnColor : 'text-slate-300'}>{fv(vFinal)}</span>
+                    : <span className="text-slate-500">—</span>}
+                </div>
+              );
+            }
+          }
+        }
         return result;
       })}
 

@@ -53,7 +53,7 @@ export const BlindingPowder: Power = {
       "table": "Melee_Sleep"
     },
     "placate": {
-      "scale": 6,
+      "scale": 8,
       "table": "Melee_Taunt"
     },
     "perceptionDebuff": {

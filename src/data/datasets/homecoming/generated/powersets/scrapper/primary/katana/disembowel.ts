@@ -42,31 +42,14 @@ export const Disembowel: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1.8,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.6909,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.6909,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.8,
-      "table": "Melee_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.8,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockup": {
-      "scale": 4,
+      "scale": 2,
       "table": "Melee_Knockback"
     },
     "defenseDebuff": {

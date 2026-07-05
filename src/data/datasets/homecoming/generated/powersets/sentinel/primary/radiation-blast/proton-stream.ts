@@ -55,20 +55,6 @@ export const ProtonStream: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 0.41,
       "tickRate": 0.12999999523162842
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5123,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.41,
-      "tickRate": 0.12999999523162842
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5123,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.41,
-      "tickRate": 0.12999999523162842
     }
   ],
   "effects": {

@@ -38,7 +38,7 @@ export const BlackDwarfAntagonize: Power = {
   "maxSlots": 6,
   "effects": {
     "taunt": {
-      "scale": 5,
+      "scale": 20,
       "table": "Melee_Taunt"
     }
   },

@@ -53,31 +53,21 @@ export const HeadSplitter: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 2.1609,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.1609,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 2.28,
       "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1.34,
-      "table": "Melee_Ones"
-    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 10
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
     },
     "buffDuration": 10
   },

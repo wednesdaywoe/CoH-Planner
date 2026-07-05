@@ -61,20 +61,6 @@ export const SteamSpray: Power = {
     },
     {
       "type": "Fire",
-      "scale": 0.6055,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 0.6055,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 3.1,
@@ -86,20 +72,6 @@ export const SteamSpray: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 1.4855,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Fire",
-      "scale": 1.4855,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.6,
-      "tickRate": 0.5
     }
   ],
   "effects": {

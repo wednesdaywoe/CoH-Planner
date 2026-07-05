@@ -39,21 +39,14 @@ export const Updraft: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.5342,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockup": {
-      "scale": 12,
+      "scale": 6,
       "table": "Ranged_Knockback"
     },
     "slow": {

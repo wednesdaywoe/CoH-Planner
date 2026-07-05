@@ -51,23 +51,11 @@ export const Shatter: Power = {
       "table": "Melee_Damage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.5109,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1101,
-      "table": "Melee_PvPDamage",
-      "duration": 4.1,
-      "tickRate": 1
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   },

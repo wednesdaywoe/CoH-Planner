@@ -49,8 +49,8 @@ export const EMPArrow: Power = {
       "table": "Ranged_Immobilize"
     },
     "enduranceDrain": {
-      "scale": 16.67,
-      "table": "Ranged_EndDrain"
+      "scale": 0.55,
+      "table": "Ranged_Ones"
     }
   }
 };

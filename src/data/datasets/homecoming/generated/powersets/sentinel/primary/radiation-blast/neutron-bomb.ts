@@ -53,16 +53,6 @@ export const NeutronBomb: Power = {
       "type": "Energy",
       "scale": 0.9,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6797,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6797,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

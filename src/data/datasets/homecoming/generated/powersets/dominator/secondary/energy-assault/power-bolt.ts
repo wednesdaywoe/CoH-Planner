@@ -49,21 +49,11 @@ export const PowerBolt: Power = {
       "type": "Energy",
       "scale": 0.6,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.504,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.756,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.4,
+      "scale": 0.7,
       "table": "Ranged_Knockback"
     }
   },

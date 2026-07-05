@@ -43,18 +43,11 @@ export const Terrify: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.7437,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "fear": {
       "mag": 3,

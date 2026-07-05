@@ -8913,6 +8913,16 @@ export function getTableValue(
     if (aliased !== key) table = at.tables[aliased];
   }
   
+  // Alias the game's "_Dam" damage-table spelling to the extracted
+  // "_dmg" key. Powers reference e.g. "Ranged_Debuff_Dam" but the AT
+  // tables are keyed "ranged_debuff_dmg"; without this the lookup misses
+  // and the display falls back to a generic half-rate (damage debuffs
+  // rendered at half — e.g. Ice Arrow -10% instead of -20%).
+  if (!table) {
+    const aliased = key.replace(/_dam$/, '_dmg');
+    if (aliased !== key) table = at.tables[aliased];
+  }
+  
   if (!table) return undefined;
   
   // Level 1 = index 0; clamp to table length (HC has 105 values,

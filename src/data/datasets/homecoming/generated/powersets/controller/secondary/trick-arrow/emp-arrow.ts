@@ -65,28 +65,55 @@ export const EMPArrow: Power = {
               "damage": [],
               "effects": [
                 {
-                  "type": "RecoveryDebuff",
+                  "type": "ResistanceBuff",
+                  "scale": 1.5,
+                  "table": "Ranged_Res_Dmg",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "EndDrainResist",
                   "scale": 0.7,
                   "table": "Ranged_Res_Boolean",
                   "ignoreStrength": true
                 },
                 {
-                  "type": "Immobilize",
-                  "magnitude": 1,
+                  "type": "RecoveryDebuffResist",
+                  "scale": 0.7,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "ImmobilizeProtection",
                   "scale": 15,
                   "table": "Ranged_Res_Boolean",
                   "ignoreStrength": true
                 },
                 {
-                  "type": "Hold",
-                  "magnitude": 1,
+                  "type": "HoldProtection",
                   "scale": 30,
                   "table": "Ranged_Res_Boolean",
                   "ignoreStrength": true
                 },
                 {
-                  "type": "Knockup",
-                  "magnitude": 1,
+                  "type": "StunProtection",
+                  "scale": 30,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "SleepProtection",
+                  "scale": 30,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "KnockupProtection",
+                  "scale": 10,
+                  "table": "Ranged_Ones",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "KnockbackProtection",
                   "scale": 10,
                   "table": "Ranged_Ones",
                   "ignoreStrength": true
@@ -212,12 +239,18 @@ export const EMPArrow: Power = {
       }
     },
     "enduranceDrain": {
-      "scale": 16.67,
-      "table": "Ranged_EndDrain"
+      "scale": 0.4,
+      "table": "Ranged_Ones"
     },
     "regenDebuff": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
+      "scale": 5,
+      "table": "Ranged_Ones",
+      "durationVariants": [
+        {
+          "scale": 5,
+          "duration": 15
+        }
+      ]
     },
     "hold": {
       "mag": 3,

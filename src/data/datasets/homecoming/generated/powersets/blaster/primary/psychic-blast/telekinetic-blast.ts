@@ -50,16 +50,11 @@ export const TelekineticBlast: Power = {
       "type": "Psionic",
       "scale": 1.5,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.5002,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 8,
+      "scale": 4,
       "table": "Ranged_Knockback"
     }
   },

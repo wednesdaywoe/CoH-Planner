@@ -56,11 +56,6 @@ export const ChainFences: Power = {
       "table": "Ranged_Damage",
       "duration": 5.2,
       "tickRate": 2
-    },
-    {
-      "type": "Energy",
-      "scale": 1.539,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
@@ -75,8 +70,8 @@ export const ChainFences: Power = {
       }
     },
     "enduranceDrain": {
-      "scale": 2,
-      "table": "Ranged_EndDrain"
+      "scale": 0.1,
+      "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,

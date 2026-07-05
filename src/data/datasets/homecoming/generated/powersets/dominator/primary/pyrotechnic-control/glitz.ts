@@ -51,29 +51,9 @@ export const Glitz: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.1019,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1019,
-      "table": "Melee_PvPDamage"
-    },
-    {
       "type": "Energy",
       "scale": 0.1625,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1019,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1019,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

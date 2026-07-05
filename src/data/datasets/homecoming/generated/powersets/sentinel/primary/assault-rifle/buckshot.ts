@@ -53,21 +53,11 @@ export const Buckshot: Power = {
       "type": "Lethal",
       "scale": 0.91,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.625,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.625,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.5,
+      "scale": 0.75,
       "table": "Ranged_Knockback"
     }
   },

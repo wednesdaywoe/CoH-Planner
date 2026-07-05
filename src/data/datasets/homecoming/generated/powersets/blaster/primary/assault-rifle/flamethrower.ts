@@ -41,20 +41,11 @@ export const Flamethrower: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.3872,
-      "table": "Ranged_Damage",
-      "duration": 4.7,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2379,
-      "table": "Ranged_PvPDamage",
-      "duration": 4.7,
-      "tickRate": 1
-    }
-  ]
+  "damage": {
+    "type": "Fire",
+    "scale": 0.3872,
+    "table": "Ranged_Damage",
+    "duration": 4.7,
+    "tickRate": 1
+  }
 };

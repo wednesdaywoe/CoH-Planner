@@ -52,16 +52,6 @@ export const BitterFreezeRay: Power = {
       "type": "Cold",
       "scale": 2.92,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.79,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.79,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

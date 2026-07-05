@@ -60,7 +60,7 @@ export const Torrent: Power = {
       "tohitDebuff": 10
     },
     "knockback": {
-      "scale": 10,
+      "scale": 5,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

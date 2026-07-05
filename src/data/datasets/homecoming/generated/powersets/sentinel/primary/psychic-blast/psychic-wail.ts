@@ -55,11 +55,6 @@ export const PsychicWail: Power = {
       "type": "Psionic",
       "scale": 0.928,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.345,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

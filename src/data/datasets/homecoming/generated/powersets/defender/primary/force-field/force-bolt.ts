@@ -47,7 +47,7 @@ export const ForceBolt: Power = {
   },
   "effects": {
     "knockback": {
-      "scale": 18,
+      "scale": 9,
       "table": "Ranged_Knockback"
     },
     "resistanceDebuff": {

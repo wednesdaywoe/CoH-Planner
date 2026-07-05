@@ -40,18 +40,11 @@ export const Subdue: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.2599,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 3,

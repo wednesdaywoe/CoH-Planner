@@ -53,16 +53,6 @@ export const AtomSmasher: Power = {
       "type": "Toxic",
       "scale": 1.16,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3357,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

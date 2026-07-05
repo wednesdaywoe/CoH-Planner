@@ -52,36 +52,6 @@ export const RadioactiveSmash: Power = {
       "type": "Energy",
       "scale": 1.11,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4325,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2975,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4325,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.2975,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.37,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.11,
-      "table": "Melee_Damage"
     }
   ],
   "effects": {
@@ -93,7 +63,7 @@ export const RadioactiveSmash: Power = {
       "defenseDebuff": 10
     },
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "buffDuration": 10

@@ -49,16 +49,6 @@ export const SmashingBlow: Power = {
       "type": "Energy",
       "scale": 1,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.456,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.064,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

@@ -39,18 +39,11 @@ export const ThunderKick: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.84,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.101,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.84,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 2,

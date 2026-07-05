@@ -38,20 +38,20 @@ export const RefractionShield: Power = {
       "scale": 4,
       "table": "Ranged_Immobilize"
     },
-    "effectDuration": 4,
+    "effectDuration": 30,
     "durations": {
-      "immobilize": 4,
-      "untouchable": 4,
-      "onlyAffectsSelf": 4
+      "immobilize": 30,
+      "untouchable": 30,
+      "onlyAffectsSelf": 30
     },
     "untouchable": {
       "scale": 4,
-      "table": "Ranged_Ones"
+      "table": "Ranged_Immobilize"
     },
     "onlyAffectsSelf": {
       "scale": 4,
-      "table": "Ranged_Ones"
+      "table": "Ranged_Immobilize"
     },
-    "buffDuration": 4
+    "buffDuration": 30
   }
 };

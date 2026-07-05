@@ -52,21 +52,11 @@ export const WhiteDwarfStrike: Power = {
       "type": "Energy",
       "scale": 0.5,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6528,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.9792,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {

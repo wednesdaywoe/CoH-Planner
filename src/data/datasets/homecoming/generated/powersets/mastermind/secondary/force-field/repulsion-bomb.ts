@@ -88,7 +88,7 @@ export const RepulsionBomb: Power = {
       "resistanceDebuff": 30
     },
     "knockback": {
-      "scale": 9.67,
+      "scale": 9,
       "table": "Ranged_Ones"
     },
     "stun": {

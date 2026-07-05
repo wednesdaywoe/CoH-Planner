@@ -41,18 +41,11 @@ export const Clobber: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2.92,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.9009,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 2.92,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 3,

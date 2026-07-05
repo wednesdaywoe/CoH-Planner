@@ -52,21 +52,11 @@ export const M30Grenade: Power = {
       "type": "Lethal",
       "scale": 0.2965,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.4554,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2243,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Ranged_Knockback"
     }
   },

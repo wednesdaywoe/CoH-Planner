@@ -28,7 +28,7 @@ export const Shockwaves: Power = {
   "maxSlots": 0,
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   },

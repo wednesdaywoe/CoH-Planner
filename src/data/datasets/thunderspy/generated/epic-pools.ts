@@ -212,7 +212,21 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 19.5,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "duration": 15,
+            "entities": [
+              {
+                "entity": "Pets_IceStorm",
+                "count": 1
+              },
+              {
+                "entity": "Pets_Embraced_IceStorm",
+                "count": 1
+              }
+            ]
+          }
         }
       }
     ]
@@ -382,7 +396,13 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+            "duration": 240,
+            "entityCount": 3
+          }
         }
       },
       {
@@ -554,7 +574,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Adept",
+            "duration": 240
+          }
         }
       },
       {
@@ -1514,7 +1539,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
+            "duration": 240
+          }
         }
       }
     ]
@@ -1715,7 +1745,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Blaster",
+            "duration": 240
+          }
         }
       }
     ]
@@ -1987,7 +2022,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Striker",
+            "duration": 240
+          }
         }
       }
     ]
@@ -2195,7 +2235,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Blood_Widow",
+            "duration": 240
+          }
         }
       }
     ]
@@ -2903,7 +2948,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 45,
           "endurance": 14,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Water_Spout",
+            "duration": 30
+          }
         }
       },
       {
@@ -3036,7 +3086,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 20,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Blue_Corolax",
+            "duration": 240
+          }
         }
       }
     ]
@@ -3234,7 +3289,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
+            "duration": 240
+          }
         }
       }
     ]
@@ -3447,7 +3507,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 20,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Guardian",
+            "duration": 240
+          }
         }
       }
     ]
@@ -3822,7 +3887,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 20,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Fortunata_Seer",
+            "duration": 240
+          }
         }
       }
     ]
@@ -4024,7 +4094,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
+            "duration": 240
+          }
         }
       }
     ]
@@ -4216,7 +4291,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
+            "duration": 240
+          }
         }
       }
     ]
@@ -4437,7 +4517,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Adept",
+            "duration": 240
+          }
         }
       }
     ]
@@ -4633,7 +4718,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Fortunata_Mistress",
+            "duration": 240
+          }
         }
       }
     ]
@@ -5310,7 +5400,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 45,
           "endurance": 14,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Water_Spout",
+            "duration": 30
+          }
         }
       },
       {
@@ -5444,7 +5539,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 20,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Blue_Corolax",
+            "duration": 240
+          }
         }
       }
     ]
@@ -5652,7 +5752,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 20,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
+            "duration": 240
+          }
         }
       }
     ]
@@ -5870,7 +5975,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 20,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Guardian",
+            "duration": 240
+          }
         }
       }
     ]
@@ -6074,7 +6184,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 20,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Fortunata_Seer",
+            "duration": 240
+          }
         }
       }
     ]
@@ -6240,7 +6355,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 75,
           "endurance": 10.4,
           "activationTime": 3.1,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Quicksand",
+            "duration": 20
+          }
         }
       },
       {
@@ -7519,7 +7639,12 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 300,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Phoenix",
+            "duration": 5
+          }
         }
       },
       {
@@ -7604,7 +7729,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 60,
           "endurance": 26,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_RainofFire",
+            "duration": 15
+          }
         }
       },
       {
@@ -7706,7 +7836,12 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 300,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Phoenix",
+            "duration": 5
+          }
         }
       },
       {
@@ -7784,7 +7919,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 90,
           "endurance": 13,
           "activationTime": 3.07,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Bonfire",
+            "duration": 45
+          }
         }
       },
       {
@@ -7924,7 +8064,12 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 300,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Phoenix",
+            "duration": 5
+          }
         }
       }
     ]
@@ -8168,7 +8313,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 60,
           "endurance": 13,
           "activationTime": 3.07,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Bonfire",
+            "duration": 45
+          }
         }
       },
       {
@@ -8337,7 +8487,12 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 300,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Phoenix",
+            "duration": 5
+          }
         }
       }
     ]
@@ -8534,7 +8689,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 60,
           "endurance": 13.65,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Epic_IceStorm",
+            "duration": 15
+          }
         }
       }
     ]
@@ -8582,7 +8742,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 60,
           "endurance": 18.2,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Sleet_Defender",
+            "duration": 15
+          }
         }
       },
       {
@@ -8716,7 +8881,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 60,
           "endurance": 15.6,
           "activationTime": 2.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Epic_IceStorm",
+            "duration": 15
+          }
         }
       }
     ]
@@ -8874,7 +9044,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 0.52,
           "activationTime": 2.03,
           "activatePeriod": 1,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet"
+          }
         }
       },
       {
@@ -11627,7 +11801,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 120,
           "endurance": 18.2,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Water_Spout_Stalker",
+            "duration": 30
+          }
         }
       },
       {
@@ -11737,7 +11916,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Coral_Guardian_Warder",
+            "duration": 240
+          }
         }
       }
     ]
@@ -11952,7 +12136,13 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+            "duration": 240,
+            "entityCount": 3
+          }
         }
       }
     ]
@@ -12221,7 +12411,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Adept",
+            "duration": 240
+          }
         }
       }
     ]
@@ -12431,7 +12626,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Night_Widow",
+            "duration": 240
+          }
         }
       }
     ]
@@ -12879,7 +13079,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
+            "duration": 240
+          }
         }
       }
     ]
@@ -13086,7 +13291,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.03,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Toxic_Tarantula",
+            "duration": 240
+          }
         }
       }
     ]
@@ -13358,7 +13568,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 1.17,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Mu_Striker",
+            "duration": 240
+          }
         }
       }
     ]
@@ -13565,7 +13780,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 480,
           "endurance": 26,
           "activationTime": 3.2,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Patron_Powers_Blood_Widow",
+            "duration": 240
+          }
         }
       }
     ]
@@ -13647,7 +13867,12 @@ export const EPIC_POOLS_RAW = {
           "recharge": 45,
           "endurance": 9.75,
           "activationTime": 1.07,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Caltrops",
+            "duration": 45
+          }
         }
       },
       {

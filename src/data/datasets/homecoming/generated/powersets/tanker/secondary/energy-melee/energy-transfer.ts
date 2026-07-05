@@ -46,11 +46,6 @@ export const EnergyTransfer: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Energy",
-      "scale": 4.055,
-      "table": "Melee_PvPDamage"
-    },
-    {
       "type": "Special",
       "scale": -1,
       "table": "Melee_HealSelf"

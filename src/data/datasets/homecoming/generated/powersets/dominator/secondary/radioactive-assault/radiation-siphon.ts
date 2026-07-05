@@ -53,16 +53,6 @@ export const RadiationSiphon: Power = {
       "type": "Energy",
       "scale": 1.71,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6071,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.8286,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

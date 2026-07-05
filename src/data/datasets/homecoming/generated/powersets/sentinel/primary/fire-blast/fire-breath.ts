@@ -55,34 +55,6 @@ export const FireBreath: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.4489,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.4489,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.9697,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.9697,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
     }
   ]
 };

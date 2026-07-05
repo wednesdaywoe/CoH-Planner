@@ -43,18 +43,11 @@ export const KnockoutBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 3.56,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.9609,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 3.56,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "hold": {
       "mag": 3,
@@ -62,7 +55,7 @@ export const KnockoutBlow: Power = {
       "table": "Melee_Stun"
     },
     "knockup": {
-      "scale": 6,
+      "scale": 3,
       "table": "Melee_Knockback"
     }
   }

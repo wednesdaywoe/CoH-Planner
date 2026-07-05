@@ -38,18 +38,11 @@ export const PulseRifleBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.26,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "regenDebuff": {
       "scale": 2,

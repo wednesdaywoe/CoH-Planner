@@ -43,28 +43,11 @@ export const LightningClap: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 2.76,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.76,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.861,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.861,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 2.76,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 2,
@@ -72,8 +55,8 @@ export const LightningClap: Power = {
       "table": "Melee_Stun"
     },
     "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
+      "scale": 0.5,
+      "table": "Melee_Ones"
     }
   },
   "specialEffects": [

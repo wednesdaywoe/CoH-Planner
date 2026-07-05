@@ -40,21 +40,14 @@ export const MaceBeam: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.32,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.809,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.32,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Knockback"
     }
   },

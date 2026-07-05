@@ -162,12 +162,12 @@ export const PowerSurge: Power = {
       "table": "Melee_Res_Boolean"
     },
     "enduranceDrain": {
-      "scale": 16.67,
-      "table": "Ranged_EndDrain"
+      "scale": 0.55,
+      "table": "Ranged_Ones"
     },
     "regenDebuff": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
+      "scale": 10,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 30
   }

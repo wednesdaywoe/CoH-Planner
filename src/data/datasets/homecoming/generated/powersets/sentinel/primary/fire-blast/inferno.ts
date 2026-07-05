@@ -56,11 +56,6 @@ export const Inferno: Power = {
     },
     {
       "type": "Fire",
-      "scale": 1.525,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.15,
       "table": "Ranged_Damage",
       "duration": 2.1,

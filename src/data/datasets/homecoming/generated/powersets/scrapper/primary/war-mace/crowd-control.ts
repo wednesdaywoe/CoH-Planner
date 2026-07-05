@@ -42,36 +42,14 @@ export const CrowdControl: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.61,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.516,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.764,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.516,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.61,
-      "table": "Melee_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.61,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   },

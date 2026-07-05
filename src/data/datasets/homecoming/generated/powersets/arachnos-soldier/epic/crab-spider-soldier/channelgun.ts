@@ -41,18 +41,11 @@ export const Channelgun: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.16,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.3,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.16,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

@@ -41,18 +41,11 @@ export const DarkBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.2599,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "tohitDebuff": {
       "scale": 0.75,

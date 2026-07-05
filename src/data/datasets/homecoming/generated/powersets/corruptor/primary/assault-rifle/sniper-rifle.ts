@@ -43,21 +43,14 @@ export const SniperRifle: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.749,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 1.4,
+      "scale": 0.7,
       "table": "Ranged_Knockback"
     }
   },
@@ -71,11 +64,6 @@ export const SniperRifle: Power = {
         "type": "Lethal",
         "scale": 2.28,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Lethal",
-        "scale": 1.699,
-        "table": "Ranged_PvPDamage"
       }
     ]
   }

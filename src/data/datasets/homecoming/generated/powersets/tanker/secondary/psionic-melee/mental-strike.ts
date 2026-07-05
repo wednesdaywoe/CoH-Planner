@@ -49,16 +49,6 @@ export const MentalStrike: Power = {
       "type": "Psionic",
       "scale": 0.63,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.305,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.915,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

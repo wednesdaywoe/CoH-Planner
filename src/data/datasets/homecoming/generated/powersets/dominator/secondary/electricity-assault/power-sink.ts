@@ -51,16 +51,6 @@ export const PowerSink: Power = {
       "type": "Energy",
       "scale": 0.876,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.953,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.837,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -82,7 +72,7 @@ export const PowerSink: Power = {
       "recoveryDebuff": 4
     },
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "buffDuration": 4

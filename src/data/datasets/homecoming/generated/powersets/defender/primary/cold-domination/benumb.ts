@@ -34,8 +34,8 @@ export const Benumb: Power = {
   "maxSlots": 6,
   "effects": {
     "regenDebuff": {
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
+      "scale": 5,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "regenDebuff": 30,
@@ -47,10 +47,6 @@ export const Benumb: Power = {
     "enduranceDrain": {
       "scale": 0.05,
       "table": "Ranged_Ones"
-    },
-    "enduranceGain": {
-      "scale": 5.5,
-      "table": "Ranged_EndDrain"
     },
     "damageDebuff": {
       "scale": 5,

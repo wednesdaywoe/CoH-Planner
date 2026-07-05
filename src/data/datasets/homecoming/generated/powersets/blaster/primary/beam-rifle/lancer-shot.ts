@@ -40,18 +40,11 @@ export const LancerShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 2.12,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.1703,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 2.12,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 3,

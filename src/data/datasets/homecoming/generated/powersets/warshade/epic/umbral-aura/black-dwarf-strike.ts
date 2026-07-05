@@ -51,21 +51,11 @@ export const BlackDwarfStrike: Power = {
       "type": "Negative",
       "scale": 0.5,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.5435,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.0885,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {

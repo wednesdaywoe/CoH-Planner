@@ -53,20 +53,6 @@ export const Barrage: Power = {
       "table": "Melee_Damage",
       "duration": 0.3,
       "tickRate": 0.25
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4713,
-      "table": "Melee_PvPDamage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.3142,
-      "table": "Melee_PvPDamage",
-      "duration": 0.3,
-      "tickRate": 0.25
     }
   ],
   "effects": {

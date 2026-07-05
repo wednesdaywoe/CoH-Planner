@@ -37,11 +37,6 @@ export const StygianCircle: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Heal",
-    "scale": 2,
-    "table": "Melee_HealSelf"
-  },
   "effects": {
     "enduranceGain": {
       "scale": 20,

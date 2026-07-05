@@ -39,21 +39,12 @@ export const ModerateOpening: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.3867,
-      "table": "Melee_Damage",
-      "duration": 1,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.5214,
-      "table": "Melee_PvPDamage",
-      "duration": 1,
-      "tickRate": 0.4000000059604645
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.3867,
+    "table": "Melee_Damage",
+    "duration": 1,
+    "tickRate": 0.4000000059604645
+  },
   "requires": "Brute_Defense.Shield_Defense !"
 };

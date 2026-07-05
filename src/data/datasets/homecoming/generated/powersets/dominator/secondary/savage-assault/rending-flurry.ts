@@ -49,25 +49,6 @@ export const RendingFlurry: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.9914,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.0793,
-      "table": "Melee_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.095,
-      "table": "Melee_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 1
     }
   ]
 };

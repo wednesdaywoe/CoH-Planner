@@ -45,23 +45,11 @@ export const Upthrust: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.8985,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.5785,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.3015,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.8985,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 0.7,
@@ -86,7 +74,7 @@ export const Upthrust: Power = {
       }
     },
     "knockback": {
-      "scale": 0.66,
+      "scale": 0.33,
       "table": "Ranged_Ones"
     },
     "buffDuration": 16

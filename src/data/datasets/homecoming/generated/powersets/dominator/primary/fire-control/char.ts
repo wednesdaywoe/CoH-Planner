@@ -40,22 +40,13 @@ export const Char: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Fire",
-      "scale": 0.22,
-      "table": "Ranged_Damage",
-      "duration": 4.2,
-      "tickRate": 1
-    },
-    {
-      "type": "Fire",
-      "scale": 0.2938,
-      "table": "Ranged_PvPDamage",
-      "duration": 4.2,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Fire",
+    "scale": 0.22,
+    "table": "Ranged_Damage",
+    "duration": 4.2,
+    "tickRate": 1
+  },
   "effects": {
     "hold": {
       "mag": 3,

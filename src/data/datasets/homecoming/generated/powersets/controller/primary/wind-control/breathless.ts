@@ -60,12 +60,7 @@ export const Breathless: Power = {
     },
     "durations": {
       "damageDebuff": 15,
-      "enduranceDiscount": 15,
       "rechargeDebuff": 15
-    },
-    "enduranceDiscount": {
-      "scale": 0.3,
-      "table": "Ranged_Ones"
     },
     "rechargeDebuff": {
       "scale": 0.3,

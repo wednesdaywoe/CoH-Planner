@@ -48,21 +48,6 @@ export const Special2: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.3554,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.3456,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.3554,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 1.7,
       "table": "Melee_InherentDamage"
     }

@@ -53,9 +53,9 @@ export const Vacuum: Power = {
       "copyBoosts": true
     },
     "hold": {
-      "mag": 4,
-      "scale": 4,
-      "table": "Ranged_Ones",
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize",
       "domination": {
         "mag": 3,
         "scale": 12,

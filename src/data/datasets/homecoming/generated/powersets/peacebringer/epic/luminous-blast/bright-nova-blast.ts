@@ -43,21 +43,14 @@ export const BrightNovaBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.932,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1,
+    "table": "Ranged_InherentDamage"
+  },
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Knockback"
     },
     "defenseDebuff": {

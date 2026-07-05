@@ -43,25 +43,16 @@ export const EmptyClips: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.2633,
-      "table": "Ranged_Damage",
-      "duration": 0.7,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.3057,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.7,
-      "tickRate": 0.30000001192092896
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.2633,
+    "table": "Ranged_Damage",
+    "duration": 0.7,
+    "tickRate": 0.30000001192092896
+  },
   "effects": {
     "knockback": {
-      "scale": 1.28,
+      "scale": 0.64,
       "table": "Ranged_Knockback"
     }
   },

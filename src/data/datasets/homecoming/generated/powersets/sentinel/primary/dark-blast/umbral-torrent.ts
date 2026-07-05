@@ -56,21 +56,11 @@ export const UmbralTorrent: Power = {
       "type": "Negative",
       "scale": 1.28,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.7968,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.7968,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 10,
+      "scale": 5,
       "table": "Ranged_Knockback"
     },
     "tohitDebuff": {

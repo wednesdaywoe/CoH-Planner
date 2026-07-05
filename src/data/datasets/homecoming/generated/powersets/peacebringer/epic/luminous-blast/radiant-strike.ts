@@ -52,21 +52,11 @@ export const RadiantStrike: Power = {
       "type": "Energy",
       "scale": 0.96,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.8675,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6816,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "slow": {

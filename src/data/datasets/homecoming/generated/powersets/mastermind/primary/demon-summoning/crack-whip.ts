@@ -49,11 +49,6 @@ export const CrackWhip: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 1.407,
-      "table": "Ranged_PvPDamage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.222,
       "table": "Ranged_Damage",
@@ -63,7 +58,7 @@ export const CrackWhip: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.28,
+      "scale": 0.64,
       "table": "Ranged_Ones"
     },
     "resistanceDebuff": {

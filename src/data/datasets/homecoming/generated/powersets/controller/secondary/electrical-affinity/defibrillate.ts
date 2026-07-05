@@ -64,7 +64,7 @@ export const Defibrillate: Power = {
       "table": "Ranged_Sleep"
     },
     "enduranceDrain": {
-      "scale": 20.3,
+      "scale": 0.3,
       "table": "Ranged_EndDrain"
     },
     "recoveryBuffUnenhanced": {

@@ -50,11 +50,6 @@ export const PoisonDart: Power = {
       "table": "Ranged_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.6099,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

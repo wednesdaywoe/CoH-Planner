@@ -63,11 +63,6 @@ export const Overcharge: Power = {
     },
     {
       "type": "Energy",
-      "scale": 1.5075,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 3.1,

@@ -52,16 +52,6 @@ export const ContaminatedStrike: Power = {
       "type": "Energy",
       "scale": 0.63,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2752,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8257,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

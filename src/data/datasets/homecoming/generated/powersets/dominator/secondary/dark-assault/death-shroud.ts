@@ -43,18 +43,11 @@ export const DeathShroud: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 4.231,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "tohitDebuff": {
       "scale": 0.75,
@@ -75,11 +68,6 @@ export const DeathShroud: Power = {
         "type": "Negative",
         "scale": 3.56,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Negative",
-        "scale": 2.131,
-        "table": "Ranged_PvPDamage"
       }
     ]
   }

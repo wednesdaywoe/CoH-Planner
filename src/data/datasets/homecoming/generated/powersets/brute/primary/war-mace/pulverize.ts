@@ -41,18 +41,11 @@ export const Pulverize: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.77,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.64,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 2,

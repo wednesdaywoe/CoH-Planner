@@ -289,6 +289,16 @@ function generateTypeScript(tables, petTables) {
   lines.push(`    if (aliased !== key) table = at.tables[aliased];`);
   lines.push(`  }`);
   lines.push(`  `);
+  lines.push(`  // Alias the game's "_Dam" damage-table spelling to the extracted`);
+  lines.push(`  // "_dmg" key. Powers reference e.g. "Ranged_Debuff_Dam" but the AT`);
+  lines.push(`  // tables are keyed "ranged_debuff_dmg"; without this the lookup misses`);
+  lines.push(`  // and the display falls back to a generic half-rate (damage debuffs`);
+  lines.push(`  // rendered at half — e.g. Ice Arrow -10% instead of -20%).`);
+  lines.push(`  if (!table) {`);
+  lines.push(`    const aliased = key.replace(/_dam$/, '_dmg');`);
+  lines.push(`    if (aliased !== key) table = at.tables[aliased];`);
+  lines.push(`  }`);
+  lines.push(`  `);
   lines.push(`  if (!table) return undefined;`);
   lines.push(`  `);
   lines.push(`  // Level 1 = index 0; clamp to table length (HC has 105 values,`);

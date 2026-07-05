@@ -51,11 +51,6 @@ export const Skewer: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.1428,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

@@ -49,17 +49,12 @@ export const AgingTouch: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.3399,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 1,
-      "table": "Melee_EndDrain"
+      "scale": 0.028,
+      "table": "Melee_Ones"
     },
     "durations": {
       "enduranceDrain": 2.1,

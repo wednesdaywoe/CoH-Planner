@@ -43,21 +43,14 @@ export const WhiteDwarfFlare: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.9,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.9268,
-      "table": "Melee_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.9,
+    "table": "Melee_InherentDamage"
+  },
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "taunt": {

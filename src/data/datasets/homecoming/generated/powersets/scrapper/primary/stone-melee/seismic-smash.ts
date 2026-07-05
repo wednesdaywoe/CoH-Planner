@@ -49,16 +49,6 @@ export const SeismicSmash: Power = {
       "type": "Smashing",
       "scale": 0.9968,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.2499,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.63,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

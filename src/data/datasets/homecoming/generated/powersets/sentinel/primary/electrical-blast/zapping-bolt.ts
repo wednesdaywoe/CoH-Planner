@@ -50,21 +50,11 @@ export const ZappingBolt: Power = {
       "type": "Energy",
       "scale": 1.96,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 3.15,
+      "scale": 0.15,
       "table": "Ranged_EndDrain"
     },
     "recoveryDebuff": {

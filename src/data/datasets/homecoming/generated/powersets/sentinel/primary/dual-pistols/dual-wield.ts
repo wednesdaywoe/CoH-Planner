@@ -89,58 +89,11 @@ export const DualWield: Power = {
       "type": "Toxic",
       "scale": 1.32,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.809,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.809,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.809,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.809,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0919,
-      "table": "Ranged_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 1.809,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.809,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1.809,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1.809,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.5,
+      "scale": 0.75,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 8

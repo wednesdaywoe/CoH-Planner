@@ -45,18 +45,11 @@ export const ElectronHaze: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.35,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.25,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.35,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 2,
@@ -66,7 +59,7 @@ export const ElectronHaze: Power = {
       "defenseDebuff": 8
     },
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 8

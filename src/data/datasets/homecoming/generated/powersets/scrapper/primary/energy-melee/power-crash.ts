@@ -58,26 +58,6 @@ export const PowerCrash: Power = {
       "type": "Energy",
       "scale": 1.2032,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.5671,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.7831,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.3503,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6698,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

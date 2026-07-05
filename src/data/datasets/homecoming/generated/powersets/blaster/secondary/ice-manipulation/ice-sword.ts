@@ -49,11 +49,6 @@ export const IceSword: Power = {
       "type": "Cold",
       "scale": 1,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.7308,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

@@ -51,16 +51,6 @@ export const Frenzy: Power = {
       "type": "Energy",
       "scale": 0.712,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5522,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.5522,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

@@ -49,26 +49,11 @@ export const Impale: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 2.421,
-      "table": "Melee_PvPDamage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.2,
       "table": "Melee_Damage",
       "duration": 15.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.421,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

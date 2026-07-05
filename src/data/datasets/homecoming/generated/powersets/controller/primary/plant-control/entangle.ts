@@ -54,20 +54,6 @@ export const Entangle: Power = {
       "table": "Ranged_Damage",
       "duration": 9.2,
       "tickRate": 2
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.14,
-      "table": "Ranged_PvPDamage",
-      "duration": 9.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.14,
-      "table": "Ranged_PvPDamage",
-      "duration": 9.2,
-      "tickRate": 2
     }
   ],
   "effects": {

@@ -50,16 +50,6 @@ export const Beanbag: Power = {
       "type": "Smashing",
       "scale": 1.16,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.23,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.23,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

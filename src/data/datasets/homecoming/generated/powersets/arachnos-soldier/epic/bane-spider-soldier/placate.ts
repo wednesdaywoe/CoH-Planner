@@ -57,7 +57,7 @@ export const Placate: Power = {
       "table": "Melee_Buff_ToHit"
     },
     "placate": {
-      "scale": 6,
+      "scale": 10,
       "table": "Melee_Taunt"
     },
     "buffDuration": 10

@@ -40,19 +40,12 @@ export const EchoChamber: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Ranged_Damage",
-      "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 2.21,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1,
+    "table": "Ranged_Damage",
+    "tickRate": 1
+  },
   "effects": {
     "hold": {
       "mag": 2,

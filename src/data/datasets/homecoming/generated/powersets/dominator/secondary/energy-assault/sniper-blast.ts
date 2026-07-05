@@ -52,21 +52,11 @@ export const SniperBlast: Power = {
       "type": "Energy",
       "scale": 2.7,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.0593,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.4717,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.4,
+      "scale": 0.7,
       "table": "Ranged_Knockback"
     }
   },
@@ -85,16 +75,6 @@ export const SniperBlast: Power = {
         "type": "Energy",
         "scale": 2.136,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Smashing",
-        "scale": 0.6393,
-        "table": "Ranged_PvPDamage"
-      },
-      {
-        "type": "Energy",
-        "scale": 1.4917,
-        "table": "Ranged_PvPDamage"
       }
     ]
   }

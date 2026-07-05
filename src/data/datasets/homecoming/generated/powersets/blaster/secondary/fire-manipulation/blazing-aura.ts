@@ -60,11 +60,6 @@ export const BlazingAura: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 0.1626,
-      "table": "Melee_PvPDamage"
-    },
-    {
       "type": "Heal",
       "scale": 0.15,
       "table": "Melee_HealSelf"

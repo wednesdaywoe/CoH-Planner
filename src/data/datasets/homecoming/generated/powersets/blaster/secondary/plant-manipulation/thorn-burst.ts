@@ -53,11 +53,6 @@ export const ThornBurst: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.417,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

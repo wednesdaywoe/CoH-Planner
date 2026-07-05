@@ -51,11 +51,6 @@ export const AtomicBlast: Power = {
       "type": "Energy",
       "scale": 3,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.737,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

@@ -72,38 +72,11 @@ export const ExecutionersShot: Power = {
       "type": "Toxic",
       "scale": 2.12,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.969,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.969,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.1375,
-      "table": "Ranged_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 1.969,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1.969,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

@@ -40,28 +40,11 @@ export const FrozenAura: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 1.424,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.424,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.3809,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.3809,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Cold",
+    "scale": 1.424,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 2,

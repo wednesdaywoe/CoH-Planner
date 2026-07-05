@@ -53,16 +53,6 @@ export const DarkObliteration: Power = {
       "type": "Negative",
       "scale": 0.9,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.5354,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 0.5354,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

@@ -39,21 +39,14 @@ export const ThroatStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.571,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.32,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "damageDebuff": {
-      "scale": 2,
+      "scale": 1.5,
       "table": "Melee_Debuff_Dam"
     },
     "durations": {

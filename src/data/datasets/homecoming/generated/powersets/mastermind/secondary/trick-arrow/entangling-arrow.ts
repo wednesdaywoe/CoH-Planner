@@ -41,11 +41,11 @@ export const EntanglingArrow: Power = {
   "effects": {
     "slow": {
       "runSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
       },
       "flySpeed": {
-        "scale": 0.1,
+        "scale": 0.5,
         "table": "Ranged_Slow"
       },
       "fly": {
@@ -53,12 +53,12 @@ export const EntanglingArrow: Power = {
         "table": "Ranged_Ones"
       },
       "jumpHeight": {
-        "scale": 2.5,
-        "table": "Melee_Leap"
+        "scale": 500,
+        "table": "Ranged_Ones"
       }
     },
     "durations": {
-      "slow": 15,
+      "slow": 30,
       "resistanceDebuff": 30
     },
     "resistanceDebuff": {

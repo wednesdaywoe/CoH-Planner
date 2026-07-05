@@ -55,23 +55,11 @@ export const Burst: Power = {
       "type": "Smashing",
       "scale": 0.6272,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1188,
-      "table": "Melee_PvPDamage",
-      "duration": 1.9,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.3959,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.8934,
+      "scale": 0.4467,
       "table": "Melee_Ones"
     },
     "damageDebuff": {

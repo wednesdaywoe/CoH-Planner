@@ -44,29 +44,13 @@ export const Suppression: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.1854,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 0.6000000238418579
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1744,
-      "table": "Ranged_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 0.6000000238418579
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3489,
-      "table": "Ranged_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 0.6000000238418579
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.1854,
+    "table": "Ranged_Damage",
+    "duration": 3.1,
+    "tickRate": 0.6000000238418579
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

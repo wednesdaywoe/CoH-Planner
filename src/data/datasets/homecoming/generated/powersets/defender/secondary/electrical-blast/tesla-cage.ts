@@ -45,18 +45,11 @@ export const TeslaCage: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.0813,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "recoveryDebuff": {
       "scale": 1.1,
@@ -71,7 +64,7 @@ export const TeslaCage: Power = {
       "table": "Ranged_Ones"
     },
     "enduranceDrain": {
-      "scale": 2.71,
+      "scale": 0.21000000000000002,
       "table": "Ranged_EndDrain"
     },
     "buffDuration": 8,

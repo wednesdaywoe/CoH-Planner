@@ -50,28 +50,13 @@ export const ArcofDestruction: Power = {
     },
     {
       "type": "Smashing",
-      "scale": 1.9586,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.9714,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 1.9519,
       "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.9586,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   }

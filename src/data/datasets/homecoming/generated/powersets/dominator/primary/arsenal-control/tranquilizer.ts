@@ -42,18 +42,11 @@ export const Tranquilizer: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Toxic",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 1.54,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Toxic",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "sleep": {
       "mag": 3.5,

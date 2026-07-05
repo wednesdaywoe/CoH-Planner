@@ -40,18 +40,11 @@ export const PulseRifleBurst: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.49,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "regenDebuff": {
       "scale": 2,
@@ -61,7 +54,7 @@ export const PulseRifleBurst: Power = {
       "regenDebuff": 30
     },
     "knockback": {
-      "scale": 3,
+      "scale": 1.5,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 30

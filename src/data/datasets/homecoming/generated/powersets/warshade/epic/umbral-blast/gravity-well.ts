@@ -53,18 +53,6 @@ export const GravityWell: Power = {
       "table": "Melee_Damage",
       "duration": 2.75,
       "tickRate": 0.5
-    },
-    {
-      "type": "Negative",
-      "scale": 1.1656,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2463,
-      "table": "Melee_PvPDamage",
-      "duration": 2.75,
-      "tickRate": 0.5
     }
   ],
   "effects": {

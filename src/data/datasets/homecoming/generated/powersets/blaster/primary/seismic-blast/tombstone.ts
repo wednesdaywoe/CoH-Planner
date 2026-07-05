@@ -41,18 +41,11 @@ export const Tombstone: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.449,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "slow": {
       "fly": {
@@ -88,11 +81,6 @@ export const Tombstone: Power = {
         "type": "Smashing",
         "scale": 2.28,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Smashing",
-        "scale": 2.049,
-        "table": "Ranged_PvPDamage"
       }
     ]
   }

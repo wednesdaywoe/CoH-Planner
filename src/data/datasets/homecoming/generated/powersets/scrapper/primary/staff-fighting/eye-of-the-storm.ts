@@ -40,35 +40,16 @@ export const EyeoftheStorm: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.205,
-      "table": "Melee_Damage",
-      "duration": 2.3,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.23,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.1678,
-      "table": "Melee_PvPDamage",
-      "duration": 2.3,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.1843,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.205,
+    "table": "Melee_Damage",
+    "duration": 2.3,
+    "tickRate": 0.4000000059604645
+  },
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   },

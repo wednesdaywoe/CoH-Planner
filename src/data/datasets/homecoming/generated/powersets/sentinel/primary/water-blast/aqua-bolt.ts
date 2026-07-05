@@ -61,26 +61,6 @@ export const AquaBolt: Power = {
       "type": "Cold",
       "scale": 0.63,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4026,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.8174,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4026,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.8174,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

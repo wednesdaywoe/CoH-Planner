@@ -52,11 +52,6 @@ export const Impale: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.4748,
-      "table": "Ranged_PvPDamage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.1195,
       "table": "Ranged_Damage",

@@ -46,8 +46,8 @@ export const WSWideAreaWebGrenade: Power = {
     },
     "slow": {
       "jumpHeight": {
-        "scale": 2,
-        "table": "Melee_Leap"
+        "scale": 500,
+        "table": "Ranged_Ones"
       },
       "runSpeed": {
         "scale": 0.5,

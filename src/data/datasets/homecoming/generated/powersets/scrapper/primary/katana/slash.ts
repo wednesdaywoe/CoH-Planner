@@ -40,34 +40,13 @@ export const Slash: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.42,
-      "table": "Melee_Damage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.4945,
-      "table": "Melee_PvPDamage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.4945,
-      "table": "Melee_PvPDamage",
-      "duration": 0.3,
-      "tickRate": 0.25
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.42,
+    "table": "Melee_Damage",
+    "duration": 0.3,
+    "tickRate": 0.25
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

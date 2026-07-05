@@ -65,8 +65,8 @@ export const TimeCrawl: Power = {
       "table": "Ranged_Slow"
     },
     "regenDebuff": {
-      "scale": 4,
-      "table": "Ranged_Res_Boolean"
+      "scale": 1,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 20
   }

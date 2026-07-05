@@ -43,11 +43,6 @@ export const Mesmerize: Power = {
   "damage": [
     {
       "type": "Psionic",
-      "scale": 1.8091,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
       "scale": 1,
       "table": "Ranged_Damage"
     },

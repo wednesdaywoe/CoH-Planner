@@ -50,21 +50,11 @@ export const LightningBolt: Power = {
       "type": "Energy",
       "scale": 1.64,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.889,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.889,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 2.1,
+      "scale": 0.1,
       "table": "Ranged_EndDrain"
     },
     "maxStacks": 2,

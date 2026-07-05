@@ -40,18 +40,11 @@ export const DarkNovaBolt: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.6,
-      "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.812,
-      "table": "Ranged_InherentDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.6,
+    "table": "Ranged_InherentDamage"
+  },
   "effects": {
     "slow": {
       "jumpHeight": {

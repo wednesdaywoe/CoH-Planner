@@ -41,18 +41,11 @@ export const PsionicDart: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 0.8321,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.5767,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.8321,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "rechargeDebuff": {
       "scale": 0.3,

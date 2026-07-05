@@ -49,22 +49,13 @@ export const ElectronShackles: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.115,
-      "table": "Ranged_Damage",
-      "duration": 4.75,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Energy",
-      "scale": 0.2758,
-      "table": "Ranged_PvPDamage",
-      "duration": 8.2,
-      "tickRate": 2
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.115,
+    "table": "Ranged_Damage",
+    "duration": 4.75,
+    "tickRate": 0.5
+  },
   "effects": {
     "immobilize": {
       "mag": 3,

@@ -55,16 +55,6 @@ export const FrozenFists: Power = {
       "table": "Melee_Damage",
       "duration": 0.3,
       "tickRate": 0.25
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.3482,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.1027,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

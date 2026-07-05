@@ -48,7 +48,7 @@ export const SoundCannon: Power = {
       "table": "Melee_Fear"
     },
     "knockback": {
-      "scale": 1.3,
+      "scale": 0.65,
       "table": "Melee_Ones"
     }
   }

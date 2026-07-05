@@ -51,11 +51,6 @@ export const LifeDrain: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Negative",
-      "scale": 2.0709,
-      "table": "Ranged_PvPDamage"
-    },
-    {
       "type": "Heal",
       "scale": 1,
       "table": "Ranged_HealSelf"

@@ -51,16 +51,6 @@ export const DarkBlast: Power = {
       "type": "Negative",
       "scale": 1,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.26,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.26,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

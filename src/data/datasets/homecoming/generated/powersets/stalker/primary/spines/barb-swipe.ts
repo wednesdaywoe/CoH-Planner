@@ -46,11 +46,6 @@ export const BarbSwipe: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.101,
-      "table": "Melee_PvPDamage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.1,
       "table": "Melee_Damage",

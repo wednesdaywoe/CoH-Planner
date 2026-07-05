@@ -56,26 +56,6 @@ export const ElectronHaze: Power = {
       "type": "Energy",
       "scale": 1.35,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.25,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.25,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.699,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.699,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
@@ -87,7 +67,7 @@ export const ElectronHaze: Power = {
       "defenseDebuff": 8
     },
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 8

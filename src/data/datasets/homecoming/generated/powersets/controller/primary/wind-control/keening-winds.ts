@@ -48,8 +48,8 @@ export const KeeningWinds: Power = {
       "table": "Ranged_Fear"
     },
     "enduranceDrain": {
-      "scale": 2.5,
-      "table": "Ranged_EndDrain"
+      "scale": 0.04,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "enduranceDrain": 2.1

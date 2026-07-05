@@ -50,16 +50,6 @@ export const Screech: Power = {
       "type": "Energy",
       "scale": 1.14,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.965,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.965,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

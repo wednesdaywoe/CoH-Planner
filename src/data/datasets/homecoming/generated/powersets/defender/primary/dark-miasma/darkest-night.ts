@@ -45,7 +45,7 @@ export const DarkestNight: Power = {
   "maxSlots": 6,
   "effects": {
     "damageDebuff": {
-      "scale": 4,
+      "scale": 3,
       "table": "Ranged_Debuff_Dam"
     },
     "durations": {

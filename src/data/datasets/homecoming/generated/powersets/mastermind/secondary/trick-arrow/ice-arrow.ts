@@ -58,11 +58,11 @@ export const IceArrow: Power = {
       }
     },
     "durations": {
-      "slow": 10,
+      "slow": 60,
       "rechargeDebuff": 10,
       "damageDebuff": 60,
-      "specialBuff": 10,
-      "specialDebuff": 10
+      "specialBuff": 60,
+      "specialDebuff": 60
     },
     "rechargeDebuff": {
       "scale": 0.2,
@@ -169,6 +169,6 @@ export const IceArrow: Power = {
         "table": "Ranged_Special"
       }
     },
-    "buffDuration": 10
+    "buffDuration": 60
   }
 };

@@ -39,27 +39,13 @@ export const FreezingTouch: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 0.19,
-      "table": "Melee_Damage",
-      "duration": 10.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Cold",
-      "scale": 0.75,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 0.0682,
-      "table": "Melee_PvPDamage",
-      "duration": 10.1,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Cold",
+    "scale": 0.19,
+    "table": "Melee_Damage",
+    "duration": 10.1,
+    "tickRate": 1
+  },
   "effects": {
     "hold": {
       "mag": 3,

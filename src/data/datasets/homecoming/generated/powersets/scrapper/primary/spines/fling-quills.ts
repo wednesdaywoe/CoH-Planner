@@ -52,21 +52,6 @@ export const FlingQuills: Power = {
       "table": "Melee_Damage",
       "duration": 6.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6907,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6907,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6,
-      "table": "Melee_InherentDamage"
     }
   ],
   "effects": {

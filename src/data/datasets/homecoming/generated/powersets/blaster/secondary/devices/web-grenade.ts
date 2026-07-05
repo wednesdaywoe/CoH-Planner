@@ -48,22 +48,13 @@ export const WebGrenade: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Toxic",
-      "scale": 0.2,
-      "table": "Ranged_Damage",
-      "duration": 8.2,
-      "tickRate": 2
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.3038,
-      "table": "Ranged_PvPDamage",
-      "duration": 8.2,
-      "tickRate": 2
-    }
-  ],
+  "damage": {
+    "type": "Toxic",
+    "scale": 0.2,
+    "table": "Ranged_Damage",
+    "duration": 8.2,
+    "tickRate": 2
+  },
   "effects": {
     "immobilize": {
       "mag": 3,
@@ -72,8 +63,8 @@ export const WebGrenade: Power = {
     },
     "slow": {
       "jumpHeight": {
-        "scale": 1.5,
-        "table": "Melee_Leap"
+        "scale": 500,
+        "table": "Ranged_Ones"
       },
       "runSpeed": {
         "scale": 0.5,

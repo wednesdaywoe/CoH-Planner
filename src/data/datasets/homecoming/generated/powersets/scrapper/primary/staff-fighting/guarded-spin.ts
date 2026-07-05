@@ -42,39 +42,13 @@ export const GuardedSpin: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.2417,
-      "table": "Melee_Damage",
-      "duration": 1.5,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.39,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2949,
-      "table": "Melee_PvPDamage",
-      "duration": 1.5,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.1053,
-      "table": "Melee_PvPDamage",
-      "duration": 1.5,
-      "tickRate": 0.30000001192092896
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.4746,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.2417,
+    "table": "Melee_Damage",
+    "duration": 1.5,
+    "tickRate": 0.30000001192092896
+  },
   "effects": {
     "defenseBuff": {
       "melee": {

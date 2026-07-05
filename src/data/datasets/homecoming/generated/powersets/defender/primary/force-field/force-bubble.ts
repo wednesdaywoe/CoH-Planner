@@ -60,7 +60,13 @@ export const ForceBubble: Power = {
               "damage": [],
               "effects": [
                 {
-                  "type": "ToHitDebuff",
+                  "type": "RegenDebuffResist",
+                  "scale": 1,
+                  "table": "Ranged_Res_Boolean",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "RechargeDebuffResist",
                   "scale": 1,
                   "table": "Ranged_Res_Boolean",
                   "ignoreStrength": true

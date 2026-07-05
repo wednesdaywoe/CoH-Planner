@@ -46,11 +46,6 @@ export const Lash: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 1.86,
-      "table": "Ranged_PvPDamage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.21,
       "table": "Ranged_Damage",
@@ -60,7 +55,7 @@ export const Lash: Power = {
   ],
   "effects": {
     "knockback": {
-      "scale": 1.28,
+      "scale": 0.64,
       "table": "Ranged_Knockback"
     },
     "resistanceDebuff": {

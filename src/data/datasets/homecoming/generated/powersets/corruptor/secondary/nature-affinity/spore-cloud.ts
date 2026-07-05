@@ -58,8 +58,8 @@ export const SporeCloud: Power = {
       "table": "Ranged_Debuff_Dam"
     },
     "regenDebuff": {
-      "scale": 2,
-      "table": "Ranged_Res_Boolean"
+      "scale": 1.5,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 0.75
   }

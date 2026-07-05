@@ -41,42 +41,16 @@ export const SpinningStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.77,
-      "table": "Melee_Damage",
-      "duration": 0.45,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.54,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.6052,
-      "table": "Melee_PvPDamage",
-      "duration": 0.45,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.2105,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.5448,
-      "table": "Melee_PvPDamage",
-      "duration": 0.45,
-      "tickRate": 0.4000000059604645
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.77,
+    "table": "Melee_Damage",
+    "duration": 0.45,
+    "tickRate": 0.4000000059604645
+  },
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   },

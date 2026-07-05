@@ -39,32 +39,13 @@ export const InitialStrike: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.42,
-      "table": "Melee_Damage",
-      "duration": 0.4,
-      "tickRate": 0.33000001311302185
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4887,
-      "table": "Melee_PvPDamage",
-      "duration": 0.4,
-      "tickRate": 0.33000001311302185
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.9774,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.42,
+    "table": "Melee_Damage",
+    "duration": 0.4,
+    "tickRate": 0.33000001311302185
+  },
   "effects": {
     "stun": {
       "mag": 2,

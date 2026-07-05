@@ -44,18 +44,11 @@ export const SnapShot: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.84,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.1802,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.84,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "damageBuff": {
       "scale": 0.066,

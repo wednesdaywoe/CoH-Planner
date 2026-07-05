@@ -50,16 +50,6 @@ export const ScrambleThoughts: Power = {
       "type": "Psionic",
       "scale": 3.56,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 3.3,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 3.3,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

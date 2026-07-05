@@ -39,20 +39,13 @@ export const FRTScrambleThoughts: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 0.25,
-      "table": "Ranged_Damage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.44,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 0.25,
+    "table": "Ranged_Damage",
+    "duration": 4.1,
+    "tickRate": 1
+  },
   "effects": {
     "stun": {
       "mag": 4,

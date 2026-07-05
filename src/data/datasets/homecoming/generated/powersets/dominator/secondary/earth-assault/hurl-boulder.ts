@@ -39,21 +39,14 @@ export const HurlBoulder: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 2.28,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.9301,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 2.28,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 6,
+      "scale": 3,
       "table": "Ranged_Knockback"
     },
     "slow": {

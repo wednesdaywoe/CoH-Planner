@@ -53,20 +53,6 @@ export const StridentEcho: Power = {
       "table": "Melee_Damage",
       "duration": 2.1,
       "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.1707,
-      "table": "Melee_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 0.4000000059604645
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1707,
-      "table": "Melee_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 0.4000000059604645
     }
   ],
   "effects": {

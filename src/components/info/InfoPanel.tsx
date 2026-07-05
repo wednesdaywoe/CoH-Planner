@@ -2303,6 +2303,20 @@ const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = {
   DamageDebuff: { label: '-Damage', color: 'text-orange-400' },
   RechargeDebuff: { label: '-Recharge', color: 'text-teal-400' },
   Slow: { label: '-Speed', color: 'text-teal-400' },
+  // Ally-facing pseudo-pet field buffs / protection (EMP Field, Faraday Cage).
+  ResistanceBuff: { label: '+Resistance', color: 'text-green-400' },
+  HoldProtection: { label: 'Hold Protection', color: 'text-sky-400' },
+  StunProtection: { label: 'Stun Protection', color: 'text-sky-400' },
+  SleepProtection: { label: 'Sleep Protection', color: 'text-sky-400' },
+  ImmobilizeProtection: { label: 'Immob Protection', color: 'text-sky-400' },
+  FearProtection: { label: 'Fear Protection', color: 'text-sky-400' },
+  ConfuseProtection: { label: 'Confuse Protection', color: 'text-sky-400' },
+  KnockbackProtection: { label: 'KB Protection', color: 'text-sky-400' },
+  KnockupProtection: { label: 'KB Protection', color: 'text-sky-400' },
+  EndDrainResist: { label: 'End Drain Resist', color: 'text-sky-400' },
+  RecoveryDebuffResist: { label: '-Recovery Resist', color: 'text-sky-400' },
+  RegenDebuffResist: { label: '-Regen Resist', color: 'text-sky-400' },
+  RechargeDebuffResist: { label: '-Recharge Resist', color: 'text-sky-400' },
 };
 
 // Pet/pseudo-pet debuffs whose computed `value` is a fraction → show as a percent
@@ -2310,8 +2324,17 @@ const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = {
 // its calculated magnitude: mez as "mag N (Ns)", KB/-end/heal as the raw value.
 const PERCENT_PET_EFFECTS = new Set([
   'RechargeDebuff', 'Slow', 'ToHitDebuff', 'DefenseDebuff', 'ResistanceDebuff', 'DamageDebuff', 'RecoveryDebuff',
+  'ResistanceBuff',
+  // Ally debuff resistances from a summoned field render as a resistance percent.
+  'EndDrainResist', 'RecoveryDebuffResist', 'RegenDebuffResist', 'RechargeDebuffResist',
 ]);
 const MEZ_PET_EFFECTS = new Set(['Stun', 'Hold', 'Sleep', 'Fear', 'Confuse', 'Immobilize']);
+// Ally mez/knock protection from a summoned field — a protection MAGNITUDE
+// (value = scale × table), shown as "Mag N" like other protection.
+const PROTECTION_PET_EFFECTS = new Set([
+  'HoldProtection', 'StunProtection', 'SleepProtection', 'ImmobilizeProtection',
+  'FearProtection', 'ConfuseProtection', 'KnockbackProtection', 'KnockupProtection',
+]);
 
 /** Format a computed pet effect value for display — percentages for debuffs, mag
  *  (+duration) for mez, raw magnitude for the rest. Replaces showing the raw
@@ -2327,6 +2350,10 @@ function formatPetEffectValue(eff: PetEffectComputed): string {
     const mag = magnitude !== undefined ? `mag ${magnitude}` : '';
     const dur = value !== undefined && value > 0 ? ` ${value.toFixed(1)}s` : '';
     return (mag + dur).trim() || '—';
+  }
+  if (PROTECTION_PET_EFFECTS.has(type)) {
+    // Protection magnitude = scale × table (the resolved `value`), not a duration.
+    return value !== undefined ? `Mag ${value.toFixed(1)}` : '—';
   }
   // Knockback / Knockup / Taunt / EndDrain / Heal: the computed value/points.
   if (value !== undefined) return value.toFixed(2);

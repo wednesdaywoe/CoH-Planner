@@ -50,16 +50,6 @@ export const BlazingArrow: Power = {
       "table": "Ranged_InherentDamage"
     },
     {
-      "type": "Lethal",
-      "scale": 2.081,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.081,
-      "table": "Ranged_PvPDamage"
-    },
-    {
       "type": "Fire",
       "scale": 0.125,
       "table": "Ranged_Damage",

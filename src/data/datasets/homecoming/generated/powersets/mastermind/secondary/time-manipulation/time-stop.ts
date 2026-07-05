@@ -53,7 +53,7 @@ export const TimeStop: Power = {
       "regenDebuff": 20
     },
     "regenDebuff": {
-      "scale": 2.5,
+      "scale": 0.5,
       "table": "Ranged_Ones"
     },
     "buffDuration": 20

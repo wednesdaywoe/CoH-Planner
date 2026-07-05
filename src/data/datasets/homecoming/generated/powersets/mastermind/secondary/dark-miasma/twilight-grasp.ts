@@ -60,8 +60,8 @@ export const TwilightGrasp: Power = {
       "table": "Ranged_Debuff_Dam"
     },
     "regenDebuff": {
-      "scale": 11.5,
-      "table": "Ranged_Res_Boolean"
+      "scale": 0.5,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 20
   }

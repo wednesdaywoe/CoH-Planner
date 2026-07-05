@@ -39,21 +39,14 @@ export const Lift: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.361,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.32,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockup": {
-      "scale": 12,
+      "scale": 6,
       "table": "Ranged_Knockback"
     },
     "slow": {

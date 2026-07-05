@@ -56,16 +56,6 @@ export const Geyser: Power = {
       "type": "Fire",
       "scale": 1.5,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.3922,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.1766,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
@@ -91,7 +81,7 @@ export const Geyser: Power = {
       "slow": 10
     },
     "knockup": {
-      "scale": 3,
+      "scale": 1.5,
       "table": "Ranged_Ones"
     },
     "buffDuration": 10

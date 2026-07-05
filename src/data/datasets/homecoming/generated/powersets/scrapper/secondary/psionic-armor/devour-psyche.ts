@@ -64,12 +64,18 @@ export const DevourPsyche: Power = {
       }
     },
     "regenDebuff": {
-      "scale": 3,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "recoveryDebuff": {
-      "scale": 1.2,
-      "table": "Melee_Ones"
+      "scale": 0.2,
+      "table": "Melee_Ones",
+      "durationVariants": [
+        {
+          "scale": 0.8,
+          "duration": 10
+        }
+      ]
     },
     "buffDuration": 45
   }

@@ -57,34 +57,6 @@ export const FrostBreath: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 0.6,
       "tickRate": 0.5
-    },
-    {
-      "type": "Cold",
-      "scale": 0.6734,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Cold",
-      "scale": 0.6734,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Cold",
-      "scale": 1.4545,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.6,
-      "tickRate": 0.5
-    },
-    {
-      "type": "Cold",
-      "scale": 1.4545,
-      "table": "Ranged_PvPDamage",
-      "duration": 0.6,
-      "tickRate": 0.5
     }
   ],
   "effects": {

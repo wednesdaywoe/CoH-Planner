@@ -42,18 +42,11 @@ export const PhotonGrenade: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 0.8985,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.7228,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 0.8985,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "regenDebuff": {
       "scale": 2,

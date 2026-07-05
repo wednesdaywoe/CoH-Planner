@@ -58,27 +58,6 @@ export const ProtonSweep: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 0.0962,
-      "table": "Melee_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.2885,
-      "table": "Melee_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Energy",
-      "scale": 0.1751,
-      "table": "Melee_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 2
     }
   ],
   "effects": {

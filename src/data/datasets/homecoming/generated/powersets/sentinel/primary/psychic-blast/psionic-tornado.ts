@@ -56,25 +56,11 @@ export const PsionicTornado: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.1241,
-      "table": "Ranged_PvPDamage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.1241,
-      "table": "Ranged_PvPDamage",
-      "duration": 4.1,
-      "tickRate": 1
     }
   ],
   "effects": {
     "knockup": {
-      "scale": 2.8,
+      "scale": 1.4,
       "table": "Ranged_Ones"
     },
     "rechargeDebuff": {

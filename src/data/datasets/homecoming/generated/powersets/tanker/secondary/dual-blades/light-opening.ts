@@ -39,21 +39,12 @@ export const LightOpening: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.42,
-      "table": "Melee_Damage",
-      "duration": 0.5,
-      "tickRate": 0.33000001311302185
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6205,
-      "table": "Melee_PvPDamage",
-      "duration": 0.5,
-      "tickRate": 0.30000001192092896
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.42,
+    "table": "Melee_Damage",
+    "duration": 0.5,
+    "tickRate": 0.33000001311302185
+  },
   "requires": "Tanker_Defense.Shield_Defense !"
 };

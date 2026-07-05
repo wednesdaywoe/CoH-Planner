@@ -55,16 +55,6 @@ export const DreadfulWail: Power = {
       "type": "Smashing",
       "scale": 0.928,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.471,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8741,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

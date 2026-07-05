@@ -48,18 +48,11 @@ export const TimeWall: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 1,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.68,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 1,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "slow": {
       "runSpeed": {
@@ -95,7 +88,7 @@ export const TimeWall: Power = {
       "table": "Ranged_Immobilize"
     },
     "regenDebuff": {
-      "scale": 0.45,
+      "scale": 0.25,
       "table": "Ranged_Ones"
     },
     "damageBuff": {

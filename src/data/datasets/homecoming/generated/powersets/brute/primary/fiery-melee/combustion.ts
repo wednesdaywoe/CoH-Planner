@@ -61,11 +61,6 @@ export const Combustion: Power = {
     },
     {
       "type": "Fire",
-      "scale": 1.77,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Fire",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 3.1,
@@ -74,7 +69,7 @@ export const Combustion: Power = {
   ],
   "effects": {
     "knockup": {
-      "scale": 1.5,
+      "scale": 0.75,
       "table": "Melee_Ones"
     }
   }

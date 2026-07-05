@@ -117,29 +117,29 @@ export const AuraofInsanity: Power = {
       "table": "Melee_Debuff_Dam"
     },
     "confuse": {
-      "mag": 2.5,
-      "scale": 2.5,
+      "mag": 2,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "effectDuration": 4,
     "stun": {
-      "mag": 2.5,
-      "scale": 2.5,
+      "mag": 2,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "sleep": {
-      "mag": 2.5,
-      "scale": 2.5,
+      "mag": 2,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "hold": {
-      "mag": 2.5,
-      "scale": 2.5,
+      "mag": 2,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "fear": {
-      "mag": 2.5,
-      "scale": 2.5,
+      "mag": 2,
+      "scale": 2,
       "table": "Melee_Ones"
     },
     "buffDuration": 4

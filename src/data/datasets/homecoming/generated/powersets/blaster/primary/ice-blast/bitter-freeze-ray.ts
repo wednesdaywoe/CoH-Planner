@@ -42,18 +42,11 @@ export const BitterFreezeRay: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 2.76,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.7501,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Cold",
+    "scale": 2.76,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "hold": {
       "mag": 3,

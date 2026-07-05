@@ -40,18 +40,11 @@ export const FRTSubdue: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.728,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.8889,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.728,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "immobilize": {
       "mag": 3,

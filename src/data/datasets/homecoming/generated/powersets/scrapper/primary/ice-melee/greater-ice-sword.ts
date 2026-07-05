@@ -49,26 +49,6 @@ export const GreaterIceSword: Power = {
       "type": "Cold",
       "scale": 1,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.96,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.078,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.1222,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 2.2002,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

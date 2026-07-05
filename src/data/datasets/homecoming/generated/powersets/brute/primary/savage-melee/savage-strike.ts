@@ -53,20 +53,6 @@ export const SavageStrike: Power = {
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.5301,
-      "table": "Melee_PvPDamage",
-      "duration": 0.4,
-      "tickRate": 0.3499999940395355
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.0852,
-      "table": "Melee_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 1
     }
   ]
 };

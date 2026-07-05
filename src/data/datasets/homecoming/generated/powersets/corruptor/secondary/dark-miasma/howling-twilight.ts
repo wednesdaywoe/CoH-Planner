@@ -92,7 +92,7 @@ export const HowlingTwilight: Power = {
       "table": "Ranged_Ones"
     },
     "regenDebuff": {
-      "scale": 35,
+      "scale": 5,
       "table": "Ranged_Ones"
     },
     "buffDuration": 30

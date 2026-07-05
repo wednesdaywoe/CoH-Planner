@@ -44,29 +44,13 @@ export const TouchofFear: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.1726,
-      "table": "Melee_Damage",
-      "duration": 3.1,
-      "tickRate": 0.75
-    },
-    {
-      "type": "Negative",
-      "scale": 0.2209,
-      "table": "Melee_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 0.75
-    },
-    {
-      "type": "Negative",
-      "scale": 0.1989,
-      "table": "Melee_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 0.75
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.1726,
+    "table": "Melee_Damage",
+    "duration": 3.1,
+    "tickRate": 0.75
+  },
   "effects": {
     "tohitDebuff": {
       "scale": 1.5,

@@ -58,8 +58,8 @@ export const ParasiticLeech: Power = {
       "perTarget": 0.9279999999999999
     },
     "regenDebuff": {
-      "scale": 2,
-      "table": "Melee_Res_Boolean"
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "buffDuration": 45,
     "absorb": {

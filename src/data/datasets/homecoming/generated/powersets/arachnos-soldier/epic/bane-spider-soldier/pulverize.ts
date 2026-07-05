@@ -51,18 +51,6 @@ export const Pulverize: Power = {
       "table": "Melee_Damage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.7699,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.1079,
-      "table": "Melee_PvPDamage",
-      "duration": 4.1,
-      "tickRate": 1
     }
   ],
   "effects": {

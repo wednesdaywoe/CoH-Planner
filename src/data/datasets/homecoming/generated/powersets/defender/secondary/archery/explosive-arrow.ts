@@ -52,31 +52,11 @@ export const ExplosiveArrow: Power = {
       "type": "Lethal",
       "scale": 0.45,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.1785,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.3569,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.58,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 1.16,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Ranged_Knockback"
     }
   },

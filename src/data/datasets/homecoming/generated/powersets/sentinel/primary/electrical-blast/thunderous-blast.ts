@@ -57,25 +57,26 @@ export const ThunderousBlast: Power = {
       "type": "Smashing",
       "scale": 0.928,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5128,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 25,
-      "table": "Ranged_EndDrain"
-    },
-    "recoveryDebuff": {
-      "scale": 2,
+      "scale": 1.05,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "recoveryDebuff": 10
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones",
+      "durationVariants": [
+        {
+          "scale": 1,
+          "duration": 10
+        }
+      ]
     },
-    "buffDuration": 10
+    "durations": {
+      "recoveryDebuff": 20
+    },
+    "buffDuration": 20
   }
 };

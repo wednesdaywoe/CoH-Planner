@@ -51,17 +51,12 @@ export const ChargedBrawl: Power = {
       "type": "Energy",
       "scale": 1,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.381,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 2.5,
-      "table": "Melee_EndDrain"
+      "scale": 0.07,
+      "table": "Melee_Ones"
     },
     "sleep": {
       "mag": 3,

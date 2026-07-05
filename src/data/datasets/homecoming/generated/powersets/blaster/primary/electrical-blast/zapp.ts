@@ -43,21 +43,14 @@ export const Zapp: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.211,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "enduranceDrain": {
-      "scale": 3.3,
+      "scale": 0.3,
       "table": "Ranged_EndDrain"
     },
     "rangeBuff": {
@@ -79,11 +72,6 @@ export const Zapp: Power = {
         "type": "Energy",
         "scale": 2.28,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Energy",
-        "scale": 1.811,
-        "table": "Ranged_PvPDamage"
       }
     ]
   }

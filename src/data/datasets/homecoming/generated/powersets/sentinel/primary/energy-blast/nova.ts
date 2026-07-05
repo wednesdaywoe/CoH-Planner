@@ -55,16 +55,11 @@ export const Nova: Power = {
       "type": "Smashing",
       "scale": 0.928,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.525,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 20,
+      "scale": 10,
       "table": "Ranged_Knockback"
     }
   }

@@ -55,21 +55,11 @@ export const SonicThrust: Power = {
       "type": "Energy",
       "scale": 0.4,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4061,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.4061,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 16,
+      "scale": 8,
       "table": "Melee_Knockback"
     },
     "repel": {

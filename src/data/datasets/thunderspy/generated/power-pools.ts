@@ -151,7 +151,12 @@ export const POWER_POOLS_RAW = {
           "recharge": 60,
           "endurance": 20.8,
           "activationTime": 1.2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Experimentation_Corrosive_Vial",
+            "duration": 14
+          }
         }
       },
       {
@@ -1953,7 +1958,11 @@ export const POWER_POOLS_RAW = {
           "recharge": 90,
           "endurance": 13.52,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Spring_Attack"
+          }
         }
       }
     ]
@@ -2420,7 +2429,13 @@ export const POWER_POOLS_RAW = {
           "recharge": 90,
           "endurance": 5.2,
           "activationTime": 2.07,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_Enflame_Pet",
+            "duration": 5,
+            "entityCount": 6
+          }
         }
       },
       {
@@ -2713,7 +2728,12 @@ export const POWER_POOLS_RAW = {
           "recharge": 20,
           "endurance": 15,
           "activationTime": 3.17,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "summon": {
+            "isPseudoPet": false,
+            "entity": "Pets_TPFoeTaunt",
+            "duration": 1.5
+          }
         }
       },
       {

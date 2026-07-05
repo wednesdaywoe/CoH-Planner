@@ -49,16 +49,6 @@ export const IceBlast: Power = {
       "type": "Cold",
       "scale": 1,
       "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.335,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.005,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

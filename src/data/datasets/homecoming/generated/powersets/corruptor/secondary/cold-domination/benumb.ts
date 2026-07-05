@@ -139,12 +139,12 @@ export const Benumb: Power = {
       }
     },
     "regenDebuff": {
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
+      "scale": 5,
+      "table": "Ranged_Ones"
     },
     "enduranceDrain": {
-      "scale": 5.5,
-      "table": "Ranged_EndDrain"
+      "scale": 0.05,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 30
   }

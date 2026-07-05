@@ -39,18 +39,11 @@ export const Levitate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.32,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.9491,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.32,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "slow": {
       "fly": {
@@ -62,7 +55,7 @@ export const Levitate: Power = {
       "slow": 10
     },
     "knockup": {
-      "scale": 12,
+      "scale": 6,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

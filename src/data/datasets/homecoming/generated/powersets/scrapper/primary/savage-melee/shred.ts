@@ -53,41 +53,10 @@ export const Shred: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.2615,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.211,
       "table": "Melee_Damage",
       "duration": 3.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2991,
-      "table": "Melee_PvPDamage",
-      "duration": 2,
-      "tickRate": 0.3499999940395355
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.7943,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.1435,
-      "table": "Melee_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.1061,
-      "table": "Melee_PvPDamage",
-      "duration": 2,
-      "tickRate": 0.6000000238418579
     }
   ],
   "effects": {

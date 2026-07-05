@@ -37,18 +37,11 @@ export const Eviscerate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 2.23,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 2.3857,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 2.23,
+    "table": "Melee_Damage"
+  },
   "specialEffects": [
     {
       "kind": "effect-proc",

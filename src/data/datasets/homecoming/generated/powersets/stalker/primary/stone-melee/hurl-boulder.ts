@@ -40,18 +40,11 @@ export const HurlBoulder: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.64,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.47,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.64,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "slow": {
       "fly": {
@@ -63,7 +56,7 @@ export const HurlBoulder: Power = {
       "slow": 15
     },
     "knockback": {
-      "scale": 6,
+      "scale": 3,
       "table": "Melee_Knockback"
     },
     "buffDuration": 15

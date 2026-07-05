@@ -52,31 +52,11 @@ export const FocusedBurst: Power = {
       "type": "Energy",
       "scale": 1.23,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.64,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.636,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.484,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.12,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 0.8934,
+      "scale": 0.4467,
       "table": "Melee_Ones"
     },
     "damageDebuff": {

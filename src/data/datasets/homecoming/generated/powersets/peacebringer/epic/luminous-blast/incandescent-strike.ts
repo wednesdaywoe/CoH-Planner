@@ -54,16 +54,6 @@ export const IncandescentStrike: Power = {
       "type": "Energy",
       "scale": 2,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.5445,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.9657,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
@@ -73,7 +63,7 @@ export const IncandescentStrike: Power = {
       "table": "Melee_Immobilize"
     },
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "slow": {

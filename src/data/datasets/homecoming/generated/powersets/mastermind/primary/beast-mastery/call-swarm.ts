@@ -43,22 +43,13 @@ export const CallSwarm: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 0.1848,
-      "table": "Ranged_Damage",
-      "duration": 3.1,
-      "tickRate": 0.75
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.244,
-      "table": "Ranged_PvPDamage",
-      "duration": 3.1,
-      "tickRate": 0.75
-    }
-  ],
+  "damage": {
+    "type": "Lethal",
+    "scale": 0.1848,
+    "table": "Ranged_Damage",
+    "duration": 3.1,
+    "tickRate": 0.75
+  },
   "effects": {
     "defenseDebuff": {
       "scale": 1,

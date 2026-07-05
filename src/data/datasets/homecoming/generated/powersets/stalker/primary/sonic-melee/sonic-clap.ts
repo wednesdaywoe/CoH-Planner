@@ -53,21 +53,11 @@ export const SonicClap: Power = {
       "type": "Energy",
       "scale": 0.3919,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.3779,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3779,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.3,
+      "scale": 0.65,
       "table": "Melee_Ones"
     },
     "stun": {

@@ -54,8 +54,8 @@ export const PowerSink: Power = {
       "regenBuff": 45
     },
     "enduranceDrain": {
-      "scale": 10,
-      "table": "Melee_EndDrain"
+      "scale": 0.35,
+      "table": "Melee_Ones"
     },
     "buffDuration": 45
   }

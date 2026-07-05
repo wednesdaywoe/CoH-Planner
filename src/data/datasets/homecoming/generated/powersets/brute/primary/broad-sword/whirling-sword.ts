@@ -51,11 +51,6 @@ export const WhirlingSword: Power = {
     },
     {
       "type": "Lethal",
-      "scale": 1.2276,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 2.1,

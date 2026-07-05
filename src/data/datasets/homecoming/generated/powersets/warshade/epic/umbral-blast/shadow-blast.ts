@@ -42,18 +42,11 @@ export const ShadowBlast: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 1.64,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.889,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 1.64,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "slow": {
       "jumpHeight": {
@@ -82,7 +75,7 @@ export const ShadowBlast: Power = {
       "table": "Ranged_Slow"
     },
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

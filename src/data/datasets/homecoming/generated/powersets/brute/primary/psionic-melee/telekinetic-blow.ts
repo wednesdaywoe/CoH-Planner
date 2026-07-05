@@ -51,21 +51,11 @@ export const TelekineticBlow: Power = {
       "type": "Psionic",
       "scale": 1.35,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4472,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.3417,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockup": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Knockback"
     }
   },

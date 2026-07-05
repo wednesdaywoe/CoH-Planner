@@ -100,8 +100,8 @@ export const EnergyAbsorption: Power = {
       "perTarget": 15
     },
     "enduranceDrain": {
-      "scale": 16.5,
-      "table": "Melee_EndDrain"
+      "scale": 0.35,
+      "table": "Melee_Ones"
     },
     "buffDuration": 45
   }

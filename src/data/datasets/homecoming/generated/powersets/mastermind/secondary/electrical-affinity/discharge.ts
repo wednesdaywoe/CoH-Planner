@@ -56,7 +56,7 @@ export const Discharge: Power = {
       "table": "Ranged_Ones"
     },
     "enduranceDrain": {
-      "scale": 7.25,
+      "scale": 0.25,
       "table": "Ranged_EndDrain"
     },
     "buffDuration": 25

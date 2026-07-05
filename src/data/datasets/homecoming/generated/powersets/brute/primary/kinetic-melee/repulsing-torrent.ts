@@ -55,26 +55,11 @@ export const RepulsingTorrent: Power = {
       "type": "Energy",
       "scale": 0.97,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.2801,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8403,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.5461,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Knockback"
     },
     "damageDebuff": {

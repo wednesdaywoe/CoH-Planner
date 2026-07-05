@@ -51,39 +51,19 @@ export const ChargedBrawl: Power = {
       "type": "Smashing",
       "scale": 0.34,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.84,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.6606,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4404,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 1.1009,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 1.25,
-      "table": "Melee_EndDrain"
+      "scale": 0.07,
+      "table": "Melee_Ones"
     },
     "enduranceGain": {
-      "scale": 4.368,
+      "scale": 2.184,
       "table": "Melee_Ones"
     },
     "recoveryDebuff": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "durations": {

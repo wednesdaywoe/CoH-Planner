@@ -49,16 +49,6 @@ export const BodyBlow: Power = {
       "type": "Energy",
       "scale": 0.87,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4047,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.9443,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

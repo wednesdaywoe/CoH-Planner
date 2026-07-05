@@ -45,11 +45,6 @@ export const Corruption: Power = {
       "table": "Ranged_Damage"
     },
     {
-      "type": "Fire",
-      "scale": 1.421,
-      "table": "Ranged_PvPDamage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.15,
       "table": "Ranged_Damage",

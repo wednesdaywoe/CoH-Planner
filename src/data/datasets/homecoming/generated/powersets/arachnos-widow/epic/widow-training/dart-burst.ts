@@ -55,16 +55,6 @@ export const DartBurst: Power = {
       "table": "Ranged_Damage",
       "duration": 5,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.8653,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.2547,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

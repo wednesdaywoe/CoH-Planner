@@ -44,11 +44,6 @@ export const Swipe: Power = {
       "table": "Melee_Damage"
     },
     {
-      "type": "Lethal",
-      "scale": 1.141,
-      "table": "Melee_PvPDamage"
-    },
-    {
       "type": "Toxic",
       "scale": 0.08,
       "table": "Melee_Damage",

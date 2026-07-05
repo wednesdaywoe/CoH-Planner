@@ -49,16 +49,11 @@ export const TelekineticThrust: Power = {
       "type": "Psionic",
       "scale": 1.46,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.2088,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 16,
+      "scale": 8,
       "table": "Melee_Knockback"
     },
     "damageBuff": {

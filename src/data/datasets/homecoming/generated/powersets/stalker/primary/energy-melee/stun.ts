@@ -46,21 +46,6 @@ export const Stun: Power = {
   "damage": [
     {
       "type": "Smashing",
-      "scale": 0.6457,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.8917,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.7626,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
       "scale": 0.8198,
       "table": "Melee_Damage"
     },

@@ -66,35 +66,11 @@ export const BallLightning: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 2.2,
       "tickRate": 0.6000000238418579
-    },
-    {
-      "type": "Energy",
-      "scale": 0.441,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.0275,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.2,
-      "tickRate": 0.6000000238418579
-    },
-    {
-      "type": "Energy",
-      "scale": 0.441,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.0275,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.2,
-      "tickRate": 0.6000000238418579
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 1.32,
+      "scale": 0.07,
       "table": "Ranged_EndDrain"
     }
   }

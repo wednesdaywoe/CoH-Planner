@@ -40,18 +40,11 @@ export const PsychicShockwave: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.737,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 2,

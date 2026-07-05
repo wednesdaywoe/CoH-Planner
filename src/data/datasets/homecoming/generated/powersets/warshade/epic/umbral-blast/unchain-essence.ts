@@ -84,7 +84,7 @@ export const UnchainEssence: Power = {
       "table": "Ranged_Stun"
     },
     "knockback": {
-      "scale": 2,
+      "scale": 1,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

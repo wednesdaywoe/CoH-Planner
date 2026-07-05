@@ -52,16 +52,6 @@ export const PositronicFist: Power = {
       "type": "Energy",
       "scale": 2.67,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.7672,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.3015,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {

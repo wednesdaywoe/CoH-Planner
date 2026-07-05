@@ -53,16 +53,6 @@ export const CosmicBurst: Power = {
       "type": "Energy",
       "scale": 2.12,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.289,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.289,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

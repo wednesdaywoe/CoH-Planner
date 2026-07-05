@@ -60,26 +60,6 @@ export const WaterJet: Power = {
       "type": "Cold",
       "scale": 1.47,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4503,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.3507,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.4503,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.3507,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

@@ -48,16 +48,6 @@ export const PsionicStrike: Power = {
       "type": "Psionic",
       "scale": 2.6,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.829,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.829,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

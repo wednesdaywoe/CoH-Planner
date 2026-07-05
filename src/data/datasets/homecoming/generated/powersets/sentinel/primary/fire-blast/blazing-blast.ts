@@ -62,51 +62,27 @@ export const BlazingBlast: Power = {
       "type": "Fire",
       "scale": 1,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0946,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.5,
-      "tickRate": 0.20000000298023224
-    },
-    {
-      "type": "Fire",
-      "scale": 0.0946,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.5,
-      "tickRate": 0.20000000298023224
-    },
-    {
-      "type": "Fire",
-      "scale": 0.8196,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Fire",
-      "scale": 0.8196,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "repel": {
-      "scale": 10,
+      "scale": 8,
       "table": "Ranged_Ones"
     },
     "durations": {
-      "repel": 0.6,
-      "hold": 0.6
+      "repel": 0.61,
+      "hold": 0.61
     },
     "hold": {
       "mag": 1,
       "scale": 4,
       "table": "Ranged_Ones"
     },
-    "effectDuration": 0.6,
+    "effectDuration": 0.61,
     "knockback": {
       "scale": 2,
       "table": "Ranged_Knockback"
     },
-    "buffDuration": 0.6
+    "buffDuration": 0.61
   }
 };

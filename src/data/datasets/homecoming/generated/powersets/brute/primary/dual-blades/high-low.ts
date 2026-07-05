@@ -56,28 +56,11 @@ export const HighLow: Power = {
       "type": "Lethal",
       "scale": 0.7,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.213,
-      "table": "Melee_PvPDamage",
-      "duration": 2.05,
-      "tickRate": 0.20000000298023224
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.2945,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 0.6725,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   }

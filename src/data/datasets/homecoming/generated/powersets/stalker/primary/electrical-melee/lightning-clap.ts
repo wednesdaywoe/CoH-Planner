@@ -53,29 +53,19 @@ export const LightningClap: Power = {
       "type": "Energy",
       "scale": 0.42,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.971,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3506,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "recoveryDebuff": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "durations": {
       "recoveryDebuff": 4
     },
     "enduranceDrain": {
-      "scale": 2,
-      "table": "Melee_EndDrain"
+      "scale": 0.07,
+      "table": "Melee_Ones"
     },
     "stun": {
       "mag": 3,
@@ -83,7 +73,7 @@ export const LightningClap: Power = {
       "table": "Melee_Stun"
     },
     "knockback": {
-      "scale": 1.28,
+      "scale": 0.64,
       "table": "Melee_Ones"
     },
     "buffDuration": 4

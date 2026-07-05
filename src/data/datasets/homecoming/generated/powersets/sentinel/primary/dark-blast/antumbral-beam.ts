@@ -51,16 +51,6 @@ export const AntumbralBeam: Power = {
       "type": "Negative",
       "scale": 2.76,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.449,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Negative",
-      "scale": 2.449,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

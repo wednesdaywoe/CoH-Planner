@@ -62,26 +62,6 @@ export const HydroBlast: Power = {
       "type": "Cold",
       "scale": 1.11,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.7396,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.11,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.7396,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Cold",
-      "scale": 1.11,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
@@ -107,7 +87,7 @@ export const HydroBlast: Power = {
       "slow": 10
     },
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Ranged_Ones"
     },
     "buffDuration": 10

@@ -83,8 +83,13 @@ export const Geode: Power = {
               "damage": [],
               "effects": [
                 {
-                  "type": "Knockup",
-                  "magnitude": 1,
+                  "type": "KnockupProtection",
+                  "scale": 10000,
+                  "table": "Melee_Ones",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "KnockbackProtection",
                   "scale": 10000,
                   "table": "Melee_Ones",
                   "ignoreStrength": true
@@ -93,6 +98,13 @@ export const Geode: Power = {
                   "type": "Immobilize",
                   "magnitude": 1000,
                   "scale": 0.2,
+                  "table": "Melee_Ones",
+                  "ignoreStrength": true
+                },
+                {
+                  "type": "Knockup",
+                  "magnitude": 1,
+                  "scale": 10,
                   "table": "Melee_Ones",
                   "ignoreStrength": true
                 },

@@ -36,18 +36,11 @@ export const MindProbe: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1.96,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 1.619,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1.96,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "rechargeDebuff": {
       "scale": 0.4,

@@ -43,21 +43,14 @@ export const PenetratingRay: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Energy",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 3.26,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Energy",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 1.4,
+      "scale": 0.7,
       "table": "Ranged_Knockback"
     },
     "rangeBuff": {
@@ -79,11 +72,6 @@ export const PenetratingRay: Power = {
         "type": "Energy",
         "scale": 2.28,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Energy",
-        "scale": 2.049,
-        "table": "Ranged_PvPDamage"
       }
     ]
   }

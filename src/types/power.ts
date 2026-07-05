@@ -25,6 +25,20 @@ export interface ScaledEffect {
    *  At N stacks: effective_scale = scale + perTarget × (N - 1)
    *  For AoE powers, N = targets hit. For non-AoE, N = stack count (see maxStacks). */
   perTarget?: number;
+  /** HC splits some debuffs into two equal halves — one the target's debuff
+   *  resistance can reduce, and one that bypasses it (IgnoreResistance). When
+   *  true, this slot holds one half and an equal unresistable half also applies;
+   *  the InfoPanel renders a second "(unresistable)" row (Flash Arrow -ToHit,
+   *  Poison Gas -DMG). Set by the converter's twin pre-scan. */
+  unresistable?: boolean;
+  /** Additional instances of THIS debuff that the power applies with a different
+   *  duration. CoH sometimes stacks the same debuff twice at distinct durations
+   *  (EMP Arrow -500% regen at 15s AND 45s; Thunderous Blast -100% recovery at
+   *  10s AND 20s) — genuinely separate applications that expire at different
+   *  times, so they must not collapse into one summed value. The primary slot
+   *  holds the longest-lived instance; each variant is rendered as its own row
+   *  with its own duration. Set by the converter's duration-aware accumulate. */
+  durationVariants?: { scale: number; duration: number }[];
 }
 
 /** Helper type for effects that can be number OR scaled */
@@ -43,7 +57,7 @@ export function getScaleValue(value: NumberOrScaled | undefined): number | undef
 /**
  * Check if a value is a ScaledEffect (has scale and table)
  */
-export function isScaledEffect(value: NumberOrScaled | undefined): value is ScaledEffect {
+export function isScaledEffect(value: unknown): value is ScaledEffect {
   return (
     typeof value === 'object' &&
     value !== null &&

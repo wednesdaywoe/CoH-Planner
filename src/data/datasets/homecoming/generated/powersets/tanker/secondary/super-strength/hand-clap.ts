@@ -48,7 +48,7 @@ export const HandClap: Power = {
       "table": "Melee_Stun"
     },
     "knockback": {
-      "scale": 4,
+      "scale": 2,
       "table": "Melee_Knockback"
     }
   },

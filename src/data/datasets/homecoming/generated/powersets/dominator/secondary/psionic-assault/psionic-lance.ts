@@ -40,18 +40,11 @@ export const PsionicLance: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 4.5,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 3.3,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 4.5,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "rechargeDebuff": {
       "scale": 0.15,
@@ -72,11 +65,6 @@ export const PsionicLance: Power = {
         "type": "Psionic",
         "scale": 3.56,
         "table": "Ranged_Damage"
-      },
-      {
-        "type": "Psionic",
-        "scale": 2.131,
-        "table": "Ranged_PvPDamage"
       }
     ]
   }

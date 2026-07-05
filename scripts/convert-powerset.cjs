@@ -651,6 +651,20 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
 
   for (const effect of effects) {
     if (effect.is_pvp === 'PVP_ONLY') continue;
+    // Drop the PvP variant of a PvE/PvP `enttype` pair. HC splits many powers
+    // into `enttype target> critter eq` (PvE) and `enttype target> player eq`
+    // (PvP) groups, both tagged is_pvp='EITHER', so the PVP_ONLY skip above
+    // never catches them. Because extractEffects writes single-valued keyed
+    // slots (last-write-wins) and the PvP group is emitted last, its scale/
+    // table/duration would clobber the correct PvE values (Flash Arrow showed
+    // the PvP -0.5/20s ToHit instead of -0.75/60s; Ice Arrow inherited the PvP
+    // 10s -Special + a Ranged_Special runSpeed; EMP's -regen took the PvP copy).
+    // `continue` drops the whole subtree (child_effects + redirect follows),
+    // matching collectInfoRedirectTemplates (~line 1023) and
+    // GAME-DATA-PRINCIPLES §3 "prefer PvE". There is no per-power PvP mode in
+    // the planner, so PvP-only content is correctly omitted, not surfaced.
+    if (effect.requires_expression
+        && /\benttype\s+target>\s+player\s+eq/.test(effect.requires_expression)) continue;
     // Skip chance=0 ONLY when the effect carries nothing real — those
     // are proc placeholders the binary leaves around. Effects with
     // chance=0 plus actual templates or child_effects are Tag-gated
@@ -1064,29 +1078,78 @@ const PSEUDOPET_DEBUFF_ATTRIBS = {
   // (−Rech 7%→14%, −Speed 14%→28%) instead of collapsing to one ambiguous "Slow".
   rechargetime: 'RechargeDebuff',
 };
+// Ally debuff-RESISTANCE (aspect=Resistance, positive scale) → protection from
+// the matching debuff, NOT an offensive debuff. EMP Field grants End-drain and
+// recovery/recharge-debuff resistance to friends; without this they'd be read as
+// foe -Recovery/-Recharge via PSEUDOPET_DEBUFF_ATTRIBS.
+const PSEUDOPET_DEBUFF_RESIST = {
+  endurance: 'EndDrainResist', recovery: 'RecoveryDebuffResist',
+  regeneration: 'RegenDebuffResist', rechargetime: 'RechargeDebuffResist',
+};
 
 /**
  * Classify a single (already deep-collected, AT-deduped, PvP-excluded) template
- * into a pseudo-pet effect. Returns {type, scale?, table?, magnitude?,
- * ignoreStrength?} or null when the template is not a foe-facing mez/debuff.
+ * into pseudo-pet effects. Returns an ARRAY of {type, scale?, table?, magnitude?,
+ * ignoreStrength?} — one entry per surfaced attrib (ally protection / debuff
+ * resistance templates carry several), or [] when the template is not a
+ * recognized ally buff / protection / foe mez/debuff.
  *
  * Discriminates enhanceable vs not via the IgnoreStrength flag (GAME-DATA §4):
  * Storm Cell's Tempest debuffs are all IgnoreStrength → informational only;
  * Glue Arrow's slow is not → enhanceable.
  */
 function classifyPseudoPetEffect(template) {
-  if (!template.attribs || template.attribs.length === 0) return null;
+  if (!template.attribs || template.attribs.length === 0) return [];
   // Foe-facing only — Self templates are pet self-buffs (ResistAll survivability,
   // self-root immob that keeps a pseudo-pet stationary, etc.).
-  if (template.target === 'Self') return null;
+  if (template.target === 'Self') return [];
   const ignoreStrength = (template.flags || []).includes('IgnoreStrength');
   const scale = template.scale;
   const table = template.table;
   // Prefer PvE: the binary often carries a `*_PvPMez` / `*_PvPDamage` sibling
   // alongside the PvE table, both ungated once `_stripIgnoredClauses` removes
   // the `enttype` clause. The PvE planner shows the PvE variant (GAME-DATA §3).
-  if (table && /pvp/i.test(table)) return null;
+  if (table && /pvp/i.test(table)) return [];
 
+  const aspectL = (template.aspect || '').toLowerCase();
+  const tableL = (table || '').toLowerCase();
+  const attribsL = template.attribs.map((a) => (a || '').toLowerCase());
+  const a0 = attribsL[0] || '';
+  const withScale = (eff) => {
+    if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
+    if (ignoreStrength) eff.ignoreStrength = true;
+    return eff;
+  };
+
+  // ---- Ally-facing BUFFS & PROTECTION (discriminate by aspect + sign, not
+  // attrib name — GAME-DATA §3). Ally auras like EMP Field / Faraday Cage grant
+  // a resistance buff, mez/knock protection, and debuff resistance to friends
+  // (target=AnyAffected, so they pass the Self check above). The foe-debuff
+  // allowlist below would otherwise DROP the +res buff and INVERT the ally
+  // protection into offensive Hold/-Recovery. These expand PER attrib so a
+  // [Held, Stunned, Sleep] template surfaces all three protections.
+  //
+  // +Resistance BUFF: aspect=Resistance, POSITIVE scale, damage-type attribs, on
+  // a non-debuff table (a −resistance DEBUFF is aspect=Resistance too but negative
+  // / on a *_debuff table — kept for the ResistanceDebuff branch).
+  if ((scale || 0) > 0 && aspectL === 'resistance' && isDamageTypeAttrib(a0) && !tableL.includes('debuff')) {
+    return [withScale({ type: 'ResistanceBuff' })];
+  }
+  // Debuff RESISTANCE: aspect=Resistance, POSITIVE scale, on a resource/recharge
+  // attrib → protection from that debuff, one per attrib.
+  if ((scale || 0) > 0 && aspectL === 'resistance') {
+    const resists = attribsL.map((a) => PSEUDOPET_DEBUFF_RESIST[a]).filter(Boolean);
+    if (resists.length) return resists.map((type) => withScale({ type }));
+  }
+  // Mez / knock PROTECTION: aspect=Current, NEGATIVE scale, mez/knock attrib is a
+  // protection magnitude (reduces incoming control), NOT offensive control. Value
+  // is computed scale × table at display time, same as any mez. One per attrib.
+  if ((scale || 0) < 0 && aspectL === 'current') {
+    const prot = attribsL.filter((a) => PSEUDOPET_MEZ_ATTRIBS[a]);
+    if (prot.length) return prot.map((a) => withScale({ type: PSEUDOPET_MEZ_ATTRIBS[a] + 'Protection' }));
+  }
+
+  // ---- Foe debuffs (first matching attrib; unchanged) ----
   // Typed resistance / defense debuffs (Tar Patch −res, Disruption/EMP Arrow,
   // Faraday Cage) are a SINGLE template carrying all 8 damage-type (or position)
   // attribs at aspect=Resistance / on a `*_Debuff_Def` table — not in the flat
@@ -1094,36 +1157,24 @@ function classifyPseudoPetEffect(template) {
   // an aspect=Resistance template using `*_Dmg` attribs is a −resistance debuff,
   // not the player's damage). Check once, before the per-attrib loop.
   {
-    const aspect = (template.aspect || '').toLowerCase();
-    const tableLower = (table || '').toLowerCase();
-    const a0 = template.attribs[0] ? template.attribs[0].toLowerCase() : '';
     const typed = isDamageTypeAttrib(a0) || isDefensePosition(a0);
-    const isDebuff = (scale || 0) < 0 || tableLower.includes('debuff');
-    if (typed && aspect === 'resistance' && isDebuff) {
-      const eff = { type: 'ResistanceDebuff' };
-      if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
-      if (ignoreStrength) eff.ignoreStrength = true;
-      return eff;
+    const isDebuff = (scale || 0) < 0 || tableL.includes('debuff');
+    if (typed && aspectL === 'resistance' && isDebuff) {
+      return [withScale({ type: 'ResistanceDebuff' })];
     }
-    if (typed && tableLower.includes('debuff_def')) {
-      const eff = { type: 'DefenseDebuff' };
-      if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
-      if (ignoreStrength) eff.ignoreStrength = true;
-      return eff;
+    if (typed && tableL.includes('debuff_def')) {
+      return [withScale({ type: 'DefenseDebuff' })];
     }
   }
 
-  for (const rawAttrib of template.attribs) {
-    const a = rawAttrib?.toLowerCase();
+  for (const a of attribsL) {
     if (!a) continue;
 
     const mezType = PSEUDOPET_MEZ_ATTRIBS[a];
     if (mezType) {
       const eff = { type: mezType };
       if (template.magnitude && template.magnitude > 0) eff.magnitude = template.magnitude;
-      if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
-      if (ignoreStrength) eff.ignoreStrength = true;
-      return eff;
+      return [withScale(eff)];
     }
 
     const debuffType = PSEUDOPET_DEBUFF_ATTRIBS[a];
@@ -1137,14 +1188,11 @@ function classifyPseudoPetEffect(template) {
       // surface, and including it makes the Slow value inconsistent (it would win
       // the single Slow slot in some redirects but not others). The Current-aspect
       // movement slow is the representative one.
-      if (debuffType === 'Slow' && (template.aspect || '').toLowerCase() === 'maximum') continue;
-      const eff = { type: debuffType };
-      if (scale && table) { eff.scale = Math.abs(scale); eff.table = table; }
-      if (ignoreStrength) eff.ignoreStrength = true;
-      return eff;
+      if (debuffType === 'Slow' && aspectL === 'maximum') continue;
+      return [withScale({ type: debuffType })];
     }
   }
-  return null;
+  return [];
 }
 
 /**
@@ -1286,17 +1334,17 @@ function resolveSummonRedirects(redirectNames) {
     const effects = [];
     const seen = new Map(); // type -> index in effects
     for (const { template, chance, gated } of collected) {
-      const e = classifyPseudoPetEffect(template);
-      if (!e) continue;
-      if (chance < 1) e.chance = Math.round(chance * 100) / 100;
-      if (gated) e.conditional = true;
-      if (!seen.has(e.type)) {
-        seen.set(e.type, effects.length);
-        effects.push(e);
-      } else if (!gated) {
-        // An always-on occurrence supersedes a previously-seen gated one.
-        const prev = effects[seen.get(e.type)];
-        if (prev.conditional) effects[seen.get(e.type)] = e;
+      for (const e of classifyPseudoPetEffect(template)) {
+        if (chance < 1) e.chance = Math.round(chance * 100) / 100;
+        if (gated) e.conditional = true;
+        if (!seen.has(e.type)) {
+          seen.set(e.type, effects.length);
+          effects.push(e);
+        } else if (!gated) {
+          // An always-on occurrence supersedes a previously-seen gated one.
+          const prev = effects[seen.get(e.type)];
+          if (prev.conditional) effects[seen.get(e.type)] = e;
+        }
       }
     }
 
@@ -1388,11 +1436,12 @@ function resolveSummonRedirects(redirectNames) {
       const vEffects = [];
       const vSeen = new Set();
       for (const { template, chance } of vCollected) {
-        const e = classifyPseudoPetEffect(template);
-        if (!e || vSeen.has(e.type)) continue;
-        vSeen.add(e.type);
-        if (chance < 1) e.chance = Math.round(chance * 100) / 100;
-        vEffects.push(e);
+        for (const e of classifyPseudoPetEffect(template)) {
+          if (vSeen.has(e.type)) continue;
+          vSeen.add(e.type);
+          if (chance < 1) e.chance = Math.round(chance * 100) / 100;
+          vEffects.push(e);
+        }
       }
       if (vEffects.length > 0) ab.poweredUpEffects = vEffects;
     }
@@ -3128,6 +3177,21 @@ function collectAllTemplates(effects, parentCombatGated = false) {
     // Skip PVP-only effects
     if (effect.is_pvp === 'PVP_ONLY') continue;
 
+    // Drop the PvP variant of a PvE/PvP `enttype` pair. HC splits many powers
+    // into `enttype target> critter eq` (PvE) and `enttype target> player eq`
+    // (PvP) groups, both tagged is_pvp='EITHER', so the PVP_ONLY skip above
+    // never catches them. Because extractEffects writes single-valued keyed
+    // slots (last-write-wins) and the PvP group is emitted last, its scale/
+    // table/duration would clobber the correct PvE values (Flash Arrow showed
+    // the PvP -0.5/20s ToHit instead of -0.75/60s; Ice Arrow inherited the PvP
+    // 10s -Special + a Ranged_Special runSpeed). `continue` drops the whole
+    // subtree (including child_effects), matching collectInfoRedirectTemplates
+    // (~line 1023) and GAME-DATA-PRINCIPLES §3 "prefer PvE". There is no
+    // per-power PvP mode in the planner, so PvP-only content is correctly
+    // omitted rather than surfaced.
+    if (effect.requires_expression
+        && /\benttype\s+target>\s+player\s+eq/.test(effect.requires_expression)) continue;
+
     // Skip chance=0 ONLY when the effect is empty (proc placeholder).
     // Effects with chance=0 plus templates or child_effects are Tag-gated
     // (Evasive Maneuvers' FlightActive outer Effect carries Fly speed,
@@ -3336,6 +3400,57 @@ function extractEffects(templates, powerName) {
     if (allMatch) absorbStackCount = absorbApplyTemplates.length;
   }
 
+  // Pre-scan for resistable + unresistable debuff twins. HC splits many debuffs
+  // into two equal templates on the same attrib/aspect/table/scale/duration
+  // differing ONLY by the IgnoreResistance flag: one the target's debuff
+  // resistance can reduce, and one that bypasses it. BOTH apply in game, but the
+  // single-valued keyed slots below would otherwise drop one (overwrite keys) or
+  // double it (accumulate keys, e.g. addOrAccumulate). We drop the
+  // IgnoreResistance duplicate from the working list (keeping the value at one
+  // half) and tag the surviving resistable template `_unresistableTwin`, which
+  // makeEffect stamps as `unresistable: true` so the InfoPanel renders a second
+  // "(unresistable)" row (Flash Arrow -ToHit ×2, Poison Gas -DMG ×2). The
+  // signature ignores the flag; a signature seen both WITH and WITHOUT
+  // IgnoreResistance is a twin. (PvP twins never reach here — collectTemplatesDeep
+  // already dropped the `player eq` group.)
+  // DEBUFFS ONLY. A self-buff (Dull Pain +MaxHP, heals, absorb) can also ship a
+  // resistable + IgnoreResistance template pair, but there both halves genuinely
+  // stack into the full buff value (the accumulate-if-same-table keys sum them),
+  // so they must NOT be coalesced/halved. The split-and-show-twice semantics only
+  // apply to foe debuffs, where each half is a distinct application against the
+  // target's debuff resistance. Gate on the same isDebuff test the main loop uses.
+  const _isTwinDebuff = (t) =>
+    (t.scale || 0) < 0 || (t.table || '').toLowerCase().includes('debuff');
+  const _twinSig = (t) =>
+    `${(t.attribs || []).map((a) => a?.toLowerCase()).sort().join(',')}|` +
+    `${(t.aspect || '').toLowerCase()}|${t.table}|` +
+    `${(t.scale || 0).toFixed(4)}|${t.duration || ''}`;
+  {
+    const seen = {};
+    for (const t of templates) {
+      if (!t.attribs || t.attribs.length === 0 || !_isTwinDebuff(t)) continue;
+      const sig = _twinSig(t);
+      if (!seen[sig]) seen[sig] = { res: false, unres: false };
+      if ((t.flags || []).includes('IgnoreResistance')) seen[sig].unres = true;
+      else seen[sig].res = true;
+    }
+    const twinSigs = new Set(
+      Object.keys(seen).filter((k) => seen[k].res && seen[k].unres)
+    );
+    if (twinSigs.size > 0) {
+      const kept = [];
+      for (const t of templates) {
+        const sig = t.attribs && t.attribs.length && _isTwinDebuff(t) ? _twinSig(t) : null;
+        if (sig && twinSigs.has(sig)) {
+          if ((t.flags || []).includes('IgnoreResistance')) continue; // drop the unresistable duplicate
+          t._unresistableTwin = true; // tag the resistable half so the UI shows both
+        }
+        kept.push(t);
+      }
+      templates = kept;
+    }
+  }
+
   for (const template of templates) {
     if (!template.attribs || template.attribs.length === 0) continue;
 
@@ -3388,7 +3503,11 @@ function extractEffects(templates, powerName) {
     }
 
     // Helper to create effect object
-    const makeEffect = (s = scale, t = table) => ({ scale: Math.abs(s), table: t });
+    const makeEffect = (s = scale, t = table) => {
+      const e = { scale: Math.abs(s), table: t };
+      if (template._unresistableTwin) e.unresistable = true;
+      return e;
+    };
     const makeMezEffect = () => ({ mag: magnitude, scale: Math.abs(scale), table });
 
     // Helper to record per-effect duration
@@ -3840,10 +3959,50 @@ function extractEffects(templates, powerName) {
         }
 
         // Helper to accumulate scales for resource effects that may appear multiple times
-        // (e.g., maxHPBuff with 2x templates of scale 1.0 should sum to scale 2.0)
+        // (e.g., maxHPBuff with 2x templates of scale 1.0 should sum to scale 2.0).
+        //
+        // Duration-aware, DEBUFFS ONLY: two same-key/same-table DEBUFF templates
+        // that carry DIFFERENT timed durations are not the same effect — they
+        // expire at different times and the game applies both (e.g. EMP Arrow's
+        // -500% regen at 15s AND a second -500% regen at 45s). Summing them into
+        // one value at one duration is wrong on two counts (inflated magnitude,
+        // single duration), so the second instance is recorded as a
+        // `durationVariants` entry on the primary and the InfoPanel renders it as
+        // its own row with its own duration.
+        //
+        // BUFFS keep summing regardless of duration. Self-sustain buffs
+        // (Hibernate, Rise to the Challenge, Bio Armor, …) re-apply their
+        // regen/recovery/heal each toggle tick as short Current-aspect templates
+        // (0.75s / 1.0s / 1.12s) that differ only by internal tick timing; those
+        // genuinely accumulate into one sustained value (the maxHPBuff-style
+        // "2× scale-1 → scale 2" case) and must NOT be split into per-duration
+        // rows. Gate on the same isDebuff test the main loop uses.
         const addOrAccumulate = (key) => {
-          if (effects[key] && effects[key].table === table) {
-            effects[key].scale += Math.abs(scale);
+          const existing = effects[key];
+          if (existing && existing.table === table) {
+            const existingDur = effects.durations ? effects.durations[key] : undefined;
+            const incomingDur = duration && duration > 0 ? duration : null;
+            if (
+              isDebuff &&
+              existingDur != null && incomingDur != null &&
+              Math.abs(existingDur - incomingDur) > 0.001
+            ) {
+              existing.durationVariants = existing.durationVariants || [];
+              if (incomingDur > existingDur) {
+                // Incoming instance lasts longer → make it the primary so the
+                // recorded duration (which drives attack-chain foe-debuff
+                // windows) and the first displayed row reflect the longest-lived
+                // instance; demote the old primary to a variant.
+                existing.durationVariants.push({ scale: existing.scale, duration: existingDur });
+                existing.scale = Math.abs(scale);
+                if (!effects.durations) effects.durations = {};
+                effects.durations[key] = incomingDur;
+              } else {
+                existing.durationVariants.push({ scale: Math.abs(scale), duration: incomingDur });
+              }
+              return;
+            }
+            existing.scale += Math.abs(scale);
           } else {
             effects[key] = makeEffect();
           }

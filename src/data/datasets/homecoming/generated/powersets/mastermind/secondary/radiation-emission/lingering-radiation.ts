@@ -67,8 +67,8 @@ export const LingeringRadiation: Power = {
       "table": "Ranged_Slow"
     },
     "regenDebuff": {
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
+      "scale": 5,
+      "table": "Ranged_Ones"
     },
     "buffDuration": 30
   }

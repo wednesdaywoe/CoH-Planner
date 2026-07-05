@@ -53,25 +53,15 @@ export const ThunderStrike: Power = {
       "type": "Energy",
       "scale": 0.42,
       "table": "Melee_Damage"
-    },
-    {
-      "type": "Energy",
-      "scale": 2.971,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Energy",
-      "scale": 0.3506,
-      "table": "Melee_PvPDamage"
     }
   ],
   "effects": {
     "enduranceDrain": {
-      "scale": 2,
-      "table": "Melee_EndDrain"
+      "scale": 0.07,
+      "table": "Melee_Ones"
     },
     "recoveryDebuff": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "durations": {
@@ -84,7 +74,7 @@ export const ThunderStrike: Power = {
       "table": "Melee_Stun"
     },
     "knockback": {
-      "scale": 1.28,
+      "scale": 0.64,
       "table": "Melee_Ones"
     },
     "damageBuff": {

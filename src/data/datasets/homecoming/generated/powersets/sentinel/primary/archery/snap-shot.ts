@@ -48,16 +48,6 @@ export const SnapShot: Power = {
       "type": "Lethal",
       "scale": 0.84,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.18,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.18,
-      "table": "Ranged_PvPDamage"
     }
   ]
 };

@@ -54,7 +54,7 @@ export const TimeStop: Power = {
       "damageBuff": 9.67
     },
     "regenDebuff": {
-      "scale": 4.5,
+      "scale": 0.5,
       "table": "Ranged_Ones"
     },
     "damageBuff": {

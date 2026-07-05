@@ -37,8 +37,8 @@ export const PowerSink: Power = {
   "maxSlots": 6,
   "effects": {
     "enduranceDrain": {
-      "scale": 10,
-      "table": "Melee_EndDrain"
+      "scale": 0.35,
+      "table": "Melee_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,

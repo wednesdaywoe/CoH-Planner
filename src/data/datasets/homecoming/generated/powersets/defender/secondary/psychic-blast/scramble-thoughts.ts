@@ -42,23 +42,11 @@ export const ScrambleThoughts: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Psionic",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 2.36,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Psionic",
-      "scale": 0.7262,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Psionic",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "stun": {
       "mag": 3,
@@ -76,8 +64,8 @@ export const ScrambleThoughts: Power = {
       "table": "Ranged_Stun"
     },
     "placate": {
-      "scale": 1,
-      "table": "Ranged_PvPMez"
+      "scale": 10,
+      "table": "Ranged_Stun"
     },
     "fear": {
       "mag": 3,

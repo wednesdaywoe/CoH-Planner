@@ -41,22 +41,13 @@ export const SkySplitter: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 1.38,
-      "table": "Melee_Damage",
-      "duration": 1.9,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.4905,
-      "table": "Melee_PvPDamage",
-      "duration": 1.9,
-      "tickRate": 1
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.38,
+    "table": "Melee_Damage",
+    "duration": 1.9,
+    "tickRate": 1
+  },
   "effects": {
     "stun": {
       "mag": 3,
@@ -64,7 +55,7 @@ export const SkySplitter: Power = {
       "table": "Melee_Stun"
     },
     "knockup": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     },
     "slow": {

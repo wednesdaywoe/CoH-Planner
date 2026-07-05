@@ -43,31 +43,14 @@ export const CrushingUppercut: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 3.18,
-      "table": "Melee_Damage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 3.18,
-      "table": "Melee_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.6417,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.6417,
-      "table": "Melee_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 3.18,
+    "table": "Melee_Damage"
+  },
   "effects": {
     "knockup": {
-      "scale": 6,
+      "scale": 3,
       "table": "Melee_Knockback"
     },
     "stun": {

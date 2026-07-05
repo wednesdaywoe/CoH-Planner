@@ -47,21 +47,14 @@ export const GraviticEmanation: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Negative",
-      "scale": 0.4,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Negative",
-      "scale": 1.2185,
-      "table": "Ranged_PvPDamage"
-    }
-  ],
+  "damage": {
+    "type": "Negative",
+    "scale": 0.4,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 10,
+      "scale": 5,
       "table": "Ranged_Knockback"
     },
     "stun": {

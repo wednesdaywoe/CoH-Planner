@@ -57,20 +57,6 @@ export const AbyssalGaze: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 2.1,
       "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.6697,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Negative",
-      "scale": 0.6697,
-      "table": "Ranged_PvPDamage",
-      "duration": 2.1,
-      "tickRate": 1
     }
   ],
   "effects": {

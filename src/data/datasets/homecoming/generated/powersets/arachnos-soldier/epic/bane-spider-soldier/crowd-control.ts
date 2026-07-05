@@ -54,28 +54,11 @@ export const CrowdControl: Power = {
       "table": "Melee_Damage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 1.7183,
-      "table": "Melee_PvPDamage"
-    },
-    {
-      "type": "Toxic",
-      "scale": 0.0836,
-      "table": "Melee_PvPDamage",
-      "duration": 4.1,
-      "tickRate": 1
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.7217,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Melee_Ones"
     }
   },

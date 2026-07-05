@@ -38,7 +38,7 @@ export const SmokeFlash: Power = {
   "maxSlots": 6,
   "effects": {
     "placate": {
-      "scale": 6,
+      "scale": 8,
       "table": "Melee_Taunt"
     },
     "resistanceDebuff": {

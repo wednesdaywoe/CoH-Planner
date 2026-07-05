@@ -55,11 +55,6 @@ export const FlingThorns: Power = {
       "table": "Ranged_Damage",
       "duration": 4.1,
       "tickRate": 1
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.9411,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {

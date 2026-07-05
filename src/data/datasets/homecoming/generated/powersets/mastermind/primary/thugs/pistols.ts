@@ -38,16 +38,9 @@ export const Pistols: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Lethal",
-      "scale": 1,
-      "table": "Ranged_Damage"
-    },
-    {
-      "type": "Lethal",
-      "scale": 1.4,
-      "table": "Ranged_PvPDamage"
-    }
-  ]
+  "damage": {
+    "type": "Lethal",
+    "scale": 1,
+    "table": "Ranged_Damage"
+  }
 };

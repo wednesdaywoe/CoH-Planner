@@ -52,26 +52,12 @@ export const Disintegrate: Power = {
       "table": "Ranged_InherentDamage",
       "duration": 10.5,
       "tickRate": 1.1100000143051147
-    },
-    {
-      "type": "Energy",
-      "scale": 0.213,
-      "table": "Ranged_PvPDamage",
-      "duration": 10.5,
-      "tickRate": 1.1100000143051147
-    },
-    {
-      "type": "Energy",
-      "scale": 0.213,
-      "table": "Ranged_PvPDamage",
-      "duration": 10.5,
-      "tickRate": 1.1100000143051147
     }
   ],
   "effects": {
     "regenDebuff": {
-      "scale": 6,
-      "table": "Ranged_Res_Boolean"
+      "scale": 1.5,
+      "table": "Ranged_Ones"
     },
     "durations": {
       "regenDebuff": 15,

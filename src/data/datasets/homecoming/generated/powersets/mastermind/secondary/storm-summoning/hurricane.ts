@@ -57,7 +57,7 @@ export const Hurricane: Power = {
       "table": "Ranged_Ones"
     },
     "knockback": {
-      "scale": 8,
+      "scale": 4,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 10

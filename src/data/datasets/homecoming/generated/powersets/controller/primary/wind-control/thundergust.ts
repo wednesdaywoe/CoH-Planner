@@ -43,21 +43,14 @@ export const Thundergust: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": 0.4867,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 0.24,
-      "table": "Ranged_Damage"
-    }
-  ],
+  "damage": {
+    "type": "Smashing",
+    "scale": 0.24,
+    "table": "Ranged_Damage"
+  },
   "effects": {
     "knockback": {
-      "scale": 1.34,
+      "scale": 0.67,
       "table": "Ranged_Ones"
     },
     "tohitDebuff": {

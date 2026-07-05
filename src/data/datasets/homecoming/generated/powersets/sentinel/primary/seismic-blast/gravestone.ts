@@ -48,16 +48,6 @@ export const Gravestone: Power = {
       "type": "Smashing",
       "scale": 2.28,
       "table": "Ranged_InherentDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.049,
-      "table": "Ranged_PvPDamage"
-    },
-    {
-      "type": "Smashing",
-      "scale": 2.049,
-      "table": "Ranged_PvPDamage"
     }
   ],
   "effects": {
