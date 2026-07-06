@@ -566,7 +566,3 @@ validates the whole differential approach before any converter rewrite.
   the export (parser-level).
 - Same collapse in other slots — tspy Ageless Destiny Endurance, Melee-hybrid + Rebirth Destiny
   Regeneration show as non-gating class-absent; the same map treatment would help.
-
-  - verify the real (unpatched) parser now emits the resolved attribs + synthesized aspect for the  Support  hybrid, and confirm it leaves Melee/Assault/Control untouched.
-
-

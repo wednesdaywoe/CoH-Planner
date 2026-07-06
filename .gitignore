@@ -63,6 +63,7 @@ docs/
 tools/ghidra-audit/project/
 CoH-Planner.code-workspace
 completed/
+bins/
 
 # Python bytecode caches (anywhere in the repo)
 **/__pycache__/
