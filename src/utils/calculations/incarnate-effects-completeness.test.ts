@@ -145,6 +145,53 @@ describe('Hybrid Support — aspect=Strength buffs, not N×-inflated', () => {
   });
 });
 
+describe('Hybrid Support Core — leaguemate buff is not dropped (DSH8)', () => {
+  // The Core Support Hybrids gate their buff with `enttype target> player eq`
+  // (the player-leaguemate value the caster receives) + `enttype target> critter
+  // eq` (pets, "doubled in strength"). extractHybrid recognized only empty-req /
+  // self-RPN / per-target-RPN, so the whole Core buff was routed nowhere and the
+  // caster saw an empty frontLoaded — while the Radial line (empty req) worked.
+  // Fixed by routing the player-leaguemate (is_pvp != PVP_ONLY) value to
+  // frontLoaded. Values + key-sets are read off the in-game help text.
+  beforeAll(async () => {
+    await loadDataset('homecoming');
+  });
+
+  const CORE_TIERS = [
+    'support_core_genome', 'support_total_core_graft',
+    'support_partial_core_graft', 'support_core_embodiment',
+  ];
+
+  it('every Core tier surfaces a non-empty caster buff (was empty {})', () => {
+    for (const id of CORE_TIERS) {
+      const fx = getHybridEffects(id);
+      expect(fx, `missing ${id}`).toBeDefined();
+      expect(Object.keys(fx!.frontLoaded).length, `${id} frontLoaded empty`).toBeGreaterThan(0);
+    }
+  });
+
+  it('Support Core Embodiment grants +6% Damage/Accuracy/Defense(All) to the caster', () => {
+    // Help: "+Damage, +Accuracy, +Defense(All) to all leaguemates ... doubled for
+    // pets". The caster is a player-leaguemate → gets the 0.06 (not the 0.12 pet) value.
+    const fx = getHybridEffects('support_core_embodiment')!;
+    expect(fx.frontLoaded.damage).toBeCloseTo(0.06, 6);
+    expect(fx.frontLoaded.accuracy).toBeCloseTo(0.06, 6);
+    expect(fx.frontLoaded.defMelee).toBeCloseTo(0.06, 6);
+    expect(fx.frontLoaded.defPsionic).toBeCloseTo(0.06, 6); // Defense(All)
+  });
+
+  it('Support Core Genome buffs only the six help-listed defense positions', () => {
+    // Help: "+Damage(All) and Defense(Melee, AoE, Smashing, Lethal, Energy, Negative)".
+    const fx = getHybridEffects('support_core_genome')!;
+    expect(fx.frontLoaded.damage).toBeCloseTo(0.02, 6);
+    expect(fx.frontLoaded.defMelee).toBeCloseTo(0.02, 6);
+    expect(fx.frontLoaded.defEnergy).toBeCloseTo(0.02, 6);
+    // not in the help list, and no accuracy on this tier:
+    expect(fx.frontLoaded).not.toHaveProperty('defFire');
+    expect(fx.frontLoaded).not.toHaveProperty('accuracy');
+  });
+});
+
 describe('Rebirth dataset (Parse6) — no junk keys, no N× collapse', () => {
   beforeAll(async () => {
     await loadDataset('rebirth');

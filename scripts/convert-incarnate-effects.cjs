@@ -599,8 +599,27 @@ function extractHybrid() {
         //     per-target (target NOT source).
         const isSelfRPN = /entref\s+target>\s+entref\s+source>\s+eq\s*$/.test(req);
         const isPerTargetRPN = /entref\s+target>\s+entref\s+source>\s+eq\s+!/.test(req);
+        // Support Hybrid's *Core* line buffs "all leaguemates" (which includes the
+        // caster) via an ENTITY-TYPE gate rather than an empty/self requires:
+        //   `enttype target> player eq`  → the player-leaguemate value the CASTER
+        //                                  receives (a PvE buff — is_pvp=EITHER).
+        //   `enttype target> critter eq` → the pet-doubled value ("This boost is
+        //                                  doubled in strength for pets", per the
+        //                                  in-game help); applies to pets, NOT the
+        //                                  caster.
+        // Neither matched the self/per-target RPN forms above, so the entire Core
+        // buff was routed nowhere and dropped (empty frontLoaded) while the Radial
+        // line — which uses an empty requires — rendered correctly. DSH8 fix: route
+        // the player-leaguemate value to frontLoaded (the caster gets it, exactly
+        // like an empty-req self buff); the critter value stays out of caster totals.
+        // NB: `enttype target> player eq` is the *PvP twin* on a FOE-DEBUFF (the
+        // regular converter drops it via isPvpEnttypeVariant), but on this
+        // leaguemate BUFF it is the caster's value. Guard on is_pvp so a PvP-only
+        // group can never leak into caster totals.
+        const notPvpOnly = (eff.is_pvp || 'EITHER') !== 'PVP_ONLY';
+        const isLeaguematePlayer = notPvpOnly && /enttype\s+target>\s+player\s+eq\s*$/.test(req);
         const isPerTarget = isPerTargetRPN || req.includes('Ne(target');
-        const isSelfOnly = isSelfRPN || req.includes('source>entref') || req === '';
+        const isSelfOnly = isSelfRPN || req.includes('source>entref') || req === '' || isLeaguematePlayer;
 
         for (const statKey of templateKeys) {
           if (isPerTarget) {

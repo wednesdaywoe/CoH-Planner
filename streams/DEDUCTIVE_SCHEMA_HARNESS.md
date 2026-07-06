@@ -403,18 +403,41 @@ validates the whole differential approach before any converter rewrite.
     sweep — done; the incarnate residuals are the `aspect=Str` relabel + scope, not
     converter drops, so DSH5 is NOT extended for DSH8 and the export JSON is a
     trustworthy "truth" side for the detector below.
-  - [ ] **Build the incarnate collapse-detector view** — compare `ingestExportPower`
-    ([`atomic-effect.ts`](src/data/core/atomic-effect.ts)) atoms for each
-    `exported_powers/incarnate/*.json` against the converter output
-    ([generated `incarnate-effects.ts`](src/data/datasets/homecoming/generated/incarnate-effects.ts)),
-    flagging calc-relevant atoms the converter dropped. The generated file's shape
-    (`Record<slug, Record<stat, number>>`, no `Source: *.json`/`.effects`) is unlike
-    `PowerEffects`, so [`dsh6-collapse-detector.cjs`](scripts/dsh6-collapse-detector.cjs)
-    can't consume it as-is — needs a per-slot-type adapter (Alpha/Destiny/Hybrid/
-    Genesis calc-feeding; Judgement/Interface/Lore/Genesis-exemplar display-only by
-    design).
-  - [ ] Fix confirmed drops in the **calc-feeding** slots and add `pvMode`/`resistible`
-    awareness; reuse the DSH4 bridge rather than the parallel `ATTRIB_MAP`.
+  - [~] **Incarnate collapse-detector view** — a scratch diagnostic (per-power
+    `ingestExportPower` ([`atomic-effect.ts`](src/data/core/atomic-effect.ts)) atoms vs
+    the converter output) is built and swept Destiny + Hybrid. It confirmed Destiny's
+    calc-feeding drops are already fixed (the 2026-07-03 completeness audit holds — all
+    residuals were FPs: `aspect=Res` folded to `debuffResistance`, `toWho=Target`
+    rez/teleport mechanics, homogeneous first-attrib-only collapses) and surfaced the
+    Hybrid finding below. Still TODO: fold those FP filters in, make it a committed,
+    CI-able detector (the generated file's `Record<slug, Record<stat,number>>` shape —
+    no `Source: *.json`/`.effects` — means [`dsh6-collapse-detector.cjs`](scripts/dsh6-collapse-detector.cjs)
+    needs a per-slot adapter), and sweep Alpha + Genesis.
+  - [x] **Support Core Hybrid leaguemate-buff drop — FIXED 2026-07-05.** The 4 *Core*
+    Support Hybrids (Support Core Genome / Partial-Core / Total-Core Graft / Core
+    Embodiment) rendered an EMPTY caster buff. They gate their buff with `enttype
+    target> player eq` (the player-leaguemate value the caster receives) + `enttype
+    target> critter eq` (pets, "doubled in strength"), but `extractHybrid`'s
+    self/per-target classifier ([convert-incarnate-effects.cjs](scripts/convert-incarnate-effects.cjs)
+    L600-603) recognized only empty-req / self-RPN / per-target-RPN, so the whole buff
+    routed nowhere; the Radial line (empty req) worked, hiding it. **Verified 3 ways
+    (verify-don't-assume):** empty converter output; Mids oracle carries a PvE
+    DamageBuff+Defense for all 4; the in-game help ("+Damage, +Accuracy, +Defense(All)
+    to all leaguemates … doubled for pets") names the exact buff. Fix routes the
+    player-leaguemate value (guarded `is_pvp != PVP_ONLY`) to `frontLoaded`; emitted
+    keys match the help text exactly (Core Genome's 6 def positions; Core Embodiment's
+    Defense(All)), and the calc already consumes `frontLoaded`
+    ([character-totals.ts:3172](src/utils/calculations/character-totals.ts#L3172)) so
+    the totals now populate. **Rebirth is a VERIFIED no-op** — its same power flags
+    `player eq` PVP_ONLY / `critter eq` PVE_ONLY *explicitly*, so the guard correctly
+    leaves it (no cross-server assumption; rebirth incarnates have no Mids oracle).
+    Also a clean twist on DSH6b: `player eq` is the PvP twin on a foe-debuff (dropped
+    there) but the caster value on this buff (kept). HC regen (4 powers); lint + DSH3
+    (3 ds) + DSH6 detector-neutral + 808 tests (+3 guard).
+    verify: fn:extractHybrid, file:src/utils/calculations/incarnate-effects-completeness.test.ts, tests:src>=808
+  - [ ] Continue the calc-feeding sweep (Alpha enhancement values, Genesis) + add
+    `pvMode`/`resistible` awareness where a real drop surfaces; reuse the DSH4 bridge
+    rather than the parallel `ATTRIB_MAP`.
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH4
 - [ ] **DSH9** — Extend the harness to the **Enhancement** pipeline (IO sets / set
   bonuses / procs / raw magnitudes). The audit found this splits into three
