@@ -34,9 +34,9 @@ export const DefensiveAdaptation: Power = {
   "effects": {
     "damageDebuff": {
       "scale": 0.25,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
-    "selfPenalty": true,
     "durations": {
       "damageDebuff": 1.1
     },

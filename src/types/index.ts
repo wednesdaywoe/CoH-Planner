@@ -66,7 +66,7 @@ export type {
   SelectedPower,
 } from './power';
 
-export { getScaleValue, isScaledEffect, isMezEffect } from './power';
+export { getScaleValue, isScaledEffect, isMezEffect, isSelfDirectedEffect, hasSelfDirectedPenalty } from './power';
 
 // Enhancement types
 export type {

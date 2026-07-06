@@ -69,10 +69,10 @@ export const GroupEnergyFlight: Power = {
     "slow": {
       "flySpeed": {
         "scale": 0.5,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     },
-    "selfPenalty": true,
     "defenseBuff": {
       "melee": {
         "scale": 0.25,

@@ -154,29 +154,34 @@ export const GraniteArmor: Power = {
     },
     "rechargeDebuff": {
       "scale": 0.65,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
-    "selfPenalty": true,
     "damageDebuff": {
       "scale": 0.3,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "slow": {
       "runSpeed": {
         "scale": 0.7,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       },
       "jumpSpeed": {
         "scale": 1.893,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       },
       "jumpHeight": {
         "scale": 1.7851,
-        "table": "Melee_Leap"
+        "table": "Melee_Leap",
+        "toWho": "Self"
       },
       "fly": {
         "scale": 10000,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     },
     "buffDuration": 0.75

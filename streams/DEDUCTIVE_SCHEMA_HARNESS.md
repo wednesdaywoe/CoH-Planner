@@ -336,14 +336,35 @@ validates the whole differential approach before any converter rewrite.
       (Rebirth/tspy 0 — their `kStealth` path untouched); DSH6 detector-neutral (by-type 1
       = Focused Fighting residual, scalar 0). Lint + DSH3 (3 ds) + 801 tests green.
       verify: fn:getPowerDominationSummary, file:src/data/domination-per-effect.test.ts, tests:src>=801
+    - [x] **Retire `selfPenalty` → per-effect `toWho`.** **Shipped 2026-07-05.** The
+      bag-level `selfPenalty` boolean is gone; each self-directed debuff value now carries
+      the DSH4 `eToWho` projection `toWho:'Self'` ([`ScaledEffect.toWho`](src/types/power.ts)),
+      read via `isSelfDirectedEffect` / `hasSelfDirectedPenalty`. **Verified an observable
+      bug, not just a rename (verify-don't-assume):** a scan of all 36,129 export files
+      (`route()` mimicking the converter's 6 selfPenalty branches) found 8 powers that set the
+      old bag flag AND routed a NON-Self (`AnyAffected`) template into a calc-consumed slot —
+      the calc's bag-wide `selfPenalty && effects.slow` gate then dragged the foe entry onto
+      the caster, **in direct violation of the converter's own `L3949` "foe slows don't slow
+      the player" comment.** Canonical case: Rebirth Granite/Rooted's `AnyAffected -JumpHeight`
+      landed in `slow[jumpHeight]=500` and was self-applied as a nonsense ~−50000% caster jump;
+      HC Reaction Time similarly self-applied a foe −70% jumpHeight. **HC is a VERIFIED no-op**
+      (every HC self-penalty template is `target:'Self'` — Granite's whole slow map keeps the
+      marker); only genuinely foe-classified entries stop leaking. Converter tags per-value
+      (6 branches, `if (isSelfTargeting) x.toWho='Self'`); calc self-applies PER ENTRY
+      ([character-totals.ts](src/utils/calculations/character-totals.ts) 3 sites, per-entry
+      slow loop); 3 predicate sites (perma / attack-chain / power-row) use
+      `hasSelfDirectedPenalty`. `rangeDebuff` self-branch confirmed dead (0 powers). Regen
+      (49 files carry `toWho:'Self'`, 0 retain `selfPenalty`); lint clean, 805 tests
+      (+4 guard [`self-penalty-towho.test.ts`](src/utils/calculations/self-penalty-towho.test.ts)),
+      DSH6 detector-neutral, all 3 converter gates green.
+      verify: file:src/utils/calculations/self-penalty-towho.test.ts, fn:hasSelfDirectedPenalty, tests:src>=805
     - [~] Retire the remaining bolt-ons. **Finding (verify-don't-assume):** `unresistable`
       and `durationVariants` are NOT independently retireable — each *is* the projection of
       multiple atomic records into one single-value `PowerEffects` slot (an unresistable-twin
       flag / a `[{scale,duration}]` mini-list), with no second representation to converge onto;
       "retiring" them requires the full `PowerEffects`-becomes-a-list rewrite, which fixes no
       observable bug (detector is green) — deferred until a new collapse site actually surfaces.
-      `selfPenalty` (calc-path, 4 read sites) IS retireable via the DSH4 `eToWho` field — the
-      next candidate.
+      `selfPenalty` is now DONE (above); the remaining two stay deferred.
     needs: DEDUCTIVE_SCHEMA_HARNESS#DSH6
 - [ ] **DSH7** — Numeric resolution + full sweep + CI: resolve oracle numbers by
   joining each effect's `scale × modifierTable` against committed `AttribMod.json`

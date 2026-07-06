@@ -14,6 +14,7 @@
 
 import type { Build, Accolade, ConditionalEffect, Enhancement, EnhancementStatType, IncarnateActiveState, IncarnateBuildState, IOSetEnhancement } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
+import { isSelfDirectedEffect } from '@/types';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
 import { stanceAdjusterOverrides } from '@/data';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
@@ -652,9 +653,8 @@ interface ActivePowerEffect {
   enduranceCost?: number;
   // Endurance discount (e.g., Conserve Power — reduces end costs by a percentage)
   enduranceDiscount?: ScalarOrScaled;
-  // Self-debuffs (e.g., Granite Armor) — only applied when selfPenalty is true
-  // Most powers with these fields target enemies, not the caster
-  selfPenalty?: boolean;
+  // Self-debuffs (e.g., Granite Armor) — applied per-value when the debuff is
+  // self-directed (toWho:'Self'). Most powers with these fields target enemies.
   tohitDebuff?: ScalarOrScaled;
   slow?: ScalarOrScaled | Record<string, ScalarOrScaled>;
   movement?: Record<string, ScalarOrScaled>;
@@ -1054,11 +1054,12 @@ function applyActivePowerBonuses(
     }
 
     // Damage debuff (self-penalty, e.g. Granite Armor -30% damage)
-    // Only applied when selfPenalty flag is set — most damageDebuff effects target enemies
-    // Unenhanceable — self-debuffs are not boosted by slotted enhancements
+    // Only applied when the value is self-directed (toWho:'Self') — most
+    // damageDebuff effects target enemies. Unenhanceable — self-debuffs are not
+    // boosted by slotted enhancements.
     // Skip crash debuffs: if a power also has damageBuff, the debuff is a crash effect
     // (e.g., Rage: 120s buff + 10s crash) and should not count as sustained damage
-    if (effects.selfPenalty && effects.damageDebuff !== undefined && effects.damageBuff === undefined) {
+    if (isSelfDirectedEffect(effects.damageDebuff) && effects.damageBuff === undefined) {
       const value = resolveScaledEffect(effects.damageDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
@@ -1330,9 +1331,11 @@ function applyActivePowerBonuses(
     }
 
     // Movement debuffs / slow (self-penalty, e.g. Granite Armor -70% run speed)
-    // Only applied when selfPenalty flag is set — most slow effects target enemies
-    // Unenhanceable — self-slows are not boosted by slotted enhancements
-    if (effects.selfPenalty && effects.slow && typeof effects.slow === 'object') {
+    // Applied PER ENTRY when that entry is self-directed (toWho:'Self') — most
+    // slow effects target enemies, and a foe slow can sit in the same `slow` map
+    // as a self slow (Rebirth Granite: self -Run + foe -JumpHeight). Gating
+    // per-entry keeps the foe half off the caster. Unenhanceable.
+    if (effects.slow && typeof effects.slow === 'object') {
       const slowKeyMap: Record<string, keyof GlobalBonuses> = {
         runSpeed: 'runSpeed',
         flySpeed: 'flySpeed',
@@ -1341,6 +1344,7 @@ function applyActivePowerBonuses(
         jumpSpeed: 'jumpSpeed',
       };
       for (const [type, val] of Object.entries(effects.slow)) {
+        if (!isSelfDirectedEffect(val)) continue;
         const key = slowKeyMap[type];
         if (key && key in global) {
           const value = resolveScaledEffect(val as ScalarOrScaled, archetypeId, buildLevel) * -100;
@@ -1369,9 +1373,9 @@ function applyActivePowerBonuses(
     }
 
     // Recharge debuff (self-penalty, e.g. Granite Armor -65% recharge)
-    // Only applied when selfPenalty flag is set — most rechargeDebuff effects target enemies
-    // Unenhanceable — self-debuffs are not boosted by slotted enhancements
-    if (effects.selfPenalty && effects.rechargeDebuff !== undefined) {
+    // Only applied when the value is self-directed (toWho:'Self') — most
+    // rechargeDebuff effects target enemies. Unenhanceable.
+    if (isSelfDirectedEffect(effects.rechargeDebuff)) {
       const value = resolveScaledEffect(effects.rechargeDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
       global.recharge += value;
       addToBreakdown(breakdown, 'recharge', {

@@ -4041,10 +4041,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -4361,10 +4361,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -5421,10 +5421,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -8008,10 +8008,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -12344,10 +12344,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -12655,10 +12655,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -20782,10 +20782,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,

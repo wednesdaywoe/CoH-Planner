@@ -80,12 +80,13 @@ export const ConduitofPain: Power = {
     },
     "damageDebuff": {
       "scale": 3,
-      "table": "Ranged_Debuff_Dam"
+      "table": "Ranged_Debuff_Dam",
+      "toWho": "Self"
     },
-    "selfPenalty": true,
     "tohitDebuff": {
       "scale": 2,
-      "table": "Ranged_Debuff_ToHit"
+      "table": "Ranged_Debuff_ToHit",
+      "toWho": "Self"
     },
     "buffDuration": 60,
     "maxStacks": 2,

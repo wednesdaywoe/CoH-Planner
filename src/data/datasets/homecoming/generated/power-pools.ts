@@ -3692,14 +3692,15 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "movementControl": {
               "scale": 0.1,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             },
             "movementFriction": {
               "scale": 0.1,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "stealth": {
             "stealthPvE": {
               "scale": 35,
@@ -3746,14 +3747,15 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "runSpeed": {
               "scale": 0.3,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             },
             "flySpeed": {
               "scale": 0.3,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "durations": {
             "slow": 3
           },

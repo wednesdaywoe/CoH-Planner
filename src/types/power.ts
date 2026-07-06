@@ -39,6 +39,15 @@ export interface ScaledEffect {
    *  holds the longest-lived instance; each variant is rendered as its own row
    *  with its own duration. Set by the converter's duration-aware accumulate. */
   durationVariants?: { scale: number; duration: number }[];
+  /** Per-effect projection of the DSH4 `eToWho` field: `'Self'` marks a debuff
+   *  value that actually lands on the CASTER (Granite Armor's -damage/-recharge/
+   *  -speed, Rage's crash, Reaction Time's self-slow) and so counts against the
+   *  caster's own totals. Absence means the value is a foe/display-only debuff.
+   *  This replaces the retired bag-level `selfPenalty` boolean — the converter
+   *  classifies each template's target individually, so a foe slow co-located
+   *  with a self slow (Rebirth Granite's foe -JumpHeight) no longer rides a
+   *  bag-wide flag onto the caster. Read via `isSelfDirectedEffect`. */
+  toWho?: 'Self';
 }
 
 /** Helper type for effects that can be number OR scaled */
@@ -64,6 +73,42 @@ export function isScaledEffect(value: unknown): value is ScaledEffect {
     'scale' in value &&
     'table' in value
   );
+}
+
+/**
+ * A debuff value that lands on the caster (DSH4 `eToWho === 'Self'`). Only the
+ * object-shaped ScaledEffect form carries the marker — bare-number debuff slots
+ * are foe/display-only by construction (the converter's self-penalty branches
+ * always emit an object). Replaces the old bag-level `selfPenalty` gate.
+ */
+export function isSelfDirectedEffect(value: unknown): boolean {
+  return isScaledEffect(value) && value.toWho === 'Self';
+}
+
+/**
+ * True when a power carries ANY self-directed penalty — a debuff value the
+ * caster actually suffers. Scans exactly the slots the converter's self-penalty
+ * branches tag (damage/recharge/tohit/accuracy/range debuffs + the per-type
+ * `slow` map). This is the power-level projection of the retired `selfPenalty`
+ * boolean, now derived from per-effect `toWho` rather than a bag-wide flag.
+ */
+export function hasSelfDirectedPenalty(effects: PowerEffects | undefined): boolean {
+  if (!effects) return false;
+  if (
+    isSelfDirectedEffect(effects.damageDebuff) ||
+    isSelfDirectedEffect(effects.rechargeDebuff) ||
+    isSelfDirectedEffect(effects.tohitDebuff) ||
+    isSelfDirectedEffect(effects.accuracyDebuff)
+  ) {
+    return true;
+  }
+  const slow = effects.slow;
+  if (slow && typeof slow === 'object') {
+    for (const val of Object.values(slow)) {
+      if (isSelfDirectedEffect(val)) return true;
+    }
+  }
+  return false;
 }
 
 // ============================================
@@ -461,10 +506,11 @@ export interface PowerEffects {
    *  this to render "Stacks (every Xs)" on the slider label. */
   stackInterval?: number;
 
-  // === SELF-PENALTY FLAG ===
-  /** If true, debuff fields (damageDebuff, slow, rechargeDebuff) are genuine self-penalties
-   *  (e.g., Granite Armor, Defensive Adaptation). Most powers with these fields target enemies. */
-  selfPenalty?: boolean;
+  // === SELF-PENALTY (per-effect `toWho`, see ScaledEffect.toWho) ===
+  // The former bag-level `selfPenalty` boolean is retired: whether a debuff
+  // lands on the caster is now carried per-value (`toWho:'Self'`), read via
+  // `isSelfDirectedEffect` / `hasSelfDirectedPenalty`. This lets a foe debuff
+  // co-located with a self debuff stay off the caster's totals.
 
   // === DEBUFF EFFECTS ===
   /** ToHit debuff value (scale or {scale, table}) */

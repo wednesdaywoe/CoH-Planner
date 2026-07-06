@@ -3665,13 +3665,12 @@ function extractEffects(templates, powerName) {
           } else if (isDebuff) {
             // Capture both self-penalty (Granite Armor -30% damage) and
             // foe-targeting damage debuffs (Darkest Night, Time's Juncture).
-            // `selfPenalty` is what gates the calc engine — only set it
-            // when the debuff actually applies to the caster's stats.
-            // Foe debuffs without the flag still surface in Power Info via
-            // the registry's `damageDebuff` entry so users can see -X%
-            // displayed alongside other power effects.
+            // The per-value `toWho:'Self'` marker is what gates the calc
+            // engine — set it only when this template lands on the caster.
+            // Foe debuffs (no marker) still surface in Power Info via the
+            // registry's `damageDebuff` entry so users see the -X%.
             effects.damageDebuff = makeEffect();
-            if (isSelfTargeting) effects.selfPenalty = true;
+            if (isSelfTargeting) effects.damageDebuff.toWho = 'Self';
             recordDuration('damageDebuff');
           } else {
             effects.damageBuff = makeEffect();
@@ -3934,10 +3933,13 @@ function extractEffects(templates, powerName) {
           effects.specialBuff.movement = makeEffect();
           recordDuration('specialBuff');
         } else if (isSelfTargeting && isSlow) {
-          // Self-targeting movement penalty (e.g., Granite Armor -70% run speed)
+          // Self-targeting movement penalty (e.g., Granite Armor -70% run speed).
+          // Tag THIS entry `toWho:'Self'` so the calc slows the caster by it —
+          // per-entry, so a foe -Speed on the same power (routed below without a
+          // marker) can't ride onto the caster (Rebirth Granite's foe -JumpHeight).
           if (!effects.slow) effects.slow = {};
           effects.slow[moveType] = makeEffect();
-          effects.selfPenalty = true;
+          effects.slow[moveType].toWho = 'Self';
           recordDuration('slow');
         } else if (isSelfTargeting) {
           // Self-targeting movement buff (e.g., Lightning Reflexes +run speed)
@@ -3948,9 +3950,11 @@ function extractEffects(templates, powerName) {
           // FOE movement slow — the -Run/Fly/Jump-speed half of a Slow (Cryo
           // ammo, Caltrops, Ice Slick, Time's Juncture, …). Its matching
           // -Recharge half is already captured as `rechargeDebuff`; this is the
-          // movement half, which used to be dropped. No `selfPenalty`, so the
-          // calc treats it as a foe debuff (doesn't slow the player) — it's a
-          // first-class debuff for display.
+          // movement half, which used to be dropped. No `toWho:'Self'` marker,
+          // so the calc treats it as a foe debuff (doesn't slow the player) —
+          // it's a first-class debuff for display. The per-entry marker is what
+          // keeps this off the caster even when a SELF slow on the same power
+          // marks a sibling entry (Rebirth Granite's foe -JumpHeight + self -Run).
           if (!effects.slow) effects.slow = {};
           effects.slow[moveType] = makeEffect();
           recordDuration('slow');
@@ -4177,10 +4181,10 @@ function extractEffects(templates, powerName) {
           } else if (isDebuff) {
             // Capture both self-penalty and foe-targeting tohit debuffs
             // (Darkest Night, Time's Juncture, Radiation Infection, etc.).
-            // `selfPenalty` gates the calc engine; without it, foe debuffs
+            // `toWho:'Self'` gates the calc engine; without it, foe debuffs
             // still surface in Power Info but don't penalise caster ToHit.
             effects.tohitDebuff = makeEffect();
-            if (isSelfTargeting) effects.selfPenalty = true;
+            if (isSelfTargeting) effects.tohitDebuff.toWho = 'Self';
             recordDuration('tohitDebuff');
           } else if (template.flags?.includes('IgnoreStrength')) {
             // IgnoreStrength: ToHit Buff enh / global +ToHit don't apply to this
@@ -4204,7 +4208,7 @@ function extractEffects(templates, powerName) {
             recordDuration('debuffResistance');
           } else if (isDebuff || scale < 0) {
             effects.accuracyDebuff = makeEffect();
-            if (isSelfTargeting) effects.selfPenalty = true;
+            if (isSelfTargeting) effects.accuracyDebuff.toWho = 'Self';
             recordDuration('accuracyDebuff');
           } else {
             effects.accuracyBuff = makeEffect();
@@ -4220,9 +4224,9 @@ function extractEffects(templates, powerName) {
           } else if (isDebuff || scale < 0 || table?.toLowerCase().includes('slow')) {
             // Capture both self-penalty (Granite Armor -65% recharge) and
             // foe-targeting recharge debuffs (Radiation Infection, etc.).
-            // `selfPenalty` gates the calc engine.
+            // `toWho:'Self'` gates the calc engine.
             effects.rechargeDebuff = makeEffect();
-            if (isSelfTargeting) effects.selfPenalty = true;
+            if (isSelfTargeting) effects.rechargeDebuff.toWho = 'Self';
             recordDuration('rechargeDebuff');
           } else {
             // Note: +recharge buffs aren't enhanced by Recharge IOs (those reduce a
@@ -4250,7 +4254,7 @@ function extractEffects(templates, powerName) {
             // that displays as +Range on the caster.
             if (isSelfTargeting) {
               effects.rangeDebuff = makeEffect();
-              effects.selfPenalty = true;
+              effects.rangeDebuff.toWho = 'Self';
               recordDuration('rangeDebuff');
             }
             // else: foe-side debuff, dropped for caster-stat purposes
