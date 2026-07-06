@@ -148,6 +148,34 @@ const ATTRIB_MAP = {
   'Level_Shift': 'levelShift',
 };
 
+// Thunderspy generic-attrib map (aspect=='' hybrid buffs).
+//
+// Thunderspy's incarnate parser collapses each multi-attrib buff to a single
+// generic *front-category* token and DROPS the AttribMod aspect (all-zero bytes
+// → aspect=''), where HC (Parse7) and Rebirth (Parse6) both preserve the real
+// per-attrib rows with their aspect (see [[thunderspy-attrib-index-array]] §7).
+// So the aspect branches above never fire and every tspy hybrid renders empty.
+//
+// This maps the three front-categories whose meaning is UNAMBIGUOUS — verified
+// three independent ways for the Support Hybrid (the only slot the collapse
+// affects): the parallel HC and Rebirth files parse these exact effects as
+//   `*_Dmg`@Strength (damage), `Melee`/`Area`/…@Current (defense), `Accuracy`@Strength,
+// at IDENTICAL scales (Core Genome 0.02 → Embodiment 0.06 player-eq), and the
+// in-game help reads "+Damage, +Accuracy, +Defense(All), +Special".
+//   `Defense` → `defenseAll` (the calc expands it to all 11 def types; at the top
+//              tier this reproduces HC's explicit 11-key list exactly).
+// Two tokens are DELIBERATELY excluded — they are the help's "+Special", i.e. the
+// heal-strength + mez-strength rows (`Heal_Dmg`/`Held`/`Confused`/… and `Stunned`,
+// all @Strength on HC/Rebirth) that BOTH sister servers drop (team buff-strength,
+// no self stat): `Ones` (the generic catch-all covering heal + non-stun mez) and
+// `Stunned`. The `Ones`@scale=1.0/dur=0 grant marker is also dropped (it maps to
+// nothing here and carries no `power_names` for the passive-boost linkage).
+const TSPY_GENERIC_HYBRID_MAP = {
+  'Damage': 'damage',
+  'Accuracy': 'accuracy',
+  'Defense': 'defenseAll',
+};
+
 // The six control (mez) attribs, used to discriminate Destiny effects:
 //   - aspect=Current, negative scale → mez PROTECTION for the caster (Clarion).
 //   - aspect=Resistance             → mez/status duration RESISTANCE (Clarion),
@@ -593,6 +621,12 @@ function extractHybrid() {
             // standard self total, so they stay out.
             else if (attrib === 'Accuracy') statKey = 'accuracy';
             else if (attrib.endsWith('_Dmg') && attrib !== 'Heal_Dmg') statKey = 'damage';
+          } else if (aspect === '' && TSPY_GENERIC_HYBRID_MAP[attrib]) {
+            // Thunderspy dropped-aspect hybrid buff — map the unambiguous
+            // generic front-category tokens (see TSPY_GENERIC_HYBRID_MAP). Only
+            // fires for tspy: HC/Rebirth always carry a real aspect, and their
+            // real attribs are never the bare `Damage`/`Defense` tokens.
+            statKey = TSPY_GENERIC_HYBRID_MAP[attrib];
           }
           if (!statKey || statKey === 'taunt') continue; // taunt isn't a player stat
           templateKeys.add(statKey);

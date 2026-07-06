@@ -628,7 +628,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome': {
     tree: 'support',
     passive: {},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.02,"defenseAll":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -638,7 +638,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_2': {
     tree: 'support',
     passive: {},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.02,"defenseAll":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -648,7 +648,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_3': {
     tree: 'support',
     passive: {},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.02,"accuracy":0.02,"defenseAll":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -658,7 +658,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_4': {
     tree: 'support',
     passive: {},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.04,"defenseAll":0.04,"accuracy":0.04},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -668,7 +668,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_5': {
     tree: 'support',
     passive: {},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.03,"defenseAll":0.03},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -678,7 +678,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_6': {
     tree: 'support',
     passive: {},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.08,"defenseAll":0.08,"accuracy":0.08},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -688,7 +688,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_7': {
     tree: 'support',
     passive: {},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.06,"defenseAll":0.06,"accuracy":0.06},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -698,7 +698,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_8': {
     tree: 'support',
     passive: {},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.06,"defenseAll":0.06,"accuracy":0.06},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -708,7 +708,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_9': {
     tree: 'support',
     passive: {},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.08,"defenseAll":0.08,"accuracy":0.08},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
