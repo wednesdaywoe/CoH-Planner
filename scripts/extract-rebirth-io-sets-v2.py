@@ -26,7 +26,9 @@ from __future__ import annotations
 import json
 import os
 import re
+import subprocess
 import sys
+from functools import lru_cache
 from pathlib import Path
 
 # Allow running from the project root
@@ -721,7 +723,7 @@ _MEZ_RESIST = {(m, 'Resistance') for m in MEZ_ATTRIBS}
 # STAT_NAME_MAP in set-bonuses.ts. Paired members are emitted as their own
 # key here (e.g. both Fire_Dmg and Cold_Dmg → damage_resistance_(fire/cold));
 # the de-dup in _resolve_bonus_effects keeps only the alpha-first of a pair.
-ATTRIB_TO_BONUS_STAT = {
+LEGACY_ATTRIB_TO_BONUS_STAT = {
     # Damage resistance, per type.
     ('Smashing_Dmg',       'Resistance'): 'damage_resistance_(smashing)',
     ('Lethal_Dmg',         'Resistance'): 'damage_resistance_(lethal)',
@@ -803,6 +805,70 @@ ATTRIB_TO_BONUS_STAT = {
     ('Knockup',      'Strength'): 'knockback_strength',
 }
 
+_BRIDGE_CLI = PROJECT_ROOT / 'scripts' / 'bridge-attrib-one.cjs'
+
+
+@lru_cache(maxsize=1024)
+def _bridge_attrib(attrib: str, aspect: str, table: str = '') -> dict:
+    req = json.dumps({'attrib': attrib, 'aspect': aspect, 'table': table})
+    out = subprocess.check_output(
+        ['node', str(_BRIDGE_CLI), req],
+        cwd=PROJECT_ROOT,
+        text=True,
+    )
+    return json.loads(out)
+
+
+def _bonus_stat_from_bridge(attrib: str, aspect: str, table: str = '') -> str | None:
+    # Explicit edge cases that bridgeAttrib intentionally leaves context-neutral.
+    legacy = LEGACY_ATTRIB_TO_BONUS_STAT.get((attrib, aspect))
+    if legacy in {'healing_strength', '+res(slow)', '+res(recharge_debuff)'}:
+        return legacy
+
+    br = _bridge_attrib(attrib, aspect, table)
+    et = br.get('effectType')
+    sub = (br.get('subType') or '').lower()
+
+    if et == 'DamageBuff':
+        return 'damage'
+    if et == 'Resistance':
+        if sub == 'all':
+            return 'damage_resistance_(all)'
+        return f'damage_resistance_({sub})' if sub else None
+    if et == 'Defense':
+        if sub == 'all':
+            return 'defense_(all)'
+        return f'defense_({sub})' if sub else None
+    if et == 'MaxHP':
+        return 'maximum_hitpoints'
+    if et == 'MaxEndurance':
+        return 'maximum_endurance'
+    if et == 'Recovery':
+        return 'recovery'
+    if et == 'Regeneration':
+        return 'regeneration'
+    if et == 'RechargeTime':
+        return 'recharge'
+    if et == 'ToHit':
+        return 'tohit'
+    if et == 'Accuracy':
+        return 'accuracy'
+    if et == 'Range':
+        return 'range'
+    if et == 'Perception':
+        return 'perception'
+    if et == 'EnduranceDiscount':
+        return 'endurance_discount'
+    if et == 'Movement':
+        return 'increased_movement'
+    if et == 'Mez' and sub in {'knockback', 'knockup'}:
+        return 'knockback_protection'
+    if et == 'Knockback':
+        return 'knockback_strength'
+
+    # Fallback preserves current behavior for any unmapped legacy tuples.
+    return LEGACY_ATTRIB_TO_BONUS_STAT.get((attrib, aspect))
+
 # Paired stats the planner's PAIRED_STATS auto-expands to BOTH members. When
 # both members of a pair appear in one tier we keep only the alpha-first key
 # (matching HC's hand-data convention) so the value isn't double-counted.
@@ -849,9 +915,9 @@ _BONUS_LOOKUP_IGNORE: set[tuple[str, str]] = {
     ('Set_Mode', 'Absolute'),
 }
 
-# Populated during _resolve_bonus_effects when a (attrib, aspect) tuple
-# has no entry in ATTRIB_TO_BONUS_STAT. Printed at end-of-run so the next
-# silently-dropped bonus surfaces immediately instead of vanishing.
+# Populated during _resolve_bonus_effects when a (attrib, aspect) tuple has no
+# bridge-resolved (or legacy-fallback) stat mapping. Printed at end-of-run so
+# the next silently-dropped bonus surfaces immediately instead of vanishing.
 _UNMAPPED_BONUS_PAIRS: dict[tuple[str, str], int] = {}
 
 # Pieces where the scale-derived effective aspect count is BELOW the extracted
@@ -871,18 +937,19 @@ def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
     resistance/defence members are de-duped to the alpha-first key so the
     planner's PAIRED_STATS expansion doesn't double-count.
     """
-    # value → set of (attrib, aspect) producing that value.
-    by_value: dict[float, set[tuple[str, str]]] = {}
+    # value → set of (attrib, aspect, table) producing that value.
+    by_value: dict[float, set[tuple[str, str, str]]] = {}
     for eg in set_bonus_power.effects:
         for t in eg.templates:
             aspect = t.aspect or ''
+            table = t.table or ''
             for a in (t.attribs or []):
                 value = round(abs(t.scale) * _bonus_multiplier(a, aspect), 4)
-                by_value.setdefault(value, set()).add((a, aspect))
+                by_value.setdefault(value, set()).add((a, aspect, table))
 
     out: list[dict] = []
     for value, pairs in by_value.items():
-        attset = set(pairs)
+        attset = {(a, asp) for a, asp, _ in pairs}
         keys: list[str] = []
 
         # Family collapses (only when the full family is present at this value).
@@ -894,8 +961,8 @@ def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
             keys.append('mez_resistance_(all)'); attset -= _MEZ_RESIST
 
         # Map the remainder per-attrib.
-        for a, aspect in attset:
-            key = ATTRIB_TO_BONUS_STAT.get((a, aspect))
+        for a, aspect, table in pairs:
+            key = _bonus_stat_from_bridge(a, aspect, table)
             if key is None:
                 if (a, aspect) not in _BONUS_LOOKUP_IGNORE:
                     _UNMAPPED_BONUS_PAIRS[(a, aspect)] = _UNMAPPED_BONUS_PAIRS.get((a, aspect), 0) + 1
@@ -1621,7 +1688,7 @@ def main(dataset: str | None = None) -> int:
     if _UNMAPPED_BONUS_PAIRS:
         print(f'\n!! Dropped {sum(_UNMAPPED_BONUS_PAIRS.values())} bonus entries due to unmapped (attrib, aspect) pairs:')
         for (attrib, aspect), n in sorted(_UNMAPPED_BONUS_PAIRS.items(), key=lambda kv: -kv[1]):
-            print(f'   ({attrib!r}, {aspect!r}) x {n}  -> add to ATTRIB_TO_BONUS_STAT')
+            print(f'   ({attrib!r}, {aspect!r}) x {n}  -> add bridge/fallback mapping in _bonus_stat_from_bridge')
 
     if _ASPECT_COUNT_UNDERSHOOTS:
         print(f'\n!! {len(_ASPECT_COUNT_UNDERSHOOTS)} pieces: scale-derived count < extracted aspects (spurious-aspect candidates):')
