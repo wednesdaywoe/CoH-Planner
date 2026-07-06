@@ -310,15 +310,25 @@ export function bridgeAttrib(attrib: string, aspect?: string, table?: string): B
   if (a in META_EFFECT) return { effectType: META_EFFECT[a] };
 
   // Base_Defense / bare by-type dimension (Smashing/…/Melee/Ranged/Area) — effectType
-  // is NOT in the name. Str ⇒ Enhancement (strength buff) unless on a def/res table;
-  // Res/res-table ⇒ Resistance; def-table ⇒ Defense; else the attrib is co-listed on
-  // a mez/notify template (deferred to DSH6's holistic routing).
+  // is NOT in the name (the damage/resistance face is always written `<type>_Dmg`).
+  // Res/res-table ⇒ Resistance; def-table ⇒ Defense; Cur ⇒ Defense (the bare attrib IS
+  // the defense characteristic, on any table); Str ⇒ Enhancement (defense strength buff);
+  // else (Abs/Max on a non-def/res table) ⇒ deferred to DSH6's holistic routing.
   const sub = a === 'base_defense' ? 'All' : DAMAGE_SUBTYPE[a];
   if (sub) {
     if (isRes || (resTable && !defTable)) return { effectType: 'Resistance', subType: sub };
     if (defTable) return { effectType: 'Defense', subType: sub };
+    // A bare position/type attrib with no `_Dmg` suffix IS the *defense* characteristic
+    // (the damage/resistance face is always written `<type>_Dmg`); aspect=Current ⇒ a
+    // defense buff/debuff — EVEN on a generic scaling table (`Melee_Ones`/`Ranged_Ones`,
+    // the incarnate flat-buff tables), not just a `*Def*` table. Verified across the full
+    // HC export (2026-07-05): every bare-by-type @ Current template is defense — Barrier /
+    // Support Core incarnates and the positional NPC "Resistance" powers (whose real
+    // resistance rides `_Dmg`@Res) — with zero mez/notify co-listing at aspect=Current.
+    // Previously these fell to Unmapped, blinding DSH5/DSH6 to defense on non-`*Def*` tables.
+    if (asp === 'current') return { effectType: 'Defense', subType: sub };
     if (isStr) return { effectType: 'Enhancement', subType: sub };
-    return { effectType: 'Unmapped', reason: `by-type '${attrib}' on non-def/res table '${table}' (co-listed on a mez/notify template — DSH6 routing)` };
+    return { effectType: 'Unmapped', reason: `by-type '${attrib}' at aspect '${aspect ?? '?'}' on non-def/res table '${table}' (deferred — DSH6 routing)` };
   }
 
   if (a.startsWith('unknown(')) return { effectType: 'Unmapped', reason: `parser-unmapped attrib index: ${attrib}` };

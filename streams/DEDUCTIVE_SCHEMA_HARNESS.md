@@ -403,16 +403,51 @@ validates the whole differential approach before any converter rewrite.
     sweep — done; the incarnate residuals are the `aspect=Str` relabel + scope, not
     converter drops, so DSH5 is NOT extended for DSH8 and the export JSON is a
     trustworthy "truth" side for the detector below.
-  - [~] **Incarnate collapse-detector view** — a scratch diagnostic (per-power
-    `ingestExportPower` ([`atomic-effect.ts`](src/data/core/atomic-effect.ts)) atoms vs
-    the converter output) is built and swept Destiny + Hybrid. It confirmed Destiny's
-    calc-feeding drops are already fixed (the 2026-07-03 completeness audit holds — all
-    residuals were FPs: `aspect=Res` folded to `debuffResistance`, `toWho=Target`
-    rez/teleport mechanics, homogeneous first-attrib-only collapses) and surfaced the
-    Hybrid finding below. Still TODO: fold those FP filters in, make it a committed,
-    CI-able detector (the generated file's `Record<slug, Record<stat,number>>` shape —
-    no `Source: *.json`/`.effects` — means [`dsh6-collapse-detector.cjs`](scripts/dsh6-collapse-detector.cjs)
-    needs a per-slot adapter), and sweep Alpha + Genesis.
+  - [x] **Bridge convergence (DSH4) — defense on generic `_Ones` tables now classified;
+    prereq for a faithful incarnate detector. SHIPPED 2026-07-05 (HC + Rebirth).** The
+    detector's input side is `ingestExportPower` → [`bridgeAttrib`](src/data/core/atomic-effect.ts),
+    but the bridge dropped every bare position/type attrib (`Melee`/`Ranged`/`Area`/`Smashing`/…)
+    at aspect=Current to **Unmapped** unless the table name contained `def` — so the incarnate
+    flat-buff tables (`Melee_Ones`/`Ranged_Ones`) left the detector **blind to Defense**. Root
+    cause: the bare attrib *is* the defense characteristic (the damage/resistance face is always
+    written `<type>_Dmg`); aspect=Current ⇒ Defense on **any** table. **Verified across the full
+    HC export (13,733 files):** every bare-by-type @ Current template is defense — Barrier /
+    Support Core incarnates + the positional NPC "Resistance" powers (whose real resistance rides
+    `_Dmg`@Res) — with **zero** mez/notify co-listing at aspect=Current, disproving the bridge's
+    old "co-listed noise" guard. **Fix:** one rule in `bridgeAttrib` (`asp === 'current'` ⇒
+    `Defense|<sub>`). Incarnate coverage now HC/Rebirth **99.94%** (only the parser-side
+    `Unknown(91)` remains — [[special-attrib-subindex-fix]], a parser gap, not the bridge). Oracle
+    **corroborates**: DSH5 resolved 149 oracle-only Defense residuals (UNCLASSIFIED 6245→6107) and
+    Mids independently classifies these `Defense|Melee/Ranged/AoE`. The 10 new EXPORT_ONLY
+    signatures are a Toxic-set-completeness fold nuance (the live HC bin has Toxic positional
+    defense; the ~5-week-stale Mids does not) — re-baselined into `oracle_divergence_rules.json`,
+    not a defect. Converter `ATTRIB_MAP` left in place (its output already agrees with the fixed
+    taxonomy: `defMelee`↔`Defense|Melee`, `resSmashing`↔`Resistance|Smashing`); a wholesale
+    converter→bridge rewrite is unnecessary for detector fidelity — the detector's output-side
+    SLOT_TABLE bridges the two representations. tsc + DSH3 (3 ds) + DSH5 cohort/regression + 810
+    tests green.
+    verify: fn:bridgeAttrib, file:src/data/atomic-effect.test.ts, tests:src>=810
+  - [x] **Incarnate collapse-detector — SHIPPED, CI-gated 2026-07-06.**
+    [`scripts/dsh8-incarnate-collapse-detector.cjs`](scripts/dsh8-incarnate-collapse-detector.cjs) —
+    the DSH6-shaped detector for the incarnate converter. INPUT = DSH4 bridge atoms
+    (`ingestExportPower`, single-source) from `exported_powers/<ds>/incarnate/<slot>/`;
+    OUTPUT = the generated `incarnate-effects.ts` record (keyed by filename base, which IS
+    the generated slug — `HYBRID_ID_ALIASES` maps only the friendly runtime IDs onto it).
+    GATE = class-present, sibling-missing over the two multi-type BUFF slots that feed caster
+    totals: **Hybrid** (passive/frontLoaded/perTarget) + **Destiny** (flat map). By-design
+    drops DIFFER from DSH6 (aspect=Str DamageBuff/Accuracy ARE surfaced by incarnates; the
+    drops are Enhancement/Heal/pets/engine; `player eq` is the kept leaguemate buff, NOT a PvP
+    variant). Two FP classes traced and folded (the DSH6 discipline): (1) Incandescence
+    Radial's `runSpeed` represents run+fly+jumpHeight — the Destiny calc fans one key to all
+    three axes ([character-totals.ts:3147](src/utils/calculations/character-totals.ts#L3147));
+    (2) aspect=Res on a buff effectType is debuff-resistance (→`debuffResistance`), not a buff.
+    **Gate GREEN (0) across all three datasets** — HC + Rebirth confirm the Support Core fix
+    holds; the known tspy generic-attrib gap surfaces as a *non-gating class-absent* entry
+    (`hybrid:support_genome_*` Accuracy — the whole tspy Support hybrid is empty, deferred),
+    exactly right. Wired: `npm run validate:incarnate-collapse` (all 3 ds, `--gate`) + vitest
+    guard. Alpha/Genesis (single-aspect enhancement) + Interface/Judgement/Lore (proc/nuke/pet)
+    are structurally collapse-free here — tracked as coverage, not swept.
+    verify: file:scripts/dsh8-incarnate-collapse-detector.cjs, file:src/utils/calculations/dsh8-incarnate-collapse.test.ts, tests:src>=814
   - [x] **Support Core Hybrid leaguemate-buff drop — FIXED 2026-07-05 (HC + Rebirth).**
     The 4 *Core* Support Hybrids (Support Core Genome / Partial-Core / Total-Core Graft /
     Core Embodiment) rendered an EMPTY caster buff. They gate it with `enttype target>

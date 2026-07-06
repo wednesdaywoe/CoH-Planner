@@ -82,10 +82,17 @@ describe('bridgeAttrib — vocabulary rules', () => {
     expect(bridgeAttrib('Smashing', 'Strength', 'Melee_Stun')).toEqual({ effectType: 'Enhancement', subType: 'Smashing' });
   });
 
-  it('defers (does not mis-map) a by-type attrib co-listed on a mez/notify table', () => {
-    const r = bridgeAttrib('Smashing', 'Current', 'Melee_Ones');
-    expect(r.effectType).toBe('Unmapped');
-    expect(r.reason).toContain('co-listed');
+  it('bare by-type @ aspect=Current is Defense, even on a generic (_Ones) table', () => {
+    // The damage/resistance face is written `<type>_Dmg`; a bare position/type attrib is
+    // the *defense* characteristic. Incarnate flat buffs (Support/Barrier Core) and
+    // positional NPC buffs use `Melee_Ones`/`Ranged_Ones`, not a `*Def*` table — the
+    // bridge must still classify them as Defense so DSH5/DSH6 can see defense drops.
+    expect(bridgeAttrib('Smashing', 'Current', 'Melee_Ones')).toEqual({ effectType: 'Defense', subType: 'Smashing' });
+    expect(bridgeAttrib('Melee', 'Current', 'Melee_Ones')).toEqual({ effectType: 'Defense', subType: 'Melee' });
+    expect(bridgeAttrib('Area', 'Current', 'Ranged_Ones')).toEqual({ effectType: 'Defense', subType: 'AoE' });
+    expect(bridgeAttrib('Base_Defense', 'Current', 'Melee_Ones')).toEqual({ effectType: 'Defense', subType: 'All' });
+    // resistance still rides `_Dmg`@Res (never bare@Current), so the twin does not collapse
+    expect(bridgeAttrib('Smashing_Dmg', 'Resistance', 'Melee_Ones')).toEqual({ effectType: 'Resistance', subType: 'Smashing' });
   });
 
   it('parseDuration reads the "N seconds" export string', () => {

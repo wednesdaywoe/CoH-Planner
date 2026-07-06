@@ -1,0 +1,156 @@
+{
+  "schema": "dsh8-incarnate-collapse-worklist/1",
+  "dataset": "homecoming",
+  "scope": {
+    "slots": "Hybrid (passive/frontLoaded/perTarget) + Destiny (flat stat map) — the multi-type buff slots feeding caster totals. Alpha/Genesis (single-aspect enhancement) + Interface/Judgement/Lore (proc/nuke/pet) are structurally collapse-free here and tracked as coverage, not swept.",
+    "gate": "class-present, sibling-missing: an input effectType represented somewhere in the output but a specific subType absent (the multi-type explosion). DamageBuff/Accuracy/scalars are folded to presence; Defense/Resistance/Mez-protection/Movement are checked per-subType. Fold-all output keys (defenseAll/resistanceAll/mezProtection/damage) cover any subType.",
+    "byDesignDrops": "Enhancement (aspect=Str mez/by-type strength), Heal/team-heal, Damage (direct — Judgement/Interface), GrantPower/pets/engine markers, scale-0, Expression, explicit pvMode=PvP. NO isPvpVariant drop — `player eq` is the leaguemate buff (kept, routed by polarity), the bridge-convergence invariant."
+  },
+  "coverage": {
+    "powersTotal": 81,
+    "powersChecked": 81,
+    "genMissing": 0,
+    "atomsChecked": 486
+  },
+  "summary": {
+    "highConfidenceCollapses": 0,
+    "distinctCollapseGroups": 0,
+    "classAbsent": 48
+  },
+  "collapseGroups": [],
+  "classAbsentGroups": [
+    {
+      "et": "Resistance",
+      "sub": "ranged",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "melee",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "aoe",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "smashing",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "lethal",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "fire",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "cold",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "energy",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "negative",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "psionic",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "toxic",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    },
+    {
+      "et": "Resistance",
+      "sub": "all",
+      "count": 4,
+      "powers": [
+        "destiny:ageless_partial_radial_invocation",
+        "destiny:ageless_radial_epiphany",
+        "destiny:ageless_radial_invocation",
+        "destiny:ageless_total_radial_invocation"
+      ]
+    }
+  ],
+  "collapses": []
+}
