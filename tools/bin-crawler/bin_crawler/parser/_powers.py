@@ -1297,6 +1297,50 @@ _TSPY_MEZ_INDEX = frozenset(
 # through the converter's KB path, so only the `Ones`-front offensive ones need it.
 _TSPY_KB_OFFENSIVE = frozenset({"Knockback", "Knockup"})
 
+# Generic front-category tokens on Thunderspy INCARNATE HYBRID buff templates.
+# The Support/Melee/… Hybrid buffs collapse every affected stat to ONE of these
+# generic *category* tokens on a `*_Ones` unit table (the real per-attrib rows
+# live only in the post-`requires` index array — see [[thunderspy-attrib-index-array]]).
+# `Stunned` is deliberately absent: it is a lone-mez front already relabeled by
+# the applied-mez path below (and is the help's inert "+Special" for team buffs).
+_TSPY_HYBRID_GENERIC_FRONTS = frozenset({"Damage", "Ones", "Accuracy", "Defense"})
+
+# Aspect classes for a hybrid buff's resolved index attribs. Thunderspy DROPS the
+# AttribMod aspect (all-zero bytes), so we synthesize it from each attrib's nature:
+# enhancement-strength buffs (+Damage/+Heal via any `*_Dmg`, +Accuracy, the
+# "+Special" mez-strength) take aspect=Strength; positional/typed defense takes
+# aspect=Current. Defense characteristics reuse the SAME indices as their damage
+# twins — the bare name (no `_Dmg`) is the defense face (verified: front `Defense`
+# → index `Melee`(27); front `Damage` → `Smashing_Dmg`(0)).
+_TSPY_HYBRID_DEFENSE_ATTRIBS = frozenset({
+    "Ranged", "Melee", "Area",                                      # positional
+    "Smashing", "Lethal", "Fire", "Cold", "Energy",
+    "Negative_Energy", "Psionic", "Toxic",                          # typed
+    "Base_Defense",
+})
+_TSPY_HYBRID_MEZ_STRENGTH_ATTRIBS = frozenset({
+    "Confused", "Afraid", "Terrorized", "Held", "Immobilized", "Stunned", "Sleep",
+})
+
+
+def _tspy_hybrid_aspect_class(attrib: str) -> str | None:
+    """Classify a resolved hybrid index attrib into its synthesized aspect.
+
+    Returns ``'Strength'`` for enhancement-strength buffs (+Damage/+Heal via any
+    ``*_Dmg``, +Accuracy, +mez-strength), ``'Current'`` for defense
+    (positional/typed defense characteristics), or ``None`` for anything else
+    (mode markers, movement, summon — never a scoped hybrid buff). A template
+    whose index mixes the two classes (the Melee Hybrid's damage+defense bag)
+    yields more than one class and is therefore left un-relabeled by the caller.
+    """
+    if attrib.endswith("_Dmg") or attrib == "Accuracy" \
+            or attrib in _TSPY_HYBRID_MEZ_STRENGTH_ATTRIBS:
+        return "Strength"
+    if attrib in _TSPY_HYBRID_DEFENSE_ATTRIBS:
+        return "Current"
+    return None
+
+
 # Create_Entity (pet/pseudo-pet summon) marker in Thunderspy's effect elements.
 # Unlike HC/Rebirth — which carry Create_Entity as the template's *front* attrib
 # (enum 469 / 116) and one AttribMod per pet — Thunderspy packs the summon list
@@ -1395,7 +1439,8 @@ def _extract_thunderspy_summons(strtab_data, start: int, end: int,
     return out
 
 
-def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) -> EffectTemplate:
+def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
+                                      *, hybrid_scope: bool = False) -> EffectTemplate:
     """Parse a Thunderspy AttribMod template.
 
     Thunderspy predates the enum-coded AttribMod format used by HC (Parse7) and
@@ -1580,6 +1625,41 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
     # for non-table effects like raw mez magnitudes.
     final_scale = scale if table else magnitude
 
+    # Synthesized aspect. Thunderspy leaves the AttribMod aspect all-zero, so the
+    # header carries no aspect and this stays '' for the vast majority of
+    # templates (buff-vs-resistance / self-vs-foe are recovered by the converter
+    # via table/target context). The scoped hybrid relabel below is the one place
+    # the parser can safely synthesize it from the front category.
+    aspect = ""
+
+    # Thunderspy INCARNATE HYBRID generic-token relabel. The Support/Melee/… Hybrid
+    # buffs collapse every affected stat to a single generic *category* front token
+    # (`Damage`/`Ones`/`Accuracy`/`Defense`) on a `*_Ones` unit table and DROP the
+    # aspect — where HC/Rebirth carry the real per-attrib rows WITH their aspect (see
+    # [[thunderspy-attrib-index-array]]). The real affected attribs already sit in the
+    # decoded index array (`_idx_attribs`); relabel front → those attribs and
+    # synthesize the aspect the category implies, so the tspy export matches HC/Rebirth
+    # shape and flows through the converter's shared branches (retiring the
+    # `TSPY_GENERIC_HYBRID_MAP` converter band-aid).
+    #
+    # Scoped to the HYBRID slot (`hybrid_scope`): an Alpha enhancement carries a
+    # byte-identical `Damage`-front + `*_Ones`-table + `*_Dmg`-index shape but is a
+    # different (filename-driven) converter path — only the SLOT tells them apart.
+    # Fires only when EVERY index attrib maps to ONE aspect class (all Strength or all
+    # Current): the Melee Hybrid's MIXED damage+defense `Ones` bag and the empty-index
+    # Assault/Control grant shells are deliberately left as the generic token (deferred
+    # — the mixed bag needs a template split, tracked in DEDUCTIVE_SCHEMA_HARNESS.md).
+    if (hybrid_scope and len(attribs) == 1
+            and attribs[0] in _TSPY_HYBRID_GENERIC_FRONTS
+            and table.endswith("_Ones") and _idx_attribs and final_scale > 0):
+        _classes = {_tspy_hybrid_aspect_class(a) for a in _idx_attribs}
+        if _classes == {"Strength"}:
+            attribs = _idx_attribs
+            aspect = "Strength"
+        elif _classes == {"Current"}:
+            attribs = _idx_attribs
+            aspect = "Current"
+
     # Applied mez: relabel the front (an enhancement/duration category) to the
     # index array's real mez attrib and adopt the post-table Magnitude. Fires for
     # both `Ones` fronts (Tesla Cage) and mismatched real-mez fronts (Blind's
@@ -1607,7 +1687,7 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base) ->
         attribs=attribs,
         type="",  # Thunderspy schema doesn't expose this consistently
         application_type="",
-        aspect="",
+        aspect=aspect,
         target="",
         table=table,
         scale=final_scale,
@@ -1797,7 +1877,8 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
     )
 
 
-def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False) -> tuple[list[EffectGroup], list[EffectGroup]]:
+def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
+                          hybrid_scope: bool = False) -> tuple[list[EffectGroup], list[EffectGroup]]:
     """Parse Parse6 effects: a flat struct_array of AttribMod records.
 
     Wraps each AttribMod in a synthetic single-template EffectGroup so
@@ -1819,7 +1900,7 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False) -> tuple[li
         try:
             if thunderspy:
                 tmpl = _parse_effect_template_thunderspy(
-                    elem_reader, r._data, r._strtab_base
+                    elem_reader, r._data, r._strtab_base, hybrid_scope=hybrid_scope
                 )
             else:
                 tmpl = _parse_effect_template_parse6(elem_reader)
@@ -2065,7 +2146,12 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
                 # ActivationEffect precede them), reached directly here.
                 effects, activation_effects = _parse_effects(r, veracity=True)
             else:
-                effects, activation_effects = _parse_effects_parse6(r, thunderspy=thunderspy)
+                # Scope the Thunderspy hybrid generic-token relabel to the Incarnate
+                # Hybrid slot (Alpha/Judgement/mode-marker templates share the shape
+                # but not the semantics — only the slot disambiguates them).
+                hybrid_scope = thunderspy and full_name.startswith("Incarnate.Hybrid.")
+                effects, activation_effects = _parse_effects_parse6(
+                    r, thunderspy=thunderspy, hybrid_scope=hybrid_scope)
         except Exception:
             effects = []
             activation_effects = []

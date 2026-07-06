@@ -560,3 +560,13 @@ validates the whole differential approach before any converter rewrite.
   Mids value/table source (`Maths.mhd`/`NLevels.mhd`). Low collapse exposure (table
   lookups, not an effect model), so it is not part of DSH9's atomic treatment;
   surfaced here so the scope boundary isn't mistaken for forgotten work.
+
+- tspy hybrid passive (enduranceDiscount) still empty — separate gap: the tspy grant 
+  marker is ['Ones']@1.0 with no power_names, so the silent-boost linkage is absent in
+  the export (parser-level).
+- Same collapse in other slots — tspy Ageless Destiny Endurance, Melee-hybrid + Rebirth Destiny
+  Regeneration show as non-gating class-absent; the same map treatment would help.
+
+  - verify the real (unpatched) parser now emits the resolved attribs + synthesized aspect for the  Support  hybrid, and confirm it leaves Melee/Assault/Control untouched.
+
+
