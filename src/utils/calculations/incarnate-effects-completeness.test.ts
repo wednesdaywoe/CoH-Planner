@@ -95,14 +95,18 @@ describe('Homecoming Destiny — dropped effects are now exposed', () => {
     expect(core.kbProtection).toBe(10.5);
   });
 
-  it('Clarion debuffResistance is the real (Repel) value, not the mislabeled confuse-resistance', () => {
+  it('Clarion debuffResistance is the real (Repel) value; PvP-only status-resistance is excluded from PvE', () => {
     const core = getDestinyEffects('clarion_core_epiphany')!;
-    // Repel resistance (0.7), split apart from the mez/status resistance (2.1)
-    // that used to masquerade as "300% Debuff Resistance".
+    // Repel resistance (0.7) is the genuine PvE debuff-resistance value; it used
+    // to masquerade as "300% Debuff Resistance" when the confuse/status
+    // resistance (2.1) was mis-bucketed here.
     expect(core.debuffResistance).toBeCloseTo(0.7, 6);
-    expect(core.statusResistance).toBeCloseTo(2.1, 6);
     // The bogus number is gone: debuffResistance is no longer the confuse mag.
     expect(core.debuffResistance).not.toBeCloseTo(2.1, 3);
+    // The mez/status DURATION resistance (2.1) is `is_pvp=PVP_ONLY` in the bin —
+    // Destiny PvP-awareness (converter) now correctly drops it from PvE totals,
+    // so it must NOT surface here (was leaking as a bogus 210% PvE status resist).
+    expect(core.statusResistance).toBeUndefined();
   });
 
   it('Incandescence Radial surfaces its run-speed buff (was dropped)', () => {

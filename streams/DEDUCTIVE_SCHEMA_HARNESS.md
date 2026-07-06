@@ -366,6 +366,26 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
     resistible/unresistable twins are not coalesced into one duration bucket.
     DSH8 detector + incarnate completeness suite stayed green across HC/Rebirth/tspy.
     verify: fn:extractDestiny, tests:src>=814
+  - [x] **Clarion PvE status-resistance leak — the Destiny pvMode fix's missed regen,
+    caught + closed 2026-07-06.** Follow-up to the item above surfaced a **regen-hygiene
+    gap, not a data bug**: commit `58915ecd0b` shipped the correct `extractDestiny` PvP
+    drop but regenerated **only thunderspy** — HC + Rebirth `incarnate-effects.ts` were
+    left stale, so the fix never went live for them. Consequence: the shipped HC/Rebirth
+    planner still showed Clarion's `statusResistance` **2.1 (= 210%) in PvE**, even though
+    the export marks those Confused/`aspect=Resistance` templates `is_pvp=PVP_ONLY`
+    (scales 2.1/0.3/0.6). **Verified fresh bins were NOT implicated:** old converter
+    (`09ea747a4e`) + current export = byte-identical to the committed `.ts`, so the drift
+    is purely the un-run converter change. **Fix:** regenerated HC + Rebirth (9 Clarion
+    entries each drop only `statusResistance`; mez/KB protection + the genuine PvE
+    `debuffResistance` 0.7 Repel value all retained), and corrected the stale guard
+    [`incarnate-effects-completeness.test.ts`](src/utils/calculations/incarnate-effects-completeness.test.ts)
+    L98 (was pinning the leaked 2.1 as expected; now asserts `statusResistance` is
+    **absent** in PvE). DSH8 gate + 23 incarnate tests + tsc green. **Process follow-up
+    (Deferred):** a CI regen-diff guard on the incarnate converter (mirroring the powerset
+    regen guard) would make a converter change un-mergeable without matching generated
+    output — this class of "fix shipped, output stale" only exists because no such gate
+    covers `convert-incarnate-effects.cjs`.
+    verify: file:src/utils/calculations/incarnate-effects-completeness.test.ts, tests:src>=814
   - [x] **Support Core Hybrid leaguemate-buff drop — FIXED 2026-07-05 (HC + Rebirth).**
     The 4 *Core* Support Hybrids (Support Core Genome / Partial-Core / Total-Core Graft /
     Core Embodiment) rendered an EMPTY caster buff. They gate it with `enttype target>
@@ -558,3 +578,9 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
 
 - Same collapse in other slots — tspy Ageless Destiny Endurance, Melee-hybrid + Rebirth Destiny
   Regeneration show as non-gating class-absent; the same map treatment would help.
+- **CI regen-diff guard for the incarnate converter** — the Clarion PvE status-resistance
+  leak (DSH8, above) shipped only because a correct `convert-incarnate-effects.cjs` change
+  regenerated one dataset and not the others, with no gate catching the drift. A regen-diff
+  guard (regenerate all datasets in CI, fail on any diff vs committed `incarnate-effects.ts`)
+  — mirroring the powerset regen guard noted in CLAUDE.md — would make "fix shipped, output
+  stale" structurally impossible. Applies equally to the other generated converters.
