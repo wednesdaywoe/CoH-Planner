@@ -4,13 +4,13 @@
   "extra_proc_classification": {
     "rows": [
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "damage"
         ],
         "io": "chance for energy damage",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "absolute resolution"
       },
       {
@@ -85,14 +85,14 @@
         "set": "edict of the master"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "control",
           "damage"
         ],
         "io": "recharge/chance for fear, psionic damage",
         "ppm": 2.5,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "endless nightmare"
       },
       {
@@ -136,23 +136,23 @@
         "set": "gladiator's armor"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "special"
         ],
         "io": "chance for pbaoe resolve",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "guardian's gift"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "control"
         ],
         "io": "chance for knockdown",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "imperial might"
       },
       {
@@ -177,13 +177,13 @@
         "set": "impervium armor"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "special"
         ],
         "io": "chance for heal, endurance, regeneration",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "inexhaustibility"
       },
       {
@@ -289,13 +289,13 @@
         "set": "regenerative tissue"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "special"
         ],
         "io": "chance for self resurrect",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "return from the grave"
       },
       {
@@ -349,33 +349,33 @@
         "set": "steadfast protection"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_proc_staleness",
         "categories": [
           "control"
         ],
         "io": "chance for stun",
         "ppm": 3.5,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "set exists in oracle, but this proc row has no oracle counterpart",
         "set": "stupefy"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_non_proc_global_or_passive",
         "categories": [
           "special"
         ],
         "io": "convert knockback to knockdown",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "special conversion mechanic (non-chance proc coverage)",
         "set": "sudden acceleration"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "damage"
         ],
         "io": "chance for energy damage",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "superior absolute resolution"
       },
       {
@@ -389,34 +389,34 @@
         "set": "superior command of the mastermind"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "control",
           "damage"
         ],
         "io": "recharge/chance for fear, psionic damage",
         "ppm": 2.5,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "superior endless nightmare"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "special"
         ],
         "io": "chance for pbaoe resolve",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "superior guardian's gift"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "special"
         ],
         "io": "chance to summon haunts",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "superior haunting"
       },
       {
@@ -441,13 +441,13 @@
         "set": "superior mark of supremacy"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "special"
         ],
         "io": "chance for self resurrect",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "superior return from the grave"
       },
       {
@@ -461,13 +461,13 @@
         "set": "superior spider's bite"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "heal"
         ],
         "io": "chance for heal",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "superior vampire's bite"
       },
       {
@@ -482,13 +482,13 @@
         "set": "superior winter's gift"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "debuff"
         ],
         "io": "chance for -res debuff",
         "ppm": 6,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "superior witchcraft"
       },
       {
@@ -502,13 +502,13 @@
         "set": "synapse's shock"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "special"
         ],
         "io": "chance to summon haunts",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "the haunting"
       },
       {
@@ -542,13 +542,13 @@
         "set": "unbreakable guard"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "heal"
         ],
         "io": "chance for heal",
         "ppm": null,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "vampire's bite"
       },
       {
@@ -563,19 +563,20 @@
         "set": "winter's gift"
       },
       {
-        "bucket": "likely_mapping_gap",
+        "bucket": "likely_oracle_set_staleness",
         "categories": [
           "debuff"
         ],
         "io": "chance for -res debuff",
         "ppm": 3.5,
-        "reason": "name indicates triggered/proc behavior",
+        "reason": "proc-looking entry but set is absent in local oracle",
         "set": "witchcraft"
       }
     ],
     "summary": {
-      "likely_mapping_gap": 18,
-      "likely_non_proc_global_or_passive": 36,
+      "likely_non_proc_global_or_passive": 37,
+      "likely_oracle_proc_staleness": 1,
+      "likely_oracle_set_staleness": 16,
       "unknown": 2
     }
   },
@@ -896,11 +897,11 @@
         5
       ],
       [
-        "maximum_hitpoints",
+        "damage_resistance_(all)",
         3
       ],
       [
-        "damage_resistance_(all)",
+        "maximum_hitpoints",
         3
       ],
       [

@@ -253,3 +253,26 @@ describe('Rebirth dataset (Parse6) — no junk keys, no N× collapse', () => {
     expect(getHybridEffects('support_core_genome')!.frontLoaded.damage).toBeCloseTo(0.02, 6);
   });
 });
+
+describe('Thunderspy dataset (Parse6) — Support Hybrid parity', () => {
+  beforeAll(async () => {
+    await loadDataset('thunderspy');
+  });
+
+  it('Support Core line surfaces non-empty caster frontLoaded buffs', () => {
+    for (const id of ['support_core_genome', 'support_total_core_graft', 'support_core_embodiment']) {
+      const fx = getHybridEffects(id);
+      expect(fx, `missing ${id}`).toBeDefined();
+      expect(Object.keys(fx!.frontLoaded).length, `${id} frontLoaded empty`).toBeGreaterThan(0);
+      expect(fx!.frontLoaded.damage, `${id} damage`).toBeGreaterThan(0);
+      expect(fx!.frontLoaded.defenseAll, `${id} defenseAll`).toBeGreaterThan(0);
+    }
+  });
+
+  it('Support passives include enduranceDiscount by tier (was missing linkage)', () => {
+    expect(getHybridEffects('support_genome')!.passive.enduranceDiscount).toBeCloseTo(0.025, 6);
+    expect(getHybridEffects('support_core_genome')!.passive.enduranceDiscount).toBeCloseTo(0.05, 6);
+    expect(getHybridEffects('support_total_core_graft')!.passive.enduranceDiscount).toBeCloseTo(0.075, 6);
+    expect(getHybridEffects('support_core_embodiment')!.passive.enduranceDiscount).toBeCloseTo(0.1, 6);
+  });
+});

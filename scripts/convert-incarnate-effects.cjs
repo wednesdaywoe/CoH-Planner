@@ -176,6 +176,20 @@ const TSPY_GENERIC_HYBRID_MAP = {
   'Defense': 'defenseAll',
 };
 
+/**
+ * Thunderspy Parse6 omits Grant_Power linkage for Support Hybrid passives
+ * (the main power carries only an `Ones` marker with no power_names), so infer
+ * the corresponding Hybrid_Silent support_boost file by tier from the power id.
+ */
+function inferTspySupportBoostSilent(powerId) {
+  if (!powerId.startsWith('support_genome')) return null;
+  if (powerId === 'support_genome') return 'support_boost_common';
+  if (powerId === 'support_genome_2' || powerId === 'support_genome_3') return 'support_boost_uncommon';
+  if (['support_genome_4', 'support_genome_5', 'support_genome_6', 'support_genome_7'].includes(powerId)) return 'support_boost_rare';
+  if (powerId === 'support_genome_8' || powerId === 'support_genome_9') return 'support_boost_very_rare';
+  return null;
+}
+
 // The six control (mez) attribs, used to discriminate Destiny effects:
 //   - aspect=Current, negative scale → mez PROTECTION for the caster (Clarion).
 //   - aspect=Resistance             → mez/status duration RESISTANCE (Clarion),
@@ -694,6 +708,10 @@ function extractHybrid() {
 
     // Resolve passive boosts from silent files
     const passive = {};
+    if (datasetId === 'thunderspy' && grantedPassiveRefs.length === 0) {
+      const inferred = inferTspySupportBoostSilent(powerId);
+      if (inferred) grantedPassiveRefs.push(inferred);
+    }
     for (const ref of grantedPassiveRefs) {
       const silentName = silentRefToFilename(ref);
       const silentData = silentCache[silentName];
@@ -719,6 +737,15 @@ function extractHybrid() {
             // store the +X% endurance discount as attrib 'EnduranceDiscount'
             // (index 92), not 'Endurance' (index 22). The earlier name was wrong
             // and made the +10% T4 Support passive vanish from `global.enduranceDiscount`.
+            statKey = 'enduranceDiscount';
+          } else if (
+            datasetId === 'thunderspy' &&
+            silentName.startsWith('support_boost_') &&
+            attrib === 'Ones' &&
+            aspect === ''
+          ) {
+            // Parse6/Thunderspy collapses this passive to a generic `Ones` token
+            // with empty aspect; the value is the intended endurance discount.
             statKey = 'enduranceDiscount';
           } else if (aspect === 'Resistance') {
             // Control passive Status Resistance

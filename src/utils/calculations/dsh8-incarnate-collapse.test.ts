@@ -12,9 +12,8 @@ import { fileURLToPath } from 'node:url';
  *
  * This asserts the gate stays at ZERO high-confidence collapses across all three
  * datasets — so a future incarnate-converter or bridge change that re-drops a buff
- * sibling fails here. (The known Thunderspy generic-attrib gap surfaces as a
- * non-gating *class-absent* entry, not a collapse — the whole tspy Support hybrid is
- * empty, deferred — so it does not trip this gate.)
+ * sibling fails here. Non-gating class-absent rows are tracked as coverage
+ * residuals, not collapse defects.
  *
  * See streams/DEDUCTIVE_SCHEMA_HARNESS.md (DSH8).
  */

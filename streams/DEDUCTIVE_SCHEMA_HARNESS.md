@@ -331,9 +331,8 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
     three axes ([character-totals.ts:3147](src/utils/calculations/character-totals.ts#L3147));
     (2) aspect=Res on a buff effectType is debuff-resistance (→`debuffResistance`), not a buff.
     **Gate GREEN (0) across all three datasets** — HC + Rebirth confirm the Support Core fix
-    holds; the known tspy generic-attrib gap surfaces as a *non-gating class-absent* entry
-    (`hybrid:support_genome_*` Accuracy — the whole tspy Support hybrid is empty, deferred),
-    exactly right. Wired: `npm run validate:incarnate-collapse` (all 3 ds, `--gate`) + vitest
+    holds; remaining tspy class-absent findings are non-support slots (Destiny/Hybrid residuals),
+    tracked as coverage and non-gating. Wired: `npm run validate:incarnate-collapse` (all 3 ds, `--gate`) + vitest
     guard. Alpha/Genesis (single-aspect enhancement) + Interface/Judgement/Lore (proc/nuke/pet)
     are structurally collapse-free here — tracked as coverage, not swept.
     verify: file:scripts/dsh8-incarnate-collapse-detector.cjs, file:src/utils/calculations/dsh8-incarnate-collapse.test.ts, tests:src>=814
@@ -374,12 +373,18 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
     (+48%→+6%). HC + Rebirth regen; HC unchanged; Rebirth Core now populates (damage 0.06,
     Defense(All), Accuracy). tsc + DSH3 (3 ds) + 810 tests (+2 Rebirth guards).
     verify: fn:extractHybrid, file:src/utils/calculations/incarnate-effects-completeness.test.ts, tests:src>=810
-  - [ ] **Thunderspy Support Core still empty — SEPARATE pre-existing root cause.** Tspy
-    encodes these as generic-category attribs `[Damage]`/`[Defense]`/`[Accuracy]` with an
-    **empty aspect** (the [[thunderspy-attrib-index-array]] pattern — front string is the
-    category, not HC's `Smashing_Dmg`+aspect=Strength), so the converter's aspect branches
-    never fire. Not an is_pvp/case issue; needs the tspy generic-category → planner-stat
-    mapping (`Defense`→Defense(All)) and tspy-value verification (don't validate vs HC).
+  - [x] **Thunderspy Support Hybrid parity — FIXED 2026-07-06.** Tspy's Parse6 export
+    encodes Support front-loaded buffs as generic-category attribs
+    `[Damage]`/`[Defense]`/`[Accuracy]` with empty aspect, and omits the Grant_Power linkage
+    for Support passives (the main power carries only an `Ones` marker with no `power_names`).
+    Converter fix in [`convert-incarnate-effects.cjs`](scripts/convert-incarnate-effects.cjs):
+    (1) map generic front-categories to planner stats (`Damage`→`damage`,
+    `Defense`→`defenseAll`, `Accuracy`→`accuracy`), and (2) infer
+    `support_boost_{common,uncommon,rare,very_rare}` by tier when Parse6 omits linkage,
+    then map Support silent `Ones`@empty-aspect to passive `enduranceDiscount`.
+    Regen verified on tspy generated output (`support_genome_*` now emits
+    `passive.enduranceDiscount` 0.025/0.05/0.075/0.1 and non-empty support frontLoaded),
+    with `incarnate-effects-completeness.test.ts` guards and DSH8 gate green.
   - [ ] Continue the calc-feeding sweep (Alpha enhancement values, Genesis) + add
     `pvMode`/`resistible` awareness where a real drop surfaces; reuse the DSH4 bridge
     rather than the parallel `ATTRIB_MAP`.
@@ -421,17 +426,18 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
     full DSH9 gate (proc identity: 2 missing / 56 extra procs remain; no bridge
     convergence or converter fixes yet — the sub-bullets below).
     verify: file:tools/mids-oracle/diff_enh_oracle.py, file:tools/mids-oracle/test_diff_enh_oracle.py
-  - [ ] **Freeze-and-gate the proc residual NOW (2026-07-06) — before it becomes a
-    second DSH5 pile.** The 56 extra procs are already triage-bucketed
-    (`likely_mapping_gap` 18 / `likely_non_proc_global_or_passive` 36 / `unknown` 2) and
-    a P-tiered worklist exists (`enh_oracle_mapping_gap_worklist.{json,md}`: **P1=10 /
-    P2=8**). Apply the discipline while the pile is 56, not 6,000: (1) the **P1=10
-    finite fix-list** is the actual actionable work (proc-name aliases / extractor
-    mappings for triggered effects) — burn it down; (2) baseline the rest and **gate on
-    new signatures** via `--baseline --strict` (already wired); (3) do NOT build a
-    grooming apparatus around `likely_non_proc_global_or_passive`/`unknown` — those are
-    the enh equivalent of DSH5's aspect=Str relabels. The 20 value residuals are already
-    frozen this way (Mids-quantization skew, gate-on-new).
+  - [x] **Freeze-and-gate the proc residual NOW (2026-07-06) — DONE 2026-07-06.**
+    Applied the DSH5 discipline while the pile is small: baseline + `--strict` is the
+    gate, and only NEW residual signatures fail. Triage was refined to split
+    oracle-staleness from extractor gaps, including two key corrections:
+    `Convert Knockback to Knockdown` is a special conversion mechanic (not a chance-proc
+    mapping miss), and Stupefy's extra `Chance for Stun` is bucketed as likely
+    per-set oracle staleness (set exists, no oracle counterpart) rather than a mapping
+    gap. Current 56-extra split: `likely_mapping_gap` **0** /
+    `likely_non_proc_global_or_passive` 37 / `likely_oracle_set_staleness` 16 /
+    `likely_oracle_proc_staleness` 1 / `unknown` 2. Actionable mapping-gap worklist is
+    now empty (`enh_oracle_mapping_gap_worklist.{json,md}`: **P1=0 / P2=0 / P3=0**).
+    The 20 value residuals remain frozen as advisory quantization skew (gate-on-new).
     verify: file:tools/mids-oracle/enh_oracle_mapping_gap_worklist.md
   - [ ] Converge the divergent parallel bridges onto the DSH4 `bridgeAttrib`:
     `ATTRIB_TO_BONUS_STAT` ([extract-rebirth-io-sets-v2.py](scripts/extract-rebirth-io-sets-v2.py) `:724`)
@@ -484,8 +490,5 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
   lookups, not an effect model), so it is not part of DSH9's atomic treatment;
   surfaced here so the scope boundary isn't mistaken for forgotten work.
 
-- tspy hybrid passive (enduranceDiscount) still empty — separate gap: the tspy grant 
-  marker is ['Ones']@1.0 with no power_names, so the silent-boost linkage is absent in
-  the export (parser-level).
 - Same collapse in other slots — tspy Ageless Destiny Endurance, Melee-hybrid + Rebirth Destiny
   Regeneration show as non-gating class-absent; the same map treatment would help.

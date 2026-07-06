@@ -473,15 +473,49 @@ def _head(items: Iterable[str], n: int) -> list[str]:
     return out[:n]
 
 
-def _classify_extra_proc_pair(io_name: str, rec: dict) -> tuple[str, str]:
+def _classify_extra_proc_pair(
+    set_name: str,
+    io_name: str,
+    rec: dict,
+    oracle_set_names: set[str],
+    oracle_proc_names_by_set: dict[str, set[str]],
+) -> tuple[str, str]:
     """Classify repo-only proc entries into likely global/passive vs mapping gap.
 
     This is intentionally heuristic triage to prioritize follow-up work.
     """
     name = _norm(io_name)
     cats = set(rec.get("categories") or [])
+    proc_like_name = ("chance" in name) or ("convert " in name) or (" recharge/" in name)
+    ppm = rec.get("ppm")
 
-    if "chance" in name or "convert " in name or " recharge/" in name:
+    # Conversion slot effects are special mechanics (not chance procs), so
+    # classify them with passive/special coverage, not mapping-gap proc misses.
+    if name.startswith("convert "):
+        return (
+            "likely_non_proc_global_or_passive",
+            "special conversion mechanic (non-chance proc coverage)",
+        )
+
+    # If the set doesn't exist in the local oracle at all, a proc-looking extra is
+    # more likely oracle staleness/scope than an extractor mapping defect.
+    if set_name not in oracle_set_names and proc_like_name:
+        return (
+            "likely_oracle_set_staleness",
+            "proc-looking entry but set is absent in local oracle",
+        )
+
+    # Set exists in oracle and already has proc rows, but this extra proc-like
+    # entry has no oracle counterpart. Treat as likely per-set oracle staleness
+    # rather than extractor mapping gap.
+    oracle_ios = oracle_proc_names_by_set.get(set_name, set())
+    if proc_like_name and oracle_ios and name not in oracle_ios and ppm is not None:
+        return (
+            "likely_oracle_proc_staleness",
+            "set exists in oracle, but this proc row has no oracle counterpart",
+        )
+
+    if proc_like_name:
         return ("likely_mapping_gap", "name indicates triggered/proc behavior")
 
     global_hints = [
@@ -795,9 +829,19 @@ def main(argv: list[str] | None = None) -> int:
         for s, io in sorted(extra_proc)[: args.show]:
             print(f"  {s} :: {io}")
 
+    oracle_proc_names_by_set: dict[str, set[str]] = {}
+    for set_name, io_name in oracle_proc_pairs:
+        oracle_proc_names_by_set.setdefault(set_name, set()).add(io_name)
+
     for s, io in sorted(extra_proc):
         rec = repo_proc_map.get((s, io), {})
-        bucket, reason = _classify_extra_proc_pair(io, rec)
+        bucket, reason = _classify_extra_proc_pair(
+            s,
+            io,
+            rec,
+            oracle_set_names,
+            oracle_proc_names_by_set,
+        )
         extra_proc_classification.append(
             {
                 "set": s,
