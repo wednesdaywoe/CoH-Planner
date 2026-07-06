@@ -87,6 +87,16 @@ for names and numbers.** Mids is old and has changed hands, so its numbers drift
   `Mag`/`MagPercent` (Mids display convention), `Compare.json` (cosmetic), Mids
   zeros (may be silent table-miss). When Sidekick and Mids disagree, the raw
   `.pigg` bin is the tiebreaker, not Mids.
+  - **Two distinct numeric-distrust modes — do not conflate (2026-07-06):**
+    **(a) rebalance staleness** — a value genuinely changed in a patch Mids hasn't
+    absorbed (~1 mid-cycle behind: Mids build 2026-05-28 vs the live HC patch); a
+    re-export closes it. **(b) format quantization** — a *permanent* precision floor:
+    Mids stores set-bonus `Scale` to **3 decimals**, so a true `0.02525` is saved as
+    `0.025` and the same stored scale backs both a repo `2.5` and a repo `2.525` (the
+    `.025` damage residual). No re-export ever fixes (b); it is structural to the
+    `.mhd`. Both are advisory, but only (a) is a candidate for a bin re-pull — (b) means
+    "trust the bin value and stop looking." This is why a *full numeric sweep* against
+    Mids is noise (see DSH7-descoped), not signal.
 
 Two non-negotiable guardrails for the harness (else it is noise): **(1)** never
 raw-shape diff — canonicalize *both* sides to a multiset of
@@ -98,69 +108,12 @@ no answer, so **SKIP with explicit coverage tracking**, never flag.
 
 ## Active
 
-Fastest-signal, dependency-free work. The self-checks (DSH2/DSH3) need no Mids
-data and catch both historical bug classes on their own; the oracle PoC (DSH1)
-validates the whole differential approach before any converter rewrite.
+Open self-check guarantees. The shipped gates + oracle PoC (**DSH1–DSH3**) are
+archived; what remains here are the SC-N routing/accounting invariants not yet built.
 
-- [x] **DSH1** — Oracle-reader PoC. **Shipped 2026-07-05** as
-  [`tools/mids-oracle/read_i12.py`](tools/mids-oracle/read_i12.py) (reader) +
-  [`diff_oracle.py`](tools/mids-oracle/diff_oracle.py) (PoC comparator) +
-  [`README.md`](tools/mids-oracle/README.md). The reader ports the `I12.mhd`
-  BinaryReader layout verbatim (top-level `LoadMainDatabase`; `Power.cs:213`;
-  `Effect.cs:87`; `Requirement.cs:67`; `Enums.cs` ordinals), seeks `\x0cBEGIN:POWERS`,
-  reads `count+1` Powers with inline `count+1` Effects, and emits one JSON line per
-  power at template granularity. **All three exit gates met:**
-  **(1)** parses the full HC DB — **10,986 powers / 73,553 effects** — and lands
-  exactly on `BEGIN:SUMMONS`, proving the `+1`/`setTypeCount <=` layout is byte-correct
-  (a single misread field would desync across 73k effects).
-  **(2)** oracle vs parser export on the known-answer cohort: Single Shot, Flash
-  Arrow, Poison Gas Arrow match **exactly** under combat canonicalization; every
-  other divergence buckets into an enumerated *modeling* class (PVP_MODELING,
-  MULTI_TYPE_GRANULARITY, MEZ_PVP_RESIDUAL, INHERENT_EXTRA, REDIRECT, small OTHER) —
-  **zero Sidekick/parser defects.** These buckets are DSH5's canonicalizer worklist
-  (README table).
-  **(3)** the resistible/unresistable-twin cohort (Flash Arrow, Poison Gas Arrow —
-  the 2026-07-05 converter-fix targets) matches the oracle exactly; Mids independently
-  shows Flash Arrow's resistible + `IgnoreResistance` ToHit twin, and the pre-fix
-  generated output (`d94431fe0d^`) had **0** `unresistable` markers vs **1** post-fix —
-  the oracle reproduces exactly the effect the collapse dropped.
-  **Discovery:** the export is NOT as atomic as Mids for multi-damage-type buff/debuff
-  (one multi-attrib record vs Mids' one-record-per-type) — reconciling that in the
-  harness (MULTI_TYPE_GRANULARITY) **needs the DSH4 attrib→type bridge**, confirming
-  the DSH5-after-DSH4 sequencing. Local-only: `MidsReborn-master/`+`.mhd` are
-  gitignored, so these do not run in CI (that is DSH5/DSH7).
-  verify: file:tools/mids-oracle/read_i12.py, file:tools/mids-oracle/diff_oracle.py
-- [x] **DSH2** — SC-1 AT-table referential integrity. **Shipped 2026-07-05** as a
-  vitest guard [`converter-table-integrity.test.ts`](src/data/converter-table-integrity.test.ts)
-  (decision: a `.test.ts`, not the planned `.cjs` — it imports the REAL
-  `getTableValue`/`getTableBaseValue`/`EFFECT_REGISTRY`, so zero cascade drift, and
-  rides `npm test` → already gated by `ci.yml`). Registry-driven and **slot-aware**:
-  validates a table only on slots the app resolves as `scale × table` (buff/debuff-%
-  + by-type protection), skipping magnitude/damage slots whose table is vestigial
-  (repel `Ones`, taunt, Kheldian InherentDamage) — FP-free. **Found + fixed a real
-  bug on first run:** [`extract-at-tables.cjs`](scripts/extract-at-tables.cjs)'s
-  fixed allowlist (45 of 110 binary tables) omitted real tables — `Melee_Debuff_Dam`
-  (the melee twin of the ranged `_dam` bug; a binary spelling asymmetry melee-`_Dam`
-  vs ranged-`_Dmg`, hidden behind a misleading "no melee_debuff_dmg exists" comment)
-  and `Melee_EndDrain`/`Ranged_EndDrain`. Fixed at root (added them, re-extracted —
-  purely additive; corrected the comment). The hand-maintained allowlist is itself
-  an inductive-schema smell → backlog.
-  verify: file:src/data/converter-table-integrity.test.ts
-- [x] **DSH3** — SC-2 collapse detector. **Shipped 2026-07-05** as
-  [`validate-converter-output.cjs`](scripts/validate-converter-output.cjs) (npm
-  `validate:converter`, wired into `ci.yml`, all 3 datasets). Two tiers. **GATE** =
-  resistible/unresistable-twin regression: mirrors the converter's own twin
-  detection ([convert-powerset.cjs](scripts/convert-powerset.cjs) L3403-3452) on the
-  input — if a debuff twin exists, output MUST carry `unresistable`, else fail.
-  Green on an 8-power cohort = the exact Trick Arrow Flash/Poison-Gas-Arrow powers
-  the 2026-07-05 fix touched (real teeth). Made FP-free by archetype-disambiguated
-  matching + excluding pseudo-pets/pools (killed a Dimension_Shift name-collision
-  false positive). **REPORT** = collapse-risk groups (~4,800 HC powers) for triage,
-  non-failing. **Discovery:** a *fully-general* per-slot detector is blocked on the
-  DSH4 attrib→slot routing map — output has already discarded the attrib identity,
-  so input siblings can't be re-aligned to output slots black-box. The general
-  detector therefore folds into **DSH6** (which already `needs` DSH4).
-  verify: file:scripts/validate-converter-output.cjs, fn:hasResistibleTwin
+- [x] **DSH1** (oracle-reader PoC) · **DSH2** (AT-table integrity gate) · **DSH3**
+  (resistible-twin collapse gate) — **SHIPPED 2026-07-05**, full narrative in
+  [the archive](DEDUCTIVE_SCHEMA_HARNESS_ARCHIVE.md).
 - [ ] SC-3 — every emitted damage/debuff effect carries an explicit `resistible`
   disposition (absence of `IgnoreResistance` ⇒ resistible); none silently agnostic.
 - [ ] SC-4 — every kept PvE effect has its PvP sibling accounted for
@@ -170,59 +123,11 @@ validates the whole differential approach before any converter rewrite.
 
 ## Backlog
 
-- [x] **DSH4** — Closed effect schema. **Shipped 2026-07-05** as
-  [`src/data/core/atomic-effect.ts`](src/data/core/atomic-effect.ts) + guard
-  [`atomic-effect.test.ts`](src/data/atomic-effect.test.ts) (rides `npm test` → CI).
-  Defines the `AtomicEffect` record (one atom = one attrib × damage/mez subType ×
-  pvMode × resistibility) with the fields Sidekick's bag-of-slots lacked — `pvMode`,
-  first-class `resistible`, per-type `subType`, `effectType`, `attribType`, `aspect`,
-  `toWho` (retires `selfPenalty`), `modifierTable`, `stacking`+`stackCap`,
-  `specialCase`+`requiresExpression` (retires the `domination` bolt-on), enh flags —
-  and keeps SIGNED `scale` (stops the converter's `Math.abs` at ingest). Two keys:
-  full `identityKey` (incl. `round(scale,4)` — for dedup/collapse) and reduced
-  `structuralKey` `(effectType, subType, pvMode, resistible, modifierTable)` (for the
-  DSH5 oracle diff, scale-agnostic). Includes the **attrib→(effectType,subType)
-  bridge** (the [[DSH1]] blocker) grounded in the committed HC export's 95-attrib
-  vocabulary + a reference `ingestExportPower`. **Verified against the Mids oracle**
-  (`tools/mids-oracle/crosscheck_bridge.ts`): the cross-check found + fixed real
-  mis-maps — `aspect=Str` is a *buff* discriminator (`_Dmg`+Str ⇒ DamageBuff not
-  Damage; mez+Str ⇒ Enhancement; mez+Res ⇒ MezResist), lifting agreement to 88.5% and
-  mapped-coverage to 98.8% of 67,409 HC atomic records. **Known residual (documented,
-  not a defect):** the `aspect=Str` scalar/movement Enhancement-vs-keep-type split is
-  a Mids-internal table-context call not cleanly derivable from (attrib,aspect,table)
-  — deferred to DSH6 rather than over-fit. This unblocks DSH5 (both its `needs` are
-  now met).
-  verify: file:src/data/core/atomic-effect.ts, file:src/data/atomic-effect.test.ts
-- [x] **DSH5** — Oracle-backed differential harness. **Shipped 2026-07-05** as
-  [`tools/mids-oracle/emit_canonical.ts`](tools/mids-oracle/emit_canonical.ts) (export-side
-  canonicalizer — reuses the tested DSH4 `ingestExportPower`, so the app schema and the
-  oracle diff can never drift; resolves redirect shells) +
-  [`diff_harness.py`](tools/mids-oracle/diff_harness.py) (joins all **5,668** HC powers to
-  the Mids oracle by `full_name`, keys effects by the DSH4 `(effectType,subType,resistible)`
-  identity, tiered classifier → `oracle_divergence_rules.json` schema
-  `dsh5-oracle-divergence-rules/1` + coverage manifest). Filters oracle to HC; Thunderspy/
-  Rebirth excluded on the export side (Mids has no answer) with the exclusion tracked.
-  **Structural invariants implemented** with FOUR modeling-difference canonicalizations,
-  each verified against a concrete power before folding (verify-don't-assume, no
-  over-fit): **complete-type-set fold** (Poison Gas Arrow — Mids' all-damage `None` record
-  vs our per-attrib split; twin folded independently so R/U stay distinct),
-  **ResEffect fold** (Acid Arrow — Mids' secondary-attrib resistance catch-all ↔ our
-  `aspect=Res` scalars, the DSH4/DSH6 boundary), **set-not-multiset INV1** (Claw Swipe —
-  Mids enumerates conditional/DoT scale-tiers on one key; collapse drops a whole *distinct*
-  sibling key, never duplicate copies → compare presence, count-deltas are advisory
-  MULTIPLICITY), and **INV4 resistibility-flip** as its own class (Power Surge). Table-name
-  (INV5, 97.0% agree) + numeric are advisory-only against the ~5-wk-stale oracle — gating on
-  them would be a false positive (the cardinal sin). **Gate green:** the known-answer cohort
-  matches (Flash Arrow + Poison Gas Arrow twin-exact; Single Shot/Acid Arrow/Build Up zero
-  UNCLASSIFIED) and `--baseline` regression-gates on any *new* UNCLASSIFIED signature (both
-  PASS, exit 0). **Result:** BY_DESIGN 1,157 / RELABEL 547 / **UNCLASSIFIED 6,245 = the DSH6
-  worklist** — spot-verified genuine (Mids `aspect=Str`→Enhancement relabel, incarnate/epic
-  scope, 289 resistibility-flips, ~160 scattered "Mids has a damage type we lack" e.g. Mace
-  Beam Blast → bin-tiebreaker candidates for DSH7). Local-only (`.mhd` gitignored → CI is
-  DSH7); `.oracle_cache/` gitignored, the rules baseline committable. Full suite still green
-  (94 files / 801 tests), tsc clean. **This unblocks DSH6** (its `needs` DSH4+DSH5 are met).
-  verify: file:tools/mids-oracle/diff_harness.py, file:tools/mids-oracle/emit_canonical.ts
-  needs: DEDUCTIVE_SCHEMA_HARNESS#DSH1, DEDUCTIVE_SCHEMA_HARNESS#DSH4
+- [x] **DSH4** (closed atomic-effect schema + attrib→type bridge) · **DSH5**
+  (oracle-backed differential harness — UNCLASSIFIED **6,107 FROZEN**, gate-on-new,
+  see the DSH7-descoped note for why the pile is not a burn-down worklist) —
+  **SHIPPED 2026-07-05**, full narrative in
+  [the archive](DEDUCTIVE_SCHEMA_HARNESS_ARCHIVE.md).
 - [~] **DSH6** — Converter repair: rework `extractEffects()` to build the DSH4
   internal effect list first (one record per template × attrib × pvMode ×
   resistibility, sign preserved), then project to `PowerEffects` at the end. The
@@ -232,35 +137,9 @@ validates the whole differential approach before any converter rewrite.
   diffs must go to zero before the next. Fold DSH2 table validation into the
   converter so it fails loudly at emit time.
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH4, DEDUCTIVE_SCHEMA_HARNESS#DSH5
-  - [x] **DSH6a** — General per-slot collapse detector (the one DSH3 deferred here
-    for want of the DSH4 attrib→slot map). **Shipped 2026-07-05** as
-    [`scripts/dsh6-collapse-detector.cjs`](scripts/dsh6-collapse-detector.cjs) +
-    committable worklist `scripts/dsh6-collapse-worklist.json`. Single-source: the
-    input side reuses the DSH4 bridge (`ingestExportPower`) via `tsx/cjs` (never
-    re-ported); the output side deep-walks the whole generated Power object
-    (effects + damage + specialEffects + conditionalEffects), and it can run in CI
-    (all inputs committed — unlike DSH5's gitignored `.mhd`). **FP-hardened** the
-    hard way (2,017 raw flags → **33**, via 5 fixes each traced to a concrete power,
-    verify-don't-assume): mez/movement sub-type normalization (`Run`↔`runSpeed`,
-    `Confused`↔`confuse`), exclude `aspect=Str` (Power-Boost→specialBuff) and
-    `aspect=Res` movement (→`debuffResistance`), and — the load-bearing insight —
-    **sign follows the converter's rule** (`scale<0` OR table matches `/debuff/`),
-    because a foe −Def/−Res debuff is stored as POSITIVE scale on a `*_Debuff_*`
-    table (Low Kick's `Base_Defense +1` on `Melee_Debuff_Def`). **Finding that
-    reshapes DSH6:** clean by-type sibling collapse (the most-cited "site B")
-    **essentially does not occur in HC** — the by-type maps already prevent it.
-    The 33 residual + 69 class-absent were all **target-directed** (ally/team buffs
-    the caster-centric converter dropped — Speed Boost / Inertial Reduction +movement)
-    or **conditional-pipeline / dual-representation** (Enforced Morale's
-    `kMeter`/`isPVPMap`-gated mez-resist, kept only for `sleep` while all 6 mez show
-    as applied-mez protection). NONE is a last-write-wins clobber. **DSH6b then
-    emitted the ally movement buffs** (33→2 by-type; the 2 left are NPC display-name
-    aggregation, class-absent = control/self-conditional edge cases). The historical
-    collapse family (PvP-clobber, resistible-twin,
-    duration) lives on the scalar/pvMode/resistible axes this v1 folds OUT — those
-    are already covered by DSH5 (bridge↔Mids) + DSH3 (twin gate); a converter-output
-    scalar-identity gate is DSH6b.
-    verify: file:scripts/dsh6-collapse-detector.cjs, file:scripts/dsh6-collapse-worklist.json
+  - [x] **DSH6a** — general per-slot collapse detector (found clean by-type collapse
+    essentially does not occur in HC → helped disprove the DSH6 rewrite). **SHIPPED
+    2026-07-05**, full narrative in [the archive](DEDUCTIVE_SCHEMA_HARNESS_ARCHIVE.md).
   - [~] **DSH6b** — Scalar-identity gate + converter fixes. **Ally/foe-targeted buff
     *display* is IN SCOPE** (decision 2026-07-05, user-chosen) — so the 69 class-absent
     + target-directed by-type flags (Speed Boost / Inertial Reduction +movement,
@@ -370,12 +249,22 @@ validates the whole differential approach before any converter rewrite.
       observable bug (detector is green) — deferred until a new collapse site actually surfaces.
       `selfPenalty` is now DONE (above); the remaining two stay deferred.
     needs: DEDUCTIVE_SCHEMA_HARNESS#DSH6
-- [ ] **DSH7** — Numeric resolution + full sweep + CI: resolve oracle numbers by
-  joining each effect's `scale × modifierTable` against committed `AttribMod.json`
-  at a pinned level/AT (enables value-level diffing as an advisory tier); run the
-  harness across all 5,277 powers × relevant ATs; every real bug → fix + regression
-  case, every legitimate divergence → typed rule; wire DSH2/DSH3 + the harness into
-  CI so the next collapse or table-name regression breaks the build.
+- [ ] **DSH7 — DESCOPED (decision 2026-07-06, review follow-up).** The two halves
+  split cleanly and only one survives:
+  - **CI wiring of the *structural* gates — KEEP, and it is mostly already done.**
+    DSH2/DSH3/DSH6a/DSH8 all ride `npm test`/`ci.yml` (committed inputs). This was the
+    load-bearing part of DSH7 and it landed piecemeal with each detector. Remaining: nothing
+    oracle-dependent (the `.mhd` is gitignored, so the oracle sweep cannot be a CI gate).
+  - **Full-corpus numeric resolution + numeric CI — DROP.** Numbers are advisory-only by
+    the trust boundary, and the 2026-07-06 `.025` finding is the proof: **Mids quantizes
+    scale to 3 decimals**, so a full numeric sweep would emit a permanent sub-1% haze on
+    every damage buff — noise by construction, never a gate. Even the point-value it was
+    meant to add is thin: the `.025` question was settled by comparing Mids scale to the
+    repo value directly, no `AttribMod.json` resolution needed.
+  - **What remains is on-demand only:** resolve a *specific* disputed number
+    (`scale × modifierTable` vs `AttribMod.json`) when a concrete case needs adjudication —
+    e.g. the finite "Mids has a damage type we lack" candidate list from DSH5. Not a sweep,
+    not CI, not a standing worklist.
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH5
 - [~] **DSH8** — Extend the harness to the **Incarnate** pipeline. The audit
   (2026-07-05, 2-agent) found [`convert-incarnate-effects.cjs`](scripts/convert-incarnate-effects.cjs)
@@ -521,7 +410,7 @@ validates the whole differential approach before any converter rewrite.
     set names + proc tuples vs `io-sets-raw.ts`/`proc-data.ts` (identity), and with
     `--value-diff` projects EnhDB→I12 set-bonus links to planner `(stat,value)` for a
     value-level compare. Residual-signature baseline + `--strict` regression gate +
-    `--triage-json`. **Root-cause fix (review follow-up, see [streams/20240706.md](streams/20240706.md)):**
+    `--triage-json`. **Root-cause fix (review follow-up, see [20240706.md](20240706.md)):**
     set-bonus links were resolved by the EnhDB's cached power `index` (a constant −22
     offset vs the I12 array, verified across all 1,138 links) → every bonus read the
     WRONG power; the stale `DamageBuff/Str ×250` multiplier had been calibrated on that
@@ -529,9 +418,21 @@ validates the whole differential approach before any converter rewrite.
     1014/1422/54 → **26/43/20**. The 20 remaining are all the **Mids 3-decimal scale
     quantization** skew (same scale `0.025` → repo `2.5` AND `2.525`) — advisory per the
     trust boundary, NOT staleness, NOT a mapping bug. **Still a bootstrap**, not the
-    full DSH9 gate (proc identity: 2 missing / 56 extra procs remain as a worklist; no
-    bridge convergence or converter fixes yet — the three sub-bullets below).
+    full DSH9 gate (proc identity: 2 missing / 56 extra procs remain; no bridge
+    convergence or converter fixes yet — the sub-bullets below).
     verify: file:tools/mids-oracle/diff_enh_oracle.py, file:tools/mids-oracle/test_diff_enh_oracle.py
+  - [ ] **Freeze-and-gate the proc residual NOW (2026-07-06) — before it becomes a
+    second DSH5 pile.** The 56 extra procs are already triage-bucketed
+    (`likely_mapping_gap` 18 / `likely_non_proc_global_or_passive` 36 / `unknown` 2) and
+    a P-tiered worklist exists (`enh_oracle_mapping_gap_worklist.{json,md}`: **P1=10 /
+    P2=8**). Apply the discipline while the pile is 56, not 6,000: (1) the **P1=10
+    finite fix-list** is the actual actionable work (proc-name aliases / extractor
+    mappings for triggered effects) — burn it down; (2) baseline the rest and **gate on
+    new signatures** via `--baseline --strict` (already wired); (3) do NOT build a
+    grooming apparatus around `likely_non_proc_global_or_passive`/`unknown` — those are
+    the enh equivalent of DSH5's aspect=Str relabels. The 20 value residuals are already
+    frozen this way (Mids-quantization skew, gate-on-new).
+    verify: file:tools/mids-oracle/enh_oracle_mapping_gap_worklist.md
   - [ ] Converge the divergent parallel bridges onto the DSH4 `bridgeAttrib`:
     `ATTRIB_TO_BONUS_STAT` ([extract-rebirth-io-sets-v2.py](scripts/extract-rebirth-io-sets-v2.py) `:724`)
     + `ATTRIB_ASPECT_TO_EFFECT` ([extract-proc-data.py](scripts/extract-proc-data.py) `:51`)
