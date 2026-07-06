@@ -636,8 +636,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'melee_genome_4': {
     tree: 'melee',
     passive: {"regeneration":0.225},
-    frontLoaded: {"resSmashing":0.04,"resLethal":0.04,"resFire":0.04,"resCold":0.04,"resEnergy":0.04,"resNegative":0.04,"resPsionic":0.04,"resToxic":0.04,"regeneration":0.675,"protStun":2,"protSleep":2,"protImmobilize":2,"protHold":2,"protConfuse":2,"protFear":4},
-    perTarget: {"resSmashing":0.01,"resLethal":0.01,"resFire":0.01,"resCold":0.01,"resEnergy":0.01,"resNegative":0.01,"resPsionic":0.01,"resToxic":0.01,"regeneration":0.16875,"protStun":0.5,"protSleep":0.5,"protImmobilize":0.5,"protHold":0.5,"protConfuse":0.5,"protFear":1},
+    frontLoaded: {"resSmashing":0.04,"resLethal":0.04,"resFire":0.04,"resCold":0.04,"resEnergy":0.04,"resNegative":0.04,"resPsionic":0.04,"resToxic":0.04,"regeneration":0.675,"protStun":2,"protSleep":2,"protImmobilize":2,"protHold":2,"protConfuse":2,"protFear":2},
+    perTarget: {"resSmashing":0.01,"resLethal":0.01,"resFire":0.01,"resCold":0.01,"resEnergy":0.01,"resNegative":0.01,"resPsionic":0.01,"resToxic":0.01,"regeneration":0.16875,"protStun":0.5,"protSleep":0.5,"protImmobilize":0.5,"protHold":0.5,"protConfuse":0.5,"protFear":0.5},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -667,7 +667,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
     tree: 'melee',
     passive: {"regeneration":0.225},
     frontLoaded: {},
-    perTarget: {"defMelee":0.01,"defRanged":0.01,"defAoE":0.01,"defSmashing":0.01,"defLethal":0.01,"defFire":0.01,"defCold":0.01,"defEnergy":0.01,"defNegative":0.01,"defPsionic":0.01,"regeneration":0.3375,"protStun":1,"protSleep":1,"protImmobilize":1,"protHold":1,"protConfuse":1,"protFear":2},
+    perTarget: {"defMelee":0.01,"defRanged":0.01,"defAoE":0.01,"defSmashing":0.01,"defLethal":0.01,"defFire":0.01,"defCold":0.01,"defEnergy":0.01,"defNegative":0.01,"defPsionic":0.01,"regeneration":0.3375,"protStun":1,"protSleep":1,"protImmobilize":1,"protHold":1,"protConfuse":1,"protFear":1},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -676,8 +676,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'melee_genome_8': {
     tree: 'melee',
     passive: {"regeneration":0.3},
-    frontLoaded: {"resSmashing":0.1608,"resLethal":0.1608,"resFire":0.1608,"resCold":0.1608,"resEnergy":0.1608,"resNegative":0.1608,"resPsionic":0.1608,"resToxic":0.1608,"regeneration":2.412,"protStun":10.72,"protSleep":10.72,"protImmobilize":10.72,"protHold":10.72,"protConfuse":10.72,"protFear":21.44},
-    perTarget: {"resSmashing":0.0099,"resLethal":0.0099,"resFire":0.0099,"resCold":0.0099,"resEnergy":0.0099,"resNegative":0.0099,"resPsionic":0.0099,"resToxic":0.0099,"regeneration":0.1485,"protStun":0.66,"protSleep":0.66,"protImmobilize":0.66,"protHold":0.66,"protConfuse":0.66,"protFear":1.32},
+    frontLoaded: {"resSmashing":0.1608,"resLethal":0.1608,"resFire":0.1608,"resCold":0.1608,"resEnergy":0.1608,"resNegative":0.1608,"resPsionic":0.1608,"resToxic":0.1608,"regeneration":2.412,"protStun":10.72,"protSleep":10.72,"protImmobilize":10.72,"protHold":10.72,"protConfuse":10.72,"protFear":10.72},
+    perTarget: {"resSmashing":0.0099,"resLethal":0.0099,"resFire":0.0099,"resCold":0.0099,"resEnergy":0.0099,"resNegative":0.0099,"resPsionic":0.0099,"resToxic":0.0099,"regeneration":0.1485,"protStun":0.66,"protSleep":0.66,"protImmobilize":0.66,"protHold":0.66,"protConfuse":0.66,"protFear":0.66},
     maxTargets: 9,
     duration: 120,
     recharge: 120,
@@ -687,7 +687,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
     tree: 'melee',
     passive: {"regeneration":0.3},
     frontLoaded: {},
-    perTarget: {"defMelee":0.015,"defRanged":0.015,"defAoE":0.015,"defSmashing":0.015,"defLethal":0.015,"defFire":0.015,"defCold":0.015,"defEnergy":0.015,"defNegative":0.015,"defPsionic":0.015,"regeneration":0.45,"protStun":2,"protSleep":2,"protImmobilize":2,"protHold":2,"protConfuse":2,"protFear":4},
+    perTarget: {"defMelee":0.015,"defRanged":0.015,"defAoE":0.015,"defSmashing":0.015,"defLethal":0.015,"defFire":0.015,"defCold":0.015,"defEnergy":0.015,"defNegative":0.015,"defPsionic":0.015,"regeneration":0.45,"protStun":2,"protSleep":2,"protImmobilize":2,"protHold":2,"protConfuse":2,"protFear":2},
     maxTargets: 9,
     duration: 120,
     recharge: 120,
@@ -696,7 +696,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome': {
     tree: 'support',
     passive: {"enduranceDiscount":0.025},
-    frontLoaded: {"damage":0.16,"defMelee":0.02,"defSmashing":0.02,"defLethal":0.02},
+    frontLoaded: {"damage":0.02,"defMelee":0.02,"defSmashing":0.02,"defLethal":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -706,7 +706,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_2': {
     tree: 'support',
     passive: {"enduranceDiscount":0.05},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.02,"defMelee":0.02,"defAoE":0.02,"defSmashing":0.02,"defLethal":0.02,"defNegative":0.02,"defEnergy":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -716,7 +716,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_3': {
     tree: 'support',
     passive: {"enduranceDiscount":0.05},
-    frontLoaded: {"damage":0.16,"accuracy":0.02,"defMelee":0.02,"defAoE":0.02,"defSmashing":0.02,"defLethal":0.02,"defNegative":0.02,"defEnergy":0.02},
+    frontLoaded: {"damage":0.02,"accuracy":0.02,"defMelee":0.02,"defAoE":0.02,"defSmashing":0.02,"defLethal":0.02,"defNegative":0.02,"defEnergy":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -726,7 +726,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_4': {
     tree: 'support',
     passive: {"enduranceDiscount":0.075},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.04,"defMelee":0.04,"defAoE":0.04,"defSmashing":0.04,"defLethal":0.04,"defEnergy":0.04,"defNegative":0.04,"defFire":0.04,"defCold":0.04,"accuracy":0.04},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -736,7 +736,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_5': {
     tree: 'support',
     passive: {"enduranceDiscount":0.075},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.03,"defMelee":0.03,"defAoE":0.03,"defSmashing":0.03,"defLethal":0.03,"defEnergy":0.03,"defNegative":0.03,"defFire":0.03,"defCold":0.03},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -746,7 +746,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_6': {
     tree: 'support',
     passive: {"enduranceDiscount":0.075},
-    frontLoaded: {"damage":0.64,"defMelee":0.08,"defAoE":0.08,"defSmashing":0.08,"defLethal":0.08,"defEnergy":0.08,"defNegative":0.08,"defFire":0.08,"defCold":0.08,"accuracy":0.08},
+    frontLoaded: {"damage":0.08,"defMelee":0.08,"defAoE":0.08,"defSmashing":0.08,"defLethal":0.08,"defEnergy":0.08,"defNegative":0.08,"defFire":0.08,"defCold":0.08,"accuracy":0.08},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -756,7 +756,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_7': {
     tree: 'support',
     passive: {"enduranceDiscount":0.075},
-    frontLoaded: {"damage":0.48,"defMelee":0.06,"defAoE":0.06,"defSmashing":0.06,"defLethal":0.06,"defEnergy":0.06,"defNegative":0.06,"defFire":0.06,"defCold":0.06,"accuracy":0.06},
+    frontLoaded: {"damage":0.06,"defMelee":0.06,"defAoE":0.06,"defSmashing":0.06,"defLethal":0.06,"defEnergy":0.06,"defNegative":0.06,"defFire":0.06,"defCold":0.06,"accuracy":0.06},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -766,7 +766,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_8': {
     tree: 'support',
     passive: {"enduranceDiscount":0.1},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.06,"defMelee":0.06,"defAoE":0.06,"defRanged":0.06,"defPsionic":0.06,"defSmashing":0.06,"defLethal":0.06,"defEnergy":0.06,"defNegative":0.06,"defFire":0.06,"defCold":0.06,"accuracy":0.06},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -776,7 +776,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_9': {
     tree: 'support',
     passive: {"enduranceDiscount":0.1},
-    frontLoaded: {"damage":0.64,"defMelee":0.08,"defAoE":0.08,"defRanged":0.08,"defPsionic":0.08,"defSmashing":0.08,"defLethal":0.08,"defEnergy":0.08,"defNegative":0.08,"defFire":0.08,"defCold":0.08,"accuracy":0.08},
+    frontLoaded: {"damage":0.08,"defMelee":0.08,"defAoE":0.08,"defRanged":0.08,"defPsionic":0.08,"defSmashing":0.08,"defLethal":0.08,"defEnergy":0.08,"defNegative":0.08,"defFire":0.08,"defCold":0.08,"accuracy":0.08},
     perTarget: {},
     maxTargets: 0,
     duration: 120,

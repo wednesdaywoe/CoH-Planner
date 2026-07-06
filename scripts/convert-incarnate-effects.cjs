@@ -531,6 +531,15 @@ function extractHybrid() {
     const perTarget = {};   // Per-enemy stacking
     const grantedPassiveRefs = []; // Passive boost powers
     const grantedOtherRefs = []; // Other granted powers (procs, etc.)
+    // Parse6 (Rebirth/Thunderspy) splits a uniform multi-attrib buff into one
+    // group per attrib where HC packs them into a single template — both encode
+    // ONE buff. Without dedup the split form SUMS: e.g. the eight `*_Dmg` groups
+    // at +6% each collapse to the same `damage` stat and read a bogus +48%. Track
+    // applied (bucket, statKey, scale) triples so an identical-scale sibling from
+    // the split counts once, while a genuinely distinct buff (different scale)
+    // still stacks. (HC is unaffected — its single template already deduped the
+    // eight damage types to one `damage` via templateKeys.)
+    const seenContribs = new Set();
 
     for (const eff of data.effects || []) {
       const req = eff.requires_expression || '';
@@ -602,30 +611,44 @@ function extractHybrid() {
         // Support Hybrid's *Core* line buffs "all leaguemates" (which includes the
         // caster) via an ENTITY-TYPE gate rather than an empty/self requires:
         //   `enttype target> player eq`  → the player-leaguemate value the CASTER
-        //                                  receives (a PvE buff — is_pvp=EITHER).
+        //                                  receives (applies in PvE).
         //   `enttype target> critter eq` → the pet-doubled value ("This boost is
         //                                  doubled in strength for pets", per the
         //                                  in-game help); applies to pets, NOT the
-        //                                  caster.
-        // Neither matched the self/per-target RPN forms above, so the entire Core
-        // buff was routed nowhere and dropped (empty frontLoaded) while the Radial
-        // line — which uses an empty requires — rendered correctly. DSH8 fix: route
-        // the player-leaguemate value to frontLoaded (the caster gets it, exactly
-        // like an empty-req self buff); the critter value stays out of caster totals.
-        // NB: `enttype target> player eq` is the *PvP twin* on a FOE-DEBUFF (the
-        // regular converter drops it via isPvpEnttypeVariant), but on this
-        // leaguemate BUFF it is the caster's value. Guard on is_pvp so a PvP-only
-        // group can never leak into caster totals.
-        const notPvpOnly = (eff.is_pvp || 'EITHER') !== 'PVP_ONLY';
-        const isLeaguematePlayer = notPvpOnly && /enttype\s+target>\s+player\s+eq\s*$/.test(req);
+        //                                  caster, so it stays out of caster totals.
+        // Neither matched the self/per-target RPN forms above, so the whole Core
+        // buff was routed nowhere (empty frontLoaded) while the Radial line — which
+        // uses an empty requires — rendered. DSH8 fix: route the player-leaguemate
+        // value to frontLoaded (the caster gets it, like an empty-req self buff).
+        //
+        // Two cross-dataset traps make the parser's `is_pvp` flag the WRONG key:
+        //   1. CASE — HC/Thunderspy write `enttype`, Rebirth writes `Enttype`; the
+        //      match must be case-insensitive (`/i`).
+        //   2. SYNTHESIZED is_pvp — Rebirth/Thunderspy are Parse6, which has no
+        //      explicit is_pvp field, so the bin parser SYNTHESIZES it from the
+        //      requires target-type and marks EVERY `player eq` group PVP_ONLY
+        //      (_parse_effects_parse6). That synthesis is harmless for FOE effects
+        //      (the `critter eq` sibling carries the effect to the critter foe in
+        //      PvE) but WRONG for this ally-BUFF, whose caster is a *player*. HC's
+        //      explicit is_pvp=EITHER for the same buff is the ground truth.
+        // The reliable discriminator is POLARITY, not is_pvp: a `player eq` group on
+        // a BENEFICIAL buff (scale > 0 — and extractHybrid only ever maps beneficial
+        // stat keys) is the leaguemate value and applies in PvE; a foe-debuff's
+        // `player eq` PvP twin is harmful (negative) and never reaches this route.
+        const isLeaguematePlayer = scale > 0 && /enttype\s+target>\s+player\s+eq\s*$/i.test(req);
         const isPerTarget = isPerTargetRPN || req.includes('Ne(target');
         const isSelfOnly = isSelfRPN || req.includes('source>entref') || req === '' || isLeaguematePlayer;
 
         for (const statKey of templateKeys) {
+          const contribKey = `${isPerTarget ? 'pt' : 'fl'}|${statKey}|${scale}`;
           if (isPerTarget) {
+            if (seenContribs.has(contribKey)) continue;
+            seenContribs.add(contribKey);
             if (!perTarget[statKey]) perTarget[statKey] = 0;
             perTarget[statKey] = round(perTarget[statKey] + Math.abs(scale));
           } else if (isSelfOnly) {
+            if (seenContribs.has(contribKey)) continue;
+            seenContribs.add(contribKey);
             if (!frontLoaded[statKey]) frontLoaded[statKey] = 0;
             // Mez protection uses negative scales for protection magnitude
             const val = statKey.startsWith('prot') ? Math.abs(scale) : scale;

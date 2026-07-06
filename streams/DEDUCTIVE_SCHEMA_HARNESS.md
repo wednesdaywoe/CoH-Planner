@@ -413,28 +413,49 @@ validates the whole differential approach before any converter rewrite.
     CI-able detector (the generated file's `Record<slug, Record<stat,number>>` shape —
     no `Source: *.json`/`.effects` — means [`dsh6-collapse-detector.cjs`](scripts/dsh6-collapse-detector.cjs)
     needs a per-slot adapter), and sweep Alpha + Genesis.
-  - [x] **Support Core Hybrid leaguemate-buff drop — FIXED 2026-07-05.** The 4 *Core*
-    Support Hybrids (Support Core Genome / Partial-Core / Total-Core Graft / Core
-    Embodiment) rendered an EMPTY caster buff. They gate their buff with `enttype
-    target> player eq` (the player-leaguemate value the caster receives) + `enttype
-    target> critter eq` (pets, "doubled in strength"), but `extractHybrid`'s
-    self/per-target classifier ([convert-incarnate-effects.cjs](scripts/convert-incarnate-effects.cjs)
-    L600-603) recognized only empty-req / self-RPN / per-target-RPN, so the whole buff
-    routed nowhere; the Radial line (empty req) worked, hiding it. **Verified 3 ways
-    (verify-don't-assume):** empty converter output; Mids oracle carries a PvE
-    DamageBuff+Defense for all 4; the in-game help ("+Damage, +Accuracy, +Defense(All)
-    to all leaguemates … doubled for pets") names the exact buff. Fix routes the
-    player-leaguemate value (guarded `is_pvp != PVP_ONLY`) to `frontLoaded`; emitted
-    keys match the help text exactly (Core Genome's 6 def positions; Core Embodiment's
-    Defense(All)), and the calc already consumes `frontLoaded`
-    ([character-totals.ts:3172](src/utils/calculations/character-totals.ts#L3172)) so
-    the totals now populate. **Rebirth is a VERIFIED no-op** — its same power flags
-    `player eq` PVP_ONLY / `critter eq` PVE_ONLY *explicitly*, so the guard correctly
-    leaves it (no cross-server assumption; rebirth incarnates have no Mids oracle).
-    Also a clean twist on DSH6b: `player eq` is the PvP twin on a foe-debuff (dropped
-    there) but the caster value on this buff (kept). HC regen (4 powers); lint + DSH3
-    (3 ds) + DSH6 detector-neutral + 808 tests (+3 guard).
-    verify: fn:extractHybrid, file:src/utils/calculations/incarnate-effects-completeness.test.ts, tests:src>=808
+  - [x] **Support Core Hybrid leaguemate-buff drop — FIXED 2026-07-05 (HC + Rebirth).**
+    The 4 *Core* Support Hybrids (Support Core Genome / Partial-Core / Total-Core Graft /
+    Core Embodiment) rendered an EMPTY caster buff. They gate it with `enttype target>
+    player eq` (the leaguemate value the caster receives) + `enttype target> critter eq`
+    (pets, "doubled"), but `extractHybrid` recognized only empty-req / self-RPN /
+    per-target-RPN, so the whole buff routed nowhere; the Radial line (empty req) worked,
+    hiding it. **Verified 3 ways:** empty output; Mids carries a PvE DamageBuff+Defense
+    for all 4; in-game help ("+Damage, +Accuracy, +Defense(All) to all leaguemates …
+    doubled for pets") names the buff.
+  - [x] **CORRECTION — Rebirth was NOT a no-op; the fix's first guard was wrong.** The
+    initial fix keyed on `is_pvp != PVP_ONLY`, which left Rebirth/Thunderspy empty and
+    was mis-recorded as a "verified no-op." Re-investigation (poking the reachable Rebirth
+    bins — `z_rebirth_bin.pigg` under the Sweet Tea launcher, *contra* the stale
+    "rebirth-bins-absent" note) found **two Parse6-only traps**, both systemic:
+    (1) **CASE** — Rebirth writes `Enttype target> player eq` (capital E); the match was
+    lowercase-only. (2) **SYNTHESIZED is_pvp** — Parse6 has no explicit is_pvp field, so
+    the bin parser *derives* it from the requires target-type
+    ([_powers.py `_parse_effects_parse6`](tools/bin-crawler/bin_crawler/parser/_powers.py#L1859)),
+    marking **every** `player eq` group `PVP_ONLY` and every `critter eq` `PVE_ONLY`. That
+    synthesis is *harmless for FOE effects* (the `critter eq` PVE sibling carries the
+    effect to the critter foe in PvE) but **wrong for ally-BUFFS**, whose caster is a
+    *player* and needs the `player eq` copy in PvE. **Proof it's a synthesis artifact, not
+    real data:** a coherence tally shows HC keeps `player eq`/`critter eq` groups
+    independent of is_pvp (121/124 all `EITHER`), while Rebirth AND Thunderspy — two
+    independently-forked Parse6 servers — both lock `player eq`→PVP_ONLY 100% (176/176,
+    110/110) and `critter eq`→PVE_ONLY 100% (172/172, 112/112); a real is_pvp field is not
+    100%-determined by target-type. An HC↔Rebirth divergence cross-check confirmed the 790
+    foe-effect divergences are harmless and the discriminator is **polarity, not
+    magnitude** (ratio 2.0 is dominated by PvP-halved foe mez twins — Force Bolt/Eagles
+    Claw Stun, Ki Push Repel — sitting next to the 0.06/0.12 ally buff). **Fix:** key the
+    leaguemate route on POLARITY (`scale > 0` — extractHybrid only maps beneficial stats)
+    + a case-insensitive match, dropping the is_pvp dependency; HC's explicit
+    is_pvp=EITHER is the ground truth. Also added a `(bucket,statKey,scale)` dedup so the
+    Parse6 *per-attrib split* (8 `*_Dmg` groups → one `damage` stat) counts once, not 8×
+    (+48%→+6%). HC + Rebirth regen; HC unchanged; Rebirth Core now populates (damage 0.06,
+    Defense(All), Accuracy). tsc + DSH3 (3 ds) + 810 tests (+2 Rebirth guards).
+    verify: fn:extractHybrid, file:src/utils/calculations/incarnate-effects-completeness.test.ts, tests:src>=810
+  - [ ] **Thunderspy Support Core still empty — SEPARATE pre-existing root cause.** Tspy
+    encodes these as generic-category attribs `[Damage]`/`[Defense]`/`[Accuracy]` with an
+    **empty aspect** (the [[thunderspy-attrib-index-array]] pattern — front string is the
+    category, not HC's `Smashing_Dmg`+aspect=Strength), so the converter's aspect branches
+    never fire. Not an is_pvp/case issue; needs the tspy generic-category → planner-stat
+    mapping (`Defense`→Defense(All)) and tspy-value verification (don't validate vs HC).
   - [ ] Continue the calc-feeding sweep (Alpha enhancement values, Genesis) + add
     `pvMode`/`resistible` awareness where a real drop surfaces; reuse the DSH4 bridge
     rather than the parallel `ATTRIB_MAP`.

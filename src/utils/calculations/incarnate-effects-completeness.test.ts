@@ -151,8 +151,10 @@ describe('Hybrid Support Core — leaguemate buff is not dropped (DSH8)', () => 
   // eq` (pets, "doubled in strength"). extractHybrid recognized only empty-req /
   // self-RPN / per-target-RPN, so the whole Core buff was routed nowhere and the
   // caster saw an empty frontLoaded — while the Radial line (empty req) worked.
-  // Fixed by routing the player-leaguemate (is_pvp != PVP_ONLY) value to
-  // frontLoaded. Values + key-sets are read off the in-game help text.
+  // Fixed by recognizing the `player eq` leaguemate pattern via POLARITY
+  // (a beneficial buff, scale > 0) and a case-insensitive match — NOT the
+  // parser's is_pvp flag, which Parse6 (Rebirth/Thunderspy) synthesizes as
+  // PVP_ONLY for every `player eq` group. Values + key-sets are the in-game help.
   beforeAll(async () => {
     await loadDataset('homecoming');
   });
@@ -223,5 +225,31 @@ describe('Rebirth dataset (Parse6) — no junk keys, no N× collapse', () => {
   it('Ageless Radial debuff resistance is consolidated to ~50% (was scattered)', () => {
     const fx = getDestinyEffects('ageless_radial_epiphany')!;
     expect(fx.debuffResistance).toBeCloseTo(0.5, 6);
+  });
+
+  it('Support Core Hybrid leaguemate buff survives Parse6 (DSH8) — two traps', () => {
+    // Rebirth's Support Core showed an EMPTY caster buff for two Parse6-only
+    // reasons the HC-tuned code missed:
+    //   1. CASE — Rebirth writes `Enttype target> player eq` (capital E); the
+    //      leaguemate match was lowercase-only.
+    //   2. SYNTHESIZED is_pvp — Parse6 has no is_pvp field, so the bin parser
+    //      derives it from the requires target-type and marks every `player eq`
+    //      group PVP_ONLY. The old guard (`is_pvp != PVP_ONLY`) then dropped it.
+    // Fixed by keying on polarity (scale > 0) + a case-insensitive match. HC's
+    // explicit is_pvp=EITHER for the same buff is the ground truth.
+    const emb = getHybridEffects('support_core_embodiment')!;
+    expect(emb, 'Support Core Embodiment missing').toBeDefined();
+    expect(Object.keys(emb.frontLoaded).length, 'empty frontLoaded').toBeGreaterThan(0);
+    expect(emb.frontLoaded.damage).toBeCloseTo(0.06, 6);
+    expect(emb.frontLoaded.accuracy).toBeCloseTo(0.06, 6);
+    expect(emb.frontLoaded.defMelee).toBeCloseTo(0.06, 6);
+  });
+
+  it('Support Core damage is not 8×-inflated by the Parse6 per-attrib split', () => {
+    // HC packs eight `*_Dmg` types into one template; Parse6 emits eight groups.
+    // All collapse to the one `damage` stat — without the (bucket,key,scale)
+    // dedup they sum to +48% for a +6% buff. Must read 0.06, not 0.48.
+    expect(getHybridEffects('support_core_embodiment')!.frontLoaded.damage).toBeCloseTo(0.06, 6);
+    expect(getHybridEffects('support_core_genome')!.frontLoaded.damage).toBeCloseTo(0.02, 6);
   });
 });
