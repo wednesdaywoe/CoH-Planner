@@ -861,6 +861,9 @@ def _bonus_stat_from_bridge(attrib: str, aspect: str, table: str = '') -> str | 
         return 'endurance_discount'
     if et == 'Movement':
         return 'increased_movement'
+    if et == 'MezResist':
+        # Planner tracks mez resistance as one aggregate stat only.
+        return 'mez_resistance_(all)'
     if et == 'Mez' and sub in {'knockback', 'knockup'}:
         return 'knockback_protection'
     if et == 'Knockback':
@@ -931,59 +934,71 @@ def _resolve_bonus_effects(set_bonus_power: PowerRecord) -> list[dict]:
     """Build the planner's bonus effects[] list from a Set_Bonus power's
     effect templates.
 
-    Templates are grouped by computed value (scale × per-attrib multiplier).
-    Within a value group the all-resistance / all-mez / all-damage families
-    collapse to a single key, the remainder map per-attrib, and paired
+    Templates are grouped by mapped identity (planner stat key), not by value,
+    so tiny float splits in one family can't leak duplicate/misaligned keys.
+    All-damage/all-resistance/all-mez families are collapsed by identity first,
+    then each key selects one representative value (max abs). Paired
     resistance/defence members are de-duped to the alpha-first key so the
     planner's PAIRED_STATS expansion doesn't double-count.
     """
-    # value → set of (attrib, aspect, table) producing that value.
-    by_value: dict[float, set[tuple[str, str, str]]] = {}
+    # Flat entries: (attrib, aspect, table, value)
+    entries: list[tuple[str, str, str, float]] = []
     for eg in set_bonus_power.effects:
         for t in eg.templates:
             aspect = t.aspect or ''
             table = t.table or ''
             for a in (t.attribs or []):
                 value = round(abs(t.scale) * _bonus_multiplier(a, aspect), 4)
-                by_value.setdefault(value, set()).add((a, aspect, table))
+                entries.append((a, aspect, table, value))
 
     out: list[dict] = []
-    for value, pairs in by_value.items():
-        attset = {(a, asp) for a, asp, _ in pairs}
-        keys: list[str] = []
+    attset = {(a, asp) for a, asp, _, _ in entries}
+    key_values: dict[str, list[float]] = {}
 
-        # Family collapses (only when the full family is present at this value).
-        if _DMG_STRENGTH.issubset(attset):
-            keys.append('damage'); attset -= _DMG_STRENGTH
-        if _DMG_RESIST.issubset(attset):
-            keys.append('damage_resistance_(all)'); attset -= _DMG_RESIST
-        if _MEZ_RESIST.issubset(attset):
-            keys.append('mez_resistance_(all)'); attset -= _MEZ_RESIST
+    # Family collapses by identity (independent of float/value splits).
+    family_consumed: set[tuple[str, str]] = set()
+    if _DMG_STRENGTH.issubset(attset):
+        vals = [v for a, asp, _, v in entries if (a, asp) in _DMG_STRENGTH]
+        if vals:
+            key_values.setdefault('damage', []).append(max(vals))
+        family_consumed |= _DMG_STRENGTH
+    if _DMG_RESIST.issubset(attset):
+        vals = [v for a, asp, _, v in entries if (a, asp) in _DMG_RESIST]
+        if vals:
+            key_values.setdefault('damage_resistance_(all)', []).append(max(vals))
+        family_consumed |= _DMG_RESIST
+    if _MEZ_RESIST.issubset(attset):
+        vals = [v for a, asp, _, v in entries if (a, asp) in _MEZ_RESIST]
+        if vals:
+            key_values.setdefault('mez_resistance_(all)', []).append(max(vals))
+        family_consumed |= _MEZ_RESIST
 
-        # Map the remainder per-attrib.
-        for a, aspect, table in pairs:
-            key = _bonus_stat_from_bridge(a, aspect, table)
-            if key is None:
-                if (a, aspect) not in _BONUS_LOOKUP_IGNORE:
-                    _UNMAPPED_BONUS_PAIRS[(a, aspect)] = _UNMAPPED_BONUS_PAIRS.get((a, aspect), 0) + 1
-                continue
-            keys.append(key)
+    # Map remaining entries per-attrib through bridge/fallback resolver.
+    for a, aspect, table, value in entries:
+        if (a, aspect) in family_consumed:
+            continue
+        key = _bonus_stat_from_bridge(a, aspect, table)
+        if key is None:
+            if (a, aspect) not in _BONUS_LOOKUP_IGNORE:
+                _UNMAPPED_BONUS_PAIRS[(a, aspect)] = _UNMAPPED_BONUS_PAIRS.get((a, aspect), 0) + 1
+            continue
+        key_values.setdefault(key, []).append(value)
 
-        # Drop the alpha-later member of any present pair (planner re-pairs it).
-        for keep, drop in _BONUS_STAT_PAIRS:
-            if keep in keys and drop in keys:
-                keys = [k for k in keys if k != drop]
+    keys = sorted(key_values.keys())
 
-        # Emit one effect per distinct key, in a stable order.
-        seen: set[str] = set()
-        for key in keys:
-            if key in seen:
-                continue
-            seen.add(key)
-            if key == 'knockback_protection':
-                value = abs(value)
-            desc = f'+{value}% {key.replace("_", " ").title()}'
-            out.append({'stat': key, 'value': value, 'desc': desc})
+    # Drop the alpha-later member of any present pair (planner re-pairs it).
+    for keep, drop in _BONUS_STAT_PAIRS:
+        if keep in keys and drop in keys:
+            keys = [k for k in keys if k != drop]
+
+    # Emit one effect per key with a stable representative value.
+    for key in keys:
+        value = max(key_values.get(key, [0]))
+        if key == 'knockback_protection':
+            value = abs(value)
+        value = round(value, 4)
+        desc = f'+{value}% {key.replace("_", " ").title()}'
+        out.append({'stat': key, 'value': value, 'desc': desc})
     return out
 
 

@@ -104,6 +104,7 @@ export interface GlobalBonuses {
   // Recovery & Health
   maxHP: number;
   maxEndurance: number;
+  absorb: number;
   regeneration: number;
   recovery: number;
   // Movement
@@ -261,6 +262,7 @@ function createEmptyGlobalBonuses(): GlobalBonuses {
     resToxic: 0,
     maxHP: 0,
     maxEndurance: 0,
+    absorb: 0,
     regeneration: 0,
     recovery: 0,
     runSpeed: 0,
@@ -2057,6 +2059,19 @@ interface PowerForProcScan {
 function collectAlwaysOnProcs(build: Build): SlottedProc[] {
   const procs: SlottedProc[] = [];
 
+  const looksLikeLegacyProcSlot = (slotName: string, procData: NonNullable<ReturnType<typeof findProcData>>): boolean => {
+    const slot = (slotName || '').toLowerCase();
+    const io = (procData.ioName || '').toLowerCase();
+    if (!slot || !io) return false;
+    if (slot === io) return true;
+    // Legacy extractor names often prepend aspect text, e.g.
+    // "Recharge/Resistance Bonus" for ioName "Resistance Bonus".
+    if (slot.includes(io)) return true;
+    // Placeholder names emitted for unresolved proc pieces.
+    if (slot === 'chance' || slot === 'recharge/chance') return true;
+    return false;
+  };
+
   const processPower = (power: PowerForProcScan) => {
     if (!power.slots) return;
 
@@ -2066,11 +2081,16 @@ function collectAlwaysOnProcs(build: Build): SlottedProc[] {
     for (const slot of power.slots) {
       if (!slot || slot.type !== 'io-set') continue;
       const ioSlot = slot as IOSetEnhancement;
-      if (!ioSlot.isProc) continue;
 
       // Look up proc data
       const procData = findProcData(ioSlot.name, ioSlot.setName);
       if (!procData) continue;
+
+      // Primary path: explicit proc flag.
+      // Legacy safety net: some old extracted pieces shipped with proc:false
+      // despite being real always-on globals. Accept only when the slot name
+      // still clearly identifies the proc entry to avoid broad false positives.
+      if (!ioSlot.isProc && !looksLikeLegacyProcSlot(ioSlot.name, procData)) continue;
 
       // Only include if it's an always-on proc type
       if (!isProcAlwaysOn(procData)) continue;
@@ -2190,7 +2210,7 @@ function applySingleProcEffect(
       break;
 
     case 'Defense':
-      // Apply to all defense types if effect type is "All"
+      // Apply typed defense when provided; "All" expands to all entries.
       if (effectType?.toLowerCase() === 'all') {
         const defTypes: (keyof GlobalBonuses)[] = [
           'defMelee', 'defRanged', 'defAoE',
@@ -2206,7 +2226,33 @@ function applySingleProcEffect(
             powerName,
           });
         }
+      } else {
+        const specificDefMap: Record<string, keyof GlobalBonuses> = {
+          melee: 'defMelee', ranged: 'defRanged', aoe: 'defAoE', area: 'defAoE',
+          smashing: 'defSmashing', lethal: 'defLethal', fire: 'defFire', cold: 'defCold',
+          energy: 'defEnergy', negative: 'defNegative', psionic: 'defPsionic', toxic: 'defToxic',
+        };
+        const defKey = specificDefMap[effectType?.toLowerCase() || ''];
+        if (defKey) {
+          global[defKey] += value;
+          addToBreakdown(breakdown, defKey as string, {
+            name: sourceName,
+            value,
+            type: 'proc',
+            powerName,
+          });
+        }
       }
+      break;
+
+    case 'Absorb':
+      global.absorb += value;
+      addToBreakdown(breakdown, 'absorb', {
+        name: sourceName,
+        value,
+        type: 'proc',
+        powerName,
+      });
       break;
 
     case 'Resistance': {
@@ -2356,6 +2402,7 @@ const PROC_CATEGORY_TO_STAT: Record<string, string | null> = {
   Regeneration:      'regeneration',
   Heal:              'regeneration', // Heal procs contribute to effective regen rate
   Endurance:         'recovery',     // Treated as recovery in calculations
+  Absorb:            'absorb',
   Recharge:          'recharge',
   RunSpeed:          'runspeed',
 };

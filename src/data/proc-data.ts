@@ -2450,7 +2450,9 @@ export function findProcData(enhancementName: string, setName?: string): ProcDat
 
   // Try exact match on bare name
   const exact = PROC_DATABASE[enhancementName];
-  if (exact) return exact;
+  // When a set is provided, only accept the bare-name exact hit if the set
+  // also matches; otherwise continue into set-aware IO-name matching.
+  if (exact && (!setName || exact.setName === setName)) return exact;
 
   // Try to find by IO name only (scan all entries)
   // When setName is provided, prefer matching set; otherwise return first match
