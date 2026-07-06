@@ -192,7 +192,7 @@ function checkableSub(et, sub) {
   return true; // folded effectTypes have no subType to check
 }
 
-function inputIdentities(sourceJson) {
+function inputIdentities(sourceJson, slot) {
   let atoms;
   try { atoms = ingestExportPower(sourceJson); } catch { return []; }
   const out = [];
@@ -215,6 +215,15 @@ function inputIdentities(sourceJson) {
     // -regen/-recharge resistance). Keep aspect=Res only where it IS the signal:
     // Resistance (damage-res) and MezResist (mez-duration-res). Mirrors DSH6.
     if (a.aspect === 'Res' && et !== 'Resistance' && et !== 'MezResist') continue;
+    // Slot-aware Strength semantics (mirror converter behavior):
+    //   - Destiny surfaces only Recharge/Recovery/Regeneration at aspect=Str.
+    //     Other Strength rows (e.g. Clarion's secondary-effect amplifiers such as
+    //     RunningSpeed/FlyingSpeed/Endurance) are by-design drops from caster totals.
+    //   - Hybrid surfaces DamageBuff/Accuracy/EnduranceDiscount at aspect=Str.
+    if (a.aspect === 'Str') {
+      if (slot === 'destiny' && !['RechargeTime', 'Recovery', 'Regeneration'].includes(et)) continue;
+      if (slot === 'hybrid' && !['DamageBuff', 'Accuracy', 'EnduranceDiscount'].includes(et)) continue;
+    }
     // polarity: incarnate buff slots are beneficial. A buff is scale>0; mez PROTECTION
     // is aspect=Cur negative-scale (the converter Math.abs's it). MezResist is aspect=Res.
     let beneficial;
@@ -268,7 +277,7 @@ function main() {
 
       const { ids, classes } = collectRepresented(rec, slot);
       const seen = new Set();
-      for (const inp of inputIdentities(sourceJson)) {
+      for (const inp of inputIdentities(sourceJson, slot)) {
         const id = `${inp.et}|${inp.sub}`;
         if (seen.has(id)) continue;
         seen.add(id);
@@ -309,10 +318,13 @@ function main() {
         'are checked per-subType. Fold-all output keys (defenseAll/resistanceAll/mezProtection/' +
         'damage) cover any subType.',
       byDesignDrops: 'Enhancement (aspect=Str mez/by-type strength), Heal/team-heal, Damage ' +
-        '(direct — Judgement/Interface), GrantPower/pets/engine markers, scale-0, Expression, ' +
-        'explicit pvMode=PvP, and Ageless-style `*_ArchVillain_Res` bundles (projected to ' +
-        '`debuffResistance`, not `resistanceAll`). NO isPvpVariant drop — `player eq` is the ' +
-        'leaguemate buff (kept, routed by polarity), the bridge-convergence invariant.',
+        '(direct — Judgement/Interface), non-routed Strength amplifiers in slot context ' +
+        '(Destiny keeps only recharge/recovery/regeneration at Str; Hybrid keeps only ' +
+        'damage/accuracy/enduranceDiscount), GrantPower/pets/engine markers, scale-0, ' +
+        'Expression, explicit pvMode=PvP, and Ageless-style `*_ArchVillain_Res` bundles ' +
+        '(projected to `debuffResistance`, not `resistanceAll`). NO isPvpVariant drop — ' +
+        '`player eq` is the leaguemate buff (kept, routed by polarity), the ' +
+        'bridge-convergence invariant.',
     },
     coverage: cov,
     summary: {
