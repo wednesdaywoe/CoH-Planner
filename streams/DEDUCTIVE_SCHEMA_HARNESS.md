@@ -7,6 +7,7 @@ relates:
   - HOMECOMING_PARSER.md
   - THUNDERSPY_PARSER.md
   - REBIRTH_PARSER.md
+  - GAME-DATA-PRINCIPLES.md
 ---
 
 # Deductive Effect Schema + Differential Harness
@@ -25,7 +26,10 @@ Scope is the powerset conversion pipeline
 ([`convert-powerset.cjs`](scripts/convert-powerset.cjs) → generated TS) and a new
 validation/oracle layer beside it. It does **not** cover the Python bin parser's
 correctness for this class (see "Where the data is lost" — the parser is already
-proven correct here).
+proven correct here). **DSH8/DSH9 (backlog) extend the same diagnosis to the two
+sibling converters — [`convert-incarnate-effects.cjs`](scripts/convert-incarnate-effects.cjs)
+and the enhancement extractors — which independently reinvented the same
+bag-of-slots model** (audit 2026-07-05, user-confirmed the expansion).
 
 > Grounded in a 2026-07-05 investigation (6-agent audit: Mids effect model, Mids
 > DB feasibility, converter collapse map, parser information-loss proof, design,
@@ -373,6 +377,78 @@ validates the whole differential approach before any converter rewrite.
   case, every legitimate divergence → typed rule; wire DSH2/DSH3 + the harness into
   CI so the next collapse or table-name regression breaks the build.
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH5
+- [~] **DSH8** — Extend the harness to the **Incarnate** pipeline. The audit
+  (2026-07-05, 2-agent) found [`convert-incarnate-effects.cjs`](scripts/convert-incarnate-effects.cjs)
+  is a wholly separate 1,614-line converter that **independently reinvented** the
+  bag-of-named-slots / last-write-wins model (it never imports `extractEffects()`),
+  and is a *worse* blind spot than regular powers: it **never reads `pvMode` or
+  `resistible`** (0 `is_pvp`/`IgnoreResistance` matches → PvE/PvP + resistible twins
+  collapse silently), has silent allowlist drops (Destiny `:415`/`:420-423`, Hybrid
+  `:588`/`:591`), keep-one-largest (Interface `:774`/`:782`, Judgement `:868`), and
+  Alpha first-attrib-only + sum (`:269-278`). The bug family has **already shipped
+  here repeatedly** — [`incarnate-effects-completeness.test.ts`](src/utils/calculations/incarnate-effects-completeness.test.ts)
+  pins empty-`{}` Rebirth core, dropped Clarion mez, 300% debuffResistance, 8×
+  Hybrid inflation.
+  **Correction after verifying the audit's "cheap oracle win" (2026-07-05, verify-don't-assume):**
+  the DSH5 oracle diff is the WRONG tool for the converter drops — both its sides
+  (Mids oracle ↔ parser export) sit **upstream** of `convert-incarnate-effects.cjs`,
+  so it structurally cannot see a converter drop. Confirmed empirically: incarnates
+  are **already in the DSH5 sweep** (975 export incarnate powers matched by
+  `full_name`), and their 533 UNCLASSIFIED residuals across 159 powers are
+  **dominated by the known DSH4 `aspect=Str`→Enhancement relabel** (e.g. Alpha
+  `accuracy_common`: export `Accuracy` vs oracle `Enhancement`) — parser-faithful,
+  not drops. **The real drop-catcher is a DSH6a-style detector comparing the export
+  atomic list to the converter output** — exactly the tool that is blind to incarnates.
+  - [x] Diagnostic: confirm parser fidelity for incarnates via the existing DSH5
+    sweep — done; the incarnate residuals are the `aspect=Str` relabel + scope, not
+    converter drops, so DSH5 is NOT extended for DSH8 and the export JSON is a
+    trustworthy "truth" side for the detector below.
+  - [ ] **Build the incarnate collapse-detector view** — compare `ingestExportPower`
+    ([`atomic-effect.ts`](src/data/core/atomic-effect.ts)) atoms for each
+    `exported_powers/incarnate/*.json` against the converter output
+    ([generated `incarnate-effects.ts`](src/data/datasets/homecoming/generated/incarnate-effects.ts)),
+    flagging calc-relevant atoms the converter dropped. The generated file's shape
+    (`Record<slug, Record<stat, number>>`, no `Source: *.json`/`.effects`) is unlike
+    `PowerEffects`, so [`dsh6-collapse-detector.cjs`](scripts/dsh6-collapse-detector.cjs)
+    can't consume it as-is — needs a per-slot-type adapter (Alpha/Destiny/Hybrid/
+    Genesis calc-feeding; Judgement/Interface/Lore/Genesis-exemplar display-only by
+    design).
+  - [ ] Fix confirmed drops in the **calc-feeding** slots and add `pvMode`/`resistible`
+    awareness; reuse the DSH4 bridge rather than the parallel `ATTRIB_MAP`.
+  needs: DEDUCTIVE_SCHEMA_HARNESS#DSH4
+- [ ] **DSH9** — Extend the harness to the **Enhancement** pipeline (IO sets / set
+  bonuses / procs / raw magnitudes). The audit found this splits into three
+  sub-pipelines with very different exposure — and, unlike incarnates, the *data* is
+  already in good shape; the gaps are the **extractors** and a **total absence of a
+  Mids oracle**. Set-bonus data is already an atomic list `{stat,value,desc}`
+  ([`io-sets.ts`](src/data/io-sets.ts)) and the Rule-of-5 calc has no collapse; proc
+  data is already `ProcEffect[]` ([`proc-data.ts`](src/data/proc-data.ts)). But
+  [`read_i12.py`](tools/mids-oracle/read_i12.py) reads **only** the I12 Powers section
+  (`BEGIN:POWERS`→`BEGIN:SUMMONS`) and never opens `EnhDB.mhd`, so set-bonus and proc
+  *values* are diffed against **nothing** from Mids —
+  [`io-sets-bonus-keys.test.ts`](src/data/io-sets-bonus-keys.test.ts) only proves the
+  two allowlists agree with *each other*, not with the game.
+  - [ ] New `EnhDB.mhd` reader beside `read_i12.py` → the missing set-bonus/proc
+    oracle (`MidsReborn-master/MidsReborn/Databases/{Homecoming,Rebirth}/EnhDB.mhd`
+    present).
+  - [ ] Converge the divergent parallel bridges onto the DSH4 `bridgeAttrib`:
+    `ATTRIB_TO_BONUS_STAT` ([extract-rebirth-io-sets-v2.py](scripts/extract-rebirth-io-sets-v2.py) `:724`)
+    + `ATTRIB_ASPECT_TO_EFFECT` ([extract-proc-data.py](scripts/extract-proc-data.py) `:51`)
+    are duplicates of it.
+  - [ ] Replace the value-keyed family collapse (`_resolve_bonus_effects` `:875-894` —
+    a float-rounding split can leak or mis-collapse a per-type family) with
+    identity-keyed grouping; fix the single-type mez-resist drop (`:715-718`) and the
+    double-allowlist lockstep risk vs
+    [`STAT_NAME_MAP`](src/utils/calculations/set-bonuses.ts).
+  - [ ] Close the proc allowlist gaps: `applySingleProcEffect` `default:` drop
+    ([character-totals.ts](src/utils/calculations/character-totals.ts) `:2345`) +
+    typed-`Defense`-only-when-`'all'` drop (`:2194`); the `proc:false` silent-drop
+    class (the ATO passive-global 6th piece).
+  - **Raw enhancement magnitudes** (schedules/ED/exemplar in
+    [`enhancement-values.ts`](src/utils/calculations/enhancement-values.ts)) are **not**
+    an atomic-effect target — they're table lookups. Any validation there needs a
+    value/table oracle, tracked under Deferred.
+  needs: DEDUCTIVE_SCHEMA_HARNESS#DSH4
 - [ ] Replace the AT-table extractor's hand-maintained 45-name allowlist
   ([`extract-at-tables.cjs`](scripts/extract-at-tables.cjs)) with a principled
   filter (extract every player-referenced table, or all 110 binary tables with a
@@ -399,3 +475,9 @@ validates the whole differential approach before any converter rewrite.
   swallow paths ([`_powers.py`](tools/bin-crawler/bin_crawler/parser/_powers.py)
   ~L764, ~L878) loud under a strict flag so an unparseable PvP twin can't vanish
   before JSON. Diagnostics only.
+- Enhancement **raw-magnitude** value oracle — validating the hand-transcribed
+  schedule / ED / exemplar tables
+  ([`enhancement-values.ts`](src/utils/calculations/enhancement-values.ts)) against a
+  Mids value/table source (`Maths.mhd`/`NLevels.mhd`). Low collapse exposure (table
+  lookups, not an effect model), so it is not part of DSH9's atomic treatment;
+  surfaced here so the scope boundary isn't mistaken for forgotten work.
