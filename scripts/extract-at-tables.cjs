@@ -60,104 +60,18 @@ const PET_CLASSES = [
   'minion_praetoriansmall',
 ];
 
-// Tables we need for power calculations
-const RELEVANT_TABLES = [
-  // Damage tables
-  'melee_damage',
-  'ranged_damage',
-  'aoe_damage',
-  'pet_damage',
-  // SS-prefix tables: Self-Squid (Kheldian Nova / Dwarf form) damage tables.
-  // Powers in Bright/Dark Nova form reference `Ranged_SSDamage`; powers in
-  // White/Black Dwarf form reference `Melee_SSDamage`. Without these the
-  // planner falls back to generic ranged/melee damage and Nova/Dwarf
-  // attacks display with the wrong AT modifier.
-  'melee_ssdamage',
-  'ranged_ssdamage',
-
-  // Debuff tables
-  'ranged_debuff_def',
-  'ranged_debuff_tohit',
-  'melee_debuff_def',
-  'melee_debuff_tohit',
-  // Damage-strength debuff. NB spelling asymmetry in the binary: the ranged
-  // table is `Ranged_Debuff_Dmg` (`_Dmg`) while the melee table is
-  // `Melee_Debuff_Dam` (`_Dam`). The old "no melee_debuff_dmg exists" note was
-  // literally true but misleading — the melee table exists under the `_Dam`
-  // spelling and was simply never extracted, so melee -Damage debuffs (Kinetic
-  // Melee, Chilling Embrace, Parasitic Aura) fell back to the generic half-rate.
-  // Powers reference both as `..._Dam`; getTableValue's `_dam`→`_dmg` alias
-  // covers ranged, while melee now resolves its `_Dam` table directly.
-  'ranged_debuff_dmg',
-  'melee_debuff_dam',
-
-  // Endurance-drain magnitude tables. Both exist in the binary; omitting them
-  // made every table-referenced -Endurance value fall back to the generic rate.
-  'ranged_enddrain',
-  'melee_enddrain',
-
-  // Buff tables
-  'ranged_buff_def',
-  'ranged_buff_tohit',
-  'melee_buff_def',
-  'melee_buff_tohit',
-  // Damage-strength buff tables — AT-specific (blaster 0.125, tanker 0.0875,
-  // …). Without these, every melee/ranged damage buff (Build Up, Soul Drain,
-  // Against All Odds, Follow Up, Aim, …) fell back to a flat 0.10, over-valuing
-  // low-damage ATs' buffs and under-valuing high-damage ones.
-  'melee_buff_dmg',
-  'ranged_buff_dmg',
-
-  // Heal tables
-  'ranged_heal',
-  'melee_heal',
-
-  // Resistance tables (damage and mez)
-  'ranged_res_dmg',
-  'melee_res_dmg',
-  'ranged_res_boolean',
-  'melee_res_boolean',
-
-  // Speed/movement tables (used by travel powers and fitness)
-  'melee_speedrunning',
-  'ranged_speedrunning',
-  'melee_speedflying',
-  'ranged_speedflying',
-  'melee_leap',
-  'ranged_leap',
-  'melee_speedjumping',
-  'ranged_speedjumping',
-
-  // Mez magnitude tables
-  'ranged_knockback',
-  'melee_knockback',
-  'ranged_stun',
-  'melee_stun',
-  'ranged_sleep',
-  'melee_sleep',
-  'ranged_immobilize',
-  'melee_immobilize',
-  'ranged_fear',
-  'melee_fear',
-  'ranged_slow',
-  'melee_slow',
-  'ranged_special',
-  'melee_special',
-
-  // Other
-  'ranged_resistance',
-  'melee_resistance',
-  'ranged_endurance_discount',
-  'ranged_recharge',
-  'ranged_speed',
-  'ranged_perception',
-  'melee_ones',
-  'ranged_ones',
-
-  // PvP tables (if present)
-  'ranged_pvpdamage',
-  'melee_pvpdamage'
-];
+// Principled filter: include every binary named table exposed on player AT/pet
+// class exports. This avoids hand-maintained allowlists that silently miss real
+// tables until a power references one in a fatal slot.
+function normalizeNamedTableEntry(tableName, tableValues) {
+  if (typeof tableName !== 'string' || tableName.length === 0) return null;
+  if (!Array.isArray(tableValues) || tableValues.length === 0) return null;
+  if (!tableValues.every((v) => typeof v === 'number' && Number.isFinite(v))) return null;
+  return {
+    key: tableName.toLowerCase(),
+    values: tableValues,
+  };
+}
 
 function extractTables() {
   const allTables = {};
@@ -180,14 +94,11 @@ function extractTables() {
       tables: {}
     };
 
-    if (data.named_tables) {
-      for (const tableName of Object.keys(data.named_tables)) {
-        // Check if it's a relevant table (case-insensitive)
-        const normalizedName = tableName.toLowerCase();
-        if (RELEVANT_TABLES.some(t => normalizedName === t.toLowerCase())) {
-          // Store as lowercase for consistency
-          allTables[atKey].tables[normalizedName] = data.named_tables[tableName];
-        }
+    if (data.named_tables && typeof data.named_tables === 'object') {
+      for (const [tableName, tableValues] of Object.entries(data.named_tables)) {
+        const normalized = normalizeNamedTableEntry(tableName, tableValues);
+        if (!normalized) continue;
+        allTables[atKey].tables[normalized.key] = normalized.values;
       }
     }
   }
@@ -211,19 +122,18 @@ function extractPetTables() {
 
     petTables[petClass] = { tables: {} };
 
-    if (data.named_tables) {
-      for (const tableName of Object.keys(data.named_tables)) {
-        const normalizedName = tableName.toLowerCase();
-        if (RELEVANT_TABLES.some(t => normalizedName === t.toLowerCase())) {
-          petTables[petClass].tables[normalizedName] = data.named_tables[tableName];
-        }
+    if (data.named_tables && typeof data.named_tables === 'object') {
+      for (const [tableName, tableValues] of Object.entries(data.named_tables)) {
+        const normalized = normalizeNamedTableEntry(tableName, tableValues);
+        if (!normalized) continue;
+        petTables[petClass].tables[normalized.key] = normalized.values;
       }
     }
 
     const tableCount = Object.keys(petTables[petClass].tables).length;
     if (tableCount === 0) {
       delete petTables[petClass];
-      console.warn(`  No relevant tables found, skipping`);
+      console.warn(`  No usable named tables found, skipping`);
     }
   }
 
