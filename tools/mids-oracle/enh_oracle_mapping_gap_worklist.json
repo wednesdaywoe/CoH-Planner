@@ -1,0 +1,291 @@
+{
+  "generated_on": "2026-07-06",
+  "source": "tools/mids-oracle/enh_oracle_triage.json",
+  "tiers": {
+    "P1": 10,
+    "P2": 8,
+    "P3": 0
+  },
+  "total_likely_mapping_gap": 18,
+  "worklist": [
+    {
+      "categories": [
+        "damage"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "proc-like structured categories"
+      ],
+      "confidence_score": 0.9,
+      "io": "chance for energy damage",
+      "priority_tier": "P1",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "absolute resolution",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "control",
+        "damage"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "proc-like structured categories"
+      ],
+      "confidence_score": 0.9,
+      "io": "recharge/chance for fear, psionic damage",
+      "priority_tier": "P1",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "endless nightmare",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "control"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "proc-like structured categories"
+      ],
+      "confidence_score": 0.9,
+      "io": "chance for knockdown",
+      "priority_tier": "P1",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "imperial might",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "control"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "proc-like structured categories"
+      ],
+      "confidence_score": 0.9,
+      "io": "chance for stun",
+      "priority_tier": "P1",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "stupefy",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "heal"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "proc-like structured categories"
+      ],
+      "confidence_score": 0.9,
+      "io": "chance for heal",
+      "priority_tier": "P1",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "vampire's bite",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "debuff"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "proc-like structured categories"
+      ],
+      "confidence_score": 0.9,
+      "io": "chance for -res debuff",
+      "priority_tier": "P1",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "witchcraft",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "damage"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "proc-like structured categories",
+        "superior variant (likely follows base fix)"
+      ],
+      "confidence_score": 0.87,
+      "io": "chance for energy damage",
+      "priority_tier": "P1",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "superior absolute resolution",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "control",
+        "damage"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "proc-like structured categories",
+        "superior variant (likely follows base fix)"
+      ],
+      "confidence_score": 0.87,
+      "io": "recharge/chance for fear, psionic damage",
+      "priority_tier": "P1",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "superior endless nightmare",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "heal"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "proc-like structured categories",
+        "superior variant (likely follows base fix)"
+      ],
+      "confidence_score": 0.87,
+      "io": "chance for heal",
+      "priority_tier": "P1",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "superior vampire's bite",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "debuff"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "proc-like structured categories",
+        "superior variant (likely follows base fix)"
+      ],
+      "confidence_score": 0.87,
+      "io": "chance for -res debuff",
+      "priority_tier": "P1",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "superior witchcraft",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "special"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "special category only"
+      ],
+      "confidence_score": 0.75,
+      "io": "chance for pbaoe resolve",
+      "priority_tier": "P2",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "guardian's gift",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "special"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "special category only"
+      ],
+      "confidence_score": 0.75,
+      "io": "chance for heal, endurance, regeneration",
+      "priority_tier": "P2",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "inexhaustibility",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "special"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "special category only"
+      ],
+      "confidence_score": 0.75,
+      "io": "chance for self resurrect",
+      "priority_tier": "P2",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "return from the grave",
+      "suggested_action": "Add explicit support for special summon/resurrect proc categories and naming."
+    },
+    {
+      "categories": [
+        "special"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "special category only"
+      ],
+      "confidence_score": 0.75,
+      "io": "chance to summon haunts",
+      "priority_tier": "P2",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "the haunting",
+      "suggested_action": "Add explicit support for special summon/resurrect proc categories and naming."
+    },
+    {
+      "categories": [
+        "special"
+      ],
+      "confidence_rationale": [
+        "conversion proc wording",
+        "special category only"
+      ],
+      "confidence_score": 0.72,
+      "io": "convert knockback to knockdown",
+      "priority_tier": "P2",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "sudden acceleration",
+      "suggested_action": "Verify convert-proc handling (KB->KD conversion) in proc extraction/classification."
+    },
+    {
+      "categories": [
+        "special"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "special category only",
+        "superior variant (likely follows base fix)"
+      ],
+      "confidence_score": 0.72,
+      "io": "chance for pbaoe resolve",
+      "priority_tier": "P2",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "superior guardian's gift",
+      "suggested_action": "Add proc-name alias or extractor mapping for triggered effect in proc-data ingestion."
+    },
+    {
+      "categories": [
+        "special"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "special category only",
+        "superior variant (likely follows base fix)"
+      ],
+      "confidence_score": 0.72,
+      "io": "chance to summon haunts",
+      "priority_tier": "P2",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "superior haunting",
+      "suggested_action": "Add explicit support for special summon/resurrect proc categories and naming."
+    },
+    {
+      "categories": [
+        "special"
+      ],
+      "confidence_rationale": [
+        "explicit chance wording",
+        "special category only",
+        "superior variant (likely follows base fix)"
+      ],
+      "confidence_score": 0.72,
+      "io": "chance for self resurrect",
+      "priority_tier": "P2",
+      "reason": "name indicates triggered/proc behavior",
+      "set": "superior return from the grave",
+      "suggested_action": "Add explicit support for special summon/resurrect proc categories and naming."
+    }
+  ]
+}

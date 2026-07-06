@@ -49,6 +49,23 @@ disagree numerically, the raw `.pigg` bin is the tiebreaker.
   `oracle_divergence_rules.json` (the committable baseline) + a coverage manifest.
   See "DSH5 harness" below.
 
+- **`read_enhdb.py`** — DSH9 bootstrap reader for `EnhDB.mhd` (enhancement + IO set DB).
+  Ports `DatabaseAPI.LoadEnhancementDb` plus `Enhancement(BinaryReader)` and
+  `EnhancementSet(BinaryReader)` verbatim. Emits either enhancements, sets, both,
+  or a summary. For enhancement FX payloads it reuses `read_i12.py`'s
+  `Effect(BinaryReader)` parser at template granularity.
+
+- **`diff_enh_oracle.py`** — minimal DSH9 coverage diff. Compares:
+  - oracle set names (`EnhancementSet.display_name`) vs `src/data/datasets/<dataset>/io-sets-raw.ts`
+  - oracle proc tuples (`set display name + enhancement name` where `is_proc`) vs
+    `src/data/proc-data.ts` (`setName + ioName`)
+
+  This is intentionally a bootstrap worklist generator, not yet the full value-level
+  DSH9 gate.
+
+- **`test_read_enhdb.py`** — smoke regression check for the new reader (alignment,
+  count floor, and stable identity anchors).
+
 ## Requirements
 
 Local only — `MidsReborn-master/` (the vendored Mids source + `I12.mhd`) is
@@ -62,6 +79,19 @@ python3 read_i12.py                              # HC I12.mhd -> stdout JSONL
 python3 read_i12.py --grep Trick_Arrow --limit 5 # spot-check specific powers
 python3 diff_oracle.py --normalize-pvp           # DSH1 gate-2/3 known-answer comparison
 python3 diff_oracle.py --cohort trick_arrow --normalize-pvp
+
+# DSH9 bootstrap (EnhDB oracle):
+python3 read_enhdb.py --mode summary
+python3 read_enhdb.py --mode sets --grep "gambler" --limit 5
+python3 diff_enh_oracle.py --dataset homecoming --show 20
+python3 diff_enh_oracle.py --dataset homecoming --value-diff --show 20
+python3 diff_enh_oracle.py --dataset homecoming --value-diff --triage-top 20
+python3 diff_enh_oracle.py --dataset homecoming --value-diff --triage-json tools/mids-oracle/enh_oracle_triage.json
+python3 diff_enh_oracle.py --dataset homecoming --value-diff --baseline-out tools/mids-oracle/enh_oracle_residual_baseline.json
+python3 diff_enh_oracle.py --dataset homecoming --value-diff --baseline tools/mids-oracle/enh_oracle_residual_baseline.json --strict
+python3 diff_enh_oracle.py --dataset homecoming --value-diff --strict
+python3 test_read_enhdb.py
+python3 test_diff_enh_oracle.py
 
 # DSH5 production harness (auto-emits the canonical export on first run):
 python3 diff_harness.py                           # full HC sweep, write rules, cohort gate
@@ -84,13 +114,60 @@ python3 diff_harness.py --emit --top 30           # force-refresh canonical, sho
   carried **0** `unresistable` markers, the post-fix output **1** — the oracle
   corroborates precisely the effect the collapse had dropped.
 
+## DSH9 bootstrap results (2026-07-06)
+
+- `read_enhdb.py` parses local Homecoming `EnhDB.mhd` with end-of-file alignment OK.
+  Current DB summary: 1,345 enhancements, 227 sets, 128 proc enhancements.
+- `test_read_enhdb.py` passes against the local Homecoming DB.
+- `diff_enh_oracle.py` reports meaningful coverage deltas:
+  - set names are now 227 vs 227 with a small typo-only mismatch class
+    (`Ascendency`/`Cacophany`/`Convalesence` vs normalized spelling)
+  - proc tuple residuals are surfaced as a concrete DSH9 worklist for extractor
+    reconciliation.
+
+### `diff_enh_oracle.py` modes
+
+- Default mode: identity coverage only (set names + proc tuples).
+- `--value-diff`: enables value-aware residuals:
+  - oracle set-bonus links (`EnhDB` -> `I12` linked powers) projected to
+    planner-like `(stat,value)` and compared against `io-sets-raw` bonus tiers.
+  - coarse oracle proc effect categories compared against structured categories in
+    `proc-data.ts` (where present).
+- `--strict`: exits non-zero when residuals exist. In `--value-diff` mode this
+  includes value/category mismatches, not just missing identities.
+- `--triage-top N`: prints highest-impact value mismatches by absolute delta,
+  plus top missing/extra stat families.
+- `--triage-json PATH`: writes summary + signatures + top triage buckets and the
+  auto/explicit proc alias maps for artifact/CI consumption. Also includes a
+  heuristic classification of repo-only proc rows into:
+  - `likely_non_proc_global_or_passive`
+  - `likely_mapping_gap`
+  - `unknown`
+- `--baseline-out PATH`: writes the current residual signatures (identity +
+  value-aware buckets) to a JSON baseline.
+- `--baseline PATH`: compares current signatures against baseline and reports only
+  NEW residual signatures. With `--strict`, only new signatures fail the run.
+
+### Proc name normalization
+
+`diff_enh_oracle.py` now auto-normalizes proc name drift using a conservative rule:
+
+- for a given set, if there is exactly one missing oracle proc name and exactly one
+  extra repo proc name, they are treated as a name alias for identity comparison.
+
+This reduces false identity residuals while keeping proc category comparisons on
+raw exact-name intersections.
+
+An additional explicit alias layer handles known edge cases not captured by the
+auto pass (currently including Stupefy's "chance of knockback" wording drift).
+
 ## Divergence taxonomy → DSH5 canonicalizer worklist
 
 Modeling-convention differences the diff surfaces (NOT defects); each becomes a
 typed rule in DSH5's tiered classifier:
 
 | class | what | reconciliation |
-|---|---|---|
+| --- | --- | --- |
 | `PVP_MODELING` | Mids: base table + explicit PvE/PvP records. Ours: Any base + `_pvp*` override table. | fold `pv`→Combat + strip `pvp` token (done in `--normalize-pvp`) |
 | `MULTI_TYPE_GRANULARITY` | Mids emits one record per damage type; our export keeps one multi-attrib record (e.g. Build Up: 7 `melee_buff_dmg` vs 1). | expand our multi-attrib templates one-per-attrib — **needs the DSH4 attrib→type bridge** |
 | `MEZ_PVP_RESIDUAL` | our `_pvpmez` maps to Mids' `_ones`/`_special`, not `_mez`. | explicit table alias map |
@@ -107,7 +184,7 @@ differences that would otherwise masquerade as defects (each was verified agains
 concrete power before being folded, never assumed):
 
 | canonicalization | why | where |
-|---|---|---|
+| --- | --- | --- |
 | **complete-type-set fold** | an all-damage/all-position effect: Mids collapses to one `damage_type=None` record; our export lists every type (the bridge splits per-attrib). Fold a complete set → one `All` on both sides. Twin (R/U) folded independently, stays distinct. | Poison Gas Arrow (Mids 1 vs export 8) |
 | **ResEffect fold** | Mids' catch-all for "resistance to a secondary-attribute debuff"; our bridge keeps the affected attrib at `aspect=Res` (the DSH4/DSH6 boundary). Bucket both → `ResEffect`. | Acid Arrow (−regen/−rec/−end…) |
 | **set-not-multiset INV1** | Mids enumerates conditional/DoT/combo scale-tiers as separate records on the *same* key. Collapse drops a whole *distinct* sibling key — never duplicate copies — so compare distinct-key **presence**; count deltas on a shared key are advisory `MULTIPLICITY`. | Claw Swipe (Mids 28 vs export 6 Lethal) |

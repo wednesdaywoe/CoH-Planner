@@ -495,7 +495,7 @@ validates the whole differential approach before any converter rewrite.
     `pvMode`/`resistible` awareness where a real drop surfaces; reuse the DSH4 bridge
     rather than the parallel `ATTRIB_MAP`.
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH4
-- [ ] **DSH9** — Extend the harness to the **Enhancement** pipeline (IO sets / set
+- [~] **DSH9** — Extend the harness to the **Enhancement** pipeline (IO sets / set
   bonuses / procs / raw magnitudes). The audit found this splits into three
   sub-pipelines with very different exposure — and, unlike incarnates, the *data* is
   already in good shape; the gaps are the **extractors** and a **total absence of a
@@ -507,9 +507,31 @@ validates the whole differential approach before any converter rewrite.
   *values* are diffed against **nothing** from Mids —
   [`io-sets-bonus-keys.test.ts`](src/data/io-sets-bonus-keys.test.ts) only proves the
   two allowlists agree with *each other*, not with the game.
-  - [ ] New `EnhDB.mhd` reader beside `read_i12.py` → the missing set-bonus/proc
-    oracle (`MidsReborn-master/MidsReborn/Databases/{Homecoming,Rebirth}/EnhDB.mhd`
-    present).
+  - [x] **`EnhDB.mhd` reader — SHIPPED 2026-07-06** as
+    [`read_enhdb.py`](tools/mids-oracle/read_enhdb.py) + smoke test
+    [`test_read_enhdb.py`](tools/mids-oracle/test_read_enhdb.py). Ports
+    `DatabaseAPI.LoadEnhancementDb` + `Enhancement(BinaryReader)` +
+    `EnhancementSet(BinaryReader)` verbatim (reuses `read_i12`'s `Effect` reader for FX
+    payloads), with the same EOF-alignment self-check as `read_i12` (parses local HC
+    `EnhDB.mhd`: 1,345 enhancements / 227 sets / 128 procs, lands exactly on EOF).
+    verify: file:tools/mids-oracle/read_enhdb.py, file:tools/mids-oracle/test_read_enhdb.py
+  - [x] **Coverage + value-diff bootstrap — SHIPPED 2026-07-06** as
+    [`diff_enh_oracle.py`](tools/mids-oracle/diff_enh_oracle.py) +
+    [`test_diff_enh_oracle.py`](tools/mids-oracle/test_diff_enh_oracle.py). Diffs oracle
+    set names + proc tuples vs `io-sets-raw.ts`/`proc-data.ts` (identity), and with
+    `--value-diff` projects EnhDB→I12 set-bonus links to planner `(stat,value)` for a
+    value-level compare. Residual-signature baseline + `--strict` regression gate +
+    `--triage-json`. **Root-cause fix (review follow-up, see [streams/20240706.md](streams/20240706.md)):**
+    set-bonus links were resolved by the EnhDB's cached power `index` (a constant −22
+    offset vs the I12 array, verified across all 1,138 links) → every bonus read the
+    WRONG power; the stale `DamageBuff/Str ×250` multiplier had been calibrated on that
+    garbage. Fixed by resolving links by `full_name` + default ×100 → value residuals
+    1014/1422/54 → **26/43/20**. The 20 remaining are all the **Mids 3-decimal scale
+    quantization** skew (same scale `0.025` → repo `2.5` AND `2.525`) — advisory per the
+    trust boundary, NOT staleness, NOT a mapping bug. **Still a bootstrap**, not the
+    full DSH9 gate (proc identity: 2 missing / 56 extra procs remain as a worklist; no
+    bridge convergence or converter fixes yet — the three sub-bullets below).
+    verify: file:tools/mids-oracle/diff_enh_oracle.py, file:tools/mids-oracle/test_diff_enh_oracle.py
   - [ ] Converge the divergent parallel bridges onto the DSH4 `bridgeAttrib`:
     `ATTRIB_TO_BONUS_STAT` ([extract-rebirth-io-sets-v2.py](scripts/extract-rebirth-io-sets-v2.py) `:724`)
     + `ATTRIB_ASPECT_TO_EFFECT` ([extract-proc-data.py](scripts/extract-proc-data.py) `:51`)
