@@ -114,12 +114,14 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
 - [x] **DSH1** (oracle-reader PoC) · **DSH2** (AT-table integrity gate) · **DSH3**
   (resistible-twin collapse gate) — **SHIPPED 2026-07-05**, full narrative in
   [the archive](DEDUCTIVE_SCHEMA_HARNESS_ARCHIVE.md).
-- [ ] SC-3 — every emitted damage/debuff effect carries an explicit `resistible`
-  disposition (absence of `IgnoreResistance` ⇒ resistible); none silently agnostic.
-- [ ] SC-4 — every kept PvE effect has its PvP sibling accounted for
-  (dropped-by-design + logged), never silently clobbered.
-- [ ] SC-5 — buff-named vs debuff-named slot routing matches the sign/target of
-  the source template (catches foe-debuff dropped on a caster stat).
+- [x] **SC-3/SC-4/SC-5 self-check invariants — SHIPPED 2026-07-06.** Implemented
+  in [`validate-converter-output.cjs`](scripts/validate-converter-output.cjs)
+  (CI-gated through `npm run validate:converter`) and pinned by
+  [`sc345-converter-self-check.test.ts`](src/utils/calculations/sc345-converter-self-check.test.ts):
+  SC-3 checks explicit `resistible` disposition on all emitted damage/debuff atoms,
+  SC-4 enforces PvP-sibling accounting (dropped-by-design + logged, no unaccounted
+  sibling), and SC-5 guards sign/target routing so foe debuffs cannot surface as
+  caster self-penalties. Current gate state: **0/0/0** on HC + Rebirth + tspy.
 
 ## Backlog
 
@@ -336,6 +338,31 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
     guard. Alpha/Genesis (single-aspect enhancement) + Interface/Judgement/Lore (proc/nuke/pet)
     are structurally collapse-free here — tracked as coverage, not swept.
     verify: file:scripts/dsh8-incarnate-collapse-detector.cjs, file:src/utils/calculations/dsh8-incarnate-collapse.test.ts, tests:src>=814
+  - [x] **Detector by-design residual fold (ArchVillain_Res) — SHIPPED 2026-07-06.**
+    The DSH8 detector now classifies Ageless-style `*_ArchVillain_Res` atoms as
+    by-design projection to `debuffResistance` (not `resistanceAll`) instead of
+    non-gating `Resistance|*` class-absent noise. Gate behavior unchanged
+    (still 0 high-confidence collapses all datasets), but residual accounting is
+    sharper: HC class-absent **48→0**; Rebirth/tspy residuals unchanged.
+    verify: file:scripts/dsh8-incarnate-collapse-detector.cjs, tests:src>=814
+  - [x] **Targeted `pvMode` + `resistible` awareness in Hybrid extraction — SHIPPED 2026-07-06.**
+    [`convert-incarnate-effects.cjs`](scripts/convert-incarnate-effects.cjs)
+    now applies a narrow PvP filter in `extractHybrid`: explicit/synthesized PvP
+    groups are dropped by default, with the existing beneficial `enttype target>
+    player eq` leaguemate-buff exception preserved (the Parse6-support-core fix).
+    The per-template dedup key is now `resistible`-aware (`R/U`) so true
+    resistible/unresistable twins are not silently coalesced during frontLoaded /
+    perTarget accumulation. DSH8 gates + incarnate completeness regression stayed
+    green on HC/Rebirth/tspy.
+    verify: fn:extractHybrid, tests:src>=814
+  - [x] **Targeted `pvMode` + `resistible` awareness in Destiny extraction — SHIPPED 2026-07-06.**
+    `extractDestiny` now mirrors the same narrow PvP handling used by Hybrid:
+    explicit/synthetic PvP rows are dropped by default with the beneficial
+    `enttype target> player eq` leaguemate exception preserved (Parse6 safety).
+    Timeline collapse is now resistible-aware (`duration × R/U`) so true
+    resistible/unresistable twins are not coalesced into one duration bucket.
+    DSH8 detector + incarnate completeness suite stayed green across HC/Rebirth/tspy.
+    verify: fn:extractDestiny, tests:src>=814
   - [x] **Support Core Hybrid leaguemate-buff drop — FIXED 2026-07-05 (HC + Rebirth).**
     The 4 *Core* Support Hybrids (Support Core Genome / Partial-Core / Total-Core Graft /
     Core Embodiment) rendered an EMPTY caster buff. They gate it with `enttype target>

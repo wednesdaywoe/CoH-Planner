@@ -7,6 +7,10 @@ import {
   getDestinyTotalDuration,
   getDestinySustainedFloorTime,
 } from '@/data';
+import {
+  GENERATED_DESTINY_EFFECTS as HC_DESTINY_EFFECTS,
+  GENERATED_DESTINY_TIMELINE as HC_DESTINY_TIMELINE,
+} from '@/data/datasets/homecoming/generated/incarnate-effects';
 
 /**
  * Destiny buffs (Barrier, Ageless, …) apply several overlapping timed buffs at
@@ -114,5 +118,30 @@ describe('Destiny decay resolver (Homecoming — Ageless Core Epiphany)', () => 
   it('instantaneous endurance refill (duration 0) counts only at t=0', () => {
     expect(getDestinyEffectsAtTime(ID, 0)!.endurance).toBe(1);
     expect(getDestinyEffectsAtTime(ID, 5)!.endurance).toBe(0);
+  });
+});
+
+describe('Destiny timeline guard — same-duration twins stay additive', () => {
+  const ID = 'zz_dsh8_destiny_twin_guard';
+
+  beforeAll(async () => {
+    await loadDataset('homecoming');
+    // Synthetic fixture: two same-duration tiers on one stat + one longer tier.
+    // This models a resistible/unresistable twin represented as duplicate timeline
+    // rows at equal duration. The resolver must sum both rows while active.
+    HC_DESTINY_EFFECTS[ID] = { recharge: 0.2 };
+    HC_DESTINY_TIMELINE[ID] = {
+      recharge: [
+        { value: 0.1, duration: 30 },
+        { value: 0.2, duration: 30 },
+        { value: 0.05, duration: 60 },
+      ],
+    };
+  });
+
+  it('sums duplicate-duration rows instead of collapsing to one', () => {
+    expect(getDestinyEffectsAtTime(ID, 0)!.recharge).toBeCloseTo(0.35, 6);
+    // At t=30, the 30s rows have expired (duration > t rule), leaving only 60s.
+    expect(getDestinyEffectsAtTime(ID, 30)!.recharge).toBeCloseTo(0.05, 6);
   });
 });

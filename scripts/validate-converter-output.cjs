@@ -40,6 +40,8 @@
 
 const fs = require('fs');
 const path = require('path');
+require('tsx/cjs');
+const { ingestExportGroup } = require('../src/data/core/atomic-effect.ts');
 const { parseDatasetArg, datasetPath } = require('./_dataset-paths.cjs');
 
 const args = process.argv.slice(2);
@@ -100,6 +102,156 @@ function flattenTemplates(groups, out = []) {
   return out;
 }
 
+function flattenTemplatesWithMeta(groups, out = []) {
+  for (const g of groups || []) {
+    const pvMode = g.is_pvp || 'EITHER';
+    const requires = g.requires_expression || '';
+    for (const t of g.templates || []) out.push({ t, pvMode, requires });
+    if (g.child_effects) flattenTemplatesWithMeta(g.child_effects, out);
+  }
+  return out;
+}
+
+function isPvpEnttypeVariant(requires) {
+  return /\benttype\s+target>\s+player\s+eq/i.test(requires || '');
+}
+
+function isPvpMapOnly(requires) {
+  return /\bisPVPMap\?(?!\s+!)/i.test(requires || '');
+}
+
+function isDebuffLike(scale, table) {
+  return (scale || 0) < 0 || /debuff|slow/i.test(table || '');
+}
+
+function sc3Check(power) {
+  let checked = 0;
+  let missing = 0;
+  let atoms = [];
+  try {
+    atoms = ingestExportPowerDeep(power);
+  } catch {
+    return { checked: 0, missing: 0 };
+  }
+  for (const a of atoms) {
+    const damageOrDebuff = a.effectType === 'Damage' || isDebuffLike(a.scale, a.modifierTable);
+    if (!damageOrDebuff) continue;
+    checked++;
+    if (typeof a.resistible !== 'boolean') missing++;
+  }
+  return { checked, missing };
+}
+
+function sc4Check(power) {
+  const bySig = new Map();
+  for (const row of flattenTemplatesWithMeta(power.effects)) {
+    const t = row.t;
+    if (!t.attribs || t.attribs.length === 0) continue;
+    const sig =
+      `${t.attribs.map((a) => (a || '').toLowerCase()).sort().join(',')}|` +
+      `${(t.aspect || '').toLowerCase()}|${t.table || ''}|` +
+      `${(t.scale || 0).toFixed(4)}|${t.duration || ''}|${t.target || ''}`;
+    if (!bySig.has(sig)) bySig.set(sig, { pve: 0, pvp: 0, pvpDropped: 0, pvpKept: 0 });
+    const b = bySig.get(sig);
+    const pvpByMode = row.pvMode === 'PVP_ONLY';
+    const pvpByReq = isPvpEnttypeVariant(row.requires) || isPvpMapOnly(row.requires);
+    const isPvpSibling = pvpByMode || pvpByReq;
+    if (isPvpSibling) {
+      b.pvp++;
+      if (pvpByMode || pvpByReq) b.pvpDropped++;
+      else b.pvpKept++;
+    } else {
+      b.pve++;
+    }
+  }
+
+  let siblingPairs = 0;
+  let accountedDrops = 0;
+  let unaccounted = 0;
+  for (const b of bySig.values()) {
+    if (b.pve > 0 && b.pvp > 0) {
+      siblingPairs++;
+      accountedDrops += b.pvpDropped;
+      // Any surviving PvP sibling in a PvE-kept family is unaccounted in this model.
+      unaccounted += b.pvpKept;
+    }
+  }
+  return { siblingPairs, accountedDrops, unaccounted };
+}
+
+function movementSlotKeys(subType) {
+  const s = String(subType || '').toLowerCase();
+  if (s === 'run' || s === 'runspeed') return ['runSpeed'];
+  if (s === 'fly' || s === 'flyspeed') return ['fly', 'flySpeed'];
+  if (s === 'jumpheight') return ['jumpHeight'];
+  if (s === 'jump' || s === 'jumpspeed') return ['jumpSpeed'];
+  if (s === 'control' || s === 'movementcontrol') return ['movementControl'];
+  if (s === 'friction' || s === 'movementfriction') return ['movementFriction'];
+  return [];
+}
+
+function sourceSelfDebuffSlots(power) {
+  const slots = new Set();
+  let atoms = [];
+  try {
+    atoms = ingestExportPowerDeep(power);
+  } catch {
+    return slots;
+  }
+  for (const a of atoms) {
+    if (a.toWho !== 'Self') continue;
+    if (!isDebuffLike(a.scale, a.modifierTable)) continue;
+    if (a.effectType === 'DamageBuff') slots.add('damageDebuff');
+    else if (a.effectType === 'RechargeTime') slots.add('rechargeDebuff');
+    else if (a.effectType === 'ToHit') slots.add('tohitDebuff');
+    else if (a.effectType === 'Accuracy') slots.add('accuracyDebuff');
+    else if (a.effectType === 'Range') slots.add('rangeDebuff');
+    else if (a.effectType === 'Movement') {
+      for (const mapped of movementSlotKeys(a.subType)) slots.add(`slow:${mapped}`);
+    }
+  }
+  return slots;
+}
+
+function ingestExportPowerDeep(power) {
+  const out = [];
+  const walk = (groups) => {
+    for (const g of groups || []) {
+      out.push(...ingestExportGroup(g));
+      if (g.child_effects) walk(g.child_effects);
+    }
+  };
+  walk(power.effects || []);
+  return out;
+}
+
+function outputSelfDebuffSlots(powerObj) {
+  const slots = new Set();
+  const e = powerObj && powerObj.effects && typeof powerObj.effects === 'object' ? powerObj.effects : null;
+  if (!e) return slots;
+
+  for (const k of ['damageDebuff', 'rechargeDebuff', 'tohitDebuff', 'accuracyDebuff', 'rangeDebuff']) {
+    const v = e[k];
+    if (v && typeof v === 'object' && v.toWho === 'Self') slots.add(k);
+  }
+  if (e.slow && typeof e.slow === 'object') {
+    for (const [k, v] of Object.entries(e.slow)) {
+      if (v && typeof v === 'object' && v.toWho === 'Self') slots.add(`slow:${k}`);
+    }
+  }
+  return slots;
+}
+
+function loadGeneratedPower(outputAbsPath) {
+  let mod;
+  try {
+    mod = require(outputAbsPath);
+  } catch {
+    return null;
+  }
+  return Object.values(mod).find((v) => v && typeof v === 'object' && v.effects) || null;
+}
+
 /** True if the power's input has a resistible+unresistable debuff twin. */
 function hasResistibleTwin(power) {
   const templates = flattenTemplates(power.effects);
@@ -149,11 +301,14 @@ const outputIndex = new Map();
 for (const f of walk(GENERATED_ROOT)) {
   const text = fs.readFileSync(f, 'utf8');
   const internal = text.match(/"internalName":\s*"([^"]+)"/)?.[1];
+  const sourceRel = text.match(/Source:\s*(\S+\.json)/)?.[1]?.replace(/\\/g, '/');
   if (!internal) continue;
   const rel = path.relative(path.dirname(GENERATED_ROOT), f).replace(/\\/g, '/');
   outputIndex.set(`${archOfOutputPath(rel)}|${norm(internal)}`, {
     hasUnresistable: text.includes('"unresistable"'),
     rel,
+    abs: f,
+    sourceRel,
   });
 }
 
@@ -171,7 +326,13 @@ function inputPowerFiles(root, out = []) {
 const twinRegressions = [];
 const unmatchedTwins = [];
 const riskRows = [];
+const sc5Leaks = [];
 let inputCount = 0;
+let sc3Checked = 0;
+let sc3Missing = 0;
+let sc4SiblingPairs = 0;
+let sc4AccountedDrops = 0;
+let sc4Unaccounted = 0;
 
 for (const f of inputPowerFiles(INPUT_ROOT)) {
   let power;
@@ -184,7 +345,17 @@ for (const f of inputPowerFiles(INPUT_ROOT)) {
   inputCount++;
 
   const arch = archOfCategory(power.full_name);
+  const inputRel = path.relative(INPUT_ROOT, f).replace(/\\/g, '/');
   const out = outputIndex.get(`${arch}|${norm(power.name)}`);
+
+  const sc3 = sc3Check(power);
+  sc3Checked += sc3.checked;
+  sc3Missing += sc3.missing;
+
+  const sc4 = sc4Check(power);
+  sc4SiblingPairs += sc4.siblingPairs;
+  sc4AccountedDrops += sc4.accountedDrops;
+  sc4Unaccounted += sc4.unaccounted;
 
   // GATE — only for the core-AT categories with an unambiguous per-AT output.
   // Pseudo-pets / pools / mission-maker are not gated (their twins live on a
@@ -197,6 +368,19 @@ for (const f of inputPowerFiles(INPUT_ROOT)) {
   const risk = collapseRiskGroups(power);
   if (risk.length && out) {
     riskRows.push({ name: power.full_name || power.name, groups: risk.length, rel: out.rel });
+  }
+
+  if (out && out.sourceRel === inputRel) {
+    const generatedPower = loadGeneratedPower(out.abs);
+    if (generatedPower) {
+      const srcSlots = sourceSelfDebuffSlots(power);
+      const outSlots = outputSelfDebuffSlots(generatedPower);
+      for (const slot of outSlots) {
+        if (!srcSlots.has(slot)) {
+          sc5Leaks.push({ name: power.full_name || power.name, rel: out.rel, slot });
+        }
+      }
+    }
   }
 }
 
@@ -217,6 +401,22 @@ if (!GATE) {
     console.log(`\n  (${unmatchedTwins.length} twin-bearing input powers had no matched output — not player-relevant / filtered; not gated.)`);
   }
 
+  console.log(`\n=== SC-3: explicit resistible disposition (${sc3Missing}) ===`);
+  console.log(`  checked ${sc3Checked} damage/debuff atoms; missing resistible flag: ${sc3Missing}`);
+
+  console.log(`\n=== SC-4: PvP sibling accounting (${sc4Unaccounted}) ===`);
+  console.log(`  sibling families: ${sc4SiblingPairs}; dropped-by-design accounted: ${sc4AccountedDrops}; unaccounted: ${sc4Unaccounted}`);
+
+  console.log(`\n=== SC-5: sign/target routing leaks (${sc5Leaks.length}) ===`);
+  if (sc5Leaks.length === 0) {
+    console.log('  none — no foe-directed debuff was surfaced as caster self-penalty.');
+  } else {
+    for (const r of sc5Leaks.slice(0, 40)) {
+      console.log(`  LEAK  ${r.name}  slot=${r.slot}  (${r.rel})`);
+    }
+    if (sc5Leaks.length > 40) console.log(`  … ${sc5Leaks.length - 40} more.`);
+  }
+
   console.log(`\n=== REPORT: collapse-risk groups (informational, top ${LIMIT} of ${riskRows.length}) ===`);
   for (const r of riskRows.slice(0, LIMIT)) {
     console.log(`  ${String(r.groups).padStart(3)} group(s)  ${r.name}  (${r.rel})`);
@@ -225,9 +425,18 @@ if (!GATE) {
   console.log('');
 }
 
-if (twinRegressions.length === 0) {
-  console.log(`GATE PASS — no resistible-twin collapse regressions (${datasetId}).`);
+const failures = [];
+if (twinRegressions.length > 0) failures.push(`${twinRegressions.length} resistible-twin regression(s)`);
+if (sc3Missing > 0) failures.push(`${sc3Missing} SC-3 missing-resistible atom(s)`);
+if (sc4Unaccounted > 0) failures.push(`${sc4Unaccounted} SC-4 unaccounted PvP sibling(s)`);
+if (sc5Leaks.length > 0) failures.push(`${sc5Leaks.length} SC-5 routing leak(s)`);
+
+if (failures.length === 0) {
+  console.log(
+    `GATE PASS — DSH3 + SC-3/4/5 clean (${datasetId}). ` +
+    `[SC3 checked ${sc3Checked}; SC4 sibling families ${sc4SiblingPairs}; SC5 leaks 0]`,
+  );
 } else {
-  console.log(`GATE FAIL — ${twinRegressions.length} resistible-twin collapse regression(s) in ${datasetId}. Regenerate the affected powers; do not hand-edit generated output.`);
+  console.log(`GATE FAIL — ${datasetId}: ${failures.join('; ')}.`);
 }
-process.exit(twinRegressions.length > 0 ? 1 : 0);
+process.exit(failures.length > 0 ? 1 : 0);

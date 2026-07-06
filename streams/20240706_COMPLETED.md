@@ -119,3 +119,57 @@ skew/display convention" case in the README trust boundary. Advisory, not a mapp
 bug; the live-bin repo value is the tiebreaker and is correct. Baseline + triage
 artifacts regenerated to lock in the corrected state; strict gate green
 (`new signatures vs baseline = 0`).
+
+## Delta update (DSH SC-3/4/5 + DSH8 + targeted Incarnate hardening)
+
+Completed the planned DSH follow-on work for converter self-check coverage and
+incarnate collapse safety, then added targeted converter hardening for Hybrid
+and Destiny.
+
+- Implemented SC-3 / SC-4 / SC-5 in `scripts/validate-converter-output.cjs`:
+  - SC-3: explicit resistible presence checks on damage/debuff atoms.
+  - SC-4: PvE/PvP sibling accounting checks.
+  - SC-5: source-vs-output self-penalty routing leak detection.
+  - Hardened source matching using explicit `Source: ...json` identity and deep
+    child effect ingestion, with movement alias handling (`fly`/`flySpeed`).
+- Added regression guard suite:
+  - `src/utils/calculations/sc345-converter-self-check.test.ts`
+  - Parses validator output and asserts SC-3/4/5 failure counts remain zero
+    across Homecoming/Rebirth/Thunderspy, with non-trivial HC check volume.
+- Refined DSH8 actionable scope in
+  `scripts/dsh8-incarnate-collapse-detector.cjs`:
+  - Excludes by-design `*_ArchVillain_Res` class-absent residuals from
+    actionable collapse noise.
+- Added shared targeted PvP/resistibility helpers in
+  `scripts/convert-incarnate-effects.cjs`:
+  - `isExplicitPvpOnlyGroup`
+  - `isPvpEnttypePlayerRequires`
+  - `isPvpMapOnlyRequires`
+  - `isTemplateResistible`
+- Applied targeted treatment to Hybrid extraction:
+  - Narrow PvP filtering with beneficial `player eq` exception.
+  - Resistible-aware dedup identity (`...|R/U`) to avoid collapsing distinct
+    twins.
+- Applied the same targeted treatment to Destiny extraction:
+  - Narrow PvP filtering with beneficial `player eq` exception.
+  - Persisted per-entry `resistible` metadata.
+  - Changed timeline collapse bucket from duration-only to `duration|R/U`.
+- Added a focused Destiny guard test in `src/data/destiny-decay.test.ts`:
+  - Synthetic same-duration twin timeline case verifies duplicate-duration rows
+    remain additive (not collapsed), covering the new `duration|R/U` behavior.
+
+### Validation summary
+
+- `node scripts/validate-converter-output.cjs --dataset homecoming --gate` passed.
+- `node scripts/validate-converter-output.cjs --dataset rebirth --gate` passed.
+- `node scripts/validate-converter-output.cjs --dataset thunderspy --gate` passed.
+- `npx vitest run src/utils/calculations/sc345-converter-self-check.test.ts` passed.
+- `node scripts/dsh8-incarnate-collapse-detector.cjs --dataset homecoming --gate` passed.
+- `node scripts/dsh8-incarnate-collapse-detector.cjs --dataset rebirth --gate` passed.
+- `node scripts/dsh8-incarnate-collapse-detector.cjs --dataset thunderspy --gate` passed.
+- `npx vitest run src/utils/calculations/incarnate-effects-completeness.test.ts src/utils/calculations/dsh8-incarnate-collapse.test.ts` passed.
+- `npx vitest run src/data/destiny-decay.test.ts` passed (includes new guard).
+
+Status: SC-3/4/5 are shipped and regression-guarded; DSH8 noise is reduced to
+actionable classes; Hybrid and Destiny now preserve targeted PvP/resistible
+semantics under collapse/dedup.

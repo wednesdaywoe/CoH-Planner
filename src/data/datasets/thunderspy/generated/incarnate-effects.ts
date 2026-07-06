@@ -168,23 +168,23 @@ export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
 
 export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number | string>> = {
   // Ageless Core Epiphany
-  'ageless_core_epiphany': {"levelShift":1},
+  'ageless_core_epiphany': {"levelShift":1,"endurance":1},
   // Ageless Core Invocation
-  'ageless_core_invocation': {},
+  'ageless_core_invocation': {"endurance":0.5},
   // Ageless Invocation
-  'ageless_invocation': {},
+  'ageless_invocation': {"endurance":0.5},
   // Ageless Partial Core Invocation
-  'ageless_partial_core_invocation': {"levelShift":1},
+  'ageless_partial_core_invocation': {"levelShift":1,"endurance":0.75},
   // Ageless Partial Radial Invocation
-  'ageless_partial_radial_invocation': {"levelShift":1},
+  'ageless_partial_radial_invocation': {"levelShift":1,"endurance":0.75},
   // Ageless Radial Epiphany
-  'ageless_radial_epiphany': {"levelShift":1},
+  'ageless_radial_epiphany': {"levelShift":1,"endurance":1},
   // Ageless Radial Invocation
-  'ageless_radial_invocation': {},
+  'ageless_radial_invocation': {"endurance":0.5},
   // Ageless Total Core Invocation
-  'ageless_total_core_invocation': {"levelShift":1},
+  'ageless_total_core_invocation': {"levelShift":1,"endurance":0.75},
   // Ageless Total Radial Invocation
-  'ageless_total_radial_invocation': {"levelShift":1},
+  'ageless_total_radial_invocation': {"levelShift":1,"endurance":0.75},
   // Barrier Core Epiphany
   'barrier_core_epiphany': {"levelShift":1},
   // Barrier Core Invocation
@@ -248,15 +248,15 @@ export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number | s
   // Rebirth Partial Core Invocation
   'rebirth_partial_core_invocation': {"levelShift":1},
   // Rebirth Partial Radial Invocation
-  'rebirth_partial_radial_invocation': {"levelShift":1},
+  'rebirth_partial_radial_invocation': {"levelShift":1,"regeneration":10},
   // Rebirth Radial Epiphany
-  'rebirth_radial_epiphany': {"levelShift":1},
+  'rebirth_radial_epiphany': {"levelShift":1,"regeneration":10},
   // Rebirth Radial Invocation
-  'rebirth_radial_invocation': {},
+  'rebirth_radial_invocation': {"regeneration":10},
   // Rebirth Total Core Invocation
   'rebirth_total_core_invocation': {"levelShift":1},
   // Rebirth Total Radial Invocation
-  'rebirth_total_radial_invocation': {"levelShift":1},
+  'rebirth_total_radial_invocation': {"levelShift":1,"regeneration":10},
 };
 
 export interface GeneratedDestinyTimelineTier { value: number; duration: number; }
@@ -538,8 +538,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'melee_genome_1': {
     tree: 'melee',
     passive: {},
-    frontLoaded: {},
-    perTarget: {},
+    frontLoaded: {"regeneration":0.0585},
+    perTarget: {"regeneration":0.097875},
     maxTargets: 4,
     duration: 120,
     recharge: 120,

@@ -204,6 +204,12 @@ function inputIdentities(sourceJson) {
     const isFold = FOLD_ET.has(et);
     const isByType = BYTYPE_ET.has(et);
     if (!isFold && !isByType) continue;           // Enhancement/Heal/Damage/GrantPower/… = by-design drop
+    // Ageless-style ArchVillain_Res templates are broad debuff-resistance bundles
+    // (mixed attrib families under one Resistance-aspect table) that the converter
+    // intentionally projects to `debuffResistance`, not `resistanceAll`. The bridge
+    // surfaces their damage-type rows as `Resistance|*`; treat that family as a
+    // by-design projection drop in this detector to avoid non-actionable noise.
+    if (et === 'Resistance' && /archvillain_res/i.test(a.modifierTable || '')) continue;
     // aspect=Res on a BUFF effectType is resistance-to-that-debuff (routed to
     // debuffResistance), not a +buff — drop it (Ageless Radial's AV-blanket -recovery/
     // -regen/-recharge resistance). Keep aspect=Res only where it IS the signal:
@@ -304,8 +310,9 @@ function main() {
         'damage) cover any subType.',
       byDesignDrops: 'Enhancement (aspect=Str mez/by-type strength), Heal/team-heal, Damage ' +
         '(direct — Judgement/Interface), GrantPower/pets/engine markers, scale-0, Expression, ' +
-        'explicit pvMode=PvP. NO isPvpVariant drop — `player eq` is the leaguemate buff (kept, ' +
-        'routed by polarity), the bridge-convergence invariant.',
+        'explicit pvMode=PvP, and Ageless-style `*_ArchVillain_Res` bundles (projected to ' +
+        '`debuffResistance`, not `resistanceAll`). NO isPvpVariant drop — `player eq` is the ' +
+        'leaguemate buff (kept, routed by polarity), the bridge-convergence invariant.',
     },
     coverage: cov,
     summary: {

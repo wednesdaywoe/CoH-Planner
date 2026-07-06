@@ -122,6 +122,24 @@ function silentRefToFilename(ref) {
   return name.toLowerCase();
 }
 
+/** Parse7 explicit PvP mode (Parse6 may synthesize this from requires). */
+function isExplicitPvpOnlyGroup(effectGroup) {
+  return (effectGroup && effectGroup.is_pvp) === 'PVP_ONLY';
+}
+
+/** PvP-gated requires forms used by bin exports. */
+function isPvpEnttypePlayerRequires(req) {
+  return /enttype\s+target>\s+player\s+eq\s*$/i.test(req || '');
+}
+function isPvpMapOnlyRequires(req) {
+  return /\bisPVPMap\?(?!\s+!)/i.test(req || '');
+}
+
+/** Resistibility bit from template flags (absence of IgnoreResistance => resistible). */
+function isTemplateResistible(t) {
+  return !((t.flags || []).includes('IgnoreResistance'));
+}
+
 /** Normalize attrib names from raw data to our internal keys */
 const ATTRIB_MAP = {
   // Damage types → resistance keys
@@ -377,6 +395,9 @@ function extractDestiny() {
     let healScale = 0;
     let healTable = '';
     for (const eff of data.effects || []) {
+      const req = eff.requires_expression || '';
+      const pvpByMode = isExplicitPvpOnlyGroup(eff);
+      const pvpByReq = isPvpMapOnlyRequires(req) || isPvpEnttypePlayerRequires(req);
       for (const t of eff.templates || []) {
         const attrib = (t.attribs || [])[0];
         if (!attrib || attrib === 'Grant_Power' || attrib === 'Revoke_Power' || attrib === 'Set_Mode') continue;
@@ -385,6 +406,14 @@ function extractDestiny() {
         const scale = t.scale || 0;
         const duration = t.duration || '';
         if (scale === 0) continue;
+
+        // Targeted PvP awareness: drop explicit/synthetically-PvP rows by
+        // default, with the same beneficial `player eq` leaguemate exception
+        // used in Hybrid (Parse6 can synthesize those rows as PVP_ONLY).
+        const isLeaguematePlayer = scale > 0 && isPvpEnttypePlayerRequires(req);
+        if ((pvpByMode || pvpByReq) && !isLeaguematePlayer) continue;
+
+        const resistible = isTemplateResistible(t);
 
         // Parse duration to seconds
         let durSec = 0;
@@ -455,6 +484,15 @@ function extractDestiny() {
           else if (attrib === 'Recovery') statKey = 'recovery';
           else if (attrib === 'Regeneration') statKey = 'regeneration';
           else statKey = null;
+        } else if (aspect === '' && datasetId === 'thunderspy') {
+          // Parse6/Thunderspy omits aspect/type metadata for many Destiny rows.
+          // Recover only the known caster-facing stats from attrib identity.
+          if (attrib === 'RechargeTime') statKey = 'recharge';
+          else if (attrib === 'Recovery') statKey = 'recovery';
+          else if (attrib === 'Regeneration') statKey = 'regeneration';
+          else if (attrib === 'Endurance') statKey = 'endurance';
+          else if (MOVEMENT_ATTRIBS.has(attrib)) statKey = 'runSpeed';
+          else statKey = null;
         } else if (attrib === 'Endurance' && aspect === 'Current') {
           statKey = 'endurance'; // Endurance refill
         }
@@ -476,7 +514,7 @@ function extractDestiny() {
         else value = scale;
         const key = `${statKey}`;
         if (!effects[key]) effects[key] = [];
-        effects[key].push({ value: round(value), duration: durSec });
+        effects[key].push({ value: round(value), duration: durSec, resistible });
       }
     }
 
@@ -491,13 +529,16 @@ function extractDestiny() {
       // Summing them would N× the magnitude (Parse6 Clarion mez would read 6×).
       // Collapse each duration to its single strongest component so the timeline
       // sums real decay tiers, not duplicate attribs.
-      const byDur = new Map();
+      // Resistible-aware: keep resistible/unresistable twins distinct.
+      const byDurRes = new Map();
       for (const e of entries) {
-        const cur = byDur.get(e.duration);
-        if (cur === undefined || Math.abs(e.value) > Math.abs(cur)) byDur.set(e.duration, e.value);
+        const durKey = `${e.duration}|${e.resistible ? 'R' : 'U'}`;
+        const cur = byDurRes.get(durKey);
+        if (cur === undefined || Math.abs(e.value) > Math.abs(cur)) {
+          byDurRes.set(durKey, { duration: e.duration, value: e.value, resistible: e.resistible });
+        }
       }
-      const collapsed = Array.from(byDur.entries())
-        .map(([dur, value]) => ({ value, duration: dur }))
+      const collapsed = Array.from(byDurRes.values())
         .sort((a, b) => a.duration - b.duration);
       // Peak = highest absolute value
       const peak = collapsed.reduce((best, e) => Math.abs(e.value) > Math.abs(best.value) ? e : best, collapsed[0]);
@@ -585,6 +626,8 @@ function extractHybrid() {
 
     for (const eff of data.effects || []) {
       const req = eff.requires_expression || '';
+      const pvpByMode = isExplicitPvpOnlyGroup(eff);
+      const pvpByReq = isPvpMapOnlyRequires(req) || isPvpEnttypePlayerRequires(req);
 
       for (const t of eff.templates || []) {
         const attribs = t.attribs || [];
@@ -608,6 +651,12 @@ function extractHybrid() {
         }
 
         if (scale === 0) continue;
+
+        // Targeted PvP awareness: drop explicit PvP-only rows by default, but
+        // keep the known leaguemate-buff shape (`enttype target> player eq` +
+        // beneficial polarity) that Parse6 can synthesize as PVP_ONLY.
+        const isLeaguematePlayer = scale > 0 && isPvpEnttypePlayerRequires(req);
+        if ((pvpByMode || pvpByReq) && !isLeaguematePlayer) continue;
 
         // Collect the DISTINCT stat keys this template maps to. A uniform
         // multi-attrib buff — e.g. Support Hybrid's aspect=Strength row over all
@@ -641,6 +690,10 @@ function extractHybrid() {
             // fires for tspy: HC/Rebirth always carry a real aspect, and their
             // real attribs are never the bare `Damage`/`Defense` tokens.
             statKey = TSPY_GENERIC_HYBRID_MAP[attrib];
+          } else if (aspect === '' && datasetId === 'thunderspy') {
+            // Parse6/Thunderspy can also omit aspect on regular scalar rows
+            // (e.g. Melee Genome +Regeneration); recover only known-safe stats.
+            if (attrib === 'Regeneration') statKey = 'regeneration';
           }
           if (!statKey || statKey === 'taunt') continue; // taunt isn't a player stat
           templateKeys.add(statKey);
@@ -683,12 +736,14 @@ function extractHybrid() {
         // a BENEFICIAL buff (scale > 0 — and extractHybrid only ever maps beneficial
         // stat keys) is the leaguemate value and applies in PvE; a foe-debuff's
         // `player eq` PvP twin is harmful (negative) and never reaches this route.
-        const isLeaguematePlayer = scale > 0 && /enttype\s+target>\s+player\s+eq\s*$/i.test(req);
         const isPerTarget = isPerTargetRPN || req.includes('Ne(target');
         const isSelfOnly = isSelfRPN || req.includes('source>entref') || req === '' || isLeaguematePlayer;
+        const resistibleKey = isTemplateResistible(t) ? 'R' : 'U';
 
         for (const statKey of templateKeys) {
-          const contribKey = `${isPerTarget ? 'pt' : 'fl'}|${statKey}|${scale}`;
+          // Resistible-aware dedup: Parse6 per-attrib split still dedups cleanly,
+          // but a true resistible/unresistable twin is kept distinct.
+          const contribKey = `${isPerTarget ? 'pt' : 'fl'}|${statKey}|${scale}|${resistibleKey}`;
           if (isPerTarget) {
             if (seenContribs.has(contribKey)) continue;
             seenContribs.add(contribKey);
