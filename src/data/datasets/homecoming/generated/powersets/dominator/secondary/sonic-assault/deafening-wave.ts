@@ -56,14 +56,24 @@ export const DeafeningWave: Power = {
     "hold": {
       "mag": 2,
       "scale": 5,
-      "table": "Melee_Immobilize",
-      "domination": {
-        "mag": 2,
-        "scale": 7.5,
-        "table": "Melee_Immobilize"
-      }
+      "table": "Melee_Immobilize"
     }
   },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 2,
+          "scale": 7.5,
+          "table": "Melee_Immobilize"
+        }
+      }
+    }
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

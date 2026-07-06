@@ -44,12 +44,22 @@ export const SeedsofConfusion: Power = {
     "confuse": {
       "mag": 3,
       "scale": 8,
-      "table": "Ranged_Stun",
-      "domination": {
-        "mag": 3,
-        "scale": 12,
-        "table": "Ranged_Immobilize"
+      "table": "Ranged_Stun"
+    }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "confuse": {
+          "mag": 3,
+          "scale": 12,
+          "table": "Ranged_Immobilize"
+        }
       }
     }
-  }
+  ]
 };

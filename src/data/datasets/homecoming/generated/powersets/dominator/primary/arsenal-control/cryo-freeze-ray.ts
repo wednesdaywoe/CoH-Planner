@@ -51,12 +51,7 @@ export const CryoFreezeRay: Power = {
     "hold": {
       "mag": 3,
       "scale": 10,
-      "table": "Ranged_Immobilize",
-      "domination": {
-        "mag": 3,
-        "scale": 18,
-        "table": "Ranged_Immobilize"
-      }
+      "table": "Ranged_Immobilize"
     },
     "slow": {
       "runSpeed": {
@@ -89,5 +84,20 @@ export const CryoFreezeRay: Power = {
       "table": "Ranged_Slow"
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 18,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

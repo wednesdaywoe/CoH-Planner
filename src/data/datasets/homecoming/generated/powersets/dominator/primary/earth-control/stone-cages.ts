@@ -53,12 +53,7 @@ export const StoneCages: Power = {
     "immobilize": {
       "mag": 3,
       "scale": 15,
-      "table": "Ranged_Immobilize",
-      "domination": {
-        "mag": 4,
-        "scale": 22.5,
-        "table": "Ranged_Immobilize"
-      }
+      "table": "Ranged_Immobilize"
     },
     "defenseDebuff": {
       "scale": 2,
@@ -75,5 +70,20 @@ export const StoneCages: Power = {
       }
     },
     "buffDuration": 12
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "immobilize": {
+          "mag": 4,
+          "scale": 22.5,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

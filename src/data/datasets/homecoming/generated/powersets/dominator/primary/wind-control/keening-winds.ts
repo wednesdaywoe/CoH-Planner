@@ -45,12 +45,7 @@ export const KeeningWinds: Power = {
     "confuse": {
       "mag": 3,
       "scale": 15,
-      "table": "Ranged_Fear",
-      "domination": {
-        "mag": 3,
-        "scale": 22.5,
-        "table": "Ranged_Fear"
-      }
+      "table": "Ranged_Fear"
     },
     "enduranceDrain": {
       "scale": 0.04,
@@ -66,5 +61,20 @@ export const KeeningWinds: Power = {
     },
     "buffDuration": 2.1
   },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "confuse": {
+          "mag": 3,
+          "scale": 22.5,
+          "table": "Ranged_Fear"
+        }
+      }
+    }
+  ],
   "requires": "accesslevel char> 0 >="
 };

@@ -55,13 +55,23 @@ export const Vacuum: Power = {
     "hold": {
       "mag": 3,
       "scale": 8,
-      "table": "Ranged_Immobilize",
-      "domination": {
-        "mag": 3,
-        "scale": 12,
-        "table": "Ranged_Immobilize"
-      }
+      "table": "Ranged_Immobilize"
     }
   },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 12,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ],
   "requires": "accesslevel char> 0 >="
 };

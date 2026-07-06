@@ -314,8 +314,36 @@ validates the whole differential approach before any converter rewrite.
       cleared). Undead/Demon/Ghost/Human/Generator are candidate allowlist additions
       pending per-power verification. Lint + DSH3 + 801 tests green.
       verify: fn:_classifyConditionalGate, tests:src>=801
-    - [~] Rework extractEffects→project for the conditional/dual-representation gaps;
-      retire the `unresistable`/`durationVariants`/`domination`/`selfPenalty` bolt-ons.
+    - [x] **DOMINATION bolt-on retired** — the clearest *dual-representation*: HC's
+      `Tag "Domination"` mez bonus was captured into a special-case `MezEffect.domination`
+      sub-field (81 HC powers), while Rebirth/tspy encode the *same* Dominator-inherent
+      bonus via the general `domination` conditionalEffect (their `kStealth source>` gate;
+      134 powers). Empty intersection ⇒ two encodings of one mechanic. Converged HC onto
+      the general pipeline: `collectConditionalsGrouped` now recognizes `Tag "Domination"`
+      groups → routes them to the shared `{id:'domination', label:'Domination Active',
+      side:'source'}` gate (base collector skips them like Containment; `extractEffects`
+      no longer diverts to the sub-field). HC Char/Dominate now emit byte-identical shape
+      to Rebirth (base `hold` + `domination` conditional). **UI kept rich for all 3 servers**
+      (decision 2026-07-05, user chose "Converge, keep rich UI" over minimal-retire / reverse /
+      defer): the `dominationActive` Header toggle already drives the `domination` conditional
+      (via `AT_INHERENT_CONDITIONAL_IDS` + `selectActiveConditionals` `atInherentState`); the
+      badge (`getPowerDominationSummary`) re-sourced from the conditional so it renders for
+      Rebirth/tspy too (was HC-only); the inline "+mag, longer duration" mez boost re-sourced
+      from the `domination` `extraInstances` collision (tagged with `conditionalId`) and its
+      duplicate "+…(from…)" row suppressed on mez rows only (non-mez collisions e.g. Shadow
+      Field's summon keep their row). `MezEffect.domination` type deleted; converter
+      `_tagDomination`/`pendingDomination`/`_domination` all removed. Regen: 83 HC files
+      (Rebirth/tspy 0 — their `kStealth` path untouched); DSH6 detector-neutral (by-type 1
+      = Focused Fighting residual, scalar 0). Lint + DSH3 (3 ds) + 801 tests green.
+      verify: fn:getPowerDominationSummary, file:src/data/domination-per-effect.test.ts, tests:src>=801
+    - [~] Retire the remaining bolt-ons. **Finding (verify-don't-assume):** `unresistable`
+      and `durationVariants` are NOT independently retireable — each *is* the projection of
+      multiple atomic records into one single-value `PowerEffects` slot (an unresistable-twin
+      flag / a `[{scale,duration}]` mini-list), with no second representation to converge onto;
+      "retiring" them requires the full `PowerEffects`-becomes-a-list rewrite, which fixes no
+      observable bug (detector is green) — deferred until a new collapse site actually surfaces.
+      `selfPenalty` (calc-path, 4 read sites) IS retireable via the DSH4 `eToWho` field — the
+      next candidate.
     needs: DEDUCTIVE_SCHEMA_HARNESS#DSH6
 - [ ] **DSH7** — Numeric resolution + full sweep + CI: resolve oracle numbers by
   joining each effect's `scale × modifierTable` against committed `AttribMod.json`

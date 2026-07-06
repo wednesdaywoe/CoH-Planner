@@ -53,12 +53,7 @@ export const GravityDistortion: Power = {
     "hold": {
       "mag": 3,
       "scale": 12,
-      "table": "Ranged_Immobilize",
-      "domination": {
-        "mag": 3,
-        "scale": 18,
-        "table": "Ranged_Immobilize"
-      }
+      "table": "Ranged_Immobilize"
     },
     "slow": {
       "runSpeed": {
@@ -86,5 +81,20 @@ export const GravityDistortion: Power = {
       "slow": 10
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 3,
+          "scale": 18,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

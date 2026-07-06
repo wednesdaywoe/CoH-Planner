@@ -62,12 +62,7 @@ export const HavokPunch: Power = {
     "sleep": {
       "mag": 3,
       "scale": 15,
-      "table": "Melee_Sleep",
-      "domination": {
-        "mag": 3,
-        "scale": 22.5,
-        "table": "Melee_Sleep"
-      }
+      "table": "Melee_Sleep"
     },
     "knockback": {
       "scale": 0.75,
@@ -82,6 +77,21 @@ export const HavokPunch: Power = {
     },
     "buffDuration": 4
   },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3,
+          "scale": 22.5,
+          "table": "Melee_Sleep"
+        }
+      }
+    }
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

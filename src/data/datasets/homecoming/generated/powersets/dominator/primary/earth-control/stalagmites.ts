@@ -51,12 +51,7 @@ export const Stalagmites: Power = {
     "stun": {
       "mag": 3,
       "scale": 8,
-      "table": "Ranged_Stun",
-      "domination": {
-        "mag": 3,
-        "scale": 12,
-        "table": "Ranged_Stun"
-      }
+      "table": "Ranged_Stun"
     },
     "defenseDebuff": {
       "scale": 2,
@@ -66,5 +61,20 @@ export const Stalagmites: Power = {
       "defenseDebuff": 12
     },
     "buffDuration": 12
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 12,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

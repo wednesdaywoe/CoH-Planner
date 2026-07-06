@@ -438,6 +438,10 @@ export interface ExtraInstance {
   value: unknown;
   /** Human-readable origin — the conditional's `label` (e.g. "Stealthed"). */
   sourceLabel: string;
+  /** The originating conditional's `id`. Lets the renderer route AT-inherent
+   *  collisions (e.g. `domination`) to their dedicated inline display instead
+   *  of a generic "+ … (from …)" row. */
+  conditionalId?: string;
 }
 
 export interface ApplyConditionalsResult {
@@ -497,7 +501,7 @@ export function applyActiveConditionals(
             // `durations` is a metadata bag (per-effect duration overrides)
             // and the `*Duration` metadata fields aren't independent
             // instances — skip them as collision sources.
-            (extraInstances[k] ??= []).push({ value: v, sourceLabel: c.label });
+            (extraInstances[k] ??= []).push({ value: v, sourceLabel: c.label, conditionalId: c.id });
           }
         }
       }

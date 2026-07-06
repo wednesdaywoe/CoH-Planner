@@ -43,12 +43,22 @@ export const MassConfusion: Power = {
     "confuse": {
       "mag": 3,
       "scale": 20,
-      "table": "Ranged_Immobilize",
-      "domination": {
-        "mag": 3,
-        "scale": 30,
-        "table": "Ranged_Immobilize"
+      "table": "Ranged_Immobilize"
+    }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "confuse": {
+          "mag": 3,
+          "scale": 30,
+          "table": "Ranged_Immobilize"
+        }
       }
     }
-  }
+  ]
 };

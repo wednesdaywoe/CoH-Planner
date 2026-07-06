@@ -5,7 +5,7 @@
  * like Blaster Defiance, Controller Containment, etc.
  */
 
-import type { PowerEffects, EffectArea } from '@/types';
+import type { PowerEffects, EffectArea, ConditionalEffect } from '@/types';
 import { isMezEffect } from '@/types/power';
 import { getArchetype } from '@/data';
 
@@ -205,22 +205,30 @@ export function getDominationInfo(): DominationInfo {
 const DOMINATION_MEZ_KEYS = ['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear'] as const;
 
 /**
- * Summarise a power's Domination bonus from its `MezEffect.domination` data.
- * Returns null when the power carries no `Tag "Domination"` mez (so Domination
- * does not enhance it — e.g. epic/patron holds), letting callers skip the badge.
+ * Summarise a power's Domination bonus from its `domination` conditionalEffect
+ * (the shared 'Domination Active' gate every server now uses — HC's former
+ * `Tag "Domination"` sub-field and Rebirth/tspy's `kStealth source>` gate both
+ * project to it). Returns null when the power carries no such conditional (so
+ * Domination doesn't enhance it — e.g. epic/patron holds), letting callers skip
+ * the badge. The bonus mez is the extra stacking instance, so the effective
+ * magnitude is `base.mag + bonus.mag` and the duration ratio is `bonus.scale /
+ * base.scale`.
  */
 export function getPowerDominationSummary(
   effects: PowerEffects | undefined,
+  conditionalEffects?: ConditionalEffect[],
 ): PowerDominationSummary | null {
-  if (!effects) return null;
+  if (!effects || !conditionalEffects) return null;
+  const dom = conditionalEffects.find((c) => c.id === 'domination');
+  if (!dom?.effects) return null;
   for (const key of DOMINATION_MEZ_KEYS) {
-    const e = effects[key];
-    if (isMezEffect(e) && e.domination && e.mag) {
-      const dom = e.domination;
+    const base = effects[key];
+    const bonus = dom.effects[key];
+    if (isMezEffect(base) && base.mag && isMezEffect(bonus) && bonus.mag) {
       return {
-        magBonus: dom.mag,
-        magMultiplier: (e.mag + dom.mag) / e.mag,
-        durMultiplier: e.scale ? dom.scale / e.scale : 1,
+        magBonus: bonus.mag,
+        magMultiplier: (base.mag + bonus.mag) / base.mag,
+        durMultiplier: base.scale ? bonus.scale / base.scale : 1,
       };
     }
   }

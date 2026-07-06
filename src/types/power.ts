@@ -111,16 +111,6 @@ export interface MezEffect {
   scale: number;
   /** AT table for duration calculation */
   table: string;
-  /**
-   * Dominator inherent bonus — the extra mez this power applies while Domination
-   * is active, from its `Tag "Domination"` effect group (engine-gated on the
-   * Domination mode). Stacks onto the base: applied magnitude becomes
-   * `mag + domination.mag`, and the bonus's duration comes from its own
-   * `scale × table`. Present ONLY on powers whose data carries the tag (most
-   * Dominator control/assault mezzes) — a control effect without the tag (e.g. an
-   * epic/patron hold) correctly has no `domination` and is not boosted.
-   */
-  domination?: { mag: number; scale: number; table: string };
 }
 
 /** Helper type for mez that can be number (magnitude only) OR full MezEffect */

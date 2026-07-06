@@ -60,12 +60,7 @@ export const ChargedBrawl: Power = {
     "sleep": {
       "mag": 3,
       "scale": 10,
-      "table": "Melee_Sleep",
-      "domination": {
-        "mag": 3,
-        "scale": 15,
-        "table": "Melee_Sleep"
-      }
+      "table": "Melee_Sleep"
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -84,6 +79,21 @@ export const ChargedBrawl: Power = {
       "enduranceGain"
     ]
   },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Melee_Sleep"
+        }
+      }
+    }
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

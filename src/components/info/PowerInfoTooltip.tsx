@@ -684,7 +684,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
           assault powers too and stays hidden on untagged holds. */}
       {(() => {
         if (archetypeId !== 'dominator') return null;
-        const domSummary = getPowerDominationSummary(effects);
+        const domSummary = getPowerDominationSummary(effects, basePower.conditionalEffects);
         if (!domSummary) return null;
 
         const dominationInfo = getDominationInfo();
