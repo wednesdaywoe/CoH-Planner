@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
-import { getDestinyEffects, getHybridEffects } from '@/data';
+import { getDestinyEffects, getHybridEffects, getAlphaEffects } from '@/data';
 import { calculateCharacterTotals } from '@/utils/calculations/character-totals';
 import { createEmptyBuild } from '@/types/build';
 import type { SelectedIncarnatePower } from '@/types/incarnate';
@@ -274,5 +274,40 @@ describe('Thunderspy dataset (Parse6) — Support Hybrid parity', () => {
     expect(getHybridEffects('support_core_genome')!.passive.enduranceDiscount).toBeCloseTo(0.05, 6);
     expect(getHybridEffects('support_total_core_graft')!.passive.enduranceDiscount).toBeCloseTo(0.075, 6);
     expect(getHybridEffects('support_core_embodiment')!.passive.enduranceDiscount).toBeCloseTo(0.1, 6);
+  });
+});
+
+// Thunderspy (Parse6) omits the Grant_Power linkage on Alpha main powers (they
+// carry only a bare `Ones` marker), so extractGrantedPowers found nothing and
+// every one of the 72 Alpha entries rendered empty — a slotted Agility/Cardiac/…
+// gave the tspy planner ZERO enhancement. The converter now recovers the linkage
+// from the parallel Homecoming alpha power and resolves it against tspy's OWN
+// silent-file scales, folding in tspy's split `Ones` ED-bypass template.
+describe('Thunderspy dataset (Parse6) — Alpha enhancement linkage', () => {
+  beforeAll(async () => {
+    await loadDataset('thunderspy');
+  });
+
+  it('Alpha entries are populated (recovered linkage), not empty', () => {
+    // Every ability core-paragon grants its full 3-aspect set.
+    const agility = getAlphaEffects('agility_core_paragon')!;
+    expect(agility.enduranceModification, 'agility endMod').toBeGreaterThan(0);
+    expect(agility.recharge, 'agility recharge').toBeGreaterThan(0);
+    expect(agility.defense, 'agility defense').toBeGreaterThan(0);
+
+    const musculature = getAlphaEffects('musculature_core_paragon')!;
+    expect(musculature.damage, 'musc damage').toBeGreaterThan(0);
+  });
+
+  it('folds the split `Ones` ED-bypass portion into the total (regular + Ones)', () => {
+    // tspy stores accuracy as Accuracy(0.11) + Ones(0.22); the total is 0.33,
+    // matching HC — the pre-fix firstAttrib-only sum would have kept only 0.11.
+    // Nerve Core Paragon grants accuracy_plus_very_rare (0.15 + 0.30 = 0.45).
+    expect(getAlphaEffects('nerve_core_paragon')!.accuracy).toBeCloseTo(0.45, 4);
+    // Agility Core Paragon's enduranceModification = recovery_plus_very_rare
+    // (Endurance 0.15 + Ones 0.30 = 0.45).
+    expect(getAlphaEffects('agility_core_paragon')!.enduranceModification).toBeCloseTo(0.45, 4);
+    // Recharge has no ED-bypass split (Ones=0); recharge_very_rare stays 0.33.
+    expect(getAlphaEffects('agility_core_paragon')!.recharge).toBeCloseTo(0.33, 4);
   });
 });

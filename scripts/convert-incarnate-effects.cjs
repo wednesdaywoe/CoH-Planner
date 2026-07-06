@@ -266,6 +266,25 @@ function round(n, decimals = 6) {
   return Math.round(n * Math.pow(10, decimals)) / Math.pow(10, decimals);
 }
 
+// Thunderspy Parse6 omits the Grant_Power linkage on Alpha main powers (each
+// carries only a bare `Ones` marker with no power_names), exactly as it does for
+// Support Hybrid passives (see inferTspySupportBoostSilent). Every Alpha ability
+// is a standard CoH incarnate (Agility/Cardiac/…) shared with Homecoming, and
+// every silent file HC references exists in the tspy export, so recover the
+// linkage from the parallel HC alpha power of the same id and resolve it against
+// tspy's OWN silent-file scales. Returns [] (current behavior — the slot stays
+// empty and a WARN is logged) if the HC reference is unavailable; no regression.
+const HC_ALPHA_REF_DIR = fs.existsSync(path.join(RAW_DATA_BASE, 'homecoming', 'incarnate'))
+  ? path.join(RAW_DATA_BASE, 'homecoming', 'incarnate', 'alpha')
+  : path.join(RAW_DATA_BASE, 'incarnate', 'alpha');
+
+function inferAlphaSilentFromReference(powerId) {
+  if (datasetId === 'homecoming') return [];
+  const ref = readJson(path.join(HC_ALPHA_REF_DIR, `${powerId}.json`));
+  if (!ref) return [];
+  return extractGrantedPowers(ref);
+}
+
 // ============================================
 // ALPHA EXTRACTION
 // ============================================
@@ -289,7 +308,12 @@ function extractAlpha() {
 
     const powerId = f.replace('.json', '');
     const displayName = data.display_name || powerId;
-    const grantedRefs = extractGrantedPowers(data);
+    let grantedRefs = extractGrantedPowers(data);
+    if (grantedRefs.length === 0) {
+      // Parse6 (thunderspy) omits the silent-power linkage; recover it from the
+      // parallel Homecoming alpha power (see inferAlphaSilentFromReference).
+      grantedRefs = inferAlphaSilentFromReference(powerId);
+    }
 
     // T3+ alphas grant +1 level shift; see inferLevelShiftFromFilename for why
     // we read this from the filename rather than the binary.
@@ -316,16 +340,23 @@ function extractAlpha() {
         continue;
       }
 
-      // Sum all templates for this aspect (regular + ED-bypass portions)
-      // Alpha silent files have 2 templates per attrib: regular + BoostIgnoreDiminishing.
-      // All damage/defense types in a file share the same scale per template,
-      // so we only need the first unique attrib's values.
+      // Sum all templates for this aspect (regular + ED-bypass portions).
+      // HC/Rebirth silent files carry 2 templates per attrib — regular +
+      // BoostIgnoreDiminishing — on the SAME attrib, and list sibling damage/
+      // defense types at an identical scale, so we take the first unique attrib.
+      // Thunderspy (Parse6) instead splits the ED-bypass onto a generic `Ones`
+      // template (aspect=''), so fold every `Ones` template into the total too
+      // (a no-op for HC/Rebirth, which have zero `Ones` templates here).
       let totalScale = 0;
       let firstAttrib = null;
       for (const eff of silentData.effects || []) {
+        // Alpha silent files are never PvP-gated (all groups export as EITHER);
+        // skip any PVP_ONLY group defensively so a future twin can't inflate.
+        if (eff.is_pvp === 'PVP_ONLY') continue;
         for (const t of eff.templates || []) {
           const attrib = (t.attribs || [])[0];
           if (!attrib || attrib === 'Set_Mode') continue;
+          if (attrib === 'Ones') { totalScale += (t.scale || 0); continue; }
           // Only process the first unique attrib (others are duplicates for different damage types)
           if (firstAttrib === null) firstAttrib = attrib;
           if (attrib !== firstAttrib) continue;

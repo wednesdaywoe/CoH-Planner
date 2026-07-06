@@ -251,7 +251,7 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
       observable bug (detector is green) — deferred until a new collapse site actually surfaces.
       `selfPenalty` is now DONE (above); the remaining two stay deferred.
     needs: DEDUCTIVE_SCHEMA_HARNESS#DSH6
-- [ ] **DSH7 — DESCOPED (decision 2026-07-06, review follow-up).** The two halves
+- [x] **DSH7 — DESCOPED (decision 2026-07-06, review follow-up).** The two halves
   split cleanly and only one survives:
   - **CI wiring of the *structural* gates — KEEP, and it is mostly already done.**
     DSH2/DSH3/DSH6a/DSH8 all ride `npm test`/`ci.yml` (committed inputs). This was the
@@ -268,7 +268,10 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
     e.g. the finite "Mids has a damage type we lack" candidate list from DSH5. Not a sweep,
     not CI, not a standing worklist.
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH5
-- [~] **DSH8** — Extend the harness to the **Incarnate** pipeline. The audit
+- [x] **DSH8** — Extend the harness to the **Incarnate** pipeline. All sub-items
+  shipped (bridge convergence, collapse detector + CI gate, Hybrid/Destiny
+  pvMode+resistible awareness, Support Core/tspy parity, Alpha+Genesis calc-feeding
+  sweep). Residual is coverage-only (non-gating class-absent slots, Deferred). The audit
   (2026-07-05, 2-agent) found [`convert-incarnate-effects.cjs`](scripts/convert-incarnate-effects.cjs)
   is a wholly separate 1,614-line converter that **independently reinvented** the
   bag-of-named-slots / last-write-wins model (it never imports `extractEffects()`),
@@ -412,11 +415,32 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
     Regen verified on tspy generated output (`support_genome_*` now emits
     `passive.enduranceDiscount` 0.025/0.05/0.075/0.1 and non-empty support frontLoaded),
     with `incarnate-effects-completeness.test.ts` guards and DSH8 gate green.
-  - [ ] Continue the calc-feeding sweep (Alpha enhancement values, Genesis) + add
-    `pvMode`/`resistible` awareness where a real drop surfaces; reuse the DSH4 bridge
-    rather than the parallel `ATTRIB_MAP`.
+  - [x] **Calc-feeding sweep (Alpha + Genesis) — SHIPPED 2026-07-06.** The
+    export-vs-generated sweep over every alpha/destiny/genesis silent file across
+    all three datasets surfaced one **real, systemic drop**: **all 72 thunderspy
+    Alpha entries rendered EMPTY** (0/72 populated vs HC/Rebirth 72/72) — a slotted
+    Agility/Cardiac/Musculature/… gave the tspy planner **zero** enhancement. Root
+    cause is the **same Parse6 Grant_Power-linkage omission** as the Support Hybrid
+    fix: tspy alpha mains carry only a bare `Ones` marker with no `power_names`, so
+    [`extractGrantedPowers`](scripts/convert-incarnate-effects.cjs) returned `[]`.
+    **Fix (tspy-isolated, verified no-op for HC/Rebirth):** (1) when linkage is
+    empty, recover it from the parallel HC alpha power of the same id
+    ([`inferAlphaSilentFromReference`](scripts/convert-incarnate-effects.cjs)) —
+    every silent file HC references (93) exists in the tspy export (0 missing), and
+    values resolve against tspy's OWN silent scales; (2) fold tspy's split `Ones`
+    ED-bypass template into the per-aspect sum (regular + Ones; e.g. accuracy 0.11 +
+    0.22 = 0.33, matching HC) — HC/Rebirth have **zero** `Ones` alpha templates so
+    this is a pure no-op there; (3) a defensive `PVP_ONLY`-group skip (alpha silent
+    files are all `EITHER`, so no `pvMode`/`resistible` drop exists to fix — checked).
+    **Genesis is clean** (37/37 populated all datasets); the destiny/genesis
+    `DISTINCT-A0-SCALES` sweep hits are by-design multi-stat grants handled by their
+    own per-attrib extractors, not the Alpha first-attrib collapse. Regen: tspy only
+    (single clean hunk = the `GENERATED_ALPHA_EFFECTS` block); DSH8 gate + completeness
+    suite green all 3 ds. The `ATTRIB_MAP`→DSH4-bridge convergence was **not needed**
+    for this drop (linkage, not attrib-classification) and stays optional cleanup.
+    verify: fn:inferAlphaSilentFromReference, file:src/utils/calculations/incarnate-effects-completeness.test.ts, tests:src>=814
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH4
-- [~] **DSH9** — Extend the harness to the **Enhancement** pipeline (IO sets / set
+- [x] **DSH9** — Extend the harness to the **Enhancement** pipeline (IO sets / set
   bonuses / procs / raw magnitudes). The audit found this splits into three
   sub-pipelines with very different exposure — and, unlike incarnates, the *data* is
   already in good shape; the gaps are the **extractors** and a **total absence of a
@@ -449,9 +473,8 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
     garbage. Fixed by resolving links by `full_name` + default ×100 → value residuals
     1014/1422/54 → **26/43/20**. The 20 remaining are all the **Mids 3-decimal scale
     quantization** skew (same scale `0.025` → repo `2.5` AND `2.525`) — advisory per the
-    trust boundary, NOT staleness, NOT a mapping bug. **Still a bootstrap**, not the
-    full DSH9 gate (proc identity: 2 missing / 56 extra procs remain; no bridge
-    convergence or converter fixes yet — the sub-bullets below).
+    trust boundary, NOT staleness, NOT a mapping bug. Proc identity residuals remain
+    baseline-frozen (`missing=2`, `extra=56`) and are gate-on-new under `--strict`.
     verify: file:tools/mids-oracle/diff_enh_oracle.py, file:tools/mids-oracle/test_diff_enh_oracle.py
   - [x] **Freeze-and-gate the proc residual NOW (2026-07-06) — DONE 2026-07-06.**
     Applied the DSH5 discipline while the pile is small: baseline + `--strict` is the
@@ -466,32 +489,48 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
     now empty (`enh_oracle_mapping_gap_worklist.{json,md}`: **P1=0 / P2=0 / P3=0**).
     The 20 value residuals remain frozen as advisory quantization skew (gate-on-new).
     verify: file:tools/mids-oracle/enh_oracle_mapping_gap_worklist.md
-  - [ ] Converge the divergent parallel bridges onto the DSH4 `bridgeAttrib`:
+  - [x] Converge the divergent parallel bridges onto the DSH4 `bridgeAttrib`:
     `ATTRIB_TO_BONUS_STAT` ([extract-rebirth-io-sets-v2.py](scripts/extract-rebirth-io-sets-v2.py) `:724`)
     + `ATTRIB_ASPECT_TO_EFFECT` ([extract-proc-data.py](scripts/extract-proc-data.py) `:51`)
-    are duplicates of it.
-  - [ ] Replace the value-keyed family collapse (`_resolve_bonus_effects` `:875-894` —
+    are duplicates of it. **SHIPPED 2026-07-06** via shared adapter
+    [`bridge-attrib-one.cjs`](scripts/bridge-attrib-one.cjs) and bridge-first routing in
+    both extractors, with narrow legacy fallbacks only for known non-bridge edge cases.
+    Validation: `test_read_enhdb.py` PASS, `test_diff_enh_oracle.py` PASS,
+    `io-sets-bonus-keys.test.ts` + `set-bonus-groups.test.ts` PASS, lint PASS.
+  - [x] Replace the value-keyed family collapse (`_resolve_bonus_effects` `:875-894` —
     a float-rounding split can leak or mis-collapse a per-type family) with
     identity-keyed grouping; fix the single-type mez-resist drop (`:715-718`) and the
     double-allowlist lockstep risk vs
-    [`STAT_NAME_MAP`](src/utils/calculations/set-bonuses.ts).
-  - [ ] Close the proc allowlist gaps: `applySingleProcEffect` `default:` drop
+    [`STAT_NAME_MAP`](src/utils/calculations/set-bonuses.ts). **SHIPPED 2026-07-06.**
+    `_resolve_bonus_effects` now groups by identity first (not value), family-collapse
+    is identity-based, single-type mez-resistance maps to aggregate
+    `mez_resistance_(all)`, and paired-stat de-dupe is preserved post-aggregation.
+    Validation: `io-sets-bonus-keys.test.ts` + `set-bonus-groups.test.ts` +
+    `mez-duration-bonus.test.ts` PASS; `py_compile` + lint PASS.
+  - [x] Close the proc allowlist gaps: `applySingleProcEffect` `default:` drop
     ([character-totals.ts](src/utils/calculations/character-totals.ts) `:2345`) +
     typed-`Defense`-only-when-`'all'` drop (`:2194`); the `proc:false` silent-drop
-    class (the ATO passive-global 6th piece).
+    class (the ATO passive-global 6th piece). **SHIPPED 2026-07-06.** Runtime proc
+    application now handles `Absorb`, keeps typed defense/global handling aligned, and
+    includes a guarded legacy fallback for `isProc:false` passive-global slots.
+    Validation: `proc-runtime-allowlist.test.ts` + proc coverage/resolution tests PASS;
+    lint PASS.
   - **Raw enhancement magnitudes** (schedules/ED/exemplar in
     [`enhancement-values.ts`](src/utils/calculations/enhancement-values.ts)) are **not**
     an atomic-effect target — they're table lookups. Any validation there needs a
     value/table oracle, tracked under Deferred.
   needs: DEDUCTIVE_SCHEMA_HARNESS#DSH4
-- [ ] Replace the AT-table extractor's hand-maintained 45-name allowlist
+- [x] Replace the AT-table extractor's hand-maintained 45-name allowlist
   ([`extract-at-tables.cjs`](scripts/extract-at-tables.cjs)) with a principled
   filter (extract every player-referenced table, or all 110 binary tables with a
   documented skip-list). The allowlist is the **same inductive-schema anti-pattern**
   as the converter's bag-of-slots — it silently omits real tables until a power
   references one on a fatal slot. DSH2 found `Melee_Debuff_Dam` + `*_EndDrain` this
   way; there are ~62 more unextracted tables that only escape notice because no
-  fatal-slot power references them yet.
+  fatal-slot power references them yet. **SHIPPED 2026-07-06.** Replaced fixed
+  `RELEVANT_TABLES` with a source-driven filter over usable `named_tables` referenced by
+  player AT + pet class exports. Validation: `converter-table-integrity.test.ts` PASS,
+  `validate:converter` PASS on homecoming/rebirth/thunderspy, lint PASS.
 
 ## Deferred
 
