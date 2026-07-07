@@ -23,7 +23,8 @@ export const LifeDrain: Power = {
     "range": 60,
     "recharge": 8,
     "endurance": 8.528,
-    "castTime": 1.93
+    "castTime": 1.93,
+    "timeToRoot": 1.1
   },
   "allowedEnhancements": [
     "EnduranceReduction",

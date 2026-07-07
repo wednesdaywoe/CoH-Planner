@@ -947,6 +947,9 @@ function extractSnipeBaseTiming(powerJson) {
   const out = {};
   if (normalJson.activation_time != null) out.castTime = normalJson.activation_time;
   if (normalJson.interrupt_time) out.interruptTime = normalJson.interrupt_time;
+  if (normalJson.time_to_root != null && normalJson.time_to_root !== normalJson.activation_time) {
+    out.timeToRoot = normalJson.time_to_root;
+  }
   return Object.keys(out).length ? out : null;
 }
 
@@ -5381,6 +5384,12 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     maxTargets: powerJson.max_targets_hit,
   };
 
+  // Animation root/lock time — only surface when it diverges from castTime
+  // (the common case is root == full activation, which tells us nothing new).
+  if (powerJson.time_to_root != null && powerJson.time_to_root !== powerJson.activation_time) {
+    power.stats.timeToRoot = powerJson.time_to_root;
+  }
+
   // Remove zero/null values
   Object.keys(power.stats).forEach(key => {
     if (!power.stats[key]) delete power.stats[key];
@@ -5747,6 +5756,8 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     const base = extractSnipeBaseTiming(powerJson);
     if (base?.castTime != null) power.stats.castTime = base.castTime;
     if (base?.interruptTime != null) power.stats.interruptTime = base.interruptTime;
+    if (base?.timeToRoot != null) power.stats.timeToRoot = base.timeToRoot;
+    else delete power.stats.timeToRoot; // base overrides the shell's castTime; a stale root value from the (unread) shell would mismatch it
   }
 
   // Requirements

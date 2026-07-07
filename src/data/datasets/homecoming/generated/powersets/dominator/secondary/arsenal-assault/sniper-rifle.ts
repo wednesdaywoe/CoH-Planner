@@ -24,7 +24,8 @@ export const SniperRifle: Power = {
     "recharge": 20,
     "endurance": 18.512,
     "castTime": 3.67,
-    "interruptTime": 3
+    "interruptTime": 3,
+    "timeToRoot": 0.67
   },
   "allowedEnhancements": [
     "Interrupt",

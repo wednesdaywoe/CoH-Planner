@@ -418,6 +418,9 @@ export interface PowerEffects {
   activatePeriod?: number;
   /** Cast/activation time in seconds */
   castTime?: number;
+  /** Animation root/lock duration in seconds — see `PowerStats.timeToRoot`.
+   *  Merged in for display alongside `castTime`; not consumed by calc. */
+  timeToRoot?: number;
   /** Effect area type */
   effectArea?: EffectArea;
   /** Radius for AoE powers */
@@ -651,6 +654,16 @@ export interface PowerStats {
   /** Interruptible channel time in seconds (snipes), already folded into
    *  `castTime`. Enhanceable by Interrupt Reduction; 0/absent otherwise. */
   interruptTime?: number;
+  /** Animation root/lock duration in seconds (HC Parse7 field 48b) — the
+   *  window during which the character is physically locked in place,
+   *  distinct from `interruptTime`. For ordinary snipes this is roughly
+   *  `castTime - interruptTime`; for Assassin's Strike from-Hide openers
+   *  it's markedly shorter than that gap. Display-only for now — not yet
+   *  consumed by attack-chain/DPS timing pending in-game verification of
+   *  whether root time (vs full castTime) gates when the next power can
+   *  be queued. Absent when equal to castTime (the common case) or unset
+   *  (Rebirth/Thunderspy, whose Parse6 layout omits the field). */
+  timeToRoot?: number;
   /** Max targets for AoE */
   maxTargets?: number;
   /** Arc for cone powers */

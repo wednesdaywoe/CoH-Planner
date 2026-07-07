@@ -24,7 +24,8 @@ export const ShadowRecall: Power = {
     "recharge": 6,
     "endurance": 15,
     "castTime": 5.93,
-    "interruptTime": 4
+    "interruptTime": 4,
+    "timeToRoot": 1.8667
   },
   "allowedEnhancements": [
     "Interrupt",

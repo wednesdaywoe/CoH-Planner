@@ -481,7 +481,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const formAdjustedPower = useMemo(() => {
     const p = snipeAdjustedPower;
     if (!p || p.midCombatCast == null || effectiveHidden) return p;
-    return { ...p, stats: { ...p.stats, castTime: p.midCombatCast, interruptTime: undefined } };
+    return { ...p, stats: { ...p.stats, castTime: p.midCombatCast, interruptTime: undefined, timeToRoot: undefined } };
   }, [snipeAdjustedPower, effectiveHidden]);
 
   // Layer active Mechanic Adjuster contributions on top of the snipe-
@@ -989,6 +989,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     ...(effectiveStats?.accuracy && { accuracy: effectiveStats.accuracy }),
     ...(effectiveStats?.range && { range: effectiveStats.range }),
     ...(effectiveStats?.castTime && { castTime: effectiveStats.castTime }),
+    ...(effectiveStats?.timeToRoot && { timeToRoot: effectiveStats.timeToRoot }),
     // AoE stats
     ...(effectiveStats?.radius && { radius: effectiveStats.radius }),
     ...(arcInDegrees != null && { arc: arcInDegrees }),

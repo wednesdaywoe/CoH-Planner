@@ -24,7 +24,8 @@ export const MementoMori: Power = {
     "recharge": 300,
     "endurance": 10.4,
     "castTime": 1.33,
-    "maxTargets": 10
+    "maxTargets": 10,
+    "timeToRoot": 1.17
   },
   "allowedEnhancements": [
     "EnduranceModification",

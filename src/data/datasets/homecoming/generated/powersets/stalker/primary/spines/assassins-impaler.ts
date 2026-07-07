@@ -27,7 +27,8 @@ export const AssassinsImpaler: Power = {
     "recharge": 15,
     "endurance": 14.352,
     "castTime": 3,
-    "interruptTime": 2
+    "interruptTime": 2,
+    "timeToRoot": 0.3667
   },
   "allowedEnhancements": [
     "EnduranceReduction",

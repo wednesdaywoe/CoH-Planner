@@ -26,7 +26,8 @@ export const Swoop: Power = {
     "range": 7,
     "recharge": 12,
     "endurance": 11.856,
-    "castTime": 1.37
+    "castTime": 1.37,
+    "timeToRoot": 1.23
   },
   "allowedEnhancements": [
     "EnduranceReduction",
