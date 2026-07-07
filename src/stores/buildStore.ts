@@ -471,6 +471,27 @@ function syncBuildDefinitions(build: Build): void {
     }
   }
 
+  // Append any inherent powers added since this build was saved — e.g. the
+  // Kheldian travel inherents (Energy/Combat Flight, Shadow Step/Recall) that
+  // became discoverable in 2026-06, or Ninja/Beast Run. Without this, an older
+  // saved build loads missing those always-on toggles and can't slot them. This
+  // lives in the shared sync funnel so BOTH importBuild (share links / JSON) and
+  // localStorage rehydrate self-heal — the import path previously skipped it,
+  // which is why a pre-fix Peacebringer share showed no Energy/Combat Flight.
+  if (build.inherents.length > 0 && build.archetype.id) {
+    const desired = getInherentSelectedPowers(
+      build.archetype.id,
+      build.archetype.name || undefined,
+      build.archetype.inherent,
+      build.level,
+    );
+    const have = new Set(build.inherents.map((p) => p.internalName));
+    const missing = desired.filter((p) => !have.has(p.internalName));
+    if (missing.length > 0) {
+      build.inherents = [...build.inherents, ...missing];
+    }
+  }
+
   // Fix IO set enhancement icons from current data
   const fixEnhancementIcons = (powers: SelectedPower[]) => {
     let anyChanged = false;
@@ -2633,23 +2654,10 @@ export const useBuildStore = create<BuildStore>()(
             });
           }
 
-          // Migration: Append any inherent powers added since this build was
-          // saved — e.g. Ninja Run / Beast Run were added in 2026-05. Without
-          // this, existing builds load missing the new toggles and the user
-          // has to do a full rebuild to access them.
-          if (state.build.inherents.length > 0 && state.build.archetype.id) {
-            const desired = getInherentSelectedPowers(
-              state.build.archetype.id,
-              state.build.archetype.name || undefined,
-              state.build.archetype.inherent,
-              state.build.level,
-            );
-            const have = new Set(state.build.inherents.map((p) => p.internalName));
-            const missing = desired.filter((p) => !have.has(p.internalName));
-            if (missing.length > 0) {
-              state.build.inherents = [...state.build.inherents, ...missing];
-            }
-          }
+          // Migration: Append inherent powers added since this build was saved
+          // (e.g. Kheldian travel inherents, Ninja/Beast Run) now lives in the
+          // shared syncBuildDefinitions funnel below, so importBuild (share
+          // links / JSON) self-heals too — not just localStorage rehydrate.
 
           // Migration: Reconcile per-server auto-granted inherent slots
           // (e.g. Rebirth's Health/Stamina grants at L8/L16/L12/L22). Builds

@@ -47,4 +47,45 @@ describe('Kheldian travel inherents are discoverable (homecoming)', () => {
     expect(energy?.inherentCategory).toBe('archetype');
     expect(combat?.inherentCategory).toBe('archetype');
   });
+
+  // Regression (bug report @nyhm, 2026-07-06): a Peacebringer build SAVED before
+  // the travel-inherent fix stores inherents as just [Health, Stamina]. Importing
+  // it via a share link / JSON (importBuild → hydrateBuild) must backfill the
+  // missing Energy/Combat Flight — previously the backfill lived only in the
+  // localStorage rehydrate path, so imported builds loaded without them and the
+  // user couldn't find or slot the powers. The fix moved the backfill into the
+  // shared syncBuildDefinitions funnel that importBuild also runs.
+  it('importBuild backfills travel inherents into a pre-fix Peacebringer save', () => {
+    const preFixSave = JSON.stringify({
+      version: 4,
+      build: {
+        name: 'Pre-fix PB',
+        serverId: 'homecoming',
+        archetype: { id: 'peacebringer', name: 'Peacebringer' },
+        level: 50,
+        primary: { id: 'peacebringer/luminous-blast', powers: [] },
+        secondary: { id: 'peacebringer/luminous-aura', powers: [] },
+        pools: [],
+        epicPool: null,
+        // The tell-tale pre-fix shape: no Energy_Flight / Combat_Flight.
+        inherents: [
+          { name: 'Health', internalName: 'Health', level: 1, slots: [] },
+          { name: 'Stamina', internalName: 'Stamina', level: 1, slots: [] },
+        ],
+      },
+    });
+
+    const ok = useBuildStore.getState().importBuild(preFixSave);
+    expect(ok).toBe(true);
+
+    const inherents = useBuildStore.getState().build.inherents;
+    const energy = inherents.find((p) => p.internalName === 'Energy_Flight');
+    const combat = inherents.find((p) => p.internalName === 'Combat_Flight');
+    expect(energy).toBeDefined();
+    expect(combat).toBeDefined();
+    // And they must be slottable (the second half of the report — "can't slot").
+    expect(energy?.maxSlots).toBeGreaterThan(0);
+    expect(combat?.maxSlots).toBeGreaterThan(0);
+    expect(energy?.inherentCategory).toBe('archetype');
+  });
 });
