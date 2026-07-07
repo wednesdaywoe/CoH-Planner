@@ -21,10 +21,12 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
-    date: '2026-07-06',
+    date: '2026-07-07',
 
     items: [
+      { message: '🚨 A very large and comprehensive data converter rewrite was implemented to address a large family of bugs related to the old coverter flattening data and dropping important attributes before it reached the planner (ie: a power does energy/smashing damage, but in the planner you only see the smashing damage portion). If the change is successful, you won\'t notice anything has changed other than more information surfacing in the planner that was previously missing 🚨', type: 'fix'},
       { message: 'Corrected an issue preventing the previous fix for Kheldian inherent travel powers from applying to loaded or imported builds', type: 'fix'},
+      { message: 'Fixed the Brute ATO "Unrelenting Fury" +Regeneration proc showing a wildly inflated regen bonus (hundreds of %). It now reports the correct average steady-state value from its ~10s stacking buff. Other buff-granting procs (+Absorb, +Res, Hide) now also carry their true buff durations.', type: 'fix'},
     ]
   },
 

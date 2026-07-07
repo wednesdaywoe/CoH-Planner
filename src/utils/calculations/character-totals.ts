@@ -2481,7 +2481,7 @@ function applyPPMProcBonuses(
       const sourceName = `${procData.setName}: ${ioSlot.name} (PPM)`;
 
       // Helper to apply a single PPM effect contribution
-      const applyPPMEffect = (category: string | undefined, value: number | undefined, suffix?: string) => {
+      const applyPPMEffect = (category: string | undefined, value: number | undefined, duration: number | undefined, suffix?: string) => {
         if (!category || value === undefined) return;
         if (!isProcCategoryEnabled(category, procSettings)) return;
         const label = suffix ? `${sourceName} (${suffix})` : sourceName;
@@ -2511,10 +2511,28 @@ function applyPPMProcBonuses(
             break;
           }
           case 'Regeneration': {
-            const regenVal = (value * procsPerMin) / 60;
-            const regenPct = (regenVal / BASE_REGEN_RATE) * 100;
-            global.regeneration += regenPct;
-            addToBreakdown(breakdown, 'regeneration', { name: label, value: regenPct, type: 'proc' });
+            if (duration && duration > 0) {
+              // Stacking DURATION regen BUFF (e.g. Unrelenting Fury: +15% /
+              // Superior +20% Regeneration for ~10.25s, StackType=Stack). `value`
+              // is the per-stack regen %, NOT a one-shot HP grant — do NOT run it
+              // through the instant-grant rate conversion (that inflates +20% into
+              // ~+430%). The steady-state contribution is the per-stack value ×
+              // the expected number of concurrently-active stacks, which by
+              // Little's law is arrivalRate × buff lifetime. procsPerMin is already
+              // area/rate-clamped (≤ ~5.4 for toggles), so this lands near the low
+              // end of the buff's transient 1–5-stack range — the honest average.
+              const avgStacks = (procsPerMin / 60) * duration;
+              const effectivePct = value * avgStacks;
+              global.regeneration += effectivePct;
+              addToBreakdown(breakdown, 'regeneration', { name: label, value: effectivePct, type: 'proc' });
+            } else {
+              // Genuine instant per-proc regen grant (no buff duration): convert
+              // the one-shot to an equivalent sustained regen rate.
+              const regenVal = (value * procsPerMin) / 60;
+              const regenPct = (regenVal / BASE_REGEN_RATE) * 100;
+              global.regeneration += regenPct;
+              addToBreakdown(breakdown, 'regeneration', { name: label, value: regenPct, type: 'proc' });
+            }
             break;
           }
           // Other PPM categories (Damage, Control, etc.) don't contribute to dashboard stats
@@ -2523,7 +2541,7 @@ function applyPPMProcBonuses(
 
       // Apply each structured effect (e.g., Panacea's +HP + +End)
       for (const e of effects) {
-        applyPPMEffect(e.category, e.value, effects.length > 1 ? e.category : undefined);
+        applyPPMEffect(e.category, e.value, e.duration, effects.length > 1 ? e.category : undefined);
       }
     }
   };

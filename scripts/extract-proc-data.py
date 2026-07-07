@@ -186,6 +186,17 @@ def structured_effects(power: PowerRecord) -> list[dict]:
     return out
 
 
+def _buff_duration(gp: PowerRecord) -> float | None:
+    """The lifetime of a granted buff power's effect (max real-attrib template
+    duration). A stacking-buff proc (Unrelenting Fury) grants a power whose +Regen
+    lasts this long; the granting Grant_Power template's own duration is only the
+    trigger dwell. Ignores marker templates (Grant_Power/Null/etc.)."""
+    ds = [round(t.duration, 2) for eg in gp.effects for t in eg.templates
+          if t.duration and t.attribs
+          and t.attribs[0] not in ('Grant_Power', 'Null', 'Create_Entity', 'Set_Mode')]
+    return max(ds) if ds else None
+
+
 def _filtered_own(piece: PowerRecord) -> PowerRecord:
     """A view of the piece with only non-enhancement, non-marker templates."""
     groups = []
@@ -323,11 +334,19 @@ def resolve_proc_payload(piece: PowerRecord, gb_index: dict[str, PowerRecord]) -
                     out += [{'category': 'Damage', 'value': 100.0, 'effectType': 'All', 'duration': d},
                             {'category': 'ToHit', 'value': 15.0, 'duration': d}]
                     return out
-                # Otherwise resolve the granted Global_Bonus (Force Feedback +Rech, …).
+                # Otherwise resolve the granted Global_Bonus (Force Feedback +Rech,
+                # Unrelenting Fury +Regen, …). The buff's LIFETIME lives on the
+                # granted power's own templates (e.g. UF's +15% Regen lasts 10.25s
+                # and Stacks); the outer Grant_Power template's duration (~0.5s) is
+                # just the trigger's dwell and must NOT be used as the buff duration
+                # — a stacking-buff proc's steady-state contribution depends on the
+                # real lifetime. Fall back to the trigger duration only when the
+                # grant target carries none.
                 for tgt in names:
                     gp = gb_index.get(tgt) or gb_index.get(tgt.split('.')[-1])
                     if not gp:
                         continue
+                    gp_dur = _buff_duration(gp)
                     for ef in structured_effects(gp):
                         # Skip Special and Damage: a +Damage% buff-stack granted via
                         # this path (Ascendancy of the Dominator) is bespoke — the
@@ -335,8 +354,9 @@ def resolve_proc_payload(piece: PowerRecord, gb_index: dict[str, PowerRecord]) -
                         # Clean grant-globals are Recharge/Defense/etc. (Force Feedback).
                         if ef['category'] in ('Special', 'Damage'):
                             continue
-                        if t.duration:
-                            ef['duration'] = round(t.duration, 2)
+                        dur = gp_dur if gp_dur else (round(t.duration, 2) if t.duration else None)
+                        if dur:
+                            ef['duration'] = dur
                         ck = ef['category'] + str(ef.get('effectType', '')) + str(ef.get('value'))
                         if ck not in seen:
                             seen.add(ck)
