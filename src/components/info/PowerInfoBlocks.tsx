@@ -142,7 +142,6 @@ interface GeneralStatsBlockProps {
     range?: number;
     recharge?: number;
     castTime?: number;
-    timeToRoot?: number;
     radius?: number;
     /** Arc in degrees (already converted upstream from radians). */
     arc?: number;
@@ -217,11 +216,7 @@ export function GeneralStatsBlock({
   return (
     <div className="bg-slate-800/40 rounded p-2 space-y-0.5">
       {effects.castTime != null && activation && (
-        <ActivationRow
-          castTime={activation.final}
-          useArcanaTime={useArcanaTime}
-          timeToRoot={effects.timeToRoot}
-        />
+        <ActivationRow castTime={activation.final} useArcanaTime={useArcanaTime} />
       )}
       {effects.range != null && rng && rng.final > 0 && (
         <KvRow label="Pwr Range" value={`${rng.final.toFixed(0)}ft`} />
@@ -265,27 +260,12 @@ export function GeneralStatsBlock({
 // Range / Effect Area / Attack Type for visual consistency.
 // ----------------------------------------------------------------------
 
-function ActivationRow({
-  castTime,
-  useArcanaTime,
-  timeToRoot,
-}: {
-  castTime: number;
-  useArcanaTime: boolean;
-  timeToRoot?: number;
-}) {
+function ActivationRow({ castTime, useArcanaTime }: { castTime: number; useArcanaTime: boolean }) {
   return (
     <>
       <KvRow label="Activation" value={`${castTime.toFixed(3)}s`} />
       {useArcanaTime && (
         <KvRow label="ArcanaTime" value={`${calculateArcanaTime(castTime).toFixed(3)}s`} />
-      )}
-      {timeToRoot != null && (
-        <KvRow
-          label="Root Time"
-          value={`${timeToRoot.toFixed(3)}s`}
-          title="Animation lock duration — how long the character is physically rooted in place, distinct from the interruptible window"
-        />
       )}
     </>
   );

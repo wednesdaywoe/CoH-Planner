@@ -989,7 +989,6 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     ...(effectiveStats?.accuracy && { accuracy: effectiveStats.accuracy }),
     ...(effectiveStats?.range && { range: effectiveStats.range }),
     ...(effectiveStats?.castTime && { castTime: effectiveStats.castTime }),
-    ...(effectiveStats?.timeToRoot && { timeToRoot: effectiveStats.timeToRoot }),
     // AoE stats
     ...(effectiveStats?.radius && { radius: effectiveStats.radius }),
     ...(arcInDegrees != null && { arc: arcInDegrees }),

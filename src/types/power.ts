@@ -418,9 +418,6 @@ export interface PowerEffects {
   activatePeriod?: number;
   /** Cast/activation time in seconds */
   castTime?: number;
-  /** Animation root/lock duration in seconds — see `PowerStats.timeToRoot`.
-   *  Merged in for display alongside `castTime`; not consumed by calc. */
-  timeToRoot?: number;
   /** Effect area type */
   effectArea?: EffectArea;
   /** Radius for AoE powers */
@@ -658,11 +655,12 @@ export interface PowerStats {
    *  window during which the character is physically locked in place,
    *  distinct from `interruptTime`. For ordinary snipes this is roughly
    *  `castTime - interruptTime`; for Assassin's Strike from-Hide openers
-   *  it's markedly shorter than that gap. Display-only for now — not yet
-   *  consumed by attack-chain/DPS timing pending in-game verification of
-   *  whether root time (vs full castTime) gates when the next power can
-   *  be queued. Absent when equal to castTime (the common case) or unset
-   *  (Rebirth/Thunderspy, whose Parse6 layout omits the field). */
+   *  it's markedly shorter than that gap. Captured but not yet surfaced in
+   *  the UI or consumed by attack-chain/DPS timing — Mids has no equivalent
+   *  concept, and the queuing mechanic it would model needs in-game
+   *  verification before it's exposed anywhere. Absent when equal to
+   *  castTime (the common case) or unset (Rebirth/Thunderspy, whose Parse6
+   *  layout omits the field). */
   timeToRoot?: number;
   /** Max targets for AoE */
   maxTargets?: number;
