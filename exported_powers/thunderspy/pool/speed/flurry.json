@@ -833,6 +833,17 @@
       ]
     }
   ],
+  "modes_required": [
+    "HunterMode",
+    "ProwlerMode",
+    "Disable_Pool",
+    "Disable_All",
+    "Widow_Tarantula_Mode",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 0,
   "powerset": "Pool.Speed"
 }

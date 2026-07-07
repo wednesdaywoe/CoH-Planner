@@ -57,12 +57,7 @@ export const PowerSink: Power = {
     "stun": {
       "mag": 3,
       "scale": 5,
-      "table": "Melee_Stun",
-      "domination": {
-        "mag": 3,
-        "scale": 7.5,
-        "table": "Melee_Stun"
-      }
+      "table": "Melee_Stun"
     },
     "recoveryDebuff": {
       "scale": 1,
@@ -77,6 +72,21 @@ export const PowerSink: Power = {
     },
     "buffDuration": 4
   },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 7.5,
+          "table": "Melee_Stun"
+        }
+      }
+    }
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

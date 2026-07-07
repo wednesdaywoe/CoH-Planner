@@ -53,12 +53,7 @@ export const Chilblain: Power = {
     "immobilize": {
       "mag": 4,
       "scale": 15,
-      "table": "Ranged_Immobilize",
-      "domination": {
-        "mag": 4,
-        "scale": 22.5,
-        "table": "Ranged_Immobilize"
-      }
+      "table": "Ranged_Immobilize"
     },
     "slow": {
       "runSpeed": {
@@ -91,5 +86,20 @@ export const Chilblain: Power = {
       "table": "Ranged_Slow"
     },
     "buffDuration": 18
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "immobilize": {
+          "mag": 4,
+          "scale": 22.5,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

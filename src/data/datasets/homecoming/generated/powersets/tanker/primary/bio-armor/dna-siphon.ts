@@ -134,8 +134,8 @@ export const DNASiphon: Power = {
       "defaultActive": false,
       "effects": {
         "regenDebuff": {
-          "scale": 2.66,
-          "table": "Melee_Res_Boolean"
+          "scale": 1.33,
+          "table": "Melee_Ones"
         },
         "durations": {
           "regenDebuff": 30

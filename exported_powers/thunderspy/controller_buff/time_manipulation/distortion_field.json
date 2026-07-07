@@ -94,6 +94,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Controller_Buff.Time_Manipulation"
 }

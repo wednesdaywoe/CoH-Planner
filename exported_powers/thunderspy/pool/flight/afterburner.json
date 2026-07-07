@@ -305,6 +305,15 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_Pool",
+    "Disable_Travel",
+    "Disable_All",
+    "HunterMode",
+    "ProwlerMode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 13,
   "powerset": "Pool.Flight"
 }

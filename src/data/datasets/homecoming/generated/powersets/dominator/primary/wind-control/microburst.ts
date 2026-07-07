@@ -56,12 +56,7 @@ export const Microburst: Power = {
     "stun": {
       "mag": 3,
       "scale": 8,
-      "table": "Ranged_Stun",
-      "domination": {
-        "mag": 3,
-        "scale": 12,
-        "table": "Ranged_Stun"
-      }
+      "table": "Ranged_Stun"
     },
     "slow": {
       "runSpeed": {
@@ -96,6 +91,19 @@ export const Microburst: Power = {
     "buffDuration": 12
   },
   "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 12,
+          "table": "Ranged_Stun"
+        }
+      }
+    },
     {
       "id": "wind_control_pressure-5",
       "label": "Pressure (5 stacks)",

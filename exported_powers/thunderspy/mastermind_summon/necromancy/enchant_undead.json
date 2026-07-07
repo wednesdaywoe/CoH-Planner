@@ -283,6 +283,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Mastermind_Summon.Necromancy"
 }

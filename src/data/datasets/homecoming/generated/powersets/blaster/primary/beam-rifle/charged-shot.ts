@@ -63,18 +63,11 @@ export const ChargedShot: Power = {
       "label": "Disintegrating",
       "scope": "per-power",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Energy",
-          "scale": 0.246,
-          "table": "Ranged_Damage"
-        },
-        {
-          "type": "Energy",
-          "scale": 0.2834,
-          "table": "Ranged_PvPDamage"
-        }
-      ]
+      "damage": {
+        "type": "Energy",
+        "scale": 0.246,
+        "table": "Ranged_Damage"
+      }
     }
   ],
   "specialEffects": [

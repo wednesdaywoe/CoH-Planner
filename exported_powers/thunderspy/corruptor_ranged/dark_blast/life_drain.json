@@ -292,6 +292,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Corruptor_Ranged.Dark_Blast"
 }

@@ -86,12 +86,7 @@ export const ArcticAir: Power = {
     "confuse": {
       "mag": 3,
       "scale": 2,
-      "table": "Ranged_Fear",
-      "domination": {
-        "mag": 3,
-        "scale": 3,
-        "table": "Ranged_Fear"
-      }
+      "table": "Ranged_Fear"
     },
     "fear": {
       "mag": 1,
@@ -109,9 +104,9 @@ export const ArcticAir: Power = {
       "defaultActive": false,
       "effects": {
         "confuse": {
-          "mag": 1,
-          "scale": 1,
-          "table": "Ranged_PvPMez"
+          "mag": 3,
+          "scale": 3,
+          "table": "Ranged_Fear"
         }
       }
     }

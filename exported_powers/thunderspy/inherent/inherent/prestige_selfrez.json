@@ -119,6 +119,11 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Arena",
+    "Disable_Temp"
+  ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

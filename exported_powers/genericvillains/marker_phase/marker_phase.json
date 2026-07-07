@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Recharge_Power"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -85,7 +85,7 @@
         },
         {
           "attribs": [
-            "Recharge_Power"
+            "Vision_Phase"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",

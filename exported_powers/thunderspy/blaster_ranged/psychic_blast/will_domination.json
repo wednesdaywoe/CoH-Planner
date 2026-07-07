@@ -249,6 +249,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Blaster_Ranged.Psychic_Blast"
 }

@@ -183,6 +183,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Training_Gadgets.Crab_Spider_Training"
 }

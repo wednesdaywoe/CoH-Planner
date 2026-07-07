@@ -69,11 +69,20 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Melee",
+            "Ranged",
+            "Area",
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy",
+            "Psionic"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Current",
           "target": "",
           "table": "Melee_Ones",
           "scale": 0.01,
@@ -172,6 +181,11 @@
         }
       ]
     }
+  ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Incarn",
+    "HybridLockout"
   ],
   "available_level": 0,
   "powerset": "Incarnate.Hybrid"

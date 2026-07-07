@@ -83,6 +83,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Dominator_Assault.Fiery_Assault"
 }

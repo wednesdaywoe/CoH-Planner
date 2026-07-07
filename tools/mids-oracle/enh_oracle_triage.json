@@ -1,0 +1,1137 @@
+{
+  "dataset": "homecoming",
+  "enhdb_version": 0.0,
+  "extra_proc_classification": {
+    "rows": [
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "damage"
+        ],
+        "io": "chance for energy damage",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "absolute resolution"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "mezresist",
+          "resistance"
+        ],
+        "io": "psionic and mez resistance",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "aegis"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "knockbackprotection"
+        ],
+        "io": "protection from knockback",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "blessing of the zephyr"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "defense"
+        ],
+        "io": "+def(all)",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "call to arms"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "stealth"
+        ],
+        "io": "buff stealth",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "celerity"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "special"
+        ],
+        "io": "pet defense bonus",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "command of the mastermind"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "debuff"
+        ],
+        "io": "+resist threat",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "commanding presence"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "defense"
+        ],
+        "io": "+def(all)",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "edict of the master"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "control",
+          "damage"
+        ],
+        "io": "recharge/chance for fear, psionic damage",
+        "ppm": 2.5,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "endless nightmare"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "resistance"
+        ],
+        "io": "+res(all)",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "expedient reinforcement"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "stealth"
+        ],
+        "io": "+stealth",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "freebird"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "runspeed"
+        ],
+        "io": "buff run speed",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "gift of the ancients"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "defense"
+        ],
+        "io": "+def(all)",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "gladiator's armor"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "special"
+        ],
+        "io": "chance for pbaoe resolve",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "guardian's gift"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "control"
+        ],
+        "io": "chance for knockdown",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "imperial might"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "mezresist",
+          "regeneration"
+        ],
+        "io": "+regeneration/+res mez(all)",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "impervious skin"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "resistance"
+        ],
+        "io": "+res(psionic)",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "impervium armor"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "special"
+        ],
+        "io": "chance for heal, endurance, regeneration",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "inexhaustibility"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "knockbackprotection"
+        ],
+        "io": "protection from knockback",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "karma"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "maxhp",
+          "resistance"
+        ],
+        "io": "resistance bonus",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "kheldian's grace"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "tohit"
+        ],
+        "io": "buff tohit",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "kismet"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "recharge"
+        ],
+        "io": "buff recharge",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "luck of the gambler"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "special"
+        ],
+        "io": "pet resistance bonus",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "mark of supremacy"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "recovery"
+        ],
+        "io": "buff recovery",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "miracle"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "recovery",
+          "regeneration"
+        ],
+        "io": "buff recovery & regeneration",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "numina's convalescence"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "resistance"
+        ],
+        "io": "scaling +res(all)",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "reactive defenses"
+      },
+      {
+        "bucket": "unknown",
+        "categories": [
+          "special"
+        ],
+        "io": "+perception",
+        "ppm": null,
+        "reason": "insufficient signal",
+        "set": "rectified reticle"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "regeneration"
+        ],
+        "io": "buff regeneration",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "regenerative tissue"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "special"
+        ],
+        "io": "chance for self resurrect",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "return from the grave"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "resistance"
+        ],
+        "io": "teleportation protection, +res(all)",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "shield wall"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "resistance"
+        ],
+        "io": "+res(all)",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "sovereign right"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "special"
+        ],
+        "io": "pet toxic bonus",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "spider's bite"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "defense"
+        ],
+        "io": "damage resistance/+def(all)",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "steadfast protection"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "knockbackprotection"
+        ],
+        "io": "knockback protection",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "steadfast protection"
+      },
+      {
+        "bucket": "likely_oracle_proc_staleness",
+        "categories": [
+          "control"
+        ],
+        "io": "chance for stun",
+        "ppm": 3.5,
+        "reason": "set exists in oracle, but this proc row has no oracle counterpart",
+        "set": "stupefy"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "special"
+        ],
+        "io": "convert knockback to knockdown",
+        "ppm": null,
+        "reason": "special conversion mechanic (non-chance proc coverage)",
+        "set": "sudden acceleration"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "damage"
+        ],
+        "io": "chance for energy damage",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "superior absolute resolution"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "special"
+        ],
+        "io": "pet defense bonus",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "superior command of the mastermind"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "control",
+          "damage"
+        ],
+        "io": "recharge/chance for fear, psionic damage",
+        "ppm": 2.5,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "superior endless nightmare"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "special"
+        ],
+        "io": "chance for pbaoe resolve",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "superior guardian's gift"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "special"
+        ],
+        "io": "chance to summon haunts",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "superior haunting"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "maxhp",
+          "resistance"
+        ],
+        "io": "resistance bonus",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "superior kheldian's grace"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "special"
+        ],
+        "io": "pet resistance bonus",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "superior mark of supremacy"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "special"
+        ],
+        "io": "chance for self resurrect",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "superior return from the grave"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "special"
+        ],
+        "io": "pet toxic bonus",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "superior spider's bite"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "heal"
+        ],
+        "io": "chance for heal",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "superior vampire's bite"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "rechargeresistance",
+          "slowresistance"
+        ],
+        "io": "slow resistance",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "superior winter's gift"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "debuff"
+        ],
+        "io": "chance for -res debuff",
+        "ppm": 6,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "superior witchcraft"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "runspeed"
+        ],
+        "io": "buff run speed",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "synapse's shock"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "special"
+        ],
+        "io": "chance to summon haunts",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "the haunting"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "stealth"
+        ],
+        "io": "+stealth",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "time & space manipulation"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "stealth"
+        ],
+        "io": "+stealth",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "unbounded leap"
+      },
+      {
+        "bucket": "likely_non_proc_global_or_passive",
+        "categories": [
+          "maxhp"
+        ],
+        "io": "max hp",
+        "ppm": null,
+        "reason": "name indicates passive/global bonus",
+        "set": "unbreakable guard"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "heal"
+        ],
+        "io": "chance for heal",
+        "ppm": null,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "vampire's bite"
+      },
+      {
+        "bucket": "unknown",
+        "categories": [
+          "rechargeresistance",
+          "slowresistance"
+        ],
+        "io": "resist speed and recharge debuffs",
+        "ppm": null,
+        "reason": "insufficient signal",
+        "set": "winter's gift"
+      },
+      {
+        "bucket": "likely_oracle_set_staleness",
+        "categories": [
+          "debuff"
+        ],
+        "io": "chance for -res debuff",
+        "ppm": 3.5,
+        "reason": "proc-looking entry but set is absent in local oracle",
+        "set": "witchcraft"
+      }
+    ],
+    "summary": {
+      "likely_non_proc_global_or_passive": 37,
+      "likely_oracle_proc_staleness": 1,
+      "likely_oracle_set_staleness": 16,
+      "unknown": 2
+    }
+  },
+  "proc_alias_map": {
+    "achilles' heel|chance for res debuff": "chance for -res debuff",
+    "annihilation|chance for res debuff": "chance for -res debuff",
+    "apocalypse|chance of damage(negative)": "chance for negative energy damage",
+    "ascendancy of the dominator|recharge/chance for +damage": "chance for +damage",
+    "assassin's mark|rechargetime/rchg build up": "chance to recharge build up",
+    "avalanche|recharge/chance for knockdown": "chance for knockdown",
+    "blistering cold|recharge/chance for hold": "chance for hold",
+    "brute's fury|recharge/fury bonus": "chance for +fury",
+    "cacophony|chance of damage(energy)": "chance for energy damage",
+    "call of the sandman|chance of heal self": "chance for heal self",
+    "coercive persuasion|contagious confusion": "chance for confusion",
+    "critical strikes|rechargetime/+50% crit proc": "chance for critical hit",
+    "debilitative action|disorient bonus": "chance for disorient",
+    "decimation|chance of build up": "chance for build up",
+    "defender's bastion|recharge/chance for minor pbaoe heal": "chance for minor pbaoe heal",
+    "defiant barrage|rechargetime/+status": "recharge/chance for mez protection,resistance",
+    "devastation|chance of hold": "chance for hold",
+    "dominating grasp|rechargetime/fiery orb": "chance for fiery orb",
+    "dominion of arachnos|recharge/chance for -dmg and terrorize": "recharge/chance for -dam(all)/chance for terror",
+    "energy manipulator|chance to stun": "chance for disorient",
+    "entomb|recharge/chance for +absorb": "chance for +absorb",
+    "entropic chaos|chance of heal self": "chance for heal self",
+    "essence transfer|rechargetime/global heal": "recharge/chance for +health",
+    "force feedback|chance for +recharge": "chance for recharge buff",
+    "frozen blast|recharge/chance for immobilize": "chance for immobilize",
+    "fury of the gladiator|chance for res debuff": "chance for -res debuff",
+    "gauntleted fist|rechargetime/+absorb": "chance for +absorb",
+    "ghost widow's embrace|chance of damage(psionic)": "chance for psionic damage",
+    "gladiator's javelin|chance of damage(toxic)": "chance for toxic damage",
+    "gladiator's net|chance of damage(lethal)": "chance for lethal damage",
+    "glimpse of the abyss|chance of damage(psionic)": "chance for psionic damage",
+    "hecatomb|chance of damage(negative)": "chance for negative energy damage",
+    "impeded swiftness|chance of damage(smashing)": "chance for smashing damage",
+    "induced coma|chance of -recharge": "chance for recharge slow",
+    "javelin volley|chance of damage(lethal)": "chance for lethal damage",
+    "kinetic combat|knockdown bonus": "chance for knockdown",
+    "launch|jumping / increased jump height": "jump/+jump height/+max jump height",
+    "lockdown|chance for +2 mag hold": "chance for hold mag 2",
+    "mako's bite|chance of damage(lethal)": "chance for lethal damage",
+    "malaise's illusions|chance of damage(psionic)": "chance for psionic damage",
+    "might of the tanker|recharge/chance for +res(all)": "chance for +res(all)",
+    "neuronic shutdown|chance of damage(psionic)": "chance for psionic dot",
+    "opportunity strikes|rechargetime/chance for opportunity": "recharge/chance for +opportunity",
+    "overpowering presence|rechargetime/energy font": "chance for energy font",
+    "pacing of the turtle|chance of -recharge": "chance for recharge slow",
+    "panacea|+hit points/endurance": "chance for +hp & +end",
+    "perfect zinger|chance for psi damage": "chance for psionic damage",
+    "performance shifter|chance for +end": "chance for endurance buff",
+    "positron's blast|chance of damage(energy)": "chance for energy damage",
+    "pounding slugfest|disorient bonus": "chance for disorient",
+    "power transfer|chance to heal self": "chance for heal self",
+    "razzle dazzle|chance of immobilize": "chance for immobilize",
+    "scirocco's dervish|chance of damage(lethal)": "chance for lethal damage",
+    "scourging blast|rechargetime/pbaoe +end": "recharge/chance for +endurance,+health",
+    "scrapper's strike|recharge/critical hit bonus": "critical hit bonus",
+    "sentinel's ward|rechargetime/chance for +absorb": "chance for +absorb",
+    "stalker's guile|recharge/chance to hide": "chance for hide",
+    "sting of the manticore|chance of damage(toxic)": "chance for toxic damage",
+    "superior ascendancy of the dominator|recharge/chance for +damage": "recharge/chance for +dam(all)",
+    "superior assassin's mark|rechargetime/rchg build up": "recharge/chance for recharge power",
+    "superior avalanche|recharge/chance for knockdown": "recharge/chance for knockback",
+    "superior brute's fury|recharge/fury bonus": "recharge/chance for +rage",
+    "superior critical strikes|rechargetime/+50% crit proc": "recharge/chance for +critical hit%",
+    "superior defender's bastion|recharge/chance for minor pbaoe heal": "recharge/chance for +health",
+    "superior defiant barrage|rechargetime/+status": "recharge/chance for mez protection,resistance",
+    "superior dominating grasp|rechargetime/fiery orb": "recharge/chance for fiery orb",
+    "superior dominion of arachnos|recharge/chance for -dmg and terrorize": "recharge/chance for -dam(all)/chance for terror",
+    "superior entomb|recharge/chance for +absorb": "chance for +absorb",
+    "superior essence transfer|rechargetime/global heal": "recharge/chance for +health",
+    "superior gauntleted fist|rechargetime/+absorb": "chance for +absorb",
+    "superior opportunity strikes|rechargetime/chance for opportunity": "recharge/chance for +opportunity",
+    "superior overpowering presence|rechargetime/energy font": "recharge/chance for energy font",
+    "superior scourging blast|rechargetime/pbaoe +end": "recharge/chance for +endurance,+health",
+    "superior scrapper's strike|recharge/critical hit bonus": "critical hit bonus",
+    "superior sentinel's ward|rechargetime/chance for +absorb": "chance for +absorb",
+    "superior stalker's guile|recharge/chance to hide": "recharge/chance for hidden status",
+    "superior unrelenting fury|rechargetime/+regen/+end": "recharge/chance for +end discount,+regeneration",
+    "superior vigilant assault|rechargetime/pbaoe +absorb": "chance for minor pbaoe +absorb",
+    "superior winter's bite|recharge/chance for -speed & -recharge": "recharge/chance for -recharge,slow",
+    "tempest|chance of end drain": "chance for end drain",
+    "theft of essence|chance for +endurance": "chance for endurance buff",
+    "thrust|thrust: running speed/increased run speed": "run/+run speed",
+    "touch of death|chance of damage(negative)": "chance for negative energy damage",
+    "touch of lady grey|chance for negative damage": "chance for negative energy damage",
+    "trap of the hunter|chance of damage(lethal)": "chance for lethal damage",
+    "triumphant insult|chance to disorient": "chance for disorient",
+    "unrelenting fury|rechargetime/+regen/+end": "recharge/chance for +end discount,+regeneration",
+    "unspeakable terror|disorient bonus": "chance for disorient",
+    "vigilant assault|rechargetime/pbaoe +absorb": "chance for minor pbaoe +absorb",
+    "warp|range / increased perception": "range/+perception",
+    "winter's bite|recharge/chance for -speed & -recharge": "chance for recharge slow"
+  },
+  "proc_alias_map_explicit": {
+    "stupefy|chance of knockback": "chance for knockback"
+  },
+  "residual_signatures": {
+    "extra_proc": [
+      "absolute resolution|chance for energy damage",
+      "aegis|psionic and mez resistance",
+      "blessing of the zephyr|protection from knockback",
+      "call to arms|+def(all)",
+      "celerity|buff stealth",
+      "command of the mastermind|pet defense bonus",
+      "commanding presence|+resist threat",
+      "edict of the master|+def(all)",
+      "endless nightmare|recharge/chance for fear, psionic damage",
+      "expedient reinforcement|+res(all)",
+      "freebird|+stealth",
+      "gift of the ancients|buff run speed",
+      "gladiator's armor|+def(all)",
+      "guardian's gift|chance for pbaoe resolve",
+      "imperial might|chance for knockdown",
+      "impervious skin|+regeneration/+res mez(all)",
+      "impervium armor|+res(psionic)",
+      "inexhaustibility|chance for heal, endurance, regeneration",
+      "karma|protection from knockback",
+      "kheldian's grace|resistance bonus",
+      "kismet|buff tohit",
+      "luck of the gambler|buff recharge",
+      "mark of supremacy|pet resistance bonus",
+      "miracle|buff recovery",
+      "numina's convalescence|buff recovery & regeneration",
+      "reactive defenses|scaling +res(all)",
+      "rectified reticle|+perception",
+      "regenerative tissue|buff regeneration",
+      "return from the grave|chance for self resurrect",
+      "shield wall|teleportation protection, +res(all)",
+      "sovereign right|+res(all)",
+      "spider's bite|pet toxic bonus",
+      "steadfast protection|damage resistance/+def(all)",
+      "steadfast protection|knockback protection",
+      "stupefy|chance for stun",
+      "sudden acceleration|convert knockback to knockdown",
+      "superior absolute resolution|chance for energy damage",
+      "superior command of the mastermind|pet defense bonus",
+      "superior endless nightmare|recharge/chance for fear, psionic damage",
+      "superior guardian's gift|chance for pbaoe resolve",
+      "superior haunting|chance to summon haunts",
+      "superior kheldian's grace|resistance bonus",
+      "superior mark of supremacy|pet resistance bonus",
+      "superior return from the grave|chance for self resurrect",
+      "superior spider's bite|pet toxic bonus",
+      "superior vampire's bite|chance for heal",
+      "superior winter's gift|slow resistance",
+      "superior witchcraft|chance for -res debuff",
+      "synapse's shock|buff run speed",
+      "the haunting|chance to summon haunts",
+      "time & space manipulation|+stealth",
+      "unbounded leap|+stealth",
+      "unbreakable guard|max hp",
+      "vampire's bite|chance for heal",
+      "winter's gift|resist speed and recharge debuffs",
+      "witchcraft|chance for -res debuff"
+    ],
+    "extra_sets": [],
+    "missing_proc": [
+      "executioner's contract|disorient bonus",
+      "hypersonic|flying / increased fly protection"
+    ],
+    "missing_sets": [],
+    "proc_category_mismatch": [
+      "absolute amazement|chance for tohit debuff|regeneration|debuff",
+      "analyze weakness|chance for +tohit||tohit",
+      "armageddon|chance for fire damage||damage",
+      "basilisk's gaze|chance for recharge slow||debuff",
+      "blaster's wrath|recharge/chance for fire damage|recharge|damage",
+      "cloud senses|chance for negative energy damage||damage",
+      "cupid's crush|damage/chance for confuse|damage|control",
+      "dark watcher's despair|chance for recharge slow|defense|debuff",
+      "deflated ego|chance for recovery debuff||debuff",
+      "eradication|chance for energy damage||damage",
+      "explosive strike|chance for smashing damage||damage",
+      "fortunata hypnosis|chance for placate||control",
+      "gaussian's synchronized fire-control|chance for build up|regeneration|damage,tohit",
+      "gladiator's strike|chance for smashing damage||damage",
+      "gravitational anchor|chance for hold||control",
+      "malice of the corruptor|recharge/chance for negative energy damage|damage,recharge|damage",
+      "obliteration|chance for smashing damage||damage",
+      "overwhelming force|damage/chance for knockdown/knockback to knockdown|damage|control",
+      "ragnarok|chance for knockdown||control",
+      "shield breaker|chance for lethal damage||damage",
+      "siphon insight|chance for +tohit||tohit",
+      "soulbound allegiance|chance for build up||damage,tohit",
+      "superior blaster's wrath|recharge/chance for fire damage|damage,recharge|damage",
+      "superior blistering cold|recharge/chance for hold|control,recharge|control",
+      "superior frozen blast|recharge/chance for immobilize|recharge|control",
+      "superior malice of the corruptor|recharge/chance for negative energy damage|damage,recharge|damage",
+      "superior might of the tanker|recharge/chance for +res(all)|recharge|resistance",
+      "superior will of the controller|recharge/chance for psionic damage|damage,recharge|damage",
+      "touch of the nictus|chance for negative energy damage||damage",
+      "unbreakable constraint|chance for smashing damage||damage",
+      "will of the controller|recharge/chance for psionic damage|damage,recharge|damage"
+    ],
+    "value_extra": [
+      "avalanche|2|+res(recharge_debuff)",
+      "blessing of the zephyr|3|knockback_protection",
+      "blistering cold|2|+res(recharge_debuff)",
+      "entomb|3|+res(recharge_debuff)",
+      "frozen blast|2|+res(recharge_debuff)",
+      "fury of the gladiator|2|+res(recharge_debuff)",
+      "fury of the gladiator|3|knockback_protection",
+      "fury of the gladiator|3|knockback_resistance",
+      "gift of the ancients|6|increased_run_speed",
+      "gladiator's armor|3|knockback_protection",
+      "gladiator's armor|3|knockback_resistance",
+      "gladiator's armor|5|+res(recharge_debuff)",
+      "gladiator's armor|6|defense_(all)",
+      "gladiator's javelin|5|knockback_protection",
+      "gladiator's net|4|+res(recharge_debuff)",
+      "gladiator's strike|5|knockback_resistance",
+      "ice mistral's torment|4|+res(recharge_debuff)",
+      "impervious skin|5|mez_resistance_(all)",
+      "javelin volley|5|+res(recharge_debuff)",
+      "karma|3|knockback_protection",
+      "kheldian's grace|6|damage_resistance_(all)",
+      "kheldian's grace|6|maximum_hitpoints",
+      "kinetic crash|4|knockback_protection",
+      "overwhelming force|6|knockback_protection",
+      "panacea|3|knockback_resistance",
+      "rectified reticle|3|perception",
+      "shield wall|3|knockback_resistance",
+      "shield wall|5|+res(recharge_debuff)",
+      "shield wall|6|damage_resistance_(all)",
+      "steadfast protection|2|defense_(all)",
+      "steadfast protection|3|knockback_protection",
+      "superior avalanche|2|+res(recharge_debuff)",
+      "superior blistering cold|2|+res(recharge_debuff)",
+      "superior entomb|3|+res(recharge_debuff)",
+      "superior frozen blast|2|+res(recharge_debuff)",
+      "superior kheldian's grace|6|damage_resistance_(all)",
+      "superior kheldian's grace|6|maximum_hitpoints",
+      "superior winter's bite|3|+res(recharge_debuff)",
+      "synapse's shock|3|+res(recharge_debuff)",
+      "synapse's shock|6|increased_run_speed",
+      "thrust|4|+res(recharge_debuff)",
+      "unbreakable guard|6|maximum_hitpoints",
+      "winter's bite|3|+res(recharge_debuff)"
+    ],
+    "value_mismatch": [
+      "achilles' heel|2|damage|1.5000|1.5250",
+      "ascendancy of the dominator|2|damage|2.5000|2.5250",
+      "assassin's mark|5|damage|3.5000|3.5250",
+      "brute's fury|4|damage|2.5000|2.5250",
+      "critical strikes|5|damage|3.5000|3.5250",
+      "deflated ego|3|damage|1.5000|1.5250",
+      "efficacy adaptor|5|damage|2.5000|2.5250",
+      "encouraged accuracy|3|damage|1.5000|1.5250",
+      "explosive strike|2|damage|1.5000|1.5250",
+      "force feedback|5|damage|2.5000|2.5250",
+      "gaussian's synchronized fire-control|5|damage|2.5000|2.5250",
+      "malaise's illusions|4|damage|2.5000|2.5250",
+      "perfect zinger|5|damage|2.5000|2.5250",
+      "performance shifter|5|damage|2.5000|2.5250",
+      "scrapper's strike|4|damage|2.5000|2.5250",
+      "spider's bite|2|damage|2.5000|2.5250",
+      "stalker's guile|4|damage|2.5000|2.5250",
+      "sudden acceleration|4|damage|2.5000|2.5250",
+      "touch of death|4|damage|2.5000|2.5250",
+      "will of the controller|2|damage|2.5000|2.5250"
+    ],
+    "value_missing": [
+      "blessing of the zephyr|3|defense_(area)",
+      "blessing of the zephyr|3|defense_(cold)",
+      "experienced marksman|6|defense_(energy)",
+      "experienced marksman|6|defense_(ranged)",
+      "experienced marksman|6|recovery",
+      "gift of the ancients|6|damage_resistance_(psionic)",
+      "gift of the ancients|6|mez_resistance_(all)",
+      "gladiator's armor|6|defense_(energy)",
+      "gladiator's armor|6|defense_(ranged)",
+      "gladiator's armor|6|recharge",
+      "impervious skin|5|recharge",
+      "karma|3|maximum_hitpoints",
+      "kheldian's grace|6|damage_resistance_(psionic)",
+      "kheldian's grace|6|mez_resistance_(all)",
+      "rectified reticle|3|regeneration",
+      "shield wall|6|damage_resistance_(psionic)",
+      "shield wall|6|mez_resistance_(all)",
+      "shield wall|6|recharge",
+      "steadfast protection|2|recovery",
+      "steadfast protection|3|maximum_hitpoints",
+      "superior kheldian's grace|6|damage_resistance_(psionic)",
+      "superior kheldian's grace|6|mez_resistance_(all)",
+      "synapse's shock|6|damage_resistance_(energy)",
+      "synapse's shock|6|mez_resistance_(all)",
+      "unbreakable guard|6|damage_resistance_(cold)",
+      "unbreakable guard|6|mez_resistance_(all)"
+    ]
+  },
+  "summary": {
+    "explicit_proc_aliases": 1,
+    "extra_proc": 56,
+    "extra_sets": 0,
+    "missing_proc": 2,
+    "missing_sets": 0,
+    "proc_aliases": 91,
+    "proc_category_mismatches": 31,
+    "value_extra_stats": 43,
+    "value_mismatches": 20,
+    "value_missing_stats": 26
+  },
+  "top": {
+    "extra_stats": [
+      [
+        "+res(recharge_debuff)",
+        18
+      ],
+      [
+        "knockback_protection",
+        8
+      ],
+      [
+        "knockback_resistance",
+        5
+      ],
+      [
+        "damage_resistance_(all)",
+        3
+      ],
+      [
+        "maximum_hitpoints",
+        3
+      ],
+      [
+        "increased_run_speed",
+        2
+      ],
+      [
+        "defense_(all)",
+        2
+      ],
+      [
+        "mez_resistance_(all)",
+        1
+      ],
+      [
+        "perception",
+        1
+      ]
+    ],
+    "missing_stats": [
+      [
+        "mez_resistance_(all)",
+        6
+      ],
+      [
+        "damage_resistance_(psionic)",
+        4
+      ],
+      [
+        "recharge",
+        3
+      ],
+      [
+        "defense_(energy)",
+        2
+      ],
+      [
+        "recovery",
+        2
+      ],
+      [
+        "defense_(ranged)",
+        2
+      ],
+      [
+        "maximum_hitpoints",
+        2
+      ],
+      [
+        "defense_(area)",
+        1
+      ],
+      [
+        "defense_(cold)",
+        1
+      ],
+      [
+        "regeneration",
+        1
+      ],
+      [
+        "damage_resistance_(energy)",
+        1
+      ],
+      [
+        "damage_resistance_(cold)",
+        1
+      ]
+    ],
+    "value_mismatch": [
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 1.5,
+        "pieces": 2,
+        "repo": 1.525,
+        "set": "achilles' heel",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 2,
+        "repo": 2.525,
+        "set": "ascendancy of the dominator",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 3.5,
+        "pieces": 5,
+        "repo": 3.525,
+        "set": "assassin's mark",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 4,
+        "repo": 2.525,
+        "set": "brute's fury",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 3.5,
+        "pieces": 5,
+        "repo": 3.525,
+        "set": "critical strikes",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 1.5,
+        "pieces": 3,
+        "repo": 1.525,
+        "set": "deflated ego",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 5,
+        "repo": 2.525,
+        "set": "efficacy adaptor",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 1.5,
+        "pieces": 3,
+        "repo": 1.525,
+        "set": "encouraged accuracy",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 1.5,
+        "pieces": 2,
+        "repo": 1.525,
+        "set": "explosive strike",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 5,
+        "repo": 2.525,
+        "set": "force feedback",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 5,
+        "repo": 2.525,
+        "set": "gaussian's synchronized fire-control",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 4,
+        "repo": 2.525,
+        "set": "malaise's illusions",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 5,
+        "repo": 2.525,
+        "set": "perfect zinger",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 5,
+        "repo": 2.525,
+        "set": "performance shifter",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 4,
+        "repo": 2.525,
+        "set": "scrapper's strike",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 2,
+        "repo": 2.525,
+        "set": "spider's bite",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 4,
+        "repo": 2.525,
+        "set": "stalker's guile",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 4,
+        "repo": 2.525,
+        "set": "sudden acceleration",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 4,
+        "repo": 2.525,
+        "set": "touch of death",
+        "stat": "damage"
+      },
+      {
+        "delta": 0.02499999999999991,
+        "oracle": 2.5,
+        "pieces": 2,
+        "repo": 2.525,
+        "set": "will of the controller",
+        "stat": "damage"
+      }
+    ]
+  }
+}

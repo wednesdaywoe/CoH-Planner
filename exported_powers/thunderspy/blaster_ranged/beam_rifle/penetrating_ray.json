@@ -55,6 +55,12 @@
     132
   ],
   "effects": [],
+  "modes_required": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Mastermind_Upgrade_1"
+  ],
   "available_level": 25,
   "powerset": "Blaster_Ranged.Beam_Rifle"
 }

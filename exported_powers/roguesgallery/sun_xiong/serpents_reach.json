@@ -242,7 +242,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -346,7 +346,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -486,7 +486,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -590,7 +590,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -730,7 +730,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -834,7 +834,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

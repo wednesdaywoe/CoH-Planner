@@ -48,6 +48,10 @@ export const CloakingDevice: Power = {
         "table": "Melee_Ones"
       },
       "stackKey": "NictusFX",
+      "translucency": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"

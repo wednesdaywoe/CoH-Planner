@@ -172,6 +172,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Incarn"
+  ],
   "available_level": 0,
   "powerset": "Incarnate.Judgement"
 }

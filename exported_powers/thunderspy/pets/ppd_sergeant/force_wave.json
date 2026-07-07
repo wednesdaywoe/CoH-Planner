@@ -162,6 +162,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 14,
   "powerset": "Pets.PPD_Sergeant"
 }

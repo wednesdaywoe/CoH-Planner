@@ -61,13 +61,23 @@ export const FlashBang: Power = {
     "stun": {
       "mag": 3,
       "scale": 10,
-      "table": "Ranged_Stun",
-      "domination": {
-        "mag": 3,
-        "scale": 15,
-        "table": "Ranged_Stun"
-      }
+      "table": "Ranged_Stun"
     },
     "buffDuration": 20
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

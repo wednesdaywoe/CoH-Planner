@@ -60,12 +60,7 @@ export const Entangle: Power = {
     "immobilize": {
       "mag": 4,
       "scale": 15,
-      "table": "Ranged_Immobilize",
-      "domination": {
-        "mag": 4,
-        "scale": 22.5,
-        "table": "Ranged_Immobilize"
-      }
+      "table": "Ranged_Immobilize"
     },
     "slow": {
       "fly": {
@@ -77,5 +72,20 @@ export const Entangle: Power = {
       "slow": 15
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "immobilize": {
+          "mag": 4,
+          "scale": 22.5,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

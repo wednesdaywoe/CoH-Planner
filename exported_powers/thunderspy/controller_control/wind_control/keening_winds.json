@@ -288,6 +288,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 25,
   "powerset": "Controller_Control.Wind_Control"
 }

@@ -252,6 +252,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Tanker_Defense.Sacred_Armor"
 }

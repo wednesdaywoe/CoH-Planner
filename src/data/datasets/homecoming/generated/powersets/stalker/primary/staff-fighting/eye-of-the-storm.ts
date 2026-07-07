@@ -59,18 +59,11 @@ export const EyeoftheStorm: Power = {
       "label": "Perfection of Body Level 3",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Smashing",
-          "scale": 0.492,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Smashing",
-          "scale": 0.0335,
-          "table": "Melee_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.492,
+        "table": "Melee_Damage"
+      },
       "effects": {
         "resistanceDebuff": {
           "smashing": {

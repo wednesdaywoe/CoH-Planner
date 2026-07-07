@@ -104,7 +104,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -356,7 +356,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

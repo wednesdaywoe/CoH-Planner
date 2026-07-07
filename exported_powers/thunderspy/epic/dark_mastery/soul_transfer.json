@@ -250,6 +250,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 34,
   "powerset": "Epic.Dark_Mastery"
 }

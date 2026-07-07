@@ -63,18 +63,11 @@ export const PowerBurst: Power = {
       "label": "Energy Store Assault",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Energy",
-          "scale": 1.69,
-          "table": "Melee_Damage"
-        },
-        {
-          "type": "Energy",
-          "scale": 0.6387,
-          "table": "Ranged_PvPDamage"
-        }
-      ]
+      "damage": {
+        "type": "Energy",
+        "scale": 1.69,
+        "table": "Melee_Damage"
+      }
     }
   ],
   "specialEffects": [

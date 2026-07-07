@@ -129,6 +129,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Mission_Maker_Attacks.Electric_Control"
 }

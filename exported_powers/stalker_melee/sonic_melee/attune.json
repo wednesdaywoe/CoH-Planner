@@ -109,7 +109,8 @@
                 "IgnoreResistance",
                 "IgnoreCombatMods"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "mode_name": "SonicAtuneFoe"
             },
             {
               "attribs": [
@@ -140,7 +141,8 @@
                 "IgnoreResistance",
                 "IgnoreCombatMods"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "mode_name": "SonicAtuneSelf"
             },
             {
               "attribs": [
@@ -215,7 +217,8 @@
                 "IgnoreResistance",
                 "IgnoreCombatMods"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "mode_name": "SonicAtune1FoeRefresh"
             }
           ]
         },
@@ -260,7 +263,8 @@
                 "IgnoreResistance",
                 "IgnoreCombatMods"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "mode_name": "SonicAtune2FoeRefresh"
             }
           ]
         },

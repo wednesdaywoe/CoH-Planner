@@ -249,6 +249,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Tanker_Melee.Super_Strength"
 }

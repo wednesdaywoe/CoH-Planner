@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Set_Mode"
+            "XPDebtProtection"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

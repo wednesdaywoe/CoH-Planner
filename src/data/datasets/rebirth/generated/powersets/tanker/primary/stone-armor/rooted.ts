@@ -126,11 +126,13 @@ export const Rooted: Power = {
       },
       "runSpeed": {
         "scale": 0.9,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       },
       "fly": {
         "scale": 10,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     },
     "movement": {
@@ -139,7 +141,6 @@ export const Rooted: Power = {
         "table": "Melee_Ones"
       }
     },
-    "selfPenalty": true,
     "buffDuration": 0.75
   }
 };

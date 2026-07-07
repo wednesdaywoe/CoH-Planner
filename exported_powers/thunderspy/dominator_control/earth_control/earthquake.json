@@ -96,6 +96,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 17,
   "powerset": "Dominator_Control.Earth_Control"
 }

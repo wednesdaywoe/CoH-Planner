@@ -402,6 +402,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Villain_Pets.Dual_Blades_Assassins_Strike"
 }

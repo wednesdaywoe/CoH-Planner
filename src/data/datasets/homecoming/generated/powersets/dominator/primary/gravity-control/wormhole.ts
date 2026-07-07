@@ -44,6 +44,16 @@ export const Wormhole: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 1.5,
+      "mezResistance": 15
+    },
     "teleport": {
       "scale": 4.1,
       "table": "Ranged_Ones"
@@ -54,23 +64,30 @@ export const Wormhole: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "durations": {
-      "mezResistance": 15
-    },
     "stun": {
       "mag": 3,
       "scale": 10,
-      "table": "Ranged_Stun",
-      "domination": {
-        "mag": 3,
-        "scale": 15,
-        "table": "Ranged_Stun"
-      }
+      "table": "Ranged_Stun"
     },
     "knockback": {
       "scale": 7,
       "table": "Ranged_Knockback"
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Ranged_Stun"
+        }
+      }
+    }
+  ]
 };

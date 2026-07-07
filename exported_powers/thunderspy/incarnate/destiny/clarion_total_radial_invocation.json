@@ -63,11 +63,16 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Held",
+            "Sleep",
+            "Stunned",
+            "Immobilized",
+            "Terrorized",
+            "Confused"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Current",
           "target": "",
           "table": "Ranged_Ones",
           "scale": -30.0,
@@ -102,11 +107,11 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Knockback"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Current",
           "target": "",
           "table": "Ranged_Ones",
           "scale": -15.0,
@@ -141,11 +146,16 @@
       "templates": [
         {
           "attribs": [
-            "Res_Boolean"
+            "Sleep",
+            "Held",
+            "Stunned",
+            "Immobilized",
+            "Terrorized",
+            "Confused"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Resistance",
           "target": "",
           "table": "Ranged_Res_Boolean",
           "scale": 3.0,
@@ -166,6 +176,10 @@
         }
       ]
     }
+  ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Incarn"
   ],
   "available_level": 0,
   "powerset": "Incarnate.Destiny"

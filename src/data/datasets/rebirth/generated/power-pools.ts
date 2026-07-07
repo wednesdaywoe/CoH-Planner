@@ -876,10 +876,10 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "flySpeed": {
               "scale": 1.01,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "buffDuration": 0.75
         }
       },
@@ -983,10 +983,10 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "flySpeed": {
               "scale": 1.01,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "buffDuration": 0.75
         }
       },
@@ -1046,10 +1046,10 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "flySpeed": {
               "scale": 0.5,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "defenseBuff": {
             "melee": {
               "scale": 0.25,
@@ -1165,7 +1165,29 @@ export const POWER_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "AoE",
           "radius": 60,
-          "maxTargets": 255
+          "maxTargets": 255,
+          "movement": {
+            "fly": {
+              "scale": 1,
+              "table": "Melee_Ones"
+            },
+            "movementControl": {
+              "scale": 10,
+              "table": "Melee_Control"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Melee_SpeedFlying"
+            },
+            "movementFriction": {
+              "scale": 10,
+              "table": "Melee_Friction"
+            }
+          },
+          "durations": {
+            "movement": 10
+          },
+          "buffDuration": 10
         }
       },
       {
@@ -1205,10 +1227,10 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "flySpeed": {
               "scale": 1,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "buffDuration": 0.75
         }
       }
@@ -1683,14 +1705,15 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "runSpeed": {
               "scale": 0.35,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             },
             "flySpeed": {
               "scale": 0.35,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "buffDuration": 0.75
         }
       },
@@ -3326,10 +3349,10 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "flySpeed": {
               "scale": 1.01,
-              "table": "Ranged_Ones"
+              "table": "Ranged_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "buffDuration": 0.75
         }
       },
@@ -3749,14 +3772,15 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "runSpeed": {
               "scale": 0.3,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             },
             "flySpeed": {
               "scale": 0.3,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "enduranceDrain": {
             "scale": 1,
             "table": "Melee_Ones"
@@ -4052,18 +4076,20 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "flySpeed": {
               "scale": 1,
-              "table": "Ranged_Ones"
+              "table": "Ranged_Ones",
+              "toWho": "Self"
             },
             "movementControl": {
               "scale": 1,
-              "table": "Ranged_Ones"
+              "table": "Ranged_Ones",
+              "toWho": "Self"
             },
             "movementFriction": {
               "scale": 1,
-              "table": "Ranged_Ones"
+              "table": "Ranged_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "buffDuration": 4
         }
       },
@@ -4432,10 +4458,10 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "flySpeed": {
               "scale": 1.01,
-              "table": "Ranged_Ones"
+              "table": "Ranged_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "buffDuration": 0.75
         }
       },

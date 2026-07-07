@@ -200,6 +200,17 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Travel",
+    "Disable_Teleport",
+    "HunterMode",
+    "ProwlerMode",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 13,
   "powerset": "Pool.Teleportation"
 }

@@ -4,6 +4,8 @@
  * that were previously duplicated across multiple components.
  */
 
+import { hasSelfDirectedPenalty, type PowerEffects } from '@/types';
+
 /**
  * Check if a power has a Heal-type damage entry (one-shot heals/drains).
  * Powers like Dark Regeneration, Dull Pain, Life Drain have these.
@@ -19,7 +21,7 @@ export function hasHealingDamage(power: { damage?: unknown }): boolean {
 /**
  * Effect keys whose presence implies a persistent buff/effect applied to the caster.
  * Used to gate the toggle UI for click powers — only powers with at least one of these
- * keys (or selfPenalty-flagged debuffs) get a toggle.
+ * keys (or a self-directed `toWho:'Self'` debuff) get a toggle.
  *
  * Includes the *Buff-suffixed fields plus unsuffixed top-level fields some powers use
  * (Healing Flames stores `resistance.toxic`, not `resistanceBuff`).
@@ -66,8 +68,9 @@ function isDamagingAttack(power: { damage?: unknown }): boolean {
 function hasPersistentBuffEffects(power: { effects?: object; damage?: unknown }, isSelf: boolean): boolean {
   if (!power.effects) return false;
   const effects = power.effects as Record<string, unknown>;
-  // selfPenalty flag means debuff fields (e.g., Granite Armor's -damage) are real self-effects
-  if (effects.selfPenalty) return true;
+  // A self-directed penalty (Granite Armor's -damage etc., toWho:'Self') is a
+  // real caster effect — such click powers get a toggle.
+  if (hasSelfDirectedPenalty(power.effects as PowerEffects)) return true;
   // Damage attacks: damageBuff is a per-cast Defiance proc, and rangeBuff
   // is the Fast Snipe per-power range bump (gated on ≥22% ToHit buff in
   // game). Neither is a persistent caster buff worth toggling at the
@@ -93,7 +96,7 @@ function affectsCaster(power: { targetType?: string }): boolean {
  * Determine if a power should show a toggle switch for stat calculations.
  * - Toggle powers (always)
  * - Click powers with persistent buff effects that apply to the caster
- *   (Build Up, Aim, Hasten, Healing Flames, Vengeance, Granite Armor's selfPenalty, etc.)
+ *   (Build Up, Aim, Hasten, Healing Flames, Vengeance, Granite Armor's self-penalty, etc.)
  * - Excluded: ally-only buffs (Speed Boost, Fortitude), one-shot damage/heal-only
  *   clicks (Inferno, Dark Regeneration), interruptible snipes (no persistent caster buff)
  */

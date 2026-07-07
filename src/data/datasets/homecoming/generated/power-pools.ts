@@ -343,10 +343,20 @@ export const POWER_POOLS_RAW = {
           "endurance": 13,
           "activationTime": 1,
           "effectArea": "Location",
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "stealth": 1
+          },
           "teleport": {
             "scale": 1,
             "table": "Ranged_Ones"
-          }
+          },
+          "buffDuration": 1
         }
       }
     ]
@@ -1036,8 +1046,20 @@ export const POWER_POOLS_RAW = {
           "maxTargets": 255,
           "movement": {
             "fly": {
-              "scale": 0.1,
+              "scale": 2,
               "table": "Melee_Ones"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Melee_SpeedFlying"
+            },
+            "movementControl": {
+              "scale": 10,
+              "table": "Melee_Control"
+            },
+            "movementFriction": {
+              "scale": 10,
+              "table": "Melee_Friction"
             }
           },
           "durations": {
@@ -1596,6 +1618,10 @@ export const POWER_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "stealth": {
+            "translucency": {
+              "scale": 0.05,
+              "table": "Melee_Ones"
+            },
             "stealthPvE": {
               "scale": 55,
               "table": "Melee_Ones"
@@ -1748,6 +1774,10 @@ export const POWER_POOLS_RAW = {
             "stealthPvP": {
               "scale": 611,
               "table": "Melee_Ones"
+            },
+            "translucency": {
+              "scale": 0.3,
+              "table": "Melee_Ones"
             }
           },
           "durations": {
@@ -1882,6 +1912,10 @@ export const POWER_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "stealth": {
+            "translucency": {
+              "scale": 0.7,
+              "table": "Melee_Ones"
+            },
             "stealthPvE": {
               "scale": 36,
               "table": "Melee_Ones"
@@ -1970,6 +2004,10 @@ export const POWER_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
           "stealth": {
+            "translucency": {
+              "scale": 0.3,
+              "table": "Ranged_Ones"
+            },
             "stealthPvE": {
               "scale": 20,
               "table": "Ranged_Ones"
@@ -3535,10 +3573,20 @@ export const POWER_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.57,
           "effectArea": "Location",
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "stealth": 1.5
+          },
           "teleport": {
             "scale": 1,
             "table": "Ranged_Ones"
-          }
+          },
+          "buffDuration": 1.5
         }
       }
     ]
@@ -3680,14 +3728,15 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "movementControl": {
               "scale": 0.1,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             },
             "movementFriction": {
               "scale": 0.1,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "stealth": {
             "stealthPvE": {
               "scale": 35,
@@ -3734,14 +3783,15 @@ export const POWER_POOLS_RAW = {
           "slow": {
             "runSpeed": {
               "scale": 0.3,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             },
             "flySpeed": {
               "scale": 0.3,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "durations": {
             "slow": 3
           },
@@ -3963,9 +4013,26 @@ export const POWER_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 30,
           "maxTargets": 255,
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Ranged_Ones"
+            }
+          },
+          "durations": {
+            "stealth": 1.5,
+            "movement": 4,
+            "slow": 4
+          },
           "teleport": {
             "scale": 3.1,
             "table": "Ranged_Ones"
+          },
+          "movement": {
+            "fly": {
+              "scale": 1,
+              "table": "Ranged_Ones"
+            }
           },
           "slow": {
             "flySpeed": {
@@ -3980,9 +4047,6 @@ export const POWER_POOLS_RAW = {
               "scale": 1,
               "table": "Ranged_Ones"
             }
-          },
-          "durations": {
-            "slow": 4
           },
           "buffDuration": 4
         }

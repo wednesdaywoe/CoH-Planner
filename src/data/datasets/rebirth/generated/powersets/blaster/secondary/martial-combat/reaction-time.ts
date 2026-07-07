@@ -54,11 +54,13 @@ export const ReactionTime: Power = {
     "slow": {
       "runSpeed": {
         "scale": 0.7,
-        "table": "Melee_Slow"
+        "table": "Melee_Slow",
+        "toWho": "Self"
       },
       "flySpeed": {
         "scale": 0.7,
-        "table": "Melee_Slow"
+        "table": "Melee_Slow",
+        "toWho": "Self"
       },
       "jumpHeight": {
         "scale": 0.7,
@@ -66,7 +68,8 @@ export const ReactionTime: Power = {
       },
       "jumpSpeed": {
         "scale": 0.7,
-        "table": "Melee_Slow"
+        "table": "Melee_Slow",
+        "toWho": "Self"
       }
     },
     "durations": {
@@ -77,9 +80,9 @@ export const ReactionTime: Power = {
     },
     "rechargeDebuff": {
       "scale": 0.4,
-      "table": "Melee_Slow"
+      "table": "Melee_Slow",
+      "toWho": "Self"
     },
-    "selfPenalty": true,
     "movement": {
       "runSpeed": {
         "scale": 1,

@@ -486,6 +486,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Stalker_Melee.Radiation_Melee"
 }

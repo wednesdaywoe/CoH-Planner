@@ -163,6 +163,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Suicide"
+  ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

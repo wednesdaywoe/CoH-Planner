@@ -253,6 +253,12 @@
       ]
     }
   ],
+  "modes_required": [
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode",
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

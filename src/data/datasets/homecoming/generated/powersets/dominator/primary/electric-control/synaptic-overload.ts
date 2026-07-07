@@ -44,12 +44,7 @@ export const SynapticOverload: Power = {
     "confuse": {
       "mag": 3,
       "scale": 10,
-      "table": "Ranged_Immobilize",
-      "domination": {
-        "mag": 3,
-        "scale": 15,
-        "table": "Ranged_Immobilize"
-      }
+      "table": "Ranged_Immobilize"
     },
     "enduranceDrain": {
       "scale": 0.1,
@@ -63,5 +58,20 @@ export const SynapticOverload: Power = {
       "recoveryDebuff": 8
     },
     "buffDuration": 8
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "confuse": {
+          "mag": 3,
+          "scale": 15,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

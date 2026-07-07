@@ -523,6 +523,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Scrapper_Melee.Martial_Arts"
 }

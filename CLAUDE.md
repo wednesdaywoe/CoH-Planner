@@ -27,6 +27,13 @@ Goal: Generate CoD2-compatible structured JSON from Bin Crawler's binary parser,
 
 The export is functional and verified. Run with: `py -3 tools/bin-crawler/bin_crawler/export_powers.py` (or `py -3 -m bin_crawler.export_powers` from inside `tools/bin-crawler/`).
 
+**Re-export discipline (enforced 2026-07-07): a parser change means re-export ALL datasets.** `exported_powers/` is the committed converter input and CANNOT be regenerated in CI (no `.pigg`, no Python), so the `generated/` regen-diff can't cover it. Instead each dataset carries an `_export_manifest.json` stamped by `export_powers.py` with a fingerprint of the powers-exporter source (`parser/*.py` + `export_powers.py`, via `_export_fingerprint.py`); the vitest guard [`export-staleness.test.ts`](src/data/export-staleness.test.ts) recomputes it and fails if any dataset's committed export was produced by a different parser than what's committed. To make it green after touching the parser, re-export each dataset to its committed root and commit the refreshed tree (a `--categories` subset export deliberately does NOT stamp — partial trees can't claim whole-dataset currency):
+- HC → `--assets-dir <…/Homecoming/assets/live> --output-dir exported_powers`
+- Rebirth → `--assets-dir <…/Sweet Tea/rebirth> --output-dir exported_powers/rebirth`
+- Thunderspy → `--assets-dir <…/Sweet Tea/tspy> --output-dir exported_powers/thunderspy`
+
+Then `npm run regen` and commit `generated/` too. (This is the "re-export de-risk" workflow from GAME-DATA-PRINCIPLES, now gated. `entities`/`salvage`/`tables` come from separate exporters and are not yet manifest-guarded.)
+
 The exporter and HTTP server read directly from `.pigg` archives via `BinResolver`, which uses Pigg Wrangler's `PiggArchive` under the hood. **CLI export tools** (`export_powers`, `export_salvage`, `export_classes`, `export_entities`, `dump_template_bytes`, `audit_stack_alignment`): point at an assets directory with `--assets-dir`; omit it and the shared resolver (`bin_crawler/assets_dir.py`) uses the **remembered path**, else opens a **folder picker** (tkinter), saving the choice to `~/.config/bin-crawler/config.json` (`%APPDATA%\bin-crawler\config.json` on Windows). `--pick` re-opens the picker; the flag always overrides (deterministic for scripts/CI); headless falls back to a typed prompt. The diff tool selects an assets *root* under a separate `assets_root` key. **The web server (`-m bin_crawler`) does NOT block on a picker** — it binds its port immediately and parses the remembered folder in a background thread (so the Sidekick Launcher's port-based status detection sees it online at once), and the folder is set/changed from the web UI's **⚙ cogwheel** (`/api/set-assets-dir`, mirroring Pigg Wrangler). `--source NAME=PATH` is the advanced multi-source mode (loads synchronously, no cogwheel).
 
 - **5,277 player powers** exported across 610 powersets in 34 categories (last verified 2026-03-28)
@@ -61,8 +68,7 @@ Mostly exotic attribs like `Toxic_Elusivity`, `Revoke_Power`, `InterruptTime`. T
 **Map remaining `type`/`application_type`/`target` enum values (82.9% match)**
 ~17% of templates have values beyond the common 0-1 range — unusual effect types (Expression-based, AoE targets, pet targets). Medium priority; some edge cases in damage/heal calculations could be affected.
 
-**Parse template tail fields (cancel_events, suppress_events, flags, fx)**
-`suppress_events` controls things like Hide's AoE defense suppression. `flags` contains `IgnoreStrength`, `CombatModMagnitude`, etc. The planner's conversion script currently gets this from CoD2. **Only becomes important when we fully replace the CoD2 dependency.**
+**Parse template tail fields** — **largely DONE (2026-07-05).** The parser now captures the tail natively in `EffectTemplate` (`tools/bin-crawler/bin_crawler/parser/_dataclasses.py`): `cancel_events`, `suppress_events`, `required_events`, and `flags` (with `flags_raw`/`flags2_raw` — `IgnoreResistance` 0x420, `IgnoreStrength` 0x430, and `CopyBoosts`/`PseudoPet` in the second word). The converter honors `IgnoreStrength`/`IgnoreResistance` from this native parse, **no longer from CoD2.** Remaining: only `fx` (cosmetic visual effects, irrelevant to the planner) is genuinely unparsed, and the converter does not yet *fold in* `suppress_events` (Hide's AoE-defense suppression) — a converter-side task tracked in [HOMECOMING_PARSER.md](streams/HOMECOMING_PARSER.md).
 
 **Enum naming alignment**
 Cosmetic — "Caster" vs "Self", "Character" vs "SingleTarget". No functional impact.

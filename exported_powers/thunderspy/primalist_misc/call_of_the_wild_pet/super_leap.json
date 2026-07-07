@@ -236,6 +236,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Primalist_Misc.Call_of_the_Wild_Pet"
 }

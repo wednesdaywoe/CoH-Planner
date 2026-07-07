@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -113,7 +113,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -156,7 +156,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -215,7 +215,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

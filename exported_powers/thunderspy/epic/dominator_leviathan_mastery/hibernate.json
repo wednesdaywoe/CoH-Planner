@@ -127,6 +127,12 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Pool",
+    "Disable_Epic",
+    "Disable_Toggle"
+  ],
   "available_level": 34,
   "powerset": "Epic.Dominator_Leviathan_Mastery"
 }

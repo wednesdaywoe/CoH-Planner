@@ -172,6 +172,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Defender_Ranged.Dark_Blast"
 }

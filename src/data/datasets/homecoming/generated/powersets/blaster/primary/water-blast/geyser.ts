@@ -100,11 +100,6 @@ export const Geyser: Power = {
         },
         {
           "type": "Fire",
-          "scale": 0.0784,
-          "table": "Ranged_PvPDamage"
-        },
-        {
-          "type": "Fire",
           "scale": 0.1432,
           "table": "Ranged_Damage",
           "duration": 5.1,
@@ -133,11 +128,6 @@ export const Geyser: Power = {
         },
         {
           "type": "Fire",
-          "scale": 0.1883,
-          "table": "Ranged_PvPDamage"
-        },
-        {
-          "type": "Fire",
           "scale": 0.1527,
           "table": "Ranged_Damage",
           "duration": 5.1,
@@ -163,11 +153,6 @@ export const Geyser: Power = {
           "type": "Fire",
           "scale": 0.5,
           "table": "Ranged_Damage"
-        },
-        {
-          "type": "Fire",
-          "scale": 0.3922,
-          "table": "Ranged_PvPDamage"
         },
         {
           "type": "Fire",

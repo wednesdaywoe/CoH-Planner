@@ -47,12 +47,7 @@ export const FearsomeStare: Power = {
     "fear": {
       "mag": 3,
       "scale": 15,
-      "table": "Ranged_Fear",
-      "domination": {
-        "mag": 3,
-        "scale": 22.5,
-        "table": "Ranged_Fear"
-      }
+      "table": "Ranged_Fear"
     },
     "tohitDebuff": {
       "scale": 1.5,
@@ -62,5 +57,20 @@ export const FearsomeStare: Power = {
       "tohitDebuff": 20
     },
     "buffDuration": 20
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "fear": {
+          "mag": 3,
+          "scale": 22.5,
+          "table": "Ranged_Fear"
+        }
+      }
+    }
+  ]
 };

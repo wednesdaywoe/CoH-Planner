@@ -1,6 +1,6 @@
 # CoH Sidekick — Architecture & Technical Documentation
 
-**Last updated:** June 11, 2026
+**Last updated:** July 6, 2026
 
 CoH Sidekick is a City of Heroes character build planner and suite of helpful tools for the Homecoming server. Hosted at **coh-sidekick.com** via GitHub Pages.
 
@@ -99,6 +99,18 @@ Because `generated/` is overwritten on every regen, hand corrections live in a p
 | `extract-at-tables.cjs` | AT modifier tables from `exported_powers/tables/<AT>.json` |
 | `extract-rebirth-io-sets-v2.py` | IO sets from `boostsets.bin` + `powers.bin`, both servers (Python; replaces the retired `convert-io-sets.js`) |
 | `generate-powerset-index.cjs`, `generate-kheldian-variants.cjs` | Powerset barrel index; Kheldian form variants |
+| `validate-converter-output.cjs` | DSH structural gate for powerset conversion (detects collapse/mismatch classes) |
+| `dsh8-incarnate-collapse-detector.cjs` | DSH structural gate for incarnate conversion (hybrid/destiny multi-type collapse detector) |
+
+### Deductive Schema Harness (DSH)
+
+The conversion pipeline is guarded by a structural validation harness documented in `streams/DEDUCTIVE_SCHEMA_HARNESS.md`.
+
+- Core diagnosis: recurring effect bugs were a single architectural mismatch (atomic effect arrays in source vs bag-of-single-slots in converter working state), not isolated one-off defects.
+- Scope boundary: for this bug family, data loss was in JavaScript converters, not the Python bin parser; parser export preserves `pvMode`, resistibility (`IgnoreResistance`), and template granularity.
+- CI-facing structural gates: `npm run validate:converter` (powersets) and `npm run validate:incarnate-collapse` (incarnates). These are fail-on-new structural divergence checks.
+- Oracle policy: Mids is used as a **structural oracle** (shape/topology), while bin/exported data remains numeric truth. Numeric mismatches are advisory and non-gating due to expected staleness and known `.mhd` quantization limits.
+- Current status (2026-07): DSH1-DSH5 shipped, DSH6 in targeted repair mode, DSH8 incarnate collapse detector shipped, DSH9 enhancement-oracle bootstrap shipped.
 
 ### Other Scripts
 
@@ -318,7 +330,7 @@ A parser for the Cryptic binary data file format used by City of Heroes. Handles
 
 ### Data Sources
 
-Bin Crawler reads directly from the `.pigg` archives Homecoming updates on every patch (typically `G:\Homecoming\assets\live\bin.pigg` and siblings). Because HC's launcher refreshes these archives automatically, Bin Crawler always sees current data. This is the long-term answer to "the JSON dump is out of date." The planner's shipping data pipeline has not yet been migrated to consume Bin Crawler's output; once it is, the conversion scripts in `scripts/` can be retired in favor of pulling current data from the live API.
+Bin Crawler reads directly from the `.pigg` archives Homecoming updates on every patch (typically `G:\Homecoming\assets\live\bin.pigg` and siblings). Because HC's launcher refreshes these archives automatically, Bin Crawler always sees current data. This is the long-term answer to "the JSON dump is out of date." The planner already consumes Bin Crawler's **exported JSON output** (`exported_powers/`) in its shipping pipeline; what remains future work is consuming the Bin Crawler **HTTP API** directly end-to-end, which would allow most conversion scripts in `scripts/` to be retired.
 
 ### Binary Format Notes
 

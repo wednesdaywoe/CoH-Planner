@@ -127,6 +127,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Mastermind_Pets.Cold_Demonling_3"
 }

@@ -640,7 +640,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -713,7 +713,8 @@
                 "IgnoreResistance",
                 "IgnoreCombatMods"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "mode_name": "Wet"
             }
           ]
         }

@@ -363,6 +363,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Villain_Pets.Ninja_Blade_Assassins_Strike"
 }

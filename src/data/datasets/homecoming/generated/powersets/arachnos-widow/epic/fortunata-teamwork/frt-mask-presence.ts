@@ -48,6 +48,10 @@ export const FRTMaskPresence: Power = {
       "stealthPvP": {
         "scale": 400,
         "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
       }
     },
     "durations": {

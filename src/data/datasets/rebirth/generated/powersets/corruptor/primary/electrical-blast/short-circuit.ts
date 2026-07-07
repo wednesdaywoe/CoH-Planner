@@ -60,5 +60,18 @@ export const ShortCircuit: Power = {
       "recoveryDebuff": 10
     },
     "buffDuration": 10
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "vs-electronic",
+      "label": "vs Machines/Robots",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.5,
+        "table": "Ranged_Damage"
+      }
+    }
+  ]
 };

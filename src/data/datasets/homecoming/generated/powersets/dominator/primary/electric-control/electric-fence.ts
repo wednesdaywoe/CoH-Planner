@@ -53,12 +53,7 @@ export const ElectricFence: Power = {
     "immobilize": {
       "mag": 4,
       "scale": 15,
-      "table": "Ranged_Immobilize",
-      "domination": {
-        "mag": 4,
-        "scale": 22.5,
-        "table": "Ranged_Immobilize"
-      }
+      "table": "Ranged_Immobilize"
     },
     "enduranceDrain": {
       "scale": 0.028,
@@ -89,6 +84,21 @@ export const ElectricFence: Power = {
       "enduranceGain"
     ]
   },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "immobilize": {
+          "mag": 4,
+          "scale": 22.5,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

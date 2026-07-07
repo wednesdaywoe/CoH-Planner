@@ -12,6 +12,7 @@
  */
 
 import type { SelectedPower, Power, PowerEffects } from '@/types';
+import { hasSelfDirectedPenalty } from '@/types';
 import type { EnhancementBonuses } from './enhancement-values';
 
 export interface PermaInfo {
@@ -90,8 +91,8 @@ export function isPermaEligible(power: Power | SelectedPower): boolean {
  * a caster-side state whose uptime perma tracking actually measures. Foe
  * debuffs and mez don't count: those expire on the target after the cast,
  * and the planner doesn't model the implicit "keep firing the attack to
- * refresh the debuff" pattern. A `selfPenalty: true` flag flips the
- * debuff fields to self-buffs (Granite Armor etc.), so honour it.
+ * refresh the debuff" pattern. A self-directed debuff (`toWho:'Self'` on
+ * Granite Armor etc.) IS a caster-side state, so honour it.
  */
 function hasSelfStateToKeepUp(effects: PowerEffects): boolean {
   if (effects.summon?.duration && effects.summon.duration > 0) return true;
@@ -127,14 +128,9 @@ function hasSelfStateToKeepUp(effects: PowerEffects): boolean {
   if (selfBuffPresent) return true;
 
   // Self-penalty powers (Granite Armor's -damage, Defensive Adaptation's
-  // -recharge) flip the debuff fields to self-buffs. Those count too.
-  if (effects.selfPenalty) {
-    if (
-      effects.damageDebuff !== undefined ||
-      effects.rechargeDebuff !== undefined ||
-      effects.slow !== undefined
-    ) return true;
-  }
+  // -recharge) carry a caster-side downside — a self-state whose uptime is
+  // worth perma-tracking. Detected per-effect via `toWho:'Self'`.
+  if (hasSelfDirectedPenalty(effects)) return true;
 
   // Absorb shields whose magnitude the converter couldn't fully model still
   // record a duration (Nature Affinity's Wild Bastion delivers its absorb via

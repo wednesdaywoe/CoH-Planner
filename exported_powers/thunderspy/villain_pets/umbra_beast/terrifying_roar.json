@@ -248,6 +248,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 3,
   "powerset": "Villain_Pets.Umbra_Beast"
 }

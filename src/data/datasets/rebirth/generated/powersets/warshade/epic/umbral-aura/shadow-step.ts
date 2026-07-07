@@ -51,18 +51,20 @@ export const ShadowStep: Power = {
     "slow": {
       "flySpeed": {
         "scale": 1,
-        "table": "Ranged_Ones"
+        "table": "Ranged_Ones",
+        "toWho": "Self"
       },
       "movementControl": {
         "scale": 1,
-        "table": "Ranged_Ones"
+        "table": "Ranged_Ones",
+        "toWho": "Self"
       },
       "movementFriction": {
         "scale": 1,
-        "table": "Ranged_Ones"
+        "table": "Ranged_Ones",
+        "toWho": "Self"
       }
     },
-    "selfPenalty": true,
     "buffDuration": 4,
     "maxStacks": 2,
     "stacksLinear": [

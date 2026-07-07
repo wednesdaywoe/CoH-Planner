@@ -181,6 +181,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Mastermind_Buff.Pain_Domination"
 }

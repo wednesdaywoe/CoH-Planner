@@ -123,6 +123,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 3,
   "powerset": "Brute_Defense.Willpower"
 }

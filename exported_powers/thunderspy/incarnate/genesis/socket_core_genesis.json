@@ -80,6 +80,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Epic"
+  ],
   "available_level": 0,
   "powerset": "Incarnate.Genesis"
 }

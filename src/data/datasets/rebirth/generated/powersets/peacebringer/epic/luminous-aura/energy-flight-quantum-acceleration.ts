@@ -49,10 +49,10 @@ export const EnergyFlightQuantumAcceleration: Power = {
     "slow": {
       "flySpeed": {
         "scale": 1,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     },
-    "selfPenalty": true,
     "buffDuration": 0.75
   },
   "requires": "Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration"

@@ -37,36 +37,25 @@ jobs:
 
       # Fails if a malformed boostset poisoned a whole IO-set category across
       # many powers (the Thunderspy "KB"/SumoBoostName pollution class — it
-      # handed "Melee Damage" to ~1387 ranged attacks). Covers all datasets
-      # incl. Thunderspy, which the regen-diff guard does not.
+      # handed "Melee Damage" to ~1387 ranged attacks). Covers the io-set
+      # category data — including the Python-extracted io-sets-raw.ts — that the
+      # generated/ regen-diff guard does not rebuild.
       - name: Audit IO-set categories (all datasets)
         run: npm run audit:set-categories
 
-  # ── FUTURE: regen-and-diff guard ─────────────────────────────────────────────
-  # Now that exported_powers/ (the converter input) is committed, CI can run the
-  # convert-*.cjs pipeline and assert src/data/datasets/*/generated/ is byte-
-  # identical to the committed output — catching ANY converter drift, not just the
-  # known classes the invariant scan above covers. This is the strongest guard.
-  #
-  # Prerequisites before enabling (tracked in HOMECOMING_PARSER.md):
-  #   1. A single regen-orchestration entrypoint (e.g. `npm run regen`). Today
-  #      convert-powerset.cjs converts one <category> <powerset> at a time; the
-  #      full generated/ tree needs all ~610 powersets x 2 datasets, plus
-  #      convert-epic-pools, convert-incarnate-effects, convert-pet-entities,
-  #      generate-kheldian-variants, extract-at-tables, extract-rebirth-io-sets,
-  #      in dependency order.
-  #   2. A validated clean full regen committed, so generated/ === regen output.
-  #      Sampled converters (incarnate-effects, defender radiation_emission)
-  #      reproduce byte-identical today, but all ~620 conversion units must be
-  #      confirmed clean before this diff can pass green on the first run.
-  #
-  # Sketch once both land:
-  #   regen-diff:
-  #     runs-on: ubuntu-latest
-  #     steps:
-  #       - uses: actions/checkout@v4
-  #       - uses: actions/setup-node@v4
-  #         with: { node-version: '20', cache: 'npm' }
-  #       - run: npm ci
-  #       - run: npm run regen
-  #       - run: git diff --exit-code -- src/data/datasets/*/generated/
+      # DSH3 (SC-2) collapse gate: fails if a resistible/unresistable debuff twin
+      # in the parser export lost its `unresistable` companion in generated output
+      # — the exact 2026-07-05 effect-collapse class, kept from silently
+      # regressing. (DSH2 / SC-1, the AT-table referential-integrity guard, rides
+      # the `npm test` step above as src/data/converter-table-integrity.test.ts.)
+      - name: Validate converter output (collapse gate, all datasets)
+        run: npm run validate:converter
+
+  # The regen-and-diff guard (rebuild generated/ from committed exported_powers/
+  # and assert byte-identity) now lives in its own workflow: .github/workflows/
+  # regen-diff.yml. It regenerates generated/ for all three datasets (HC +
+  # Rebirth + Thunderspy) and is the strongest drift guard — it catches ANY
+  # converter change that wasn't re-committed, not just the known classes the
+  # invariant scan above covers. NB it is scoped to generated/ only; the layered
+  # at-tables / kheldian / pet-entities / index files are reconciled deliberately
+  # and are NOT byte-gated (see regen-diff.yml).

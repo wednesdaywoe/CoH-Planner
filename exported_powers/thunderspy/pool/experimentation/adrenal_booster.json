@@ -164,6 +164,13 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Tanker_Mode",
+    "Widow_Tarantula_Mode",
+    "Disable_Pool"
+  ],
   "available_level": 19,
   "powerset": "Pool.Experimentation"
 }

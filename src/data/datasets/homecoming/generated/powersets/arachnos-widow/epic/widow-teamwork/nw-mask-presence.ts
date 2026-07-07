@@ -48,6 +48,10 @@ export const NWMaskPresence: Power = {
       "stealthPvP": {
         "scale": 500,
         "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
       }
     },
     "durations": {

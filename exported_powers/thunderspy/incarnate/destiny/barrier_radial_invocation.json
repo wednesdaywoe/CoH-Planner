@@ -60,11 +60,20 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy",
+            "Psionic",
+            "Melee",
+            "Ranged",
+            "Area"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Current",
           "target": "",
           "table": "Ranged_Ones",
           "scale": 0.6,
@@ -129,6 +138,10 @@
         }
       ]
     }
+  ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Incarn"
   ],
   "available_level": 0,
   "powerset": "Incarnate.Destiny"

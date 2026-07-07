@@ -417,7 +417,7 @@
       "templates": [
         {
           "attribs": [
-            "Set_Mode"
+            "Set_Costume"
           ],
           "type": "Constant",
           "application_type": "Immediate",

@@ -324,6 +324,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 25,
   "powerset": "Widow_Training.Night_Widow_Training"
 }

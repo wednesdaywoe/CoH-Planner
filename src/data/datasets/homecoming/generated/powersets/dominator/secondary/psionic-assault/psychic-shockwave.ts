@@ -49,12 +49,7 @@ export const PsychicShockwave: Power = {
     "stun": {
       "mag": 2,
       "scale": 6,
-      "table": "Melee_Stun",
-      "domination": {
-        "mag": 2,
-        "scale": 9,
-        "table": "Melee_Stun"
-      }
+      "table": "Melee_Stun"
     },
     "rechargeDebuff": {
       "scale": 0.5,
@@ -65,6 +60,21 @@ export const PsychicShockwave: Power = {
     },
     "buffDuration": 20
   },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "stun": {
+          "mag": 2,
+          "scale": 9,
+          "table": "Melee_Stun"
+        }
+      }
+    }
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

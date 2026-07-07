@@ -55,16 +55,27 @@ export const TimeBomb: Power = {
       "scale": 4,
       "table": "Melee_Knockback"
     },
-    "rechargeBuff": {
-      "scale": 0.375,
-      "table": "Ranged_Ones"
+    "movement": {
+      "runSpeed": {
+        "scale": 0.375,
+        "table": "Ranged_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.375,
+        "table": "Ranged_Ones"
+      }
     },
     "durations": {
+      "movement": 30,
       "rechargeBuff": 30,
       "recoveryBuff": 30,
       "rechargeDebuff": 30,
       "slow": 30,
       "recoveryDebuff": 30
+    },
+    "rechargeBuff": {
+      "scale": 0.375,
+      "table": "Ranged_Ones"
     },
     "recoveryBuff": {
       "scale": 0.375,

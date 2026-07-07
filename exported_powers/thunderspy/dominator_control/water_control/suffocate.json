@@ -447,6 +447,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Dominator_Control.Water_Control"
 }

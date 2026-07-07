@@ -1,10 +1,11 @@
 # Regen-and-diff guard.
 #
 # Rebuilds src/data/datasets/*/generated/ from the committed exported_powers/
-# input (no .pigg, no Python) and asserts it byte-matches what's checked in.
-# This catches ANY converter drift or stale generated/ output — a strictly
-# stronger guard than the structural invariant scan in the test suite, which
-# only covers known regression classes.
+# input (no .pigg, no Python) and asserts it byte-matches what's checked in, for
+# all three datasets (HC + Rebirth + Thunderspy). This catches ANY converter
+# drift or stale generated/ output — a strictly stronger guard than the
+# structural invariant scan in the test suite, which only covers known
+# regression classes.
 #
 # Deterministic and fast (~45s full regen — the converters embed no timestamps).
 # Scoped to generated/ only: the layered at-tables / kheldian / pet-entities /
@@ -58,8 +59,9 @@ jobs:
 
       - name: Assert generated/ matches converter output
         run: |
-          git diff --stat -- src/data/datasets/homecoming/generated src/data/datasets/rebirth/generated
-          git diff --exit-code -- src/data/datasets/homecoming/generated src/data/datasets/rebirth/generated || {
+          PATHS="src/data/datasets/homecoming/generated src/data/datasets/rebirth/generated src/data/datasets/thunderspy/generated"
+          git diff --stat -- $PATHS
+          git diff --exit-code -- $PATHS || {
             echo "::error::generated/ drifted from converter output. Run 'npm run regen' locally and commit the result.";
             exit 1;
           }

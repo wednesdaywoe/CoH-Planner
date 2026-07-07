@@ -122,6 +122,24 @@ function silentRefToFilename(ref) {
   return name.toLowerCase();
 }
 
+/** Parse7 explicit PvP mode (Parse6 may synthesize this from requires). */
+function isExplicitPvpOnlyGroup(effectGroup) {
+  return (effectGroup && effectGroup.is_pvp) === 'PVP_ONLY';
+}
+
+/** PvP-gated requires forms used by bin exports. */
+function isPvpEnttypePlayerRequires(req) {
+  return /enttype\s+target>\s+player\s+eq\s*$/i.test(req || '');
+}
+function isPvpMapOnlyRequires(req) {
+  return /\bisPVPMap\?(?!\s+!)/i.test(req || '');
+}
+
+/** Resistibility bit from template flags (absence of IgnoreResistance => resistible). */
+function isTemplateResistible(t) {
+  return !((t.flags || []).includes('IgnoreResistance'));
+}
+
 /** Normalize attrib names from raw data to our internal keys */
 const ATTRIB_MAP = {
   // Damage types → resistance keys
@@ -147,6 +165,79 @@ const ATTRIB_MAP = {
   'Taunt': 'taunt',
   'Level_Shift': 'levelShift',
 };
+
+// Thunderspy generic-attrib map (aspect=='' hybrid buffs).
+//
+// Thunderspy's incarnate parser collapses each multi-attrib buff to a single
+// generic *front-category* token and DROPS the AttribMod aspect (all-zero bytes
+// → aspect=''), where HC (Parse7) and Rebirth (Parse6) both preserve the real
+// per-attrib rows with their aspect (see [[thunderspy-attrib-index-array]] §7).
+// So the aspect branches above never fire and every tspy hybrid renders empty.
+//
+// This maps the three front-categories whose meaning is UNAMBIGUOUS — verified
+// three independent ways for the Support Hybrid (the only slot the collapse
+// affects): the parallel HC and Rebirth files parse these exact effects as
+//   `*_Dmg`@Strength (damage), `Melee`/`Area`/…@Current (defense), `Accuracy`@Strength,
+// at IDENTICAL scales (Core Genome 0.02 → Embodiment 0.06 player-eq), and the
+// in-game help reads "+Damage, +Accuracy, +Defense(All), +Special".
+//   `Defense` → `defenseAll` (the calc expands it to all 11 def types; at the top
+//              tier this reproduces HC's explicit 11-key list exactly).
+// Two tokens are DELIBERATELY excluded — they are the help's "+Special", i.e. the
+// heal-strength + mez-strength rows (`Heal_Dmg`/`Held`/`Confused`/… and `Stunned`,
+// all @Strength on HC/Rebirth) that BOTH sister servers drop (team buff-strength,
+// no self stat): `Ones` (the generic catch-all covering heal + non-stun mez) and
+// `Stunned`. The `Ones`@scale=1.0/dur=0 grant marker is also dropped (it maps to
+// nothing here and carries no `power_names` for the passive-boost linkage).
+const TSPY_GENERIC_HYBRID_MAP = {
+  'Damage': 'damage',
+  'Accuracy': 'accuracy',
+  'Defense': 'defenseAll',
+};
+
+/**
+ * Thunderspy Parse6 omits Grant_Power linkage for Hybrid passives (the main
+ * power carries only an `Ones` marker with no power_names). Recover the boost
+ * linkage from the parallel Homecoming hybrid power of the same id — the same
+ * reference-recovery pattern as inferAlphaSilentFromReference — and resolve it
+ * against tspy's OWN silent-file scales. Returns [] when no HC parallel exists.
+ */
+const HC_HYBRID_REF_DIR = fs.existsSync(path.join(RAW_DATA_BASE, 'homecoming', 'incarnate'))
+  ? path.join(RAW_DATA_BASE, 'homecoming', 'incarnate', 'hybrid')
+  : path.join(RAW_DATA_BASE, 'incarnate', 'hybrid');
+
+function inferHybridPassiveFromReference(powerId) {
+  if (datasetId === 'homecoming') return [];
+  const ref = readJson(path.join(HC_HYBRID_REF_DIR, `${powerId}.json`));
+  if (!ref) return [];
+  const refs = [];
+  for (const eff of ref.effects || []) {
+    for (const t of eff.templates || []) {
+      if (!isGrantPowerTemplate(t)) continue;
+      const pnames = [
+        ...(t.power_names || []),
+        ...((t.params && t.params.power_names) || []),
+      ];
+      for (const pn of pnames) {
+        if (pn.toLowerCase().includes('boost')) refs.push(pn);
+      }
+    }
+  }
+  return [...new Set(refs)];
+}
+
+/**
+ * Thunderspy Parse6 omits Grant_Power linkage for Support Hybrid passives
+ * (the main power carries only an `Ones` marker with no power_names), so infer
+ * the corresponding Hybrid_Silent support_boost file by tier from the power id.
+ */
+function inferTspySupportBoostSilent(powerId) {
+  if (!powerId.startsWith('support_genome')) return null;
+  if (powerId === 'support_genome') return 'support_boost_common';
+  if (powerId === 'support_genome_2' || powerId === 'support_genome_3') return 'support_boost_uncommon';
+  if (['support_genome_4', 'support_genome_5', 'support_genome_6', 'support_genome_7'].includes(powerId)) return 'support_boost_rare';
+  if (powerId === 'support_genome_8' || powerId === 'support_genome_9') return 'support_boost_very_rare';
+  return null;
+}
 
 // The six control (mez) attribs, used to discriminate Destiny effects:
 //   - aspect=Current, negative scale → mez PROTECTION for the caster (Clarion).
@@ -206,6 +297,25 @@ function round(n, decimals = 6) {
   return Math.round(n * Math.pow(10, decimals)) / Math.pow(10, decimals);
 }
 
+// Thunderspy Parse6 omits the Grant_Power linkage on Alpha main powers (each
+// carries only a bare `Ones` marker with no power_names), exactly as it does for
+// Support Hybrid passives (see inferTspySupportBoostSilent). Every Alpha ability
+// is a standard CoH incarnate (Agility/Cardiac/…) shared with Homecoming, and
+// every silent file HC references exists in the tspy export, so recover the
+// linkage from the parallel HC alpha power of the same id and resolve it against
+// tspy's OWN silent-file scales. Returns [] (current behavior — the slot stays
+// empty and a WARN is logged) if the HC reference is unavailable; no regression.
+const HC_ALPHA_REF_DIR = fs.existsSync(path.join(RAW_DATA_BASE, 'homecoming', 'incarnate'))
+  ? path.join(RAW_DATA_BASE, 'homecoming', 'incarnate', 'alpha')
+  : path.join(RAW_DATA_BASE, 'incarnate', 'alpha');
+
+function inferAlphaSilentFromReference(powerId) {
+  if (datasetId === 'homecoming') return [];
+  const ref = readJson(path.join(HC_ALPHA_REF_DIR, `${powerId}.json`));
+  if (!ref) return [];
+  return extractGrantedPowers(ref);
+}
+
 // ============================================
 // ALPHA EXTRACTION
 // ============================================
@@ -229,7 +339,12 @@ function extractAlpha() {
 
     const powerId = f.replace('.json', '');
     const displayName = data.display_name || powerId;
-    const grantedRefs = extractGrantedPowers(data);
+    let grantedRefs = extractGrantedPowers(data);
+    if (grantedRefs.length === 0) {
+      // Parse6 (thunderspy) omits the silent-power linkage; recover it from the
+      // parallel Homecoming alpha power (see inferAlphaSilentFromReference).
+      grantedRefs = inferAlphaSilentFromReference(powerId);
+    }
 
     // T3+ alphas grant +1 level shift; see inferLevelShiftFromFilename for why
     // we read this from the filename rather than the binary.
@@ -256,16 +371,23 @@ function extractAlpha() {
         continue;
       }
 
-      // Sum all templates for this aspect (regular + ED-bypass portions)
-      // Alpha silent files have 2 templates per attrib: regular + BoostIgnoreDiminishing.
-      // All damage/defense types in a file share the same scale per template,
-      // so we only need the first unique attrib's values.
+      // Sum all templates for this aspect (regular + ED-bypass portions).
+      // HC/Rebirth silent files carry 2 templates per attrib — regular +
+      // BoostIgnoreDiminishing — on the SAME attrib, and list sibling damage/
+      // defense types at an identical scale, so we take the first unique attrib.
+      // Thunderspy (Parse6) instead splits the ED-bypass onto a generic `Ones`
+      // template (aspect=''), so fold every `Ones` template into the total too
+      // (a no-op for HC/Rebirth, which have zero `Ones` templates here).
       let totalScale = 0;
       let firstAttrib = null;
       for (const eff of silentData.effects || []) {
+        // Alpha silent files are never PvP-gated (all groups export as EITHER);
+        // skip any PVP_ONLY group defensively so a future twin can't inflate.
+        if (eff.is_pvp === 'PVP_ONLY') continue;
         for (const t of eff.templates || []) {
           const attrib = (t.attribs || [])[0];
           if (!attrib || attrib === 'Set_Mode') continue;
+          if (attrib === 'Ones') { totalScale += (t.scale || 0); continue; }
           // Only process the first unique attrib (others are duplicates for different damage types)
           if (firstAttrib === null) firstAttrib = attrib;
           if (attrib !== firstAttrib) continue;
@@ -335,6 +457,9 @@ function extractDestiny() {
     let healScale = 0;
     let healTable = '';
     for (const eff of data.effects || []) {
+      const req = eff.requires_expression || '';
+      const pvpByMode = isExplicitPvpOnlyGroup(eff);
+      const pvpByReq = isPvpMapOnlyRequires(req) || isPvpEnttypePlayerRequires(req);
       for (const t of eff.templates || []) {
         const attrib = (t.attribs || [])[0];
         if (!attrib || attrib === 'Grant_Power' || attrib === 'Revoke_Power' || attrib === 'Set_Mode') continue;
@@ -343,6 +468,14 @@ function extractDestiny() {
         const scale = t.scale || 0;
         const duration = t.duration || '';
         if (scale === 0) continue;
+
+        // Targeted PvP awareness: drop explicit/synthetically-PvP rows by
+        // default, with the same beneficial `player eq` leaguemate exception
+        // used in Hybrid (Parse6 can synthesize those rows as PVP_ONLY).
+        const isLeaguematePlayer = scale > 0 && isPvpEnttypePlayerRequires(req);
+        if ((pvpByMode || pvpByReq) && !isLeaguematePlayer) continue;
+
+        const resistible = isTemplateResistible(t);
 
         // Parse duration to seconds
         let durSec = 0;
@@ -413,6 +546,15 @@ function extractDestiny() {
           else if (attrib === 'Recovery') statKey = 'recovery';
           else if (attrib === 'Regeneration') statKey = 'regeneration';
           else statKey = null;
+        } else if (aspect === '' && datasetId === 'thunderspy') {
+          // Parse6/Thunderspy omits aspect/type metadata for many Destiny rows.
+          // Recover only the known caster-facing stats from attrib identity.
+          if (attrib === 'RechargeTime') statKey = 'recharge';
+          else if (attrib === 'Recovery') statKey = 'recovery';
+          else if (attrib === 'Regeneration') statKey = 'regeneration';
+          else if (attrib === 'Endurance') statKey = 'endurance';
+          else if (MOVEMENT_ATTRIBS.has(attrib)) statKey = 'runSpeed';
+          else statKey = null;
         } else if (attrib === 'Endurance' && aspect === 'Current') {
           statKey = 'endurance'; // Endurance refill
         }
@@ -434,7 +576,7 @@ function extractDestiny() {
         else value = scale;
         const key = `${statKey}`;
         if (!effects[key]) effects[key] = [];
-        effects[key].push({ value: round(value), duration: durSec });
+        effects[key].push({ value: round(value), duration: durSec, resistible });
       }
     }
 
@@ -449,13 +591,16 @@ function extractDestiny() {
       // Summing them would N× the magnitude (Parse6 Clarion mez would read 6×).
       // Collapse each duration to its single strongest component so the timeline
       // sums real decay tiers, not duplicate attribs.
-      const byDur = new Map();
+      // Resistible-aware: keep resistible/unresistable twins distinct.
+      const byDurRes = new Map();
       for (const e of entries) {
-        const cur = byDur.get(e.duration);
-        if (cur === undefined || Math.abs(e.value) > Math.abs(cur)) byDur.set(e.duration, e.value);
+        const durKey = `${e.duration}|${e.resistible ? 'R' : 'U'}`;
+        const cur = byDurRes.get(durKey);
+        if (cur === undefined || Math.abs(e.value) > Math.abs(cur)) {
+          byDurRes.set(durKey, { duration: e.duration, value: e.value, resistible: e.resistible });
+        }
       }
-      const collapsed = Array.from(byDur.entries())
-        .map(([dur, value]) => ({ value, duration: dur }))
+      const collapsed = Array.from(byDurRes.values())
         .sort((a, b) => a.duration - b.duration);
       // Peak = highest absolute value
       const peak = collapsed.reduce((best, e) => Math.abs(e.value) > Math.abs(best.value) ? e : best, collapsed[0]);
@@ -531,9 +676,20 @@ function extractHybrid() {
     const perTarget = {};   // Per-enemy stacking
     const grantedPassiveRefs = []; // Passive boost powers
     const grantedOtherRefs = []; // Other granted powers (procs, etc.)
+    // Parse6 (Rebirth/Thunderspy) splits a uniform multi-attrib buff into one
+    // group per attrib where HC packs them into a single template — both encode
+    // ONE buff. Without dedup the split form SUMS: e.g. the eight `*_Dmg` groups
+    // at +6% each collapse to the same `damage` stat and read a bogus +48%. Track
+    // applied (bucket, statKey, scale) triples so an identical-scale sibling from
+    // the split counts once, while a genuinely distinct buff (different scale)
+    // still stacks. (HC is unaffected — its single template already deduped the
+    // eight damage types to one `damage` via templateKeys.)
+    const seenContribs = new Set();
 
     for (const eff of data.effects || []) {
       const req = eff.requires_expression || '';
+      const pvpByMode = isExplicitPvpOnlyGroup(eff);
+      const pvpByReq = isPvpMapOnlyRequires(req) || isPvpEnttypePlayerRequires(req);
 
       for (const t of eff.templates || []) {
         const attribs = t.attribs || [];
@@ -557,6 +713,12 @@ function extractHybrid() {
         }
 
         if (scale === 0) continue;
+
+        // Targeted PvP awareness: drop explicit PvP-only rows by default, but
+        // keep the known leaguemate-buff shape (`enttype target> player eq` +
+        // beneficial polarity) that Parse6 can synthesize as PVP_ONLY.
+        const isLeaguematePlayer = scale > 0 && isPvpEnttypePlayerRequires(req);
+        if ((pvpByMode || pvpByReq) && !isLeaguematePlayer) continue;
 
         // Collect the DISTINCT stat keys this template maps to. A uniform
         // multi-attrib buff — e.g. Support Hybrid's aspect=Strength row over all
@@ -584,6 +746,16 @@ function extractHybrid() {
             // standard self total, so they stay out.
             else if (attrib === 'Accuracy') statKey = 'accuracy';
             else if (attrib.endsWith('_Dmg') && attrib !== 'Heal_Dmg') statKey = 'damage';
+          } else if (aspect === '' && TSPY_GENERIC_HYBRID_MAP[attrib]) {
+            // Thunderspy dropped-aspect hybrid buff — map the unambiguous
+            // generic front-category tokens (see TSPY_GENERIC_HYBRID_MAP). Only
+            // fires for tspy: HC/Rebirth always carry a real aspect, and their
+            // real attribs are never the bare `Damage`/`Defense` tokens.
+            statKey = TSPY_GENERIC_HYBRID_MAP[attrib];
+          } else if (aspect === '' && datasetId === 'thunderspy') {
+            // Parse6/Thunderspy can also omit aspect on regular scalar rows
+            // (e.g. Melee Genome +Regeneration); recover only known-safe stats.
+            if (attrib === 'Regeneration') statKey = 'regeneration';
           }
           if (!statKey || statKey === 'taunt') continue; // taunt isn't a player stat
           templateKeys.add(statKey);
@@ -599,14 +771,49 @@ function extractHybrid() {
         //     per-target (target NOT source).
         const isSelfRPN = /entref\s+target>\s+entref\s+source>\s+eq\s*$/.test(req);
         const isPerTargetRPN = /entref\s+target>\s+entref\s+source>\s+eq\s+!/.test(req);
+        // Support Hybrid's *Core* line buffs "all leaguemates" (which includes the
+        // caster) via an ENTITY-TYPE gate rather than an empty/self requires:
+        //   `enttype target> player eq`  → the player-leaguemate value the CASTER
+        //                                  receives (applies in PvE).
+        //   `enttype target> critter eq` → the pet-doubled value ("This boost is
+        //                                  doubled in strength for pets", per the
+        //                                  in-game help); applies to pets, NOT the
+        //                                  caster, so it stays out of caster totals.
+        // Neither matched the self/per-target RPN forms above, so the whole Core
+        // buff was routed nowhere (empty frontLoaded) while the Radial line — which
+        // uses an empty requires — rendered. DSH8 fix: route the player-leaguemate
+        // value to frontLoaded (the caster gets it, like an empty-req self buff).
+        //
+        // Two cross-dataset traps make the parser's `is_pvp` flag the WRONG key:
+        //   1. CASE — HC/Thunderspy write `enttype`, Rebirth writes `Enttype`; the
+        //      match must be case-insensitive (`/i`).
+        //   2. SYNTHESIZED is_pvp — Rebirth/Thunderspy are Parse6, which has no
+        //      explicit is_pvp field, so the bin parser SYNTHESIZES it from the
+        //      requires target-type and marks EVERY `player eq` group PVP_ONLY
+        //      (_parse_effects_parse6). That synthesis is harmless for FOE effects
+        //      (the `critter eq` sibling carries the effect to the critter foe in
+        //      PvE) but WRONG for this ally-BUFF, whose caster is a *player*. HC's
+        //      explicit is_pvp=EITHER for the same buff is the ground truth.
+        // The reliable discriminator is POLARITY, not is_pvp: a `player eq` group on
+        // a BENEFICIAL buff (scale > 0 — and extractHybrid only ever maps beneficial
+        // stat keys) is the leaguemate value and applies in PvE; a foe-debuff's
+        // `player eq` PvP twin is harmful (negative) and never reaches this route.
         const isPerTarget = isPerTargetRPN || req.includes('Ne(target');
-        const isSelfOnly = isSelfRPN || req.includes('source>entref') || req === '';
+        const isSelfOnly = isSelfRPN || req.includes('source>entref') || req === '' || isLeaguematePlayer;
+        const resistibleKey = isTemplateResistible(t) ? 'R' : 'U';
 
         for (const statKey of templateKeys) {
+          // Resistible-aware dedup: Parse6 per-attrib split still dedups cleanly,
+          // but a true resistible/unresistable twin is kept distinct.
+          const contribKey = `${isPerTarget ? 'pt' : 'fl'}|${statKey}|${scale}|${resistibleKey}`;
           if (isPerTarget) {
+            if (seenContribs.has(contribKey)) continue;
+            seenContribs.add(contribKey);
             if (!perTarget[statKey]) perTarget[statKey] = 0;
             perTarget[statKey] = round(perTarget[statKey] + Math.abs(scale));
           } else if (isSelfOnly) {
+            if (seenContribs.has(contribKey)) continue;
+            seenContribs.add(contribKey);
             if (!frontLoaded[statKey]) frontLoaded[statKey] = 0;
             // Mez protection uses negative scales for protection magnitude
             const val = statKey.startsWith('prot') ? Math.abs(scale) : scale;
@@ -618,6 +825,17 @@ function extractHybrid() {
 
     // Resolve passive boosts from silent files
     const passive = {};
+    if (datasetId === 'thunderspy' && grantedPassiveRefs.length === 0) {
+      // Recover the omitted Parse6 linkage from the HC parallel (all trees);
+      // fall back to the tier-derived support map when no parallel exists.
+      const inferredRefs = inferHybridPassiveFromReference(powerId);
+      if (inferredRefs.length > 0) {
+        grantedPassiveRefs.push(...inferredRefs);
+      } else {
+        const inferred = inferTspySupportBoostSilent(powerId);
+        if (inferred) grantedPassiveRefs.push(inferred);
+      }
+    }
     for (const ref of grantedPassiveRefs) {
       const silentName = silentRefToFilename(ref);
       const silentData = silentCache[silentName];
@@ -644,6 +862,27 @@ function extractHybrid() {
             // (index 92), not 'Endurance' (index 22). The earlier name was wrong
             // and made the +10% T4 Support passive vanish from `global.enduranceDiscount`.
             statKey = 'enduranceDiscount';
+          } else if (
+            datasetId === 'thunderspy' &&
+            silentName.startsWith('support_boost_') &&
+            attrib === 'Ones' &&
+            aspect === ''
+          ) {
+            // Parse6/Thunderspy collapses this passive to a generic `Ones` token
+            // with empty aspect; the value is the intended endurance discount.
+            statKey = 'enduranceDiscount';
+          } else if (datasetId === 'thunderspy' && aspect === '') {
+            // Parse6/Thunderspy drops the aspect on the other trees' silent
+            // boosts too; recover by silent-file family (tier scales match the
+            // HC parallels exactly: melee regen 0.075/0.15/0.225/0.3, assault
+            // damage 0.025/0.05/0.075/0.1, control status-res 0.1/0.15/0.2/0.25).
+            if (silentName.startsWith('melee_boost_') && attrib === 'Regeneration') {
+              statKey = 'regeneration';
+            } else if (silentName.startsWith('assault_boost_') && attrib === 'Ones') {
+              statKey = 'damage';
+            } else if (silentName.startsWith('control_boost_') && attrib === 'Ones') {
+              statKey = 'statusResistance';
+            }
           } else if (aspect === 'Resistance') {
             // Control passive Status Resistance
             const mezTypes = ['Confused', 'Terrorized', 'Held', 'Immobilized', 'Stunned', 'Sleep', 'Afraid'];

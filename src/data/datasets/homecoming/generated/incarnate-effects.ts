@@ -204,23 +204,23 @@ export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number | s
   // Barrier Total Radial Invocation
   'barrier_total_radial_invocation': {"levelShift":1,"defenseAll":0.6,"resistanceAll":0.6},
   // Clarion Core Epiphany
-  'clarion_core_epiphany': {"levelShift":1,"mezProtection":21,"kbProtection":10.5,"debuffResistance":0.7,"statusResistance":2.1},
+  'clarion_core_epiphany': {"levelShift":1,"mezProtection":21,"kbProtection":10.5,"debuffResistance":0.7},
   // Clarion Core Invocation
-  'clarion_core_invocation': {"mezProtection":21,"kbProtection":10.5,"debuffResistance":0.7,"statusResistance":2.1},
+  'clarion_core_invocation': {"mezProtection":21,"kbProtection":10.5,"debuffResistance":0.7},
   // Clarion Invocation
-  'clarion_invocation': {"mezProtection":30,"kbProtection":15,"debuffResistance":1,"statusResistance":3},
+  'clarion_invocation': {"mezProtection":30,"kbProtection":15,"debuffResistance":1},
   // Clarion Partial Core Invocation
-  'clarion_partial_core_invocation': {"levelShift":1,"mezProtection":21,"kbProtection":10.5,"debuffResistance":0.7,"statusResistance":2.1},
+  'clarion_partial_core_invocation': {"levelShift":1,"mezProtection":21,"kbProtection":10.5,"debuffResistance":0.7},
   // Clarion Partial Radial Invocation
-  'clarion_partial_radial_invocation': {"levelShift":1,"mezProtection":30,"kbProtection":15,"debuffResistance":1,"statusResistance":3},
+  'clarion_partial_radial_invocation': {"levelShift":1,"mezProtection":30,"kbProtection":15,"debuffResistance":1},
   // Clarion Radial Epiphany
-  'clarion_radial_epiphany': {"levelShift":1,"mezProtection":30,"kbProtection":15,"debuffResistance":1,"statusResistance":3},
+  'clarion_radial_epiphany': {"levelShift":1,"mezProtection":30,"kbProtection":15,"debuffResistance":1},
   // Clarion Radial Invocation
-  'clarion_radial_invocation': {"mezProtection":30,"kbProtection":15,"debuffResistance":1,"statusResistance":3},
+  'clarion_radial_invocation': {"mezProtection":30,"kbProtection":15,"debuffResistance":1},
   // Clarion Total Core Invocation
-  'clarion_total_core_invocation': {"levelShift":1,"mezProtection":21,"kbProtection":10.5,"debuffResistance":0.7,"statusResistance":2.1},
+  'clarion_total_core_invocation': {"levelShift":1,"mezProtection":21,"kbProtection":10.5,"debuffResistance":0.7},
   // Clarion Total Radial Invocation
-  'clarion_total_radial_invocation': {"levelShift":1,"mezProtection":30,"kbProtection":15,"debuffResistance":1,"statusResistance":3},
+  'clarion_total_radial_invocation': {"levelShift":1,"mezProtection":30,"kbProtection":15,"debuffResistance":1},
   // Incandescence Core Epiphany
   'incandescence_core_epiphany': {"levelShift":1,"healReceived":0.8},
   // Incandescence Core Invocation
@@ -298,23 +298,23 @@ export const GENERATED_DESTINY_TIMELINE: Record<string, Record<string, Generated
   // Barrier Total Radial Invocation
   'barrier_total_radial_invocation': {"defenseAll":[{"value":0.6,"duration":5},{"value":0.25,"duration":15},{"value":0.025,"duration":30},{"value":0.025,"duration":60}],"resistanceAll":[{"value":0.6,"duration":5},{"value":0.25,"duration":15},{"value":0.025,"duration":30},{"value":0.025,"duration":60}]},
   // Clarion Core Epiphany
-  'clarion_core_epiphany': {"mezProtection":[{"value":21,"duration":30},{"value":3,"duration":60},{"value":6,"duration":120}],"kbProtection":[{"value":10.5,"duration":30},{"value":1.5,"duration":60},{"value":3,"duration":120}],"debuffResistance":[{"value":0.7,"duration":30},{"value":0.1,"duration":60},{"value":0.2,"duration":120}],"statusResistance":[{"value":2.1,"duration":30},{"value":0.3,"duration":60},{"value":0.6,"duration":120}]},
+  'clarion_core_epiphany': {"mezProtection":[{"value":21,"duration":30},{"value":3,"duration":60},{"value":6,"duration":120}],"kbProtection":[{"value":10.5,"duration":30},{"value":1.5,"duration":60},{"value":3,"duration":120}],"debuffResistance":[{"value":0.7,"duration":30},{"value":0.1,"duration":60},{"value":0.2,"duration":120}]},
   // Clarion Core Invocation
-  'clarion_core_invocation': {"mezProtection":[{"value":21,"duration":22.5},{"value":3,"duration":45},{"value":6,"duration":90}],"kbProtection":[{"value":10.5,"duration":22.5},{"value":1.5,"duration":45},{"value":3,"duration":90}],"debuffResistance":[{"value":0.7,"duration":22.5},{"value":0.1,"duration":45},{"value":0.2,"duration":90}],"statusResistance":[{"value":2.1,"duration":22.5},{"value":0.3,"duration":45},{"value":0.6,"duration":90}]},
+  'clarion_core_invocation': {"mezProtection":[{"value":21,"duration":22.5},{"value":3,"duration":45},{"value":6,"duration":90}],"kbProtection":[{"value":10.5,"duration":22.5},{"value":1.5,"duration":45},{"value":3,"duration":90}],"debuffResistance":[{"value":0.7,"duration":22.5},{"value":0.1,"duration":45},{"value":0.2,"duration":90}]},
   // Clarion Invocation
-  'clarion_invocation': {"mezProtection":[{"value":30,"duration":15},{"value":3,"duration":30},{"value":3,"duration":60}],"kbProtection":[{"value":15,"duration":15},{"value":1.5,"duration":30},{"value":1.5,"duration":60}],"debuffResistance":[{"value":1,"duration":15},{"value":0.1,"duration":30},{"value":0.1,"duration":60}],"statusResistance":[{"value":3,"duration":15},{"value":0.3,"duration":30},{"value":0.3,"duration":60}]},
+  'clarion_invocation': {"mezProtection":[{"value":30,"duration":15},{"value":3,"duration":30},{"value":3,"duration":60}],"kbProtection":[{"value":15,"duration":15},{"value":1.5,"duration":30},{"value":1.5,"duration":60}],"debuffResistance":[{"value":1,"duration":15},{"value":0.1,"duration":30},{"value":0.1,"duration":60}]},
   // Clarion Partial Core Invocation
-  'clarion_partial_core_invocation': {"mezProtection":[{"value":21,"duration":30},{"value":3,"duration":60},{"value":6,"duration":120}],"kbProtection":[{"value":10.5,"duration":30},{"value":1.5,"duration":60},{"value":3,"duration":120}],"debuffResistance":[{"value":0.7,"duration":30},{"value":0.1,"duration":60},{"value":0.2,"duration":120}],"statusResistance":[{"value":2.1,"duration":30},{"value":0.3,"duration":60},{"value":0.6,"duration":120}]},
+  'clarion_partial_core_invocation': {"mezProtection":[{"value":21,"duration":30},{"value":3,"duration":60},{"value":6,"duration":120}],"kbProtection":[{"value":10.5,"duration":30},{"value":1.5,"duration":60},{"value":3,"duration":120}],"debuffResistance":[{"value":0.7,"duration":30},{"value":0.1,"duration":60},{"value":0.2,"duration":120}]},
   // Clarion Partial Radial Invocation
-  'clarion_partial_radial_invocation': {"mezProtection":[{"value":30,"duration":22.5},{"value":3,"duration":45},{"value":3,"duration":90}],"kbProtection":[{"value":15,"duration":22.5},{"value":1.5,"duration":45},{"value":1.5,"duration":90}],"debuffResistance":[{"value":1,"duration":22.5},{"value":0.1,"duration":45},{"value":0.1,"duration":90}],"statusResistance":[{"value":3,"duration":22.5},{"value":0.3,"duration":45},{"value":0.3,"duration":90}]},
+  'clarion_partial_radial_invocation': {"mezProtection":[{"value":30,"duration":22.5},{"value":3,"duration":45},{"value":3,"duration":90}],"kbProtection":[{"value":15,"duration":22.5},{"value":1.5,"duration":45},{"value":1.5,"duration":90}],"debuffResistance":[{"value":1,"duration":22.5},{"value":0.1,"duration":45},{"value":0.1,"duration":90}]},
   // Clarion Radial Epiphany
-  'clarion_radial_epiphany': {"mezProtection":[{"value":30,"duration":22.5},{"value":3,"duration":45},{"value":3,"duration":90}],"kbProtection":[{"value":15,"duration":22.5},{"value":1.5,"duration":45},{"value":1.5,"duration":90}],"debuffResistance":[{"value":1,"duration":22.5},{"value":0.1,"duration":45},{"value":0.1,"duration":90}],"statusResistance":[{"value":3,"duration":22.5},{"value":0.3,"duration":45},{"value":0.3,"duration":90}]},
+  'clarion_radial_epiphany': {"mezProtection":[{"value":30,"duration":22.5},{"value":3,"duration":45},{"value":3,"duration":90}],"kbProtection":[{"value":15,"duration":22.5},{"value":1.5,"duration":45},{"value":1.5,"duration":90}],"debuffResistance":[{"value":1,"duration":22.5},{"value":0.1,"duration":45},{"value":0.1,"duration":90}]},
   // Clarion Radial Invocation
-  'clarion_radial_invocation': {"mezProtection":[{"value":30,"duration":15},{"value":3,"duration":30},{"value":3,"duration":60}],"kbProtection":[{"value":15,"duration":15},{"value":1.5,"duration":30},{"value":1.5,"duration":60}],"debuffResistance":[{"value":1,"duration":15},{"value":0.1,"duration":30},{"value":0.1,"duration":60}],"statusResistance":[{"value":3,"duration":15},{"value":0.3,"duration":30},{"value":0.3,"duration":60}]},
+  'clarion_radial_invocation': {"mezProtection":[{"value":30,"duration":15},{"value":3,"duration":30},{"value":3,"duration":60}],"kbProtection":[{"value":15,"duration":15},{"value":1.5,"duration":30},{"value":1.5,"duration":60}],"debuffResistance":[{"value":1,"duration":15},{"value":0.1,"duration":30},{"value":0.1,"duration":60}]},
   // Clarion Total Core Invocation
-  'clarion_total_core_invocation': {"mezProtection":[{"value":21,"duration":22.5},{"value":3,"duration":45},{"value":6,"duration":90}],"kbProtection":[{"value":10.5,"duration":22.5},{"value":1.5,"duration":45},{"value":3,"duration":90}],"debuffResistance":[{"value":0.7,"duration":22.5},{"value":0.1,"duration":45},{"value":0.2,"duration":90}],"statusResistance":[{"value":2.1,"duration":22.5},{"value":0.3,"duration":45},{"value":0.6,"duration":90}]},
+  'clarion_total_core_invocation': {"mezProtection":[{"value":21,"duration":22.5},{"value":3,"duration":45},{"value":6,"duration":90}],"kbProtection":[{"value":10.5,"duration":22.5},{"value":1.5,"duration":45},{"value":3,"duration":90}],"debuffResistance":[{"value":0.7,"duration":22.5},{"value":0.1,"duration":45},{"value":0.2,"duration":90}]},
   // Clarion Total Radial Invocation
-  'clarion_total_radial_invocation': {"mezProtection":[{"value":30,"duration":15},{"value":3,"duration":30},{"value":3,"duration":60}],"kbProtection":[{"value":15,"duration":15},{"value":1.5,"duration":30},{"value":1.5,"duration":60}],"debuffResistance":[{"value":1,"duration":15},{"value":0.1,"duration":30},{"value":0.1,"duration":60}],"statusResistance":[{"value":3,"duration":15},{"value":0.3,"duration":30},{"value":0.3,"duration":60}]},
+  'clarion_total_radial_invocation': {"mezProtection":[{"value":30,"duration":15},{"value":3,"duration":30},{"value":3,"duration":60}],"kbProtection":[{"value":15,"duration":15},{"value":1.5,"duration":30},{"value":1.5,"duration":60}],"debuffResistance":[{"value":1,"duration":15},{"value":0.1,"duration":30},{"value":0.1,"duration":60}]},
   // Rebirth Core Epiphany
   'rebirth_core_epiphany': {"maxHP":[{"value":0.2,"duration":10},{"value":0.05,"duration":30},{"value":0.05,"duration":60},{"value":0.05,"duration":120}]},
   // Rebirth Partial Core Invocation
@@ -706,7 +706,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_2': {
     tree: 'support',
     passive: {"enduranceDiscount":0.05},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.02,"defMelee":0.02,"defAoE":0.02,"defSmashing":0.02,"defLethal":0.02,"defEnergy":0.02,"defNegative":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -726,7 +726,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_4': {
     tree: 'support',
     passive: {"enduranceDiscount":0.075},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.04,"accuracy":0.04,"defMelee":0.04,"defAoE":0.04,"defSmashing":0.04,"defLethal":0.04,"defFire":0.04,"defCold":0.04,"defEnergy":0.04,"defNegative":0.04},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -736,7 +736,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_5': {
     tree: 'support',
     passive: {"enduranceDiscount":0.075},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.03,"defMelee":0.03,"defAoE":0.03,"defSmashing":0.03,"defLethal":0.03,"defFire":0.03,"defCold":0.03,"defEnergy":0.03,"defNegative":0.03},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -766,7 +766,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_8': {
     tree: 'support',
     passive: {"enduranceDiscount":0.1},
-    frontLoaded: {},
+    frontLoaded: {"damage":0.06,"accuracy":0.06,"defRanged":0.06,"defMelee":0.06,"defAoE":0.06,"defSmashing":0.06,"defLethal":0.06,"defFire":0.06,"defCold":0.06,"defEnergy":0.06,"defNegative":0.06,"defPsionic":0.06,"defToxic":0.06},
     perTarget: {},
     maxTargets: 0,
     duration: 120,

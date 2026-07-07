@@ -288,6 +288,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Defender_Ranged.Katana"
 }

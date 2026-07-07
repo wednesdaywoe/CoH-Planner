@@ -165,17 +165,18 @@ export const Geode: Power = {
     "slow": {
       "fly": {
         "scale": 10000,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     },
-    "selfPenalty": true,
     "untouchable": {
       "scale": 1000,
       "table": "Melee_Ones"
     },
     "damageDebuff": {
       "scale": 999,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "taunt": {
       "scale": 999,
@@ -183,7 +184,8 @@ export const Geode: Power = {
     },
     "accuracyDebuff": {
       "scale": 999,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "buffDuration": 0.2
   }

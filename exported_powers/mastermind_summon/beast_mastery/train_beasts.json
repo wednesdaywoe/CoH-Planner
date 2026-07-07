@@ -134,7 +134,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -156,12 +156,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Howler_Wolf_2.Howl"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -294,7 +288,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -316,12 +310,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Alpha_Wolf_2.Howl"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

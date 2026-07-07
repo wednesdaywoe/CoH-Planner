@@ -75,13 +75,23 @@ export const AriaofStasis: Power = {
     "immobilize": {
       "mag": 3,
       "scale": 15,
-      "table": "Ranged_Immobilize",
-      "domination": {
-        "mag": 3,
-        "scale": 22.5,
-        "table": "Ranged_Immobilize"
-      }
+      "table": "Ranged_Immobilize"
     },
     "buffDuration": 15
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "immobilize": {
+          "mag": 3,
+          "scale": 22.5,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ]
 };

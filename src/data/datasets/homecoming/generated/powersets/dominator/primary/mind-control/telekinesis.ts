@@ -45,6 +45,21 @@ export const Telekinesis: Power = {
     "Immobilize"
   ],
   "maxSlots": 6,
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "immobilize": {
+          "mag": 4,
+          "scale": 7.5,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

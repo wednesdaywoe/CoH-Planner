@@ -132,7 +132,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -168,7 +168,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -190,12 +190,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Soldier_2.Equip"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -218,7 +212,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -290,7 +284,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -326,7 +320,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -348,12 +342,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Medic_2.Equip"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -484,7 +472,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -520,7 +508,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -542,12 +530,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Spec_Ops_2.Equip"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -678,7 +660,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -714,7 +696,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -736,12 +718,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Commando_2.Equip"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

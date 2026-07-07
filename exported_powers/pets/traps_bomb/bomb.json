@@ -140,7 +140,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

@@ -213,6 +213,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 34,
   "powerset": "Dominator_Assault.Kinetic_Assault"
 }

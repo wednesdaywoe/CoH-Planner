@@ -132,7 +132,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -154,12 +154,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Soldier_3.Tactical_Upgrade"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -290,7 +284,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -312,12 +306,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Medic_3.Tactical_Upgrade"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -412,7 +400,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -434,12 +422,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Spec_Ops_3.Stealth"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -448,7 +430,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -470,12 +452,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Spec_Ops_3.Tactical_Upgrade"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -642,7 +618,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -664,12 +640,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Commando_3.Tactical_Upgrade"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

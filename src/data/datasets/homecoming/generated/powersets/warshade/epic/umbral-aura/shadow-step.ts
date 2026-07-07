@@ -34,6 +34,17 @@ export const ShadowStep: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "stealth": {
+      "translucency": {
+        "scale": 0.25,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 1,
+      "movement": 15,
+      "untouchable": 1
+    },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
@@ -56,15 +67,11 @@ export const ShadowStep: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "movement": 15,
-      "untouchable": 1
-    },
     "untouchable": {
       "scale": 1000,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15
+    "buffDuration": 1
   },
   "requires": "Inherent.Inherent.Shadow_Step !"
 };

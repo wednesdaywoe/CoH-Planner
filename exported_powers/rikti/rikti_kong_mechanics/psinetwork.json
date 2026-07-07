@@ -768,7 +768,7 @@
       "templates": [
         {
           "attribs": [
-            "Recharge_Power"
+            "Combat_Mod_Shift"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

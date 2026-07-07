@@ -51,6 +51,12 @@
     132
   ],
   "effects": [],
+  "modes_required": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Mastermind_Upgrade_1"
+  ],
   "available_level": 5,
   "powerset": "Stalker_Melee.Radiation_Melee"
 }

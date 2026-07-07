@@ -79,7 +79,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
@@ -121,7 +121,7 @@
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
-              "magnitude_expression": "",
+              "magnitude_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *",
               "application_period": 0.0,
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
@@ -163,7 +163,7 @@
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
-              "magnitude_expression": "",
+              "magnitude_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *",
               "application_period": 0.0,
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
@@ -253,7 +253,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
@@ -295,7 +295,7 @@
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
-              "magnitude_expression": "",
+              "magnitude_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *",
               "application_period": 0.0,
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
@@ -335,7 +335,7 @@
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
-              "magnitude_expression": "",
+              "magnitude_expression": "Temporary_Powers.Temporary_Powers.Savage_Melee_Blood_Frenzy_Stalker source.ownPowerNum? .04 * 1 + @StdResult *",
               "application_period": 0.0,
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
@@ -410,7 +410,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

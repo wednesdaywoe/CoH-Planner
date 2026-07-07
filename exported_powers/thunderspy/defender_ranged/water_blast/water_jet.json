@@ -54,6 +54,12 @@
     128
   ],
   "effects": [],
+  "modes_required": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "DD_BonusAoEMode_1"
+  ],
   "available_level": 9,
   "powerset": "Defender_Ranged.Water_Blast"
 }

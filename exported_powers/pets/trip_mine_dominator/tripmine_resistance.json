@@ -352,7 +352,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -374,12 +374,6 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Pets.Trip_Mine_Dominator.TripMine_SelfDestruct"
-            ]
-          },
           "flags_raw": 1280
         }
       ]

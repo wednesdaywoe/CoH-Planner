@@ -50,6 +50,10 @@ export const Placate: Power = {
       "stealthPvP": {
         "scale": 380,
         "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
       }
     },
     "durations": {

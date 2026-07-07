@@ -126,6 +126,11 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_Pool",
+    "Disable_All",
+    "Disable_Toggle"
+  ],
   "available_level": 13,
   "powerset": "Pool.Invisibility"
 }

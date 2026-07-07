@@ -43,12 +43,22 @@ export const MassHypnosis: Power = {
     "sleep": {
       "mag": 3,
       "scale": 12,
-      "table": "Ranged_Sleep",
-      "domination": {
-        "mag": 3,
-        "scale": 18,
-        "table": "Ranged_Sleep"
+      "table": "Ranged_Sleep"
+    }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3,
+          "scale": 18,
+          "table": "Ranged_Sleep"
+        }
       }
     }
-  }
+  ]
 };

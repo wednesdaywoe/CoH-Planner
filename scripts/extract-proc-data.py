@@ -18,8 +18,10 @@ from __future__ import annotations
 
 import os
 import re
+import subprocess
 import sys
 from pathlib import Path
+from functools import lru_cache
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT / 'tools' / 'bin-crawler'))
@@ -69,6 +71,62 @@ ATTRIB_ASPECT_TO_EFFECT = {
     ('FlyingSpeed', 'Resistance'):  ('SlowResistance', 100.0),
     ('RechargeTime', 'Resistance'): ('RechargeResistance', 100.0),
 }
+
+_BRIDGE_CLI = PROJECT_ROOT / 'scripts' / 'bridge-attrib-one.cjs'
+
+
+@lru_cache(maxsize=1024)
+def _bridge_attrib(attrib: str, aspect: str, table: str = '') -> dict:
+    req = json.dumps({'attrib': attrib, 'aspect': aspect, 'table': table})
+    out = subprocess.check_output(
+        ['node', str(_BRIDGE_CLI), req],
+        cwd=PROJECT_ROOT,
+        text=True,
+    )
+    return json.loads(out)
+
+
+def _proc_effect_from_bridge(attrib: str, aspect: str, table: str = '') -> tuple[str, float, str | None] | None:
+    # Explicit overrides where proc categories differ from bridge effect types.
+    if (attrib, aspect) == ('RunningSpeed', 'Resistance'):
+        return ('SlowResistance', 100.0, None)
+    if (attrib, aspect) == ('FlyingSpeed', 'Resistance'):
+        return ('SlowResistance', 100.0, None)
+    if (attrib, aspect) == ('RechargeTime', 'Resistance'):
+        return ('RechargeResistance', 100.0, None)
+
+    br = _bridge_attrib(attrib, aspect, table)
+    et = br.get('effectType')
+    sub = br.get('subType')
+
+    if et == 'RechargeTime':
+        return ('Recharge', 100.0, None)
+    if et == 'ToHit':
+        return ('ToHit', 100.0, None)
+    if et == 'Recovery':
+        return ('Recovery', 100.0, None)
+    if et == 'Endurance':
+        return ('Endurance', 100.0, None)
+    if et == 'Regeneration':
+        return ('Regeneration', 100.0, None)
+    if et == 'MaxHP':
+        return ('MaxHP', 10.0, None)
+    if et == 'Absorb':
+        return ('Absorb', 100.0, None)
+    if et == 'Heal':
+        return ('Heal', 100.0, None)
+    if et == 'Perception':
+        return ('Special', 100.0, None)
+    if et == 'Movement':
+        return ('RunSpeed', 100.0, None)
+    if et == 'Resistance' and attrib.endswith('_Dmg'):
+        return ('Resistance', 100.0, attrib.replace('_Dmg', ''))
+
+    # Preserve existing behavior if the bridge yields no handled mapping.
+    base = ATTRIB_ASPECT_TO_EFFECT.get((attrib, aspect))
+    if base:
+        return (base[0], base[1], None)
+    return None
 
 # Boost-piece Null-marker `tags` -> the effect category it stands for. Used to
 # pick the right Global_Bonus power per piece in multi-global sets (Steadfast
@@ -151,12 +209,11 @@ def _group_effects(eg) -> list[dict]:
     # (Winter's Gift: SlowResistance AND RechargeResistance), not just the first.
     seen_cats: set[str] = set()
     for a, asp, sc in sorted(attset):
-        cat = mult = eff_type = None
-        if (a, asp) in ATTRIB_ASPECT_TO_EFFECT:
-            cat, mult = ATTRIB_ASPECT_TO_EFFECT[(a, asp)]
-        elif a in DMG_ATTRIBS and asp == 'Resistance':
-            cat, mult, eff_type = 'Resistance', 100.0, a.replace('_Dmg', '')
-        if cat and cat not in seen_cats:
+        mapped = _proc_effect_from_bridge(a, asp)
+        if not mapped:
+            continue
+        cat, mult, eff_type = mapped
+        if cat not in seen_cats:
             eff = {'category': cat, 'value': round(abs(sc) * mult, 4)}
             if eff_type:
                 eff['effectType'] = eff_type

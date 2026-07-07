@@ -111,20 +111,13 @@ export const Geyser: Power = {
       "label": "Tidal Power (1 stacks)",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Fire",
-          "scale": 0.108,
-          "table": "Ranged_Damage",
-          "duration": 5.1,
-          "tickRate": 0.5
-        },
-        {
-          "type": "Fire",
-          "scale": 0.0756,
-          "table": "Ranged_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Fire",
+        "scale": 0.108,
+        "table": "Ranged_Damage",
+        "duration": 5.1,
+        "tickRate": 0.5
+      },
       "effects": {
         "stun": {
           "mag": 3,
@@ -139,20 +132,13 @@ export const Geyser: Power = {
       "label": "Tidal Power (2 stacks)",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Fire",
-          "scale": 0.115,
-          "table": "Ranged_Damage",
-          "duration": 5.1,
-          "tickRate": 0.5
-        },
-        {
-          "type": "Fire",
-          "scale": 0.1815,
-          "table": "Ranged_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Fire",
+        "scale": 0.115,
+        "table": "Ranged_Damage",
+        "duration": 5.1,
+        "tickRate": 0.5
+      },
       "effects": {
         "stun": {
           "mag": 3,
@@ -167,20 +153,13 @@ export const Geyser: Power = {
       "label": "Tidal Power (3 stacks)",
       "scope": "global",
       "defaultActive": false,
-      "damage": [
-        {
-          "type": "Fire",
-          "scale": 0.128,
-          "table": "Ranged_Damage",
-          "duration": 5.1,
-          "tickRate": 0.5
-        },
-        {
-          "type": "Fire",
-          "scale": 0.3782,
-          "table": "Ranged_PvPDamage"
-        }
-      ],
+      "damage": {
+        "type": "Fire",
+        "scale": 0.128,
+        "table": "Ranged_Damage",
+        "duration": 5.1,
+        "tickRate": 0.5
+      },
       "effects": {
         "stun": {
           "mag": 3,

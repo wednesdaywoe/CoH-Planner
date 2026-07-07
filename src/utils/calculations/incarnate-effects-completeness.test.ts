@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
-import { getDestinyEffects, getHybridEffects } from '@/data';
+import { getDestinyEffects, getHybridEffects, getAlphaEffects } from '@/data';
 import { calculateCharacterTotals } from '@/utils/calculations/character-totals';
 import { createEmptyBuild } from '@/types/build';
 import type { SelectedIncarnatePower } from '@/types/incarnate';
@@ -95,14 +95,18 @@ describe('Homecoming Destiny — dropped effects are now exposed', () => {
     expect(core.kbProtection).toBe(10.5);
   });
 
-  it('Clarion debuffResistance is the real (Repel) value, not the mislabeled confuse-resistance', () => {
+  it('Clarion debuffResistance is the real (Repel) value; PvP-only status-resistance is excluded from PvE', () => {
     const core = getDestinyEffects('clarion_core_epiphany')!;
-    // Repel resistance (0.7), split apart from the mez/status resistance (2.1)
-    // that used to masquerade as "300% Debuff Resistance".
+    // Repel resistance (0.7) is the genuine PvE debuff-resistance value; it used
+    // to masquerade as "300% Debuff Resistance" when the confuse/status
+    // resistance (2.1) was mis-bucketed here.
     expect(core.debuffResistance).toBeCloseTo(0.7, 6);
-    expect(core.statusResistance).toBeCloseTo(2.1, 6);
     // The bogus number is gone: debuffResistance is no longer the confuse mag.
     expect(core.debuffResistance).not.toBeCloseTo(2.1, 3);
+    // The mez/status DURATION resistance (2.1) is `is_pvp=PVP_ONLY` in the bin —
+    // Destiny PvP-awareness (converter) now correctly drops it from PvE totals,
+    // so it must NOT surface here (was leaking as a bogus 210% PvE status resist).
+    expect(core.statusResistance).toBeUndefined();
   });
 
   it('Incandescence Radial surfaces its run-speed buff (was dropped)', () => {
@@ -145,6 +149,55 @@ describe('Hybrid Support — aspect=Strength buffs, not N×-inflated', () => {
   });
 });
 
+describe('Hybrid Support Core — leaguemate buff is not dropped (DSH8)', () => {
+  // The Core Support Hybrids gate their buff with `enttype target> player eq`
+  // (the player-leaguemate value the caster receives) + `enttype target> critter
+  // eq` (pets, "doubled in strength"). extractHybrid recognized only empty-req /
+  // self-RPN / per-target-RPN, so the whole Core buff was routed nowhere and the
+  // caster saw an empty frontLoaded — while the Radial line (empty req) worked.
+  // Fixed by recognizing the `player eq` leaguemate pattern via POLARITY
+  // (a beneficial buff, scale > 0) and a case-insensitive match — NOT the
+  // parser's is_pvp flag, which Parse6 (Rebirth/Thunderspy) synthesizes as
+  // PVP_ONLY for every `player eq` group. Values + key-sets are the in-game help.
+  beforeAll(async () => {
+    await loadDataset('homecoming');
+  });
+
+  const CORE_TIERS = [
+    'support_core_genome', 'support_total_core_graft',
+    'support_partial_core_graft', 'support_core_embodiment',
+  ];
+
+  it('every Core tier surfaces a non-empty caster buff (was empty {})', () => {
+    for (const id of CORE_TIERS) {
+      const fx = getHybridEffects(id);
+      expect(fx, `missing ${id}`).toBeDefined();
+      expect(Object.keys(fx!.frontLoaded).length, `${id} frontLoaded empty`).toBeGreaterThan(0);
+    }
+  });
+
+  it('Support Core Embodiment grants +6% Damage/Accuracy/Defense(All) to the caster', () => {
+    // Help: "+Damage, +Accuracy, +Defense(All) to all leaguemates ... doubled for
+    // pets". The caster is a player-leaguemate → gets the 0.06 (not the 0.12 pet) value.
+    const fx = getHybridEffects('support_core_embodiment')!;
+    expect(fx.frontLoaded.damage).toBeCloseTo(0.06, 6);
+    expect(fx.frontLoaded.accuracy).toBeCloseTo(0.06, 6);
+    expect(fx.frontLoaded.defMelee).toBeCloseTo(0.06, 6);
+    expect(fx.frontLoaded.defPsionic).toBeCloseTo(0.06, 6); // Defense(All)
+  });
+
+  it('Support Core Genome buffs only the six help-listed defense positions', () => {
+    // Help: "+Damage(All) and Defense(Melee, AoE, Smashing, Lethal, Energy, Negative)".
+    const fx = getHybridEffects('support_core_genome')!;
+    expect(fx.frontLoaded.damage).toBeCloseTo(0.02, 6);
+    expect(fx.frontLoaded.defMelee).toBeCloseTo(0.02, 6);
+    expect(fx.frontLoaded.defEnergy).toBeCloseTo(0.02, 6);
+    // not in the help list, and no accuracy on this tier:
+    expect(fx.frontLoaded).not.toHaveProperty('defFire');
+    expect(fx.frontLoaded).not.toHaveProperty('accuracy');
+  });
+});
+
 describe('Rebirth dataset (Parse6) — no junk keys, no N× collapse', () => {
   beforeAll(async () => {
     await loadDataset('rebirth');
@@ -176,5 +229,92 @@ describe('Rebirth dataset (Parse6) — no junk keys, no N× collapse', () => {
   it('Ageless Radial debuff resistance is consolidated to ~50% (was scattered)', () => {
     const fx = getDestinyEffects('ageless_radial_epiphany')!;
     expect(fx.debuffResistance).toBeCloseTo(0.5, 6);
+  });
+
+  it('Support Core Hybrid leaguemate buff survives Parse6 (DSH8) — two traps', () => {
+    // Rebirth's Support Core showed an EMPTY caster buff for two Parse6-only
+    // reasons the HC-tuned code missed:
+    //   1. CASE — Rebirth writes `Enttype target> player eq` (capital E); the
+    //      leaguemate match was lowercase-only.
+    //   2. SYNTHESIZED is_pvp — Parse6 has no is_pvp field, so the bin parser
+    //      derives it from the requires target-type and marks every `player eq`
+    //      group PVP_ONLY. The old guard (`is_pvp != PVP_ONLY`) then dropped it.
+    // Fixed by keying on polarity (scale > 0) + a case-insensitive match. HC's
+    // explicit is_pvp=EITHER for the same buff is the ground truth.
+    const emb = getHybridEffects('support_core_embodiment')!;
+    expect(emb, 'Support Core Embodiment missing').toBeDefined();
+    expect(Object.keys(emb.frontLoaded).length, 'empty frontLoaded').toBeGreaterThan(0);
+    expect(emb.frontLoaded.damage).toBeCloseTo(0.06, 6);
+    expect(emb.frontLoaded.accuracy).toBeCloseTo(0.06, 6);
+    expect(emb.frontLoaded.defMelee).toBeCloseTo(0.06, 6);
+  });
+
+  it('Support Core damage is not 8×-inflated by the Parse6 per-attrib split', () => {
+    // HC packs eight `*_Dmg` types into one template; Parse6 emits eight groups.
+    // All collapse to the one `damage` stat — without the (bucket,key,scale)
+    // dedup they sum to +48% for a +6% buff. Must read 0.06, not 0.48.
+    expect(getHybridEffects('support_core_embodiment')!.frontLoaded.damage).toBeCloseTo(0.06, 6);
+    expect(getHybridEffects('support_core_genome')!.frontLoaded.damage).toBeCloseTo(0.02, 6);
+  });
+});
+
+describe('Thunderspy dataset (Parse6) — Support Hybrid parity', () => {
+  beforeAll(async () => {
+    await loadDataset('thunderspy');
+  });
+
+  it('Support Core line surfaces non-empty caster frontLoaded buffs', () => {
+    for (const id of ['support_core_genome', 'support_total_core_graft', 'support_core_embodiment']) {
+      const fx = getHybridEffects(id);
+      expect(fx, `missing ${id}`).toBeDefined();
+      expect(Object.keys(fx!.frontLoaded).length, `${id} frontLoaded empty`).toBeGreaterThan(0);
+      expect(fx!.frontLoaded.damage, `${id} damage`).toBeGreaterThan(0);
+      // The tspy bin's index array names only the Melee defense position
+      // (count=1, byte-verified 2026-07-07) — defMelee, not the old
+      // `Defense`-category defenseAll guess.
+      expect(fx!.frontLoaded.defMelee, `${id} defMelee`).toBeGreaterThan(0);
+    }
+  });
+
+  it('Support passives include enduranceDiscount by tier (was missing linkage)', () => {
+    expect(getHybridEffects('support_genome')!.passive.enduranceDiscount).toBeCloseTo(0.025, 6);
+    expect(getHybridEffects('support_core_genome')!.passive.enduranceDiscount).toBeCloseTo(0.05, 6);
+    expect(getHybridEffects('support_total_core_graft')!.passive.enduranceDiscount).toBeCloseTo(0.075, 6);
+    expect(getHybridEffects('support_core_embodiment')!.passive.enduranceDiscount).toBeCloseTo(0.1, 6);
+  });
+});
+
+// Thunderspy (Parse6) omits the Grant_Power linkage on Alpha main powers (they
+// carry only a bare `Ones` marker), so extractGrantedPowers found nothing and
+// every one of the 72 Alpha entries rendered empty — a slotted Agility/Cardiac/…
+// gave the tspy planner ZERO enhancement. The converter now recovers the linkage
+// from the parallel Homecoming alpha power and resolves it against tspy's OWN
+// silent-file scales, folding in tspy's split `Ones` ED-bypass template.
+describe('Thunderspy dataset (Parse6) — Alpha enhancement linkage', () => {
+  beforeAll(async () => {
+    await loadDataset('thunderspy');
+  });
+
+  it('Alpha entries are populated (recovered linkage), not empty', () => {
+    // Every ability core-paragon grants its full 3-aspect set.
+    const agility = getAlphaEffects('agility_core_paragon')!;
+    expect(agility.enduranceModification, 'agility endMod').toBeGreaterThan(0);
+    expect(agility.recharge, 'agility recharge').toBeGreaterThan(0);
+    expect(agility.defense, 'agility defense').toBeGreaterThan(0);
+
+    const musculature = getAlphaEffects('musculature_core_paragon')!;
+    expect(musculature.damage, 'musc damage').toBeGreaterThan(0);
+  });
+
+  it('folds the split `Ones` ED-bypass portion into the total (regular + Ones)', () => {
+    // tspy stores accuracy as Accuracy(0.11) + Ones(0.22); the total is 0.33,
+    // matching HC — the pre-fix firstAttrib-only sum would have kept only 0.11.
+    // Nerve Core Paragon grants accuracy_plus_very_rare (0.15 + 0.30 = 0.45).
+    expect(getAlphaEffects('nerve_core_paragon')!.accuracy).toBeCloseTo(0.45, 4);
+    // Agility Core Paragon's enduranceModification = recovery_plus_very_rare
+    // (Endurance 0.15 + Ones 0.30 = 0.45).
+    expect(getAlphaEffects('agility_core_paragon')!.enduranceModification).toBeCloseTo(0.45, 4);
+    // Recharge has no ED-bypass split (Ones=0); recharge_very_rare stays 0.33.
+    expect(getAlphaEffects('agility_core_paragon')!.recharge).toBeCloseTo(0.33, 4);
   });
 });

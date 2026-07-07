@@ -559,6 +559,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 17,
   "powerset": "Mission_Maker_Attacks.Demon_Summoning"
 }

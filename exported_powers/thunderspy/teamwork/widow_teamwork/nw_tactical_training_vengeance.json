@@ -364,6 +364,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_Pool",
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Teamwork.Widow_Teamwork"
 }

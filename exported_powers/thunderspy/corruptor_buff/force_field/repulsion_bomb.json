@@ -329,6 +329,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 34,
   "powerset": "Corruptor_Buff.Force_Field"
 }

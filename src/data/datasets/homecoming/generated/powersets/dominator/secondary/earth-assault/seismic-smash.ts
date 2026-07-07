@@ -48,12 +48,22 @@ export const SeismicSmash: Power = {
     "hold": {
       "mag": 3,
       "scale": 8,
-      "table": "Melee_Immobilize",
-      "domination": {
-        "mag": 1,
-        "scale": 12,
-        "table": "Melee_Immobilize"
+      "table": "Melee_Immobilize"
+    }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "hold": {
+          "mag": 1,
+          "scale": 12,
+          "table": "Melee_Immobilize"
+        }
       }
     }
-  }
+  ]
 };

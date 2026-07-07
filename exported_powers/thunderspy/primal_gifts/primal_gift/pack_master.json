@@ -1100,6 +1100,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Primal_Gifts.Primal_Gift"
 }

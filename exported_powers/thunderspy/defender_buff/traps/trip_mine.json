@@ -94,6 +94,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 25,
   "powerset": "Defender_Buff.Traps"
 }

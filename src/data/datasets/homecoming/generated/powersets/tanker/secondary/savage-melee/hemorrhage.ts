@@ -64,20 +64,6 @@ export const Hemorrhage: Power = {
           "table": "Melee_Damage",
           "duration": 4.1,
           "tickRate": 1
-        },
-        {
-          "type": "Lethal",
-          "scale": 0.1435,
-          "table": "Melee_PvPDamage",
-          "duration": 5.1,
-          "tickRate": 1
-        },
-        {
-          "type": "Lethal",
-          "scale": 0.1364,
-          "table": "Melee_PvPDamage",
-          "duration": 4.1,
-          "tickRate": 1
         }
       ]
     }

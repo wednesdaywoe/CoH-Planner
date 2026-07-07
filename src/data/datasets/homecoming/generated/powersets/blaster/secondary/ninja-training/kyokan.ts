@@ -111,6 +111,10 @@ export const Kyokan: Power = {
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.3,
+        "table": "Melee_Ones"
       }
     },
     "defenseBuffSuppressible": {

@@ -1,0 +1,11 @@
+{
+  "generated_on": "2026-07-06",
+  "source": "tools/mids-oracle/enh_oracle_triage.json",
+  "tiers": {
+    "P1": 0,
+    "P2": 0,
+    "P3": 0
+  },
+  "total_likely_mapping_gap": 0,
+  "worklist": []
+}

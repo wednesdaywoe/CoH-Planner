@@ -162,6 +162,15 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_Pool",
+    "Disable_All",
+    "HunterMode",
+    "ProwlerMode",
+    "Widow_Tarantula_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 13,
   "powerset": "Pool.Invisibility"
 }

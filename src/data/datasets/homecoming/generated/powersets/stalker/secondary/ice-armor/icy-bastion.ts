@@ -146,10 +146,10 @@ export const IcyBastion: Power = {
     "slow": {
       "fly": {
         "scale": 10000,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     },
-    "selfPenalty": true,
     "untouchable": {
       "scale": 0.75,
       "table": "Melee_Ones"

@@ -645,6 +645,18 @@ const COMBAT_SUPPRESS_EVENTS = new Set([
  * @param {number} depth - Current recursion depth
  * @returns {Array} - Flat array of all template objects
  */
+// A PvE/PvP `enttype` pair is split into `enttype target> critter eq` (PvE) and
+// `enttype target> player eq` (PvP) groups, BOTH tagged is_pvp='EITHER', so the
+// PVP_ONLY flag never catches the PvP half — this requires clause does. The planner
+// has no PvP mode, so the `player eq` variant is always dropped in favor of its PvE
+// twin (GAME-DATA-PRINCIPLES §3). SINGLE SOURCE for every collector — base,
+// redirect, AND conditional/special. The conditional pipeline used to omit this
+// check, so a conditional PvE/PvP pair (Beam Rifle's Disintegrate -regen) kept the
+// PvP -3/Ranged_Res_Boolean value instead of the PvE -0.75/Ranged_Ones one.
+function isPvpEnttypeVariant(requiresExpression) {
+  return /\benttype\s+target>\s+player\s+eq/.test(requiresExpression || '');
+}
+
 function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCombatGated = false) {
   const templates = [];
   const MAX_DEPTH = 3;
@@ -663,8 +675,7 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
     // matching collectInfoRedirectTemplates (~line 1023) and
     // GAME-DATA-PRINCIPLES §3 "prefer PvE". There is no per-power PvP mode in
     // the planner, so PvP-only content is correctly omitted, not surfaced.
-    if (effect.requires_expression
-        && /\benttype\s+target>\s+player\s+eq/.test(effect.requires_expression)) continue;
+    if (isPvpEnttypeVariant(effect.requires_expression)) continue;
     // Skip chance=0 ONLY when the effect carries nothing real — those
     // are proc placeholders the binary leaves around. Effects with
     // chance=0 plus actual templates or child_effects are Tag-gated
@@ -676,10 +687,12 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
         && (!effect.child_effects || effect.child_effects.length === 0)) continue;
     if (effect.tags && effect.tags.includes('Containment')) continue;
     // `Tag "Domination"` groups carry the Dominator inherent's control bonus.
-    // Unlike Containment (dropped above), we KEEP these but stamp their
-    // templates so extractEffects can route them into the mez `domination`
-    // sub-field rather than merging them into the base mez.
-    const isDomination = !!(effect.tags && effect.tags.includes('Domination'));
+    // Skip them here (like Containment) — `collectConditionalsGrouped` collects
+    // them into the shared 'Domination Active' conditional (the same Mechanic
+    // Adjuster Rebirth/tspy get from their `kStealth source>` gate), instead of
+    // the retired `MezEffect.domination` sub-field. Skipping keeps the bonus
+    // template out of the base mez; the untagged base mez template is unaffected.
+    if (effect.tags && effect.tags.includes('Domination')) continue;
     // Skip conditional effects that represent archetype inherent mechanics
     // (these are handled separately by the planner's toggle system)
     let combatGated = parentCombatGated;
@@ -733,7 +746,6 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
           }
         } else {
           if (combatGated) _tagCombatGated(template);
-          if (isDomination) _tagDomination(template);
           templates.push(template);
         }
       }
@@ -1034,7 +1046,7 @@ function collectInfoRedirectTemplates(powerJson) {
   // 4.0 each; collecting both sums to 8). Prefer PvE, matching the rest of the
   // converter (GAME-DATA-PRINCIPLES §3).
   const clean = (effs) => effs
-    .filter(e => !/\benttype\s+target>\s+player\s+eq/.test(e.requires_expression || ''))
+    .filter(e => !isPvpEnttypeVariant(e.requires_expression))
     .map(e => {
       const c = { ...e };
       if (typeof c.requires_expression === 'string'
@@ -2129,17 +2141,6 @@ function _tagCombatGated(template) {
   template._combatGated = true;
 }
 
-/** Tag templates that come from a `Tag "Domination"` effect group. These are
- *  the Dominator inherent's per-power control bonus (an extra mez that stacks
- *  onto the base while Domination is active). extractEffects reads this to
- *  capture the bonus into the mez effect's `domination` sub-field instead of
- *  merging it into (and being discarded by) the base one-per-type mez. Only
- *  powers whose data actually carries the tag get the sub-field — a blast
- *  power with an untagged control effect correctly gets none. */
-function _tagDomination(template) {
-  template._domination = true;
-}
-
 /**
  * Detect whether an Effect's `requires_expression` is a *positive state gate*
  * representing a conditional bonus that should NOT be folded into the power's
@@ -2333,8 +2334,30 @@ function _isUntoggleableGate(req) {
   return false;
 }
 
+// Target content-type tags surfaced as "vs <type>" conditional bonuses. A
+// CLOSED, semantic allowlist: only tags that name a user-meaningful enemy
+// CONTENT category (a "does extra vs machines / undead / …" bonus) belong here.
+// Deliberately NOT syntactic — the dominant `.HasTag?` gates are `Raid`
+// (4,185×) and `IncarnateBoss` (367×), which are internal engine mechanics
+// (streakbreaker / accuracy caps / AV resistance, always chained with
+// `@ToHitRoll` / `kRage`), never a player bonus; those stay untoggleable. Each
+// entry is verified against a concrete power before being added. Value = label.
+//   Electronic — ESD Arrow's +1.64 Energy dmg + Mag-2 Hold "vs machines and
+//   robots" (matches the in-game description). Undead/Demon/Ghost/Human/Generator
+//   are candidate future additions pending per-power verification.
+const SURFACEABLE_TARGET_TAGS = { Electronic: 'Machines/Robots' };
+
 function _classifyConditionalGate(req, powersetKey) {
   if (!_isConditionalGate(req)) return null;
+  // Allowlisted target content-type tag (`<Tag> target.HasTag?`) → a "vs <type>"
+  // bonus. Matched on the STRIPPED, anchored expression so it fires only when the
+  // tag check is the WHOLE gate (the enttype PvE filter is stripped; a tag chained
+  // with a real second mechanic won't match and falls through). Checked before the
+  // untoggleable pass below, whose `.HasTag?` rule rejects every non-allowlisted tag.
+  const tagMatch = _stripIgnoredClauses(req).trim().match(/^([A-Za-z_]+)\s+target\.HasTag\?$/);
+  if (tagMatch && SURFACEABLE_TARGET_TAGS[tagMatch[1]]) {
+    return { id: `vs-${tagMatch[1].toLowerCase()}`, label: `vs ${SURFACEABLE_TARGET_TAGS[tagMatch[1]]}`, side: 'target' };
+  }
   // Test untoggleability on the STRIPPED expression so a strippable game-state
   // clause (per-target HP-state, PvE/PvP enttype) chained with a real toggle
   // doesn't sink the whole gate. DNA Siphon's Defensive/Efficient leech bonuses
@@ -2565,6 +2588,24 @@ function collectConditionalsGrouped(effects, powersetKey) {
 
   function visit(effect) {
     if (effect.is_pvp === 'PVP_ONLY') return;
+    // Same PvE/PvP `enttype`-pair drop the base collectors apply — the conditional
+    // pipeline omitted it, so a conditional PvE/PvP pair (Beam Rifle's Disintegrate
+    // -regen) kept the PvP -3/Ranged_Res_Boolean value over the PvE -0.75/Ranged_Ones.
+    if (isPvpEnttypeVariant(effect.requires_expression)) return;
+    // `Tag "Domination"` groups (HC's Dominator inherent control bonus) carry no
+    // `requires` gate — recognize them here so they route to the same shared
+    // 'domination' conditional Rebirth/tspy derive from their `kStealth source>`
+    // gate. Checked before the chance==0 guard below: these tag-gated groups are
+    // often chance=0 yet carry real templates (the enabled-while-Domination mez).
+    if (effect.tags && effect.tags.includes('Domination')) {
+      const gate = { id: 'domination', label: 'Domination Active', side: 'source' };
+      pushTemplates(gate, effect.templates || []);
+      if (effect.child_effects?.length) {
+        const sub = collectConditionalsGrouped(effect.child_effects, powersetKey);
+        for (const [, subg] of sub) groups.get(gate.id).templates.push(...subg.templates);
+      }
+      return;
+    }
     if (effect.chance === 0 || effect.chance === 0.0) return;
     if (effect.tags && effect.tags.includes('Containment')) return;
 
@@ -3369,11 +3410,6 @@ function extractDamage(templates) {
 function extractEffects(templates, powerName) {
   const effects = {};
   const unmappedAttribs = new Set();
-  // Domination inherent bonus (from `Tag "Domination"` groups, stamped in
-  // collectTemplatesDeep). Collected here by mez type and attached to the
-  // matching base mez effect's `domination` sub-field after the main loop, so
-  // ordering and the base one-per-type dedup can't drop it. PvE only.
-  const pendingDomination = {};
 
   // Pre-scan for repeated-template absorb stacks. The Rebirth Spirit Ward
   // rework emits 5 identical Absorb/Current/Magnitude templates (one per
@@ -3629,13 +3665,12 @@ function extractEffects(templates, powerName) {
           } else if (isDebuff) {
             // Capture both self-penalty (Granite Armor -30% damage) and
             // foe-targeting damage debuffs (Darkest Night, Time's Juncture).
-            // `selfPenalty` is what gates the calc engine — only set it
-            // when the debuff actually applies to the caster's stats.
-            // Foe debuffs without the flag still surface in Power Info via
-            // the registry's `damageDebuff` entry so users can see -X%
-            // displayed alongside other power effects.
+            // The per-value `toWho:'Self'` marker is what gates the calc
+            // engine — set it only when this template lands on the caster.
+            // Foe debuffs (no marker) still surface in Power Info via the
+            // registry's `damageDebuff` entry so users see the -X%.
             effects.damageDebuff = makeEffect();
-            if (isSelfTargeting) effects.selfPenalty = true;
+            if (isSelfTargeting) effects.damageDebuff.toWho = 'Self';
             recordDuration('damageDebuff');
           } else {
             effects.damageBuff = makeEffect();
@@ -3792,18 +3827,6 @@ function extractEffects(templates, powerName) {
           // negative-scale `*_Ones` (a separate pre-existing question, not touched
           // here) — this schema drops the aspect, so tspy can't reuse that path.
           continue;
-        } else if (template._domination) {
-          // Dominator inherent bonus: a `Tag "Domination"` mez that stacks onto
-          // the base while Domination is active. Capture (PvE only) into a
-          // pending bucket; attached to effects[mezType].domination after the
-          // loop. Prefer the higher-magnitude PvE variant among same-kind.
-          if (!/pvp/i.test(table || '')) {
-            const prev = pendingDomination[mezType];
-            if (!prev || magnitude > prev.mag) {
-              pendingDomination[mezType] = { mag: magnitude, scale: Math.abs(scale), table };
-            }
-          }
-          continue;
         } else {
           const newMez = makeMezEffect();
           const cur = effects[mezType];
@@ -3910,10 +3933,13 @@ function extractEffects(templates, powerName) {
           effects.specialBuff.movement = makeEffect();
           recordDuration('specialBuff');
         } else if (isSelfTargeting && isSlow) {
-          // Self-targeting movement penalty (e.g., Granite Armor -70% run speed)
+          // Self-targeting movement penalty (e.g., Granite Armor -70% run speed).
+          // Tag THIS entry `toWho:'Self'` so the calc slows the caster by it —
+          // per-entry, so a foe -Speed on the same power (routed below without a
+          // marker) can't ride onto the caster (Rebirth Granite's foe -JumpHeight).
           if (!effects.slow) effects.slow = {};
           effects.slow[moveType] = makeEffect();
-          effects.selfPenalty = true;
+          effects.slow[moveType].toWho = 'Self';
           recordDuration('slow');
         } else if (isSelfTargeting) {
           // Self-targeting movement buff (e.g., Lightning Reflexes +run speed)
@@ -3924,13 +3950,31 @@ function extractEffects(templates, powerName) {
           // FOE movement slow — the -Run/Fly/Jump-speed half of a Slow (Cryo
           // ammo, Caltrops, Ice Slick, Time's Juncture, …). Its matching
           // -Recharge half is already captured as `rechargeDebuff`; this is the
-          // movement half, which used to be dropped. No `selfPenalty`, so the
-          // calc treats it as a foe debuff (doesn't slow the player) — it's a
-          // first-class debuff for display. (Foe movement *buffs* — rare/ally —
-          // still fall through and are skipped.)
+          // movement half, which used to be dropped. No `toWho:'Self'` marker,
+          // so the calc treats it as a foe debuff (doesn't slow the player) —
+          // it's a first-class debuff for display. The per-entry marker is what
+          // keeps this off the caster even when a SELF slow on the same power
+          // marks a sibling entry (Rebirth Granite's foe -JumpHeight + self -Run).
           if (!effects.slow) effects.slow = {};
           effects.slow[moveType] = makeEffect();
           recordDuration('slow');
+        } else if (aspect === 'current') {
+          // ALLY/TEAM movement BUFF — a positive (non-slow) Current-aspect
+          // movement mod on a non-Self target: Speed Boost / Accelerate
+          // Metabolism +run/+fly, Inertial Reduction +jump, Group Fly's team
+          // fly. Route to effects.movement exactly like the self buff above.
+          // The calc's ALLY_ONLY_TARGET_TYPES gate (character-totals.ts) keeps
+          // these off the CASTER's own totals for ally-only powers — mirroring
+          // how this same power's rechargeBuff/recoveryBuff are shown-but-not-
+          // self-applied — while self/team-castable powers (Group Fly,
+          // targetType Self) still buff the caster. Previously dropped, so the
+          // "Allies +SPD" these powers advertise never rendered in Power Info.
+          // Restricted to aspect=Current (the genuine movement-speed buff);
+          // Strength (Power Boost-style multiplier, self-only above) and other
+          // aspects still fall through.
+          if (!effects.movement) effects.movement = {};
+          effects.movement[moveType] = makeEffect();
+          recordDuration('movement');
         }
         continue;
       }
@@ -4137,10 +4181,10 @@ function extractEffects(templates, powerName) {
           } else if (isDebuff) {
             // Capture both self-penalty and foe-targeting tohit debuffs
             // (Darkest Night, Time's Juncture, Radiation Infection, etc.).
-            // `selfPenalty` gates the calc engine; without it, foe debuffs
+            // `toWho:'Self'` gates the calc engine; without it, foe debuffs
             // still surface in Power Info but don't penalise caster ToHit.
             effects.tohitDebuff = makeEffect();
-            if (isSelfTargeting) effects.selfPenalty = true;
+            if (isSelfTargeting) effects.tohitDebuff.toWho = 'Self';
             recordDuration('tohitDebuff');
           } else if (template.flags?.includes('IgnoreStrength')) {
             // IgnoreStrength: ToHit Buff enh / global +ToHit don't apply to this
@@ -4164,7 +4208,7 @@ function extractEffects(templates, powerName) {
             recordDuration('debuffResistance');
           } else if (isDebuff || scale < 0) {
             effects.accuracyDebuff = makeEffect();
-            if (isSelfTargeting) effects.selfPenalty = true;
+            if (isSelfTargeting) effects.accuracyDebuff.toWho = 'Self';
             recordDuration('accuracyDebuff');
           } else {
             effects.accuracyBuff = makeEffect();
@@ -4180,9 +4224,9 @@ function extractEffects(templates, powerName) {
           } else if (isDebuff || scale < 0 || table?.toLowerCase().includes('slow')) {
             // Capture both self-penalty (Granite Armor -65% recharge) and
             // foe-targeting recharge debuffs (Radiation Infection, etc.).
-            // `selfPenalty` gates the calc engine.
+            // `toWho:'Self'` gates the calc engine.
             effects.rechargeDebuff = makeEffect();
-            if (isSelfTargeting) effects.selfPenalty = true;
+            if (isSelfTargeting) effects.rechargeDebuff.toWho = 'Self';
             recordDuration('rechargeDebuff');
           } else {
             // Note: +recharge buffs aren't enhanced by Recharge IOs (those reduce a
@@ -4210,7 +4254,7 @@ function extractEffects(templates, powerName) {
             // that displays as +Range on the caster.
             if (isSelfTargeting) {
               effects.rangeDebuff = makeEffect();
-              effects.selfPenalty = true;
+              effects.rangeDebuff.toWho = 'Self';
               recordDuration('rangeDebuff');
             }
             // else: foe-side debuff, dropped for caster-stat purposes
@@ -4375,15 +4419,6 @@ function extractEffects(templates, powerName) {
     effects.summon.conditionalEntities = [
       { entity: ignitedVariant, toggleId: 'oilslick_ignited', label: 'Oil Slick Ignited' },
     ];
-  }
-
-  // Attach captured Domination bonuses to the matching base mez effect. A power
-  // only gets the sub-field if it has both a base mez AND a Domination-tagged
-  // bonus for that type — a power that tags a mez it doesn't apply as a base
-  // (rare) is skipped rather than inventing a base mez.
-  for (const [mezType, dom] of Object.entries(pendingDomination)) {
-    const base = effects[mezType];
-    if (base && typeof base === 'object') base.domination = dom;
   }
 
   return effects;

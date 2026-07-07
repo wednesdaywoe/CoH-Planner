@@ -172,6 +172,11 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Incarn",
+    "HybridLockout"
+  ],
   "available_level": 0,
   "powerset": "Incarnate.Hybrid"
 }

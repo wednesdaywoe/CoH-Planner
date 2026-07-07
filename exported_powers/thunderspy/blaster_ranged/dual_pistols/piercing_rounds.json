@@ -1185,6 +1185,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 25,
   "powerset": "Blaster_Ranged.Dual_Pistols"
 }

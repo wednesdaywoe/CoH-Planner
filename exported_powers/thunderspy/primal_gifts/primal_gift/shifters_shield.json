@@ -88,6 +88,11 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "ProwlerMode",
+    "HunterMode"
+  ],
   "available_level": 27,
   "powerset": "Primal_Gifts.Primal_Gift"
 }

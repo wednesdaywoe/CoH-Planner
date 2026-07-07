@@ -51,12 +51,7 @@ export const Tranquilizer: Power = {
     "sleep": {
       "mag": 3.5,
       "scale": 30,
-      "table": "Ranged_Sleep",
-      "domination": {
-        "mag": 3.5,
-        "scale": 45,
-        "table": "Ranged_Sleep"
-      }
+      "table": "Ranged_Sleep"
     },
     "slow": {
       "runSpeed": {
@@ -80,5 +75,20 @@ export const Tranquilizer: Power = {
       "slow": 5
     },
     "buffDuration": 5
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "sleep": {
+          "mag": 3.5,
+          "scale": 45,
+          "table": "Ranged_Sleep"
+        }
+      }
+    }
+  ]
 };

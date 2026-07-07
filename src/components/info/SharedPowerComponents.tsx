@@ -12,6 +12,7 @@ import {
   calcThreeTier,
   expandByTypeEntries,
   expandProtectionEntries,
+  AT_INHERENT_CONDITIONAL_IDS,
 } from './powerDisplayUtils';
 import { calculateBuffDebuffFraction } from '@/utils/calculations';
 import type { ThreeTierValues } from './powerDisplayUtils';
@@ -227,9 +228,10 @@ interface DisplayableEffect {
   tiers: ThreeTierValues;
   byTypeLabel?: string;
   expandedLabel?: string;
-  /** Dominator inherent bonus for this mez, from the power's `Tag "Domination"`
-   *  data (MezEffect.domination). Present only on powers that actually carry the
-   *  tag; drives the "+mag while Domination active" display. */
+  /** Dominator inherent bonus for this mez — the extra stacking mez the power's
+   *  `domination` conditionalEffect grants while Domination is active (sourced
+   *  from the matching `extraInstances` collision). Present only on powers that
+   *  carry the tag; drives the "+mag while Domination active" inline display. */
   dominationBonus?: { mag: number; scale: number; table: string };
 }
 
@@ -926,7 +928,11 @@ export function RegistryEffectsDisplay({
         byTypeLabel = getByTypeAbbreviations(value as Record<string, unknown>);
       }
 
-      const dominationBonus = isMezEffect(value) && value.domination ? value.domination : undefined;
+      // The Domination bonus for this mez rides in as an `extraInstances`
+      // collision from the power's `domination` conditionalEffect (id
+      // 'domination'); surface it inline instead of as a generic "+…" row.
+      const domExtra = extraInstances?.[key]?.find((e) => e.conditionalId === 'domination');
+      const dominationBonus = domExtra && isMezEffect(domExtra.value) ? domExtra.value : undefined;
       displayableEffects.push({ effect, baseValue, tiers, byTypeLabel, dominationBonus });
     }
   }
@@ -1285,11 +1291,15 @@ export function RegistryEffectsDisplay({
 
         // Handle mez effects (magnitude format)
         if (config.format === 'mag') {
-          // Domination inherent: add this power's actual `Tag "Domination"` bonus
-          // (per-power data) when active — extra magnitude AND longer duration (the
-          // tagged mez stacks onto the base). Only tagged powers have `.domination`,
-          // so an untagged control effect is correctly left alone.
-          const dom = dominationActive && isMezEffect(rawValue) ? rawValue.domination : undefined;
+          // Domination inherent: add this power's actual Domination bonus when
+          // active — extra magnitude AND longer duration (the tagged mez stacks
+          // onto the base). The bonus arrives as an `extraInstances` collision
+          // from the power's `domination` conditionalEffect; only tagged powers
+          // carry it, so an untagged control effect is correctly left alone.
+          const domExtra = dominationActive
+            ? extraInstances?.[key]?.find((e) => e.conditionalId === 'domination')
+            : undefined;
+          const dom = domExtra && isMezEffect(domExtra.value) ? domExtra.value : undefined;
           const rawMag = dom ? tiers.base + dom.mag : tiers.base;
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
           const colorClass = dom ? 'text-pink-400' : config.colorClass;
@@ -1460,7 +1470,13 @@ export function RegistryEffectsDisplay({
         // Render extra-instance rows for additive collisions on this group's
         // key (e.g. Suffocate's Stealthed Mag-3 hold on top of base Mag-3).
         const itemKey = group.type === 'single' ? group.item.effect.key : null;
-        const extras = (itemKey && extraInstances?.[itemKey]) || [];
+        // AT-inherent collisions (Domination) on a MEZ row are surfaced inline
+        // on the base row (+mag, longer duration) + the dedicated Domination
+        // badge, so drop the duplicate extra row there. Non-mez Domination
+        // collisions (e.g. a summon override) have no inline path — keep their row.
+        const inlineHandlesDom = group.type === 'single' && group.item.effect.config.format === 'mag';
+        const extras = ((itemKey && extraInstances?.[itemKey]) || [])
+          .filter((e) => !(inlineHandlesDom && e.conditionalId && AT_INHERENT_CONDITIONAL_IDS.has(e.conditionalId)));
         const extraRows = extras.map((extra, i) => renderExtraInstanceRow({
           key: `${itemKey}-extra-${groupIdx}-${i}`,
           baseKey: itemKey!,

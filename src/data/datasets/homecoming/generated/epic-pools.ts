@@ -675,7 +675,8 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "repel": 0.75,
             "immobilize": 30,
-            "threatDebuff": 30
+            "threatDebuff": 30,
+            "stealth": 30
           },
           "immobilize": {
             "mag": 1,
@@ -686,6 +687,12 @@ export const EPIC_POOLS_RAW = {
           "threatDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0.1,
+              "table": "Melee_Ones"
+            }
           },
           "buffDuration": 30
         }
@@ -3678,11 +3685,18 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "resistance": 120,
             "recoveryBuffUnenhanced": 120,
+            "stealth": 120,
             "recoveryDebuff": 15
           },
           "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Melee_Ones"
+            }
           },
           "enduranceDrain": {
             "scale": 1,
@@ -4041,10 +4055,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -4361,10 +4375,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -5421,10 +5435,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -8008,10 +8022,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -8710,11 +8724,18 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "resistance": 120,
             "recoveryBuffUnenhanced": 120,
+            "stealth": 120,
             "recoveryDebuff": 15
           },
           "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Melee_Ones"
+            }
           },
           "enduranceDrain": {
             "scale": 1,
@@ -9526,11 +9547,18 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "resistance": 120,
             "recoveryBuffUnenhanced": 120,
+            "stealth": 120,
             "recoveryDebuff": 15
           },
           "recoveryBuffUnenhanced": {
             "scale": 1,
             "table": "Melee_Ones"
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Melee_Ones"
+            }
           },
           "enduranceDrain": {
             "scale": 1,
@@ -12344,10 +12372,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -12655,10 +12683,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -20782,10 +20810,10 @@ export const EPIC_POOLS_RAW = {
           "slow": {
             "fly": {
               "scale": 10000,
-              "table": "Melee_Ones"
+              "table": "Melee_Ones",
+              "toWho": "Self"
             }
           },
-          "selfPenalty": true,
           "immobilize": {
             "mag": 1000,
             "scale": 0.75,
@@ -21609,7 +21637,14 @@ export const EPIC_POOLS_RAW = {
             }
           },
           "durations": {
-            "defenseBuff": 15
+            "defenseBuff": 15,
+            "stealth": 15
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Melee_Ones"
+            }
           },
           "buffDuration": 15
         }

@@ -451,6 +451,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 11,
   "powerset": "Blaster_Ranged.Water_Blast"
 }

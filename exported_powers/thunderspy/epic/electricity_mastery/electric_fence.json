@@ -446,6 +446,11 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Pool",
+    "Disable_Epic"
+  ],
   "available_level": 34,
   "powerset": "Epic.Electricity_Mastery"
 }

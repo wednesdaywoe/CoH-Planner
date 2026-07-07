@@ -127,6 +127,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Peacebringer_Blaster_Mode",
+    "Disable_All"
+  ],
   "available_level": 21,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

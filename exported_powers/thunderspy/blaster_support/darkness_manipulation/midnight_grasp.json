@@ -329,6 +329,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Blaster_Support.Darkness_Manipulation"
 }

@@ -211,6 +211,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Widow_Training.Fortunata_Training"
 }

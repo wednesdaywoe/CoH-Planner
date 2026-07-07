@@ -49,6 +49,12 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
+  "modes_required": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Mastermind_Upgrade_1"
+  ],
   "available_level": 25,
   "powerset": "Defender_Buff.Nature_Affinity"
 }

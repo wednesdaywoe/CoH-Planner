@@ -172,6 +172,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Controller_Control.Electric_Control"
 }

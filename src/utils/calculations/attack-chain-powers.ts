@@ -8,6 +8,7 @@
  */
 
 import type { Build, SelectedPower, PowerEffects } from '@/types';
+import { hasSelfDirectedPenalty } from '@/types';
 import { getIOSet, arcToDegrees } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import {
@@ -159,8 +160,8 @@ function toHitBuffWindow(power: SelectedPower): number {
  *  self-penalty crash, and `enduranceDrain` / `specialDebuff` are instant or
  *  odd-shaped, none of which represent a maintained foe debuff. Driving this
  *  from the registry verbatim would draw spurious windows for those. Powers
- *  flagged `selfPenalty` (Granite Armor etc.) reuse some of these as
- *  self-downsides and are excluded by `foeDebuffWindow`. */
+ *  with a self-directed penalty (`toWho:'Self'`, Granite Armor etc.) reuse some
+ *  of these as self-downsides and are excluded by `foeDebuffWindow`. */
 const FOE_DEBUFF_KEYS = [
   'tohitDebuff',
   'defenseDebuff',
@@ -182,7 +183,7 @@ const FOE_DEBUFF_KEYS = [
  *  the power-level debuff/effect duration. 0 = no debuff. */
 function foeDebuffWindow(power: SelectedPower): number {
   const e = power.effects;
-  if (!e || e.selfPenalty) return 0;
+  if (!e || hasSelfDirectedPenalty(e)) return 0;
   const present = FOE_DEBUFF_KEYS.filter((k) => e[k] != null);
   if (present.length === 0) return 0;
   return resolveEffectDuration(e, present, [e.effectDuration, e.buffDuration]);

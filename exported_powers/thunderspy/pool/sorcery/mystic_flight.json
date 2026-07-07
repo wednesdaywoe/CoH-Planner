@@ -324,6 +324,17 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_Pool",
+    "Disable_Travel",
+    "Disable_All",
+    "HunterMode",
+    "ProwlerMode",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 3,
   "powerset": "Pool.Sorcery"
 }

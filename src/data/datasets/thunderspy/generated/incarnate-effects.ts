@@ -16,149 +16,149 @@
 
 export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
   // Agility Boost
-  'agility_boost': {},
+  'agility_boost': {"enduranceModification":0.33},
   // Agility Core Boost
-  'agility_core_boost': {},
+  'agility_core_boost': {"enduranceModification":0.33,"recharge":0.33},
   // Agility Core Paragon
-  'agility_core_paragon': {"levelShift":1},
+  'agility_core_paragon': {"levelShift":1,"enduranceModification":0.45,"recharge":0.33,"defense":0.1334},
   // Agility Partial Core Revamp
-  'agility_partial_core_revamp': {"levelShift":1},
+  'agility_partial_core_revamp': {"levelShift":1,"enduranceModification":0.33,"recharge":0.33,"defense":0.2},
   // Agility Partial Radial Revamp
-  'agility_partial_radial_revamp': {"levelShift":1},
+  'agility_partial_radial_revamp': {"levelShift":1,"enduranceModification":0.33,"recharge":0.165,"defense":0.2,"runSpeed":0.165},
   // Agility Radial Boost
-  'agility_radial_boost': {},
+  'agility_radial_boost': {"enduranceModification":0.33,"defense":0.2666},
   // Agility Radial Paragon
-  'agility_radial_paragon': {"levelShift":1},
+  'agility_radial_paragon': {"levelShift":1,"enduranceModification":0.33,"recharge":0.33,"defense":0.1334,"jumpSpeed":0.33,"runSpeed":0.11,"flySpeed":0.33},
   // Agility Total Core Revamp
-  'agility_total_core_revamp': {"levelShift":1},
+  'agility_total_core_revamp': {"levelShift":1,"enduranceModification":0.45,"recharge":0.33},
   // Agility Total Radial Revamp
-  'agility_total_radial_revamp': {"levelShift":1},
+  'agility_total_radial_revamp': {"levelShift":1,"enduranceModification":0.33,"recharge":0.165,"defense":0.2,"jumpSpeed":0.33},
   // Cardiac Boost
-  'cardiac_boost': {},
+  'cardiac_boost': {"enduranceReduction":0.33},
   // Cardiac Core Boost
-  'cardiac_core_boost': {},
+  'cardiac_core_boost': {"enduranceReduction":0.33,"range":0.2},
   // Cardiac Core Paragon
-  'cardiac_core_paragon': {"levelShift":1},
+  'cardiac_core_paragon': {"levelShift":1,"enduranceReduction":0.45,"range":0.2,"resistance":0.1334},
   // Cardiac Partial Core Revamp
-  'cardiac_partial_core_revamp': {"levelShift":1},
+  'cardiac_partial_core_revamp': {"levelShift":1,"enduranceReduction":0.33,"range":0.2,"resistance":0.2},
   // Cardiac Partial Radial Revamp
-  'cardiac_partial_radial_revamp': {"levelShift":1},
+  'cardiac_partial_radial_revamp': {"levelShift":1,"enduranceReduction":0.33,"range":0.1,"resistance":0.2,"fear":0.33},
   // Cardiac Radial Boost
-  'cardiac_radial_boost': {},
+  'cardiac_radial_boost': {"enduranceReduction":0.33,"resistance":0.2666},
   // Cardiac Radial Paragon
-  'cardiac_radial_paragon': {"levelShift":1},
+  'cardiac_radial_paragon': {"levelShift":1,"enduranceReduction":0.33,"range":0.2,"resistance":0.1334,"sleep":0.33,"fear":0.33,"intangible":0.11},
   // Cardiac Total Core Revamp
-  'cardiac_total_core_revamp': {"levelShift":1},
+  'cardiac_total_core_revamp': {"levelShift":1,"enduranceReduction":0.45,"range":0.2},
   // Cardiac Total Radial Revamp
-  'cardiac_total_radial_revamp': {"levelShift":1},
+  'cardiac_total_radial_revamp': {"levelShift":1,"enduranceReduction":0.33,"range":0.1,"resistance":0.2,"sleep":0.33},
   // Intuition Boost
-  'intuition_boost': {},
+  'intuition_boost': {"hold":0.33},
   // Intuition Core Boost
-  'intuition_core_boost': {},
+  'intuition_core_boost': {"hold":0.33,"defenseDebuff":0.44},
   // Intuition Core Paragon
-  'intuition_core_paragon': {"levelShift":1},
+  'intuition_core_paragon': {"levelShift":1,"hold":0.45,"defenseDebuff":0.22,"range":0.2},
   // Intuition Partial Core Revamp
-  'intuition_partial_core_revamp': {"levelShift":1},
+  'intuition_partial_core_revamp': {"levelShift":1,"hold":0.33,"defenseDebuff":0.33,"range":0.2},
   // Intuition Partial Radial Revamp
-  'intuition_partial_radial_revamp': {"levelShift":1},
+  'intuition_partial_radial_revamp': {"levelShift":1,"hold":0.33,"defenseDebuff":0.165,"range":0.2,"damage":0.33},
   // Intuition Radial Boost
-  'intuition_radial_boost': {},
+  'intuition_radial_boost': {"hold":0.33,"range":0.2},
   // Intuition Radial Paragon
-  'intuition_radial_paragon': {"levelShift":1},
+  'intuition_radial_paragon': {"levelShift":1,"hold":0.33,"defenseDebuff":0.22,"range":0.2,"toHitDebuff":0.2,"damage":0.22,"slow":0.11},
   // Intuition Total Core Revamp
-  'intuition_total_core_revamp': {"levelShift":1},
+  'intuition_total_core_revamp': {"levelShift":1,"hold":0.45,"defenseDebuff":0.33},
   // Intuition Total Radial Revamp
-  'intuition_total_radial_revamp': {"levelShift":1},
+  'intuition_total_radial_revamp': {"levelShift":1,"hold":0.33,"defenseDebuff":0.165,"range":0.2,"toHitDebuff":0.2},
   // Musculature Boost
-  'musculature_boost': {},
+  'musculature_boost': {"damage":0.55},
   // Musculature Core Boost
-  'musculature_core_boost': {},
+  'musculature_core_boost': {"damage":0.44,"immobilize":0.33},
   // Musculature Core Paragon
-  'musculature_core_paragon': {"levelShift":1},
+  'musculature_core_paragon': {"levelShift":1,"damage":0.3,"immobilize":0.33,"defenseDebuff":0.22},
   // Musculature Partial Core Revamp
-  'musculature_partial_core_revamp': {"levelShift":1},
+  'musculature_partial_core_revamp': {"levelShift":1,"damage":0.33,"immobilize":0.33,"defenseDebuff":0.33},
   // Musculature Partial Radial Revamp
-  'musculature_partial_radial_revamp': {"levelShift":1},
+  'musculature_partial_radial_revamp': {"levelShift":1,"damage":0.33,"immobilize":0.165,"defenseDebuff":0.33,"toHitDebuff":0.2},
   // Musculature Radial Boost
-  'musculature_radial_boost': {},
+  'musculature_radial_boost': {"damage":0.44,"defenseDebuff":0.44},
   // Musculature Radial Paragon
-  'musculature_radial_paragon': {"levelShift":1},
+  'musculature_radial_paragon': {"levelShift":1,"damage":0.22,"immobilize":0.33,"defenseDebuff":0.22,"enduranceModification":0.33,"toHitDebuff":0.2,"runSpeed":0.11},
   // Musculature Total Core Revamp
-  'musculature_total_core_revamp': {"levelShift":1},
+  'musculature_total_core_revamp': {"levelShift":1,"damage":0.45,"immobilize":0.33},
   // Musculature Total Radial Revamp
-  'musculature_total_radial_revamp': {"levelShift":1},
+  'musculature_total_radial_revamp': {"levelShift":1,"damage":0.33,"immobilize":0.165,"defenseDebuff":0.33,"enduranceModification":0.33},
   // Nerve Boost
-  'nerve_boost': {},
+  'nerve_boost': {"accuracy":0.33},
   // Nerve Core Boost
-  'nerve_core_boost': {},
+  'nerve_core_boost': {"accuracy":0.33,"hold":0.33},
   // Nerve Core Paragon
-  'nerve_core_paragon': {"levelShift":1},
+  'nerve_core_paragon': {"levelShift":1,"accuracy":0.45,"hold":0.33,"defense":0.1334},
   // Nerve Partial Core Revamp
-  'nerve_partial_core_revamp': {"levelShift":1},
+  'nerve_partial_core_revamp': {"levelShift":1,"accuracy":0.33,"hold":0.33,"defense":0.2},
   // Nerve Partial Radial Revamp
-  'nerve_partial_radial_revamp': {"levelShift":1},
+  'nerve_partial_radial_revamp': {"levelShift":1,"accuracy":0.33,"hold":0.165,"defense":0.2,"taunt":0.33},
   // Nerve Radial Boost
-  'nerve_radial_boost': {},
+  'nerve_radial_boost': {"accuracy":0.33,"defense":0.2666},
   // Nerve Radial Paragon
-  'nerve_radial_paragon': {"levelShift":1},
+  'nerve_radial_paragon': {"levelShift":1,"accuracy":0.33,"hold":0.33,"defense":0.1334,"confuse":0.33,"taunt":0.33,"flySpeed":0.33},
   // Nerve Total Core Revamp
-  'nerve_total_core_revamp': {"levelShift":1},
+  'nerve_total_core_revamp': {"levelShift":1,"accuracy":0.45,"hold":0.33},
   // Nerve Total Radial Revamp
-  'nerve_total_radial_revamp': {"levelShift":1},
+  'nerve_total_radial_revamp': {"levelShift":1,"accuracy":0.33,"hold":0.165,"defense":0.2,"confuse":0.33},
   // Resilient Boost
-  'resilient_boost': {},
+  'resilient_boost': {"resistance":0.3334},
   // Resilient Core Boost
-  'resilient_core_boost': {},
+  'resilient_core_boost': {"resistance":0.2666,"toHitBuff":0.2},
   // Resilient Core Paragon
-  'resilient_core_paragon': {"levelShift":1},
+  'resilient_core_paragon': {"levelShift":1,"resistance":0.22,"toHitBuff":0.2,"immobilize":0.33},
   // Resilient Partial Core Revamp
-  'resilient_partial_core_revamp': {"levelShift":1},
+  'resilient_partial_core_revamp': {"levelShift":1,"resistance":0.2,"toHitBuff":0.2,"immobilize":0.33},
   // Resilient Partial Radial Revamp
-  'resilient_partial_radial_revamp': {"levelShift":1},
+  'resilient_partial_radial_revamp': {"levelShift":1,"resistance":0.2,"toHitBuff":0.1,"immobilize":0.33,"stun":0.33},
   // Resilient Radial Boost
-  'resilient_radial_boost': {},
+  'resilient_radial_boost': {"resistance":0.2666,"immobilize":0.33},
   // Resilient Radial Paragon
-  'resilient_radial_paragon': {"levelShift":1},
+  'resilient_radial_paragon': {"levelShift":1,"resistance":0.1334,"toHitBuff":0.2,"immobilize":0.33,"intangible":0.11,"stun":0.33,"taunt":0.33},
   // Resilient Total Core Revamp
-  'resilient_total_core_revamp': {"levelShift":1},
+  'resilient_total_core_revamp': {"levelShift":1,"resistance":0.33,"toHitBuff":0.2},
   // Resilient Total Radial Revamp
-  'resilient_total_radial_revamp': {"levelShift":1},
+  'resilient_total_radial_revamp': {"levelShift":1,"resistance":0.2,"toHitBuff":0.1,"immobilize":0.33,"intangible":0.165},
   // Spiritual Boost
-  'spiritual_boost': {},
+  'spiritual_boost': {"recharge":0.33},
   // Spiritual Core Boost
-  'spiritual_core_boost': {},
+  'spiritual_core_boost': {"recharge":0.33,"stun":0.33},
   // Spiritual Core Paragon
-  'spiritual_core_paragon': {"levelShift":1},
+  'spiritual_core_paragon': {"levelShift":1,"recharge":0.45,"stun":0.33,"heal":0.33},
   // Spiritual Partial Core Revamp
-  'spiritual_partial_core_revamp': {"levelShift":1},
+  'spiritual_partial_core_revamp': {"levelShift":1,"recharge":0.33,"stun":0.33,"heal":0.33},
   // Spiritual Partial Radial Revamp
-  'spiritual_partial_radial_revamp': {"levelShift":1},
+  'spiritual_partial_radial_revamp': {"levelShift":1,"recharge":0.33,"stun":0.165,"heal":0.33,"slow":0.165},
   // Spiritual Radial Boost
-  'spiritual_radial_boost': {},
+  'spiritual_radial_boost': {"recharge":0.33,"heal":0.33},
   // Spiritual Radial Paragon
-  'spiritual_radial_paragon': {"levelShift":1},
+  'spiritual_radial_paragon': {"levelShift":1,"recharge":0.33,"stun":0.33,"heal":0.33,"toHitBuff":0.2,"slow":0.11,"jumpSpeed":0.33},
   // Spiritual Total Core Revamp
-  'spiritual_total_core_revamp': {"levelShift":1},
+  'spiritual_total_core_revamp': {"levelShift":1,"recharge":0.45,"stun":0.33},
   // Spiritual Total Radial Revamp
-  'spiritual_total_radial_revamp': {"levelShift":1},
+  'spiritual_total_radial_revamp': {"levelShift":1,"recharge":0.33,"stun":0.165,"heal":0.33,"toHitBuff":0.2},
   // Vigor Boost
-  'vigor_boost': {},
+  'vigor_boost': {"heal":0.33},
   // Vigor Core Boost
-  'vigor_core_boost': {},
+  'vigor_core_boost': {"heal":0.33,"accuracy":0.33},
   // Vigor Core Paragon
-  'vigor_core_paragon': {"levelShift":1},
+  'vigor_core_paragon': {"levelShift":1,"heal":0.45,"accuracy":0.33,"enduranceReduction":0.33},
   // Vigor Partial Core Revamp
-  'vigor_partial_core_revamp': {"levelShift":1},
+  'vigor_partial_core_revamp': {"levelShift":1,"heal":0.33,"accuracy":0.33,"enduranceReduction":0.33},
   // Vigor Partial Radial Revamp
-  'vigor_partial_radial_revamp': {"levelShift":1},
+  'vigor_partial_radial_revamp': {"levelShift":1,"heal":0.33,"accuracy":0.165,"enduranceReduction":0.33,"sleep":0.33},
   // Vigor Radial Boost
-  'vigor_radial_boost': {},
+  'vigor_radial_boost': {"heal":0.33,"enduranceReduction":0.33},
   // Vigor Radial Paragon
-  'vigor_radial_paragon': {"levelShift":1},
+  'vigor_radial_paragon': {"levelShift":1,"heal":0.33,"accuracy":0.33,"enduranceReduction":0.33,"confuse":0.33,"sleep":0.33,"fear":0.33},
   // Vigor Total Core Revamp
-  'vigor_total_core_revamp': {"levelShift":1},
+  'vigor_total_core_revamp': {"levelShift":1,"heal":0.45,"accuracy":0.33},
   // Vigor Total Radial Revamp
-  'vigor_total_radial_revamp': {"levelShift":1},
+  'vigor_total_radial_revamp': {"levelShift":1,"heal":0.33,"accuracy":0.165,"enduranceReduction":0.33,"confuse":0.33},
 };
 
 // ============================================
@@ -168,59 +168,59 @@ export const GENERATED_ALPHA_EFFECTS: Record<string, Record<string, number>> = {
 
 export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number | string>> = {
   // Ageless Core Epiphany
-  'ageless_core_epiphany': {"levelShift":1},
+  'ageless_core_epiphany': {"levelShift":1,"endurance":1},
   // Ageless Core Invocation
-  'ageless_core_invocation': {},
+  'ageless_core_invocation': {"endurance":0.5},
   // Ageless Invocation
-  'ageless_invocation': {},
+  'ageless_invocation': {"endurance":0.5},
   // Ageless Partial Core Invocation
-  'ageless_partial_core_invocation': {"levelShift":1},
+  'ageless_partial_core_invocation': {"levelShift":1,"endurance":0.75},
   // Ageless Partial Radial Invocation
-  'ageless_partial_radial_invocation': {"levelShift":1},
+  'ageless_partial_radial_invocation': {"levelShift":1,"endurance":0.75,"debuffResistance":0.5},
   // Ageless Radial Epiphany
-  'ageless_radial_epiphany': {"levelShift":1},
+  'ageless_radial_epiphany': {"levelShift":1,"endurance":1,"debuffResistance":0.5},
   // Ageless Radial Invocation
-  'ageless_radial_invocation': {},
+  'ageless_radial_invocation': {"endurance":0.5,"debuffResistance":0.5},
   // Ageless Total Core Invocation
-  'ageless_total_core_invocation': {"levelShift":1},
+  'ageless_total_core_invocation': {"levelShift":1,"endurance":0.75},
   // Ageless Total Radial Invocation
-  'ageless_total_radial_invocation': {"levelShift":1},
+  'ageless_total_radial_invocation': {"levelShift":1,"endurance":0.75,"debuffResistance":0.5},
   // Barrier Core Epiphany
-  'barrier_core_epiphany': {"levelShift":1},
+  'barrier_core_epiphany': {"levelShift":1,"defenseAll":0.575},
   // Barrier Core Invocation
-  'barrier_core_invocation': {},
+  'barrier_core_invocation': {"defenseAll":0.6},
   // Barrier Invocation
-  'barrier_invocation': {},
+  'barrier_invocation': {"defenseAll":0.6},
   // Barrier Partial Core Invocation
-  'barrier_partial_core_invocation': {"levelShift":1},
+  'barrier_partial_core_invocation': {"levelShift":1,"defenseAll":0.575},
   // Barrier Partial Radial Invocation
-  'barrier_partial_radial_invocation': {"levelShift":1},
+  'barrier_partial_radial_invocation': {"levelShift":1,"defenseAll":0.6},
   // Barrier Radial Epiphany
-  'barrier_radial_epiphany': {"levelShift":1},
+  'barrier_radial_epiphany': {"levelShift":1,"defenseAll":0.6},
   // Barrier Radial Invocation
-  'barrier_radial_invocation': {},
+  'barrier_radial_invocation': {"defenseAll":0.6},
   // Barrier Total Core Invocation
-  'barrier_total_core_invocation': {"levelShift":1},
+  'barrier_total_core_invocation': {"levelShift":1,"defenseAll":0.6},
   // Barrier Total Radial Invocation
-  'barrier_total_radial_invocation': {"levelShift":1},
+  'barrier_total_radial_invocation': {"levelShift":1,"defenseAll":0.6},
   // Clarion Core Epiphany
-  'clarion_core_epiphany': {"levelShift":1},
+  'clarion_core_epiphany': {"levelShift":1,"mezProtection":21,"kbProtection":10.5},
   // Clarion Core Invocation
-  'clarion_core_invocation': {},
+  'clarion_core_invocation': {"mezProtection":21,"kbProtection":10.5},
   // Clarion Invocation
-  'clarion_invocation': {},
+  'clarion_invocation': {"mezProtection":30,"kbProtection":15},
   // Clarion Partial Core Invocation
-  'clarion_partial_core_invocation': {"levelShift":1},
+  'clarion_partial_core_invocation': {"levelShift":1,"mezProtection":21,"kbProtection":10.5},
   // Clarion Partial Radial Invocation
-  'clarion_partial_radial_invocation': {"levelShift":1},
+  'clarion_partial_radial_invocation': {"levelShift":1,"mezProtection":30,"kbProtection":15},
   // Clarion Radial Epiphany
-  'clarion_radial_epiphany': {"levelShift":1},
+  'clarion_radial_epiphany': {"levelShift":1,"mezProtection":30,"kbProtection":15},
   // Clarion Radial Invocation
-  'clarion_radial_invocation': {},
+  'clarion_radial_invocation': {"mezProtection":30,"kbProtection":15},
   // Clarion Total Core Invocation
-  'clarion_total_core_invocation': {"levelShift":1},
+  'clarion_total_core_invocation': {"levelShift":1,"mezProtection":21,"kbProtection":10.5},
   // Clarion Total Radial Invocation
-  'clarion_total_radial_invocation': {"levelShift":1},
+  'clarion_total_radial_invocation': {"levelShift":1,"mezProtection":30,"kbProtection":15},
   // Incandescence Core Epiphany
   'incandescence_core_epiphany': {"levelShift":1},
   // Incandescence Core Invocation
@@ -240,23 +240,23 @@ export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number | s
   // Incandescence Total Radial Invocation
   'incandescence_total_radial_invocation': {"levelShift":1},
   // Rebirth Core Epiphany
-  'rebirth_core_epiphany': {"levelShift":1},
+  'rebirth_core_epiphany': {"levelShift":1,"healScale":8,"healTable":"Ranged_Tempdamage"},
   // Rebirth Core Invocation
-  'rebirth_core_invocation': {},
+  'rebirth_core_invocation': {"healScale":6,"healTable":"Ranged_Tempdamage"},
   // Rebirth Invocation
-  'rebirth_invocation': {},
+  'rebirth_invocation': {"healScale":5,"healTable":"Ranged_Tempdamage"},
   // Rebirth Partial Core Invocation
-  'rebirth_partial_core_invocation': {"levelShift":1},
+  'rebirth_partial_core_invocation': {"levelShift":1,"healScale":7,"healTable":"Ranged_Tempdamage"},
   // Rebirth Partial Radial Invocation
-  'rebirth_partial_radial_invocation': {"levelShift":1},
+  'rebirth_partial_radial_invocation': {"levelShift":1,"regeneration":10,"healScale":7,"healTable":"Ranged_Tempdamage"},
   // Rebirth Radial Epiphany
-  'rebirth_radial_epiphany': {"levelShift":1},
+  'rebirth_radial_epiphany': {"levelShift":1,"regeneration":10,"healScale":8,"healTable":"Ranged_Tempdamage"},
   // Rebirth Radial Invocation
-  'rebirth_radial_invocation': {},
+  'rebirth_radial_invocation': {"regeneration":10,"healScale":6,"healTable":"Ranged_Tempdamage"},
   // Rebirth Total Core Invocation
-  'rebirth_total_core_invocation': {"levelShift":1},
+  'rebirth_total_core_invocation': {"levelShift":1,"healScale":7,"healTable":"Ranged_Tempdamage"},
   // Rebirth Total Radial Invocation
-  'rebirth_total_radial_invocation': {"levelShift":1},
+  'rebirth_total_radial_invocation': {"levelShift":1,"regeneration":10,"healScale":7,"healTable":"Ranged_Tempdamage"},
 };
 
 export interface GeneratedDestinyTimelineTier { value: number; duration: number; }
@@ -357,7 +357,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Core Embodiment
   'assault_core_embodiment': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.1},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -367,7 +367,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Core Genome
   'assault_core_genome': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.05},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -377,7 +377,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Genome
   'assault_genome': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.025},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -387,7 +387,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Partial Core Graft
   'assault_partial_core_graft': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.075},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -397,7 +397,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Partial Radial Graft
   'assault_partial_radial_graft': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.075},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -407,7 +407,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Radial Embodiment
   'assault_radial_embodiment': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.1},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -417,7 +417,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Radial Genome
   'assault_radial_genome': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.05},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -427,7 +427,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Total Core Graft
   'assault_total_core_graft': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.075},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -437,7 +437,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Total Radial Graft
   'assault_total_radial_graft': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.075},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -447,7 +447,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Core Embodiment
   'control_core_embodiment': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.4},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -457,7 +457,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Core Genome
   'control_core_genome': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.2},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -467,7 +467,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Genome
   'control_genome': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.1},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -477,7 +477,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Partial Core Graft
   'control_partial_core_graft': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.3},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -487,7 +487,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Partial Radial Graft
   'control_partial_radial_graft': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.3},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -497,7 +497,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Radial Embodiment
   'control_radial_embodiment': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.4},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -507,7 +507,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Radial Genome
   'control_radial_genome': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.2},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -517,7 +517,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Total Core Graft
   'control_total_core_graft': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.3},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -527,7 +527,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Total Radial Graft
   'control_total_radial_graft': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.3},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -537,9 +537,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Genome
   'melee_genome_1': {
     tree: 'melee',
-    passive: {},
-    frontLoaded: {},
-    perTarget: {},
+    passive: {"regeneration":0.075},
+    frontLoaded: {"regeneration":0.0585},
+    perTarget: {"regeneration":0.097875},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -547,9 +547,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Core Genome
   'melee_genome_2': {
     tree: 'melee',
-    passive: {},
-    frontLoaded: {},
-    perTarget: {},
+    passive: {"regeneration":0.15},
+    frontLoaded: {"resSmashing":0.0136,"resLethal":0.0136,"resFire":0.0136,"resCold":0.0136,"resEnergy":0.0136,"resNegative":0.0136,"resPsionic":0.0136,"resToxic":0.0136},
+    perTarget: {"resSmashing":0.0066,"resLethal":0.0066,"resFire":0.0066,"resCold":0.0066,"resEnergy":0.0066,"resNegative":0.0066,"resPsionic":0.0066,"resToxic":0.0066},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -557,9 +557,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Radial Genome
   'melee_genome_3': {
     tree: 'melee',
-    passive: {},
+    passive: {"regeneration":0.15},
     frontLoaded: {},
-    perTarget: {},
+    perTarget: {"defMelee":0.005,"defRanged":0.005,"defAoE":0.005,"defSmashing":0.005,"defLethal":0.005,"defFire":0.005,"defCold":0.005,"defEnergy":0.005,"defNegative":0.005,"defPsionic":0.005},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -567,9 +567,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Total Core Graft
   'melee_genome_4': {
     tree: 'melee',
-    passive: {},
-    frontLoaded: {},
-    perTarget: {},
+    passive: {"regeneration":0.225},
+    frontLoaded: {"resSmashing":0.04,"resLethal":0.04,"resFire":0.04,"resCold":0.04,"resEnergy":0.04,"resNegative":0.04,"resPsionic":0.04,"resToxic":0.04},
+    perTarget: {"resSmashing":0.01,"resLethal":0.01,"resFire":0.01,"resCold":0.01,"resEnergy":0.01,"resNegative":0.01,"resPsionic":0.01,"resToxic":0.01},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -577,9 +577,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Partial Core Graft
   'melee_genome_5': {
     tree: 'melee',
-    passive: {},
-    frontLoaded: {},
-    perTarget: {},
+    passive: {"regeneration":0.225},
+    frontLoaded: {"resSmashing":0.07,"resLethal":0.07,"resFire":0.07,"resCold":0.07,"resEnergy":0.07,"resNegative":0.07,"resPsionic":0.07,"resToxic":0.07},
+    perTarget: {"resSmashing":0.01,"resLethal":0.01,"resFire":0.01,"resCold":0.01,"resEnergy":0.01,"resNegative":0.01,"resPsionic":0.01,"resToxic":0.01},
     maxTargets: 7,
     duration: 120,
     recharge: 120,
@@ -587,9 +587,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Partial Radial Graft
   'melee_genome_6': {
     tree: 'melee',
-    passive: {},
+    passive: {"regeneration":0.225},
     frontLoaded: {},
-    perTarget: {},
+    perTarget: {"defMelee":0.01,"defRanged":0.01,"defAoE":0.01,"defSmashing":0.01,"defLethal":0.01,"defFire":0.01,"defCold":0.01,"defEnergy":0.01,"defNegative":0.01,"defPsionic":0.01},
     maxTargets: 7,
     duration: 120,
     recharge: 120,
@@ -597,9 +597,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Total Radial Graft
   'melee_genome_7': {
     tree: 'melee',
-    passive: {},
+    passive: {"regeneration":0.225},
     frontLoaded: {},
-    perTarget: {},
+    perTarget: {"defMelee":0.01,"defRanged":0.01,"defAoE":0.01,"defSmashing":0.01,"defLethal":0.01,"defFire":0.01,"defCold":0.01,"defEnergy":0.01,"defNegative":0.01,"defPsionic":0.01},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -607,9 +607,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Core Embodiment
   'melee_genome_8': {
     tree: 'melee',
-    passive: {},
-    frontLoaded: {},
-    perTarget: {},
+    passive: {"regeneration":0.3},
+    frontLoaded: {"resSmashing":0.1608,"resLethal":0.1608,"resFire":0.1608,"resCold":0.1608,"resEnergy":0.1608,"resNegative":0.1608,"resPsionic":0.1608,"resToxic":0.1608},
+    perTarget: {"resSmashing":0.0099,"resLethal":0.0099,"resFire":0.0099,"resCold":0.0099,"resEnergy":0.0099,"resNegative":0.0099,"resPsionic":0.0099,"resToxic":0.0099},
     maxTargets: 9,
     duration: 120,
     recharge: 120,
@@ -617,9 +617,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Radial Embodiment
   'melee_genome_9': {
     tree: 'melee',
-    passive: {},
+    passive: {"regeneration":0.3},
     frontLoaded: {},
-    perTarget: {},
+    perTarget: {"defMelee":0.015,"defRanged":0.015,"defAoE":0.015,"defSmashing":0.015,"defLethal":0.015,"defFire":0.015,"defCold":0.015,"defEnergy":0.015,"defNegative":0.015,"defPsionic":0.015},
     maxTargets: 9,
     duration: 120,
     recharge: 120,
@@ -627,8 +627,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Genome
   'support_genome': {
     tree: 'support',
-    passive: {},
-    frontLoaded: {},
+    passive: {"enduranceDiscount":0.025},
+    frontLoaded: {"damage":0.02,"defMelee":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -637,8 +637,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Core Genome
   'support_genome_2': {
     tree: 'support',
-    passive: {},
-    frontLoaded: {},
+    passive: {"enduranceDiscount":0.05},
+    frontLoaded: {"damage":0.02,"defMelee":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -647,8 +647,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Radial Genome
   'support_genome_3': {
     tree: 'support',
-    passive: {},
-    frontLoaded: {},
+    passive: {"enduranceDiscount":0.05},
+    frontLoaded: {"damage":0.02,"accuracy":0.02,"defMelee":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -657,8 +657,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Total Core Graft
   'support_genome_4': {
     tree: 'support',
-    passive: {},
-    frontLoaded: {},
+    passive: {"enduranceDiscount":0.075},
+    frontLoaded: {"damage":0.04,"defMelee":0.04,"accuracy":0.04},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -667,8 +667,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Partial Core Graft
   'support_genome_5': {
     tree: 'support',
-    passive: {},
-    frontLoaded: {},
+    passive: {"enduranceDiscount":0.075},
+    frontLoaded: {"damage":0.03,"defMelee":0.03},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -677,8 +677,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Partial Radial Graft
   'support_genome_6': {
     tree: 'support',
-    passive: {},
-    frontLoaded: {},
+    passive: {"enduranceDiscount":0.075},
+    frontLoaded: {"damage":0.08,"defMelee":0.08,"accuracy":0.08},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -687,8 +687,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Total Radial Graft
   'support_genome_7': {
     tree: 'support',
-    passive: {},
-    frontLoaded: {},
+    passive: {"enduranceDiscount":0.075},
+    frontLoaded: {"damage":0.06,"defMelee":0.06,"accuracy":0.06},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -697,8 +697,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Core Embodiment
   'support_genome_8': {
     tree: 'support',
-    passive: {},
-    frontLoaded: {},
+    passive: {"enduranceDiscount":0.1},
+    frontLoaded: {"damage":0.06,"defMelee":0.06,"accuracy":0.06},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -707,8 +707,8 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Support Radial Embodiment
   'support_genome_9': {
     tree: 'support',
-    passive: {},
-    frontLoaded: {},
+    passive: {"enduranceDiscount":0.1},
+    frontLoaded: {"damage":0.08,"defMelee":0.08,"accuracy":0.08},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -1000,365 +1000,365 @@ export const GENERATED_LORE_EFFECTS: Record<string, {
   levelShift: number;
 }> = {
   // Arachnos Ally
-  'arachnos_ally': {"faction":"Arachnos","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'arachnos_ally': {"faction":"Arachnos","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Arachnos Core Ally
-  'arachnos_core_ally': {"faction":"Arachnos","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'arachnos_core_ally': {"faction":"Arachnos","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Arachnos Core Superior Ally
-  'arachnos_core_superior_ally': {"faction":"Arachnos","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'arachnos_core_superior_ally': {"faction":"Arachnos","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Arachnos Partial Core Improved Ally
-  'arachnos_partial_core_improved_ally': {"faction":"Arachnos","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'arachnos_partial_core_improved_ally': {"faction":"Arachnos","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Arachnos Partial Radial Improved Ally
-  'arachnos_partial_radial_improved_ally': {"faction":"Arachnos","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'arachnos_partial_radial_improved_ally': {"faction":"Arachnos","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Arachnos Radial Ally
-  'arachnos_radial_ally': {"faction":"Arachnos","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'arachnos_radial_ally': {"faction":"Arachnos","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Arachnos Radial Superior Ally
-  'arachnos_radial_superior_ally': {"faction":"Arachnos","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'arachnos_radial_superior_ally': {"faction":"Arachnos","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Arachnos Total Core Improved Ally
-  'arachnos_total_core_improved_ally': {"faction":"Arachnos","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'arachnos_total_core_improved_ally': {"faction":"Arachnos","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Arachnos Total Radial Improved Ally
-  'arachnos_total_radial_improved_ally': {"faction":"Arachnos","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'arachnos_total_radial_improved_ally': {"faction":"Arachnos","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Banished Pantheon Ally
-  'banished_pantheon_ally': {"faction":"Banished Pantheon","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'banished_pantheon_ally': {"faction":"Banished Pantheon","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Banished Pantheon Core Ally
-  'banished_pantheon_core_ally': {"faction":"Banished Pantheon","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'banished_pantheon_core_ally': {"faction":"Banished Pantheon","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Banished Pantheon Core Superior Ally
-  'banished_pantheon_core_superior_ally': {"faction":"Banished Pantheon","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'banished_pantheon_core_superior_ally': {"faction":"Banished Pantheon","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Banished Pantheon Partial Core Improved Ally
-  'banished_pantheon_partial_core_improved_ally': {"faction":"Banished Pantheon","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'banished_pantheon_partial_core_improved_ally': {"faction":"Banished Pantheon","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Banished Pantheon Partial Radial Improved Ally
-  'banished_pantheon_partial_radial_improved_ally': {"faction":"Banished Pantheon","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'banished_pantheon_partial_radial_improved_ally': {"faction":"Banished Pantheon","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Banished Pantheon Radial Ally
-  'banished_pantheon_radial_ally': {"faction":"Banished Pantheon","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'banished_pantheon_radial_ally': {"faction":"Banished Pantheon","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Banished Pantheon Radial Superior Ally
-  'banished_pantheon_radial_superior_ally': {"faction":"Banished Pantheon","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'banished_pantheon_radial_superior_ally': {"faction":"Banished Pantheon","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Banished Pantheon Total Core Improved Ally
-  'banished_pantheon_total_core_improved_ally': {"faction":"Banished Pantheon","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'banished_pantheon_total_core_improved_ally': {"faction":"Banished Pantheon","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Banished Pantheon Total Radial Improved Ally
-  'banished_pantheon_total_radial_improved_ally': {"faction":"Banished Pantheon","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'banished_pantheon_total_radial_improved_ally': {"faction":"Banished Pantheon","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Carnival Ally
-  'carnival_ally': {"faction":"Carnival of Shadows","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'carnival_ally': {"faction":"Carnival of Shadows","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Carnival Core Ally
-  'carnival_core_ally': {"faction":"Carnival of Shadows","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'carnival_core_ally': {"faction":"Carnival of Shadows","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Carnival Core Superior Ally
-  'carnival_core_superior_ally': {"faction":"Carnival of Shadows","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'carnival_core_superior_ally': {"faction":"Carnival of Shadows","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Carnival Partial Core Improved Ally
-  'carnival_partial_core_improved_ally': {"faction":"Carnival of Shadows","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'carnival_partial_core_improved_ally': {"faction":"Carnival of Shadows","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Carnival Partial Radial Improved Ally
-  'carnival_partial_radial_improved_ally': {"faction":"Carnival of Shadows","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'carnival_partial_radial_improved_ally': {"faction":"Carnival of Shadows","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Carnival Radial Ally
-  'carnival_radial_ally': {"faction":"Carnival of Shadows","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'carnival_radial_ally': {"faction":"Carnival of Shadows","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Carnival Radial Superior Ally
-  'carnival_radial_superior_ally': {"faction":"Carnival of Shadows","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'carnival_radial_superior_ally': {"faction":"Carnival of Shadows","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Carnival Total Core Improved Ally
-  'carnival_total_core_improved_ally': {"faction":"Carnival of Shadows","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'carnival_total_core_improved_ally': {"faction":"Carnival of Shadows","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Carnival Total Radial Improved Ally
-  'carnival_total_radial_improved_ally': {"faction":"Carnival of Shadows","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'carnival_total_radial_improved_ally': {"faction":"Carnival of Shadows","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Cimeroran Ally
-  'cimeroran_ally': {"faction":"Cimeroran","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'cimeroran_ally': {"faction":"Cimeroran","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Cimeroran Core Ally
-  'cimeroran_core_ally': {"faction":"Cimeroran","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'cimeroran_core_ally': {"faction":"Cimeroran","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Cimeroran Core Superior Ally
-  'cimeroran_core_superior_ally': {"faction":"Cimeroran","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'cimeroran_core_superior_ally': {"faction":"Cimeroran","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Cimeroran Partial Core Improved Ally
-  'cimeroran_partial_core_improved_ally': {"faction":"Cimeroran","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'cimeroran_partial_core_improved_ally': {"faction":"Cimeroran","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Cimeroran Partial Radial Improved Ally
-  'cimeroran_partial_radial_improved_ally': {"faction":"Cimeroran","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'cimeroran_partial_radial_improved_ally': {"faction":"Cimeroran","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Cimeroran Radial Ally
-  'cimeroran_radial_ally': {"faction":"Cimeroran","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'cimeroran_radial_ally': {"faction":"Cimeroran","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Cimeroran Radial Superior Ally
-  'cimeroran_radial_superior_ally': {"faction":"Cimeroran","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'cimeroran_radial_superior_ally': {"faction":"Cimeroran","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Cimeroran Total Core Improved Ally
-  'cimeroran_total_core_improved_ally': {"faction":"Cimeroran","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'cimeroran_total_core_improved_ally': {"faction":"Cimeroran","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Cimeroran Total Radial Improved Ally
-  'cimeroran_total_radial_improved_ally': {"faction":"Cimeroran","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'cimeroran_total_radial_improved_ally': {"faction":"Cimeroran","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Clockwork Ally
-  'clockwork_ally': {"faction":"Clockwork","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'clockwork_ally': {"faction":"Clockwork","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Clockwork Core Ally
-  'clockwork_core_ally': {"faction":"Clockwork","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'clockwork_core_ally': {"faction":"Clockwork","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Clockwork Core Superior Ally
-  'clockwork_core_superior_ally': {"faction":"Clockwork","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'clockwork_core_superior_ally': {"faction":"Clockwork","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Clockwork Partial Core Improved Ally
-  'clockwork_partial_core_improved_ally': {"faction":"Clockwork","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'clockwork_partial_core_improved_ally': {"faction":"Clockwork","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Clockwork Partial Radial Improved Ally
-  'clockwork_partial_radial_improved_ally': {"faction":"Clockwork","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'clockwork_partial_radial_improved_ally': {"faction":"Clockwork","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Clockwork Radial Ally
-  'clockwork_radial_ally': {"faction":"Clockwork","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'clockwork_radial_ally': {"faction":"Clockwork","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Clockwork Radial Superior Ally
-  'clockwork_radial_superior_ally': {"faction":"Clockwork","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'clockwork_radial_superior_ally': {"faction":"Clockwork","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Clockwork Total Core Improved Ally
-  'clockwork_total_core_improved_ally': {"faction":"Clockwork","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'clockwork_total_core_improved_ally': {"faction":"Clockwork","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Clockwork Total Radial Improved Ally
-  'clockwork_total_radial_improved_ally': {"faction":"Clockwork","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'clockwork_total_radial_improved_ally': {"faction":"Clockwork","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // IDF Ally
-  'idf_ally': {"faction":"IDF","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'idf_ally': {"faction":"IDF","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // IDF Core Ally
-  'idf_core_ally': {"faction":"IDF","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'idf_core_ally': {"faction":"IDF","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // IDF Core Superior Ally
-  'idf_core_superior_ally': {"faction":"IDF","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'idf_core_superior_ally': {"faction":"IDF","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // IDF Partial Core Improved Ally
-  'idf_partial_core_improved_ally': {"faction":"IDF","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'idf_partial_core_improved_ally': {"faction":"IDF","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // IDF Partial Radial Improved Ally
-  'idf_partial_radial_improved_ally': {"faction":"IDF","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'idf_partial_radial_improved_ally': {"faction":"IDF","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // IDF Radial Ally
-  'idf_radial_ally': {"faction":"IDF","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'idf_radial_ally': {"faction":"IDF","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // IDF Radial Superior Ally
-  'idf_radial_superior_ally': {"faction":"IDF","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'idf_radial_superior_ally': {"faction":"IDF","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // IDF Total Core Improved Ally
-  'idf_total_core_improved_ally': {"faction":"IDF","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'idf_total_core_improved_ally': {"faction":"IDF","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // IDF Total Radial Improved Ally
-  'idf_total_radial_improved_ally': {"faction":"IDF","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'idf_total_radial_improved_ally': {"faction":"IDF","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Knives of Vengeance Ally
-  'knives_of_vengeance_ally': {"faction":"Knives of Artemis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'knives_of_vengeance_ally': {"faction":"Knives of Artemis","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Knives of Vengeance Core Ally
-  'knives_of_vengeance_core_ally': {"faction":"Knives of Artemis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'knives_of_vengeance_core_ally': {"faction":"Knives of Artemis","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Knives of Vengeance Core Superior Ally
-  'knives_of_vengeance_core_superior_ally': {"faction":"Knives of Artemis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'knives_of_vengeance_core_superior_ally': {"faction":"Knives of Artemis","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Knives of Vengeance Partial Core Improved Ally
-  'knives_of_vengeance_partial_core_improved_ally': {"faction":"Knives of Artemis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'knives_of_vengeance_partial_core_improved_ally': {"faction":"Knives of Artemis","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Knives of Vengeance Partial Radial Improved Ally
-  'knives_of_vengeance_partial_radial_improved_ally': {"faction":"Knives of Artemis","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'knives_of_vengeance_partial_radial_improved_ally': {"faction":"Knives of Artemis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Knives of Vengeance Radial Ally
-  'knives_of_vengeance_radial_ally': {"faction":"Knives of Artemis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'knives_of_vengeance_radial_ally': {"faction":"Knives of Artemis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Knives of Vengeance Radial Superior Ally
-  'knives_of_vengeance_radial_superior_ally': {"faction":"Knives of Artemis","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'knives_of_vengeance_radial_superior_ally': {"faction":"Knives of Artemis","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Knives of Vengeance Total Core Improved Ally
-  'knives_of_vengeance_total_core_improved_ally': {"faction":"Knives of Artemis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'knives_of_vengeance_total_core_improved_ally': {"faction":"Knives of Artemis","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Knives of Vengeance Total Radial Improved Ally
-  'knives_of_vengeance_total_radial_improved_ally': {"faction":"Knives of Artemis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'knives_of_vengeance_total_radial_improved_ally': {"faction":"Knives of Artemis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Longbow Ally
-  'longbow_ally': {"faction":"Longbow","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'longbow_ally': {"faction":"Longbow","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Longbow Core Ally
-  'longbow_core_ally': {"faction":"Longbow","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'longbow_core_ally': {"faction":"Longbow","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Longbow Core Superior Ally
-  'longbow_core_superior_ally': {"faction":"Longbow","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'longbow_core_superior_ally': {"faction":"Longbow","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Longbow Partial Core Improved Ally
-  'longbow_partial_core_improved_ally': {"faction":"Longbow","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'longbow_partial_core_improved_ally': {"faction":"Longbow","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Longbow Partial Radial Improved Ally
-  'longbow_partial_radial_improved_ally': {"faction":"Longbow","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'longbow_partial_radial_improved_ally': {"faction":"Longbow","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Longbow Radial Ally
-  'longbow_radial_ally': {"faction":"Longbow","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'longbow_radial_ally': {"faction":"Longbow","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Longbow Radial Superior Ally
-  'longbow_radial_superior_ally': {"faction":"Longbow","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'longbow_radial_superior_ally': {"faction":"Longbow","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Longbow Total Core Improved Ally
-  'longbow_total_core_improved_ally': {"faction":"Longbow","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'longbow_total_core_improved_ally': {"faction":"Longbow","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Longbow Total Radial Improved Ally
-  'longbow_total_radial_improved_ally': {"faction":"Longbow","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'longbow_total_radial_improved_ally': {"faction":"Longbow","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Nemesis Ally
-  'nemesis_ally': {"faction":"Nemesis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'nemesis_ally': {"faction":"Nemesis","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Nemesis Core Ally
-  'nemesis_core_ally': {"faction":"Nemesis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'nemesis_core_ally': {"faction":"Nemesis","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Nemesis Core Superior Ally
-  'nemesis_core_superior_ally': {"faction":"Nemesis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'nemesis_core_superior_ally': {"faction":"Nemesis","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Nemesis Partial Core Improved Ally
-  'nemesis_partial_core_improved_ally': {"faction":"Nemesis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'nemesis_partial_core_improved_ally': {"faction":"Nemesis","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Nemesis Partial Radial Improved Ally
-  'nemesis_partial_radial_improved_ally': {"faction":"Nemesis","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'nemesis_partial_radial_improved_ally': {"faction":"Nemesis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Nemesis Radial Ally
-  'nemesis_radial_ally': {"faction":"Nemesis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'nemesis_radial_ally': {"faction":"Nemesis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Nemesis Radial Superior Ally
-  'nemesis_radial_superior_ally': {"faction":"Nemesis","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'nemesis_radial_superior_ally': {"faction":"Nemesis","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Nemesis Total Core Improved Ally
-  'nemesis_total_core_improved_ally': {"faction":"Nemesis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'nemesis_total_core_improved_ally': {"faction":"Nemesis","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Nemesis Total Radial Improved Ally
-  'nemesis_total_radial_improved_ally': {"faction":"Nemesis","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'nemesis_total_radial_improved_ally': {"faction":"Nemesis","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Phantom Ally
-  'phantom_ally': {"faction":"Phantom","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'phantom_ally': {"faction":"Phantom","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Phantom Core Ally
-  'phantom_core_ally': {"faction":"Phantom","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'phantom_core_ally': {"faction":"Phantom","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Phantom Core Superior Ally
-  'phantom_core_superior_ally': {"faction":"Phantom","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'phantom_core_superior_ally': {"faction":"Phantom","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Phantom Partial Core Improved Ally
-  'phantom_partial_core_improved_ally': {"faction":"Phantom","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'phantom_partial_core_improved_ally': {"faction":"Phantom","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Phantom Partial Radial Improved Ally
-  'phantom_partial_radial_improved_ally': {"faction":"Phantom","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'phantom_partial_radial_improved_ally': {"faction":"Phantom","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Phantom Radial Ally
-  'phantom_radial_ally': {"faction":"Phantom","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'phantom_radial_ally': {"faction":"Phantom","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Phantom Radial Superior Ally
-  'phantom_radial_superior_ally': {"faction":"Phantom","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'phantom_radial_superior_ally': {"faction":"Phantom","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Phantom Total Core Improved Ally
-  'phantom_total_core_improved_ally': {"faction":"Phantom","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'phantom_total_core_improved_ally': {"faction":"Phantom","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Phantom Total Radial Improved Ally
-  'phantom_total_radial_improved_ally': {"faction":"Phantom","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'phantom_total_radial_improved_ally': {"faction":"Phantom","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Polar Lights Ally
-  'polar_lights_ally': {"faction":"Lights","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'polar_lights_ally': {"faction":"Lights","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Polar Lights Core Ally
-  'polar_lights_core_ally': {"faction":"Lights","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'polar_lights_core_ally': {"faction":"Lights","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Polar Lights Core Superior Ally
-  'polar_lights_core_superior_ally': {"faction":"Lights","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'polar_lights_core_superior_ally': {"faction":"Lights","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Polar Lights Partial Core Improved Ally
-  'polar_lights_partial_core_improved_ally': {"faction":"Lights","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'polar_lights_partial_core_improved_ally': {"faction":"Lights","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Polar Lights Partial Radial Improved Ally
-  'polar_lights_partial_radial_improved_ally': {"faction":"Lights","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'polar_lights_partial_radial_improved_ally': {"faction":"Lights","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Polar Lights Radial Ally
-  'polar_lights_radial_ally': {"faction":"Lights","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'polar_lights_radial_ally': {"faction":"Lights","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Polar Lights Radial Superior Ally
-  'polar_lights_radial_superior_ally': {"faction":"Lights","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'polar_lights_radial_superior_ally': {"faction":"Lights","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Polar Lights Total Core Improved Ally
-  'polar_lights_total_core_improved_ally': {"faction":"Lights","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'polar_lights_total_core_improved_ally': {"faction":"Lights","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Polar Lights Total Radial Improved Ally
-  'polar_lights_total_radial_improved_ally': {"faction":"Lights","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'polar_lights_total_radial_improved_ally': {"faction":"Lights","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rikti Ally
-  'rikti_ally': {"faction":"Rikti","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rikti_ally': {"faction":"Rikti","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rikti Core Ally
-  'rikti_core_ally': {"faction":"Rikti","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rikti_core_ally': {"faction":"Rikti","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rikti Core Superior Ally
-  'rikti_core_superior_ally': {"faction":"Rikti","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rikti_core_superior_ally': {"faction":"Rikti","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rikti Partial Core Improved Ally
-  'rikti_partial_core_improved_ally': {"faction":"Rikti","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rikti_partial_core_improved_ally': {"faction":"Rikti","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rikti Partial Radial Improved Ally
-  'rikti_partial_radial_improved_ally': {"faction":"Rikti","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'rikti_partial_radial_improved_ally': {"faction":"Rikti","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Rikti Radial Ally
-  'rikti_radial_ally': {"faction":"Rikti","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rikti_radial_ally': {"faction":"Rikti","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rikti Radial Superior Ally
-  'rikti_radial_superior_ally': {"faction":"Rikti","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'rikti_radial_superior_ally': {"faction":"Rikti","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Rikti Total Core Improved Ally
-  'rikti_total_core_improved_ally': {"faction":"Rikti","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rikti_total_core_improved_ally': {"faction":"Rikti","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rikti Total Radial Improved Ally
-  'rikti_total_radial_improved_ally': {"faction":"Rikti","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rikti_total_radial_improved_ally': {"faction":"Rikti","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Robotic Drones Ally
-  'robotic_drones_ally': {"faction":"Drones","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'robotic_drones_ally': {"faction":"Drones","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Robotic Drones Core Ally
-  'robotic_drones_core_ally': {"faction":"Drones","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'robotic_drones_core_ally': {"faction":"Drones","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Robotic Drones Core Superior Ally
-  'robotic_drones_core_superior_ally': {"faction":"Drones","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'robotic_drones_core_superior_ally': {"faction":"Drones","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Robotic Drones Partial Core Improved Ally
-  'robotic_drones_partial_core_improved_ally': {"faction":"Drones","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'robotic_drones_partial_core_improved_ally': {"faction":"Drones","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Robotic Drones Partial Radial Improved Ally
-  'robotic_drones_partial_radial_improved_ally': {"faction":"Drones","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'robotic_drones_partial_radial_improved_ally': {"faction":"Drones","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Robotic Drones Radial Ally
-  'robotic_drones_radial_ally': {"faction":"Drones","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'robotic_drones_radial_ally': {"faction":"Drones","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Robotic Drones Radial Superior Ally
-  'robotic_drones_radial_superior_ally': {"faction":"Drones","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'robotic_drones_radial_superior_ally': {"faction":"Drones","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Robotic Drones Total Core Improved Ally
-  'robotic_drones_total_core_improved_ally': {"faction":"Drones","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'robotic_drones_total_core_improved_ally': {"faction":"Drones","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Robotic Drones Total Radial Improved Ally
-  'robotic_drones_total_radial_improved_ally': {"faction":"Drones","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'robotic_drones_total_radial_improved_ally': {"faction":"Drones","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rularuu Ally
-  'rularuu_ally': {"faction":"Rularuu","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rularuu_ally': {"faction":"Rularuu","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rularuu Core Ally
-  'rularuu_core_ally': {"faction":"Rularuu","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rularuu_core_ally': {"faction":"Rularuu","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rularuu Core Superior Ally
-  'rularuu_core_superior_ally': {"faction":"Rularuu","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rularuu_core_superior_ally': {"faction":"Rularuu","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rularuu Partial Core Improved Ally
-  'rularuu_partial_core_improved_ally': {"faction":"Rularuu","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rularuu_partial_core_improved_ally': {"faction":"Rularuu","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rularuu Partial Radial Improved Ally
-  'rularuu_partial_radial_improved_ally': {"faction":"Rularuu","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'rularuu_partial_radial_improved_ally': {"faction":"Rularuu","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Rularuu Radial Ally
-  'rularuu_radial_ally': {"faction":"Rularuu","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rularuu_radial_ally': {"faction":"Rularuu","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rularuu Radial Superior Ally
-  'rularuu_radial_superior_ally': {"faction":"Rularuu","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'rularuu_radial_superior_ally': {"faction":"Rularuu","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Rularuu Total Core Improved Ally
-  'rularuu_total_core_improved_ally': {"faction":"Rularuu","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rularuu_total_core_improved_ally': {"faction":"Rularuu","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Rularuu Total Radial Improved Ally
-  'rularuu_total_radial_improved_ally': {"faction":"Rularuu","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'rularuu_total_radial_improved_ally': {"faction":"Rularuu","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Seers Ally
-  'seers_ally': {"faction":"Seers","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'seers_ally': {"faction":"Seers","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Seers Core Ally
-  'seers_core_ally': {"faction":"Seers","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'seers_core_ally': {"faction":"Seers","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Seers Core Superior Ally
-  'seers_core_superior_ally': {"faction":"Seers","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'seers_core_superior_ally': {"faction":"Seers","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Seers Partial Core Improved Ally
-  'seers_partial_core_improved_ally': {"faction":"Seers","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'seers_partial_core_improved_ally': {"faction":"Seers","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Seers Partial Radial Improved Ally
-  'seers_partial_radial_improved_ally': {"faction":"Seers","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'seers_partial_radial_improved_ally': {"faction":"Seers","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Seers Radial Ally
-  'seers_radial_ally': {"faction":"Seers","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'seers_radial_ally': {"faction":"Seers","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Seers Radial Superior Ally
-  'seers_radial_superior_ally': {"faction":"Seers","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'seers_radial_superior_ally': {"faction":"Seers","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Seers Total Core Improved Ally
-  'seers_total_core_improved_ally': {"faction":"Seers","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'seers_total_core_improved_ally': {"faction":"Seers","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Seers Total Radial Improved Ally
-  'seers_total_radial_improved_ally': {"faction":"Seers","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'seers_total_radial_improved_ally': {"faction":"Seers","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Storm Elemental Ally
-  'storm_elemental_ally': {"faction":"Storm","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'storm_elemental_ally': {"faction":"Storm","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Storm Elemental Core Ally
-  'storm_elemental_core_ally': {"faction":"Storm","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'storm_elemental_core_ally': {"faction":"Storm","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Storm Elemental Core Superior Ally
-  'storm_elemental_core_superior_ally': {"faction":"Storm","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'storm_elemental_core_superior_ally': {"faction":"Storm","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Storm Elemental Partial Core Improved Ally
-  'storm_elemental_partial_core_improved_ally': {"faction":"Storm","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'storm_elemental_partial_core_improved_ally': {"faction":"Storm","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Storm Elemental Partial Radial Improved Ally
-  'storm_elemental_partial_radial_improved_ally': {"faction":"Storm","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'storm_elemental_partial_radial_improved_ally': {"faction":"Storm","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Storm Elemental Radial Ally
-  'storm_elemental_radial_ally': {"faction":"Storm","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'storm_elemental_radial_ally': {"faction":"Storm","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Storm Elemental Radial Superior Ally
-  'storm_elemental_radial_superior_ally': {"faction":"Storm","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'storm_elemental_radial_superior_ally': {"faction":"Storm","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Storm Elemental Total Core Improved Ally
-  'storm_elemental_total_core_improved_ally': {"faction":"Storm","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'storm_elemental_total_core_improved_ally': {"faction":"Storm","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Storm Elemental Total Radial Improved Ally
-  'storm_elemental_total_radial_improved_ally': {"faction":"Storm","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'storm_elemental_total_radial_improved_ally': {"faction":"Storm","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Talons of Vengeance Ally
-  'talons_of_vengeance_ally': {"faction":"Talons of Vengeance","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'talons_of_vengeance_ally': {"faction":"Talons of Vengeance","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Talons of Vengeance Core Ally
-  'talons_of_vengeance_core_ally': {"faction":"Talons of Vengeance","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'talons_of_vengeance_core_ally': {"faction":"Talons of Vengeance","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Talons of Vengeance Core Superior Ally
-  'talons_of_vengeance_core_superior_ally': {"faction":"Talons of Vengeance","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'talons_of_vengeance_core_superior_ally': {"faction":"Talons of Vengeance","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Talons of Vengeance Partial Core Improved Ally
-  'talons_of_vengeance_partial_core_improved_ally': {"faction":"Talons of Vengeance","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'talons_of_vengeance_partial_core_improved_ally': {"faction":"Talons of Vengeance","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Talons of Vengeance Partial Radial Improved Ally
-  'talons_of_vengeance_partial_radial_improved_ally': {"faction":"Talons of Vengeance","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'talons_of_vengeance_partial_radial_improved_ally': {"faction":"Talons of Vengeance","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Talons of Vengeance Radial Ally
-  'talons_of_vengeance_radial_ally': {"faction":"Talons of Vengeance","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'talons_of_vengeance_radial_ally': {"faction":"Talons of Vengeance","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Talons of Vengeance Radial Superior Ally
-  'talons_of_vengeance_radial_superior_ally': {"faction":"Talons of Vengeance","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'talons_of_vengeance_radial_superior_ally': {"faction":"Talons of Vengeance","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Talons of Vengeance Total Core Improved Ally
-  'talons_of_vengeance_total_core_improved_ally': {"faction":"Talons of Vengeance","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'talons_of_vengeance_total_core_improved_ally': {"faction":"Talons of Vengeance","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Talons of Vengeance Total Radial Improved Ally
-  'talons_of_vengeance_total_radial_improved_ally': {"faction":"Talons of Vengeance","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'talons_of_vengeance_total_radial_improved_ally': {"faction":"Talons of Vengeance","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Tsoo Ally
-  'tsoo_ally': {"faction":"Tsoo","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'tsoo_ally': {"faction":"Tsoo","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Tsoo Core Ally
-  'tsoo_core_ally': {"faction":"Tsoo","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'tsoo_core_ally': {"faction":"Tsoo","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Tsoo Core Superior Ally
-  'tsoo_core_superior_ally': {"faction":"Tsoo","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'tsoo_core_superior_ally': {"faction":"Tsoo","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Tsoo Partial Core Improved Ally
-  'tsoo_partial_core_improved_ally': {"faction":"Tsoo","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'tsoo_partial_core_improved_ally': {"faction":"Tsoo","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Tsoo Partial Radial Improved Ally
-  'tsoo_partial_radial_improved_ally': {"faction":"Tsoo","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'tsoo_partial_radial_improved_ally': {"faction":"Tsoo","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Tsoo Radial Ally
-  'tsoo_radial_ally': {"faction":"Tsoo","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'tsoo_radial_ally': {"faction":"Tsoo","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Tsoo Radial Superior Ally
-  'tsoo_radial_superior_ally': {"faction":"Tsoo","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'tsoo_radial_superior_ally': {"faction":"Tsoo","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Tsoo Total Core Improved Ally
-  'tsoo_total_core_improved_ally': {"faction":"Tsoo","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'tsoo_total_core_improved_ally': {"faction":"Tsoo","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Tsoo Total Radial Improved Ally
-  'tsoo_total_radial_improved_ally': {"faction":"Tsoo","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'tsoo_total_radial_improved_ally': {"faction":"Tsoo","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Vanguard Ally
-  'vanguard_ally': {"faction":"Vanguard","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'vanguard_ally': {"faction":"Vanguard","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Vanguard Core Ally
-  'vanguard_core_ally': {"faction":"Vanguard","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'vanguard_core_ally': {"faction":"Vanguard","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Vanguard Core Superior Ally
-  'vanguard_core_superior_ally': {"faction":"Vanguard","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'vanguard_core_superior_ally': {"faction":"Vanguard","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Vanguard Partial Core Improved Ally
-  'vanguard_partial_core_improved_ally': {"faction":"Vanguard","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'vanguard_partial_core_improved_ally': {"faction":"Vanguard","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Vanguard Partial Radial Improved Ally
-  'vanguard_partial_radial_improved_ally': {"faction":"Vanguard","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'vanguard_partial_radial_improved_ally': {"faction":"Vanguard","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Vanguard Radial Ally
-  'vanguard_radial_ally': {"faction":"Vanguard","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'vanguard_radial_ally': {"faction":"Vanguard","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Vanguard Radial Superior Ally
-  'vanguard_radial_superior_ally': {"faction":"Vanguard","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'vanguard_radial_superior_ally': {"faction":"Vanguard","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Vanguard Total Core Improved Ally
-  'vanguard_total_core_improved_ally': {"faction":"Vanguard","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'vanguard_total_core_improved_ally': {"faction":"Vanguard","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Vanguard Total Radial Improved Ally
-  'vanguard_total_radial_improved_ally': {"faction":"Vanguard","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'vanguard_total_radial_improved_ally': {"faction":"Vanguard","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Warworks Ally
-  'warworks_ally': {"faction":"War Works","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'warworks_ally': {"faction":"War Works","pets":["Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Warworks Core Ally
-  'warworks_core_ally': {"faction":"War Works","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'warworks_core_ally': {"faction":"War Works","pets":["Boss"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Warworks Core Superior Ally
-  'warworks_core_superior_ally': {"faction":"War Works","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'warworks_core_superior_ally': {"faction":"War Works","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Warworks Partial Core Improved Ally
-  'warworks_partial_core_improved_ally': {"faction":"War Works","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'warworks_partial_core_improved_ally': {"faction":"War Works","pets":["Boss","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Warworks Partial Radial Improved Ally
-  'warworks_partial_radial_improved_ally': {"faction":"War Works","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'warworks_partial_radial_improved_ally': {"faction":"War Works","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":600,"levelShift":0},
   // Warworks Radial Ally
-  'warworks_radial_ally': {"faction":"War Works","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'warworks_radial_ally': {"faction":"War Works","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Warworks Radial Superior Ally
-  'warworks_radial_superior_ally': {"faction":"War Works","pets":["Unknown"],"duration":300,"rechargeTime":600,"levelShift":0},
+  'warworks_radial_superior_ally': {"faction":"War Works","pets":["Boss","Support"],"duration":200,"rechargeTime":600,"levelShift":0},
   // Warworks Total Core Improved Ally
-  'warworks_total_core_improved_ally': {"faction":"War Works","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'warworks_total_core_improved_ally': {"faction":"War Works","pets":["Boss","Lieutenant"],"duration":300,"rechargeTime":900,"levelShift":0},
   // Warworks Total Radial Improved Ally
-  'warworks_total_radial_improved_ally': {"faction":"War Works","pets":["Unknown"],"duration":300,"rechargeTime":900,"levelShift":0},
+  'warworks_total_radial_improved_ally': {"faction":"War Works","pets":["Lieutenant","Support"],"duration":300,"rechargeTime":900,"levelShift":0},
 };
 
 // ============================================

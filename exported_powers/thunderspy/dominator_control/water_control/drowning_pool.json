@@ -328,6 +328,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Dominator_Control.Water_Control"
 }

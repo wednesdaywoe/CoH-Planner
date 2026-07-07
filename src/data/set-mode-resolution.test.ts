@@ -13,15 +13,13 @@ import { fileURLToPath } from 'node:url';
  * Guards the committed HC `exported_powers/` data. Mode indices are per-server;
  * only HC is resolved so far (Rebirth/Thunderspy ship no `attrib_names.bin`).
  *
- * NOTE (2026-07-04): the committed data here still predates the attrib-118 fix.
- * The exporter used to gate resolution on magnitude >= 2 because index 118
- * collapsed three engine attribs (kXPDebtProtection / kSetMode / kSetCostume)
- * onto `Set_Mode`, making a mag==1 Set_Mode ambiguous. That truncation is now
- * fixed at the parser source (resolve_attrib reads the byte-granular sub-index),
- * so a re-export will (a) relabel the mag==1 impostors as XPDebtProtection /
- * Set_Costume and (b) resolve the one genuine mag==1 mode set, Bright Nova ->
- * Peacebringer_Blaster_Mode. The `mag==1 NOT resolved` case below guards the
- * current (pre-regen) committed data and should be updated when it is re-exported.
+ * NOTE (2026-07-07): the committed HC data now POST-DATES the attrib-118 fix
+ * (adopted by the 2026-07-07 export-staleness re-export). The exporter used to
+ * gate resolution on magnitude >= 2 because index 118 collapsed three engine
+ * attribs (kXPDebtProtection / kSetMode / kSetCostume) onto `Set_Mode`, making a
+ * mag==1 Set_Mode ambiguous. That truncation is fixed at the parser source
+ * (resolve_attrib reads the byte-granular sub-index), so the mag==1 impostors are
+ * now relabeled (Empathy Resurrect's mag==1 → `XPDebtProtection`, no Set_Mode).
  * See HOMECOMING_PARSER.md "attrib-118 misdecode".
  */
 type Template = { attribs?: string[]; magnitude?: number; mode_name?: string };
@@ -94,15 +92,14 @@ describe('Set_Mode magnitude → mode-name resolution (HC)', () => {
     expect(m[37]).toBe('Suppress_JumpToggles');
   });
 
-  it('mag==1 Set_Mode templates are NOT resolved (pre-regen attrib-118 data)', () => {
-    // Empathy Resurrect's exported Set_Mode mag=1 is really a misdecoded
-    // kXPDebtProtection — in the current (pre-fix) committed data it must carry
-    // no mode_name. After a re-export this template becomes attribs:
-    // ['XPDebtProtection'] (no Set_Mode at all) and this expectation flips.
+  it('mag==1 Set_Mode impostors are relabeled by the attrib-118 fix (post-regen)', () => {
+    // Empathy Resurrect's old exported Set_Mode mag=1 was a misdecoded
+    // kXPDebtProtection. Post attrib-118 fix (2026-07-07 re-export) the template
+    // is attribs: ['XPDebtProtection'] with NO Set_Mode — so no mag==1 Set_Mode
+    // survives here at all.
     const modes = setModes(loadPower('controller_buff/empathy/resurrect.json'));
     const magOne = modes.filter(([mag]) => mag === 1);
-    expect(magOne.length).toBeGreaterThan(0);
-    expect(magOne.every(([, name]) => name === undefined)).toBe(true);
+    expect(magOne.length).toBe(0);
   });
 });
 

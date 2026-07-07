@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Avoid"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

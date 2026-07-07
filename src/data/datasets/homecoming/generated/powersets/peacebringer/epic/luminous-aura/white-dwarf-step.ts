@@ -34,6 +34,17 @@ export const WhiteDwarfStep: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "stealth": {
+      "translucency": {
+        "scale": 0.25,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 3,
+      "movement": 15,
+      "untouchable": 3
+    },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
@@ -56,15 +67,11 @@ export const WhiteDwarfStep: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "movement": 15,
-      "untouchable": 3
-    },
     "untouchable": {
       "scale": 1000,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15
+    "buffDuration": 3
   },
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Step ! &&"
 };

@@ -108,10 +108,10 @@ export const CombatFlight: Power = {
     "slow": {
       "flySpeed": {
         "scale": 1.01,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     },
-    "selfPenalty": true,
     "buffDuration": 0.75
   },
   "requires": "Inherent.Inherent.Combat_Flight !"

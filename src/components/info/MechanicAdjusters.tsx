@@ -63,10 +63,15 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
   const conditional = power.conditionalEffects;
   if (!conditional || conditional.length === 0) return null;
 
-  // AT-inherent mechanics (Domination, etc.) are already controlled by the
-  // Header's dashboard — the merger reads that existing state for these ids.
+  // AT-inherent mechanics (Domination, …) share their active state with the
+  // Header's dashboard toggle. We still surface a *mirror* toggle here — on the
+  // power — because that's where players (and Mids veterans) look for it. The
+  // mirror reads/writes the SAME uiStore state (not the generic globalAdjusters
+  // map), so flipping it here or in the Header stays in lockstep and the
+  // calc/display keep their single source of truth.
+  const atInherent = conditional.filter((c) => AT_INHERENT_CONDITIONAL_IDS.has(c.id));
   const surfaceable = conditional.filter((c) => !AT_INHERENT_CONDITIONAL_IDS.has(c.id));
-  if (surfaceable.length === 0) return null;
+  const dominationEntry = atInherent.find((c) => c.id === 'domination');
 
   // Pull out stance options (Bio Armor adaptation, Staff Perfection) and route
   // them to a single canonical picker per stance group, driven by the parent's
@@ -107,11 +112,12 @@ export function MechanicAdjusters({ power }: MechanicAdjustersProps) {
     }
   }
 
-  if (stanceRenders.length === 0 && groups.size === 0 && singletons.length === 0) return null;
+  if (stanceRenders.length === 0 && groups.size === 0 && singletons.length === 0 && !dominationEntry) return null;
 
   return (
     <div className="bg-slate-800/40 rounded p-2">
       <div className="flex flex-col gap-1">
+        {dominationEntry && <DominationAdjusterToggle power={power} entry={dominationEntry} />}
         {stanceRenders.map(({ group, parent, entries }) => (
           <StanceModeGroup
             key={group.key}
@@ -193,6 +199,34 @@ function StanceModeGroup({
       {activeId !== null && (
         <ClearButton onClick={() => setActiveSubPower(parent.internalName, null)} />
       )}
+    </div>
+  );
+}
+
+// ----------------------------------------------------------------------
+// AT-inherent mirror toggle (Domination). A second control surface for the
+// Header's dashboard switch, placed on the power because that's where players
+// expect it. It reads/writes the shared `uiStore.dominationActive` (the single
+// source of truth the calc + effect display already consult) rather than the
+// generic globalAdjusters map, so this toggle and the Header switch move as one.
+// No ContributionHint: the effect rows already render the boosted Mag/duration
+// inline when active — the generic "+ extra instance" hint would misdescribe it.
+// Add more AT-inherent mirrors here as other ids gain store bindings.
+// ----------------------------------------------------------------------
+
+function DominationAdjusterToggle({ power, entry }: { power: Power; entry: ConditionalEffect }) {
+  const active = useUIStore((s) => s.dominationActive);
+  const toggle = useUIStore((s) => s.toggleDomination);
+  return (
+    <div className="flex items-center justify-between gap-2 text-xs">
+      <Toggle
+        id={`adjuster-${power.internalName}-${entry.id}`}
+        checked={active}
+        onChange={toggle}
+        label="Domination"
+        title="While Domination is active, this power's control magnitude and duration are boosted."
+      />
+      <GlobalBadge />
     </div>
   );
 }

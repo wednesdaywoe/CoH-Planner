@@ -319,7 +319,7 @@
       "templates": [
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -345,7 +345,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -371,7 +371,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -397,7 +397,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -423,7 +423,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -449,7 +449,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -518,7 +518,8 @@
                 "IgnoreResistance",
                 "IgnoreCombatMods"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "mode_name": "DD_StatusMode_1"
             }
           ]
         },
@@ -565,7 +566,8 @@
                 "IgnoreResistance",
                 "IgnoreCombatMods"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "mode_name": "DD_DebuffMode_1"
             }
           ]
         }

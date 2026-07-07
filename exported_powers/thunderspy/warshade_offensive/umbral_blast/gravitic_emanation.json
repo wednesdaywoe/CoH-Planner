@@ -331,6 +331,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Warshade_Blaster_Mode",
+    "Disable_All"
+  ],
   "available_level": 17,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

@@ -167,6 +167,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 11,
   "powerset": "Brute_Melee.Claws"
 }

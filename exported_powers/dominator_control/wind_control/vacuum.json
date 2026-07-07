@@ -86,7 +86,7 @@
           "duration": "8 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
-          "duration_expression": "",
+          "duration_expression": "8 Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 2 * +",
           "magnitude_expression": "",
           "application_period": 0.0,
           "tick_chance": 1.0,
@@ -458,7 +458,7 @@
           "duration": "0 seconds",
           "magnitude": 159.0,
           "delay": 0.0,
-          "duration_expression": "",
+          "duration_expression": "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure source.ownPowerNum? 5 * 30 +",
           "magnitude_expression": "",
           "application_period": 0.0,
           "tick_chance": 1.0,
@@ -539,7 +539,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

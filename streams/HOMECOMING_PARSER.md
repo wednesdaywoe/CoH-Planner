@@ -438,8 +438,11 @@ not the earlier "6 vs 5", which was an `rg` false match on `EffectArea`.)
 - [ ] **Phase 2 — converter completeness**: diff `exported_powers` vs `generated` (the
   class the knockback bug belonged to — parser captured it, converter dropped it);
   ensure every mechanically-relevant template/field incl. `requires_expression`
-  gating is emitted. Also fold in the un-parsed template tail (`suppress_events`,
-  `flags`, `fx`).
+  gating is emitted. Also fold in the template-tail field the converter still
+  ignores: `suppress_events` (parsed into `EffectTemplate.suppress_events` but not
+  yet consumed). Note: `flags` is already parsed **and** honored by the converter
+  (`IgnoreStrength`/`IgnoreResistance` via `flags_raw`/`flags2_raw`); only `fx`
+  (cosmetic) remains genuinely unparsed.
 - [ ] **Later**: a `.powers ⊆ extraction` guard, once the sweep backlog is worked down.
 
 ## Resolved

@@ -749,6 +749,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "ProwlerMode"
+  ],
   "available_level": 0,
   "powerset": "Primalist_Misc.Hunter_Form_Powers"
 }

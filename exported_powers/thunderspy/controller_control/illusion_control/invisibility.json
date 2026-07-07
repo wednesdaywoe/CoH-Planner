@@ -201,6 +201,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 4294967295,
   "powerset": "Controller_Control.Illusion_Control"
 }
