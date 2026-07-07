@@ -176,51 +176,51 @@ export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number | s
   // Ageless Partial Core Invocation
   'ageless_partial_core_invocation': {"levelShift":1,"endurance":0.75},
   // Ageless Partial Radial Invocation
-  'ageless_partial_radial_invocation': {"levelShift":1,"endurance":0.75},
+  'ageless_partial_radial_invocation': {"levelShift":1,"endurance":0.75,"debuffResistance":0.5},
   // Ageless Radial Epiphany
-  'ageless_radial_epiphany': {"levelShift":1,"endurance":1},
+  'ageless_radial_epiphany': {"levelShift":1,"endurance":1,"debuffResistance":0.5},
   // Ageless Radial Invocation
-  'ageless_radial_invocation': {"endurance":0.5},
+  'ageless_radial_invocation': {"endurance":0.5,"debuffResistance":0.5},
   // Ageless Total Core Invocation
   'ageless_total_core_invocation': {"levelShift":1,"endurance":0.75},
   // Ageless Total Radial Invocation
-  'ageless_total_radial_invocation': {"levelShift":1,"endurance":0.75},
+  'ageless_total_radial_invocation': {"levelShift":1,"endurance":0.75,"debuffResistance":0.5},
   // Barrier Core Epiphany
-  'barrier_core_epiphany': {"levelShift":1},
+  'barrier_core_epiphany': {"levelShift":1,"defenseAll":0.575},
   // Barrier Core Invocation
-  'barrier_core_invocation': {},
+  'barrier_core_invocation': {"defenseAll":0.6},
   // Barrier Invocation
-  'barrier_invocation': {},
+  'barrier_invocation': {"defenseAll":0.6},
   // Barrier Partial Core Invocation
-  'barrier_partial_core_invocation': {"levelShift":1},
+  'barrier_partial_core_invocation': {"levelShift":1,"defenseAll":0.575},
   // Barrier Partial Radial Invocation
-  'barrier_partial_radial_invocation': {"levelShift":1},
+  'barrier_partial_radial_invocation': {"levelShift":1,"defenseAll":0.6},
   // Barrier Radial Epiphany
-  'barrier_radial_epiphany': {"levelShift":1},
+  'barrier_radial_epiphany': {"levelShift":1,"defenseAll":0.6},
   // Barrier Radial Invocation
-  'barrier_radial_invocation': {},
+  'barrier_radial_invocation': {"defenseAll":0.6},
   // Barrier Total Core Invocation
-  'barrier_total_core_invocation': {"levelShift":1},
+  'barrier_total_core_invocation': {"levelShift":1,"defenseAll":0.6},
   // Barrier Total Radial Invocation
-  'barrier_total_radial_invocation': {"levelShift":1},
+  'barrier_total_radial_invocation': {"levelShift":1,"defenseAll":0.6},
   // Clarion Core Epiphany
-  'clarion_core_epiphany': {"levelShift":1},
+  'clarion_core_epiphany': {"levelShift":1,"mezProtection":21,"kbProtection":10.5},
   // Clarion Core Invocation
-  'clarion_core_invocation': {},
+  'clarion_core_invocation': {"mezProtection":21,"kbProtection":10.5},
   // Clarion Invocation
-  'clarion_invocation': {},
+  'clarion_invocation': {"mezProtection":30,"kbProtection":15},
   // Clarion Partial Core Invocation
-  'clarion_partial_core_invocation': {"levelShift":1},
+  'clarion_partial_core_invocation': {"levelShift":1,"mezProtection":21,"kbProtection":10.5},
   // Clarion Partial Radial Invocation
-  'clarion_partial_radial_invocation': {"levelShift":1},
+  'clarion_partial_radial_invocation': {"levelShift":1,"mezProtection":30,"kbProtection":15},
   // Clarion Radial Epiphany
-  'clarion_radial_epiphany': {"levelShift":1},
+  'clarion_radial_epiphany': {"levelShift":1,"mezProtection":30,"kbProtection":15},
   // Clarion Radial Invocation
-  'clarion_radial_invocation': {},
+  'clarion_radial_invocation': {"mezProtection":30,"kbProtection":15},
   // Clarion Total Core Invocation
-  'clarion_total_core_invocation': {"levelShift":1},
+  'clarion_total_core_invocation': {"levelShift":1,"mezProtection":21,"kbProtection":10.5},
   // Clarion Total Radial Invocation
-  'clarion_total_radial_invocation': {"levelShift":1},
+  'clarion_total_radial_invocation': {"levelShift":1,"mezProtection":30,"kbProtection":15},
   // Incandescence Core Epiphany
   'incandescence_core_epiphany': {"levelShift":1},
   // Incandescence Core Invocation
@@ -240,23 +240,23 @@ export const GENERATED_DESTINY_EFFECTS: Record<string, Record<string, number | s
   // Incandescence Total Radial Invocation
   'incandescence_total_radial_invocation': {"levelShift":1},
   // Rebirth Core Epiphany
-  'rebirth_core_epiphany': {"levelShift":1},
+  'rebirth_core_epiphany': {"levelShift":1,"healScale":8,"healTable":"Ranged_Tempdamage"},
   // Rebirth Core Invocation
-  'rebirth_core_invocation': {},
+  'rebirth_core_invocation': {"healScale":6,"healTable":"Ranged_Tempdamage"},
   // Rebirth Invocation
-  'rebirth_invocation': {},
+  'rebirth_invocation': {"healScale":5,"healTable":"Ranged_Tempdamage"},
   // Rebirth Partial Core Invocation
-  'rebirth_partial_core_invocation': {"levelShift":1},
+  'rebirth_partial_core_invocation': {"levelShift":1,"healScale":7,"healTable":"Ranged_Tempdamage"},
   // Rebirth Partial Radial Invocation
-  'rebirth_partial_radial_invocation': {"levelShift":1,"regeneration":10},
+  'rebirth_partial_radial_invocation': {"levelShift":1,"regeneration":10,"healScale":7,"healTable":"Ranged_Tempdamage"},
   // Rebirth Radial Epiphany
-  'rebirth_radial_epiphany': {"levelShift":1,"regeneration":10},
+  'rebirth_radial_epiphany': {"levelShift":1,"regeneration":10,"healScale":8,"healTable":"Ranged_Tempdamage"},
   // Rebirth Radial Invocation
-  'rebirth_radial_invocation': {"regeneration":10},
+  'rebirth_radial_invocation': {"regeneration":10,"healScale":6,"healTable":"Ranged_Tempdamage"},
   // Rebirth Total Core Invocation
-  'rebirth_total_core_invocation': {"levelShift":1},
+  'rebirth_total_core_invocation': {"levelShift":1,"healScale":7,"healTable":"Ranged_Tempdamage"},
   // Rebirth Total Radial Invocation
-  'rebirth_total_radial_invocation': {"levelShift":1,"regeneration":10},
+  'rebirth_total_radial_invocation': {"levelShift":1,"regeneration":10,"healScale":7,"healTable":"Ranged_Tempdamage"},
 };
 
 export interface GeneratedDestinyTimelineTier { value: number; duration: number; }
@@ -357,7 +357,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Core Embodiment
   'assault_core_embodiment': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.1},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -367,7 +367,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Core Genome
   'assault_core_genome': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.05},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -377,7 +377,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Genome
   'assault_genome': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.025},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -387,7 +387,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Partial Core Graft
   'assault_partial_core_graft': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.075},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -397,7 +397,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Partial Radial Graft
   'assault_partial_radial_graft': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.075},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -407,7 +407,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Radial Embodiment
   'assault_radial_embodiment': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.1},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -417,7 +417,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Radial Genome
   'assault_radial_genome': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.05},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -427,7 +427,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Total Core Graft
   'assault_total_core_graft': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.075},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -437,7 +437,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Assault Total Radial Graft
   'assault_total_radial_graft': {
     tree: 'assault',
-    passive: {},
+    passive: {"damage":0.075},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -447,7 +447,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Core Embodiment
   'control_core_embodiment': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.4},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -457,7 +457,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Core Genome
   'control_core_genome': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.2},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -467,7 +467,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Genome
   'control_genome': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.1},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -477,7 +477,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Partial Core Graft
   'control_partial_core_graft': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.3},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -487,7 +487,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Partial Radial Graft
   'control_partial_radial_graft': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.3},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -497,7 +497,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Radial Embodiment
   'control_radial_embodiment': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.4},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -507,7 +507,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Radial Genome
   'control_radial_genome': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.2},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -517,7 +517,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Total Core Graft
   'control_total_core_graft': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.3},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -527,7 +527,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Control Total Radial Graft
   'control_total_radial_graft': {
     tree: 'control',
-    passive: {},
+    passive: {"statusResistance":0.3},
     frontLoaded: {},
     perTarget: {},
     maxTargets: 0,
@@ -537,7 +537,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Genome
   'melee_genome_1': {
     tree: 'melee',
-    passive: {},
+    passive: {"regeneration":0.075},
     frontLoaded: {"regeneration":0.0585},
     perTarget: {"regeneration":0.097875},
     maxTargets: 4,
@@ -547,9 +547,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Core Genome
   'melee_genome_2': {
     tree: 'melee',
-    passive: {},
-    frontLoaded: {},
-    perTarget: {},
+    passive: {"regeneration":0.15},
+    frontLoaded: {"resSmashing":0.0136,"resLethal":0.0136,"resFire":0.0136,"resCold":0.0136,"resEnergy":0.0136,"resNegative":0.0136,"resPsionic":0.0136,"resToxic":0.0136},
+    perTarget: {"resSmashing":0.0066,"resLethal":0.0066,"resFire":0.0066,"resCold":0.0066,"resEnergy":0.0066,"resNegative":0.0066,"resPsionic":0.0066,"resToxic":0.0066},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -557,9 +557,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Radial Genome
   'melee_genome_3': {
     tree: 'melee',
-    passive: {},
+    passive: {"regeneration":0.15},
     frontLoaded: {},
-    perTarget: {},
+    perTarget: {"defMelee":0.005,"defRanged":0.005,"defAoE":0.005,"defSmashing":0.005,"defLethal":0.005,"defFire":0.005,"defCold":0.005,"defEnergy":0.005,"defNegative":0.005,"defPsionic":0.005},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -567,9 +567,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Total Core Graft
   'melee_genome_4': {
     tree: 'melee',
-    passive: {},
-    frontLoaded: {},
-    perTarget: {},
+    passive: {"regeneration":0.225},
+    frontLoaded: {"resSmashing":0.04,"resLethal":0.04,"resFire":0.04,"resCold":0.04,"resEnergy":0.04,"resNegative":0.04,"resPsionic":0.04,"resToxic":0.04},
+    perTarget: {"resSmashing":0.01,"resLethal":0.01,"resFire":0.01,"resCold":0.01,"resEnergy":0.01,"resNegative":0.01,"resPsionic":0.01,"resToxic":0.01},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -577,9 +577,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Partial Core Graft
   'melee_genome_5': {
     tree: 'melee',
-    passive: {},
-    frontLoaded: {},
-    perTarget: {},
+    passive: {"regeneration":0.225},
+    frontLoaded: {"resSmashing":0.07,"resLethal":0.07,"resFire":0.07,"resCold":0.07,"resEnergy":0.07,"resNegative":0.07,"resPsionic":0.07,"resToxic":0.07},
+    perTarget: {"resSmashing":0.01,"resLethal":0.01,"resFire":0.01,"resCold":0.01,"resEnergy":0.01,"resNegative":0.01,"resPsionic":0.01,"resToxic":0.01},
     maxTargets: 7,
     duration: 120,
     recharge: 120,
@@ -587,9 +587,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Partial Radial Graft
   'melee_genome_6': {
     tree: 'melee',
-    passive: {},
+    passive: {"regeneration":0.225},
     frontLoaded: {},
-    perTarget: {},
+    perTarget: {"defMelee":0.01,"defRanged":0.01,"defAoE":0.01,"defSmashing":0.01,"defLethal":0.01,"defFire":0.01,"defCold":0.01,"defEnergy":0.01,"defNegative":0.01,"defPsionic":0.01},
     maxTargets: 7,
     duration: 120,
     recharge: 120,
@@ -597,9 +597,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Total Radial Graft
   'melee_genome_7': {
     tree: 'melee',
-    passive: {},
+    passive: {"regeneration":0.225},
     frontLoaded: {},
-    perTarget: {},
+    perTarget: {"defMelee":0.01,"defRanged":0.01,"defAoE":0.01,"defSmashing":0.01,"defLethal":0.01,"defFire":0.01,"defCold":0.01,"defEnergy":0.01,"defNegative":0.01,"defPsionic":0.01},
     maxTargets: 4,
     duration: 120,
     recharge: 120,
@@ -607,9 +607,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Core Embodiment
   'melee_genome_8': {
     tree: 'melee',
-    passive: {},
-    frontLoaded: {},
-    perTarget: {},
+    passive: {"regeneration":0.3},
+    frontLoaded: {"resSmashing":0.1608,"resLethal":0.1608,"resFire":0.1608,"resCold":0.1608,"resEnergy":0.1608,"resNegative":0.1608,"resPsionic":0.1608,"resToxic":0.1608},
+    perTarget: {"resSmashing":0.0099,"resLethal":0.0099,"resFire":0.0099,"resCold":0.0099,"resEnergy":0.0099,"resNegative":0.0099,"resPsionic":0.0099,"resToxic":0.0099},
     maxTargets: 9,
     duration: 120,
     recharge: 120,
@@ -617,9 +617,9 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   // Melee Radial Embodiment
   'melee_genome_9': {
     tree: 'melee',
-    passive: {},
+    passive: {"regeneration":0.3},
     frontLoaded: {},
-    perTarget: {},
+    perTarget: {"defMelee":0.015,"defRanged":0.015,"defAoE":0.015,"defSmashing":0.015,"defLethal":0.015,"defFire":0.015,"defCold":0.015,"defEnergy":0.015,"defNegative":0.015,"defPsionic":0.015},
     maxTargets: 9,
     duration: 120,
     recharge: 120,
@@ -628,7 +628,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome': {
     tree: 'support',
     passive: {"enduranceDiscount":0.025},
-    frontLoaded: {"damage":0.02,"defenseAll":0.02},
+    frontLoaded: {"damage":0.02,"defMelee":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -638,7 +638,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_2': {
     tree: 'support',
     passive: {"enduranceDiscount":0.05},
-    frontLoaded: {"damage":0.02,"defenseAll":0.02},
+    frontLoaded: {"damage":0.02,"defMelee":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -648,7 +648,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_3': {
     tree: 'support',
     passive: {"enduranceDiscount":0.05},
-    frontLoaded: {"damage":0.02,"accuracy":0.02,"defenseAll":0.02},
+    frontLoaded: {"damage":0.02,"accuracy":0.02,"defMelee":0.02},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -658,7 +658,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_4': {
     tree: 'support',
     passive: {"enduranceDiscount":0.075},
-    frontLoaded: {"damage":0.04,"defenseAll":0.04,"accuracy":0.04},
+    frontLoaded: {"damage":0.04,"defMelee":0.04,"accuracy":0.04},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -668,7 +668,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_5': {
     tree: 'support',
     passive: {"enduranceDiscount":0.075},
-    frontLoaded: {"damage":0.03,"defenseAll":0.03},
+    frontLoaded: {"damage":0.03,"defMelee":0.03},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -678,7 +678,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_6': {
     tree: 'support',
     passive: {"enduranceDiscount":0.075},
-    frontLoaded: {"damage":0.08,"defenseAll":0.08,"accuracy":0.08},
+    frontLoaded: {"damage":0.08,"defMelee":0.08,"accuracy":0.08},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -688,7 +688,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_7': {
     tree: 'support',
     passive: {"enduranceDiscount":0.075},
-    frontLoaded: {"damage":0.06,"defenseAll":0.06,"accuracy":0.06},
+    frontLoaded: {"damage":0.06,"defMelee":0.06,"accuracy":0.06},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -698,7 +698,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_8': {
     tree: 'support',
     passive: {"enduranceDiscount":0.1},
-    frontLoaded: {"damage":0.06,"defenseAll":0.06,"accuracy":0.06},
+    frontLoaded: {"damage":0.06,"defMelee":0.06,"accuracy":0.06},
     perTarget: {},
     maxTargets: 0,
     duration: 120,
@@ -708,7 +708,7 @@ export const GENERATED_HYBRID_EFFECTS: Record<string, GeneratedHybridEffects> = 
   'support_genome_9': {
     tree: 'support',
     passive: {"enduranceDiscount":0.1},
-    frontLoaded: {"damage":0.08,"defenseAll":0.08,"accuracy":0.08},
+    frontLoaded: {"damage":0.08,"defMelee":0.08,"accuracy":0.08},
     perTarget: {},
     maxTargets: 0,
     duration: 120,

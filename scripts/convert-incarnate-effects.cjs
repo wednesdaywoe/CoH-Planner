@@ -195,6 +195,37 @@ const TSPY_GENERIC_HYBRID_MAP = {
 };
 
 /**
+ * Thunderspy Parse6 omits Grant_Power linkage for Hybrid passives (the main
+ * power carries only an `Ones` marker with no power_names). Recover the boost
+ * linkage from the parallel Homecoming hybrid power of the same id — the same
+ * reference-recovery pattern as inferAlphaSilentFromReference — and resolve it
+ * against tspy's OWN silent-file scales. Returns [] when no HC parallel exists.
+ */
+const HC_HYBRID_REF_DIR = fs.existsSync(path.join(RAW_DATA_BASE, 'homecoming', 'incarnate'))
+  ? path.join(RAW_DATA_BASE, 'homecoming', 'incarnate', 'hybrid')
+  : path.join(RAW_DATA_BASE, 'incarnate', 'hybrid');
+
+function inferHybridPassiveFromReference(powerId) {
+  if (datasetId === 'homecoming') return [];
+  const ref = readJson(path.join(HC_HYBRID_REF_DIR, `${powerId}.json`));
+  if (!ref) return [];
+  const refs = [];
+  for (const eff of ref.effects || []) {
+    for (const t of eff.templates || []) {
+      if (!isGrantPowerTemplate(t)) continue;
+      const pnames = [
+        ...(t.power_names || []),
+        ...((t.params && t.params.power_names) || []),
+      ];
+      for (const pn of pnames) {
+        if (pn.toLowerCase().includes('boost')) refs.push(pn);
+      }
+    }
+  }
+  return [...new Set(refs)];
+}
+
+/**
  * Thunderspy Parse6 omits Grant_Power linkage for Support Hybrid passives
  * (the main power carries only an `Ones` marker with no power_names), so infer
  * the corresponding Hybrid_Silent support_boost file by tier from the power id.
@@ -795,8 +826,15 @@ function extractHybrid() {
     // Resolve passive boosts from silent files
     const passive = {};
     if (datasetId === 'thunderspy' && grantedPassiveRefs.length === 0) {
-      const inferred = inferTspySupportBoostSilent(powerId);
-      if (inferred) grantedPassiveRefs.push(inferred);
+      // Recover the omitted Parse6 linkage from the HC parallel (all trees);
+      // fall back to the tier-derived support map when no parallel exists.
+      const inferredRefs = inferHybridPassiveFromReference(powerId);
+      if (inferredRefs.length > 0) {
+        grantedPassiveRefs.push(...inferredRefs);
+      } else {
+        const inferred = inferTspySupportBoostSilent(powerId);
+        if (inferred) grantedPassiveRefs.push(inferred);
+      }
     }
     for (const ref of grantedPassiveRefs) {
       const silentName = silentRefToFilename(ref);
@@ -833,6 +871,18 @@ function extractHybrid() {
             // Parse6/Thunderspy collapses this passive to a generic `Ones` token
             // with empty aspect; the value is the intended endurance discount.
             statKey = 'enduranceDiscount';
+          } else if (datasetId === 'thunderspy' && aspect === '') {
+            // Parse6/Thunderspy drops the aspect on the other trees' silent
+            // boosts too; recover by silent-file family (tier scales match the
+            // HC parallels exactly: melee regen 0.075/0.15/0.225/0.3, assault
+            // damage 0.025/0.05/0.075/0.1, control status-res 0.1/0.15/0.2/0.25).
+            if (silentName.startsWith('melee_boost_') && attrib === 'Regeneration') {
+              statKey = 'regeneration';
+            } else if (silentName.startsWith('assault_boost_') && attrib === 'Ones') {
+              statKey = 'damage';
+            } else if (silentName.startsWith('control_boost_') && attrib === 'Ones') {
+              statKey = 'statusResistance';
+            }
           } else if (aspect === 'Resistance') {
             // Control passive Status Resistance
             const mezTypes = ['Confused', 'Terrorized', 'Held', 'Immobilized', 'Stunned', 'Sleep', 'Afraid'];

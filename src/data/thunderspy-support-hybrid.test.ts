@@ -5,14 +5,18 @@ import { GENERATED_HYBRID_EFFECTS as HC_HYBRID } from '@/data/datasets/homecomin
 /**
  * Thunderspy Support Hybrid — generic-attrib map (DSH8).
  *
- * Thunderspy's incarnate parser collapses each multi-attrib buff to a single
- * generic front-category token (`Damage`/`Ones`/`Defense`/`Accuracy`/`Stunned`)
- * and DROPS the AttribMod aspect, where HC (Parse7) and Rebirth (Parse6) both
- * preserve the real per-attrib rows with aspect. That left every tspy hybrid
- * rendering EMPTY (frontLoaded: {}). convert-incarnate-effects.cjs now maps the
- * three unambiguous tokens (Damage→damage, Accuracy→accuracy, Defense→defenseAll)
- * when aspect==='', verified against the parallel HC/Rebirth parse + the in-game
- * help ("+Damage, +Accuracy, +Defense(All), +Special").
+ * Thunderspy stores each hybrid buff with a generic front-category token
+ * (`Damage`/`Ones`/`Defense`/`Accuracy`) and all-zero aspect bytes; the REAL
+ * affected attribs live in the post-`requires` index array. The bin parser now
+ * relabels the front to the resolved index attribs and synthesizes the aspect
+ * (see `_parse_effect_template_thunderspy` in _powers.py), so the export carries
+ * real per-attrib rows like HC/Rebirth and the converter's shared branches apply:
+ * `*_Dmg`@Strength → damage, `Accuracy`@Strength → accuracy, and the index-named
+ * defense position (`Melee`@Current) → defMelee. Note the tspy bin names ONLY
+ * the Melee position for the Support defense row (count=1 in the index array,
+ * verified against the raw bytes 2026-07-07) — the earlier `Defense`→defenseAll
+ * category guess overstated it, and even HC's tier-1 row is Melee/Smashing/Lethal,
+ * not all 11.
  *
  * The excluded `Ones`/`Stunned` tokens are the help's "+Special" (heal- and
  * mez-strength) that HC and Rebirth both drop (team buff-strength, no self stat).
@@ -50,11 +54,11 @@ describe('Thunderspy Support Hybrid generic-attrib map', () => {
     }
   });
 
-  it('maps Damage→damage and Defense→defenseAll at the correct scale on every tier', () => {
+  it('maps Damage→damage and the index-named Defense position→defMelee at the correct scale on every tier', () => {
     for (const [id, scale] of Object.entries(SUPPORT_TIERS)) {
       const fl = TSPY_HYBRID[id].frontLoaded as Record<string, number>;
       expect(fl.damage, `${id} damage`).toBeCloseTo(scale, 6);
-      expect(fl.defenseAll, `${id} defenseAll`).toBeCloseTo(scale, 6);
+      expect(fl.defMelee, `${id} defMelee`).toBeCloseTo(scale, 6);
     }
   });
 
@@ -74,7 +78,7 @@ describe('Thunderspy Support Hybrid generic-attrib map', () => {
       const fl = TSPY_HYBRID[id].frontLoaded as Record<string, number>;
       // Ones (heal + non-stun mez strength) and Stunned map to nothing.
       for (const k of Object.keys(fl)) {
-        expect(['damage', 'accuracy', 'defenseAll'], `${id} unexpected key ${k}`).toContain(k);
+        expect(['damage', 'accuracy', 'defMelee'], `${id} unexpected key ${k}`).toContain(k);
       }
     }
   });

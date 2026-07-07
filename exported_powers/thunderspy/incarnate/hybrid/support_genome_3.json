@@ -69,11 +69,11 @@
       "templates": [
         {
           "attribs": [
-            "Damage"
+            "Smashing_Dmg"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Strength",
           "target": "",
           "table": "Melee_Ones",
           "scale": 0.02,
@@ -108,11 +108,17 @@
       "templates": [
         {
           "attribs": [
-            "Ones"
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Psionic_Dmg",
+            "Toxic_Dmg"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Strength",
           "target": "",
           "table": "Melee_Ones",
           "scale": 0.02,
@@ -151,7 +157,7 @@
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Strength",
           "target": "",
           "table": "Melee_Ones",
           "scale": 0.02,
@@ -186,11 +192,11 @@
       "templates": [
         {
           "attribs": [
-            "Defense"
+            "Melee"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Current",
           "target": "",
           "table": "Melee_Ones",
           "scale": 0.02,
@@ -211,6 +217,11 @@
         }
       ]
     }
+  ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Incarn",
+    "HybridLockout"
   ],
   "available_level": 0,
   "powerset": "Incarnate.Hybrid"

@@ -59,11 +59,11 @@
       "templates": [
         {
           "attribs": [
-            "Tempdamage"
+            "Heal_Dmg"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Absolute",
           "target": "",
           "table": "Ranged_Tempdamage",
           "scale": -6.0,
@@ -84,6 +84,10 @@
         }
       ]
     }
+  ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Incarn"
   ],
   "available_level": 0,
   "powerset": "Incarnate.Destiny"

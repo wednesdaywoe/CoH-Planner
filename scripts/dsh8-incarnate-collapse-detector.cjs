@@ -181,6 +181,10 @@ const FOLD_ET = new Set(['DamageBuff', 'Accuracy', 'Regeneration', 'Recovery', '
   'RechargeTime', 'EnduranceDiscount', 'MaxHP', 'MezResist']);
 // per-subType (multi-type explosion — where a sibling can collapse):
 const BYTYPE_ET = new Set(['Defense', 'Resistance', 'Mez', 'Movement']);
+// The six core mez attribs the converter maps to statusResistance at aspect=Res
+// (everything else — Repel/Taunt/Placate — projects to scalar debuffResistance).
+const CORE_MEZ_ATTRIBS = new Set(['Held', 'Stunned', 'Immobilized', 'Sleep',
+  'Confused', 'Afraid', 'Terrorized']);
 const STD_TYPE = new Set(['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'toxic', 'psionic', 'melee', 'ranged', 'aoe']);
 const MEZ_SUB = new Set(['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear']);
 const MOVE_AXIS = new Set(['run', 'fly', 'jump', 'jumpheight']);
@@ -198,6 +202,12 @@ function inputIdentities(sourceJson, slot) {
   const out = [];
   for (const a of atoms) {
     if (a.pvMode === 'PvP') continue;             // explicit PvP-only group (Parse7)
+    // PvP-map-only gate (`isPVPMap?` without negation) — the converter's
+    // isPvpMapOnlyRequires drop. Parse6/tspy can't mark these pvMode=PvP (its
+    // synthesized flag reads only the enttype target-type), so the gate rides
+    // requires_expression: tspy Clarion's 6-mez status-resistance twin carries
+    // it where HC marks the same rows is_pvp=PVP_ONLY.
+    if (/\bisPVPMap\?(?!\s+!)/i.test(a.requiresExpression || '')) continue;
     if (!a.scale) continue;                       // scale-0 marker
     if (a.attribType === 'Expression') continue;  // engine phantom / cap
     const et = a.effectType;
@@ -215,6 +225,12 @@ function inputIdentities(sourceJson, slot) {
     // -regen/-recharge resistance). Keep aspect=Res only where it IS the signal:
     // Resistance (damage-res) and MezResist (mez-duration-res). Mirrors DSH6.
     if (a.aspect === 'Res' && et !== 'Resistance' && et !== 'MezResist') continue;
+    // Non-core-mez MezResist (Clarion's Repel/Taunt/Placate resistance) is
+    // projected to the scalar `debuffResistance` by design (the converter's
+    // Resistance-aspect else-branch; Clarion debuffResistance 0.7 is pinned by
+    // incarnate-effects-completeness) — only the six core mez map to
+    // statusResistance, so only those are checkable here.
+    if (et === 'MezResist' && !CORE_MEZ_ATTRIBS.has(a.sourceAttrib)) continue;
     // Slot-aware Strength semantics (mirror converter behavior):
     //   - Destiny surfaces only Recharge/Recovery/Regeneration at aspect=Str.
     //     Other Strength rows (e.g. Clarion's secondary-effect amplifiers such as
@@ -321,7 +337,9 @@ function main() {
         '(direct — Judgement/Interface), non-routed Strength amplifiers in slot context ' +
         '(Destiny keeps only recharge/recovery/regeneration at Str; Hybrid keeps only ' +
         'damage/accuracy/enduranceDiscount), GrantPower/pets/engine markers, scale-0, ' +
-        'Expression, explicit pvMode=PvP, and Ageless-style `*_ArchVillain_Res` bundles ' +
+        'Expression, explicit pvMode=PvP, PvP-map-only gates (`isPVPMap?` requires — the ' +
+        'Parse6/tspy form of the same twin), non-core-mez MezResist (Repel/Taunt/Placate — ' +
+        'projected to scalar `debuffResistance`), and Ageless-style `*_ArchVillain_Res` bundles ' +
         '(projected to `debuffResistance`, not `resistanceAll`). NO isPvpVariant drop — ' +
         '`player eq` is the leaguemate buff (kept, routed by polarity), the ' +
         'bridge-convergence invariant.',

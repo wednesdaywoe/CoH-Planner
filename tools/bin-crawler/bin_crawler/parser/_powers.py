@@ -1323,18 +1323,27 @@ _TSPY_HYBRID_MEZ_STRENGTH_ATTRIBS = frozenset({
 })
 
 
-def _tspy_hybrid_aspect_class(attrib: str) -> str | None:
+def _tspy_hybrid_aspect_class(attrib: str, *, melee: bool = False) -> str | None:
     """Classify a resolved hybrid index attrib into its synthesized aspect.
 
     Returns ``'Strength'`` for enhancement-strength buffs (+Damage/+Heal via any
     ``*_Dmg``, +Accuracy, +mez-strength), ``'Current'`` for defense
     (positional/typed defense characteristics), or ``None`` for anything else
     (mode markers, movement, summon — never a scoped hybrid buff). A template
-    whose index mixes the two classes (the Melee Hybrid's damage+defense bag)
-    yields more than one class and is therefore left un-relabeled by the caller.
+    whose index mixes classes yields more than one class and is therefore left
+    un-relabeled by the caller.
+
+    ``melee=True`` selects the MELEE-tree reading of ``*_Dmg``: the Melee Hybrid
+    (Core Genome/Graft/Embodiment) grants damage RESISTANCE, not a damage buff —
+    HC and Rebirth both carry the same rows as ``Smashing_Dmg…Toxic_Dmg`` at
+    aspect=Resistance, and tspy's own help text reads "+Res per nearby enemy".
+    Only the Support tree's ``*_Dmg`` rows are Strength (+Damage) — labeling the
+    melee rows Strength would feed a resistance buff into the converter's
+    damage-buff branch.
     """
-    if attrib.endswith("_Dmg") or attrib == "Accuracy" \
-            or attrib in _TSPY_HYBRID_MEZ_STRENGTH_ATTRIBS:
+    if attrib.endswith("_Dmg"):
+        return "Resistance" if melee else "Strength"
+    if attrib == "Accuracy" or attrib in _TSPY_HYBRID_MEZ_STRENGTH_ATTRIBS:
         return "Strength"
     if attrib in _TSPY_HYBRID_DEFENSE_ATTRIBS:
         return "Current"
@@ -1440,7 +1449,7 @@ def _extract_thunderspy_summons(strtab_data, start: int, end: int,
 
 
 def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
-                                      *, hybrid_scope: bool = False) -> EffectTemplate:
+                                      *, incarnate_scope: str | None = None) -> EffectTemplate:
     """Parse a Thunderspy AttribMod template.
 
     Thunderspy predates the enum-coded AttribMod format used by HC (Parse7) and
@@ -1642,23 +1651,61 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     # shape and flows through the converter's shared branches (retiring the
     # `TSPY_GENERIC_HYBRID_MAP` converter band-aid).
     #
-    # Scoped to the HYBRID slot (`hybrid_scope`): an Alpha enhancement carries a
-    # byte-identical `Damage`-front + `*_Ones`-table + `*_Dmg`-index shape but is a
-    # different (filename-driven) converter path — only the SLOT tells them apart.
-    # Fires only when EVERY index attrib maps to ONE aspect class (all Strength or all
-    # Current): the Melee Hybrid's MIXED damage+defense `Ones` bag and the empty-index
-    # Assault/Control grant shells are deliberately left as the generic token (deferred
-    # — the mixed bag needs a template split, tracked in DEDUCTIVE_SCHEMA_HARNESS.md).
-    if (hybrid_scope and len(attribs) == 1
+    # Scoped to the HYBRID slot (`incarnate_scope` 'hybrid'/'hybrid_melee'): an Alpha
+    # enhancement carries a byte-identical `Damage`-front + `*_Ones`-table +
+    # `*_Dmg`-index shape but is a different (filename-driven) converter path — only
+    # the SLOT tells them apart. Fires only when EVERY index attrib maps to ONE
+    # aspect class (all Strength / all Current / all Resistance — the last only on
+    # the melee tree, whose `*_Dmg` rows are damage RESISTANCE per HC/Rebirth/help,
+    # see `_tspy_hybrid_aspect_class`): the empty-index Assault/Control grant shells
+    # are deliberately left as the generic token.
+    if (incarnate_scope in ("hybrid", "hybrid_melee") and len(attribs) == 1
             and attribs[0] in _TSPY_HYBRID_GENERIC_FRONTS
             and table.endswith("_Ones") and _idx_attribs and final_scale > 0):
-        _classes = {_tspy_hybrid_aspect_class(a) for a in _idx_attribs}
-        if _classes == {"Strength"}:
+        _melee = incarnate_scope == "hybrid_melee"
+        _classes = {_tspy_hybrid_aspect_class(a, melee=_melee) for a in _idx_attribs}
+        if len(_classes) == 1 and None not in _classes:
             attribs = _idx_attribs
-            aspect = "Strength"
-        elif _classes == {"Current"}:
+            aspect = next(iter(_classes))
+
+    # Scoped to the DESTINY slot: the same generic-front + index-array shape carries
+    # the Destiny buffs (verified against the raw tspy bin + the HC parallels by
+    # (scale, duration) alignment, 2026-07-07 — see DEDUCTIVE_SCHEMA_HARNESS.md):
+    #   - `Ones` + all-defense index, positive     → Barrier's +DEF (bare attrib @
+    #     Current = defense, the DSH8 bridge-convergence invariant; tspy Barrier
+    #     carries NO `*_Dmg` twins, i.e. defense-only, diverging from HC's def+res)
+    #   - `Ones` + all-mez index, negative         → Clarion's mez PROTECTION
+    #     (HC: 6-mez @ Current, PvE tier -21/-30)
+    #   - `Ones` + KB/KU index, negative           → Clarion's KB protection (-10.5)
+    #   - `Res_Boolean` + all-mez index            → Clarion's status-duration
+    #     RESISTANCE twin; its `isPVPMap?` requires makes the converter drop it in
+    #     PvE, matching HC's explicit is_pvp=PVP_ONLY on the same rows
+    #   - `Tempdamage` + lone Heal_Dmg index       → Rebirth's click heal (negative
+    #     Absolute Heal_Dmg, HC-identical scale -8/-7/-6/-5)
+    #   - `ArchVillain_Res` front                  → Ageless Radial's debuff-
+    #     resistance bundle (index = the ~20-attrib resistance list HC folds to
+    #     debuffResistance); front is already real, only the aspect is synthesized.
+    if incarnate_scope == "destiny" and len(attribs) == 1:
+        _front = attribs[0]
+        _idxset = set(_idx_attribs)
+        if _front == "Ones" and _idx_attribs:
+            if _idxset <= _TSPY_HYBRID_DEFENSE_ATTRIBS and final_scale > 0:
+                attribs = _idx_attribs
+                aspect = "Current"
+            elif _idxset <= _TSPY_MEZ_INDEX and final_scale < 0:
+                attribs = _idx_attribs
+                aspect = "Current"
+            elif _idxset <= _TSPY_KB_OFFENSIVE and final_scale < 0:
+                attribs = _idx_attribs
+                aspect = "Current"
+        elif _front == "Res_Boolean" and _idx_attribs and _idxset <= _TSPY_MEZ_INDEX:
             attribs = _idx_attribs
-            aspect = "Current"
+            aspect = "Resistance"
+        elif _front == "Tempdamage" and _idx_attribs == ["Heal_Dmg"]:
+            attribs = _idx_attribs
+            aspect = "Absolute"
+        elif _front == "ArchVillain_Res":
+            aspect = "Resistance"
 
     # Applied mez: relabel the front (an enhancement/duration category) to the
     # index array's real mez attrib and adopt the post-table Magnitude. Fires for
@@ -1878,7 +1925,7 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
 
 
 def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
-                          hybrid_scope: bool = False) -> tuple[list[EffectGroup], list[EffectGroup]]:
+                          incarnate_scope: str | None = None) -> tuple[list[EffectGroup], list[EffectGroup]]:
     """Parse Parse6 effects: a flat struct_array of AttribMod records.
 
     Wraps each AttribMod in a synthetic single-template EffectGroup so
@@ -1900,7 +1947,7 @@ def _parse_effects_parse6(r: BinReader, *, thunderspy: bool = False,
         try:
             if thunderspy:
                 tmpl = _parse_effect_template_thunderspy(
-                    elem_reader, r._data, r._strtab_base, hybrid_scope=hybrid_scope
+                    elem_reader, r._data, r._strtab_base, incarnate_scope=incarnate_scope
                 )
             else:
                 tmpl = _parse_effect_template_parse6(elem_reader)
@@ -2146,12 +2193,21 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
                 # ActivationEffect precede them), reached directly here.
                 effects, activation_effects = _parse_effects(r, veracity=True)
             else:
-                # Scope the Thunderspy hybrid generic-token relabel to the Incarnate
-                # Hybrid slot (Alpha/Judgement/mode-marker templates share the shape
-                # but not the semantics — only the slot disambiguates them).
-                hybrid_scope = thunderspy and full_name.startswith("Incarnate.Hybrid.")
+                # Scope the Thunderspy generic-token relabels to the Incarnate
+                # Hybrid/Destiny slots (Alpha/Judgement/mode-marker templates share
+                # the shape but not the semantics — only the slot disambiguates
+                # them). The melee tree gets its own scope: its `*_Dmg` rows are
+                # damage RESISTANCE, not a damage buff (see _tspy_hybrid_aspect_class).
+                incarnate_scope = None
+                if thunderspy:
+                    if full_name.startswith("Incarnate.Hybrid."):
+                        incarnate_scope = ("hybrid_melee"
+                                           if full_name.startswith("Incarnate.Hybrid.Melee_")
+                                           else "hybrid")
+                    elif full_name.startswith("Incarnate.Destiny."):
+                        incarnate_scope = "destiny"
                 effects, activation_effects = _parse_effects_parse6(
-                    r, thunderspy=thunderspy, hybrid_scope=hybrid_scope)
+                    r, thunderspy=thunderspy, incarnate_scope=incarnate_scope)
         except Exception:
             effects = []
             activation_effects = []

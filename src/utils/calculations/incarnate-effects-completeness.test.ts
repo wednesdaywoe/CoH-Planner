@@ -269,7 +269,10 @@ describe('Thunderspy dataset (Parse6) — Support Hybrid parity', () => {
       expect(fx, `missing ${id}`).toBeDefined();
       expect(Object.keys(fx!.frontLoaded).length, `${id} frontLoaded empty`).toBeGreaterThan(0);
       expect(fx!.frontLoaded.damage, `${id} damage`).toBeGreaterThan(0);
-      expect(fx!.frontLoaded.defenseAll, `${id} defenseAll`).toBeGreaterThan(0);
+      // The tspy bin's index array names only the Melee defense position
+      // (count=1, byte-verified 2026-07-07) — defMelee, not the old
+      // `Defense`-category defenseAll guess.
+      expect(fx!.frontLoaded.defMelee, `${id} defMelee`).toBeGreaterThan(0);
     }
   });
 

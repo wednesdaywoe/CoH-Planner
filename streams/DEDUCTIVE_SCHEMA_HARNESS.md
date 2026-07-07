@@ -576,8 +576,35 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
   lookups, not an effect model), so it is not part of DSH9's atomic treatment;
   surfaced here so the scope boundary isn't mistaken for forgotten work.
 
-- Same collapse in other slots — tspy Ageless Destiny Endurance, Melee-hybrid + Rebirth Destiny
-  Regeneration show as non-gating class-absent; the same map treatment would help.
+- [x] **Same collapse in other slots — RESOLVED at the parser layer 2026-07-07** (the
+  "tspy Ageless End / Melee-hybrid Regen / Rebirth Destiny Regeneration class-absent"
+  deferred note). Investigation found the converter-map framing was wrong twice over:
+  **(1) the committed tspy incarnate exports were STALE** — the 2026-07-06 parser
+  hybrid-relabel (commit `950c929d50`) shipped with no re-export, so its own fix was
+  inert, and **(2) the tspy bin's post-`requires` index array carries the REAL affected
+  attribs for Destiny too** (verified by instrumented raw-bin probes: zero swallowed
+  templates; Barrier `Ones`→10 bare defense types, Clarion `Ones`→6 mez / `Knockback`,
+  `Res_Boolean`→6 mez + `isPVPMap?`, `Tempdamage`→`Heal_Dmg`, `ArchVillain_Res`→the
+  20-attrib debuff-res bundle). Fixes at the right layer
+  ([_powers.py](tools/bin-crawler/bin_crawler/parser/_powers.py)): `incarnate_scope`
+  replaces `hybrid_scope` — a new **Destiny relabel** (defense/mez-prot/KB-prot/status-res/
+  heal/debuff-res, each idx-verified vs the HC parallel by (scale,duration) alignment) and a
+  **melee-tree fix** to the hybrid relabel (`*_Dmg` on `Incarnate.Hybrid.Melee_*` =
+  RESISTANCE per HC/Rebirth/help — the uniform `Strength` synthesis would have shipped
+  melee res buffs as +damage). Re-export adopted (763 files: 48 substantive = exactly the
+  relabels; 715 = benign `modes_required` metadata). Converter: HC-reference passive-boost
+  inference generalized to ALL hybrid trees (`inferHybridPassiveFromReference`, the
+  Alpha pattern) + tspy silent-row token maps (melee regen / assault damage / control
+  status-res). **tspy planner gains:** Clarion mez+KB protection (was NOTHING), Barrier
+  defenseAll, Ageless Radial debuffResistance 50%, Rebirth click heal (healScale 5–8),
+  melee-hybrid res/def toggles + all melee/assault/control passives. Support
+  `defenseAll`→`defMelee` (the bin's index names ONLY Melee, count=1 byte-verified — the
+  category-token guess overstated it). **Detector residuals to 0/0/0:** tspy coverage
+  20→254 atoms; the HC/Rebirth `MezResist ×9` (Clarion) classified = Repel/Taunt/Placate
+  resist projected to scalar `debuffResistance` by design + the `isPVPMap?` PvP-map twin
+  (both folded in [dsh8-incarnate-collapse-detector.cjs](scripts/dsh8-incarnate-collapse-detector.cjs)).
+  HC/Rebirth converter output byte-identical (verified regen no-op).
+  verify: file:tools/bin-crawler/bin_crawler/parser/_powers.py, fn:inferHybridPassiveFromReference, file:src/data/thunderspy-support-hybrid.test.ts, tests:src>=831
 - [x] **CI regen-diff guard for the incarnate converter — SHIPPED 2026-07-06.** The Clarion
   PvE status-resistance leak (DSH8, above) shipped only because a correct
   `convert-incarnate-effects.cjs` change regenerated one dataset and not the others, with no
