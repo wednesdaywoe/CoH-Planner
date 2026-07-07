@@ -88,18 +88,53 @@ Verified this session: working-tree `generated/` clean after a full regen,
 
 ## 4. `.powers` extraction-completeness audit (Homecoming)
 
-- **Missing clean power-field captures** — Still absent, need parser reads +
-  re-export: `TimeToRoot` (2,340 powers — animation lock, affects DPS/rotation),
-  `StrengthsDisallowed` (951), `BuyRequires` (631).
-- **Attrib name-map for `audit.py`** — Add `.powers`↔export attrib name-map to
-  `tools/extraction-audit/audit.py`, then close genuinely-dropped exotic attribs
-  (`*_Elusivity`, `revoke_power`, `grant_power`, `silent_kill`, `cancel_mods`,
-  `set_costume`, `jump_pack`, `xp_debt_protection`, `null_bool`).
+**Core bullets CLOSED 2026-07-07.** What each turned out to be:
+
+- **`TimeToRoot`** — DONE at the parser: it is HC Parse7 **field 48b**, which the
+  parser was reading and discarding as "HC extra field" (byte-verified against
+  the oracle: Bayonet 1.67, Heavy_Burst 2.5, Assassin's Claw cast 3.0 / root
+  0.367 — the Stalker AS quick-form class is where root ≠ cast matters).
+  Captured as `time_to_root`, emitted when nonzero (Parse6 genuinely omits the
+  field). Full 3-dataset re-export shipped: HC +6,230 files gained ONLY the new
+  field (scratch-diff verified zero unrelated drift); Rebirth/tspy manifest-only.
+- **`BuyRequires`** — was NEVER missing: bin field 26 `buy_requires` exports as
+  `requires` (Frag_Grenade verbatim match). Pure audit name-map fix.
+- **`StrengthsDisallowed`** — **NOT in the client bin at all** (proved by full
+  byte-accounting of Parse7 records: zero unread bytes, all pads identical with/
+  without the flag — it's server-side data). Sourced instead from the committed
+  `raw defs/` oracle by the converters (powerset + pool + epic; HC only, ~703
+  archetype powers + pools/epics): new `Power.strengthsDisallowed` /
+  `globalStrengthsDisallowed`. **Calc now honors the RechargeTime lock**: perma
+  (Rune of Protection / armor T9s / MM summons can't be Hasten-perma'd;
+  Kuji-In Rin's global-only variant keeps slotting) and attack-chain
+  (`fixedRecharge`). Guard: `src/data/strengths-disallowed.test.ts` (9 tests).
+- **Attrib name-map for `audit.py`** — DONE and then some: ATTRIB_ALIASES
+  (defense/speed*/elude→elusivity/aoe→area/knock→knockback/…), space-safe
+  normalization (`Jump Pack`), walks `activation_effects` AND **follows
+  `redirect` targets** (self-rez powers serialize 0 inline templates — their
+  effects live behind Redirects.*), buckets entity-summon attribs (Burn-class:
+  damage lives on the created entity) and SERVER_ONLY_FIELDS separately.
+  Attrib gaps went ~2,700 power-hits → a handful, ALL verified as oracle
+  staleness (HC slot-reuse renames: Stalker "Resurgence"→"Up to the Challenge",
+  "Smoke_Flash"→"Bo Ryaku") + one kUnique3 singleton on a silent temp power.
+
+Remaining (the audit's live worklist, now trustworthy):
+
+- **Power-level fields still unparsed** [M] — mechanical candidates from the
+  cleaned report: `ProcAllowed` (76), `GroupMembership` (66 — parser reads
+  field 75 `exclusion_groups` and discards), `OverCapMultiplier`/`OverCapTrigger`
+  (Psionic Armor over-cap, 64), `MaxBoosts` (63), `TargetNearGround`/`NearGround`
+  (142/42), `CastableAfterDeath` (36), `StackingUsage`, `ProcMainTargetOnly`,
+  `ChainDelay` (parser reads field 41 and discards), `ChainIntoPower`.
+  UI/AI-only rows (Show*, AIReport/AIGroups, Cancelable, Free, DoNotSave,
+  DontSetStance, PreferenceMultiplier, Anim*) are expected-skips.
+- **Consume `time_to_root` in the planner** [M] — captured but unused: the
+  attack-chain/DPS view still keys on cast time; the ~50 root≠cast powers
+  (Stalker AS quick forms, teleports) could model the shorter animation lock.
 - **Phase 2 — converter completeness** — Diff `exported_powers` vs `generated`;
-  ensure every mechanically-relevant template/field (incl. `requires_expression`
-  gating) is emitted. Fold in `suppress_events` (parsed into
-  `EffectTemplate.suppress_events` but not consumed). Only `fx` (cosmetic)
-  remains genuinely unparsed.
+  largely delivered by the DSH6 collapse detector; the named remainder is
+  folding in `suppress_events` (parsed into `EffectTemplate.suppress_events`
+  but not consumed — Hide's AoE-defense suppression).
 - **`.powers ⊆ extraction` guard** [L] — Build once the sweep backlog is down.
 
 > ## 5. Parser misalignment stragglers (Homecoming)

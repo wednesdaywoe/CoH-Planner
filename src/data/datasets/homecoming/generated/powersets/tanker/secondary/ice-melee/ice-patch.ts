@@ -18,6 +18,9 @@ export const IcePatch: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 2,
     "recharge": 35,

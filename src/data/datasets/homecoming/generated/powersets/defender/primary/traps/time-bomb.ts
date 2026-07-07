@@ -17,6 +17,9 @@ export const TimeBomb: Power = {
   "icon": "traps_remotebomb.png",
   "powerType": "Click",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 2
   },

@@ -18,6 +18,9 @@ export const TrickShot: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Chain",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

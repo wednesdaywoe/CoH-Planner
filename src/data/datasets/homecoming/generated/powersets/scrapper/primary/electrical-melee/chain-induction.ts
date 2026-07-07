@@ -18,6 +18,9 @@ export const ChainInduction: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Chain",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

@@ -24,6 +24,9 @@ export const OnewiththeShield: Power = {
     "stun",
     "terror"
   ],
+  "strengthsDisallowed": [
+    "RechargeTime"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 360,

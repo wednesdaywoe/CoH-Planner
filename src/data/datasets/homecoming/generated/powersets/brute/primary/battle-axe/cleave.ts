@@ -18,6 +18,10 @@ export const Cleave: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range",
+    "Radius"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 40,

@@ -29,6 +29,16 @@ export const BlackDwarf: Power = {
     "sleep",
     "stun"
   ],
+  "globalStrengthsDisallowed": [
+    "Smashing",
+    "Lethal",
+    "Fire",
+    "Cold",
+    "Energy",
+    "Negative_Energy",
+    "Psionic",
+    "Toxic"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 1,

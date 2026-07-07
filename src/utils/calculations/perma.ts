@@ -165,8 +165,16 @@ export function calculatePermaInfo(
   const duration = getDuration(effects);
   if (baseRecharge <= 0 || duration <= 0) return null;
 
-  const slottedRecharge = enhBonuses.recharge ?? 0;
-  const totalRecharge = slottedRecharge + globalRecharge;
+  // StrengthsDisallowed('RechargeTime'): the game applies NO recharge strength
+  // to this power — Hasten, set bonuses, and slotted IOs are all ignored (Rune
+  // of Protection, the armor T9s, some MM summons). GlobalStrengthsDisallowed
+  // keeps slotted enhancement but ignores globals (Kuji-In Rin). Server-side
+  // .powers data, HC only; see Power.strengthsDisallowed.
+  const rechargeLocked = power.strengthsDisallowed?.includes('RechargeTime') ?? false;
+  const globalLocked = rechargeLocked
+    || (power.globalStrengthsDisallowed?.includes('RechargeTime') ?? false);
+  const slottedRecharge = rechargeLocked ? 0 : (enhBonuses.recharge ?? 0);
+  const totalRecharge = slottedRecharge + (globalLocked ? 0 : globalRecharge);
   const effectiveRecharge = baseRecharge / Math.max(1, 1 + totalRecharge);
   const rechargeNeeded = (baseRecharge / duration) - 1; // e.g. 450/120 - 1 = 2.75
   const permaPercent = rechargeNeeded > 0

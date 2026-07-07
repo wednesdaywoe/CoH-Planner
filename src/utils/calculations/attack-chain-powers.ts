@@ -420,7 +420,13 @@ export function buildChainPowers(
       type,
       cast,
       baseRecharge,
-      rechargeEnh: enh.recharge || 0,
+      // StrengthsDisallowed('RechargeTime'): no recharge strength applies at
+      // all (slotted or global) — same fixed-cooldown semantics as Judgement's
+      // fixedRecharge. (GlobalStrengthsDisallowed isn't representable in
+      // ChainPower's single global-slider model; its only recharge carrier,
+      // Kuji-In Rin, is a click armor that never enters an attack chain.)
+      rechargeEnh: power.strengthsDisallowed?.includes('RechargeTime') ? 0 : (enh.recharge || 0),
+      ...(power.strengthsDisallowed?.includes('RechargeTime') ? { fixedRecharge: true } : {}),
       endCost,
       endGain: endGain || undefined,
       damage,

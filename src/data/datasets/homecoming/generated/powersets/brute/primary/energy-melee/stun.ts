@@ -18,6 +18,10 @@ export const Stun: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Arc",
+    "Range"
+  ],
   "maxTargetsExpression": "5 Redirects.Energy_Melee.Energy_Store source.ownPower? 5 * +",
   "stats": {
     "accuracy": 1,

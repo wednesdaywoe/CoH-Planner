@@ -14,6 +14,15 @@ Usage:
 
 Output: a ranked report (most-frequently-missing first) so we can prioritise parser
 fixes by impact, not anecdote.
+
+Caveat (2026-07-07): the `raw defs/` snapshot is OLDER than the live bins, so a
+residual "missing" attrib can be genuine game drift, not a parser drop — HC has
+reworked powers in place, keeping the internal name (see the slot-reuse rename
+gotcha: Stalker Willpower "Resurgence" is now the +Regen passive "Up to the
+Challenge"; Ninjitsu "Smoke_Flash" is now "Bo Ryaku"). Check the export's
+display_name against the .powers one before treating a residual as a drop.
+As of 2026-07-07 the report's attrib section is entirely this drift class plus
+one unmapped kUnique3 on a silent temp power.
 """
 
 from __future__ import annotations
@@ -52,6 +61,34 @@ CAPTURED_FIELDS = {
     "targetrequires", "interrupttime", "activateperiod", "numallowed",
     "numcharges", "usagetime", "lifetime", "shortname", "castthrough",
     "targetsautohit", "targetsaffected",
+    # BuyRequires is bin field 26 `buy_requires`, exported as `requires`
+    # (verified 2026-07-07: Frag_Grenade's expression matches verbatim).
+    "buyrequires",
+    # TimeToRoot is Parse7 field 48b, exported as `time_to_root` (2026-07-07).
+    "timetoroot",
+    # The per-mez ToggleIgnore*/CastThrough* spellings land in the exported
+    # `toggle_ignore` / `cast_through` lists (bin field 34 cast_flags).
+    "toggleignorehold", "toggleignorestun", "toggleignoresleep",
+    "castthroughhold", "castthroughstun", "castthroughsleep",
+    "castthroughterrorize",
+    # Power-level IgnoreStrength is propagated by the game's bin compiler onto
+    # every effect template's flags (verified: Kuji-In Toh carries it on all 3
+    # templates) — captured at template level, honored by the converter.
+    "ignorestrength",
+    # .powers `MaxTargetsExpr`/`ChainEff`/`ChainTarget` export as
+    # max_targets_expression / chain_eff_expression / chain_target_expression
+    # (emitted only when non-empty, which is exactly when .powers carries them).
+    "maxtargetsexpr", "chaineff", "chaintarget",
+}
+
+# Fields that exist in the `.powers` server source but are NOT serialized into
+# the client powers.bin at all — verified 2026-07-07 by full byte-accounting of
+# Parse7 records (every byte maps to a known field, zero unread tail, and the
+# unknown scalars/skip-pads are byte-identical between powers with and without
+# StrengthsDisallowed). These can never be parser-captured; if the planner needs
+# one it must be sourced from the committed `raw defs/` oracle converter-side.
+SERVER_ONLY_FIELDS = {
+    "strengthsdisallowed", "globalstrengthsdisallowed",
 }
 
 
@@ -59,16 +96,46 @@ def norm_field(name: str) -> str:
     return name.lower().replace("_", "")
 
 
+# `.powers` attrib names whose export spelling differs beyond suffix-stripping.
+# Keys/values are post-norm_attrib (lowercase, no underscores/spaces, suffixes
+# stripped). Verified against parser/_enums.py ATTRIB_NAME 2026-07-07.
+ATTRIB_ALIASES = {
+    "defense": "basedefense",          # kDefense ↔ Base_Defense
+    "speedrunning": "runningspeed",    # kSpeedRunning ↔ RunningSpeed
+    "speedflying": "flyingspeed",
+    "speedjumping": "jumpingspeed",
+    "entcreate": "createentity",       # kEntCreate ↔ Create_Entity
+    "stealthradius": "stealthradiuspve",
+    "stealthradiusplayer": "stealthradiuspvp",
+    "aoe": "area",                     # kAOE_Attack ↔ Area (positional defense)
+    "knock": "knockback",              # kKnock ↔ Knockback (verified: Shockwaves)
+    "phase": "combatphase",            # kPhase ↔ Combat_Phase
+    "nullbool": "null",                # kNullBool ↔ Null
+    "rechargetime": "recharge",        # kRechargeTime ↔ Recharge
+    "viewattrib": "viewattributes",    # kViewAttrib ↔ View_Attributes
+}
+
+# Attribs with zero build-math value: kNull/kNullBool are the engine's no-op
+# placeholder (FX/icon carriers). Missing ones are reported separately, never
+# as gaps.
+MARKER_ATTRIBS = {"null"}
+
+
 def norm_attrib(name: str) -> str:
     """Normalise a `.powers` (kEnergy) or export (Energy_Dmg) attrib to a common key."""
     s = name.strip()
     if s.startswith("k") and len(s) > 1 and s[1].isupper():
         s = s[1:]
-    s = s.lower().replace("_", "")
+    s = s.lower().replace("_", "").replace(" ", "")
     for suf in ("dmg", "attack", "boost"):
         if s.endswith(suf) and len(s) > len(suf):
             s = s[: -len(suf)]
-    return s
+    # kSmashingElude etc. ↔ Smashing_Elusivity (kAOEElude ↔ Area_Elusivity via
+    # the aoe alias applied to the stem)
+    if s.endswith("elude"):
+        s = s[: -len("elude")]
+        s = ATTRIB_ALIASES.get(s, s) + "elusivity"
+    return ATTRIB_ALIASES.get(s, s)
 
 
 def powers_path_to_export(fullname: str) -> Path:
@@ -77,8 +144,15 @@ def powers_path_to_export(fullname: str) -> Path:
     return EXPORT.joinpath(*[p.lower() for p in parts]).with_suffix(".json")
 
 
-def collect_export_attribs(power_json: dict) -> set[str]:
+def collect_export_attribs(power_json: dict, _seen: set[str] | None = None) -> set[str]:
+    """All attribs reachable from a power's export: effects, activation_effects,
+    child_effects, AND redirect targets. Self-rez powers (Resurgence, Rise of the
+    Phoenix) serialize ZERO effect templates in the client bin — their real
+    effects live entirely behind `redirect` entries into the Redirects.* category
+    (verified 2026-07-07). Not following redirects made that whole class look
+    like dropped attribs."""
     out: set[str] = set()
+    seen = _seen if _seen is not None else set()
 
     def walk(groups):
         for g in groups or []:
@@ -92,15 +166,31 @@ def collect_export_attribs(power_json: dict) -> set[str]:
             walk(g.get("child_effects"))
 
     walk(power_json.get("effects"))
+    walk(power_json.get("activation_effects"))
+
+    for rd in power_json.get("redirect") or []:
+        target = rd.get("name") if isinstance(rd, dict) else None
+        if not target or target.lower() in seen:
+            continue
+        seen.add(target.lower())
+        rp = powers_path_to_export(target)
+        if rp.exists():
+            try:
+                rj = json.loads(rp.read_text(encoding="utf-8"))
+                if isinstance(rj, list):
+                    rj = rj[0] if rj else {}
+                out |= collect_export_attribs(rj, seen)
+            except Exception:  # noqa: BLE001
+                pass
     return out
 
 
 def audit_power(powers_file: Path):
-    """Return (fullname, missing_attribs:set, missing_fields:set, asset_fields:set) or None."""
+    """Return (fullname, missing_attribs, entity_attribs, missing_fields, asset_fields, server_only_fields) or None."""
     try:
         pw = parse_powers_file(powers_file)
     except Exception as e:  # noqa: BLE001
-        return ("PARSE_ERROR:" + powers_file.name, {str(e)}, set(), set())
+        return ("PARSE_ERROR:" + powers_file.name, {str(e)}, set(), set(), set(), set())
     fullname = pw.get("fullname") or powers_file.stem
     export_path = powers_path_to_export(fullname)
     if not export_path.exists():
@@ -125,12 +215,24 @@ def audit_power(powers_file: Path):
             for tok in str(item).split():
                 powers_attribs.add(norm_attrib(tok))
     export_attribs = collect_export_attribs(ej)
-    missing_attribs = {a for a in powers_attribs if a and a not in export_attribs}
+    missing_attribs = {a for a in powers_attribs
+                       if a and a not in export_attribs and a not in MARKER_ATTRIBS}
+    # Entity-summon powers (Burn, Voltaic Sentinel, MM pets…): the bin moves the
+    # damage/mez onto the created entity's own powers (a different export tree,
+    # handled by convert-pet-entities). Their "missing" attribs are expected —
+    # bucket separately so they don't read as parser drops.
+    summons_entity = "createentity" in export_attribs
+    if summons_entity and missing_attribs:
+        entity_attribs = missing_attribs
+        missing_attribs = set()
+    else:
+        entity_attribs = set()
 
     # --- power-level fields ---
     export_field_norms = {norm_field(k) for k in ej.keys()}
     missing_fields: set[str] = set()
     asset_fields: set[str] = set()
+    server_only_fields: set[str] = set()
     for k, v in pw.items():
         if k in ("fullname",):
             continue
@@ -139,11 +241,13 @@ def audit_power(powers_file: Path):
         nf = norm_field(k)
         if nf in ASSET_FIELDS:
             asset_fields.add(k)
+        elif nf in SERVER_ONLY_FIELDS:
+            server_only_fields.add(k)
         elif nf in CAPTURED_FIELDS or nf in export_field_norms:
             continue  # captured (possibly under a renamed key)
         else:
             missing_fields.add(k)
-    return (fullname, missing_attribs, missing_fields, asset_fields)
+    return (fullname, missing_attribs, entity_attribs, missing_fields, asset_fields, server_only_fields)
 
 
 def main():
@@ -162,6 +266,8 @@ def main():
     attrib_counter: Counter = Counter()
     field_counter: Counter = Counter()
     asset_counter: Counter = Counter()
+    server_only_counter: Counter = Counter()
+    entity_attrib_counter: Counter = Counter()
     attrib_examples: dict[str, str] = {}
     field_examples: dict[str, str] = {}
     audited = 0
@@ -172,7 +278,7 @@ def main():
         if res is None:
             no_export += 1
             continue
-        fullname, miss_a, miss_f, asset_f = res
+        fullname, miss_a, ent_a, miss_f, asset_f, server_f = res
         audited += 1
         for a in miss_a:
             attrib_counter[a] += 1
@@ -182,6 +288,10 @@ def main():
             field_examples.setdefault(fld, fullname)
         for af in asset_f:
             asset_counter[af] += 1
+        for sf in server_f:
+            server_only_counter[sf] += 1
+        for ea in ent_a:
+            entity_attrib_counter[ea] += 1
 
     print(f"\n=== EXTRACTION AUDIT (Phase 1: .powers vs exported_powers) ===")
     print(f"raw .powers files: {len(files)}   audited (have export): {audited}   no-export (skipped): {no_export}\n")
@@ -198,6 +308,16 @@ def main():
     if not field_counter:
         print("  (none)")
 
+    print(f"\n--- ATTRIBS likely living on a SUMMONED ENTITY's powers (power exports")
+    print(f"    Create_Entity; convert-pet-entities handles the entity tree) ---")
+    for ea, c in entity_attrib_counter.most_common(15):
+        print(f"  {c:5d}  {ea}")
+
+    print(f"\n--- SERVER-ONLY fields (not serialized in the client bin — converter must")
+    print(f"    source these from `raw defs/` if needed; see audit.py SERVER_ONLY_FIELDS) ---")
+    for sf, c in server_only_counter.most_common():
+        print(f"  {c:5d}  {sf}")
+
     print(f"\n--- ASSET-REF fields (intentionally skipped, for reference) ---")
     for af, c in asset_counter.most_common(15):
         print(f"  {c:5d}  {af}")
@@ -207,6 +327,8 @@ def main():
             "audited": audited, "no_export": no_export,
             "missing_attribs": attrib_counter.most_common(),
             "missing_fields": field_counter.most_common(),
+            "server_only_fields": server_only_counter.most_common(),
+            "entity_attribs": entity_attrib_counter.most_common(),
             "asset_fields": asset_counter.most_common(),
         }, indent=2), encoding="utf-8")
         print(f"\nwrote {args.json}")

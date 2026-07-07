@@ -131,6 +131,12 @@ class PowerRecord:
     # guessing from `is_proc`.
     slot_requires: str = ""
 
+    # TimeToRoot (Parse7 field 48b) — animation-lock/root duration. Usually
+    # equals time_to_activate; differs on ~50 HC powers (Stalker Assassin's
+    # Strike quick forms, self-teleports). 0.0 when the .powers def omits it,
+    # and always 0.0 on Parse6 datasets (the field isn't serialized there).
+    time_to_root: float = 0.0
+
     # `ChainEff` (space-joined RPN/infix token list) — per-jump chain-continue
     # chance (e.g. `1 0.20 @ChainJump 1 - * - 0.20 1 minmax`). Previously read
     # and dropped; VERIFIED against Veracity/Parse6 (`@ChainJump`/`minmax`).

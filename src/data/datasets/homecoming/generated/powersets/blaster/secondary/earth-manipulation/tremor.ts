@@ -18,6 +18,9 @@ export const Tremor: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 10,

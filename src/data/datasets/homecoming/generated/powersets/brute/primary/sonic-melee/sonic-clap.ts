@@ -18,6 +18,9 @@ export const SonicClap: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

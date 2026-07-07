@@ -18,6 +18,9 @@ export const LightningField: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 0.8,
     "radius": 15,

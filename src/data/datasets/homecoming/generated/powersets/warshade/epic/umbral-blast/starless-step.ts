@@ -18,6 +18,9 @@ export const StarlessStep: Power = {
   "powerType": "Click",
   "targetType": "Dead Teammate",
   "effectArea": "Location",
+  "globalStrengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,

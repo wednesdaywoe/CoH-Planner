@@ -18,6 +18,9 @@ export const BoomerangSlice: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 30,

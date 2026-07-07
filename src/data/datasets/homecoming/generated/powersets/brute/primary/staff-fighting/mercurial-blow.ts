@@ -18,6 +18,9 @@ export const MercurialBlow: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 9,

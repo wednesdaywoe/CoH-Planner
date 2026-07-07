@@ -182,6 +182,10 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None) -> dict:
         'range': pw.range,
         'range_secondary': pw.range_secondary,
         'activation_time': round(pw.time_to_activate, 4),
+        # TimeToRoot (Parse7 field 48b) — animation-lock duration. Emitted only
+        # when nonzero: 0 means the .powers def omits it, and Parse6 datasets
+        # (Rebirth/Thunderspy) don't serialize the field at all.
+        **({'time_to_root': round(pw.time_to_root, 4)} if pw.time_to_root else {}),
         'recharge_time': round(pw.recharge_time, 4),
         'activate_period': round(pw.activate_period, 4),
         'endurance_cost': round(pw.endurance_cost, 4),

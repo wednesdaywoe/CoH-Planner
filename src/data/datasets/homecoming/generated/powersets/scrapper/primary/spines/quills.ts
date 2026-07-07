@@ -23,6 +23,9 @@ export const Quills: Power = {
     "sleep",
     "stun"
   ],
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,

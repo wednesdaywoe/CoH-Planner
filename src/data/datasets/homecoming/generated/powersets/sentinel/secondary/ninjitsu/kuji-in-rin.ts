@@ -24,6 +24,9 @@ export const KujiInRin: Power = {
     "stun",
     "terror"
   ],
+  "globalStrengthsDisallowed": [
+    "Psionic"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 200,

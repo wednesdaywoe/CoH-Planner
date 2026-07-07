@@ -17,6 +17,9 @@ export const TouchofFear: Power = {
   "icon": "darknessmanipulation_touchoffear.png",
   "powerType": "Click",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

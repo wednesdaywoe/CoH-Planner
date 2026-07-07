@@ -5246,6 +5246,61 @@ function guardThunderspyAppliedMez(power, targetsAffected) {
   if (Object.keys(e).every((k) => META_ONLY.has(k))) delete power.effects;
 }
 
+// ---------------------------------------------------------------------------
+// StrengthsDisallowed / GlobalStrengthsDisallowed enrichment (HC only).
+//
+// These fields are server-side only — verified 2026-07-07 by full byte-
+// accounting of Parse7 power records: they are NOT serialized into the client
+// powers.bin, so the bin parser can never capture them (see
+// tools/extraction-audit/audit.py SERVER_ONLY_FIELDS). The committed
+// `raw defs/` .powers oracle is the authoritative source instead.
+//
+// Semantics (calc-relevant, esp. kRechargeTime on T9 armors / Rune of
+// Protection / MM summons):
+//  - StrengthsDisallowed: NO strength applies to that attribute of this power —
+//    neither slotted enhancement nor global buffs (Hasten, set bonuses).
+//  - GlobalStrengthsDisallowed: only GLOBAL strength is ignored; slotted
+//    enhancement still applies (Kuji-In Rin).
+//
+// HC-only by data availability: `raw defs/` is the HC dev source. Rebirth and
+// Thunderspy have no equivalent oracle, so their powers carry no flag (their
+// bins don't expose it either). Keyed by full_name; the oracle predates some
+// HC reworks, so a renamed/reworked power simply has stale-but-harmless flags —
+// the audit's drift caveat applies.
+let _strengthsDisallowedIndex = null;
+function getStrengthsDisallowedIndex() {
+  if (_strengthsDisallowedIndex) return _strengthsDisallowedIndex;
+  const idx = new Map();
+  const rawDefsRoot = path.join(__dirname, '../raw defs');
+  if (datasetId !== 'homecoming' || !fs.existsSync(rawDefsRoot)) {
+    _strengthsDisallowedIndex = idx;
+    return idx;
+  }
+  const stripK = (tok) => (tok.startsWith('k') ? tok.slice(1) : tok);
+  const walk = (dir) => {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const p = path.join(dir, e.name);
+      if (e.isDirectory()) { walk(p); continue; }
+      if (!e.name.endsWith('.powers')) continue;
+      const txt = fs.readFileSync(p, 'utf8');
+      if (!txt.includes('StrengthsDisallowed')) continue;
+      const nameM = txt.match(/^Power\s+(\S+)/m);
+      if (!nameM) continue;
+      const entry = { strengths: [], global: [] };
+      for (const m of txt.matchAll(/^\s*(Global)?StrengthsDisallowed\s+(.+?)\s*$/gm)) {
+        const list = m[2].split(/[\s,]+/).filter(Boolean).map(stripK);
+        (m[1] ? entry.global : entry.strengths).push(...list);
+      }
+      if (entry.strengths.length || entry.global.length) {
+        idx.set(nameM[1].toLowerCase(), entry);
+      }
+    }
+  };
+  walk(rawDefsRoot);
+  _strengthsDisallowedIndex = idx;
+  return idx;
+}
+
 function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // Map target type to valid TypeScript type (or undefined if unknown)
   const rawTargetType = powerJson.target_type;
@@ -5280,6 +5335,18 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // parser as `toggle_ignore`. Omit when empty.
   if (Array.isArray(powerJson.toggle_ignore) && powerJson.toggle_ignore.length) {
     power.toggleIgnoreMez = powerJson.toggle_ignore;
+  }
+
+  // StrengthsDisallowed enrichment from the `raw defs/` oracle (HC only — see
+  // getStrengthsDisallowedIndex above). Sparse: ~800 player powers carry
+  // strengthsDisallowed (mostly Range on melee attacks + RechargeTime on
+  // fixed-cooldown powers); omit when absent.
+  if (powerJson.full_name) {
+    const sd = getStrengthsDisallowedIndex().get(powerJson.full_name.toLowerCase());
+    if (sd) {
+      if (sd.strengths.length) power.strengthsDisallowed = sd.strengths;
+      if (sd.global.length) power.globalStrengthsDisallowed = sd.global;
+    }
   }
 
   // Chain / target-cap RPN expressions (bin fields 43b / 38 — Electrical Affinity
@@ -5994,6 +6061,7 @@ export default powerset;
 // Export for reuse by other scripts (e.g., audit-powerset-effects.cjs,
 // migrate-to-layered.cjs)
 module.exports = {
+  getStrengthsDisallowedIndex,
   applyThunderspyDamageType,
   guardThunderspyOnesBuffs,
   guardThunderspyAppliedMez,

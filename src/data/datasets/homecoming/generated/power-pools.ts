@@ -322,6 +322,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Jaunt",
         "fullName": "Pool.Experimentation.Jaunt",
+        "strengthsDisallowed": [
+          "RechargeTime"
+        ],
         "rank": 6,
         "available": -1,
         "description": "Clicking on this power and then selecting a location will cause the caster to vanish and reappear at their target location.<br><br><color #fcfc95>Notes: In PvP, this power will recharge in 20s.<br><br>Jaunt is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
@@ -372,6 +375,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Boxing",
         "fullName": "Pool.Fighting.Boxing",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 0,
         "description": "You strike your opponent with a strong punch that causes light smashing damage and has a small chance to stun foes.<br><br>If you have also trained Kick, this power's damage is increased by 15% and your chance to stun increases.<br><br>If you have also trained Cross Punch, this power's damage is increased by 15% and will fatigue the target, draining some endurance and lowering recovery slightly.<br><br>The synergy with Kick and Cross Punch stacks.<br><br><color #fcfc95>Damage: Minor.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
@@ -415,6 +421,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Kick",
         "fullName": "Pool.Fighting.Kick",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 0,
         "description": "You strike your opponent with a forceful kick that causes moderate smashing damage and has a small chance to knock opponents down.<br><br>If you have also trained Boxing, this power's damage is increased by 15% and your chance to knockdown increases.<br><br>If you have also trained Cross Punch, this power's damage is increased by 15% and will fatigue the target, draining some endurance and lowering recovery slightly.<br><br>The synergy with Boxing and Cross Punch stacks.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
@@ -586,6 +595,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Cross Punch",
         "fullName": "Pool.Fighting.Cross_Punch",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 5,
         "available": 13,
         "description": "You execute a sweeping right hook that can strike multiple targets in your frontal arc. This attack causes moderate smashing damage and has a chance to both knock down and stun foes.<br><br>If you have also trained Boxing, this power's damage is increased by 15% and will improve your recharge and accuracy briefly.<br><br>If you have also trained Kick, this power's damage is increased by 15% and will improve your recharge and accuracy briefly.<br><br>The synergy with Boxing and Kick stacks.<br><br>You must be at least level 14 and have two other Fighting Powers before selecting Cross Punch.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Moderate.</color>",
@@ -920,6 +932,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Air Superiority",
         "fullName": "Pool.Flight.Air_Superiority",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 0,
         "description": "This two-handed overhead melee attack can knock a flying target to the ground.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Fast.</color>",
@@ -1187,6 +1202,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Afterburner",
         "fullName": "Pool.Flight.Fly_Boost",
+        "strengthsDisallowed": [
+          "RechargeTime"
+        ],
         "rank": 6,
         "available": -1,
         "description": "Afterburner greatly increases your fly speed and maximum fly speed for a short period of time.<br><br><color #fcfc95>Notes: Afterburner is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Slow.</color>",
@@ -2451,6 +2469,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Victory Rush",
         "fullName": "Pool.Leadership.Victory_Rush",
+        "strengthsDisallowed": [
+          "RechargeTime"
+        ],
         "rank": 5,
         "available": 13,
         "description": "The defeat of an opponent gives your team a rush of adrenaline. The excitement of your victory increases the recovery and reduces the endurance cost of your powers. This effect extends to your teammates as well. The total strength of this bonus is dependent upon the rank of the enemy on which this is cast, with Archvillains and Giant Monsters providing the greatest benefit. This power does not stack with multiple castings.<br><br>You must be at least level 14 and have two other Leadership powers before selecting Victory Rush.<br><br><color #fcfc95>Notes: Victory Rush is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Very Long.</color>",
@@ -2490,6 +2511,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Jump Kick",
         "fullName": "Pool.Leaping.Jump_Kick",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 0,
         "description": "A good jumping kick attack that may knock foes down. Good if you are looking for another attack power.",
@@ -3421,6 +3445,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Rune of Protection",
         "fullName": "Pool.Sorcery.Rune_of_Protection",
+        "strengthsDisallowed": [
+          "RechargeTime"
+        ],
         "rank": 5,
         "available": 19,
         "description": "You cast a Rune of Projection upon yourself granting you protection from Hold, Sleep, Immobilize, Knockdown and Disorient effects as well as granting you a measure of damage resistance against all forms of damage for a short time.<br><br>You must be at least level 20 and have two other Sorcery powers before selecting Rune of Protection.<br><br><color #fcfc95>Notes: Rune of Protection is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Long.</color>",
@@ -3602,6 +3629,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Flurry",
         "fullName": "Pool.Speed.Flurry",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 0,
         "description": "Unleashes a super fast Flurry of punches to pummel your foe. Flurry is so dizzying that it has a chance to Disorient the target.<br><br><color #fcfc95>Damage: Light.</color><br><color #fcfc95>Recharge: Very Fast.</color>",
@@ -3914,6 +3944,9 @@ export const POWER_POOLS_RAW = {
       {
         "name": "Combat Teleport",
         "fullName": "Pool.Teleportation.Teleport_Foe",
+        "globalStrengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 0,
         "description": "You can Teleport moderate distances extremely quickly. These quick teleports surprise foes, giving your next attack a small ToHit advantage. This power can be used up to 3 times in a row before it starts recharging.<br><br><color #fcfc95>Notes: Combat Teleport is unaffected by Range changes.</color><br><br><color #fcfc95>Recharge: Fast.</color>",

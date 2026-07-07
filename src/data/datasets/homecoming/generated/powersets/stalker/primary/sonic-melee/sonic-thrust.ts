@@ -18,6 +18,9 @@ export const SonicThrust: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

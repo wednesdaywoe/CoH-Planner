@@ -740,6 +740,21 @@ export interface Power {
    * Absent unless the cap is conditional.
    */
   maxTargetsExpression?: string;
+  /**
+   * Attributes of this power that NO strength applies to — neither slotted
+   * enhancement nor global buffs (e.g. 'RechargeTime' on Rune of Protection /
+   * the armor T9s means Hasten and recharge set bonuses do NOT speed them up;
+   * 'Range' on most melee attacks). Server-side data not present in the client
+   * bin — sourced from the `raw defs/` oracle by the converter, HC only.
+   * Absent on the vast majority of powers.
+   */
+  strengthsDisallowed?: string[];
+  /**
+   * Attributes for which only GLOBAL strength is ignored — slotted enhancement
+   * still applies (e.g. 'RechargeTime' on Kuji-In Rin: recharge IOs work,
+   * Hasten/set bonuses don't). Same sourcing/caveats as `strengthsDisallowed`.
+   */
+  globalStrengthsDisallowed?: string[];
   /** Prerequisite power(s) - logical expression */
   requires?: string;
   /**

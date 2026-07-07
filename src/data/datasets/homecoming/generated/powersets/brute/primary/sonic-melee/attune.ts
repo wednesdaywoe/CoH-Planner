@@ -18,6 +18,10 @@ export const Attune: Power = {
   "powerType": "Toggle",
   "targetType": "Foe",
   "effectArea": "SingleTarget",
+  "strengthsDisallowed": [
+    "Range",
+    "RechargeTime"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 20,

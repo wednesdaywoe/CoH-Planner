@@ -5,7 +5,7 @@ Supports both Parse7 (HC/Homecoming) and Parse6 (retail/Rebirth) formats.
 HC added 6 extra fields not present in Parse6:
   - 35b: u4 after ai_report
   - 38:  chain_effect_array (string_array) + 38b-d: 3×u4
-  - 48b: f4 after time_to_activate
+  - 48b: f4 after time_to_activate = TimeToRoot (captured as time_to_root)
   - 52b: u4 after idea_cost
 Parse6 retains fields 53-56 (confirm dialog fields) in all records.
 Parse6 has 8 bytes of box data (2×f4) instead of Parse7's 24 bytes (2×f4×3).
@@ -1076,8 +1076,13 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     range_secondary = r.read_f4()
     # 48. time_to_activate (f4)
     time_to_activate = r.read_f4()
-    # 48b. HC extra field (f4)
-    r.read_f4()
+    # 48b. TimeToRoot (f4) — animation-lock/root duration, distinct from cast
+    # time on ~50 powers (Stalker Assassin's Strike quick forms root 0.3–1.2s
+    # vs 3.0–3.67s cast; Shadow Recall/teleporters). VERIFIED 2026-07-07 against
+    # the `.powers` oracle (Bayonet 1.67, Heavy_Burst 2.5; 0 where the oracle
+    # omits the field). Matches the Ghidra descriptor's TimeToRoot placement.
+    # Parse6 genuinely omits this field (see _parse_power_parse6).
+    time_to_root = r.read_f4()
     # 49. recharge_time (f4)
     recharge_time = r.read_f4()
     # 50. activate_period (f4)
@@ -1219,6 +1224,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         radius=radius,
         arc=arc,
         time_to_activate=time_to_activate,
+        time_to_root=time_to_root,
         recharge_time=recharge_time,
         activate_period=activate_period,
         endurance_cost=endurance_cost,

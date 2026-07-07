@@ -18,6 +18,9 @@ export const ArcofDestruction: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "maxTargetsExpression": "10 kDisable_GauntletTargetCap Source.Mode? 5 * -",
   "stats": {
     "accuracy": 1,

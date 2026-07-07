@@ -23,6 +23,9 @@ export const CloakofFear: Power = {
     "sleep",
     "stun"
   ],
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 0.8,
     "radius": 15,

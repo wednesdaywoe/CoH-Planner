@@ -29,6 +29,7 @@ const {
   inferAllowedSetCategories,
   normalizeIconPath,
   TARGET_TYPE_MAP,
+  getStrengthsDisallowedIndex,
 } = require('./convert-powerset.cjs');
 
 // Bin export writes epic pool powers under `<RAW_DATA_PATH>/epic/`.
@@ -106,6 +107,19 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   // Basic metadata
   power.name = rawJson.display_name || rawJson.name;
   power.fullName = rawJson.full_name;
+
+  // StrengthsDisallowed / GlobalStrengthsDisallowed from the `raw defs/`
+  // oracle (server-side data absent from the client bin; HC only — see
+  // getStrengthsDisallowedIndex in convert-powerset.cjs). Recharge carriers
+  // here: Rune of Protection, Afterburner-class travel boosts.
+  {
+    const sd = rawJson.full_name
+      && getStrengthsDisallowedIndex().get(rawJson.full_name.toLowerCase());
+    if (sd) {
+      if (sd.strengths.length) power.strengthsDisallowed = sd.strengths;
+      if (sd.global.length) power.globalStrengthsDisallowed = sd.global;
+    }
+  }
   power.rank = rank;
   power.available = availableLevel;
 

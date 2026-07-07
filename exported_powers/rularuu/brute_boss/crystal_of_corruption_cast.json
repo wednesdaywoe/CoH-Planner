@@ -18,6 +18,7 @@
   "range": 5.0,
   "range_secondary": 0.0,
   "activation_time": 5.17,
+  "time_to_root": 2.9,
   "recharge_time": 240.0,
   "activate_period": 0.0,
   "endurance_cost": 0.0,

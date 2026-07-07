@@ -3557,6 +3557,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Thunder Strike",
         "fullName": "Epic.Charge_Mastery.Thunder_Strike",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 3,
         "available": 37,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 38 and have one other Electricity Mastery Powers before selecting this power.",
@@ -4566,6 +4569,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Midnight Grasp",
         "fullName": "Epic.Controller_Dark_Mastery.Gather_Shadows",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 4,
         "available": 40,
         "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force. You must be level 41 and have one other Dark Mastery Powers before selecting this power.",
@@ -5212,6 +5218,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Greater Fire Sword",
         "fullName": "Epic.Corruptor_Fire_Mastery.Greater_Fire_Sword",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 5,
         "available": 43,
         "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
@@ -7297,6 +7306,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Greater Fire Sword",
         "fullName": "Epic.Defender_Fire_Mastery.Greater_Fire_Sword",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 5,
         "available": 43,
         "description": "Your mastery of fire allows you to create an enhanced Sword of Fire that can set foes ablaze. Successful attacks from the Greater Fire Sword will ignite your target, dealing damage over time. You must be level 44 and have two other Fire Mastery Powers before selecting this power.",
@@ -13345,6 +13357,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Knockout Blow",
         "fullName": "Epic.Mastermind_Leviathan_Mastery.Knockout_Blow",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 3,
         "available": 37,
         "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target. You must be level 38 and have one other Leviathan Mastery Powers before selecting this power.",
@@ -14008,6 +14023,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Thunder Strike",
         "fullName": "Epic.Mastermind_Mu_Mastery.Thunder_Strike",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 3,
         "available": 37,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained. You must be level 38 and have one other Mu Mastery Powers before selecting this power.",
@@ -15668,6 +15686,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Energy Transfer",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Energy_Transfer",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 1,
         "available": 34,
         "description": "Mastery of Energy Melee begins with the ability to transfer your own Hit Points into a punch that deals extreme damage. Energy Transfer has a good chance of Disorienting the target.",
@@ -17415,6 +17436,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Smite",
         "fullName": "Epic.Sentinel_Dark_Mastery.Smite",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "You wrap your fists with Negative Energy channeled from the Netherworlds, then perform a Smite that deals more damage than Shadow Punch, but has a longer recharge time. Smite clouds the target's vision, lowering their chance to hit for a short time.",
@@ -17742,6 +17766,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Havoc Punch",
         "fullName": "Epic.Sentinel_Electricity_Mastery.Havok_Punch",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with a greater damage. Havoc Punch can may knock down targets, drain some Endurance from your target, or even overload their synapses, leaving them writhing for a moment. A portion of the drained Endurance may be given back to you. Disturbing an overloaded target will disperse the electrical charge and release them.",
@@ -18057,6 +18084,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Cremate",
         "fullName": "Epic.Sentinel_Fire_Mastery.Cremate",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "A slow but devastating attack. Cremate clobbers your foes with a massive 2 handed fiery smash that leaves your foe set on fire.",
@@ -18364,6 +18394,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Ice Sword",
         "fullName": "Epic.Sentinel_Ice_Mastery.Ice_Sword",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "You create a blade of solid ice that deals higher damage then Frozen Fists. Being hit by this Ice Sword will Slow a target's movement and attack speed, due to the intense chill.",
@@ -18720,6 +18753,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Knockout Blow",
         "fullName": "Epic.Sentinel_Leviathan_Mastery.Knockout_Blow",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "You can channel the massive strength of the Leviathan into a Knockout Blow. This punch does Superior damage, and has a great chance of Holding your target.",
@@ -19127,6 +19163,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Pulverize",
         "fullName": "Epic.Sentinel_Mace_Mastery.Pulverize",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "You are capable of Pulverizing a foe with your Nullifier Mace dealing high damage, causing toxic damage over time. Pulverize will occasionally disorient foes as well.",
@@ -19464,6 +19503,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Thunder Strike",
         "fullName": "Epic.Sentinel_Mu_Mastery.Thunder_Strike",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave, as well as have some endurance drained.",
@@ -19783,6 +19825,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Sting of the Wasp",
         "fullName": "Epic.Sentinel_Ninja_Mastery.Sting_of_the_Wasp",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "You perform a standard attack with your Ninja Blade. This attack is slower than Gambler's Cut, but deals more lethal damage. Sting of the Wasp can reduce a target's Defense, making them easier to hit.",
@@ -19921,6 +19966,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "The Lotus Drops",
         "fullName": "Epic.Sentinel_Ninja_Mastery.The_Lotus_Drops",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 4,
         "available": 40,
         "description": "You perform The Lotus Drops maneuver, attacking all foes in melee range. This attack wounds your opponents, causing them to take moderate damage over time and reduces their Defense. You must be level 41 and have one other Weapon Mastery Powers before selecting this power.",
@@ -20093,6 +20141,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Mind Probe",
         "fullName": "Epic.Sentinel_Psionic_Mastery.Mind_Probe",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "Grip the minds of your foe with a Mind Probe. You must be in close proximity to pull off this attack that wreaks havoc on your foes synapses, dealing high Psionic Damage while reducing their attack speed.",
@@ -20426,6 +20477,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Midnight Grasp",
         "fullName": "Epic.Sentinel_Soul_Mastery.Midnight_Grasp",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 2,
         "available": 34,
         "description": "Mastery over the forces of the Netherworld allows you to create dark tentacles that can Immobilize a foe, reduce their chance to hit and continuously drain their life force.",
@@ -21899,6 +21953,9 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Seismic Smash",
         "fullName": "Epic.Stone_Mastery.Seismic_Smash",
+        "strengthsDisallowed": [
+          "Range"
+        ],
         "rank": 4,
         "available": 40,
         "description": "This massive attack hits with all the force of the Earth itself. It deals tremendous amounts of damage, and may Hold the target if they are not defeated outright. You must be level 41 and have one other Earth Mastery Powers before selecting this power.",

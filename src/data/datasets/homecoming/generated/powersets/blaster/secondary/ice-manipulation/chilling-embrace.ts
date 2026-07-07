@@ -29,6 +29,9 @@ export const ChillingEmbrace: Power = {
     "sleep",
     "stun"
   ],
+  "strengthsDisallowed": [
+    "Range"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,

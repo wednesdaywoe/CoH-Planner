@@ -18,6 +18,16 @@ export const ElixirofLife: Power = {
   "powerType": "Click",
   "targetType": "Dead Teammate",
   "effectArea": "AoE",
+  "globalStrengthsDisallowed": [
+    "Smashing",
+    "Lethal",
+    "Fire",
+    "Cold",
+    "Energy",
+    "Negative_Energy",
+    "Toxic",
+    "Psionic"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 15,

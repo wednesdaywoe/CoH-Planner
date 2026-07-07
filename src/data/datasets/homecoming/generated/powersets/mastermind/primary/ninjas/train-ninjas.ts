@@ -18,6 +18,9 @@ export const TrainNinjas: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "AoE",
+  "strengthsDisallowed": [
+    "RechargeTime"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,
