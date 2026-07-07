@@ -60,11 +60,12 @@ function readDir(dirPath) {
   }
 }
 
-/** T3+ alpha and destiny tiers grant +1 level shift. The binary doesn't tag
- *  this as a distinct Level_Shift attrib — index 123 collapses Recharge_Power,
- *  Level_Shift, Vision_Phase, and Ninja_Run with no disambiguator, so the
- *  attrib-based detection that used to live here never actually fired.
- *  Filename inference per the documented CoH naming convention is reliable:
+/** T3+ alpha and destiny tiers grant +1 level shift. Since the special-attrib
+ *  sub-index fix the export DOES carry a distinct `Level_Shift` attrib, but
+ *  only on the granted `*_silent/level_shift.json` powers (Destiny/Lore);
+ *  Alpha's shift lives on the enhancement boost itself, outside this tree,
+ *  so attrib-based detection still can't cover it. Filename inference per
+ *  the documented CoH naming convention is reliable:
  *    Alpha T3+:   *_core_paragon, *_radial_paragon,
  *                 *_partial_{core,radial}_revamp, *_total_{core,radial}_revamp
  *    Destiny T3+: *_core_epiphany, *_radial_epiphany,

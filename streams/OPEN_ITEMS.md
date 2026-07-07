@@ -31,93 +31,60 @@ uncertain-payoff · blank = unstated.
 
 ## 1. Re-export & regen hygiene (Homecoming)
 
-The largest cluster: the committed `exported_powers/` + `generated/` still
-carry pre-fix labels from parser work that shipped without a full re-export.
-These want a coordinated de-risk re-export pass, not piecemeal edits.
+**Cluster CLOSED 2026-07-07** — the staleness-guard catch-up re-export (same
+day) had already refreshed `exported_powers/` (post-fix labels: `Silent_Kill`
+207 / `Revoke_Power` 738 / `magnitude_expression` 10,530 HC files), and the
+downstream cleanup pass finished the rest. `npm run regen` is byte-stable
+against the committed `generated/`, closing the delay-sweep / pool-layer /
+Focused-Accuracy "verify" bullets; all six `overrides/{power,epic}-pools.ts`
+files (3 datasets) are already empty records, closing the dead-pin audit.
+Workaround cleanup done: `convert-pet-entities.cjs` `extractLifespan` accepts
+`Silent_Kill` (HC) + `Create_Entity` (Rebirth Parse6) — and its HC input was
+repointed from the stale gitignored `tools/bin-crawler/exported_powers/live/`
+tree to the committed manifest-guarded `exported_powers/` root (with a
+sibling-dataset walk guard); `convert-incarnate-effects.cjs` index-123 comment
+corrected (attrib detection covers Destiny/Lore silent grants only — Alpha's
+shift lives on the boost, so filename inference stays); `extract-proc-data.py`
+marker skips extended with the split labels (`Revoke_Power`, `Silent_Kill`,
+`Set_Costume`, …) + missing `import json` fixed. Grant_Power consumers all
+exact-match, so `Revoke_Power` can't be swallowed. 857/857 tests green.
 
-- **attrib-118 root-fix regen + workaround cleanup** — Committed data still
-  carries pre-fix labels (Set_Mode 692 / Grant_Power 1316 / Create_Entity 1383
-  files). Re-export, then delete the now-obviated downstream collision
-  workarounds in `scripts/convert-pet-entities.cjs` ("Silent_Kill labeled
-  Create_Entity"), `scripts/convert-incarnate-effects.cjs` ("index 123
-  collapses Recharge/Vision/Ninja"), and `extract-proc-data.py` special-attrib
-  exclusion lists. Verify `Grant_Power` converters don't swallow the newly-split
-  `Revoke_Power`. Same batch as the `magnitude_expression` re-export below.
-- **`magnitude_expression` staleness** — Committed HC data lacks snipe/foresight
-  scaling expressions a fresh export now produces. Full re-export due (separate,
-  user-reviewed change).
-- **Broader `delay`-consumer re-conversion sweep** — The non-kExpression `delay`
-  offset fix touched 227 templates; other `delay` consumers (proc PPM activation
-  gating, delayed-debuff effects) may have silently read 0. Worth a broad
-  re-conversion sweep.
-- **Dead-pin audit for pool/epic overrides** [M] — Now that the pool/epic
-  generated layer is current, `overrides/power-pools.ts` /
-  `overrides/epic-pools.ts` entries pinning values the converter now produces
-  natively are candidate dead pins (MSOT-4-style audit).
-- **"Bring pool layers current" pass** — Deferred `epic-pools`/`power-pools`
-  regen whose committed output predates the foe movement-`slow` extraction fix.
-  May be partly closed by the later `regen-all --apply` fix — verify overlap.
-- **Focused Accuracy / powerset accuracy powers** — Combat Training: Offensive,
-  Eagle Eye, Terra Firma, etc. noted "Not done"; may overlap the later
-  specialBuff-regen — verify.
+Still open from this cluster:
+
+- **Launch IO jump-buff bridge mislabel** — Re-running `extract-proc-data.py`
+  (now possible on Linux via `COH_HC_ASSETS=…`) regenerates the Launch
+  "Jump/+Jump Height" entry as `RunSpeed 200/1000` (bridge maps jump attribs
+  to RunSpeed; its own validator says `want=Special`). Reverted — needs a
+  verified jump-category mapping before adoption. All other proc outputs
+  byte-stable.
 - **Chain/max-targets fields in other converters** [L] — Regenerate
   `convert-pet-entities` / `reconvert-redirect-powersets` for
   `chain_target_expression`/`max_targets_expression` only if ever needed there.
 
 ## 2. Commit converter input for CI reproducibility (cross-dataset)
 
-- **Commit `exported_powers/` so CI can regen + byte-diff** — The heavy half of
-  the reproducibility fix. Decision (2026-06-03) was to commit the full ~233 MB
-  / ~25k files for both datasets so a fresh clone / CI can run converters
-  end-to-end and byte-diff `generated/`. Optional later shrink: drop ~10 unread
-  template fields at export time. (The `_export_manifest.json` fingerprint guard
-  shipped 2026-07-07 mitigates staleness but is not the same as committing the
-  input.) *Related: TSPY7 below.*
+**CLOSED 2026-07-07 (verified already shipped).** `exported_powers/` is fully
+committed — 36,130 files / ~313 MB, all three datasets, landed via
+`9b17a20d4a` ("Implemented export guards") and merged to `main`. The payoff
+loop exists end-to-end: `.github/workflows/regen-diff.yml` (on `main`,
+path-filtered on `scripts/**` + `exported_powers/**` + `generated/**`) runs
+`npm run regen:generated` and byte-diffs all THREE datasets' `generated/`
+trees — so TSPY7's "add thunderspy to regen-all + CI regen-diff" is closed
+too (`regen-all.cjs` defaults to `[homecoming, rebirth, thunderspy]`).
+Verified this session: working-tree `generated/` clean after a full regen,
+`export-staleness.test.ts` green. Residual:
+
+- **Optional export shrink** [L] — drop ~10 unread template fields at export
+  time to cut the committed tree's ~313 MB. Cosmetic/repo-size only; a shrink
+  changes the exporter fingerprint, so it forces a full 3-dataset re-export
+  by design.
 
 ## 3. Mode system (Set_Mode / modes_*) — cross-dataset
 
-**RESOLVED 2026-07-07.** The Rebirth/Thunderspy work uncovered that the
-Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
-
-- ~~Rebirth (Parse6) / Thunderspy mode name tables~~ — DONE. `parse_mode_table`
-  gained a Parse6 variant (sub-array walk anchored on `ServerTrayOverride`);
-  Thunderspy's Parse7-wrapped table parsed with the existing heuristic. All
-  three servers resolve (HC 214 / Rebirth 139 / tspy 123 modes), and
-  `modes_required/disallowed/suspended` + Set_Mode `mode_name` are now emitted
-  in all three exports. Byte-verified against known powers (TW Follow_Through
-  requires FastMode, White_Dwarf_Step requires Peacebringer_Tanker_Mode,
-  Energy_Flight disallowed in the four form modes, DP ammo toggles).
-  NOTE: Thunderspy's binary has NO ModesSuspended slot (its tail is
-  GM/req/dis/AIGroups/Redirect); Rebirth has no redirect array before effects
-  (REB3's post-effects tail stands).
-- ~~Mode STAT-EFFECT extraction [X]~~ — CLOSED, confirmed pure flags: every
-  mode record in `attrib_names.bin` is (name, display) only; all 139 Rebirth
-  records carry an all-zero trailing word. No stat payload exists.
-- ~~Converter consumption of `modes_*`~~ — **SHIPPED 2026-07-07.** The converter
-  now emits three lean power fields (`convert-powerset.cjs`, after `requires`):
-  `setsModes` (from `Set_Mode` template `mode_name`, PvP-only groups skipped),
-  `modesSuspended`, `modesRequired`; noise (`Disable_All`, `ServerTrayOverride`)
-  stripped; `modes_disallowed` dropped (≈5.8k files of pure `Disable_All`). On
-  `Power` (`src/types/power.ts`).
-  (a) **Suppression matrix** (`modes_suspended`, §8 overlap): new pure util
-  `src/utils/mode-suppression.ts` — `activeModes = ⋃ setsModes of active powers`,
-  a power is suspended when `modesSuspended ∩ activeModes ≠ ∅`. `character-totals.ts`
-  filters suspended powers out of the direct-effect passes (`collectStrengthBuffs`
-  / `applyActivePowerBonuses` / `expandActiveConditionals`) so Granite Armor
-  correctly suppresses the other Stone toggles (set bonuses still apply — the
-  toggle is still running). InfoPanel shows a "Suspended by <power>" banner
-  (`useModeSuppression` hook). Default-safe: no active mode-setter → identical
-  totals (843 tests, incl. the new `mode-suppression.test.ts`; zero regressions).
-  (b) **Availability annotation** (`modes_required`): InfoPanel shows a
-  "Requires: <mode>" note (`modeLabel`); NO picker grey-out — a build planner
-  always slots these. Per-server data: HC full; Rebirth setsModes+required but
-  almost no modes_suspended (data-absent, not a bug); Thunderspy annotation-only
-  (its binary has no `Set_Mode` `mode_name` and no ModesSuspended slot, so
-  suppression is inherently N/A there).
-  Remaining (not done, lower value): data-driven linking of the Set_Mode power
-  to its dependent conditionals (replace the `STANCE_GROUPS` name-string
-  heuristic) — the requires-based classifier already covers Bio/DP, so this is a
-  refactor, not a gap.
+- **Data-driven linking of Set_Mode power to dependent conditionals**
+  [lower value] — Replace the `STANCE_GROUPS` name-string heuristic with a
+  data-driven link. The requires-based classifier already covers Bio/DP, so
+  this is a refactor, not a gap.
 
 ## 4. `.powers` extraction-completeness audit (Homecoming)
 
@@ -140,18 +107,6 @@ Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
 - **`Incarnate_I20.Airstrike.Main` empty** — Template-level parse failure
   (`eff_count=1`, single Judgement group's templates fail). Separate
   investigation from the systemic misalignment fix.
-- ~~Rebirth Parse6 empty-effects powers~~ — **RESOLVED 2026-07-07** (fell out
-  of the §3 mode work). Root cause: `_parse_power_parse6` read a phantom
-  "RechargeGroup" array and misread AIGroups (an inline-pascal string_array on
-  Rebirth, e.g. `kEarlyBattle` on pet powers) as a u4_array — any power with a
-  non-empty AIGroups misaligned the reader and silently lost its whole effects
-  array. Not just the 109 pets: **2,583 Rebirth powers** (12%) had 0 effects;
-  now 0. Same fix gave Thunderspy its Redirect struct_array (identical element
-  shape to HC's `_parse_redirects`) — 70 tspy powers (snipes, TW momentum
-  attacks, assassin strikes, Water Jet, Nature Rebirth) now export
-  `redirect` and their generated output resolves through it (tspy snipes
-  finally have damage). All three datasets re-exported, regen + 836 tests +
-  DSH gates green.
 
 ## 6. Knockback / Kheldian (Homecoming, deferred to the extraction audit)
 
@@ -167,32 +122,14 @@ Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
   all, so `InfoPanel`'s rebirth-only import has nothing to swap to on HC yet.
   Not a quick dataset-aware fix — genuinely blocked on HC Kheldian form
   modeling/extraction resuming first.
-- ~~DNA Siphon mode-gated heal bonus~~ — **RESOLVED 2026-07-07.** The
-  Defensive Adaptation +0.375 heal-via-`damage` entry was already correctly
-  merged into the `InfoPanel`'s main display (`applyActiveConditionals` +
-  `extractHealingFromDamage` already summed it — verified with a scratch
-  test, 1.25 base + 0.375 conditional = 1.625). The actual gap was narrower
-  than described: `PowerInfoTooltip.tsx`'s hover-preview heal extraction read
-  `basePower.damage` directly, bypassing the active-conditional merge, so the
-  power-picker tooltip showed base-only while the InfoPanel (once selected)
-  was already correct. Fixed by folding the build's active stance
-  conditionals (`selectActiveConditionals` + `stanceAdjusterOverrides`) into
-  the tooltip's heal computation before `extractHealingFromDamage`, matching
-  InfoPanel's existing merge. 857 tests green.
 
 ## 7. Kheldian form-redirect model (Rebirth — REB3)
 
-- ~~Replace auto-grant with PowerRedirector model~~ — **Already shipped**,
-  confirmed 2026-07-07 (backlog wording was stale). `granted-powers.ts`
-  already strips the 4 Kheldian form parents from HC's auto-grant map
-  (`REBIRTH_DROPPED_PARENTS`); `src/data/datasets/rebirth/kheldian-redirects.ts`
-  (189 lines, `KHELDIAN_REDIRECTS` + `resolveKheldianRedirect()`) implements
-  the PowerRedirector model, consumed by `InfoPanel.tsx`'s form-aware variant
-  lookup and `AvailablePowers.tsx`'s picker filter. Remaining real work,
-  not a rewrite:
-  - a "current form" selector on damage/info display
-  - audit HC's extracted redirects for other mis-modeled powers (snipe
-    quick/interruptible, Bio Armor adaptations)
+- **"Current form" selector** — Add a selector to damage/info display driving
+  which form's redirect target is shown (the underlying PowerRedirector model
+  in `src/data/datasets/rebirth/kheldian-redirects.ts` is already shipped).
+- **Audit HC's extracted redirects for other mis-modeled powers** — snipe
+  quick/interruptible, Bio Armor adaptations.
 - **Native Parse6 redirect parse** [L, deferred] — Extract form-redirect data
   natively from `powers.bin` post-effects tail (currently discarded by
   `_parse_power_parse6`'s `skip_to_end()`) instead of the hand-curated map.
@@ -238,14 +175,7 @@ Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
   numerically (planner doesn't model "while resting" procs). Set is slottable,
   labeled `Rest Buff`.
 - **HEAL-ABSORB-AND-EXPORT-GAPS.md (missing doc)** — Referenced note now absent
-  from tree: IO-set aspect/Absorb export gaps still open. ~~Guardian AT missing
-  from the AT-table allowlist~~ **RESOLVED 2026-07-07**: `guardian` added to
-  `extract-at-tables.cjs`'s `PLAYER_ARCHETYPES`, rebirth `at-tables.ts`
-  regenerated (Guardian Defense was rendering at ~0.27× — S/L Def 3.4% vs
-  in-game 12.75% — via the legacy 0.10 fallback). New structural guard
-  `src/data/at-table-archetype-coverage.test.ts` asserts every AT with generated
-  powersets has modifier tables, closing the allowlist-gap class on all three
-  servers. See [[at-table-extractor-allowlist-gap]].
+  from tree: IO-set aspect/Absorb export gaps still open.
 
 ## 9. Thunderspy
 
@@ -271,9 +201,10 @@ Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
 - **TSPY6 — extract effect-template tail fields** — `cancel_events`,
   `suppress_events`, stacking metadata. Variable tail layout; planner-needed
   math fields already extracted, so this is extra coverage.
-- **TSPY7 — add thunderspy to `regen-all.cjs` + CI regen-diff** — Currently
-  `[homecoming, rebirth]`; tspy covered by the dedicated ci.yml audit step.
-  Precondition: full generated tree committed byte-stable first. *(Related to §2.)*
+- **TSPY7 — add thunderspy to `regen-all.cjs` + CI regen-diff** — **CLOSED
+  2026-07-07 (verified already shipped):** `regen-all.cjs` defaults to all
+  three datasets and `regen-diff.yml` byte-gates the thunderspy `generated/`
+  tree on `main`. *(See §2.)*
 - **TSPY8 — code-split dataset bundles** [L, perf-only] — All 3 datasets ship in
   one ~14 MB chunk (drove the deploy heap bump to 6144 MB); a dynamic-import
   split would cut initial page weight. Explicitly not a scaling need.

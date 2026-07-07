@@ -11,14 +11,16 @@ const { parseDatasetArg, dataPath, datasetPath } = require('./_dataset-paths.cjs
 
 const datasetId = parseDatasetArg();
 
-// Read from the per-dataset bin-crawler export. HC's export lives under
-// `tools/bin-crawler/exported_powers/live/`, Rebirth's under
-// `exported_powers/rebirth/`. Both are organized as
+// Read from the per-dataset bin-crawler export — the committed,
+// manifest-guarded `exported_powers/` trees (HC at the root, Rebirth and
+// Thunderspy in subdirectories). All are organized as
 //   <root>/entities/*.json
 //   <root>/<powerset_category>/<powerset>/<power>.json
-// so we share the same `<root>` for both lookups.
+// so we share the same `<root>` for both lookups. (HC previously read the
+// gitignored `tools/bin-crawler/exported_powers/live/` local tree, which
+// went stale against the committed export.)
 const EXPORT_ROOTS = {
-  homecoming: path.join(__dirname, '../tools/bin-crawler/exported_powers/live'),
+  homecoming: path.join(__dirname, '../exported_powers'),
   rebirth: path.join(__dirname, '../exported_powers/rebirth'),
   thunderspy: path.join(__dirname, '../exported_powers/thunderspy'),
 };
@@ -498,6 +500,10 @@ function processUpgradeDirectory(dirPath) {
   return abilities;
 }
 
+// The HC export root physically contains the other datasets' export trees
+// as subdirectories — never let a whole-tree walk cross into them.
+const SIBLING_DATASET_DIRS = new Set(['rebirth', 'thunderspy']);
+
 /** Walk a directory tree and collect every file whose basename matches. */
 function findFilesRecursive(rootDir, basename) {
   const out = [];
@@ -507,8 +513,10 @@ function findFilesRecursive(rootDir, basename) {
     catch { return; }
     for (const e of entries) {
       const full = path.join(dir, e.name);
-      if (e.isDirectory()) walk(full);
-      else if (e.isFile() && e.name === basename) out.push(full);
+      if (e.isDirectory()) {
+        if (dir === rootDir && SIBLING_DATASET_DIRS.has(e.name)) continue;
+        walk(full);
+      } else if (e.isFile() && e.name === basename) out.push(full);
     }
   }
   walk(rootDir);
@@ -523,11 +531,13 @@ function findFilesRecursive(rootDir, basename) {
  * the pet auto-fires Self_Destruct on spawn, and the Silent_Kill's `Delay`
  * field is when the despawn actually triggers.
  *
- * In the bin export the Silent_Kill AttribMod is labeled `Create_Entity`
- * (both share enum index 117). We disambiguate by signature: target=Self,
- * stack=Stack, table='Melee_Ones', no EntCreate params. Permanent pets
- * (mastermind primaries that last until killed) either have no Self_Destruct
- * power at all or have one with delay=0.
+ * The HC (Parse7) export labels it `Silent_Kill` since the special-attrib
+ * sub-index fix; the Rebirth (Parse6) export still decodes the shared index
+ * 117 as `Create_Entity`, so we accept both and disambiguate by signature:
+ * target=Self, stack=Stack, table='Melee_Ones', no EntCreate params.
+ * Permanent pets (mastermind primaries that last until killed) either have
+ * no Self_Destruct power at all or have one with delay=0. (Thunderspy
+ * labels it `Ones` with empty target/stack — TSPY4, not handled here.)
  */
 function extractLifespan(powerFilePath) {
   let data;
@@ -539,7 +549,7 @@ function extractLifespan(powerFilePath) {
   for (const effectGroup of (data.effects || [])) {
     for (const t of (effectGroup.templates || [])) {
       const attribs = t.attribs || [];
-      if (!attribs.includes('Create_Entity')) continue;
+      if (!attribs.includes('Silent_Kill') && !attribs.includes('Create_Entity')) continue;
       if (t.target !== 'Self') continue;
       if (t.stack !== 'Stack') continue;
       if (t.table !== 'Melee_Ones') continue;

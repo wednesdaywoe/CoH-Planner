@@ -16,6 +16,7 @@ Usage:
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import subprocess
@@ -49,6 +50,15 @@ DMG_ATTRIBS = {'Smashing_Dmg', 'Lethal_Dmg', 'Fire_Dmg', 'Cold_Dmg',
 DEF_ATTRIBS = {'Melee', 'Ranged', 'Area', 'Smashing', 'Lethal', 'Fire', 'Cold',
                'Energy', 'Negative_Energy', 'Psionic', 'Toxic', 'Base_Defense'}
 MEZ_ATTRIBS = {'Held', 'Stunned', 'Sleep', 'Confused', 'Terrorized', 'Immobilized'}
+
+# Marker/meta attribs that never carry a proc's real effect. Includes the
+# labels the special-attrib sub-index fix split out of the old merged decode
+# (Grant_Power→Revoke_Power; Create_Entity→Silent_Kill/Translucency/
+# Clear_Damagers; Set_Mode→Set_Costume/XPDebtProtection) so the split
+# doesn't leak markers past the skip.
+MARKER_ATTRIBS = {'Null', 'Grant_Power', 'Revoke_Power', 'Create_Entity',
+                  'Silent_Kill', 'Translucency', 'Clear_Damagers',
+                  'Set_Mode', 'Set_Costume', 'XPDebtProtection'}
 
 ATTRIB_ASPECT_TO_EFFECT = {
     ('RechargeTime', 'Strength'): ('Recharge', 100.0),
@@ -250,7 +260,7 @@ def _buff_duration(gp: PowerRecord) -> float | None:
     trigger dwell. Ignores marker templates (Grant_Power/Null/etc.)."""
     ds = [round(t.duration, 2) for eg in gp.effects for t in eg.templates
           if t.duration and t.attribs
-          and t.attribs[0] not in ('Grant_Power', 'Null', 'Create_Entity', 'Set_Mode')]
+          and t.attribs[0] not in MARKER_ATTRIBS]
     return max(ds) if ds else None
 
 
@@ -262,7 +272,7 @@ def _filtered_own(piece: PowerRecord) -> PowerRecord:
         # scale) — a global's real effect uses Current/Absolute/Resistance/Maximum.
         # (Damage PROCS, which DO use Strength/Absolute damage, are a later phase.)
         keep = [t for t in eg.templates if t.attribs
-                and t.attribs[0] not in ('Null', 'Grant_Power', 'Create_Entity', 'Set_Mode')
+                and t.attribs[0] not in MARKER_ATTRIBS
                 and not (t.aspect == 'Strength' and t.scale > 0.001)]
         if keep:
             eg2 = type(eg).__new__(type(eg))
@@ -420,7 +430,7 @@ def resolve_proc_payload(piece: PowerRecord, gb_index: dict[str, PowerRecord]) -
                             out.append(ef)
                 continue
             # skip markers, damage (3a), and enhancement aspects
-            if a in ('Null', 'Grant_Power', 'Create_Entity', 'Set_Mode') or t.table == 'Melee_ProcDamage':
+            if a in MARKER_ATTRIBS or t.table == 'Melee_ProcDamage':
                 continue
             if asp == 'Strength' and sc > 0.001 and not a.endswith('_Dmg'):
                 continue
