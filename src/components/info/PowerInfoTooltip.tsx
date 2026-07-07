@@ -53,6 +53,8 @@ import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhanc
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import type { ArchetypeId } from '@/types';
 import { INCARNATE_TIER_REGISTRY } from '@/data/incarnate-registry';
+import { selectActiveConditionals } from '@/utils/conditional-effects';
+import { stanceAdjusterOverrides } from '@/data/stance-groups';
 import {
   getEffectiveBuffDebuffModifier,
   convertGlobalBonusesToAspects,
@@ -73,6 +75,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const archetypeId = build.archetype.id;
   const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
   const mechanicAdjusters = useUIStore((s) => s.mechanicAdjusters);
+  const globalAdjusters = useUIStore((s) => s.globalAdjusters);
   const globalBonuses = useGlobalBonuses();
   const maxBuildDamage = useBuildMaxAttackDamage();
   const targetLevelOffset = useUIStore((s) => s.targetLevelOffset);
@@ -199,12 +202,27 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
     );
   }, [basePower, build.level, archetypeId, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset]);
 
-  // Extract healing from damage field (e.g., Life Drain, Dark Regeneration, Reconstruction)
-  // Powers can define healing as { type: "Heal", scale, table } either as a single object or array entry
-  const healFromDamageArray = useMemo(
-    () => extractHealingFromDamage(basePower?.damage ?? basePower?.effects?.damage),
-    [basePower?.damage, basePower?.effects?.damage],
-  );
+  // Extract healing from damage field (e.g., Life Drain, Dark Regeneration, Reconstruction),
+  // folding in any active mode-gated bonus heal (e.g. DNA Siphon's Defensive
+  // Adaptation +0.375 Heal) so the hover preview matches the InfoPanel's merged
+  // display instead of showing base-only.
+  const healFromDamageArray = useMemo(() => {
+    if (!basePower) return undefined;
+    const stancePowers: { internalName: string; activeSubPower?: string }[] = [];
+    const addStance = (powers?: { internalName: string; activeSubPower?: string }[]) =>
+      powers?.forEach((p) => stancePowers.push({ internalName: p.internalName, activeSubPower: p.activeSubPower }));
+    addStance(build.primary?.powers);
+    addStance(build.secondary?.powers);
+    build.pools?.forEach((pool) => addStance(pool.powers));
+    addStance(build.epicPool?.powers);
+    const effectiveGlobalAdjusters = { ...globalAdjusters, ...stanceAdjusterOverrides(stancePowers) };
+    const active = selectActiveConditionals(basePower, mechanicAdjusters, effectiveGlobalAdjusters, { dominationActive });
+    const baseDamage = basePower.damage ?? basePower.effects?.damage;
+    const conditionalHeals = active.flatMap((c) => (c.damage ? (Array.isArray(c.damage) ? c.damage : [c.damage]) : []));
+    if (conditionalHeals.length === 0) return extractHealingFromDamage(baseDamage);
+    const merged = (Array.isArray(baseDamage) ? baseDamage : baseDamage ? [baseDamage] : []).concat(conditionalHeals);
+    return extractHealingFromDamage(merged);
+  }, [basePower, mechanicAdjusters, globalAdjusters, dominationActive, build.primary?.powers, build.secondary?.powers, build.pools, build.epicPool?.powers]);
 
   // Calculate aggregate pet damage (supports multi-entity summons)
   const petDamageAggregate = useMemo<{ results: PetDamageResult[]; base: number; enhanced: number; final: number } | null>(() => {

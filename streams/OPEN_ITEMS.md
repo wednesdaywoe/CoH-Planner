@@ -76,7 +76,7 @@ These want a coordinated de-risk re-export pass, not piecemeal edits.
 
 ## 3. Mode system (Set_Mode / modes_*) — cross-dataset
 
-**Mostly RESOLVED 2026-07-07.** The Rebirth/Thunderspy work uncovered that the
+**RESOLVED 2026-07-07.** The Rebirth/Thunderspy work uncovered that the
 Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
 
 - ~~Rebirth (Parse6) / Thunderspy mode name tables~~ — DONE. `parse_mode_table`
@@ -160,24 +160,39 @@ Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
 - **`kheldian-form-variants.ts` left reverted** — Not regenerated; a regen
   carries unvetted converter deltas (a `tohitBuff` 0.5 removed, a
   `rechargeDebuff`/`Ranged_Slow` 0.2 added) needing source-verification first.
-- **`homecoming/kheldian-form-variants.ts` is dead output** — `InfoPanel`
-  imports the rebirth map unconditionally; make the lookup dataset-aware when
-  modeling resumes.
-- **DNA Siphon mode-gated heal bonus** — Defensive +0.375 heal (a
-  heal-via-`damage` entry) doesn't surface in the Adaptation
-  `conditionalEffects`; the heal-from-damage and mode-conditional paths don't
-  meet. Base heal correct; only the mode bonus is under-shown.
+- **`homecoming/kheldian-form-variants.ts` is dead output** — checked
+  2026-07-07: the file is an empty auto-generated `{}` (source
+  `exported_powers/homecoming/kheldian_pets/{form}/*.json` never populated),
+  and HC has no `kheldian-redirects.ts`-equivalent PowerRedirector table at
+  all, so `InfoPanel`'s rebirth-only import has nothing to swap to on HC yet.
+  Not a quick dataset-aware fix — genuinely blocked on HC Kheldian form
+  modeling/extraction resuming first.
+- ~~DNA Siphon mode-gated heal bonus~~ — **RESOLVED 2026-07-07.** The
+  Defensive Adaptation +0.375 heal-via-`damage` entry was already correctly
+  merged into the `InfoPanel`'s main display (`applyActiveConditionals` +
+  `extractHealingFromDamage` already summed it — verified with a scratch
+  test, 1.25 base + 0.375 conditional = 1.625). The actual gap was narrower
+  than described: `PowerInfoTooltip.tsx`'s hover-preview heal extraction read
+  `basePower.damage` directly, bypassing the active-conditional merge, so the
+  power-picker tooltip showed base-only while the InfoPanel (once selected)
+  was already correct. Fixed by folding the build's active stance
+  conditionals (`selectActiveConditionals` + `stanceAdjusterOverrides`) into
+  the tooltip's heal computation before `extractHealingFromDamage`, matching
+  InfoPanel's existing merge. 857 tests green.
 
 ## 7. Kheldian form-redirect model (Rebirth — REB3)
 
-- **Replace auto-grant with PowerRedirector model** — Planner wrongly
-  auto-grants form-variant powers as separate picks; correct model keeps slots on
-  the base human power. Steps: add `KHELDIAN_REDIRECTS` table in
-  `src/data/datasets/rebirth/`; replace auto-grant in
-  `src/data/datasets/rebirth/granted-powers.ts` + form sub-power UI; add a
-  "current form" selector to damage/info display; audit HC's extracted redirects
-  for other mis-modeled powers (snipe quick/interruptible, Bio Armor
-  adaptations).
+- ~~Replace auto-grant with PowerRedirector model~~ — **Already shipped**,
+  confirmed 2026-07-07 (backlog wording was stale). `granted-powers.ts`
+  already strips the 4 Kheldian form parents from HC's auto-grant map
+  (`REBIRTH_DROPPED_PARENTS`); `src/data/datasets/rebirth/kheldian-redirects.ts`
+  (189 lines, `KHELDIAN_REDIRECTS` + `resolveKheldianRedirect()`) implements
+  the PowerRedirector model, consumed by `InfoPanel.tsx`'s form-aware variant
+  lookup and `AvailablePowers.tsx`'s picker filter. Remaining real work,
+  not a rewrite:
+  - a "current form" selector on damage/info display
+  - audit HC's extracted redirects for other mis-modeled powers (snipe
+    quick/interruptible, Bio Armor adaptations)
 - **Native Parse6 redirect parse** [L, deferred] — Extract form-redirect data
   natively from `powers.bin` post-effects tail (currently discarded by
   `_parse_power_parse6`'s `skip_to_end()`) instead of the hand-curated map.
