@@ -63,6 +63,10 @@ export interface ChainPower {
   baseRecharge: number;
   /** Slotted recharge enhancement as a fraction (e.g. 0.95 = +95%). */
   rechargeEnh: number;
+  /** True for powers with a flat, unenhanceable recharge (Incarnate Judgement)
+   *  — no IO slots, and neither slotted nor global recharge bonuses apply.
+   *  `effectiveRecharge` returns `baseRecharge` unchanged when set. */
+  fixedRecharge?: boolean;
   /** Enhanced endurance cost per activation. */
   endCost: number;
   /** Self endurance GAINED per activation (Dark Consumption / Consume / Power
@@ -203,6 +207,7 @@ export const MIN_RECHARGE_DENOM = 0.25;
  *  with the game's −75% net-strength floor so a recharge debuff can slow a power
  *  to at most 4× base rather than blowing the divisor past zero. */
 export function effectiveRecharge(p: ChainPower, globalRechargePct: number): number {
+  if (p.fixedRecharge) return p.baseRecharge;
   const denom = Math.max(MIN_RECHARGE_DENOM, 1 + p.rechargeEnh + globalRechargePct / 100);
   return p.baseRecharge / denom;
 }

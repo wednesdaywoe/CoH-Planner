@@ -8,9 +8,9 @@
  */
 
 import type { Build, SelectedPower, PowerEffects } from '@/types';
-import { hasSelfDirectedPenalty } from '@/types';
-import { getIOSet, arcToDegrees } from '@/data';
-import { getTableValue } from '@/data/at-tables';
+import { hasSelfDirectedPenalty, INCARNATE_REQUIRED_LEVEL } from '@/types';
+import { getIOSet, arcToDegrees, getJudgementEffects } from '@/data';
+import { getTableValue, calculateIncarnateDamage } from '@/data/at-tables';
 import {
   calculatePowerEnhancementBonuses,
   calculatePowerDamage,
@@ -214,6 +214,35 @@ function selfEnduranceGain(
   return value > 0 ? value : 0;
 }
 
+/** The build's slotted Judgement power as a ChainPower, or null if none is
+ *  selected (or the build's level is below the incarnate threshold — no slot
+ *  access, no chain candidate). Judgement is modeled separately from
+ *  `collectCandidates`/`deriveDamage`: it isn't a `SelectedPower` (no `stats`/
+ *  `effects`/`slots` — see `SelectedIncarnatePower`), its damage comes from
+ *  the display-only `JudgementEffects` registry via `calculateIncarnateDamage`
+ *  (unenhanceable — Judgement can't be slotted, so there's no ED/set-bonus
+ *  path to run), and its 90s recharge is flat: neither slotted IOs nor global
+ *  recharge bonuses affect it in-game, hence `fixedRecharge: true`. */
+function buildJudgementChainPower(build: Build, archetypeId: string | undefined): ChainPower | null {
+  const sel = build.incarnates?.judgement;
+  if (!sel || build.level < INCARNATE_REQUIRED_LEVEL) return null;
+  const fx = getJudgementEffects(sel.powerId);
+  if (!fx) return null;
+  const damage = archetypeId ? calculateIncarnateDamage(fx.damageScale, fx.tableName, archetypeId, build.level) : null;
+  return {
+    id: `judgement:${sel.powerId}`,
+    name: sel.displayName,
+    type: 'attack',
+    cast: calculateArcanaTime(fx.activationTime),
+    baseRecharge: fx.rechargeTime,
+    rechargeEnh: 0,
+    fixedRecharge: true,
+    endCost: 0,
+    damage: damage ?? 0,
+    dot: null,
+  } satisfies ChainPower;
+}
+
 /** Build the per-power chain data for the current build. `targetsHit` maps a
  *  power's name → the targets-hit slider value (for per-target effects like the
  *  endurance gain on Dark Consumption); defaults to none. */
@@ -226,7 +255,9 @@ export function buildChainPowers(
   const globalForCalc = convertGlobalBonusesToAspects(globalBonuses);
   const archetypeId = build.archetype?.id ?? undefined;
 
-  return collectCandidates(build).map(({ power, powersetName, powersetId, category, bucket }) => {
+  const judgement = buildJudgementChainPower(build, archetypeId);
+
+  const powers = collectCandidates(build).map(({ power, powersetName, powersetId, category, bucket }) => {
     const enh = calculatePowerEnhancementBonuses(
       { name: power.name, slots: power.slots },
       build.level,
@@ -400,6 +431,8 @@ export function buildChainPowers(
       ...(tohitWin ? { tohitWindow: tohitWin } : {}),
     } satisfies ChainPower;
   });
+
+  return judgement ? [...powers, judgement] : powers;
 }
 
 /** Character endurance parameters for the sustainability sim. */
