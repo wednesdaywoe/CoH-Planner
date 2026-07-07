@@ -578,9 +578,31 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
 
 - Same collapse in other slots — tspy Ageless Destiny Endurance, Melee-hybrid + Rebirth Destiny
   Regeneration show as non-gating class-absent; the same map treatment would help.
-- **CI regen-diff guard for the incarnate converter** — the Clarion PvE status-resistance
-  leak (DSH8, above) shipped only because a correct `convert-incarnate-effects.cjs` change
-  regenerated one dataset and not the others, with no gate catching the drift. A regen-diff
-  guard (regenerate all datasets in CI, fail on any diff vs committed `incarnate-effects.ts`)
-  — mirroring the powerset regen guard noted in CLAUDE.md — would make "fix shipped, output
-  stale" structurally impossible. Applies equally to the other generated converters.
+- [x] **CI regen-diff guard for the incarnate converter — SHIPPED 2026-07-06.** The Clarion
+  PvE status-resistance leak (DSH8, above) shipped only because a correct
+  `convert-incarnate-effects.cjs` change regenerated one dataset and not the others, with no
+  gate catching the drift. **Root cause of the miss:** the existing regen-diff guard
+  ([regen-diff.yml](.github/workflows/regen-diff.yml)) DID rebuild `generated/` (incl.
+  `incarnate-effects.ts`) — but only for **HC + Rebirth**; thunderspy was silently excluded
+  from `regen-all.cjs`'s default dataset list, so a tspy-only (or HC/Rebirth-only) regen could
+  still drift undetected. Fix: made thunderspy a first-class regen target — its `generated/`
+  tree reproduces byte-identical from committed `exported_powers/` (verified 0-diff), so
+  `regen-all.cjs` default now includes it and the guard asserts all three datasets' `generated/`.
+  The stale "FUTURE: regen-and-diff guard" sketch in `ci.yml` (the guard already exists) was
+  corrected. This closes the incarnate-converter half of the class for all datasets.
+  verify: file:scripts/regen-all.cjs, file:.github/workflows/regen-diff.yml
+- [x] **at-tables.ts stale outputs adopted across all 3 datasets — SHIPPED 2026-07-06.**
+  Regenerated [`at-tables.ts`](src/data/datasets/homecoming/at-tables.ts) for homecoming,
+  rebirth, and thunderspy from the already-landed source-driven extractor
+  ([`extract-at-tables.cjs`](scripts/extract-at-tables.cjs)); this activates the prior
+  extractor fix that had been inert while outputs stayed on the old 45-name allowlist.
+  As predicted by the defer note, adoption was not calc-neutral: `_inherentdamage`
+  tables becoming directly resolvable caused pseudo-pet runtime double-count in
+  [`calculateResolvedPseudoPetDamage`](src/utils/calculations/pet-damage.ts). Fixed by
+  mirroring the main damage-path filter there (drop `*_PvP*` and
+  `*InherentDamage*` siblings when a non-inherent sibling exists; fallback to
+  inherent-only rows when needed). Validation after regen+fix: targeted AT-table risk
+  suites PASS (`pseudopet-redirect`, `converter-table-integrity`, `strength-buffs`,
+  `trick-arrow-fixes`, `converter-invariants`, `assassin-strike-damage`) and
+  `npm run validate:converter` PASS on homecoming/rebirth/thunderspy.
+  verify: file:src/utils/calculations/pet-damage.ts, file:src/data/datasets/homecoming/at-tables.ts

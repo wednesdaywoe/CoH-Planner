@@ -15,9 +15,25 @@
   "summary": {
     "highConfidenceCollapses": 0,
     "distinctCollapseGroups": 0,
-    "classAbsent": 0
+    "classAbsent": 9
   },
   "collapseGroups": [],
-  "classAbsentGroups": [],
+  "classAbsentGroups": [
+    {
+      "et": "MezResist",
+      "sub": "",
+      "count": 9,
+      "powers": [
+        "destiny:clarion_core_epiphany",
+        "destiny:clarion_core_invocation",
+        "destiny:clarion_invocation",
+        "destiny:clarion_partial_core_invocation",
+        "destiny:clarion_partial_radial_invocation",
+        "destiny:clarion_radial_epiphany",
+        "destiny:clarion_radial_invocation",
+        "destiny:clarion_total_core_invocation"
+      ]
+    }
+  ],
   "collapses": []
 }

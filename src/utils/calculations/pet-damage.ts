@@ -277,6 +277,9 @@ export function calculateResolvedPseudoPetDamage(
 ): PetDamageResult | null {
   if (!entity?.abilities?.length) return null;
 
+  const isPvPTable = (table?: string) => table?.toLowerCase().includes('pvp') ?? false;
+  const isInherentDamageTable = (table?: string) => table?.toLowerCase().includes('inherentdamage') ?? false;
+
   const abilities: PetAbilityDamage[] = [];
   const effectOnlyAbilities: PetAbility[] = [];
   const allEffectsMap = new Map<string, PetEffectComputed>();
@@ -345,8 +348,16 @@ export function calculateResolvedPseudoPetDamage(
     const damageSource = (poweredUp && ability.poweredUpDamage && ability.poweredUpDamage.length > 0)
       ? ability.poweredUpDamage
       : ability.damage;
+    // Keep pseudo-pet runtime damage aligned with the main power damage path:
+    // skip PvP table variants and ignore InherentDamage bonus entries when a
+    // regular sibling exists (avoid double-counting after AT table expansion).
+    let damageEntries = damageSource.filter((dmg) => !isPvPTable(dmg.table) && !isInherentDamageTable(dmg.table));
+    if (damageEntries.length === 0) {
+      damageEntries = damageSource.filter((dmg) => !isPvPTable(dmg.table));
+    }
+
     const baseDamages: { type: string; base: number }[] = [];
-    for (const dmg of damageSource) {
+    for (const dmg of damageEntries) {
       const tv = getTableValue(archetype, dmg.table, level);
       if (tv === undefined) continue;
       baseDamages.push({ type: dmg.damageType, base: Math.abs(tv) * Math.abs(dmg.scale) * chanceMult });
