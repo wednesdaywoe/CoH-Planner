@@ -175,6 +175,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Mastermind_Buff.Nature_Affinity"
 }

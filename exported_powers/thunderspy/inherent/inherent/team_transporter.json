@@ -170,6 +170,12 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_Temp",
+    "Disable_Travel",
+    "Disable_All",
+    "CoOpTeam"
+  ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

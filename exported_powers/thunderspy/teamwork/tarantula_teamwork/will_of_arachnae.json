@@ -86,6 +86,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 34,
   "powerset": "Teamwork.Tarantula_Teamwork"
 }

@@ -95,6 +95,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Warshade_Tanker_Mode",
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Warshade_Offensive.Umbral_Blast"
 }

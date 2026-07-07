@@ -122,6 +122,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_Pool",
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Pool.Fitness"
 }

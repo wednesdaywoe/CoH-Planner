@@ -158,7 +158,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -180,12 +180,6 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Temporary_Powers.Temporary_Powers.Resurgence"
-            ]
-          },
           "flags": [
             "KeepThroughDeath",
             "NoHitDelay",

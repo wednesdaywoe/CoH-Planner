@@ -205,6 +205,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Mastermind_Pets.Dire_Wolf_2"
 }

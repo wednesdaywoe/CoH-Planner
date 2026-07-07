@@ -88,9 +88,24 @@ export const CloakingDevice: Power = {
     },
     "durations": {
       "defenseBuff": 0.75,
+      "stealth": 0.75,
       "defenseBuffSuppressible": 0.75,
-      "threatDebuff": 0.75,
-      "stealth": 0.75
+      "threatDebuff": 0.75
+    },
+    "stealth": {
+      "translucency": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 1000,
+        "table": "Melee_Ones"
+      },
+      "stackKey": "NictusFX",
+      "stealthPvE": {
+        "scale": 200,
+        "table": "Melee_Ones"
+      }
     },
     "defenseBuffSuppressible": {
       "ranged": {
@@ -141,17 +156,6 @@ export const CloakingDevice: Power = {
     "threatDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "stealth": {
-      "stealthPvP": {
-        "scale": 1000,
-        "table": "Melee_Ones"
-      },
-      "stackKey": "NictusFX",
-      "stealthPvE": {
-        "scale": 200,
-        "table": "Melee_Ones"
-      }
     },
     "buffDuration": 0.75
   }

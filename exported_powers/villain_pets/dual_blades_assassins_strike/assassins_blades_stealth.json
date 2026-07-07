@@ -66,7 +66,7 @@
       "templates": [
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -548,7 +548,7 @@
       "templates": [
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -574,7 +574,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -600,7 +600,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -626,7 +626,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -695,11 +695,12 @@
                 "IgnoreResistance",
                 "IgnoreCombatMods"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "mode_name": "DD_StatusMode_2"
             },
             {
               "attribs": [
-                "Cancel_Effects"
+                "Cancel_Mods"
               ],
               "type": "Magnitude",
               "application_type": "Immediate",
@@ -768,11 +769,12 @@
                 "IgnoreResistance",
                 "IgnoreCombatMods"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "mode_name": "DD_BonusAoEMode_2"
             },
             {
               "attribs": [
-                "Cancel_Effects"
+                "Cancel_Mods"
               ],
               "type": "Magnitude",
               "application_type": "Immediate",

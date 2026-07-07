@@ -56,6 +56,13 @@
     116
   ],
   "effects": [],
+  "modes_required": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Disable_Walk",
+    "Peacebringer_Tanker_Mode"
+  ],
   "available_level": 25,
   "powerset": "Feral_Might.Feral_Might"
 }

@@ -132,6 +132,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Controller_Buff.Radiation_Emission"
 }

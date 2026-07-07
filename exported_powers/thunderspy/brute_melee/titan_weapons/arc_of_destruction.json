@@ -54,6 +54,12 @@
     116
   ],
   "effects": [],
+  "modes_required": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Disable_Walk"
+  ],
   "available_level": 31,
   "powerset": "Brute_Melee.Titan_Weapons"
 }

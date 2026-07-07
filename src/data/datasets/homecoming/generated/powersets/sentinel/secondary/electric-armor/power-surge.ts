@@ -86,6 +86,7 @@ export const PowerSurge: Power = {
       "repel": 30,
       "mezResistance": 30,
       "debuffResistance": 30,
+      "stealth": 29,
       "hold": 30,
       "immobilize": 30,
       "stun": 30,
@@ -138,6 +139,12 @@ export const PowerSurge: Power = {
       "recovery": {
         "scale": 4,
         "table": "Melee_Res_Boolean"
+      }
+    },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Melee_Ones"
       }
     },
     "hold": {

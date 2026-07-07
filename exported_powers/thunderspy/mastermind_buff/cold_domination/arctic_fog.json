@@ -140,6 +140,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Mastermind_Buff.Cold_Domination"
 }

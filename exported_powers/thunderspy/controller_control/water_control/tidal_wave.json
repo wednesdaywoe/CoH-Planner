@@ -605,6 +605,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 11,
   "powerset": "Controller_Control.Water_Control"
 }

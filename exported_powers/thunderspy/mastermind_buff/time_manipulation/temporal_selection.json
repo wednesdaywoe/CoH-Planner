@@ -126,6 +126,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 9,
   "powerset": "Mastermind_Buff.Time_Manipulation"
 }

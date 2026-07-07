@@ -367,6 +367,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Brute_Defense.Organic_Armor"
 }

@@ -364,7 +364,7 @@
       "templates": [
         {
           "attribs": [
-            "Set_Token"
+            "Token_Add"
           ],
           "type": "Constant",
           "application_type": "Immediate",

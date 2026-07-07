@@ -71,5 +71,19 @@ export const OffensiveAdaptation: Power = {
     },
     "buffDuration": 1.1
   },
+  "grantedDamageProcs": [
+    {
+      "name": "Offensive_Adaptation_Proc",
+      "displayName": "Offensive Adaptation",
+      "damage": [
+        {
+          "damageType": "Toxic",
+          "scale": 0.25,
+          "table": "Melee_Damage"
+        }
+      ],
+      "enhanceable": false
+    }
+  ],
   "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation"
 };

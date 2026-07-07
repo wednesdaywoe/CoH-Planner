@@ -1305,6 +1305,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Dominator_Assault.Dual_Pistols"
 }

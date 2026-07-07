@@ -276,7 +276,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Clear_Damagers"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -306,7 +306,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Constant",
           "application_type": "Immediate",
@@ -351,7 +351,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Clear_Damagers"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -381,7 +381,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Constant",
           "application_type": "Immediate",
@@ -426,7 +426,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Clear_Damagers"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -456,7 +456,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Constant",
           "application_type": "Immediate",
@@ -501,7 +501,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Clear_Damagers"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -531,7 +531,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Constant",
           "application_type": "Immediate",
@@ -576,7 +576,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Clear_Damagers"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -606,7 +606,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Constant",
           "application_type": "Immediate",
@@ -651,7 +651,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Clear_Damagers"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -681,7 +681,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Constant",
           "application_type": "Immediate",
@@ -726,7 +726,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Clear_Damagers"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -756,7 +756,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Constant",
           "application_type": "Immediate",

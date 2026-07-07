@@ -50,6 +50,12 @@
     120
   ],
   "effects": [],
+  "modes_required": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Mastermind_Upgrade_1"
+  ],
   "available_level": 19,
   "powerset": "Defender_Ranged.Savage_Melee"
 }

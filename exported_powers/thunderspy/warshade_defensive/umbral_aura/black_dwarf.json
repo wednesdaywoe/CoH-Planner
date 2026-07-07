@@ -339,6 +339,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

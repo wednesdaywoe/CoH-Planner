@@ -952,6 +952,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Tanker_Melee.Brawling"
 }

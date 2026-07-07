@@ -234,7 +234,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Clear_Damagers"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -264,7 +264,7 @@
         },
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -294,7 +294,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Script_Notify"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",

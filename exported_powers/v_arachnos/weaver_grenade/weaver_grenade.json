@@ -94,7 +94,8 @@
                 "IgnoreResistance",
                 "DeepSleep"
               ],
-              "flags_raw": 3120
+              "flags_raw": 3120,
+              "mode_name": "OnePowerCell"
             },
             {
               "attribs": [
@@ -165,7 +166,8 @@
                 "IgnoreResistance",
                 "DeepSleep"
               ],
-              "flags_raw": 3120
+              "flags_raw": 3120,
+              "mode_name": "TwoPowerCell"
             },
             {
               "attribs": [
@@ -268,7 +270,8 @@
                 "IgnoreResistance",
                 "DeepSleep"
               ],
-              "flags_raw": 3120
+              "flags_raw": 3120,
+              "mode_name": "ThreePowerCell"
             },
             {
               "attribs": [

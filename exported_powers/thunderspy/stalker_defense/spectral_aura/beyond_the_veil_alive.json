@@ -164,6 +164,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Stalker_Defense.Spectral_Aura"
 }

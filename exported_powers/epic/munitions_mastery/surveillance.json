@@ -62,7 +62,7 @@
       "templates": [
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "View_Attributes"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

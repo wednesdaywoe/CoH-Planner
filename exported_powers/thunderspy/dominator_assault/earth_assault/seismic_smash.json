@@ -326,6 +326,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Dominator_Assault.Earth_Assault"
 }

@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -184,7 +184,7 @@
         },
         {
           "attribs": [
-            "Set_Token"
+            "Token_Add"
           ],
           "type": "Constant",
           "application_type": "Immediate",

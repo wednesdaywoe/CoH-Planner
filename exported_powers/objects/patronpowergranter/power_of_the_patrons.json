@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Reward"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -84,7 +84,7 @@
         },
         {
           "attribs": [
-            "Null"
+            "Reward"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -114,7 +114,7 @@
         },
         {
           "attribs": [
-            "Null"
+            "Reward"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -144,7 +144,7 @@
         },
         {
           "attribs": [
-            "Null"
+            "Reward"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

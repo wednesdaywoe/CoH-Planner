@@ -368,6 +368,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 3,
   "powerset": "Tanker_Melee.Energy_Melee"
 }

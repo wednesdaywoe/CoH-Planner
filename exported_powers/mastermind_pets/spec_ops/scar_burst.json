@@ -74,7 +74,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "@StdResult kFocusFire_Burst target.mode? kPersonalAttack1 Source.Mode? && kFocusFire_Slug target.mode? kPersonalAttack2 Source.Mode? && + kFocusFire_M30 target.mode? kPersonalAttack3 Source.Mode? && + 0.0333 * 1 + *",
           "application_period": 0.30000001192092896,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,

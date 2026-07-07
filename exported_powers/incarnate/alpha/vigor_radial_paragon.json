@@ -270,7 +270,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -306,7 +306,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -342,7 +342,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -378,7 +378,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -414,7 +414,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -450,7 +450,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "OnDisable",
@@ -486,7 +486,7 @@
         },
         {
           "attribs": [
-            "Recharge_Power"
+            "Combat_Mod_Shift"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

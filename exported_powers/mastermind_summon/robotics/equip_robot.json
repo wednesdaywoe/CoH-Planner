@@ -96,7 +96,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -118,12 +118,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Droid_2.Resistance"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -254,7 +248,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -276,12 +270,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Protector_2.Resistance"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -448,7 +436,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -470,12 +458,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Assault_2.Resistance"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

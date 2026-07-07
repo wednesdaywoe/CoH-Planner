@@ -66,7 +66,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "prestige_Base_Teleport target.TokenTime> 600 + now - 0 600 minmax",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
@@ -90,7 +90,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

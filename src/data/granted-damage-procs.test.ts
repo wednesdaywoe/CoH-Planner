@@ -14,8 +14,12 @@ import { calculateDamageWithATTable } from '@/utils/calculations';
  * hop is resolved at convert time. Molten Embrace (Sentinel) and Hidden Flame
  * (Stalker Hide) grant the *enhanceable* Fire DoT the I28P3 note describes;
  * Toxins / Envenomed Blades grant non-enhanceable (`IgnoreStrength`) damage.
- * Powers that grant MORE THAN ONE distinct proc (Bio Armor adaptations, a
- * mode system) are deliberately NOT resolved here. See HOMECOMING_PARSER.
+ * Bio Armor adaptations grant a stance proc PLUS the other stances' procs
+ * mode-nested. Since the 2026-07-07 export refresh (mode-system parsing), each
+ * adaptation exposes only its OWN stance's proc on the converter's ungated walk,
+ * so the offensive stance correctly surfaces its Toxic DoT while the defensive/
+ * efficient stances (whose own procs are heals) surface no damage proc. See
+ * HOMECOMING_PARSER.
  */
 function gen(dataset: string, rel: string): string {
   const p = fileURLToPath(new URL(`./datasets/${dataset}/generated/powersets/${rel}`, import.meta.url));
@@ -63,13 +67,18 @@ describe('Granted DoT procs (Grant_Power → Temporary_Powers)', () => {
     expect(perTick!).toBeLessThan(50); // sanity: a small per-tick DoT, not absurd
   });
 
-  it('Bio Armor adaptations (multi-grant mode system) are NOT resolved as a flat proc', () => {
-    // Each adaptation grants BOTH the Offensive (Toxic) and Defensive (Heal)
-    // procs with no group-level requires to tell stances apart — attaching a
-    // flat proc would show the offensive DoT on the defensive stance.
+  it('Bio Armor Offensive Adaptation surfaces its Toxic DoT, scoped to its own stance', () => {
+    // Post the 2026-07-07 mode-system export refresh, each adaptation's ungated
+    // grant is its OWN stance's proc: the offensive stance exposes its Toxic DoT,
+    // while defensive/efficient (whose own procs are heals) surface no damage
+    // proc — so the offensive DoT never leaks onto the wrong stance.
+    const off = gen('homecoming', 'brute/secondary/bio-armor/offensive-adaptation.ts');
+    expect(off).toContain('"grantedDamageProcs"');
+    expect(off).toMatch(/"name":\s*"Offensive_Adaptation_Proc"/);
+    expect(off).toMatch(/"damageType":\s*"Toxic"/);
     for (const rel of [
-      'brute/secondary/bio-armor/offensive-adaptation.ts',
       'brute/secondary/bio-armor/defensive-adaptation.ts',
+      'brute/secondary/bio-armor/efficient-adaptation.ts',
     ]) {
       expect(gen('homecoming', rel)).not.toContain('"grantedDamageProcs"');
     }

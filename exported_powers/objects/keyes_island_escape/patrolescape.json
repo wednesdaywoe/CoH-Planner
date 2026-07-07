@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Silent_Kill"
           ],
           "type": "Constant",
           "application_type": "Immediate",

@@ -430,11 +430,12 @@
             "IgnoreResistance",
             "DeepSleep"
           ],
-          "flags_raw": 3120
+          "flags_raw": 3120,
+          "mode_name": "Peacebringer_Blaster_Mode"
         },
         {
           "attribs": [
-            "Set_Mode"
+            "Set_Costume"
           ],
           "type": "Constant",
           "application_type": "Immediate",

@@ -47,6 +47,15 @@ export const ZombieHorde: Power = {
       "duration": 99999,
       "copyBoosts": true
     },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 2
+    },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
@@ -55,6 +64,7 @@ export const ZombieHorde: Power = {
       "mag": 500,
       "scale": 3,
       "table": "Melee_Ones"
-    }
+    },
+    "buffDuration": 2
   }
 };

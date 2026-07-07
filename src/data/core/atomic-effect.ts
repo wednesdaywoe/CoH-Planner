@@ -237,6 +237,18 @@ const META_EFFECT: Record<string, EffectType> = {
   set_mode: 'Meta', set_token: 'Meta', add_behavior: 'Meta',
   cancel_effects: 'Meta', designer_status: 'Meta', meter: 'Meta',
   rage: 'Meta', null: 'Meta', 'jump pack': 'Meta', stealth: 'Stealth',
+  // Engine / script markers surfaced by the 2026-07-07 export refresh (mode-system
+  // parsing + the attrib-118 byte-granular sub-index fix, which stopped collapsing
+  // several of these onto Set_Mode). None is a numeric player stat — all are
+  // non-stat engine/reward/script/costume markers → 'Meta' (translucency is the
+  // stealth-visual component → 'Stealth', alongside `stealth`).
+  translucency: 'Stealth',
+  revoke_power: 'Meta', cancel_mods: 'Meta', set_costume: 'Meta',
+  silent_kill: 'Meta', xpdebtprotection: 'Meta', token_add: 'Meta',
+  token_set: 'Meta', clear_damagers: 'Meta', view_attributes: 'Meta',
+  vision_phase: 'Meta', combat_mod_shift: 'Meta', avoid: 'Meta',
+  grant_boosted_power: 'Meta', set_script_value: 'Meta', reward: 'Meta',
+  ninja_run: 'Meta', script_notify: 'Meta',
 };
 
 /**

@@ -300,7 +300,7 @@
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
-              "magnitude_expression": "",
+              "magnitude_expression": "40 distance -",
               "application_period": 0.0,
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
@@ -410,7 +410,7 @@
               "magnitude": 1.0,
               "delay": 0.0,
               "duration_expression": "",
-              "magnitude_expression": "",
+              "magnitude_expression": "distance 60 -",
               "application_period": 0.0,
               "tick_chance": 1.0,
               "tick_mag_multiplier": 1.0,
@@ -678,7 +678,8 @@
                 "IgnoreCombatMods",
                 "KeepThroughDeath"
               ],
-              "flags_raw": 16496
+              "flags_raw": 16496,
+              "mode_name": "Levitated"
             }
           ]
         }

@@ -172,6 +172,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Peacebringer_Tanker_Mode",
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

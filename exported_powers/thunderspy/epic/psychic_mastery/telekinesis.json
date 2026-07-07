@@ -201,6 +201,12 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Pool",
+    "Disable_Epic",
+    "Defiant"
+  ],
   "available_level": 34,
   "powerset": "Epic.Psychic_Mastery"
 }

@@ -62,7 +62,7 @@
       "templates": [
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -84,12 +84,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Howler_Wolf_3.Lick_Wounds"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -220,7 +214,7 @@
       "templates": [
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -242,12 +236,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Alpha_Wolf_3.Lick_Wounds"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -414,7 +402,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -436,12 +424,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Lioness_3.Lick_Wounds"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -644,7 +626,7 @@
         },
         {
           "attribs": [
-            "Global_Chance_Mod"
+            "Grant_Boosted_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -666,12 +648,6 @@
           "stack": "Ignore",
           "stack_limit": 2,
           "stack_key": null,
-          "params": {
-            "type": "Power",
-            "power_names": [
-              "Mastermind_Pets.Dire_Wolf_3.Will_of_the_Wild"
-            ]
-          },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

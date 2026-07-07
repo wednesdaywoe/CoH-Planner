@@ -368,6 +368,12 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Pool",
+    "Disable_Epic",
+    "Widow_Tarantula_Mode"
+  ],
   "available_level": 34,
   "powerset": "Epic.VEAT_Mu_Mastery"
 }

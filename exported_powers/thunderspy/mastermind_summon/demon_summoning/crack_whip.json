@@ -294,6 +294,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Mastermind_Summon.Demon_Summoning"
 }

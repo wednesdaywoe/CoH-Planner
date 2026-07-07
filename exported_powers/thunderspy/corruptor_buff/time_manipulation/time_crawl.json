@@ -247,6 +247,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Corruptor_Buff.Time_Manipulation"
 }

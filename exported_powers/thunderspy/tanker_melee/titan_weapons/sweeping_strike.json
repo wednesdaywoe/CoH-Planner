@@ -54,6 +54,12 @@
     116
   ],
   "effects": [],
+  "modes_required": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "Disable_Walk"
+  ],
   "available_level": 3,
   "powerset": "Tanker_Melee.Titan_Weapons"
 }

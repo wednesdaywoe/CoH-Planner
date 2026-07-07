@@ -74,7 +74,7 @@
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": "",
-          "magnitude_expression": "",
+          "magnitude_expression": "now KineticAssaultSecondaries source.TokenTime> - 25 / 1 + @StdResult *",
           "application_period": 0.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,

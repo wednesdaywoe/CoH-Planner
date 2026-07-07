@@ -605,6 +605,34 @@ archived; what remains here are the SC-N routing/accounting invariants not yet b
   (both folded in [dsh8-incarnate-collapse-detector.cjs](scripts/dsh8-incarnate-collapse-detector.cjs)).
   HC/Rebirth converter output byte-identical (verified regen no-op).
   verify: file:tools/bin-crawler/bin_crawler/parser/_powers.py, fn:inferHybridPassiveFromReference, file:src/data/thunderspy-support-hybrid.test.ts, tests:src>=831
+- [x] **Parser→export staleness guard — SHIPPED 2026-07-07.** Closes the class the DSH8
+  work surfaced twice (a parser change shipping with no re-export → inert downstream fix;
+  `exported_powers/` had NO gate, unlike the `generated/` regen-diff). The `generated/`
+  trick is impossible here — CI has neither the gitignored `.pigg` archives nor Python, so
+  the powers export can't be regenerate-and-diffed. Instead a **fingerprint manifest**:
+  [`export_powers.py`](tools/bin-crawler/bin_crawler/export_powers.py) stamps each dataset's
+  output dir with `_export_manifest.json` recording the sha256 of the powers-exporter source
+  (every `parser/*.py` + `export_powers.py`, via
+  [`_export_fingerprint.py`](tools/bin-crawler/bin_crawler/_export_fingerprint.py) — a
+  directory glob, not a curated allowlist); a vitest guard
+  ([`export-staleness.test.ts`](src/data/export-staleness.test.ts)) recomputes it from the
+  committed sources and asserts every dataset matches. If the parser changed but a dataset
+  wasn't re-exported, its fingerprint diverges → red; the only fix is to actually re-export
+  (re-stamp). Per-dataset (HC root / rebirth / thunderspy), mirroring regen-diff's all-three
+  stance, so a "re-exported tspy only" slip is caught on HC/rebirth. **The guard immediately
+  did its job:** turning it on revealed HC + tspy exports were already stale by ~two parser
+  generations (2026-07-04 vintage). Adopted the catch-up: HC 2024 files (**calc-relevant** —
+  97 generated corrections: Shadow Step stealth+durations, `buffDuration` fixes), tspy 4068
+  files (all `modes_required` metadata, **calc-inert** — 0 generated change), rebirth already
+  current (manifest only). Three previously-stale-pinning tests flipped to the resolved state
+  (all verify-don't-assume, not blind updates): (a) `set-mode-resolution` mag==1 attrib-118
+  impostor → `XPDebtProtection` (self-predicted by the test's own comment); (b)
+  `granted-damage-procs` Bio Offensive Adaptation now correctly surfaces its Toxic DoT
+  scoped to its own stance (mode-system parsing separated the stances — defensive/efficient
+  still emit no damage proc, verified no leak); (c) `atomic-effect` bridge coverage — 18 new
+  engine/script attribs (Set_Costume/Silent_Kill/Ninja_Run/Translucency/… — attrib-118 fix
+  fallout) mapped to `Meta`/`Stealth` in `bridgeAttrib`'s `META_EFFECT`. Full suite green.
+  verify: file:src/data/export-staleness.test.ts, file:tools/bin-crawler/bin_crawler/_export_fingerprint.py, fn:bridgeAttrib, tests:src>=832
 - [x] **CI regen-diff guard for the incarnate converter — SHIPPED 2026-07-06.** The Clarion
   PvE status-resistance leak (DSH8, above) shipped only because a correct
   `convert-incarnate-effects.cjs` change regenerated one dataset and not the others, with no

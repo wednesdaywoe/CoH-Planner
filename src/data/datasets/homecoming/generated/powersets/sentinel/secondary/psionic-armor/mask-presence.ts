@@ -115,6 +115,10 @@ export const MaskPresence: Power = {
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
       }
     },
     "buffDuration": 0.75

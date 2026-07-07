@@ -123,6 +123,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 1,
   "powerset": "Tanker_Defense.Willpower"
 }

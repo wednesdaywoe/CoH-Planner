@@ -203,7 +203,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -272,7 +272,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -400,7 +400,7 @@
       "templates": [
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -426,7 +426,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -452,7 +452,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -478,7 +478,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -504,7 +504,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -530,7 +530,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Cancel_Mods"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

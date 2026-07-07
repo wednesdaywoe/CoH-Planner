@@ -42,6 +42,10 @@ export const NebulousForm: Power = {
   "maxSlots": 6,
   "effects": {
     "stealth": {
+      "translucency": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
       "stealthPvE": {
         "scale": 20,
         "table": "Melee_Ones"

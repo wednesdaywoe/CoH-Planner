@@ -281,6 +281,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Mastermind_Buff.Obedience_Training"
 }

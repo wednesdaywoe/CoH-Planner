@@ -325,6 +325,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Blaster_Support.Time_Manipulation"
 }

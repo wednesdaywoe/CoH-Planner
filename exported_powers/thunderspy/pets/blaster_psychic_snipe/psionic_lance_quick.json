@@ -210,6 +210,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Pets.Blaster_Psychic_Snipe"
 }

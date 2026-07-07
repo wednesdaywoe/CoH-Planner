@@ -759,6 +759,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 3,
   "powerset": "Defender_Ranged.Water_Blast"
 }

@@ -39,10 +39,20 @@ export const ShadowRecall: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "stealth": {
+      "translucency": {
+        "scale": 0,
+        "table": "Ranged_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 1.5
+    },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
-    }
+    },
+    "buffDuration": 1.5
   },
   "requires": "Inherent.Inherent.Shadow_Recall !"
 };

@@ -173,6 +173,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 9,
   "powerset": "Blaster_Support.Martial_Manipulation"
 }

@@ -97,6 +97,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Arachnos_Soldiers.Crab_Spider_Soldier"
 }

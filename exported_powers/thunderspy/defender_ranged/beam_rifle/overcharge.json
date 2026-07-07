@@ -413,6 +413,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Defender_Ranged.Beam_Rifle"
 }

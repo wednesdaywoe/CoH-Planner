@@ -369,6 +369,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Tanker_Melee.Dark_Melee"
 }

@@ -165,6 +165,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Mastermind_Buff.Radiation_Emission"
 }

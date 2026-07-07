@@ -93,6 +93,10 @@ export const Invisibility: Power = {
       "threatDebuff": 0.75
     },
     "stealth": {
+      "translucency": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
+      },
       "stealthPvP": {
         "scale": 1000,
         "table": "Melee_Ones"

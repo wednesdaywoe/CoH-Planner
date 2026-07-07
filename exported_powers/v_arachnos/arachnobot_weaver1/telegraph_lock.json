@@ -121,7 +121,7 @@
         },
         {
           "attribs": [
-            "Cancel_Effects"
+            "Script_Notify"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

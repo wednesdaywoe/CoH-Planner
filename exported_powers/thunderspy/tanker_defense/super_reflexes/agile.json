@@ -336,6 +336,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Tanker_Defense.Super_Reflexes"
 }

@@ -150,7 +150,7 @@
         },
         {
           "attribs": [
-            "Grant_Power"
+            "Revoke_Power"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

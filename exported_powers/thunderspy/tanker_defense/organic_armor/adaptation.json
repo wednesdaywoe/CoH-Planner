@@ -322,6 +322,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 11,
   "powerset": "Tanker_Defense.Organic_Armor"
 }

@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Translucency"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",
@@ -157,7 +157,7 @@
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Reward"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

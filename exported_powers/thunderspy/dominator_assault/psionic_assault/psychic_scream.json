@@ -287,6 +287,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 9,
   "powerset": "Dominator_Assault.Psionic_Assault"
 }

@@ -290,6 +290,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Dominator_Control.Mind_Control"
 }

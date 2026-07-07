@@ -275,7 +275,7 @@
         },
         {
           "attribs": [
-            "Set_Token"
+            "Token_Set"
           ],
           "type": "Constant",
           "application_type": "OnTick",

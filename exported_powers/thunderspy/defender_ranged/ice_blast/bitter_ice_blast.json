@@ -214,6 +214,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 9,
   "powerset": "Defender_Ranged.Ice_Blast"
 }

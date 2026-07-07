@@ -246,6 +246,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Pets.Chain_Stun_Controller_Jump1"
 }

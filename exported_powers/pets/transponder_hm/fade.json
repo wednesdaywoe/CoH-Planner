@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Create_Entity"
+            "Clear_Damagers"
           ],
           "type": "Magnitude",
           "application_type": "Immediate",

@@ -363,6 +363,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Primal_Gifts.Primal_Gift"
 }

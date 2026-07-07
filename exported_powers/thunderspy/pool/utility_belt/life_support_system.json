@@ -86,6 +86,12 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Peacebringer_Blaster_Mode",
+    "Warshade_Blaster_Mode",
+    "Disable_Pool"
+  ],
   "available_level": 19,
   "powerset": "Pool.Utility_Belt"
 }

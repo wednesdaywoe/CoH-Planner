@@ -201,6 +201,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Defiant"
+  ],
   "available_level": 25,
   "powerset": "Controller_Control.Mind_Control"
 }

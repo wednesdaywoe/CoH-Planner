@@ -50,6 +50,13 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
+  "modes_required": [
+    "Disable_All",
+    "ProwlerMode"
+  ],
+  "modes_suspended": [
+    "Disable_Walk"
+  ],
   "available_level": 15,
   "powerset": "Primal_Gifts.Primal_Gift"
 }

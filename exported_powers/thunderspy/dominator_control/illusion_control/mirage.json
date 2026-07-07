@@ -137,6 +137,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 11,
   "powerset": "Dominator_Control.Illusion_Control"
 }

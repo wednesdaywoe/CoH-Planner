@@ -54,7 +54,7 @@
       "templates": [
         {
           "attribs": [
-            "Add_Behavior"
+            "Set_Script_Value"
           ],
           "type": "Constant",
           "application_type": "Immediate",

@@ -42,6 +42,10 @@ export const SmokeFlash: Power = {
       "stealthPvP": {
         "scale": 500,
         "table": "Ranged_Ones"
+      },
+      "translucency": {
+        "scale": 0.2,
+        "table": "Ranged_Ones"
       }
     },
     "durations": {

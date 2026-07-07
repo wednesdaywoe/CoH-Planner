@@ -326,6 +326,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Corruptor_Buff.Radiation_Emission"
 }

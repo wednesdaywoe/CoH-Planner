@@ -312,6 +312,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_Pool",
+    "Disable_All"
+  ],
   "available_level": 13,
   "powerset": "Pool.Leadership"
 }

@@ -189,7 +189,8 @@
                 "IgnoreResistance",
                 "IgnoreCombatMods"
               ],
-              "flags_raw": 112
+              "flags_raw": 112,
+              "mode_name": "Wet"
             }
           ]
         }

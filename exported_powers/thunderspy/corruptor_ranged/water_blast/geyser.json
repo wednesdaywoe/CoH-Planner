@@ -995,6 +995,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Corruptor_Ranged.Water_Blast"
 }

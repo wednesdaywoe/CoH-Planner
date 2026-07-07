@@ -131,6 +131,10 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All",
+    "Disable_Toggle"
+  ],
   "available_level": 34,
   "powerset": "Stalker_Defense.Ice_Armor"
 }

@@ -1576,6 +1576,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Brute_Melee.Staff_Fighting"
 }

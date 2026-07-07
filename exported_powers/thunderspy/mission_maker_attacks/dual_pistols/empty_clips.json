@@ -824,6 +824,9 @@
       ]
     }
   ],
+  "modes_required": [
+    "Disable_All"
+  ],
   "available_level": 1,
   "powerset": "Mission_Maker_Attacks.Dual_Pistols"
 }

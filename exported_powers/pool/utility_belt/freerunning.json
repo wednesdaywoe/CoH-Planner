@@ -69,7 +69,7 @@
       "templates": [
         {
           "attribs": [
-            "Recharge_Power"
+            "Ninja_Run"
           ],
           "type": "Constant",
           "application_type": "Immediate",

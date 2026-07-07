@@ -32,6 +32,7 @@ from bin_crawler.parser._messages import load_messages
 from bin_crawler.parser._attrib_names import parse_mode_table
 from bin_crawler.parser._pigg import BinResolver
 from bin_crawler.assets_dir import resolve_assets_dir
+from bin_crawler._export_fingerprint import parser_fingerprint
 from bin_crawler.parser._enums import POWER_TYPE, EFFECT_AREA, TARGET_TYPE, PVP_FLAG
 
 
@@ -562,6 +563,36 @@ def main():
     print(f'  Categories: {len(grouped)}')
     print(f'  Powersets: {sum(len(ps) for ps in grouped.values())}')
     print(f'  Powers: {len(player_powers)}')
+
+    # Stamp the export-staleness manifest. This records the fingerprint of the
+    # powers-exporter SOURCE that produced this tree, so a later parser change
+    # that ships without a matching re-export is caught by the JS/vitest guard
+    # (src/data/export-staleness.test.ts) — CI can't re-run this Python export
+    # (no .pigg) so the fingerprint is the only cross-check. See
+    # bin_crawler/_export_fingerprint.py. Skip when the user exported a category
+    # SUBSET (`--categories`): a partial tree must not claim whole-dataset
+    # currency, and stamping the current fingerprint over stale sibling
+    # categories would defeat the guard.
+    if not args.categories:
+        manifest = {
+            'schema': 'bin-crawler-export-manifest/1',
+            'note': ('parser_fingerprint is the sha256 of the powers exporter '
+                     '(bin_crawler/parser/**/*.py + export_powers.py) at export '
+                     'time. If it disagrees with the current committed exporter '
+                     'source, THIS tree is stale — re-run export_powers for this '
+                     'dataset and commit. Guarded by '
+                     'src/data/export-staleness.test.ts.'),
+            'parser_fingerprint': parser_fingerprint(),
+            'categories': len(grouped),
+            'power_files': total_files,
+        }
+        with open(output_dir / '_export_manifest.json', 'w') as f:
+            json.dump(manifest, f, indent=2)
+            f.write('\n')
+        print(f'  Manifest: parser_fingerprint={manifest["parser_fingerprint"][:12]}…')
+    else:
+        print('  Manifest: SKIPPED (partial --categories export; not stamping '
+              'whole-dataset currency)')
 
 
 if __name__ == '__main__':
