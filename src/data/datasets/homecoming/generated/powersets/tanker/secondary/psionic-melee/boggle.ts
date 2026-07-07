@@ -42,5 +42,8 @@ export const Boggle: Power = {
       "scale": 15,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "setsModes": [
+    "DD_StatusMode_1"
+  ]
 };

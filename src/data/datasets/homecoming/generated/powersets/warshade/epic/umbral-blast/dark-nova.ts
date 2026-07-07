@@ -92,5 +92,10 @@ export const DarkNova: Power = {
       }
     },
     "buffDuration": 2
-  }
+  },
+  "setsModes": [
+    "Suppress_PoolToggles",
+    "Disable_Walk",
+    "Warshade_Blaster_Mode"
+  ]
 };

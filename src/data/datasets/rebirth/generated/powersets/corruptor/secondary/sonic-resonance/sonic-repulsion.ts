@@ -48,5 +48,8 @@ export const SonicRepulsion: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 0.5
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

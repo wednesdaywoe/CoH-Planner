@@ -50,5 +50,9 @@ export const OrbitingDeath: Power = {
     "table": "Melee_Damage",
     "duration": 2.5,
     "tickRate": 3
-  }
+  },
+  "modesSuspended": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ]
 };

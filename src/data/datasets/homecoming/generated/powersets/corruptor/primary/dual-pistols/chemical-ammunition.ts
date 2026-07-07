@@ -31,5 +31,11 @@ export const ChemicalAmmunition: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "requires": "Corruptor_Ranged.Dual_Pistols.Swap_Ammo"
+  "requires": "Corruptor_Ranged.Dual_Pistols.Swap_Ammo",
+  "setsModes": [
+    "ToxicAmmo"
+  ],
+  "modesRequired": [
+    "LethalAmmo"
+  ]
 };

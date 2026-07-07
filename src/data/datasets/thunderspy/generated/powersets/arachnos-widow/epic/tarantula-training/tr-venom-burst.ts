@@ -54,5 +54,8 @@ export const TRVenomBurst: Power = {
       "regenDebuff": 30
     },
     "buffDuration": 30
-  }
+  },
+  "modesRequired": [
+    "Widow_Tarantula_Mode"
+  ]
 };

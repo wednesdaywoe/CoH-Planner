@@ -64,5 +64,8 @@ export const ClearSkies: Power = {
     }
   ],
   "requires": "Dominator_Control.Wind_Control.Vortex Dominator_Control.Wind_Control.Vacuum &&",
+  "modesRequired": [
+    "ClearSkies"
+  ],
   "mechanicType": "parentMechanic"
 };

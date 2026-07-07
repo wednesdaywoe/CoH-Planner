@@ -24,5 +24,8 @@ export const ReachfortheLimit: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ],
   "mechanicType": "parentMechanic"
 };

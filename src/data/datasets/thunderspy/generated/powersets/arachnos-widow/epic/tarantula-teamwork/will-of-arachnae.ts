@@ -32,5 +32,8 @@ export const WillOfArachnae: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "modesRequired": [
+    "Widow_Tarantula_Mode"
+  ]
 };

@@ -57,5 +57,9 @@ export const Burst: Power = {
       "defenseDebuff": 8
     },
     "buffDuration": 8
-  }
+  },
+  "setsModes": [
+    "FocusFire_Burst",
+    "PersonalAttack1"
+  ]
 };

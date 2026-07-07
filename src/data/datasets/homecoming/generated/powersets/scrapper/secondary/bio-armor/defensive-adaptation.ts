@@ -42,5 +42,8 @@ export const DefensiveAdaptation: Power = {
     },
     "buffDuration": 1.1
   },
-  "requires": "Scrapper_Defense.Bio_Organic_Armor.Evolution"
+  "requires": "Scrapper_Defense.Bio_Organic_Armor.Evolution",
+  "setsModes": [
+    "DefensiveAdaptation"
+  ]
 };

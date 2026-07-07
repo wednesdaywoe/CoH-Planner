@@ -54,5 +54,8 @@ export const TemporalSelection: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 120
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

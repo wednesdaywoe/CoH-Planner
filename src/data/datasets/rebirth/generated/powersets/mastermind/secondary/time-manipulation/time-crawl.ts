@@ -70,5 +70,8 @@ export const TimeCrawl: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 20
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

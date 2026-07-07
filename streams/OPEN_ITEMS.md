@@ -93,17 +93,31 @@ Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
 - ~~Mode STAT-EFFECT extraction [X]~~ — CLOSED, confirmed pure flags: every
   mode record in `attrib_names.bin` is (name, display) only; all 139 Rebirth
   records carry an all-zero trailing word. No stat payload exists.
-- **Converter consumption of `modes_*`** [re-scoped] — The original "match
-  Bio/DP conditionals by mode name" is already covered by the requires-based
-  classifier (`k<Name> Source.Mode?` → conditionalEffects) on all three
-  servers, verified in Rebirth generated Bio Armor output. What the new fields
-  would still enable, both product-level features rather than data gaps:
-  (a) power availability gating by caster mode (`modes_required`:
-  Domination/form/Momentum-gated powers — planner currently doesn't grey these
-  out); (b) a "what's active" suppression matrix from `modes_suspended`
-  (HC Stone Armor toggles under Granite; overlaps §8's Rebirth exclusivity
-  item). Also possible: data-driven linking of the Set_Mode power to its
-  dependent conditionals (replace the name-string heuristic).
+- ~~Converter consumption of `modes_*`~~ — **SHIPPED 2026-07-07.** The converter
+  now emits three lean power fields (`convert-powerset.cjs`, after `requires`):
+  `setsModes` (from `Set_Mode` template `mode_name`, PvP-only groups skipped),
+  `modesSuspended`, `modesRequired`; noise (`Disable_All`, `ServerTrayOverride`)
+  stripped; `modes_disallowed` dropped (≈5.8k files of pure `Disable_All`). On
+  `Power` (`src/types/power.ts`).
+  (a) **Suppression matrix** (`modes_suspended`, §8 overlap): new pure util
+  `src/utils/mode-suppression.ts` — `activeModes = ⋃ setsModes of active powers`,
+  a power is suspended when `modesSuspended ∩ activeModes ≠ ∅`. `character-totals.ts`
+  filters suspended powers out of the direct-effect passes (`collectStrengthBuffs`
+  / `applyActivePowerBonuses` / `expandActiveConditionals`) so Granite Armor
+  correctly suppresses the other Stone toggles (set bonuses still apply — the
+  toggle is still running). InfoPanel shows a "Suspended by <power>" banner
+  (`useModeSuppression` hook). Default-safe: no active mode-setter → identical
+  totals (843 tests, incl. the new `mode-suppression.test.ts`; zero regressions).
+  (b) **Availability annotation** (`modes_required`): InfoPanel shows a
+  "Requires: <mode>" note (`modeLabel`); NO picker grey-out — a build planner
+  always slots these. Per-server data: HC full; Rebirth setsModes+required but
+  almost no modes_suspended (data-absent, not a bug); Thunderspy annotation-only
+  (its binary has no `Set_Mode` `mode_name` and no ModesSuspended slot, so
+  suppression is inherently N/A there).
+  Remaining (not done, lower value): data-driven linking of the Set_Mode power
+  to its dependent conditionals (replace the `STANCE_GROUPS` name-string
+  heuristic) — the requires-based classifier already covers Bio/DP, so this is a
+  refactor, not a gap.
 
 ## 4. `.powers` extraction-completeness audit (Homecoming)
 
@@ -121,7 +135,7 @@ Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
   remains genuinely unparsed.
 - **`.powers ⊆ extraction` guard** [L] — Build once the sweep backlog is down.
 
-## 5. Parser misalignment stragglers (Homecoming)
+> ## 5. Parser misalignment stragglers (Homecoming)
 
 - **`Incarnate_I20.Airstrike.Main` empty** — Template-level parse failure
   (`eff_count=1`, single Judgement group's templates fail). Separate
@@ -187,8 +201,14 @@ Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
   and regenerate.
 - **Exclusivity suppression rules not honored by calc** — Rebirth's runtime
   suppression (e.g. Aerobatics suppresses Acrobatics/Weave) is captured in pool
-  descriptions but the stat calc probably doesn't honor it (needs a runtime
-  "what's active" suppression matrix).
+  descriptions but the stat calc probably doesn't honor it. PARTIALLY ADDRESSED
+  2026-07-07 (§3): the `modes_suspended`-driven suppression matrix
+  (`src/utils/mode-suppression.ts`) now honors mode-based suppression where the
+  data carries it (Granite → Stone toggles). Rebirth exports almost no
+  `modes_suspended` (only 2 files), so Aerobatics-style pool suppression is NOT
+  covered by this — it isn't encoded as a mode there. Would need the pool
+  descriptions parsed into explicit suppression rules, or a Rebirth data source
+  that carries the modes.
 - **Parse6 CopyBoosts/PseudoPet tail decode** — `CopyBoosts`/`PseudoPet` live in
   the not-yet-decoded post-magnitude tail; Parse6 template parser decodes no
   `flags` at all, so Rebirth pets get no `copyBoosts`. Do it if a Rebirth
@@ -203,10 +223,14 @@ Parse6 power-tail parse was mislabeled AND misaligned (see §5 — same fix):
   numerically (planner doesn't model "while resting" procs). Set is slottable,
   labeled `Rest Buff`.
 - **HEAL-ABSORB-AND-EXPORT-GAPS.md (missing doc)** — Referenced note now absent
-  from tree: IO-set aspect/Absorb export gaps + the Guardian AT (Rebirth-only)
-  missing from `extract-at-tables.cjs`'s `PLAYER_ARCHETYPES` allowlist (surfaced
-  2026-06-05). Open-status uncertain since the doc is gone — flagged for
-  awareness.
+  from tree: IO-set aspect/Absorb export gaps still open. ~~Guardian AT missing
+  from the AT-table allowlist~~ **RESOLVED 2026-07-07**: `guardian` added to
+  `extract-at-tables.cjs`'s `PLAYER_ARCHETYPES`, rebirth `at-tables.ts`
+  regenerated (Guardian Defense was rendering at ~0.27× — S/L Def 3.4% vs
+  in-game 12.75% — via the legacy 0.10 fallback). New structural guard
+  `src/data/at-table-archetype-coverage.test.ts` asserts every AT with generated
+  powersets has modifier tables, closing the allowlist-gap class on all three
+  servers. See [[at-table-extractor-allowlist-gap]].
 
 ## 9. Thunderspy
 

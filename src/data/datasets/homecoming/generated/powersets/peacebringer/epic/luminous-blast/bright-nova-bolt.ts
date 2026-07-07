@@ -56,5 +56,8 @@ export const BrightNovaBolt: Power = {
     },
     "buffDuration": 3
   },
-  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Bolt ! &&"
+  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Bolt ! &&",
+  "modesRequired": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

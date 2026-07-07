@@ -46,5 +46,8 @@ export const SoulSearing: Power = {
     "stacksLinear": [
       "tohitBuff"
     ]
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

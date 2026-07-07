@@ -81,5 +81,8 @@ export const ChronoShift: Power = {
       "table": "Ranged_Ones"
     },
     "buffDuration": 90
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

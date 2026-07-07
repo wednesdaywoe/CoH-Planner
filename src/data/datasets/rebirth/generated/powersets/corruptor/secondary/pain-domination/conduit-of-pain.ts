@@ -92,5 +92,8 @@ export const ConduitofPain: Power = {
       "recoveryBuff",
       "tohitBuff"
     ]
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

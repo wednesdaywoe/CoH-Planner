@@ -88,5 +88,8 @@ export const BlackDwarfDrain: Power = {
     },
     "buffDuration": 6
   },
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Warshade_Tanker_Mode"
+  ]
 };

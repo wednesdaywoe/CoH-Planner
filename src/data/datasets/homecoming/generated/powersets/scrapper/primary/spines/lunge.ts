@@ -99,5 +99,8 @@ export const Lunge: Power = {
       "label": "Lethal_Dmg"
     }
   ],
-  "requires": "Scrapper_Defense.Shield_Defense !"
+  "requires": "Scrapper_Defense.Shield_Defense !",
+  "setsModes": [
+    "DD_StatusMode_1"
+  ]
 };

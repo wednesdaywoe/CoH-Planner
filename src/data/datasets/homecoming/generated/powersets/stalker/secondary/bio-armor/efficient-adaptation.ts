@@ -31,5 +31,8 @@ export const EfficientAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation"
+  "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation",
+  "setsModes": [
+    "RestedAdaptation"
+  ]
 };

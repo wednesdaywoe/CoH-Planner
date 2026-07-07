@@ -38,5 +38,8 @@ export const WhiteDwarfSublimation: Power = {
     "scale": 4.375,
     "table": "Melee_HealSelf"
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Sublimation ! &&"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Sublimation ! &&",
+  "modesRequired": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

@@ -70,5 +70,8 @@ export const TRCocoon: Power = {
       "scale": 10,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "modesRequired": [
+    "Widow_Tarantula_Mode"
+  ]
 };

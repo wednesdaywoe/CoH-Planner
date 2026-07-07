@@ -55,5 +55,8 @@ export const StygianCircle: Power = {
       "table": "Melee_Ones",
       "perTarget": 20
     }
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

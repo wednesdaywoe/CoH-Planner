@@ -84,5 +84,8 @@ export const ChainInduction: Power = {
       "chance": 0.30000001192092896,
       "label": "Recovery"
     }
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

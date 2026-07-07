@@ -68,5 +68,8 @@ export const PhotonGrenade: Power = {
       "chance": 0.30000001192092896,
       "label": "Stun"
     }
+  ],
+  "setsModes": [
+    "PersonalAttack3"
   ]
 };

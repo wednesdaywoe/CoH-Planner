@@ -49,5 +49,8 @@ export const TRWebSpitter: Power = {
       "scale": 15,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "modesRequired": [
+    "Widow_Tarantula_Mode"
+  ]
 };

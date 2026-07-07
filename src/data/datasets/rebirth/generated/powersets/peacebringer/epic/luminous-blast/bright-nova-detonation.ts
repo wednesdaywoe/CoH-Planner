@@ -79,5 +79,8 @@ export const BrightNovaDetonation: Power = {
       "label": "Knockback"
     }
   ],
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

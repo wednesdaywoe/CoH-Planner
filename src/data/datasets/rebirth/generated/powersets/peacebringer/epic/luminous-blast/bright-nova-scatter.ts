@@ -60,5 +60,8 @@ export const BrightNovaScatter: Power = {
     },
     "buffDuration": 8
   },
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

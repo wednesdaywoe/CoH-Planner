@@ -54,5 +54,8 @@ export const Disintegrate: Power = {
       "regenDebuff": 15
     },
     "buffDuration": 15
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

@@ -54,5 +54,9 @@ export const TwilightShield: Power = {
       "resistance": 0.75
     },
     "buffDuration": 0.75
-  }
+  },
+  "modesSuspended": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ]
 };

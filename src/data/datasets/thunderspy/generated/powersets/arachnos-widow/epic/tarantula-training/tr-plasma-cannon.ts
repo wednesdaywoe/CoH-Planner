@@ -46,5 +46,8 @@ export const TRPlasmaCannon: Power = {
     "table": "Ranged_Damage",
     "duration": 4.12,
     "tickRate": 1
-  }
+  },
+  "modesRequired": [
+    "Widow_Tarantula_Mode"
+  ]
 };

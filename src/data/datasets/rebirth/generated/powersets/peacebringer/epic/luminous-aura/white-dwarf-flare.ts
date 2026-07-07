@@ -74,5 +74,8 @@ export const WhiteDwarfFlare: Power = {
       "label": "Knockback"
     }
   ],
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

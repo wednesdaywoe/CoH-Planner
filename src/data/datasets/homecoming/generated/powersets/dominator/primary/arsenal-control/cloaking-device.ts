@@ -158,5 +158,8 @@ export const CloakingDevice: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 0.75
-  }
+  },
+  "setsModes": [
+    "Hidden_Attack"
+  ]
 };

@@ -42,5 +42,8 @@ export const BlackDwarfAntagonize: Power = {
       "table": "Melee_Taunt"
     }
   },
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Antagonize ! &&"
+  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Antagonize ! &&",
+  "modesRequired": [
+    "Warshade_Tanker_Mode"
+  ]
 };

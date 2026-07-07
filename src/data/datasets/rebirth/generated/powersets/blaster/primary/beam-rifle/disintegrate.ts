@@ -63,5 +63,8 @@ export const Disintegrate: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

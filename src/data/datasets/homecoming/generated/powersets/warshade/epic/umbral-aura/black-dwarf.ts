@@ -177,5 +177,10 @@ export const BlackDwarf: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 2.03
-  }
+  },
+  "setsModes": [
+    "Suppress_PoolToggles",
+    "Disable_Walk",
+    "Warshade_Tanker_Mode"
+  ]
 };

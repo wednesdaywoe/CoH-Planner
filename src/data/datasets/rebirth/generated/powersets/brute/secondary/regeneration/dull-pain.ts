@@ -51,5 +51,8 @@ export const DullPain: Power = {
     "stacksLinear": [
       "maxHPBuff"
     ]
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

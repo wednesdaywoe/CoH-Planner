@@ -48,5 +48,8 @@ export const TrickShot: Power = {
       "entity": "Pets_Trick_Shot_Jump1",
       "duration": 1
     }
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

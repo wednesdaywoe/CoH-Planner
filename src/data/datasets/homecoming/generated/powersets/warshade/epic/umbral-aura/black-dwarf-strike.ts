@@ -97,5 +97,8 @@ export const BlackDwarfStrike: Power = {
       "label": "Knockback"
     }
   ],
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Strike ! &&"
+  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Strike ! &&",
+  "modesRequired": [
+    "Warshade_Tanker_Mode"
+  ]
 };

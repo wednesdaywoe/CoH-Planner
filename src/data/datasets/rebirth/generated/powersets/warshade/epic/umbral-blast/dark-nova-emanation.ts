@@ -78,5 +78,8 @@ export const DarkNovaEmanation: Power = {
     },
     "buffDuration": 8
   },
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Warshade_Blaster_Mode"
+  ]
 };

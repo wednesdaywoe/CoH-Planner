@@ -95,5 +95,8 @@ export const KujiInRetsu: Power = {
       "jumpHeight",
       "runSpeed"
     ]
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

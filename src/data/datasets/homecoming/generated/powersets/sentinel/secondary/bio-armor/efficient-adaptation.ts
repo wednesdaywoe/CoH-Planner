@@ -31,5 +31,8 @@ export const EfficientAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "requires": "Sentinel_Defense.Bio_Organic_Armor.Adaptation"
+  "requires": "Sentinel_Defense.Bio_Organic_Armor.Adaptation",
+  "setsModes": [
+    "RestedAdaptation"
+  ]
 };

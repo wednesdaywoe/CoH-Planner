@@ -98,5 +98,8 @@ export const BlackDwarfStrike: Power = {
       "label": "Knockback"
     }
   ],
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Warshade_Tanker_Mode"
+  ]
 };

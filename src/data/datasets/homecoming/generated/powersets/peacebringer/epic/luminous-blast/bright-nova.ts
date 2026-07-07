@@ -91,5 +91,10 @@ export const BrightNova: Power = {
       }
     },
     "buffDuration": 2
-  }
+  },
+  "setsModes": [
+    "Suppress_PoolToggles",
+    "Disable_Walk",
+    "Peacebringer_Blaster_Mode"
+  ]
 };

@@ -73,5 +73,9 @@ export const Vacuum: Power = {
       }
     }
   ],
-  "requires": "accesslevel char> 0 >="
+  "requires": "accesslevel char> 0 >=",
+  "setsModes": [
+    "ClearSkies",
+    "CloudedSkies"
+  ]
 };

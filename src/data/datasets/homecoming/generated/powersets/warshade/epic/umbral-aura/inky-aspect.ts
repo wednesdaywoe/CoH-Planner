@@ -53,5 +53,9 @@ export const InkyAspect: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "modesSuspended": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ]
 };

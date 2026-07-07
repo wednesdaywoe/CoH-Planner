@@ -134,5 +134,8 @@ export const Microburst: Power = {
       "chance": 0.5,
       "label": "Stun"
     }
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

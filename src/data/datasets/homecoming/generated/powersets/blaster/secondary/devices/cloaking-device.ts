@@ -170,5 +170,8 @@ export const CloakingDevice: Power = {
       }
     },
     "buffDuration": 0.75
-  }
+  },
+  "setsModes": [
+    "Hidden_Attack"
+  ]
 };

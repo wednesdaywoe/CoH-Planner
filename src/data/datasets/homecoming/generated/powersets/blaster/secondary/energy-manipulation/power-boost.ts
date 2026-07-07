@@ -128,5 +128,8 @@ export const PowerBoost: Power = {
     "stacksLinear": [
       "specialBuff"
     ]
-  }
+  },
+  "setsModes": [
+    "BoostPower"
+  ]
 };

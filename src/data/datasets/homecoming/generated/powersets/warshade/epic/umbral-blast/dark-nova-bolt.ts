@@ -74,5 +74,8 @@ export const DarkNovaBolt: Power = {
     },
     "buffDuration": 3
   },
-  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Bolt ! &&"
+  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Bolt ! &&",
+  "modesRequired": [
+    "Warshade_Blaster_Mode"
+  ]
 };

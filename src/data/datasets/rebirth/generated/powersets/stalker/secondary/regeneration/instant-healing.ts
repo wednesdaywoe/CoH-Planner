@@ -47,5 +47,8 @@ export const InstantHealing: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 90
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

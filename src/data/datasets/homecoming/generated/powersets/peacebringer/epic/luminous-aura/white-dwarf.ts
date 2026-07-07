@@ -176,5 +176,10 @@ export const WhiteDwarf: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 2.03
-  }
+  },
+  "setsModes": [
+    "Suppress_PoolToggles",
+    "Disable_Walk",
+    "Peacebringer_Tanker_Mode"
+  ]
 };

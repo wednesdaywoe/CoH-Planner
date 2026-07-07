@@ -181,5 +181,8 @@ export const SkySplitter: Power = {
       },
       "group": "staff-form"
     }
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

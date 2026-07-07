@@ -89,5 +89,8 @@ export const Lunge: Power = {
     },
     "buffDuration": 6
   },
-  "requires": "Tanker_Defense.Shield_Defense !"
+  "requires": "Tanker_Defense.Shield_Defense !",
+  "setsModes": [
+    "DD_StatusMode_1"
+  ]
 };

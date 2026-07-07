@@ -79,5 +79,8 @@ export const DarkNovaEmanation: Power = {
     },
     "buffDuration": 8
   },
-  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Emanation ! &&"
+  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Emanation ! &&",
+  "modesRequired": [
+    "Warshade_Blaster_Mode"
+  ]
 };

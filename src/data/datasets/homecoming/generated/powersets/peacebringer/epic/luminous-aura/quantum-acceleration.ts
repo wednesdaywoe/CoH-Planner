@@ -127,5 +127,9 @@ export const QuantumAcceleration: Power = {
       "table": "Melee_Res_Boolean"
     },
     "buffDuration": 0.2
-  }
+  },
+  "modesSuspended": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
+  ]
 };

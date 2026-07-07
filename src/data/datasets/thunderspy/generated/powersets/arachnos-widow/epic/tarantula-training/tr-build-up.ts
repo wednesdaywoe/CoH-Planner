@@ -32,5 +32,8 @@ export const TRBuildUp: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "modesRequired": [
+    "Widow_Tarantula_Mode"
+  ]
 };

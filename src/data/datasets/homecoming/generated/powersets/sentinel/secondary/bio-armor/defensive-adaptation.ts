@@ -42,5 +42,8 @@ export const DefensiveAdaptation: Power = {
     },
     "buffDuration": 1.1
   },
-  "requires": "Sentinel_Defense.Bio_Organic_Armor.Adaptation"
+  "requires": "Sentinel_Defense.Bio_Organic_Armor.Adaptation",
+  "setsModes": [
+    "DefensiveAdaptation"
+  ]
 };

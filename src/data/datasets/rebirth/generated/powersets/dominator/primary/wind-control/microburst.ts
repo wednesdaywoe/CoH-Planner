@@ -140,5 +140,8 @@ export const Microburst: Power = {
       },
       "group": "wind_control_pressure-stacks"
     }
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

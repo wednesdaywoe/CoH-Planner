@@ -66,5 +66,8 @@ export const AssassinsStrike: Power = {
       "stealth": 8
     },
     "buffDuration": 8
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

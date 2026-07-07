@@ -46,5 +46,8 @@ export const PowerSiphon: Power = {
     "stacksLinear": [
       "tohitBuff"
     ]
-  }
+  },
+  "setsModes": [
+    "SiphonMode"
+  ]
 };

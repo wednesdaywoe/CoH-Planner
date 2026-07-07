@@ -743,6 +743,31 @@ export interface Power {
   /** Prerequisite power(s) - logical expression */
   requires?: string;
   /**
+   * Game "modes" this power ACTIVATES — combat-state flags set by a `Set_Mode`
+   * effect (e.g. Granite Armor sets `Granite_Mode`; Momentum sets `FastMode`;
+   * Bright Nova sets `Peacebringer_Blaster_Mode`; Swap Ammo sets `LethalAmmo`).
+   * When this power is active in a build, these modes are "live" and drive
+   * `modesSuspended` / `modesRequired` on other powers. Raw mode ids; noise
+   * (`Disable_All`) stripped. Absent on the vast majority of powers.
+   */
+  setsModes?: string[];
+  /**
+   * Modes that SUSPEND this power's own effect contribution while live. The
+   * other Stone Armor toggles carry `['Granite_Mode']` (Granite suspends them);
+   * pool/travel toggles carry the `Suppress_*` markers Granite/forms set. When
+   * an active power in the build `setsModes` an intersecting mode, the totals
+   * calc drops this power's direct effects (set bonuses still apply — the toggle
+   * is still running) and the UI marks it "Suspended by <setter>". Raw mode ids.
+   */
+  modesSuspended?: string[];
+  /**
+   * Modes this power needs to be USABLE — Titan `FastMode` (Momentum) attacks,
+   * Kheldian form attacks, Domination-only powers, travel-toggle-gated powers.
+   * Annotation only: a build planner always slots these, so they are NOT greyed
+   * out; the InfoPanel shows a "Requires: <mode>" note. Raw mode ids.
+   */
+  modesRequired?: string[];
+  /**
    * If set, this power is a mechanic (non-standard) power:
    * - 'childToggle': Auto-granted child toggle (ammo types, stance forms, adaptations)
    * - 'parentMechanic': Pickable parent that grants child toggles (Swap Ammo, Staff Mastery)

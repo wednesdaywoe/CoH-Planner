@@ -46,5 +46,8 @@ export const EnvenomedBlades: Power = {
     "stacksLinear": [
       "tohitBuff"
     ]
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

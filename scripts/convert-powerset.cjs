@@ -5687,6 +5687,39 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     power.requires = powerJson.requires;
   }
 
+  // Game "modes" (combat states: Kheldian Nova/Dwarf forms, Titan Momentum,
+  // Domination, Granite, Swap-Ammo, travel toggles). The exporter resolves the
+  // per-server mode registry from attrib_names.bin and stamps three power-level
+  // arrays plus a `mode_name` on each Set_Mode template. We surface a lean slice:
+  //   - setsModes:     modes this power ACTIVATES (from Set_Mode `mode_name`) —
+  //                    the calc uses these to know which modes are live.
+  //   - modesSuspended: modes that SUSPEND this power's own effects (Granite
+  //                    suspends the other Stone toggles; forms suspend human
+  //                    toggles) — the calc drops the effect contribution when a
+  //                    live mode intersects.
+  //   - modesRequired:  modes the power needs to be USABLE (FastMode/Momentum,
+  //                    Domination, form-gated attacks) — annotation only; a
+  //                    build planner always slots these, so no picker gating.
+  // `modes_disallowed` is ~5.8k files of pure `Disable_All` noise → dropped.
+  // `Disable_All` (ubiquitous) and `ServerTrayOverride` (mode index 0 — the
+  // system tray slot, no gameplay meaning) are stripped everywhere.
+  const MODE_NOISE = new Set(['Disable_All', 'ServerTrayOverride']);
+  const dropNoiseMode = (m) => m && !MODE_NOISE.has(m);
+  const setsModes = [];
+  for (const grp of powerJson.effects || []) {
+    if (grp?.is_pvp === 'PVP_ONLY') continue; // PvE planner default — PvP-only setters excluded
+    for (const t of grp?.templates || []) {
+      if (t?.mode_name && (t.attribs || []).includes('Set_Mode') && dropNoiseMode(t.mode_name)) {
+        if (!setsModes.includes(t.mode_name)) setsModes.push(t.mode_name);
+      }
+    }
+  }
+  if (setsModes.length) power.setsModes = setsModes;
+  const modesSuspended = (powerJson.modes_suspended || []).filter(dropNoiseMode);
+  if (modesSuspended.length) power.modesSuspended = modesSuspended;
+  const modesRequired = (powerJson.modes_required || []).filter(dropNoiseMode);
+  if (modesRequired.length) power.modesRequired = modesRequired;
+
   // Mechanic power type detection
   const showInManage = powerJson.show_in_manage !== false; // defaults to true
   const maxBoosts = powerJson.max_boosts || 0;

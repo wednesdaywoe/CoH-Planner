@@ -57,5 +57,8 @@ export const GroupEnergyFlightFree: Power = {
     },
     "buffDuration": 10
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.Group_Energy_Flight",
+  "modesRequired": [
+    "EnergyFlyOn"
+  ]
 };

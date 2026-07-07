@@ -71,5 +71,8 @@ export const BlackDwarfStep: Power = {
       "fly"
     ]
   },
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Warshade_Tanker_Mode"
+  ]
 };

@@ -118,5 +118,8 @@ export const EyeoftheStorm: Power = {
       "chance": 0.5,
       "label": "Smashing_Dmg"
     }
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

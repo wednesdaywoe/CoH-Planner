@@ -58,5 +58,8 @@ export const BrimstoneArmor: Power = {
       "resistance": 0.75
     },
     "buffDuration": 0.75
-  }
+  },
+  "modesSuspended": [
+    "Granite_Mode"
+  ]
 };

@@ -39,5 +39,8 @@ export const WhiteDwarfSublimation: Power = {
     "scale": 4.375,
     "table": "Melee_HealSelf"
   },
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

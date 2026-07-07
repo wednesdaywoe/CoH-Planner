@@ -57,5 +57,9 @@ export const Slug: Power = {
       "chance": 0.25,
       "label": "Knockback"
     }
+  ],
+  "setsModes": [
+    "FocusFire_Slug",
+    "PersonalAttack2"
   ]
 };

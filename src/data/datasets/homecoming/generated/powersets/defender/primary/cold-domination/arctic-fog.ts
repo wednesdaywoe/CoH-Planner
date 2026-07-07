@@ -136,5 +136,8 @@ export const ArcticFog: Power = {
       }
     },
     "buffDuration": 0.75
-  }
+  },
+  "setsModes": [
+    "Hidden_Attack"
+  ]
 };

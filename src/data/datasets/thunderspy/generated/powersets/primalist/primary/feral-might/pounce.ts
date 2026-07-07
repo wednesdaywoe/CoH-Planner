@@ -89,5 +89,8 @@ export const Pounce: Power = {
       }
     }
   ],
-  "requires": "Feral_Might.Feral_Might.Prowler_Form"
+  "requires": "Feral_Might.Feral_Might.Prowler_Form",
+  "modesRequired": [
+    "ProwlerMode"
+  ]
 };

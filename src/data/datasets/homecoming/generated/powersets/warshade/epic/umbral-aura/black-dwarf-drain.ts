@@ -87,5 +87,8 @@ export const BlackDwarfDrain: Power = {
     },
     "buffDuration": 6
   },
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Drain ! &&"
+  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Drain ! &&",
+  "modesRequired": [
+    "Warshade_Tanker_Mode"
+  ]
 };

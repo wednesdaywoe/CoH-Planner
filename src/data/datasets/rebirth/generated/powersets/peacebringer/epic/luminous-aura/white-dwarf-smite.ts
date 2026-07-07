@@ -100,5 +100,8 @@ export const WhiteDwarfSmite: Power = {
       "label": "Stun"
     }
   ],
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

@@ -49,6 +49,7 @@ import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
 import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
+import { computeModeSuppression, type ModeCarrier } from '@/utils/mode-suppression';
 import {
   isCalcDebugEnabled,
   debugBuildContext,
@@ -3386,7 +3387,7 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
   // into the caster's totals.
   const enrich = (
     power: { internalName?: string; isActive?: boolean; slots?: unknown },
-    def?: { targetType?: string; powerType?: string; effectArea?: string; effects?: unknown; conditionalEffects?: unknown },
+    def?: { targetType?: string; powerType?: string; effectArea?: string; effects?: unknown; conditionalEffects?: unknown; setsModes?: string[]; modesSuspended?: string[] },
   ): PowerWithToggle => {
     if (!def) return power as unknown as PowerWithToggle;
     return {
@@ -3399,6 +3400,10 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
       // Carry mode-/state-gated contributions so the calc can apply the
       // active ones (Bio Armor adaptation modes, …) — see expandActiveConditionals.
       conditionalEffects: def.conditionalEffects ?? (power as { conditionalEffects?: unknown }).conditionalEffects,
+      // Carry the mode flags so mode-suppression (Granite → other Stone toggles)
+      // can be resolved from the enriched active-power list.
+      setsModes: def.setsModes,
+      modesSuspended: def.modesSuspended,
     } as unknown as PowerWithToggle;
   };
 
@@ -3671,7 +3676,21 @@ export function calculateCharacterTotals(
   }
 
   // Step 4: Collect all powers
-  const allPowers = collectAllPowers(build);
+  const collectedPowers = collectAllPowers(build);
+
+  // Step 4.1: Mode suppression. When an active power sets a mode that suspends
+  // other active powers (Granite Armor suspends the other Stone Armor toggles;
+  // Kheldian forms suspend human toggles; Granite suspends travel toggles), the
+  // suppressed powers' own effects must NOT be summed — the game runs them but
+  // their armor/buff is off. Their slotted set bonuses still apply (that's a
+  // separate path via buildToBuildPowers), matching the game. Default-safe: no
+  // active mode-setter → empty map → identical totals.
+  const suppressedPowers = computeModeSuppression(
+    collectedPowers as unknown as ModeCarrier[],
+  );
+  const allPowers = suppressedPowers.size === 0
+    ? collectedPowers
+    : collectedPowers.filter((p) => !suppressedPowers.has(p.internalName));
 
   // Step 5: Get Alpha incarnate enhancement bonuses (apply to all powers including fitness)
   const alphaBonuses = getAlphaEnhancementBonuses(build.incarnates, incarnateActive, incarnatesSuppressed);

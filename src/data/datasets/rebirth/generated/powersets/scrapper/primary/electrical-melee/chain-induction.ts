@@ -76,5 +76,8 @@ export const ChainInduction: Power = {
       "chance": 0.05000000074505806,
       "label": "Energy_Dmg"
     }
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

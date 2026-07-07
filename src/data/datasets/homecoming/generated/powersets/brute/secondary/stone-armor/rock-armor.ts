@@ -62,5 +62,8 @@ export const RockArmor: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "Brute_Melee.Claws !"
+  "requires": "Brute_Melee.Claws !",
+  "modesSuspended": [
+    "Granite_Mode"
+  ]
 };

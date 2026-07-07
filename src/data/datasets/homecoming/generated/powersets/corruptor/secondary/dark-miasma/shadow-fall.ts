@@ -139,5 +139,8 @@ export const ShadowFall: Power = {
     },
     "effectDuration": 0.75,
     "buffDuration": 0.75
-  }
+  },
+  "setsModes": [
+    "Hidden_Attack"
+  ]
 };

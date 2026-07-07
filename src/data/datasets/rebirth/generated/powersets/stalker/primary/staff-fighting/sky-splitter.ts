@@ -123,5 +123,8 @@ export const SkySplitter: Power = {
         "buffDuration": 15
       }
     }
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

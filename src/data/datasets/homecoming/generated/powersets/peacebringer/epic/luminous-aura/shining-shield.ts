@@ -54,5 +54,9 @@ export const ShiningShield: Power = {
       "resistance": 0.75
     },
     "buffDuration": 0.75
-  }
+  },
+  "modesSuspended": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode"
+  ]
 };

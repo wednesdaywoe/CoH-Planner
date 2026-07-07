@@ -113,5 +113,8 @@ export const BlackDwarfSmite: Power = {
       "label": "Knockback"
     }
   ],
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Smite ! &&"
+  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Smite ! &&",
+  "modesRequired": [
+    "Warshade_Tanker_Mode"
+  ]
 };

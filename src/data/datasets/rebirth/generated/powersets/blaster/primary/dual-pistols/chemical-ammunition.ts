@@ -31,5 +31,8 @@ export const ChemicalAmmunition: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "requires": "Blaster_Ranged.Dual_Pistols.Swap_Ammo"
+  "requires": "Blaster_Ranged.Dual_Pistols.Swap_Ammo",
+  "modesRequired": [
+    "LethalAmmo"
+  ]
 };

@@ -73,5 +73,8 @@ export const WhiteDwarfStep: Power = {
     },
     "buffDuration": 3
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Step ! &&"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Step ! &&",
+  "modesRequired": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

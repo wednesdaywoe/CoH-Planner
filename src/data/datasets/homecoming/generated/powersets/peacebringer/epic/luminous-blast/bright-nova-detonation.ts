@@ -78,5 +78,8 @@ export const BrightNovaDetonation: Power = {
       "label": "Knockback"
     }
   ],
-  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Detonation ! &&"
+  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Detonation ! &&",
+  "modesRequired": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

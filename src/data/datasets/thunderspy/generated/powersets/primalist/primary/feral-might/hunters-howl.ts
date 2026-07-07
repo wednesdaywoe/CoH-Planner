@@ -39,5 +39,8 @@ export const HuntersHowl: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
-  "requires": "Feral_Might.Feral_Might.Hunter_Form"
+  "requires": "Feral_Might.Feral_Might.Hunter_Form",
+  "modesRequired": [
+    "HunterMode"
+  ]
 };

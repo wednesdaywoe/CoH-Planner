@@ -76,5 +76,8 @@ export const WhirlingSlice: Power = {
       "chance": 0.05000000074505806,
       "label": "Smashing_Dmg"
     }
+  ],
+  "modesRequired": [
+    "FastMode"
   ]
 };

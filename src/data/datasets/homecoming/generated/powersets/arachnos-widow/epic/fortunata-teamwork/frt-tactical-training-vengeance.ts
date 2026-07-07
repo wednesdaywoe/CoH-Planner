@@ -146,5 +146,8 @@ export const FRTTacticalTrainingVengeance: Power = {
     },
     "effectDuration": 120,
     "buffDuration": 120
-  }
+  },
+  "setsModes": [
+    "Vengeance_Mode"
+  ]
 };

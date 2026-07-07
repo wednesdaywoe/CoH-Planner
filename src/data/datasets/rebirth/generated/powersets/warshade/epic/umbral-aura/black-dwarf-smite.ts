@@ -115,5 +115,8 @@ export const BlackDwarfSmite: Power = {
       "label": "Stun"
     }
   ],
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Warshade_Tanker_Mode"
+  ]
 };

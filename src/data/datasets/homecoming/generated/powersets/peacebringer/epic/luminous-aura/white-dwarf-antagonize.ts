@@ -42,5 +42,8 @@ export const WhiteDwarfAntagonize: Power = {
       "table": "Melee_Taunt"
     }
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Antagonize ! &&"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Antagonize ! &&",
+  "modesRequired": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

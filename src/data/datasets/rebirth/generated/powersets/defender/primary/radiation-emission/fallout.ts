@@ -49,5 +49,8 @@ export const Fallout: Power = {
       "entity": "Pets_Fallout",
       "duration": 1
     }
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

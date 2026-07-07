@@ -45,5 +45,8 @@ export const OrbitingDeath: Power = {
     "table": "Melee_Damage",
     "duration": 2.5,
     "tickRate": 3
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

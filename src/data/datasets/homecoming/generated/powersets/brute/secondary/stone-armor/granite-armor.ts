@@ -185,5 +185,11 @@ export const GraniteArmor: Power = {
       }
     },
     "buffDuration": 0.75
-  }
+  },
+  "setsModes": [
+    "Suppress_FlyToggles",
+    "Suppress_RunToggles",
+    "Suppress_JumpToggles",
+    "Granite_Mode"
+  ]
 };

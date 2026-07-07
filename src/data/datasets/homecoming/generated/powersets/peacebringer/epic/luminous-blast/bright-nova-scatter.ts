@@ -59,5 +59,8 @@ export const BrightNovaScatter: Power = {
     },
     "buffDuration": 8
   },
-  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Scatter ! &&"
+  "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Scatter ! &&",
+  "modesRequired": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

@@ -52,5 +52,8 @@ export const BuildUp: Power = {
       "damageBuff",
       "tohitBuff"
     ]
-  }
+  },
+  "setsModes": [
+    "FastMode"
+  ]
 };

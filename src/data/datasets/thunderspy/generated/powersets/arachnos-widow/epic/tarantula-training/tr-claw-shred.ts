@@ -60,5 +60,8 @@ export const TRClawShred: Power = {
       "regenDebuff": 15
     },
     "buffDuration": 15
-  }
+  },
+  "modesRequired": [
+    "Widow_Tarantula_Mode"
+  ]
 };

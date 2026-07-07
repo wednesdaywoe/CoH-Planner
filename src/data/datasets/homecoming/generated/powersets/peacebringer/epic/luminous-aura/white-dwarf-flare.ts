@@ -73,5 +73,8 @@ export const WhiteDwarfFlare: Power = {
       "label": "Knockback"
     }
   ],
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Flare ! &&"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Flare ! &&",
+  "modesRequired": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

@@ -50,5 +50,8 @@ export const WhirlingSlice: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "modesRequired": [
+    "FastMode"
+  ]
 };

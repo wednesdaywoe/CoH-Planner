@@ -65,5 +65,9 @@ export const Vacuum: Power = {
       "label": "Hold"
     }
   ],
-  "requires": "accesslevel char> 0 >="
+  "requires": "accesslevel char> 0 >=",
+  "setsModes": [
+    "ClearSkies",
+    "CloudedSkies"
+  ]
 };

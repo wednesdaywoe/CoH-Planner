@@ -63,5 +63,10 @@ export const GroupEnergyFlight: Power = {
       "movement": 2.25
     },
     "buffDuration": 2.25
-  }
+  },
+  "modesSuspended": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Suppress_FlyToggles"
+  ]
 };

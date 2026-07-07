@@ -62,5 +62,8 @@ export const AquaBolt: Power = {
       "defenseDebuff": 8
     },
     "buffDuration": 8
-  }
+  },
+  "setsModes": [
+    "Wet"
+  ]
 };

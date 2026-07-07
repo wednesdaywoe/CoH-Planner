@@ -110,5 +110,10 @@ export const CombatFlight: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "Inherent.Inherent.Combat_Flight !"
+  "requires": "Inherent.Inherent.Combat_Flight !",
+  "modesSuspended": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Suppress_FlyToggles"
+  ]
 };

@@ -56,5 +56,8 @@ export const FollowThrough: Power = {
       "scale": 4,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "modesRequired": [
+    "FastMode"
+  ]
 };

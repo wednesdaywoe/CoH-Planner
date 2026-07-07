@@ -65,5 +65,8 @@ export const PulseRifleBurst: Power = {
       "chance": 0.4000000059604645,
       "label": "Knockback"
     }
+  ],
+  "setsModes": [
+    "PersonalAttack2"
   ]
 };

@@ -185,5 +185,8 @@ export const EyeoftheStorm: Power = {
       "chance": 0.4000000059604645,
       "label": "Knockback"
     }
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

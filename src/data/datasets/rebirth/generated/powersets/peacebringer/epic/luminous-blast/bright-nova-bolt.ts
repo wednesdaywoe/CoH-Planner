@@ -57,5 +57,8 @@ export const BrightNovaBolt: Power = {
     },
     "buffDuration": 3
   },
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

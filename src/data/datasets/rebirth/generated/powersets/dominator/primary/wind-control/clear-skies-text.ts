@@ -31,5 +31,8 @@ export const ClearSkiesText: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "requires": "Dominator_Control.Wind_Control.Vortex Dominator_Control.Wind_Control.Vacuum &&",
+  "modesRequired": [
+    "ClearSkies"
+  ],
   "mechanicType": "parentMechanic"
 };

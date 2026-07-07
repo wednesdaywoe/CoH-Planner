@@ -125,5 +125,12 @@ export const ShadowCloak: Power = {
       }
     },
     "buffDuration": 0.75
-  }
+  },
+  "setsModes": [
+    "Hidden_Attack"
+  ],
+  "modesSuspended": [
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ]
 };

@@ -46,5 +46,8 @@ export const TRMindLink: Power = {
       "defenseBuff": 90
     },
     "buffDuration": 90
-  }
+  },
+  "modesRequired": [
+    "Widow_Tarantula_Mode"
+  ]
 };

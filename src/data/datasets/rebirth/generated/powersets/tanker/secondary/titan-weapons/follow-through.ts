@@ -86,5 +86,8 @@ export const FollowThrough: Power = {
       "chance": 0.33000001311302185,
       "label": "Stun"
     }
+  ],
+  "modesRequired": [
+    "FastMode"
   ]
 };

@@ -86,5 +86,8 @@ export const Resurgence: Power = {
       "table": "Ranged_Debuff_ToHit"
     },
     "buffDuration": 90
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

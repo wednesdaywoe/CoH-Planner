@@ -101,5 +101,8 @@ export const Thaw: Power = {
       }
     },
     "buffDuration": 90
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

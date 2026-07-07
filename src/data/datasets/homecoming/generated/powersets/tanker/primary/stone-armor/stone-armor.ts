@@ -62,5 +62,8 @@ export const StoneArmor: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "Tanker_Melee.Claws !"
+  "requires": "Tanker_Melee.Claws !",
+  "modesSuspended": [
+    "Granite_Mode"
+  ]
 };

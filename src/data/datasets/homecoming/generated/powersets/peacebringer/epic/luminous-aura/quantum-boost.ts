@@ -45,5 +45,14 @@ export const QuantumBoost: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.Energy_Flight"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.Energy_Flight",
+  "modesSuspended": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Suppress_FlyToggles",
+    "Suppress_TravelToggles"
+  ],
+  "modesRequired": [
+    "FlyOn"
+  ]
 };

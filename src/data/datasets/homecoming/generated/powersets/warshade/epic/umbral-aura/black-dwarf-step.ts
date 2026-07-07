@@ -73,5 +73,8 @@ export const BlackDwarfStep: Power = {
     },
     "buffDuration": 3
   },
-  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Step ! &&"
+  "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Step ! &&",
+  "modesRequired": [
+    "Warshade_Tanker_Mode"
+  ]
 };

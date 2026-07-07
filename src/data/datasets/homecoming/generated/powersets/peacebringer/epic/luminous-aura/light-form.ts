@@ -151,5 +151,8 @@ export const LightForm: Power = {
       "recoveryBuff",
       "resistance"
     ]
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Light_Mode"
+  ]
 };

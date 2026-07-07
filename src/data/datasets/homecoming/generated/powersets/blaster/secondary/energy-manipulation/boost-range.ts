@@ -38,5 +38,8 @@ export const BoostRange: Power = {
       "rangeBuff": 30
     },
     "buffDuration": 30
-  }
+  },
+  "setsModes": [
+    "BoostRange"
+  ]
 };

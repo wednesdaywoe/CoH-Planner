@@ -31,5 +31,8 @@ export const EfficientAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "requires": "Scrapper_Defense.Bio_Organic_Armor.Evolution"
+  "requires": "Scrapper_Defense.Bio_Organic_Armor.Evolution",
+  "setsModes": [
+    "RestedAdaptation"
+  ]
 };

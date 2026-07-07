@@ -44,5 +44,8 @@ export const ReinforcedExoskeleton: Power = {
     "scale": 2,
     "table": "Melee_Res_DMG",
     "duration": 0.75
-  }
+  },
+  "modesRequired": [
+    "Widow_Tarantula_Mode"
+  ]
 };

@@ -146,5 +146,8 @@ export const NWTacticalTrainingVengeance: Power = {
     },
     "effectDuration": 120,
     "buffDuration": 120
-  }
+  },
+  "setsModes": [
+    "Vengeance_Mode"
+  ]
 };

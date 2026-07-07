@@ -77,5 +77,8 @@ export const QuantumFlight: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 0.75
-  }
+  },
+  "modesSuspended": [
+    "Suppress_FlyToggles"
+  ]
 };

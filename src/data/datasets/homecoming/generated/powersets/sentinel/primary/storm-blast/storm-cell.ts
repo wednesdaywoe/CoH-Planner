@@ -172,5 +172,8 @@ export const StormCell: Power = {
       "scope": "global",
       "defaultActive": false
     }
+  ],
+  "setsModes": [
+    "StormCell"
   ]
 };

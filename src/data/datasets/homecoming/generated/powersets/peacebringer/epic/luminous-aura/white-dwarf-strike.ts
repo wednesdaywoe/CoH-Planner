@@ -79,5 +79,8 @@ export const WhiteDwarfStrike: Power = {
       "label": "Knockback"
     }
   ],
-  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Strike ! &&"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Strike ! &&",
+  "modesRequired": [
+    "Peacebringer_Tanker_Mode"
+  ]
 };

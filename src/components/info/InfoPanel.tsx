@@ -48,6 +48,8 @@ import { resolveKheldianRedirect } from '@/data/datasets/rebirth/kheldian-redire
 import { KHELDIAN_FORM_VARIANT_POWERS } from '@/data/datasets/rebirth/kheldian-form-variants';
 import { resolvePrimalistRedirect, PRIMALIST_FORM_VARIANT_POWERS } from '@/data/datasets/thunderspy/primalist-redirects';
 import { getPowerset, stanceAdjusterOverrides } from '@/data';
+import { useModeSuppression } from '@/hooks/useModeSuppression';
+import { modeLabel } from '@/utils/mode-suppression';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
 import { MechanicAdjusters } from './MechanicAdjusters';
 import { DamageBlock } from './DamageBlock';
@@ -280,6 +282,9 @@ interface PowerInfoProps {
 function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const build = useBuildStore((s) => s.build);
   const archetypeId = build.archetype.id;
+  // Mode suppression — which build powers are currently suspended by an active
+  // mode-setter (Granite Armor suspends the other Stone toggles, etc.).
+  const modeSuppression = useModeSuppression();
   // Global "Storm Cell Active" / High Winds — when on, the storm pseudo-pet's
   // powered-up state applies (WindSpeed debuffs + lightning folded into damage).
   const stormCellActive = useGlobalAdjuster('stormblast_instormcell', false);
@@ -1050,6 +1055,26 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         <PowerMetaTags power={power} />
         {power.shortHelp && <ShortHelpChips shortHelp={power.shortHelp} />}
       </div>
+
+      {/* Mode gating — a "Requires: <mode>" note for powers only usable in a
+        * combat state (Momentum, Domination, form attacks), and a "Suspended by
+        * <power>" banner when an active mode-setter suspends this power's effects
+        * (Granite Armor suspends the other Stone toggles). Annotation for the
+        * former (build planners always slot these); the latter mirrors the
+        * totals calc, which drops the suspended power's contribution. */}
+      {power.modesRequired?.length ? (
+        <div className="text-[11px] text-amber-400/90">
+          Requires: {power.modesRequired.map(modeLabel).join(', ')}
+        </div>
+      ) : null}
+      {(() => {
+        const sup = modeSuppression.get(power.internalName);
+        return sup ? (
+          <div className="text-[11px] text-orange-300 bg-orange-500/10 border border-orange-500/30 rounded px-2 py-1">
+            Suspended by <span className="font-semibold">{sup.by}</span> — effects not applied while active.
+          </div>
+        ) : null;
+      })()}
 
       {/* Allowed Enhancements — its own wrapping section of chips so nothing
         * gets truncated. */}

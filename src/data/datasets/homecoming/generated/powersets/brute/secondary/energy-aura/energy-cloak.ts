@@ -106,5 +106,8 @@ export const EnergyCloak: Power = {
       }
     },
     "buffDuration": 0.75
-  }
+  },
+  "setsModes": [
+    "Hidden_Attack"
+  ]
 };

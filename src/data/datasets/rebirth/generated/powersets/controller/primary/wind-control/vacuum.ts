@@ -65,5 +65,8 @@ export const Vacuum: Power = {
       "chance": 0.20000000298023224,
       "label": "Hold"
     }
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

@@ -89,5 +89,8 @@ export const DarkNovaDetonation: Power = {
       "label": "Knockback"
     }
   ],
-  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Detonation ! &&"
+  "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Detonation ! &&",
+  "modesRequired": [
+    "Warshade_Blaster_Mode"
+  ]
 };

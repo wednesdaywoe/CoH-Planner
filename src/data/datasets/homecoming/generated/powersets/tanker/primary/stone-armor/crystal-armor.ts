@@ -68,5 +68,8 @@ export const CrystalArmor: Power = {
       "table": "Melee_Ones"
     },
     "buffDuration": 0.75
-  }
+  },
+  "modesSuspended": [
+    "Granite_Mode"
+  ]
 };

@@ -58,5 +58,8 @@ export const Vacuum: Power = {
       "scale": 8,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

@@ -52,5 +52,8 @@ export const PulseRifleBlast: Power = {
       "regenDebuff": 30
     },
     "buffDuration": 30
-  }
+  },
+  "setsModes": [
+    "PersonalAttack1"
+  ]
 };

@@ -66,5 +66,9 @@ export const WildRoar: Power = {
         }
       }
     }
+  ],
+  "modesRequired": [
+    "ProwlerMode",
+    "HunterMode"
   ]
 };

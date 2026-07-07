@@ -93,5 +93,8 @@ export const Elude: Power = {
       "jumpHeight",
       "runSpeed"
     ]
-  }
+  },
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
+  ]
 };

@@ -75,5 +75,8 @@ export const DarkNovaBolt: Power = {
     },
     "buffDuration": 3
   },
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Warshade_Blaster_Mode"
+  ]
 };

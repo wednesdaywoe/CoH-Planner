@@ -31,5 +31,11 @@ export const IncendiaryAmmunition: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
-  "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo"
+  "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo",
+  "setsModes": [
+    "FireAmmo"
+  ],
+  "modesRequired": [
+    "LethalAmmo"
+  ]
 };

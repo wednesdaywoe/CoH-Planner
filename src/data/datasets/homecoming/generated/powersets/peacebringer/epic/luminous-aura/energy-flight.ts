@@ -61,5 +61,14 @@ export const EnergyFlight: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "Inherent.Inherent.Energy_Flight !"
+  "requires": "Inherent.Inherent.Energy_Flight !",
+  "setsModes": [
+    "FlyOn"
+  ],
+  "modesSuspended": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Suppress_FlyToggles",
+    "Suppress_TravelToggles"
+  ]
 };

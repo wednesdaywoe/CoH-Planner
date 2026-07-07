@@ -91,5 +91,8 @@ export const BlackDwarfMire: Power = {
     },
     "buffDuration": 10
   },
-  "requires": "0"
+  "requires": "0",
+  "modesRequired": [
+    "Warshade_Tanker_Mode"
+  ]
 };

@@ -41,5 +41,11 @@ export const CryoAmmunition: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo"
+  "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo",
+  "setsModes": [
+    "IceAmmo"
+  ],
+  "modesRequired": [
+    "LethalAmmo"
+  ]
 };

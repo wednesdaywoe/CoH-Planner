@@ -92,5 +92,8 @@ export const Breathless: Power = {
       "chance": 0.5,
       "label": "Immobilized"
     }
+  ],
+  "setsModes": [
+    "Peacebringer_Blaster_Mode"
   ]
 };

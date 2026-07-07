@@ -55,5 +55,8 @@ export const EnergyFlightQuantumAcceleration: Power = {
     },
     "buffDuration": 0.75
   },
-  "requires": "Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration"
+  "requires": "Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration",
+  "modesRequired": [
+    "EnergyFlyOn"
+  ]
 };

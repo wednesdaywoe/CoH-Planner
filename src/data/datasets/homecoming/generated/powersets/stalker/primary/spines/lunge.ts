@@ -104,5 +104,8 @@ export const Lunge: Power = {
       "label": "Assassins Focus"
     }
   ],
-  "requires": "Stalker_Defense.Shield_Defense !"
+  "requires": "Stalker_Defense.Shield_Defense !",
+  "setsModes": [
+    "DD_StatusMode_1"
+  ]
 };

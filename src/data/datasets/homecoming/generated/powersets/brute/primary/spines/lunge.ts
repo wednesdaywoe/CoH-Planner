@@ -89,5 +89,8 @@ export const Lunge: Power = {
     },
     "buffDuration": 6
   },
-  "requires": "Brute_Defense.Shield_Defense !"
+  "requires": "Brute_Defense.Shield_Defense !",
+  "setsModes": [
+    "DD_StatusMode_1"
+  ]
 };
