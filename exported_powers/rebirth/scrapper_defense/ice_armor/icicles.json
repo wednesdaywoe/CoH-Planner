@@ -131,6 +131,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 27,
   "powerset": "Scrapper_Defense.Ice_Armor"
 }

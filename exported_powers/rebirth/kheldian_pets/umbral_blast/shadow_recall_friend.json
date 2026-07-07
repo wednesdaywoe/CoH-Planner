@@ -134,6 +134,14 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode",
+    "Disable_All",
+    "Disable_Recall"
+  ],
   "available_level": 0,
   "powerset": "Kheldian_Pets.Umbral_Blast"
 }

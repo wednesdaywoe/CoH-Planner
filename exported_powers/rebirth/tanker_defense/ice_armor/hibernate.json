@@ -515,6 +515,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Toggle"
+  ],
   "available_level": 31,
   "powerset": "Tanker_Defense.Ice_Armor"
 }

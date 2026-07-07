@@ -217,10 +217,16 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Pool",
+    "Disable_Epic"
   ],
   "available_level": 40,
   "powerset": "Epic.Mastermind_Soul_Mastery"

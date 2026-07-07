@@ -358,7 +358,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "HunterMode",
     "ProwlerMode",
     "Disable_Pool",

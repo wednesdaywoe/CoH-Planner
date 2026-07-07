@@ -684,6 +684,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Scrapper_Melee.Claws"
 }

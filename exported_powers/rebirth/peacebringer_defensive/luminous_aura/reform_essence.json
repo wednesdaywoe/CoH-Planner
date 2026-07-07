@@ -131,6 +131,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

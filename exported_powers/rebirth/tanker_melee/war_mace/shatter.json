@@ -375,6 +375,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 34,
   "powerset": "Tanker_Melee.War_Mace"
 }

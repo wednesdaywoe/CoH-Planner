@@ -81,7 +81,8 @@
           "stack_key": "4294967295",
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Human_Mode"
         }
       ]
     },

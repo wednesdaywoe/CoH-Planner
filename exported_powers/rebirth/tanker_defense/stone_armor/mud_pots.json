@@ -498,6 +498,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Tanker_Defense.Stone_Armor"
 }

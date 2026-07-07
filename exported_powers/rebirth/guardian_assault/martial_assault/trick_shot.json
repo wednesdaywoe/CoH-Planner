@@ -219,7 +219,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },
@@ -311,6 +312,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 1,
   "powerset": "Guardian_Assault.Martial_Assault"

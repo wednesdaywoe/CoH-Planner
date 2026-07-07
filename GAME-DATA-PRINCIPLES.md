@@ -13,7 +13,7 @@ of these; treat "power" in older examples as "whatever game data you're touching
 derived data) learned extending this beyond powers.
 
 This is the **principles reference**. The chronological issue log lives in
-[HOMECOMING_PARSER.md](streams/HOMECOMING_PARSER.md); project setup is in CLAUDE.md.
+[HOMECOMING_PARSER.md](docs/HOMECOMING_PARSER.md); project setup is in CLAUDE.md.
 
 ---
 
@@ -222,7 +222,7 @@ silently no-ops on Rebirth.
 Both formats land the same effect **keys** in base, so attribute by key when a
 feature must work on both. Worked example: Dual Pistols Swap Ammo keys on
 `defenseDebuff`/`rechargeDebuff`/`damageDebuff`, not HC ammo `Tag`s — see the DP
-entry in [HOMECOMING_PARSER.md](streams/HOMECOMING_PARSER.md).
+entry in [HOMECOMING_PARSER.md](docs/HOMECOMING_PARSER.md).
 
 **When a format DROPS a discriminator field, a byte-level relabel can't reconstruct
 the semantic — you need an out-of-band signal, and an adversarial audit to find where

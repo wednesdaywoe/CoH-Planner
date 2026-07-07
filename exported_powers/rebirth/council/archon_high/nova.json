@@ -43,7 +43,203 @@
     116,
     132
   ],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Smashing_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Damage",
+          "scale": 0.5,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Damage",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 0.75,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Damage",
+          "scale": 0.5,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.75,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 0.05000000074505806,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Damage",
+          "scale": 0.5,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.05000000074505806,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Knockback"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Knockback",
+          "scale": 10.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    }
+  ],
   "available_level": 0,
   "powerset": "Council.Archon_High"
 }

@@ -49,7 +49,486 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Smashing_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 0.75,
+          "duration": "2.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Lethal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 0.75,
+          "duration": "2.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Fire_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 0.75,
+          "duration": "2.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Cold_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 0.75,
+          "duration": "2.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 0.75,
+          "duration": "2.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Negative_Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 0.75,
+          "duration": "2.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 0.75,
+          "duration": "2.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Psionic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 0.75,
+          "duration": "2.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Taunt"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Ranged_Res_Boolean",
+          "scale": 1.75,
+          "duration": "2.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Placate"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Ranged_Res_Boolean",
+          "scale": 1.75,
+          "duration": "2.10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Unlimited",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "cancel_events": [
+            "Damaged",
+            "Event_19",
+            "Event_22"
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    }
+  ],
   "available_level": 0,
   "powerset": "Incarnate.Lore_Pet_Lights_Support"
 }

@@ -47,7 +47,19 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "modes_required": [
+  "redirect": [
+    {
+      "name": "Pets.Pool_Medicine_AidOther.AidOther_NoInterrupt",
+      "condition_expression": "Pool.Medicine.Field_Medic source.ownPower?",
+      "show_in_info": false
+    },
+    {
+      "name": "Pets.Pool_Medicine_AidOther.AidOther_Interrupt",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
+  "modes_disallowed": [
     "HunterMode",
     "ProwlerMode",
     "Disable_Pool",
@@ -56,9 +68,6 @@
     "Peacebringer_Tanker_Mode",
     "Warshade_Blaster_Mode",
     "Warshade_Tanker_Mode"
-  ],
-  "modes_suspended": [
-    "Disable_Walk"
   ],
   "available_level": 0,
   "powerset": "Pool.Medicine"

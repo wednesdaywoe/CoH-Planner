@@ -95,6 +95,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Corruptor_Ranged.Fire_Blast"
 }

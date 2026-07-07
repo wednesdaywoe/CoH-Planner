@@ -122,6 +122,9 @@
     }
   ],
   "modes_required": [
+    "MightyLeapOn"
+  ],
+  "modes_disallowed": [
     "Disable_Travel",
     "Disable_All",
     "Disable_Pool",

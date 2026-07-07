@@ -90,6 +90,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Mastermind_Pets.Alpha_Wolf_2"
 }

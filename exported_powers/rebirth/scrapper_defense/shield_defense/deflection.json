@@ -362,6 +362,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 1,
   "powerset": "Scrapper_Defense.Shield_Defense"
 }

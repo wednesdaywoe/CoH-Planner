@@ -44,5 +44,10 @@ export const CrushingBlow: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.7548,
+    "table": "Melee_Damage"
+  },
   "requires": "Tanker_Defense.Shield_Defense !"
 };

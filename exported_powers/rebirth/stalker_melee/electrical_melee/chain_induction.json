@@ -289,7 +289,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },
@@ -664,6 +665,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 17,
   "powerset": "Stalker_Melee.Electrical_Melee"

@@ -151,6 +151,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 25,
   "powerset": "Dominator_Control.Darkness_Control"
 }

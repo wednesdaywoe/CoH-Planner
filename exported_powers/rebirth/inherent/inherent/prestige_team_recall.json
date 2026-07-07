@@ -125,6 +125,12 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Temp",
+    "Disable_All",
+    "Disable_Teleport",
+    "Disable_Recall"
+  ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

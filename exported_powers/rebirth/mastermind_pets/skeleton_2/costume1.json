@@ -88,6 +88,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Mastermind_Upgrade_2"
+  ],
   "available_level": 0,
   "powerset": "Mastermind_Pets.Skeleton_2"
 }

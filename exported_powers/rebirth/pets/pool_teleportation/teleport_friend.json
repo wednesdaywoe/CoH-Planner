@@ -134,6 +134,13 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Pool",
+    "Disable_All",
+    "Disable_Recall",
+    "HunterMode",
+    "ProwlerMode"
+  ],
   "available_level": 0,
   "powerset": "Pets.Pool_Teleportation"
 }

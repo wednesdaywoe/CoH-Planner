@@ -243,7 +243,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Tanker_Mode",
     "Disable_All"

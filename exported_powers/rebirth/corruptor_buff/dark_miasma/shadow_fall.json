@@ -950,6 +950,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Corruptor_Buff.Dark_Miasma"
 }

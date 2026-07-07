@@ -310,6 +310,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

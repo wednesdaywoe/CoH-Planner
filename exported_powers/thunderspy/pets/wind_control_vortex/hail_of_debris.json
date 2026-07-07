@@ -95,7 +95,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "CloudedSkies"
   ],
   "available_level": 0,

@@ -553,6 +553,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Teamwork.Widow_Teamwork"
 }

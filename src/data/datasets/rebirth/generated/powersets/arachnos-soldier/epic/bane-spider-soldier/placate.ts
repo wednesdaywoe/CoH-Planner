@@ -30,5 +30,30 @@ export const Placate: Power = {
     "Range",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "placate": {
+      "scale": 10,
+      "table": "Melee_Taunt"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 54,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 500,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "stealth": 10,
+      "tohitBuff": 10
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
+    },
+    "buffDuration": 10
+  }
 };

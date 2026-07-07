@@ -1316,6 +1316,15 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "HunterMode",
+    "ProwlerMode",
+    "Disable_All",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 0,
   "powerset": "Pool.Leaping"
 }

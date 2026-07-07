@@ -1158,6 +1158,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Brute_Defense.Shield_Defense"
 }

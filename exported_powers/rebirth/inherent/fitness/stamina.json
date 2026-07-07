@@ -87,6 +87,14 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "ServerTrayOverride",
+    "Warshade_Form_Change",
+    "Disable_Inspiration_Small"
+  ],
   "available_level": 1,
   "powerset": "Inherent.Fitness"
 }

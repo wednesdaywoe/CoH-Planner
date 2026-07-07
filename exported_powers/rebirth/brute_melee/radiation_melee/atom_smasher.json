@@ -553,6 +553,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Brute_Melee.Radiation_Melee"
 }

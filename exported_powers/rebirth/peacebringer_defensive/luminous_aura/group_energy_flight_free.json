@@ -278,6 +278,13 @@
       ]
     }
   ],
+  "modes_required": [
+    "EnergyFlyOn"
+  ],
+  "modes_disallowed": [
+    "Peacebringer_Form_Change",
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

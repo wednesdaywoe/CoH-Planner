@@ -710,6 +710,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 25,
   "powerset": "Stalker_Melee.Psionic_Melee"
 }

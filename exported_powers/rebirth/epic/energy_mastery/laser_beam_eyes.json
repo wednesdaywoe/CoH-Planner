@@ -336,6 +336,11 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Pool",
+    "Disable_Epic"
+  ],
   "available_level": 40,
   "powerset": "Epic.Energy_Mastery"
 }

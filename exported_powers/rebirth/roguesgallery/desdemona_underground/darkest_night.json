@@ -42,7 +42,383 @@
     112,
     136
   ],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Smashing_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 3.0,
+          "duration": "20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Lethal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 3.0,
+          "duration": "20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Fire_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 3.0,
+          "duration": "20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Cold_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 3.0,
+          "duration": "20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 3.0,
+          "duration": "20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Negative_Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 3.0,
+          "duration": "20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 3.0,
+          "duration": "20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Psionic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 3.0,
+          "duration": "20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "ToHit"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_DeBuff_ToHit",
+          "scale": 1.5,
+          "duration": "20 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    }
+  ],
   "available_level": 0,
   "powerset": "RoguesGallery.Desdemona_Underground"
 }

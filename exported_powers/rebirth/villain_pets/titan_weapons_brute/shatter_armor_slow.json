@@ -768,6 +768,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Villain_Pets.Titan_Weapons_Brute"
 }

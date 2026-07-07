@@ -37,5 +37,19 @@ export const AssassinsCorruption: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": [
+    {
+      "type": "Smashing",
+      "scale": 0.625,
+      "table": "Melee_Damage"
+    },
+    {
+      "type": "Smashing",
+      "scale": 1.4,
+      "table": "Melee_Damage"
+    }
+  ],
+  "fromHideBonus": 0.4419889502762431,
+  "midCombatCast": 1
 };

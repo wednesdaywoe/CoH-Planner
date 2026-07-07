@@ -715,7 +715,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "Disable_All",
     "Widow_Tarantula_Mode",
     "Peacebringer_Blaster_Mode",

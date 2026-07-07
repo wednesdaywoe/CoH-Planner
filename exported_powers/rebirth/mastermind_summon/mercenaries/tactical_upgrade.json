@@ -43,7 +43,888 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Soldier target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Soldier target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Soldier_3.Assault_Rifle_Auto_Fire"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Soldier target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Soldier target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Soldier_3.Assault_Rifle_Burst"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Soldier target.VillainName> Mastermind_Pets.Soldier_2.Assault_Rifle_Heavy_Burst target.ownPower? ! &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Soldier target.VillainName> Mastermind_Pets.Soldier_2.Assault_Rifle_Heavy_Burst target.ownPower? ! &&",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Soldier_3.Assault_Rifle_Heavy_Burst"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Soldier target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Soldier target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Soldier_3.Tactical_Upgrade"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Soldier target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Soldier target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Soldier.ASMG_Burst"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Soldier target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Soldier target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Soldier_2.ASMG_Heavy_Burst"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Medic target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 12.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Medic target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Medic_3.Stimulant"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Medic target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Medic target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Medic_3.Frag_Grenade"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Medic target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Medic target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Medic_3.Tactical_Upgrade"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Spec_Ops target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Spec_Ops target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Spec_Ops_3.SCAR_Snipe"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Spec_Ops target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Spec_Ops target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Spec_Ops_3.Tear_Gas"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Spec_Ops target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Spec_Ops target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Spec_Ops_3.Stealth"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Spec_Ops target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Spec_Ops target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Spec_Ops_3.Tactical_Upgrade"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Commando target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Commando target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Commando_3.M30_Grenade"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Commando target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Commando target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Commando_3.Flamethrower"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Commando target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Commando target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Commando_3.LRM_Rocket"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Commando target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Commando target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Commando_3.Tactical_Upgrade"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Evade"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 100.0,
+          "duration": "11 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ]
+        }
+      ]
+    }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Mastermind_Summon.Mercenaries"
 }

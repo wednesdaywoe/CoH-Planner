@@ -200,7 +200,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "Disable_All",
     "Disable_Travel",
     "Disable_Teleport",

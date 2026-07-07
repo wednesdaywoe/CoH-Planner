@@ -54,11 +54,20 @@
     128
   ],
   "effects": [],
-  "modes_required": [
-    "Disable_All"
+  "redirect": [
+    {
+      "name": "Pets.Water_Blast_Blaster.Water_Jet_Fast",
+      "condition_expression": "Temporary_Powers.Temporary_Powers.Tidal_Power source.ownPowerNum? 3 == temporary_powers.temporary_powers.enhanced_water_jet_lock source.ownPower? ! &&",
+      "show_in_info": false
+    },
+    {
+      "name": "Pets.Water_Blast_Blaster.Water_Jet_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
   ],
-  "modes_suspended": [
-    "DD_BonusAoEMode_1"
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 7,
   "powerset": "Blaster_Ranged.Water_Blast"

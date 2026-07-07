@@ -129,6 +129,14 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
+  "modes_suspended": [
+    "ServerTrayOverride",
+    "Warshade_Blaster_Mode",
+    "Disable_Pool"
+  ],
   "available_level": 1,
   "powerset": "Inherent.Fitness"
 }

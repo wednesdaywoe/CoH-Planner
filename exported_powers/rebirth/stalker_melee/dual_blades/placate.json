@@ -1055,6 +1055,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 11,
   "powerset": "Stalker_Melee.Dual_Blades"
 }

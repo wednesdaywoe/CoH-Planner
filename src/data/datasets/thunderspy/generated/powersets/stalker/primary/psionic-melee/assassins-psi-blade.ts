@@ -37,5 +37,12 @@ export const AssassinsPsiBlade: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.875,
+    "table": "Melee_Damage"
+  },
+  "fromHideBonus": 0.4571428571428571,
+  "midCombatCast": 1
 };

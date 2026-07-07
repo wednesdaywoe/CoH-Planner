@@ -39,7 +39,877 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "ToHit"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_ToHit",
+          "scale": 1.0,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Smashing_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 4.0,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Lethal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 4.0,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Fire_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 4.0,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Cold_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 4.0,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 4.0,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Negative_Energy_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 4.0,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 4.0,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Psionic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Buff_Dmg",
+          "scale": 4.0,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 1.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 10.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 20.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 30.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 0.949999988079071,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 40.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.949999988079071,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 0.8999999761581421,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 50.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.8999999761581421,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 0.8500000238418579,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 60.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.8500000238418579,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 0.800000011920929,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 70.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.800000011920929,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 0.75,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 80.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.75,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 0.699999988079071,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Levelminus2",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 90.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.699999988079071,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "NPC_Pets_MA_Living_Hellfire",
+            "priority_list": "PL_FightPreferMelee"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 17,
   "powerset": "Mission_Maker_Attacks.Demon_Summoning"
 }

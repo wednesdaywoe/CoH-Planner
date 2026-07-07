@@ -4,6 +4,8 @@
   "MastermindPets_Ghost_Minion": 300,
   "MastermindPets_Living_Hellfire": 90,
   "Pets_Blast_Radius": 1,
+  "Pets_Bomb": 15,
+  "Pets_Bomb_Defender": 15,
   "Pets_Creeper_Entangle": 2,
   "Pets_Creeper_Vine": 15,
   "Pets_Dominating_Grasp_Pet": 20,
@@ -27,5 +29,7 @@
   "Pets_Thug_Pose_09": 120,
   "Pets_Traps_Poison_Gas": 30,
   "Pets_Traps_Poison_Gas_Defender": 30,
+  "Pets_Traps_TimeBomb": 2,
+  "Pets_Traps_TimeBomb_Defender": 2,
   "Pets_Warshade_Extraction": 200
 }

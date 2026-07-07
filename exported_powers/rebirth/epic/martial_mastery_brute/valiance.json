@@ -223,6 +223,11 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Pool",
+    "Disable_Epic"
+  ],
   "available_level": 43,
   "powerset": "Epic.Martial_Mastery_Brute"
 }

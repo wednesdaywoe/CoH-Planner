@@ -125,6 +125,12 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Temp",
+    "Disable_Travel",
+    "Disable_All",
+    "Disable_Toggle"
+  ],
   "available_level": 2,
   "powerset": "Inherent.Inherent"
 }

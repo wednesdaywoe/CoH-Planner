@@ -37,5 +37,12 @@ export const AssassinsReave: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Negative",
+    "scale": 1.25,
+    "table": "Melee_Damage"
+  },
+  "fromHideBonus": 0.5333333333333334,
+  "midCombatCast": 1
 };

@@ -39,7 +39,339 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Taunt"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "CircleOfThorns_CoTPortal_Behemoth",
+            "priority_list": "PL_FightPreferRanged"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 2.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "CircleOfThorns_CoTPortal_Behemoth",
+            "priority_list": "PL_FightPreferRanged"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 0.4000000059604645,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 5.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.4000000059604645,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "CircleOfThorns_CoTPortal_Behemoth_Lt",
+            "priority_list": "PL_FightPreferRanged"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 0.05000000074505806,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 8.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.05000000074505806,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "CircleOfThorns_CoTPortal_Behemoth_Boss",
+            "priority_list": "PL_FightPreferRanged"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 0.10000000149011612,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "group target> Pets eq group target> MastermindPets eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.10000000149011612,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "group target> Pets eq group target> MastermindPets eq ||",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "CircleOfThorns_CoTPortal_Behemoth",
+            "priority_list": "PL_FightPreferRanged"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 0.05000000074505806,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "group target> Pets eq group target> MastermindPets eq ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Create_Entity"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": -1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 8.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.05000000074505806,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "group target> Pets eq group target> MastermindPets eq ||",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "EntCreate",
+            "entity_def": "CircleOfThorns_CoTPortal_Behemoth_Boss",
+            "priority_list": "PL_FightPreferRanged"
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    }
+  ],
   "available_level": 0,
   "powerset": "CircleOfThorns.CoT_Portal"
 }

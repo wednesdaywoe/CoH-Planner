@@ -728,6 +728,15 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Walk",
+    "Disable_Travel",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode",
+    "Disable_RocketBoard"
+  ],
   "available_level": 1,
   "powerset": "Inherent.Inherent"
 }

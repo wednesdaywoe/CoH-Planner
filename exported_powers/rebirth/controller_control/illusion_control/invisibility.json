@@ -1102,6 +1102,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Controller_Control.Illusion_Control"
 }

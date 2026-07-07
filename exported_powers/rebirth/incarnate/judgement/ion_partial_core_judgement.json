@@ -211,7 +211,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },
@@ -375,6 +376,11 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Epic",
+    "Disable_Incarnate"
   ],
   "available_level": 0,
   "powerset": "Incarnate.Judgement"

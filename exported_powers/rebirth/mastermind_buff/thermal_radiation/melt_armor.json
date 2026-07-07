@@ -429,6 +429,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Mastermind_Buff.Thermal_Radiation"
 }

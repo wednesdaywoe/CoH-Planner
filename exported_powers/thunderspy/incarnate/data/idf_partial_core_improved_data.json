@@ -133,7 +133,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "Disable_All",
     "Disable_Epic"
   ],

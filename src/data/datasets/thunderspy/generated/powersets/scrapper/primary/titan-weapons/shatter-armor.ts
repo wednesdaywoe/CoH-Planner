@@ -39,5 +39,10 @@ export const ShatterArmor: Power = {
     "Scrapper Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 3.212,
+    "table": "Melee_Damage"
+  }
 };

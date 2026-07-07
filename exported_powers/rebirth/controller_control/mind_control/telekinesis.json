@@ -211,6 +211,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Defiant"
+  ],
   "available_level": 11,
   "powerset": "Controller_Control.Mind_Control"
 }

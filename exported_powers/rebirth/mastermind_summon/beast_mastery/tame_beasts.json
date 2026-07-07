@@ -43,7 +43,795 @@
   "activate_requires": "",
   "target_requires": "",
   "attack_types": [],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Howler_Wolf target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Howler_Wolf target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Howler_Wolf_3.Howl"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Howler_Wolf target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Howler_Wolf target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Howler_Wolf_3.Throat_Bite"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Howler_Wolf target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Howler_Wolf target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Howler_Wolf_3.PM_Throat_Bite"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Howler_Wolf target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Howler_Wolf target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Howler_Wolf_3.Tame_Beasts"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Howler_Wolf_Alpha target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Howler_Wolf_Alpha target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Alpha_Wolf_3.Howl"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Howler_Wolf_Alpha target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Howler_Wolf_Alpha target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Alpha_Wolf_3.Lick_Wounds"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Howler_Wolf_Alpha target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Howler_Wolf_Alpha target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Alpha_Wolf_3.Tame_Beasts"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Lioness target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Lioness target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Lioness_3.Claw_Swipe"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Lioness target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Lioness target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Lioness_3.PM_Claw_Swipe"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Lioness target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Lioness target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Lioness_3.Ferocious_Growl"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Lioness target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Lioness target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Lioness_3.PM_Ferocious_Growl"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Lioness target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Lioness target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Lioness_3.Tame_Beasts"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Dire_Wolf target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Dire_Wolf target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Dire_Wolf_3.Terrible_Howl"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Dire_Wolf target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Dire_Wolf target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Dire_Wolf_3.PM_Terrible_Howl"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Dire_Wolf target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Dire_Wolf target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Dire_Wolf_3.Will_of_the_Wild"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "MastermindPets_Dire_Wolf target.VillainName>",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "MastermindPets_Dire_Wolf target.VillainName>",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Mastermind_Pets.Dire_Wolf_3.Tame_Beasts"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Mastermind_Summon.Beast_Mastery"
 }

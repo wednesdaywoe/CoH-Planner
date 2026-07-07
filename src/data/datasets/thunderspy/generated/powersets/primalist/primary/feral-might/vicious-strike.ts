@@ -41,5 +41,10 @@ export const ViciousStrike: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.5,
+    "table": "Melee_Damage"
+  }
 };

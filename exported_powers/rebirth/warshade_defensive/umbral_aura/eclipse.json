@@ -517,6 +517,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Warshade_Blaster_Mode",
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

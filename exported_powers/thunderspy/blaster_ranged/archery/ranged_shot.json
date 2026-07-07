@@ -53,11 +53,20 @@
     120
   ],
   "effects": [],
-  "modes_required": [
-    "Disable_All"
+  "redirect": [
+    {
+      "name": "Pets.Blaster_Archery_Snipe.Ranged_Shot_Quick",
+      "condition_expression": "cur.kToHit source> .97 >=",
+      "show_in_info": false
+    },
+    {
+      "name": "Pets.Blaster_Archery_Snipe.Ranged_Shot_Normal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
   ],
-  "modes_suspended": [
-    "Mastermind_Upgrade_1"
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 25,
   "powerset": "Blaster_Ranged.Archery"

@@ -204,10 +204,14 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": "4294967295",
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 9,
   "powerset": "Tanker_Melee.Dual_Blades"

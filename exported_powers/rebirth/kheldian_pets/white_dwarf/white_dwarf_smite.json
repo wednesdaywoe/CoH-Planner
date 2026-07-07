@@ -500,6 +500,12 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode",
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Kheldian_Pets.White_Dwarf"
 }

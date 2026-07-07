@@ -80,10 +80,15 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Temp"
   ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"

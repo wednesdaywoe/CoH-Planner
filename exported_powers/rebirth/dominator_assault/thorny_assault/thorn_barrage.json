@@ -338,6 +338,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Dominator_Assault.Thorny_Assault"
 }

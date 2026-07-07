@@ -260,6 +260,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 1,
   "powerset": "Guardian_Assault.Gun_Fu"
 }

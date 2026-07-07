@@ -331,7 +331,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "Warshade_Blaster_Mode",
     "Disable_All"
   ],

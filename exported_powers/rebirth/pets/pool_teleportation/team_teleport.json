@@ -312,6 +312,14 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Pool",
+    "Disable_Travel",
+    "Disable_Teleport",
+    "Disable_All",
+    "HunterMode",
+    "ProwlerMode"
+  ],
   "available_level": 0,
   "powerset": "Pets.Pool_Teleportation"
 }

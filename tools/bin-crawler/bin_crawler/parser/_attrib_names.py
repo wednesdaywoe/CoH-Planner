@@ -36,6 +36,20 @@ a mode that postdates the oracle snapshot, not a mapping error). Mode indices ar
 **per-server** — each server's ``attrib_names.bin`` reorders them, so parse the
 table from the same source you parsed ``powers.bin`` from.
 
+Parse6 (Rebirth) layout differs: no string table. The payload is a u4 total
+size followed by the AttribNames sub-arrays back to back, each a u4 count of
+size-prefixed records (u4 byte size EXCLUDING the size word itself, then
+inline pascal strings: name, display, plus one trailing u4). The mode
+sub-array is identified by its anchor: its first record is always the
+``ServerTrayOverride`` system slot (index 0), same as HC. Verified (Rebirth
+2026-07-07): 7 sub-arrays (Damage/Defense/Boost/Group/Mode/Elusivity/
+StackKeys), mode array = 139 records; index 36 ``Domination`` / 37
+``Domination_Active`` / 98 ``FastMode`` / 113 ``DefensiveAdaptation`` confirmed
+against powers.bin mode gates (Titan Weapons Follow_Through requires 98, DP
+ammo toggles require 73, everything disallows 18 ``Disable_All`` — mirroring
+HC's exports). Thunderspy's attrib_names.bin is Parse7-wrapped and parses via
+the Parse7 heuristic unchanged (123 modes, same anchor).
+
 Note on mag==1: mode #1 is ``Peacebringer_Blaster_Mode`` (Bright Nova). This
 used to be unresolvable because attrib index 118 collapsed three distinct
 engine attribs — ``kXPDebtProtection`` / ``kSetMode`` / ``kSetCostume`` — onto
@@ -52,9 +66,14 @@ from __future__ import annotations
 
 import re
 
-from ._reader import BinReader
+from ._reader import BinReader, Parse6BinReader, open_parse7
 
 _IDENT_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_]*$")
+
+# The mode sub-array's first record on every known server: a system slot no
+# player power sets. Used as the anchor to identify the mode array among the
+# same-shaped AttribNames sub-arrays in the Parse6 layout.
+_MODE_ANCHOR = "ServerTrayOverride"
 
 # Minimum plausible length for the mode run — guards against a stray short run
 # of same-shaped records being mistaken for the mode table.
@@ -71,6 +90,12 @@ def parse_mode_table(data: bytes) -> dict[int, str]:
     unexpected layout on a server variant), so callers degrade to emitting no
     mode names rather than crashing.
     """
+    try:
+        br = open_parse7(data)
+    except Exception:
+        return {}
+    if isinstance(br, Parse6BinReader):
+        return _parse_mode_table_parse6(br)
     try:
         br = BinReader(data)
     except Exception:
@@ -140,3 +165,34 @@ def parse_mode_table(data: bytes) -> dict[int, str]:
         if name:
             table[i] = name
     return table
+
+
+def _parse_mode_table_parse6(br: Parse6BinReader) -> dict[int, str]:
+    """Parse6 (Rebirth) variant: walk the AttribNames sub-arrays and return
+    the one anchored by ``ServerTrayOverride``. Each sub-array is a u4 count
+    of records; each record is a u4 byte size (excluding the size word)
+    followed by two inline pascal strings (name, display) and a trailing u4.
+    """
+    try:
+        br.read_u4()  # total payload size
+        while br.remaining() >= 4:
+            count = br.read_u4()
+            if count > 10000:  # implausible — bail rather than loop on garbage
+                return {}
+            names: list[str] = []
+            for _ in range(count):
+                if br.remaining() < 4:
+                    return {}
+                size = br.read_u4()
+                start = br.pos
+                name = br.read_string()
+                consumed = br.pos - start
+                if size < consumed or size > br.remaining() + consumed:
+                    return {}
+                br.skip(size - consumed)  # display string + trailing u4
+                names.append(name)
+            if names and names[0] == _MODE_ANCHOR:
+                return {i: n for i, n in enumerate(names) if n}
+    except Exception:
+        pass
+    return {}

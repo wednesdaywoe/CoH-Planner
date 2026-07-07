@@ -247,7 +247,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "Warshade_Blaster_Mode",
     "Warshade_Tanker_Mode",
     "Disable_All"

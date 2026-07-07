@@ -251,6 +251,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 43,
   "powerset": "Epic.Primal_Forces_Mastery_Dominator"
 }

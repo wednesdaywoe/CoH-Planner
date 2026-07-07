@@ -323,6 +323,17 @@
       ]
     }
   ],
+  "modes_required": [
+    "Warshade_Tanker_Mode"
+  ],
+  "modes_disallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Disable_Travel",
+    "Disable_Teleport",
+    "Disable_All"
+  ],
   "available_level": 19,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

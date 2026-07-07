@@ -690,7 +690,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },
@@ -1155,7 +1156,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },
@@ -1198,7 +1200,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },
@@ -1241,7 +1244,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },
@@ -1284,10 +1288,14 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 34,
   "powerset": "Brute_Defense.Willpower"

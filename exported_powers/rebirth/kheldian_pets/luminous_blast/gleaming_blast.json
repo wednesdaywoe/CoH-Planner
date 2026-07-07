@@ -255,6 +255,11 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Tanker_Mode",
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Kheldian_Pets.Luminous_Blast"
 }

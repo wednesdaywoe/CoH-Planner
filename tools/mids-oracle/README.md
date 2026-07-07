@@ -2,7 +2,7 @@
 
 A Linux-native reader for the Mids Reborn `I12.mhd` power database, used as a
 **structural oracle** for the Deductive Schema Harness
-([streams/DEDUCTIVE_SCHEMA_HARNESS.md](../../streams/DEDUCTIVE_SCHEMA_HARNESS.md)).
+([streams/DEDUCTIVE_SCHEMA_HARNESS.md](../../docs/DEDUCTIVE_SCHEMA_HARNESS.md)).
 Mids models a power the same way the game and our bin parser do — a flat array of
 atomic, single-attrib effect records at *template granularity* — so it is a clean
 parser-to-parser structural diff, **no Mids calc engine required**.

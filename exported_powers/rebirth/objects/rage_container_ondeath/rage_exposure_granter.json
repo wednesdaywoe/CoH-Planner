@@ -44,7 +44,311 @@
     124,
     120
   ],
-  "effects": [],
+  "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq Temporary_Powers.Temporary_Powers.Rage_Exposure_Side_Effect_Lock target.ownPower? ! &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq Temporary_Powers.Temporary_Powers.Rage_Exposure_Side_Effect_Lock target.ownPower? ! &&",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Rage_Exposure_Side_Effect_Lock"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Rage_Exposure"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "enttype target> player eq Temporary_Powers.Temporary_Powers.Rage_Exposure_Side_Effect_Launcher target.ownPower? ! &&",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "PVP_ONLY",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Null"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 3.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "enttype target> player eq Temporary_Powers.Temporary_Powers.Rage_Exposure_Side_Effect_Launcher target.ownPower? ! &&",
+          "caster_stack": "Individual",
+          "stack": "Ignore",
+          "stack_limit": 2,
+          "stack_key": "4294967295",
+          "params": {
+            "type": "Power",
+            "power_names": [
+              "Temporary_Powers.Temporary_Powers.Rage_Exposure_Side_Effect_Launcher"
+            ]
+          },
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ]
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@ToHitRoll @ToHit < @ForceHit ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Lethal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Damage",
+          "scale": 0.7,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "@ToHitRoll @ToHit < @ForceHit ||",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@ToHitRoll @ToHit < @ForceHit ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Fire_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Damage",
+          "scale": 0.7,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "@ToHitRoll @ToHit < @ForceHit ||",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 0.5,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@ToHitRoll @ToHit < @ForceHit ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Stunned"
+          ],
+          "type": "Duration",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Stun",
+          "scale": 12.0,
+          "duration": "0 seconds",
+          "magnitude": 2.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.5,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "@ToHitRoll @ToHit < @ForceHit ||",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    },
+    {
+      "chance": 0.5,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": "@ToHitRoll @ToHit < @ForceHit ||",
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Knockback"
+          ],
+          "type": "Magnitude",
+          "application_type": "Immediate",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Knockback",
+          "scale": 2.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": "",
+          "magnitude_expression": "",
+          "application_period": 0.0,
+          "tick_chance": 0.5,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": "@ToHitRoll @ToHit < @ForceHit ||",
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": "4294967295"
+        }
+      ]
+    }
+  ],
   "available_level": 0,
   "powerset": "Objects.Rage_Container_OnDeath"
 }

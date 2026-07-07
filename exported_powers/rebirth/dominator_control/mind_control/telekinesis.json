@@ -292,6 +292,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Defiant"
+  ],
   "available_level": 11,
   "powerset": "Dominator_Control.Mind_Control"
 }

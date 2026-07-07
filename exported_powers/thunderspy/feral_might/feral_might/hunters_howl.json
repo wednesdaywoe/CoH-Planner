@@ -209,6 +209,9 @@
     }
   ],
   "modes_required": [
+    "HunterMode"
+  ],
+  "modes_disallowed": [
     "Disable_All"
   ],
   "available_level": 4294967295,

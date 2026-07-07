@@ -309,6 +309,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Villain_Pets.Broad_Sword_Assassins_Strike"
 }

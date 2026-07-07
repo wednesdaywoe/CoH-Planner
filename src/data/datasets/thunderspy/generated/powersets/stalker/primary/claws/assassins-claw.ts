@@ -37,5 +37,12 @@ export const AssassinsClaw: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Lethal",
+    "scale": 1.25,
+    "table": "Melee_Damage"
+  },
+  "fromHideBonus": 0.3999999999999999,
+  "midCombatCast": 1
 };

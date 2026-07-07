@@ -43,5 +43,12 @@ export const ProtonVolley: Power = {
     "Sniper Attacks",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Energy",
+    "scale": 0.49,
+    "table": "Ranged_Damage",
+    "duration": 1.6,
+    "tickRate": 0.5
+  }
 };

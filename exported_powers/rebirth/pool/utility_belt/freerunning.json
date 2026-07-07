@@ -744,6 +744,14 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Travel",
+    "Disable_All",
+    "Disable_Pool",
+    "Peacebringer_Form_Change",
+    "Warshade_Form_Change",
+    "Warshade_Form_Change2"
+  ],
   "available_level": 3,
   "powerset": "Pool.Utility_Belt"
 }

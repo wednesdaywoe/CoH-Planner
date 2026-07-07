@@ -372,6 +372,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Kheldian_Pets.Luminous_Blast"
 }

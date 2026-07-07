@@ -689,7 +689,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },
@@ -1080,6 +1081,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 9,
   "powerset": "Mastermind_Buff.Pain_Domination"

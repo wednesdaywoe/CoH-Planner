@@ -381,6 +381,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Defender_Ranged.Energy_Blast"
 }

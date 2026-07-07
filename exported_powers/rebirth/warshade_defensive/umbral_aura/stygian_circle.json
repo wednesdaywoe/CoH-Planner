@@ -89,7 +89,8 @@
           "stack_key": "4294967295",
           "flags": [
             "IgnoreStrength"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },
@@ -472,6 +473,10 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Warshade_Blaster_Mode",
+    "Disable_All"
   ],
   "available_level": 21,
   "powerset": "Warshade_Defensive.Umbral_Aura"

@@ -80,10 +80,14 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 3,
   "powerset": "Blaster_Support.Martial_Manipulation"

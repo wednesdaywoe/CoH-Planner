@@ -1050,6 +1050,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 11,
   "powerset": "Guardian_Assault.Kinetic_Assault"
 }

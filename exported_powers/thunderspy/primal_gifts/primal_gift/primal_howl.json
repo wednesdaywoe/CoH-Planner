@@ -50,12 +50,21 @@
   "target_requires": "",
   "attack_types": [],
   "effects": [],
-  "modes_required": [
+  "redirect": [
+    {
+      "name": "Primalist_Misc.Hunter_Form_Powers.Primal_Howl_Hunter",
+      "condition_expression": "kHunterMode Source.Mode?",
+      "show_in_info": false
+    },
+    {
+      "name": "Primalist_Misc.Primal_Form_Powers.Primal_Howl_Primal",
+      "condition_expression": "Always",
+      "show_in_info": true
+    }
+  ],
+  "modes_disallowed": [
     "Disable_All",
     "ProwlerMode"
-  ],
-  "modes_suspended": [
-    "Disable_Walk"
   ],
   "available_level": 15,
   "powerset": "Primal_Gifts.Primal_Gift"

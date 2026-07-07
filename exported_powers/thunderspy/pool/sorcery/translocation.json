@@ -81,6 +81,9 @@
     }
   ],
   "modes_required": [
+    "MysticFlightOn"
+  ],
+  "modes_disallowed": [
     "Disable_Travel",
     "Disable_All",
     "Disable_Pool",

@@ -500,6 +500,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Arena"
+  ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

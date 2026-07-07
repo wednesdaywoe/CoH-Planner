@@ -80,7 +80,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "Mastermind_Upgrade_2"
   ],
   "available_level": 0,

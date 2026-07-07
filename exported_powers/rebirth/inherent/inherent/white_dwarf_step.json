@@ -303,6 +303,17 @@
       ]
     }
   ],
+  "modes_required": [
+    "Peacebringer_Tanker_Mode"
+  ],
+  "modes_disallowed": [
+    "Peacebringer_Blaster_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode",
+    "Disable_Travel",
+    "Disable_Teleport",
+    "Disable_All"
+  ],
   "available_level": 4294967295,
   "powerset": "Inherent.Inherent"
 }

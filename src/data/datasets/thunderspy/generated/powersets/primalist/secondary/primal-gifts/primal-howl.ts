@@ -36,5 +36,15 @@ export const PrimalHowl: Power = {
     "Endurance Modification",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "regenBuff": 60
+    },
+    "buffDuration": 60
+  }
 };

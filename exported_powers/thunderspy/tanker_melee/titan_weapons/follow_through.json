@@ -448,6 +448,9 @@
     }
   ],
   "modes_required": [
+    "FastMode"
+  ],
+  "modes_disallowed": [
     "Disable_All"
   ],
   "available_level": 15,

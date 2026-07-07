@@ -46,5 +46,10 @@ export const BrutalSwipe: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 1.95,
+    "table": "Melee_Damage"
+  }
 };

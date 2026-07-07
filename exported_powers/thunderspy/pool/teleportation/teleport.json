@@ -86,7 +86,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "Disable_Pool",
     "Disable_Travel",
     "Disable_Teleport",

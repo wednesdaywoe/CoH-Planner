@@ -220,6 +220,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Guardian_Comp.Stone_Composition"
 }

@@ -407,6 +407,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Guardian_Comp.Dark_Composition"
 }

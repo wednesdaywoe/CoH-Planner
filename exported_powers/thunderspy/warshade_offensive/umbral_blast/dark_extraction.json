@@ -95,7 +95,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "Warshade_Tanker_Mode",
     "Disable_All"
   ],

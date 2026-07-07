@@ -40,5 +40,10 @@ export const PrimalStrike: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 2.78,
+    "table": "Melee_Damage"
+  }
 };

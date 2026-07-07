@@ -93,6 +93,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Walk",
+    "Disable_Temp"
+  ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

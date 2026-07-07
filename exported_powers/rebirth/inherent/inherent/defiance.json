@@ -79,7 +79,8 @@
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     }

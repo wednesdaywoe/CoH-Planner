@@ -1254,6 +1254,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_PFF"
+  ],
   "available_level": 15,
   "powerset": "Mastermind_Buff.Force_Field"
 }

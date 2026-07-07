@@ -178,6 +178,15 @@
       ]
     }
   ],
+  "modes_required": [
+    "Peacebringer_Blaster_Mode"
+  ],
+  "modes_disallowed": [
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode",
+    "Disable_All"
+  ],
   "available_level": 5,
   "powerset": "Peacebringer_Offensive.Luminous_Blast"
 }

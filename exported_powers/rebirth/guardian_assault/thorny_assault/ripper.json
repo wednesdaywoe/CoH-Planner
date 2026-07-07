@@ -348,6 +348,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 25,
   "powerset": "Guardian_Assault.Thorny_Assault"
 }

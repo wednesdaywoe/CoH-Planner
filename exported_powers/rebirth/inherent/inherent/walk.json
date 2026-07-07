@@ -277,6 +277,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Walk"
+  ],
   "available_level": 1,
   "powerset": "Inherent.Inherent"
 }

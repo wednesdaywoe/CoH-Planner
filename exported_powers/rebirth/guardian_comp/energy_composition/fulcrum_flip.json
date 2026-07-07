@@ -146,6 +146,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Guardian_Comp.Energy_Composition"
 }

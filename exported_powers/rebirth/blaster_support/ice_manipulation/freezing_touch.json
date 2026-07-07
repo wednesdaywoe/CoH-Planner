@@ -734,6 +734,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 34,
   "powerset": "Blaster_Support.Ice_Manipulation"
 }

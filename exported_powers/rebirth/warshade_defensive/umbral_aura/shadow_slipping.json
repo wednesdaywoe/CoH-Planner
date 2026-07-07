@@ -295,6 +295,11 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Warshade_Form_Change",
+    "Warshade_Form_Change2",
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

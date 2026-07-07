@@ -416,6 +416,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Warshade_Tanker_Mode",
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Kheldian_Pets.Umbral_Blast"
 }

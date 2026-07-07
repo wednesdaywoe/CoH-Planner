@@ -170,7 +170,8 @@
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },
@@ -257,6 +258,9 @@
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 0,
   "powerset": "Villain_Pets.Chain_Jolt_Dominator_Jump3"

@@ -753,6 +753,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 1,
   "powerset": "Controller_Control.Ice_Control"
 }

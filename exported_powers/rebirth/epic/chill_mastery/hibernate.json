@@ -481,6 +481,12 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All",
+    "Disable_Pool",
+    "Disable_Epic",
+    "Disable_Toggle"
+  ],
   "available_level": 43,
   "powerset": "Epic.Chill_Mastery"
 }

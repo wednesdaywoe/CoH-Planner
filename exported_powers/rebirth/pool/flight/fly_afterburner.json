@@ -266,6 +266,17 @@
       ]
     }
   ],
+  "modes_required": [
+    "FlyOn"
+  ],
+  "modes_disallowed": [
+    "AfterburnerOff",
+    "Disable_Pool",
+    "Disable_Travel",
+    "Disable_All",
+    "HunterMode",
+    "ProwlerMode"
+  ],
   "available_level": 4294967295,
   "powerset": "Pool.Flight"
 }

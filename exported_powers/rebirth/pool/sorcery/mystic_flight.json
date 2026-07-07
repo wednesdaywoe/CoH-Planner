@@ -683,6 +683,16 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Pool",
+    "Disable_Travel",
+    "Disable_All",
+    "HunterMode",
+    "ProwlerMode",
+    "Peacebringer_Form_Change",
+    "Warshade_Form_Change",
+    "Warshade_Form_Change2"
+  ],
   "available_level": 3,
   "powerset": "Pool.Sorcery"
 }

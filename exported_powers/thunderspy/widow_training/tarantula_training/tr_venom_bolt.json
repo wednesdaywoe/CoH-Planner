@@ -170,6 +170,9 @@
     }
   ],
   "modes_required": [
+    "Widow_Tarantula_Mode"
+  ],
+  "modes_disallowed": [
     "Disable_All"
   ],
   "available_level": 1,

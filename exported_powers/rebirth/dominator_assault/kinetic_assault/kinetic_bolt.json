@@ -587,6 +587,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Dominator_Assault.Kinetic_Assault"
 }

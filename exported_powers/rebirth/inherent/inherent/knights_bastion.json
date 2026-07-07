@@ -129,6 +129,10 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Temp",
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Inherent.Inherent"
 }

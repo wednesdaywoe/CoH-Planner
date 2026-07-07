@@ -284,6 +284,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 14,
   "powerset": "Pets.Resistance_Rifle"
 }

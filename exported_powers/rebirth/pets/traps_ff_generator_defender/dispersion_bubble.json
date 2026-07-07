@@ -721,6 +721,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Pets.Traps_FF_Generator_Defender"
 }

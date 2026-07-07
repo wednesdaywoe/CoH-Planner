@@ -302,6 +302,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 4294967295,
   "powerset": "Mastermind_Buff.Force_Field"
 }

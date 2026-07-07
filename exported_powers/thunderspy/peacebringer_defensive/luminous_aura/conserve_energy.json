@@ -164,7 +164,7 @@
       ]
     }
   ],
-  "modes_required": [
+  "modes_disallowed": [
     "Peacebringer_Blaster_Mode",
     "Disable_All"
   ],

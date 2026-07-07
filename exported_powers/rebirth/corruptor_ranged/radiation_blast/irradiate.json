@@ -252,6 +252,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 1,
   "powerset": "Corruptor_Ranged.Radiation_Blast"
 }

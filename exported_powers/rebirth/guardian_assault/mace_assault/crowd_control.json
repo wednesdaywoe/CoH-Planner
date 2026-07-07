@@ -299,6 +299,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Guardian_Assault.Mace_Assault"
 }

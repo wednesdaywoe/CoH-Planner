@@ -83,6 +83,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 14,
   "powerset": "Pets.PPD_Hard_Suit"
 }

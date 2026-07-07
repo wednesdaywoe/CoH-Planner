@@ -429,6 +429,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 34,
   "powerset": "Guardian_Comp.Fiery_Composition"
 }

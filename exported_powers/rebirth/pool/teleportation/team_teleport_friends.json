@@ -217,6 +217,16 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_Pool",
+    "Disable_Travel",
+    "Disable_Teleport",
+    "Disable_All",
+    "HunterMode",
+    "ProwlerMode",
+    "Peacebringer_Blaster_Mode",
+    "Warshade_Blaster_Mode"
+  ],
   "available_level": 4294967295,
   "powerset": "Pool.Teleportation"
 }

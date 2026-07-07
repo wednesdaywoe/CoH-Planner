@@ -885,6 +885,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Pets.Venomous_Gas"
 }

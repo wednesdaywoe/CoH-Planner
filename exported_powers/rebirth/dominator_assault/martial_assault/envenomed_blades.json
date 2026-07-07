@@ -165,10 +165,14 @@
           "stack_key": "4294967295",
           "flags": [
             "IgnoreResistance"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     }
+  ],
+  "modes_disallowed": [
+    "Disable_All"
   ],
   "available_level": 15,
   "powerset": "Dominator_Assault.Martial_Assault"

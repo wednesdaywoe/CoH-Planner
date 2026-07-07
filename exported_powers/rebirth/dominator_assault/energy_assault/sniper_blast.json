@@ -420,6 +420,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 34,
   "powerset": "Dominator_Assault.Energy_Assault"
 }

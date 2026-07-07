@@ -183,6 +183,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 31,
   "powerset": "Controller_Control.Fire_Control"
 }

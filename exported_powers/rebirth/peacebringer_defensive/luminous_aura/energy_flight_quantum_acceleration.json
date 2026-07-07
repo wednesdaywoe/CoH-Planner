@@ -266,6 +266,15 @@
       ]
     }
   ],
+  "modes_required": [
+    "EnergyFlyOn"
+  ],
+  "modes_disallowed": [
+    "AfterburnerOff",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Disable_All"
+  ],
   "available_level": 23,
   "powerset": "Peacebringer_Defensive.Luminous_Aura"
 }

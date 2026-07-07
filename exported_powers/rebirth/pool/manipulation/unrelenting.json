@@ -614,6 +614,16 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "HunterMode",
+    "ProwlerMode",
+    "Disable_Pool",
+    "Disable_All",
+    "Peacebringer_Blaster_Mode",
+    "Peacebringer_Tanker_Mode",
+    "Warshade_Blaster_Mode",
+    "Warshade_Tanker_Mode"
+  ],
   "available_level": 13,
   "powerset": "Pool.Manipulation"
 }

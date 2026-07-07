@@ -498,6 +498,12 @@
       ]
     }
   ],
+  "modes_required": [
+    "FastMode"
+  ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 15,
   "powerset": "Tanker_Melee.Titan_Weapons"
 }

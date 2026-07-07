@@ -363,6 +363,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Guardian_Assault.Psionic_Assault"
 }

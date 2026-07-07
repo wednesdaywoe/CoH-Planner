@@ -5,7 +5,7 @@
 
 Prefer fixing root problems properly over quick fixes. The planner handles complex game mechanics with many interacting systems (AT tables, enhancement calculations, power effects, set bonuses). Band-aid fixes create compounding issues that are harder to debug later. When a bug surfaces, investigate whether it's a symptom of a deeper systemic issue before patching the surface behavior. This is essential for making the app reliable and maintainable.
 
-**Before touching game data (bin parser, converters, calc), read [GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md)** — the durable principles and the specific gotchas (strength meta-templates, resistance-aspect traps, proc/pet exclusions, the verify-don't-assume discipline, the re-export de-risk workflow). The running issue log is [HOMECOMING_PARSER.md](streams/HOMECOMING_PARSER.md).
+**Before touching game data (bin parser, converters, calc), read [GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md)** — the durable principles and the specific gotchas (strength meta-templates, resistance-aspect traps, proc/pet exclusions, the verify-don't-assume discipline, the re-export de-risk workflow). The running issue log is [HOMECOMING_PARSER.md](docs/HOMECOMING_PARSER.md).
 
 ## Source Data
 
@@ -68,7 +68,7 @@ Mostly exotic attribs like `Toxic_Elusivity`, `Revoke_Power`, `InterruptTime`. T
 **Map remaining `type`/`application_type`/`target` enum values (82.9% match)**
 ~17% of templates have values beyond the common 0-1 range — unusual effect types (Expression-based, AoE targets, pet targets). Medium priority; some edge cases in damage/heal calculations could be affected.
 
-**Parse template tail fields** — **largely DONE (2026-07-05).** The parser now captures the tail natively in `EffectTemplate` (`tools/bin-crawler/bin_crawler/parser/_dataclasses.py`): `cancel_events`, `suppress_events`, `required_events`, and `flags` (with `flags_raw`/`flags2_raw` — `IgnoreResistance` 0x420, `IgnoreStrength` 0x430, and `CopyBoosts`/`PseudoPet` in the second word). The converter honors `IgnoreStrength`/`IgnoreResistance` from this native parse, **no longer from CoD2.** Remaining: only `fx` (cosmetic visual effects, irrelevant to the planner) is genuinely unparsed, and the converter does not yet *fold in* `suppress_events` (Hide's AoE-defense suppression) — a converter-side task tracked in [HOMECOMING_PARSER.md](streams/HOMECOMING_PARSER.md).
+**Parse template tail fields** — **largely DONE (2026-07-05).** The parser now captures the tail natively in `EffectTemplate` (`tools/bin-crawler/bin_crawler/parser/_dataclasses.py`): `cancel_events`, `suppress_events`, `required_events`, and `flags` (with `flags_raw`/`flags2_raw` — `IgnoreResistance` 0x420, `IgnoreStrength` 0x430, and `CopyBoosts`/`PseudoPet` in the second word). The converter honors `IgnoreStrength`/`IgnoreResistance` from this native parse, **no longer from CoD2.** Remaining: only `fx` (cosmetic visual effects, irrelevant to the planner) is genuinely unparsed, and the converter does not yet *fold in* `suppress_events` (Hide's AoE-defense suppression) — a converter-side task tracked in [HOMECOMING_PARSER.md](docs/HOMECOMING_PARSER.md).
 
 **Enum naming alignment**
 Cosmetic — "Caster" vs "Self", "Character" vs "SingleTarget". No functional impact.

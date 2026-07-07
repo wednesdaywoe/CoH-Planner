@@ -391,6 +391,12 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Warshade_Form_Change",
+    "Disable_Travel",
+    "Disable_Teleport",
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Warshade_Defensive.Umbral_Aura"
 }

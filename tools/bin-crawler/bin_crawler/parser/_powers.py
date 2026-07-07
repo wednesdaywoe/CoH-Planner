@@ -2164,16 +2164,39 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     r.read_u4_array()
     allowed_boostset_cats: list[str] = []
 
-    # Parse6 tail. Hand-decoded against the binary 2026-05-02:
-    # The HC powers.bin descriptor at 0x1408f04f0 lists fields between
-    # BoostsAllowed and Effect as GroupMembership/RechargeGroup/
-    # ModesRequired/ModesDisallowed/ModesSuspended/AIGroups/Redirect/
-    # Effect/ActivationEffect — but **Parse6 omits AIGroups, Redirect,
-    # and ActivationEffect entirely**. Those wrapping-and-routing fields
-    # were added in the HC schema generation; the older Parse6 binary
-    # goes straight from ModesSuspended to a flat struct_array of
-    # AttribMod records (no EffectGroup wrapper, no ActivationEffect).
-    # See `_parse_effect_template_parse6` for the AttribMod layout.
+    # Parse6 tail. Re-decoded byte-level against Rebirth + Thunderspy
+    # 2026-07-07 (see streams/OPEN_ITEMS.md §3). Field 74 (GroupMembership/
+    # exclusion) was consumed in the loop above; what follows differs per
+    # flavor:
+    #
+    #   Rebirth (Parse6):  ModesRequired, ModesDisallowed, ModesSuspended,
+    #                      AIGroups (string_array, inline pascal), Effects.
+    #                      Redirects live in the post-effects tail (REB3),
+    #                      not here.
+    #   Thunderspy:        ModesRequired, ModesDisallowed, AIGroups
+    #                      (string_array), Redirect (struct_array, same
+    #                      element shape as HC's `_parse_redirects`),
+    #                      Effects. There is NO ModesSuspended slot.
+    #   Veracity:          treated like Rebirth (retail field set); byte
+    #                      consumption is unchanged from the old read since
+    #                      its Parse7-style string_array is width-identical
+    #                      to a u4_array.
+    #
+    # The old read (a phantom "RechargeGroup" u4_array before the mode
+    # arrays, and AIGroups/Redirect read as u4_arrays) had two bugs: every
+    # mode name landed one slot early (Disable_All showed up in
+    # modes_required), and any power with a non-empty AIGroups (Rebirth —
+    # inline strings change the byte width) or Redirect array (Thunderspy
+    # snipes) misaligned the reader and silently lost its entire effects
+    # array. This was the root of the "109/1361 Rebirth pet powers have 0
+    # effects" cluster.
+    #
+    # Mode indices resolve via the same per-server registry Set_Mode
+    # magnitudes use (attrib_names.bin — `parse_mode_table`). Verified:
+    # tspy White_Dwarf_Step requires mode 2 (Peacebringer_Tanker_Mode),
+    # Energy_Flight is disallowed in the four form modes + Disable_All,
+    # Rebirth Titan Weapons Follow_Through requires 98 (FastMode) —
+    # mirroring HC's committed exports for the same powers.
     effects: list[EffectGroup] = []
     activation_effects: list[EffectGroup] = []
     redirects: list[dict] = []
@@ -2181,12 +2204,22 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     modes_disallowed: list[int] = []
     modes_suspended: list[int] = []
     try:
-        # Field 74 (GroupMembership) was already consumed in the loop
-        # above; resume from RechargeGroup.
-        r.read_u4_array()  # RechargeGroup
         modes_required = r.read_u4_array()
         modes_disallowed = r.read_u4_array()
-        modes_suspended = r.read_u4_array()
+        if thunderspy:
+            r.read_string_array()  # AIGroups (e.g. kHeavyGroup on NPC powers)
+            try:
+                redirects = _parse_redirects(r)
+            except Exception as e:
+                # Same loud path as the HC parser: a redirect misparse here
+                # misaligns the effects read — surface it, don't hide it.
+                redirects = []
+                _warn_dropped(full_name,
+                              f"redirect parse failed ({e}); effects may be lost")
+                r.skip_to_end()
+        else:
+            modes_suspended = r.read_u4_array()
+            r.read_string_array()  # AIGroups (e.g. kEarlyBattle on pet powers)
         try:
             if veracity:
                 # Veracity uses HC-style EffectGroup effects (no Redirect /

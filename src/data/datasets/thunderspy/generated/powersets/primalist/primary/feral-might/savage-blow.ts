@@ -40,5 +40,10 @@ export const SavageBlow: Power = {
     "Stuns",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Special",
+    "scale": 3.56,
+    "table": "Melee_Damage"
+  }
 };

@@ -37,5 +37,12 @@ export const AssassinsStrike: Power = {
     "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.75,
+    "table": "Melee_Damage"
+  },
+  "fromHideBonus": 0.47058823529411775,
+  "midCombatCast": 0.67
 };

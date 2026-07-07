@@ -717,6 +717,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 7,
   "powerset": "Defender_Buff.Sonic_Debuff"
 }

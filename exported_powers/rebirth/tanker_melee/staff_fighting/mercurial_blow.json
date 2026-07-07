@@ -1125,6 +1125,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 0,
   "powerset": "Tanker_Melee.Staff_Fighting"
 }

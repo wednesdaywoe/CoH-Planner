@@ -370,6 +370,9 @@
     }
   ],
   "modes_required": [
+    "Peacebringer_Tanker_Mode"
+  ],
+  "modes_disallowed": [
     "Peacebringer_Blaster_Mode",
     "Warshade_Blaster_Mode",
     "Warshade_Tanker_Mode",

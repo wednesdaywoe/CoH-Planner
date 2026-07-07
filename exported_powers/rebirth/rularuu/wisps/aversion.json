@@ -79,7 +79,8 @@
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength"
-          ]
+          ],
+          "mode_name": "Peacebringer_Blaster_Mode"
         }
       ]
     },

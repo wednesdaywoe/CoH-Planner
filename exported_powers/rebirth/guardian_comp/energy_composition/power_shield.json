@@ -665,6 +665,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 3,
   "powerset": "Guardian_Comp.Energy_Composition"
 }

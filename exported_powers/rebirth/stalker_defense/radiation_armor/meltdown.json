@@ -989,6 +989,9 @@
       ]
     }
   ],
+  "modes_disallowed": [
+    "Disable_All"
+  ],
   "available_level": 37,
   "powerset": "Stalker_Defense.Radiation_Armor"
 }
