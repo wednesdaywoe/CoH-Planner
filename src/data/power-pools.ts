@@ -190,9 +190,19 @@ function _activeRegistry(): PowerPoolRegistry {
   const id = getActiveDataset().id;
   let r = _registryCache.get(id);
   if (!r) {
-    r = transformRegistry(
-      _resolveRawForDataset(id) as unknown as LegacyPowerPoolRegistry
-    );
+    // Drop dormant pools — present in this server's bins but not released
+    // (their powers are locked behind a dev-only `accesslevel > 0` gate,
+    // flagged `dormant` at convert time by scripts/convert-pool-powers.cjs).
+    // Filtered here (not deleted from the generated data) so the set stays
+    // available for a possible future "show unreleased" toggle. This is the
+    // pool analog of the powerset dormancy filter in src/data/powersets.ts,
+    // and replaces the former hand-maintained per-dataset pool allowlist.
+    const raw = _resolveRawForDataset(id) as Record<string, { dormant?: boolean }>;
+    const live: Record<string, unknown> = {};
+    for (const [poolId, pool] of Object.entries(raw)) {
+      if (!pool.dormant) live[poolId] = pool;
+    }
+    r = transformRegistry(live as unknown as LegacyPowerPoolRegistry);
     _registryCache.set(id, r);
   }
   return r;

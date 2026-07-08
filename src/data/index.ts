@@ -322,8 +322,19 @@ export {
   calculateAutoToggleProcsPerMinute,
   calculateProcStats,
   AUTO_POWER_PSEUDO_RECHARGE,
+  // Variable-proc controls (per-proc toggles + stack / HP sliders)
+  getProcControlType,
+  isVariableProc,
+  DEFAULT_STACK_COUNT,
+  interpolateScalingValue,
+  resolveProcContribution,
+  procOverrideKey,
+  isDefaultProcOverride,
+  pruneProcOverridesForRemovedPowers,
+  reindexProcOverridesForRemovedSlot,
+  DEFAULT_PROC_OVERRIDE,
 } from './proc-data';
-export type { ProcData, ProcType, ProcEffectCategory, ParsedProcEffect, ProcEffect, PowerProcCalcData } from './proc-data';
+export type { ProcData, ProcType, ProcEffectCategory, ParsedProcEffect, ProcEffect, PowerProcCalcData, ProcControlType } from './proc-data';
 
 // Granted powers (sub-powers granted by parent powers like Adaptation)
 export {

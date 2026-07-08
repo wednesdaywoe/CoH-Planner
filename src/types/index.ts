@@ -99,6 +99,7 @@ export type {
   ArchetypeSelection,
   Build,
   AttackChain,
+  ProcOverride,
   BuildExport,
   BuildExportV1,
   BuildExportV2,

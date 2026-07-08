@@ -20,7 +20,7 @@ relates:
 
 - [ ] Launcher HTTP/2-505 mitigation (2026-07-01 launcher, "Still open / optional") — if a browser genuinely leads with an HTTP/2 preface, the durable fix (fresh port, or an Alt-Svc: clear header on Bin Crawler responses) is not implemented. Optional.
 
-Implementation Plan: Per-Proc Toggles & Variable-Proc Sliders
+- [x] Implementation Plan: Per-Proc Toggles & Variable-Proc Sliders (done 2026-07-08 — MotT stack slider resolved "By the Slotted Power" via AT Res_Dmg modifier; Reactive HP slider; per-proc on/off; persisted+shared)
 Goal
 Give each slotted proc its own control in the power InfoPanel: an on/off toggle (per-proc replaces the global category toggles as the default gate), plus a slider for variable procs — a stack slider (Might of the Tanker, 0–3 stacks) and an HP% slider (Reactive Defenses scaling resist, 3%→12.9%). State persists with the build. Sliders default to the expected-uptime contribution.
 

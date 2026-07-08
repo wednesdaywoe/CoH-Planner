@@ -30,6 +30,7 @@ const {
   EFFECT_AREA_MAP,
   TARGET_TYPE_MAP,
   getStrengthsDisallowedIndex,
+  deriveDormant,
 } = require('./convert-powerset.cjs');
 
 // HC bin export writes pool powers under `<RAW_DATA_PATH>/pool/`. The legacy
@@ -61,12 +62,21 @@ const poolFilter = poolFilterIdx >= 0 ? args[poolFilterIdx + 1] : null;
 
 // Map processed pool IDs to raw data directory names
 // Most are the same, but "presence" maps to "manipulation"
+// Every pool listed here is converted unconditionally for every dataset; a pool
+// absent from a dataset's export is skipped silently (convertPool returns null),
+// so listing the union is safe. Release state is derived where the bins encode
+// it: a pool whose powers carry the dev-only `accesslevel > 0` gate is flagged
+// `dormant` (see `deriveDormant`) and hidden by the app. Per server devs
+// (2026-07-08): HC has neither Gadgetry nor Utility Belt, Rebirth has Gadgetry
+// only, Thunderspy has both. The accesslevel signal reproduces all of that
+// EXCEPT Rebirth's Utility Belt — see POOL_DORMANCY_OVERRIDES below.
 const POOL_DIR_MAP = {
   experimentation: 'experimentation',
   fighting: 'fighting',
   fitness: 'fitness',
   flight: 'flight',
   force_of_will: 'force_of_will',
+  gadgetry: 'gadgetry',
   invisibility: 'invisibility',
   leadership: 'leadership',
   leaping: 'leaping',
@@ -75,6 +85,7 @@ const POOL_DIR_MAP = {
   sorcery: 'sorcery',
   speed: 'speed',
   teleportation: 'teleportation',
+  utility_belt: 'utility_belt',
 };
 
 // Pool display names
@@ -84,6 +95,7 @@ const POOL_DISPLAY_NAMES = {
   fitness: 'Fitness',
   flight: 'Flight',
   force_of_will: 'Force of Will',
+  gadgetry: 'Gadgetry',
   invisibility: 'Concealment',
   leadership: 'Leadership',
   leaping: 'Leaping',
@@ -92,32 +104,22 @@ const POOL_DISPLAY_NAMES = {
   sorcery: 'Sorcery',
   speed: 'Speed',
   teleportation: 'Teleportation',
+  utility_belt: 'Utility Belt',
 };
 
-// Pools that exist only in specific datasets. Gadgetry and Utility Belt carry
-// full binary data (powercat membership + player-pickable available levels) in
-// ALL THREE datasets' bins — IDENTICALLY — yet whether a server actually
-// *releases* a pool is a curation fact the bins do not encode (HC leaves both
-// unselectable in-game despite the data). So this allowlist is deliberately
-// hand-curated from in-game/dev knowledge, not derived from the export:
-//   - HC: neither released.
-//   - Rebirth: Gadgetry only (Utility Belt data present but unreleased —
-//     confirmed 2026-07-08, do not add).
-//   - Thunderspy: Gadgetry only (Utility Belt data present but unreleased —
-//     confirmed 2026-07-08).
-const DATASET_EXTRA_POOLS = {
-  rebirth: {
-    gadgetry: { dir: 'gadgetry', displayName: 'Gadgetry' },
-  },
-  thunderspy: {
-    gadgetry: { dir: 'gadgetry', displayName: 'Gadgetry' },
-  },
+// Non-derivable dormancy overrides: pools that are present + ungated in a
+// server's bins (so `deriveDormant` would SHOW them) but are NOT actually live,
+// per the server's devs. The client `.pigg` does not encode this — verified
+// 2026-07-08 by parsing all three servers' bins: Rebirth's not-live Utility Belt
+// is byte-identical to its live Gadgetry at every client gate (per-power
+// accesslevel, powerset show_in_*/buy_requires, AND the Pool powercat roster).
+// The "not live" state is enforced server-side, so it must be curated here.
+// Keep this MINIMAL and sourced from devs — not wikis/patch-notes. Remove an
+// entry once the server ships the pool (Thunderspy already has both, so it has
+// no entry; HC gates both via accesslevel, so it needs none).
+const POOL_DORMANCY_OVERRIDES = {
+  rebirth: new Set(['utility_belt']),  // Gadgetry live; Utility Belt not yet released (per Rebirth devs).
 };
-
-for (const [poolId, info] of Object.entries(DATASET_EXTRA_POOLS[datasetId] || {})) {
-  POOL_DIR_MAP[poolId] = info.dir;
-  POOL_DISPLAY_NAMES[poolId] = info.displayName;
-}
 
 // ============================================
 // LOAD EXISTING DATA (for preserving metadata)
@@ -438,8 +440,17 @@ function main() {
     const pool = convertPool(poolId);
 
     if (pool) {
+      // Dormant = not released on this server. Derived from the dev-only
+      // `accesslevel > 0` gate (deriveDormant), OR an explicit server-side
+      // override for the cases the client bins don't encode (see
+      // POOL_DORMANCY_OVERRIDES). Flagged here; the app filters it from the
+      // picker (src/data/power-pools.ts). Replaces the former DATASET_EXTRA_POOLS
+      // allowlist.
+      const overridden = POOL_DORMANCY_OVERRIDES[datasetId]?.has(poolId);
+      if (deriveDormant(pool.powers) || overridden) pool.dormant = true;
       allPools[poolId] = pool;
-      console.log(`  ${pool.powers.length} powers converted`);
+      const why = overridden ? ' (DORMANT — server-side override)' : (pool.dormant ? ' (DORMANT — accesslevel-gated)' : '');
+      console.log(`  ${pool.powers.length} powers converted${why}`);
 
       // Compare with existing
       const existing = existingPools[poolId];

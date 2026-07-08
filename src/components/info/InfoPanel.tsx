@@ -52,6 +52,7 @@ import { useModeSuppression } from '@/hooks/useModeSuppression';
 import { modeLabel } from '@/utils/mode-suppression';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
 import { MechanicAdjusters } from './MechanicAdjusters';
+import { SlottedProcControls } from './SlottedProcControls';
 import { DamageBlock } from './DamageBlock';
 import { ShortHelpChips } from './TagsRow';
 import { PowerMetaTags, AllowedEnhancementsBlock, GeneralStatsBlock } from './PowerInfoBlocks';
@@ -1128,6 +1129,10 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         * Disintegrating, Bio Armor adaptation, etc.). Toggle state is
         * persisted in uiStore; calc-pipeline integration is a follow-up. */}
       <MechanicAdjusters power={power} />
+
+      {/* Slotted Procs — per-proc on/off + stack / %HP sliders for variable
+        * procs (Might of the Tanker stacks, Reactive Defenses HP-scaling). */}
+      <SlottedProcControls power={selectedPower} />
 
       {/* Registry-driven Power Effects display. Pseudo-pet enhanceable debuffs
           (Glue Arrow's slow, etc.) are merged in — parent effects win on key

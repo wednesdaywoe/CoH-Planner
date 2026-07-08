@@ -217,6 +217,29 @@ export interface Build {
    *  Optional for backward compat; missing → no saved chains. See
    *  {@link AttackChain} and the Attack Chain Builder. */
   attackChains?: AttackChain[];
+
+  /** Per-slotted-proc control overrides, keyed `${powerName}:${slotIndex}`.
+   *  Sparse: only procs the user has explicitly touched appear here; an absent
+   *  key means the proc is enabled and on its Auto (expected-uptime) default.
+   *  Build-identity data — travels through save / load / export / share. See
+   *  {@link ProcOverride} and the InfoPanel "Slotted Procs" block. */
+  procOverrides?: Record<string, ProcOverride>;
+}
+
+/**
+ * Per-proc control override stored on the Build (see {@link Build.procOverrides}).
+ * Absent key ⇒ `{ enabled: true, mode: 'auto' }` (the runtime default). The
+ * resolver + default live in `src/data/proc-data.ts`.
+ */
+export interface ProcOverride {
+  /** Master gate for this specific slotted proc. Default true. */
+  enabled: boolean;
+  /** `auto` = expected-uptime default; `stacks`/`hp` = a user-pinned value. */
+  mode: 'auto' | 'stacks' | 'hp';
+  /** Pinned stack count when mode === 'stacks' (0..maxStacks). */
+  stacks?: number;
+  /** Pinned %HP when mode === 'hp' (0..100; 100 = full HP = floor). */
+  hpPct?: number;
 }
 
 // ============================================
@@ -300,6 +323,8 @@ export interface SlimBuildData {
   epicPool: { id: string; name: string; powers: { name: string; level: number; slots: unknown[] }[] } | null;
   /** Saved attack chains (named rotations). Optional for backward compat. */
   attackChains?: AttackChain[];
+  /** Per-slotted-proc control overrides. Optional for backward compat. */
+  procOverrides?: Record<string, ProcOverride>;
   [key: string]: unknown;
 }
 

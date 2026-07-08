@@ -110,6 +110,7 @@ export function slimBuild(build: Build): SlimBuildData {
     slotOrder: build.slotOrder,
     kheldianForm: build.kheldianForm,
     attackChains: build.attackChains ?? [],
+    procOverrides: build.procOverrides ?? {},
   };
 }
 
@@ -350,6 +351,9 @@ export function hydrateBuild(slim: Record<string, any>): Build {
     slotOrder: slim.slotOrder ?? [],
     ...(slim.kheldianForm ? { kheldianForm: slim.kheldianForm } : {}),
     ...(Array.isArray(slim.attackChains) ? { attackChains: slim.attackChains } : {}),
+    ...(slim.procOverrides && typeof slim.procOverrides === 'object'
+      ? { procOverrides: slim.procOverrides as Build['procOverrides'] }
+      : {}),
   };
 }
 

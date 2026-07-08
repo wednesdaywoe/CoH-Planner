@@ -7,9 +7,9 @@
  * composed facade at src/data/power-pools-raw.ts.
  * Run: node scripts/convert-pool-powers.cjs --apply
  *
- * Total pools: 14
- * Total powers: 76
- * Pool IDs: ["experimentation","fighting","fitness","flight","force_of_will","invisibility","leadership","leaping","presence","medicine","sorcery","speed","teleportation","gadgetry"]
+ * Total pools: 15
+ * Total powers: 82
+ * Pool IDs: ["experimentation","fighting","fitness","flight","force_of_will","gadgetry","invisibility","leadership","leaping","presence","medicine","sorcery","speed","teleportation","utility_belt"]
  */
 
 export const POWER_POOLS_RAW = {
@@ -1229,6 +1229,229 @@ export const POWER_POOLS_RAW = {
             "scale": 0.1,
             "table": "Melee_Ones"
           }
+        }
+      }
+    ]
+  },
+  "gadgetry": {
+    "id": "gadgetry",
+    "name": "Gadgetry",
+    "displayName": "Gadgetry",
+    "description": "",
+    "icon": "gadgetry_set.ico",
+    "requires": "",
+    "powers": [
+      {
+        "name": "Nano Net",
+        "fullName": "Pool.Gadgetry.Nano_Net",
+        "rank": 1,
+        "available": 0,
+        "description": "You trap your foe in an energy net that significantly reduces their movement speed, attack rate and regeneration rate for a short time. Affected foes will also be knocked out of the sky. Recharge: Moderate",
+        "shortHelp": "Ranged, Foe -Speed, -Recharge, -Fly, -Regen",
+        "icon": "gadgetry_nanonet.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "EnduranceReduction",
+          "Range",
+          "Recharge",
+          "Slow"
+        ],
+        "allowedSetCategories": [
+          "Slow Movement"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 4,
+          "endurance": 7.8,
+          "activationTime": 1.47,
+          "effectArea": "SingleTarget",
+          "regenDebuff": {
+            "scale": 0.5,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "regenDebuff": 15
+          },
+          "buffDuration": 15
+        }
+      },
+      {
+        "name": "Blaster Drone",
+        "fullName": "Pool.Gadgetry.Wrist_Blaster",
+        "rank": 2,
+        "available": 0,
+        "description": "You fire a series of blasts from a sophisticated energy drone. Wrist Blaster deals Moderate energy damage and will reduce the target's regeneration rate for a short time. Recharge: Fast",
+        "shortHelp": "Ranged, Moderate DMG(Energy), Foe -Regen",
+        "icon": "gadgetry_wristblaster.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 80,
+          "recharge": 8,
+          "endurance": 8.528,
+          "activationTime": 1,
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Special",
+            "scale": 0.41,
+            "table": "Ranged_Damage",
+            "duration": 0.9,
+            "tickRate": 0.25
+          },
+          "regenDebuff": {
+            "scale": 0.33,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "regenDebuff": 10
+          },
+          "buffDuration": 10
+        }
+      },
+      {
+        "name": "Jetpack",
+        "fullName": "Pool.Gadgetry.Jetpack",
+        "rank": 3,
+        "available": 3,
+        "description": "By activating this power will you will be able to fly at high speeds. While this power is active you will have the ability to engage a Turbo Boost for a short time to further speed up your flight. Recharge: Moderate",
+        "shortHelp": "Toggle: Self Fly, (Special)",
+        "icon": "gadgetry_jetpack.png",
+        "powerType": "Toggle",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Fly"
+        ],
+        "allowedSetCategories": [
+          "Flight",
+          "Universal Travel"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "endurance": 0.182,
+          "activatePeriod": 0.5,
+          "effectArea": "SingleTarget"
+        }
+      },
+      {
+        "name": "Drone Barrage",
+        "fullName": "Pool.Gadgetry.Blaster_Barrage",
+        "rank": 4,
+        "available": 13,
+        "description": "You fire off a barrage of energy blasts from an advanced energy drone dealing Moderate energy damage to foes in long cone in front of you. Damage: Moderate, Recharge: Moderate",
+        "shortHelp": "Ranged Cone, Moderate DMG(Energy), Foe -Regen",
+        "icon": "gadgetry_blasterbarrage.png",
+        "powerType": "Click",
+        "targetType": "Foe",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "Accuracy",
+          "Damage",
+          "EnduranceReduction",
+          "Range",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Ranged AoE Damage"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "range": 40,
+          "recharge": 16,
+          "endurance": 15.184,
+          "activationTime": 3,
+          "effectArea": "Cone",
+          "radius": 40,
+          "arc": 0.5235987901687622,
+          "maxTargets": 10,
+          "damage": {
+            "type": "Special",
+            "scale": 1.35,
+            "table": "Ranged_Damage"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Ranged_Ones"
+          },
+          "regenDebuff": {
+            "scale": 0.33,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "regenDebuff": 10
+          },
+          "buffDuration": 10
+        }
+      },
+      {
+        "name": "Force Barrier",
+        "fullName": "Pool.Gadgetry.Force_Barrier",
+        "rank": 5,
+        "available": 19,
+        "description": "You activate a force field around you for a short time that will absorb a high amount of damage before dissipating. Recharge: Very Long",
+        "shortHelp": "Self, +Absorb",
+        "icon": "gadgetry_forcebarrier.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "",
+        "maxSlots": 6,
+        "allowedEnhancements": [
+          "EnduranceReduction",
+          "Healing",
+          "Recharge"
+        ],
+        "allowedSetCategories": [
+          "Healing"
+        ],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 180,
+          "endurance": 10.4,
+          "activationTime": 1.27,
+          "effectArea": "SingleTarget"
+        }
+      },
+      {
+        "name": "Turbo Boost",
+        "fullName": "Pool.Gadgetry.Turbo_Boost",
+        "rank": 6,
+        "available": -1,
+        "description": "Activating this power will give you a massive burst to your flight speed for a short time. Recharge: Very Long",
+        "shortHelp": "Click, Self +Fly Speed",
+        "icon": "gadgetry_turboboost.png",
+        "powerType": "Click",
+        "targetType": "Self",
+        "requires": "Pool.Gadgetry.Jetpack",
+        "maxSlots": 6,
+        "allowedEnhancements": [],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "recharge": 120,
+          "endurance": 6.5,
+          "activationTime": 1.27,
+          "effectArea": "SingleTarget"
         }
       }
     ]
@@ -2825,22 +3048,22 @@ export const POWER_POOLS_RAW = {
       }
     ]
   },
-  "gadgetry": {
-    "id": "gadgetry",
-    "name": "Gadgetry",
-    "displayName": "Gadgetry",
+  "utility_belt": {
+    "id": "utility_belt",
+    "name": "Utility Belt",
+    "displayName": "Utility Belt",
     "description": "",
-    "icon": "gadgetry_set.ico",
+    "icon": "utility_belt_set.ico",
     "requires": "",
     "powers": [
       {
-        "name": "Nano Net",
-        "fullName": "Pool.Gadgetry.Nano_Net",
+        "name": "Bolas",
+        "fullName": "Pool.Utility_Belt.Bolas",
         "rank": 1,
         "available": 0,
-        "description": "You trap your foe in an energy net that significantly reduces their movement speed, attack rate and regeneration rate for a short time. Affected foes will also be knocked out of the sky. Recharge: Moderate",
-        "shortHelp": "Ranged, Foe -Speed, -Recharge, -Fly, -Regen",
-        "icon": "gadgetry_nanonet.png",
+        "description": "You hurl a pair of bolas at your target entangling them and rendering them immobilized. For the duration of the effect the target may be knocked down. Recharge: Moderate",
+        "shortHelp": "Ranged, Foe Immobilize, Knockdown",
+        "icon": "utilitybelt_bolas.png",
         "powerType": "Click",
         "targetType": "Foe",
         "requires": "",
@@ -2848,38 +3071,35 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [
           "Accuracy",
           "EnduranceReduction",
+          "Immobilize",
           "Range",
-          "Recharge",
-          "Slow"
+          "Recharge"
         ],
         "allowedSetCategories": [
-          "Slow Movement"
+          "Immobilize"
         ],
         "effects": {
           "accuracy": 1,
           "range": 80,
-          "recharge": 4,
-          "endurance": 7.8,
-          "activationTime": 1.47,
+          "recharge": 8,
+          "endurance": 7.28,
+          "activationTime": 1.87,
           "effectArea": "SingleTarget",
-          "regenDebuff": {
-            "scale": 0.5,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "regenDebuff": 15
-          },
-          "buffDuration": 15
+          "immobilize": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
-        "name": "Blaster Drone",
-        "fullName": "Pool.Gadgetry.Wrist_Blaster",
+        "name": "Poisoned Dagger",
+        "fullName": "Pool.Utility_Belt.Poisoned_Dagger",
         "rank": 2,
         "available": 0,
-        "description": "You fire a series of blasts from a sophisticated energy drone. Wrist Blaster deals Moderate energy damage and will reduce the target's regeneration rate for a short time. Recharge: Fast",
-        "shortHelp": "Ranged, Moderate DMG(Energy), Foe -Regen",
-        "icon": "gadgetry_wristblaster.png",
+        "description": "You throw an envenomed blade at your target causing a moderate amount of lethal damage and causing them to suffer a fair amount of toxic damage over time. Foes struck by the Poisoned Dagger will also have their damage decreased. Damage: Moderate, Recharge: Fast",
+        "shortHelp": "Ranged, Moderate DMG(Lethal), Foe Light DoT(Toxic), -DMG",
+        "icon": "utilitybelt_poisoneddagger.png",
         "powerType": "Click",
         "targetType": "Foe",
         "requires": "",
@@ -2903,39 +3123,32 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "damage": {
             "type": "Special",
-            "scale": 0.41,
-            "table": "Ranged_Damage",
-            "duration": 0.9,
-            "tickRate": 0.25
-          },
-          "regenDebuff": {
-            "scale": 0.33,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "regenDebuff": 10
-          },
-          "buffDuration": 10
+            "scale": 1.04,
+            "table": "Ranged_Damage"
+          }
         }
       },
       {
-        "name": "Jetpack",
-        "fullName": "Pool.Gadgetry.Jetpack",
+        "name": "Freerunning",
+        "fullName": "Pool.Utility_Belt.Freerunning",
         "rank": 3,
         "available": 3,
-        "description": "By activating this power will you will be able to fly at high speeds. While this power is active you will have the ability to engage a Turbo Boost for a short time to further speed up your flight. Recharge: Moderate",
-        "shortHelp": "Toggle: Self Fly, (Special)",
-        "icon": "gadgetry_jetpack.png",
+        "description": "You are skilled at using your environment to your advantage to quickly traverse any obstacles that you come across. Freerunning grants you a considerable boost to both your jump height and run speed. While this power is active, you will also have access to the Athletics power which when clicked will boost this power's effects for a short time. Recharge: Moderate",
+        "shortHelp": "Toggle: Self, +Jump, +Run Speed, +Special",
+        "icon": "utilitybelt_freerunning.png",
         "powerType": "Toggle",
         "targetType": "Self",
         "requires": "",
         "maxSlots": 6,
         "allowedEnhancements": [
           "EnduranceReduction",
-          "Fly"
+          "Jump",
+          "Recharge",
+          "Run Speed"
         ],
         "allowedSetCategories": [
-          "Flight",
+          "Leaping & Sprints",
+          "Running & Sprints",
           "Universal Travel"
         ],
         "effects": {
@@ -2946,13 +3159,13 @@ export const POWER_POOLS_RAW = {
         }
       },
       {
-        "name": "Drone Barrage",
-        "fullName": "Pool.Gadgetry.Blaster_Barrage",
+        "name": "Envenomed Barrage",
+        "fullName": "Pool.Utility_Belt.Flying_Kick",
         "rank": 4,
         "available": 13,
-        "description": "You fire off a barrage of energy blasts from an advanced energy drone dealing Moderate energy damage to foes in long cone in front of you. Damage: Moderate, Recharge: Moderate",
-        "shortHelp": "Ranged Cone, Moderate DMG(Energy), Foe -Regen",
-        "icon": "gadgetry_blasterbarrage.png",
+        "description": "You unleash a barrage of throwing knives at foes in front of you dealing Moderate lethal damage and an additional amount of toxic damage over time.  Affected foes will also have their damage reduced slightly.  Damage: Moderate, Light DoT(Toxic), Recharge: Long",
+        "shortHelp": "Ranged(Cone), Moderate DMG(Lethal), Foe Light DoT(Toxic), -DMG",
+        "icon": "utilitybelt_envenomedbarrage.png",
         "powerType": "Click",
         "targetType": "Foe",
         "requires": "",
@@ -2969,41 +3182,29 @@ export const POWER_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
-          "range": 40,
+          "range": 60,
           "recharge": 16,
           "endurance": 15.184,
-          "activationTime": 3,
+          "activationTime": 1,
           "effectArea": "Cone",
-          "radius": 40,
-          "arc": 0.5235987901687622,
+          "radius": 60,
+          "arc": 0.6981317400932312,
           "maxTargets": 10,
           "damage": {
             "type": "Special",
-            "scale": 1.35,
+            "scale": 0.2,
             "table": "Ranged_Damage"
-          },
-          "knockback": {
-            "scale": 0.67,
-            "table": "Ranged_Ones"
-          },
-          "regenDebuff": {
-            "scale": 0.33,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "regenDebuff": 10
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
-        "name": "Force Barrier",
-        "fullName": "Pool.Gadgetry.Force_Barrier",
+        "name": "Life Support System",
+        "fullName": "Pool.Utility_Belt.Life_Support_System",
         "rank": 5,
         "available": 19,
-        "description": "You activate a force field around you for a short time that will absorb a high amount of damage before dissipating. Recharge: Very Long",
-        "shortHelp": "Self, +Absorb",
-        "icon": "gadgetry_forcebarrier.png",
+        "description": "Life Support System immediately heals you and causes you to recover a moderate amount of health over time.  This power's potency increases as your health decreases.  Recharge: Very Long",
+        "shortHelp": "Self, +HP, +Heal Over Time, +Special",
+        "icon": "utilitybelt_lifesupportsystem.png",
         "powerType": "Click",
         "targetType": "Self",
         "requires": "",
@@ -3018,31 +3219,30 @@ export const POWER_POOLS_RAW = {
         ],
         "effects": {
           "accuracy": 1,
-          "recharge": 180,
-          "endurance": 10.4,
-          "activationTime": 1.27,
+          "recharge": 90,
+          "endurance": 7.8,
+          "activationTime": 0.73,
           "effectArea": "SingleTarget"
         }
       },
       {
-        "name": "Turbo Boost",
-        "fullName": "Pool.Gadgetry.Turbo_Boost",
+        "name": "Athletics",
+        "fullName": "Pool.Utility_Belt.Athletics",
         "rank": 6,
         "available": -1,
-        "description": "Activating this power will give you a massive burst to your flight speed for a short time. Recharge: Very Long",
-        "shortHelp": "Click, Self +Fly Speed",
-        "icon": "gadgetry_turboboost.png",
+        "description": "Activating this power will give you a massive burst of speed and jump power for a moderate duration. Recharge: Very Long",
+        "shortHelp": "Click, Self +Run Speed, +Jump",
+        "icon": "utilitybelt_athletics.png",
         "powerType": "Click",
         "targetType": "Self",
-        "requires": "Pool.Gadgetry.Jetpack",
+        "requires": "Pool.Utility_Belt.Freerunning",
         "maxSlots": 6,
         "allowedEnhancements": [],
         "allowedSetCategories": [],
         "effects": {
           "accuracy": 1,
-          "recharge": 120,
+          "recharge": 60,
           "endurance": 6.5,
-          "activationTime": 1.27,
           "effectArea": "SingleTarget"
         }
       }

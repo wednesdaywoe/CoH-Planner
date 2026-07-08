@@ -6037,6 +6037,14 @@ export const ${exportName}: Power = base;
     return count > 0 ? `${baseName}${count + 1}` : baseName;
   });
 
+  // Dormant sets stay in the generated tree but are flagged so the app can
+  // filter them from pickers uniformly (see src/data/powersets.ts). Only
+  // player-selectable set types can be dormant; pets/inherent are never offered
+  // in a picker, so an access gate there is normal, not a dormancy signal.
+  const SELECTABLE_TYPES = new Set(['primary', 'secondary', 'epic']);
+  const dormant = SELECTABLE_TYPES.has(categoryInfo.type)
+    && deriveDormant(powers.map((x) => x.power));
+
   // Write index file
   const indexContent = `/**
  * ${indexJson.display_name} Powerset
@@ -6061,7 +6069,7 @@ export const powerset: Powerset = {
   powers: [
 ${powerVarNames.map(name => `    ${name},`).join('\n')}
   ],
-};
+${dormant ? '  dormant: true,\n' : ''}};
 
 export default powerset;
 `;
@@ -6075,9 +6083,43 @@ export default powerset;
   return { powerset: indexJson, powers, outputDir: composedDir };
 }
 
+// ============================================
+// DORMANCY DERIVATION
+// ============================================
+
+// A power whose `requires` expression contains an `accesslevel char> N` clause
+// is locked to GMs/devs — normal players have access level 0, so the clause is
+// always false for them. City of Heroes uses this to keep unfinished/unreleased
+// content out of normal play.
+const ACCESS_GATE_RE = /accesslevel char>/;
+
+/**
+ * Derive whether a player-selectable powerset is "dormant" — present in this
+ * server's bins but not released to players.
+ *
+ * A set is dormant when the MAJORITY of its powers carry the dev-only access
+ * gate. The majority threshold (not "all") tolerates a stray ungated component
+ * power — e.g. Wind Control's "Breathless" is open while its other 9 powers are
+ * gated (9/10) — without misfiring on a genuinely released set that merely
+ * contains one or two dev-gated powers — e.g. Thunderspy's Organic Armor (2/12).
+ * Validated 2026-07-08: across all three servers the dormant sets sit at
+ * 0.90–1.00 gated and every released set at <=0.17, so any threshold in that
+ * gap is safe.
+ *
+ * This replaces hand-maintained hide-lists (formerly HC_HIDDEN_POWERSETS in
+ * src/data/powersets.ts). It is self-maintaining: when a server finishes a set
+ * and drops the gate, the flag flips on the next `npm run regen`, no code edit.
+ */
+function deriveDormant(powers) {
+  if (!powers || powers.length === 0) return false;
+  const gated = powers.filter((p) => ACCESS_GATE_RE.test(p.requires || '')).length;
+  return gated / powers.length > 0.5;
+}
+
 // Export for reuse by other scripts (e.g., audit-powerset-effects.cjs,
 // migrate-to-layered.cjs)
 module.exports = {
+  deriveDormant,
   getStrengthsDisallowedIndex,
   applyThunderspyDamageType,
   guardThunderspyOnesBuffs,

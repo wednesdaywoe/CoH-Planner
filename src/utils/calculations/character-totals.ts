@@ -17,7 +17,7 @@ import type { ProcSettings } from '@/stores/uiStore';
 import { isSelfDirectedEffect } from '@/types';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
 import { stanceAdjusterOverrides } from '@/data';
-import { getIOSet, getAlphaEffects, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees } from '@/data';
+import { getIOSet, getAlphaEffects, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees, getProcControlType, DEFAULT_STACK_COUNT, resolveProcContribution, procOverrideKey } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
 import { getBaseToHit, getCombatModifier } from '@/data/purple-patch';
@@ -2038,6 +2038,8 @@ interface SlottedProc {
   powerName: string;
   powerType: string;
   isActive: boolean;
+  /** Slot array index — keys per-proc overrides (`${powerName}:${slotIndex}`). */
+  slotIndex: number;
 }
 
 /** Minimal power interface for proc collection */
@@ -2079,7 +2081,8 @@ function collectAlwaysOnProcs(build: Build): SlottedProc[] {
     const powerType = power.powerType?.toLowerCase() || '';
     const isAlwaysActive = powerType === 'auto' || (powerType === 'toggle' && power.isActive);
 
-    for (const slot of power.slots) {
+    for (let slotIndex = 0; slotIndex < power.slots.length; slotIndex++) {
+      const slot = power.slots[slotIndex];
       if (!slot || slot.type !== 'io-set') continue;
       const ioSlot = slot as IOSetEnhancement;
 
@@ -2105,6 +2108,7 @@ function collectAlwaysOnProcs(build: Build): SlottedProc[] {
           powerName: power.name,
           powerType: powerType,
           isActive: true,
+          slotIndex,
         });
       }
     }
@@ -2463,8 +2467,17 @@ function applyProcBonuses(
 
     // Binary-sourced structured effects (falls back to the mechanics parse).
     // Each effect goes through the same category-filter + Rule-of-5 gate.
+    const overrideKey = procOverrideKey(proc.powerName, proc.slotIndex);
+    const override = build.procOverrides?.[overrideKey];
+
     for (const eff of getProcEffects(procData)) {
-      if (eff.value === undefined || !isProcCategoryEnabled(eff.category, procSettings)) continue;
+      // Variable procs (self-stacking buffs, HP-scaling) are owned exclusively by
+      // applyVariableProcBonuses — skip them here so they aren't double-counted.
+      if (getProcControlType(eff) !== 'toggle') continue;
+      // Per-proc override wins; the global category toggle is the default gate
+      // for a proc the user hasn't explicitly touched.
+      const enabled = override ? override.enabled : isProcCategoryEnabled(eff.category, procSettings);
+      if (eff.value === undefined || !enabled) continue;
       // Skip pet/ally buffs (MM auras) and chance-gated procs — they don't
       // contribute a steady bonus to the PLAYER's dashboard.
       if ('target' in eff && eff.target === 'pets') continue;
@@ -2740,6 +2753,120 @@ function applyBuildUpProcBonuses(
       type: 'proc',
     });
   }
+}
+
+/**
+ * Apply variable-proc bonuses — self-stacking buffs (Might of the Tanker) and
+ * HP-scaling globals (Reactive Defenses). These effects are skipped by
+ * applyProcBonuses / applyPPMProcBonuses and owned exclusively here so their
+ * per-proc override (enable + stack / %HP slider) drives the contribution.
+ *
+ * Magnitude resolution:
+ *  - `scaleTable` effects ("By the Slotted Power", e.g. MotT) are `value ×
+ *    getTableValue(archetype, scaleTable, level)` — the AT modifier the generator
+ *    can't apply (MotT: 50 × 0.10 Tanker Melee_Res_Dmg = 5%/stack).
+ *  - plain effects (Reactive Defenses) use `value` as the resolved literal.
+ * Expected stacks (Auto default) use the host power's base recharge/geometry, the
+ * same rough model as applyBuildUpProcBonuses (enhanced recharge not yet folded in).
+ */
+function applyVariableProcBonuses(
+  build: Build,
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>,
+  procSettings: ProcSettings | undefined,
+  stealthContribs: StealthContribution[],
+): void {
+  const archetype = build.archetype?.id || '';
+  const level = build.level ?? 50;
+
+  const resolveMagnitude = (raw: number | undefined, scaleTable: string | undefined): number => {
+    if (raw === undefined) return 0;
+    if (!scaleTable) return raw; // already a resolved literal
+    const mod = getTableValue(archetype, scaleTable, level) ?? 0;
+    return raw * mod;
+  };
+
+  const processPower = (power: PowerForProcScan) => {
+    if (!power.slots) return;
+    // A Proc-type variable buff contributes when its host is in use: auto is
+    // always on; a toggle only while toggled on; a click ATTACK is assumed
+    // in-rotation (click powers carry isActive === undefined — see buildStore's
+    // add-power default — and their expected-stacks model already accounts for
+    // cast frequency). Only an explicitly toggled-OFF host (isActive === false)
+    // suppresses it. Global scaling procs (Reactive Defenses) are always on.
+    const hostSuppressed = power.isActive === false;
+
+    for (let slotIndex = 0; slotIndex < power.slots.length; slotIndex++) {
+      const slot = power.slots[slotIndex];
+      if (!slot || slot.type !== 'io-set') continue;
+      const ioSlot = slot as IOSetEnhancement;
+      if (!ioSlot.isProc) continue;
+
+      const procData = findProcData(ioSlot.name, ioSlot.setName);
+      if (!procData) continue;
+
+      const overrideKey = procOverrideKey(power.name, slotIndex);
+      const override = build.procOverrides?.[overrideKey];
+
+      for (const eff of getProcEffects(procData)) {
+        const controlType = getProcControlType(eff);
+        if (controlType === 'toggle') continue; // handled by applyProcBonuses
+        if (procData.type !== 'Global' && hostSuppressed) continue;
+
+        // Per-proc override wins; otherwise the global category toggle gates.
+        const effOverride =
+          override ?? { enabled: isProcCategoryEnabled(eff.category, procSettings), mode: 'auto' as const };
+        if (!effOverride.enabled) continue;
+
+        const perUnitValue = resolveMagnitude(eff.value, eff.scaleTable);
+        const capValue = eff.valueMax !== undefined ? resolveMagnitude(eff.valueMax, eff.scaleTable) : undefined;
+
+        const contribution = resolveProcContribution({
+          controlType,
+          perUnitValue,
+          capValue,
+          maxStacks: eff.maxStacks,
+          override: effOverride,
+        });
+        if (contribution === 0) continue;
+
+        // Annotate the breakdown row with the resolved discrete stacks / %HP so
+        // the dashboard tooltip explains the number (stacks default to 1).
+        let detail = '';
+        if (controlType === 'stacks') {
+          const stacks =
+            effOverride.mode === 'stacks'
+              ? Math.max(0, Math.min(eff.maxStacks ?? 1, effOverride.stacks ?? 0))
+              : Math.min(DEFAULT_STACK_COUNT, eff.maxStacks ?? 1);
+          detail = ` (${stacks} stack${stacks === 1 ? '' : 's'})`;
+        } else if (controlType === 'hp' && override) {
+          detail = ` (@${effOverride.mode === 'hp' ? effOverride.hpPct ?? 100 : 100}% HP)`;
+        }
+        const sourceName = `${procData.setName}: ${ioSlot.name}${detail}`;
+        applySingleProcEffect(
+          eff.category,
+          contribution,
+          undefined,
+          eff.effectType,
+          sourceName,
+          global,
+          breakdown,
+          power.name,
+          stealthContribs,
+        );
+      }
+    }
+  };
+
+  for (const power of build.primary?.powers || []) processPower(power);
+  for (const power of build.secondary?.powers || []) processPower(power);
+  for (const pool of build.pools || []) {
+    for (const power of pool.powers) processPower(power);
+  }
+  if (build.epicPool) {
+    for (const power of build.epicPool.powers) processPower(power);
+  }
+  for (const power of build.inherents || []) processPower(power);
 }
 
 // ============================================
@@ -3758,6 +3885,11 @@ export function calculateCharacterTotals(
   if (anyProcEnabled) {
     applyProcBonuses(build, globalBonuses, breakdown, procSettings, stealthContribs);
   }
+
+  // Step 7.5c: Variable procs (stacking buffs / HP-scaling globals). Runs
+  // regardless of anyProcEnabled so an explicit per-proc enable still applies
+  // when the global category toggles are all off — the pass gates per-proc.
+  applyVariableProcBonuses(build, globalBonuses, breakdown, procSettings, stealthContribs);
 
   // Step 7.5b: Commit stealth radius now that every source (active powers +
   // procs) is gathered — suppress groups contribute their max, the rest add.

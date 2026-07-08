@@ -22,31 +22,33 @@ export type PowersetRegistry = Record<string, Powerset>;
 // POWERSET REGISTRY
 // ============================================
 
-// Powerset IDs to hide from the HC registry. Wind Control was an
-// unfinished pre-shutdown set that re-surfaced in the bin export; HC
-// doesn't ship it, so block it from showing up in archetype pickers.
-// Curated here (not via deletion in the generated index) so that
-// re-running `generate-powerset-index.cjs` doesn't reintroduce it.
-const HC_HIDDEN_POWERSETS = new Set<string>([
-  'controller/wind-control',
-  'dominator/wind-control',
-]);
-
-const HC_POWERSETS: PowersetRegistry = (() => {
-  if (HC_HIDDEN_POWERSETS.size === 0) return HC_POWERSETS_RAW;
+// Dormant sets — present in a server's bins but not released to players (their
+// powers are locked behind a dev-only `accesslevel > 0` gate) — are flagged
+// `dormant: true` at convert time (see `deriveDormant` in
+// scripts/convert-powerset.cjs) and dropped from every dataset's pickable
+// registry here. This replaces the former hand-maintained HC_HIDDEN_POWERSETS
+// list (which hid Wind Control on HC): the flag is derived per-dataset from the
+// bins, so it stays correct automatically as servers finish sets. Filtering at
+// runtime (not by deleting generated output) keeps the data available for a
+// possible future "show unreleased sets" toggle and survives regen.
+function withoutDormant(registry: PowersetRegistry): PowersetRegistry {
   const filtered: PowersetRegistry = {};
-  for (const [id, ps] of Object.entries(HC_POWERSETS_RAW)) {
-    if (!HC_HIDDEN_POWERSETS.has(id)) filtered[id] = ps;
+  for (const [id, ps] of Object.entries(registry)) {
+    if (!ps.dormant) filtered[id] = ps;
   }
   return filtered;
-})();
+}
+
+const HC_POWERSETS = withoutDormant(HC_POWERSETS_RAW);
+const REBIRTH_POWERSETS_LIVE = withoutDormant(REBIRTH_POWERSETS);
+const THUNDERSPY_POWERSETS_LIVE = withoutDormant(THUNDERSPY_POWERSETS);
 
 function getRegistry(): PowersetRegistry {
   switch (getActiveDataset().id) {
     case 'rebirth':
-      return REBIRTH_POWERSETS;
+      return REBIRTH_POWERSETS_LIVE;
     case 'thunderspy':
-      return THUNDERSPY_POWERSETS;
+      return THUNDERSPY_POWERSETS_LIVE;
     case 'homecoming':
     default:
       return HC_POWERSETS;

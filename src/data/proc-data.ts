@@ -7,6 +7,8 @@ import { PROC_DAMAGE_EFFECTS } from './generated/proc-damage.generated';
 import { PROC_OTHER_EFFECTS } from './generated/proc-effects.generated';
 import { PROC_PPM } from './generated/proc-ppm.generated';
 import { PROC_RESIDUAL_EFFECTS } from './proc-residual-effects';
+import { PROC_VARIABLE_CONTROLS } from './proc-variable-controls';
+import type { ProcOverride } from '../types/build';
 
 export type ProcType = 'Proc' | 'Proc120s' | 'Global';
 
@@ -81,8 +83,20 @@ export interface ProcEffect {
   /** Trigger chance when < 1 (chance-gated, not steady always-on). The
    *  always-on dashboard path skips these. Omitted = always on. */
   chance?: number;
-  /** True when the value is an HP-scaling floor (Reactive Defenses 3%–12.9%). */
+  /** True when the value is an HP-scaling floor (Reactive Defenses 3%–12.9%).
+   *  `value` is the floor (at full HP), `valueMax` the cap (near 0 HP). */
   scaling?: boolean;
+  /** Max concurrent stacks for a self-stacking buff proc (Might of the Tanker
+   *  = 3). Present ⇒ this effect exposes a stack slider; contribution is
+   *  per-stack `value` × stacks. */
+  maxStacks?: number;
+  /** AT modifier table for a "By the Slotted Power" effect whose magnitude is
+   *  `scale × table[level]`, NOT a literal percent. When set, `value` holds the
+   *  raw `scale × 100` (as the generator emits it) and the resolved per-stack
+   *  magnitude is `value × getTableValue(archetype, scaleTable, level)` — e.g.
+   *  Might of the Tanker: 50 (scale 0.5×100) × 0.10 (Tanker Melee_Res_Dmg) = 5%.
+   *  Absent ⇒ `value` is already the resolved literal (Reactive Defenses = 3%). */
+  scaleTable?: string;
 }
 
 export interface ProcData {
@@ -2404,6 +2418,21 @@ for (const [key, effects] of Object.entries(PROC_RESIDUAL_EFFECTS)) {
   if (entry) entry.effects = effects;
 }
 
+// Additive variable-control overlay (must run LAST, after every effects-setting
+// merge): patch maxStacks/valueMax/scaleTable onto the matching existing effect
+// IN PLACE, preserving the `effects` array reference (the coverage guard asserts
+// getProcEffects === entry.effects). See proc-variable-controls.ts.
+for (const [key, control] of Object.entries(PROC_VARIABLE_CONTROLS)) {
+  const entry = PROC_DATABASE[key];
+  if (!entry?.effects) continue;
+  for (const eff of entry.effects) {
+    if (eff.category !== control.category) continue;
+    if (control.maxStacks !== undefined) eff.maxStacks = control.maxStacks;
+    if (control.valueMax !== undefined) eff.valueMax = control.valueMax;
+    if (control.scaleTable !== undefined) eff.scaleTable = control.scaleTable;
+  }
+}
+
 /**
  * Unified accessor for a proc's structured effects. Every PROC_DATABASE entry
  * now carries binary-sourced (generated) or hand-curated (`proc-residual-effects`)
@@ -2694,6 +2723,164 @@ export function calculateProcsPerMinute(
   const activationsPerMinute = 60 / cycleTime;
 
   return procChance * activationsPerMinute;
+}
+
+// ============================================================================
+// VARIABLE-PROC CONTROLS (per-proc toggles & stack / HP sliders)
+// ============================================================================
+
+/**
+ * Which control a slotted proc exposes in the InfoPanel and how its dashboard
+ * contribution is modelled:
+ *  - `stacks` — self-stacking buff (maxStacks); a discrete 0..maxStacks slider.
+ *  - `hp`     — HP-scaling floor→cap (scaling); a 0..100 %HP slider.
+ *  - `toggle` — plain on/off (globals like Steadfast: genuinely always-on).
+ */
+export type ProcControlType = 'stacks' | 'hp' | 'toggle';
+
+/** The single control-type inference used by both the UI and the calc. */
+export function getProcControlType(effect: ProcEffect): ProcControlType {
+  if (effect.maxStacks !== undefined) return 'stacks';
+  if (effect.scaling) return 'hp';
+  return 'toggle';
+}
+
+/** True when any of a proc's effects exposes a variable (stacks/HP) control. */
+export function isVariableProc(procData: ProcData): boolean {
+  return getProcEffects(procData).some((e) => getProcControlType(e) !== 'toggle');
+}
+
+export const DEFAULT_PROC_OVERRIDE: ProcOverride = { enabled: true, mode: 'auto' };
+
+/** The Build.procOverrides map key for a slotted proc. */
+export function procOverrideKey(powerName: string, slotIndex: number): string {
+  return `${powerName}:${slotIndex}`;
+}
+
+/** True when an override equals the default (enabled + auto) — prune to absent. */
+export function isDefaultProcOverride(ov: ProcOverride): boolean {
+  return ov.enabled && ov.mode === 'auto';
+}
+
+/**
+ * Drop procOverrides entries belonging to any removed power. Returns the same
+ * map reference when nothing changed (so callers can skip a needless update).
+ */
+export function pruneProcOverridesForRemovedPowers(
+  map: Record<string, ProcOverride> | undefined,
+  removedPowerNames: Set<string>,
+): Record<string, ProcOverride> | undefined {
+  if (!map) return map;
+  let changed = false;
+  const next: Record<string, ProcOverride> = {};
+  for (const [key, ov] of Object.entries(map)) {
+    // key === `${powerName}:${slotIndex}` — the power name is everything before
+    // the final ':' (slotIndex is a plain integer).
+    const sep = key.lastIndexOf(':');
+    const powerName = sep >= 0 ? key.slice(0, sep) : key;
+    if (removedPowerNames.has(powerName)) {
+      changed = true;
+      continue;
+    }
+    next[key] = ov;
+  }
+  return changed ? next : map;
+}
+
+/**
+ * Re-key procOverrides after a single slot is removed from `powerName`: drop the
+ * removed slot's entry and shift higher slot indices on that power down by one,
+ * mirroring how slotOrder is reindexed. Returns the same map when unchanged.
+ */
+export function reindexProcOverridesForRemovedSlot(
+  map: Record<string, ProcOverride> | undefined,
+  powerName: string,
+  slotIndex: number,
+): Record<string, ProcOverride> | undefined {
+  if (!map) return map;
+  let changed = false;
+  const next: Record<string, ProcOverride> = {};
+  for (const [key, ov] of Object.entries(map)) {
+    const sep = key.lastIndexOf(':');
+    const keyPower = sep >= 0 ? key.slice(0, sep) : key;
+    const keyIdx = sep >= 0 ? Number(key.slice(sep + 1)) : NaN;
+    if (keyPower !== powerName || !Number.isInteger(keyIdx)) {
+      next[key] = ov;
+      continue;
+    }
+    if (keyIdx === slotIndex) {
+      changed = true; // removed slot → drop
+      continue;
+    }
+    if (keyIdx > slotIndex) {
+      changed = true;
+      next[procOverrideKey(powerName, keyIdx - 1)] = ov;
+    } else {
+      next[key] = ov;
+    }
+  }
+  return changed ? next : map;
+}
+
+/**
+ * Default discrete stack count for a stacking buff proc the user hasn't pinned.
+ * Stacks are integers (you hold 0/1/2/3 of a buff, never a fraction), so the
+ * default is a concrete, conservative baseline rather than a time-averaged
+ * "expected uptime" — a fractional average is a moment the player is never
+ * actually in. Users slide to model their real stack count.
+ */
+export const DEFAULT_STACK_COUNT = 1;
+
+/**
+ * Interpolate an HP-scaling proc's magnitude. Reactive Defenses scales inversely
+ * with current HP: full HP (100%) ⇒ `floor`; ~0 HP ⇒ `cap`. Linear in %HP.
+ */
+export function interpolateScalingValue(floor: number, cap: number, hpPct: number): number {
+  const clamped = Math.max(0, Math.min(100, hpPct));
+  return floor + (cap - floor) * (1 - clamped / 100);
+}
+
+/**
+ * Resolve a single slotted proc effect's steady-state dashboard contribution,
+ * honouring its per-proc override. AT-modifier resolution is done by the caller:
+ * `perUnitValue` is the already-resolved per-stack (stacks) / floor (hp) / full
+ * (toggle) magnitude; `capValue` is the resolved cap for an HP-scaling proc.
+ *
+ * Stacks default (no override / `auto` mode) is a discrete {@link DEFAULT_STACK_COUNT}
+ * clamped to the cap — never a fractional average.
+ *
+ * Returns 0 when the proc is disabled or resolves to nothing.
+ */
+export function resolveProcContribution(args: {
+  controlType: ProcControlType;
+  perUnitValue: number;
+  capValue?: number;
+  maxStacks?: number;
+  override?: ProcOverride;
+}): number {
+  const { controlType, perUnitValue, capValue, maxStacks, override } = args;
+  const ov = override ?? DEFAULT_PROC_OVERRIDE;
+  if (!ov.enabled) return 0;
+
+  switch (controlType) {
+    case 'stacks': {
+      const cap = maxStacks ?? 1;
+      const stacks =
+        ov.mode === 'stacks'
+          ? Math.max(0, Math.min(cap, ov.stacks ?? 0))
+          : Math.min(DEFAULT_STACK_COUNT, cap); // auto → discrete default (1 stack)
+      return perUnitValue * stacks;
+    }
+    case 'hp': {
+      const floor = perUnitValue;
+      const cap = capValue ?? floor;
+      // auto → the honest always-on floor; hp override → interpolate to %HP.
+      return ov.mode === 'hp' ? interpolateScalingValue(floor, cap, ov.hpPct ?? 100) : floor;
+    }
+    case 'toggle':
+    default:
+      return perUnitValue; // enabled non-variable proc contributes its full value
+  }
 }
 
 /**

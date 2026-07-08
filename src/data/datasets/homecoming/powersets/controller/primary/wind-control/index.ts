@@ -39,6 +39,7 @@ export const powerset: Powerset = {
     Vacuum,
     Vortex,
   ],
+  dormant: true,
 };
 
 export default powerset;

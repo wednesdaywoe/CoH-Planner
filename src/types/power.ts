@@ -982,6 +982,14 @@ export interface Powerset {
   icon: string;
   /** Powers in this set */
   powers: Power[];
+  /**
+   * True when this set exists in the server's bins but is NOT released to
+   * players — its powers are locked behind a dev-only access gate
+   * (`accesslevel > 0`). Derived at convert time (see `deriveDormant` in
+   * scripts/convert-powerset.cjs), not hand-curated. Dormant sets are filtered
+   * out of the pickable registry at runtime (see src/data/powersets.ts).
+   */
+  dormant?: boolean;
 }
 
 // ============================================

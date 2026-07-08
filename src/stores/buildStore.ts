@@ -10,6 +10,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import type {
   Build,
   AttackChain,
+  ProcOverride,
   SelectedPower,
   Accolade,
   ArchetypeId,
@@ -47,6 +48,13 @@ import {
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
 import { computeSetTracking } from '@/utils/calculations/set-tracking';
+import {
+  DEFAULT_PROC_OVERRIDE,
+  isDefaultProcOverride,
+  procOverrideKey,
+  pruneProcOverridesForRemovedPowers,
+  reindexProcOverridesForRemovedSlot,
+} from '@/data/proc-data';
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
 import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, canRelocateSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
 import { enhancementAllowedInPower } from '@/utils/enhancement-eligibility';
@@ -147,6 +155,14 @@ interface BuildActions {
   updateAttackChain: (id: string, powers: string[]) => void;
   renameAttackChain: (id: string, name: string) => void;
   deleteAttackChain: (id: string) => void;
+
+  // Per-slotted-proc control overrides (enable/disable + stack / HP-scaling
+  // slider), keyed `${powerName}:${slotIndex}`. Sparse: absent = enabled + auto.
+  /** Merge a partial override for one slotted proc; prunes back to absent when
+   *  the result is the default (enabled + auto), keeping the map sparse. */
+  setProcOverride: (powerName: string, slotIndex: number, patch: Partial<ProcOverride>) => void;
+  /** Remove a proc's override entirely (back to enabled + auto). */
+  clearProcOverride: (powerName: string, slotIndex: number) => void;
 
   /**
    * Walk every slotted enhancement and bump it to its "finalized" form.
@@ -1259,6 +1275,7 @@ export const useBuildStore = create<BuildStore>()(
               powers: [], // Clear powers when powerset changes
             },
             slotOrder: state.build.slotOrder.filter((e) => !removedNames.has(e.powerName)),
+            procOverrides: pruneProcOverridesForRemovedPowers(state.build.procOverrides, removedNames),
           };
 
           // Auto-grant inherent powers if both powersets are now selected
@@ -1290,6 +1307,7 @@ export const useBuildStore = create<BuildStore>()(
               powers: [],
             },
             slotOrder: state.build.slotOrder.filter((e) => !removedNames.has(e.powerName)),
+            procOverrides: pruneProcOverridesForRemovedPowers(state.build.procOverrides, removedNames),
           };
 
           // Auto-grant inherent powers if both powersets are now selected
@@ -1509,6 +1527,7 @@ export const useBuildStore = create<BuildStore>()(
             for (const name of formGroup.grantedPowers) removedNames.add(name);
           }
           newBuild.slotOrder = newBuild.slotOrder.filter((e) => !removedNames.has(e.powerName));
+          newBuild.procOverrides = pruneProcOverridesForRemovedPowers(newBuild.procOverrides, removedNames);
           return { build: newBuild };
         });
       },
@@ -1585,6 +1604,7 @@ export const useBuildStore = create<BuildStore>()(
             ...state.build,
             pools: state.build.pools.filter((p) => p.id !== poolId),
             slotOrder: state.build.slotOrder.filter((e) => !removedNames.has(e.powerName)),
+            procOverrides: pruneProcOverridesForRemovedPowers(state.build.procOverrides, removedNames),
           };
           newBuild.sets = updateSetTracking(newBuild);
           return { build: newBuild };
@@ -1600,6 +1620,7 @@ export const useBuildStore = create<BuildStore>()(
               ...state.build,
               epicPool: null,
               slotOrder: state.build.slotOrder.filter((e) => !removedNames.has(e.powerName)),
+              procOverrides: pruneProcOverridesForRemovedPowers(state.build.procOverrides, removedNames),
             };
             newBuild.sets = updateSetTracking(newBuild);
             return { build: newBuild };
@@ -1700,6 +1721,13 @@ export const useBuildStore = create<BuildStore>()(
                 ? { ...e, slotIndex: e.slotIndex - 1 }
                 : e
             );
+          // Drop the removed slot's proc override and shift higher same-power
+          // indices down, mirroring the slotOrder reindex above.
+          newBuild.procOverrides = reindexProcOverridesForRemovedSlot(
+            newBuild.procOverrides,
+            powerName,
+            slotIndex,
+          );
           return { build: newBuild };
         });
 
@@ -1771,6 +1799,22 @@ export const useBuildStore = create<BuildStore>()(
                 ? { ...e, slotIndex: e.slotIndex - 1 }
                 : e
             );
+          // Carry the moved slot's proc override to its destination key when the
+          // enhancement travels; then reindex the source power's remaining keys.
+          const movedOverride = carried
+            ? s.build.procOverrides?.[procOverrideKey(source.powerName, sourceIndex)]
+            : undefined;
+          newBuild.procOverrides = reindexProcOverridesForRemovedSlot(
+            newBuild.procOverrides,
+            source.powerName,
+            sourceIndex,
+          );
+          if (movedOverride) {
+            newBuild.procOverrides = {
+              ...(newBuild.procOverrides ?? {}),
+              [procOverrideKey(target.powerName, targetNewIndex)]: movedOverride,
+            };
+          }
 
           // 2) Resolve the destination grant level against the POST-removal
           //    slotOrder (so the freed source grant is back in the pool), then
@@ -1993,6 +2037,32 @@ export const useBuildStore = create<BuildStore>()(
             attackChains: (state.build.attackChains ?? []).filter((c) => c.id !== id),
           },
         }));
+      },
+
+      setProcOverride: (powerName, slotIndex, patch) => {
+        historyCheckpoint();
+        const key = procOverrideKey(powerName, slotIndex);
+        set((state) => {
+          const prev = state.build.procOverrides?.[key] ?? DEFAULT_PROC_OVERRIDE;
+          const next: ProcOverride = { ...prev, ...patch };
+          const map = { ...(state.build.procOverrides ?? {}) };
+          // Keep the map sparse (smaller share-URLs): drop the key when the
+          // override is back to the default (enabled + auto).
+          if (isDefaultProcOverride(next)) delete map[key];
+          else map[key] = next;
+          return { build: { ...state.build, procOverrides: map } };
+        });
+      },
+
+      clearProcOverride: (powerName, slotIndex) => {
+        const key = procOverrideKey(powerName, slotIndex);
+        if (!get().build.procOverrides?.[key]) return; // nothing to clear
+        historyCheckpoint();
+        set((state) => {
+          const map = { ...(state.build.procOverrides ?? {}) };
+          delete map[key];
+          return { build: { ...state.build, procOverrides: map } };
+        });
       },
 
       maximizeEnhancementLevels: (options) => {
