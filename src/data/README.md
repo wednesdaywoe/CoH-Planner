@@ -41,8 +41,25 @@ generated + overrides + composed lets each layer evolve independently:
   overrides survive untouched.
 - Hand-edit an override only when the generated extraction is genuinely
   wrong/missing a planner-side field — the next regen leaves it alone.
-- Composed files are thin `withOverrides(generated, overrides)` wrappers;
-  they only need editing if the power's export name changes.
+- Composed files are thin wrappers, always rewritten by the converter to
+  keep their import/export identifier in sync with the generated export.
+
+### An override file exists ONLY when it carries a real delta
+
+> **Changed 2026-07-07.** The converter no longer scaffolds an empty `{}`
+> override stub for every power. Previously each power had a parallel
+> `overrides/<power>.ts` even when it held no deltas (~8,700 empty stubs
+> across the three datasets); those were deleted and are no longer emitted.
+
+So a power's `overrides/<power>.ts` is present **iff** it has a hand-written
+delta, and the composed file takes one of two shapes accordingly (see
+[Composed file shape](#composed-file-shape)). **To add an override:**
+hand-create `overrides/<at>/<slot>/<set>/<power>.ts` with a non-empty
+`overrides` object, then re-run the converter for that set
+(`node scripts/convert-powerset.cjs <category> <set>`) — it detects the file
+and rewires the composed export to layer it via `withOverrides`. Deleting an
+override file (or emptying it to `{}`) and re-running reverts the composed
+export to the base-only form.
 
 ## ⚠️ `generated/` is authoritative — overrides should be rare and shrinking
 

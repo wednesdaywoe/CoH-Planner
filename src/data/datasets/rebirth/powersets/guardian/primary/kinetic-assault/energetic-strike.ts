@@ -1,16 +1,15 @@
 /**
  * Energetic Strike — COMPOSED EXPORT
  *
- * The planner imports from here. Composes the auto-generated power object
- * with hand-written overrides via `withOverrides`. See src/data/README.md
- * for the layering pattern.
+ * The planner imports from here. No hand-written overrides exist for this
+ * power, so it re-exports the auto-generated base directly. To add an
+ * override: create the parallel overrides/<power>.ts with a non-empty
+ * `overrides` object and re-run the converter. See src/data/README.md.
  *
  * To re-generate the base power:
  *   node scripts/convert-powerset.cjs guardian_assault kinetic_assault
  */
 import type { Power } from '@/types';
-import { withOverrides } from '@/data/_layer';
 import { EnergeticStrike as base } from '@/data/datasets/rebirth/generated/powersets/guardian/primary/kinetic-assault/energetic-strike';
-import { overrides } from '@/data/datasets/rebirth/overrides/powersets/guardian/primary/kinetic-assault/energetic-strike';
 
-export const EnergeticStrike: Power = withOverrides(base, overrides);
+export const EnergeticStrike: Power = base;

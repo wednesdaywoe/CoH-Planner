@@ -1,16 +1,15 @@
 /**
  * Stun — COMPOSED EXPORT
  *
- * The planner imports from here. Composes the auto-generated power object
- * with hand-written overrides via `withOverrides`. See src/data/README.md
- * for the layering pattern.
+ * The planner imports from here. No hand-written overrides exist for this
+ * power, so it re-exports the auto-generated base directly. To add an
+ * override: create the parallel overrides/<power>.ts with a non-empty
+ * `overrides` object and re-run the converter. See src/data/README.md.
  *
  * To re-generate the base power:
  *   node scripts/convert-powerset.cjs blaster_support energy_manipulation
  */
 import type { Power } from '@/types';
-import { withOverrides } from '@/data/_layer';
 import { Stun as base } from '@/data/datasets/thunderspy/generated/powersets/blaster/secondary/energy-manipulation/stun';
-import { overrides } from '@/data/datasets/thunderspy/overrides/powersets/blaster/secondary/energy-manipulation/stun';
 
-export const Stun: Power = withOverrides(base, overrides);
+export const Stun: Power = base;

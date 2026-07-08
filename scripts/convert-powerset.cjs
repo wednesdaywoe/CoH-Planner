@@ -5965,40 +5965,30 @@ export const ${exportName}: Power = ${JSON.stringify(power, null, 2)};
 `;
     fs.writeFileSync(path.join(generatedDir, powerFileName), generatedContent);
 
-    // 2. & 3. overrides + composed — scaffolded individually if missing.
-    //    Each is independent; a missing composed gets created (importing
-    //    whatever override exists or scaffolding an empty one), and a
-    //    missing override gets an empty stub. Both are safe-to-rebuild —
-    //    the composed file is just the layering shim, and the empty
-    //    override is a no-op.
+    // 2. & 3. overrides + composed.
+    //    An override file exists ONLY when it carries a real hand-written delta.
+    //    Empty `{}` stubs are no longer scaffolded — a no-delta power gets a
+    //    composed file that re-exports the generated base directly (no override
+    //    import, no `withOverrides` call). To ADD an override: hand-create the
+    //    parallel overrides/<power>.ts with a non-empty `overrides` object, then
+    //    re-run the converter — it detects the file here and rewires the composed
+    //    file to layer it. See src/data/README.md.
     const composedPath = path.join(composedDir, powerFileName);
     const overridePath = path.join(overridesDir, powerFileName);
-    const composedExists = fs.existsSync(composedPath);
-    const overrideExists = fs.existsSync(overridePath);
-    if (!overrideExists) {
-      const overrideContent = `/**
- * ${power.name} — OVERRIDES LAYER
- *
- * Hand-written deltas applied on top of the generated power object via
- * \`withOverrides()\` in the composed file. Survives regeneration.
- * Empty \`{}\` means no overrides — the generated extraction is accepted
- * as-is. Add fields here when convert-powerset produces the wrong value
- * or is missing a planner-only field (maxStacks, stacksLinear, etc.).
- */
-import type { Power } from '@/types';
-
-export const overrides: Partial<Power> = {};
-`;
-      fs.writeFileSync(overridePath, overrideContent);
+    // hasOverride = an override file exists AND its object literal is non-empty.
+    // A lingering empty `{}` stub is treated as "no override" so it projects to
+    // the base-only composed form (and can be safely deleted).
+    let hasOverride = false;
+    if (fs.existsSync(overridePath)) {
+      const existing = fs.readFileSync(overridePath, 'utf-8');
+      const m = existing.match(/Partial<Power>\s*=\s*(\{[\s\S]*?\})\s*;/);
+      hasOverride = m ? m[1].replace(/\s+/g, '') !== '{}' : false;
     }
-    // The composed file is purely mechanical (import base + overrides →
-    // withOverrides) — all hand-edits live in the parallel override file — so it
-    // is ALWAYS rewritten. This keeps its import/export identifier in sync with
-    // the generated export const; previously, scaffolding it only-if-missing left
-    // a rename stranded (the composed kept importing the old name). `composedExists`
-    // is retained only to log new scaffolds.
-    void composedExists;
-    const composedContent = `/**
+    // The composed file is purely mechanical and ALWAYS rewritten — this keeps
+    // its import/export identifier in sync with the generated export const (a
+    // rename would otherwise strand the old import).
+    const composedContent = hasOverride
+      ? `/**
  * ${power.name} — COMPOSED EXPORT
  *
  * The planner imports from here. Composes the auto-generated power object
@@ -6014,6 +6004,22 @@ import { ${exportName} as base } from '${genRel}';
 import { overrides } from '${ovrRel}';
 
 export const ${exportName}: Power = withOverrides(base, overrides);
+`
+      : `/**
+ * ${power.name} — COMPOSED EXPORT
+ *
+ * The planner imports from here. No hand-written overrides exist for this
+ * power, so it re-exports the auto-generated base directly. To add an
+ * override: create the parallel overrides/<power>.ts with a non-empty
+ * \`overrides\` object and re-run the converter. See src/data/README.md.
+ *
+ * To re-generate the base power:
+ *   node scripts/convert-powerset.cjs ${category} ${powersetName}
+ */
+import type { Power } from '@/types';
+import { ${exportName} as base } from '${genRel}';
+
+export const ${exportName}: Power = base;
 `;
     fs.writeFileSync(composedPath, composedContent);
 

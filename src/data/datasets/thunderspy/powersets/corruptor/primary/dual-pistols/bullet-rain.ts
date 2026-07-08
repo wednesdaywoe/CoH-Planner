@@ -1,16 +1,15 @@
 /**
  * Bullet Rain — COMPOSED EXPORT
  *
- * The planner imports from here. Composes the auto-generated power object
- * with hand-written overrides via `withOverrides`. See src/data/README.md
- * for the layering pattern.
+ * The planner imports from here. No hand-written overrides exist for this
+ * power, so it re-exports the auto-generated base directly. To add an
+ * override: create the parallel overrides/<power>.ts with a non-empty
+ * `overrides` object and re-run the converter. See src/data/README.md.
  *
  * To re-generate the base power:
  *   node scripts/convert-powerset.cjs corruptor_ranged dual_pistols
  */
 import type { Power } from '@/types';
-import { withOverrides } from '@/data/_layer';
 import { BulletRain as base } from '@/data/datasets/thunderspy/generated/powersets/corruptor/primary/dual-pistols/bullet-rain';
-import { overrides } from '@/data/datasets/thunderspy/overrides/powersets/corruptor/primary/dual-pistols/bullet-rain';
 
-export const BulletRain: Power = withOverrides(base, overrides);
+export const BulletRain: Power = base;
