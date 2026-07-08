@@ -280,12 +280,16 @@ per-field evidence trail:
   in `src/data/datasets/rebirth/kheldian-redirects.ts` is already shipped).
 - **Audit HC's extracted redirects for other mis-modeled powers** — snipe
   quick/interruptible, Bio Armor adaptations.
-- **Native Parse6 redirect parse** [L, deferred] — Extract form-redirect data
-  natively from `powers.bin` post-effects tail (currently discarded by
-  `_parse_power_parse6`'s `skip_to_end()`) instead of the hand-curated map.
-  Format is a flat RPN string-array, not HC's `(target, condition_array)` shape —
-  real RE. Notes in `project_parse6_redirects` memory. Restart hint: dump
-  Glinting_Eye / Gleaming_Blast / Solar_Flare tails in parallel for a pattern.
+- ~~**Native Parse6 redirect parse**~~ [L] — **PARSER RE DONE 2026-07-07** (the
+  `parse6-tail-modes-redirects` fix). `_parse_power_parse6` now parses the
+  post-effects tail natively — [`_powers.py:2129`](../tools/bin-crawler/bin_crawler/parser/_powers.py#L2129)
+  calls `_parse_redirects(r)` (Thunderspy snipes + Rebirth REB3) instead of
+  `skip_to_end()`. The RE overturned this item's premise: Parse6 redirects are an
+  **HC-shaped struct_array**, not the assumed flat RPN string-array, so the same
+  `_parse_redirects` reader works. Residual (separate, converter-side): switch the
+  Rebirth Kheldian form model off the hand-curated
+  `datasets/rebirth/kheldian-redirects.ts` map onto the native parse — do only if
+  the map drifts; the parser gap that blocked it is closed.
 - **Other Kheldian verification** — (1) diff powercat dumps vs generated
   powersets for new/removed powers in Rebirth's Luminous_Blast / Luminous_Aura /
   Umbral_Blast / Umbral_Aura; (2) check whether Cosmic Balance / Dark Sustenance
@@ -312,9 +316,13 @@ per-field evidence trail:
   descriptions parsed into explicit suppression rules, or a Rebirth data source
   that carries the modes.
 - **Parse6 CopyBoosts/PseudoPet tail decode** — `CopyBoosts`/`PseudoPet` live in
-  the not-yet-decoded post-magnitude tail; Parse6 template parser decodes no
-  `flags` at all, so Rebirth pets get no `copyBoosts`. Do it if a Rebirth
-  summon's pet DPS is reported wrong.
+  the not-yet-RE'd **post-magnitude** tail, so Rebirth pets get no `copyBoosts`.
+  (Rationale corrected 2026-07-07: the old "Parse6 decodes no `flags` at all" is
+  stale — [`_powers.py:1844`](../tools/bin-crawler/bin_crawler/parser/_powers.py#L1844)
+  now decodes the `Allow*`-derived flags: IgnoreStrength / IgnoreResistance /
+  IgnoreCombatMods / NearGround / CancelOnMiss. Only CopyBoosts/PseudoPet remain,
+  explicitly deferred at [`_powers.py:1843`](../tools/bin-crawler/bin_crawler/parser/_powers.py#L1843).)
+  Do it if a Rebirth summon's pet DPS is reported wrong.
 - **Rebirth stealth suppression (conditional re-apply)** — `STEALTH_SUPPRESS_LEAVES`
   max-wins fix was built then reverted to additive; re-apply ONLY if live Rebirth
   is observed max-wins.
@@ -348,9 +356,13 @@ per-field evidence trail:
 - **TSPY5 — Thunderspy archetype-stats test** — Mirror the HC one;
   `src/data/archetype-stats.test.ts` covers HC/Rebirth only. *(Same item noted
   as a TODO in THUNDERSPY_PARSER.md's `_classes.py` entry.)*
-- **TSPY6 — extract effect-template tail fields** — `cancel_events`,
-  `suppress_events`, stacking metadata. Variable tail layout; planner-needed
-  math fields already extracted, so this is extra coverage.
+- **TSPY6 — extract effect-template tail fields** — narrowed 2026-07-07 to
+  **`suppress_events` only**. Stacking metadata is DONE (`stack_limit` in 8,473
+  tspy export files); `cancel_events` is parsed but always-empty for Parse6 (0
+  files surface it) — a non-gap. `suppress_events` is still in the un-RE'd Parse6
+  post-magnitude tail (0 tspy / 0 rebirth files vs HC-only), same tail as the
+  Rebirth CopyBoosts/PseudoPet item in §8 — so RE them together. Extra coverage;
+  planner-needed math fields already extracted.
 - **TSPY7 — add thunderspy to `regen-all.cjs` + CI regen-diff** — **CLOSED
   2026-07-07 (verified already shipped):** `regen-all.cjs` defaults to all
   three datasets and `regen-diff.yml` byte-gates the thunderspy `generated/`
