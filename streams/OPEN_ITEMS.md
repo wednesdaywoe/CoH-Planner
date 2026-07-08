@@ -196,50 +196,33 @@ per-field evidence trail:
   3 fields get parsed later (e.g. as a side effect of some other parser
   work), leave them unconsumed rather than inventing an assumed-target-count
   UI for them.
-- **`ProcMainTargetOnly`** [RESEARCHED 2026-07-07, mechanism confirmed by
-  structural pattern, likely REAL BUG in current calc, not yet implemented]
-  — always `kTrue` when present (92 files), never `kFalse`. Cross-read every
-  file's `EffectArea`/`Target`/`Radius`/`MaxTargetsHit`:
-  - **54 are `EffectArea kCharacter`** (no radius/arc at all — Beheader,
-    Swoop, Chop, Gash, Head_Splitter and the rest of the Battle
-    Axe/Broad_Sword ST melee chain-attack set). Already single-target in the
-    export (`radius=0`), so the flag is a no-op under current code — no bug,
-    just confirms the field's semantics line up.
-  - **The other ~38 all have a non-zero `radius` field despite being
-    single-relevant-target powers**: `Tesla_Cage` (`EffectArea kChain`,
-    `radius=10`, but `MaxTargetsHit=1` — verified exported as
-    `radius: 10, maxTargets: 1` in
-    `generated/.../electrical-blast/tesla-cage.ts`), `Ground_Zero`
-    (`Target kCaster` — self is the real target, foes in the 15' sphere are
-    splash, one copy per AT with Radiation Armor), every AT's `Placate`
-    (Stalker/Bane Spider — `kSphere radius=15 mth=5`, a non-damage
-    status/threat-drop power), `Touch_of_Fear`/`Lightning_Clap` (Dark/
-    Electrical Melee PBAoE fear/stun — no damage effect, control-only),
-    `Propel` (Gravity Control — single-target thrown-object attack;
-    `radius=15` is vestigial/targeting-only), `Focused_Burst` (Kinetic
-    Attack ST attack, `EffectArea kChain`). **No true multi-target damage
-    AoE (Frost, Fire Sword Circle, Whirling_*, etc.) carries this flag** —
-    the absence is as informative as the presence.
-  - **Conclusion**: `ProcMainTargetOnly` means "for PPM proc-chance
-    purposes, this power's `radius`/`arc` fields are not real splash
-    geometry — treat as single-target (area denom = 1.0)" regardless of
-    what `EffectArea`/`Radius` say. This directly implicates
-    `resolveProcAreaGeometry` (`src/utils/calculations/pet-damage.ts:593`),
-    which currently derives `radius`/`arcDegrees` straight from the power's
-    own fields with **no check for this flag or for `MaxTargetsHit===1`**,
-    then feeds them into `getPPMAreaDenominator`
-    (`src/data/proc-data.ts:2595`). For Tesla_Cage that's
-    `getPPMAreaDenominator(10, 360) ≈ 2.125` — a proc chance cut to under
-    half of what it should be, for a power that only ever hits one target.
-    Same class of under-estimation for Placate/Ground_Zero/Propel/etc. if a
-    player proc-slots them. **Likely a real, fixable calc bug** — unlike
-    OverCap above, this doesn't require encounter simulation: it's a static
-    per-power correction (parse the flag, or equivalently gate on
-    `MaxTargetsHit===1`, and short-circuit `resolveProcAreaGeometry` to
-    `{radius: 0, arcDegrees: 360}`). Not yet implemented; the structural
-    correlation is strong but not confirmed against a live combat log the
-    way the `ProcAllowed` theory was tested and disproven — flag this
-    distinction if pursuing.
+- **`ProcMainTargetOnly`** [RULED OUT as "proc rolls once against main
+  target only" — DISPROVEN by live combat log, 2026-07-07] — a structural
+  cross-read (see prior revision of this entry, superseded) had built a
+  plausible-looking theory: 54/92 files are `EffectArea kCharacter`
+  (already ST, no-op) and the other ~38 all have a non-zero `radius` despite
+  being single-relevant-target-feeling powers (Tesla_Cage `MaxTargetsHit=1`,
+  Ground_Zero self-target, every AT's Placate, Touch_of_Fear/Lightning_Clap,
+  Propel, Focused_Burst) — theorized the flag meant "ignore radius/arc for
+  PPM purposes, proc rolls once against the main target." **User tested
+  Touch of Fear in-game with an Eradication proc slotted** (live Homecoming
+  combat log, 2026-07-07 21:57): a single Touch of Fear activation at
+  21:57:48 produced **three separate Eradication: Chance for Energy Damage
+  procs on three different targets** (P.E.A.C.E. Breacher 51.76,
+  Patroller Engineer 79.63, P.E.A.C.E. Heavy 31.85) in the following second.
+  That is exactly per-target independent rolling, indistinguishable from a
+  normal AoE proc — flatly contradicts "rolls once, main target only."
+  Whatever `ProcMainTargetOnly` actually gates, it is NOT limiting procs to
+  a single roll. Same lesson as `ProcAllowed` below (plausible name +
+  file-structure correlation ≠ confirmed semantics) — this is the *third*
+  time in this project a structurally-plausible field theory died on
+  contact with a live test (see [[dna-siphon-tooltip-conditional-heal]] and
+  `ProcAllowed`). Do not re-attempt the "single roll"/"ignore AoE denom"
+  theory without new evidence; true meaning unknown, deprioritized. (Side
+  finding, not a contradiction: Touch of Fear's live DoT damage comes from
+  its `ExecutePower` redirect target, not from any AttribMod on the
+  top-level `.powers` file, which only carries the redirect — consistent
+  with, not contrary to, the earlier read.)
 - **`ProcAllowed`** (112) [RULED OUT as a proc-blocking flag, 2026-07-07] —
   hypothesized this blocked slotted IO procs entirely (seen on MM pet summons,
   Fault, Spring_Attack, etc.). **Disproven by live combat log**: Spring_Attack
