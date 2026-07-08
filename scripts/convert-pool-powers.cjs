@@ -107,18 +107,22 @@ const POOL_DISPLAY_NAMES = {
   utility_belt: 'Utility Belt',
 };
 
-// Non-derivable dormancy overrides: pools that are present + ungated in a
-// server's bins (so `deriveDormant` would SHOW them) but are NOT actually live,
-// per the server's devs. The client `.pigg` does not encode this — verified
-// 2026-07-08 by parsing all three servers' bins: Rebirth's not-live Utility Belt
-// is byte-identical to its live Gadgetry at every client gate (per-power
-// accesslevel, powerset show_in_*/buy_requires, AND the Pool powercat roster).
-// The "not live" state is enforced server-side, so it must be curated here.
-// Keep this MINIMAL and sourced from devs — not wikis/patch-notes. Remove an
-// entry once the server ships the pool (Thunderspy already has both, so it has
-// no entry; HC gates both via accesslevel, so it needs none).
+// Dormancy overrides for pools that no bin signal can classify. Per a Rebirth
+// dev (2026-07-08), Rebirth's Utility Belt is "present but locked — nobody owns
+// it and there's no way to get the entitlement." It's ENTITLEMENT-gated: the
+// powerset requires ownership of an account product (verified in powersets.bin —
+// Rebirth UB carries account_product='ctpputbe', account_tooltip 'ctpputbe
+// ProductOwned?'). The REQUIREMENT is in the data, but whether the product is
+// GRANTED to players is server-side and is NOT — so it can't be derived. Proof
+// it's non-derivable: on Rebirth, Sorcery ALSO carries an account product
+// (ctppsorc) yet is fully available (its product is granted to everyone); only
+// UB's product is granted to no one. account_product is identical in shape for
+// the available set and the locked set. (Thunderspy's UB has no entitlement at
+// all → available; HC gates via accesslevel GM-only, which deriveDormant
+// catches.) So this stays hand-curated from dev word until Rebirth grants/ships
+// UB, at which point delete the entry. Keep MINIMAL and dev-sourced.
 const POOL_DORMANCY_OVERRIDES = {
-  rebirth: new Set(['utility_belt']),  // Gadgetry live; Utility Belt not yet released (per Rebirth devs).
+  rebirth: new Set(['utility_belt']),  // entitlement-locked (product 'ctpputbe' granted to nobody) — not derivable.
 };
 
 // ============================================
