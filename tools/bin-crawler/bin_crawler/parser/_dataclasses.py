@@ -191,6 +191,17 @@ class PowerRecord:
     modes_disallowed: list[int] = field(default_factory=list)
     modes_suspended: list[int] = field(default_factory=list)
 
+    # `GroupMembership` in the .def (field 75, HC; field 74 tail, Parse6) — a
+    # u4_array, read but previously discarded. Powers sharing a non-empty
+    # group id are presumed mutually exclusive (e.g. Dual Pistols' ammo
+    # toggles, Bio Armor's Adaptation stances) — a candidate native data
+    # source for what `src/data/stance-groups.ts`'s hand-curated
+    # `STANCE_GROUPS` approximates by power-name heuristic. Whether these
+    # indices resolve through the same mode registry as modes_required/etc.
+    # is UNVERIFIED — resolve and cross-check against known stance groups
+    # before trusting the resolved names.
+    exclusion_groups: list[int] = field(default_factory=list)
+
     # Fields kept from before for backward compat
     @property
     def power_type_name(self) -> str:

@@ -1157,7 +1157,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
     # The three mode arrays are indices into the global mode registry (same table
     # Set_Mode magnitudes index — attrib_names.bin ppchMode); captured raw here and
     # resolved to names at export. Empty on almost all powers.
-    r.read_u4_array()  # exclusion_groups
+    exclusion_groups = r.read_u4_array()
     modes_required = r.read_u4_array()
     modes_disallowed = r.read_u4_array()
     modes_suspended = r.read_u4_array()
@@ -1250,6 +1250,7 @@ def _parse_power(r: BinReader, *, has_field_45b: bool = True, has_field_41b: boo
         modes_required=modes_required,
         modes_disallowed=modes_disallowed,
         modes_suspended=modes_suspended,
+        exclusion_groups=exclusion_groups,
     )
 
 
@@ -2167,7 +2168,7 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     boosts_allowed = [boost_map.get(v, f"Unknown({v})") for v in boosts_raw]
     # 74: u4_array of mode/group refs (see HC parser comment). Not
     # allowed_boostset_cats — that field doesn't exist in the binary.
-    r.read_u4_array()
+    exclusion_groups = r.read_u4_array()
     allowed_boostset_cats: list[str] = []
 
     # Parse6 tail. Re-decoded byte-level against Rebirth + Thunderspy
@@ -2302,4 +2303,5 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
         modes_required=modes_required,
         modes_disallowed=modes_disallowed,
         modes_suspended=modes_suspended,
+        exclusion_groups=exclusion_groups,
     )

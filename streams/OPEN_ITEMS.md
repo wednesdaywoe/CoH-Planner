@@ -118,19 +118,69 @@ Verified this session: working-tree `generated/` clean after a full regen,
   staleness (HC slot-reuse renames: Stalker "Resurgence"→"Up to the Challenge",
   "Smoke_Flash"→"Bo Ryaku") + one kUnique3 singleton on a silent temp power.
 
-Remaining (the audit's live worklist, now trustworthy):
+Remaining (the audit's live worklist, now trustworthy). Re-ran audit.py
+2026-07-07 with full paths (not just basenames) to vet each candidate before
+committing effort — see [[power-level-fields-triage]] memory for the full
+per-field evidence trail:
 
-- **Power-level fields still unparsed** [M] — mechanical candidates from the
-  cleaned report: `ProcAllowed` (76), `GroupMembership` (66 — parser reads
-  field 75 `exclusion_groups` and discards), `OverCapMultiplier`/`OverCapTrigger`
-  (Psionic Armor over-cap, 64), `MaxBoosts` (63), `TargetNearGround`/`NearGround`
-  (142/42), `CastableAfterDeath` (36), `StackingUsage`, `ProcMainTargetOnly`,
-  `ChainDelay` (parser reads field 41 and discards), `ChainIntoPower`.
+- **`GroupMembership`/`exclusion_groups`** — CAPTURED 2026-07-07, but turned
+  out NOT to be the STANCE_GROUPS data source hoped for. The parser now
+  retains field 75 (HC)/74 (Parse6) instead of discarding it (`_powers.py` +
+  `PowerRecord.exclusion_groups`; 3-dataset re-export, manifest-only + one
+  incidental live-data drift — Obscure Sustenance's recharge dropped
+  180s→60s in the same HC patch, propagated via `npm run regen`, 866/866
+  green). Empirically: Dual Pistols ammo and Bio Organic Armor/Staff Fighting
+  carry NO `GroupMembership` in the compiled client bin at all (their real
+  exclusivity runs through `modes_required`/`modes_disallowed`, already
+  captured/exported, and `activeSubPower` respectively — see
+  [[power-level-fields-triage]]). Across all 26,313 HC powers only **11**
+  carry a non-empty value, in 4 small clusters (flight-speed-boost clicks,
+  extra-jump temps, 2 self-rez temps, the 4 alt-signature-summon vet
+  rewards) — real but narrow. Attempted resolving the group ids through the
+  same mode-name table `modes_required` uses; that table is WRONG for this
+  field (resolved names don't semantically fit — e.g. the 4-signature-pet
+  group resolved to `"Disable_SteamJump"`). Correct name registry
+  unlocated. Left as raw unresolved indices in the parser (harmless,
+  unconsumed) — not wired into `export_powers.py`/the converter. Do not
+  re-pursue as a STANCE_GROUPS replacement without finding the real table.
+- **`OverCapTrigger`/`OverCapMultiplier`/`OverCapExponential`** [needs
+  research, high potential impact] — 64/63 hits, but ~54 are exclusively
+  `Tanker_Melee` copies of marquee AoE attacks (Foot_Stomp, Shatter,
+  Eviscerate, the Whirling_* family, Frost, Combustion...) — notably the
+  **Brute** copy of the same power (e.g. Foot_Stomp) has NO OverCap fields,
+  only the Tanker one does. Looks like Homecoming's Tanker-specific
+  "AoE damage scales with target count" mechanic, completely unmodeled in
+  `src/`. Formula direction/shape unconfirmed — needs research (wiki/patch
+  notes or in-game test) before implementing, not a guess-and-ship.
+- **`ProcMainTargetOnly`** (92, mostly Stalker/Scrapper/Brute/Tanker melee
+  AoE/cone attacks) [needs research] — plausibly governs whether a slotted
+  proc's PPM chance rolls once against the main target vs per-target; current
+  `calculateProcChance`'s `getPPMAreaDenominator` reduction may not apply to
+  these powers, meaning proc chance could be under- or over-estimated for
+  exactly the attacks players proc-slot the most. Not verified.
+- **`ProcAllowed`** (112) [RULED OUT as a proc-blocking flag, 2026-07-07] —
+  hypothesized this blocked slotted IO procs entirely (seen on MM pet summons,
+  Fault, Spring_Attack, etc.). **Disproven by live combat log**: Spring_Attack
+  (`ProcAllowed kNone`) fires Scirocco's Dervish and Obliteration procs
+  normally in-game. Whatever this field gates, it is NOT player-slotted proc
+  eligibility. Genuinely unknown purpose — deprioritized, not actionable
+  without further research (real meaning might be AI/NPC-only, or narrower
+  than assumed). Don't re-attempt the "blocks procs" theory without new
+  evidence.
+- **`MaxBoosts`** [ruled out — non-issue] — the 243 `MaxBoosts 0` powers
+  already export `boosts_allowed: []`, so slotting is already blocked by the
+  existing field. No gap.
+- **`TargetNearGround`/`NearGround`/`CastableAfterDeath`** [low value] —
+  targeting/usability restrictions (AI/UX), not stat-calc inputs.
+- **`ChainDelay`/`ChainIntoPower`/`ChainFork`/`StackingUsage`** — not yet
+  triaged past the raw count; lower priority than the above.
   UI/AI-only rows (Show*, AIReport/AIGroups, Cancelable, Free, DoNotSave,
   DontSetStance, PreferenceMultiplier, Anim*) are expected-skips.
-- **Consume `time_to_root` in the planner** [M] — captured but unused: the
-  attack-chain/DPS view still keys on cast time; the ~50 root≠cast powers
-  (Stalker AS quick forms, teleports) could model the shorter animation lock.
+- ~~**Consume `time_to_root` in the planner**~~ — CLOSED as non-goal
+  2026-07-07: captured at the parser, but doesn't map to a meaningful calc
+  input — Mids itself doesn't model/consume this value, and the attack-chain/
+  DPS view keying on cast time matches the reference behavior. No further
+  action.
 - **Phase 2 — converter completeness** — Diff `exported_powers` vs `generated`;
   largely delivered by the DSH6 collapse detector; the named remainder is
   folding in `suppress_events` (parsed into `EffectTemplate.suppress_events`
