@@ -1,16 +1,15 @@
 /**
  * Obscure Sustenance — COMPOSED EXPORT
  *
- * The planner imports from here. Composes the auto-generated power object
- * with hand-written overrides via `withOverrides`. See src/data/README.md
- * for the layering pattern.
+ * The planner imports from here. No hand-written overrides exist for this
+ * power, so it re-exports the auto-generated base directly. To add an
+ * override: create the parallel overrides/<power>.ts with a non-empty
+ * `overrides` object and re-run the converter. See src/data/README.md.
  *
  * To re-generate the base power:
  *   node scripts/convert-powerset.cjs scrapper_defense dark_armor
  */
 import type { Power } from '@/types';
-import { withOverrides } from '@/data/_layer';
 import { ObscureSustenance as base } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/dark-armor/obscure-sustenance';
-import { overrides } from '@/data/datasets/homecoming/overrides/powersets/scrapper/secondary/dark-armor/obscure-sustenance';
 
-export const ObscureSustenance: Power = withOverrides(base, overrides);
+export const ObscureSustenance: Power = base;

@@ -1,16 +1,15 @@
 /**
  * Devastating Blow — COMPOSED EXPORT
  *
- * The planner imports from here. Composes the auto-generated power object
- * with hand-written overrides via `withOverrides`. See src/data/README.md
- * for the layering pattern.
+ * The planner imports from here. No hand-written overrides exist for this
+ * power, so it re-exports the auto-generated base directly. To add an
+ * override: create the parallel overrides/<power>.ts with a non-empty
+ * `overrides` object and re-run the converter. See src/data/README.md.
  *
  * To re-generate the base power:
  *   node scripts/convert-powerset.cjs dominator_assault atomic_assault
  */
 import type { Power } from '@/types';
-import { withOverrides } from '@/data/_layer';
 import { DevastatingBlow as base } from '@/data/datasets/thunderspy/generated/powersets/dominator/secondary/atomic-assault/devastating-blow';
-import { overrides } from '@/data/datasets/thunderspy/overrides/powersets/dominator/secondary/atomic-assault/devastating-blow';
 
-export const DevastatingBlow: Power = withOverrides(base, overrides);
+export const DevastatingBlow: Power = base;

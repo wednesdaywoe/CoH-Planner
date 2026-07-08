@@ -1,16 +1,15 @@
 /**
  * Power of the Phoenix — COMPOSED EXPORT
  *
- * The planner imports from here. Composes the auto-generated power object
- * with hand-written overrides via `withOverrides`. See src/data/README.md
- * for the layering pattern.
+ * The planner imports from here. No hand-written overrides exist for this
+ * power, so it re-exports the auto-generated base directly. To add an
+ * override: create the parallel overrides/<power>.ts with a non-empty
+ * `overrides` object and re-run the converter. See src/data/README.md.
  *
  * To re-generate the base power:
  *   node scripts/convert-powerset.cjs defender_buff thermal_radiation
  */
 import type { Power } from '@/types';
-import { withOverrides } from '@/data/_layer';
 import { PowerofthePhoenix as base } from '@/data/datasets/thunderspy/generated/powersets/defender/primary/thermal-radiation/power-of-the-phoenix';
-import { overrides } from '@/data/datasets/thunderspy/overrides/powersets/defender/primary/thermal-radiation/power-of-the-phoenix';
 
-export const PowerofthePhoenix: Power = withOverrides(base, overrides);
+export const PowerofthePhoenix: Power = base;

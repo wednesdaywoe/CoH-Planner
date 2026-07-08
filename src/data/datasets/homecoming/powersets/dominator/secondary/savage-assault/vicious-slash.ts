@@ -1,16 +1,15 @@
 /**
  * Vicious Slash — COMPOSED EXPORT
  *
- * The planner imports from here. Composes the auto-generated power object
- * with hand-written overrides via `withOverrides`. See src/data/README.md
- * for the layering pattern.
+ * The planner imports from here. No hand-written overrides exist for this
+ * power, so it re-exports the auto-generated base directly. To add an
+ * override: create the parallel overrides/<power>.ts with a non-empty
+ * `overrides` object and re-run the converter. See src/data/README.md.
  *
  * To re-generate the base power:
  *   node scripts/convert-powerset.cjs dominator_assault savage_assault
  */
 import type { Power } from '@/types';
-import { withOverrides } from '@/data/_layer';
 import { ViciousSlash as base } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/savage-assault/vicious-slash';
-import { overrides } from '@/data/datasets/homecoming/overrides/powersets/dominator/secondary/savage-assault/vicious-slash';
 
-export const ViciousSlash: Power = withOverrides(base, overrides);
+export const ViciousSlash: Power = base;

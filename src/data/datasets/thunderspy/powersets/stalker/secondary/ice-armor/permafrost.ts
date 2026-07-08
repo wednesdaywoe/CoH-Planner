@@ -1,16 +1,15 @@
 /**
  * Permafrost — COMPOSED EXPORT
  *
- * The planner imports from here. Composes the auto-generated power object
- * with hand-written overrides via `withOverrides`. See src/data/README.md
- * for the layering pattern.
+ * The planner imports from here. No hand-written overrides exist for this
+ * power, so it re-exports the auto-generated base directly. To add an
+ * override: create the parallel overrides/<power>.ts with a non-empty
+ * `overrides` object and re-run the converter. See src/data/README.md.
  *
  * To re-generate the base power:
  *   node scripts/convert-powerset.cjs stalker_defense ice_armor
  */
 import type { Power } from '@/types';
-import { withOverrides } from '@/data/_layer';
 import { Permafrost as base } from '@/data/datasets/thunderspy/generated/powersets/stalker/secondary/ice-armor/permafrost';
-import { overrides } from '@/data/datasets/thunderspy/overrides/powersets/stalker/secondary/ice-armor/permafrost';
 
-export const Permafrost: Power = withOverrides(base, overrides);
+export const Permafrost: Power = base;
