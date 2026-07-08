@@ -94,11 +94,22 @@ const POOL_DISPLAY_NAMES = {
   teleportation: 'Teleportation',
 };
 
-// Pools that exist only in specific datasets. Gadgetry and Utility Belt have
-// binary data in HC's `bin.pigg` but are unreleased/unselectable in-game;
-// only Rebirth ships them as playable pools.
+// Pools that exist only in specific datasets. Gadgetry and Utility Belt carry
+// full binary data (powercat membership + player-pickable available levels) in
+// ALL THREE datasets' bins — IDENTICALLY — yet whether a server actually
+// *releases* a pool is a curation fact the bins do not encode (HC leaves both
+// unselectable in-game despite the data). So this allowlist is deliberately
+// hand-curated from in-game/dev knowledge, not derived from the export:
+//   - HC: neither released.
+//   - Rebirth: Gadgetry only (Utility Belt data present but unreleased —
+//     confirmed 2026-07-08, do not add).
+//   - Thunderspy: Gadgetry only (Utility Belt data present but unreleased —
+//     confirmed 2026-07-08).
 const DATASET_EXTRA_POOLS = {
   rebirth: {
+    gadgetry: { dir: 'gadgetry', displayName: 'Gadgetry' },
+  },
+  thunderspy: {
     gadgetry: { dir: 'gadgetry', displayName: 'Gadgetry' },
   },
 };
