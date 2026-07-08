@@ -1,0 +1,130 @@
+.skif is plain UTF-8 JSON. The importer also accepts the same JSON from a .json file or clipboard paste.
+
+Envelope
+
+Example:
+
+{
+“version”: 4,
+“build”: { … },
+“meta”: {
+“exportedAt”: “2026-07-08T18:25:43Z”
+}
+}
+
+* version — please write 4.
+    * Only versions 2, 3, and 4 use the slim format. Any other value is treated as a legacy v1 full-Build object and will misparse. The import returns false with no clean error.
+* meta is optional and ignored during import.
+
+
+* Minimal required fields (marked ★ in the CSV):
+    * serverId
+    * archetype { id, name }
+    * primary
+    * secondary
+    * Everything else has defaults.
+    * Set serverId correctly. A missing or unknown value silently hydrates as Homecoming.
+* No slot-placement levels.
+    * The game does not track them, and the format does not support them.
+    * Each power stores:
+        * its pick level (1–49)
+        * a slots array
+    * The slots array is ordered, with the base slot at index 0. Each entry is either an enhancement or null.
+    * There is nowhere to store a per-slot level.
+    * Omit slotOrder; the importer reconstructs it from pick order.
+* Join keys — these must be exact or the slot/power silently degrades.
+    * Power internalName
+        * Use the game’s existing binary short name (Wind_Shear, Tough_Hide).
+        * Use underscores.
+        * The importer falls back to case-insensitive matching, but always write it.
+    * Powerset IDs
+        * Format: <archetypeId>/<kebab-set-name>
+        * Pool and epic IDs use snake_case.
+        * See the vocabularies in section 5 of the CSV.
+    * IO sets
+        * Use setId and pieceNum.
+        * This is the the most troublesome mapping.
+        * setId is the snake_case version of the set’s display name.
+            Example:
+            * Luck of the Gambler → luck_of_the_gambler
+        * Do not use the game’s internal set ID.
+        * pieceNum is the piece’s 1-based num.
+        * If setId or pieceNum does not match, the slot hydrates as null with no error.
+* Write sets whenever any IO set is slotted.
+    * This is a tracking map:
+        * { setId: { count, pieces[] } }
+    * Contains one entry for each distinct set used anywhere in the build.
+    * pieces is the sorted list of distinct pieceNum values.
+    * This is not recomputed during import.
+    * If omitted, set bonuses will not register.
+* Omit the following fields because they are marked “omit” in the CSV:
+    * craftingChecklist
+    * incarnateObtained
+    * shoppingListAcquired
+    * attackChains
+    * procOverrides
+    * slotOrder
+    * Per-power isActive
+    * Per-power activeSubPower
+
+Short example
+
+{
+  "version": 4,
+  "build": {
+    "name": "Gale Force",
+    "serverId": "rebirth",
+    "archetype": {
+      "id": "controller",
+      "name": "Controller"
+    },
+    "level": 50,
+    "primary": {
+      "id": "controller/wind-control",
+      "name": "Wind Control",
+      "powers": [
+        {
+          "name": "Updraft",
+          "internalName": "Updraft",
+          "level": 1,
+          "slots": [
+            {
+              "type": "io-set",
+              "setId": "luck_of_the_gambler",
+              "pieceNum": 1,
+              "attuned": true
+            },
+            null
+          ]
+        },
+        {
+          "name": "Wind Shear",
+          "internalName": "Wind_Shear",
+          "level": 2,
+          "slots": [
+            {
+              "type": "io-generic",
+              "stat": "EnduranceReduction",
+              "level": 50
+            }
+          ]
+        }
+      ]
+    },
+    "secondary": {
+      "id": null,
+      "name": "",
+      "powers": []
+    },
+    "sets": {
+      "luck_of_the_gambler": {
+        "count": 1,
+        "pieces": [
+          1
+        ]
+      }
+    }
+  }
+}
+
+Enhancement payloads (io-set, io-generic, origin, special) and all identifier vocabularies are defined in skif-format.csv.
