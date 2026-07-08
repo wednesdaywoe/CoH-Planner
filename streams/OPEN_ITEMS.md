@@ -143,21 +143,103 @@ per-field evidence trail:
   unlocated. Left as raw unresolved indices in the parser (harmless,
   unconsumed) — not wired into `export_powers.py`/the converter. Do not
   re-pursue as a STANCE_GROUPS replacement without finding the real table.
-- **`OverCapTrigger`/`OverCapMultiplier`/`OverCapExponential`** [needs
-  research, high potential impact] — 64/63 hits, but ~54 are exclusively
-  `Tanker_Melee` copies of marquee AoE attacks (Foot_Stomp, Shatter,
-  Eviscerate, the Whirling_* family, Frost, Combustion...) — notably the
-  **Brute** copy of the same power (e.g. Foot_Stomp) has NO OverCap fields,
-  only the Tanker one does. Looks like Homecoming's Tanker-specific
-  "AoE damage scales with target count" mechanic, completely unmodeled in
-  `src/`. Formula direction/shape unconfirmed — needs research (wiki/patch
-  notes or in-game test) before implementing, not a guess-and-ship.
-- **`ProcMainTargetOnly`** (92, mostly Stalker/Scrapper/Brute/Tanker melee
-  AoE/cone attacks) [needs research] — plausibly governs whether a slotted
-  proc's PPM chance rolls once against the main target vs per-target; current
-  `calculateProcChance`'s `getPPMAreaDenominator` reduction may not apply to
-  these powers, meaning proc chance could be under- or over-estimated for
-  exactly the attacks players proc-slot the most. Not verified.
+- **`OverCapTrigger`/`OverCapMultiplier`/`OverCapExponential`** [RESEARCHED
+  2026-07-07, mechanism confirmed, CLOSED as capture-only — not a calc
+  target] — a generic "per-target effect scaling past the Nth target hit"
+  triple, used in 3 distinct real contexts (64 files total). Mechanism:
+  targets 1..Trigger get full magnitude; targets beyond Trigger get magnitude
+  × Multiplier (`OverCapExponential` absent/false → flat multiplier every
+  extra target) or × Multiplier^(position−Trigger) (`OverCapExponential
+  kTrue` → compounding per extra target). Confirmed via `raw defs`
+  cross-reads:
+  - **Tanker AoE cap increase** (56 files: 53 `Tanker_Melee` + 3
+    `Tanker_Melee_Aux` — Foot_Stomp, Shatter, Eviscerate, Whirling_*, Frost,
+    Combustion...). `OverCapTrigger` always equals the power's *original*
+    target cap (5 for cone/narrower AoEs, 10 for sphere AoEs — verified
+    against every Tanker_Melee hit, only 2 exceptions: Proton_Sweep and Taunt,
+    both non-damage-relevant edge cases). Paired with `MaxTargetsExpr` (e.g.
+    `16 kDisable_GauntletTargetCap Source.Mode? 6 * -`) that raises the
+    compiled `MaxTargetsHit` by +5/+6 (5→10, 10→16) when a Mode gate is
+    clear. `OverCapMultiplier` is uniformly **0.3333**, no exponential flag
+    (flat). The **Brute** copy of the same power (e.g. Foot_Stomp) has
+    neither the raised `MaxTargetsExpr` nor any OverCap fields — confirms
+    Tanker-exclusive, matches Homecoming's known "Tanker AoEs hit more
+    targets; extras beyond the old cap take 33% damage" QoL change. This is
+    the high-impact one: it touches nearly all of a Tanker's AoE attack
+    chain and isn't modeled in `src/` DPS/attack-chain calc at all
+    (`max_targets_hit`/`max_targets_expression` are already exported per
+    [[power-level-fields-triage]] but nothing consumes them for per-target
+    damage scaling).
+  - **Self-buff-from-foes-hit diminishing returns** (~9 files: Psionic
+    Armor's Aura_of_Insanity + Radiation Armor's Radiation_Therapy, one copy
+    per AT that has the set). `OverCapTrigger=1`, `OverCapMultiplier=0.9`,
+    `OverCapExponential kTrue` — the self-heal/regen/recovery benefit from
+    hitting extra foes decays exponentially (0.9^extra) past the first foe,
+    capping the payoff in big spawns. Note: the `Tanker_Defense` copy of
+    Radiation_Therapy is a `Redirect` stub carrying only
+    `OverCapExponential kTrue` at the top level — the real Trigger/Multiplier
+    presumably live on the redirect target, not yet traced.
+  - **One-off**: Dominator Electric Control's `Stunning_Aura` (PBAoE toggle
+    stun) — `OverCapTrigger=8`, `OverCapMultiplier=0.3`, flat (no exponential
+    flag) — likely stun-magnitude/duration falloff for a big-radius toggle,
+    a third independent use of the same 3-field mechanic.
+  **Decision 2026-07-07: not worth consuming.** Sidekick is a static build
+  planner, not a combat sim — it has no notion of "how many enemies this
+  cast actually hits," and the honest value of that number swings from 1
+  (isolated target) to the power's full cap (packed spawn), so any single
+  DPS/attack-chain number the planner could show would be an arbitrary
+  assumption dressed up as data, not a real improvement over today's
+  single-target figures. Modeling it properly would require the planner to
+  become a full encounter simulator (assumed spawn size, positioning,
+  Gauntlet aggro), which is out of scope. Treat like [[powers-extraction-audit-close]]'s
+  `time_to_root` closure: **capture only, no consumption planned.** If the
+  3 fields get parsed later (e.g. as a side effect of some other parser
+  work), leave them unconsumed rather than inventing an assumed-target-count
+  UI for them.
+- **`ProcMainTargetOnly`** [RESEARCHED 2026-07-07, mechanism confirmed by
+  structural pattern, likely REAL BUG in current calc, not yet implemented]
+  — always `kTrue` when present (92 files), never `kFalse`. Cross-read every
+  file's `EffectArea`/`Target`/`Radius`/`MaxTargetsHit`:
+  - **54 are `EffectArea kCharacter`** (no radius/arc at all — Beheader,
+    Swoop, Chop, Gash, Head_Splitter and the rest of the Battle
+    Axe/Broad_Sword ST melee chain-attack set). Already single-target in the
+    export (`radius=0`), so the flag is a no-op under current code — no bug,
+    just confirms the field's semantics line up.
+  - **The other ~38 all have a non-zero `radius` field despite being
+    single-relevant-target powers**: `Tesla_Cage` (`EffectArea kChain`,
+    `radius=10`, but `MaxTargetsHit=1` — verified exported as
+    `radius: 10, maxTargets: 1` in
+    `generated/.../electrical-blast/tesla-cage.ts`), `Ground_Zero`
+    (`Target kCaster` — self is the real target, foes in the 15' sphere are
+    splash, one copy per AT with Radiation Armor), every AT's `Placate`
+    (Stalker/Bane Spider — `kSphere radius=15 mth=5`, a non-damage
+    status/threat-drop power), `Touch_of_Fear`/`Lightning_Clap` (Dark/
+    Electrical Melee PBAoE fear/stun — no damage effect, control-only),
+    `Propel` (Gravity Control — single-target thrown-object attack;
+    `radius=15` is vestigial/targeting-only), `Focused_Burst` (Kinetic
+    Attack ST attack, `EffectArea kChain`). **No true multi-target damage
+    AoE (Frost, Fire Sword Circle, Whirling_*, etc.) carries this flag** —
+    the absence is as informative as the presence.
+  - **Conclusion**: `ProcMainTargetOnly` means "for PPM proc-chance
+    purposes, this power's `radius`/`arc` fields are not real splash
+    geometry — treat as single-target (area denom = 1.0)" regardless of
+    what `EffectArea`/`Radius` say. This directly implicates
+    `resolveProcAreaGeometry` (`src/utils/calculations/pet-damage.ts:593`),
+    which currently derives `radius`/`arcDegrees` straight from the power's
+    own fields with **no check for this flag or for `MaxTargetsHit===1`**,
+    then feeds them into `getPPMAreaDenominator`
+    (`src/data/proc-data.ts:2595`). For Tesla_Cage that's
+    `getPPMAreaDenominator(10, 360) ≈ 2.125` — a proc chance cut to under
+    half of what it should be, for a power that only ever hits one target.
+    Same class of under-estimation for Placate/Ground_Zero/Propel/etc. if a
+    player proc-slots them. **Likely a real, fixable calc bug** — unlike
+    OverCap above, this doesn't require encounter simulation: it's a static
+    per-power correction (parse the flag, or equivalently gate on
+    `MaxTargetsHit===1`, and short-circuit `resolveProcAreaGeometry` to
+    `{radius: 0, arcDegrees: 360}`). Not yet implemented; the structural
+    correlation is strong but not confirmed against a live combat log the
+    way the `ProcAllowed` theory was tested and disproven — flag this
+    distinction if pursuing.
 - **`ProcAllowed`** (112) [RULED OUT as a proc-blocking flag, 2026-07-07] —
   hypothesized this blocked slotted IO procs entirely (seen on MM pet summons,
   Fault, Spring_Attack, etc.). **Disproven by live combat log**: Spring_Attack
