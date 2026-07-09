@@ -58,8 +58,10 @@ export function fromColumns(columns: PlannerSectionConfig[][]): PlannerSectionCo
  * Apply a drag-drop: move `dragId` to land at `targetId` per `zone`.
  *   above/below  → stack into the target's column, just before/after it
  *   colBefore/After → become its own new column to the left/right of target's
- * Returns a fresh canonical list (dense columns, column-major order). The moved
- * section's `rowWeight` is reset so it starts balanced in its new position.
+ * Returns a fresh canonical list (dense columns, column-major order). When
+ * stacking (above/below), the whole receiving column's `rowWeight`s are cleared
+ * so the column re-defaults to content-based sizing (each cell as tall as its
+ * contents) rather than inheriting a stale manual split — the requested UX.
  */
 export function applyDrop(
   sections: PlannerSectionConfig[],
@@ -97,9 +99,13 @@ export function applyDrop(
   }
   if (targetCol === -1) return sections;
 
-  if (zone === 'above') pruned[targetCol].splice(targetRow, 0, dragged);
-  else if (zone === 'below') pruned[targetCol].splice(targetRow + 1, 0, dragged);
-  else if (zone === 'colBefore') pruned.splice(targetCol, 0, [dragged]);
+  if (zone === 'above' || zone === 'below') {
+    pruned[targetCol].splice(zone === 'above' ? targetRow : targetRow + 1, 0, dragged);
+    // Stacking changed the column's makeup — drop any manual split so it re-lays
+    // out content-first (see doc comment). Keeps a column's cells all-or-nothing
+    // on `rowWeight`, so the render never mixes content- and weight-driven cells.
+    pruned[targetCol] = pruned[targetCol].map((s) => ({ ...s, rowWeight: undefined }));
+  } else if (zone === 'colBefore') pruned.splice(targetCol, 0, [dragged]);
   else pruned.splice(targetCol + 1, 0, [dragged]);
 
   return fromColumns(pruned);

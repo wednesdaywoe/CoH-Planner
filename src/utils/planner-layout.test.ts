@@ -91,6 +91,32 @@ describe('applyDrop', () => {
     expect(moved.rowWeight).toBeUndefined();
   });
 
+  it('clears the receiving column rowWeights when stacking (content-first re-layout)', () => {
+    // A previously-resized column (primary/secondary carry rowWeights); dropping
+    // info into it must reset all three so the column re-sizes to content.
+    const resizedStack: PlannerSectionConfig[] = [
+      { id: 'primary', visible: true, column: 0, rowWeight: 2 },
+      { id: 'secondary', visible: true, column: 0, rowWeight: 1 },
+      { id: 'info', visible: true, column: 1 },
+    ];
+    const next = applyDrop(resizedStack, 'info', 'primary', 'below');
+    const col0 = next.filter((s) => s.column === 0);
+    expect(col0.map((s) => s.id)).toEqual(['primary', 'info', 'secondary']);
+    expect(col0.every((s) => s.rowWeight === undefined)).toBe(true);
+  });
+
+  it('leaves rowWeights untouched for a colBefore/colAfter (new-column) drop', () => {
+    const resizedStack: PlannerSectionConfig[] = [
+      { id: 'primary', visible: true, column: 0, rowWeight: 2 },
+      { id: 'secondary', visible: true, column: 0, rowWeight: 1 },
+      { id: 'info', visible: true, column: 1 },
+    ];
+    const next = applyDrop(resizedStack, 'info', 'primary', 'colBefore');
+    // primary/secondary stay stacked+weighted; info is its own new column.
+    const stayed = next.filter((s) => ['primary', 'secondary'].includes(s.id));
+    expect(stayed.map((s) => s.rowWeight)).toEqual([2, 1]);
+  });
+
   it('is a no-op when dragging onto itself', () => {
     expect(applyDrop(singleRow, 'info', 'info', 'below')).toBe(singleRow);
   });

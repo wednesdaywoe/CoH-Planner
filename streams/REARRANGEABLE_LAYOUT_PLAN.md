@@ -187,6 +187,16 @@ revisit.
   (c) **per-cell min-height floor = 120px** (`MIN_CELL_PX`; the audit found the
   vertical axis render-safe — bodies scroll — so this is a UX floor, not a clip
   constraint; the vertical resize clamps both neighbors to it).
+  **Content-first default split (refined 2026-07-09, user-raised):** a fresh stack
+  does NOT split 50/50. Until the user drags a divider, a column is *content-driven*
+  (`flex: 1 1 auto` → each cell sizes to its own contents, shrinking proportionally
+  only when the column can't fit everything), so a tall upper cell keeps its height
+  instead of being forced to half + a scrollbar. Dragging a divider converts the
+  whole column to *weight-driven* (`flex-basis: 0` + per-cell `rowWeight`), seeded
+  from the cells' *measured px heights* so the transition is seamless (no jump);
+  `startRowResize` reads live DOM heights, not stored weights. `applyDrop` clears
+  the receiving column's `rowWeight`s on a stack so it re-defaults to content-first
+  (invariant: a column's cells are all-or-nothing on `rowWeight`, never mixed).
   **Implementation:** new pure `src/utils/planner-layout.ts`
   (`toColumns`/`fromColumns`/`applyDrop`/`shiftColumn`/`reconcilePlannerColumns`,
   shared by the store migration + page + menu; 17 unit tests) — every mutation

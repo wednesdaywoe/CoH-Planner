@@ -29,7 +29,7 @@ import { SetBonusPopup } from '@/components/info/SetBonusPopup';
 import { Toggle, CollapsibleSection } from '@/components/ui';
 import { ViewModeToggle } from '@/components/ui/ViewModeToggle';
 import { MAX_POWER_PICKS, getArchetype } from '@/data';
-import type { Power, PlannerSectionId, PlannerSectionConfig } from '@/types';
+import type { Power, PlannerSectionId } from '@/types';
 import { toColumns, applyDrop, type DropZone } from '@/utils/planner-layout';
 
 /** Undock button icon (box with arrow pointing out) */
@@ -411,38 +411,38 @@ export function PlannerPage() {
     window.addEventListener('pointerup', onUp);
   };
 
-  // Drag the divider between stacked rows `topIdx` and `topIdx + 1` in one
-  // column: the vertical twin of startColumnResize (shifts `rowWeight`, clamps
-  // both to MIN_CELL_PX). The column's own element supplies the usable height.
-  const startRowResize = (
-    e: React.PointerEvent,
-    rows: PlannerSectionConfig[],
-    topIdx: number,
-  ) => {
+  // Drag the divider between stacked cells `topIdx` and `topIdx + 1`: the vertical
+  // twin of startColumnResize. Reads the *actual* current cell heights from the DOM
+  // (px), so it starts seamlessly whether the column is content-driven (default) or
+  // already weight-driven — and seeds every cell's `rowWeight` from its measured
+  // height, converting the whole column to weight-driven in one consistent step
+  // (px used as fr; only ratios matter). Both neighbors clamp to MIN_CELL_PX.
+  const startRowResize = (e: React.PointerEvent, topIdx: number) => {
     const container = (e.currentTarget as HTMLElement).closest('[data-column]') as HTMLElement | null;
-    const top = rows[topIdx];
-    const bottom = rows[topIdx + 1];
-    if (!container || !top || !bottom) return;
-    const gapTotal = Math.max(0, rows.length - 1);
-    const usable = container.clientHeight - gapTotal;
-    const sumWeight = rows.reduce((sum, r) => sum + (r.rowWeight ?? 1), 0);
-    const pxPerWeight = usable / sumWeight;
-    const pairPx = ((top.rowWeight ?? 1) + (bottom.rowWeight ?? 1)) * pxPerWeight;
-    if (pairPx < MIN_CELL_PX * 2 || pxPerWeight <= 0) return;
-    const pxT0 = (top.rowWeight ?? 1) * pxPerWeight;
+    if (!container) return;
+    const cellEls = [...container.querySelectorAll<HTMLElement>(':scope > [data-cell]')];
+    const topEl = cellEls[topIdx];
+    const bottomEl = cellEls[topIdx + 1];
+    if (!topEl || !bottomEl) return;
+    const heights = cellEls.map((el) => el.getBoundingClientRect().height);
+    const ids = cellEls.map((el) => el.getAttribute('data-cell') as PlannerSectionId);
+    const pairPx = heights[topIdx] + heights[topIdx + 1];
+    if (pairPx < MIN_CELL_PX * 2) return;
+    const topH0 = heights[topIdx];
     const startY = e.clientY;
     const handleEl = e.currentTarget as HTMLElement;
     handleEl.setPointerCapture(e.pointerId);
 
     const onMove = (ev: PointerEvent) => {
-      const newT = Math.max(
+      const newTop = Math.max(
         MIN_CELL_PX,
-        Math.min(pairPx - MIN_CELL_PX, pxT0 + (ev.clientY - startY)),
+        Math.min(pairPx - MIN_CELL_PX, topH0 + (ev.clientY - startY)),
       );
-      setPlannerSectionRowWeights(view, {
-        [top.id]: newT / pxPerWeight,
-        [bottom.id]: (pairPx - newT) / pxPerWeight,
-      });
+      const weights: Partial<Record<PlannerSectionId, number>> = {};
+      ids.forEach((id, i) => { weights[id] = heights[i]; });
+      weights[ids[topIdx]] = newTop;
+      weights[ids[topIdx + 1]] = pairPx - newTop;
+      setPlannerSectionRowWeights(view, weights);
     };
     const onUp = () => {
       handleEl.releasePointerCapture?.(e.pointerId);
@@ -472,6 +472,12 @@ export function PlannerPage() {
         >
         {columns.map((col, colIdx) => {
           const isLastCol = colIdx === columns.length - 1;
+          // A column is weight-driven once the user drags a divider in it (any
+          // cell carries a `rowWeight`); until then each cell sizes to its own
+          // content (`flex-basis: auto`), shrinking proportionally only when the
+          // column can't fit everything — so a tall upper cell keeps its height
+          // instead of being forced to an even split + scrollbar.
+          const weightDriven = col.rows.some((r) => r.rowWeight !== undefined);
           return (
             <div
               key={`col-${colIdx}`}
@@ -485,10 +491,15 @@ export function PlannerPage() {
                 return (
                   <div
                     key={cfg.id}
+                    data-cell={cfg.id}
                     data-onboarding={section.onboarding}
                     onDragOver={(e) => handleDragOver(e, cfg.id)}
                     onDrop={() => handleDrop(cfg.id)}
-                    style={{ flexGrow: cfg.rowWeight ?? 1, flexBasis: 0, minHeight: MIN_CELL_PX }}
+                    style={
+                      weightDriven
+                        ? { flexGrow: cfg.rowWeight ?? 1, flexShrink: 1, flexBasis: 0, minHeight: MIN_CELL_PX }
+                        : { flexGrow: 1, flexShrink: 1, flexBasis: 'auto', minHeight: MIN_CELL_PX }
+                    }
                     className={`relative bg-slate-900 flex flex-col overflow-hidden min-h-0 transition-opacity ${
                       dragId === cfg.id ? 'opacity-40' : ''
                     }`}
@@ -520,7 +531,7 @@ export function PlannerPage() {
                         during a reorder drag so the gestures never fight. */}
                     {!isLastRow && !dragId && (
                       <div
-                        onPointerDown={(e) => { e.preventDefault(); startRowResize(e, col.rows, rowIdx); }}
+                        onPointerDown={(e) => { e.preventDefault(); startRowResize(e, rowIdx); }}
                         className="absolute left-0 right-0 bottom-0 h-2 translate-y-1/2 z-20 cursor-row-resize group/vresize"
                         title="Drag to resize stacked sections"
                         aria-label="Resize stacked section"
