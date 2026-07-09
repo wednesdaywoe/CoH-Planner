@@ -47,12 +47,15 @@ function UndockButton({ onClick }: { onClick: () => void }) {
 }
 
 /** Minimum rendered width for any planner column. The min-size audit (see
- *  streams/REARRANGEABLE_LAYOUT_PLAN.md) found the widest clean-render floor is
- *  Available's ~260px; below it sections deform (truncated names, wrapped ghost
- *  slot, h-scrolling info tables). The grid uses `minmax(MIN, …fr)` so columns
- *  hold this floor and the grid overflow-scrolls rather than deforming, and the
- *  resize drag clamps neighbors so neither is pushed under it. */
-const MIN_COL_PX = 260;
+ *  streams/REARRANGEABLE_LAYOUT_PLAN.md) put the widest clean-render floor at
+ *  Available's ~260px, but its internal Primary|Secondary split is now
+ *  container-query responsive (stacks to one column below ~280px), dropping
+ *  Available to ~200px. The remaining binding floors are Selected (6-slot row +
+ *  ghost + toggle, ~240px) and Info (stat tables h-scroll below ~240px), so 240
+ *  is the safe global clamp — and it fits all six columns in 1440px. The grid
+ *  uses `minmax(MIN, …fr)` so columns hold this floor (grid overflow-scrolls
+ *  rather than deforming) and the resize drag clamps neighbors to it. */
+const MIN_COL_PX = 240;
 
 /** Drag-handle grip shown in each desktop column header. */
 function GripHandle(props: React.HTMLAttributes<HTMLDivElement>) {
@@ -198,7 +201,13 @@ export function PlannerPage() {
   const availableCombinedBody = (
     <>
       <CollapsibleSection title="Primary & Secondary" defaultOpen>
-        <div className="grid grid-cols-2 gap-px bg-slate-700">
+        {/* Container-query wrapper: the Primary|Secondary split stacks to one
+            column when THIS column is narrow (independently resizable, so we key
+            off the column's own width, not the viewport). Below ~280px each
+            sub-list would truncate names, so stack instead — this is what lets
+            the Available column's clean floor drop from ~260px to ~200px. */}
+      <div className="@container">
+        <div className="grid grid-cols-1 @min-[280px]:grid-cols-2 gap-px bg-slate-700">
           <div className="bg-slate-900">
             <AvailablePowers
               category="primary"
@@ -236,6 +245,7 @@ export function PlannerPage() {
             )}
           </div>
         </div>
+      </div>
       </CollapsibleSection>
 
       <CollapsibleSection title="Power Pools & Epic" defaultOpen>

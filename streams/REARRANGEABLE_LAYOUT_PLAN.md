@@ -111,6 +111,29 @@ revisit.
   Reset clears weights (defaults carry none → 1fr). Verified in-app: 1:1 tracking up
   to the neighbor's floor, clamp holds, weights persist to `coh-planner-ui`, 6-slot
   rows stay inline at the 260 floor. verify: file:src/pages/PlannerPage.tsx, fn:startColumnResize
+- [x] **LAY9** — lower the global column floor 260→**240px** by removing Available's
+  binding constraint: its internal Primary\|Secondary `grid-cols-2` split is now a
+  **Tailwind v4 container query** (`@container` wrapper + `grid-cols-1
+  @min-[280px]:grid-cols-2`) keyed off the *column's own* width (not the viewport —
+  columns resize independently), so below ~280px the two sub-lists stack full-width
+  instead of truncating. Available's clean floor drops to ~200px; the new binding
+  floors are Selected + Info at ~240px, so `MIN_COL_PX = 240`. This fits all six
+  columns in ~1455px (vs 1560px before). Verified in-app: at a 205px Available column
+  the split stacks with zero name truncation; at 240px every column (6-slot rows,
+  info tables) renders clean, no deform. Going below 240 needs the two remaining
+  audit unlocks (Info table reflow + Selected slot-shrink) — deferred as
+  disproportionate for the last 40px. verify: file:src/pages/PlannerPage.tsx, fn:MIN_COL_PX
+- [x] **LAY9b** — validate the 240 floor for *toggled* powers. In-app the audit's
+  240 "clean" was optimistic: a 6-slot power **with a toggle** (defense sets like
+  Bio Armor) actually needed ~262px because the toggle shared the slot row's width,
+  so the ghost slot wrapped onto a 3rd line and the bottom-aligned icon dropped with
+  it (user-reported on DNA Siphon). Fix: in the stacked `PowerRow`, the toggle moved
+  from beside the slots into the name row (next to the info/compare/remove buttons),
+  so the slot row gets the full column width. Measured: the slot run went 1 row of 7
+  items at 240px (was wrapping to 2), row height 86→60px. Toggles now group with the
+  other row controls — a consistency win at all widths, not just narrow. Inline
+  layout (chronological) unchanged — it's a single wide column, rarely squeezed.
+  verify: file:src/components/powers/PowerRow.tsx, fn:renderNameRow
 
 ## Min-size audit (2026-07-09)
 
@@ -127,8 +150,8 @@ truncated names, no h-scroll). The snap value is the *clean* floor.
 
 | Section | Clean floor | Clip floor | Binding constraint | How to lower the clean floor |
 |---|---|---|---|---|
-| **Available Powers** | ~260px | ~200px | internal `grid-cols-2` split (Primary \| Secondary sub-lists) — each sub-col ≈125px at 260, names truncate to "Behea"/"Evolvi Armor" below | make the 2-col split stack to 1 col below a breakpoint (container query) → ~200px |
-| **Selected** (Primary / Secondary / Pool) | ~240px | ~200px | the slot row is **6 md-hexes (24px) + ghost + optional toggle** ≈220px content; the ghost is the 7th item and wraps first, floating the bottom-aligned icon onto its own line | drop slot size lg→sm (24→20px) → ~190px |
+| **Available Powers** | ~200px (was ~260) | ~200px | ~~internal `grid-cols-2` split truncates sub-col names~~ **FIXED (LAY9):** split is now container-query responsive, stacks to 1 col below ~280px | done |
+| **Selected** (Primary / Secondary / Pool) | ~240px (toggled: was ~262 pre-fix) | ~200px | slot row = **6 md-hexes + ghost** (~180px) + a toggle that *shared the row*; on toggled powers (defense sets) the toggle stole ~24px so the ghost wrapped, dragging the bottom-aligned icon to a 3rd line. **FIXED (LAY9b): toggle moved into the name row**, freeing the full width for slots → toggled powers now hold one slot row at 240 | drop slot size lg→sm (24→20px) → ~190px |
 | **Info Panel** | ~240px | ~240px | fixed multi-col stat tables (POWER EFFECTS `STAT/BASE/ENHANCED/FINAL`, DAMAGE tiles) don't reflow → h-scrollbar below ~240px (scrolls gracefully, not a hard break) | reflow the stat table to stacked rows under a breakpoint |
 | **Powers by Level** (chrono) | ~240px (inferred) | ~200px | reuses the same slotted rows grouped by level; shares the Selected floor | same as Selected |
 
@@ -152,10 +175,12 @@ follow-ups, not prerequisites.
   `weight` field). Still deferred: vertical resize / 2D free-form dock grid
   (react-grid-layout-style). The audit found vertical is render-safe (bodies scroll)
   but a 2D grid needs a mobile/reset story and is a larger lift.
-- Optional floor-lowering follow-ups (from the audit; independent, not blocking):
-  make Available's `grid-cols-2` split responsive (→240px global floor), then shrink
-  Selected slot size + reflow Info stat tables (→200px). Only worth it if users hit
-  the 260px clamp and want narrower columns.
+- Floor-lowering: Available split responsive **DONE (LAY9, →240px global)**.
+  Remaining unlocks to reach ~200px (independent, not blocking; deferred as
+  disproportionate for 40px): reflow the Info stat tables to stacked rows under a
+  container breakpoint, and shrink the Selected slot row when its column is narrow
+  (container-responsive slot size — needs PowerRow to take size from a container
+  query rather than a fixed prop). Only worth it if users hit the 240px clamp.
 - Unify the two hand-rolled floating-window implementations
   ([PopOutInfoPanel.tsx](../src/components/info/PopOutInfoPanel.tsx) +
   [SetBonusPopup.tsx](../src/components/info/SetBonusPopup.tsx), which duplicate the
