@@ -32,24 +32,17 @@ export const AmpUp: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 90,
     "durations": {
       "rechargeBuff": 90,
       "specialBuff": 90
     },
+    "rechargeBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
     "specialBuff": {
-      "heal": {
-        "scale": 6,
-        "table": "Ranged_Buff_Dmg"
-      },
       "absorb": {
-        "scale": 6,
-        "table": "Ranged_Buff_Dmg"
-      },
-      "endurance": {
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
@@ -57,7 +50,19 @@ export const AmpUp: Power = {
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
+      "defense": {
+        "scale": 3.6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "endurance": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      },
       "fear": {
+        "scale": 6,
+        "table": "Ranged_Buff_Dmg"
+      },
+      "heal": {
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
@@ -69,23 +74,18 @@ export const AmpUp: Power = {
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
-      "stun": {
-        "scale": 6,
-        "table": "Ranged_Buff_Dmg"
-      },
       "sleep": {
         "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
-      "defense": {
-        "scale": 3.6,
+      "stun": {
+        "scale": 6,
         "table": "Ranged_Buff_Dmg"
       },
       "tohit": {
         "scale": 3.6,
         "table": "Ranged_Buff_Dmg"
       }
-    },
-    "buffDuration": 90
+    }
   }
 };

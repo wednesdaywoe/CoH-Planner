@@ -93,15 +93,16 @@ export const PiercingRounds: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8,
     "durations": {
       "resistanceDebuff": 15
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -109,11 +110,7 @@ export const PiercingRounds: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -125,12 +122,15 @@ export const PiercingRounds: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "buffDuration": 8
+    }
   },
   "conditionalEffects": [
     {
@@ -145,11 +145,11 @@ export const PiercingRounds: Power = {
           "table": "Ranged_Slow"
         },
         "slow": {
-          "runSpeed": {
+          "flySpeed": {
             "scale": 0.15,
             "table": "Ranged_Slow"
           },
-          "flySpeed": {
+          "jumpHeight": {
             "scale": 0.15,
             "table": "Ranged_Slow"
           },
@@ -157,7 +157,7 @@ export const PiercingRounds: Power = {
             "scale": 0.15,
             "table": "Ranged_Slow"
           },
-          "jumpHeight": {
+          "runSpeed": {
             "scale": 0.15,
             "table": "Ranged_Slow"
           }

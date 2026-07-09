@@ -43,9 +43,9 @@ export const IrradiatedGround: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 10,
       "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
-      "duration": 10
+      "isPseudoPet": false
     }
   }
 };

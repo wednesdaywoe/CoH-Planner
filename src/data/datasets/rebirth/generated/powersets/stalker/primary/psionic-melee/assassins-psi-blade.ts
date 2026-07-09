@@ -52,6 +52,10 @@ export const AssassinsPsiBlade: Power = {
   ],
   "fromHideBonus": 1.8461538461538463,
   "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "stealth": 8
+    },
     "stealth": {
       "stealthPvE": {
         "scale": 1,
@@ -61,11 +65,7 @@ export const AssassinsPsiBlade: Power = {
         "scale": 1,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "stealth": 8
-    },
-    "buffDuration": 8
+    }
   },
   "specialEffects": [
     {

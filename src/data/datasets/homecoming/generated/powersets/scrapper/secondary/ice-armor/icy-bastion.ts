@@ -44,76 +44,46 @@ export const IcyBastion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 6,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 30,
     "durations": {
-      "regenBuff": 0.75,
-      "recoveryBuff": 30,
-      "resistance": 30,
-      "knockup": 30,
-      "knockback": 30,
-      "repel": 30,
-      "mezResistance": 30,
       "hold": 30,
       "immobilize": 30,
-      "stun": 30,
+      "knockback": 30,
+      "knockup": 30,
+      "mezResistance": 30,
+      "recoveryBuff": 30,
+      "regenBuff": 0.75,
+      "repel": 30,
+      "resistance": 30,
       "sleep": 30,
-      "slow": 0.75
+      "slow": 0.75,
+      "stun": 30
     },
-    "recoveryBuff": {
-      "scale": 4,
-      "table": "Melee_Ones"
+    "effectDuration": 30,
+    "hold": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
     },
-    "resistance": {
-      "smashing": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "cold": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      },
-      "toxic": {
-        "scale": 0.375,
-        "table": "Melee_Ones"
-      }
-    },
-    "knockup": {
-      "scale": 100,
+    "immobilize": {
+      "mag": 1000,
+      "scale": 0.75,
       "table": "Melee_Ones"
     },
     "knockback": {
       "scale": 100,
       "table": "Melee_Ones"
     },
-    "repel": {
+    "knockup": {
       "scale": 100,
       "table": "Melee_Ones"
     },
     "mezResistance": {
-      "knockup": {
+      "knockback": {
         "scale": 10,
         "table": "Melee_Ones"
       },
-      "knockback": {
+      "knockup": {
         "scale": 10,
         "table": "Melee_Ones"
       },
@@ -122,21 +92,51 @@ export const IcyBastion: Power = {
         "table": "Melee_Ones"
       }
     },
-    "hold": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 30,
-    "immobilize": {
-      "mag": 1000,
+    "onlyAffectsSelf": {
       "scale": 0.75,
       "table": "Melee_Ones"
     },
-    "stun": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+    "recoveryBuff": {
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "regenBuff": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 0.375,
+        "table": "Melee_Ones"
+      },
+      "energy": {
+        "scale": 0.375,
+        "table": "Melee_Ones"
+      },
+      "fire": {
+        "scale": 0.375,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0.375,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0.375,
+        "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0.375,
+        "table": "Melee_Ones"
+      },
+      "toxic": {
+        "scale": 0.375,
+        "table": "Melee_Ones"
+      }
     },
     "sleep": {
       "mag": 1,
@@ -150,15 +150,15 @@ export const IcyBastion: Power = {
         "toWho": "Self"
       }
     },
+    "stun": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
     "untouchable": {
       "scale": 0.75,
       "table": "Melee_Ones"
     },
-    "onlyAffectsSelf": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 30,
     "maxStacks": 2,
     "stacksLinear": [
       "specialBuff"

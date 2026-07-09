@@ -50,20 +50,26 @@ export const BitterFreezeRay: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 18,
+    "damageBuff": {
+      "scale": 0.165,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10,
+      "rechargeDebuff": 18,
+      "slow": 18
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Ranged_Slow"
     },
-    "durations": {
-      "rechargeDebuff": 18,
-      "slow": 18,
-      "damageBuff": 10
-    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -75,18 +81,12 @@ export const BitterFreezeRay: Power = {
       "jumpSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
       }
     },
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "damageBuff": {
-      "scale": 0.165,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 18,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

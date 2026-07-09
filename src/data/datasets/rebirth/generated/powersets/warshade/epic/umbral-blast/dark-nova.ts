@@ -43,6 +43,18 @@ export const DarkNova: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2,
+    "damageBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 2,
+      "movement": 2,
+      "recoveryBuff": 2,
+      "resistance": 2,
+      "tohitBuff": 2
+    },
     "movement": {
       "fly": {
         "scale": 4,
@@ -61,24 +73,9 @@ export const DarkNova: Power = {
         "table": "Melee_Friction"
       }
     },
-    "durations": {
-      "movement": 2,
-      "recoveryBuff": 2,
-      "tohitBuff": 2,
-      "damageBuff": 2,
-      "resistance": 2
-    },
     "recoveryBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    },
-    "damageBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_Dmg"
     },
     "resistance": {
       "energy": {
@@ -91,10 +88,13 @@ export const DarkNova: Power = {
       }
     },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 2,
       "entity": "PFX2",
-      "duration": 2
+      "isPseudoPet": false
     },
-    "buffDuration": 2
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    }
   }
 };

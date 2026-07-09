@@ -48,19 +48,19 @@ export const PhotonGrenade: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "regenDebuff": 30
+    },
     "regenDebuff": {
       "scale": 2,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
     },
     "stun": {
       "mag": 2,
       "scale": 4,
       "table": "Ranged_Stun"
-    },
-    "buffDuration": 30
+    }
   },
   "specialEffects": [
     {

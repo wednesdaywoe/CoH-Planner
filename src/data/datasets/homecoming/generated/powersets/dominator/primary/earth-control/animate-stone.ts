@@ -43,10 +43,10 @@ export const AnimateStone: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Stone",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "Pets_Stone",
+      "isPseudoPet": false
     }
   }
 };

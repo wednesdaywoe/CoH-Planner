@@ -39,9 +39,9 @@ export const PoisonGasArrow: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 20,
       "entity": "Pets_PoisonGasArrow",
-      "duration": 20
+      "isPseudoPet": false
     }
   }
 };

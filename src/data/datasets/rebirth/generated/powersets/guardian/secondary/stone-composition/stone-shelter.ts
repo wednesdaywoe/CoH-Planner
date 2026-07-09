@@ -40,9 +40,9 @@ export const StoneShelter: Power = {
       "scale": 1,
       "table": "Ranged_Heal"
     },
+    "buffDuration": 15,
     "durations": {
       "absorb": 15
-    },
-    "buffDuration": 15
+    }
   }
 };

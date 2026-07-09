@@ -47,13 +47,13 @@ export const FistfulofArrows: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 8.67,
     "damageBuff": {
       "scale": 0.032,
       "table": "Ranged_Ones"
     },
     "durations": {
       "damageBuff": 8.67
-    },
-    "buffDuration": 8.67
+    }
   }
 };

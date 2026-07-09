@@ -56,10 +56,7 @@ export const Smite: Power = {
     }
   ],
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    },
+    "buffDuration": 10,
     "durations": {
       "tohitDebuff": 10
     },
@@ -67,6 +64,9 @@ export const Smite: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 10
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Melee_DeBuff_ToHit"
+    }
   }
 };

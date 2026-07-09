@@ -56,6 +56,7 @@ export const WhiteDwarfStrike: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 6,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
@@ -70,8 +71,7 @@ export const WhiteDwarfStrike: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 6
+    }
   },
   "specialEffects": [
     {

@@ -40,30 +40,9 @@ export const FRTMaskPresence: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 40,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 400,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 0.75,
-      "defenseBuff": 0.75
-    },
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
+      "aoe": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -75,7 +54,11 @@ export const FRTMaskPresence: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
-      "negative": {
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -83,15 +66,32 @@ export const FRTMaskPresence: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
+      "negative": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
       "ranged": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
-      "aoe": {
+      "smashing": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       }
     },
-    "buffDuration": 0.75
+    "durations": {
+      "defenseBuff": 0.75,
+      "stealth": 0.75
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 40,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 400,
+        "table": "Melee_Ones"
+      }
+    }
   }
 };

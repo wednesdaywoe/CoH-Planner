@@ -49,19 +49,19 @@ export const HowlingTwilight: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 15,
-      "table": "Ranged_Ones"
-    },
     "fear": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Ones"
     },
+    "stun": {
+      "mag": 2,
+      "scale": 15,
+      "table": "Ranged_Ones"
+    },
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_HowlingVillain"
+      "entity": "Pets_HowlingVillain",
+      "isPseudoPet": false
     }
   }
 };

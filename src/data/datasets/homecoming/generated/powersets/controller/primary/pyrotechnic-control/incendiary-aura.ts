@@ -44,16 +44,27 @@ export const IncendiaryAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.45,
+    "defenseDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 0.45,
+      "resistanceDebuff": 5,
+      "slow": 0.45,
+      "tohitDebuff": 0.45
+    },
     "knockback": {
       "scale": 20,
       "table": "Ranged_Ones"
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -61,11 +72,7 @@ export const IncendiaryAura: Power = {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -77,20 +84,14 @@ export const IncendiaryAura: Power = {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.2,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 5,
-      "tohitDebuff": 0.45,
-      "slow": 0.45,
-      "defenseDebuff": 0.45
-    },
-    "tohitDebuff": {
-      "scale": 1.25,
-      "table": "Melee_DeBuff_ToHit"
     },
     "slow": {
       "jumpHeight": {
@@ -98,11 +99,10 @@ export const IncendiaryAura: Power = {
         "table": "Melee_Ones"
       }
     },
-    "defenseDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_Def"
-    },
-    "buffDuration": 0.45
+    "tohitDebuff": {
+      "scale": 1.25,
+      "table": "Melee_DeBuff_ToHit"
+    }
   },
   "specialEffects": [
     {

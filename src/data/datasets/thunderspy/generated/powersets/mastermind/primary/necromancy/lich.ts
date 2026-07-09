@@ -51,9 +51,9 @@ export const Lich: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "MastermindPets_Lich",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

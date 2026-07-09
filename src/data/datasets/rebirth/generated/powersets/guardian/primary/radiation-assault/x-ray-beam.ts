@@ -50,14 +50,14 @@ export const XRayBeam: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 6,
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 6
-    },
-    "buffDuration": 6
+    }
   },
   "specialEffects": [
     {

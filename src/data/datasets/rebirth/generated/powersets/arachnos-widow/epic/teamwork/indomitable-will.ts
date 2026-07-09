@@ -40,26 +40,27 @@ export const IndomitableWill: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
+    "buffDuration": 0.75,
+    "confuse": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75,
     "durations": {
-      "stun": 0.75,
-      "sleep": 0.75,
-      "hold": 0.75,
       "confuse": 0.75,
       "fear": 0.75,
-      "resistance": 0.75,
+      "hold": 0.75,
       "immobilize": 0.75,
-      "mezResistance": 0.75,
       "knockback": 0.75,
       "knockup": 0.75,
-      "repel": 0.75
+      "mezResistance": 0.75,
+      "repel": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
     },
-    "sleep": {
+    "effectDuration": 0.75,
+    "fear": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -69,26 +70,18 @@ export const IndomitableWill: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "resistance": {
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
     "immobilize": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
@@ -104,18 +97,25 @@ export const IndomitableWill: Power = {
         "table": "Melee_Ones"
       }
     },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
     "repel": {
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "buffDuration": 0.75
+    "resistance": {
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

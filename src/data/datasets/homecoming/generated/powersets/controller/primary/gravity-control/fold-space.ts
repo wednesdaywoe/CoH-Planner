@@ -45,10 +45,10 @@ export const FoldSpace: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Singularity_Controller",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "Pets_Singularity_Controller",
+      "isPseudoPet": false
     }
   }
 };

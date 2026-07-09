@@ -56,10 +56,7 @@ export const ShadowPunch: Power = {
     }
   ],
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    },
+    "buffDuration": 6,
     "durations": {
       "tohitDebuff": 6
     },
@@ -67,6 +64,9 @@ export const ShadowPunch: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 6
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Melee_DeBuff_ToHit"
+    }
   }
 };

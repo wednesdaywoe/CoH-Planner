@@ -43,6 +43,37 @@ export const Integration: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "hold": 2.25,
+      "immobilize": 2.25,
+      "knockback": 2.25,
+      "knockup": 2.25,
+      "mezResistance": 2.25,
+      "regenBuff": 2.25,
+      "regenBuffUnenhanced": 2.25,
+      "sleep": 2.25,
+      "stun": 2.25
+    },
+    "effectDuration": 2.25,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "mezResistance": {
       "knockback": {
         "scale": 100,
@@ -53,58 +84,27 @@ export const Integration: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "mezResistance": 2.25,
-      "knockback": 2.25,
-      "knockup": 2.25,
-      "stun": 2.25,
-      "hold": 2.25,
-      "sleep": 2.25,
-      "immobilize": 2.25,
-      "regenBuffUnenhanced": 2.25,
-      "regenBuff": 2.25
-    },
-    "knockback": {
-      "scale": 10,
+    "regenBuff": {
+      "scale": 1,
       "table": "Melee_Ones"
     },
-    "knockup": {
-      "scale": 10,
+    "regenBuffUnenhanced": {
+      "scale": 0.5,
       "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 2.25,
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
     },
     "sleep": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "immobilize": {
+    "stun": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "regenBuffUnenhanced": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 2.25
+    }
   }
 };

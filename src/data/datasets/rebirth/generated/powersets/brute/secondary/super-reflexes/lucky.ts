@@ -32,6 +32,13 @@ export const Lucky: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.5,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "aoe": {
         "scale": 0.75,
@@ -39,29 +46,11 @@ export const Lucky: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 2.5,
       "debuffResistance": 2.5,
+      "defenseBuff": 2.5,
       "resistance": 2.5
     },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "resistance": {
-      "smashing": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
       "cold": {
         "scale": 0,
         "table": "Melee_Ones"
@@ -70,12 +59,23 @@ export const Lucky: Power = {
         "scale": 0,
         "table": "Melee_Ones"
       },
+      "fire": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
       "negative": {
         "scale": 0,
         "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0,
+        "table": "Melee_Ones"
       }
-    },
-    "buffDuration": 2.5
+    }
   },
   "mechanicType": "parentMechanic"
 };

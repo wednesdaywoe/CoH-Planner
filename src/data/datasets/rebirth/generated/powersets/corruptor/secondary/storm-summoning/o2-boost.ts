@@ -41,29 +41,8 @@ export const O2Boost: Power = {
     "table": "Ranged_Heal"
   },
   "effects": {
-    "stun": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 60,
-    "durations": {
-      "stun": 60,
-      "sleep": 60,
-      "debuffResistance": 60,
-      "mezResistance": 60,
-      "perceptionBuff": 60
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
+    "buffDuration": 60,
     "debuffResistance": {
-      "recovery": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
       "endurance": {
         "scale": 2,
         "table": "Ranged_Res_Boolean"
@@ -71,8 +50,20 @@ export const O2Boost: Power = {
       "perception": {
         "scale": 2.5,
         "table": "Ranged_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
       }
     },
+    "durations": {
+      "debuffResistance": 60,
+      "mezResistance": 60,
+      "perceptionBuff": 60,
+      "sleep": 60,
+      "stun": 60
+    },
+    "effectDuration": 60,
     "mezResistance": {
       "sleep": {
         "scale": 4,
@@ -83,6 +74,15 @@ export const O2Boost: Power = {
       "scale": 2.5,
       "table": "Ranged_Res_Boolean"
     },
-    "buffDuration": 60
+    "sleep": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    }
   }
 };

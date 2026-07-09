@@ -38,12 +38,21 @@ export const WildGrowth: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "regenBuff": 90,
+      "resistance": 90
+    },
+    "regenBuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
     "resistance": {
-      "smashing": {
+      "cold": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
@@ -51,11 +60,7 @@ export const WildGrowth: Power = {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
@@ -67,19 +72,14 @@ export const WildGrowth: Power = {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 90,
-      "regenBuff": 90
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 90
+    }
   }
 };

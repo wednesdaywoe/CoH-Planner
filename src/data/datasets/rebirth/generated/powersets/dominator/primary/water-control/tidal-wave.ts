@@ -61,16 +61,15 @@ export const TidalWave: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
+    },
+    "knockback": {
+      "scale": 3,
+      "table": "Ranged_Ones"
     },
     "slow": {
-      "runSpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
         "scale": 0.35,
         "table": "Ranged_Slow"
@@ -82,16 +81,17 @@ export const TidalWave: Power = {
       "jumpSpeed": {
         "scale": 0.35,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
       }
     },
-    "durations": {
-      "slow": 15
-    },
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 15
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    }
   },
   "conditionalEffects": [
     {
@@ -117,16 +117,11 @@ export const TidalWave: Power = {
         }
       ],
       "effects": {
-        "stun": {
-          "mag": 3,
-          "scale": 10,
-          "table": "Ranged_Stun"
+        "buffDuration": 15,
+        "durations": {
+          "slow": 15
         },
         "slow": {
-          "runSpeed": {
-            "scale": 0.4375,
-            "table": "Ranged_Slow"
-          },
           "flySpeed": {
             "scale": 0.4375,
             "table": "Ranged_Slow"
@@ -138,12 +133,17 @@ export const TidalWave: Power = {
           "jumpSpeed": {
             "scale": 0.4375,
             "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
           }
         },
-        "durations": {
-          "slow": 15
-        },
-        "buffDuration": 15
+        "stun": {
+          "mag": 3,
+          "scale": 10,
+          "table": "Ranged_Stun"
+        }
       }
     },
     {

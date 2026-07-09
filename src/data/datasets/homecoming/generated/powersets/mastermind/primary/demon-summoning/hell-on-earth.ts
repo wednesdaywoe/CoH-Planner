@@ -41,26 +41,26 @@ export const HellonEarth: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 90,
-      "damageBuff": 90
-    },
+    "buffDuration": 90,
     "damageBuff": {
       "scale": 5,
       "table": "Ranged_Buff_Dmg"
     },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Living_Hellfire",
-      "duration": 90,
-      "copyBoosts": true,
-      "entityCount": 10
+    "durations": {
+      "damageBuff": 90,
+      "tohitBuff": 90
     },
-    "buffDuration": 90
+    "summon": {
+      "copyBoosts": true,
+      "duration": 90,
+      "entity": "Pets_Living_Hellfire",
+      "entityCount": 10,
+      "isPseudoPet": false
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
+    }
   },
   "specialEffects": [
     {

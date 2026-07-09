@@ -57,6 +57,7 @@ export const FireSword: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8.83,
     "damageBuff": {
       "scale": 0.088,
       "table": "Melee_Ones"
@@ -64,7 +65,6 @@ export const FireSword: Power = {
     "durations": {
       "damageBuff": 8.83
     },
-    "buffDuration": 8.83,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

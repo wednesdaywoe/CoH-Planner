@@ -43,13 +43,13 @@ export const Integration: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 2.25,
     "durations": {
       "regenBuff": 2.25
     },
-    "buffDuration": 2.25
+    "regenBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    }
   }
 };

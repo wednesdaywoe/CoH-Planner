@@ -41,14 +41,14 @@ export const ParasiticAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 45,
     "durations": {
       "recoveryBuff": 45
     },
-    "buffDuration": 45
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    }
   },
   "conditionalEffects": [
     {

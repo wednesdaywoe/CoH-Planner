@@ -36,14 +36,14 @@ export const Meltdown: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 60,
     "durations": {
       "recoveryBuff": 60
     },
-    "buffDuration": 60
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    }
   },
   "requires": "accesslevel char> 0 >="
 };

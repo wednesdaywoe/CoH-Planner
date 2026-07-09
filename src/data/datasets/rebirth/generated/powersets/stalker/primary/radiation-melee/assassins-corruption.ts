@@ -54,6 +54,10 @@ export const AssassinsCorruption: Power = {
   ],
   "fromHideBonus": 1.1538461538461542,
   "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "stealth": 8
+    },
     "stealth": {
       "stealthPvE": {
         "scale": 1,
@@ -63,11 +67,7 @@ export const AssassinsCorruption: Power = {
         "scale": 1,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "stealth": 8
-    },
-    "buffDuration": 8
+    }
   },
   "specialEffects": [
     {

@@ -42,90 +42,62 @@ export const GraniteArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 5,
-        "table": "Melee_Res_DMG"
-      },
-      "lethal": {
-        "scale": 5,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 5,
-        "table": "Melee_Res_DMG"
-      },
+    "buffDuration": 0.75,
+    "damageDebuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones",
+      "toWho": "Self"
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "defenseBuff": {
       "cold": {
-        "scale": 5,
-        "table": "Melee_Res_DMG"
+        "scale": 2,
+        "table": "Melee_Buff_Def"
       },
       "energy": {
-        "scale": 5,
-        "table": "Melee_Res_DMG"
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
       },
       "negative": {
-        "scale": 5,
-        "table": "Melee_Res_DMG"
+        "scale": 2,
+        "table": "Melee_Buff_Def"
       },
-      "toxic": {
-        "scale": 5,
-        "table": "Melee_Res_DMG"
+      "smashing": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
-      "resistance": 0.75,
+      "damageDebuff": 0.75,
+      "debuffResistance": 0.75,
       "defenseBuff": 0.75,
-      "stun": 0.75,
       "hold": 0.75,
-      "sleep": 0.75,
       "immobilize": 0.75,
       "knockback": 0.75,
       "knockup": 0.75,
-      "repel": 0.75,
-      "slow": 0.75,
-      "rechargeDebuff": 0.75,
-      "damageDebuff": 0.75,
       "movement": 0.75,
-      "debuffResistance": 0.75
-    },
-    "defenseBuff": {
-      "smashing": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+      "rechargeDebuff": 0.75,
+      "repel": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "slow": 0.75,
+      "stun": 0.75
     },
     "effectDuration": 0.75,
     "hold": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
@@ -143,24 +115,10 @@ export const GraniteArmor: Power = {
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
-      "jumpHeight": {
-        "scale": 500,
+    "movement": {
+      "jumpSpeed": {
+        "scale": 0.5,
         "table": "Melee_Ones"
-      },
-      "fly": {
-        "scale": 10,
-        "table": "Melee_Ones",
-        "toWho": "Self"
       }
     },
     "rechargeDebuff": {
@@ -168,28 +126,70 @@ export const GraniteArmor: Power = {
       "table": "Melee_Ones",
       "toWho": "Self"
     },
-    "damageDebuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones",
-      "toWho": "Self"
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
-    "movement": {
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
+    "resistance": {
+      "cold": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
       }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      },
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Melee_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      }
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
     },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 0.75,
       "entity": "ROCKSUIT",
-      "duration": 0.75
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
+      "isPseudoPet": false
+    }
   }
 };

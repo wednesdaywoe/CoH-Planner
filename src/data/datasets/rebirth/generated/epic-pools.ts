@@ -74,12 +74,29 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 2
             }
           ],
+          "buffDuration": 18,
+          "durations": {
+            "rechargeDebuff": 18,
+            "slow": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           },
+          "rechargeDebuff": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
           "slow": {
+            "fly": {
+              "scale": 1,
+              "table": "Melee_Ones"
+            },
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
             "jumpHeight": {
               "scale": 0.3,
               "table": "Melee_Slow"
@@ -91,25 +108,8 @@ export const EPIC_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.3,
               "table": "Melee_Slow"
-            },
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "fly": {
-              "scale": 1,
-              "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "slow": 15,
-            "rechargeDebuff": 18
-          },
-          "rechargeDebuff": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "buffDuration": 18
+          }
         }
       },
       {
@@ -159,12 +159,25 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
+          "buffDuration": 18,
+          "durations": {
+            "rechargeDebuff": 18,
+            "slow": 18
+          },
           "hold": {
             "mag": 3,
             "scale": 12,
             "table": "Melee_Immobilize"
           },
+          "rechargeDebuff": {
+            "scale": 0.3,
+            "table": "Melee_Slow"
+          },
           "slow": {
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
             "jumpHeight": {
               "scale": 0.3,
               "table": "Melee_Slow"
@@ -176,21 +189,8 @@ export const EPIC_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.3,
               "table": "Melee_Slow"
-            },
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
             }
-          },
-          "durations": {
-            "slow": 18,
-            "rechargeDebuff": 18
-          },
-          "rechargeDebuff": {
-            "scale": 0.3,
-            "table": "Melee_Slow"
-          },
-          "buffDuration": 18
+          }
         }
       },
       {
@@ -243,7 +243,20 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
+          "buffDuration": 10,
+          "durations": {
+            "rechargeDebuff": 10,
+            "slow": 10
+          },
+          "rechargeDebuff": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
           "slow": {
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Melee_Slow"
+            },
             "jumpHeight": {
               "scale": 0.2,
               "table": "Melee_Slow"
@@ -255,21 +268,8 @@ export const EPIC_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.2,
               "table": "Melee_Slow"
-            },
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Melee_Slow"
             }
-          },
-          "durations": {
-            "slow": 10,
-            "rechargeDebuff": 10
-          },
-          "rechargeDebuff": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -310,19 +310,16 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.48708,
             "table": "Melee_Damage"
           },
-          "rechargeDebuff": {
-            "scale": 0.65,
-            "table": "Melee_Slow"
-          },
+          "buffDuration": 10,
           "durations": {
             "rechargeDebuff": 10,
             "slow": 10
           },
+          "rechargeDebuff": {
+            "scale": 0.65,
+            "table": "Melee_Slow"
+          },
           "slow": {
-            "runSpeed": {
-              "scale": 1,
-              "table": "Melee_SpeedRunning"
-            },
             "flySpeed": {
               "scale": 0.65,
               "table": "Melee_Slow"
@@ -334,9 +331,12 @@ export const EPIC_POOLS_RAW = {
             "jumpSpeed": {
               "scale": 0.65,
               "table": "Melee_Slow"
+            },
+            "runSpeed": {
+              "scale": 1,
+              "table": "Melee_SpeedRunning"
             }
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -372,18 +372,18 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
             "duration": 15,
             "entities": [
               {
-                "entity": "Pets_IceStorm",
-                "count": 1
+                "count": 1,
+                "entity": "Pets_IceStorm"
               },
               {
-                "entity": "Pets_Embraced_IceStorm",
-                "count": 1
+                "count": 1,
+                "entity": "Pets_Embraced_IceStorm"
               }
-            ]
+            ],
+            "isPseudoPet": false
           }
         }
       }
@@ -432,6 +432,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 10,
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
@@ -441,14 +446,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.2,
@@ -458,12 +459,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -493,17 +493,18 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
+            "energy": {
+              "scale": 1,
               "table": "Melee_Buff_Def"
             },
             "lethal": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
-            "energy": {
-              "scale": 1,
+            "smashing": {
+              "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
           },
@@ -516,8 +517,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -609,10 +609,10 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
             "duration": 240,
-            "entityCount": 3
+            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+            "entityCount": 3,
+            "isPseudoPet": false
           }
         }
       },
@@ -649,6 +649,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "hold": {
             "mag": 3,
             "scale": 10,
@@ -658,14 +663,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.5,
@@ -675,12 +676,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       }
     ]
@@ -735,22 +735,22 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.96,
             "table": "Ranged_Damage"
           },
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
           },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 4
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -780,8 +780,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "energy": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
@@ -789,15 +793,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "energy": {
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -836,9 +836,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Mu_Adept",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       },
@@ -886,24 +886,24 @@ export const EPIC_POOLS_RAW = {
             "duration": 7.1,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
+          "buffDuration": 6.2,
+          "durations": {
+            "enduranceDrain": 6.2,
+            "recoveryDebuff": 2
           },
           "enduranceDrain": {
             "scale": 0.04,
             "table": "Ranged_Ones"
           },
-          "durations": {
-            "enduranceDrain": 6.2,
-            "recoveryDebuff": 2
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
-          },
-          "buffDuration": 6.2
+          }
         }
       },
       {
@@ -948,27 +948,27 @@ export const EPIC_POOLS_RAW = {
             "duration": 6.3,
             "tickRate": 1
           },
-          "hold": {
-            "mag": 3,
-            "scale": 8,
-            "table": "Ranged_Ones"
+          "buffDuration": 8,
+          "durations": {
+            "recoveryDebuff": 8
           },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Ranged_Ones"
           },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 8
-          },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 8
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          }
         }
       }
     ]
@@ -1156,6 +1156,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
+          "buffDuration": 40,
           "defenseDebuff": {
             "scale": 1,
             "table": "Ranged_Debuff_Def"
@@ -1165,18 +1166,6 @@ export const EPIC_POOLS_RAW = {
             "resistanceDebuff": 40
           },
           "resistanceDebuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
             "cold": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
@@ -1185,20 +1174,31 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
-            "negative": {
+            "fire": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
-            "toxic": {
+            "lethal": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
             "psionic": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
             }
-          },
-          "buffDuration": 40
+          }
         }
       },
       {
@@ -1289,14 +1289,14 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "enduranceDiscount": {
-            "scale": 1,
-            "table": "Melee_Stun"
-          },
+          "buffDuration": 90,
           "durations": {
             "enduranceDiscount": 90
           },
-          "buffDuration": 90
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -1326,35 +1326,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -1396,14 +1396,14 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
+          "buffDuration": 6,
           "defenseDebuff": {
             "scale": 2,
             "table": "Melee_Debuff_Def"
           },
           "durations": {
             "defenseDebuff": 6
-          },
-          "buffDuration": 6
+          }
         }
       },
       {
@@ -1430,19 +1430,19 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
-            "regenBuff": 10.25,
-            "recoveryBuff": 10.25
+            "recoveryBuff": 10.25,
+            "regenBuff": 10.25
           },
           "recoveryBuff": {
             "scale": 0.125,
             "table": "Melee_Ones"
           },
-          "buffDuration": 10.25
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -1532,14 +1532,14 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 10,
           "effectArea": "SingleTarget",
-          "maxEndBuff": {
-            "scale": 5,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
             "maxEndBuff": 10.25
           },
-          "buffDuration": 10.25
+          "maxEndBuff": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -1569,35 +1569,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -1639,14 +1639,14 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
+          "buffDuration": 6,
           "defenseDebuff": {
             "scale": 2,
             "table": "Melee_Debuff_Def"
           },
           "durations": {
             "defenseDebuff": 6
-          },
-          "buffDuration": 6
+          }
         }
       },
       {
@@ -1673,19 +1673,19 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
-            "regenBuff": 10.25,
-            "recoveryBuff": 10.25
+            "recoveryBuff": 10.25,
+            "regenBuff": 10.25
           },
           "recoveryBuff": {
             "scale": 0.125,
             "table": "Melee_Ones"
           },
-          "buffDuration": 10.25
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -2024,7 +2024,65 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 10,
+          "defenseDebuff": {
+            "scale": 1.5,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 10,
+            "knockback": 10,
+            "rechargeDebuff": 10,
+            "resistanceDebuff": 10,
+            "slow": 10
+          },
+          "knockback": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "rechargeDebuff": {
+            "scale": 0.3,
+            "table": "Melee_Slow"
+          },
+          "resistanceDebuff": {
+            "cold": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
           "slow": {
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
             "jumpHeight": {
               "scale": 0.3,
               "table": "Melee_Slow"
@@ -2036,70 +2094,12 @@ export const EPIC_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.3,
               "table": "Melee_Slow"
-            },
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
             }
-          },
-          "durations": {
-            "slow": 10,
-            "rechargeDebuff": 10,
-            "resistanceDebuff": 10,
-            "defenseDebuff": 10,
-            "knockback": 10
-          },
-          "rechargeDebuff": {
-            "scale": 0.3,
-            "table": "Melee_Slow"
-          },
-          "resistanceDebuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "cold": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "psionic": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "defenseDebuff": {
-            "scale": 1.5,
-            "table": "Melee_Debuff_Def"
-          },
-          "knockback": {
-            "scale": 0.1,
-            "table": "Melee_Ones"
           },
           "taunt": {
             "scale": 1,
             "table": "Melee_InherentTaunt"
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -2138,9 +2138,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -2253,6 +2253,11 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.48708,
             "table": "Ranged_Damage"
           },
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
@@ -2262,14 +2267,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.2,
@@ -2279,16 +2280,15 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
             }
           },
           "taunt": {
             "scale": 1,
             "table": "Ranged_InherentTaunt"
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -2318,35 +2318,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -2445,9 +2445,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Arachnobot_Blaster",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -2507,26 +2507,26 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "enduranceGain": {
+            "scale": 4.29,
             "table": "Melee_Ones"
           },
           "recoveryDebuff": {
             "scale": 3,
             "table": "Melee_Ones"
           },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Melee_Ones"
-          },
           "taunt": {
             "scale": 1,
             "table": "Melee_InherentTaunt"
-          },
-          "buffDuration": 4
+          }
         }
       },
       {
@@ -2582,18 +2582,19 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
+          "buffDuration": 6.2,
+          "durations": {
+            "enduranceDrain": 6.2,
+            "recoveryDebuff": 2
           },
           "enduranceDrain": {
             "scale": 0.04,
             "table": "Melee_Ones"
           },
-          "durations": {
-            "enduranceDrain": 6.2,
-            "recoveryDebuff": 2
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
           },
           "recoveryDebuff": {
             "scale": 1,
@@ -2602,8 +2603,7 @@ export const EPIC_POOLS_RAW = {
           "taunt": {
             "scale": 1,
             "table": "Melee_InherentTaunt"
-          },
-          "buffDuration": 6.2
+          }
         }
       },
       {
@@ -2666,6 +2666,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Melee_Ones"
@@ -2674,14 +2678,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "durations": {
-            "recoveryDebuff": 4
-          },
           "taunt": {
             "scale": 1,
             "table": "Melee_InherentTaunt"
-          },
-          "buffDuration": 4
+          }
         }
       },
       {
@@ -2731,26 +2731,26 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage"
             }
           ],
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.07,
+            "table": "Ranged_Ones"
+          },
+          "enduranceGain": {
+            "scale": 4.29,
             "table": "Ranged_Ones"
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
           },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "enduranceGain": {
-            "scale": 4.29,
-            "table": "Ranged_Ones"
-          },
           "taunt": {
             "scale": 1,
             "table": "Ranged_InherentTaunt"
-          },
-          "buffDuration": 4
+          }
         }
       },
       {
@@ -2788,9 +2788,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Mu_Striker",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -2856,10 +2856,7 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 0.5
             }
           ],
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          },
+          "buffDuration": 10,
           "durations": {
             "tohitDebuff": 10
           },
@@ -2867,7 +2864,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_InherentTaunt"
           },
-          "buffDuration": 10
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Melee_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -2970,6 +2970,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 16,
+          "buffDuration": 0.75,
           "damageDebuff": {
             "scale": 3,
             "table": "Ranged_Debuff_Dam"
@@ -2981,8 +2982,7 @@ export const EPIC_POOLS_RAW = {
           "tohitDebuff": {
             "scale": 1.5,
             "table": "Ranged_DeBuff_ToHit"
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -3033,10 +3033,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          },
+          "buffDuration": 10,
           "durations": {
             "tohitDebuff": 10
           },
@@ -3044,7 +3041,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_InherentTaunt"
           },
-          "buffDuration": 10
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Melee_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -3081,9 +3081,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Blood_Widow",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -3187,27 +3187,27 @@ export const EPIC_POOLS_RAW = {
             "duration": 6.3,
             "tickRate": 1
           },
-          "hold": {
-            "mag": 3,
-            "scale": 8,
-            "table": "Melee_Ones"
+          "buffDuration": 8,
+          "durations": {
+            "recoveryDebuff": 8
           },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Melee_Ones"
           },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 8
-          },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Melee_Ones"
           },
-          "buffDuration": 8
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -3259,27 +3259,27 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
-          "stun": {
-            "mag": 3,
-            "scale": 5,
-            "table": "Melee_Stun"
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
           },
           "enduranceDrain": {
             "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 0.64,
             "table": "Melee_Ones"
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "knockback": {
-            "scale": 0.64,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 4
+          "stun": {
+            "mag": 3,
+            "scale": 5,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -3310,19 +3310,25 @@ export const EPIC_POOLS_RAW = {
           "endurance": 3.25,
           "activationTime": 1.96,
           "effectArea": "SingleTarget",
+          "buffDuration": 120,
+          "durations": {
+            "recoveryBuffUnenhanced": 120,
+            "recoveryDebuff": 15,
+            "resistance": 120
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuffUnenhanced": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
           "resistance": {
-            "smashing": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
             "cold": {
               "scale": 5,
               "table": "Melee_Res_Dmg"
@@ -3331,33 +3337,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 6,
               "table": "Melee_Res_Dmg"
             },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
             "negative": {
               "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 5,
               "table": "Melee_Res_Dmg"
             },
             "toxic": {
               "scale": 5,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 120,
-            "recoveryBuffUnenhanced": 120,
-            "recoveryDebuff": 15
-          },
-          "recoveryBuffUnenhanced": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "enduranceDrain": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 120
+          }
         }
       },
       {
@@ -3392,28 +3392,28 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 40,
           "maxTargets": 16,
-          "stun": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
+          "buffDuration": 15,
+          "durations": {
+            "recoveryDebuff": 15,
+            "regenDebuff": 15
           },
           "enduranceDrain": {
             "scale": 50,
             "table": "Ranged_EndDrain"
           },
-          "regenDebuff": {
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "regenDebuff": 15,
-            "recoveryDebuff": 15
-          },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 15
+          "regenDebuff": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "stun": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          }
         }
       }
     ]
@@ -3473,7 +3473,20 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage"
             }
           ],
+          "buffDuration": 10,
+          "durations": {
+            "rechargeDebuff": 10,
+            "slow": 10
+          },
+          "rechargeDebuff": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
           "slow": {
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
             "jumpHeight": {
               "scale": 0.2,
               "table": "Ranged_Slow"
@@ -3485,21 +3498,8 @@ export const EPIC_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.2,
               "table": "Ranged_Slow"
-            },
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
             }
-          },
-          "durations": {
-            "slow": 10,
-            "rechargeDebuff": 10
-          },
-          "rechargeDebuff": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -3589,21 +3589,21 @@ export const EPIC_POOLS_RAW = {
             "scale": 3,
             "table": "Melee_HealSelf"
           },
-          "maxHPBuff": {
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
+          "buffDuration": 120,
           "durations": {
             "maxHPBuff": 120,
             "resistance": 120
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
           },
           "resistance": {
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 120
+          }
         }
       },
       {
@@ -3635,12 +3635,13 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.73,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
+            "lethal": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
-            "lethal": {
+            "smashing": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
@@ -3658,8 +3659,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -3691,6 +3691,27 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.07,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "mezResistance": 0.75,
+            "recoveryBuff": 0.75,
+            "regenBuff": 0.75
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
           "mezResistance": {
             "knockback": {
               "scale": 10,
@@ -3701,43 +3722,22 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Ones"
             }
           },
-          "durations": {
-            "mezResistance": 0.75,
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "regenBuff": 0.75,
-            "recoveryBuff": 0.75
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 100,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
           "onlyAffectsSelf": {
             "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
             "table": "Melee_Ones"
           },
           "recoveryBuff": {
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -3783,10 +3783,23 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 10,
+          "buffDuration": 0.75,
+          "durations": {
+            "rechargeDebuff": 0.75,
+            "slow": 0.75
+          },
+          "rechargeDebuff": {
+            "scale": 0.5,
+            "table": "Ranged_Slow"
+          },
           "slow": {
-            "runSpeed": {
+            "fly": {
               "scale": 1,
-              "table": "Ranged_SpeedRunning"
+              "table": "Ranged_Ones"
+            },
+            "flySpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
             },
             "jumpHeight": {
               "scale": 0.5,
@@ -3796,24 +3809,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.5,
               "table": "Ranged_Slow"
             },
-            "flySpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
-            },
-            "fly": {
+            "runSpeed": {
               "scale": 1,
-              "table": "Ranged_Ones"
+              "table": "Ranged_SpeedRunning"
             }
-          },
-          "durations": {
-            "slow": 0.75,
-            "rechargeDebuff": 0.75
-          },
-          "rechargeDebuff": {
-            "scale": 0.5,
-            "table": "Ranged_Slow"
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -3903,21 +3903,21 @@ export const EPIC_POOLS_RAW = {
             "scale": 3,
             "table": "Melee_HealSelf"
           },
-          "maxHPBuff": {
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
+          "buffDuration": 120,
           "durations": {
             "maxHPBuff": 120,
             "resistance": 120
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
           },
           "resistance": {
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 120
+          }
         }
       },
       {
@@ -3949,12 +3949,13 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.73,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
+            "lethal": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
-            "lethal": {
+            "smashing": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
@@ -3972,8 +3973,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -4005,6 +4005,27 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.07,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "mezResistance": 0.75,
+            "recoveryBuff": 0.75,
+            "regenBuff": 0.75
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
           "mezResistance": {
             "knockback": {
               "scale": 10,
@@ -4015,43 +4036,22 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Ones"
             }
           },
-          "durations": {
-            "mezResistance": 0.75,
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "regenBuff": 0.75,
-            "recoveryBuff": 0.75
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 100,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
           "onlyAffectsSelf": {
             "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
             "table": "Melee_Ones"
           },
           "recoveryBuff": {
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -4114,6 +4114,7 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 30,
           "defenseDebuff": {
             "scale": 2,
             "table": "Ranged_Debuff_Def"
@@ -4123,18 +4124,6 @@ export const EPIC_POOLS_RAW = {
             "resistanceDebuff": 30
           },
           "resistanceDebuff": {
-            "smashing": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
             "cold": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
@@ -4143,20 +4132,31 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
-            "negative": {
+            "fire": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
-            "toxic": {
+            "lethal": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "psionic": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
             }
-          },
-          "buffDuration": 30
+          }
         }
       },
       {
@@ -4186,17 +4186,18 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
+            "energy": {
+              "scale": 1,
               "table": "Melee_Buff_Def"
             },
             "lethal": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
-            "energy": {
-              "scale": 1,
+            "smashing": {
+              "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
           },
@@ -4209,8 +4210,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -4292,35 +4292,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -4359,9 +4359,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Toxic_Tarantula",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -4461,8 +4461,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "cold": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
@@ -4470,15 +4474,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -4510,6 +4510,27 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.07,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "mezResistance": 0.75,
+            "recoveryBuff": 0.75,
+            "regenBuff": 0.75
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
           "mezResistance": {
             "knockback": {
               "scale": 10,
@@ -4520,43 +4541,22 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Ones"
             }
           },
-          "durations": {
-            "mezResistance": 0.75,
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "regenBuff": 0.75,
-            "recoveryBuff": 0.75
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 100,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
           "onlyAffectsSelf": {
             "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
             "table": "Melee_Ones"
           },
           "recoveryBuff": {
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -4606,6 +4606,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 15,
+          "durations": {
+            "slow": 15
+          },
           "hold": {
             "mag": 3,
             "scale": 10,
@@ -4616,11 +4620,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.6,
               "table": "Ranged_Ones"
             }
-          },
-          "durations": {
-            "slow": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -4662,9 +4662,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Red_Corolax",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -4713,6 +4713,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 10,
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
@@ -4722,14 +4727,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.2,
@@ -4739,12 +4740,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -4774,17 +4774,18 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
+            "energy": {
+              "scale": 1,
               "table": "Melee_Buff_Def"
             },
             "lethal": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
-            "energy": {
-              "scale": 1,
+            "smashing": {
+              "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
           },
@@ -4797,8 +4798,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -4828,35 +4828,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -4892,6 +4892,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "hold": {
             "mag": 3,
             "scale": 10,
@@ -4901,14 +4906,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.5,
@@ -4918,12 +4919,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -4961,9 +4961,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -5008,22 +5008,22 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.35,
             "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
           },
           "enduranceGain": {
             "scale": 25,
             "table": "Melee_Ones"
           },
-          "buffDuration": 4
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -5053,8 +5053,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "energy": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
@@ -5062,15 +5066,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "energy": {
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -5115,27 +5115,27 @@ export const EPIC_POOLS_RAW = {
             "duration": 6.3,
             "tickRate": 1
           },
-          "hold": {
-            "mag": 3,
-            "scale": 8,
-            "table": "Ranged_Ones"
+          "buffDuration": 8,
+          "durations": {
+            "recoveryDebuff": 8
           },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Ranged_Ones"
           },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 8
-          },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 8
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -5161,14 +5161,14 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "enduranceDiscount": {
-            "scale": 1,
-            "table": "Melee_Stun"
-          },
+          "buffDuration": 90,
           "durations": {
             "enduranceDiscount": 90
           },
-          "buffDuration": 90
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -5207,9 +5207,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Mu_Adept",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -5262,19 +5262,19 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "tohitBuff": {
-            "scale": 1,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 30,
-            "damageBuff": 30
-          },
+          "buffDuration": 30,
           "damageBuff": {
             "scale": 4,
             "table": "Melee_Buff_Dmg"
           },
-          "buffDuration": 30
+          "durations": {
+            "damageBuff": 30,
+            "tohitBuff": 30
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -5304,28 +5304,28 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "lethal": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -5351,44 +5351,12 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "specialBuff": 15
+          },
           "specialBuff": {
-            "stun": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "sleep": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "confuse": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "fear": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "immobilize": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "hold": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "movement": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "defense": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "melee": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "ranged": {
+            "absorb": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
@@ -5396,11 +5364,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "smashing": {
+            "cold": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "lethal": {
+            "confuse": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "defense": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fear": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
@@ -5408,11 +5392,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "cold": {
+            "heal": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "energy": {
+            "hold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "melee": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "movement": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
@@ -5424,27 +5424,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "heal": {
+            "ranged": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "absorb": {
+            "sleep": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "stun": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "tohit": {
               "scale": 0.66,
               "table": "Melee_Stun"
-            },
-            "endurance": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
             }
-          },
-          "durations": {
-            "specialBuff": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -5531,9 +5531,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Fortunata_Mistress",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -5661,28 +5661,28 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "lethal": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -5734,27 +5734,11 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
-          "stun": {
-            "mag": 30,
-            "scale": 8,
-            "table": "Melee_Stun"
-          },
-          "recoveryBuff": {
-            "scale": 0.05,
-            "table": "Ranged_Ones"
-          },
+          "buffDuration": 90,
           "durations": {
             "recoveryBuff": 90,
             "regenBuff": 90,
             "untouchable": 15
-          },
-          "regenBuff": {
-            "scale": 0.15,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 10,
-            "table": "Melee_Ones"
           },
           "enduranceGain": {
             "scale": 30,
@@ -5765,7 +5749,23 @@ export const EPIC_POOLS_RAW = {
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 90
+          "recoveryBuff": {
+            "scale": 0.05,
+            "table": "Ranged_Ones"
+          },
+          "regenBuff": {
+            "scale": 0.15,
+            "table": "Melee_Ones"
+          },
+          "stun": {
+            "mag": 30,
+            "scale": 8,
+            "table": "Melee_Stun"
+          },
+          "untouchable": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -5805,19 +5805,19 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "tohitBuff": {
-            "scale": 1,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 30,
-            "damageBuff": 30
-          },
+          "buffDuration": 30,
           "damageBuff": {
             "scale": 4,
             "table": "Melee_Buff_Dmg"
           },
-          "buffDuration": 30
+          "durations": {
+            "damageBuff": 30,
+            "tohitBuff": 30
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       }
     ]
@@ -5876,6 +5876,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.4,
             "table": "Melee_Damage"
           },
+          "buffDuration": 10,
+          "durations": {
+            "tohitDebuff": 10
+          },
           "knockback": {
             "scale": 5,
             "table": "Melee_Knockback"
@@ -5883,11 +5887,7 @@ export const EPIC_POOLS_RAW = {
           "tohitDebuff": {
             "scale": 0.75,
             "table": "Melee_DeBuff_ToHit"
-          },
-          "durations": {
-            "tohitDebuff": 10
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -5966,14 +5966,14 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          },
+          "buffDuration": 6,
           "durations": {
             "tohitDebuff": 6
           },
-          "buffDuration": 6
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Melee_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -6020,14 +6020,14 @@ export const EPIC_POOLS_RAW = {
             "duration": 2.8,
             "tickRate": 0.30000001192092896
           },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Ranged_DeBuff_ToHit"
-          },
+          "buffDuration": 10,
           "durations": {
             "tohitDebuff": 10
           },
-          "buffDuration": 10
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Ranged_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -6084,10 +6084,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          },
+          "buffDuration": 8,
           "durations": {
             "tohitDebuff": 8
           },
@@ -6096,7 +6093,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 15,
             "table": "Melee_Immobilize"
           },
-          "buffDuration": 8
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Melee_DeBuff_ToHit"
+          }
         }
       }
     ]
@@ -6149,9 +6149,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 30,
             "entity": "Pets_Patron_Powers_Water_Spout",
-            "duration": 30
+            "isPseudoPet": false
           }
         }
       },
@@ -6233,6 +6233,27 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.07,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "mezResistance": 0.75,
+            "recoveryBuff": 0.75,
+            "regenBuff": 0.75
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
           "mezResistance": {
             "knockback": {
               "scale": 10,
@@ -6243,43 +6264,22 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Ones"
             }
           },
-          "durations": {
-            "mezResistance": 0.75,
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "regenBuff": 0.75,
-            "recoveryBuff": 0.75
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 100,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
           "onlyAffectsSelf": {
             "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
             "table": "Melee_Ones"
           },
           "recoveryBuff": {
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -6309,8 +6309,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "cold": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
@@ -6318,15 +6322,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -6365,9 +6365,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Blue_Corolax",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -6431,6 +6431,7 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 30,
           "defenseDebuff": {
             "scale": 2,
             "table": "Ranged_Debuff_Def"
@@ -6440,18 +6441,6 @@ export const EPIC_POOLS_RAW = {
             "resistanceDebuff": 30
           },
           "resistanceDebuff": {
-            "smashing": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
             "cold": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
@@ -6460,20 +6449,31 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
-            "negative": {
+            "fire": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
-            "toxic": {
+            "lethal": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
             "psionic": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
             }
-          },
-          "buffDuration": 30
+          }
         }
       },
       {
@@ -6503,17 +6503,18 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
+            "energy": {
+              "scale": 1,
               "table": "Melee_Buff_Def"
             },
             "lethal": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
-            "energy": {
-              "scale": 1,
+            "smashing": {
+              "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
           },
@@ -6526,8 +6527,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -6609,10 +6609,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.03,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "onlyAffectsSelf": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 0.75,
           "defenseBuff": {
             "scale": 7.5,
             "table": "Melee_Buff_Def"
@@ -6621,12 +6618,16 @@ export const EPIC_POOLS_RAW = {
             "defenseBuff": 0.75,
             "resistance": 0.75
           },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
           "resistance": {
-            "smashing": {
+            "cold": {
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
@@ -6634,11 +6635,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 4,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
@@ -6649,9 +6646,12 @@ export const EPIC_POOLS_RAW = {
             "psionic": {
               "scale": 4,
               "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -6690,9 +6690,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Toxic_Tarantula",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -6737,22 +6737,22 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.35,
             "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
           },
           "enduranceGain": {
             "scale": 25,
             "table": "Melee_Ones"
           },
-          "buffDuration": 4
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -6782,8 +6782,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "energy": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
@@ -6791,15 +6795,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "energy": {
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -6850,6 +6850,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Ranged_Ones"
@@ -6857,11 +6861,7 @@ export const EPIC_POOLS_RAW = {
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "buffDuration": 4
+          }
         }
       },
       {
@@ -6892,19 +6892,25 @@ export const EPIC_POOLS_RAW = {
           "endurance": 3.25,
           "activationTime": 1.96,
           "effectArea": "SingleTarget",
+          "buffDuration": 120,
+          "durations": {
+            "recoveryBuffUnenhanced": 120,
+            "recoveryDebuff": 15,
+            "resistance": 120
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuffUnenhanced": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
           "resistance": {
-            "smashing": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
             "cold": {
               "scale": 5,
               "table": "Melee_Res_Dmg"
@@ -6913,33 +6919,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 6,
               "table": "Melee_Res_Dmg"
             },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
             "negative": {
               "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 5,
               "table": "Melee_Res_Dmg"
             },
             "toxic": {
               "scale": 5,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 120,
-            "recoveryBuffUnenhanced": 120,
-            "recoveryDebuff": 15
-          },
-          "recoveryBuffUnenhanced": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "enduranceDrain": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 120
+          }
         }
       },
       {
@@ -6977,9 +6977,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Mu_Guardian",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -7065,28 +7065,28 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "lethal": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -7130,14 +7130,14 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.9,
             "table": "Ranged_Damage"
           },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Ranged_DeBuff_ToHit"
-          },
+          "buffDuration": 10,
           "durations": {
             "tohitDebuff": 10
           },
-          "buffDuration": 10
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Ranged_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -7177,19 +7177,19 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "tohitBuff": {
-            "scale": 1,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 30,
-            "damageBuff": 30
-          },
+          "buffDuration": 30,
           "damageBuff": {
             "scale": 4,
             "table": "Melee_Buff_Dmg"
           },
-          "buffDuration": 30
+          "durations": {
+            "damageBuff": 30,
+            "tohitBuff": 30
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -7225,9 +7225,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Fortunata_Seer",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -7292,11 +7292,7 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 2
             }
           ],
-          "immobilize": {
-            "mag": 4,
-            "scale": 15,
-            "table": "Melee_Immobilize"
-          },
+          "buffDuration": 15,
           "defenseDebuff": {
             "scale": 2,
             "table": "Melee_Debuff_Def"
@@ -7305,13 +7301,17 @@ export const EPIC_POOLS_RAW = {
             "defenseDebuff": 15,
             "slow": 15
           },
+          "immobilize": {
+            "mag": 4,
+            "scale": 15,
+            "table": "Melee_Immobilize"
+          },
           "slow": {
             "fly": {
               "scale": 1,
               "table": "Melee_Ones"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -7344,11 +7344,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 30,
           "maxTargets": 10,
-          "sleep": {
-            "mag": 3,
-            "scale": 20,
-            "table": "Ranged_Sleep"
-          },
+          "buffDuration": 15,
           "defenseDebuff": {
             "scale": 2,
             "table": "Ranged_Debuff_Def"
@@ -7356,7 +7352,11 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "defenseDebuff": 15
           },
-          "buffDuration": 15
+          "sleep": {
+            "mag": 3,
+            "scale": 20,
+            "table": "Ranged_Sleep"
+          }
         }
       },
       {
@@ -7404,11 +7404,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
-          "hold": {
-            "mag": 3,
-            "scale": 12,
-            "table": "Melee_Immobilize"
-          },
+          "buffDuration": 12,
           "defenseDebuff": {
             "scale": 2,
             "table": "Melee_Debuff_Def"
@@ -7416,7 +7412,11 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "defenseDebuff": 12
           },
-          "buffDuration": 12
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Melee_Immobilize"
+          }
         }
       },
       {
@@ -7449,18 +7449,18 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.1,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
             "duration": 45,
             "entities": [
               {
-                "entity": "Pets_Epic_Quicksand",
-                "count": 1
+                "count": 1,
+                "entity": "Pets_Epic_Quicksand"
               },
               {
-                "entity": "Pets_Embraced_Quicksand",
-                "count": 1
+                "count": 1,
+                "entity": "Pets_Embraced_Quicksand"
               }
-            ]
+            ],
+            "isPseudoPet": false
           }
         }
       },
@@ -7511,11 +7511,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
-          "stun": {
-            "mag": 3,
-            "scale": 8,
-            "table": "Melee_Stun"
-          },
+          "buffDuration": 12,
           "defenseDebuff": {
             "scale": 2,
             "table": "Melee_Debuff_Def"
@@ -7523,7 +7519,11 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "defenseDebuff": 12
           },
-          "buffDuration": 12
+          "stun": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Stun"
+          }
         }
       }
     ]
@@ -7626,23 +7626,23 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.2,
             "tickRate": 1
           },
-          "hold": {
-            "mag": 3,
-            "scale": 12,
-            "table": "Ranged_Immobilize"
+          "buffDuration": 8.1,
+          "durations": {
+            "enduranceDrain": 8.1
           },
           "enduranceDrain": {
             "scale": 2,
             "table": "Ranged_EndDrain"
           },
-          "durations": {
-            "enduranceDrain": 8.1
-          },
           "enduranceGain": {
             "scale": 5.33,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 8.1
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -7672,8 +7672,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "energy": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
@@ -7681,15 +7685,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "energy": {
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -7720,19 +7720,25 @@ export const EPIC_POOLS_RAW = {
           "endurance": 3.25,
           "activationTime": 1.96,
           "effectArea": "SingleTarget",
+          "buffDuration": 120,
+          "durations": {
+            "recoveryBuffUnenhanced": 120,
+            "recoveryDebuff": 15,
+            "resistance": 120
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuffUnenhanced": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
           "resistance": {
-            "smashing": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
             "cold": {
               "scale": 5,
               "table": "Melee_Res_Dmg"
@@ -7741,33 +7747,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 6,
               "table": "Melee_Res_Dmg"
             },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
             "negative": {
               "scale": 4,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 5,
               "table": "Melee_Res_Dmg"
             },
             "toxic": {
               "scale": 5,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 120,
-            "recoveryBuffUnenhanced": 120,
-            "recoveryDebuff": 15
-          },
-          "recoveryBuffUnenhanced": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "enduranceDrain": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 120
+          }
         }
       },
       {
@@ -7802,28 +7802,28 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 40,
           "maxTargets": 16,
-          "stun": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
+          "buffDuration": 15,
+          "durations": {
+            "recoveryDebuff": 15,
+            "regenDebuff": 15
           },
           "enduranceDrain": {
             "scale": 50,
             "table": "Ranged_EndDrain"
           },
-          "regenDebuff": {
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "regenDebuff": 15,
-            "recoveryDebuff": 15
-          },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 15
+          "regenDebuff": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "stun": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
+          }
         }
       }
     ]
@@ -7880,24 +7880,24 @@ export const EPIC_POOLS_RAW = {
             "duration": 8.2,
             "tickRate": 2
           },
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
+          "buffDuration": 6.2,
+          "durations": {
+            "enduranceDrain": 6.2,
+            "recoveryDebuff": 2
           },
           "enduranceDrain": {
             "scale": 2,
             "table": "Ranged_EndDrain"
           },
-          "durations": {
-            "enduranceDrain": 6.2,
-            "recoveryDebuff": 2
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
-          },
-          "buffDuration": 6.2
+          }
         }
       },
       {
@@ -7948,10 +7948,9 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
-          "stun": {
-            "mag": 3,
-            "scale": 5,
-            "table": "Melee_Stun"
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
           },
           "knockback": {
             "scale": 5,
@@ -7961,10 +7960,11 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "buffDuration": 4
+          "stun": {
+            "mag": 3,
+            "scale": 5,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -7994,24 +7994,24 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
-              "scale": 2.75,
+            "energy": {
+              "scale": 2,
               "table": "Melee_Res_Dmg"
             },
             "lethal": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "energy": {
-              "scale": 2,
+            "smashing": {
+              "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -8057,23 +8057,23 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.2,
             "tickRate": 1
           },
-          "hold": {
-            "mag": 3,
-            "scale": 12,
-            "table": "Ranged_Immobilize"
+          "buffDuration": 8.1,
+          "durations": {
+            "enduranceDrain": 8.1
           },
           "enduranceDrain": {
             "scale": 2,
             "table": "Ranged_EndDrain"
           },
-          "durations": {
-            "enduranceDrain": 8.1
-          },
           "enduranceGain": {
             "scale": 5.33,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 8.1
+          "hold": {
+            "mag": 3,
+            "scale": 12,
+            "table": "Ranged_Immobilize"
+          }
         }
       },
       {
@@ -8104,22 +8104,22 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 12,
           "maxTargets": 10,
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 33,
             "table": "Melee_EndDrain"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
           },
           "enduranceGain": {
             "scale": 25,
             "table": "Melee_Ones"
           },
-          "buffDuration": 4
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -8157,14 +8157,14 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "enduranceDiscount": {
-            "scale": 1,
-            "table": "Melee_Stun"
-          },
+          "buffDuration": 90,
           "durations": {
             "enduranceDiscount": 90
           },
-          "buffDuration": 90
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -8194,35 +8194,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -8271,14 +8271,14 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
+          "buffDuration": 6,
           "defenseDebuff": {
             "scale": 2,
             "table": "Melee_Debuff_Def"
           },
           "durations": {
             "defenseDebuff": 6
-          },
-          "buffDuration": 6
+          }
         }
       },
       {
@@ -8305,19 +8305,19 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
-            "regenBuff": 10.25,
-            "recoveryBuff": 10.25
+            "recoveryBuff": 10.25,
+            "regenBuff": 10.25
           },
           "recoveryBuff": {
             "scale": 0.125,
             "table": "Melee_Ones"
           },
-          "buffDuration": 10.25
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -8412,14 +8412,14 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 10,
           "effectArea": "SingleTarget",
-          "maxEndBuff": {
-            "scale": 5,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
             "maxEndBuff": 10.25
           },
-          "buffDuration": 10.25
+          "maxEndBuff": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -8449,35 +8449,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -8526,14 +8526,14 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
+          "buffDuration": 6,
           "defenseDebuff": {
             "scale": 2,
             "table": "Melee_Debuff_Def"
           },
           "durations": {
             "defenseDebuff": 6
-          },
-          "buffDuration": 6
+          }
         }
       },
       {
@@ -8560,19 +8560,19 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
-            "regenBuff": 10.25,
-            "recoveryBuff": 10.25
+            "recoveryBuff": 10.25,
+            "regenBuff": 10.25
           },
           "recoveryBuff": {
             "scale": 0.125,
             "table": "Melee_Ones"
           },
-          "buffDuration": 10.25
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -8672,20 +8672,20 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 0.75,
           "durations": {
             "resistance": 0.75
           },
-          "buffDuration": 0.75
+          "resistance": {
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          }
         }
       },
       {
@@ -8871,40 +8871,15 @@ export const EPIC_POOLS_RAW = {
           "endurance": 3.25,
           "activationTime": 3.1,
           "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "cold": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 120,
           "durations": {
-            "resistance": 120,
             "recoveryBuff": 120,
-            "recoveryDebuff": 15
+            "recoveryDebuff": 15,
+            "resistance": 120
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
           },
           "recoveryBuff": {
             "scale": 1,
@@ -8914,11 +8889,36 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "enduranceDrain": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 120
+          "resistance": {
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            }
+          }
         }
       }
     ]
@@ -9059,28 +9059,28 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
+            "cold": {
+              "scale": 1,
               "table": "Melee_Res_Dmg"
             },
             "fire": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 1,
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -9123,19 +9123,7 @@ export const EPIC_POOLS_RAW = {
             "duration": 0.5,
             "tickRate": 1
           },
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Phoenix",
-            "duration": 5
-          },
-          "untouchable": {
-            "scale": 15,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 50,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 90,
           "damageBuff": {
             "scale": 5,
             "table": "Melee_Buff_Dmg"
@@ -9143,12 +9131,24 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "damageBuff": 90
           },
+          "enduranceGain": {
+            "scale": 50,
+            "table": "Melee_Ones"
+          },
           "immobilize": {
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 90
+          "summon": {
+            "duration": 5,
+            "entity": "Pets_Phoenix",
+            "isPseudoPet": false
+          },
+          "untouchable": {
+            "scale": 15,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -9188,10 +9188,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.4,
             "table": "Melee_Damage"
           },
-          "enduranceGain": {
-            "scale": 20,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 120,
           "debuffResistance": {
             "endurance": {
               "scale": 0.5,
@@ -9201,7 +9198,10 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "debuffResistance": 120
           },
-          "buffDuration": 120
+          "enduranceGain": {
+            "scale": 20,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -9247,9 +9247,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 15,
             "entity": "Pets_RainofFire",
-            "duration": 15
+            "isPseudoPet": false
           }
         }
       },
@@ -9333,28 +9333,28 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
+            "cold": {
+              "scale": 1,
               "table": "Melee_Res_Dmg"
             },
             "fire": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 1,
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -9397,19 +9397,7 @@ export const EPIC_POOLS_RAW = {
             "duration": 0.5,
             "tickRate": 1
           },
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Phoenix",
-            "duration": 5
-          },
-          "untouchable": {
-            "scale": 15,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 50,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 90,
           "damageBuff": {
             "scale": 5,
             "table": "Melee_Buff_Dmg"
@@ -9417,12 +9405,24 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "damageBuff": 90
           },
+          "enduranceGain": {
+            "scale": 50,
+            "table": "Melee_Ones"
+          },
           "immobilize": {
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 90
+          "summon": {
+            "duration": 5,
+            "entity": "Pets_Phoenix",
+            "isPseudoPet": false
+          },
+          "untouchable": {
+            "scale": 15,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -9458,6 +9458,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
+          "buffDuration": 40,
           "defenseDebuff": {
             "scale": 1,
             "table": "Ranged_Debuff_Def"
@@ -9467,18 +9468,6 @@ export const EPIC_POOLS_RAW = {
             "resistanceDebuff": 40
           },
           "resistanceDebuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
             "cold": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
@@ -9487,20 +9476,31 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
-            "negative": {
+            "fire": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
-            "toxic": {
+            "lethal": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
             "psionic": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
             }
-          },
-          "buffDuration": 40
+          }
         }
       }
     ]
@@ -9547,9 +9547,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.07,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 45,
             "entity": "Pets_Bonfire",
-            "duration": 45
+            "isPseudoPet": false
           }
         }
       },
@@ -9627,28 +9627,28 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
+            "cold": {
+              "scale": 1,
               "table": "Melee_Res_Dmg"
             },
             "fire": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 1,
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -9684,28 +9684,21 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 10,
+          "buffDuration": 40,
+          "damageBuff": {
+            "scale": 0.04,
+            "table": "Ranged_Ones"
+          },
           "defenseDebuff": {
             "scale": 1,
             "table": "Ranged_Debuff_Def"
           },
           "durations": {
+            "damageBuff": 9,
             "defenseDebuff": 40,
-            "resistanceDebuff": 40,
-            "damageBuff": 9
+            "resistanceDebuff": 40
           },
           "resistanceDebuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
             "cold": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
@@ -9714,24 +9707,31 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
-            "negative": {
+            "fire": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
-            "toxic": {
+            "lethal": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
             "psionic": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
             }
-          },
-          "damageBuff": {
-            "scale": 0.04,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 40
+          }
         }
       },
       {
@@ -9774,19 +9774,7 @@ export const EPIC_POOLS_RAW = {
             "duration": 0.5,
             "tickRate": 1
           },
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Phoenix",
-            "duration": 5
-          },
-          "untouchable": {
-            "scale": 15,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 50,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 90,
           "damageBuff": {
             "scale": 5,
             "table": "Melee_Buff_Dmg"
@@ -9794,12 +9782,24 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "damageBuff": 90
           },
+          "enduranceGain": {
+            "scale": 50,
+            "table": "Melee_Ones"
+          },
           "immobilize": {
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 90
+          "summon": {
+            "duration": 5,
+            "entity": "Pets_Phoenix",
+            "isPseudoPet": false
+          },
+          "untouchable": {
+            "scale": 15,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -9841,10 +9841,7 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.03,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "onlyAffectsSelf": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 0.75,
           "defenseBuff": {
             "scale": 7.5,
             "table": "Melee_Buff_Def"
@@ -9853,12 +9850,16 @@ export const EPIC_POOLS_RAW = {
             "defenseBuff": 0.75,
             "resistance": 0.75
           },
+          "onlyAffectsSelf": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
           "resistance": {
-            "smashing": {
+            "cold": {
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
@@ -9866,11 +9867,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 4,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 4,
               "table": "Melee_Res_Dmg"
             },
@@ -9881,9 +9878,12 @@ export const EPIC_POOLS_RAW = {
             "psionic": {
               "scale": 4,
               "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 4,
+              "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -9914,10 +9914,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 9,
           "maxTargets": 16,
-          "knockback": {
-            "scale": 3,
-            "table": "Ranged_Knockback"
-          },
+          "buffDuration": 0.75,
           "durations": {
             "knockback": 0.75
           },
@@ -9925,7 +9922,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 2.5,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 0.75
+          "knockback": {
+            "scale": 3,
+            "table": "Ranged_Knockback"
+          }
         }
       },
       {
@@ -9955,20 +9955,20 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 0.75,
           "durations": {
             "resistance": 0.75
           },
-          "buffDuration": 0.75
+          "resistance": {
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          }
         }
       },
       {
@@ -10013,6 +10013,14 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Ranged_Damage"
           },
+          "buffDuration": 10.57,
+          "damageBuff": {
+            "scale": 0.062,
+            "table": "Ranged_Ones"
+          },
+          "durations": {
+            "damageBuff": 10.57
+          },
           "knockback": {
             "scale": 0.67,
             "table": "Ranged_Ones"
@@ -10021,15 +10029,7 @@ export const EPIC_POOLS_RAW = {
             "mag": 2,
             "scale": 8,
             "table": "Ranged_Stun"
-          },
-          "damageBuff": {
-            "scale": 0.062,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "damageBuff": 10.57
-          },
-          "buffDuration": 10.57
+          }
         }
       },
       {
@@ -10060,40 +10060,15 @@ export const EPIC_POOLS_RAW = {
           "endurance": 3.25,
           "activationTime": 3.1,
           "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "cold": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 120,
           "durations": {
-            "resistance": 120,
             "recoveryBuff": 120,
-            "recoveryDebuff": 15
+            "recoveryDebuff": 15,
+            "resistance": 120
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
           },
           "recoveryBuff": {
             "scale": 1,
@@ -10103,11 +10078,36 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "enduranceDrain": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 120
+          "resistance": {
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            }
+          }
         }
       }
     ]
@@ -10163,16 +10163,21 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Ranged_Damage"
           },
+          "buffDuration": 12,
+          "durations": {
+            "rechargeDebuff": 12,
+            "slow": 12
+          },
           "hold": {
             "mag": 3,
             "scale": 12,
             "table": "Ranged_Immobilize"
           },
+          "rechargeDebuff": {
+            "scale": 0.3,
+            "table": "Ranged_Slow"
+          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.3,
-              "table": "Ranged_Slow"
-            },
             "flySpeed": {
               "scale": 0.3,
               "table": "Ranged_Slow"
@@ -10184,17 +10189,12 @@ export const EPIC_POOLS_RAW = {
             "jumpSpeed": {
               "scale": 0.3,
               "table": "Ranged_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Ranged_Slow"
             }
-          },
-          "durations": {
-            "slow": 12,
-            "rechargeDebuff": 12
-          },
-          "rechargeDebuff": {
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          },
-          "buffDuration": 12
+          }
         }
       },
       {
@@ -10242,15 +10242,24 @@ export const EPIC_POOLS_RAW = {
             "duration": 5.2,
             "tickRate": 2
           },
+          "buffDuration": 12,
+          "durations": {
+            "rechargeDebuff": 12,
+            "slow": 12
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
+          "rechargeDebuff": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.3,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 1.6,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.3,
@@ -10264,20 +10273,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.3,
               "table": "Ranged_Slow"
             },
-            "fly": {
-              "scale": 1.6,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Ranged_Slow"
             }
-          },
-          "durations": {
-            "slow": 12,
-            "rechargeDebuff": 12
-          },
-          "rechargeDebuff": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "buffDuration": 12
+          }
         }
       },
       {
@@ -10313,21 +10313,21 @@ export const EPIC_POOLS_RAW = {
             "scale": 3,
             "table": "Melee_HealSelf"
           },
-          "maxHPBuff": {
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
+          "buffDuration": 120,
           "durations": {
             "maxHPBuff": 120,
             "resistance": 120
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
           },
           "resistance": {
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 120
+          }
         }
       },
       {
@@ -10359,12 +10359,13 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.73,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
+            "lethal": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
-            "lethal": {
+            "smashing": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
@@ -10382,8 +10383,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -10415,6 +10415,27 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.07,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "mezResistance": 0.75,
+            "recoveryBuff": 0.75,
+            "regenBuff": 0.75
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
           "mezResistance": {
             "knockback": {
               "scale": 10,
@@ -10425,43 +10446,22 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Ones"
             }
           },
-          "durations": {
-            "mezResistance": 0.75,
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "regenBuff": 0.75,
-            "recoveryBuff": 0.75
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 100,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
           "onlyAffectsSelf": {
             "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
             "table": "Melee_Ones"
           },
           "recoveryBuff": {
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -10658,9 +10658,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 15,
             "entity": "Pets_RainofFire",
-            "duration": 15
+            "isPseudoPet": false
           }
         }
       },
@@ -10770,12 +10770,29 @@ export const EPIC_POOLS_RAW = {
             "duration": 9.2,
             "tickRate": 2
           },
+          "buffDuration": 18,
+          "durations": {
+            "rechargeDebuff": 18,
+            "slow": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
             "table": "Melee_Immobilize"
           },
+          "rechargeDebuff": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
           "slow": {
+            "fly": {
+              "scale": 1,
+              "table": "Melee_Ones"
+            },
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
             "jumpHeight": {
               "scale": 0.3,
               "table": "Melee_Slow"
@@ -10787,25 +10804,8 @@ export const EPIC_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.3,
               "table": "Melee_Slow"
-            },
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
-            },
-            "fly": {
-              "scale": 1,
-              "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "slow": 15,
-            "rechargeDebuff": 18
-          },
-          "rechargeDebuff": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "buffDuration": 18
+          }
         }
       },
       {
@@ -10937,9 +10937,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 15,
             "entity": "Pets_Epic_IceStorm",
-            "duration": 15
+            "isPseudoPet": false
           }
         }
       },
@@ -10976,19 +10976,16 @@ export const EPIC_POOLS_RAW = {
           "radius": 60,
           "arc": 2.356194496154785,
           "maxTargets": 10,
-          "rechargeDebuff": {
-            "scale": 0.65,
-            "table": "Melee_Slow"
-          },
+          "buffDuration": 10,
           "durations": {
             "rechargeDebuff": 10,
             "slow": 10
           },
+          "rechargeDebuff": {
+            "scale": 0.65,
+            "table": "Melee_Slow"
+          },
           "slow": {
-            "runSpeed": {
-              "scale": 1,
-              "table": "Melee_SpeedRunning"
-            },
             "flySpeed": {
               "scale": 0.65,
               "table": "Melee_Slow"
@@ -11000,9 +10997,12 @@ export const EPIC_POOLS_RAW = {
             "jumpSpeed": {
               "scale": 0.65,
               "table": "Melee_Slow"
+            },
+            "runSpeed": {
+              "scale": 1,
+              "table": "Melee_SpeedRunning"
             }
-          },
-          "buffDuration": 10
+          }
         }
       }
     ]
@@ -11065,6 +11065,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 15,
+          "durations": {
+            "slow": 15
+          },
           "hold": {
             "mag": 3,
             "scale": 10,
@@ -11075,11 +11079,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.6,
               "table": "Ranged_Ones"
             }
-          },
-          "durations": {
-            "slow": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -11136,7 +11136,65 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 10,
+          "defenseDebuff": {
+            "scale": 1.5,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 10,
+            "knockback": 10,
+            "rechargeDebuff": 10,
+            "resistanceDebuff": 10,
+            "slow": 10
+          },
+          "knockback": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "rechargeDebuff": {
+            "scale": 0.3,
+            "table": "Melee_Slow"
+          },
+          "resistanceDebuff": {
+            "cold": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
           "slow": {
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
             "jumpHeight": {
               "scale": 0.3,
               "table": "Melee_Slow"
@@ -11148,66 +11206,8 @@ export const EPIC_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.3,
               "table": "Melee_Slow"
-            },
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
             }
-          },
-          "durations": {
-            "slow": 10,
-            "rechargeDebuff": 10,
-            "resistanceDebuff": 10,
-            "defenseDebuff": 10,
-            "knockback": 10
-          },
-          "rechargeDebuff": {
-            "scale": 0.3,
-            "table": "Melee_Slow"
-          },
-          "resistanceDebuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "cold": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "psionic": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "defenseDebuff": {
-            "scale": 1.5,
-            "table": "Melee_Debuff_Def"
-          },
-          "knockback": {
-            "scale": 0.1,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -11299,9 +11299,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 30,
             "entity": "Pets_Patron_Powers_Water_Spout",
-            "duration": 30
+            "isPseudoPet": false
           }
         }
       },
@@ -11342,9 +11342,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Blue_Corolax",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -11395,12 +11395,16 @@ export const EPIC_POOLS_RAW = {
             "scale": 2.76,
             "table": "Melee_Damage"
           },
+          "buffDuration": 16,
+          "durations": {
+            "resistanceDebuff": 16
+          },
           "resistanceDebuff": {
-            "smashing": {
+            "cold": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -11408,11 +11412,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 2,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -11424,15 +11424,15 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
             "toxic": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistanceDebuff": 16
-          },
-          "buffDuration": 16
+          }
         }
       },
       {
@@ -11468,6 +11468,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "hold": {
             "mag": 3,
             "scale": 10,
@@ -11477,14 +11482,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.5,
@@ -11494,12 +11495,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -11582,35 +11582,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -11650,9 +11650,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Toxic_Tarantula",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -11711,27 +11711,27 @@ export const EPIC_POOLS_RAW = {
             "duration": 6.3,
             "tickRate": 1
           },
-          "hold": {
-            "mag": 3,
-            "scale": 8,
-            "table": "Ranged_Ones"
+          "buffDuration": 8,
+          "durations": {
+            "recoveryDebuff": 8
           },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Ranged_Ones"
           },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 8
-          },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 8
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -11783,6 +11783,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Ranged_Ones"
@@ -11790,11 +11794,7 @@ export const EPIC_POOLS_RAW = {
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "buffDuration": 4
+          }
         }
       },
       {
@@ -11848,27 +11848,27 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
-          "stun": {
-            "mag": 3,
-            "scale": 5,
-            "table": "Melee_Stun"
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
           },
           "enduranceDrain": {
             "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 0.64,
             "table": "Melee_Ones"
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "knockback": {
-            "scale": 0.64,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 4
+          "stun": {
+            "mag": 3,
+            "scale": 5,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -11894,14 +11894,14 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "enduranceDiscount": {
-            "scale": 1,
-            "table": "Melee_Stun"
-          },
+          "buffDuration": 90,
           "durations": {
             "enduranceDiscount": 90
           },
-          "buffDuration": 90
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -11940,9 +11940,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Mu_Guardian",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -12076,14 +12076,14 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 10,
           "effectArea": "SingleTarget",
-          "maxEndBuff": {
-            "scale": 5,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
             "maxEndBuff": 10.25
           },
-          "buffDuration": 10.25
+          "maxEndBuff": {
+            "scale": 5,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -12113,35 +12113,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -12174,12 +12174,21 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 20,
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 20,
+            "resistanceDebuff": 20
+          },
           "resistanceDebuff": {
-            "smashing": {
+            "cold": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -12187,11 +12196,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 2,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -12203,20 +12208,15 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
             "toxic": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistanceDebuff": 20,
-            "defenseDebuff": 20
-          },
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "buffDuration": 20
+          }
         }
       }
     ]
@@ -12422,35 +12422,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -12477,19 +12477,19 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
-            "regenBuff": 10.25,
-            "recoveryBuff": 10.25
+            "recoveryBuff": 10.25,
+            "regenBuff": 10.25
           },
           "recoveryBuff": {
             "scale": 0.125,
             "table": "Melee_Ones"
           },
-          "buffDuration": 10.25
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -12586,10 +12586,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
-          "rechargeDebuff": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
+          "buffDuration": 6,
           "durations": {
             "rechargeDebuff": 6
           },
@@ -12598,7 +12595,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 8,
             "table": "Melee_Stun"
           },
-          "buffDuration": 6
+          "rechargeDebuff": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          }
         }
       },
       {
@@ -12643,10 +12643,7 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.1,
             "tickRate": 1
           },
-          "rechargeDebuff": {
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          },
+          "buffDuration": 10,
           "durations": {
             "rechargeDebuff": 10
           },
@@ -12654,7 +12651,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 1.4,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 10
+          "rechargeDebuff": {
+            "scale": 0.3,
+            "table": "Ranged_Slow"
+          }
         }
       },
       {
@@ -12842,14 +12842,14 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.9,
             "table": "Ranged_Damage"
           },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Ranged_DeBuff_ToHit"
-          },
+          "buffDuration": 10,
           "durations": {
             "tohitDebuff": 10
           },
-          "buffDuration": 10
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Ranged_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -12890,19 +12890,19 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "tohitBuff": {
-            "scale": 1,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 30,
-            "damageBuff": 30
-          },
+          "buffDuration": 30,
           "damageBuff": {
             "scale": 4,
             "table": "Melee_Buff_Dmg"
           },
-          "buffDuration": 30
+          "durations": {
+            "damageBuff": 30,
+            "tohitBuff": 30
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -12983,9 +12983,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Blood_Widow",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -13033,9 +13033,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.07,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 45,
             "entity": "Pets_Bonfire",
-            "duration": 45
+            "isPseudoPet": false
           }
         }
       },
@@ -13234,15 +13234,6 @@ export const EPIC_POOLS_RAW = {
             "duration": 0.5,
             "tickRate": 1
           },
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Phoenix",
-            "duration": 5
-          },
-          "untouchable": {
-            "scale": 15,
-            "table": "Melee_Ones"
-          },
           "enduranceGain": {
             "scale": 50,
             "table": "Melee_Ones"
@@ -13250,6 +13241,15 @@ export const EPIC_POOLS_RAW = {
           "immobilize": {
             "mag": 50,
             "scale": 4,
+            "table": "Melee_Ones"
+          },
+          "summon": {
+            "duration": 5,
+            "entity": "Pets_Phoenix",
+            "isPseudoPet": false
+          },
+          "untouchable": {
+            "scale": 15,
             "table": "Melee_Ones"
           }
         }
@@ -13311,7 +13311,20 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Damage"
             }
           ],
+          "buffDuration": 10,
+          "durations": {
+            "rechargeDebuff": 10,
+            "slow": 10
+          },
+          "rechargeDebuff": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
           "slow": {
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
             "jumpHeight": {
               "scale": 0.2,
               "table": "Ranged_Slow"
@@ -13323,21 +13336,8 @@ export const EPIC_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.2,
               "table": "Ranged_Slow"
-            },
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
             }
-          },
-          "durations": {
-            "slow": 10,
-            "rechargeDebuff": 10
-          },
-          "rechargeDebuff": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -13369,6 +13369,27 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.07,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "mezResistance": 0.75,
+            "recoveryBuff": 0.75,
+            "regenBuff": 0.75
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
           "mezResistance": {
             "knockback": {
               "scale": 10,
@@ -13379,43 +13400,22 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Ones"
             }
           },
-          "durations": {
-            "mezResistance": 0.75,
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "regenBuff": 0.75,
-            "recoveryBuff": 0.75
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 100,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
           "onlyAffectsSelf": {
             "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
             "table": "Melee_Ones"
           },
           "recoveryBuff": {
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -13447,12 +13447,13 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.73,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
+            "lethal": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
-            "lethal": {
+            "smashing": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
@@ -13470,8 +13471,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -13517,7 +13517,20 @@ export const EPIC_POOLS_RAW = {
             "duration": 0.6,
             "tickRate": 0.5
           },
+          "buffDuration": 10,
+          "durations": {
+            "rechargeDebuff": 10,
+            "slow": 10
+          },
+          "rechargeDebuff": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
           "slow": {
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
             "jumpHeight": {
               "scale": 0.2,
               "table": "Ranged_Slow"
@@ -13529,21 +13542,8 @@ export const EPIC_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.2,
               "table": "Ranged_Slow"
-            },
-            "flySpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
             }
-          },
-          "durations": {
-            "slow": 10,
-            "rechargeDebuff": 10
-          },
-          "rechargeDebuff": {
-            "scale": 0.2,
-            "table": "Ranged_Slow"
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -13579,9 +13579,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 15,
             "entity": "Pets_Epic_IceStorm",
-            "duration": 15
+            "isPseudoPet": false
           }
         }
       }
@@ -13634,9 +13634,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 15,
             "entity": "Pets_Sleet_Defender",
-            "duration": 15
+            "isPseudoPet": false
           }
         }
       },
@@ -13669,6 +13669,27 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.07,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "mezResistance": 0.75,
+            "recoveryBuff": 0.75,
+            "regenBuff": 0.75
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
           "mezResistance": {
             "knockback": {
               "scale": 10,
@@ -13679,43 +13700,22 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Ones"
             }
           },
-          "durations": {
-            "mezResistance": 0.75,
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "regenBuff": 0.75,
-            "recoveryBuff": 0.75
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 100,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
           "onlyAffectsSelf": {
             "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
             "table": "Melee_Ones"
           },
           "recoveryBuff": {
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -13747,12 +13747,13 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.73,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
+            "lethal": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
-            "lethal": {
+            "smashing": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
@@ -13770,8 +13771,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -13807,21 +13807,21 @@ export const EPIC_POOLS_RAW = {
             "scale": 3,
             "table": "Melee_HealSelf"
           },
-          "maxHPBuff": {
-            "scale": 3,
-            "table": "Melee_HealSelf"
-          },
+          "buffDuration": 120,
           "durations": {
             "maxHPBuff": 120,
             "resistance": 120
+          },
+          "maxHPBuff": {
+            "scale": 3,
+            "table": "Melee_HealSelf"
           },
           "resistance": {
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 120
+          }
         }
       },
       {
@@ -13857,9 +13857,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 15,
             "entity": "Pets_Epic_IceStorm",
-            "duration": 15
+            "isPseudoPet": false
           }
         }
       }
@@ -13959,10 +13959,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.4,
             "table": "Melee_Damage"
           },
-          "enduranceGain": {
-            "scale": 20,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 120,
           "debuffResistance": {
             "endurance": {
               "scale": 0.5,
@@ -13972,7 +13969,10 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "debuffResistance": 120
           },
-          "buffDuration": 120
+          "enduranceGain": {
+            "scale": 20,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -14002,28 +14002,28 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 2.75,
+            "cold": {
+              "scale": 1,
               "table": "Melee_Res_Dmg"
             },
             "fire": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 1,
+            "lethal": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -14058,9 +14058,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.07,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 45,
             "entity": "Pets_Bonfire",
-            "duration": 45
+            "isPseudoPet": false
           }
         }
       },
@@ -14104,19 +14104,7 @@ export const EPIC_POOLS_RAW = {
             "duration": 0.5,
             "tickRate": 1
           },
-          "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Phoenix",
-            "duration": 5
-          },
-          "untouchable": {
-            "scale": 15,
-            "table": "Melee_Ones"
-          },
-          "enduranceGain": {
-            "scale": 50,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 90,
           "damageBuff": {
             "scale": 5,
             "table": "Melee_Buff_Dmg"
@@ -14124,12 +14112,24 @@ export const EPIC_POOLS_RAW = {
           "durations": {
             "damageBuff": 90
           },
+          "enduranceGain": {
+            "scale": 50,
+            "table": "Melee_Ones"
+          },
           "immobilize": {
             "mag": 50,
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 90
+          "summon": {
+            "duration": 5,
+            "entity": "Pets_Phoenix",
+            "isPseudoPet": false
+          },
+          "untouchable": {
+            "scale": 15,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -14174,12 +14174,21 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 20,
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 20,
+            "resistanceDebuff": 20
+          },
           "resistanceDebuff": {
-            "smashing": {
+            "cold": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -14187,11 +14196,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 2,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -14203,20 +14208,15 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
             "toxic": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistanceDebuff": 20,
-            "defenseDebuff": 20
-          },
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "buffDuration": 20
+          }
         }
       },
       {
@@ -14250,38 +14250,38 @@ export const EPIC_POOLS_RAW = {
           "endurance": 5.2,
           "activationTime": 2.33,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 0.75
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
+          "rechargeDebuff": {
+            "scale": 0.1,
+            "table": "Ranged_Slow"
+          },
           "slow": {
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
             "fly": {
               "scale": 10,
+              "table": "Ranged_Ones"
+            },
+            "flySpeed": {
+              "scale": 0.1,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
               "table": "Ranged_Ones"
             },
             "runSpeed": {
               "scale": 1,
               "table": "Ranged_SpeedRunning"
-            },
-            "flySpeed": {
-              "scale": 0.1,
-              "table": "Ranged_Slow"
             }
-          },
-          "durations": {
-            "slow": 0.75,
-            "rechargeDebuff": 15
-          },
-          "rechargeDebuff": {
-            "scale": 0.1,
-            "table": "Ranged_Slow"
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -14349,9 +14349,14 @@ export const EPIC_POOLS_RAW = {
           "endurance": 13.52,
           "activationTime": 1.5,
           "effectArea": "Location",
-          "teleport": {
-            "scale": 0.1,
-            "table": "Ranged_Ones"
+          "buffDuration": 8.5,
+          "damageBuff": {
+            "scale": 3,
+            "table": "Melee_Buff_Dmg"
+          },
+          "durations": {
+            "damageBuff": 8.5,
+            "stealth": 8.5
           },
           "stealth": {
             "stealthPvE": {
@@ -14363,15 +14368,10 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Ones"
             }
           },
-          "durations": {
-            "stealth": 8.5,
-            "damageBuff": 8.5
-          },
-          "damageBuff": {
-            "scale": 3,
-            "table": "Melee_Buff_Dmg"
-          },
-          "buffDuration": 8.5
+          "teleport": {
+            "scale": 0.1,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -14402,19 +14402,19 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10,
           "activationTime": 1,
           "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.8,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 30,
           "durations": {
-            "regenBuff": 30,
-            "recoveryBuff": 30
+            "recoveryBuff": 30,
+            "regenBuff": 30
           },
           "recoveryBuff": {
             "scale": 0.25,
             "table": "Melee_Ones"
           },
-          "buffDuration": 30
+          "regenBuff": {
+            "scale": 0.8,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -14478,6 +14478,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 2
             }
           ],
+          "buffDuration": 15,
+          "durations": {
+            "regenDebuff": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
@@ -14486,11 +14490,7 @@ export const EPIC_POOLS_RAW = {
           "regenDebuff": {
             "scale": 2,
             "table": "Ranged_Ones"
-          },
-          "durations": {
-            "regenDebuff": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -14517,19 +14517,19 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "maxHPBuff": {
-            "scale": 0.75,
-            "table": "Melee_HealSelf"
-          },
+          "buffDuration": 10.25,
           "durations": {
-            "maxHPBuff": 10.25,
-            "maxEndBuff": 10.25
+            "maxEndBuff": 10.25,
+            "maxHPBuff": 10.25
           },
           "maxEndBuff": {
             "scale": 3.5,
             "table": "Melee_Ones"
           },
-          "buffDuration": 10.25
+          "maxHPBuff": {
+            "scale": 0.75,
+            "table": "Melee_HealSelf"
+          }
         }
       },
       {
@@ -14577,6 +14577,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
+          "buffDuration": 15,
           "defenseDebuff": {
             "scale": 1.5,
             "table": "Melee_Debuff_Def"
@@ -14586,18 +14587,6 @@ export const EPIC_POOLS_RAW = {
             "resistanceDebuff": 15
           },
           "resistanceDebuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
             "cold": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
@@ -14606,20 +14595,31 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
-            "negative": {
+            "fire": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
-            "toxic": {
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
             "psionic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -14681,13 +14681,10 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 30,
           "maxTargets": 30,
-          "regenBuff": {
-            "scale": 1.4,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 2.25,
           "durations": {
-            "regenBuff": 2.25,
-            "mezResistance": 2.25
+            "mezResistance": 2.25,
+            "regenBuff": 2.25
           },
           "mezResistance": {
             "confuse": {
@@ -14699,7 +14696,10 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Res_Boolean"
             }
           },
-          "buffDuration": 2.25
+          "regenBuff": {
+            "scale": 1.4,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -14744,12 +14744,21 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 20,
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 20,
+            "resistanceDebuff": 20
+          },
           "resistanceDebuff": {
-            "smashing": {
+            "cold": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -14757,11 +14766,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 2,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -14773,20 +14778,15 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
             "toxic": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistanceDebuff": 20,
-            "defenseDebuff": 20
-          },
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "buffDuration": 20
+          }
         }
       },
       {
@@ -14820,38 +14820,38 @@ export const EPIC_POOLS_RAW = {
           "endurance": 5.2,
           "activationTime": 2.33,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 0.75
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
             "table": "Ranged_Immobilize"
           },
+          "rechargeDebuff": {
+            "scale": 0.1,
+            "table": "Ranged_Slow"
+          },
           "slow": {
-            "jumpHeight": {
-              "scale": 500,
-              "table": "Ranged_Ones"
-            },
             "fly": {
               "scale": 10,
+              "table": "Ranged_Ones"
+            },
+            "flySpeed": {
+              "scale": 0.1,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 500,
               "table": "Ranged_Ones"
             },
             "runSpeed": {
               "scale": 1,
               "table": "Ranged_SpeedRunning"
-            },
-            "flySpeed": {
-              "scale": 0.1,
-              "table": "Ranged_Slow"
             }
-          },
-          "durations": {
-            "slow": 0.75,
-            "rechargeDebuff": 15
-          },
-          "rechargeDebuff": {
-            "scale": 0.1,
-            "table": "Ranged_Slow"
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -14889,6 +14889,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 1.64,
             "table": "Melee_Damage"
           },
+          "buffDuration": 8,
+          "durations": {
+            "stealth": 8
+          },
           "stealth": {
             "stealthPvE": {
               "scale": 1,
@@ -14898,11 +14902,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1,
               "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "stealth": 8
-          },
-          "buffDuration": 8
+          }
         }
       },
       {
@@ -14935,26 +14935,26 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 12,
           "maxTargets": 10,
-          "tohitDebuff": {
-            "scale": 1,
-            "table": "Ranged_Debuff_ToHit"
-          },
-          "durations": {
-            "tohitDebuff": 20,
-            "damageDebuff": 20,
-            "fear": 8
-          },
+          "buffDuration": 20,
           "damageDebuff": {
             "scale": 2,
             "table": "Ranged_Debuff_Dam"
           },
+          "durations": {
+            "damageDebuff": 20,
+            "fear": 8,
+            "tohitDebuff": 20
+          },
+          "effectDuration": 8,
           "fear": {
             "mag": 2,
             "scale": 8,
             "table": "Melee_Ones"
           },
-          "effectDuration": 8,
-          "buffDuration": 20
+          "tohitDebuff": {
+            "scale": 1,
+            "table": "Ranged_Debuff_ToHit"
+          }
         }
       },
       {
@@ -14985,19 +14985,19 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10,
           "activationTime": 1,
           "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.8,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 30,
           "durations": {
-            "regenBuff": 30,
-            "recoveryBuff": 30
+            "recoveryBuff": 30,
+            "regenBuff": 30
           },
           "recoveryBuff": {
             "scale": 0.25,
             "table": "Melee_Ones"
           },
-          "buffDuration": 30
+          "regenBuff": {
+            "scale": 0.8,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -15080,6 +15080,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 2
             }
           ],
+          "buffDuration": 15,
+          "durations": {
+            "regenDebuff": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
@@ -15088,11 +15092,7 @@ export const EPIC_POOLS_RAW = {
           "regenDebuff": {
             "scale": 2,
             "table": "Ranged_Ones"
-          },
-          "durations": {
-            "regenDebuff": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -15119,19 +15119,19 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "maxHPBuff": {
-            "scale": 0.75,
-            "table": "Melee_HealSelf"
-          },
+          "buffDuration": 10.25,
           "durations": {
-            "maxHPBuff": 10.25,
-            "maxEndBuff": 10.25
+            "maxEndBuff": 10.25,
+            "maxHPBuff": 10.25
           },
           "maxEndBuff": {
             "scale": 3.5,
             "table": "Melee_Ones"
           },
-          "buffDuration": 10.25
+          "maxHPBuff": {
+            "scale": 0.75,
+            "table": "Melee_HealSelf"
+          }
         }
       },
       {
@@ -15179,6 +15179,7 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
+          "buffDuration": 15,
           "defenseDebuff": {
             "scale": 1.5,
             "table": "Melee_Debuff_Def"
@@ -15188,18 +15189,6 @@ export const EPIC_POOLS_RAW = {
             "resistanceDebuff": 15
           },
           "resistanceDebuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
             "cold": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
@@ -15208,20 +15197,31 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
-            "negative": {
+            "fire": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
-            "toxic": {
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
             "psionic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -15253,13 +15253,10 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 30,
           "maxTargets": 255,
-          "regenBuff": {
-            "scale": 1.4,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 2.25,
           "durations": {
-            "regenBuff": 2.25,
-            "mezResistance": 2.25
+            "mezResistance": 2.25,
+            "regenBuff": 2.25
           },
           "mezResistance": {
             "confuse": {
@@ -15271,7 +15268,10 @@ export const EPIC_POOLS_RAW = {
               "table": "Ranged_Res_Boolean"
             }
           },
-          "buffDuration": 2.25
+          "regenBuff": {
+            "scale": 1.4,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -15469,8 +15469,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "cold": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
@@ -15478,15 +15482,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -15536,6 +15536,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 15,
+          "durations": {
+            "slow": 15
+          },
           "hold": {
             "mag": 3,
             "scale": 10,
@@ -15546,11 +15550,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.6,
               "table": "Ranged_Ones"
             }
-          },
-          "durations": {
-            "slow": 15
-          },
-          "buffDuration": 15
+          }
         }
       }
     ]
@@ -15598,6 +15598,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 10,
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
@@ -15607,14 +15612,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.2,
@@ -15624,12 +15625,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -15659,17 +15659,18 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 2,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
-              "scale": 1.5,
+            "energy": {
+              "scale": 1,
               "table": "Melee_Buff_Def"
             },
             "lethal": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
-            "energy": {
-              "scale": 1,
+            "smashing": {
+              "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
           },
@@ -15682,8 +15683,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -15762,44 +15762,12 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "specialBuff": 15
+          },
           "specialBuff": {
-            "stun": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            },
-            "sleep": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            },
-            "confuse": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            },
-            "fear": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            },
-            "immobilize": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            },
-            "hold": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            },
-            "movement": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            },
-            "defense": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            },
-            "melee": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
-            },
-            "ranged": {
+            "absorb": {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
@@ -15807,11 +15775,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
-            "smashing": {
+            "cold": {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
-            "lethal": {
+            "confuse": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "defense": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "fear": {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
@@ -15819,11 +15803,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
-            "cold": {
+            "heal": {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
-            "energy": {
+            "hold": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "melee": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "movement": {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
@@ -15835,27 +15835,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
-            "heal": {
+            "ranged": {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
-            "absorb": {
+            "sleep": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.44,
+              "table": "Melee_Stun"
+            },
+            "stun": {
               "scale": 0.44,
               "table": "Melee_Stun"
             },
             "tohit": {
               "scale": 0.44,
               "table": "Melee_Stun"
-            },
-            "endurance": {
-              "scale": 0.44,
-              "table": "Melee_Stun"
             }
-          },
-          "durations": {
-            "specialBuff": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -15891,6 +15891,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "hold": {
             "mag": 3,
             "scale": 10,
@@ -15900,14 +15905,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.5,
@@ -15917,12 +15918,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       }
     ]
@@ -15977,22 +15977,22 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.96,
             "table": "Ranged_Damage"
           },
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
           },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 4
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -16022,8 +16022,12 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "energy": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
@@ -16031,15 +16035,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "energy": {
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -16091,27 +16091,27 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
-          "stun": {
-            "mag": 3,
-            "scale": 5,
-            "table": "Melee_Stun"
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
           },
           "enduranceDrain": {
             "scale": 0.07,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 0.64,
             "table": "Melee_Ones"
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "knockback": {
-            "scale": 0.64,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 4
+          "stun": {
+            "mag": 3,
+            "scale": 5,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -16158,24 +16158,24 @@ export const EPIC_POOLS_RAW = {
             "duration": 7.1,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Ranged_Immobilize"
+          "buffDuration": 6.2,
+          "durations": {
+            "enduranceDrain": 6.2,
+            "recoveryDebuff": 2
           },
           "enduranceDrain": {
             "scale": 0.04,
             "table": "Ranged_Ones"
           },
-          "durations": {
-            "enduranceDrain": 6.2,
-            "recoveryDebuff": 2
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Ranged_Immobilize"
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
-          },
-          "buffDuration": 6.2
+          }
         }
       },
       {
@@ -16220,27 +16220,27 @@ export const EPIC_POOLS_RAW = {
             "duration": 6.3,
             "tickRate": 1
           },
-          "hold": {
-            "mag": 3,
-            "scale": 8,
-            "table": "Ranged_Ones"
+          "buffDuration": 8,
+          "durations": {
+            "recoveryDebuff": 8
           },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Ranged_Ones"
           },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 8
-          },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 8
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          }
         }
       }
     ]
@@ -16299,14 +16299,14 @@ export const EPIC_POOLS_RAW = {
             "duration": 2.8,
             "tickRate": 0.30000001192092896
           },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Ranged_DeBuff_ToHit"
-          },
+          "buffDuration": 10,
           "durations": {
             "tohitDebuff": 10
           },
-          "buffDuration": 10
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Ranged_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -16336,28 +16336,28 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
+            "lethal": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
             },
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -16541,20 +16541,20 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 1.25,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.25,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 10.25,
           "durations": {
             "resistance": 10.25
           },
-          "buffDuration": 10.25
+          "resistance": {
+            "lethal": {
+              "scale": 1.25,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.25,
+              "table": "Melee_Res_Dmg"
+            }
+          }
         }
       },
       {
@@ -16679,12 +16679,21 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 1.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 20,
+          "defenseDebuff": {
+            "scale": 2,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 20,
+            "resistanceDebuff": 20
+          },
           "resistanceDebuff": {
-            "smashing": {
+            "cold": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -16692,11 +16701,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 2,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -16708,20 +16713,15 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
             "toxic": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistanceDebuff": 20,
-            "defenseDebuff": 20
-          },
-          "defenseDebuff": {
-            "scale": 2,
-            "table": "Melee_Debuff_Def"
-          },
-          "buffDuration": 20
+          }
         }
       },
       {
@@ -16812,14 +16812,14 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "enduranceDiscount": {
-            "scale": 1,
-            "table": "Melee_Stun"
-          },
+          "buffDuration": 90,
           "durations": {
             "enduranceDiscount": 90
           },
-          "buffDuration": 90
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -16848,44 +16848,18 @@ export const EPIC_POOLS_RAW = {
           "endurance": 13,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
+          "buffDuration": 12.5,
+          "damageBuff": {
+            "scale": 8,
+            "table": "Melee_Buff_Dmg"
+          },
+          "durations": {
+            "damageBuff": 12.5,
+            "specialBuff": 12.5,
+            "tohitBuff": 12.5
+          },
           "specialBuff": {
-            "stun": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "sleep": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "confuse": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "fear": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "immobilize": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "hold": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "movement": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "defense": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "melee": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "ranged": {
+            "absorb": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
@@ -16893,11 +16867,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "smashing": {
+            "cold": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "lethal": {
+            "confuse": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "defense": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fear": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
@@ -16905,11 +16895,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "cold": {
+            "heal": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "energy": {
+            "hold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "melee": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "movement": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
@@ -16921,37 +16927,31 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "heal": {
+            "ranged": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "absorb": {
+            "sleep": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "stun": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "tohit": {
               "scale": 0.66,
               "table": "Melee_Stun"
-            },
-            "endurance": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
             }
-          },
-          "durations": {
-            "specialBuff": 12.5,
-            "tohitBuff": 12.5,
-            "damageBuff": 12.5
           },
           "tohitBuff": {
             "scale": 1,
             "table": "Melee_Buff_ToHit"
-          },
-          "damageBuff": {
-            "scale": 8,
-            "table": "Melee_Buff_Dmg"
-          },
-          "buffDuration": 12.5
+          }
         }
       },
       {
@@ -16981,20 +16981,20 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 0.75,
           "durations": {
             "resistance": 0.75
           },
-          "buffDuration": 0.75
+          "resistance": {
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          }
         }
       },
       {
@@ -17025,40 +17025,15 @@ export const EPIC_POOLS_RAW = {
           "endurance": 3.25,
           "activationTime": 3.1,
           "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "cold": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 120,
           "durations": {
-            "resistance": 120,
             "recoveryBuffUnenhanced": 120,
-            "recoveryDebuff": 15
+            "recoveryDebuff": 15,
+            "resistance": 120
+          },
+          "enduranceDrain": {
+            "scale": 1,
+            "table": "Melee_Ones"
           },
           "recoveryBuffUnenhanced": {
             "scale": 1,
@@ -17068,11 +17043,36 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Ones"
           },
-          "enduranceDrain": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 120
+          "resistance": {
+            "cold": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 5,
+              "table": "Melee_Res_Dmg"
+            }
+          }
         }
       },
       {
@@ -17211,14 +17211,14 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "enduranceDiscount": {
-            "scale": 1,
-            "table": "Melee_Stun"
-          },
+          "buffDuration": 90,
           "durations": {
             "enduranceDiscount": 90
           },
-          "buffDuration": 90
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -17248,20 +17248,20 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 0.75,
           "durations": {
             "resistance": 0.75
           },
-          "buffDuration": 0.75
+          "resistance": {
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          }
         }
       },
       {
@@ -17340,44 +17340,12 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "specialBuff": 15
+          },
           "specialBuff": {
-            "stun": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "sleep": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "confuse": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "fear": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "immobilize": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "hold": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "movement": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "defense": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "melee": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
-            },
-            "ranged": {
+            "absorb": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
@@ -17385,11 +17353,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "smashing": {
+            "cold": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "lethal": {
+            "confuse": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "defense": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "endurance": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "energy": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "fear": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
@@ -17397,11 +17381,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "cold": {
+            "heal": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "energy": {
+            "hold": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "immobilize": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "lethal": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "melee": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "movement": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
@@ -17413,27 +17413,27 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "heal": {
+            "ranged": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
-            "absorb": {
+            "sleep": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "smashing": {
+              "scale": 0.66,
+              "table": "Melee_Stun"
+            },
+            "stun": {
               "scale": 0.66,
               "table": "Melee_Stun"
             },
             "tohit": {
               "scale": 0.66,
               "table": "Melee_Stun"
-            },
-            "endurance": {
-              "scale": 0.66,
-              "table": "Melee_Stun"
             }
-          },
-          "durations": {
-            "specialBuff": 15
-          },
-          "buffDuration": 15
+          }
         }
       }
     ]
@@ -17528,14 +17528,14 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.17,
           "effectArea": "SingleTarget",
-          "enduranceDiscount": {
-            "scale": 1,
-            "table": "Melee_Stun"
-          },
+          "buffDuration": 90,
           "durations": {
             "enduranceDiscount": 90
           },
-          "buffDuration": 90
+          "enduranceDiscount": {
+            "scale": 1,
+            "table": "Melee_Stun"
+          }
         }
       },
       {
@@ -17565,20 +17565,20 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 3,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 0.75,
           "durations": {
             "resistance": 0.75
           },
-          "buffDuration": 0.75
+          "resistance": {
+            "lethal": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 3,
+              "table": "Melee_Res_Dmg"
+            }
+          }
         }
       },
       {
@@ -17733,14 +17733,14 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Ranged_Damage"
           },
-          "rechargeDebuff": {
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          },
+          "buffDuration": 6,
           "durations": {
             "rechargeDebuff": 6
           },
-          "buffDuration": 6
+          "rechargeDebuff": {
+            "scale": 0.3,
+            "table": "Ranged_Slow"
+          }
         }
       },
       {
@@ -17769,36 +17769,8 @@ export const EPIC_POOLS_RAW = {
           "endurance": 19.5,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
-          "stun": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "effectDuration": 90,
-          "durations": {
-            "stun": 90,
-            "sleep": 90,
-            "hold": 90,
-            "confuse": 90,
-            "fear": 90,
-            "defenseBuff": 90
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 90,
           "confuse": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "fear": {
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
@@ -17809,7 +17781,35 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Buff_Def"
             }
           },
-          "buffDuration": 90
+          "durations": {
+            "confuse": 90,
+            "defenseBuff": 90,
+            "fear": 90,
+            "hold": 90,
+            "sleep": 90,
+            "stun": 90
+          },
+          "effectDuration": 90,
+          "fear": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "hold": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "stun": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -17839,11 +17839,11 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
             "lethal": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
@@ -17851,12 +17851,12 @@ export const EPIC_POOLS_RAW = {
             "psionic": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -17942,10 +17942,7 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.1,
             "tickRate": 1
           },
-          "rechargeDebuff": {
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          },
+          "buffDuration": 10,
           "durations": {
             "rechargeDebuff": 10
           },
@@ -17953,7 +17950,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 1.4,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 10
+          "rechargeDebuff": {
+            "scale": 0.3,
+            "table": "Ranged_Slow"
+          }
         }
       }
     ]
@@ -17996,43 +17996,9 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 35,
           "maxTargets": 255,
-          "tohitBuff": {
-            "scale": 0.33,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 90,
-            "resistance": 90,
-            "defenseBuff": 90
-          },
-          "resistance": {
-            "psionic": {
-              "scale": 0.2,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 90,
           "defenseBuff": {
-            "melee": {
-              "scale": 0.5,
-              "table": "Melee_Buff_Def"
-            },
-            "ranged": {
-              "scale": 0.5,
-              "table": "Melee_Buff_Def"
-            },
             "aoe": {
-              "scale": 0.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.5,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
               "scale": 0.5,
               "table": "Melee_Buff_Def"
             },
@@ -18044,6 +18010,18 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.5,
               "table": "Melee_Buff_Def"
             },
+            "fire": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
             "negative": {
               "scale": 0.5,
               "table": "Melee_Buff_Def"
@@ -18051,9 +18029,31 @@ export const EPIC_POOLS_RAW = {
             "psionic": {
               "scale": 0.5,
               "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
             }
           },
-          "buffDuration": 90
+          "durations": {
+            "defenseBuff": 90,
+            "resistance": 90,
+            "tohitBuff": 90
+          },
+          "resistance": {
+            "psionic": {
+              "scale": 0.2,
+              "table": "Melee_Res_Dmg"
+            }
+          },
+          "tohitBuff": {
+            "scale": 0.33,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -18082,36 +18082,8 @@ export const EPIC_POOLS_RAW = {
           "endurance": 19.5,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
-          "stun": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "effectDuration": 90,
-          "durations": {
-            "stun": 90,
-            "sleep": 90,
-            "hold": 90,
-            "confuse": 90,
-            "fear": 90,
-            "defenseBuff": 90
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "hold": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 90,
           "confuse": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "fear": {
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
@@ -18122,7 +18094,35 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Buff_Def"
             }
           },
-          "buffDuration": 90
+          "durations": {
+            "confuse": 90,
+            "defenseBuff": 90,
+            "fear": 90,
+            "hold": 90,
+            "sleep": 90,
+            "stun": 90
+          },
+          "effectDuration": 90,
+          "fear": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "hold": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "sleep": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "stun": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -18152,11 +18152,11 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
             "lethal": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
@@ -18164,12 +18164,12 @@ export const EPIC_POOLS_RAW = {
             "psionic": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -18254,10 +18254,7 @@ export const EPIC_POOLS_RAW = {
             "duration": 4.1,
             "tickRate": 1
           },
-          "rechargeDebuff": {
-            "scale": 0.3,
-            "table": "Ranged_Slow"
-          },
+          "buffDuration": 10,
           "durations": {
             "rechargeDebuff": 10
           },
@@ -18265,7 +18262,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 1.4,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 10
+          "rechargeDebuff": {
+            "scale": 0.3,
+            "table": "Ranged_Slow"
+          }
         }
       }
     ]
@@ -18391,11 +18391,11 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
           "resistance": {
-            "smashing": {
-              "scale": 2.75,
-              "table": "Melee_Res_Dmg"
-            },
             "lethal": {
               "scale": 2.75,
               "table": "Melee_Res_Dmg"
@@ -18403,12 +18403,12 @@ export const EPIC_POOLS_RAW = {
             "psionic": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 2.75,
+              "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistance": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -18481,6 +18481,10 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 10,
           "maxTargets": 5,
+          "buffDuration": 0.75,
+          "durations": {
+            "repel": 0.75
+          },
           "hold": {
             "mag": 3,
             "scale": 0.75,
@@ -18489,11 +18493,7 @@ export const EPIC_POOLS_RAW = {
           "repel": {
             "scale": 1,
             "table": "Melee_Ones"
-          },
-          "durations": {
-            "repel": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       }
     ]
@@ -18716,6 +18716,7 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.48708,
             "table": "Ranged_Damage"
           },
+          "buffDuration": 40,
           "defenseDebuff": {
             "scale": 1,
             "table": "Ranged_Debuff_Def"
@@ -18725,18 +18726,6 @@ export const EPIC_POOLS_RAW = {
             "resistanceDebuff": 40
           },
           "resistanceDebuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Ranged_Res_Dmg"
-            },
             "cold": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
@@ -18745,20 +18734,31 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
-            "negative": {
+            "fire": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
-            "toxic": {
+            "lethal": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "negative": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
             },
             "psionic": {
               "scale": 1.5,
               "table": "Ranged_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Ranged_Res_Dmg"
             }
-          },
-          "buffDuration": 40
+          }
         }
       },
       {
@@ -18958,6 +18958,27 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.07,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "knockback": 0.75,
+            "knockup": 0.75,
+            "mezResistance": 0.75,
+            "recoveryBuff": 0.75,
+            "regenBuff": 0.75
+          },
+          "immobilize": {
+            "mag": 100,
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
           "mezResistance": {
             "knockback": {
               "scale": 10,
@@ -18968,43 +18989,22 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Ones"
             }
           },
-          "durations": {
-            "mezResistance": 0.75,
-            "knockback": 0.75,
-            "knockup": 0.75,
-            "regenBuff": 0.75,
-            "recoveryBuff": 0.75
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Melee_Ones"
-          },
-          "untouchable": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "immobilize": {
-            "mag": 100,
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
           "onlyAffectsSelf": {
             "scale": 0.75,
-            "table": "Melee_Ones"
-          },
-          "regenBuff": {
-            "scale": 10,
             "table": "Melee_Ones"
           },
           "recoveryBuff": {
             "scale": 4,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "regenBuff": {
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "untouchable": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -19054,6 +19054,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 15,
+          "durations": {
+            "slow": 15
+          },
           "hold": {
             "mag": 3,
             "scale": 10,
@@ -19064,11 +19068,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 1.6,
               "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "slow": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -19107,9 +19107,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Coral_Guardian_Warder",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -19312,6 +19312,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 10.66,
           "activationTime": 2,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "hold": {
             "mag": 3,
             "scale": 10,
@@ -19321,14 +19326,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.5,
@@ -19338,12 +19339,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -19382,10 +19382,10 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
             "duration": 240,
-            "entityCount": 3
+            "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+            "entityCount": 3,
+            "isPseudoPet": false
           }
         }
       }
@@ -19438,22 +19438,22 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
+          "buffDuration": 2,
+          "durations": {
+            "recoveryDebuff": 2
+          },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 2
           },
           "enduranceGain": {
             "scale": 3.25,
             "table": "Melee_Ones"
           },
-          "buffDuration": 2
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -19495,22 +19495,22 @@ export const EPIC_POOLS_RAW = {
             "scale": 2.3,
             "table": "Melee_Damage"
           },
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.14,
             "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
           },
           "enduranceGain": {
             "scale": 8.97,
             "table": "Melee_Ones"
           },
-          "buffDuration": 4
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -19561,6 +19561,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Melee_Ones"
@@ -19568,11 +19572,7 @@ export const EPIC_POOLS_RAW = {
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "buffDuration": 4
+          }
         }
       },
       {
@@ -19617,27 +19617,27 @@ export const EPIC_POOLS_RAW = {
             "duration": 6.3,
             "tickRate": 1
           },
-          "hold": {
-            "mag": 3,
-            "scale": 8,
-            "table": "Melee_Ones"
+          "buffDuration": 8,
+          "durations": {
+            "recoveryDebuff": 8
           },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Melee_Ones"
           },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 8
-          },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Melee_Ones"
           },
-          "buffDuration": 8
+          "hold": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -19676,9 +19676,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Mu_Adept",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -19733,14 +19733,14 @@ export const EPIC_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          },
+          "buffDuration": 6,
           "durations": {
             "tohitDebuff": 6
           },
-          "buffDuration": 6
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Melee_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -19784,14 +19784,14 @@ export const EPIC_POOLS_RAW = {
             "scale": 2.3,
             "table": "Melee_Damage"
           },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          },
+          "buffDuration": 10,
           "durations": {
             "tohitDebuff": 10
           },
-          "buffDuration": 10
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Melee_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -19820,24 +19820,9 @@ export const EPIC_POOLS_RAW = {
           "endurance": 5.2,
           "activationTime": 3,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
           "defenseBuff": {
-            "melee": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "ranged": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
             "aoe": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 2.7,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
               "scale": 2.7,
               "table": "Melee_Buff_Def"
             },
@@ -19845,7 +19830,23 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.7,
               "table": "Melee_Buff_Def"
             },
+            "energy": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
             "fire": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
               "scale": 2.7,
               "table": "Melee_Buff_Def"
             },
@@ -19853,19 +19854,18 @@ export const EPIC_POOLS_RAW = {
               "scale": 2.7,
               "table": "Melee_Buff_Def"
             },
-            "energy": {
+            "ranged": {
               "scale": 2.7,
               "table": "Melee_Buff_Def"
             },
-            "negative": {
+            "smashing": {
               "scale": 2.7,
               "table": "Melee_Buff_Def"
             }
           },
           "durations": {
             "defenseBuff": 15
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -19951,9 +19951,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Night_Widow",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -20092,20 +20092,20 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 0.73,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "smashing": {
+            "lethal": {
               "scale": 1.6,
               "table": "Melee_Buff_Def"
             },
-            "lethal": {
+            "smashing": {
               "scale": 1.6,
               "table": "Melee_Buff_Def"
             }
           },
           "durations": {
             "defenseBuff": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -20185,21 +20185,21 @@ export const EPIC_POOLS_RAW = {
             "scale": 4,
             "table": "Melee_HealSelf"
           },
-          "maxHPBuff": {
-            "scale": 4,
-            "table": "Melee_HealSelf"
-          },
+          "buffDuration": 120,
           "durations": {
             "maxHPBuff": 120,
             "resistance": 120
+          },
+          "maxHPBuff": {
+            "scale": 4,
+            "table": "Melee_HealSelf"
           },
           "resistance": {
             "toxic": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "buffDuration": 120
+          }
         }
       }
     ]
@@ -20425,7 +20425,65 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 10,
+          "defenseDebuff": {
+            "scale": 1.5,
+            "table": "Melee_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 10,
+            "knockback": 10,
+            "rechargeDebuff": 10,
+            "resistanceDebuff": 10,
+            "slow": 10
+          },
+          "knockback": {
+            "scale": 0.1,
+            "table": "Melee_Ones"
+          },
+          "rechargeDebuff": {
+            "scale": 0.3,
+            "table": "Melee_Slow"
+          },
+          "resistanceDebuff": {
+            "cold": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "energy": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "negative": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "psionic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "toxic": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          },
           "slow": {
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Slow"
+            },
             "jumpHeight": {
               "scale": 0.3,
               "table": "Melee_Slow"
@@ -20437,66 +20495,8 @@ export const EPIC_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.3,
               "table": "Melee_Slow"
-            },
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Slow"
             }
-          },
-          "durations": {
-            "slow": 10,
-            "rechargeDebuff": 10,
-            "resistanceDebuff": 10,
-            "defenseDebuff": 10,
-            "knockback": 10
-          },
-          "rechargeDebuff": {
-            "scale": 0.3,
-            "table": "Melee_Slow"
-          },
-          "resistanceDebuff": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "fire": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "cold": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "negative": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "toxic": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "psionic": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
-          "defenseDebuff": {
-            "scale": 1.5,
-            "table": "Melee_Debuff_Def"
-          },
-          "knockback": {
-            "scale": 0.1,
-            "table": "Melee_Ones"
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -20535,9 +20535,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Coral_Guardian_Sentinel",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -20638,6 +20638,11 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 15,
           "maxTargets": 10,
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
@@ -20647,14 +20652,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.2,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.2,
@@ -20664,12 +20665,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -20758,12 +20758,16 @@ export const EPIC_POOLS_RAW = {
             "scale": 2.76,
             "table": "Melee_Damage"
           },
+          "buffDuration": 20,
+          "durations": {
+            "resistanceDebuff": 20
+          },
           "resistanceDebuff": {
-            "smashing": {
+            "cold": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -20771,11 +20775,7 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 2,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
@@ -20787,15 +20787,15 @@ export const EPIC_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             },
+            "smashing": {
+              "scale": 2,
+              "table": "Melee_Res_Dmg"
+            },
             "toxic": {
               "scale": 2,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistanceDebuff": 20
-          },
-          "buffDuration": 20
+          }
         }
       },
       {
@@ -20833,9 +20833,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.03,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Arachnobot_Blaster",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -20888,22 +20888,22 @@ export const EPIC_POOLS_RAW = {
             "scale": 1.32,
             "table": "Melee_Damage"
           },
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.1,
             "table": "Melee_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 3,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
           },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Melee_Ones"
           },
-          "buffDuration": 4
+          "recoveryDebuff": {
+            "scale": 3,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -20950,24 +20950,24 @@ export const EPIC_POOLS_RAW = {
             "duration": 7.1,
             "tickRate": 1
           },
-          "immobilize": {
-            "mag": 3,
-            "scale": 15,
-            "table": "Melee_Immobilize"
+          "buffDuration": 6.2,
+          "durations": {
+            "enduranceDrain": 6.2,
+            "recoveryDebuff": 2
           },
           "enduranceDrain": {
             "scale": 0.04,
             "table": "Melee_Ones"
           },
-          "durations": {
-            "enduranceDrain": 6.2,
-            "recoveryDebuff": 2
+          "immobilize": {
+            "mag": 3,
+            "scale": 15,
+            "table": "Melee_Immobilize"
           },
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
-          },
-          "buffDuration": 6.2
+          }
         }
       },
       {
@@ -21018,6 +21018,10 @@ export const EPIC_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Melee_Ones"
@@ -21025,11 +21029,7 @@ export const EPIC_POOLS_RAW = {
           "recoveryDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
-          },
-          "buffDuration": 4
+          }
         }
       },
       {
@@ -21072,22 +21072,22 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.96,
             "table": "Ranged_Damage"
           },
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
           "enduranceDrain": {
             "scale": 0.07,
             "table": "Ranged_Ones"
-          },
-          "recoveryDebuff": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
-          "durations": {
-            "recoveryDebuff": 4
           },
           "enduranceGain": {
             "scale": 4.29,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 4
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -21125,9 +21125,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Mu_Striker",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -21184,14 +21184,14 @@ export const EPIC_POOLS_RAW = {
             "duration": 3.6,
             "tickRate": 0.5
           },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          },
+          "buffDuration": 10,
           "durations": {
             "tohitDebuff": 10
           },
-          "buffDuration": 10
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Melee_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -21292,14 +21292,14 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.9,
             "table": "Melee_Damage"
           },
-          "tohitDebuff": {
-            "scale": 0.75,
-            "table": "Melee_DeBuff_ToHit"
-          },
+          "buffDuration": 10,
           "durations": {
             "tohitDebuff": 10
           },
-          "buffDuration": 10
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Melee_DeBuff_ToHit"
+          }
         }
       },
       {
@@ -21334,6 +21334,7 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 25,
           "maxTargets": 16,
+          "buffDuration": 0.75,
           "damageDebuff": {
             "scale": 2.25,
             "table": "Ranged_Debuff_Dam"
@@ -21345,8 +21346,7 @@ export const EPIC_POOLS_RAW = {
           "tohitDebuff": {
             "scale": 1.125,
             "table": "Ranged_DeBuff_ToHit"
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -21381,9 +21381,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.2,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 240,
             "entity": "Pets_Patron_Powers_Blood_Widow",
-            "duration": 240
+            "isPseudoPet": false
           }
         }
       }
@@ -21432,6 +21432,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.37,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
@@ -21441,14 +21446,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.5,
@@ -21458,12 +21459,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -21499,9 +21499,9 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.07,
           "effectArea": "Location",
           "summon": {
-            "isPseudoPet": false,
+            "duration": 45,
             "entity": "Pets_Caltrops",
-            "duration": 45
+            "isPseudoPet": false
           }
         }
       },
@@ -21569,35 +21569,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -21684,6 +21684,11 @@ export const EPIC_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.37,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "slow": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 15,
@@ -21693,14 +21698,10 @@ export const EPIC_POOLS_RAW = {
             "scale": 0.5,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15
-          },
           "slow": {
-            "runSpeed": {
-              "scale": 0.5,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.5,
@@ -21710,12 +21711,11 @@ export const EPIC_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Ranged_Slow"
             }
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -21742,19 +21742,19 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
-            "regenBuff": 10.25,
-            "recoveryBuff": 10.25
+            "recoveryBuff": 10.25,
+            "regenBuff": 10.25
           },
           "recoveryBuff": {
             "scale": 0.125,
             "table": "Melee_Ones"
           },
-          "buffDuration": 10.25
+          "regenBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -21821,35 +21821,35 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
-            "scale": 0.5,
-            "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 0.75,
-            "debuffResistance": 0.75,
-            "accuracyBuff": 0.75,
-            "perceptionBuff": 0.75
-          },
-          "debuffResistance": {
-            "tohit": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "perception": {
-              "scale": 0.6,
-              "table": "Melee_Ones"
-            }
-          },
           "accuracyBuff": {
             "scale": 0.2,
             "table": "Melee_Ones"
+          },
+          "buffDuration": 0.75,
+          "debuffResistance": {
+            "perception": {
+              "scale": 0.6,
+              "table": "Melee_Ones"
+            },
+            "tohit": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            }
+          },
+          "durations": {
+            "accuracyBuff": 0.75,
+            "debuffResistance": 0.75,
+            "perceptionBuff": 0.75,
+            "tohitBuff": 0.75
           },
           "perceptionBuff": {
             "scale": 0.6,
             "table": "Melee_Ones"
           },
-          "buffDuration": 0.75
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {

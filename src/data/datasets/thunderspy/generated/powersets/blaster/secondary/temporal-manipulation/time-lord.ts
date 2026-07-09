@@ -45,9 +45,9 @@ export const TimeLord: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 120,
       "entity": "Pets_Time",
-      "duration": 120
+      "isPseudoPet": false
     }
   }
 };

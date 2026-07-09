@@ -44,16 +44,16 @@ export const GravityDistortionField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 12,
+    "durations": {
+      "slow": 12
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
     "slow": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
         "scale": 0.5,
         "table": "Ranged_Slow"
@@ -65,12 +65,12 @@ export const GravityDistortionField: Power = {
       "jumpSpeed": {
         "scale": 0.5,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 12
-    },
-    "buffDuration": 12
+    }
   },
   "specialEffects": [
     {

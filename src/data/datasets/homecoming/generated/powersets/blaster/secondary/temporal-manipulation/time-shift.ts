@@ -44,6 +44,34 @@ export const TimeShift: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "damageBuff": {
+      "scale": 0.033,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.53,
+      "slow": 20,
+      "tohitDebuff": 20
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "stun": {
       "mag": 2,
       "scale": 8,
@@ -52,35 +80,7 @@ export const TimeShift: Power = {
     "tohitDebuff": {
       "scale": 0.5,
       "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 20,
-      "slow": 20,
-      "damageBuff": 9.53
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      },
-      "jumpHeight": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      }
-    },
-    "damageBuff": {
-      "scale": 0.033,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 20
+    }
   },
   "conditionalEffects": [
     {

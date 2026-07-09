@@ -50,32 +50,13 @@ export const AcidArrow: Power = {
     "tickRate": 1
   },
   "effects": {
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "durations": {
-      "defenseDebuff": 45,
-      "resistance": 45,
-      "debuffResistance": 45,
-      "enduranceDiscount": 45
-    },
-    "resistance": {
-      "heal": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
+    "buffDuration": 45,
     "debuffResistance": {
       "endurance": {
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
-      "tohit": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "regeneration": {
+      "recharge": {
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
@@ -83,15 +64,34 @@ export const AcidArrow: Power = {
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
-      "recharge": {
+      "regeneration": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      },
+      "tohit": {
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }
+    },
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "debuffResistance": 45,
+      "defenseDebuff": 45,
+      "enduranceDiscount": 45,
+      "resistance": 45
     },
     "enduranceDiscount": {
       "scale": 4,
       "table": "Ranged_Res_Dmg"
     },
-    "buffDuration": 45
+    "resistance": {
+      "heal": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      }
+    }
   }
 };

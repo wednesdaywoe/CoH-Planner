@@ -36,20 +36,20 @@ export const Frostwork: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "maxHPBuff": {
-      "scale": 4,
-      "table": "Ranged_Heal"
-    },
+    "buffDuration": 120,
     "durations": {
       "maxHPBuff": 120,
       "resistance": 120
+    },
+    "maxHPBuff": {
+      "scale": 4,
+      "table": "Ranged_Heal"
     },
     "resistance": {
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "buffDuration": 120
+    }
   }
 };

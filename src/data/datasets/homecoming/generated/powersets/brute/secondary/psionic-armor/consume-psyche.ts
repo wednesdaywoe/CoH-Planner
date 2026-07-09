@@ -43,43 +43,43 @@ export const ConsumePsyche: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 0.85,
-      "table": "Melee_Ones",
-      "perTarget": 0.35
-    },
+    "buffDuration": 45,
     "durations": {
-      "regenBuff": 45,
       "recoveryBuff": 45,
-      "resistance": 45,
+      "recoveryDebuff": 45,
+      "regenBuff": 45,
       "regenDebuff": 45,
-      "recoveryDebuff": 45
+      "resistance": 45
     },
     "recoveryBuff": {
       "scale": 0.15000000000000002,
       "table": "Melee_Ones",
       "perTarget": 0.05
     },
-    "resistance": {
-      "heal": {
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      }
+    "recoveryDebuff": {
+      "durationVariants": [
+        {
+          "duration": 10,
+          "scale": 0.8
+        }
+      ],
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "regenBuff": {
+      "scale": 0.85,
+      "table": "Melee_Ones",
+      "perTarget": 0.35
     },
     "regenDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "recoveryDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones",
-      "durationVariants": [
-        {
-          "scale": 0.8,
-          "duration": 10
-        }
-      ]
-    },
-    "buffDuration": 45
+    "resistance": {
+      "heal": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
+      }
+    }
   }
 };

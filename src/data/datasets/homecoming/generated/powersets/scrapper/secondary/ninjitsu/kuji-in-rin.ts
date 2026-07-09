@@ -50,22 +50,23 @@ export const KujiInRin: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 120,
     "confuse": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 120,
     "durations": {
       "confuse": 120,
       "fear": 120,
       "hold": 120,
       "immobilize": 120,
-      "stun": 120,
-      "sleep": 120,
+      "movement": 120,
       "resistance": 120,
-      "movement": 120
+      "sleep": 120,
+      "stun": 120
     },
+    "effectDuration": 120,
     "fear": {
       "mag": 1,
       "scale": 30,
@@ -81,24 +82,8 @@ export const KujiInRin: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "resistance": {
-      "psionic": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
     "movement": {
-      "runSpeed": {
+      "jumpHeight": {
         "scale": 0.1,
         "table": "Melee_SpeedRunning"
       },
@@ -106,12 +91,27 @@ export const KujiInRin: Power = {
         "scale": 0.1,
         "table": "Melee_SpeedRunning"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.1,
         "table": "Melee_SpeedRunning"
       }
     },
-    "buffDuration": 120,
+    "resistance": {
+      "psionic": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "resistance"

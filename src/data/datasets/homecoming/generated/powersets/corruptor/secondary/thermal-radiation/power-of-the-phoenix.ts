@@ -50,19 +50,10 @@ export const PowerofthePhoenix: Power = {
     "tickRate": 1
   },
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Phoenix",
-      "duration": 5,
-      "copyBoosts": true
-    },
-    "untouchable": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 15,
     "durations": {
-      "untouchable": 15,
-      "stealth": 15
+      "stealth": 15,
+      "untouchable": 15
     },
     "enduranceGain": {
       "scale": 70,
@@ -74,6 +65,15 @@ export const PowerofthePhoenix: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 15
+    "summon": {
+      "copyBoosts": true,
+      "duration": 5,
+      "entity": "Pets_Phoenix",
+      "isPseudoPet": false
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Ranged_Ones"
+    }
   }
 };

@@ -57,11 +57,7 @@ export const ElectronShackles: Power = {
     "tickRate": 0.5
   },
   "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
@@ -69,6 +65,10 @@ export const ElectronShackles: Power = {
     "durations": {
       "defenseDebuff": 10
     },
-    "buffDuration": 10
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    }
   }
 };

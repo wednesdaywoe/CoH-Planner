@@ -40,6 +40,7 @@ export const MineralArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "psionic": {
         "scale": 2.5,
@@ -48,7 +49,6 @@ export const MineralArmor: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

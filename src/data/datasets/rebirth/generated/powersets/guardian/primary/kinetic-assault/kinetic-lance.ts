@@ -64,7 +64,20 @@ export const KineticLance: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "rechargeDebuff": 15,
+      "slow": 15
+    },
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.15,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.15,
         "table": "Ranged_Slow"
@@ -76,21 +89,8 @@ export const KineticLance: Power = {
       "runSpeed": {
         "scale": 0.15,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 15,
-      "rechargeDebuff": 15
-    },
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 15
+    }
   },
   "specialEffects": [
     {

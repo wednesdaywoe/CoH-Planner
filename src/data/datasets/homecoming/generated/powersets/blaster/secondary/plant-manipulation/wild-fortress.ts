@@ -46,16 +46,17 @@ export const WildFortress: Power = {
       "scale": 0.3,
       "table": "Melee_HealSelf"
     },
+    "buffDuration": 2.5,
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
     "durations": {
       "absorb": 12,
       "confuse": 2.5,
       "recoveryBuff": 2.5,
       "resistance": 2.5
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
     },
     "effectDuration": 2.5,
     "recoveryBuff": {
@@ -67,7 +68,6 @@ export const WildFortress: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "buffDuration": 2.5
+    }
   }
 };

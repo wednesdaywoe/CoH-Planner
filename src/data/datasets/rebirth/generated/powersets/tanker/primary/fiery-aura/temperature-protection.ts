@@ -30,20 +30,7 @@ export const Temperatureprotection: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "debuffResistance": 10.25
-    },
+    "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
         "scale": 0.2,
@@ -54,7 +41,20 @@ export const Temperatureprotection: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 10.25
+    "durations": {
+      "debuffResistance": 10.25,
+      "resistance": 10.25
+    },
+    "resistance": {
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    }
   },
   "mechanicType": "parentMechanic"
 };

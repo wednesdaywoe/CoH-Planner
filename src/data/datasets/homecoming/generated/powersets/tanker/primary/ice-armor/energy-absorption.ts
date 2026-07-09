@@ -40,6 +40,7 @@ export const EnergyAbsorption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 45,
     "debuffResistance": {
       "movement": {
         "scale": 0.2,
@@ -50,17 +51,13 @@ export const EnergyAbsorption: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "debuffResistance": 45,
-      "defenseBuff": 45
-    },
     "defenseBuff": {
-      "smashing": {
+      "cold": {
         "scale": 0.47500000000000003,
         "table": "Melee_Buff_Def",
         "perTarget": 0.025
       },
-      "lethal": {
+      "energy": {
         "scale": 0.47500000000000003,
         "table": "Melee_Buff_Def",
         "perTarget": 0.025
@@ -70,12 +67,7 @@ export const EnergyAbsorption: Power = {
         "table": "Melee_Buff_Def",
         "perTarget": 0.025
       },
-      "cold": {
-        "scale": 0.47500000000000003,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.025
-      },
-      "energy": {
+      "lethal": {
         "scale": 0.47500000000000003,
         "table": "Melee_Buff_Def",
         "perTarget": 0.025
@@ -90,21 +82,29 @@ export const EnergyAbsorption: Power = {
         "table": "Melee_Buff_Def",
         "perTarget": 0.025
       },
+      "smashing": {
+        "scale": 0.47500000000000003,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.025
+      },
       "toxic": {
         "scale": 0.47500000000000003,
         "table": "Melee_Buff_Def",
         "perTarget": 0.025
       }
     },
-    "enduranceGain": {
-      "scale": 15,
-      "table": "Melee_Ones",
-      "perTarget": 15
+    "durations": {
+      "debuffResistance": 45,
+      "defenseBuff": 45
     },
     "enduranceDrain": {
       "scale": 0.35,
       "table": "Melee_Ones"
     },
-    "buffDuration": 45
+    "enduranceGain": {
+      "scale": 15,
+      "table": "Melee_Ones",
+      "perTarget": 15
+    }
   }
 };

@@ -56,20 +56,26 @@ export const Quills: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
+    "buffDuration": 3,
     "durations": {
       "rechargeDebuff": 3,
       "slow": 3
     },
+    "immobilize": {
+      "mag": 0.33000001311302185,
+      "scale": 3,
+      "table": "Melee_Immobilize"
+    },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
-      "flySpeed": {
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -77,20 +83,14 @@ export const Quills: Power = {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
       }
     },
-    "immobilize": {
-      "mag": 0.33000001311302185,
-      "scale": 3,
-      "table": "Melee_Immobilize"
-    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 3
+    }
   }
 };

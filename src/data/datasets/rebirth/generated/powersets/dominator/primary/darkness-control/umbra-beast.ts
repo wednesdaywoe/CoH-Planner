@@ -47,9 +47,9 @@ export const UmbraBeast: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "Pets_Umbra_Beast",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

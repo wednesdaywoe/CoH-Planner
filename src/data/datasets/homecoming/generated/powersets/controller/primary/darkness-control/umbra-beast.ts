@@ -47,10 +47,10 @@ export const UmbraBeast: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Umbra_Beast_Controller",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "Pets_Umbra_Beast_Controller",
+      "isPseudoPet": false
     }
   }
 };

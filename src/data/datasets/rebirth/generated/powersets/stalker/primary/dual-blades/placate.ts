@@ -30,6 +30,10 @@ export const Placate: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "stealth": 10
+    },
     "placate": {
       "scale": 10,
       "table": "Melee_Taunt"
@@ -44,10 +48,6 @@ export const Placate: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "stealth": 10
-    },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",
@@ -61,19 +61,19 @@ export const Placate: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "tohitBuff": {
-          "scale": 1,
-          "table": "Melee_Buff_ToHit"
-        },
-        "durations": {
-          "tohitBuff": 20,
-          "damageBuff": 20
-        },
+        "buffDuration": 20,
         "damageBuff": {
           "scale": 2,
           "table": "Melee_Buff_Dmg"
         },
-        "buffDuration": 20
+        "durations": {
+          "damageBuff": 20,
+          "tohitBuff": 20
+        },
+        "tohitBuff": {
+          "scale": 1,
+          "table": "Melee_Buff_ToHit"
+        }
       }
     }
   ]

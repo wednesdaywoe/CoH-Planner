@@ -42,9 +42,9 @@ export const SoulAbsorption: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 1,
       "entity": "Pets_SoulAbsorptionBuff",
-      "duration": 1
+      "isPseudoPet": false
     }
   }
 };

@@ -30,34 +30,21 @@ export const WolfSpiderArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 0.3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.3,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 0.2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "confuse": 10.25,
-      "fear": 10.25,
-      "hold": 10.25,
-      "immobilize": 10.25,
-      "stun": 10.25,
-      "sleep": 10.25,
-      "mezResistance": 10.25
-    },
+    "buffDuration": 10.25,
     "confuse": {
       "mag": 1,
       "scale": 2,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "confuse": 10.25,
+      "fear": 10.25,
+      "hold": 10.25,
+      "immobilize": 10.25,
+      "mezResistance": 10.25,
+      "resistance": 10.25,
+      "sleep": 10.25,
+      "stun": 10.25
     },
     "effectDuration": 10.25,
     "fear": {
@@ -75,23 +62,36 @@ export const WolfSpiderArmor: Power = {
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "stun": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
     "mezResistance": {
       "sleep": {
         "scale": 5,
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 10.25
+    "resistance": {
+      "lethal": {
+        "scale": 0.3,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 0.2,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 0.3,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    }
   },
   "mechanicType": "parentMechanic"
 };

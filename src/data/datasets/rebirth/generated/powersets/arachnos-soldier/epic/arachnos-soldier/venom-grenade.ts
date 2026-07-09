@@ -48,12 +48,16 @@ export const VenomGrenade: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 16,
+    "durations": {
+      "resistanceDebuff": 16
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Ranged_Res_DMG"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Res_DMG"
       },
@@ -61,11 +65,7 @@ export const VenomGrenade: Power = {
         "scale": 2,
         "table": "Ranged_Res_DMG"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_DMG"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Res_DMG"
       },
@@ -77,15 +77,15 @@ export const VenomGrenade: Power = {
         "scale": 2,
         "table": "Ranged_Res_DMG"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_DMG"
+      },
       "toxic": {
         "scale": 4,
         "table": "Ranged_Res_DMG"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 16
-    },
-    "buffDuration": 16
+    }
   },
   "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Venom_Grenade !"
 };

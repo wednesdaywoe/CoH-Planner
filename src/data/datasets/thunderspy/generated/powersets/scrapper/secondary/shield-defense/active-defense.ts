@@ -42,6 +42,7 @@ export const ActiveDefense: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "melee": {
         "scale": 1.65,
@@ -50,8 +51,7 @@ export const ActiveDefense: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   },
   "requires": "Scrapper_Melee.Dual_Blades Scrapper_Melee.Claws || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Katana || Scrapper_Melee.Titan_Weapons || !"
 };

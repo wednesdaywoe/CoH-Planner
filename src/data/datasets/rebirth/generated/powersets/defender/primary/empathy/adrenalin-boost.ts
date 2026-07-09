@@ -38,24 +38,7 @@ export const AdrenalinBoost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 8,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 90,
-      "regenBuff": 90,
-      "rechargeBuff": 90,
-      "debuffResistance": 90
-    },
-    "regenBuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
-    "rechargeBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 90,
     "debuffResistance": {
       "movement": {
         "scale": 0.8,
@@ -66,6 +49,23 @@ export const AdrenalinBoost: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 90
+    "durations": {
+      "debuffResistance": 90,
+      "rechargeBuff": 90,
+      "recoveryBuff": 90,
+      "regenBuff": 90
+    },
+    "rechargeBuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 8,
+      "table": "Ranged_Ones"
+    },
+    "regenBuff": {
+      "scale": 5,
+      "table": "Ranged_Ones"
+    }
   }
 };

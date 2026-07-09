@@ -42,14 +42,14 @@ export const QuantumAcceleration: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "duration": 4,
+      "entity": "Pets_Dive_Attack",
+      "isPseudoPet": false
+    },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Dive_Attack",
-      "duration": 4
     }
   },
   "requires": "Pool.Speed.Whirlwind ! Pool.Teleportation.Team_Teleport ! && Pool.Leaping.Spring_Attack ! && Pool.Flight.Afterburner ! &&"

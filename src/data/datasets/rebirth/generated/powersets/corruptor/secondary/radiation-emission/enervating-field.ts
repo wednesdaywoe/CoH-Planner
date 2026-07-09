@@ -35,6 +35,7 @@ export const EnervatingField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "damageDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Dam"
@@ -44,18 +45,6 @@ export const EnervatingField: Power = {
       "resistanceDebuff": 0.75
     },
     "resistanceDebuff": {
-      "smashing": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
       "cold": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
@@ -64,19 +53,30 @@ export const EnervatingField: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "negative": {
+      "fire": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "toxic": {
+      "lethal": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
       }
-    },
-    "buffDuration": 0.75
+    }
   }
 };

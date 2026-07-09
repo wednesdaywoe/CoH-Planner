@@ -52,15 +52,19 @@ export const GravityDistortion: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "slow": 10
+    },
     "hold": {
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
     },
     "slow": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
       },
       "flySpeed": {
         "scale": 0.5,
@@ -74,15 +78,11 @@ export const GravityDistortion: Power = {
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 10
-    },
-    "buffDuration": 10
+    }
   },
   "conditionalEffects": [
     {

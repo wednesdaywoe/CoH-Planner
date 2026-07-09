@@ -37,10 +37,24 @@ export const TimeStop: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "damageBuff": {
+      "scale": 0.143,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.67,
+      "regenDebuff": 20,
+      "specialBuff": 20
+    },
     "hold": {
       "mag": 2,
       "scale": 10,
       "table": "Ranged_Immobilize"
+    },
+    "regenDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
     },
     "specialBuff": {
       "heal": {
@@ -48,20 +62,6 @@ export const TimeStop: Power = {
         "table": "Ranged_Stun"
       }
     },
-    "durations": {
-      "specialBuff": 20,
-      "regenDebuff": 20,
-      "damageBuff": 9.67
-    },
-    "regenDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 0.143,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 20,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

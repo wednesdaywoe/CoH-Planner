@@ -61,19 +61,19 @@ export const AquaBolt: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8.5,
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 8,
-      "damageBuff": 8.5
+      "damageBuff": 8.5,
+      "defenseDebuff": 8
     },
-    "damageBuff": {
-      "scale": 0.066,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 8.5,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

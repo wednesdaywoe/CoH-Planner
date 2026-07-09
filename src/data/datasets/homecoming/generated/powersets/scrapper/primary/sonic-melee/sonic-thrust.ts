@@ -55,6 +55,7 @@ export const SonicThrust: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
     "debuffResistance": {
       "defense": {
         "scale": 1,
@@ -64,15 +65,11 @@ export const SonicThrust: Power = {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "tohit": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
       "movement": {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "regeneration": {
+      "recharge": {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
@@ -80,7 +77,11 @@ export const SonicThrust: Power = {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "recharge": {
+      "regeneration": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "tohit": {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       }
@@ -91,8 +92,7 @@ export const SonicThrust: Power = {
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 15
+    }
   },
   "specialEffects": [
     {

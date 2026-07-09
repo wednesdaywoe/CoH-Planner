@@ -40,19 +40,19 @@ export const FocusedSenses: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "ranged": {
+      "aoe": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       },
-      "aoe": {
+      "ranged": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

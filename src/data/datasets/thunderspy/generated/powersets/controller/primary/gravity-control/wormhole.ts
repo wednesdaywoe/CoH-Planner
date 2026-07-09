@@ -44,14 +44,14 @@ export const Wormhole: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "knockback": {
+      "scale": 7,
+      "table": "Ranged_Knockback"
+    },
     "stun": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 7,
-      "table": "Ranged_Knockback"
     }
   }
 };

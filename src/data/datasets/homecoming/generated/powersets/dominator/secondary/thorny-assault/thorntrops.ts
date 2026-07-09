@@ -40,10 +40,10 @@ export const Thorntrops: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Thorntrops",
+      "copyBoosts": true,
       "duration": 45,
-      "copyBoosts": true
+      "entity": "Pets_Thorntrops",
+      "isPseudoPet": false
     }
   }
 };

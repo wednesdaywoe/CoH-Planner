@@ -38,12 +38,16 @@ export const SonicBarrier: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 240,
+    "durations": {
+      "resistance": 240
+    },
     "resistance": {
-      "smashing": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "smashing": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -51,10 +55,6 @@ export const SonicBarrier: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 240
-    },
-    "buffDuration": 240
+    }
   }
 };

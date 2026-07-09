@@ -44,9 +44,9 @@ export const Sleet: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 15,
       "entity": "Pets_Sleet_Defender",
-      "duration": 15
+      "isPseudoPet": false
     }
   }
 };

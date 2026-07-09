@@ -50,15 +50,15 @@ export const GrippingTerror: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
     "fear": {
       "mag": 0.75,
       "scale": 10,
       "table": "Melee_Fear"
+    },
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
     }
   }
 };

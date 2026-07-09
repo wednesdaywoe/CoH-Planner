@@ -60,6 +60,16 @@ export const Ripper: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 15
+    },
+    "immobilize": {
+      "mag": 0.6700000166893005,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
@@ -68,15 +78,7 @@ export const Ripper: Power = {
       "scale": 0.1,
       "table": "Melee_Slow"
     },
-    "durations": {
-      "rechargeDebuff": 10,
-      "slow": 15
-    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
       "flySpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
@@ -88,14 +90,12 @@ export const Ripper: Power = {
       "jumpSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
       }
-    },
-    "immobilize": {
-      "mag": 0.6700000166893005,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "buffDuration": 15
+    }
   },
   "specialEffects": [
     {

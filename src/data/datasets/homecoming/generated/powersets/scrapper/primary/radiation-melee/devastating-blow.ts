@@ -58,6 +58,7 @@ export const DevastatingBlow: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Def"
@@ -69,8 +70,7 @@ export const DevastatingBlow: Power = {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

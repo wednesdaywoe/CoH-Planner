@@ -3487,6 +3487,26 @@ function templatesToAtoms(templates) {
   return atoms;
 }
 
+// DSH6 Phase 0c — canonical field order for emitted effects bags. The legacy
+// extractEffects writes bag keys in forward-pass first-touch order, so the
+// emitted key order encodes the ROUTING ORDER of the extraction — any
+// restructuring (like swapping in the atom projection, whose summon handling
+// no longer interleaves mid-loop) would churn every generated file with pure
+// reorder noise. Deep-sorting the bag at the extractEffects boundary makes the
+// emitted order canonical for ALL consumers (powerset generated layer, pool /
+// epic / kheldian / primalist emitters, conditional pipeline) in one place.
+// Objects only — arrays (durationVariants, stacksLinear, summon.entities,
+// summon.powers) keep their meaningful order.
+function _sortKeysDeep(v) {
+  if (Array.isArray(v)) return v.map(_sortKeysDeep);
+  if (v && typeof v === 'object') {
+    const out = {};
+    for (const k of Object.keys(v).sort()) out[k] = _sortKeysDeep(v[k]);
+    return out;
+  }
+  return v;
+}
+
 /**
  * DSH6 Phase 0b — PROJECTION: AtomicEffect[] → PowerEffects bag.
  *
@@ -4149,7 +4169,7 @@ function projectAtomsToEffects(atoms, powerName) {
     }
   }
 
-  return effects;
+  return _sortKeysDeep(effects); // canonical emit order (Phase 0c)
 }
 
 function extractEffects(templates, powerName) {
@@ -5220,7 +5240,7 @@ function extractEffects(templates, powerName) {
     }
   }
 
-  return effects;
+  return _sortKeysDeep(effects); // canonical emit order (Phase 0c)
 }
 
 // ============================================

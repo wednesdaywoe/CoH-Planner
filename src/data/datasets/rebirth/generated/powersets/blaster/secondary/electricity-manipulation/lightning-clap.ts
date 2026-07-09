@@ -44,15 +44,7 @@ export const LightningClap: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 8,
-      "table": "Melee_Stun"
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Melee_Knockback"
-    },
+    "buffDuration": 8.73,
     "damageBuff": {
       "scale": 0.025,
       "table": "Melee_Ones"
@@ -60,7 +52,15 @@ export const LightningClap: Power = {
     "durations": {
       "damageBuff": 8.73
     },
-    "buffDuration": 8.73
+    "knockback": {
+      "scale": 1,
+      "table": "Melee_Knockback"
+    },
+    "stun": {
+      "mag": 2,
+      "scale": 8,
+      "table": "Melee_Stun"
+    }
   },
   "specialEffects": [
     {

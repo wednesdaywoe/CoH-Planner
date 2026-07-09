@@ -47,9 +47,9 @@ export const WildBastion: Power = {
       "scale": 0.25,
       "table": "Ranged_Ones"
     },
+    "buffDuration": 60,
     "durations": {
       "absorb": 60
-    },
-    "buffDuration": 60
+    }
   }
 };

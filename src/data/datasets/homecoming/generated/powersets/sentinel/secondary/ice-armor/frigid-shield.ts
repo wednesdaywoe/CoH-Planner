@@ -44,10 +44,7 @@ export const FrigidShield: Power = {
       "scale": 0.5,
       "table": "Melee_HealSelf"
     },
-    "durations": {
-      "absorb": 20,
-      "debuffResistance": 4
-    },
+    "buffDuration": 20,
     "debuffResistance": {
       "movement": {
         "scale": 0.1,
@@ -58,6 +55,9 @@ export const FrigidShield: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 20
+    "durations": {
+      "absorb": 20,
+      "debuffResistance": 4
+    }
   }
 };

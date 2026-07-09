@@ -51,6 +51,10 @@ export const HeartofDarkness: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "tohitDebuff": 10
+    },
     "stun": {
       "mag": 3,
       "scale": 10,
@@ -59,11 +63,7 @@ export const HeartofDarkness: Power = {
     "tohitDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "buffDuration": 10
+    }
   },
   "conditionalEffects": [
     {

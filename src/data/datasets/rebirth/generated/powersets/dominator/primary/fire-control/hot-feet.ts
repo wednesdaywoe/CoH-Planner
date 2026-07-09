@@ -42,6 +42,10 @@ export const HotFeet: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "slow": 2.25
+    },
     "fear": {
       "mag": 3,
       "scale": 4,
@@ -64,10 +68,6 @@ export const HotFeet: Power = {
         "scale": 0.7,
         "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 2.25
-    },
-    "buffDuration": 2.25
+    }
   }
 };

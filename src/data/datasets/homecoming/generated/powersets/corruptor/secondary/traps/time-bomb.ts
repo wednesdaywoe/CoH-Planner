@@ -51,33 +51,30 @@ export const TimeBomb: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "movement": 30,
+      "rechargeBuff": 30,
+      "rechargeDebuff": 30,
+      "recoveryBuff": 30,
+      "recoveryDebuff": 30,
+      "slow": 30
+    },
     "knockback": {
       "scale": 4,
       "table": "Melee_Knockback"
     },
     "movement": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.375,
         "table": "Ranged_Ones"
       },
-      "flySpeed": {
+      "runSpeed": {
         "scale": 0.375,
         "table": "Ranged_Ones"
       }
     },
-    "durations": {
-      "movement": 30,
-      "rechargeBuff": 30,
-      "recoveryBuff": 30,
-      "rechargeDebuff": 30,
-      "slow": 30,
-      "recoveryDebuff": 30
-    },
     "rechargeBuff": {
-      "scale": 0.375,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
       "scale": 0.375,
       "table": "Ranged_Ones"
     },
@@ -85,20 +82,23 @@ export const TimeBomb: Power = {
       "scale": 0.4,
       "table": "Ranged_Ones"
     },
-    "slow": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Ones"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Ones"
-      }
+    "recoveryBuff": {
+      "scale": 0.375,
+      "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 0.3,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 30
+    "slow": {
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Ones"
+      }
+    }
   }
 };

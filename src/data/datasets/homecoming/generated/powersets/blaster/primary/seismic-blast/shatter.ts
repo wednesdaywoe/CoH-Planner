@@ -53,6 +53,7 @@ export const Shatter: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 6,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
@@ -66,15 +67,14 @@ export const Shatter: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       },
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
       "jumpHeight": {
         "scale": 1,
         "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 1,
+        "table": "Ranged_Slow"
       }
-    },
-    "buffDuration": 6
+    }
   }
 };

@@ -58,19 +58,19 @@ export const FireSword: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Melee_Ones"
+    },
     "defenseDebuff": {
       "scale": 0.5,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 10,
-      "damageBuff": 8.83
+      "damageBuff": 8.83,
+      "defenseDebuff": 10
     },
-    "damageBuff": {
-      "scale": 0.088,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

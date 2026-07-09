@@ -51,20 +51,11 @@ export const CallHawk: Power = {
     "tickRate": 0.30000001192092896
   },
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
+    "buffDuration": 10,
     "durations": {
-      "tohitDebuff": 10,
+      "maxHPBuff": 30,
       "slow": 10,
-      "maxHPBuff": 30
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
+      "tohitDebuff": 10
     },
     "knockback": {
       "scale": 0.67,
@@ -74,7 +65,16 @@ export const CallHawk: Power = {
       "scale": 0.4,
       "table": "Melee_HealSelf"
     },
-    "buffDuration": 10
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    }
   },
   "specialEffects": [
     {

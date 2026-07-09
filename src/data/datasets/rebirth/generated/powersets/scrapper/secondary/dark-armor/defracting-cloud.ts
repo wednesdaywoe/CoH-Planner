@@ -40,11 +40,22 @@ export const Defractingcloud: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
       },
+      "recovery": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "resistance": 0.75
+    },
+    "resistance": {
       "cold": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
@@ -53,25 +64,14 @@ export const Defractingcloud: Power = {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
       "negative": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "debuffResistance": 0.75
-    },
-    "debuffResistance": {
-      "recovery": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "endurance": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
+    }
   }
 };

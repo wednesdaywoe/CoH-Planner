@@ -40,15 +40,11 @@ export const TemporalHealing: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
+    "absorb": {
+      "scale": 0.3,
+      "table": "Melee_HealSelf"
     },
-    "durations": {
-      "recoveryBuff": 2.25,
-      "debuffResistance": 2.25,
-      "absorb": 12
-    },
+    "buffDuration": 2.25,
     "debuffResistance": {
       "movement": {
         "scale": 0.2,
@@ -63,11 +59,15 @@ export const TemporalHealing: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "absorb": {
-      "scale": 0.3,
-      "table": "Melee_HealSelf"
+    "durations": {
+      "absorb": 12,
+      "debuffResistance": 2.25,
+      "recoveryBuff": 2.25
     },
-    "buffDuration": 2.25
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    }
   },
   "conditionalEffects": [
     {
@@ -80,10 +80,10 @@ export const TemporalHealing: Power = {
           "scale": 0.09,
           "table": "Melee_HealSelf"
         },
+        "buffDuration": 12,
         "durations": {
           "absorb": 12
-        },
-        "buffDuration": 12
+        }
       }
     }
   ]

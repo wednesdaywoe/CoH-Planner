@@ -41,9 +41,9 @@ export const SpectralTerror: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 45,
       "entity": "Pets_Terror",
-      "duration": 45
+      "isPseudoPet": false
     }
   }
 };

@@ -57,17 +57,21 @@ export const GraviticEmanation: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
+    "buffDuration": 10,
     "durations": {
       "accuracyBuff": 8,
-      "slow": 10,
-      "rechargeDebuff": 10
+      "rechargeDebuff": 10,
+      "slow": 10
     },
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
     },
     "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -79,17 +83,13 @@ export const GraviticEmanation: Power = {
       "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
       }
     },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 10
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    }
   },
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Warshade_Offensive.Umbral_Blast.Dark_Nova_Emanation ! && Inherent.Inherent.Dark_Nova_Emanation ! &&"
 };

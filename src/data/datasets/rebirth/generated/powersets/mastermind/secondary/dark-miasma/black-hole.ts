@@ -38,18 +38,18 @@ export const BlackHole: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
       "duration": 30,
       "entities": [
         {
-          "entity": "Pets_Black_Hole",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Black_Hole"
         },
         {
-          "entity": "Pets_Black_Hole_Phased",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Black_Hole_Phased"
         }
-      ]
+      ],
+      "isPseudoPet": false
     }
   }
 };

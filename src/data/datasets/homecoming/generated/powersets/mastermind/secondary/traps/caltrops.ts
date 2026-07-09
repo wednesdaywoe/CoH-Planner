@@ -41,10 +41,10 @@ export const Caltrops: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Caltrops",
+      "copyBoosts": true,
       "duration": 45,
-      "copyBoosts": true
+      "entity": "Pets_Caltrops",
+      "isPseudoPet": false
     }
   }
 };

@@ -40,20 +40,21 @@ export const Shiver: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.325,
-      "table": "Melee_Slow"
-    },
+    "buffDuration": 60,
     "durations": {
       "rechargeDebuff": 60,
       "slow": 60
     },
+    "rechargeDebuff": {
+      "scale": 0.325,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      },
       "flySpeed": {
+        "scale": 0.325,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.325,
         "table": "Melee_Slow"
       },
@@ -61,11 +62,10 @@ export const Shiver: Power = {
         "scale": 0.325,
         "table": "Melee_Slow"
       },
-      "jumpHeight": {
-        "scale": 0.325,
-        "table": "Melee_Slow"
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
       }
-    },
-    "buffDuration": 60
+    }
   }
 };

@@ -43,14 +43,14 @@ export const EMPArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "enduranceDrain": {
+      "scale": 0.55,
+      "table": "Ranged_Ones"
+    },
     "stun": {
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Immobilize"
-    },
-    "enduranceDrain": {
-      "scale": 0.55,
-      "table": "Ranged_Ones"
     }
   },
   "conditionalEffects": [

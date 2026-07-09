@@ -52,9 +52,9 @@ export const ProtectorBots: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "MastermindPets_Protector_Bot",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

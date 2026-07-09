@@ -40,48 +40,7 @@ export const MetabolicAcceleration: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 0.75,
-      "regenBuffUnenhanced": 0.75,
-      "recoveryBuff": 0.75,
-      "rechargeBuff": 0.75,
-      "mezResistance": 0.75,
-      "debuffResistance": 0.75
-    },
-    "regenBuffUnenhanced": {
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "mezResistance": {
-      "hold": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      },
-      "stun": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
+    "buffDuration": 0.75,
     "debuffResistance": {
       "endurance": {
         "scale": 1,
@@ -92,6 +51,47 @@ export const MetabolicAcceleration: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 0.75
+    "durations": {
+      "debuffResistance": 0.75,
+      "mezResistance": 0.75,
+      "rechargeBuff": 0.75,
+      "recoveryBuff": 0.75,
+      "regenBuff": 0.75,
+      "regenBuffUnenhanced": 0.75
+    },
+    "mezResistance": {
+      "hold": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      },
+      "stun": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "regenBuff": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -46,19 +46,19 @@ export const Parry: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 10,
     "defenseBuff": {
-      "melee": {
+      "lethal": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       },
-      "lethal": {
+      "melee": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

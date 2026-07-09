@@ -66,6 +66,10 @@ export const RadiationTherapy: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "regenDebuff": 30
+    },
     "enduranceGain": {
       "scale": 7.75,
       "table": "Melee_Ones"
@@ -73,10 +77,6 @@ export const RadiationTherapy: Power = {
     "regenDebuff": {
       "scale": 1.5,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
-    },
-    "buffDuration": 30
+    }
   }
 };

@@ -50,6 +50,10 @@ export const HurlBoulder: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
+    },
     "knockback": {
       "scale": 3,
       "table": "Melee_Knockback"
@@ -60,14 +64,10 @@ export const HurlBoulder: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "slow": 15
-    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 15
+    }
   },
   "specialEffects": [
     {

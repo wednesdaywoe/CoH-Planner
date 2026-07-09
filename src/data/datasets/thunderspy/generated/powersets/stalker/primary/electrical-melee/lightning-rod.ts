@@ -42,8 +42,8 @@ export const LightningRod: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Lightning_Rod_Stalker"
+      "entity": "Pets_Lightning_Rod_Stalker",
+      "isPseudoPet": false
     }
   }
 };

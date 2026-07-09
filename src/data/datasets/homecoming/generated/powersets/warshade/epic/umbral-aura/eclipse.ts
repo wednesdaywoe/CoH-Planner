@@ -39,30 +39,31 @@ export const Eclipse: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "enduranceDrain": {
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 90,
     "durations": {
       "recoveryDebuff": 10,
       "resistance": 90
+    },
+    "enduranceDrain": {
+      "scale": 0.33,
+      "table": "Melee_Ones"
     },
     "enduranceGain": {
       "scale": 25,
       "table": "Melee_Ones",
       "perTarget": 25
     },
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "resistance": {
-      "smashing": {
+      "cold": {
         "scale": 1.5,
         "table": "Melee_Res_Dmg",
         "perTarget": 1.5
       },
-      "lethal": {
+      "energy": {
         "scale": 1.5,
         "table": "Melee_Res_Dmg",
         "perTarget": 1.5
@@ -72,12 +73,7 @@ export const Eclipse: Power = {
         "table": "Melee_Res_Dmg",
         "perTarget": 1.5
       },
-      "cold": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 1.5
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.5,
         "table": "Melee_Res_Dmg",
         "perTarget": 1.5
@@ -92,12 +88,16 @@ export const Eclipse: Power = {
         "table": "Melee_Res_Dmg",
         "perTarget": 1.5
       },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg",
+        "perTarget": 1.5
+      },
       "toxic": {
         "scale": 1.5,
         "table": "Melee_Res_Dmg",
         "perTarget": 1.5
       }
-    },
-    "buffDuration": 90
+    }
   }
 };

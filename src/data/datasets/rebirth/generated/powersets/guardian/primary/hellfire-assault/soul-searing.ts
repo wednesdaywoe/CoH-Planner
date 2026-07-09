@@ -34,14 +34,14 @@ export const SoulSearing: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 40,
+    "durations": {
+      "tohitBuff": 40
+    },
     "tohitBuff": {
       "scale": 0.12,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "tohitBuff": 40
-    },
-    "buffDuration": 40,
     "maxStacks": 2,
     "stacksLinear": [
       "tohitBuff"

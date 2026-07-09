@@ -40,15 +40,15 @@ export const RainofFire: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Rain of Fire",
+      "duration": 15,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Pets.RainofFire_Sentinel.Avoid",
         "Pets.RainofFire_Sentinel.RainofFire"
       ],
-      "duration": 15,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Rain of Fire",

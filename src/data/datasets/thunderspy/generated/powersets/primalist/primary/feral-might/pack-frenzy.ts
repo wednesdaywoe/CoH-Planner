@@ -42,14 +42,14 @@ export const PackFrenzy: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "rechargeBuff": {
-          "scale": 0.25,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 15,
         "durations": {
           "rechargeBuff": 15
         },
-        "buffDuration": 15
+        "rechargeBuff": {
+          "scale": 0.25,
+          "table": "Melee_Ones"
+        }
       }
     }
   ]

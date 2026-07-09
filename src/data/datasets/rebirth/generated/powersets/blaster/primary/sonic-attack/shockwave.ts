@@ -56,10 +56,7 @@ export const Shockwave: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 6,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 9.67,
     "damageBuff": {
       "scale": 0.058,
       "table": "Ranged_Ones"
@@ -67,6 +64,9 @@ export const Shockwave: Power = {
     "durations": {
       "damageBuff": 9.67
     },
-    "buffDuration": 9.67
+    "knockback": {
+      "scale": 6,
+      "table": "Ranged_Knockback"
+    }
   }
 };

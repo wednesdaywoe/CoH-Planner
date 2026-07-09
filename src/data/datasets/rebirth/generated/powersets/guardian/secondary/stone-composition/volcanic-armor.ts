@@ -40,28 +40,29 @@ export const VolcanicArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "cold": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      }
-    },
+    "buffDuration": 0.75,
     "durations": {
-      "resistance": 0.75,
       "hold": 0.75,
+      "resistance": 0.75,
       "sleep": 0.75,
       "stun": 0.75
     },
+    "effectDuration": 0.75,
     "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75,
+    "resistance": {
+      "cold": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      }
+    },
     "sleep": {
       "mag": 1,
       "scale": 30,
@@ -71,7 +72,6 @@ export const VolcanicArmor: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

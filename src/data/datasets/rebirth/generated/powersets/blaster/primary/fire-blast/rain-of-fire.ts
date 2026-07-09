@@ -39,11 +39,7 @@ export const RainofFire: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_RainofFire",
-      "duration": 15
-    },
+    "buffDuration": 9.53,
     "damageBuff": {
       "scale": 0.028,
       "table": "Ranged_Ones"
@@ -51,6 +47,10 @@ export const RainofFire: Power = {
     "durations": {
       "damageBuff": 9.53
     },
-    "buffDuration": 9.53
+    "summon": {
+      "duration": 15,
+      "entity": "Pets_RainofFire",
+      "isPseudoPet": false
+    }
   }
 };

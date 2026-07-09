@@ -41,28 +41,28 @@ export const EnergyDrain: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "enduranceDrain": {
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 4,
-      "defenseBuff": 45
-    },
+    "buffDuration": 45,
     "defenseBuff": {
       "smashing": {
         "scale": 0.05,
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "defenseBuff": 45,
+      "recoveryDebuff": 4
+    },
+    "enduranceDrain": {
+      "scale": 0.33,
+      "table": "Melee_Ones"
+    },
     "enduranceGain": {
       "scale": 25,
       "table": "Melee_Ones"
     },
-    "buffDuration": 45
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
   }
 };

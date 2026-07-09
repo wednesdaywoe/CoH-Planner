@@ -39,19 +39,19 @@ export const DimensionShift: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "duration": 20,
       "copyBoosts": true,
+      "duration": 20,
       "entities": [
         {
-          "entity": "Pets_Dimension_Shift",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Dimension_Shift"
         },
         {
-          "entity": "Pets_Dimension_Shift_Phased",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Dimension_Shift_Phased"
         }
-      ]
+      ],
+      "isPseudoPet": false
     }
   }
 };

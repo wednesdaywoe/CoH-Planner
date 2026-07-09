@@ -40,6 +40,7 @@ export const IndomitableWill: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "psionic": {
         "scale": 1,
@@ -48,7 +49,6 @@ export const IndomitableWill: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

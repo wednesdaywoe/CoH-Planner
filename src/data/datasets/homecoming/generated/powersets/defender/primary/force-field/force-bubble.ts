@@ -37,16 +37,16 @@ export const ForceBubble: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Dampening Bubble",
+      "duration": 45,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Force_Field.Dampening_Bubble",
         "Redirects.Force_Field.Dampening_Bubble_Debuff",
         "Redirects.Force_Field.Dampening_BubbleFX"
       ],
-      "duration": 45,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Dampening Bubble",

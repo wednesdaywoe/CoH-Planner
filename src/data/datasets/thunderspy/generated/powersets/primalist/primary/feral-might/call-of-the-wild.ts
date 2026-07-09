@@ -40,10 +40,10 @@ export const CalloftheWild: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_PrimalWolf",
       "duration": 90,
-      "entityCount": 2
+      "entity": "Pets_PrimalWolf",
+      "entityCount": 2,
+      "isPseudoPet": false
     }
   }
 };

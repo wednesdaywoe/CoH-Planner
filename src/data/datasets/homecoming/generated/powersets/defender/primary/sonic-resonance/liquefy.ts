@@ -48,14 +48,14 @@ export const Liquefy: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "copyBoosts": true,
+      "duration": 30,
       "entity": "Liquefy",
+      "isPseudoPet": false,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Pets.Liquefy.Liquefy"
-      ],
-      "duration": 30,
-      "copyBoosts": true
+      ]
     }
   }
 };

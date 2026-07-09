@@ -57,12 +57,21 @@ export const Shriek: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8.5,
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5,
+      "resistanceDebuff": 5
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -70,11 +79,7 @@ export const Shriek: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -86,20 +91,15 @@ export const Shriek: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 5,
-      "damageBuff": 8.5
-    },
-    "damageBuff": {
-      "scale": 0.066,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 8.5,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

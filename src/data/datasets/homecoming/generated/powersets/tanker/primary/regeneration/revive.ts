@@ -31,21 +31,7 @@ export const Revive: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "maxHPBuff": {
-      "scale": 2.4,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 10.3,
-      "resistanceDebuff": 10.3,
-      "debuffResistance": 10.25
-    },
-    "resistanceDebuff": {
-      "heal": {
-        "scale": 0.15,
-        "table": "Melee_Ones"
-      }
-    },
+    "buffDuration": 10.3,
     "debuffResistance": {
       "defense": {
         "scale": 0.2,
@@ -55,19 +41,7 @@ export const Revive: Power = {
         "scale": 0.2,
         "table": "Melee_Ones"
       },
-      "tohit": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
       "movement": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "regeneration": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
         "scale": 0.2,
         "table": "Melee_Ones"
       },
@@ -78,9 +52,35 @@ export const Revive: Power = {
       "recharge": {
         "scale": 0.2,
         "table": "Melee_Ones"
+      },
+      "recovery": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "regeneration": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
       }
     },
-    "buffDuration": 10.3
+    "durations": {
+      "debuffResistance": 10.25,
+      "maxHPBuff": 10.3,
+      "resistanceDebuff": 10.3
+    },
+    "maxHPBuff": {
+      "scale": 2.4,
+      "table": "Melee_HealSelf"
+    },
+    "resistanceDebuff": {
+      "heal": {
+        "scale": 0.15,
+        "table": "Melee_Ones"
+      }
+    }
   },
   "mechanicType": "parentMechanic"
 };

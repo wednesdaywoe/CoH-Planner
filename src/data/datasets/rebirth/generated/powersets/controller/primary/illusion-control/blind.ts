@@ -55,9 +55,9 @@ export const Blind: Power = {
       "table": "Ranged_Immobilize"
     },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 1,
       "entity": "Pets_Blind",
-      "duration": 1
+      "isPseudoPet": false
     }
   },
   "specialEffects": [

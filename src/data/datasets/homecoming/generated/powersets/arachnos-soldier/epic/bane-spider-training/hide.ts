@@ -40,6 +40,88 @@ export const Hide: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "defenseBuff": {
+      "aoe": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "defenseBuffSuppressible": {
+      "aoe": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "defenseBuffSuppressible": 0.75,
+      "stealth": 0.75
+    },
     "stealth": {
       "stealthPvE": {
         "scale": 55,
@@ -53,88 +135,6 @@ export const Hide: Power = {
         "scale": 0.15,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "stealth": 0.75,
-      "defenseBuff": 0.75,
-      "defenseBuffSuppressible": 0.75
-    },
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "defenseBuffSuppressible": {
-      "ranged": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "buffDuration": 0.75
+    }
   }
 };

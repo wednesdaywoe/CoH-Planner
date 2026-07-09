@@ -30,13 +30,13 @@ export const BoostRange: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Melee_Stun"
-    },
+    "buffDuration": 30,
     "durations": {
       "rangeBuff": 30
     },
-    "buffDuration": 30
+    "rangeBuff": {
+      "scale": 0.5,
+      "table": "Melee_Stun"
+    }
   }
 };

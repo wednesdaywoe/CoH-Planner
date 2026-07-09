@@ -46,83 +46,21 @@ export const OnewiththeShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
+    "buffDuration": 120,
     "durations": {
-      "resistance": 120,
-      "maxHPBuff": 120,
-      "knockup": 120,
-      "knockback": 120,
-      "mezResistance": 120,
-      "repel": 120,
-      "recoveryBuff": 120,
       "hold": 120,
       "immobilize": 120,
-      "stun": 120,
-      "sleep": 120
+      "knockback": 120,
+      "knockup": 120,
+      "maxHPBuff": 120,
+      "mezResistance": 120,
+      "recoveryBuff": 120,
+      "repel": 120,
+      "resistance": 120,
+      "sleep": 120,
+      "stun": 120
     },
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "repel": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
+    "effectDuration": 120,
     "enduranceDrain": {
       "scale": 0.6,
       "table": "Melee_Ones"
@@ -132,8 +70,76 @@ export const OnewiththeShield: Power = {
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 120,
     "immobilize": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "sleep": {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
@@ -142,12 +148,6 @@ export const OnewiththeShield: Power = {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 120
+    }
   }
 };

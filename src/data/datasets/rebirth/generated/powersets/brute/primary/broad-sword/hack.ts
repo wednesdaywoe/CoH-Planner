@@ -49,6 +49,7 @@ export const Hack: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
@@ -59,7 +60,6 @@ export const Hack: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 10
+    }
   }
 };

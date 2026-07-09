@@ -38,12 +38,16 @@ export const DisruptionAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "resistanceDebuff": 2.25
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
@@ -51,11 +55,7 @@ export const DisruptionAura: Power = {
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
@@ -67,14 +67,14 @@ export const DisruptionAura: Power = {
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Melee_Debuff_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 2.25
-    },
-    "buffDuration": 2.25
+    }
   }
 };

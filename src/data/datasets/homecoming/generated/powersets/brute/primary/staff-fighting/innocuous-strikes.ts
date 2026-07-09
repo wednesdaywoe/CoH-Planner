@@ -57,24 +57,7 @@ export const InnocuousStrikes: Power = {
     "tickRate": 0.4000000059604645
   },
   "effects": {
-    "slow": {
-      "runSpeed": {
-        "scale": 0.15,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.15,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.15,
-        "table": "Melee_Slow"
-      }
-    },
+    "buffDuration": 10,
     "durations": {
       "slow": 10
     },
@@ -83,7 +66,24 @@ export const InnocuousStrikes: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     },
-    "buffDuration": 10
+    "slow": {
+      "flySpeed": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.15,
+        "table": "Melee_Slow"
+      }
+    }
   },
   "specialEffects": [
     {

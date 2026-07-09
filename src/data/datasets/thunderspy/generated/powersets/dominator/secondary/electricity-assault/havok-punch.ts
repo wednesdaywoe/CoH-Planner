@@ -49,27 +49,27 @@ export const HavokPunch: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "sleep": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Sleep"
-    },
-    "knockback": {
-      "scale": 0.01,
-      "table": "Melee_Knockback"
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
     },
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Melee_Ones"
     },
+    "knockback": {
+      "scale": 0.01,
+      "table": "Melee_Knockback"
+    },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "recoveryDebuff": 4
-    },
-    "buffDuration": 4
+    "sleep": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Melee_Sleep"
+    }
   },
   "conditionalEffects": [
     {

@@ -46,11 +46,7 @@ export const Taser: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Stun"
-    },
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Melee_Ones"
@@ -58,7 +54,11 @@ export const Taser: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5,
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Stun"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

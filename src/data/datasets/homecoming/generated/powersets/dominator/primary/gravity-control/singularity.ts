@@ -44,10 +44,10 @@ export const Singularity: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Singularity",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "Pets_Singularity",
+      "isPseudoPet": false
     }
   }
 };

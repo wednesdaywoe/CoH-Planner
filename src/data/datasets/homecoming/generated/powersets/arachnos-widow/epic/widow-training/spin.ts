@@ -56,12 +56,21 @@ export const Spin: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "rechargeDebuff": 6,
+      "slow": 6
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
-      "flySpeed": {
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -69,20 +78,11 @@ export const Spin: Power = {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 6,
-      "rechargeDebuff": 6
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 6
+    }
   },
   "specialEffects": [
     {

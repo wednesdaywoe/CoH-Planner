@@ -36,43 +36,9 @@ export const GroupInvisibility: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 60,
-        "table": "Ranged_Ones"
-      },
-      "stealthPvP": {
-        "scale": 667,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 120,
-      "defenseBuff": 120,
-      "threatDebuff": 120
-    },
+    "buffDuration": 120,
     "defenseBuff": {
-      "melee": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
         "scale": 0.25,
         "table": "Ranged_Buff_Def"
       },
@@ -84,6 +50,18 @@ export const GroupInvisibility: Power = {
         "scale": 0.25,
         "table": "Ranged_Buff_Def"
       },
+      "fire": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
       "negative": {
         "scale": 0.25,
         "table": "Ranged_Buff_Def"
@@ -91,12 +69,34 @@ export const GroupInvisibility: Power = {
       "psionic": {
         "scale": 0.25,
         "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 120,
+      "stealth": 120,
+      "threatDebuff": 120
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 60,
+        "table": "Ranged_Ones"
+      },
+      "stealthPvP": {
+        "scale": 667,
+        "table": "Ranged_Ones"
       }
     },
     "threatDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 120
+    }
   }
 };

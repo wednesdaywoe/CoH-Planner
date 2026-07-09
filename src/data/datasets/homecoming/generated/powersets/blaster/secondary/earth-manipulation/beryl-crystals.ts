@@ -36,17 +36,15 @@ export const BerylCrystals: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "accuracyBuff": {
+      "scale": 0.33,
+      "table": "Melee_Ones"
+    },
+    "buffDuration": 0.75,
     "confuse": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "durations": {
-      "confuse": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75,
-      "accuracyBuff": 0.75
     },
     "debuffResistance": {
       "perception": {
@@ -58,14 +56,16 @@ export const BerylCrystals: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
+    "durations": {
+      "accuracyBuff": 0.75,
+      "confuse": 0.75,
+      "debuffResistance": 0.75,
+      "perceptionBuff": 0.75
+    },
+    "effectDuration": 0.75,
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
-    },
-    "accuracyBuff": {
-      "scale": 0.33,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

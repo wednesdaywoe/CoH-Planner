@@ -44,17 +44,51 @@ export const WetIce: Power = {
       "scale": 0.5,
       "table": "Melee_HealSelf"
     },
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      },
+      "movement": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
+    },
     "durations": {
       "absorb": 10,
-      "mezResistance": 0.75,
+      "debuffResistance": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
       "knockback": 0.75,
       "knockup": 0.75,
-      "stun": 0.75,
-      "hold": 0.75,
+      "mezResistance": 0.75,
+      "resistance": 0.75,
       "sleep": 0.75,
-      "immobilize": 0.75,
-      "debuffResistance": 0.75,
-      "resistance": 0.75
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
@@ -66,55 +100,21 @@ export const WetIce: Power = {
         "table": "Melee_Ones"
       }
     },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "resistance": {
       "cold": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 0.75
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

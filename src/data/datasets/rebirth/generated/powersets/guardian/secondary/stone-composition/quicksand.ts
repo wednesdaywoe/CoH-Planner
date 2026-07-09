@@ -38,9 +38,9 @@ export const Quicksand: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 45,
       "entity": "Pets_Quicksand",
-      "duration": 45
+      "isPseudoPet": false
     }
   }
 };

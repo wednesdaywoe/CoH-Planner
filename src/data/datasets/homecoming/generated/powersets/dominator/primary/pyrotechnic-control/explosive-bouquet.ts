@@ -40,16 +40,25 @@ export const ExplosiveBouquet: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "resistanceDebuff": 5
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    },
     "knockback": {
       "scale": 20,
       "table": "Ranged_Ones"
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -57,11 +66,7 @@ export const ExplosiveBouquet: Power = {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -73,20 +78,15 @@ export const ExplosiveBouquet: Power = {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.2,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 5
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
-    "buffDuration": 5
+    }
   },
   "conditionalEffects": [
     {

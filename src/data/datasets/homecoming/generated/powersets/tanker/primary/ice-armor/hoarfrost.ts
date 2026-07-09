@@ -41,21 +41,21 @@ export const Hoarfrost: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
+    "buffDuration": 120,
+    "durations": {
+      "maxHPBuff": 120,
+      "resistance": 120
+    },
+    "maxHPBuff": {
+      "scale": 4,
+      "table": "Melee_HealSelf"
+    },
     "resistance": {
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "resistance": 120,
-      "maxHPBuff": 120
-    },
-    "maxHPBuff": {
-      "scale": 4,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 120,
     "maxStacks": 2,
     "stacksLinear": [
       "maxHPBuff"

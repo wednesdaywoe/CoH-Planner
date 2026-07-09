@@ -40,10 +40,10 @@ export const FireImps: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_FireImp",
       "duration": 99999,
-      "entityCount": 3
+      "entity": "Pets_FireImp",
+      "entityCount": 3,
+      "isPseudoPet": false
     }
   }
 };

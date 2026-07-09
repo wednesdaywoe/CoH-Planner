@@ -34,14 +34,14 @@ export const Toxins: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "tohitBuff": 10
+    },
     "tohitBuff": {
       "scale": 2,
       "table": "Melee_Buff_ToHit"
     },
-    "durations": {
-      "tohitBuff": 10
-    },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "tohitBuff"

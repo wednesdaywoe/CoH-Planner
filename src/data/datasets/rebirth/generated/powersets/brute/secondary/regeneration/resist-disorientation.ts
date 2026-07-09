@@ -30,33 +30,25 @@ export const ResistDisorientation: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.25,
+    "durations": {
+      "mezResistance": 10.25,
+      "resistance": 10.25,
+      "stun": 10.25
+    },
+    "effectDuration": 10.25,
     "mezResistance": {
       "stun": {
         "scale": 5,
         "table": "Melee_Res_Boolean"
       }
     },
-    "durations": {
-      "mezResistance": 10.25,
-      "stun": 10.25,
-      "resistance": 10.25
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 15,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 10.25,
     "resistance": {
-      "smashing": {
+      "cold": {
         "scale": 1.25,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
+      "energy": {
         "scale": 1.25,
         "table": "Melee_Res_Dmg"
       },
@@ -64,11 +56,7 @@ export const ResistDisorientation: Power = {
         "scale": 1.25,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.25,
         "table": "Melee_Res_Dmg"
       },
@@ -79,9 +67,21 @@ export const ResistDisorientation: Power = {
       "psionic": {
         "scale": 1.25,
         "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 10.25
+    "stun": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Melee_Res_Boolean"
+    }
   },
   "mechanicType": "parentMechanic"
 };

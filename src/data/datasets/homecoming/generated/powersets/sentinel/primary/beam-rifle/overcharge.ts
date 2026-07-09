@@ -70,11 +70,7 @@ export const Overcharge: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 4,
-      "table": "Ranged_Stun"
-    },
+    "buffDuration": 15,
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
@@ -82,7 +78,11 @@ export const Overcharge: Power = {
     "durations": {
       "defenseDebuff": 15
     },
-    "buffDuration": 15
+    "stun": {
+      "mag": 3,
+      "scale": 4,
+      "table": "Ranged_Stun"
+    }
   },
   "conditionalEffects": [
     {

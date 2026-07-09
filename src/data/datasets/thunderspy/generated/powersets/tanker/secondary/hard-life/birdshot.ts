@@ -43,14 +43,14 @@ export const Birdshot: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "taunt": {
-      "scale": 5,
-      "table": "Melee_Taunt"
-    },
     "immobilize": {
       "mag": 1.5,
       "scale": 15,
       "table": "Melee_Immobilize"
+    },
+    "taunt": {
+      "scale": 5,
+      "table": "Melee_Taunt"
     }
   }
 };

@@ -53,11 +53,21 @@ export const FrozenFists: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 5,
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.83,
+      "rechargeDebuff": 5,
+      "slow": 5
+    },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_Slow"
-      },
       "flySpeed": {
         "scale": 0.1,
         "table": "Melee_Slow"
@@ -69,22 +79,12 @@ export const FrozenFists: Power = {
       "jumpSpeed": {
         "scale": 0.1,
         "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_Slow"
       }
     },
-    "durations": {
-      "slow": 5,
-      "rechargeDebuff": 5,
-      "damageBuff": 8.83
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "damageBuff": {
-      "scale": 0.088,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 5,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

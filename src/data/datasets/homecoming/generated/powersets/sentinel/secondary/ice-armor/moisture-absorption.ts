@@ -39,21 +39,13 @@ export const MoistureAbsorption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 15,
-      "table": "Melee_Ones",
-      "perTarget": 15
-    },
+    "buffDuration": 100,
     "defenseBuff": {
-      "smashing": {
+      "cold": {
         "scale": 0.4,
         "table": "Melee_Buff_Def"
       },
-      "lethal": {
+      "energy": {
         "scale": 0.4,
         "table": "Melee_Buff_Def"
       },
@@ -61,11 +53,7 @@ export const MoistureAbsorption: Power = {
         "scale": 0.4,
         "table": "Melee_Buff_Def"
       },
-      "cold": {
-        "scale": 0.4,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
+      "lethal": {
         "scale": 0.4,
         "table": "Melee_Buff_Def"
       },
@@ -77,6 +65,10 @@ export const MoistureAbsorption: Power = {
         "scale": 0.4,
         "table": "Melee_Buff_Def"
       },
+      "smashing": {
+        "scale": 0.4,
+        "table": "Melee_Buff_Def"
+      },
       "toxic": {
         "scale": 0.4,
         "table": "Melee_Buff_Def"
@@ -85,6 +77,14 @@ export const MoistureAbsorption: Power = {
     "durations": {
       "defenseBuff": 100
     },
-    "buffDuration": 100
+    "enduranceDrain": {
+      "scale": 0.35,
+      "table": "Melee_Ones"
+    },
+    "enduranceGain": {
+      "scale": 15,
+      "table": "Melee_Ones",
+      "perTarget": 15
+    }
   }
 };

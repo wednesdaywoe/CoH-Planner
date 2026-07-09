@@ -57,13 +57,13 @@ export const Skewer: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 6,
     "defenseDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 6
-    },
-    "buffDuration": 6
+    }
   }
 };

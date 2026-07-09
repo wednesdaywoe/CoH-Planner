@@ -46,9 +46,11 @@ export const CarrionCreepers: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_Untargetable_FightPreferRanged",
+      "copyBoosts": true,
       "displayName": "Carrion Creeper",
+      "duration": 120,
+      "entity": "PL_Untargetable_FightPreferRanged",
+      "isPseudoPet": false,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Villain_Pets.Creeper_Patch.Carrion_Creepers",
@@ -56,8 +58,6 @@ export const CarrionCreepers: Power = {
         "Villain_Pets.Creeper_Patch.Bramble",
         "Villain_Pets.Creeper_Patch.FX"
       ],
-      "duration": 120,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Carrion Creeper",

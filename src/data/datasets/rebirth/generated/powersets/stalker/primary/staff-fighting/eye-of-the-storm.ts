@@ -66,12 +66,16 @@ export const EyeoftheStorm: Power = {
         "table": "Melee_Damage"
       },
       "effects": {
+        "buffDuration": 6,
+        "durations": {
+          "resistanceDebuff": 6
+        },
         "resistanceDebuff": {
-          "smashing": {
+          "cold": {
             "scale": 1,
             "table": "Melee_Res_Dmg"
           },
-          "lethal": {
+          "energy": {
             "scale": 1,
             "table": "Melee_Res_Dmg"
           },
@@ -79,11 +83,7 @@ export const EyeoftheStorm: Power = {
             "scale": 1,
             "table": "Melee_Res_Dmg"
           },
-          "cold": {
-            "scale": 1,
-            "table": "Melee_Res_Dmg"
-          },
-          "energy": {
+          "lethal": {
             "scale": 1,
             "table": "Melee_Res_Dmg"
           },
@@ -95,15 +95,15 @@ export const EyeoftheStorm: Power = {
             "scale": 1,
             "table": "Melee_Res_Dmg"
           },
+          "smashing": {
+            "scale": 1,
+            "table": "Melee_Res_Dmg"
+          },
           "toxic": {
             "scale": 1,
             "table": "Melee_Res_Dmg"
           }
-        },
-        "durations": {
-          "resistanceDebuff": 6
-        },
-        "buffDuration": 6
+        }
       }
     }
   ],

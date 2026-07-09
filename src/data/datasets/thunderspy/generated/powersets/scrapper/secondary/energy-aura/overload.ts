@@ -39,6 +39,7 @@ export const Overload: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
     "defenseBuff": {
       "smashing": {
         "scale": 6,
@@ -52,7 +53,6 @@ export const Overload: Power = {
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 90
+    }
   }
 };

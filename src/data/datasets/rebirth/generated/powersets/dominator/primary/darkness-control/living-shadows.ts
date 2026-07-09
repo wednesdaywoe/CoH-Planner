@@ -56,13 +56,10 @@ export const LivingShadows: Power = {
     "tickRate": 2
   },
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_DeBuff_ToHit"
-    },
+    "buffDuration": 15,
     "durations": {
-      "tohitDebuff": 8,
-      "slow": 15
+      "slow": 15,
+      "tohitDebuff": 8
     },
     "immobilize": {
       "mag": 3,
@@ -75,7 +72,10 @@ export const LivingShadows: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 15
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_DeBuff_ToHit"
+    }
   },
   "conditionalEffects": [
     {

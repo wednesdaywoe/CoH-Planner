@@ -55,18 +55,18 @@ export const PhoenixAwakening: Power = {
       "table": "Melee_Ones"
     },
     "summon": {
-      "isPseudoPet": false,
       "duration": 5,
       "entities": [
         {
-          "entity": "Pets_Phoenix",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Phoenix"
         },
         {
-          "entity": "Pets_Guardian_FieryComposition_PhoenixAwakening",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Guardian_FieryComposition_PhoenixAwakening"
         }
-      ]
+      ],
+      "isPseudoPet": false
     },
     "enduranceGain": {
       "scale": 1,
@@ -88,19 +88,19 @@ export const PhoenixAwakening: Power = {
         "tickRate": 1.5
       },
       "effects": {
-        "untouchable": {
-          "scale": 10,
-          "table": "Ranged_Ones"
-        },
+        "buffDuration": 15,
         "durations": {
-          "untouchable": 15,
-          "enduranceGain": 1
+          "enduranceGain": 1,
+          "untouchable": 15
         },
         "enduranceGain": {
           "scale": 1,
           "table": "Melee_Ones"
         },
-        "buffDuration": 15
+        "untouchable": {
+          "scale": 10,
+          "table": "Ranged_Ones"
+        }
       }
     }
   ]

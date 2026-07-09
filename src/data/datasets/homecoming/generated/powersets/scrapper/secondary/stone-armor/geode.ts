@@ -42,34 +42,70 @@ export const Geode: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
+    "accuracyDebuff": {
+      "scale": 999,
+      "table": "Melee_Ones",
+      "toWho": "Self"
+    },
+    "buffDuration": 0.2,
+    "damageDebuff": {
+      "scale": 999,
+      "table": "Melee_Ones",
+      "toWho": "Self"
+    },
+    "durations": {
+      "accuracyDebuff": 0.2,
+      "damageDebuff": 0.2,
+      "knockback": 0.2,
+      "knockup": 0.2,
+      "mezResistance": 0.2,
+      "recoveryBuff": 0.2,
+      "regenBuff": 0.2,
+      "slow": 0.2,
+      "taunt": 0.2,
+      "untouchable": 0.2
+    },
+    "knockback": {
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "regenBuff": 0.2,
-      "recoveryBuff": 0.2,
-      "mezResistance": 0.2,
-      "knockup": 0.2,
-      "knockback": 0.2,
-      "slow": 0.2,
-      "untouchable": 0.2,
-      "damageDebuff": 0.2,
-      "taunt": 0.2,
-      "accuracyDebuff": 0.2
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
     },
     "recoveryBuff": {
       "scale": 4,
       "table": "Melee_Ones"
     },
+    "regenBuff": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "slow": {
+      "fly": {
+        "scale": 10000,
+        "table": "Melee_Ones",
+        "toWho": "Self"
+      }
+    },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "Class_Minion_Pets",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Stone_Armor.Geode",
         "Redirects.Stone_Armor.Geode_Scaling"
       ],
-      "duration": 99999,
       "resolvedEntities": [
         {
           "displayName": "Geode",
@@ -144,49 +180,13 @@ export const Geode: Power = {
         }
       ]
     },
-    "mezResistance": {
-      "knockup": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "slow": {
-      "fly": {
-        "scale": 10000,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      }
-    },
-    "untouchable": {
-      "scale": 1000,
-      "table": "Melee_Ones"
-    },
-    "damageDebuff": {
-      "scale": 999,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
     "taunt": {
       "scale": 999,
       "table": "Melee_Ones"
     },
-    "accuracyDebuff": {
-      "scale": 999,
-      "table": "Melee_Ones",
-      "toWho": "Self"
-    },
-    "buffDuration": 0.2
+    "untouchable": {
+      "scale": 1000,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -49,6 +49,10 @@ export const RingofFire: Power = {
     "tickRate": 2
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "slow": 10
+    },
     "immobilize": {
       "mag": 4,
       "scale": 15,
@@ -59,11 +63,7 @@ export const RingofFire: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "slow": 10
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

@@ -55,10 +55,7 @@ export const M30Grenade: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 9.17,
     "damageBuff": {
       "scale": 0.034,
       "table": "Ranged_Ones"
@@ -66,7 +63,10 @@ export const M30Grenade: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    }
   },
   "specialEffects": [
     {

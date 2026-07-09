@@ -58,14 +58,14 @@ export const Inferno: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10.5,
     "damageBuff": {
       "scale": 0.042,
       "table": "Ranged_Ones"
     },
     "durations": {
       "damageBuff": 10.5
-    },
-    "buffDuration": 10.5
+    }
   },
   "specialEffects": [
     {

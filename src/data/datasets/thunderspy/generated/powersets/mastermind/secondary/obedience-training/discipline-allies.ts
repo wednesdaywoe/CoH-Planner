@@ -44,14 +44,14 @@ export const DisciplineAllies: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
-        "regenBuff": {
-          "scale": 2.5,
-          "table": "Ranged_Ones"
-        },
+        "buffDuration": 30,
         "durations": {
           "regenBuff": 30
         },
-        "buffDuration": 30
+        "regenBuff": {
+          "scale": 2.5,
+          "table": "Ranged_Ones"
+        }
       }
     }
   ]

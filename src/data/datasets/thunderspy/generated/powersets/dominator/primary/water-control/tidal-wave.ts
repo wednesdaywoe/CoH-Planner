@@ -53,14 +53,14 @@ export const TidalWave: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "knockup": {
+      "scale": 3,
+      "table": "Ranged_Ones"
+    },
     "stun": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Stun"
-    },
-    "knockup": {
-      "scale": 3,
-      "table": "Ranged_Ones"
     }
   },
   "conditionalEffects": [

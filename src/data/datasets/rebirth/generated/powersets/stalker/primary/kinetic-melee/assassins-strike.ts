@@ -52,6 +52,10 @@ export const AssassinsStrike: Power = {
   ],
   "fromHideBonus": 1.7999999999999998,
   "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "stealth": 8
+    },
     "stealth": {
       "stealthPvE": {
         "scale": 1,
@@ -61,10 +65,6 @@ export const AssassinsStrike: Power = {
         "scale": 1,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "stealth": 8
-    },
-    "buffDuration": 8
+    }
   }
 };

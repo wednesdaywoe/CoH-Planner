@@ -40,10 +40,7 @@ export const EnergyAbsorption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "enduranceGain": {
-      "scale": 15,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 45,
     "defenseBuff": {
       "smashing": {
         "scale": 0.06,
@@ -57,6 +54,9 @@ export const EnergyAbsorption: Power = {
       "scale": 0.35,
       "table": "Melee_Ones"
     },
-    "buffDuration": 45
+    "enduranceGain": {
+      "scale": 15,
+      "table": "Melee_Ones"
+    }
   }
 };

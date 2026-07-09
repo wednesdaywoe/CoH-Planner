@@ -35,6 +35,10 @@ export const Telekinesis: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "repel": 0.75
+    },
     "hold": {
       "mag": 3,
       "scale": 0.75,
@@ -43,10 +47,6 @@ export const Telekinesis: Power = {
     "repel": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "repel": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

@@ -41,15 +41,7 @@ export const BurstofSpeed: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Burst_of_Speed",
-      "duration": 2
-    },
+    "buffDuration": 7.5,
     "damageBuff": {
       "scale": 0.026,
       "table": "Ranged_Ones"
@@ -57,7 +49,15 @@ export const BurstofSpeed: Power = {
     "durations": {
       "damageBuff": 7.5
     },
-    "buffDuration": 7.5,
+    "summon": {
+      "duration": 2,
+      "entity": "Pets_Burst_of_Speed",
+      "isPseudoPet": false
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -38,13 +38,13 @@ export const ChillingEmbrace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 30,
     "durations": {
       "regenBuff": 30
     },
-    "buffDuration": 30
+    "regenBuff": {
+      "scale": 4,
+      "table": "Melee_Ones"
+    }
   }
 };

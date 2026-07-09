@@ -44,78 +44,7 @@ export const ArcticFog: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35,
-        "table": "Ranged_Ones"
-      },
-      "stealthPvP": {
-        "scale": 389,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 2.25,
-      "defenseBuff": 2.25,
-      "resistance": 2.25,
-      "debuffResistance": 2.25
-    },
-    "defenseBuff": {
-      "melee": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "resistance": {
-      "fire": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
+    "buffDuration": 2.25,
     "debuffResistance": {
       "movement": {
         "scale": 0.6,
@@ -126,6 +55,77 @@ export const ArcticFog: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 2.25
+    "defenseBuff": {
+      "aoe": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "debuffResistance": 2.25,
+      "defenseBuff": 2.25,
+      "resistance": 2.25,
+      "stealth": 2.25
+    },
+    "resistance": {
+      "cold": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35,
+        "table": "Ranged_Ones"
+      },
+      "stealthPvP": {
+        "scale": 389,
+        "table": "Ranged_Ones"
+      }
+    }
   }
 };

@@ -45,12 +45,19 @@ export const Overload: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 30,
+    "debuffResistance": {
+      "defense": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
-      "smashing": {
+      "cold": {
         "scale": 2.5,
         "table": "Melee_Buff_Def"
       },
-      "lethal": {
+      "energy": {
         "scale": 2.5,
         "table": "Melee_Buff_Def"
       },
@@ -58,11 +65,7 @@ export const Overload: Power = {
         "scale": 2.5,
         "table": "Melee_Buff_Def"
       },
-      "cold": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2.5,
         "table": "Melee_Buff_Def"
       },
@@ -74,31 +77,28 @@ export const Overload: Power = {
         "scale": 2,
         "table": "Melee_Buff_Def"
       },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
       "toxic": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
+      "debuffResistance": 30,
       "defenseBuff": 30,
       "maxHPBuff": 30,
-      "debuffResistance": 30,
       "recoveryBuff": 30
     },
     "maxHPBuff": {
       "scale": 3,
       "table": "Melee_HealSelf"
     },
-    "debuffResistance": {
-      "defense": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 30
+    }
   }
 };

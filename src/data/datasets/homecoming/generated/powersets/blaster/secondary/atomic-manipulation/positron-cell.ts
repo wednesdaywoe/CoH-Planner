@@ -51,11 +51,7 @@ export const PositronCell: Power = {
     "tickRate": 1
   },
   "effects": {
-    "hold": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
@@ -63,6 +59,10 @@ export const PositronCell: Power = {
     "durations": {
       "defenseDebuff": 10
     },
-    "buffDuration": 10
+    "hold": {
+      "mag": 2,
+      "scale": 10,
+      "table": "Ranged_Immobilize"
+    }
   }
 };

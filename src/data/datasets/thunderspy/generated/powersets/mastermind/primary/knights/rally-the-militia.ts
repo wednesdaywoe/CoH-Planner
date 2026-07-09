@@ -45,6 +45,7 @@ export const RallyTheMilitia: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
     "defenseBuff": {
       "melee": {
         "scale": 1,
@@ -60,26 +61,25 @@ export const RallyTheMilitia: Power = {
       "table": "Ranged_Ones"
     },
     "summon": {
-      "isPseudoPet": false,
       "entities": [
         {
-          "entity": "Pets_Militia_01",
-          "count": 2
+          "count": 2,
+          "entity": "Pets_Militia_01"
         },
         {
-          "entity": "Pets_Militia_02",
-          "count": 2
+          "count": 2,
+          "entity": "Pets_Militia_02"
         },
         {
-          "entity": "Pets_Militia_03",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Militia_03"
         },
         {
-          "entity": "Pets_Militia_04",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Militia_04"
         }
-      ]
-    },
-    "buffDuration": 90
+      ],
+      "isPseudoPet": false
+    }
   }
 };

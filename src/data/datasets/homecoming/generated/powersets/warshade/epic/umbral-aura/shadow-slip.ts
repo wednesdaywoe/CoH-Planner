@@ -34,9 +34,9 @@ export const ShadowSlip: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 4.1,
-      "table": "Ranged_Ones"
+    "buffDuration": 15,
+    "durations": {
+      "mezResistance": 15
     },
     "mezResistance": {
       "teleport": {
@@ -44,9 +44,9 @@ export const ShadowSlip: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "durations": {
-      "mezResistance": 15
-    },
-    "buffDuration": 15
+    "teleport": {
+      "scale": 4.1,
+      "table": "Ranged_Ones"
+    }
   }
 };

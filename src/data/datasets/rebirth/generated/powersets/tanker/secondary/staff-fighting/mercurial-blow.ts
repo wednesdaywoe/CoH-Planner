@@ -51,10 +51,7 @@ export const MercurialBlow: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    },
+    "buffDuration": 8,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
@@ -62,7 +59,10 @@ export const MercurialBlow: Power = {
     "durations": {
       "defenseDebuff": 8
     },
-    "buffDuration": 8
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
   },
   "requires": "Tanker_Defense.Shield_Defense !"
 };

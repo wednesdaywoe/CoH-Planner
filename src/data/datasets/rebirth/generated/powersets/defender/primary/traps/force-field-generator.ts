@@ -36,9 +36,9 @@ export const ForceFieldGenerator: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 240,
       "entity": "Pets_Traps_FF_Generator_Defender",
-      "duration": 240
+      "isPseudoPet": false
     }
   }
 };

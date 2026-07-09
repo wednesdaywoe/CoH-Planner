@@ -46,6 +46,17 @@ export const Consume: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 120,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "debuffResistance": 120,
+      "recoveryBuff": 15
+    },
     "enduranceGain": {
       "scale": 20,
       "table": "Melee_Ones",
@@ -55,17 +66,6 @@ export const Consume: Power = {
       "scale": 0.05,
       "table": "Melee_Ones",
       "perTarget": 0.05
-    },
-    "durations": {
-      "recoveryBuff": 15,
-      "debuffResistance": 120
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 120
+    }
   }
 };

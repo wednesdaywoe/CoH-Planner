@@ -52,10 +52,10 @@ export const Reverberant: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Reverberant",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "Pets_Reverberant",
+      "isPseudoPet": false
     }
   }
 };

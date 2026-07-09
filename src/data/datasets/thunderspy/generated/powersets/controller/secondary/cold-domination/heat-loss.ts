@@ -40,18 +40,18 @@ export const HeatLoss: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
       "duration": 2,
       "entities": [
         {
-          "entity": "Pets_HeatLossDebuff_Defender",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_HeatLossDebuff_Defender"
         },
         {
-          "entity": "Pets_HeatLossBuff_Defender",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_HeatLossBuff_Defender"
         }
-      ]
+      ],
+      "isPseudoPet": false
     }
   }
 };

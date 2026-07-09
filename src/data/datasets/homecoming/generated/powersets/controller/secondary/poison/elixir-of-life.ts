@@ -47,36 +47,43 @@ export const ElixirofLife: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 90,
+    "damageBuff": {
+      "scale": 4,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "damageDebuff": {
+      "scale": 4,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageBuff": 90,
+      "damageDebuff": 45,
+      "hold": 4,
+      "rechargeBuff": 90,
+      "recoveryBuff": 90,
+      "resistance": 90,
+      "stealth": 15,
+      "tohitBuffUnenhanced": 90,
+      "tohitDebuff": 45
+    },
+    "effectDuration": 4,
     "enduranceGain": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 1000,
+      "table": "Ranged_Ones"
+    },
+    "rechargeBuff": {
       "scale": 1,
       "table": "Ranged_Ones"
     },
     "recoveryBuff": {
       "scale": 2,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 90,
-      "rechargeBuff": 90,
-      "damageBuff": 90,
-      "tohitBuffUnenhanced": 90,
-      "resistance": 90,
-      "stealth": 15,
-      "hold": 4,
-      "damageDebuff": 45,
-      "tohitDebuff": 45
-    },
-    "rechargeBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuffUnenhanced": {
-      "scale": 3,
-      "table": "Ranged_Buff_ToHit"
     },
     "resistance": {
       "toxic": {
@@ -90,20 +97,13 @@ export const ElixirofLife: Power = {
         "table": "Melee_Ones"
       }
     },
-    "hold": {
-      "mag": 1,
-      "scale": 1000,
-      "table": "Ranged_Ones"
-    },
-    "effectDuration": 4,
-    "damageDebuff": {
-      "scale": 4,
-      "table": "Ranged_Debuff_Dam"
+    "tohitBuffUnenhanced": {
+      "scale": 3,
+      "table": "Ranged_Buff_ToHit"
     },
     "tohitDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_ToHit"
-    },
-    "buffDuration": 90
+    }
   }
 };

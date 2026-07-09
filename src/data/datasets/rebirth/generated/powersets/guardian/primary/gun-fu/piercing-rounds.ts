@@ -54,19 +54,11 @@ export const PiercingRounds: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "resistanceDebuff": 10
+    },
     "resistanceDebuff": {
-      "smashing": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
       "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
@@ -75,22 +67,30 @@ export const PiercingRounds: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "negative": {
+      "fire": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "toxic": {
+      "lethal": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

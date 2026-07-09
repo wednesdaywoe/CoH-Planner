@@ -45,16 +45,16 @@ export const InertialSiphon: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Guardian_InertialSiphonBuff",
-      "duration": 1
+    "buffDuration": 45,
+    "durations": {
+      "rechargeDebuff": 45,
+      "slow": 45
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
     },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      },
       "flySpeed": {
         "scale": 0.5,
         "table": "Melee_Slow"
@@ -66,16 +66,16 @@ export const InertialSiphon: Power = {
       "jumpSpeed": {
         "scale": 0.5,
         "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
       }
     },
-    "durations": {
-      "slow": 45,
-      "rechargeDebuff": 45
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 45
+    "summon": {
+      "duration": 1,
+      "entity": "Pets_Guardian_InertialSiphonBuff",
+      "isPseudoPet": false
+    }
   }
 };

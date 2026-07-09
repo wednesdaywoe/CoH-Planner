@@ -33,17 +33,17 @@ export const CombatTrainingOffensive: Power = {
       "scale": 1,
       "table": "Melee_Buff_ToHit"
     },
-    "durations": {
-      "accuracyBuff": 0.75,
-      "debuffResistance": 0.75
-    },
+    "buffDuration": 0.75,
     "debuffResistance": {
       "tohit": {
         "scale": 0.33,
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 0.75
+    "durations": {
+      "accuracyBuff": 0.75,
+      "debuffResistance": 0.75
+    }
   },
   "mechanicType": "parentMechanic"
 };

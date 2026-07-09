@@ -42,9 +42,9 @@ export const AcidMortar: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 60,
       "entity": "Pets_Traps_Acid_Mortar_Defender",
-      "duration": 60
+      "isPseudoPet": false
     }
   }
 };

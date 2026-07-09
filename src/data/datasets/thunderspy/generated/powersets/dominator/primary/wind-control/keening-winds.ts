@@ -42,19 +42,19 @@ export const KeeningWinds: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.1,
     "confuse": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Fear"
     },
-    "enduranceDrain": {
-      "scale": 0.04,
-      "table": "Ranged_Ones"
-    },
     "durations": {
       "enduranceDrain": 2.1
     },
-    "buffDuration": 2.1
+    "enduranceDrain": {
+      "scale": 0.04,
+      "table": "Ranged_Ones"
+    }
   },
   "conditionalEffects": [
     {

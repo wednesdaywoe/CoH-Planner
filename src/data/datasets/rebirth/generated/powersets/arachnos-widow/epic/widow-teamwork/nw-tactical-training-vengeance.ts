@@ -43,28 +43,13 @@ export const NWTacticalTrainingVengeance: Power = {
     "table": "Melee_Heal"
   },
   "effects": {
+    "buffDuration": 120,
+    "damageBuff": {
+      "scale": 3.5,
+      "table": "Melee_Buff_Dmg"
+    },
     "defenseBuff": {
-      "melee": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 2.5,
         "table": "Melee_Buff_Def"
       },
@@ -76,6 +61,18 @@ export const NWTacticalTrainingVengeance: Power = {
         "scale": 2.5,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 2.5,
         "table": "Melee_Buff_Def"
@@ -83,39 +80,35 @@ export const NWTacticalTrainingVengeance: Power = {
       "psionic": {
         "scale": 2.5,
         "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
+      "damageBuff": 120,
       "defenseBuff": 120,
-      "tohitBuff": 120,
       "fear": 120,
       "mezResistance": 120,
-      "damageBuff": 120
+      "tohitBuff": 120
     },
-    "tohitBuff": {
-      "scale": 3.5,
-      "table": "Melee_Buff_ToHit"
-    },
+    "effectDuration": 120,
     "fear": {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "effectDuration": 120,
     "mezResistance": {
+      "confuse": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
       "fear": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "stun": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "immobilize": {
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
@@ -123,23 +116,30 @@ export const NWTacticalTrainingVengeance: Power = {
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
-      "confuse": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "taunt": {
+      "immobilize": {
         "scale": 2,
         "table": "Melee_Res_Boolean"
       },
       "placate": {
         "scale": 2,
         "table": "Melee_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "stun": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "taunt": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
       }
     },
-    "damageBuff": {
+    "tohitBuff": {
       "scale": 3.5,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 120
+      "table": "Melee_Buff_ToHit"
+    }
   }
 };

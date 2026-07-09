@@ -48,13 +48,13 @@ export const GleamingBolt: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 3,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 3
-    },
-    "buffDuration": 3
+    }
   }
 };

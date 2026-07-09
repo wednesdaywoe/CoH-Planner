@@ -39,14 +39,14 @@ export const GlueArrow: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Glue Arrow",
+      "duration": 60,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Trick_Arrow.GlueArrow"
       ],
-      "duration": 60,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Glue Arrow",

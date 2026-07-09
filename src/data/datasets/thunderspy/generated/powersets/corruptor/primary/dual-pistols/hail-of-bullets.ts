@@ -49,12 +49,12 @@ export const HailofBullets: Power = {
     "tickRate": 0.30000001192092896
   },
   "effects": {
-    "immobilize": {
-      "mag": 1,
-      "scale": 10.1,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 5,
     "defenseBuff": {
+      "aoe": {
+        "scale": 3,
+        "table": "Ranged_Buff_Def"
+      },
       "melee": {
         "scale": 3,
         "table": "Ranged_Buff_Def"
@@ -62,15 +62,15 @@ export const HailofBullets: Power = {
       "ranged": {
         "scale": 3,
         "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 3,
-        "table": "Ranged_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 5
     },
-    "buffDuration": 5
+    "immobilize": {
+      "mag": 1,
+      "scale": 10.1,
+      "table": "Ranged_Immobilize"
+    }
   }
 };

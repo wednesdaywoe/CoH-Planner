@@ -34,13 +34,13 @@ export const Manifest: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
     "effectDuration": 10,
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Telekinetic_Sword",
       "duration": 10,
-      "entityCount": 3
-    },
-    "buffDuration": 10
+      "entity": "Pets_Telekinetic_Sword",
+      "entityCount": 3,
+      "isPseudoPet": false
+    }
   }
 };

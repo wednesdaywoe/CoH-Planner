@@ -47,10 +47,10 @@ export const Vortex: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_WindControl_Vortex_Controller",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "Pets_WindControl_Vortex_Controller",
+      "isPseudoPet": false
     }
   },
   "requires": "accesslevel char> 0 >="

@@ -58,10 +58,7 @@ export const FocusedBurst: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.4467,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 10,
     "damageDebuff": {
       "scale": 0.7,
       "table": "Melee_Debuff_Dam"
@@ -69,7 +66,10 @@ export const FocusedBurst: Power = {
     "durations": {
       "damageDebuff": 10
     },
-    "buffDuration": 10
+    "knockback": {
+      "scale": 0.4467,
+      "table": "Melee_Ones"
+    }
   },
   "specialEffects": [
     {

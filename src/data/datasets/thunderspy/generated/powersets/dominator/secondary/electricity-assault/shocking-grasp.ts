@@ -47,9 +47,9 @@ export const ShockingGrasp: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 60,
       "entity": "Pets_VoltaicSentinel_Dominator",
-      "duration": 60
+      "isPseudoPet": false
     }
   }
 };

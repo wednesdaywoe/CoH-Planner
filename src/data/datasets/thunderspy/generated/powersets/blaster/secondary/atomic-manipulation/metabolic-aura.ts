@@ -49,13 +49,13 @@ export const MetabolicAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 2.25,
     "durations": {
       "recoveryBuff": 2.25
     },
-    "buffDuration": 2.25
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    }
   }
 };

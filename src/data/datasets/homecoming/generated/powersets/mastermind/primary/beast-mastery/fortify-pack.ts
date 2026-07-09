@@ -38,28 +38,9 @@ export const FortifyPack: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
     "defenseBuff": {
-      "ranged": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
         "scale": 0,
         "table": "Ranged_Buff_Def"
       },
@@ -71,11 +52,31 @@ export const FortifyPack: Power = {
         "scale": 0,
         "table": "Ranged_Buff_Def"
       },
+      "fire": {
+        "scale": 0,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 0,
+        "table": "Ranged_Buff_Def"
+      },
       "negative": {
         "scale": 0,
         "table": "Ranged_Buff_Def"
       },
       "psionic": {
+        "scale": 0,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
         "scale": 0,
         "table": "Ranged_Buff_Def"
       },
@@ -91,7 +92,6 @@ export const FortifyPack: Power = {
     "regenBuff": {
       "scale": 0,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 60
+    }
   }
 };

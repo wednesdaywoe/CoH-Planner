@@ -38,19 +38,8 @@ export const MomentofGlory: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
     "defenseBuff": {
-      "smashing": {
-        "scale": 9.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 9.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 9.5,
-        "table": "Melee_Buff_Def"
-      },
       "cold": {
         "scale": 9.5,
         "table": "Melee_Buff_Def"
@@ -59,14 +48,25 @@ export const MomentofGlory: Power = {
         "scale": 9.5,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
+        "scale": 9.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 9.5,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 15
-    },
-    "buffDuration": 15
+    }
   }
 };

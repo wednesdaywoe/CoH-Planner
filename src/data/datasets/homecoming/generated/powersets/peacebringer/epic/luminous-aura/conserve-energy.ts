@@ -30,14 +30,14 @@ export const ConserveEnergy: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "enduranceDiscount": 90
+    },
     "enduranceDiscount": {
       "scale": 1,
       "table": "Melee_Stun"
     },
-    "durations": {
-      "enduranceDiscount": 90
-    },
-    "buffDuration": 90,
     "maxStacks": 2,
     "stacksLinear": [
       "specialBuff"

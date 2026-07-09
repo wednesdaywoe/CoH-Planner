@@ -38,12 +38,21 @@ export const Surveillance: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 20,
+      "resistanceDebuff": 20
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
@@ -51,11 +60,7 @@ export const Surveillance: Power = {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
@@ -67,19 +72,14 @@ export const Surveillance: Power = {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 20,
-      "defenseDebuff": 20
-    },
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Def"
-    },
-    "buffDuration": 20
+    }
   }
 };

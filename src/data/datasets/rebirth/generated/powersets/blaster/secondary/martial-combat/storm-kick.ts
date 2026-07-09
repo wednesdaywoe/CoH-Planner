@@ -54,10 +54,7 @@ export const StormKick: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 8.57,
     "damageBuff": {
       "scale": 0.071,
       "table": "Melee_Ones"
@@ -65,7 +62,10 @@ export const StormKick: Power = {
     "durations": {
       "damageBuff": 8.57
     },
-    "buffDuration": 8.57,
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -42,6 +42,7 @@ export const ActiveDefense: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "melee": {
         "scale": 1.5,
@@ -53,16 +54,15 @@ export const ActiveDefense: Power = {
       "resistance": 0.75
     },
     "resistance": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
       "lethal": {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "requires": "Stalker_Melee.Claws Stalker_Melee.Ninja_Sword || Stalker_Melee.Dual_Blades || Stalker_Melee.Spines || Stalker_Melee.Staff_Fighting || !"
 };

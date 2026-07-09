@@ -49,13 +49,13 @@ export const Longfang: Power = {
     "tickRate": 0.30000001192092896
   },
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

@@ -44,20 +44,27 @@ export const ArcticAir: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
+    "buffDuration": 2.25,
+    "confuse": {
+      "mag": 3,
+      "scale": 2,
+      "table": "Ranged_Fear"
     },
     "durations": {
       "rechargeDebuff": 2.25,
       "slow": 2.25,
       "stealth": 2.25
     },
+    "fear": {
+      "mag": 3,
+      "scale": 2,
+      "table": "Ranged_Fear"
+    },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      },
       "flySpeed": {
         "scale": 0.65,
         "table": "Ranged_Slow"
@@ -69,6 +76,10 @@ export const ArcticAir: Power = {
       "jumpSpeed": {
         "scale": 0.65,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
       }
     },
     "stealth": {
@@ -80,18 +91,7 @@ export const ArcticAir: Power = {
         "scale": 389,
         "table": "Ranged_Ones"
       }
-    },
-    "fear": {
-      "mag": 3,
-      "scale": 2,
-      "table": "Ranged_Fear"
-    },
-    "confuse": {
-      "mag": 3,
-      "scale": 2,
-      "table": "Ranged_Fear"
-    },
-    "buffDuration": 2.25
+    }
   },
   "specialEffects": [
     {

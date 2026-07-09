@@ -36,21 +36,21 @@ export const PowerSink: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
+    },
     "enduranceDrain": {
       "scale": 0.4,
       "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 4
     },
     "enduranceGain": {
       "scale": 25,
       "table": "Melee_Ones"
     },
-    "buffDuration": 4
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
   }
 };

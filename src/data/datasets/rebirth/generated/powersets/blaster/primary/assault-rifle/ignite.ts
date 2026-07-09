@@ -39,11 +39,7 @@ export const Ignite: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_FlameThrower",
-      "duration": 10
-    },
+    "buffDuration": 11.5,
     "damageBuff": {
       "scale": 0.151,
       "table": "Ranged_Ones"
@@ -51,7 +47,11 @@ export const Ignite: Power = {
     "durations": {
       "damageBuff": 11.5
     },
-    "buffDuration": 11.5,
+    "summon": {
+      "duration": 10,
+      "entity": "Pets_FlameThrower",
+      "isPseudoPet": false
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

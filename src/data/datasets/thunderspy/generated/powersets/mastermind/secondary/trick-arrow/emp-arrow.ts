@@ -40,6 +40,10 @@ export const EMPArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "regenDebuff": 15
+    },
     "hold": {
       "mag": 3,
       "scale": 15,
@@ -48,11 +52,7 @@ export const EMPArrow: Power = {
     "regenDebuff": {
       "scale": 10,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 15
-    },
-    "buffDuration": 15
+    }
   },
   "conditionalEffects": [
     {

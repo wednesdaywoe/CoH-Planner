@@ -40,42 +40,33 @@ export const TrainedMind: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
+    "buffDuration": 0.75,
+    "confuse": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75,
     "durations": {
-      "stun": 0.75,
-      "hold": 0.75,
-      "sleep": 0.75,
-      "immobilize": 0.75,
       "confuse": 0.75,
       "fear": 0.75,
-      "resistance": 0.75
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
+    "fear": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     },
     "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
     "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "fear": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -86,6 +77,15 @@ export const TrainedMind: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 0.75
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

@@ -41,14 +41,14 @@ export const HandClap: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Melee_Knockback"
+    },
     "stun": {
       "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
     }
   },
   "requires": "Brute_Melee.Super_Strength.Mighty_Shockwave !"

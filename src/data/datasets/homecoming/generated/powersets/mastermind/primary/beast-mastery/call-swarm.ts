@@ -51,21 +51,26 @@ export const CallSwarm: Power = {
     "tickRate": 0.75
   },
   "effects": {
+    "buffDuration": 8,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 8,
-      "slow": 8,
-      "maxHPBuff": 30
+      "maxHPBuff": 30,
+      "slow": 8
+    },
+    "maxHPBuff": {
+      "scale": 0.4,
+      "table": "Melee_HealSelf"
     },
     "slow": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
-      "flySpeed": {
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -73,16 +78,11 @@ export const CallSwarm: Power = {
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
       }
-    },
-    "maxHPBuff": {
-      "scale": 0.4,
-      "table": "Melee_HealSelf"
-    },
-    "buffDuration": 8
+    }
   },
   "specialEffects": [
     {

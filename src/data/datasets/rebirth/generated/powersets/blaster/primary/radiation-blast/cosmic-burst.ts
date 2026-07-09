@@ -51,24 +51,24 @@ export const CosmicBurst: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+    "buffDuration": 12,
+    "damageBuff": {
+      "scale": 0.137,
+      "table": "Ranged_Ones"
     },
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 12,
-      "damageBuff": 9.57
+      "damageBuff": 9.57,
+      "defenseDebuff": 12
     },
-    "damageBuff": {
-      "scale": 0.137,
-      "table": "Ranged_Ones"
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
     },
-    "buffDuration": 12,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

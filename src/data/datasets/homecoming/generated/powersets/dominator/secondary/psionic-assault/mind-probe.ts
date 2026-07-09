@@ -45,13 +45,13 @@ export const MindProbe: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
+    "buffDuration": 6,
     "durations": {
       "rechargeDebuff": 6
     },
-    "buffDuration": 6
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    }
   }
 };

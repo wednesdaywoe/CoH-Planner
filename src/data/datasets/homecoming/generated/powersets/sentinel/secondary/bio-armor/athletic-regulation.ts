@@ -28,27 +28,27 @@ export const AthleticRegulation: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "movement": {
-      "runSpeed": {
-        "scale": 0.075,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.075,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "durations": {
-      "movement": 2.25,
-      "debuffResistance": 2.25
-    },
+    "buffDuration": 2.25,
     "debuffResistance": {
       "defense": {
         "scale": 0.75,
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 2.25
+    "durations": {
+      "debuffResistance": 2.25,
+      "movement": 2.25
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.075,
+        "table": "Melee_SpeedFlying"
+      },
+      "runSpeed": {
+        "scale": 0.075,
+        "table": "Melee_SpeedRunning"
+      }
+    }
   },
   "conditionalEffects": [
     {
@@ -57,6 +57,7 @@ export const AthleticRegulation: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 2.25,
         "debuffResistance": {
           "movement": {
             "scale": 0.4,
@@ -65,8 +66,7 @@ export const AthleticRegulation: Power = {
         },
         "durations": {
           "debuffResistance": 2.25
-        },
-        "buffDuration": 2.25
+        }
       },
       "group": "adaptation"
     },
@@ -76,20 +76,20 @@ export const AthleticRegulation: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "movement": {
-          "runSpeed": {
-            "scale": 0.14,
-            "table": "Melee_Ones"
-          },
-          "flySpeed": {
-            "scale": 0.14,
-            "table": "Melee_Ones"
-          }
-        },
+        "buffDuration": 2.25,
         "durations": {
           "movement": 2.25
         },
-        "buffDuration": 2.25
+        "movement": {
+          "flySpeed": {
+            "scale": 0.14,
+            "table": "Melee_Ones"
+          },
+          "runSpeed": {
+            "scale": 0.14,
+            "table": "Melee_Ones"
+          }
+        }
       },
       "group": "adaptation"
     },
@@ -99,16 +99,16 @@ export const AthleticRegulation: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 2.25,
+        "durations": {
+          "specialBuff": 2.25
+        },
         "specialBuff": {
           "movement": {
             "scale": 0.33,
             "table": "Melee_Ones"
           }
-        },
-        "durations": {
-          "specialBuff": 2.25
-        },
-        "buffDuration": 2.25
+        }
       },
       "group": "adaptation"
     }

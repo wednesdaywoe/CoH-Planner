@@ -45,10 +45,10 @@ export const DarkServant: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_V_DarkServant",
+      "copyBoosts": true,
       "duration": 240,
-      "copyBoosts": true
+      "entity": "Pets_V_DarkServant",
+      "isPseudoPet": false
     }
   }
 };

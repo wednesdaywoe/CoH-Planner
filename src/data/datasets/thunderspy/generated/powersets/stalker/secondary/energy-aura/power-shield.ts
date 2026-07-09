@@ -40,6 +40,7 @@ export const PowerShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "fire": {
         "scale": 2.2,
@@ -48,7 +49,6 @@ export const PowerShield: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

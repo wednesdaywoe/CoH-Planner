@@ -51,26 +51,27 @@ export const ElectricFence: Power = {
     "tickRate": 2
   },
   "effects": {
-    "immobilize": {
-      "mag": 4,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "enduranceDrain": {
-      "scale": 0.028,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 15,
     "durations": {
       "enduranceDrain": 6.2,
       "recoveryDebuff": 2,
       "slow": 15
     },
-    "recoveryDebuff": {
-      "scale": 1,
+    "enduranceDrain": {
+      "scale": 0.028,
       "table": "Ranged_Ones"
     },
     "enduranceGain": {
       "scale": 2.6,
+      "table": "Ranged_Ones"
+    },
+    "immobilize": {
+      "mag": 4,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
       "table": "Ranged_Ones"
     },
     "slow": {
@@ -79,7 +80,6 @@ export const ElectricFence: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 15,
     "maxStacks": 2,
     "stacksLinear": [
       "enduranceGain"

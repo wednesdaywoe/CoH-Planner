@@ -39,6 +39,7 @@ export const AnguishingCry: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 30,
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
@@ -48,18 +49,6 @@ export const AnguishingCry: Power = {
       "resistanceDebuff": 30
     },
     "resistanceDebuff": {
-      "smashing": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
       "cold": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
@@ -68,19 +57,30 @@ export const AnguishingCry: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "negative": {
+      "fire": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "toxic": {
+      "lethal": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
       "psionic": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
       }
-    },
-    "buffDuration": 30
+    }
   }
 };

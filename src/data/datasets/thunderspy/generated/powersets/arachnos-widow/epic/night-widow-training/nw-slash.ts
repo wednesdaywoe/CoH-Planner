@@ -54,13 +54,13 @@ export const NWSlash: Power = {
     }
   ],
   "effects": {
-    "regenDebuff": {
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 15,
     "durations": {
       "regenDebuff": 15
     },
-    "buffDuration": 15
+    "regenDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    }
   }
 };

@@ -41,15 +41,15 @@ export const Alkaloid: Power = {
     "table": "Ranged_Heal"
   },
   "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "resistance": 60
+    },
     "resistance": {
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 60
-    },
-    "buffDuration": 60
+    }
   }
 };

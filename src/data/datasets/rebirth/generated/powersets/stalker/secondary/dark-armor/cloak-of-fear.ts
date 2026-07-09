@@ -43,6 +43,10 @@ export const CloakofFear: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "tohitDebuff": 5
+    },
     "fear": {
       "mag": 2,
       "scale": 5,
@@ -51,10 +55,6 @@ export const CloakofFear: Power = {
     "tohitDebuff": {
       "scale": 0.05,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "tohitDebuff": 5
-    },
-    "buffDuration": 5
+    }
   }
 };

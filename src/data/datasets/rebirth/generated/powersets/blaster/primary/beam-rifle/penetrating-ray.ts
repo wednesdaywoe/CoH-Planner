@@ -49,10 +49,7 @@ export const PenetratingRay: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 8.9,
     "damageBuff": {
       "scale": 0.044,
       "table": "Ranged_Ones"
@@ -60,7 +57,10 @@ export const PenetratingRay: Power = {
     "durations": {
       "damageBuff": 8.9
     },
-    "buffDuration": 8.9,
+    "knockback": {
+      "scale": 0.7,
+      "table": "Ranged_Knockback"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"
@@ -81,9 +81,9 @@ export const PenetratingRay: Power = {
       },
       "effects": {
         "summon": {
-          "isPseudoPet": false,
+          "duration": 6,
           "entity": "Pets_DisintegrateSpread",
-          "duration": 6
+          "isPseudoPet": false
         }
       }
     }

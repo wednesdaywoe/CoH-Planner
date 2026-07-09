@@ -38,6 +38,7 @@ export const FRTTacticalTrainingVengeance: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 120,
     "defenseBuff": {
       "melee": {
         "scale": 2.5,
@@ -46,7 +47,6 @@ export const FRTTacticalTrainingVengeance: Power = {
     },
     "durations": {
       "defenseBuff": 120
-    },
-    "buffDuration": 120
+    }
   }
 };

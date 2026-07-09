@@ -42,10 +42,10 @@ export const Gremlins: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Gremlin",
       "duration": 99999,
-      "entityCount": 2
+      "entity": "Pets_Gremlin",
+      "entityCount": 2,
+      "isPseudoPet": false
     }
   }
 };

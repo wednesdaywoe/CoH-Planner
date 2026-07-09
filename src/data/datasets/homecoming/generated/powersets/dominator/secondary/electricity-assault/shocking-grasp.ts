@@ -43,16 +43,16 @@ export const ShockingGrasp: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pet_NoCollision",
+      "copyBoosts": true,
       "displayName": "Voltaic Sentinel",
+      "duration": 60,
+      "entity": "Pet_NoCollision",
+      "isPseudoPet": false,
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Pets.VoltaicSentinel_Dominator.Electrical_Bolt",
         "Pets.VoltaicSentinel_Dominator.Electrical_Field"
       ],
-      "duration": 60,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Voltaic Sentinel",

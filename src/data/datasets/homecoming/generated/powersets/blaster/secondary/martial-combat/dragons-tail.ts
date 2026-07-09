@@ -49,10 +49,7 @@ export const DragonsTail: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 9,
     "damageBuff": {
       "scale": 0.045,
       "table": "Melee_Ones"
@@ -60,7 +57,10 @@ export const DragonsTail: Power = {
     "durations": {
       "damageBuff": 9
     },
-    "buffDuration": 9
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   },
   "specialEffects": [
     {

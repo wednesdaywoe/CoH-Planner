@@ -43,9 +43,9 @@ export const CallBruiser: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "MastermindPets_Thug_Boss",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

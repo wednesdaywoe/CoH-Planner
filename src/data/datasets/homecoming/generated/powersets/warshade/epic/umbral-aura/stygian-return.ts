@@ -52,6 +52,11 @@ export const StygianReturn: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "stealth": 15,
+      "untouchable": 15
+    },
     "enduranceGain": {
       "scale": 30,
       "table": "Melee_Ones",
@@ -62,20 +67,15 @@ export const StygianReturn: Power = {
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "untouchable": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "untouchable": 15,
-      "stealth": 15
-    },
     "stealth": {
       "stealthPvE": {
         "scale": 300,
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 15
+    "untouchable": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    }
   }
 };

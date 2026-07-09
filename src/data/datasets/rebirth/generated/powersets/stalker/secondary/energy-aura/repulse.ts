@@ -39,14 +39,14 @@ export const Repulse: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "enduranceDrain": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "stun": {
       "mag": 2,
       "scale": 4,
       "table": "Melee_Stun"
-    },
-    "enduranceDrain": {
-      "scale": 1,
-      "table": "Melee_Ones"
     }
   }
 };

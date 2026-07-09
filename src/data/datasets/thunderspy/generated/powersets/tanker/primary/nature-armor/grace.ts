@@ -30,6 +30,7 @@ export const Grace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.75,
     "defenseBuff": {
       "psionic": {
         "scale": 1,
@@ -38,8 +39,7 @@ export const Grace: Power = {
     },
     "durations": {
       "defenseBuff": 10.75
-    },
-    "buffDuration": 10.75
+    }
   },
   "mechanicType": "parentMechanic"
 };

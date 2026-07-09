@@ -40,34 +40,10 @@ export const MineralArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "defenseBuff": {
-      "psionic": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "confuse": 0.75,
-      "mezResistance": 0.75,
-      "rechargeBuff": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
+    "buffDuration": 0.75,
     "confuse": {
       "mag": 1,
       "scale": 30,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 0.75,
-    "mezResistance": {
-      "confuse": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "rechargeBuff": {
-      "scale": 0.15,
       "table": "Melee_Ones"
     },
     "debuffResistance": {
@@ -76,10 +52,34 @@ export const MineralArmor: Power = {
         "table": "Melee_Ones"
       }
     },
+    "defenseBuff": {
+      "psionic": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "confuse": 0.75,
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "mezResistance": 0.75,
+      "perceptionBuff": 0.75,
+      "rechargeBuff": 0.75
+    },
+    "effectDuration": 0.75,
+    "mezResistance": {
+      "confuse": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
     },
-    "buffDuration": 0.75
+    "rechargeBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    }
   }
 };

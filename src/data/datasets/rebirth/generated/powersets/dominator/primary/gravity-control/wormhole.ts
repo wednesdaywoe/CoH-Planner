@@ -45,18 +45,18 @@ export const Wormhole: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 4.1,
-      "table": "Ranged_Ones"
+    "knockback": {
+      "scale": 7,
+      "table": "Ranged_Knockback"
     },
     "stun": {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     },
-    "knockback": {
-      "scale": 7,
-      "table": "Ranged_Knockback"
+    "teleport": {
+      "scale": 4.1,
+      "table": "Ranged_Ones"
     }
   },
   "conditionalEffects": [

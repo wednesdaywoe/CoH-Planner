@@ -43,17 +43,17 @@ export const TearGas: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Tear Gas",
+      "duration": 60,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Assault_Rifle.Tear_Gas",
         "Redirects.Assault_Rifle.Tear_Gas_Debuff",
         "Redirects.Assault_Rifle.Tear_Gas_OneShot",
         "Pets.ResistAll.ResistAll"
       ],
-      "duration": 60,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Tear Gas",

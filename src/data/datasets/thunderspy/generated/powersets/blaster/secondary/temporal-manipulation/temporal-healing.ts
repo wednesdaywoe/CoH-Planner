@@ -40,14 +40,14 @@ export const TemporalHealing: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.2,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 0.75,
     "durations": {
       "recoveryBuff": 0.75
     },
-    "buffDuration": 0.75
+    "recoveryBuff": {
+      "scale": 0.2,
+      "table": "Ranged_Ones"
+    }
   },
   "conditionalEffects": [
     {
@@ -56,14 +56,14 @@ export const TemporalHealing: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
-        "recoveryBuff": {
-          "scale": 0.3,
-          "table": "Ranged_Ones"
-        },
+        "buffDuration": 0.75,
         "durations": {
           "recoveryBuff": 0.75
         },
-        "buffDuration": 0.75
+        "recoveryBuff": {
+          "scale": 0.3,
+          "table": "Ranged_Ones"
+        }
       }
     }
   ]

@@ -48,44 +48,44 @@ export const SunlessMire: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 30,
+    "damageBuff": {
+      "scale": 1.25,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 1.25
+    },
+    "durations": {
+      "damageBuff": 30,
+      "rechargeDebuff": 6,
+      "slow": 6,
+      "tohitBuff": 30
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
       "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
       "jumpSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 6,
-      "rechargeDebuff": 6,
-      "tohitBuff": 30,
-      "damageBuff": 30
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
     },
     "tohitBuff": {
       "scale": 0.5,
       "table": "Melee_Buff_ToHit",
       "perTarget": 0.5
-    },
-    "damageBuff": {
-      "scale": 1.25,
-      "table": "Melee_Buff_Dmg",
-      "perTarget": 1.25
-    },
-    "buffDuration": 30
+    }
   }
 };

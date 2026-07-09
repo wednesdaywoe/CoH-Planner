@@ -60,6 +60,10 @@ export const Roots: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 12,
+    "durations": {
+      "slow": 12
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
@@ -70,11 +74,7 @@ export const Roots: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "slow": 12
-    },
-    "buffDuration": 12
+    }
   },
   "specialEffects": [
     {

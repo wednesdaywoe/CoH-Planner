@@ -85,14 +85,14 @@ export const SuppressiveFire: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 3.2,
-      "table": "Ranged_Sleep"
-    },
     "hold": {
       "mag": 4,
       "scale": 4,
+      "table": "Ranged_Sleep"
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 3.2,
       "table": "Ranged_Sleep"
     }
   }

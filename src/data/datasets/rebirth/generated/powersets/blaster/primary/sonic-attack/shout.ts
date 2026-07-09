@@ -51,12 +51,21 @@ export const Shout: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10.17,
+    "damageBuff": {
+      "scale": 0.176,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.17,
+      "resistanceDebuff": 10
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -64,11 +73,7 @@ export const Shout: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -80,20 +85,15 @@ export const Shout: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 10,
-      "damageBuff": 10.17
-    },
-    "damageBuff": {
-      "scale": 0.176,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10.17,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -38,51 +38,7 @@ export const EnergyAbsorption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 15,
-      "table": "Melee_Ones",
-      "perTarget": 15
-    },
-    "defenseBuff": {
-      "smashing": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      },
-      "lethal": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      },
-      "fire": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      },
-      "cold": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      },
-      "energy": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      },
-      "negative": {
-        "scale": 0.16,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.06
-      }
-    },
-    "durations": {
-      "defenseBuff": 45,
-      "debuffResistance": 45
-    },
+    "buffDuration": 45,
     "debuffResistance": {
       "movement": {
         "scale": 0.2,
@@ -93,6 +49,50 @@ export const EnergyAbsorption: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 45
+    "defenseBuff": {
+      "cold": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      },
+      "energy": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      },
+      "fire": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      },
+      "lethal": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      },
+      "negative": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      },
+      "smashing": {
+        "scale": 0.16,
+        "table": "Melee_Buff_Def",
+        "perTarget": 0.06
+      }
+    },
+    "durations": {
+      "debuffResistance": 45,
+      "defenseBuff": 45
+    },
+    "enduranceDrain": {
+      "scale": 0.35,
+      "table": "Melee_Ones"
+    },
+    "enduranceGain": {
+      "scale": 15,
+      "table": "Melee_Ones",
+      "perTarget": 15
+    }
   }
 };

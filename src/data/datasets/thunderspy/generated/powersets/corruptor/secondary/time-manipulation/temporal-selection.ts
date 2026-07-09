@@ -36,13 +36,13 @@ export const TemporalSelection: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.3,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 120,
     "durations": {
       "rechargeBuff": 120
     },
-    "buffDuration": 120
+    "rechargeBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    }
   }
 };

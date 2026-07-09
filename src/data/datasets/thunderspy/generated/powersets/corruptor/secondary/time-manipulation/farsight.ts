@@ -38,6 +38,7 @@ export const Farsight: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 120,
     "defenseBuff": {
       "melee": {
         "scale": 1.25,
@@ -46,7 +47,6 @@ export const Farsight: Power = {
     },
     "durations": {
       "defenseBuff": 120
-    },
-    "buffDuration": 120
+    }
   }
 };

@@ -46,6 +46,7 @@ export const Consume: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 120,
     "debuffResistance": {
       "endurance": {
         "scale": 0.5,
@@ -55,7 +56,6 @@ export const Consume: Power = {
     "durations": {
       "debuffResistance": 120
     },
-    "buffDuration": 120,
     "enduranceGain": {
       "scale": 20,
       "table": "Melee_Ones",

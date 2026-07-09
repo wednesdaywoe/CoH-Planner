@@ -34,23 +34,20 @@ export const Aim: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
+    "buffDuration": 10,
+    "damageBuff": {
       "scale": 4,
-      "table": "Melee_Buff_ToHit"
+      "table": "Melee_Buff_Dmg"
     },
     "durations": {
-      "tohitBuff": 10,
-      "rangeBuff": 10,
       "damageBuff": 10,
-      "specialBuff": 10
+      "rangeBuff": 10,
+      "specialBuff": 10,
+      "tohitBuff": 10
     },
     "rangeBuff": {
       "scale": 0.333,
       "table": "Melee_Ones"
-    },
-    "damageBuff": {
-      "scale": 4,
-      "table": "Melee_Buff_Dmg"
     },
     "specialBuff": {
       "endurance": {
@@ -58,7 +55,10 @@ export const Aim: Power = {
         "table": "Ranged_EndDrain"
       }
     },
-    "buffDuration": 10,
+    "tohitBuff": {
+      "scale": 4,
+      "table": "Melee_Buff_ToHit"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

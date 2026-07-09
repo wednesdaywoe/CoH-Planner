@@ -50,10 +50,7 @@ export const WhiteDwarfFlare: Power = {
     "table": "Melee_SSDamage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Def"
@@ -61,11 +58,14 @@ export const WhiteDwarfFlare: Power = {
     "durations": {
       "defenseDebuff": 10
     },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

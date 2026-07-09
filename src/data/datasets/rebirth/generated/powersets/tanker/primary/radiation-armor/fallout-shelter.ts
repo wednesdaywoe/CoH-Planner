@@ -40,27 +40,18 @@ export const FalloutShelter: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
+    "buffDuration": 0.75,
     "durations": {
-      "stun": 0.75,
-      "sleep": 0.75,
       "hold": 0.75,
       "immobilize": 0.75,
-      "mezResistance": 0.75,
       "knockback": 0.75,
       "knockup": 0.75,
-      "resistance": 0.75
+      "mezResistance": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
     },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
+    "effectDuration": 0.75,
     "hold": {
       "mag": 1,
       "scale": 30,
@@ -70,6 +61,14 @@ export const FalloutShelter: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
@@ -81,14 +80,6 @@ export const FalloutShelter: Power = {
         "table": "Melee_Ones"
       }
     },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
     "resistance": {
       "psionic": {
         "scale": 1.5,
@@ -99,6 +90,15 @@ export const FalloutShelter: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 0.75
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

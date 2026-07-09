@@ -42,17 +42,14 @@ export const Revive: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "regenBuff": 90,
+      "untouchable": 15
+    },
     "enduranceGain": {
       "scale": 50,
       "table": "Melee_Ones"
-    },
-    "untouchable": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "untouchable": 15,
-      "regenBuff": 90
     },
     "immobilize": {
       "mag": 50,
@@ -63,7 +60,10 @@ export const Revive: Power = {
       "scale": 2.5,
       "table": "Melee_Ones"
     },
-    "buffDuration": 90,
+    "untouchable": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "enduranceGain"

@@ -44,16 +44,16 @@ export const VoltaicSentinel: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pet_NoCollision",
+      "copyBoosts": true,
       "displayName": "Voltaic Sentinel",
+      "duration": 99999,
+      "entity": "Pet_NoCollision",
+      "isPseudoPet": false,
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Pets.VoltaicSentinel_PseudoPet.Electrical_Bolt",
         "Pets.VoltaicSentinel_PseudoPet.Electrical_Field"
       ],
-      "duration": 99999,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Voltaic Sentinel",

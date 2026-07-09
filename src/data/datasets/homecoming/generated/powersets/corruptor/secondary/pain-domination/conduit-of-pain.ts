@@ -43,34 +43,36 @@ export const ConduitofPain: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 60,
+    "damageBuff": {
+      "scale": 3,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "damageDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Dam",
+      "toWho": "Self"
+    },
+    "durations": {
+      "damageBuff": 60,
+      "damageDebuff": 30,
+      "rechargeBuff": 60,
+      "recoveryBuff": 60,
+      "stealth": 15,
+      "tohitBuffUnenhanced": 60,
+      "tohitDebuff": 30
+    },
     "enduranceGain": {
       "scale": 4,
       "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 1.75,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 60,
-      "rechargeBuff": 60,
-      "damageBuff": 60,
-      "tohitBuffUnenhanced": 60,
-      "stealth": 15,
-      "damageDebuff": 30,
-      "tohitDebuff": 30
     },
     "rechargeBuff": {
       "scale": 0.75,
       "table": "Ranged_Ones"
     },
-    "damageBuff": {
-      "scale": 3,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuffUnenhanced": {
-      "scale": 2,
-      "table": "Ranged_Buff_ToHit"
+    "recoveryBuff": {
+      "scale": 1.75,
+      "table": "Ranged_Ones"
     },
     "stealth": {
       "stealthPvE": {
@@ -78,17 +80,15 @@ export const ConduitofPain: Power = {
         "table": "Melee_Ones"
       }
     },
-    "damageDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam",
-      "toWho": "Self"
+    "tohitBuffUnenhanced": {
+      "scale": 2,
+      "table": "Ranged_Buff_ToHit"
     },
     "tohitDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_ToHit",
       "toWho": "Self"
     },
-    "buffDuration": 60,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

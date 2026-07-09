@@ -44,13 +44,13 @@ export const SonicRepulsion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    },
     "enduranceDrain": {
       "scale": 1,
       "table": "Ranged_Ones"
+    },
+    "knockback": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
     }
   }
 };

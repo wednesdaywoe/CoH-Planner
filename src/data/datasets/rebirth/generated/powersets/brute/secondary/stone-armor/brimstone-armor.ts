@@ -40,19 +40,19 @@ export const BrimstoneArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "cold": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      }
-    },
+    "buffDuration": 0.75,
     "durations": {
       "resistance": 0.75
     },
-    "buffDuration": 0.75
+    "resistance": {
+      "cold": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      }
+    }
   }
 };

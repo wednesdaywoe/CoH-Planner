@@ -43,17 +43,17 @@ export const ParalyzingBlast: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Tesla Coil",
+      "duration": 60,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Electric_Control.Tesla_Coil_Pulse",
         "Redirects.Electric_Control.Tesla_Coil_Debuff",
         "Redirects.Electric_Control.Tesla_Coil_OneShot",
         "Redirects.Electric_Control.Self_Destruct"
       ],
-      "duration": 60,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Tesla Coil",

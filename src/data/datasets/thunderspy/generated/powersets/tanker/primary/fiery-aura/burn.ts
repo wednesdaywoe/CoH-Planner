@@ -45,9 +45,9 @@ export const Burn: Power = {
   },
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 10,
       "entity": "Pets_Burn",
-      "duration": 10
+      "isPseudoPet": false
     }
   }
 };

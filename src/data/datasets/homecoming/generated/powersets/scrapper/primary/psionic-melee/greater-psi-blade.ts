@@ -55,6 +55,10 @@ export const GreaterPsiBlade: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "rechargeDebuff": 6
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
@@ -63,11 +67,7 @@ export const GreaterPsiBlade: Power = {
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 6
-    },
-    "buffDuration": 6
+    }
   },
   "conditionalEffects": [
     {

@@ -36,6 +36,7 @@ export const TRMindLink: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
     "defenseBuff": {
       "melee": {
         "scale": 0.8,
@@ -44,8 +45,7 @@ export const TRMindLink: Power = {
     },
     "durations": {
       "defenseBuff": 90
-    },
-    "buffDuration": 90
+    }
   },
   "modesRequired": [
     "Widow_Tarantula_Mode"

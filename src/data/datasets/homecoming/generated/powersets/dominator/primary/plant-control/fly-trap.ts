@@ -44,10 +44,10 @@ export const FlyTrap: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Fly_Trap",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "Pets_Fly_Trap",
+      "isPseudoPet": false
     }
   }
 };

@@ -47,11 +47,7 @@ export const Beanbag: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
+    "buffDuration": 8.4,
     "damageBuff": {
       "scale": 0.059,
       "table": "Ranged_Ones"
@@ -59,7 +55,11 @@ export const Beanbag: Power = {
     "durations": {
       "damageBuff": 8.4
     },
-    "buffDuration": 8.4,
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

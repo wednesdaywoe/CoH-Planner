@@ -39,9 +39,9 @@ export const Mirage: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 10,
       "entity": "MirageAttackerHit",
-      "duration": 10
+      "isPseudoPet": false
     }
   },
   "conditionalEffects": [
@@ -52,9 +52,9 @@ export const Mirage: Power = {
       "defaultActive": false,
       "effects": {
         "summon": {
-          "isPseudoPet": false,
+          "duration": 10,
           "entity": "MirageAttackerHit",
-          "duration": 10
+          "isPseudoPet": false
         }
       }
     }

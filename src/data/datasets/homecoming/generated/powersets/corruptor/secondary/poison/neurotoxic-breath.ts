@@ -40,20 +40,26 @@ export const NeurotoxicBreath: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.65,
-      "table": "Ranged_Slow"
-    },
+    "buffDuration": 20,
     "durations": {
       "rechargeDebuff": 20,
       "slow": 20
     },
+    "hold": {
+      "mag": 2,
+      "scale": 3,
+      "table": "Ranged_Immobilize"
+    },
+    "rechargeDebuff": {
+      "scale": 0.65,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 1.5,
-        "table": "Ranged_SpeedRunning"
-      },
       "flySpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
@@ -61,17 +67,11 @@ export const NeurotoxicBreath: Power = {
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
-      "jumpHeight": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
+      "runSpeed": {
+        "scale": 1.5,
+        "table": "Ranged_SpeedRunning"
       }
-    },
-    "hold": {
-      "mag": 2,
-      "scale": 3,
-      "table": "Ranged_Immobilize"
-    },
-    "buffDuration": 20
+    }
   },
   "specialEffects": [
     {

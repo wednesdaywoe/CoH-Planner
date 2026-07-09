@@ -40,12 +40,21 @@ export const SlowedResponse: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 30,
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 30,
+      "resistanceDebuff": 30
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
@@ -53,11 +62,7 @@ export const SlowedResponse: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
@@ -69,20 +74,15 @@ export const SlowedResponse: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 30,
-      "defenseDebuff": 30
-    },
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "buffDuration": 30
+    }
   },
   "conditionalEffects": [
     {
@@ -92,12 +92,21 @@ export const SlowedResponse: Power = {
       "defaultActive": false,
       "mode": "replace",
       "effects": {
+        "buffDuration": 30,
+        "defenseDebuff": {
+          "scale": 2.5,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 30,
+          "resistanceDebuff": 30
+        },
         "resistanceDebuff": {
-          "smashing": {
+          "cold": {
             "scale": 3.6,
             "table": "Ranged_Res_Dmg"
           },
-          "lethal": {
+          "energy": {
             "scale": 3.6,
             "table": "Ranged_Res_Dmg"
           },
@@ -105,11 +114,7 @@ export const SlowedResponse: Power = {
             "scale": 3.6,
             "table": "Ranged_Res_Dmg"
           },
-          "cold": {
-            "scale": 3.6,
-            "table": "Ranged_Res_Dmg"
-          },
-          "energy": {
+          "lethal": {
             "scale": 3.6,
             "table": "Ranged_Res_Dmg"
           },
@@ -121,20 +126,15 @@ export const SlowedResponse: Power = {
             "scale": 3.6,
             "table": "Ranged_Res_Dmg"
           },
+          "smashing": {
+            "scale": 3.6,
+            "table": "Ranged_Res_Dmg"
+          },
           "toxic": {
             "scale": 3.6,
             "table": "Ranged_Res_Dmg"
           }
-        },
-        "durations": {
-          "resistanceDebuff": 30,
-          "defenseDebuff": 30
-        },
-        "defenseDebuff": {
-          "scale": 2.5,
-          "table": "Ranged_Debuff_Def"
-        },
-        "buffDuration": 30
+        }
       }
     }
   ]

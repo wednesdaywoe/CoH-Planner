@@ -40,28 +40,9 @@ export const EnergyCloak: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -73,11 +54,31 @@ export const EnergyCloak: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
       "psionic": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -91,11 +92,11 @@ export const EnergyCloak: Power = {
       "stealth": 0.75
     },
     "stealth": {
+      "stackKey": "NictusFX",
       "stealthPvE": {
         "scale": 36.5,
         "table": "Melee_Ones"
       },
-      "stackKey": "NictusFX",
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"
@@ -104,8 +105,7 @@ export const EnergyCloak: Power = {
         "scale": 0.1,
         "table": "Melee_Ones"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "setsModes": [
     "Hidden_Attack"

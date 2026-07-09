@@ -45,10 +45,10 @@ export const Oni: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Oni",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "MastermindPets_Oni",
+      "isPseudoPet": false
     }
   }
 };

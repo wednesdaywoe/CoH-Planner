@@ -50,14 +50,14 @@ export const IncandescentStrike: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
     "hold": {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
     }
   }
 };

@@ -30,25 +30,25 @@ export const GenomicEvolution: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 5.25,
+    "durations": {
+      "resistance": 5.25
+    },
     "resistance": {
-      "smashing": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
       "cold": {
         "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
       "energy": {
         "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 0.75,
         "table": "Melee_Res_Dmg"
       },
       "negative": {
@@ -59,15 +59,15 @@ export const GenomicEvolution: Power = {
         "scale": 0.6,
         "table": "Melee_Res_Dmg"
       },
+      "smashing": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
       "toxic": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 5.25
-    },
-    "buffDuration": 5.25
+    }
   },
   "conditionalEffects": [
     {
@@ -76,14 +76,14 @@ export const GenomicEvolution: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "rangeBuff": {
-          "scale": 0.15,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 5.25,
         "durations": {
           "rangeBuff": 5.25
         },
-        "buffDuration": 5.25
+        "rangeBuff": {
+          "scale": 0.15,
+          "table": "Melee_Ones"
+        }
       },
       "group": "adaptation"
     },
@@ -93,14 +93,14 @@ export const GenomicEvolution: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "maxEndBuff": {
-          "scale": 5,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 5.25,
         "durations": {
           "maxEndBuff": 5.25
         },
-        "buffDuration": 5.25
+        "maxEndBuff": {
+          "scale": 5,
+          "table": "Melee_Ones"
+        }
       },
       "group": "adaptation"
     },
@@ -110,25 +110,25 @@ export const GenomicEvolution: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 5.25,
+        "durations": {
+          "resistance": 5.25
+        },
         "resistance": {
-          "smashing": {
-            "scale": 0.225,
-            "table": "Melee_Res_Dmg"
-          },
-          "lethal": {
-            "scale": 0.225,
-            "table": "Melee_Res_Dmg"
-          },
-          "fire": {
-            "scale": 0.15,
-            "table": "Melee_Res_Dmg"
-          },
           "cold": {
             "scale": 0.15,
             "table": "Melee_Res_Dmg"
           },
           "energy": {
             "scale": 0.15,
+            "table": "Melee_Res_Dmg"
+          },
+          "fire": {
+            "scale": 0.15,
+            "table": "Melee_Res_Dmg"
+          },
+          "lethal": {
+            "scale": 0.225,
             "table": "Melee_Res_Dmg"
           },
           "negative": {
@@ -139,15 +139,15 @@ export const GenomicEvolution: Power = {
             "scale": 0.18,
             "table": "Melee_Res_Dmg"
           },
+          "smashing": {
+            "scale": 0.225,
+            "table": "Melee_Res_Dmg"
+          },
           "toxic": {
             "scale": 0.3,
             "table": "Melee_Res_Dmg"
           }
-        },
-        "durations": {
-          "resistance": 5.25
-        },
-        "buffDuration": 5.25
+        }
       },
       "group": "adaptation"
     }

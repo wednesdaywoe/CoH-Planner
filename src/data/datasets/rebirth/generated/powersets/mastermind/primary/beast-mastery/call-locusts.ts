@@ -54,6 +54,7 @@ export const CallLocusts: Power = {
     "tickRate": 0.75
   },
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
@@ -63,9 +64,9 @@ export const CallLocusts: Power = {
       "slow": 10
     },
     "slow": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
       },
       "flySpeed": {
         "scale": 0.2,
@@ -79,12 +80,11 @@ export const CallLocusts: Power = {
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
       }
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

@@ -37,15 +37,16 @@ export const ClearSkies: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "tohitBuff": {
-          "scale": 2.5,
-          "table": "Ranged_Buff_ToHit"
-        },
+        "buffDuration": 2.1,
         "durations": {
-          "tohitBuff": 2.1,
+          "enduranceDiscount": 2.1,
           "rechargeBuff": 2.1,
           "recoveryBuff": 2.1,
-          "enduranceDiscount": 2.1
+          "tohitBuff": 2.1
+        },
+        "enduranceDiscount": {
+          "scale": 0.25,
+          "table": "Ranged_Ones"
         },
         "rechargeBuff": {
           "scale": 0.25,
@@ -55,11 +56,10 @@ export const ClearSkies: Power = {
           "scale": 0.25,
           "table": "Ranged_Ones"
         },
-        "enduranceDiscount": {
-          "scale": 0.25,
-          "table": "Ranged_Ones"
-        },
-        "buffDuration": 2.1
+        "tohitBuff": {
+          "scale": 2.5,
+          "table": "Ranged_Buff_ToHit"
+        }
       }
     }
   ],

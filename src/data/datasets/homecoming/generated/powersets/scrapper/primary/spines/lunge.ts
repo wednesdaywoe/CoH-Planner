@@ -57,17 +57,26 @@ export const Lunge: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "rechargeDebuff": 4,
+      "slow": 6
+    },
     "immobilize": {
       "mag": 0.33000001311302185,
       "scale": 8,
       "table": "Melee_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
-      "flySpeed": {
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -75,20 +84,11 @@ export const Lunge: Power = {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 6,
-      "rechargeDebuff": 4
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 6
+    }
   },
   "specialEffects": [
     {

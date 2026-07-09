@@ -40,20 +40,20 @@ export const GravityShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
+    "buffDuration": 0.75,
     "durations": {
       "resistance": 0.75
     },
-    "buffDuration": 0.75
+    "resistance": {
+      "lethal": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    }
   },
   "modesSuspended": [
     "Warshade_Blaster_Mode",

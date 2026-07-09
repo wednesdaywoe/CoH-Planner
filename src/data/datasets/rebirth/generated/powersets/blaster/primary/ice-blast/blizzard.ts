@@ -45,11 +45,7 @@ export const Blizzard: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Blizzard",
-      "duration": 15
-    },
+    "buffDuration": 9.53,
     "damageBuff": {
       "scale": 0.024,
       "table": "Ranged_Ones"
@@ -57,6 +53,10 @@ export const Blizzard: Power = {
     "durations": {
       "damageBuff": 9.53
     },
-    "buffDuration": 9.53
+    "summon": {
+      "duration": 15,
+      "entity": "Pets_Blizzard",
+      "isPseudoPet": false
+    }
   }
 };

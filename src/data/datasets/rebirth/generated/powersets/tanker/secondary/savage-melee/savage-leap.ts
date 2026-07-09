@@ -41,14 +41,14 @@ export const SavageLeap: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "duration": 4,
+      "entity": "Pets_Savage_Melee_Savage_Leap",
+      "isPseudoPet": false
+    },
     "teleport": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Savage_Melee_Savage_Leap",
-      "duration": 4
     }
   }
 };

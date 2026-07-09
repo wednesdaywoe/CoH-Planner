@@ -61,6 +61,10 @@ export const SonicThrust: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 2,
+    "durations": {
+      "repel": 2
+    },
     "knockback": {
       "scale": 8,
       "table": "Melee_Knockback"
@@ -68,10 +72,6 @@ export const SonicThrust: Power = {
     "repel": {
       "scale": 4,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "repel": 2
-    },
-    "buffDuration": 2
+    }
   }
 };

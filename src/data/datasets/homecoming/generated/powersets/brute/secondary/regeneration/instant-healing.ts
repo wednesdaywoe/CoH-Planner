@@ -34,19 +34,19 @@ export const InstantHealing: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuffUnenhanced": {
-      "scale": 6,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 90,
     "durations": {
-      "regenBuffUnenhanced": 90,
-      "regenBuff": 90
+      "regenBuff": 90,
+      "regenBuffUnenhanced": 90
     },
     "regenBuff": {
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "buffDuration": 90
+    "regenBuffUnenhanced": {
+      "scale": 6,
+      "table": "Melee_Ones"
+    }
   },
   "requires": "Brute_Defense.Regeneration.Instant_Regeneration !"
 };

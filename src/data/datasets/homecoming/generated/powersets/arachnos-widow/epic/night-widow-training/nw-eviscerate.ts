@@ -58,12 +58,21 @@ export const NWEviscerate: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 10
+    },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.4,
         "table": "Melee_Slow"
       },
-      "flySpeed": {
+      "jumpHeight": {
         "scale": 0.4,
         "table": "Melee_Slow"
       },
@@ -71,20 +80,11 @@ export const NWEviscerate: Power = {
         "scale": 0.4,
         "table": "Melee_Slow"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.4,
         "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 10,
-      "rechargeDebuff": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

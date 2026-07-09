@@ -50,23 +50,23 @@ export const PsionicTornado: Power = {
     "tickRate": 1
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 0.039,
+      "table": "Ranged_Ones"
     },
     "durations": {
-      "rechargeDebuff": 10,
-      "damageBuff": 9.87
+      "damageBuff": 9.87,
+      "rechargeDebuff": 10
     },
     "knockup": {
       "scale": 1.4,
       "table": "Ranged_Ones"
     },
-    "damageBuff": {
-      "scale": 0.039,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    }
   },
   "specialEffects": [
     {

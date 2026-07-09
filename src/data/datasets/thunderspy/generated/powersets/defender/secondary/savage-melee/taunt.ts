@@ -36,10 +36,7 @@ export const Taunt: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "taunt": {
-      "scale": 5,
-      "table": "Melee_Taunt"
-    },
+    "buffDuration": 15,
     "defenseBuff": {
       "aoe": {
         "scale": 1.5,
@@ -49,6 +46,9 @@ export const Taunt: Power = {
     "durations": {
       "defenseBuff": 15
     },
-    "buffDuration": 15
+    "taunt": {
+      "scale": 5,
+      "table": "Melee_Taunt"
+    }
   }
 };

@@ -56,15 +56,24 @@ export const Chilblain: Power = {
     "tickRate": 2
   },
   "effects": {
+    "buffDuration": 18,
+    "durations": {
+      "rechargeDebuff": 18,
+      "slow": 15
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
       },
       "flySpeed": {
         "scale": 0.3,
@@ -78,19 +87,10 @@ export const Chilblain: Power = {
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 15,
-      "rechargeDebuff": 18
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 18
+    }
   }
 };

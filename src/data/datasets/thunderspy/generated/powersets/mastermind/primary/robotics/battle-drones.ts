@@ -41,9 +41,9 @@ export const BattleDrones: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "MastermindPets_Droid",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

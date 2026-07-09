@@ -53,6 +53,7 @@ export const BlazingArrow: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 9.33,
     "damageBuff": {
       "scale": 0.121,
       "table": "Ranged_Ones"
@@ -60,7 +61,6 @@ export const BlazingArrow: Power = {
     "durations": {
       "damageBuff": 9.33
     },
-    "buffDuration": 9.33,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

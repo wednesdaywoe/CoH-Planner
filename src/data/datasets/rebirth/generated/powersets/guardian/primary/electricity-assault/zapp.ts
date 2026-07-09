@@ -49,22 +49,22 @@ export const Zapp: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
+    },
     "enduranceDrain": {
       "scale": 0.15,
+      "table": "Ranged_Ones"
+    },
+    "enduranceGain": {
+      "scale": 7.2,
       "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "recoveryDebuff": 4
-    },
-    "enduranceGain": {
-      "scale": 7.2,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 4,
     "maxStacks": 2,
     "stacksLinear": [
       "enduranceGain"

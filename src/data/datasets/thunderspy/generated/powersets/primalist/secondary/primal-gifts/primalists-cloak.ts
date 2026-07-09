@@ -40,6 +40,7 @@ export const PrimalistsCloak: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1.25,
     "defenseBuff": {
       "aoe": {
         "scale": 2,
@@ -48,7 +49,6 @@ export const PrimalistsCloak: Power = {
     },
     "durations": {
       "defenseBuff": 1.25
-    },
-    "buffDuration": 1.25
+    }
   }
 };

@@ -48,9 +48,9 @@ export const CarrionCreepers: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 120,
       "entity": "Pets_Creeper_Patch",
-      "duration": 120
+      "isPseudoPet": false
     }
   }
 };

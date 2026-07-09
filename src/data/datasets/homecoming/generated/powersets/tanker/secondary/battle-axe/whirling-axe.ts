@@ -52,10 +52,7 @@ export const WhirlingAxe: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "repel": {
-      "scale": 2,
-      "table": "Ones"
-    },
+    "buffDuration": 0.15,
     "durations": {
       "repel": 0.15
     },
@@ -63,7 +60,10 @@ export const WhirlingAxe: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     },
-    "buffDuration": 0.15
+    "repel": {
+      "scale": 2,
+      "table": "Ones"
+    }
   },
   "specialEffects": [
     {

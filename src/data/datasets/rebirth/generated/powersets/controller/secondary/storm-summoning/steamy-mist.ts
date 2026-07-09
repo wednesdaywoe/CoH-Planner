@@ -44,45 +44,14 @@ export const SteamyMist: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35,
-        "table": "Ranged_Ones"
-      },
-      "stealthPvP": {
-        "scale": 389,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 2.25,
-      "defenseBuff": 2.25,
-      "resistance": 2.25,
-      "mezResistance": 2.25,
-      "confuse": 2.25
+    "buffDuration": 2.25,
+    "confuse": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
     },
     "defenseBuff": {
-      "melee": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
@@ -91,6 +60,18 @@ export const SteamyMist: Power = {
         "table": "Ranged_Buff_Def"
       },
       "energy": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
@@ -101,13 +82,31 @@ export const SteamyMist: Power = {
       "psionic": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "confuse": 2.25,
+      "defenseBuff": 2.25,
+      "mezResistance": 2.25,
+      "resistance": 2.25,
+      "stealth": 2.25
+    },
+    "effectDuration": 2.25,
+    "mezResistance": {
+      "confuse": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
       }
     },
     "resistance": {
-      "fire": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
       "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
@@ -115,20 +114,21 @@ export const SteamyMist: Power = {
       "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
       }
     },
-    "mezResistance": {
-      "confuse": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35,
+        "table": "Ranged_Ones"
+      },
+      "stealthPvP": {
+        "scale": 389,
+        "table": "Ranged_Ones"
       }
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 2.25,
-    "buffDuration": 2.25
+    }
   }
 };

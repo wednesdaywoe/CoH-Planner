@@ -51,23 +51,23 @@ export const Gravestone: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 16,
+    "durations": {
+      "slow": 16
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
       },
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
       "jumpHeight": {
         "scale": 1,
         "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 1,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 16
-    },
-    "buffDuration": 16
+    }
   }
 };

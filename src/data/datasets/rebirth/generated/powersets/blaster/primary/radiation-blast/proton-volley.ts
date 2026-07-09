@@ -53,19 +53,19 @@ export const ProtonVolley: Power = {
     "tickRate": 0.5
   },
   "effects": {
+    "buffDuration": 12,
+    "damageBuff": {
+      "scale": 0.088,
+      "table": "Ranged_Ones"
+    },
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 12,
-      "damageBuff": 8.83
+      "damageBuff": 8.83,
+      "defenseDebuff": 12
     },
-    "damageBuff": {
-      "scale": 0.088,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 12,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

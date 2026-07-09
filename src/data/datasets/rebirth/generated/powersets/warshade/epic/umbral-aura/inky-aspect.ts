@@ -58,14 +58,14 @@ export const InkyAspect: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "recoveryBuffUnenhanced": {
-          "scale": 1,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 2,
         "durations": {
           "recoveryBuffUnenhanced": 2
         },
-        "buffDuration": 2
+        "recoveryBuffUnenhanced": {
+          "scale": 1,
+          "table": "Melee_Ones"
+        }
       }
     }
   ]

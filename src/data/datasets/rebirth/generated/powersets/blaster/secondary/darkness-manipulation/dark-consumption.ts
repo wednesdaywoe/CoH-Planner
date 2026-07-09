@@ -45,11 +45,7 @@ export const DarkConsumption: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "enduranceGain": {
-      "scale": 25,
-      "table": "Melee_Ones",
-      "perTarget": 25
-    },
+    "buffDuration": 7.5,
     "damageBuff": {
       "scale": 0.248,
       "table": "Melee_Ones",
@@ -58,6 +54,10 @@ export const DarkConsumption: Power = {
     "durations": {
       "damageBuff": 7.5
     },
-    "buffDuration": 7.5
+    "enduranceGain": {
+      "scale": 25,
+      "table": "Melee_Ones",
+      "perTarget": 25
+    }
   }
 };

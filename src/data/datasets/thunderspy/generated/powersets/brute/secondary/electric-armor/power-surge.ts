@@ -39,18 +39,18 @@ export const PowerSurge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "recoveryBuff": 90
+    },
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "recoveryBuff": 90
-    },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 90,
       "entity": "Pets_Power_Surge",
-      "duration": 90
-    },
-    "buffDuration": 90
+      "isPseudoPet": false
+    }
   }
 };

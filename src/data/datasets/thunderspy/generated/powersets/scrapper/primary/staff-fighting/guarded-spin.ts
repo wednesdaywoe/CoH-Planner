@@ -50,6 +50,7 @@ export const GuardedSpin: Power = {
     "tickRate": 0.30000001192092896
   },
   "effects": {
+    "buffDuration": 10,
     "defenseBuff": {
       "melee": {
         "scale": 1.5,
@@ -58,7 +59,6 @@ export const GuardedSpin: Power = {
     },
     "durations": {
       "defenseBuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

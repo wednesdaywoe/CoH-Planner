@@ -45,9 +45,9 @@ export const Whirlpool: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 15,
       "entity": "Pets_Whirlpool_Defender",
-      "duration": 15
+      "isPseudoPet": false
     }
   }
 };

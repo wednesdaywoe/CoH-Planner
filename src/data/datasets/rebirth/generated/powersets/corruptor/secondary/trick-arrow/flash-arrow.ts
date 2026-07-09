@@ -41,24 +41,24 @@ export const FlashArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 60,
     "durations": {
       "perceptionDebuff": 60,
       "tohitDebuff": 60
     },
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Ranged_Ones"
+    },
+    "summon": {
+      "duration": 5,
+      "entity": "Pets_OilSlickLighter",
+      "isPseudoPet": false
+    },
     "tohitDebuff": {
       "scale": 1,
       "table": "Ranged_DeBuff_ToHit"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_OilSlickLighter",
-      "duration": 5
-    },
-    "buffDuration": 60
+    }
   },
   "conditionalEffects": [
     {
@@ -67,14 +67,14 @@ export const FlashArrow: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
-        "tohitDebuff": {
-          "scale": 0.2,
-          "table": "Ranged_DeBuff_ToHit"
-        },
+        "buffDuration": 60,
         "durations": {
           "tohitDebuff": 60
         },
-        "buffDuration": 60
+        "tohitDebuff": {
+          "scale": 0.2,
+          "table": "Ranged_DeBuff_ToHit"
+        }
       }
     }
   ]

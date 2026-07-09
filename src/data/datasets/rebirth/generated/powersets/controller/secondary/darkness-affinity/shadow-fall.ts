@@ -44,45 +44,9 @@ export const ShadowFall: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35,
-        "table": "Ranged_Ones"
-      },
-      "stealthPvP": {
-        "scale": 389,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 2.25,
-      "defenseBuff": 2.25,
-      "resistance": 2.25,
-      "mezResistance": 2.25,
-      "fear": 2.25
-    },
+    "buffDuration": 2.25,
     "defenseBuff": {
-      "melee": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
@@ -94,28 +58,47 @@ export const ShadowFall: Power = {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
+      "fire": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
       "negative": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
       "psionic": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       }
     },
-    "resistance": {
-      "psionic": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      }
+    "durations": {
+      "defenseBuff": 2.25,
+      "fear": 2.25,
+      "mezResistance": 2.25,
+      "resistance": 2.25,
+      "stealth": 2.25
+    },
+    "effectDuration": 2.25,
+    "fear": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
     },
     "mezResistance": {
       "fear": {
@@ -123,12 +106,29 @@ export const ShadowFall: Power = {
         "table": "Ranged_Res_Boolean"
       }
     },
-    "fear": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
+    "resistance": {
+      "energy": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      }
     },
-    "effectDuration": 2.25,
-    "buffDuration": 2.25
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35,
+        "table": "Ranged_Ones"
+      },
+      "stealthPvP": {
+        "scale": 389,
+        "table": "Ranged_Ones"
+      }
+    }
   }
 };

@@ -46,14 +46,14 @@ export const TRVenomBurst: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "regenDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 30,
     "durations": {
       "regenDebuff": 30
     },
-    "buffDuration": 30
+    "regenDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Ones"
+    }
   },
   "modesRequired": [
     "Widow_Tarantula_Mode"

@@ -36,9 +36,9 @@ export const PoisonTrap: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 260,
       "entity": "Pets_Traps_Poison_Trap",
-      "duration": 260
+      "isPseudoPet": false
     }
   }
 };

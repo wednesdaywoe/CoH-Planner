@@ -45,16 +45,20 @@ export const ForceBolt: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "resistanceDebuff": 30
+    },
     "knockback": {
       "scale": 9,
       "table": "Ranged_Knockback"
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -62,11 +66,7 @@ export const ForceBolt: Power = {
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -78,14 +78,14 @@ export const ForceBolt: Power = {
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Ranged_Debuff_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 30
-    },
-    "buffDuration": 30
+    }
   }
 };

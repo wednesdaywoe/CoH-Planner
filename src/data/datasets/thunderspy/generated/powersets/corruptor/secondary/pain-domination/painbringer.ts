@@ -38,13 +38,13 @@ export const Painbringer: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenDebuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 60,
     "durations": {
       "regenDebuff": 60
     },
-    "buffDuration": 60
+    "regenDebuff": {
+      "scale": 5,
+      "table": "Ranged_Ones"
+    }
   }
 };

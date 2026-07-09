@@ -82,14 +82,14 @@ export const BoneSmasher: Power = {
       "defaultActive": false,
       "mode": "replace",
       "effects": {
-        "regenDebuff": {
-          "scale": 0.5,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 15,
         "durations": {
           "regenDebuff": 15
         },
-        "buffDuration": 15
+        "regenDebuff": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        }
       }
     }
   ],

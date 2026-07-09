@@ -46,18 +46,15 @@ export const BetaDecay: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 1,
-      "defenseDebuff": 1,
-      "rechargeBuff": 1
-    },
+    "buffDuration": 1,
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 1,
+      "rechargeBuff": 1,
+      "tohitDebuff": 1
     },
     "rechargeBuff": {
       "scale": 0.125,
@@ -68,6 +65,9 @@ export const BetaDecay: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 1
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Melee_DeBuff_ToHit"
+    }
   }
 };

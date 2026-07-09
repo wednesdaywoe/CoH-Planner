@@ -42,33 +42,33 @@ export const EMPArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "recoveryDebuff": 15,
+      "regenDebuff": 15
+    },
+    "enduranceDrain": {
+      "scale": 0.55,
+      "table": "Ranged_Ones"
+    },
     "hold": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
-    "enduranceDrain": {
-      "scale": 0.55,
+    "recoveryDebuff": {
+      "scale": 1,
       "table": "Ranged_Ones"
     },
     "regenDebuff": {
       "scale": 10,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "regenDebuff": 15,
-      "recoveryDebuff": 15
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 5,
       "entity": "Pets_OilSlickLighter",
-      "duration": 5
-    },
-    "buffDuration": 15
+      "isPseudoPet": false
+    }
   },
   "conditionalEffects": [
     {
@@ -77,6 +77,10 @@ export const EMPArrow: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 15,
+        "durations": {
+          "regenDebuff": 15
+        },
         "enduranceDrain": {
           "scale": 0.11,
           "table": "Ranged_Ones"
@@ -84,11 +88,7 @@ export const EMPArrow: Power = {
         "regenDebuff": {
           "scale": 2,
           "table": "Ranged_Ones"
-        },
-        "durations": {
-          "regenDebuff": 15
-        },
-        "buffDuration": 15
+        }
       }
     },
     {

@@ -38,13 +38,13 @@ export const WildGrowth: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 90,
     "durations": {
       "regenBuff": 90
     },
-    "buffDuration": 90
+    "regenBuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    }
   }
 };

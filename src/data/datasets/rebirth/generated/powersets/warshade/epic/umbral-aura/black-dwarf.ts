@@ -49,63 +49,65 @@ export const BlackDwarf: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 5,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 5,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 5,
-        "table": "Melee_Res_Dmg"
-      }
+    "buffDuration": 2.03,
+    "confuse": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
     },
     "durations": {
-      "resistance": 2,
-      "maxHPBuff": 2,
-      "threatBuff": 2,
-      "recoveryBuff": 2,
-      "movement": 2,
-      "mezResistance": 2,
+      "confuse": 2.03,
+      "fear": 2.03,
+      "hold": 2.03,
+      "immobilize": 2.03,
       "knockback": 2.03,
       "knockup": 2.03,
-      "stun": 2.03,
-      "hold": 2.03,
+      "maxHPBuff": 2,
+      "mezResistance": 2,
+      "movement": 2,
+      "recoveryBuff": 2,
+      "resistance": 2,
       "sleep": 2.03,
-      "immobilize": 2.03,
-      "confuse": 2.03,
-      "fear": 2.03
+      "stun": 2.03,
+      "threatBuff": 2
+    },
+    "effectDuration": 2.03,
+    "fear": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 60,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 200,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 200,
+      "table": "Melee_Ones"
     },
     "maxHPBuff": {
       "scale": 7.5,
       "table": "Melee_HealSelf"
     },
-    "threatBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.15,
-      "table": "Melee_Ones"
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
     },
     "movement": {
       "jumpHeight": {
@@ -125,60 +127,58 @@ export const BlackDwarf: Power = {
         "table": "Melee_Ones"
       }
     },
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
+    "recoveryBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
       },
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
+      "energy": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 5,
+        "table": "Melee_Res_Dmg"
       }
-    },
-    "knockback": {
-      "scale": 200,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 200,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 2.03,
-    "hold": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
     },
     "sleep": {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
-    "immobilize": {
-      "mag": 1,
-      "scale": 60,
-      "table": "Melee_Res_Boolean"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "fear": {
+    "stun": {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 2,
       "entity": "KHELDIAN_DWARF_WARSHADE",
-      "duration": 2
+      "isPseudoPet": false
     },
-    "buffDuration": 2.03
+    "threatBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
   }
 };

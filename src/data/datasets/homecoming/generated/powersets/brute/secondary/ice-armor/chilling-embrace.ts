@@ -44,12 +44,26 @@ export const ChillingEmbrace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 5,
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 5,
+      "rechargeDebuff": 5,
+      "slow": 5
+    },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      },
       "flySpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -57,28 +71,14 @@ export const ChillingEmbrace: Power = {
         "scale": 0.7,
         "table": "Melee_Slow"
       },
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
       }
-    },
-    "durations": {
-      "slow": 5,
-      "rechargeDebuff": 5,
-      "damageDebuff": 5
-    },
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Dam"
     },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 5
+    }
   }
 };

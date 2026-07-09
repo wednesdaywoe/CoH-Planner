@@ -55,16 +55,24 @@ export const GraviticEmanation: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 10
+    },
     "knockback": {
       "scale": 1,
       "table": "Ranged_Knockback"
     },
-    "stun": {
-      "mag": 2,
-      "scale": 6,
-      "table": "Ranged_Stun"
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
     },
     "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -76,21 +84,13 @@ export const GraviticEmanation: Power = {
       "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
       }
     },
-    "durations": {
-      "slow": 10,
-      "rechargeDebuff": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 10
+    "stun": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Ranged_Stun"
+    }
   },
   "specialEffects": [
     {

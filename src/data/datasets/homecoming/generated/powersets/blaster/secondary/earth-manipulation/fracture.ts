@@ -42,6 +42,7 @@ export const Fracture: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
@@ -53,7 +54,6 @@ export const Fracture: Power = {
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"
-    },
-    "buffDuration": 10
+    }
   }
 };

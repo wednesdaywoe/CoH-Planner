@@ -53,11 +53,7 @@ export const Suffocate: Power = {
     "tickRate": 1
   },
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
@@ -65,7 +61,11 @@ export const Suffocate: Power = {
     "durations": {
       "defenseDebuff": 10
     },
-    "buffDuration": 10
+    "hold": {
+      "mag": 3,
+      "scale": 12,
+      "table": "Ranged_Immobilize"
+    }
   },
   "conditionalEffects": [
     {
@@ -104,14 +104,14 @@ export const Suffocate: Power = {
         }
       ],
       "effects": {
+        "buffDuration": 10,
         "defenseDebuff": {
           "scale": 1.875,
           "table": "Ranged_Debuff_Def"
         },
         "durations": {
           "defenseDebuff": 10
-        },
-        "buffDuration": 10
+        }
       }
     }
   ],

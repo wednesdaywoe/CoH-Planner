@@ -43,7 +43,29 @@ export const Mutation: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 90,
+    "damageBuff": {
+      "scale": 4,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "damageDebuff": {
+      "scale": 4,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageBuff": 90,
+      "damageDebuff": 45,
+      "rechargeBuff": 90,
+      "recoveryBuff": 90,
+      "stealth": 15,
+      "tohitBuffUnenhanced": 90,
+      "tohitDebuff": 45
+    },
     "enduranceGain": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "rechargeBuff": {
       "scale": 1,
       "table": "Ranged_Ones"
     },
@@ -51,41 +73,19 @@ export const Mutation: Power = {
       "scale": 2,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "recoveryBuff": 90,
-      "rechargeBuff": 90,
-      "damageBuff": 90,
-      "tohitBuffUnenhanced": 90,
-      "stealth": 15,
-      "damageDebuff": 45,
-      "tohitDebuff": 45
-    },
-    "rechargeBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 4,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuffUnenhanced": {
-      "scale": 3,
-      "table": "Ranged_Buff_ToHit"
-    },
     "stealth": {
       "stealthPvE": {
         "scale": 300,
         "table": "Melee_Ones"
       }
     },
-    "damageDebuff": {
-      "scale": 4,
-      "table": "Ranged_Debuff_Dam"
+    "tohitBuffUnenhanced": {
+      "scale": 3,
+      "table": "Ranged_Buff_ToHit"
     },
     "tohitDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_ToHit"
-    },
-    "buffDuration": 90
+    }
   }
 };

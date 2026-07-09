@@ -57,8 +57,12 @@ export const MaimingSlash: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "slow": 10
+    },
     "slow": {
-      "runSpeed": {
+      "jumpHeight": {
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -66,15 +70,11 @@ export const MaimingSlash: Power = {
         "scale": 0.7,
         "table": "Melee_Slow"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.7,
         "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 10
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

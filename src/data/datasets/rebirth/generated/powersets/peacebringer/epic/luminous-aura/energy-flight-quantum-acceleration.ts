@@ -32,19 +32,20 @@ export const EnergyFlightQuantumAcceleration: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "effects": {
-    "movement": {
-      "flySpeed": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      },
-      "fly": {
-        "scale": 2,
-        "table": "Melee_Ones"
-      }
-    },
+    "buffDuration": 0.75,
     "durations": {
       "movement": 0.75,
       "slow": 0.75
+    },
+    "movement": {
+      "fly": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 2,
+        "table": "Melee_Ones"
+      }
     },
     "slow": {
       "flySpeed": {
@@ -52,8 +53,7 @@ export const EnergyFlightQuantumAcceleration: Power = {
         "table": "Melee_Ones",
         "toWho": "Self"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "requires": "Peacebringer_Defensive.Luminous_Aura.Quantum_Acceleration",
   "modesRequired": [

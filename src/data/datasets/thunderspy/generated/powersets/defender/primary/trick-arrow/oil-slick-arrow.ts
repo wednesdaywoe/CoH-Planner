@@ -42,16 +42,16 @@ export const OilSlickArrow: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_OilSlickOil",
-      "duration": 30,
       "conditionalEntities": [
         {
           "entity": "Pets_OilSlickBurn",
-          "toggleId": "oilslick_ignited",
-          "label": "Oil Slick Ignited"
+          "label": "Oil Slick Ignited",
+          "toggleId": "oilslick_ignited"
         }
-      ]
+      ],
+      "duration": 30,
+      "entity": "Pets_OilSlickOil",
+      "isPseudoPet": false
     }
   },
   "conditionalEffects": [

@@ -59,10 +59,7 @@ export const LightningClap: Power = {
     }
   ],
   "effects": {
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 4,
     "durations": {
       "recoveryDebuff": 4
     },
@@ -70,16 +67,19 @@ export const LightningClap: Power = {
       "scale": 0.07,
       "table": "Melee_Ones"
     },
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    },
     "knockback": {
       "scale": 0.64,
       "table": "Melee_Ones"
     },
-    "buffDuration": 4
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Stun"
+    }
   },
   "specialEffects": [
     {

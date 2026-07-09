@@ -30,7 +30,12 @@ export const Dodge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.5,
     "defenseBuff": {
+      "aoe": {
+        "scale": 0.75,
+        "table": "Melee_Buff_Def"
+      },
       "melee": {
         "scale": 0.75,
         "table": "Melee_Buff_Def"
@@ -38,16 +43,11 @@ export const Dodge: Power = {
       "ranged": {
         "scale": 0.75,
         "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 2.5
-    },
-    "buffDuration": 2.5
+    }
   },
   "mechanicType": "parentMechanic"
 };

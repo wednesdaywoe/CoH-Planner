@@ -41,16 +41,16 @@ export const FaradayCage: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Faraday Cage",
+      "duration": 240,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Shock_Therapy.FaradayCage",
         "Redirects.Shock_Therapy.FaradayCageFx",
         "Redirects.Shock_Therapy.FaradayStatic"
       ],
-      "duration": 240,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Faraday Cage",

@@ -54,28 +54,24 @@ export const InnerWill: Power = {
     }
   ],
   "effects": {
-    "stun": {
+    "buffDuration": 30,
+    "confuse": {
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "effectDuration": 30,
     "durations": {
-      "stun": 30,
-      "sleep": 30,
-      "immobilize": 30,
-      "hold": 30,
       "confuse": 30,
       "fear": 30,
+      "hold": 30,
+      "immobilize": 30,
       "mezResistance": 30,
-      "specialBuff": 30
+      "sleep": 30,
+      "specialBuff": 30,
+      "stun": 30
     },
-    "sleep": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
+    "effectDuration": 30,
+    "fear": {
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
@@ -85,12 +81,7 @@ export const InnerWill: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "fear": {
+    "immobilize": {
       "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
@@ -112,14 +103,19 @@ export const InnerWill: Power = {
         "scale": 1,
         "table": "Melee_Ones"
       },
-      "stun": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
       "sleep": {
         "scale": 1,
         "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 1,
+        "table": "Melee_Ones"
       }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "specialBuff": {
       "confuse": {
@@ -138,16 +134,20 @@ export const InnerWill: Power = {
         "scale": 0.5,
         "table": "Melee_Ones"
       },
-      "stun": {
+      "sleep": {
         "scale": 0.5,
         "table": "Melee_Ones"
       },
-      "sleep": {
+      "stun": {
         "scale": 0.5,
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 30,
+    "stun": {
+      "mag": 1,
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "specialBuff"

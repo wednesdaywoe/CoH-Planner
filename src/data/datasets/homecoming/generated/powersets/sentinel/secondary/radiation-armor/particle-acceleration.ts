@@ -28,15 +28,7 @@ export const ParticleAcceleration: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rechargeBuff": 10.25,
-      "debuffResistance": 10.25,
-      "movement": 10.25
-    },
+    "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
         "scale": 0.4,
@@ -47,17 +39,25 @@ export const ParticleAcceleration: Power = {
         "table": "Melee_Ones"
       }
     },
+    "durations": {
+      "debuffResistance": 10.25,
+      "movement": 10.25,
+      "rechargeBuff": 10.25
+    },
     "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      },
       "flySpeed": {
         "scale": 0.1,
         "table": "Melee_SpeedFlying"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
       }
     },
-    "buffDuration": 10.25
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    }
   },
   "mechanicType": "parentMechanic"
 };

@@ -40,19 +40,24 @@ export const TimesJuncture: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitDebuff": {
-      "scale": 1.25,
-      "table": "Ranged_DeBuff_ToHit"
+    "buffDuration": 1,
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
     },
     "durations": {
-      "tohitDebuff": 1,
+      "damageDebuff": 1,
       "slow": 1,
-      "damageDebuff": 1
+      "tohitDebuff": 1
     },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
       },
       "jumpHeight": {
         "scale": 0.3,
@@ -62,20 +67,15 @@ export const TimesJuncture: Power = {
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
       }
     },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "buffDuration": 1
+    "tohitDebuff": {
+      "scale": 1.25,
+      "table": "Ranged_DeBuff_ToHit"
+    }
   },
   "conditionalEffects": [
     {
@@ -85,19 +85,24 @@ export const TimesJuncture: Power = {
       "defaultActive": false,
       "mode": "replace",
       "effects": {
-        "tohitDebuff": {
-          "scale": 1.5,
-          "table": "Ranged_DeBuff_ToHit"
+        "buffDuration": 1,
+        "damageDebuff": {
+          "scale": 2.4,
+          "table": "Ranged_Debuff_Dam"
         },
         "durations": {
-          "tohitDebuff": 1,
+          "damageDebuff": 1,
           "slow": 1,
-          "damageDebuff": 1
+          "tohitDebuff": 1
         },
         "slow": {
-          "runSpeed": {
-            "scale": 1.2,
-            "table": "Ranged_SpeedRunning"
+          "fly": {
+            "scale": 1.92,
+            "table": "Ranged_Ones"
+          },
+          "flySpeed": {
+            "scale": 0.36,
+            "table": "Ranged_Slow"
           },
           "jumpHeight": {
             "scale": 0.36,
@@ -107,20 +112,15 @@ export const TimesJuncture: Power = {
             "scale": 0.36,
             "table": "Ranged_Slow"
           },
-          "flySpeed": {
-            "scale": 0.36,
-            "table": "Ranged_Slow"
-          },
-          "fly": {
-            "scale": 1.92,
-            "table": "Ranged_Ones"
+          "runSpeed": {
+            "scale": 1.2,
+            "table": "Ranged_SpeedRunning"
           }
         },
-        "damageDebuff": {
-          "scale": 2.4,
-          "table": "Ranged_Debuff_Dam"
-        },
-        "buffDuration": 1
+        "tohitDebuff": {
+          "scale": 1.5,
+          "table": "Ranged_DeBuff_ToHit"
+        }
       }
     }
   ]

@@ -34,23 +34,23 @@ export const AgainstallOdds: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "taunt": {
-      "scale": 1.25,
-      "table": "Melee_InherentTaunt"
-    },
+    "buffDuration": 1,
     "damageBuff": {
       "scale": 12.399999999999999,
       "table": "Melee_Buff_DMG",
       "perTarget": 4.3999999999999995
     },
-    "durations": {
-      "damageBuff": 1,
-      "damageDebuff": 1
-    },
     "damageDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Dam"
     },
-    "buffDuration": 1
+    "durations": {
+      "damageBuff": 1,
+      "damageDebuff": 1
+    },
+    "taunt": {
+      "scale": 1.25,
+      "table": "Melee_InherentTaunt"
+    }
   }
 };

@@ -42,16 +42,144 @@ export const EMPArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 45,
+    "durations": {
+      "regenDebuff": 45,
+      "slow": 45,
+      "specialBuff": 45,
+      "specialDebuff": 45
+    },
+    "enduranceDrain": {
+      "scale": 0.4,
+      "table": "Ranged_Ones"
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 7,
+      "table": "Ranged_Immobilize"
+    },
+    "regenDebuff": {
+      "durationVariants": [
+        {
+          "duration": 15,
+          "scale": 5
+        }
+      ],
+      "scale": 5,
+      "table": "Ranged_Ones"
+    },
+    "slow": {
+      "flySpeed": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "runSpeed": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "specialBuff": {
+      "absorb": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "confuse": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "endurance": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "fear": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "heal": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "hold": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "stun": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "tohit": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "specialDebuff": {
+      "aoe": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "cold": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "defense": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "energy": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "fire": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "lethal": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "melee": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "negative": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "psionic": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "ranged": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "smashing": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "toxic": {
+        "scale": 1.2,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "EMP Field",
+      "duration": 240,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Trick_Arrow.EMP_Arrow",
         "Redirects.Trick_Arrow.EMP_Arrow_Fx"
       ],
-      "duration": 240,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "EMP Field",
@@ -129,134 +257,6 @@ export const EMPArrow: Power = {
           ]
         }
       ]
-    },
-    "specialBuff": {
-      "heal": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "absorb": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "endurance": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "confuse": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "fear": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "hold": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "tohit": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "durations": {
-      "specialBuff": 45,
-      "slow": 45,
-      "specialDebuff": 45,
-      "regenDebuff": 45
-    },
-    "slow": {
-      "runSpeed": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "flySpeed": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "specialDebuff": {
-      "ranged": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "melee": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "aoe": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "smashing": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "lethal": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "fire": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "cold": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "energy": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "negative": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "psionic": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "toxic": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "defense": {
-        "scale": 1.2,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "enduranceDrain": {
-      "scale": 0.4,
-      "table": "Ranged_Ones"
-    },
-    "regenDebuff": {
-      "scale": 5,
-      "table": "Ranged_Ones",
-      "durationVariants": [
-        {
-          "scale": 5,
-          "duration": 15
-        }
-      ]
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 7,
-      "table": "Ranged_Immobilize"
-    },
-    "buffDuration": 45
+    }
   }
 };

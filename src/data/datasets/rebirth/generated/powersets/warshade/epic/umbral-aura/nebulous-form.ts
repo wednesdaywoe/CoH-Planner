@@ -40,19 +40,10 @@ export const NebulousForm: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 20,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 222,
-        "table": "Melee_Ones"
-      }
-    },
+    "buffDuration": 0.75,
     "durations": {
-      "stealth": 0.75,
       "movement": 0.75,
+      "stealth": 0.75,
       "threatDebuff": 0.75
     },
     "movement": {
@@ -73,10 +64,19 @@ export const NebulousForm: Power = {
         "table": "Melee_Ones"
       }
     },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 20,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 222,
+        "table": "Melee_Ones"
+      }
+    },
     "threatDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

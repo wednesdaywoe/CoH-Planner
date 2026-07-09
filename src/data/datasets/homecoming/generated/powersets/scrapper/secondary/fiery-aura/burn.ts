@@ -40,25 +40,26 @@ export const Burn: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 100,
+    "durations": {
+      "immobilize": 100
+    },
+    "effectDuration": 100,
     "immobilize": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 100,
-    "durations": {
-      "immobilize": 100
-    },
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Burn Flames",
+      "duration": 10,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Fiery_Aura.FieryBurn",
         "Redirects.Fiery_Aura.FieryBurn_FrontDamage"
       ],
-      "duration": 10,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Burn Flames",
@@ -124,7 +125,6 @@ export const Burn: Power = {
           ]
         }
       ]
-    },
-    "buffDuration": 100
+    }
   }
 };

@@ -42,10 +42,10 @@ export const SummonSpiderlings: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
       "duration": 240,
-      "entityCount": 3
+      "entity": "Pets_Patron_Powers_Arachnobot_Spiderling",
+      "entityCount": 3,
+      "isPseudoPet": false
     }
   }
 };

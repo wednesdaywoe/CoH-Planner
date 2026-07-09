@@ -37,8 +37,8 @@ export const GlueArrow: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_StickyArrow"
+      "entity": "Pets_StickyArrow",
+      "isPseudoPet": false
     }
   }
 };

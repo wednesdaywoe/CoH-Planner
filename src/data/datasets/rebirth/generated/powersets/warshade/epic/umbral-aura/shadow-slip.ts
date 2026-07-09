@@ -41,9 +41,9 @@ export const ShadowSlip: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 2.1,
-      "table": "Ranged_Ones"
+    "buffDuration": 15,
+    "durations": {
+      "mezResistance": 15
     },
     "mezResistance": {
       "teleport": {
@@ -51,14 +51,14 @@ export const ShadowSlip: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "durations": {
-      "mezResistance": 15
-    },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 1,
       "entity": "Pets_TPFoeTauntWide",
-      "duration": 1
+      "isPseudoPet": false
     },
-    "buffDuration": 15
+    "teleport": {
+      "scale": 2.1,
+      "table": "Ranged_Ones"
+    }
   }
 };

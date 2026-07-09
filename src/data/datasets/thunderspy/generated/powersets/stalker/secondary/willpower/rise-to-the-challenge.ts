@@ -38,14 +38,14 @@ export const RisetotheChallenge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 0.25,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 1,
     "durations": {
       "regenBuff": 1
     },
-    "buffDuration": 1
+    "regenBuff": {
+      "scale": 0.25,
+      "table": "Melee_Ones"
+    }
   },
   "requires": "Stalker_Defense.Willpower.Reconstruction !"
 };

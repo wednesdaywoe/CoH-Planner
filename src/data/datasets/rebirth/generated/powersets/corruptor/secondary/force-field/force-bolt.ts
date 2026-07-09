@@ -46,15 +46,15 @@ export const ForceBolt: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "slow": 15
-    },
-    "buffDuration": 15
+    }
   }
 };

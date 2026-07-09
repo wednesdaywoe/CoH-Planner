@@ -30,14 +30,14 @@ export const QuickRecovery: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 10.25,
     "durations": {
       "recoveryBuff": 10.25
     },
-    "buffDuration": 10.25
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    }
   },
   "mechanicType": "parentMechanic"
 };

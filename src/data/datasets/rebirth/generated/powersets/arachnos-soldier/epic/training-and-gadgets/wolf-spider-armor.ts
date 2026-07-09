@@ -30,48 +30,24 @@ export const WolfSpiderArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 0.3,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.3,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 0.2,
-        "table": "Melee_Res_Dmg"
-      }
+    "buffDuration": 10,
+    "confuse": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
     },
     "durations": {
-      "resistance": 10.25,
-      "stun": 10,
-      "mezResistance": 10,
-      "sleep": 10,
-      "immobilize": 10,
-      "hold": 10,
       "confuse": 10,
-      "fear": 10
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Melee_Ones"
+      "fear": 10,
+      "hold": 10,
+      "immobilize": 10,
+      "mezResistance": 10,
+      "resistance": 10.25,
+      "sleep": 10,
+      "stun": 10
     },
     "effectDuration": 10,
-    "mezResistance": {
-      "sleep": {
-        "scale": 5,
-        "table": "Melee_Ones"
-      }
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "immobilize": {
+    "fear": {
       "mag": 1,
       "scale": 2,
       "table": "Melee_Ones"
@@ -81,17 +57,41 @@ export const WolfSpiderArmor: Power = {
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "confuse": {
+    "immobilize": {
       "mag": 1,
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "fear": {
+    "mezResistance": {
+      "sleep": {
+        "scale": 5,
+        "table": "Melee_Ones"
+      }
+    },
+    "resistance": {
+      "lethal": {
+        "scale": 0.3,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 0.2,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 0.3,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "sleep": {
       "mag": 1,
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10
+    "stun": {
+      "mag": 1,
+      "scale": 2,
+      "table": "Melee_Ones"
+    }
   },
   "mechanicType": "parentMechanic"
 };

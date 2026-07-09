@@ -47,28 +47,19 @@ export const Quickness: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.5,
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.4,
+        "table": "Melee_Ones"
+      }
+    },
     "defenseBuff": {
-      "ranged": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
@@ -80,11 +71,31 @@ export const Quickness: Power = {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
       "psionic": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
@@ -94,45 +105,34 @@ export const Quickness: Power = {
       }
     },
     "durations": {
+      "debuffResistance": 0.5,
       "defenseBuff": 0.5,
-      "knockup": 0.5,
       "knockback": 0.5,
-      "rechargeBuff": 0.5,
+      "knockup": 0.5,
       "movement": 0.5,
-      "debuffResistance": 0.5
-    },
-    "knockup": {
-      "scale": 9,
-      "table": "Melee_Ones"
+      "rechargeBuff": 0.5
     },
     "knockback": {
       "scale": 9,
       "table": "Melee_Ones"
     },
-    "rechargeBuff": {
-      "scale": 0.2,
+    "knockup": {
+      "scale": 9,
       "table": "Melee_Ones"
     },
     "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      },
       "flySpeed": {
         "scale": 0.1,
         "table": "Melee_SpeedFlying"
-      }
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
       },
-      "recharge": {
-        "scale": 0.4,
-        "table": "Melee_Ones"
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
       }
     },
-    "buffDuration": 0.5
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    }
   }
 };

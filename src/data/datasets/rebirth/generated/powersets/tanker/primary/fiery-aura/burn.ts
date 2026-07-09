@@ -51,20 +51,20 @@ export const Burn: Power = {
     }
   ],
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Burn",
-      "duration": 10
+    "buffDuration": 100,
+    "durations": {
+      "immobilize": 100
     },
+    "effectDuration": 100,
     "immobilize": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 100,
-    "durations": {
-      "immobilize": 100
-    },
-    "buffDuration": 100
+    "summon": {
+      "duration": 10,
+      "entity": "Pets_Burn",
+      "isPseudoPet": false
+    }
   }
 };

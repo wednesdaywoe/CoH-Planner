@@ -49,13 +49,13 @@ export const FireBreath: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 10.17,
     "damageBuff": {
       "scale": 0.082,
       "table": "Ranged_Ones"
     },
     "durations": {
       "damageBuff": 10.17
-    },
-    "buffDuration": 10.17
+    }
   }
 };

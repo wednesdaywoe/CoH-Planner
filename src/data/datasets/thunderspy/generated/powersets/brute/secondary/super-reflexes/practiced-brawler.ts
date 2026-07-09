@@ -40,13 +40,13 @@ export const PracticedBrawler: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 120,
     "durations": {
       "regenBuff": 120
     },
-    "buffDuration": 120
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -59,6 +59,7 @@ export const BrightNovaDetonation: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
@@ -69,8 +70,7 @@ export const BrightNovaDetonation: Power = {
     "knockback": {
       "scale": 2,
       "table": "Ranged_Knockback"
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

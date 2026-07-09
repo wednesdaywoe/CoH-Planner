@@ -47,7 +47,20 @@ export const DarkNovaBolt: Power = {
     "table": "Ranged_SSDamage"
   },
   "effects": {
+    "buffDuration": 3,
+    "durations": {
+      "rechargeDebuff": 3,
+      "slow": 3
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -59,21 +72,8 @@ export const DarkNovaBolt: Power = {
       "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 3,
-      "rechargeDebuff": 3
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 3
+    }
   },
   "requires": "0",
   "modesRequired": [

@@ -42,6 +42,10 @@ export const StunningAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "regenBuff": 2.25
+    },
     "enduranceDrain": {
       "scale": 0.075,
       "table": "Ranged_Ones"
@@ -49,10 +53,6 @@ export const StunningAura: Power = {
     "regenBuff": {
       "scale": 0.15,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenBuff": 2.25
-    },
-    "buffDuration": 2.25
+    }
   }
 };

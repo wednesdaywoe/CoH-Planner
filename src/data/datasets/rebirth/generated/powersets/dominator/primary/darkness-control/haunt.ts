@@ -44,10 +44,10 @@ export const Haunt: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Shade",
       "duration": 60,
-      "entityCount": 2
+      "entity": "Pets_Shade",
+      "entityCount": 2,
+      "isPseudoPet": false
     }
   }
 };

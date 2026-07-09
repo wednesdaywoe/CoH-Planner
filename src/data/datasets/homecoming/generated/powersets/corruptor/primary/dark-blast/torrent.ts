@@ -52,10 +52,7 @@ export const Torrent: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
+    "buffDuration": 10,
     "durations": {
       "tohitDebuff": 10
     },
@@ -63,6 +60,9 @@ export const Torrent: Power = {
       "scale": 5,
       "table": "Ranged_Knockback"
     },
-    "buffDuration": 10
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    }
   }
 };

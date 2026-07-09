@@ -54,10 +54,9 @@ export const ChainInduction: Power = {
     }
   ],
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Chain_Induction_Jump1",
-      "duration": 1
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
     },
     "enduranceDrain": {
       "scale": 0.1,
@@ -67,14 +66,15 @@ export const ChainInduction: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "recoveryDebuff": 4
+    "summon": {
+      "duration": 1,
+      "entity": "Pets_Chain_Induction_Jump1",
+      "isPseudoPet": false
     },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 4
+    }
   },
   "specialEffects": [
     {

@@ -42,19 +42,8 @@ export const GraniteArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "smashing": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
       "cold": {
         "scale": 2,
         "table": "Melee_Buff_Def"
@@ -63,14 +52,25 @@ export const GraniteArmor: Power = {
         "scale": 2,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

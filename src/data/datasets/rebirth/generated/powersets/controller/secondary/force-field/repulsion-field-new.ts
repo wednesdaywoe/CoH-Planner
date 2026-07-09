@@ -29,10 +29,7 @@ export const RepulsionFieldNew: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 0.75,
     "durations": {
       "knockback": 0.75
     },
@@ -40,7 +37,10 @@ export const RepulsionFieldNew: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 0.75
+    "knockback": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
+    }
   },
   "requires": "Controller_Buff.Force_Field.Force_Bubble"
 };

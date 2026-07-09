@@ -36,43 +36,9 @@ export const FRTMindLink: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 0.5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 90,
-      "resistance": 90,
-      "defenseBuff": 90
-    },
-    "resistance": {
-      "psionic": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
+    "buffDuration": 90,
     "defenseBuff": {
-      "ranged": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
@@ -84,6 +50,18 @@ export const FRTMindLink: Power = {
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 1,
         "table": "Melee_Buff_Def"
@@ -92,11 +70,33 @@ export const FRTMindLink: Power = {
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
+      "ranged": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
       "toxic": {
         "scale": 1,
         "table": "Melee_Buff_Def"
       }
     },
-    "buffDuration": 90
+    "durations": {
+      "defenseBuff": 90,
+      "resistance": 90,
+      "tohitBuff": 90
+    },
+    "resistance": {
+      "psionic": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "tohitBuff": {
+      "scale": 0.5,
+      "table": "Melee_Buff_ToHit"
+    }
   }
 };

@@ -38,13 +38,13 @@ export const AdrenalinBoost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 8,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 60,
     "durations": {
       "recoveryBuff": 60
     },
-    "buffDuration": 60
+    "recoveryBuff": {
+      "scale": 8,
+      "table": "Ranged_Ones"
+    }
   }
 };

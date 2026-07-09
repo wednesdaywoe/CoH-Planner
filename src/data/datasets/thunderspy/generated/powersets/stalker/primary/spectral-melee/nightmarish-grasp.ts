@@ -47,15 +47,15 @@ export const NightmarishGrasp: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Immobilize"
-    },
     "fear": {
       "mag": 0.75,
       "scale": 20,
       "table": "Melee_Fear"
+    },
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Melee_Immobilize"
     }
   }
 };

@@ -42,10 +42,10 @@ export const SpectralTerror: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Terror",
+      "copyBoosts": true,
       "duration": 45,
-      "copyBoosts": true
+      "entity": "Pets_Terror",
+      "isPseudoPet": false
     }
   }
 };

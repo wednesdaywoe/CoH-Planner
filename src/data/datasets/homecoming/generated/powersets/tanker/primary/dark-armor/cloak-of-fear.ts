@@ -51,28 +51,21 @@ export const CloakofFear: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "fear": {
-      "mag": 1,
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 3,
-    "durations": {
-      "fear": 3,
-      "tohitDebuff": 3,
-      "damageDebuff": 3,
-      "knockup": 5,
-      "knockback": 5
-    },
-    "tohitDebuff": {
-      "scale": 0.05,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 3,
     "damageDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Dam"
     },
-    "knockup": {
+    "durations": {
+      "damageDebuff": 3,
+      "fear": 3,
+      "knockback": 5,
+      "knockup": 5,
+      "tohitDebuff": 3
+    },
+    "effectDuration": 3,
+    "fear": {
+      "mag": 1,
       "scale": 1,
       "table": "Melee_Ones"
     },
@@ -80,10 +73,17 @@ export const CloakofFear: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
+    "knockup": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "taunt": {
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 3
+    "tohitDebuff": {
+      "scale": 0.05,
+      "table": "Melee_Ones"
+    }
   }
 };

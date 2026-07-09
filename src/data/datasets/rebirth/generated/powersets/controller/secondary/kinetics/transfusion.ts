@@ -40,10 +40,9 @@ export const Transfusion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Transfusion_Controller",
-      "duration": 1
+    "buffDuration": 20,
+    "durations": {
+      "regenDebuff": 20
     },
     "enduranceDrain": {
       "scale": 0.1,
@@ -53,9 +52,10 @@ export const Transfusion: Power = {
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "regenDebuff": 20
-    },
-    "buffDuration": 20
+    "summon": {
+      "duration": 1,
+      "entity": "Pets_Transfusion_Controller",
+      "isPseudoPet": false
+    }
   }
 };

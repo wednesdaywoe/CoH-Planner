@@ -54,12 +54,16 @@ export const Howl: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "resistanceDebuff": 8
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -67,11 +71,7 @@ export const Howl: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -83,14 +83,14 @@ export const Howl: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 8
-    },
-    "buffDuration": 8
+    }
   }
 };

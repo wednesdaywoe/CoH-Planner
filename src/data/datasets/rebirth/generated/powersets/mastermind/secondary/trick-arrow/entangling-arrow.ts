@@ -41,12 +41,34 @@ export const EntanglingArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "damageDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 15,
+      "rechargeDebuff": 15,
+      "slow": 15
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 500,
         "table": "Ranged_Ones"
@@ -54,30 +76,8 @@ export const EntanglingArrow: Power = {
       "runSpeed": {
         "scale": 1.5,
         "table": "Ranged_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "slow": 15,
-      "rechargeDebuff": 15,
-      "damageDebuff": 15
-    },
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Ranged_Slow"
-    },
-    "damageDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "buffDuration": 15
+    }
   },
   "conditionalEffects": [
     {
@@ -86,25 +86,25 @@ export const EntanglingArrow: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
-        "rechargeDebuff": {
-          "scale": 0.08,
-          "table": "Ranged_Slow"
-        },
+        "buffDuration": 15,
         "durations": {
           "rechargeDebuff": 15,
           "slow": 15
         },
+        "rechargeDebuff": {
+          "scale": 0.08,
+          "table": "Ranged_Slow"
+        },
         "slow": {
-          "runSpeed": {
-            "scale": 0.08,
-            "table": "Ranged_Slow"
-          },
           "flySpeed": {
             "scale": 0.08,
             "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.08,
+            "table": "Ranged_Slow"
           }
-        },
-        "buffDuration": 15
+        }
       }
     }
   ]

@@ -52,21 +52,26 @@ export const Frostbite: Power = {
     "tickRate": 2
   },
   "effects": {
+    "buffDuration": 12,
+    "durations": {
+      "rechargeDebuff": 12,
+      "slow": 12
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
       },
       "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
@@ -74,20 +79,15 @@ export const Frostbite: Power = {
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 12,
-      "rechargeDebuff": 12
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 12
+    }
   },
   "specialEffects": [
     {

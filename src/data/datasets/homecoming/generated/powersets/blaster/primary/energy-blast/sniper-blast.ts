@@ -57,6 +57,10 @@ export const SniperBlast: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rangeBuff": 10
+    },
     "knockback": {
       "scale": 0.7,
       "table": "Ranged_Knockback"
@@ -64,11 +68,7 @@ export const SniperBlast: Power = {
     "rangeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
-    },
-    "buffDuration": 10
+    }
   },
   "quickSnipe": {
     "stats": {

@@ -60,14 +60,14 @@ export const FireBall: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.02,
       "table": "Ranged_Ones"
     },
     "durations": {
       "damageBuff": 8.5
-    },
-    "buffDuration": 8.5
+    }
   },
   "specialEffects": [
     {

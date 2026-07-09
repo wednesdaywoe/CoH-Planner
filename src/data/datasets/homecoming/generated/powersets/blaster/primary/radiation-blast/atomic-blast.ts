@@ -54,11 +54,7 @@ export const AtomicBlast: Power = {
     }
   ],
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
+    "buffDuration": 20,
     "defenseDebuff": {
       "scale": 4,
       "table": "Ranged_Debuff_Def"
@@ -66,6 +62,10 @@ export const AtomicBlast: Power = {
     "durations": {
       "defenseDebuff": 20
     },
-    "buffDuration": 20
+    "hold": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    }
   }
 };

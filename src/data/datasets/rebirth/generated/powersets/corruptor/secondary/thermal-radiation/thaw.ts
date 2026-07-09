@@ -36,56 +36,8 @@ export const Thaw: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 90,
-    "durations": {
-      "stun": 90,
-      "mezResistance": 90,
-      "sleep": 90,
-      "immobilize": 90,
-      "hold": 90,
-      "resistance": 90,
-      "confuse": 90,
-      "fear": 90,
-      "debuffResistance": 90
-    },
-    "mezResistance": {
-      "sleep": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
+    "buffDuration": 90,
     "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "fear": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
@@ -100,7 +52,55 @@ export const Thaw: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 90
+    "durations": {
+      "confuse": 90,
+      "debuffResistance": 90,
+      "fear": 90,
+      "hold": 90,
+      "immobilize": 90,
+      "mezResistance": 90,
+      "resistance": 90,
+      "sleep": 90,
+      "stun": 90
+    },
+    "effectDuration": 90,
+    "fear": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "mezResistance": {
+      "sleep": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "resistance": {
+      "cold": {
+        "scale": 1,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    }
   },
   "setsModes": [
     "Peacebringer_Blaster_Mode"

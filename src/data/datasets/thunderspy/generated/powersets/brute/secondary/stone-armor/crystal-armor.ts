@@ -40,6 +40,7 @@ export const CrystalArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "energy": {
         "scale": 1.6,
@@ -52,7 +53,6 @@ export const CrystalArmor: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

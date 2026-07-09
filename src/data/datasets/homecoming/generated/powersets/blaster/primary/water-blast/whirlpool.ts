@@ -44,12 +44,7 @@ export const Whirlpool: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Whirlpool_Blaster",
-      "duration": 15,
-      "copyBoosts": true
-    },
+    "buffDuration": 9.53,
     "damageBuff": {
       "scale": 0.033,
       "table": "Ranged_Ones"
@@ -57,6 +52,11 @@ export const Whirlpool: Power = {
     "durations": {
       "damageBuff": 9.53
     },
-    "buffDuration": 9.53
+    "summon": {
+      "copyBoosts": true,
+      "duration": 15,
+      "entity": "Pets_Whirlpool_Blaster",
+      "isPseudoPet": false
+    }
   }
 };

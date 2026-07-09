@@ -40,19 +40,18 @@ export const HeightenedSenses: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      },
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
+    },
     "defenseBuff": {
-      "smashing": {
-        "scale": 0.33,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.33,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 1.3,
-        "table": "Melee_Buff_Def"
-      },
       "cold": {
         "scale": 1.3,
         "table": "Melee_Buff_Def"
@@ -61,30 +60,31 @@ export const HeightenedSenses: Power = {
         "scale": 1.3,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 1.3,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.33,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 1.3,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.33,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
       "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
       "perceptionBuff": 0.75
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
     },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

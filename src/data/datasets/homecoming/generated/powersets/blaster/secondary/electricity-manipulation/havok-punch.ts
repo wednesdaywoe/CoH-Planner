@@ -59,14 +59,22 @@ export const HavokPunch: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 9,
+    "damageBuff": {
+      "scale": 0.099,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 9,
+      "recoveryDebuff": 4
+    },
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Melee_Ones"
     },
-    "sleep": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Melee_Sleep"
+    "enduranceGain": {
+      "scale": 6.76,
+      "table": "Melee_Ones"
     },
     "knockback": {
       "scale": 0.75,
@@ -76,19 +84,11 @@ export const HavokPunch: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "recoveryDebuff": 4,
-      "damageBuff": 9
+    "sleep": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Melee_Sleep"
     },
-    "enduranceGain": {
-      "scale": 6.76,
-      "table": "Melee_Ones"
-    },
-    "damageBuff": {
-      "scale": 0.099,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 9,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

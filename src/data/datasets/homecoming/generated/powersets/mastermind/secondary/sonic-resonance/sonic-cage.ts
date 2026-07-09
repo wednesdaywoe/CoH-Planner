@@ -33,25 +33,25 @@ export const SonicCage: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "untouchable": {
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 30,
     "durations": {
-      "untouchable": 30,
+      "immobilize": 30,
       "onlyAffectsSelf": 30,
-      "immobilize": 30
+      "untouchable": 30
     },
-    "onlyAffectsSelf": {
-      "scale": 4,
-      "table": "Ranged_Immobilize"
-    },
+    "effectDuration": 30,
     "immobilize": {
       "mag": 1,
       "scale": 4,
       "table": "Ranged_Immobilize"
     },
-    "effectDuration": 30,
-    "buffDuration": 30
+    "onlyAffectsSelf": {
+      "scale": 4,
+      "table": "Ranged_Immobilize"
+    },
+    "untouchable": {
+      "scale": 4,
+      "table": "Ranged_Immobilize"
+    }
   }
 };

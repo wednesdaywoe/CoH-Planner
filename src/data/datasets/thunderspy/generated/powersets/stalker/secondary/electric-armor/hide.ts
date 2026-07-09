@@ -37,18 +37,18 @@ export const Hide: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "regenDebuff": 15
+    },
     "regenDebuff": {
       "scale": 10,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "regenDebuff": 15
-    },
     "taunt": {
       "scale": 8,
       "table": "Melee_Taunt"
-    },
-    "buffDuration": 15
+    }
   },
   "conditionalEffects": [
     {

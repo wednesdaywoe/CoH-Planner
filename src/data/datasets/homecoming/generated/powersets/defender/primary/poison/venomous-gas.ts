@@ -45,8 +45,27 @@ export const VenomousGas: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "damageDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "damageDebuff": 0.75,
+      "defenseDebuff": 0.75,
+      "resistanceDebuff": 0.75,
+      "tohitDebuff": 0.75
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
@@ -54,11 +73,7 @@ export const VenomousGas: Power = {
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
@@ -70,33 +85,18 @@ export const VenomousGas: Power = {
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
-      "toxic": {
+      "smashing": {
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "toxic": {
         "scale": 2.5,
         "table": "Ranged_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 0.75,
-      "damageDebuff": 0.75,
-      "defenseDebuff": 0.75,
-      "tohitDebuff": 0.75
-    },
-    "damageDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
     "tohitDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_ToHit"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

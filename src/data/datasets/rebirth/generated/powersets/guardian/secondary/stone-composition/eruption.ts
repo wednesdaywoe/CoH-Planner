@@ -47,9 +47,9 @@ export const Eruption: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 15,
       "entity": "Pets_Guardian_StoneComposition_Eruption",
-      "duration": 15
+      "isPseudoPet": false
     }
   }
 };

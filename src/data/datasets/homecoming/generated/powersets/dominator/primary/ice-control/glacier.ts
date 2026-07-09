@@ -40,38 +40,38 @@ export const Glacier: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 18,
+    "durations": {
+      "rechargeDebuff": 18,
+      "slow": 18
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
       "jumpSpeed": {
         "scale": 0.5,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 18,
-      "rechargeDebuff": 18
-    },
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 18
+    }
   },
   "conditionalEffects": [
     {

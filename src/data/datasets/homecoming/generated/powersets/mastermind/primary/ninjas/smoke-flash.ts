@@ -34,6 +34,10 @@ export const SmokeFlash: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 4,
+    "durations": {
+      "stealth": 4
+    },
     "stealth": {
       "stealthPvE": {
         "scale": 54,
@@ -47,10 +51,6 @@ export const SmokeFlash: Power = {
         "scale": 0.2,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "stealth": 4
-    },
-    "buffDuration": 4
+    }
   }
 };

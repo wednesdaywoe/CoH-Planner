@@ -38,8 +38,16 @@ export const FireShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 240,
+    "durations": {
+      "resistance": 240
+    },
     "resistance": {
-      "smashing": {
+      "cold": {
+        "scale": 1,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -47,18 +55,10 @@ export const FireShield: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "fire": {
+      "smashing": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 240
-    },
-    "buffDuration": 240
+    }
   }
 };

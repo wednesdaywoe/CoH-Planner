@@ -53,23 +53,23 @@ export const ElectronHaze: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 9.87,
+    "damageBuff": {
+      "scale": 0.072,
+      "table": "Ranged_Ones"
+    },
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 8,
-      "damageBuff": 9.87
+      "damageBuff": 9.87,
+      "defenseDebuff": 8
     },
     "knockback": {
       "scale": 1,
       "table": "Ranged_Knockback"
-    },
-    "damageBuff": {
-      "scale": 0.072,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 9.87
+    }
   },
   "specialEffects": [
     {

@@ -41,9 +41,9 @@ export const SummonDemonlings: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "MastermindPets_Fiery_Demonling",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

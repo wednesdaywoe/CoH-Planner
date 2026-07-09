@@ -40,12 +40,16 @@ export const BrimstoneArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
     "resistance": {
-      "fire": {
+      "cold": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
+      "fire": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       },
@@ -53,11 +57,7 @@ export const BrimstoneArmor: Power = {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
+    }
   },
   "modesSuspended": [
     "Granite_Mode"

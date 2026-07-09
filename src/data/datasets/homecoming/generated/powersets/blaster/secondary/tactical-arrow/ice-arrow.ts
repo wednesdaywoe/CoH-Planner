@@ -50,16 +50,21 @@ export const IceArrow: Power = {
     "tickRate": 0.5
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 10
+    },
     "hold": {
       "mag": 2,
       "scale": 10,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
         "scale": 0.1,
         "table": "Ranged_Slow"
@@ -71,16 +76,11 @@ export const IceArrow: Power = {
       "jumpSpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 10,
-      "rechargeDebuff": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 10
+    }
   }
 };

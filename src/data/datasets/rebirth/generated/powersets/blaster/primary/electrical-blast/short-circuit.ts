@@ -48,6 +48,15 @@ export const ShortCircuit: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 10.5,
+    "damageBuff": {
+      "scale": 0.05,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 10.5,
+      "recoveryDebuff": 10
+    },
     "enduranceDrain": {
       "scale": 0.35,
       "table": "Ranged_Ones"
@@ -55,16 +64,7 @@ export const ShortCircuit: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 10,
-      "damageBuff": 10.5
-    },
-    "damageBuff": {
-      "scale": 0.05,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10.5
+    }
   },
   "conditionalEffects": [
     {

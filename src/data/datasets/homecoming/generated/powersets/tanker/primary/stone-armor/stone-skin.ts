@@ -32,19 +32,38 @@ export const StoneSkin: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
+    "buffDuration": 10.25,
+    "defenseBuff": {
+      "cold": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
       },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
+      "energy": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
       },
       "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
       },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 10.25,
+      "resistance": 10.25
+    },
+    "resistance": {
       "cold": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
@@ -53,7 +72,19 @@ export const StoneSkin: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
       "negative": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
@@ -61,38 +92,7 @@ export const StoneSkin: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "defenseBuff": 10.25
-    },
-    "defenseBuff": {
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "buffDuration": 10.25
+    }
   },
   "requires": "Tanker_Melee.Claws !",
   "mechanicType": "parentMechanic"

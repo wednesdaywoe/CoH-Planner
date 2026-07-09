@@ -38,13 +38,13 @@ export const RegenerationAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 60,
     "durations": {
       "regenBuff": 60
     },
-    "buffDuration": 60
+    "regenBuff": {
+      "scale": 5,
+      "table": "Ranged_Ones"
+    }
   }
 };

@@ -30,36 +30,7 @@ export const Permafrost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "debuffResistance": 10.25
-    },
+    "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
         "scale": 0.2,
@@ -70,7 +41,36 @@ export const Permafrost: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 10.25
+    "durations": {
+      "debuffResistance": 10.25,
+      "resistance": 10.25
+    },
+    "resistance": {
+      "cold": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    }
   },
   "mechanicType": "parentMechanic"
 };

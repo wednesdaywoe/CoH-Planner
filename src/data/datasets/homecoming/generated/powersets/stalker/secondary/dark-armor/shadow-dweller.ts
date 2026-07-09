@@ -32,48 +32,15 @@ export const ShadowDweller: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "immobilize": {
-      "mag": 1,
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 10.25,
-    "durations": {
-      "immobilize": 10.25,
-      "mezResistance": 10.25,
-      "defenseBuff": 10.25,
-      "debuffResistance": 10.25,
-      "perceptionBuff": 10.25,
-      "regenBuff": 10.3
-    },
-    "mezResistance": {
-      "immobilize": {
-        "scale": 1.5,
+    "buffDuration": 10.25,
+    "debuffResistance": {
+      "perception": {
+        "scale": 1.25,
         "table": "Melee_Res_Boolean"
       }
     },
     "defenseBuff": {
-      "ranged": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
@@ -85,14 +52,48 @@ export const ShadowDweller: Power = {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       }
     },
-    "debuffResistance": {
-      "perception": {
-        "scale": 1.25,
+    "durations": {
+      "debuffResistance": 10.25,
+      "defenseBuff": 10.25,
+      "immobilize": 10.25,
+      "mezResistance": 10.25,
+      "perceptionBuff": 10.25,
+      "regenBuff": 10.3
+    },
+    "effectDuration": 10.25,
+    "immobilize": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "immobilize": {
+        "scale": 1.5,
         "table": "Melee_Res_Boolean"
       }
     },
@@ -103,8 +104,7 @@ export const ShadowDweller: Power = {
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 10.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

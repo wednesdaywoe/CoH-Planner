@@ -48,78 +48,20 @@ export const LightForm: Power = {
     }
   ],
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      }
-    },
+    "buffDuration": 90,
     "durations": {
-      "resistance": 90,
-      "recoveryBuff": 90,
-      "mezResistance": 90,
-      "knockup": 90,
-      "knockback": 90,
-      "repel": 90,
       "hold": 90,
       "immobilize": 90,
-      "stun": 90,
-      "sleep": 90
+      "knockback": 90,
+      "knockup": 90,
+      "mezResistance": 90,
+      "recoveryBuff": 90,
+      "repel": 90,
+      "resistance": 90,
+      "sleep": 90,
+      "stun": 90
     },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "repel": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
+    "effectDuration": 90,
     "enduranceDrain": {
       "scale": 0.5,
       "table": "Melee_Ones"
@@ -129,8 +71,72 @@ export const LightForm: Power = {
       "scale": 10,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 90,
     "immobilize": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "sleep": {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"
@@ -140,12 +146,6 @@ export const LightForm: Power = {
       "scale": 10,
       "table": "Melee_Res_Boolean"
     },
-    "sleep": {
-      "mag": 1,
-      "scale": 10,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 90,
     "maxStacks": 2,
     "stacksLinear": [
       "recoveryBuff",

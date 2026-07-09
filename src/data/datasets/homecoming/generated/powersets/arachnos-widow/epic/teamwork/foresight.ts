@@ -32,41 +32,32 @@ export const Foresight: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "psionic": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "defenseBuff": {
+      "aoe": {
+        "scale": 0.75,
+        "table": "Melee_Buff_Def"
       },
-      "smashing": {
-        "scale": 0,
-        "table": "Melee_Ones"
+      "melee": {
+        "scale": 0.75,
+        "table": "Melee_Buff_Def"
       },
-      "lethal": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "cold": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "energy": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "negative": {
-        "scale": 0,
-        "table": "Melee_Ones"
+      "ranged": {
+        "scale": 0.75,
+        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
-      "resistance": 0.75,
-      "mezResistance": 0.75,
       "debuffResistance": 0.75,
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "mezResistance": 0.75,
+      "resistance": 0.75
     },
     "mezResistance": {
       "confuse": {
@@ -85,36 +76,45 @@ export const Foresight: Power = {
         "scale": 0.25,
         "table": "Melee_Ones"
       },
-      "stun": {
-        "scale": 0.25,
-        "table": "Melee_Ones"
-      },
       "sleep": {
         "scale": 0.25,
         "table": "Melee_Ones"
-      }
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
       },
-      "melee": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.75,
-        "table": "Melee_Buff_Def"
+      "stun": {
+        "scale": 0.25,
+        "table": "Melee_Ones"
       }
     },
-    "buffDuration": 0.75
+    "resistance": {
+      "cold": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "energy": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "fire": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "negative": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "psionic": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      }
+    }
   },
   "mechanicType": "parentMechanic"
 };

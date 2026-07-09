@@ -43,13 +43,13 @@ export const AnguishingCry: Power = {
     "table": "Melee_Ones"
   },
   "effects": {
+    "buffDuration": 30,
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 30
-    },
-    "buffDuration": 30
+    }
   }
 };

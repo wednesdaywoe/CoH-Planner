@@ -49,9 +49,9 @@ export const Tornado: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 30,
       "entity": "Pets_Tornado",
-      "duration": 30
+      "isPseudoPet": false
     }
   }
 };

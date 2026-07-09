@@ -48,46 +48,7 @@ export const SoulTransfer: Power = {
       "scale": 2.2,
       "table": "Melee_HealSelf"
     },
-    "durations": {
-      "absorb": 30,
-      "fear": 30,
-      "hold": 30,
-      "immobilize": 30,
-      "stun": 30,
-      "sleep": 30,
-      "knockback": 30,
-      "debuffResistance": 30
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 30,
-    "hold": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 25,
-      "table": "Melee_Res_Boolean"
-    },
-    "knockback": {
-      "scale": 26.25,
-      "table": "Melee_Res_Boolean"
-    },
+    "buffDuration": 30,
     "debuffResistance": {
       "endurance": {
         "scale": 0.11,
@@ -98,6 +59,45 @@ export const SoulTransfer: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 30
+    "durations": {
+      "absorb": 30,
+      "debuffResistance": 30,
+      "fear": 30,
+      "hold": 30,
+      "immobilize": 30,
+      "knockback": 30,
+      "sleep": 30,
+      "stun": 30
+    },
+    "effectDuration": 30,
+    "fear": {
+      "mag": 1,
+      "scale": 25,
+      "table": "Melee_Res_Boolean"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 25,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 25,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 26.25,
+      "table": "Melee_Res_Boolean"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 25,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 25,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

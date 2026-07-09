@@ -40,11 +40,11 @@ export const MindOverBody: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
     "resistance": {
-      "smashing": {
-        "scale": 2.25,
-        "table": "Melee_Res_DMG"
-      },
       "lethal": {
         "scale": 2.25,
         "table": "Melee_Res_DMG"
@@ -52,11 +52,11 @@ export const MindOverBody: Power = {
       "psionic": {
         "scale": 2,
         "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 2.25,
+        "table": "Melee_Res_DMG"
       }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

@@ -32,34 +32,7 @@ export const TemperatureProtection: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "debuffResistance": 10.25,
-      "regenBuff": 10.25,
-      "maxHPBuff": 10.25,
-      "knockback": 10.25,
-      "knockup": 10.25,
-      "mezResistance": 10.25,
-      "fear": 10.25
-    },
+    "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
         "scale": 0.2,
@@ -70,13 +43,21 @@ export const TemperatureProtection: Power = {
         "table": "Melee_Ones"
       }
     },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
+    "durations": {
+      "debuffResistance": 10.25,
+      "fear": 10.25,
+      "knockback": 10.25,
+      "knockup": 10.25,
+      "maxHPBuff": 10.25,
+      "mezResistance": 10.25,
+      "regenBuff": 10.25,
+      "resistance": 10.25
     },
-    "maxHPBuff": {
-      "scale": 1,
-      "table": "Melee_HealSelf"
+    "effectDuration": 10.25,
+    "fear": {
+      "mag": 1,
+      "scale": 8,
+      "table": "Melee_Res_Boolean"
     },
     "knockback": {
       "scale": 3,
@@ -86,27 +67,46 @@ export const TemperatureProtection: Power = {
       "scale": 3,
       "table": "Melee_Ones"
     },
+    "maxHPBuff": {
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    },
     "mezResistance": {
-      "knockup": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
+      "fear": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
       },
       "knockback": {
         "scale": 0.5,
         "table": "Melee_Ones"
       },
-      "fear": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
+      "knockup": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
       }
     },
-    "fear": {
-      "mag": 1,
-      "scale": 8,
-      "table": "Melee_Res_Boolean"
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     },
-    "effectDuration": 10.25,
-    "buffDuration": 10.25
+    "resistance": {
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    }
   },
   "mechanicType": "parentMechanic"
 };

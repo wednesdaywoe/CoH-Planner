@@ -32,6 +32,7 @@ export const CombatTrainingDefensive: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "melee": {
         "scale": 0.75,
@@ -43,18 +44,6 @@ export const CombatTrainingDefensive: Power = {
       "resistance": 0.75
     },
     "resistance": {
-      "smashing": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
       "cold": {
         "scale": 0,
         "table": "Melee_Ones"
@@ -63,12 +52,23 @@ export const CombatTrainingDefensive: Power = {
         "scale": 0,
         "table": "Melee_Ones"
       },
+      "fire": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
       "negative": {
         "scale": 0,
         "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0,
+        "table": "Melee_Ones"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "mechanicType": "parentMechanic"
 };

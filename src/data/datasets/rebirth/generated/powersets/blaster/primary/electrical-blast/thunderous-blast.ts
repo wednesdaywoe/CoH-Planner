@@ -54,10 +54,7 @@ export const ThunderousBlast: Power = {
     }
   ],
   "effects": {
-    "enduranceDrain": {
-      "scale": 1.05,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 11.2,
     "damageBuff": {
       "scale": 0.051,
       "table": "Ranged_Ones"
@@ -65,7 +62,10 @@ export const ThunderousBlast: Power = {
     "durations": {
       "damageBuff": 11.2
     },
-    "buffDuration": 11.2
+    "enduranceDrain": {
+      "scale": 1.05,
+      "table": "Ranged_Ones"
+    }
   },
   "specialEffects": [
     {

@@ -68,31 +68,31 @@ export const DNASiphon: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "recoveryBuff": 30,
+      "regenBuff": 30,
+      "regenDebuff": 30
+    },
     "enduranceGain": {
       "scale": 5,
       "table": "Melee_Ones",
       "perTarget": 5
-    },
-    "regenBuff": {
-      "scale": 0.26,
-      "table": "Melee_Ones",
-      "perTarget": 0.26
-    },
-    "durations": {
-      "regenBuff": 30,
-      "recoveryBuff": 30,
-      "regenDebuff": 30
     },
     "recoveryBuff": {
       "scale": 0.2188,
       "table": "Melee_Ones",
       "perTarget": 0.2188
     },
+    "regenBuff": {
+      "scale": 0.26,
+      "table": "Melee_Ones",
+      "perTarget": 0.26
+    },
     "regenDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 30
+    }
   },
   "conditionalEffects": [
     {
@@ -114,19 +114,19 @@ export const DNASiphon: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "regenBuffUnenhanced": {
-          "scale": 0.06,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 30,
         "durations": {
-          "regenBuffUnenhanced": 30,
-          "recoveryBuffUnenhanced": 30
+          "recoveryBuffUnenhanced": 30,
+          "regenBuffUnenhanced": 30
         },
         "recoveryBuffUnenhanced": {
           "scale": 0.0938,
           "table": "Melee_Ones"
         },
-        "buffDuration": 30
+        "regenBuffUnenhanced": {
+          "scale": 0.06,
+          "table": "Melee_Ones"
+        }
       },
       "group": "adaptation"
     },
@@ -136,14 +136,14 @@ export const DNASiphon: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "regenDebuff": {
-          "scale": 1.33,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 30,
         "durations": {
           "regenDebuff": 30
         },
-        "buffDuration": 30
+        "regenDebuff": {
+          "scale": 1.33,
+          "table": "Melee_Ones"
+        }
       },
       "group": "adaptation"
     }

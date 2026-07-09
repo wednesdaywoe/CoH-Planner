@@ -53,6 +53,10 @@ export const JacobsLadder: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 2,
+    "durations": {
+      "recoveryDebuff": 2
+    },
     "enduranceDrain": {
       "scale": 0.07,
       "table": "Melee_Ones"
@@ -61,15 +65,11 @@ export const JacobsLadder: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "recoveryDebuff": 2
-    },
     "sleep": {
       "mag": 2,
       "scale": 6,
       "table": "Melee_Sleep"
-    },
-    "buffDuration": 2
+    }
   },
   "specialEffects": [
     {

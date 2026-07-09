@@ -40,9 +40,9 @@ export const ForceBarrier: Power = {
       "scale": 0.3,
       "table": "Ranged_Ones"
     },
+    "buffDuration": 60,
     "durations": {
       "absorb": 60
-    },
-    "buffDuration": 60
+    }
   }
 };

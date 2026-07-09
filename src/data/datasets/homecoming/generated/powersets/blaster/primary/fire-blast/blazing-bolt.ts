@@ -57,14 +57,14 @@ export const BlazingBolt: Power = {
     }
   ],
   "effects": {
-    "rangeBuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 10,
     "durations": {
       "rangeBuff": 10
     },
-    "buffDuration": 10
+    "rangeBuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    }
   },
   "quickSnipe": {
     "stats": {

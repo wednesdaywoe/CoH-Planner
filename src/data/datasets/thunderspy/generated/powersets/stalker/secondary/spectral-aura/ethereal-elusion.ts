@@ -44,6 +44,7 @@ export const EtherealElusion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "ranged": {
         "scale": 2,
@@ -52,7 +53,6 @@ export const EtherealElusion: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

@@ -42,50 +42,19 @@ export const EntropyShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "mezResistance": {
-      "teleport": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "repel": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
-    },
+    "buffDuration": 2.25,
     "durations": {
-      "mezResistance": 2.25,
-      "knockup": 2.25,
-      "knockback": 2.25,
-      "repel": 2.25,
       "hold": 2.25,
-      "stun": 2.25,
+      "immobilize": 2.25,
+      "knockback": 2.25,
+      "knockup": 2.25,
+      "mezResistance": 2.25,
+      "repel": 2.25,
       "sleep": 2.25,
-      "immobilize": 2.25
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+      "stun": 2.25
     },
     "effectDuration": 2.25,
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
+    "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -95,7 +64,38 @@ export const EntropyShield: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 2.25,
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "repel": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
     "rechargeBuff": {
       "scale": 0.085,
       "table": "Melee_Ones",

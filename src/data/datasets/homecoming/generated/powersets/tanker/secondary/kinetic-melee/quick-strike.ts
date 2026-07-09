@@ -57,10 +57,7 @@ export const QuickStrike: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.4467,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 6,
     "damageDebuff": {
       "scale": 0.85,
       "table": "Melee_Debuff_Dam"
@@ -68,7 +65,10 @@ export const QuickStrike: Power = {
     "durations": {
       "damageDebuff": 6
     },
-    "buffDuration": 6
+    "knockback": {
+      "scale": 0.4467,
+      "table": "Melee_Ones"
+    }
   },
   "specialEffects": [
     {

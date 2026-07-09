@@ -45,6 +45,10 @@ export const Levitate: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "slow": 10
+    },
     "knockup": {
       "scale": 6,
       "table": "Ranged_Knockback"
@@ -54,10 +58,6 @@ export const Levitate: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "slow": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

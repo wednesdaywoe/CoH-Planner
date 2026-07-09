@@ -39,13 +39,13 @@ export const SiphonSpeed: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 60,
     "durations": {
       "rechargeDebuff": 60
     },
-    "buffDuration": 60
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    }
   }
 };

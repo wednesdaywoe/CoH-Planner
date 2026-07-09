@@ -52,15 +52,7 @@ export const PowerofthePhoenix: Power = {
     "tickRate": 1
   },
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Phoenix",
-      "duration": 5
-    },
-    "untouchable": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 15,
     "durations": {
       "untouchable": 15
     },
@@ -68,6 +60,14 @@ export const PowerofthePhoenix: Power = {
       "scale": 70,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15
+    "summon": {
+      "duration": 5,
+      "entity": "Pets_Phoenix",
+      "isPseudoPet": false
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Ranged_Ones"
+    }
   }
 };

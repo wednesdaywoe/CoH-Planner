@@ -42,9 +42,9 @@ export const JackFrost: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "Pets_JackFrost",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

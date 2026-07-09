@@ -81,7 +81,20 @@ export const Dehydrate: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8,
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 8,
+      "slow": 8
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -93,20 +106,7 @@ export const Dehydrate: Power = {
       "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 8,
-      "defenseDebuff": 8
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Ranged_Debuff_Def"
-    },
-    "buffDuration": 8
+    }
   }
 };

@@ -41,9 +41,9 @@ export const SuppressionField: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 45,
       "entity": "Pets_Guardian_ForceComposition_SuppressionField",
-      "duration": 45
+      "isPseudoPet": false
     }
   }
 };

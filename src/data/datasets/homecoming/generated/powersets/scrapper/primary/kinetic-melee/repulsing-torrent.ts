@@ -56,10 +56,7 @@ export const RepulsingTorrent: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1,
-      "table": "Melee_Knockback"
-    },
+    "buffDuration": 6,
     "damageDebuff": {
       "scale": 0.7,
       "table": "Melee_Debuff_Dam"
@@ -67,7 +64,10 @@ export const RepulsingTorrent: Power = {
     "durations": {
       "damageDebuff": 6
     },
-    "buffDuration": 6
+    "knockback": {
+      "scale": 1,
+      "table": "Melee_Knockback"
+    }
   },
   "specialEffects": [
     {

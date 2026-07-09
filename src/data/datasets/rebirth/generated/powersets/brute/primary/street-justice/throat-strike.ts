@@ -45,6 +45,7 @@ export const ThroatStrike: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 5,
     "damageDebuff": {
       "scale": 1.5,
       "table": "Melee_Debuff_Dam"
@@ -54,11 +55,11 @@ export const ThroatStrike: Power = {
       "resistanceDebuff": 5
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
@@ -66,11 +67,7 @@ export const ThroatStrike: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
@@ -82,6 +79,10 @@ export const ThroatStrike: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
       "toxic": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
@@ -90,7 +91,6 @@ export const ThroatStrike: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 5
+    }
   }
 };

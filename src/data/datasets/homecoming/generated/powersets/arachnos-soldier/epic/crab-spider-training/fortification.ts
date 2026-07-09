@@ -40,19 +40,26 @@ export const Fortification: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
+    "hold": {
+      "mag": 1,
+      "scale": 24,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 24,
+      "table": "Melee_Res_Boolean"
+    },
     "resistance": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
       "cold": {
         "scale": 2.5,
         "table": "Melee_Res_Dmg"
@@ -61,8 +68,20 @@ export const Fortification: Power = {
         "scale": 2.5,
         "table": "Melee_Res_Dmg"
       },
+      "fire": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
       "negative": {
         "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.5,
         "table": "Melee_Res_Dmg"
       },
       "toxic": {
@@ -70,20 +89,7 @@ export const Fortification: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "resistance": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 24,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "immobilize": {
+    "sleep": {
       "mag": 1,
       "scale": 24,
       "table": "Melee_Res_Boolean"
@@ -92,12 +98,6 @@ export const Fortification: Power = {
       "mag": 1,
       "scale": 24,
       "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 24,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

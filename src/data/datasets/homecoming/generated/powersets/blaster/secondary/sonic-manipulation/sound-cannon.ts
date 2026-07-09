@@ -42,14 +42,14 @@ export const SoundCannon: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "knockback": {
+      "scale": 0.65,
+      "table": "Melee_Ones"
+    },
     "stun": {
       "mag": 2,
       "scale": 8,
       "table": "Melee_Fear"
-    },
-    "knockback": {
-      "scale": 0.65,
-      "table": "Melee_Ones"
     }
   }
 };

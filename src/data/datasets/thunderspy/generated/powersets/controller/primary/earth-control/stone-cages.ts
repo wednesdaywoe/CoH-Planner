@@ -50,15 +50,15 @@ export const StoneCages: Power = {
     "tickRate": 2
   },
   "effects": {
+    "buffDuration": 1,
+    "durations": {
+      "immobilize": 1
+    },
+    "effectDuration": 1,
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "effectDuration": 1,
-    "durations": {
-      "immobilize": 1
-    },
-    "buffDuration": 1
+    }
   }
 };

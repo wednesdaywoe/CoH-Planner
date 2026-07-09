@@ -40,12 +40,31 @@ export const Infrigidate: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "damageDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "defenseDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "damageDebuff": 20,
+      "defenseDebuff": 20,
+      "rechargeDebuff": 20,
+      "slow": 20
+    },
+    "rechargeDebuff": {
+      "scale": 0.7,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      },
       "flySpeed": {
+        "scale": 0.7,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.7,
         "table": "Ranged_Slow"
       },
@@ -53,29 +72,10 @@ export const Infrigidate: Power = {
         "scale": 0.7,
         "table": "Ranged_Slow"
       },
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Ranged_Slow"
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
       }
-    },
-    "durations": {
-      "slow": 20,
-      "rechargeDebuff": 20,
-      "defenseDebuff": 20,
-      "damageDebuff": 20
-    },
-    "rechargeDebuff": {
-      "scale": 0.7,
-      "table": "Ranged_Slow"
-    },
-    "defenseDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Def"
-    },
-    "damageDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "buffDuration": 20
+    }
   }
 };

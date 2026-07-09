@@ -56,13 +56,13 @@ export const RefractorBeam: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
     "defenseDebuff": {
       "scale": 0.5,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 15
-    },
-    "buffDuration": 15
+    }
   }
 };

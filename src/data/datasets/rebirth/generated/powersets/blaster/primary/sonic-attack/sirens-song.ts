@@ -50,11 +50,7 @@ export const SirensSong: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "sleep": {
-      "mag": 3,
-      "scale": 30,
-      "table": "Ranged_Sleep"
-    },
+    "buffDuration": 9.5,
     "damageBuff": {
       "scale": 0.054,
       "table": "Ranged_Ones"
@@ -62,6 +58,10 @@ export const SirensSong: Power = {
     "durations": {
       "damageBuff": 9.5
     },
-    "buffDuration": 9.5
+    "sleep": {
+      "mag": 3,
+      "scale": 30,
+      "table": "Ranged_Sleep"
+    }
   }
 };

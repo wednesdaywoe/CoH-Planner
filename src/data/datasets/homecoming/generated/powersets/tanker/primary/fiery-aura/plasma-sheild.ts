@@ -40,12 +40,24 @@ export const PlasmaSheild: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "hold": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75
+    },
+    "effectDuration": 0.75,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
     "resistance": {
-      "fire": {
+      "energy": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       },
-      "energy": {
+      "fire": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       },
@@ -54,22 +66,10 @@ export const PlasmaSheild: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "resistance": 0.75,
-      "hold": 0.75,
-      "sleep": 0.75
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
     "sleep": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

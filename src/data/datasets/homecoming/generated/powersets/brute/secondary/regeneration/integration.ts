@@ -44,35 +44,45 @@ export const Integration: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 2.25,
     "durations": {
-      "knockup": 2.25,
-      "knockback": 2.25,
       "hold": 2.25,
       "immobilize": 2.25,
-      "stun": 2.25,
-      "sleep": 2.25,
+      "knockback": 2.25,
+      "knockup": 2.25,
+      "regenBuff": 2.25,
       "regenBuffUnenhanced": 2.25,
-      "regenBuff": 2.25
+      "sleep": 2.25,
+      "stun": 2.25
     },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
+    "effectDuration": 2.25,
     "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 2.25,
     "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "sleep": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -82,19 +92,9 @@ export const Integration: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "regenBuffUnenhanced": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
+    "taunt": {
       "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 2.25
+      "table": "Melee_InherentTaunt"
+    }
   }
 };

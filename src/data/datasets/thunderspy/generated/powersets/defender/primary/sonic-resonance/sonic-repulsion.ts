@@ -42,13 +42,13 @@ export const SonicRepulsion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 10,
     "durations": {
       "regenBuff": 10
     },
-    "buffDuration": 10
+    "regenBuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    }
   }
 };

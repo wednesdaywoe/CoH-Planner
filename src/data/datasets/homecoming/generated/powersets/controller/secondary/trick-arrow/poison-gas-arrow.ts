@@ -40,15 +40,24 @@ export const PoisonGasArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam",
+      "unresistable": true
+    },
+    "durations": {
+      "damageDebuff": 60
+    },
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Poison Gas Arrow",
+      "duration": 20,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Trick_Arrow.PoisonGasArrow"
       ],
-      "duration": 20,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Poison Gas Arrow",
@@ -78,15 +87,6 @@ export const PoisonGasArrow: Power = {
           ]
         }
       ]
-    },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam",
-      "unresistable": true
-    },
-    "durations": {
-      "damageDebuff": 60
-    },
-    "buffDuration": 60
+    }
   }
 };

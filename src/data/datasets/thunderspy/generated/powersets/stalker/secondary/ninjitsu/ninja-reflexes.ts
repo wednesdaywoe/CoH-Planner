@@ -40,6 +40,7 @@ export const NinjaReflexes: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "melee": {
         "scale": 2,
@@ -48,7 +49,6 @@ export const NinjaReflexes: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

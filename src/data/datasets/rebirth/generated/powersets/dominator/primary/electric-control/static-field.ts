@@ -44,9 +44,9 @@ export const StaticField: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 25,
       "entity": "Pets_Static_Field_Dominator",
-      "duration": 25
+      "isPseudoPet": false
     }
   }
 };

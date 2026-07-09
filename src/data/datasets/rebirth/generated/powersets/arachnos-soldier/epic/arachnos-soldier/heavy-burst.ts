@@ -53,13 +53,13 @@ export const HeavyBurst: Power = {
     "tickRate": 0.30000001192092896
   },
   "effects": {
+    "buffDuration": 12,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 12
-    },
-    "buffDuration": 12
+    }
   }
 };

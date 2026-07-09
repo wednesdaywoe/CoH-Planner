@@ -66,29 +66,30 @@ export const Cloudburst: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "rechargeDebuff": {
-          "scale": 0.1,
-          "table": "Melee_Slow"
-        },
+        "buffDuration": 8,
         "durations": {
           "rechargeDebuff": 8,
           "slow": 8,
           "tohitDebuff": 8
         },
+        "rechargeDebuff": {
+          "scale": 0.1,
+          "table": "Melee_Slow"
+        },
         "slow": {
-          "jumpHeight": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
-          "runSpeed": {
-            "scale": 0.2,
-            "table": "Melee_Slow"
-          },
           "flySpeed": {
             "scale": 0.2,
             "table": "Melee_Slow"
           },
+          "jumpHeight": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
           "jumpSpeed": {
+            "scale": 0.2,
+            "table": "Melee_Slow"
+          },
+          "runSpeed": {
             "scale": 0.2,
             "table": "Melee_Slow"
           }
@@ -96,8 +97,7 @@ export const Cloudburst: Power = {
         "tohitDebuff": {
           "scale": 1,
           "table": "Ranged_Debuff_ToHit"
-        },
-        "buffDuration": 8
+        }
       }
     }
   ]

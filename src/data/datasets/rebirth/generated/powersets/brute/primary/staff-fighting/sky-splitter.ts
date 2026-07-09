@@ -52,18 +52,13 @@ export const SkySplitter: Power = {
     "tickRate": 1
   },
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
+    "buffDuration": 10,
+    "durations": {
+      "slow": 10
     },
     "knockup": {
       "scale": 0.67,
       "table": "Melee_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
     },
     "slow": {
       "fly": {
@@ -71,10 +66,15 @@ export const SkySplitter: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "slow": 10
+    "stun": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Stun"
     },
-    "buffDuration": 10
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
   },
   "conditionalEffects": [
     {
@@ -89,12 +89,16 @@ export const SkySplitter: Power = {
         "table": "Melee_Damage"
       },
       "effects": {
+        "buffDuration": 15,
+        "durations": {
+          "resistance": 15
+        },
         "resistance": {
-          "smashing": {
+          "cold": {
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
-          "lethal": {
+          "energy": {
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
@@ -102,11 +106,7 @@ export const SkySplitter: Power = {
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
-          "cold": {
-            "scale": 1.33,
-            "table": "Melee_Res_Dmg"
-          },
-          "energy": {
+          "lethal": {
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
@@ -118,15 +118,15 @@ export const SkySplitter: Power = {
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           },
+          "smashing": {
+            "scale": 1.33,
+            "table": "Melee_Res_Dmg"
+          },
           "toxic": {
             "scale": 1.33,
             "table": "Melee_Res_Dmg"
           }
-        },
-        "durations": {
-          "resistance": 15
-        },
-        "buffDuration": 15
+        }
       },
       "group": "staff-form"
     },
@@ -142,14 +142,14 @@ export const SkySplitter: Power = {
         "table": "Melee_Damage"
       },
       "effects": {
-        "tohitBuffUnenhanced": {
-          "scale": 2,
-          "table": "Melee_Buff_ToHit"
-        },
+        "buffDuration": 15,
         "durations": {
           "tohitBuffUnenhanced": 15
         },
-        "buffDuration": 15
+        "tohitBuffUnenhanced": {
+          "scale": 2,
+          "table": "Melee_Buff_ToHit"
+        }
       },
       "group": "staff-form"
     },
@@ -165,19 +165,19 @@ export const SkySplitter: Power = {
         "table": "Melee_Damage"
       },
       "effects": {
-        "regenBuffUnenhanced": {
-          "scale": 1.25,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 15,
         "durations": {
-          "regenBuffUnenhanced": 15,
-          "recoveryBuffUnenhanced": 15
+          "recoveryBuffUnenhanced": 15,
+          "regenBuffUnenhanced": 15
         },
         "recoveryBuffUnenhanced": {
           "scale": 0.83,
           "table": "Melee_Ones"
         },
-        "buffDuration": 15
+        "regenBuffUnenhanced": {
+          "scale": 1.25,
+          "table": "Melee_Ones"
+        }
       },
       "group": "staff-form"
     }

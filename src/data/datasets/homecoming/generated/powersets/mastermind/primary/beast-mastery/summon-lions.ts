@@ -44,10 +44,10 @@ export const SummonLions: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Lioness",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "MastermindPets_Lioness",
+      "isPseudoPet": false
     }
   }
 };

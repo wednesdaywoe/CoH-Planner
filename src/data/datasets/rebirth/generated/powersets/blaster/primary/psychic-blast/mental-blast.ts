@@ -50,19 +50,19 @@ export const MentalBlast: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 6,
-      "damageBuff": 9.17
-    },
+    "buffDuration": 9.17,
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 9.17,
+    "durations": {
+      "damageBuff": 9.17,
+      "rechargeDebuff": 6
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

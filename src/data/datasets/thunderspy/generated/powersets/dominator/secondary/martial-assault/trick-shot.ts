@@ -44,9 +44,9 @@ export const TrickShot: Power = {
   },
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 2,
       "entity": "Pets_Trick_Shot_Jump1",
-      "duration": 2
+      "isPseudoPet": false
     }
   }
 };

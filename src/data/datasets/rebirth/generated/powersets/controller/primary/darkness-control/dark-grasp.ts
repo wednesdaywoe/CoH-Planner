@@ -51,6 +51,10 @@ export const DarkGrasp: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "tohitDebuff": 10
+    },
     "hold": {
       "mag": 3,
       "scale": 12,
@@ -59,11 +63,7 @@ export const DarkGrasp: Power = {
     "tohitDebuff": {
       "scale": 0.75,
       "table": "Ranged_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

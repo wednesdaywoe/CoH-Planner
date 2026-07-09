@@ -42,18 +42,18 @@ export const VolcanicGasses: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
       "duration": 60,
       "entities": [
         {
-          "entity": "Pets_Volcanicgas",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Volcanicgas"
         },
         {
-          "entity": "Pets_Volcanicgeyser",
-          "count": 6
+          "count": 6,
+          "entity": "Pets_Volcanicgeyser"
         }
-      ]
+      ],
+      "isPseudoPet": false
     }
   }
 };

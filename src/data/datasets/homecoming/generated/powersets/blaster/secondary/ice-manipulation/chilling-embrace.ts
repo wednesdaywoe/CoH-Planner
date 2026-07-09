@@ -54,12 +54,36 @@ export const ChillingEmbrace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "absorb": {
+      "scale": 0.3,
+      "table": "Melee_HealSelf"
+    },
+    "buffDuration": 5,
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "absorb": 12,
+      "damageDebuff": 5,
+      "rechargeDebuff": 5,
+      "recoveryBuff": 3,
+      "slow": 5
+    },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow"
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
-      },
       "flySpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.7,
         "table": "Melee_Slow"
       },
@@ -67,34 +91,10 @@ export const ChillingEmbrace: Power = {
         "scale": 0.7,
         "table": "Melee_Slow"
       },
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
       }
-    },
-    "durations": {
-      "slow": 5,
-      "rechargeDebuff": 5,
-      "damageDebuff": 5,
-      "absorb": 12,
-      "recoveryBuff": 3
-    },
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Melee_Slow"
-    },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Melee_Debuff_Dam"
-    },
-    "absorb": {
-      "scale": 0.3,
-      "table": "Melee_HealSelf"
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 5
+    }
   }
 };

@@ -34,14 +34,14 @@ export const PowerSiphon: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "tohitBuff": 15
+    },
     "tohitBuff": {
       "scale": 0.75,
       "table": "Melee_Buff_ToHit"
     },
-    "durations": {
-      "tohitBuff": 15
-    },
-    "buffDuration": 15,
     "maxStacks": 2,
     "stacksLinear": [
       "tohitBuff"

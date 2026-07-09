@@ -57,14 +57,14 @@ export const ThornBurst: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 3,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

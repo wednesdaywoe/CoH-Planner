@@ -49,11 +49,24 @@ export const Quasar: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "rechargeDebuff": 20,
+      "slow": 20
+    },
     "knockback": {
       "scale": 10,
       "table": "Ranged_Knockback"
     },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.3,
         "table": "Ranged_Slow"
@@ -65,21 +78,8 @@ export const Quasar: Power = {
       "runSpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 20,
-      "rechargeDebuff": 20
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 20
+    }
   },
   "conditionalEffects": [
     {

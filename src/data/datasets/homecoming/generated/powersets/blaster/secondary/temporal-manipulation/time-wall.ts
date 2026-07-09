@@ -54,12 +54,36 @@ export const TimeWall: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 20,
+    "damageBuff": {
+      "scale": 0.106,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.1,
+      "rechargeDebuff": 20,
+      "regenDebuff": 20,
+      "slow": 20
+    },
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
+    "rechargeDebuff": {
+      "scale": 0.6,
+      "table": "Ranged_Slow"
+    },
+    "regenDebuff": {
+      "scale": 0.25,
+      "table": "Ranged_Ones"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      },
       "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -67,35 +91,11 @@ export const TimeWall: Power = {
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
       }
     },
-    "durations": {
-      "slow": 20,
-      "rechargeDebuff": 20,
-      "regenDebuff": 20,
-      "damageBuff": 9.1
-    },
-    "rechargeDebuff": {
-      "scale": 0.6,
-      "table": "Ranged_Slow"
-    },
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
-    "regenDebuff": {
-      "scale": 0.25,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 0.106,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 20,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -55,10 +55,7 @@ export const TelekineticThrust: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 8,
-      "table": "Melee_Knockback"
-    },
+    "buffDuration": 9.57,
     "damageBuff": {
       "scale": 0.137,
       "table": "Melee_Ones"
@@ -66,7 +63,10 @@ export const TelekineticThrust: Power = {
     "durations": {
       "damageBuff": 9.57
     },
-    "buffDuration": 9.57,
+    "knockback": {
+      "scale": 8,
+      "table": "Melee_Knockback"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

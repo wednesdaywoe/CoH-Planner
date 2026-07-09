@@ -37,9 +37,9 @@ export const SpiritTree: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 90,
       "entity": "Pets_Spirit_Tree",
-      "duration": 90
+      "isPseudoPet": false
     }
   }
 };

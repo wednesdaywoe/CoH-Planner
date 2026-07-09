@@ -39,18 +39,18 @@ export const SmokeGrenade: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.7,
-      "table": "Melee_DeBuff_ToHit"
-    },
+    "buffDuration": 60,
     "durations": {
-      "tohitDebuff": 60,
-      "perceptionDebuff": 60
+      "perceptionDebuff": 60,
+      "tohitDebuff": 60
     },
     "perceptionDebuff": {
       "scale": 0.9,
       "table": "Melee_Ones"
     },
-    "buffDuration": 60
+    "tohitDebuff": {
+      "scale": 0.7,
+      "table": "Melee_DeBuff_ToHit"
+    }
   }
 };

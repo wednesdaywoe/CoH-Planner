@@ -37,6 +37,7 @@ export const InsulationShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 240,
     "defenseBuff": {
       "fire": {
         "scale": 0.75,
@@ -45,7 +46,6 @@ export const InsulationShield: Power = {
     },
     "durations": {
       "defenseBuff": 240
-    },
-    "buffDuration": 240
+    }
   }
 };

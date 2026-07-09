@@ -47,6 +47,16 @@ export const WebGrenade: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "damageBuff": {
+      "scale": 0.09,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.87,
+      "rechargeDebuff": 15,
+      "slow": 15
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
@@ -56,15 +66,10 @@ export const WebGrenade: Power = {
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
-    "durations": {
-      "rechargeDebuff": 15,
-      "slow": 15,
-      "damageBuff": 8.87
-    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
       },
       "flySpeed": {
         "scale": 0.5,
@@ -74,16 +79,11 @@ export const WebGrenade: Power = {
         "scale": 500,
         "table": "Ranged_Ones"
       },
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
       }
     },
-    "damageBuff": {
-      "scale": 0.09,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 15,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

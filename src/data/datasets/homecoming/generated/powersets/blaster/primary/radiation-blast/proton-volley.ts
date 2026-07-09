@@ -53,6 +53,7 @@ export const ProtonVolley: Power = {
     "tickRate": 0.5
   },
   "effects": {
+    "buffDuration": 12,
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
@@ -64,8 +65,7 @@ export const ProtonVolley: Power = {
     "rangeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 12
+    }
   },
   "quickSnipe": {
     "stats": {

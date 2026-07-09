@@ -39,14 +39,14 @@ export const TripMine: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "copyBoosts": true,
+      "duration": 170,
       "entity": "Mine",
+      "isPseudoPet": false,
       "powers": [
         "Pets.Trip_Mine_Dominator.TripMine_Resistance",
         "Pets.Trip_Mine_Dominator.TripMine_Info"
-      ],
-      "duration": 170,
-      "copyBoosts": true
+      ]
     }
   }
 };

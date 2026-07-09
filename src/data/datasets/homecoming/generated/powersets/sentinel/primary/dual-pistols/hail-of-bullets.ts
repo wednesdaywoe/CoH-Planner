@@ -157,8 +157,9 @@ export const HailofBullets: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
     "defenseBuff": {
-      "ranged": {
+      "aoe": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       },
@@ -166,7 +167,7 @@ export const HailofBullets: Power = {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       },
-      "aoe": {
+      "ranged": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       }
@@ -178,8 +179,7 @@ export const HailofBullets: Power = {
     "knockback": {
       "scale": 0.8,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
+    }
   },
   "conditionalEffects": [
     {
@@ -194,11 +194,11 @@ export const HailofBullets: Power = {
           "table": "Ranged_Slow"
         },
         "slow": {
-          "runSpeed": {
+          "flySpeed": {
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
-          "flySpeed": {
+          "jumpHeight": {
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
@@ -206,7 +206,7 @@ export const HailofBullets: Power = {
             "scale": 0.2,
             "table": "Ranged_Slow"
           },
-          "jumpHeight": {
+          "runSpeed": {
             "scale": 0.2,
             "table": "Ranged_Slow"
           }

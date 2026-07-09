@@ -43,6 +43,7 @@ export const ShoalRush: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
     "defenseDebuff": {
       "scale": 1.6,
       "table": "Ranged_Debuff_Def"
@@ -52,11 +53,11 @@ export const ShoalRush: Power = {
       "slow": 20
     },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      },
       "flySpeed": {
+        "scale": 0.448,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.448,
         "table": "Ranged_Slow"
       },
@@ -64,11 +65,10 @@ export const ShoalRush: Power = {
         "scale": 0.448,
         "table": "Ranged_Slow"
       },
-      "jumpHeight": {
-        "scale": 0.448,
-        "table": "Ranged_Slow"
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
       }
-    },
-    "buffDuration": 20
+    }
   }
 };

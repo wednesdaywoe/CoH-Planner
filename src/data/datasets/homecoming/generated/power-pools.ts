@@ -51,22 +51,23 @@ export const POWER_POOLS_RAW = {
           "endurance": 10.4,
           "activationTime": 1.36,
           "effectArea": "SingleTarget",
+          "buffDuration": 60,
           "confuse": {
             "mag": 1,
             "scale": 20,
             "table": "Ranged_Res_Boolean"
           },
-          "effectDuration": 60,
           "durations": {
             "confuse": 60,
             "fear": 60,
             "hold": 60,
             "immobilize": 60,
-            "stun": 60,
-            "sleep": 60,
+            "recoveryBuff": 60,
             "regenBuff": 60,
-            "recoveryBuff": 60
+            "sleep": 60,
+            "stun": 60
           },
+          "effectDuration": 60,
           "fear": {
             "mag": 1,
             "scale": 20,
@@ -82,25 +83,24 @@ export const POWER_POOLS_RAW = {
             "scale": 20,
             "table": "Ranged_Res_Boolean"
           },
-          "stun": {
-            "mag": 1,
-            "scale": 20,
-            "table": "Ranged_Res_Boolean"
+          "recoveryBuff": {
+            "scale": 0.25,
+            "table": "Ranged_Ones"
+          },
+          "regenBuff": {
+            "scale": 0.5,
+            "table": "Ranged_Ones"
           },
           "sleep": {
             "mag": 1,
             "scale": 20,
             "table": "Ranged_Res_Boolean"
           },
-          "regenBuff": {
-            "scale": 0.5,
-            "table": "Ranged_Ones"
-          },
-          "recoveryBuff": {
-            "scale": 0.25,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 60
+          "stun": {
+            "mag": 1,
+            "scale": 20,
+            "table": "Ranged_Res_Boolean"
+          }
         }
       },
       {
@@ -175,16 +175,16 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.2275,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
           "movement": {
             "runSpeed": {
               "scale": 1.938,
               "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "movement": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -219,14 +219,14 @@ export const POWER_POOLS_RAW = {
           "activationTime": 1.53,
           "effectArea": "SingleTarget",
           "summon": {
-            "isPseudoPet": false,
-            "entity": "PL_StaticObject",
+            "copyBoosts": true,
             "displayName": "Corrosive Vial",
+            "duration": 14,
+            "entity": "PL_StaticObject",
+            "isPseudoPet": false,
             "powers": [
               "Redirects.Pool_Experimentation.Corrosive_Vial_Splat"
-            ],
-            "duration": 14,
-            "copyBoosts": true
+            ]
           }
         }
       },
@@ -256,34 +256,31 @@ export const POWER_POOLS_RAW = {
           "endurance": 2.6,
           "activationTime": 1.3,
           "effectArea": "SingleTarget",
-          "tohitBuff": {
+          "buffDuration": 60,
+          "damageBuff": {
             "scale": 1,
             "table": "Melee_Res_Boolean"
           },
           "durations": {
-            "tohitBuff": 60,
             "damageBuff": 60,
             "rechargeBuff": 60,
-            "specialBuff": 60
-          },
-          "damageBuff": {
-            "scale": 1,
-            "table": "Melee_Res_Boolean"
+            "specialBuff": 60,
+            "tohitBuff": 60
           },
           "rechargeBuff": {
             "scale": 1,
             "table": "Melee_Res_Boolean"
           },
           "specialBuff": {
-            "endurance": {
-              "scale": 1,
-              "table": "Melee_Res_Boolean"
-            },
-            "movement": {
-              "scale": 1,
-              "table": "Melee_Res_Boolean"
-            },
             "confuse": {
+              "scale": 1,
+              "table": "Melee_Res_Boolean"
+            },
+            "defense": {
+              "scale": 1,
+              "table": "Melee_Res_Boolean"
+            },
+            "endurance": {
               "scale": 1,
               "table": "Melee_Res_Boolean"
             },
@@ -299,7 +296,7 @@ export const POWER_POOLS_RAW = {
               "scale": 1,
               "table": "Melee_Res_Boolean"
             },
-            "stun": {
+            "movement": {
               "scale": 1,
               "table": "Melee_Res_Boolean"
             },
@@ -307,7 +304,7 @@ export const POWER_POOLS_RAW = {
               "scale": 1,
               "table": "Melee_Res_Boolean"
             },
-            "defense": {
+            "stun": {
               "scale": 1,
               "table": "Melee_Res_Boolean"
             },
@@ -316,7 +313,10 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_Res_Boolean"
             }
           },
-          "buffDuration": 60
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Res_Boolean"
+          }
         }
       },
       {
@@ -346,20 +346,20 @@ export const POWER_POOLS_RAW = {
           "endurance": 13,
           "activationTime": 1,
           "effectArea": "Location",
+          "buffDuration": 1,
+          "durations": {
+            "stealth": 1
+          },
           "stealth": {
             "translucency": {
               "scale": 0,
               "table": "Ranged_Ones"
             }
           },
-          "durations": {
-            "stealth": 1
-          },
           "teleport": {
             "scale": 1,
             "table": "Ranged_Ones"
-          },
-          "buffDuration": 1
+          }
         }
       }
     ]
@@ -490,20 +490,20 @@ export const POWER_POOLS_RAW = {
           "activationTime": 3.1,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "resistance": {
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            }
-          },
+          "buffDuration": 0.75,
           "durations": {
             "resistance": 0.75
           },
-          "buffDuration": 0.75
+          "resistance": {
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            }
+          }
         }
       },
       {
@@ -533,28 +533,9 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
           "defenseBuff": {
-            "ranged": {
-              "scale": 0.5,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.5,
-              "table": "Melee_Buff_Def"
-            },
             "aoe": {
-              "scale": 0.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.5,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
               "scale": 0.5,
               "table": "Melee_Buff_Def"
             },
@@ -566,11 +547,31 @@ export const POWER_POOLS_RAW = {
               "scale": 0.5,
               "table": "Melee_Buff_Def"
             },
+            "fire": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
             "negative": {
               "scale": 0.5,
               "table": "Melee_Buff_Def"
             },
             "psionic": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.5,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
               "scale": 0.5,
               "table": "Melee_Buff_Def"
             },
@@ -588,8 +589,7 @@ export const POWER_POOLS_RAW = {
               "scale": 1.75,
               "table": "Melee_Res_Boolean"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -636,8 +636,17 @@ export const POWER_POOLS_RAW = {
             "scale": 1.27,
             "table": "Melee_Damage"
           },
+          "buffDuration": 6,
+          "durations": {
+            "rechargeBuff": 6,
+            "tohitBuffUnenhanced": 6
+          },
           "knockback": {
             "scale": 0.67,
+            "table": "Melee_Ones"
+          },
+          "rechargeBuff": {
+            "scale": 0.05,
             "table": "Melee_Ones"
           },
           "stun": {
@@ -645,19 +654,10 @@ export const POWER_POOLS_RAW = {
             "scale": 6,
             "table": "Melee_Ones"
           },
-          "rechargeBuff": {
-            "scale": 0.05,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "rechargeBuff": 6,
-            "tohitBuffUnenhanced": 6
-          },
           "tohitBuffUnenhanced": {
             "scale": 0.05,
             "table": "Melee_Ones"
-          },
-          "buffDuration": 6
+          }
         }
       }
     ]
@@ -695,20 +695,20 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "movement": {
-            "runSpeed": {
-              "scale": 0.1,
-              "table": "Melee_SpeedRunning"
-            },
-            "flySpeed": {
-              "scale": 0.1,
-              "table": "Melee_SpeedFlying"
-            }
-          },
+          "buffDuration": 10.25,
           "durations": {
             "movement": 10.25
           },
-          "buffDuration": 10.25
+          "movement": {
+            "flySpeed": {
+              "scale": 0.1,
+              "table": "Melee_SpeedFlying"
+            },
+            "runSpeed": {
+              "scale": 0.1,
+              "table": "Melee_SpeedRunning"
+            }
+          }
         }
       },
       {
@@ -734,6 +734,10 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
+          "buffDuration": 10.25,
+          "durations": {
+            "movement": 10.25
+          },
           "movement": {
             "jumpHeight": {
               "scale": 0.06,
@@ -743,11 +747,7 @@ export const POWER_POOLS_RAW = {
               "scale": 0.5,
               "table": "Melee_SpeedJumping"
             }
-          },
-          "durations": {
-            "movement": 10.25
-          },
-          "buffDuration": 10.25
+          }
         }
       },
       {
@@ -772,13 +772,10 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 0.4,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
-            "regenBuff": 10.25,
-            "mezResistance": 10.25
+            "mezResistance": 10.25,
+            "regenBuff": 10.25
           },
           "mezResistance": {
             "sleep": {
@@ -786,7 +783,10 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_Res_Boolean"
             }
           },
-          "buffDuration": 10.25
+          "regenBuff": {
+            "scale": 0.4,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -811,14 +811,14 @@ export const POWER_POOLS_RAW = {
           "accuracy": 1,
           "activatePeriod": 10,
           "effectArea": "SingleTarget",
-          "recoveryBuff": {
-            "scale": 0.25,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 10.25,
           "durations": {
             "recoveryBuff": 10.25
           },
-          "buffDuration": 10.25
+          "recoveryBuff": {
+            "scale": 0.25,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -858,6 +858,57 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.0975,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "defenseBuff": {
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "toxic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "movement": 0.75
+          },
           "movement": {
             "fly": {
               "scale": 2,
@@ -875,58 +926,7 @@ export const POWER_POOLS_RAW = {
               "scale": 25,
               "table": "Melee_Friction"
             }
-          },
-          "durations": {
-            "movement": 0.75,
-            "defenseBuff": 0.75
-          },
-          "defenseBuff": {
-            "ranged": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "aoe": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "toxic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -966,12 +966,7 @@ export const POWER_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Damage"
           },
-          "slow": {
-            "fly": {
-              "scale": 1.6,
-              "table": "Melee_Ones"
-            }
-          },
+          "buffDuration": 30,
           "durations": {
             "slow": 30
           },
@@ -979,7 +974,12 @@ export const POWER_POOLS_RAW = {
             "scale": 0.75,
             "table": "Melee_Ones"
           },
-          "buffDuration": 30
+          "slow": {
+            "fly": {
+              "scale": 1.6,
+              "table": "Melee_Ones"
+            }
+          }
         }
       },
       {
@@ -1007,9 +1007,17 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.2275,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
           "movement": {
             "fly": {
               "scale": 2,
+              "table": "Melee_Ones"
+            },
+            "flySpeed": {
+              "scale": 2.0475,
               "table": "Melee_Ones"
             },
             "movementControl": {
@@ -1019,16 +1027,8 @@ export const POWER_POOLS_RAW = {
             "movementFriction": {
               "scale": 2,
               "table": "Melee_Friction"
-            },
-            "flySpeed": {
-              "scale": 2.0475,
-              "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "movement": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -1059,6 +1059,10 @@ export const POWER_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 60,
           "maxTargets": 255,
+          "buffDuration": 2.25,
+          "durations": {
+            "movement": 2.25
+          },
           "movement": {
             "fly": {
               "scale": 2,
@@ -1076,11 +1080,7 @@ export const POWER_POOLS_RAW = {
               "scale": 10,
               "table": "Melee_Friction"
             }
-          },
-          "durations": {
-            "movement": 2.25
-          },
-          "buffDuration": 2.25
+          }
         }
       },
       {
@@ -1111,67 +1111,9 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.052,
           "activatePeriod": 0.2,
           "effectArea": "SingleTarget",
-          "movement": {
-            "fly": {
-              "scale": 2,
-              "table": "Melee_Ones"
-            },
-            "movementControl": {
-              "scale": 15,
-              "table": "Melee_Control"
-            },
-            "movementFriction": {
-              "scale": 15,
-              "table": "Melee_Friction"
-            },
-            "flySpeed": {
-              "scale": 0.4,
-              "table": "Melee_SpeedFlying"
-            }
-          },
-          "durations": {
-            "movement": 0.25,
-            "immobilize": 0.25,
-            "knockup": 0.25,
-            "knockback": 0.25,
-            "defenseBuffSuppressible": 0.25
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 30,
-            "table": "Melee_Res_Boolean"
-          },
-          "effectDuration": 0.25,
-          "knockup": {
-            "scale": 1.75,
-            "table": "Melee_Res_Boolean"
-          },
-          "knockback": {
-            "scale": 1.75,
-            "table": "Melee_Res_Boolean"
-          },
+          "buffDuration": 0.25,
           "defenseBuffSuppressible": {
-            "ranged": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
             "aoe": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
@@ -1183,6 +1125,18 @@ export const POWER_POOLS_RAW = {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
             "negative": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
@@ -1191,12 +1145,58 @@ export const POWER_POOLS_RAW = {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
+            "ranged": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
           },
-          "buffDuration": 0.25
+          "durations": {
+            "defenseBuffSuppressible": 0.25,
+            "immobilize": 0.25,
+            "knockback": 0.25,
+            "knockup": 0.25,
+            "movement": 0.25
+          },
+          "effectDuration": 0.25,
+          "immobilize": {
+            "mag": 1,
+            "scale": 30,
+            "table": "Melee_Res_Boolean"
+          },
+          "knockback": {
+            "scale": 1.75,
+            "table": "Melee_Res_Boolean"
+          },
+          "knockup": {
+            "scale": 1.75,
+            "table": "Melee_Res_Boolean"
+          },
+          "movement": {
+            "fly": {
+              "scale": 2,
+              "table": "Melee_Ones"
+            },
+            "flySpeed": {
+              "scale": 0.4,
+              "table": "Melee_SpeedFlying"
+            },
+            "movementControl": {
+              "scale": 15,
+              "table": "Melee_Control"
+            },
+            "movementFriction": {
+              "scale": 15,
+              "table": "Melee_Friction"
+            }
+          }
         }
       },
       {
@@ -1222,23 +1222,23 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.2275,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75,
+            "specialBuff": 0.75
+          },
           "movement": {
             "flySpeed": {
               "scale": 1,
               "table": "Melee_Ones"
             }
           },
-          "durations": {
-            "movement": 0.75,
-            "specialBuff": 0.75
-          },
           "specialBuff": {
             "movement": {
               "scale": 0.35,
               "table": "Ranged_SpeedFlying"
             }
-          },
-          "buffDuration": 0.75
+          }
         }
       }
     ]
@@ -1284,12 +1284,22 @@ export const POWER_POOLS_RAW = {
           "endurance": 7.8,
           "activationTime": 2,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "defenseDebuff": {
+            "scale": 1,
+            "table": "Ranged_Debuff_Def"
+          },
+          "durations": {
+            "defenseDebuff": 15,
+            "resistanceDebuff": 15,
+            "tohitDebuff": 15
+          },
           "resistanceDebuff": {
-            "smashing": {
+            "cold": {
               "scale": 1,
               "table": "Ranged_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 1,
               "table": "Ranged_Res_Dmg"
             },
@@ -1297,11 +1307,7 @@ export const POWER_POOLS_RAW = {
               "scale": 1,
               "table": "Ranged_Res_Dmg"
             },
-            "cold": {
-              "scale": 1,
-              "table": "Ranged_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 1,
               "table": "Ranged_Res_Dmg"
             },
@@ -1313,25 +1319,19 @@ export const POWER_POOLS_RAW = {
               "scale": 1,
               "table": "Ranged_Res_Dmg"
             },
+            "smashing": {
+              "scale": 1,
+              "table": "Ranged_Res_Dmg"
+            },
             "toxic": {
               "scale": 1,
               "table": "Ranged_Res_Dmg"
             }
           },
-          "durations": {
-            "resistanceDebuff": 15,
-            "defenseDebuff": 15,
-            "tohitDebuff": 15
-          },
-          "defenseDebuff": {
-            "scale": 1,
-            "table": "Ranged_Debuff_Def"
-          },
           "tohitDebuff": {
             "scale": 0.5,
             "table": "Ranged_Debuff_ToHit"
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -1403,6 +1403,10 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.2275,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
           "movement": {
             "jumpHeight": {
               "scale": 1,
@@ -1420,11 +1424,7 @@ export const POWER_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "movement": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -1510,41 +1510,9 @@ export const POWER_POOLS_RAW = {
           "endurance": 2.6,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
-          "regenBuff": {
-            "scale": 1.5,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "regenBuff": 60,
-            "recoveryBuff": 60,
-            "defenseBuff": 60
-          },
-          "recoveryBuff": {
-            "scale": 0.75,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 60,
           "defenseBuff": {
-            "ranged": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
             "aoe": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1.5,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
@@ -1556,6 +1524,18 @@ export const POWER_POOLS_RAW = {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
+            "fire": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
             "negative": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
@@ -1564,12 +1544,32 @@ export const POWER_POOLS_RAW = {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             },
+            "ranged": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Buff_Def"
+            },
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Buff_Def"
             }
           },
-          "buffDuration": 60
+          "durations": {
+            "defenseBuff": 60,
+            "recoveryBuff": 60,
+            "regenBuff": 60
+          },
+          "recoveryBuff": {
+            "scale": 0.75,
+            "table": "Melee_Ones"
+          },
+          "regenBuff": {
+            "scale": 1.5,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -1639,19 +1639,24 @@ export const POWER_POOLS_RAW = {
           "endurance": 7.8,
           "activationTime": 1.37,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "rechargeDebuff": 15,
+            "regenDebuff": 15,
+            "slow": 15
+          },
           "rechargeDebuff": {
             "scale": 0.6,
             "table": "Ranged_Slow"
           },
-          "durations": {
-            "rechargeDebuff": 15,
-            "slow": 15,
-            "regenDebuff": 15
+          "regenDebuff": {
+            "scale": 0.5,
+            "table": "Ranged_Ones"
           },
           "slow": {
-            "runSpeed": {
-              "scale": 0.6,
-              "table": "Ranged_Slow"
+            "fly": {
+              "scale": 10,
+              "table": "Ranged_Ones"
             },
             "flySpeed": {
               "scale": 0.6,
@@ -1661,16 +1666,11 @@ export const POWER_POOLS_RAW = {
               "scale": 500,
               "table": "Ranged_Ones"
             },
-            "fly": {
-              "scale": 10,
-              "table": "Ranged_Ones"
+            "runSpeed": {
+              "scale": 0.6,
+              "table": "Ranged_Slow"
             }
-          },
-          "regenDebuff": {
-            "scale": 0.5,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -1708,14 +1708,14 @@ export const POWER_POOLS_RAW = {
             "scale": 1.16,
             "table": "Ranged_Damage"
           },
-          "regenDebuff": {
-            "scale": 0.33,
-            "table": "Ranged_Ones"
-          },
+          "buffDuration": 10,
           "durations": {
             "regenDebuff": 10
           },
-          "buffDuration": 10
+          "regenDebuff": {
+            "scale": 0.33,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -1743,9 +1743,17 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.2275,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
           "movement": {
             "fly": {
               "scale": 2,
+              "table": "Melee_Ones"
+            },
+            "flySpeed": {
+              "scale": 2.0475,
               "table": "Melee_Ones"
             },
             "movementControl": {
@@ -1755,16 +1763,8 @@ export const POWER_POOLS_RAW = {
             "movementFriction": {
               "scale": 2,
               "table": "Melee_Friction"
-            },
-            "flySpeed": {
-              "scale": 2.0475,
-              "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "movement": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -1805,10 +1805,7 @@ export const POWER_POOLS_RAW = {
             "scale": 0.96,
             "table": "Ranged_Damage"
           },
-          "regenDebuff": {
-            "scale": 0.33,
-            "table": "Ranged_Ones"
-          },
+          "buffDuration": 10,
           "durations": {
             "regenDebuff": 10
           },
@@ -1816,7 +1813,10 @@ export const POWER_POOLS_RAW = {
             "scale": 0.67,
             "table": "Ranged_Ones"
           },
-          "buffDuration": 10
+          "regenDebuff": {
+            "scale": 0.33,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -1845,10 +1845,10 @@ export const POWER_POOLS_RAW = {
           "endurance": 10.4,
           "activationTime": 2.03,
           "effectArea": "SingleTarget",
+          "buffDuration": 30,
           "durations": {
             "absorb": 30
-          },
-          "buffDuration": 30
+          }
         }
       },
       {
@@ -1873,16 +1873,16 @@ export const POWER_POOLS_RAW = {
           "endurance": 1,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
           "movement": {
             "flySpeed": {
               "scale": 10,
               "table": "Ranged_SpeedFlying"
             }
-          },
-          "durations": {
-            "movement": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       }
     ],
@@ -1921,124 +1921,124 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.73,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "stealth": {
-            "translucency": {
-              "scale": 0.05,
-              "table": "Melee_Ones"
+          "buffDuration": 0.75,
+          "defenseBuff": {
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
             },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "toxic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "defenseBuffSuppressible": {
+            "aoe": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "toxic": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "defenseBuffSuppressible": 0.75,
+            "stealth": 0.75,
+            "threatDebuff": 0.75
+          },
+          "stealth": {
+            "stackKey": "NictusFX",
             "stealthPvE": {
               "scale": 55,
               "table": "Melee_Ones"
             },
-            "stackKey": "NictusFX",
             "stealthPvP": {
               "scale": 611,
               "table": "Melee_Ones"
+            },
+            "translucency": {
+              "scale": 0.05,
+              "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "stealth": 0.75,
-            "threatDebuff": 0.75,
-            "defenseBuffSuppressible": 0.75,
-            "defenseBuff": 0.75
           },
           "threatDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
-          },
-          "defenseBuffSuppressible": {
-            "ranged": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "aoe": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            },
-            "toxic": {
-              "scale": 1,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "defenseBuff": {
-            "ranged": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "aoe": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "toxic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -2070,6 +2070,104 @@ export const POWER_POOLS_RAW = {
           "activationTime": 1.17,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 120,
+          "defenseBuff": {
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "toxic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "defenseBuffSuppressible": {
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "toxic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 120,
+            "defenseBuffSuppressible": 120,
+            "stealth": 120
+          },
           "stealth": {
             "stealthPvE": {
               "scale": 55,
@@ -2083,105 +2181,7 @@ export const POWER_POOLS_RAW = {
               "scale": 0.3,
               "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "stealth": 120,
-            "defenseBuffSuppressible": 120,
-            "defenseBuff": 120
-          },
-          "defenseBuffSuppressible": {
-            "ranged": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "aoe": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "toxic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "defenseBuff": {
-            "ranged": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "aoe": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "toxic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "buffDuration": 120
+          }
         }
       },
       {
@@ -2215,47 +2215,9 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.2275,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "stealth": {
-            "translucency": {
-              "scale": 0.7,
-              "table": "Melee_Ones"
-            },
-            "stealthPvE": {
-              "scale": 36,
-              "table": "Melee_Ones"
-            },
-            "stackKey": "NictusFX",
-            "stealthPvP": {
-              "scale": 389,
-              "table": "Melee_Ones"
-            }
-          },
-          "durations": {
-            "stealth": 0.75,
-            "defenseBuffSuppressible": 0.75
-          },
+          "buffDuration": 0.75,
           "defenseBuffSuppressible": {
-            "ranged": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
             "aoe": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
               "scale": 0.25,
               "table": "Melee_Buff_Def"
             },
@@ -2267,6 +2229,18 @@ export const POWER_POOLS_RAW = {
               "scale": 0.25,
               "table": "Melee_Buff_Def"
             },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
             "negative": {
               "scale": 0.25,
               "table": "Melee_Buff_Def"
@@ -2275,12 +2249,38 @@ export const POWER_POOLS_RAW = {
               "scale": 0.25,
               "table": "Melee_Buff_Def"
             },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
             "toxic": {
               "scale": 0.25,
               "table": "Melee_Buff_Def"
             }
           },
-          "buffDuration": 0.75
+          "durations": {
+            "defenseBuffSuppressible": 0.75,
+            "stealth": 0.75
+          },
+          "stealth": {
+            "stackKey": "NictusFX",
+            "stealthPvE": {
+              "scale": 36,
+              "table": "Melee_Ones"
+            },
+            "stealthPvP": {
+              "scale": 389,
+              "table": "Melee_Ones"
+            },
+            "translucency": {
+              "scale": 0.7,
+              "table": "Melee_Ones"
+            }
+          }
         }
       },
       {
@@ -2307,11 +2307,12 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.5,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "stealth": 0.75,
+            "threatDebuff": 0.75
+          },
           "stealth": {
-            "translucency": {
-              "scale": 0.3,
-              "table": "Ranged_Ones"
-            },
             "stealthPvE": {
               "scale": 20,
               "table": "Ranged_Ones"
@@ -2319,17 +2320,16 @@ export const POWER_POOLS_RAW = {
             "stealthPvP": {
               "scale": 222,
               "table": "Ranged_Ones"
+            },
+            "translucency": {
+              "scale": 0.3,
+              "table": "Ranged_Ones"
             }
-          },
-          "durations": {
-            "stealth": 0.75,
-            "threatDebuff": 0.75
           },
           "threatDebuff": {
             "scale": 1,
             "table": "Ranged_Ones"
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -2361,16 +2361,20 @@ export const POWER_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 20,
           "maxTargets": 10,
+          "buffDuration": 15,
+          "durations": {
+            "resistanceDebuff": 15
+          },
           "placate": {
             "scale": 15,
             "table": "Melee_Ones"
           },
           "resistanceDebuff": {
-            "smashing": {
+            "cold": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
@@ -2378,11 +2382,7 @@ export const POWER_POOLS_RAW = {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
-            "cold": {
-              "scale": 1.5,
-              "table": "Melee_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
@@ -2394,15 +2394,15 @@ export const POWER_POOLS_RAW = {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_Dmg"
+            },
             "toxic": {
               "scale": 1.5,
               "table": "Melee_Res_Dmg"
             }
-          },
-          "durations": {
-            "resistanceDebuff": 15
-          },
-          "buffDuration": 15
+          }
         }
       }
     ]
@@ -2444,28 +2444,9 @@ export const POWER_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 60,
           "maxTargets": 255,
+          "buffDuration": 2.25,
           "defenseBuff": {
-            "ranged": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
             "aoe": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.35,
-              "table": "Ranged_Buff_Def"
-            },
-            "fire": {
               "scale": 0.35,
               "table": "Ranged_Buff_Def"
             },
@@ -2477,11 +2458,31 @@ export const POWER_POOLS_RAW = {
               "scale": 0.35,
               "table": "Ranged_Buff_Def"
             },
+            "fire": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
             "negative": {
               "scale": 0.35,
               "table": "Ranged_Buff_Def"
             },
             "psionic": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.35,
+              "table": "Ranged_Buff_Def"
+            },
+            "smashing": {
               "scale": 0.35,
               "table": "Ranged_Buff_Def"
             },
@@ -2492,8 +2493,7 @@ export const POWER_POOLS_RAW = {
           },
           "durations": {
             "defenseBuff": 2.25
-          },
-          "buffDuration": 2.25
+          }
         }
       },
       {
@@ -2522,6 +2522,7 @@ export const POWER_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 60,
           "maxTargets": 255,
+          "buffDuration": 2.25,
           "damageBuff": {
             "scale": 1.5,
             "table": "Ranged_Buff_Dmg"
@@ -2531,16 +2532,15 @@ export const POWER_POOLS_RAW = {
             "mezResistance": 2.25
           },
           "mezResistance": {
-            "taunt": {
-              "scale": 1.75,
-              "table": "Ranged_Res_Boolean"
-            },
             "placate": {
               "scale": 1.75,
               "table": "Ranged_Res_Boolean"
+            },
+            "taunt": {
+              "scale": 1.75,
+              "table": "Ranged_Res_Boolean"
             }
-          },
-          "buffDuration": 2.25
+          }
         }
       },
       {
@@ -2572,16 +2572,11 @@ export const POWER_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 60,
           "maxTargets": 255,
-          "tohitBuff": {
-            "scale": 1,
-            "table": "Ranged_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 2.25,
-            "debuffResistance": 2.25,
-            "perceptionBuff": 2.25,
-            "mezResistance": 2.25,
-            "confuse": 2.25
+          "buffDuration": 2.25,
+          "confuse": {
+            "mag": 1,
+            "scale": 15,
+            "table": "Ranged_Res_Boolean"
           },
           "debuffResistance": {
             "perception": {
@@ -2589,27 +2584,32 @@ export const POWER_POOLS_RAW = {
               "table": "Ranged_Res_Boolean"
             }
           },
-          "perceptionBuff": {
-            "scale": 2,
-            "table": "Ranged_Res_Boolean"
+          "durations": {
+            "confuse": 2.25,
+            "debuffResistance": 2.25,
+            "mezResistance": 2.25,
+            "perceptionBuff": 2.25,
+            "tohitBuff": 2.25
           },
+          "effectDuration": 2.25,
           "mezResistance": {
-            "fear": {
+            "confuse": {
               "scale": 1.75,
               "table": "Ranged_Res_Boolean"
             },
-            "confuse": {
+            "fear": {
               "scale": 1.75,
               "table": "Ranged_Res_Boolean"
             }
           },
-          "confuse": {
-            "mag": 1,
-            "scale": 15,
+          "perceptionBuff": {
+            "scale": 2,
             "table": "Ranged_Res_Boolean"
           },
-          "effectDuration": 2.25,
-          "buffDuration": 2.25
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Ranged_Buff_ToHit"
+          }
         }
       },
       {
@@ -2648,28 +2648,13 @@ export const POWER_POOLS_RAW = {
             "scale": 1,
             "table": "Melee_Heal"
           },
+          "buffDuration": 120,
+          "damageBuff": {
+            "scale": 3.5,
+            "table": "Melee_Buff_Dmg"
+          },
           "defenseBuff": {
-            "ranged": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
             "aoe": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 2.5,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
               "scale": 2.5,
               "table": "Melee_Buff_Def"
             },
@@ -2681,11 +2666,31 @@ export const POWER_POOLS_RAW = {
               "scale": 2.5,
               "table": "Melee_Buff_Def"
             },
+            "fire": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
             "negative": {
               "scale": 2.5,
               "table": "Melee_Buff_Def"
             },
             "psionic": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 2.5,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
               "scale": 2.5,
               "table": "Melee_Buff_Def"
             },
@@ -2695,31 +2700,19 @@ export const POWER_POOLS_RAW = {
             }
           },
           "durations": {
+            "damageBuff": 120,
             "defenseBuff": 120,
-            "tohitBuff": 120,
             "fear": 120,
             "mezResistance": 120,
-            "damageBuff": 120
+            "tohitBuff": 120
           },
-          "tohitBuff": {
-            "scale": 3.5,
-            "table": "Melee_Buff_ToHit"
-          },
+          "effectDuration": 120,
           "fear": {
             "mag": 1,
             "scale": 10,
             "table": "Melee_Ones"
           },
-          "effectDuration": 120,
           "mezResistance": {
-            "taunt": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
-            "placate": {
-              "scale": 2,
-              "table": "Melee_Res_Boolean"
-            },
             "confuse": {
               "scale": 2,
               "table": "Melee_Res_Boolean"
@@ -2736,20 +2729,27 @@ export const POWER_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Res_Boolean"
             },
-            "stun": {
+            "placate": {
               "scale": 2,
               "table": "Melee_Res_Boolean"
             },
             "sleep": {
               "scale": 2,
               "table": "Melee_Res_Boolean"
+            },
+            "stun": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
+            },
+            "taunt": {
+              "scale": 2,
+              "table": "Melee_Res_Boolean"
             }
           },
-          "damageBuff": {
+          "tohitBuff": {
             "scale": 3.5,
-            "table": "Melee_Buff_Dmg"
-          },
-          "buffDuration": 120
+            "table": "Melee_Buff_ToHit"
+          }
         }
       },
       {
@@ -2867,6 +2867,64 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.0325,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "defenseBuff": {
+            "aoe": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "melee": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            },
+            "toxic": {
+              "scale": 0.25,
+              "table": "Melee_Buff_Def"
+            }
+          },
+          "durations": {
+            "defenseBuff": 0.75,
+            "immobilize": 0.75,
+            "movement": 0.75
+          },
+          "effectDuration": 0.75,
+          "immobilize": {
+            "mag": 1,
+            "scale": 30,
+            "table": "Melee_Res_Boolean"
+          },
           "movement": {
             "jumpHeight": {
               "scale": 2,
@@ -2884,65 +2942,7 @@ export const POWER_POOLS_RAW = {
               "scale": 0.2,
               "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "movement": 0.75,
-            "defenseBuff": 0.75,
-            "immobilize": 0.75
-          },
-          "defenseBuff": {
-            "ranged": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "melee": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "aoe": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "smashing": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "lethal": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "fire": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "cold": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "energy": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "negative": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "psionic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            },
-            "toxic": {
-              "scale": 0.25,
-              "table": "Melee_Buff_Def"
-            }
-          },
-          "immobilize": {
-            "mag": 1,
-            "scale": 30,
-            "table": "Melee_Res_Boolean"
-          },
-          "effectDuration": 0.75,
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -2971,6 +2971,10 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.2275,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
           "movement": {
             "jumpHeight": {
               "scale": 1,
@@ -2988,11 +2992,7 @@ export const POWER_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "movement": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -3022,33 +3022,33 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.67,
           "activatePeriod": 1,
           "effectArea": "SingleTarget",
-          "knockup": {
-            "scale": 9,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 1.25,
           "durations": {
-            "knockup": 1.25,
-            "knockback": 1.25,
             "hold": 1.25,
+            "knockback": 1.25,
+            "knockup": 1.25,
             "mezResistance": 1.25
           },
-          "knockback": {
-            "scale": 9,
-            "table": "Melee_Ones"
-          },
+          "effectDuration": 1.25,
           "hold": {
             "mag": 1,
             "scale": 2,
             "table": "Melee_Ones"
           },
-          "effectDuration": 1.25,
+          "knockback": {
+            "scale": 9,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 9,
+            "table": "Melee_Ones"
+          },
           "mezResistance": {
             "hold": {
               "scale": 1.75,
               "table": "Melee_Res_Boolean"
             }
-          },
-          "buffDuration": 1.25
+          }
         }
       },
       {
@@ -3095,13 +3095,13 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_Damage"
             }
           ],
-          "teleport": {
-            "scale": 1,
-            "table": "Ranged_Ones"
-          },
           "knockback": {
             "scale": 0.67,
             "table": "Melee_Ones"
+          },
+          "teleport": {
+            "scale": 1,
+            "table": "Ranged_Ones"
           }
         }
       },
@@ -3312,24 +3312,24 @@ export const POWER_POOLS_RAW = {
             "duration": 30,
             "tickRate": 1
           },
-          "rechargeBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
-          "durations": {
-            "rechargeBuff": 30,
-            "recoveryBuff": 30,
-            "damageBuff": 30
-          },
-          "recoveryBuff": {
-            "scale": 0.2,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 30,
           "damageBuff": {
             "scale": 2,
             "table": "Melee_Buff_Dmg"
           },
-          "buffDuration": 30
+          "durations": {
+            "damageBuff": 30,
+            "rechargeBuff": 30,
+            "recoveryBuff": 30
+          },
+          "rechargeBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          },
+          "recoveryBuff": {
+            "scale": 0.2,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -3403,6 +3403,7 @@ export const POWER_POOLS_RAW = {
           "endurance": 13,
           "activationTime": 2.93,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
           "damageDebuff": {
             "scale": 1,
             "table": "Ranged_Debuff_Dam"
@@ -3419,8 +3420,7 @@ export const POWER_POOLS_RAW = {
           "tohitDebuff": {
             "scale": 1,
             "table": "Ranged_Debuff_ToHit"
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -3455,16 +3455,16 @@ export const POWER_POOLS_RAW = {
             "scale": 1.96,
             "table": "Melee_HealSelf"
           },
+          "buffDuration": 45,
+          "durations": {
+            "mezResistance": 45
+          },
           "mezResistance": {
             "stun": {
               "scale": 1.75,
               "table": "Melee_Res_Boolean"
             }
-          },
-          "durations": {
-            "mezResistance": 45
-          },
-          "buffDuration": 45
+          }
         }
       },
       {
@@ -3527,15 +3527,10 @@ export const POWER_POOLS_RAW = {
           "endurance": 19.5,
           "activationTime": 3.33,
           "effectArea": "SingleTarget",
-          "specialBuff": {
-            "heal": {
-              "scale": 0.25,
-              "table": "Melee_Ones"
-            }
-          },
+          "buffDuration": 60,
           "durations": {
-            "specialBuff": 60,
-            "resistanceDebuff": 60
+            "resistanceDebuff": 60,
+            "specialBuff": 60
           },
           "resistanceDebuff": {
             "heal": {
@@ -3543,7 +3538,12 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_Ones"
             }
           },
-          "buffDuration": 60
+          "specialBuff": {
+            "heal": {
+              "scale": 0.25,
+              "table": "Melee_Ones"
+            }
+          }
         }
       }
     ]
@@ -3590,10 +3590,10 @@ export const POWER_POOLS_RAW = {
             "scale": 1.2,
             "table": "Ranged_Heal"
           },
+          "buffDuration": 10,
           "durations": {
             "absorb": 10
-          },
-          "buffDuration": 10
+          }
         }
       },
       {
@@ -3664,9 +3664,17 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.2275,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
           "movement": {
             "fly": {
               "scale": 2,
+              "table": "Melee_Ones"
+            },
+            "flySpeed": {
+              "scale": 2.0475,
               "table": "Melee_Ones"
             },
             "movementControl": {
@@ -3676,16 +3684,8 @@ export const POWER_POOLS_RAW = {
             "movementFriction": {
               "scale": 2,
               "table": "Melee_Friction"
-            },
-            "flySpeed": {
-              "scale": 2.0475,
-              "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "movement": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -3721,10 +3721,10 @@ export const POWER_POOLS_RAW = {
           "radius": 8,
           "maxTargets": 5,
           "summon": {
-            "isPseudoPet": false,
-            "entity": "Pets_Enflame_Pet",
+            "copyBoosts": true,
             "duration": 5,
-            "copyBoosts": true
+            "entity": "Pets_Enflame_Pet",
+            "isPseudoPet": false
           }
         }
       },
@@ -3756,32 +3756,52 @@ export const POWER_POOLS_RAW = {
           "endurance": 2.6,
           "activationTime": 2.03,
           "effectArea": "SingleTarget",
+          "buffDuration": 60,
+          "durations": {
+            "hold": 60,
+            "immobilize": 60,
+            "knockback": 60,
+            "knockup": 60,
+            "mezResistance": 60,
+            "resistance": 60,
+            "sleep": 60,
+            "stun": 60
+          },
+          "effectDuration": 60,
+          "hold": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "immobilize": {
+            "mag": 1,
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "knockback": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
+          "knockup": {
+            "scale": 10,
+            "table": "Ranged_Ones"
+          },
           "mezResistance": {
-            "knockup": {
+            "knockback": {
               "scale": 100,
               "table": "Ranged_Ones"
             },
-            "knockback": {
+            "knockup": {
               "scale": 100,
               "table": "Ranged_Ones"
             }
           },
-          "durations": {
-            "mezResistance": 60,
-            "resistance": 60,
-            "hold": 60,
-            "immobilize": 60,
-            "stun": 60,
-            "sleep": 60,
-            "knockup": 60,
-            "knockback": 60
-          },
           "resistance": {
-            "smashing": {
+            "cold": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
-            "lethal": {
+            "energy": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
@@ -3789,11 +3809,7 @@ export const POWER_POOLS_RAW = {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
-            "cold": {
-              "scale": 2.5,
-              "table": "Ranged_Res_Dmg"
-            },
-            "energy": {
+            "lethal": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
@@ -3805,18 +3821,16 @@ export const POWER_POOLS_RAW = {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             },
+            "smashing": {
+              "scale": 2.5,
+              "table": "Ranged_Res_Dmg"
+            },
             "toxic": {
               "scale": 2.5,
               "table": "Ranged_Res_Dmg"
             }
           },
-          "hold": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
-          "effectDuration": 60,
-          "immobilize": {
+          "sleep": {
             "mag": 1,
             "scale": 10,
             "table": "Ranged_Ones"
@@ -3825,21 +3839,7 @@ export const POWER_POOLS_RAW = {
             "mag": 1,
             "scale": 10,
             "table": "Ranged_Ones"
-          },
-          "sleep": {
-            "mag": 1,
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
-          "knockup": {
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
-          "knockback": {
-            "scale": 10,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 60
+          }
         }
       },
       {
@@ -3886,20 +3886,20 @@ export const POWER_POOLS_RAW = {
           "endurance": 9.75,
           "activationTime": 1.57,
           "effectArea": "Location",
+          "buffDuration": 1.5,
+          "durations": {
+            "stealth": 1.5
+          },
           "stealth": {
             "translucency": {
               "scale": 0,
               "table": "Ranged_Ones"
             }
           },
-          "durations": {
-            "stealth": 1.5
-          },
           "teleport": {
             "scale": 1,
             "table": "Ranged_Ones"
-          },
-          "buffDuration": 1.5
+          }
         }
       }
     ]
@@ -3981,10 +3981,7 @@ export const POWER_POOLS_RAW = {
           "recharge": 450,
           "activationTime": 0.73,
           "effectArea": "SingleTarget",
-          "rechargeBuff": {
-            "scale": 0.7,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 120,
           "durations": {
             "rechargeBuff": 120
           },
@@ -3992,7 +3989,10 @@ export const POWER_POOLS_RAW = {
             "scale": 15,
             "table": "Melee_Ones"
           },
-          "buffDuration": 120
+          "rechargeBuff": {
+            "scale": 0.7,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -4021,11 +4021,14 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.2275,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75,
+            "slow": 0.75,
+            "stealth": 0.75,
+            "threatDebuff": 0.75
+          },
           "movement": {
-            "runSpeed": {
-              "scale": 1.938,
-              "table": "Melee_Ones"
-            },
             "jumpHeight": {
               "scale": 0.1,
               "table": "Melee_Leap"
@@ -4033,13 +4036,11 @@ export const POWER_POOLS_RAW = {
             "jumpSpeed": {
               "scale": 0.075,
               "table": "Melee_SpeedJumping"
+            },
+            "runSpeed": {
+              "scale": 1.938,
+              "table": "Melee_Ones"
             }
-          },
-          "durations": {
-            "movement": 0.75,
-            "slow": 0.75,
-            "stealth": 0.75,
-            "threatDebuff": 0.75
           },
           "slow": {
             "movementControl": {
@@ -4054,17 +4055,16 @@ export const POWER_POOLS_RAW = {
             }
           },
           "stealth": {
+            "stackKey": "NictusFX",
             "stealthPvE": {
               "scale": 35,
               "table": "Melee_Ones"
-            },
-            "stackKey": "NictusFX"
+            }
           },
           "threatDebuff": {
             "scale": 1,
             "table": "Melee_Ones"
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -4096,30 +4096,30 @@ export const POWER_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 7,
           "maxTargets": 16,
-          "slow": {
-            "runSpeed": {
-              "scale": 0.3,
-              "table": "Melee_Ones",
-              "toWho": "Self"
-            },
-            "flySpeed": {
-              "scale": 0.3,
-              "table": "Melee_Ones",
-              "toWho": "Self"
-            }
-          },
+          "buffDuration": 3,
           "durations": {
             "slow": 3
-          },
-          "knockback": {
-            "scale": 1,
-            "table": "Melee_Knockback"
           },
           "enduranceDrain": {
             "scale": 1.5,
             "table": "Melee_Ones"
           },
-          "buffDuration": 3
+          "knockback": {
+            "scale": 1,
+            "table": "Melee_Knockback"
+          },
+          "slow": {
+            "flySpeed": {
+              "scale": 0.3,
+              "table": "Melee_Ones",
+              "toWho": "Self"
+            },
+            "runSpeed": {
+              "scale": 0.3,
+              "table": "Melee_Ones",
+              "toWho": "Self"
+            }
+          }
         }
       },
       {
@@ -4145,14 +4145,14 @@ export const POWER_POOLS_RAW = {
           "endurance": 48.75,
           "activationTime": 1,
           "effectArea": "SingleTarget",
-          "maxEndBuff": {
-            "scale": 25,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 60,
           "durations": {
             "maxEndBuff": 60
           },
-          "buffDuration": 60
+          "maxEndBuff": {
+            "scale": 25,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -4175,14 +4175,14 @@ export const POWER_POOLS_RAW = {
           "activationTime": 0.5,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
-          "onlyAffectsSelf": {
-            "scale": 4,
-            "table": "Melee_Ones"
-          },
+          "buffDuration": 0.75,
           "durations": {
             "onlyAffectsSelf": 0.75
           },
-          "buffDuration": 0.75
+          "onlyAffectsSelf": {
+            "scale": 4,
+            "table": "Melee_Ones"
+          }
         }
       }
     ]
@@ -4260,6 +4260,10 @@ export const POWER_POOLS_RAW = {
           "endurance": 5.5714,
           "activationTime": 0.67,
           "effectArea": "Location",
+          "buffDuration": 5,
+          "durations": {
+            "tohitBuff": 5
+          },
           "teleport": {
             "scale": 1,
             "table": "Melee_Ones"
@@ -4267,11 +4271,7 @@ export const POWER_POOLS_RAW = {
           "tohitBuff": {
             "scale": 1,
             "table": "Melee_Buff_ToHit"
-          },
-          "durations": {
-            "tohitBuff": 5
-          },
-          "buffDuration": 5
+          }
         }
       },
       {
@@ -4332,20 +4332,11 @@ export const POWER_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 30,
           "maxTargets": 255,
-          "stealth": {
-            "translucency": {
-              "scale": 0,
-              "table": "Ranged_Ones"
-            }
-          },
+          "buffDuration": 4,
           "durations": {
-            "stealth": 1.5,
             "movement": 4,
-            "slow": 4
-          },
-          "teleport": {
-            "scale": 3.1,
-            "table": "Ranged_Ones"
+            "slow": 4,
+            "stealth": 1.5
           },
           "movement": {
             "fly": {
@@ -4367,7 +4358,16 @@ export const POWER_POOLS_RAW = {
               "table": "Ranged_Ones"
             }
           },
-          "buffDuration": 4
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Ranged_Ones"
+            }
+          },
+          "teleport": {
+            "scale": 3.1,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -4399,9 +4399,9 @@ export const POWER_POOLS_RAW = {
           "effectArea": "AoE",
           "radius": 100,
           "maxTargets": 16,
-          "teleport": {
-            "scale": 4.1,
-            "table": "Ranged_Ones"
+          "buffDuration": 15,
+          "durations": {
+            "mezResistance": 15
           },
           "mezResistance": {
             "teleport": {
@@ -4409,10 +4409,10 @@ export const POWER_POOLS_RAW = {
               "table": "Ranged_Ones"
             }
           },
-          "durations": {
-            "mezResistance": 15
-          },
-          "buffDuration": 15
+          "teleport": {
+            "scale": 4.1,
+            "table": "Ranged_Ones"
+          }
         }
       }
     ]
@@ -4454,26 +4454,26 @@ export const POWER_POOLS_RAW = {
           "endurance": 7.28,
           "activationTime": 1.87,
           "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "knockback": 12,
+            "slow": 15
+          },
           "immobilize": {
             "mag": 3,
             "scale": 12,
             "table": "Ranged_Immobilize"
+          },
+          "knockback": {
+            "scale": 0.67,
+            "table": "Ranged_Ones"
           },
           "slow": {
             "fly": {
               "scale": 10,
               "table": "Ranged_Ones"
             }
-          },
-          "durations": {
-            "slow": 15,
-            "knockback": 12
-          },
-          "knockback": {
-            "scale": 0.67,
-            "table": "Ranged_Ones"
-          },
-          "buffDuration": 15
+          }
         }
       },
       {
@@ -4520,14 +4520,14 @@ export const POWER_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 5,
           "damageDebuff": {
             "scale": 0.8,
             "table": "Ranged_Debuff_Dam"
           },
           "durations": {
             "damageDebuff": 5
-          },
-          "buffDuration": 5
+          }
         }
       },
       {
@@ -4561,6 +4561,10 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.2275,
           "activatePeriod": 0.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
           "movement": {
             "jumpHeight": {
               "scale": 0.25,
@@ -4582,11 +4586,7 @@ export const POWER_POOLS_RAW = {
               "scale": 0.4,
               "table": "Melee_SpeedRunning"
             }
-          },
-          "durations": {
-            "movement": 0.75
-          },
-          "buffDuration": 0.75
+          }
         }
       },
       {
@@ -4636,14 +4636,14 @@ export const POWER_POOLS_RAW = {
               "tickRate": 1
             }
           ],
+          "buffDuration": 8,
           "damageDebuff": {
             "scale": 0.8,
             "table": "Ranged_Debuff_Dam"
           },
           "durations": {
             "damageDebuff": 8
-          },
-          "buffDuration": 8
+          }
         }
       },
       {
@@ -4707,6 +4707,10 @@ export const POWER_POOLS_RAW = {
           "recharge": 120,
           "endurance": 6.5,
           "effectArea": "SingleTarget",
+          "buffDuration": 30,
+          "durations": {
+            "movement": 30
+          },
           "movement": {
             "jumpHeight": {
               "scale": 0.3,
@@ -4728,11 +4732,7 @@ export const POWER_POOLS_RAW = {
               "scale": 0.5,
               "table": "Melee_SpeedRunning"
             }
-          },
-          "durations": {
-            "movement": 30
-          },
-          "buffDuration": 30
+          }
         }
       }
     ],

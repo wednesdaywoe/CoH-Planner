@@ -40,15 +40,20 @@ export const Envenom: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 30,
     "defenseDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 30,
-      "resistance": 30,
       "regenDebuff": 30,
+      "resistance": 30,
       "resistanceDebuff": 30
+    },
+    "regenDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Ones"
     },
     "resistance": {
       "heal": {
@@ -56,16 +61,12 @@ export const Envenom: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "regenDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -73,11 +74,7 @@ export const Envenom: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -89,11 +86,14 @@ export const Envenom: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "buffDuration": 30
+    }
   }
 };

@@ -47,6 +47,7 @@ export const RangedShot: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 9.17,
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
@@ -54,7 +55,6 @@ export const RangedShot: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

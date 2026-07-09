@@ -32,14 +32,14 @@ export const GammaBoost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 1.25,
     "durations": {
       "regenBuff": 1.25
     },
-    "buffDuration": 1.25
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
   },
   "mechanicType": "parentMechanic"
 };

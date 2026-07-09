@@ -31,14 +31,7 @@ export const FrostProtection: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "maxHPBuff": {
-      "scale": 1,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 10.3,
-      "debuffResistance": 10.3
-    },
+    "buffDuration": 10.3,
     "debuffResistance": {
       "movement": {
         "scale": 0.1,
@@ -49,7 +42,14 @@ export const FrostProtection: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 10.3
+    "durations": {
+      "debuffResistance": 10.3,
+      "maxHPBuff": 10.3
+    },
+    "maxHPBuff": {
+      "scale": 1,
+      "table": "Melee_HealSelf"
+    }
   },
   "mechanicType": "parentMechanic"
 };

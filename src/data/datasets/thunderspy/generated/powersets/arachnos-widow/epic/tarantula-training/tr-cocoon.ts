@@ -60,14 +60,14 @@ export const TRCocoon: Power = {
     }
   ],
   "effects": {
-    "immobilize": {
-      "mag": 2,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
     "hold": {
       "mag": 3,
       "scale": 10,
+      "table": "Ranged_Immobilize"
+    },
+    "immobilize": {
+      "mag": 2,
+      "scale": 15,
       "table": "Ranged_Immobilize"
     }
   },

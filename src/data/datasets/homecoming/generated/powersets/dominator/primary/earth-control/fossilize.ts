@@ -46,11 +46,7 @@ export const Fossilize: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 12,
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
@@ -58,7 +54,11 @@ export const Fossilize: Power = {
     "durations": {
       "defenseDebuff": 12
     },
-    "buffDuration": 12
+    "hold": {
+      "mag": 3,
+      "scale": 12,
+      "table": "Ranged_Immobilize"
+    }
   },
   "conditionalEffects": [
     {

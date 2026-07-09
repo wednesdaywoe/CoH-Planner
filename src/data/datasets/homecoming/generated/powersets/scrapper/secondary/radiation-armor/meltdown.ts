@@ -36,12 +36,42 @@ export const Meltdown: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "damageBuff": {
+      "scale": 3.3,
+      "table": "Melee_Buff_Dmg"
+    },
+    "debuffResistance": {
+      "recovery": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "damageBuff": 60,
+      "debuffResistance": 10,
+      "recoveryBuffUnenhanced": 60,
+      "recoveryDebuff": 10,
+      "resistance": 60
+    },
+    "enduranceDrain": {
+      "scale": 0.1,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuffUnenhanced": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "recoveryDebuff": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
     "resistance": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
@@ -49,11 +79,7 @@ export const Meltdown: Power = {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
@@ -65,40 +91,14 @@ export const Meltdown: Power = {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 60,
-      "recoveryBuffUnenhanced": 60,
-      "damageBuff": 60,
-      "recoveryDebuff": 10,
-      "debuffResistance": 10
-    },
-    "recoveryBuffUnenhanced": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "damageBuff": {
-      "scale": 3.3,
-      "table": "Melee_Buff_Dmg"
-    },
-    "enduranceDrain": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "recovery": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 60
+    }
   }
 };

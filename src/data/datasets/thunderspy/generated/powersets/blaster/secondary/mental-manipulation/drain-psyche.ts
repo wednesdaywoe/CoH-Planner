@@ -40,18 +40,18 @@ export const DrainPsyche: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 30,
     "durations": {
       "regenBuff": 30,
       "regenDebuff": 30
     },
+    "regenBuff": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    },
     "regenDebuff": {
       "scale": 2.5,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 30
+    }
   }
 };

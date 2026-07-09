@@ -51,19 +51,19 @@ export const Moonbeam: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
+    "buffDuration": 10,
     "durations": {
-      "tohitDebuff": 10,
-      "rangeBuff": 10
+      "rangeBuff": 10,
+      "tohitDebuff": 10
     },
     "rangeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    }
   },
   "quickSnipe": {
     "stats": {

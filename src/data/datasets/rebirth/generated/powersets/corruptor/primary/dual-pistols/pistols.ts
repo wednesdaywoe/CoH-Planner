@@ -106,10 +106,6 @@ export const Pistols: Power = {
           "table": "Ranged_Slow"
         },
         "slow": {
-          "runSpeed": {
-            "scale": 0.12,
-            "table": "Ranged_Slow"
-          },
           "flySpeed": {
             "scale": 0.12,
             "table": "Ranged_Slow"
@@ -119,6 +115,10 @@ export const Pistols: Power = {
             "table": "Ranged_Slow"
           },
           "jumpSpeed": {
+            "scale": 0.12,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
             "scale": 0.12,
             "table": "Ranged_Slow"
           }

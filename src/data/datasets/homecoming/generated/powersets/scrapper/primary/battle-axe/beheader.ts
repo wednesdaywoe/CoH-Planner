@@ -51,10 +51,7 @@ export const Beheader: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 6,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
@@ -62,7 +59,10 @@ export const Beheader: Power = {
     "durations": {
       "defenseDebuff": 6
     },
-    "buffDuration": 6
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   },
   "specialEffects": [
     {

@@ -39,26 +39,33 @@ export const PersonalForceField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "onlyAffectsSelf": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "onlyAffectsSelf": 99999,
-      "defenseBuff": 0.75,
-      "resistance": 0.75,
-      "mezResistance": 0.75
-    },
+    "buffDuration": 0.75,
     "defenseBuff": {
       "scale": 7.5,
       "table": "Melee_Buff_Def"
     },
+    "durations": {
+      "defenseBuff": 0.75,
+      "mezResistance": 0.75,
+      "onlyAffectsSelf": 99999,
+      "resistance": 0.75
+    },
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "onlyAffectsSelf": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
     "resistance": {
-      "smashing": {
+      "cold": {
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
@@ -66,11 +73,7 @@ export const PersonalForceField: Power = {
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 4,
         "table": "Melee_Res_Dmg"
       },
@@ -81,14 +84,11 @@ export const PersonalForceField: Power = {
       "psionic": {
         "scale": 4,
         "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
       }
-    },
-    "mezResistance": {
-      "teleport": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 0.75
+    }
   }
 };

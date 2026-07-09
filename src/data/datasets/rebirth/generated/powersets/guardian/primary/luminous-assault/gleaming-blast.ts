@@ -50,10 +50,7 @@ export const GleamingBlast: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 6,
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
@@ -61,7 +58,10 @@ export const GleamingBlast: Power = {
     "durations": {
       "defenseDebuff": 6
     },
-    "buffDuration": 6
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    }
   },
   "specialEffects": [
     {

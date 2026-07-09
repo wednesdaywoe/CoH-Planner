@@ -48,14 +48,14 @@ export const Entangle: Power = {
     "tickRate": 0.5
   },
   "effects": {
+    "knockback": {
+      "scale": 6,
+      "table": "Ranged_Knockback"
+    },
     "stun": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 6,
-      "table": "Ranged_Knockback"
     }
   },
   "conditionalEffects": [

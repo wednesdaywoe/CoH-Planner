@@ -48,11 +48,7 @@ export const FuturePain: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "fear": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Fear"
-    },
+    "buffDuration": 9.17,
     "damageBuff": {
       "scale": 0.11,
       "table": "Melee_Ones"
@@ -60,7 +56,11 @@ export const FuturePain: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17,
+    "fear": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Fear"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -38,6 +38,7 @@ export const Fade: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
     "defenseBuff": {
       "melee": {
         "scale": 1.25,
@@ -46,7 +47,6 @@ export const Fade: Power = {
     },
     "durations": {
       "defenseBuff": 60
-    },
-    "buffDuration": 60
+    }
   }
 };

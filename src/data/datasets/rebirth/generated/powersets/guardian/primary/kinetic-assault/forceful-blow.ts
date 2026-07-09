@@ -52,10 +52,7 @@ export const ForcefulBlow: Power = {
     }
   ],
   "effects": {
-    "knockup": {
-      "scale": 0.75,
-      "table": "Melee_Knockback"
-    },
+    "buffDuration": 10,
     "damageDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Dam"
@@ -63,7 +60,10 @@ export const ForcefulBlow: Power = {
     "durations": {
       "damageDebuff": 10
     },
-    "buffDuration": 10
+    "knockup": {
+      "scale": 0.75,
+      "table": "Melee_Knockback"
+    }
   },
   "specialEffects": [
     {

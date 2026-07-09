@@ -37,26 +37,27 @@ export const WorldofPain: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
+    "buffDuration": 90,
+    "damageBuff": {
+      "scale": 1.6,
+      "table": "Ranged_Buff_Dmg"
     },
     "durations": {
-      "tohitBuff": 90,
+      "damageBuff": 90,
       "placate": 90,
       "resistance": 90,
-      "damageBuff": 90
+      "tohitBuff": 90
     },
     "placate": {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
     "resistance": {
-      "smashing": {
+      "cold": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
@@ -64,11 +65,7 @@ export const WorldofPain: Power = {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
@@ -80,15 +77,18 @@ export const WorldofPain: Power = {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       }
     },
-    "damageBuff": {
-      "scale": 1.6,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "buffDuration": 90
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
+    }
   }
 };

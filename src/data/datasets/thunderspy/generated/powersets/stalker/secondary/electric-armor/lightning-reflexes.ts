@@ -28,14 +28,14 @@ export const LightningReflexes: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 10.25,
     "durations": {
       "rechargeBuff": 10.25
     },
-    "buffDuration": 10.25
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    }
   },
   "mechanicType": "parentMechanic"
 };

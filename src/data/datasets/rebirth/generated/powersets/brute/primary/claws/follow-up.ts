@@ -47,23 +47,23 @@ export const FollowUp: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
+    "buffDuration": 10,
     "damageBuff": {
       "scale": 3,
       "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 10,
+      "tohitBuff": 10
     },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 10,
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

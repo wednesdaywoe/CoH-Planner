@@ -43,18 +43,18 @@ export const Caltrops: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
       "duration": 45,
       "entities": [
         {
-          "entity": "Pets_Caltrops",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Caltrops"
         },
         {
-          "entity": "Pets_Traps_Mine",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Traps_Mine"
         }
-      ]
+      ],
+      "isPseudoPet": false
     }
   }
 };

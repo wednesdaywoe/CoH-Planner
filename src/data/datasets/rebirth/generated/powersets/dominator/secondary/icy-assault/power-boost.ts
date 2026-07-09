@@ -30,44 +30,12 @@ export const PowerBoost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "specialBuff": 15
+    },
     "specialBuff": {
-      "stun": {
-        "scale": 0.66,
-        "table": "Melee_Stun"
-      },
-      "sleep": {
-        "scale": 0.66,
-        "table": "Melee_Stun"
-      },
-      "confuse": {
-        "scale": 0.66,
-        "table": "Melee_Stun"
-      },
-      "fear": {
-        "scale": 0.66,
-        "table": "Melee_Stun"
-      },
-      "immobilize": {
-        "scale": 0.66,
-        "table": "Melee_Stun"
-      },
-      "hold": {
-        "scale": 0.66,
-        "table": "Melee_Stun"
-      },
-      "movement": {
-        "scale": 0.66,
-        "table": "Melee_Stun"
-      },
-      "defense": {
-        "scale": 0.66,
-        "table": "Melee_Stun"
-      },
-      "melee": {
-        "scale": 0.66,
-        "table": "Melee_Stun"
-      },
-      "ranged": {
+      "absorb": {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
@@ -75,11 +43,27 @@ export const PowerBoost: Power = {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
-      "smashing": {
+      "cold": {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
-      "lethal": {
+      "confuse": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "defense": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "endurance": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "energy": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "fear": {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
@@ -87,11 +71,27 @@ export const PowerBoost: Power = {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
-      "cold": {
+      "heal": {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
-      "energy": {
+      "hold": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "immobilize": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "lethal": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "melee": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "movement": {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
@@ -103,27 +103,27 @@ export const PowerBoost: Power = {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
-      "heal": {
+      "ranged": {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
-      "absorb": {
+      "sleep": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "smashing": {
+        "scale": 0.66,
+        "table": "Melee_Stun"
+      },
+      "stun": {
         "scale": 0.66,
         "table": "Melee_Stun"
       },
       "tohit": {
         "scale": 0.66,
         "table": "Melee_Stun"
-      },
-      "endurance": {
-        "scale": 0.66,
-        "table": "Melee_Stun"
       }
     },
-    "durations": {
-      "specialBuff": 15
-    },
-    "buffDuration": 15,
     "maxStacks": 2,
     "stacksLinear": [
       "specialBuff"

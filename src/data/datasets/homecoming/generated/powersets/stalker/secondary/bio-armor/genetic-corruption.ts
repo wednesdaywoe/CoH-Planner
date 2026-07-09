@@ -43,11 +43,7 @@ export const GeneticCorruption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "sleep": {
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Stun"
-    },
+    "buffDuration": 5,
     "damageDebuff": {
       "scale": 1.5,
       "table": "Melee_Debuff_Dam"
@@ -55,7 +51,11 @@ export const GeneticCorruption: Power = {
     "durations": {
       "damageDebuff": 5
     },
-    "buffDuration": 5
+    "sleep": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Stun"
+    }
   },
   "specialEffects": [
     {

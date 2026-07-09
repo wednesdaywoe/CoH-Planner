@@ -43,15 +43,15 @@ export const SoothingFlames: Power = {
     "table": "Ranged_Heal"
   },
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "resistance": 30
+    },
     "resistance": {
       "toxic": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 30
-    },
-    "buffDuration": 30
+    }
   }
 };

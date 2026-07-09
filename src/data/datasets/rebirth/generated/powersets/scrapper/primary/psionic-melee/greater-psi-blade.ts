@@ -53,10 +53,7 @@ export const GreaterPsiBlade: Power = {
     }
   ],
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
+    "buffDuration": 6,
     "durations": {
       "rechargeDebuff": 6
     },
@@ -65,7 +62,10 @@ export const GreaterPsiBlade: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     },
-    "buffDuration": 6
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    }
   },
   "conditionalEffects": [
     {

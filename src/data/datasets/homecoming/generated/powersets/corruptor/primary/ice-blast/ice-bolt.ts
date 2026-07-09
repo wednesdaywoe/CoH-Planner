@@ -46,12 +46,21 @@ export const IceBolt: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "rechargeDebuff": 6,
+      "slow": 6
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
-      "flySpeed": {
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
@@ -59,19 +68,10 @@ export const IceBolt: Power = {
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 6,
-      "rechargeDebuff": 6
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 6
+    }
   }
 };

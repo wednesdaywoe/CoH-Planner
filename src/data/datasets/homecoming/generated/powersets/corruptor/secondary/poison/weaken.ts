@@ -40,23 +40,30 @@ export const Weaken: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 30,
     "damageDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_Dam"
     },
     "durations": {
       "damageDebuff": 30,
-      "tohitDebuff": 30,
-      "specialBuff": 30,
       "slow": 30,
-      "specialDebuff": 30
+      "specialBuff": 30,
+      "specialDebuff": 30,
+      "tohitDebuff": 30
     },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
+    "slow": {
+      "flySpeed": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "runSpeed": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      }
     },
     "specialBuff": {
-      "heal": {
+      "confuse": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
@@ -64,11 +71,11 @@ export const Weaken: Power = {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
-      "confuse": {
+      "fear": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
-      "fear": {
+      "heal": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
@@ -80,11 +87,11 @@ export const Weaken: Power = {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
-      "stun": {
+      "sleep": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
-      "sleep": {
+      "stun": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
@@ -93,38 +100,8 @@ export const Weaken: Power = {
         "table": "Ranged_Stun"
       }
     },
-    "slow": {
-      "runSpeed": {
-        "scale": 0.25,
-        "table": "Ranged_Stun"
-      },
-      "flySpeed": {
-        "scale": 0.25,
-        "table": "Ranged_Stun"
-      }
-    },
     "specialDebuff": {
-      "ranged": {
-        "scale": 0.25,
-        "table": "Ranged_Stun"
-      },
-      "melee": {
-        "scale": 0.25,
-        "table": "Ranged_Stun"
-      },
       "aoe": {
-        "scale": 0.25,
-        "table": "Ranged_Stun"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Ranged_Stun"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Ranged_Stun"
-      },
-      "fire": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
@@ -132,7 +109,23 @@ export const Weaken: Power = {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
+      "defense": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
       "energy": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "fire": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "melee": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
@@ -144,15 +137,22 @@ export const Weaken: Power = {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
-      "toxic": {
+      "ranged": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       },
-      "defense": {
+      "smashing": {
+        "scale": 0.25,
+        "table": "Ranged_Stun"
+      },
+      "toxic": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       }
     },
-    "buffDuration": 30
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    }
   }
 };

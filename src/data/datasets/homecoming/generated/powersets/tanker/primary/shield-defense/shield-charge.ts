@@ -43,19 +43,15 @@ export const ShieldCharge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Shield Charge",
+      "duration": 1,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Shield_Defense.Shield_Charge_AoE"
       ],
-      "duration": 1,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Shield Charge",
@@ -97,6 +93,10 @@ export const ShieldCharge: Power = {
           ]
         }
       ]
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
     }
   }
 };

@@ -62,6 +62,15 @@ export const Impale: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "defenseDebuff": {
+      "scale": 3,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 15,
+      "slow": 15
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
@@ -71,10 +80,6 @@ export const Impale: Power = {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
       },
       "flySpeed": {
         "scale": 0.3,
@@ -87,17 +92,12 @@ export const Impale: Power = {
       "jumpSpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 15,
-      "defenseDebuff": 15
-    },
-    "defenseDebuff": {
-      "scale": 3,
-      "table": "Ranged_Debuff_Def"
-    },
-    "buffDuration": 15
+    }
   },
   "specialEffects": [
     {

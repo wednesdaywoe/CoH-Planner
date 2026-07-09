@@ -43,20 +43,20 @@ export const IcePack: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
-    "maxHPBuff": {
-      "scale": 4,
-      "table": "Melee_HealSelf"
-    },
+    "buffDuration": 120,
     "durations": {
       "maxHPBuff": 120,
       "resistance": 120
+    },
+    "maxHPBuff": {
+      "scale": 4,
+      "table": "Melee_HealSelf"
     },
     "resistance": {
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "buffDuration": 120
+    }
   }
 };

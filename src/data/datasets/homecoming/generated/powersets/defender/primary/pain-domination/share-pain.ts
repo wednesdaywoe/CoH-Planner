@@ -48,26 +48,26 @@ export const SharePain: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 15,
+      "regenDebuff": 15,
+      "resistance": 15
+    },
+    "regenDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
     "resistance": {
       "heal": {
         "scale": 1,
         "table": "Ranged_Ones"
       }
     },
-    "durations": {
-      "resistance": 15,
-      "regenDebuff": 15,
-      "damageBuff": 15
-    },
-    "regenDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 2.5,
-      "table": "Ranged_Buff_Dmg"
-    },
-    "buffDuration": 15,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

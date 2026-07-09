@@ -48,6 +48,14 @@ export const TeslaCage: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "recoveryDebuff": 8
+    },
+    "enduranceGain": {
+      "scale": 3.43,
+      "table": "Ranged_Ones"
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
@@ -56,14 +64,6 @@ export const TeslaCage: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 8
-    },
-    "enduranceGain": {
-      "scale": 3.43,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 8
+    }
   }
 };

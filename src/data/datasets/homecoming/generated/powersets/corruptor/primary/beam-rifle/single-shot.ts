@@ -58,14 +58,14 @@ export const SingleShot: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
-        "regenDebuff": {
-          "scale": 0.75,
-          "table": "Ranged_Ones"
-        },
+        "buffDuration": 10,
         "durations": {
           "regenDebuff": 10
         },
-        "buffDuration": 10
+        "regenDebuff": {
+          "scale": 0.75,
+          "table": "Ranged_Ones"
+        }
       }
     }
   ],

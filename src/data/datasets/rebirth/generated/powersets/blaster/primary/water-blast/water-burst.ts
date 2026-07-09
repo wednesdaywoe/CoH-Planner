@@ -58,7 +58,20 @@ export const WaterBurst: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 0.035,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.23,
+      "slow": 10
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.3,
         "table": "Ranged_Slow"
@@ -70,21 +83,8 @@ export const WaterBurst: Power = {
       "runSpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 10,
-      "damageBuff": 9.23
-    },
-    "damageBuff": {
-      "scale": 0.035,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10
+    }
   },
   "conditionalEffects": [
     {

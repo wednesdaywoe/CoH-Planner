@@ -36,25 +36,30 @@ export const PainAbsorption: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "absorb": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    },
+    "buffDuration": 20,
+    "durations": {
+      "absorb": 20,
+      "regenBuffUnenhanced": 20,
+      "resistance": 60,
+      "resistanceDebuff": 20
+    },
+    "enduranceDrain": {
+      "scale": 5,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
     "resistance": {
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 60,
-      "absorb": 20,
-      "regenBuffUnenhanced": 20,
-      "resistanceDebuff": 20
-    },
-    "absorb": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
-    "regenBuffUnenhanced": {
-      "scale": 1,
-      "table": "Melee_Ones"
     },
     "resistanceDebuff": {
       "heal": {
@@ -62,11 +67,6 @@ export const PainAbsorption: Power = {
         "table": "Melee_Ones"
       }
     },
-    "enduranceDrain": {
-      "scale": 5,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 20,
     "maxStacks": 2,
     "stacksLinear": [
       "absorb",
@@ -85,10 +85,15 @@ export const PainAbsorption: Power = {
           "scale": 3,
           "table": "Melee_HealSelf"
         },
+        "buffDuration": 20,
         "durations": {
           "absorb": 20,
           "regenBuffUnenhanced": 20,
           "resistanceDebuff": 20
+        },
+        "enduranceDrain": {
+          "scale": 10,
+          "table": "Melee_Ones"
         },
         "regenBuffUnenhanced": {
           "scale": 2,
@@ -99,12 +104,7 @@ export const PainAbsorption: Power = {
             "scale": 0.5,
             "table": "Melee_Ones"
           }
-        },
-        "enduranceDrain": {
-          "scale": 10,
-          "table": "Melee_Ones"
-        },
-        "buffDuration": 20
+        }
       },
       "group": "pain_absorption-levels"
     },
@@ -119,10 +119,15 @@ export const PainAbsorption: Power = {
           "scale": 4,
           "table": "Melee_HealSelf"
         },
+        "buffDuration": 20,
         "durations": {
           "absorb": 20,
           "regenBuffUnenhanced": 20,
           "resistanceDebuff": 20
+        },
+        "enduranceDrain": {
+          "scale": 15,
+          "table": "Melee_Ones"
         },
         "regenBuffUnenhanced": {
           "scale": 3,
@@ -133,12 +138,7 @@ export const PainAbsorption: Power = {
             "scale": 0.75,
             "table": "Melee_Ones"
           }
-        },
-        "enduranceDrain": {
-          "scale": 15,
-          "table": "Melee_Ones"
-        },
-        "buffDuration": 20
+        }
       },
       "group": "pain_absorption-levels"
     }

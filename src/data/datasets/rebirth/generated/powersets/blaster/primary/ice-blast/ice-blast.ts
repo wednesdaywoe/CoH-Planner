@@ -60,7 +60,25 @@ export const IceBlast: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17,
+      "rechargeDebuff": 10,
+      "slow": 10
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -72,26 +90,8 @@ export const IceBlast: Power = {
       "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
       }
     },
-    "durations": {
-      "slow": 10,
-      "rechargeDebuff": 10,
-      "damageBuff": 9.17
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "damageBuff": {
-      "scale": 0.11,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

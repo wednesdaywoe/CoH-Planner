@@ -56,11 +56,21 @@ export const SpineBurst: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 8,
+      "slow": 10
+    },
+    "immobilize": {
+      "mag": 0.33000001311302185,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
       "flySpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
@@ -72,22 +82,12 @@ export const SpineBurst: Power = {
       "jumpSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 10,
-      "rechargeDebuff": 8
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "immobilize": {
-      "mag": 0.33000001311302185,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

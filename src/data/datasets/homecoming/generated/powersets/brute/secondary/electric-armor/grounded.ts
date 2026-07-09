@@ -29,19 +29,25 @@ export const Grounded: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 1,
+      "immobilize": 1,
+      "resistance": 1
+    },
+    "effectDuration": 1,
+    "immobilize": {
+      "mag": 1,
+      "scale": 6,
+      "table": "Melee_Ones"
+    },
     "resistance": {
-      "smashing": {
-        "scale": 0.8,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.8,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 0.8,
-        "table": "Melee_Res_Dmg"
-      },
       "cold": {
         "scale": 0.8,
         "table": "Melee_Res_Dmg"
@@ -50,29 +56,23 @@ export const Grounded: Power = {
         "scale": 1.25,
         "table": "Melee_Res_Dmg"
       },
+      "fire": {
+        "scale": 0.8,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 0.8,
+        "table": "Melee_Res_Dmg"
+      },
       "negative": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 0.8,
+        "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 1,
-      "debuffResistance": 1,
-      "immobilize": 1
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 1,
-    "buffDuration": 1
+    }
   },
   "mechanicType": "parentMechanic"
 };

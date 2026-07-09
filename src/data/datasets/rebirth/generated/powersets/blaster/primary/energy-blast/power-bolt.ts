@@ -59,10 +59,7 @@ export const PowerBolt: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
@@ -70,7 +67,10 @@ export const PowerBolt: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5,
+    "knockback": {
+      "scale": 0.7,
+      "table": "Ranged_Knockback"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

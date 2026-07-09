@@ -42,10 +42,10 @@ export const ShadowField: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Shadow_Field_Dominator",
+      "copyBoosts": true,
       "duration": 45,
-      "copyBoosts": true
+      "entity": "Pets_Shadow_Field_Dominator",
+      "isPseudoPet": false
     }
   },
   "conditionalEffects": [
@@ -56,10 +56,10 @@ export const ShadowField: Power = {
       "defaultActive": false,
       "effects": {
         "summon": {
-          "isPseudoPet": false,
-          "entity": "Pets_Shadow_Field_Dominator_Domination",
+          "copyBoosts": true,
           "duration": 45,
-          "copyBoosts": true
+          "entity": "Pets_Shadow_Field_Dominator_Domination",
+          "isPseudoPet": false
         }
       }
     }

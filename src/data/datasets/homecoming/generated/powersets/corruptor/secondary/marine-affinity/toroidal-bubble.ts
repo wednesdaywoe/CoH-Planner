@@ -42,21 +42,44 @@ export const ToroidalBubble: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 60,
+      "movement": 60,
+      "recoveryBuff": 60,
+      "resistance": 60
+    },
+    "enduranceGain": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "movement": {
       "jumpHeight": {
         "scale": 0.25,
         "table": "Melee_Leap"
       }
     },
-    "durations": {
-      "movement": 60,
-      "resistance": 60,
-      "debuffResistance": 60,
-      "recoveryBuff": 60
+    "recoveryBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
     },
     "resistance": {
-      "smashing": {
-        "scale": 2.5,
+      "cold": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
       "fire": {
@@ -64,14 +87,6 @@ export const ToroidalBubble: Power = {
         "table": "Ranged_Res_Dmg"
       },
       "lethal": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
@@ -83,29 +98,14 @@ export const ToroidalBubble: Power = {
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "recovery": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "enduranceGain": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 60
+    }
   }
 };

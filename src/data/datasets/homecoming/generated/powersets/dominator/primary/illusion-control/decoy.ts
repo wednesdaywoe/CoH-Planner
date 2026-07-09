@@ -40,9 +40,9 @@ export const Decoy: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "duration": 60,
       "copyBoosts": true,
+      "duration": 60,
+      "isPseudoPet": false,
       "entity": "Pets_Decoy_Dominator",
       "entityCount": 3
     },

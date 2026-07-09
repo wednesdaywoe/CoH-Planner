@@ -53,6 +53,15 @@ export const AbyssalGaze: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17,
+      "tohitDebuff": 10
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
@@ -62,15 +71,6 @@ export const AbyssalGaze: Power = {
       "scale": 0.75,
       "table": "Ranged_DeBuff_ToHit"
     },
-    "durations": {
-      "tohitDebuff": 10,
-      "damageBuff": 9.17
-    },
-    "damageBuff": {
-      "scale": 0.11,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

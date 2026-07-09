@@ -40,7 +40,12 @@ export const GlacialShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 240,
     "defenseBuff": {
+      "aoe": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
       "energy": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
@@ -50,10 +55,6 @@ export const GlacialShield: Power = {
         "table": "Ranged_Buff_Def"
       },
       "ranged": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       }
@@ -67,7 +68,6 @@ export const GlacialShield: Power = {
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "buffDuration": 240
+    }
   }
 };

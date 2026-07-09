@@ -30,16 +30,9 @@ export const ShadowDweller: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.25,
     "defenseBuff": {
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
+      "aoe": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
@@ -51,7 +44,11 @@ export const ShadowDweller: Power = {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
-      "negative": {
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
@@ -59,19 +56,22 @@ export const ShadowDweller: Power = {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
+      "negative": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
       "ranged": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
-      "aoe": {
+      "smashing": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 10.25
-    },
-    "buffDuration": 10.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

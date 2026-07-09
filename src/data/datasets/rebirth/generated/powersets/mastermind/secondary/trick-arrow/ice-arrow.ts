@@ -41,16 +41,21 @@ export const IceArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 10
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
         "scale": 0.4,
         "table": "Ranged_Slow"
@@ -62,17 +67,12 @@ export const IceArrow: Power = {
       "jumpSpeed": {
         "scale": 0.4,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 10,
-      "rechargeDebuff": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 10
+    }
   },
   "conditionalEffects": [
     {
@@ -81,11 +81,16 @@ export const IceArrow: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 10,
+        "durations": {
+          "rechargeDebuff": 10,
+          "slow": 10
+        },
+        "rechargeDebuff": {
+          "scale": 0.08,
+          "table": "Ranged_Slow"
+        },
         "slow": {
-          "runSpeed": {
-            "scale": 0.08,
-            "table": "Ranged_Slow"
-          },
           "flySpeed": {
             "scale": 0.08,
             "table": "Ranged_Slow"
@@ -97,17 +102,12 @@ export const IceArrow: Power = {
           "jumpSpeed": {
             "scale": 0.08,
             "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.08,
+            "table": "Ranged_Slow"
           }
-        },
-        "durations": {
-          "slow": 10,
-          "rechargeDebuff": 10
-        },
-        "rechargeDebuff": {
-          "scale": 0.08,
-          "table": "Ranged_Slow"
-        },
-        "buffDuration": 10
+        }
       }
     }
   ]

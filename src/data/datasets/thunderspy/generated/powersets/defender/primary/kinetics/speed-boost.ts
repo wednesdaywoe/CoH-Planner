@@ -40,18 +40,18 @@ export const SpeedBoost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 240,
     "durations": {
       "rechargeBuff": 240,
       "recoveryBuff": 240
     },
+    "rechargeBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
     "recoveryBuff": {
       "scale": 0.25,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 240
+    }
   }
 };

@@ -55,11 +55,7 @@ export const RingofFire: Power = {
     "tickRate": 1.5
   },
   "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 10,
     "damageBuff": {
       "scale": 0.077,
       "table": "Ranged_Ones"
@@ -68,13 +64,17 @@ export const RingofFire: Power = {
       "damageBuff": 8.67,
       "slow": 10
     },
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -44,9 +44,9 @@ export const OmegaManeuver: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 5,
       "entity": "Pets_Omega_Bomb",
-      "duration": 5
+      "isPseudoPet": false
     }
   }
 };

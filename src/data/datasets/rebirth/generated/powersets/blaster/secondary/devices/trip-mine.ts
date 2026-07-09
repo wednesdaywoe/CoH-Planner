@@ -40,11 +40,7 @@ export const TripMine: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Mine",
-      "duration": 260
-    },
+    "buffDuration": 11.5,
     "damageBuff": {
       "scale": 0.264,
       "table": "Ranged_Ones"
@@ -52,7 +48,11 @@ export const TripMine: Power = {
     "durations": {
       "damageBuff": 11.5
     },
-    "buffDuration": 11.5,
+    "summon": {
+      "duration": 260,
+      "entity": "Pets_Mine",
+      "isPseudoPet": false
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

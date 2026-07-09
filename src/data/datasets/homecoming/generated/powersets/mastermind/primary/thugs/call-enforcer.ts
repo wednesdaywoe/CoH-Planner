@@ -44,10 +44,10 @@ export const CallEnforcer: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Thug_Lt",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "MastermindPets_Thug_Lt",
+      "isPseudoPet": false
     }
   }
 };

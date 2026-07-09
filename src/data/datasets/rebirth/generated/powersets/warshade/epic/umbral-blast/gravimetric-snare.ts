@@ -66,17 +66,26 @@ export const GravimetricSnare: Power = {
       "scale": 4,
       "table": "Melee_Ones"
     },
+    "buffDuration": 6,
     "durations": {
       "accuracyBuff": 15,
-      "slow": 6,
-      "rechargeDebuff": 6
+      "rechargeDebuff": 6,
+      "slow": 6
     },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -88,16 +97,7 @@ export const GravimetricSnare: Power = {
       "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
       }
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 6
+    }
   }
 };

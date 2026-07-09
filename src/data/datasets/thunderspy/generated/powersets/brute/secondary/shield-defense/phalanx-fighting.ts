@@ -32,7 +32,12 @@ export const PhalanxFighting: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1.25,
     "defenseBuff": {
+      "aoe": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
       "melee": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
@@ -40,16 +45,11 @@ export const PhalanxFighting: Power = {
       "ranged": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 1.25
-    },
-    "buffDuration": 1.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

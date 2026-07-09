@@ -41,16 +41,16 @@ export const KujiInSha: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "resistance": 60
+    },
     "resistance": {
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "resistance": 60
-    },
-    "buffDuration": 60,
     "maxStacks": 2,
     "stacksLinear": [
       "resistance"

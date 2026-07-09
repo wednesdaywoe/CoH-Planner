@@ -45,6 +45,7 @@ export const CauterizingBlaze: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
+    "buffDuration": 2.2,
     "damageBuff": {
       "scale": 1,
       "table": "Melee_Buff_Dmg"
@@ -52,7 +53,6 @@ export const CauterizingBlaze: Power = {
     "durations": {
       "damageBuff": 2.2
     },
-    "buffDuration": 2.2,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

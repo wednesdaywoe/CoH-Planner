@@ -50,19 +50,19 @@ export const PsionicDart: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 6,
-      "damageBuff": 8.5
-    },
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8.5,
+    "durations": {
+      "damageBuff": 8.5,
+      "rechargeDebuff": 6
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

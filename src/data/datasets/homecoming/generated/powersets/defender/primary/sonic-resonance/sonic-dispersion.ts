@@ -42,19 +42,25 @@ export const SonicDispersion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "hold": 2.25,
+      "immobilize": 2.25,
+      "resistance": 2.25,
+      "stun": 2.25
+    },
+    "effectDuration": 2.25,
+    "hold": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 20,
+      "table": "Ranged_Res_Boolean"
+    },
     "resistance": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
       "cold": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
@@ -63,7 +69,19 @@ export const SonicDispersion: Power = {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
+      "fire": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
       "negative": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
@@ -72,28 +90,10 @@ export const SonicDispersion: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "durations": {
-      "resistance": 2.25,
-      "hold": 2.25,
-      "immobilize": 2.25,
-      "stun": 2.25
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 2.25,
-    "immobilize": {
-      "mag": 1,
-      "scale": 20,
-      "table": "Ranged_Res_Boolean"
-    },
     "stun": {
       "mag": 1,
       "scale": 20,
       "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 2.25
+    }
   }
 };

@@ -36,10 +36,7 @@ export const SonicRepulsion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 0.5,
     "durations": {
       "knockback": 0.5
     },
@@ -47,7 +44,10 @@ export const SonicRepulsion: Power = {
       "scale": 2.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 0.5
+    "knockback": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
+    }
   },
   "setsModes": [
     "Peacebringer_Blaster_Mode"

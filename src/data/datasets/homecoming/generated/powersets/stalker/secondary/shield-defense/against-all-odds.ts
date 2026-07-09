@@ -38,19 +38,19 @@ export const AgainstallOdds: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1,
     "damageBuff": {
       "scale": 1.55,
       "table": "Melee_Buff_Dmg",
       "perTarget": 0.55
     },
-    "durations": {
-      "damageBuff": 1,
-      "damageDebuff": 1
-    },
     "damageDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Dam"
     },
-    "buffDuration": 1
+    "durations": {
+      "damageBuff": 1,
+      "damageDebuff": 1
+    }
   }
 };

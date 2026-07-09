@@ -50,11 +50,7 @@ export const StoneCages: Power = {
     "tickRate": 2
   },
   "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 12,
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
@@ -63,13 +59,17 @@ export const StoneCages: Power = {
       "defenseDebuff": 12,
       "slow": 12
     },
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
     "slow": {
       "fly": {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
-    },
-    "buffDuration": 12
+    }
   },
   "conditionalEffects": [
     {

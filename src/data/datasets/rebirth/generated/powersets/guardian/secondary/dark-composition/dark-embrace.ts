@@ -40,27 +40,27 @@ export const DarkEmbrace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
     "resistance": {
-      "smashing": {
+      "lethal": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "negative": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       },
       "toxic": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

@@ -30,55 +30,22 @@ export const BaneSpiderArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "confuse": 10.25,
-      "fear": 10.25,
-      "hold": 10.25,
-      "immobilize": 10.25,
-      "stun": 10.25,
-      "sleep": 10.25,
-      "mezResistance": 10.25,
-      "maxHPBuff": 10.25
-    },
+    "buffDuration": 10.25,
     "confuse": {
       "mag": 1,
       "scale": 4,
       "table": "Melee_Ones"
+    },
+    "durations": {
+      "confuse": 10.25,
+      "fear": 10.25,
+      "hold": 10.25,
+      "immobilize": 10.25,
+      "maxHPBuff": 10.25,
+      "mezResistance": 10.25,
+      "resistance": 10.25,
+      "sleep": 10.25,
+      "stun": 10.25
     },
     "effectDuration": 10.25,
     "fear": {
@@ -96,15 +63,9 @@ export const BaneSpiderArmor: Power = {
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "stun": {
-      "mag": 1,
-      "scale": 4,
-      "table": "Melee_Ones"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 4,
-      "table": "Melee_Ones"
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
     },
     "mezResistance": {
       "sleep": {
@@ -112,11 +73,50 @@ export const BaneSpiderArmor: Power = {
         "table": "Melee_Ones"
       }
     },
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
+    "resistance": {
+      "cold": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      }
     },
-    "buffDuration": 10.25
+    "sleep": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 4,
+      "table": "Melee_Ones"
+    }
   },
   "mechanicType": "parentMechanic"
 };

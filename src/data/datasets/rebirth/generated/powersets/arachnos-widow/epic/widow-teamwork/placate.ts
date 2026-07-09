@@ -32,6 +32,10 @@ export const Placate: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "stealth": 10
+    },
     "placate": {
       "scale": 10,
       "table": "Melee_Taunt"
@@ -45,10 +49,6 @@ export const Placate: Power = {
         "scale": 380,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "stealth": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

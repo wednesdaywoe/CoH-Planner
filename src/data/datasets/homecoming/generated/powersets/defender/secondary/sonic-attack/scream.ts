@@ -55,12 +55,16 @@ export const Scream: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "resistanceDebuff": 8
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -68,11 +72,7 @@ export const Scream: Power = {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -84,14 +84,14 @@ export const Scream: Power = {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 8
-    },
-    "buffDuration": 8
+    }
   }
 };

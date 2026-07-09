@@ -28,25 +28,7 @@ export const MentalTraining: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rechargeBuff": 10.25,
-      "movement": 10.25,
-      "debuffResistance": 10.25
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.1,
-        "table": "Melee_SpeedFlying"
-      }
-    },
+    "buffDuration": 10.25,
     "debuffResistance": {
       "movement": {
         "scale": 0.4,
@@ -57,7 +39,25 @@ export const MentalTraining: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 10.25
+    "durations": {
+      "debuffResistance": 10.25,
+      "movement": 10.25,
+      "rechargeBuff": 10.25
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedFlying"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    }
   },
   "mechanicType": "parentMechanic"
 };

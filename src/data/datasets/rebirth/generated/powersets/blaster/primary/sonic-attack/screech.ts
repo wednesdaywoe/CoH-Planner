@@ -54,17 +54,21 @@ export const Screech: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
+    "buffDuration": 12,
+    "damageBuff": {
+      "scale": 0.099,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9,
+      "resistanceDebuff": 12
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -72,11 +76,7 @@ export const Screech: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -88,20 +88,20 @@ export const Screech: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 12,
-      "damageBuff": 9
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
     },
-    "damageBuff": {
-      "scale": 0.099,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 12,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

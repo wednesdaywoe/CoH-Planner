@@ -38,31 +38,10 @@ export const Hide: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 150,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 500,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 0.75,
-      "defenseBuff": 0.75
-    },
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
+      "aoe": {
+        "scale": 5,
         "table": "Melee_Buff_Def"
       },
       "cold": {
@@ -73,7 +52,11 @@ export const Hide: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
-      "negative": {
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -81,15 +64,32 @@ export const Hide: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
+      "negative": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
       "ranged": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
-      "aoe": {
-        "scale": 5,
+      "smashing": {
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       }
     },
-    "buffDuration": 0.75
+    "durations": {
+      "defenseBuff": 0.75,
+      "stealth": 0.75
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 150,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 500,
+        "table": "Melee_Ones"
+      }
+    }
   }
 };

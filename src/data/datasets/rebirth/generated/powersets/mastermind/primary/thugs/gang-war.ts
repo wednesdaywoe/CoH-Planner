@@ -40,8 +40,8 @@ export const GangWar: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
       "duration": 120,
+      "isPseudoPet": false,
       "entity": "Pets_Thug_Pose_01",
       "entityCount": 10
     }

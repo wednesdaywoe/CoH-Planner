@@ -42,6 +42,7 @@ export const ActiveDefense: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "melee": {
         "scale": 1.5,
@@ -53,16 +54,15 @@ export const ActiveDefense: Power = {
       "resistance": 0.75
     },
     "resistance": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
       "lethal": {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "requires": "Tanker_Melee.Dual_Blades Tanker_Melee.Staff_Fighting || Tanker_Melee.Titan_Weapons || Tanker_Melee.Katana || !"
 };

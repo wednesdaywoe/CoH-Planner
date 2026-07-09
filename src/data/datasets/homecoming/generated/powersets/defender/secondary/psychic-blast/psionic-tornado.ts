@@ -48,6 +48,10 @@ export const PsionicTornado: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10
+    },
     "knockup": {
       "scale": 1.4,
       "table": "Ranged_Ones"
@@ -55,11 +59,7 @@ export const PsionicTornado: Power = {
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 10
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

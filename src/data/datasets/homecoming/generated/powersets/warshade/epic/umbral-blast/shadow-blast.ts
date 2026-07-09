@@ -48,37 +48,37 @@ export const ShadowBlast: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 10
+    },
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
       "jumpSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 10,
-      "rechargeDebuff": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

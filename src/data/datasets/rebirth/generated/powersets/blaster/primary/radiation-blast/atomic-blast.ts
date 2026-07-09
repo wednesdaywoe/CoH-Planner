@@ -55,23 +55,23 @@ export const AtomicBlast: Power = {
     }
   ],
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
+    "buffDuration": 20,
+    "damageBuff": {
+      "scale": 0.041,
+      "table": "Ranged_Ones"
     },
     "defenseDebuff": {
       "scale": 4,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 20,
-      "damageBuff": 10.43
+      "damageBuff": 10.43,
+      "defenseDebuff": 20
     },
-    "damageBuff": {
-      "scale": 0.041,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 20
+    "hold": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    }
   }
 };

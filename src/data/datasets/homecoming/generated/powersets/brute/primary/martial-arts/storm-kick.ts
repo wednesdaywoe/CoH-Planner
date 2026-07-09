@@ -48,28 +48,9 @@ export const StormKick: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 10,
     "defenseBuff": {
-      "ranged": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
@@ -81,14 +62,33 @@ export const StormKick: Power = {
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 1,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

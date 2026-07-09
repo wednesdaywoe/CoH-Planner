@@ -38,36 +38,22 @@ export const IncreaseDensity: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Dmg"
-      }
-    },
+    "buffDuration": 60,
     "durations": {
-      "resistance": 60,
       "hold": 60,
       "immobilize": 60,
-      "stun": 60,
       "mezResistance": 60,
-      "slow": 60
+      "resistance": 60,
+      "slow": 60,
+      "stun": 60
     },
+    "effectDuration": 60,
     "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
-    "effectDuration": 60,
     "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
@@ -78,24 +64,38 @@ export const IncreaseDensity: Power = {
         "table": "Ranged_Ones"
       }
     },
+    "resistance": {
+      "energy": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      }
+    },
     "slow": {
-      "jumpHeight": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.1,
         "table": "Ranged_Slow"
       },
       "jumpSpeed": {
         "scale": 0.1,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
       }
     },
-    "buffDuration": 60
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    }
   }
 };

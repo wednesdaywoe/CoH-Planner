@@ -57,6 +57,15 @@ export const BallLightning: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8.57,
+    "damageBuff": {
+      "scale": 0.022,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.57,
+      "recoveryDebuff": 4
+    },
     "enduranceDrain": {
       "scale": 0.07,
       "table": "Ranged_Ones"
@@ -64,16 +73,7 @@ export const BallLightning: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 4,
-      "damageBuff": 8.57
-    },
-    "damageBuff": {
-      "scale": 0.022,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 8.57
+    }
   },
   "specialEffects": [
     {

@@ -56,11 +56,7 @@ export const CosmicBurst: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    },
+    "buffDuration": 12,
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
@@ -68,6 +64,10 @@ export const CosmicBurst: Power = {
     "durations": {
       "defenseDebuff": 12
     },
-    "buffDuration": 12
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    }
   }
 };

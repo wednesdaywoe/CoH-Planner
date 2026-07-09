@@ -60,6 +60,10 @@ export const AbyssalGaze: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "tohitDebuff": 10
+    },
     "hold": {
       "mag": 3,
       "scale": 4.4,
@@ -68,10 +72,6 @@ export const AbyssalGaze: Power = {
     "tohitDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

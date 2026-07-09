@@ -38,12 +38,16 @@ export const Brine: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "resistanceDebuff": 60
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
@@ -51,11 +55,7 @@ export const Brine: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
@@ -67,14 +67,14 @@ export const Brine: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 60
-    },
-    "buffDuration": 60
+    }
   }
 };

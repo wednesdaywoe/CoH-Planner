@@ -45,9 +45,26 @@ export const Defibrillate: Power = {
     "tickRate": 3.5
   },
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "stealth": 15
+    },
+    "enduranceDrain": {
+      "scale": 0.3,
+      "table": "Ranged_EndDrain"
+    },
     "enduranceGain": {
       "scale": 100,
       "table": "Melee_Ones"
+    },
+    "recoveryBuffUnenhanced": {
+      "scale": 30,
+      "table": "Ranged_Ones"
+    },
+    "sleep": {
+      "mag": 3,
+      "scale": 30,
+      "table": "Ranged_Sleep"
     },
     "stealth": {
       "stealthPvE": {
@@ -55,23 +72,6 @@ export const Defibrillate: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "stealth": 15
-    },
-    "sleep": {
-      "mag": 3,
-      "scale": 30,
-      "table": "Ranged_Sleep"
-    },
-    "enduranceDrain": {
-      "scale": 0.3,
-      "table": "Ranged_EndDrain"
-    },
-    "recoveryBuffUnenhanced": {
-      "scale": 30,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 15,
     "maxStacks": 2,
     "stacksLinear": [
       "specialBuff"

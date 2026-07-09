@@ -56,25 +56,25 @@ export const RadiantStrike: Power = {
     }
   ],
   "effects": {
-    "slow": {
-      "fly": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "slow": 30,
-      "defenseDebuff": 6
-    },
+    "buffDuration": 30,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 6,
+      "slow": 30
     },
     "knockback": {
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30
+    "slow": {
+      "fly": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    }
   },
   "specialEffects": [
     {

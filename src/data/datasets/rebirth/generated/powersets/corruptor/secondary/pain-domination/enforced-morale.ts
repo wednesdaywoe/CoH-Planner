@@ -32,36 +32,32 @@ export const EnforcedMorale: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
+    "buffDuration": 90,
+    "confuse": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
-    "effectDuration": 90,
-    "durations": {
-      "stun": 90,
-      "mezResistance": 90,
-      "sleep": 90,
-      "immobilize": 90,
-      "hold": 90,
-      "confuse": 90,
-      "fear": 90,
-      "movement": 90,
-      "debuffResistance": 90,
-      "perceptionBuff": 90
-    },
-    "mezResistance": {
-      "sleep": {
-        "scale": 5,
+    "debuffResistance": {
+      "perception": {
+        "scale": 2.5,
         "table": "Ranged_Res_Boolean"
       }
     },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
+    "durations": {
+      "confuse": 90,
+      "debuffResistance": 90,
+      "fear": 90,
+      "hold": 90,
+      "immobilize": 90,
+      "mezResistance": 90,
+      "movement": 90,
+      "perceptionBuff": 90,
+      "sleep": 90,
+      "stun": 90
     },
-    "immobilize": {
+    "effectDuration": 90,
+    "fear": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
@@ -71,44 +67,48 @@ export const EnforcedMorale: Power = {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
-    "confuse": {
+    "immobilize": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
-    "fear": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
+    "mezResistance": {
+      "sleep": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "movement": {
-      "runSpeed": {
-        "scale": 0.05,
-        "table": "Ranged_SpeedRunning"
-      },
       "flySpeed": {
         "scale": 0.05,
         "table": "Ranged_SpeedFlying"
+      },
+      "jumpHeight": {
+        "scale": 0.05,
+        "table": "Ranged_Leap"
       },
       "jumpSpeed": {
         "scale": 0.05,
         "table": "Ranged_SpeedJumping"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.05,
-        "table": "Ranged_Leap"
-      }
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 2.5,
-        "table": "Ranged_Res_Boolean"
+        "table": "Ranged_SpeedRunning"
       }
     },
     "perceptionBuff": {
       "scale": 2.5,
       "table": "Ranged_Res_Boolean"
     },
-    "buffDuration": 90
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    }
   }
 };

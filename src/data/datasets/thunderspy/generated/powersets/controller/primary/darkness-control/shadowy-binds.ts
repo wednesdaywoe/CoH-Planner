@@ -51,10 +51,10 @@ export const ShadowyBinds: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Shade",
       "duration": 30,
-      "entityCount": 3
+      "entity": "Pets_Shade",
+      "entityCount": 3,
+      "isPseudoPet": false
     }
   }
 };

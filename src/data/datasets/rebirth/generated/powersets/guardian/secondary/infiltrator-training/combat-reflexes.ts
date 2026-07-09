@@ -40,6 +40,13 @@ export const CombatReflexes: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "melee": {
         "scale": 1.85,
@@ -47,15 +54,8 @@ export const CombatReflexes: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75
+    }
   }
 };

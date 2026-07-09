@@ -37,18 +37,18 @@ export const Reforge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 90,
-      "damageBuff": 90
-    },
+    "buffDuration": 90,
     "damageBuff": {
       "scale": 4,
       "table": "Ranged_Buff_Dmg"
     },
-    "buffDuration": 90
+    "durations": {
+      "damageBuff": 90,
+      "tohitBuff": 90
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Ranged_Buff_ToHit"
+    }
   }
 };

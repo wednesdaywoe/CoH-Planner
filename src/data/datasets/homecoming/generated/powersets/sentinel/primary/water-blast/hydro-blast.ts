@@ -65,24 +65,7 @@ export const HydroBlast: Power = {
     }
   ],
   "effects": {
-    "slow": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      }
-    },
+    "buffDuration": 10,
     "durations": {
       "slow": 10
     },
@@ -90,7 +73,24 @@ export const HydroBlast: Power = {
       "scale": 0.67,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10
+    "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      }
+    }
   },
   "specialEffects": [
     {

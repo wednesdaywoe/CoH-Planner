@@ -54,19 +54,19 @@ export const DarkBlast: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 6,
-      "damageBuff": 8.5
-    },
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8.5,
+    "durations": {
+      "damageBuff": 8.5,
+      "tohitDebuff": 6
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_DeBuff_ToHit"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

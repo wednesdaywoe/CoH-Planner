@@ -41,9 +41,9 @@ export const Placate: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 45,
       "entity": "Pets_Thorntrops",
-      "duration": 45
+      "isPseudoPet": false
     }
   }
 };

@@ -30,21 +30,21 @@ export const FastHealing: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 10,
-      "debuffResistance": 10
-    },
+    "buffDuration": 10,
     "debuffResistance": {
       "regeneration": {
         "scale": 0.75,
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 10
+    "durations": {
+      "debuffResistance": 10,
+      "regenBuff": 10
+    },
+    "regenBuff": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    }
   },
   "mechanicType": "parentMechanic"
 };

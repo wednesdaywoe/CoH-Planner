@@ -54,13 +54,13 @@ export const BlackDwarf: Power = {
     "duration": 2
   },
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.15,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 2,
     "durations": {
       "recoveryBuff": 2
     },
-    "buffDuration": 2
+    "recoveryBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones"
+    }
   }
 };

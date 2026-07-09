@@ -61,6 +61,7 @@ export const StridentEcho: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
     "debuffResistance": {
       "defense": {
         "scale": 1,
@@ -70,15 +71,11 @@ export const StridentEcho: Power = {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "tohit": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
       "movement": {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "regeneration": {
+      "recharge": {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
@@ -86,7 +83,11 @@ export const StridentEcho: Power = {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "recharge": {
+      "regeneration": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "tohit": {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       }
@@ -98,8 +99,7 @@ export const StridentEcho: Power = {
       "mag": 3,
       "scale": 5,
       "table": "Melee_Immobilize"
-    },
-    "buffDuration": 15
+    }
   },
   "specialEffects": [
     {

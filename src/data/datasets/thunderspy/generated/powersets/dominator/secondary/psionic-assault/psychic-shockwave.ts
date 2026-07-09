@@ -47,14 +47,14 @@ export const PsychicShockwave: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 0.01,
+      "table": "Ranged_Knockback"
+    },
     "stun": {
       "mag": 2,
       "scale": 6,
       "table": "Melee_Stun"
-    },
-    "knockback": {
-      "scale": 0.01,
-      "table": "Ranged_Knockback"
     }
   },
   "conditionalEffects": [

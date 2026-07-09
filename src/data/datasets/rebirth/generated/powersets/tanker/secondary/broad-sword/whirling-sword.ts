@@ -59,6 +59,7 @@ export const WhirlingSword: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
@@ -69,7 +70,6 @@ export const WhirlingSword: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 10
+    }
   }
 };

@@ -62,19 +62,19 @@ export const SteamSpray: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10.03,
+    "damageBuff": {
+      "scale": 0.073,
+      "table": "Ranged_Ones"
+    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 8,
-      "damageBuff": 10.03
-    },
-    "damageBuff": {
-      "scale": 0.073,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10.03
+      "damageBuff": 10.03,
+      "defenseDebuff": 8
+    }
   },
   "specialEffects": [
     {

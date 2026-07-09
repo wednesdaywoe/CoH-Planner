@@ -42,6 +42,14 @@ export const LightningField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 8.73,
+    "damageBuff": {
+      "scale": 0.025,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.73
+    },
     "knockback": {
       "scale": 1,
       "table": "Melee_Knockback"
@@ -50,15 +58,7 @@ export const LightningField: Power = {
       "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"
-    },
-    "damageBuff": {
-      "scale": 0.025,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "damageBuff": 8.73
-    },
-    "buffDuration": 8.73
+    }
   },
   "specialEffects": [
     {

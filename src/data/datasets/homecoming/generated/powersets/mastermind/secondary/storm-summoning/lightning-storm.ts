@@ -43,10 +43,10 @@ export const LightningStorm: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_LightningStorm_Controller",
+      "copyBoosts": true,
       "duration": 60,
-      "copyBoosts": true
+      "entity": "Pets_LightningStorm_Controller",
+      "isPseudoPet": false
     }
   }
 };

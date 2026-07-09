@@ -40,45 +40,15 @@ export const CloakofDarkness: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "debuffResistance": {
       "perception": {
         "scale": 0.6,
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75,
-      "defenseBuff": 0.75,
-      "immobilize": 0.75,
-      "stealth": 0.75
-    },
-    "perceptionBuff": {
-      "scale": 0.6,
-      "table": "Melee_Ones"
-    },
     "defenseBuff": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -90,6 +60,18 @@ export const CloakofDarkness: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
@@ -98,29 +80,47 @@ export const CloakofDarkness: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
       "toxic": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "immobilize": 0.75,
+      "perceptionBuff": 0.75,
+      "stealth": 0.75
+    },
+    "effectDuration": 0.75,
     "immobilize": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75,
+    "perceptionBuff": {
+      "scale": 0.6,
+      "table": "Melee_Ones"
+    },
     "stealth": {
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      },
       "stackKey": "NictusFX",
       "stealthPvE": {
         "scale": 35.5,
         "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 390,
+        "table": "Melee_Ones"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "setsModes": [
     "Hidden_Attack"

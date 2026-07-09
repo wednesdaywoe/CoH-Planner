@@ -54,56 +54,41 @@ export const LightForm: Power = {
     }
   ],
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 7,
-        "table": "Melee_Res_Dmg"
-      }
-    },
+    "buffDuration": 90,
     "durations": {
-      "resistance": 90,
-      "recoveryBuff": 90,
-      "mezResistance": 90,
+      "hold": 90,
+      "immobilize": 90,
       "knockback": 90,
       "knockup": 90,
+      "mezResistance": 90,
+      "recoveryBuff": 90,
       "repel": 90,
-      "stun": 90,
-      "hold": 90,
+      "resistance": 90,
       "sleep": 90,
-      "immobilize": 90
+      "stun": 90
     },
-    "recoveryBuff": {
-      "scale": 0.3,
+    "effectDuration": 90,
+    "enduranceDrain": {
+      "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "KHELDIAN_PEACEBRINGER_LIGHT_FORM",
-      "duration": 90
+    "hold": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 10,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
     },
     "mezResistance": {
       "knockback": {
@@ -119,44 +104,59 @@ export const LightForm: Power = {
         "table": "Melee_Ones"
       }
     },
-    "knockback": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 100,
+    "recoveryBuff": {
+      "scale": 0.3,
       "table": "Melee_Ones"
     },
     "repel": {
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "stun": {
-      "mag": 1,
-      "scale": 10,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 90,
-    "hold": {
-      "mag": 1,
-      "scale": 10,
-      "table": "Melee_Res_Boolean"
+    "resistance": {
+      "cold": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 7,
+        "table": "Melee_Res_Dmg"
+      }
     },
     "sleep": {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"
     },
-    "immobilize": {
+    "stun": {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"
     },
-    "enduranceDrain": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
+    "summon": {
+      "duration": 90,
+      "entity": "KHELDIAN_PEACEBRINGER_LIGHT_FORM",
+      "isPseudoPet": false
     },
-    "buffDuration": 90,
     "maxStacks": 2,
     "stacksLinear": [
       "recoveryBuff",

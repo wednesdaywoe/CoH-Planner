@@ -40,27 +40,27 @@ export const RockArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "defenseBuff": {
-      "smashing": {
-        "scale": 1.6,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.6,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75
-    },
+    "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 0.75
+    "defenseBuff": {
+      "lethal": {
+        "scale": 1.6,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1.6,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75
+    }
   },
   "requires": "Brute_Melee.Claws !"
 };

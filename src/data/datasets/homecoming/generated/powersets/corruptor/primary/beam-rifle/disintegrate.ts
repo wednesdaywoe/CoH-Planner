@@ -46,13 +46,13 @@ export const Disintegrate: Power = {
     "tickRate": 1.1100000143051147
   },
   "effects": {
-    "regenDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 15,
     "durations": {
       "regenDebuff": 15
     },
-    "buffDuration": 15
+    "regenDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Ones"
+    }
   }
 };

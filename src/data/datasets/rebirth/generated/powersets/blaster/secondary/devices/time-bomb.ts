@@ -40,11 +40,7 @@ export const TimeBomb: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Bomb",
-      "duration": 21
-    },
+    "buffDuration": 15.5,
     "damageBuff": {
       "scale": 0.528,
       "table": "Ranged_Ones"
@@ -52,7 +48,11 @@ export const TimeBomb: Power = {
     "durations": {
       "damageBuff": 15.5
     },
-    "buffDuration": 15.5,
+    "summon": {
+      "duration": 21,
+      "entity": "Pets_Bomb",
+      "isPseudoPet": false
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

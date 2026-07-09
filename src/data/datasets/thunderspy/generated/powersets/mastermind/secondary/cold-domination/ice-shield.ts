@@ -36,24 +36,9 @@ export const IceShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 240,
     "defenseBuff": {
-      "melee": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.75,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
         "scale": 0.75,
         "table": "Ranged_Buff_Def"
       },
@@ -61,14 +46,29 @@ export const IceShield: Power = {
         "scale": 0.75,
         "table": "Ranged_Buff_Def"
       },
+      "lethal": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      },
       "negative": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
         "scale": 0.75,
         "table": "Ranged_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 240
-    },
-    "buffDuration": 240
+    }
   }
 };

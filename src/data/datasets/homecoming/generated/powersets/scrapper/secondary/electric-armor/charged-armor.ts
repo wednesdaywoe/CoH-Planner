@@ -40,8 +40,12 @@ export const ChargedArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
     "resistance": {
-      "smashing": {
+      "energy": {
         "scale": 3.5,
         "table": "Melee_Res_Dmg"
       },
@@ -49,14 +53,10 @@ export const ChargedArmor: Power = {
         "scale": 3.5,
         "table": "Melee_Res_Dmg"
       },
-      "energy": {
+      "smashing": {
         "scale": 3.5,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

@@ -47,6 +47,10 @@ export const AtomicBlast: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "regenDebuff": 30
+    },
     "hold": {
       "mag": 3,
       "scale": 10,
@@ -55,10 +59,6 @@ export const AtomicBlast: Power = {
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 30
-    },
-    "buffDuration": 30
+    }
   }
 };

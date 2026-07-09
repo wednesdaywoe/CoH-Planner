@@ -46,15 +46,20 @@ export const KineticBolt: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
+    "buffDuration": 8,
     "durations": {
       "rechargeDebuff": 8,
       "slow": 8
     },
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.15,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.15,
         "table": "Ranged_Slow"
@@ -66,12 +71,7 @@ export const KineticBolt: Power = {
       "runSpeed": {
         "scale": 0.15,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
       }
-    },
-    "buffDuration": 8
+    }
   }
 };

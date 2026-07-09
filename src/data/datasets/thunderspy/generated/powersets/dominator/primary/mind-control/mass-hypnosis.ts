@@ -40,16 +40,16 @@ export const MassHypnosis: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1,
+    "durations": {
+      "sleep": 1
+    },
+    "effectDuration": 1,
     "sleep": {
       "mag": 4,
       "scale": 12,
       "table": "Ranged_Sleep"
-    },
-    "effectDuration": 1,
-    "durations": {
-      "sleep": 1
-    },
-    "buffDuration": 1
+    }
   },
   "conditionalEffects": [
     {

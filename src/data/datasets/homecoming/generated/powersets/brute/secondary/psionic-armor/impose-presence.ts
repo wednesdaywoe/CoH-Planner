@@ -46,36 +46,36 @@ export const ImposePresence: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 0.2,
-      "table": "Melee_Buff_ToHit",
-      "perTarget": 0.2
-    },
-    "durations": {
-      "tohitBuff": 1,
-      "rechargeDebuff": 1.25,
-      "defenseBuff": 1
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Melee_Slow"
-    },
+    "buffDuration": 1,
     "defenseBuff": {
-      "ranged": {
+      "melee": {
         "scale": 0.075,
         "table": "Melee_Buff_Def",
         "perTarget": 0.075
       },
-      "melee": {
+      "ranged": {
         "scale": 0.075,
         "table": "Melee_Buff_Def",
         "perTarget": 0.075
       }
     },
+    "durations": {
+      "defenseBuff": 1,
+      "rechargeDebuff": 1.25,
+      "tohitBuff": 1
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Melee_Slow"
+    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 1
+    "tohitBuff": {
+      "scale": 0.2,
+      "table": "Melee_Buff_ToHit",
+      "perTarget": 0.2
+    }
   }
 };

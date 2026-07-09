@@ -49,6 +49,15 @@ export const Breathless: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 15,
+    "damageDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 15,
+      "rechargeDebuff": 15
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
@@ -57,16 +66,7 @@ export const Breathless: Power = {
     "rechargeDebuff": {
       "scale": 0.3,
       "table": "Ranged_Slow"
-    },
-    "durations": {
-      "rechargeDebuff": 15,
-      "damageDebuff": 15
-    },
-    "damageDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "buffDuration": 15
+    }
   },
   "conditionalEffects": [
     {
@@ -75,14 +75,14 @@ export const Breathless: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 15,
         "damageDebuff": {
           "scale": 2,
           "table": "Ranged_Debuff_Dam"
         },
         "durations": {
           "damageDebuff": 15
-        },
-        "buffDuration": 15
+        }
       }
     }
   ],

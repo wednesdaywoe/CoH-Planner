@@ -57,6 +57,7 @@ export const AoEBridge: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 20,
         "defenseDebuff": {
           "scale": 1,
           "table": "Melee_Debuff_Def"
@@ -68,8 +69,7 @@ export const AoEBridge: Power = {
         "tohitDebuff": {
           "scale": 1,
           "table": "Melee_DeBuff_ToHit"
-        },
-        "buffDuration": 20
+        }
       }
     },
     {

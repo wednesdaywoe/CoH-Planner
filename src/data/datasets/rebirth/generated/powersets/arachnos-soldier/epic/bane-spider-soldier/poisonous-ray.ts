@@ -50,13 +50,13 @@ export const PoisonousRay: Power = {
     "tickRate": 0.5
   },
   "effects": {
+    "buffDuration": 15,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 15
-    },
-    "buffDuration": 15
+    }
   }
 };

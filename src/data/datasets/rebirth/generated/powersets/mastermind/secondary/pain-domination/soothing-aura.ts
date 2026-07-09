@@ -42,13 +42,13 @@ export const SoothingAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 4.25,
     "durations": {
       "regenBuff": 4.25
     },
-    "buffDuration": 4.25
+    "regenBuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    }
   }
 };

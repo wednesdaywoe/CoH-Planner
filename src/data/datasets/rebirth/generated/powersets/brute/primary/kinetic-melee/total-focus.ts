@@ -55,6 +55,14 @@ export const TotalFocus: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8,
+    "damageDebuff": {
+      "scale": 0.85,
+      "table": "Melee_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 8
+    },
     "stun": {
       "mag": 3,
       "scale": 10,
@@ -63,15 +71,7 @@ export const TotalFocus: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "damageDebuff": {
-      "scale": 0.85,
-      "table": "Melee_Debuff_Dam"
-    },
-    "durations": {
-      "damageDebuff": 8
-    },
-    "buffDuration": 8
+    }
   },
   "specialEffects": [
     {

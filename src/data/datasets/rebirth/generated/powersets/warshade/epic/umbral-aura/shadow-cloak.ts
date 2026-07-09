@@ -40,45 +40,15 @@ export const ShadowCloak: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 389,
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "stealth": 0.75,
-      "defenseBuff": 0.75,
-      "immobilize": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
     "defenseBuff": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -90,6 +60,18 @@ export const ShadowCloak: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
@@ -97,24 +79,42 @@ export const ShadowCloak: Power = {
       "psionic": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "immobilize": 0.75,
+      "perceptionBuff": 0.75,
+      "stealth": 0.75
+    },
+    "effectDuration": 0.75,
     "immobilize": {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75,
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
     },
-    "buffDuration": 0.75
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 389,
+        "table": "Melee_Ones"
+      }
+    }
   }
 };

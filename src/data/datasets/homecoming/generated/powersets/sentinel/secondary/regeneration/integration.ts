@@ -40,42 +40,56 @@ export const Integration: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
-    },
+    "buffDuration": 0.75,
     "durations": {
-      "mezResistance": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
       "hold": 0.75,
       "immobilize": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "mezResistance": 0.75,
+      "regenBuff": 0.75,
       "regenBuffUnenhanced": 0.75,
-      "regenBuff": 0.75
+      "sleep": 0.75,
+      "stun": 0.75
     },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
+    "effectDuration": 0.75,
     "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75,
     "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
+    },
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "sleep": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -84,20 +98,6 @@ export const Integration: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "regenBuffUnenhanced": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

@@ -39,26 +39,26 @@ export const TimeStop: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "regenDebuff": 20,
+      "specialBuff": 20
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Immobilize"
+    },
+    "regenDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
     },
     "specialBuff": {
       "heal": {
         "scale": 0.25,
         "table": "Ranged_Stun"
       }
-    },
-    "durations": {
-      "specialBuff": 20,
-      "regenDebuff": 20
-    },
-    "regenDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 20
+    }
   },
   "conditionalEffects": [
     {

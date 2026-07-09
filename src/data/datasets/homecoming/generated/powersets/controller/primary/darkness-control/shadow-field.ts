@@ -42,10 +42,10 @@ export const ShadowField: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Shadow_Field_Controller",
+      "copyBoosts": true,
       "duration": 45,
-      "copyBoosts": true
+      "entity": "Pets_Shadow_Field_Controller",
+      "isPseudoPet": false
     }
   }
 };

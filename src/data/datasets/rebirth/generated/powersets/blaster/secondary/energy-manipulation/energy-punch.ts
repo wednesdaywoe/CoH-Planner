@@ -53,11 +53,7 @@ export const EnergyPunch: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 5,
-      "table": "Melee_Stun"
-    },
+    "buffDuration": 8.33,
     "damageBuff": {
       "scale": 0.055,
       "table": "Melee_Ones"
@@ -65,7 +61,11 @@ export const EnergyPunch: Power = {
     "durations": {
       "damageBuff": 8.33
     },
-    "buffDuration": 8.33,
+    "stun": {
+      "mag": 2,
+      "scale": 5,
+      "table": "Melee_Stun"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

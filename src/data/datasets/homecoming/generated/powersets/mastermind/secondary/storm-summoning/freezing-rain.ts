@@ -45,15 +45,15 @@ export const FreezingRain: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Freezing Rain",
+      "duration": 15,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Pets.Freezing_Rain.FreezingRain",
         "Pets.Freezing_Rain.Avoid"
       ],
-      "duration": 15,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Freezing Rain",

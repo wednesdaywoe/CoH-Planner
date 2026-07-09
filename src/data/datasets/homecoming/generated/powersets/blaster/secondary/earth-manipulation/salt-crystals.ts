@@ -40,11 +40,7 @@ export const SaltCrystals: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "sleep": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Sleep"
-    },
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
@@ -52,6 +48,10 @@ export const SaltCrystals: Power = {
     "durations": {
       "defenseDebuff": 10
     },
-    "buffDuration": 10
+    "sleep": {
+      "mag": 3,
+      "scale": 12,
+      "table": "Ranged_Sleep"
+    }
   }
 };

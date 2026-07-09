@@ -38,24 +38,25 @@ export const ForceBubble: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "repel": {
-      "scale": 10,
-      "table": "Ranged_Ones"
+    "buffDuration": 0.3,
+    "damageDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Dam"
     },
     "durations": {
+      "damageDebuff": 0.3,
       "repel": 0.25,
-      "slow": 0.3,
-      "damageDebuff": 0.3
+      "slow": 0.3
     },
     "knockback": {
       "scale": 0.1,
       "table": "Ranged_Ones"
     },
+    "repel": {
+      "scale": 10,
+      "table": "Ranged_Ones"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.4,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
         "scale": 0.4,
         "table": "Ranged_Slow"
@@ -67,13 +68,12 @@ export const ForceBubble: Power = {
       "jumpSpeed": {
         "scale": 0.4,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.4,
+        "table": "Ranged_Slow"
       }
-    },
-    "damageDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "buffDuration": 0.3
+    }
   },
   "specialEffects": [
     {

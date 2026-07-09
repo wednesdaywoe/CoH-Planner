@@ -47,33 +47,9 @@ export const Intrusion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 389,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 0.75,
-      "defenseBuff": 0.75,
-      "regenBuff": 0.75,
-      "enduranceDiscount": 0.75,
-      "movement": 0.75
-    },
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
+      "aoe": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
@@ -85,7 +61,11 @@ export const Intrusion: Power = {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
-      "negative": {
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
@@ -93,18 +73,25 @@ export const Intrusion: Power = {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
+      "negative": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
       "ranged": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
-      "aoe": {
+      "smashing": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       }
     },
-    "regenBuff": {
-      "scale": 1.5,
-      "table": "Melee_Ones"
+    "durations": {
+      "defenseBuff": 0.75,
+      "enduranceDiscount": 0.75,
+      "movement": 0.75,
+      "regenBuff": 0.75,
+      "stealth": 0.75
     },
     "enduranceDiscount": {
       "scale": 0.35,
@@ -124,6 +111,19 @@ export const Intrusion: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 0.75
+    "regenBuff": {
+      "scale": 1.5,
+      "table": "Melee_Ones"
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 35,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 389,
+        "table": "Melee_Ones"
+      }
+    }
   }
 };

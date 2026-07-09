@@ -40,11 +40,14 @@ export const BattleDrones: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Droid",
-      "duration": 99999,
-      "copyBoosts": true
+    "buffDuration": 2,
+    "durations": {
+      "stealth": 2
+    },
+    "immobilize": {
+      "mag": 500,
+      "scale": 3,
+      "table": "Melee_Ones"
     },
     "stealth": {
       "translucency": {
@@ -52,18 +55,15 @@ export const BattleDrones: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "durations": {
-      "stealth": 2
+    "summon": {
+      "copyBoosts": true,
+      "duration": 99999,
+      "entity": "MastermindPets_Droid",
+      "isPseudoPet": false
     },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "immobilize": {
-      "mag": 500,
-      "scale": 3,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 2
+    }
   }
 };

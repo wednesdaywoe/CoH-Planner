@@ -74,13 +74,13 @@ export const FireSwordCircle: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 0.5,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

@@ -48,15 +48,15 @@ export const ScrambleThoughts: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "stun": {
+    "fear": {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     },
-    "sleep": {
+    "hold": {
       "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
+      "scale": 8,
+      "table": "Ranged_Immobilize"
     },
     "immobilize": {
       "mag": 3,
@@ -67,15 +67,15 @@ export const ScrambleThoughts: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     },
-    "fear": {
+    "sleep": {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Stun"
     },
-    "hold": {
+    "stun": {
       "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
+      "scale": 10,
+      "table": "Ranged_Stun"
     }
   },
   "specialEffects": [

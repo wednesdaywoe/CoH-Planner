@@ -44,6 +44,10 @@ export const FearsomeStare: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "tohitDebuff": 20
+    },
     "fear": {
       "mag": 3,
       "scale": 15,
@@ -52,11 +56,7 @@ export const FearsomeStare: Power = {
     "tohitDebuff": {
       "scale": 1.5,
       "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 20
-    },
-    "buffDuration": 20
+    }
   },
   "conditionalEffects": [
     {

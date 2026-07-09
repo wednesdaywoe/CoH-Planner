@@ -34,13 +34,13 @@ export const HardLife: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 30,
     "durations": {
       "rechargeBuff": 30
     },
-    "buffDuration": 30
+    "rechargeBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    }
   }
 };

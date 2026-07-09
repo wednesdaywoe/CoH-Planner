@@ -49,13 +49,13 @@ export const Slice: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 6,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 6
-    },
-    "buffDuration": 6
+    }
   }
 };

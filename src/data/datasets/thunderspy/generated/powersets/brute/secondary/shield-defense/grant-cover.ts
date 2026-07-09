@@ -42,6 +42,7 @@ export const GrantCover: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
     "defenseBuff": {
       "melee": {
         "scale": 1.125,
@@ -50,7 +51,6 @@ export const GrantCover: Power = {
     },
     "durations": {
       "defenseBuff": 2.25
-    },
-    "buffDuration": 2.25
+    }
   }
 };

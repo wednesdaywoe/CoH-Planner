@@ -36,14 +36,14 @@ export const MoltenEmbrace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1.2,
     "damageBuff": {
       "scale": 1,
       "table": "Melee_Buff_Dmg"
     },
     "durations": {
       "damageBuff": 1.2
-    },
-    "buffDuration": 1.2
+    }
   },
   "grantedDamageProcs": [
     {

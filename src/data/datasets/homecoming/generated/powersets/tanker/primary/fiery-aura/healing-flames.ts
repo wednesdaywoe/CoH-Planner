@@ -41,6 +41,10 @@ export const HealingFlames: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "resistance": 60
+    },
     "resistance": {
       "psionic": {
         "scale": 1,
@@ -51,10 +55,6 @@ export const HealingFlames: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "resistance": 60
-    },
-    "buffDuration": 60,
     "maxStacks": 2,
     "stacksLinear": [
       "resistance"

@@ -34,6 +34,7 @@ export const AblativeCarapace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 30,
     "durations": {
       "absorb": 30,
       "regenBuff": 30
@@ -41,8 +42,7 @@ export const AblativeCarapace: Power = {
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 30
+    }
   },
   "conditionalEffects": [
     {
@@ -51,10 +51,10 @@ export const AblativeCarapace: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 30,
         "durations": {
           "absorb": 30
-        },
-        "buffDuration": 30
+        }
       },
       "group": "adaptation"
     },
@@ -64,14 +64,14 @@ export const AblativeCarapace: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "regenBuff": {
-          "scale": 0.3,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 30,
         "durations": {
           "regenBuff": 30
         },
-        "buffDuration": 30
+        "regenBuff": {
+          "scale": 0.3,
+          "table": "Melee_Ones"
+        }
       },
       "group": "adaptation"
     }

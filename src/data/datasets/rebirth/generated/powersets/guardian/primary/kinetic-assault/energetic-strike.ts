@@ -53,14 +53,14 @@ export const EnergeticStrike: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
     "damageDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Dam"
     },
     "durations": {
       "damageDebuff": 10
-    },
-    "buffDuration": 10
+    }
   },
   "conditionalEffects": [
     {

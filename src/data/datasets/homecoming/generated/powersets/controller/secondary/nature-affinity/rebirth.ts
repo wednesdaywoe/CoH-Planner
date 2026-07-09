@@ -51,6 +51,10 @@ export const Rebirth: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "stealth": 15
+    },
     "enduranceGain": {
       "scale": 0.5,
       "table": "Ranged_Ones"
@@ -60,10 +64,6 @@ export const Rebirth: Power = {
         "scale": 300,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "stealth": 15
-    },
-    "buffDuration": 15
+    }
   }
 };

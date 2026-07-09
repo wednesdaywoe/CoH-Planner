@@ -51,33 +51,33 @@ export const DarkNovaEmanation: Power = {
     "table": "Ranged_InherentDamage"
   },
   "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "rechargeDebuff": 8,
+      "slow": 8
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
       },
       "jumpSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 8,
-      "rechargeDebuff": 8
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 8
+    }
   },
   "requires": "Warshade_Offensive.Umbral_Blast.Dark_Nova Inherent.Inherent.Dark_Nova_Emanation ! &&",
   "modesRequired": [

@@ -35,16 +35,7 @@ export const Rage: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 120,
-      "damageBuff": 120,
-      "damageDebuff": 10,
-      "defenseDebuff": 10
-    },
+    "buffDuration": 120,
     "damageBuff": {
       "scale": 8,
       "table": "Melee_Buff_Dmg"
@@ -58,11 +49,20 @@ export const Rage: Power = {
       "scale": 0.2,
       "table": "Melee_Ones"
     },
+    "durations": {
+      "damageBuff": 120,
+      "damageDebuff": 10,
+      "defenseDebuff": 10,
+      "tohitBuff": 120
+    },
     "enduranceDrain": {
       "scale": 0.25,
       "table": "Melee_Ones"
     },
-    "buffDuration": 120,
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

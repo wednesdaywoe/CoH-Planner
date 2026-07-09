@@ -81,11 +81,11 @@ export const ExecutionersShot: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
     "knockback": {
       "scale": 1,
       "table": "Ranged_Knockback"
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {
@@ -124,10 +124,6 @@ export const ExecutionersShot: Power = {
           "table": "Ranged_Slow"
         },
         "slow": {
-          "runSpeed": {
-            "scale": 0.15,
-            "table": "Ranged_Slow"
-          },
           "flySpeed": {
             "scale": 0.15,
             "table": "Ranged_Slow"
@@ -137,6 +133,10 @@ export const ExecutionersShot: Power = {
             "table": "Ranged_Slow"
           },
           "jumpSpeed": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
             "scale": 0.15,
             "table": "Ranged_Slow"
           }

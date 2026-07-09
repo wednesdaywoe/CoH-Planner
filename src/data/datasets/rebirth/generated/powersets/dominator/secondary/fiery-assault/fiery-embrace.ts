@@ -30,6 +30,7 @@ export const FieryEmbrace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
     "damageBuff": {
       "scale": 8,
       "table": "Melee_Buff_Dmg"
@@ -37,7 +38,6 @@ export const FieryEmbrace: Power = {
     "durations": {
       "damageBuff": 10
     },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

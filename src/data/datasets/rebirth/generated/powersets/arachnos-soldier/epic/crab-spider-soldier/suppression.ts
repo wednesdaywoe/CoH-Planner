@@ -53,13 +53,13 @@ export const Suppression: Power = {
     "tickRate": 0.6000000238418579
   },
   "effects": {
+    "buffDuration": 5,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 5
-    },
-    "buffDuration": 5
+    }
   }
 };

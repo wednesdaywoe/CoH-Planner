@@ -38,10 +38,10 @@ export const Discharge: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_GalvanicSentinel",
+      "copyBoosts": true,
       "duration": 120,
-      "copyBoosts": true
+      "entity": "Pets_GalvanicSentinel",
+      "isPseudoPet": false
     }
   }
 };

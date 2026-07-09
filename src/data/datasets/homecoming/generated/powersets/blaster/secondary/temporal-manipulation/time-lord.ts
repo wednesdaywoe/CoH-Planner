@@ -30,16 +30,7 @@ export const TimeLord: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "rechargeBuff": 0.75,
-      "debuffResistance": 0.75,
-      "resistance": 0.75,
-      "stun": 0.5
-    },
+    "buffDuration": 0.75,
     "debuffResistance": {
       "movement": {
         "scale": 0.6,
@@ -49,6 +40,17 @@ export const TimeLord: Power = {
         "scale": 0.6,
         "table": "Melee_Ones"
       }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "rechargeBuff": 0.75,
+      "resistance": 0.75,
+      "stun": 0.5
+    },
+    "effectDuration": 0.5,
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
     },
     "resistance": {
       "energy": {
@@ -60,9 +62,7 @@ export const TimeLord: Power = {
       "mag": 1,
       "scale": 10,
       "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.5,
-    "buffDuration": 0.75
+    }
   },
   "conditionalEffects": [
     {
@@ -72,15 +72,7 @@ export const TimeLord: Power = {
       "defaultActive": false,
       "mode": "replace",
       "effects": {
-        "rechargeBuff": {
-          "scale": 0.1,
-          "table": "Melee_Ones"
-        },
-        "durations": {
-          "rechargeBuff": 0.5,
-          "debuffResistance": 0.5,
-          "resistance": 0.5
-        },
+        "buffDuration": 0.5,
         "debuffResistance": {
           "movement": {
             "scale": 0.3,
@@ -91,13 +83,21 @@ export const TimeLord: Power = {
             "table": "Melee_Ones"
           }
         },
+        "durations": {
+          "debuffResistance": 0.5,
+          "rechargeBuff": 0.5,
+          "resistance": 0.5
+        },
+        "rechargeBuff": {
+          "scale": 0.1,
+          "table": "Melee_Ones"
+        },
         "resistance": {
           "energy": {
             "scale": 0.5,
             "table": "Melee_Res_Dmg"
           }
-        },
-        "buffDuration": 0.5
+        }
       }
     }
   ],

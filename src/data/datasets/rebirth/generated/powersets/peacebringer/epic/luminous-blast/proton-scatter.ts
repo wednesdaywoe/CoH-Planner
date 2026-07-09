@@ -51,14 +51,14 @@ export const ProtonScatter: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 8,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 8
-    },
-    "buffDuration": 8
+    }
   },
   "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Peacebringer_Offensive.Luminous_Blast.Bright_Nova_Scatter ! && Inherent.Inherent.Bright_Nova_Scatter ! &&"
 };

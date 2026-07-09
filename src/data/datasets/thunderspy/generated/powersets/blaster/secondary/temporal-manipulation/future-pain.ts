@@ -41,14 +41,14 @@ export const FuturePain: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "knockback": {
+      "scale": 0.4,
+      "table": "Ranged_Knockback"
+    },
     "stun": {
       "mag": 3,
       "scale": 8,
       "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 0.4,
-      "table": "Ranged_Knockback"
     }
   },
   "conditionalEffects": [

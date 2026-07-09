@@ -40,15 +40,15 @@ export const LifegivingSpores: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "LIfegiving Spores",
+      "duration": 99999,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Pets.Lifegiving_Spores.Lifegiving_Spores"
       ],
-      "duration": 99999,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "LIfegiving Spores",

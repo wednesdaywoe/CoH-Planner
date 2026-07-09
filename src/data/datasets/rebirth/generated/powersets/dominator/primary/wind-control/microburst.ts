@@ -55,15 +55,19 @@ export const Microburst: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+    "buffDuration": 12,
+    "durations": {
+      "rechargeDebuff": 12,
+      "slow": 12
+    },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
     },
     "slow": {
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Ranged_Slow"
+      "fly": {
+        "scale": 2,
+        "table": "Ranged_Ones"
       },
       "flySpeed": {
         "scale": 0.3,
@@ -77,20 +81,16 @@ export const Microburst: Power = {
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
-      "fly": {
-        "scale": 2,
-        "table": "Ranged_Ones"
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Ranged_Slow"
       }
     },
-    "durations": {
-      "slow": 12,
-      "rechargeDebuff": 12
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 12
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    }
   },
   "conditionalEffects": [
     {
@@ -112,14 +112,14 @@ export const Microburst: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 12,
         "defenseDebuff": {
           "scale": 2,
           "table": "Ranged_Debuff_Def"
         },
         "durations": {
           "defenseDebuff": 12
-        },
-        "buffDuration": 12
+        }
       },
       "group": "wind_control_pressure-stacks"
     },
@@ -129,14 +129,14 @@ export const Microburst: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 12,
         "defenseDebuff": {
           "scale": 2.5,
           "table": "Ranged_Debuff_Def"
         },
         "durations": {
           "defenseDebuff": 12
-        },
-        "buffDuration": 12
+        }
       },
       "group": "wind_control_pressure-stacks"
     }

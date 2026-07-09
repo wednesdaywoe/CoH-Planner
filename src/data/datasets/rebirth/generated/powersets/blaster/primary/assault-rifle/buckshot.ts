@@ -49,10 +49,7 @@ export const Buckshot: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 8.4,
     "damageBuff": {
       "scale": 0.028,
       "table": "Ranged_Ones"
@@ -60,7 +57,10 @@ export const Buckshot: Power = {
     "durations": {
       "damageBuff": 8.4
     },
-    "buffDuration": 8.4
+    "knockback": {
+      "scale": 0.75,
+      "table": "Ranged_Knockback"
+    }
   },
   "specialEffects": [
     {

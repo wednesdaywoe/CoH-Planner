@@ -44,14 +44,14 @@ export const PulseRifleBlast: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "regenDebuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 30,
     "durations": {
       "regenDebuff": 30
     },
-    "buffDuration": 30
+    "regenDebuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    }
   },
   "setsModes": [
     "PersonalAttack1"

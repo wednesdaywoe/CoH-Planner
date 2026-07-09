@@ -55,6 +55,7 @@ export const Earsplitter: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
     "debuffResistance": {
       "defense": {
         "scale": 1,
@@ -64,15 +65,11 @@ export const Earsplitter: Power = {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "tohit": {
-        "scale": 1,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
       "movement": {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "regeneration": {
+      "recharge": {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
@@ -80,7 +77,11 @@ export const Earsplitter: Power = {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "recharge": {
+      "regeneration": {
+        "scale": 1,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
+      "tohit": {
         "scale": 1,
         "table": "Melee_Debuff_Res_Dmg"
       }
@@ -92,8 +93,7 @@ export const Earsplitter: Power = {
       "mag": 3,
       "scale": 5,
       "table": "Melee_Immobilize"
-    },
-    "buffDuration": 15
+    }
   },
   "specialEffects": [
     {

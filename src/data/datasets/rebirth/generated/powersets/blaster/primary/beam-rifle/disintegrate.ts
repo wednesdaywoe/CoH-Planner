@@ -46,6 +46,7 @@ export const Disintegrate: Power = {
     "tickRate": 1.1100000143051147
   },
   "effects": {
+    "buffDuration": 15,
     "damageBuff": {
       "scale": 0.125,
       "table": "Ranged_Ones"
@@ -58,7 +59,6 @@ export const Disintegrate: Power = {
       "scale": 1.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

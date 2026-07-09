@@ -48,17 +48,26 @@ export const BlockofIce: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 18,
+    "durations": {
+      "rechargeDebuff": 18,
+      "slow": 18
+    },
     "hold": {
       "mag": 3,
       "scale": 12,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
-      "flySpeed": {
+      "jumpHeight": {
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
@@ -66,20 +75,11 @@ export const BlockofIce: Power = {
         "scale": 0.3,
         "table": "Ranged_Slow"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.3,
         "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 18,
-      "rechargeDebuff": 18
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 18
+    }
   },
   "conditionalEffects": [
     {

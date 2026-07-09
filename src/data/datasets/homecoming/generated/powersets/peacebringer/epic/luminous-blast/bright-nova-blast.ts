@@ -49,10 +49,7 @@ export const BrightNovaBlast: Power = {
     "table": "Ranged_InherentDamage"
   },
   "effects": {
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 6,
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
@@ -60,7 +57,10 @@ export const BrightNovaBlast: Power = {
     "durations": {
       "defenseDebuff": 6
     },
-    "buffDuration": 6
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    }
   },
   "specialEffects": [
     {

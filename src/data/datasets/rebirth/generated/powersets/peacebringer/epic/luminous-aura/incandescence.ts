@@ -30,6 +30,10 @@ export const Incandescence: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.25,
+    "durations": {
+      "resistance": 10.25
+    },
     "resistance": {
       "energy": {
         "scale": 1.5,
@@ -39,11 +43,7 @@ export const Incandescence: Power = {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 10.25
-    },
-    "buffDuration": 10.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

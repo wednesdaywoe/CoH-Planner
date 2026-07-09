@@ -53,10 +53,7 @@ export const PowerBurst: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 9.5,
     "damageBuff": {
       "scale": 0.132,
       "table": "Ranged_Ones"
@@ -64,7 +61,10 @@ export const PowerBurst: Power = {
     "durations": {
       "damageBuff": 9.5
     },
-    "buffDuration": 9.5,
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

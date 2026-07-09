@@ -47,11 +47,7 @@ export const FreezeRay: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Sleep"
-    },
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
@@ -59,7 +55,11 @@ export const FreezeRay: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5,
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Sleep"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

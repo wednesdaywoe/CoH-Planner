@@ -51,19 +51,19 @@ export const CuttingBeam: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 10,
     "damageBuff": {
       "scale": 0.051,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "damageBuff": 9.4,
-      "defenseDebuff": 10
     },
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 10
+    "durations": {
+      "damageBuff": 9.4,
+      "defenseDebuff": 10
+    }
   },
   "conditionalEffects": [
     {

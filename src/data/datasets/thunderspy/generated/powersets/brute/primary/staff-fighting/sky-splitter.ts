@@ -51,14 +51,14 @@ export const SkySplitter: Power = {
     "tickRate": 1
   },
   "effects": {
+    "knockup": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
     "stun": {
       "mag": 3,
       "scale": 5,
       "table": "Melee_Stun"
-    },
-    "knockup": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
     }
   },
   "conditionalEffects": [

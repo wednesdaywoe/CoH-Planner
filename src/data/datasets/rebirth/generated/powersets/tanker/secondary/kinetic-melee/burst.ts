@@ -55,14 +55,7 @@ export const Burst: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    },
+    "buffDuration": 7,
     "damageDebuff": {
       "scale": 2,
       "table": "Melee_Debuff_Dam"
@@ -70,7 +63,14 @@ export const Burst: Power = {
     "durations": {
       "damageDebuff": 7
     },
-    "buffDuration": 7
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
   },
   "specialEffects": [
     {

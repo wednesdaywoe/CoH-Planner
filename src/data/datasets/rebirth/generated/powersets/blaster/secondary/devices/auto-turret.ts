@@ -38,11 +38,7 @@ export const AutoTurret: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Turret",
-      "duration": 90
-    },
+    "buffDuration": 7.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
@@ -50,7 +46,11 @@ export const AutoTurret: Power = {
     "durations": {
       "damageBuff": 7.5
     },
-    "buffDuration": 7.5,
+    "summon": {
+      "duration": 90,
+      "entity": "Pets_Turret",
+      "isPseudoPet": false
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

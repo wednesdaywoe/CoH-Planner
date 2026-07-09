@@ -53,15 +53,15 @@ export const HypnotizingLights: Power = {
     "tickRate": 0.5
   },
   "effects": {
-    "sleep": {
-      "mag": 3,
-      "scale": 12,
-      "table": "Ranged_Sleep"
-    },
     "confuse": {
       "mag": 3,
       "scale": 7.5,
       "table": "Ranged_Fear"
+    },
+    "sleep": {
+      "mag": 3,
+      "scale": 12,
+      "table": "Ranged_Sleep"
     }
   }
 };

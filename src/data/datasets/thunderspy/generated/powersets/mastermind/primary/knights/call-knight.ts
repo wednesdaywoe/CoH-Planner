@@ -44,9 +44,9 @@ export const CallKnight: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "MastermindPets_Knight_Boss",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

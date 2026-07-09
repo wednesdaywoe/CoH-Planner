@@ -35,25 +35,22 @@ export const BlackHole: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "repel": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 30,
     "durations": {
-      "repel": 0.75,
       "immobilize": 30,
-      "threatDebuff": 30,
-      "stealth": 30
+      "repel": 0.75,
+      "stealth": 30,
+      "threatDebuff": 30
     },
+    "effectDuration": 30,
     "immobilize": {
       "mag": 1,
       "scale": 3,
       "table": "Ranged_Ones"
     },
-    "effectDuration": 30,
-    "threatDebuff": {
+    "repel": {
       "scale": 1,
-      "table": "Ranged_Ones"
+      "table": "Melee_Ones"
     },
     "stealth": {
       "translucency": {
@@ -61,6 +58,9 @@ export const BlackHole: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 30
+    "threatDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    }
   }
 };

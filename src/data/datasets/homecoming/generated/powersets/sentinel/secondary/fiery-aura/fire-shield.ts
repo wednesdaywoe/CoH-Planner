@@ -40,8 +40,18 @@ export const FireShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
     "resistance": {
-      "smashing": {
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       },
@@ -49,25 +59,15 @@ export const FireShield: Power = {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       },
-      "fire": {
+      "smashing": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "stun": 0.75
     },
     "stun": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "buffDuration": 0.75
+    }
   }
 };

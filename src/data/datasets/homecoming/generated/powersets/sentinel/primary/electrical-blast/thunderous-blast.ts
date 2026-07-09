@@ -60,23 +60,23 @@ export const ThunderousBlast: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "recoveryDebuff": 20
+    },
     "enduranceDrain": {
       "scale": 1.05,
       "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones",
       "durationVariants": [
         {
-          "scale": 1,
-          "duration": 10
+          "duration": 10,
+          "scale": 1
         }
-      ]
-    },
-    "durations": {
-      "recoveryDebuff": 20
-    },
-    "buffDuration": 20
+      ],
+      "scale": 1,
+      "table": "Ranged_Ones"
+    }
   }
 };

@@ -56,10 +56,7 @@ export const KineticShockwave: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 10,
     "damageDebuff": {
       "scale": 1.2,
       "table": "Melee_Debuff_Dam"
@@ -67,7 +64,10 @@ export const KineticShockwave: Power = {
     "durations": {
       "damageDebuff": 10
     },
-    "buffDuration": 10
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   },
   "conditionalEffects": [
     {

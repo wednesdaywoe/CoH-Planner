@@ -40,6 +40,10 @@ export const TwilightShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
     "resistance": {
       "energy": {
         "scale": 3,
@@ -49,11 +53,7 @@ export const TwilightShield: Power = {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
+    }
   },
   "modesSuspended": [
     "Warshade_Blaster_Mode",

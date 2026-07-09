@@ -38,6 +38,45 @@ export const EntropyShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 2.25,
+      "hold": 2.25,
+      "immobilize": 2.25,
+      "knockback": 2.25,
+      "knockup": 2.25,
+      "mezResistance": 2.25,
+      "rechargeBuff": 2.25,
+      "rechargeDebuff": 2.25,
+      "repel": 2.25,
+      "sleep": 2.25,
+      "stun": 2.25
+    },
+    "effectDuration": 2.25,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "mezResistance": {
       "knockback": {
         "scale": 100,
@@ -56,62 +95,6 @@ export const EntropyShield: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "mezResistance": 2.25,
-      "knockback": 2.25,
-      "knockup": 2.25,
-      "repel": 2.25,
-      "stun": 2.25,
-      "hold": 2.25,
-      "sleep": 2.25,
-      "immobilize": 2.25,
-      "debuffResistance": 2.25,
-      "rechargeBuff": 2.25,
-      "rechargeDebuff": 2.25
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 2.25,
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "taunt": {
-      "scale": 2.25,
-      "table": "Melee_Ones"
-    },
     "rechargeBuff": {
       "scale": 0.085,
       "table": "Melee_Ones",
@@ -121,6 +104,23 @@ export const EntropyShield: Power = {
       "scale": 0.2,
       "table": "Melee_Slow"
     },
-    "buffDuration": 2.25
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "taunt": {
+      "scale": 2.25,
+      "table": "Melee_Ones"
+    }
   }
 };

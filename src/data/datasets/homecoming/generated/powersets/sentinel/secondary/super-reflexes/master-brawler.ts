@@ -34,10 +34,10 @@ export const MasterBrawler: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 30,
     "durations": {
       "absorb": 30
-    },
-    "buffDuration": 30
+    }
   },
   "requires": "Sentinel_Defense.Super_Reflexes.Practiced_Brawler !"
 };

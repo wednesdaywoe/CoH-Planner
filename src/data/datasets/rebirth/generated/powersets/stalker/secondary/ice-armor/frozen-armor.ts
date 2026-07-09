@@ -40,20 +40,27 @@ export const FrozenArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
-      "smashing": {
+      "lethal": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       },
-      "lethal": {
+      "smashing": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
+      "debuffResistance": 0.75,
       "defenseBuff": 0.75,
-      "resistance": 0.75,
-      "debuffResistance": 0.75
+      "resistance": 0.75
     },
     "resistance": {
       "cold": {
@@ -64,13 +71,6 @@ export const FrozenArmor: Power = {
         "scale": 1.25,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
+    }
   }
 };

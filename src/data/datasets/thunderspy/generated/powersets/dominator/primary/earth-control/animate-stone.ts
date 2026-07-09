@@ -44,9 +44,9 @@ export const AnimateStone: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "Pets_Stone",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

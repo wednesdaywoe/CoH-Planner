@@ -44,6 +44,13 @@ export const Evasion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "aoe": {
         "scale": 1.85,
@@ -51,19 +58,12 @@ export const Evasion: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 2.25,
-      "debuffResistance": 2.25
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
+      "debuffResistance": 2.25,
+      "defenseBuff": 2.25
     },
     "taunt": {
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 2.25
+    }
   }
 };

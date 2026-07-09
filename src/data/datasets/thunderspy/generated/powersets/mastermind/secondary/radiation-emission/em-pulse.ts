@@ -39,14 +39,14 @@ export const EMPulse: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "enduranceDrain": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
     "hold": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "enduranceDrain": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
     }
   },
   "conditionalEffects": [

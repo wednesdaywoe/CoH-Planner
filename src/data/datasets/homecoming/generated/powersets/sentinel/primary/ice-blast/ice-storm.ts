@@ -42,15 +42,15 @@ export const IceStorm: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Ice Storm",
+      "duration": 15,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Pets.IceStorm_Sentinel.Avoid",
         "Pets.IceStorm_Sentinel.IceStorm"
       ],
-      "duration": 15,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Ice Storm",

@@ -51,53 +51,38 @@ export const InnerWill: Power = {
     }
   ],
   "effects": {
-    "mezResistance": {
-      "stun": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "sleep": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "immobilize": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "hold": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "confuse": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      },
-      "fear": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
+    "buffDuration": 30,
     "durations": {
       "mezResistance": 30,
       "specialBuff": 30
     },
-    "specialBuff": {
-      "stun": {
-        "scale": 0.5,
+    "mezResistance": {
+      "confuse": {
+        "scale": 1,
         "table": "Melee_Ones"
       },
-      "sleep": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      },
-      "immobilize": {
-        "scale": 0.5,
+      "fear": {
+        "scale": 1,
         "table": "Melee_Ones"
       },
       "hold": {
-        "scale": 0.5,
+        "scale": 1,
         "table": "Melee_Ones"
       },
+      "immobilize": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
+    },
+    "specialBuff": {
       "confuse": {
         "scale": 0.5,
         "table": "Melee_Ones"
@@ -105,9 +90,24 @@ export const InnerWill: Power = {
       "fear": {
         "scale": 0.5,
         "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
       }
     },
-    "buffDuration": 30,
     "maxStacks": 2,
     "stacksLinear": [
       "specialBuff"

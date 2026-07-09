@@ -40,11 +40,11 @@ export const ConductiveShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
     "resistance": {
-      "fire": {
-        "scale": 3.5,
-        "table": "Melee_Res_DMG"
-      },
       "cold": {
         "scale": 3.5,
         "table": "Melee_Res_DMG"
@@ -53,14 +53,14 @@ export const ConductiveShield: Power = {
         "scale": 3.5,
         "table": "Melee_Res_DMG"
       },
+      "fire": {
+        "scale": 3.5,
+        "table": "Melee_Res_DMG"
+      },
       "negative": {
         "scale": 2,
         "table": "Melee_Res_DMG"
       }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

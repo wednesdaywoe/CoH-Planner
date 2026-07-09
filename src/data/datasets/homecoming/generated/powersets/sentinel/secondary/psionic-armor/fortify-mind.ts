@@ -38,11 +38,30 @@ export const FortifyMind: Power = {
       "scale": 3,
       "table": "Melee_HealSelf"
     },
+    "buffDuration": 45,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "recovery": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "regeneration": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
+    },
     "durations": {
       "absorb": 30,
+      "debuffResistance": 45,
       "maxHPBuff": 45,
-      "regenBuff": 45,
-      "debuffResistance": 45
+      "regenBuff": 45
     },
     "maxHPBuff": {
       "scale": 1,
@@ -52,25 +71,6 @@ export const FortifyMind: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "regeneration": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recovery": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 45,
     "maxStacks": 3,
     "stacksLinear": [
       "absorb",

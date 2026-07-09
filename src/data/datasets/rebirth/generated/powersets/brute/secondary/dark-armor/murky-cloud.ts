@@ -40,11 +40,22 @@ export const MurkyCloud: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "fire": {
-        "scale": 3,
-        "table": "Melee_Res_DMG"
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
       },
+      "recovery": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "resistance": 0.75
+    },
+    "resistance": {
       "cold": {
         "scale": 3,
         "table": "Melee_Res_DMG"
@@ -53,25 +64,14 @@ export const MurkyCloud: Power = {
         "scale": 2,
         "table": "Melee_Res_DMG"
       },
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
       "negative": {
         "scale": 2,
         "table": "Melee_Res_DMG"
       }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "debuffResistance": 0.75
-    },
-    "debuffResistance": {
-      "recovery": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "endurance": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
+    }
   }
 };

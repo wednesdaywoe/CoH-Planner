@@ -38,28 +38,28 @@ export const CallDepths: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "maxHPBuff": {
-      "scale": 4,
-      "table": "Ranged_Heal"
-    },
+    "buffDuration": 60,
     "durations": {
-      "maxHPBuff": 60,
       "maxEndBuff": 60,
-      "regenBuff": 60,
-      "rangeBuff": 60
+      "maxHPBuff": 60,
+      "rangeBuff": 60,
+      "regenBuff": 60
     },
     "maxEndBuff": {
       "scale": 20,
       "table": "Ranged_Ones"
     },
-    "regenBuff": {
+    "maxHPBuff": {
       "scale": 4,
-      "table": "Ranged_Ones"
+      "table": "Ranged_Heal"
     },
     "rangeBuff": {
       "scale": 0.375,
       "table": "Melee_Stun"
     },
-    "buffDuration": 60
+    "regenBuff": {
+      "scale": 4,
+      "table": "Ranged_Ones"
+    }
   }
 };

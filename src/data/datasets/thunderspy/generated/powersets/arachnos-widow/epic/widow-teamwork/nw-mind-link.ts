@@ -36,6 +36,7 @@ export const NWMindLink: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
     "defenseBuff": {
       "melee": {
         "scale": 1,
@@ -44,7 +45,6 @@ export const NWMindLink: Power = {
     },
     "durations": {
       "defenseBuff": 90
-    },
-    "buffDuration": 90
+    }
   }
 };

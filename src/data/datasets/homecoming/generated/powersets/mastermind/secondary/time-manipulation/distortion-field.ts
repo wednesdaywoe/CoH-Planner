@@ -39,10 +39,10 @@ export const DistortionField: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_DistortionField_Mastermind",
+      "copyBoosts": true,
       "duration": 45,
-      "copyBoosts": true
+      "entity": "Pets_DistortionField_Mastermind",
+      "isPseudoPet": false
     }
   }
 };

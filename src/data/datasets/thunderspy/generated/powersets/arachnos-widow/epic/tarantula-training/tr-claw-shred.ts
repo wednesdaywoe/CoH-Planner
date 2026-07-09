@@ -48,18 +48,18 @@ export const TRClawShred: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "taunt": {
-      "scale": 20,
-      "table": "Melee_Taunt"
+    "buffDuration": 15,
+    "durations": {
+      "regenDebuff": 15
     },
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "regenDebuff": 15
-    },
-    "buffDuration": 15
+    "taunt": {
+      "scale": 20,
+      "table": "Melee_Taunt"
+    }
   },
   "modesRequired": [
     "Widow_Tarantula_Mode"

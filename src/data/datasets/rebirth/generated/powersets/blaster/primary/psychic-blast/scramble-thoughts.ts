@@ -47,11 +47,7 @@ export const ScrambleThoughts: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
-    },
+    "buffDuration": 10.5,
     "damageBuff": {
       "scale": 0.198,
       "table": "Ranged_Ones"
@@ -59,7 +55,11 @@ export const ScrambleThoughts: Power = {
     "durations": {
       "damageBuff": 10.5
     },
-    "buffDuration": 10.5,
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

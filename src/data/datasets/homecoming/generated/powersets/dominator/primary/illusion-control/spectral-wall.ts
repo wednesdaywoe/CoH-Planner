@@ -51,6 +51,10 @@ export const SpectralWall: Power = {
     "tickRate": 2
   },
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "tohitDebuff": 15
+    },
     "immobilize": {
       "mag": 4,
       "scale": 15,
@@ -59,11 +63,7 @@ export const SpectralWall: Power = {
     "tohitDebuff": {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 15
-    },
-    "buffDuration": 15
+    }
   },
   "conditionalEffects": [
     {

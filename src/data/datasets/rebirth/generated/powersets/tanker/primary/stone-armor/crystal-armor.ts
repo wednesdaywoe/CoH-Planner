@@ -40,6 +40,13 @@ export const CrystalArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "energy": {
         "scale": 1.6,
@@ -51,15 +58,8 @@ export const CrystalArmor: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75
+    }
   }
 };

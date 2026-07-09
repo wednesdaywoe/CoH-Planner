@@ -47,7 +47,27 @@ export const BlackDwarfMire: Power = {
     "table": "Melee_SSDamage"
   },
   "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 2.5
+    },
+    "durations": {
+      "damageBuff": 10,
+      "rechargeDebuff": 6,
+      "slow": 6,
+      "tohitBuff": 10
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
       "jumpHeight": {
         "scale": 0.2,
         "table": "Melee_Slow"
@@ -59,37 +79,17 @@ export const BlackDwarfMire: Power = {
       "runSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 6,
-      "rechargeDebuff": 6,
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "tohitBuff": {
-      "scale": 0.5,
-      "table": "Melee_Buff_ToHit",
-      "perTarget": 0.5
-    },
-    "damageBuff": {
-      "scale": 2.5,
-      "table": "Melee_Buff_Dmg",
-      "perTarget": 2.5
     },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 10
+    "tohitBuff": {
+      "scale": 0.5,
+      "table": "Melee_Buff_ToHit",
+      "perTarget": 0.5
+    }
   },
   "requires": "0",
   "modesRequired": [

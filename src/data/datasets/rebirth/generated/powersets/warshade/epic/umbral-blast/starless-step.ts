@@ -50,32 +50,9 @@ export const StarlessStep: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 10,
     "defenseBuff": {
-      "melee": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.725,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 0.725,
         "table": "Melee_Buff_Def"
       },
@@ -87,7 +64,27 @@ export const StarlessStep: Power = {
         "scale": 0.725,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.725,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 0.725,
         "table": "Melee_Buff_Def"
       }
@@ -95,7 +92,10 @@ export const StarlessStep: Power = {
     "durations": {
       "defenseBuff": 10
     },
-    "buffDuration": 10
+    "teleport": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
   },
   "requires": "Pool.Speed.Whirlwind ! Pool.Teleportation.Team_Teleport ! && Pool.Leaping.Spring_Attack ! && Pool.Flight.Afterburner ! &&"
 };

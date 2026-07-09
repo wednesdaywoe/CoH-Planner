@@ -50,13 +50,13 @@ export const Irradiate: Power = {
     "tickRate": 0.5
   },
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

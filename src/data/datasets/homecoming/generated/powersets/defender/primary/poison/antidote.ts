@@ -36,23 +36,34 @@ export const Antidote: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
     "confuse": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
-    "effectDuration": 90,
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.5,
+        "table": "Ranged_Ones"
+      },
+      "recharge": {
+        "scale": 0.5,
+        "table": "Ranged_Ones"
+      }
+    },
     "durations": {
       "confuse": 90,
+      "debuffResistance": 90,
       "fear": 90,
       "hold": 90,
       "immobilize": 90,
-      "stun": 90,
-      "sleep": 90,
       "mezResistance": 90,
       "resistance": 90,
-      "debuffResistance": 90
+      "sleep": 90,
+      "stun": 90
     },
+    "effectDuration": 90,
     "fear": {
       "mag": 1,
       "scale": 30,
@@ -64,16 +75,6 @@ export const Antidote: Power = {
       "table": "Ranged_Res_Boolean"
     },
     "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "sleep": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
@@ -94,16 +95,15 @@ export const Antidote: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.5,
-        "table": "Ranged_Ones"
-      },
-      "recharge": {
-        "scale": 0.5,
-        "table": "Ranged_Ones"
-      }
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
     },
-    "buffDuration": 90
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    }
   }
 };

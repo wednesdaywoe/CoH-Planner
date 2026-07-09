@@ -61,13 +61,13 @@ export const SteamSpray: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 8
-    },
-    "buffDuration": 8
+    }
   }
 };

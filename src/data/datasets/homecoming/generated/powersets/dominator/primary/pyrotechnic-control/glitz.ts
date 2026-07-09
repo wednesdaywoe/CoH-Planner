@@ -57,15 +57,15 @@ export const Glitz: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    },
     "fear": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Fear"
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
     }
   },
   "conditionalEffects": [

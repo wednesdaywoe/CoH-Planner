@@ -54,19 +54,19 @@ export const NeutrinoBolt: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 8.5,
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
-      "defenseDebuff": 3,
-      "damageBuff": 8.5
+      "damageBuff": 8.5,
+      "defenseDebuff": 3
     },
-    "damageBuff": {
-      "scale": 0.066,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 8.5,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

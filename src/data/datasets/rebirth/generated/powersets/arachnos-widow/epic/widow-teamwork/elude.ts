@@ -37,7 +37,18 @@ export const Elude: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 180,
+    "debuffResistance": {
+      "defense": {
+        "scale": 1,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
+      "aoe": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
       "melee": {
         "scale": 6,
         "table": "Melee_Buff_Def"
@@ -45,20 +56,16 @@ export const Elude: Power = {
       "ranged": {
         "scale": 6,
         "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
-      "defenseBuff": 180,
-      "recoveryBuff": 180,
-      "movement": 180,
       "debuffResistance": 180,
+      "defenseBuff": 180,
+      "movement": 180,
+      "recoveryBuff": 180,
       "recoveryDebuff": 20
     },
-    "recoveryBuff": {
+    "enduranceDrain": {
       "scale": 1,
       "table": "Melee_Ones"
     },
@@ -72,21 +79,14 @@ export const Elude: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
-    "debuffResistance": {
-      "defense": {
-        "scale": 1,
-        "table": "Melee_Res_Boolean"
-      }
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
     },
     "recoveryDebuff": {
       "scale": 100,
       "table": "Melee_Ones"
     },
-    "enduranceDrain": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 180,
     "maxStacks": 2,
     "stacksLinear": [
       "jumpHeight",

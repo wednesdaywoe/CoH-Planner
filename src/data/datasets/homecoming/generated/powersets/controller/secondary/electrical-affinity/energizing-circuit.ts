@@ -40,6 +40,10 @@ export const EnergizingCircuit: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "rechargeBuff": 5
+    },
     "enduranceGain": {
       "scale": 25,
       "table": "Melee_Ones"
@@ -47,10 +51,6 @@ export const EnergizingCircuit: Power = {
     "rechargeBuff": {
       "scale": 1.25,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "rechargeBuff": 5
-    },
-    "buffDuration": 5
+    }
   }
 };

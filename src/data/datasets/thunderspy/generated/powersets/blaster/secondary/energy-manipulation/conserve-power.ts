@@ -34,14 +34,14 @@ export const ConservePower: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "effectDuration": 60,
+    "buffDuration": 60,
     "durations": {
       "regenBuff": 60
     },
+    "effectDuration": 60,
     "regenBuff": {
       "scale": 1.125,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 60
+    }
   }
 };

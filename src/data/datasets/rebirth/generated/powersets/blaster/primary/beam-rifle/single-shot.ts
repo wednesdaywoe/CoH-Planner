@@ -52,10 +52,7 @@ export const SingleShot: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
@@ -63,7 +60,10 @@ export const SingleShot: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5,
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"
@@ -76,19 +76,19 @@ export const SingleShot: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 10,
+        "durations": {
+          "regenDebuff": 10
+        },
         "regenDebuff": {
           "scale": 0.75,
           "table": "Ranged_Ones"
         },
-        "durations": {
-          "regenDebuff": 10
-        },
         "summon": {
-          "isPseudoPet": false,
+          "duration": 6,
           "entity": "Pets_DisintegrateSpread",
-          "duration": 6
-        },
-        "buffDuration": 10
+          "isPseudoPet": false
+        }
       }
     }
   ],

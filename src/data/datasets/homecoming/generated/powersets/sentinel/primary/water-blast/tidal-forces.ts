@@ -34,24 +34,24 @@ export const TidalForces: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_ToHit"
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 2.5,
+      "table": "Melee_Buff_Dmg"
     },
     "durations": {
-      "tohitBuff": 10,
+      "damageBuff": 10,
       "rangeBuff": 10,
-      "damageBuff": 10
+      "tohitBuff": 10
     },
     "rangeBuff": {
       "scale": 0.333,
       "table": "Melee_Ones"
     },
-    "damageBuff": {
-      "scale": 2.5,
-      "table": "Melee_Buff_Dmg"
+    "tohitBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_ToHit"
     },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

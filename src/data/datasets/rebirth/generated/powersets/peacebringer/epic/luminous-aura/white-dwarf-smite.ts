@@ -59,6 +59,15 @@ export const WhiteDwarfSmite: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 30,
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10,
+      "slow": 30
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
@@ -69,14 +78,6 @@ export const WhiteDwarfSmite: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "slow": 30,
-      "defenseDebuff": 10
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
     "stun": {
       "mag": 2,
       "scale": 6,
@@ -85,8 +86,7 @@ export const WhiteDwarfSmite: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 30
+    }
   },
   "specialEffects": [
     {

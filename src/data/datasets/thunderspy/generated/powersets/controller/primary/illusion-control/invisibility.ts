@@ -32,6 +32,7 @@ export const Invisibility: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "melee": {
         "scale": 0,
@@ -40,8 +41,7 @@ export const Invisibility: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   },
   "requires": "Controller_Control.Illusion_Control.Blind Controller_Control.Illusion_Control.Phantasm ||"
 };

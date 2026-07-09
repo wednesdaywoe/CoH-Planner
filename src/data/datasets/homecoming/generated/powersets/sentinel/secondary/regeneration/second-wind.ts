@@ -41,13 +41,13 @@ export const SecondWind: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
+    "buffDuration": 120,
     "durations": {
       "maxHPBuff": 120
     },
-    "buffDuration": 120
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    }
   }
 };

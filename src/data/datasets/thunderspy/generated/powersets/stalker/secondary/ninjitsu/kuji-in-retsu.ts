@@ -42,16 +42,17 @@ export const KujiInRetsu: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
     "defenseBuff": {
+      "aoe": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
       "melee": {
         "scale": 6,
         "table": "Melee_Buff_Def"
       },
       "ranged": {
-        "scale": 6,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
         "scale": 6,
         "table": "Melee_Buff_Def"
       }
@@ -63,7 +64,6 @@ export const KujiInRetsu: Power = {
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 90
+    }
   }
 };

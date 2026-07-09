@@ -57,41 +57,41 @@ export const BlackDwarfStrike: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 6,
+    "durations": {
+      "rechargeDebuff": 6,
+      "slow": 6
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
     },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
     },
     "slow": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
       "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
       "jumpSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
       }
     },
-    "durations": {
-      "slow": 6,
-      "rechargeDebuff": 6
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 6
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
   },
   "specialEffects": [
     {

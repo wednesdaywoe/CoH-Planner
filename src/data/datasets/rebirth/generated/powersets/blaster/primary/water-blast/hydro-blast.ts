@@ -62,7 +62,24 @@ export const HydroBlast: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 0.11,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.17,
+      "slow": 10
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -74,25 +91,8 @@ export const HydroBlast: Power = {
       "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
       }
     },
-    "durations": {
-      "slow": 10,
-      "damageBuff": 9.17
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 0.11,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

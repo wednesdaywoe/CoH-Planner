@@ -37,14 +37,14 @@ export const ClearSkies: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "rechargeBuff": {
-          "scale": 0.25,
-          "table": "Ranged_Ones"
-        },
+        "buffDuration": 2.1,
         "durations": {
           "rechargeBuff": 2.1
         },
-        "buffDuration": 2.1
+        "rechargeBuff": {
+          "scale": 0.25,
+          "table": "Ranged_Ones"
+        }
       }
     }
   ],

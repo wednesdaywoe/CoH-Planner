@@ -33,12 +33,21 @@ export const CorrosiveSap: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 30,
+    "damageDebuff": {
+      "scale": 2.5,
+      "table": "Ranged_Debuff_Dam"
+    },
+    "durations": {
+      "damageDebuff": 30,
+      "resistanceDebuff": 30
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -46,11 +55,7 @@ export const CorrosiveSap: Power = {
         "scale": 2.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 2.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -62,19 +67,14 @@ export const CorrosiveSap: Power = {
         "scale": 2.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 2.5,
         "table": "Ranged_Debuff_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 30,
-      "damageDebuff": 30
-    },
-    "damageDebuff": {
-      "scale": 2.5,
-      "table": "Ranged_Debuff_Dam"
-    },
-    "buffDuration": 30
+    }
   }
 };

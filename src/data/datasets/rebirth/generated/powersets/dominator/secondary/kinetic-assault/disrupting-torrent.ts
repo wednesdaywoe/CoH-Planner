@@ -55,6 +55,10 @@ export const DisruptingTorrent: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "regenBuffUnenhanced": 15
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
@@ -62,11 +66,7 @@ export const DisruptingTorrent: Power = {
     "regenBuffUnenhanced": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenBuffUnenhanced": 15
-    },
-    "buffDuration": 15
+    }
   },
   "conditionalEffects": [
     {

@@ -57,17 +57,26 @@ export const BitterIceBlast: Power = {
     }
   ],
   "effects": {
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Ranged_DeBuff_ToHit"
+    "buffDuration": 12,
+    "damageBuff": {
+      "scale": 0.071,
+      "table": "Ranged_Ones"
     },
     "durations": {
-      "tohitDebuff": 6,
-      "slow": 12,
+      "damageBuff": 8.57,
       "rechargeDebuff": 12,
-      "damageBuff": 8.57
+      "slow": 12,
+      "tohitDebuff": 6
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
     },
     "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -79,21 +88,12 @@ export const BitterIceBlast: Power = {
       "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
       }
     },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Ranged_DeBuff_ToHit"
     },
-    "damageBuff": {
-      "scale": 0.071,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 12,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

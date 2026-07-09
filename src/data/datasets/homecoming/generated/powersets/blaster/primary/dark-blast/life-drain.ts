@@ -58,13 +58,13 @@ export const LifeDrain: Power = {
     }
   ],
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_Debuff_ToHit"
-    },
+    "buffDuration": 10,
     "durations": {
       "tohitDebuff": 10
     },
-    "buffDuration": 10
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_Debuff_ToHit"
+    }
   }
 };

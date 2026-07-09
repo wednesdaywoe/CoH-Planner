@@ -66,13 +66,13 @@ export const BlazingAura: Power = {
     }
   ],
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 2.1,
     "durations": {
       "recoveryBuff": 2.1
     },
-    "buffDuration": 2.1
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    }
   }
 };

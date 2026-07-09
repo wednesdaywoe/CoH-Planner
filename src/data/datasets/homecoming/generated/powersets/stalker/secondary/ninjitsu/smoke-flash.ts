@@ -30,25 +30,26 @@ export const SmokeFlash: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockup": {
-      "scale": 20,
-      "table": "Melee_Res_Boolean"
-    },
+    "buffDuration": 10.25,
     "durations": {
-      "knockup": 10.25,
       "knockback": 10.25,
+      "knockup": 10.25,
       "resistance": 10.25
     },
     "knockback": {
       "scale": 20,
       "table": "Melee_Res_Boolean"
     },
+    "knockup": {
+      "scale": 20,
+      "table": "Melee_Res_Boolean"
+    },
     "resistance": {
-      "smashing": {
+      "cold": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
@@ -56,11 +57,7 @@ export const SmokeFlash: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
@@ -72,12 +69,15 @@ export const SmokeFlash: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
       "toxic": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "buffDuration": 10.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

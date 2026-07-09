@@ -42,19 +42,19 @@ export const FrozenArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "smashing": {
+      "lethal": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       },
-      "lethal": {
+      "smashing": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

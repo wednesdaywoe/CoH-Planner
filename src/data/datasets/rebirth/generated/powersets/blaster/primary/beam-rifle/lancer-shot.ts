@@ -47,11 +47,7 @@ export const LancerShot: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    },
+    "buffDuration": 9.4,
     "damageBuff": {
       "scale": 0.125,
       "table": "Ranged_Ones"
@@ -59,7 +55,11 @@ export const LancerShot: Power = {
     "durations": {
       "damageBuff": 9.4
     },
-    "buffDuration": 9.4,
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"
@@ -78,9 +78,9 @@ export const LancerShot: Power = {
       },
       "effects": {
         "summon": {
-          "isPseudoPet": false,
+          "duration": 6,
           "entity": "Pets_DisintegrateSpread",
-          "duration": 6
+          "isPseudoPet": false
         }
       }
     }

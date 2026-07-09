@@ -40,14 +40,15 @@ export const ChargedShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "maxEndBuff": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 0.6,
     "durations": {
       "maxEndBuff": 0.6,
       "regenBuff": 0.6,
       "regenBuffUnenhanced": 0.6
+    },
+    "maxEndBuff": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
     "regenBuff": {
       "scale": 1.5,
@@ -56,7 +57,6 @@ export const ChargedShield: Power = {
     "regenBuffUnenhanced": {
       "scale": 0.5,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 0.6
+    }
   }
 };

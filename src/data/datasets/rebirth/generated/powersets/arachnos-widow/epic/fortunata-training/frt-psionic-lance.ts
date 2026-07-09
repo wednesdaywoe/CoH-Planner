@@ -50,10 +50,7 @@ export const FRTPsionicLance: Power = {
     "tickRate": 1
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Ranged_Slow"
-    },
+    "buffDuration": 10,
     "durations": {
       "rechargeDebuff": 10
     },
@@ -61,7 +58,10 @@ export const FRTPsionicLance: Power = {
       "scale": 1.4,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Ranged_Slow"
+    }
   },
   "specialEffects": [
     {

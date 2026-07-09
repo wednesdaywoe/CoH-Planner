@@ -52,19 +52,16 @@ export const Frost: Power = {
     "tickRate": 0.5
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
+    "buffDuration": 8,
     "durations": {
       "rechargeDebuff": 8,
       "slow": 8
     },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
       "flySpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
@@ -76,9 +73,12 @@ export const Frost: Power = {
       "jumpSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
       }
-    },
-    "buffDuration": 8
+    }
   },
   "specialEffects": [
     {

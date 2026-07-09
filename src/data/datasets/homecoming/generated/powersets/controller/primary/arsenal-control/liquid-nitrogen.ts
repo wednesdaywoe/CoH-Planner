@@ -41,10 +41,10 @@ export const LiquidNitrogen: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_LiquidNitrogen",
+      "copyBoosts": true,
       "duration": 30,
-      "copyBoosts": true
+      "entity": "Pets_LiquidNitrogen",
+      "isPseudoPet": false
     }
   }
 };

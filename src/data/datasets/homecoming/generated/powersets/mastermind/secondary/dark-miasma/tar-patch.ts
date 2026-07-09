@@ -37,14 +37,14 @@ export const TarPatch: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Tar Patch",
+      "duration": 45,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Dark_Miasma.Tar"
       ],
-      "duration": 45,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Tar Patch",

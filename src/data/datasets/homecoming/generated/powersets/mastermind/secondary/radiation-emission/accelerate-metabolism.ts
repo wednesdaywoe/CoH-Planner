@@ -40,39 +40,10 @@ export const AccelerateMetabolism: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 120,
     "damageBuff": {
       "scale": 2,
       "table": "Ranged_Buff_Dmg"
-    },
-    "durations": {
-      "damageBuff": 120,
-      "mezResistance": 120,
-      "rechargeBuff": 120,
-      "debuffResistance": 120,
-      "recoveryBuff": 120,
-      "movement": 120
-    },
-    "mezResistance": {
-      "hold": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "immobilize": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "stun": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      },
-      "sleep": {
-        "scale": 5,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "rechargeBuff": {
-      "scale": 0.3,
-      "table": "Ranged_Ones"
     },
     "debuffResistance": {
       "endurance": {
@@ -84,20 +55,49 @@ export const AccelerateMetabolism: Power = {
         "table": "Ranged_Res_Boolean"
       }
     },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Ranged_Ones"
+    "durations": {
+      "damageBuff": 120,
+      "debuffResistance": 120,
+      "mezResistance": 120,
+      "movement": 120,
+      "rechargeBuff": 120,
+      "recoveryBuff": 120
+    },
+    "mezResistance": {
+      "hold": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "immobilize": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "sleep": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      },
+      "stun": {
+        "scale": 5,
+        "table": "Ranged_Res_Boolean"
+      }
     },
     "movement": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.3,
         "table": "Ranged_Ones"
       },
-      "flySpeed": {
+      "runSpeed": {
         "scale": 0.3,
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 120
+    "rechargeBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    }
   }
 };

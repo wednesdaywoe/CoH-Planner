@@ -47,13 +47,13 @@ export const ForceBolt: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 9.1,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 1,
     "durations": {
       "knockback": 1
     },
-    "buffDuration": 1
+    "knockback": {
+      "scale": 9.1,
+      "table": "Ranged_Knockback"
+    }
   }
 };

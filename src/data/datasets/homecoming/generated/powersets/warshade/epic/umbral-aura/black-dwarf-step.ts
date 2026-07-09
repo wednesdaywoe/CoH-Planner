@@ -34,20 +34,11 @@ export const BlackDwarfStep: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "translucency": {
-        "scale": 0.25,
-        "table": "Ranged_Ones"
-      }
-    },
+    "buffDuration": 3,
     "durations": {
-      "stealth": 3,
       "movement": 15,
+      "stealth": 3,
       "untouchable": 3
-    },
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
     },
     "movement": {
       "fly": {
@@ -67,11 +58,20 @@ export const BlackDwarfStep: Power = {
         "table": "Melee_Ones"
       }
     },
+    "stealth": {
+      "translucency": {
+        "scale": 0.25,
+        "table": "Ranged_Ones"
+      }
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
     "untouchable": {
       "scale": 1000,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 3
+    }
   },
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Step ! &&",
   "modesRequired": [

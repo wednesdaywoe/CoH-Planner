@@ -30,44 +30,17 @@ export const GatherShadows: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 4,
+      "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 10,
+      "specialBuff": 10
+    },
     "specialBuff": {
-      "stun": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "sleep": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "confuse": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "fear": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "immobilize": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "hold": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
-      },
-      "ranged": {
+      "absorb": {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
@@ -75,11 +48,27 @@ export const GatherShadows: Power = {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
-      "smashing": {
+      "cold": {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
-      "lethal": {
+      "confuse": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "endurance": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "fear": {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
@@ -87,11 +76,27 @@ export const GatherShadows: Power = {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
-      "cold": {
+      "heal": {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
-      "energy": {
+      "hold": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "immobilize": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "movement": {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
@@ -103,32 +108,27 @@ export const GatherShadows: Power = {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
-      "heal": {
+      "ranged": {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
-      "absorb": {
+      "sleep": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Stun"
+      },
+      "stun": {
         "scale": 0.5,
         "table": "Melee_Stun"
       },
       "tohit": {
         "scale": 0.5,
         "table": "Melee_Stun"
-      },
-      "endurance": {
-        "scale": 0.5,
-        "table": "Melee_Stun"
       }
     },
-    "durations": {
-      "specialBuff": 10,
-      "damageBuff": 10
-    },
-    "damageBuff": {
-      "scale": 4,
-      "table": "Melee_Buff_Dmg"
-    },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

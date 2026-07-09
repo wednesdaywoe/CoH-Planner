@@ -40,48 +40,23 @@ export const MaskPresence: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "damageBuff": {
       "scale": 4,
       "table": "Melee_Buff_Dmg"
     },
-    "durations": {
-      "damageBuff": 0.75,
-      "defenseBuff": 0.75,
-      "defenseBuffSuppressible": 0.55,
-      "stealth": 0.75
-    },
     "defenseBuff": {
-      "ranged": {
+      "melee": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
-      "melee": {
+      "ranged": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       }
     },
     "defenseBuffSuppressible": {
-      "ranged": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
@@ -93,6 +68,18 @@ export const MaskPresence: Power = {
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 1,
         "table": "Melee_Buff_Def"
@@ -101,17 +88,31 @@ export const MaskPresence: Power = {
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
+      "ranged": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
       "toxic": {
         "scale": 1,
         "table": "Melee_Buff_Def"
       }
     },
+    "durations": {
+      "damageBuff": 0.75,
+      "defenseBuff": 0.75,
+      "defenseBuffSuppressible": 0.55,
+      "stealth": 0.75
+    },
     "stealth": {
+      "stackKey": "NictusFX",
       "stealthPvE": {
         "scale": 35.5,
         "table": "Melee_Ones"
       },
-      "stackKey": "NictusFX",
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"
@@ -120,7 +121,6 @@ export const MaskPresence: Power = {
         "scale": 0.15,
         "table": "Melee_Ones"
       }
-    },
-    "buffDuration": 0.75
+    }
   }
 };

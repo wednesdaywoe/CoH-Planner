@@ -44,16 +44,7 @@ export const Burn: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Burn",
-      "duration": 10
-    },
-    "immobilize": {
-      "mag": -15,
-      "scale": 100,
-      "table": "Melee_Res_Boolean"
-    },
+    "buffDuration": 9.53,
     "damageBuff": {
       "scale": 0.488,
       "table": "Melee_Ones",
@@ -62,12 +53,21 @@ export const Burn: Power = {
     "durations": {
       "damageBuff": 9.53
     },
+    "immobilize": {
+      "mag": -15,
+      "scale": 100,
+      "table": "Melee_Res_Boolean"
+    },
     "mezResistance": {
       "immobilize": {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 9.53
+    "summon": {
+      "duration": 10,
+      "entity": "Pets_Burn",
+      "isPseudoPet": false
+    }
   }
 };

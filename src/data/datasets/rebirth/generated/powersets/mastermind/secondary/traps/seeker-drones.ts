@@ -46,18 +46,18 @@ export const SeekerDrones: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
       "duration": 240,
       "entities": [
         {
-          "entity": "Pets_Traps_Seeker1",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Traps_Seeker1"
         },
         {
-          "entity": "Pets_Traps_Seeker2",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Traps_Seeker2"
         }
-      ]
+      ],
+      "isPseudoPet": false
     }
   }
 };

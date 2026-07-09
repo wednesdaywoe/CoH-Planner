@@ -40,6 +40,54 @@ export const CombatFlight: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "defenseBuff": {
+      "aoe": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "movement": 0.75,
+      "slow": 0.75
+    },
     "movement": {
       "fly": {
         "scale": 2,
@@ -58,61 +106,13 @@ export const CombatFlight: Power = {
         "table": "Melee_Friction"
       }
     },
-    "durations": {
-      "movement": 0.75,
-      "defenseBuff": 0.75,
-      "slow": 0.75
-    },
-    "defenseBuff": {
-      "melee": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      }
-    },
     "slow": {
       "flySpeed": {
         "scale": 1.01,
         "table": "Melee_Ones",
         "toWho": "Self"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "requires": "Inherent.Inherent.Combat_Flight !"
 };

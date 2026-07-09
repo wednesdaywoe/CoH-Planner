@@ -40,6 +40,7 @@ export const EnergyCloak: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "melee": {
         "scale": 0.5,
@@ -48,7 +49,6 @@ export const EnergyCloak: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

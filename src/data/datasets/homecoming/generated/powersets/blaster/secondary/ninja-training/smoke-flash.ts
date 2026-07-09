@@ -37,16 +37,20 @@ export const SmokeFlash: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "resistanceDebuff": 15
+    },
     "placate": {
       "scale": 8,
       "table": "Melee_Taunt"
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
       },
@@ -54,11 +58,7 @@ export const SmokeFlash: Power = {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
       },
@@ -70,14 +70,14 @@ export const SmokeFlash: Power = {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.5,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 15
-    },
-    "buffDuration": 15
+    }
   }
 };

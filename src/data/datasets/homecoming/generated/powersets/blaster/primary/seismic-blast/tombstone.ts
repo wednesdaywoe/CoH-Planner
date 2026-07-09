@@ -48,29 +48,29 @@ export const Tombstone: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      },
-      "jumpSpeed": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 1,
-        "table": "Ranged_Slow"
-      }
-    },
+    "buffDuration": 16,
     "durations": {
-      "slow": 16,
-      "rangeBuff": 10
+      "rangeBuff": 10,
+      "slow": 16
     },
     "rangeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 16
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      },
+      "jumpHeight": {
+        "scale": 1,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 1,
+        "table": "Ranged_Slow"
+      }
+    }
   },
   "quickSnipe": {
     "stats": {

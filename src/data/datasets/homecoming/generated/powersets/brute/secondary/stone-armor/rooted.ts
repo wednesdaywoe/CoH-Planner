@@ -40,12 +40,60 @@ export const Rooted: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      },
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "mezResistance": 0.75,
+      "movement": 0.75,
+      "regenBuff": 0.75,
+      "repel": 0.75,
+      "sleep": 0.75,
+      "slow": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "mezResistance": {
-      "knockup": {
+      "knockback": {
         "scale": 100,
         "table": "Melee_Ones"
       },
-      "knockback": {
+      "knockup": {
         "scale": 100,
         "table": "Melee_Ones"
       },
@@ -54,89 +102,41 @@ export const Rooted: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "mezResistance": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
-      "repel": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
-      "regenBuff": 0.75,
-      "debuffResistance": 0.75,
-      "movement": 0.75,
-      "slow": 0.75
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "endurance": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "movement": {
       "jumpSpeed": {
         "scale": 0.5,
         "table": "Melee_Ones"
       }
     },
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.9,
-        "table": "Melee_Ones",
-        "toWho": "Self"
-      },
       "fly": {
         "scale": 10,
         "table": "Melee_Ones",
         "toWho": "Self"
+      },
+      "runSpeed": {
+        "scale": 0.9,
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     },
-    "buffDuration": 0.75
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

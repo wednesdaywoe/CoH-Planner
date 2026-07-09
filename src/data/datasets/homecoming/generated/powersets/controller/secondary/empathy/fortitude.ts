@@ -38,41 +38,13 @@ export const Fortitude: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 1.5,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 120,
-      "damageBuff": 120,
-      "defenseBuff": 120
-    },
+    "buffDuration": 120,
     "damageBuff": {
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },
     "defenseBuff": {
-      "ranged": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       },
@@ -84,6 +56,18 @@ export const Fortitude: Power = {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       },
+      "fire": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
       "negative": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
@@ -92,11 +76,27 @@ export const Fortitude: Power = {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       },
+      "ranged": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
       "toxic": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       }
     },
-    "buffDuration": 120
+    "durations": {
+      "damageBuff": 120,
+      "defenseBuff": 120,
+      "tohitBuff": 120
+    },
+    "tohitBuff": {
+      "scale": 1.5,
+      "table": "Ranged_Buff_ToHit"
+    }
   }
 };

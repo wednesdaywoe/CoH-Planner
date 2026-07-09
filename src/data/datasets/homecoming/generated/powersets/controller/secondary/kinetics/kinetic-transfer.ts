@@ -33,19 +33,19 @@ export const KineticTransfer: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 45,
     "damageBuff": {
       "scale": 4,
       "table": "Ranged_Buff_Dmg",
       "perTarget": 2
     },
-    "durations": {
-      "damageBuff": 45,
-      "damageDebuff": 30
-    },
     "damageDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Dam"
     },
-    "buffDuration": 45
+    "durations": {
+      "damageBuff": 45,
+      "damageDebuff": 30
+    }
   }
 };

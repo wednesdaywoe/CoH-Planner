@@ -43,9 +43,9 @@ export const WildBastion: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 60,
     "durations": {
       "absorb": 60
-    },
-    "buffDuration": 60
+    }
   }
 };

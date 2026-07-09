@@ -42,8 +42,8 @@ export const BurstofSpeed: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Burst_of_Speed"
+      "entity": "Pets_Burst_of_Speed",
+      "isPseudoPet": false
     }
   }
 };

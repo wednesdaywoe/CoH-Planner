@@ -39,12 +39,29 @@ export const WSWideAreaWebGrenade: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "rechargeDebuff": 15,
+      "slow": 15
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 500,
         "table": "Ranged_Ones"
@@ -52,24 +69,7 @@ export const WSWideAreaWebGrenade: Power = {
       "runSpeed": {
         "scale": 0.5,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "slow": 15,
-      "rechargeDebuff": 15
-    },
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 15
+    }
   }
 };

@@ -44,21 +44,26 @@ export const TouchofFear: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "damageBuff": {
+      "scale": 0.077,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.67,
+      "recoveryBuff": 60,
+      "regenBuff": 60,
+      "regenBuffUnenhanced": 60,
+      "tohitDebuff": 20
+    },
     "fear": {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Fear"
     },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 20,
-      "regenBuff": 60,
-      "regenBuffUnenhanced": 60,
-      "recoveryBuff": 60,
-      "damageBuff": 8.67
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
     },
     "regenBuff": {
       "scale": 1.125,
@@ -68,15 +73,10 @@ export const TouchofFear: Power = {
       "scale": 1.125,
       "table": "Melee_Ones"
     },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Melee_DeBuff_ToHit"
     },
-    "damageBuff": {
-      "scale": 0.077,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 60,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

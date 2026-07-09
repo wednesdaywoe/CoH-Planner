@@ -38,6 +38,7 @@ export const TacticalTrainingAssault: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
     "damageBuff": {
       "scale": 1.5,
       "table": "Ranged_Buff_Dmg"
@@ -47,15 +48,14 @@ export const TacticalTrainingAssault: Power = {
       "mezResistance": 2.25
     },
     "mezResistance": {
-      "taunt": {
-        "scale": 1.75,
-        "table": "Ranged_Res_Boolean"
-      },
       "placate": {
         "scale": 1.75,
         "table": "Ranged_Res_Boolean"
+      },
+      "taunt": {
+        "scale": 1.75,
+        "table": "Ranged_Res_Boolean"
       }
-    },
-    "buffDuration": 2.25
+    }
   }
 };

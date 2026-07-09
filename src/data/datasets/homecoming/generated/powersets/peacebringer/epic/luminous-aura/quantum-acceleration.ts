@@ -41,28 +41,9 @@ export const QuantumAcceleration: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.2,
     "defenseBuffSuppressible": {
-      "ranged": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
@@ -74,11 +55,31 @@ export const QuantumAcceleration: Power = {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
       "psionic": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
@@ -89,15 +90,33 @@ export const QuantumAcceleration: Power = {
     },
     "durations": {
       "defenseBuffSuppressible": 0.2,
-      "movement": 0.2,
       "immobilize": 0.2,
+      "knockback": 0.2,
       "knockup": 0.2,
-      "knockback": 0.2
+      "movement": 0.2
+    },
+    "effectDuration": 0.2,
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 1.75,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockup": {
+      "scale": 1.75,
+      "table": "Melee_Res_Boolean"
     },
     "movement": {
       "fly": {
         "scale": 2,
         "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.4,
+        "table": "Melee_SpeedFlying"
       },
       "movementControl": {
         "scale": 15,
@@ -106,27 +125,8 @@ export const QuantumAcceleration: Power = {
       "movementFriction": {
         "scale": 15,
         "table": "Melee_Friction"
-      },
-      "flySpeed": {
-        "scale": 0.4,
-        "table": "Melee_SpeedFlying"
       }
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.2,
-    "knockup": {
-      "scale": 1.75,
-      "table": "Melee_Res_Boolean"
-    },
-    "knockback": {
-      "scale": 1.75,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 0.2
+    }
   },
   "modesSuspended": [
     "Peacebringer_Blaster_Mode",

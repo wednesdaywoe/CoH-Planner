@@ -33,15 +33,15 @@ export const DetentionField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "immobilize": 30
+    },
+    "effectDuration": 30,
     "immobilize": {
       "mag": 1,
       "scale": 4,
       "table": "Ranged_Immobilize"
-    },
-    "effectDuration": 30,
-    "durations": {
-      "immobilize": 30
-    },
-    "buffDuration": 30
+    }
   }
 };

@@ -59,11 +59,21 @@ export const ThrowSpines: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 15
+    },
+    "immobilize": {
+      "mag": 0.6700000166893005,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_Slow"
-      },
       "flySpeed": {
         "scale": 0.5,
         "table": "Melee_Slow"
@@ -75,22 +85,12 @@ export const ThrowSpines: Power = {
       "jumpSpeed": {
         "scale": 0.5,
         "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 15,
-      "rechargeDebuff": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
-    },
-    "immobilize": {
-      "mag": 0.6700000166893005,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "buffDuration": 15
+    }
   },
   "specialEffects": [
     {

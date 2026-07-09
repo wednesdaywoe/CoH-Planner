@@ -60,9 +60,9 @@ export const LancerShot: Power = {
       "defaultActive": false,
       "effects": {
         "summon": {
-          "isPseudoPet": false,
+          "duration": 6,
           "entity": "Pets_DisintegrateSpread",
-          "duration": 6
+          "isPseudoPet": false
         }
       }
     }

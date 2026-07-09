@@ -40,6 +40,14 @@ export const PowerSink: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 45,
+    "durations": {
+      "regenBuff": 45
+    },
+    "enduranceDrain": {
+      "scale": 0.35,
+      "table": "Melee_Ones"
+    },
     "enduranceGain": {
       "scale": 15,
       "table": "Melee_Ones",
@@ -49,14 +57,6 @@ export const PowerSink: Power = {
       "scale": 0.35,
       "table": "Melee_Ones",
       "perTarget": 0.175
-    },
-    "durations": {
-      "regenBuff": 45
-    },
-    "enduranceDrain": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 45
+    }
   }
 };

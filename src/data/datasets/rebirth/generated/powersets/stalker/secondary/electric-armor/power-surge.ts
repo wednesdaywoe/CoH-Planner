@@ -46,55 +46,43 @@ export const PowerSurge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
+    "buffDuration": 90,
+    "debuffResistance": {
+      "endurance": {
         "scale": 4,
-        "table": "Melee_Res_Dmg"
+        "table": "Melee_Res_Boolean"
       },
-      "lethal": {
+      "recovery": {
         "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 4.56,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 3.36,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 4,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 3.36,
-        "table": "Melee_Res_Dmg"
+        "table": "Melee_Res_Boolean"
       }
     },
     "durations": {
-      "resistance": 90,
-      "recoveryBuffUnenhanced": 90,
+      "debuffResistance": 90,
+      "hold": 90,
+      "immobilize": 90,
+      "knockback": 90,
       "knockup": 90,
       "mezResistance": 90,
-      "knockback": 90,
+      "recoveryBuffUnenhanced": 90,
       "repel": 90,
-      "stun": 90,
-      "hold": 90,
+      "resistance": 90,
       "sleep": 90,
-      "immobilize": 90,
-      "debuffResistance": 90
+      "stun": 90
     },
-    "recoveryBuffUnenhanced": {
-      "scale": 1,
+    "effectDuration": 90,
+    "hold": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 100,
       "table": "Melee_Ones"
     },
     "knockup": {
@@ -102,11 +90,11 @@ export const PowerSurge: Power = {
       "table": "Melee_Ones"
     },
     "mezResistance": {
-      "knockup": {
+      "knockback": {
         "scale": 10,
         "table": "Melee_Ones"
       },
-      "knockback": {
+      "knockup": {
         "scale": 10,
         "table": "Melee_Ones"
       },
@@ -119,50 +107,62 @@ export const PowerSurge: Power = {
         "table": "Melee_Ones"
       }
     },
-    "knockback": {
-      "scale": 100,
+    "recoveryBuffUnenhanced": {
+      "scale": 1,
       "table": "Melee_Ones"
     },
     "repel": {
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "stun": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 90,
-    "hold": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
+    "resistance": {
+      "cold": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 4.56,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 3.36,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 3.36,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 4,
+        "table": "Melee_Res_Dmg"
+      }
     },
     "sleep": {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
-    "immobilize": {
+    "stun": {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
-    "debuffResistance": {
-      "recovery": {
-        "scale": 4,
-        "table": "Melee_Res_Boolean"
-      },
-      "endurance": {
-        "scale": 4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 4,
       "entity": "Pets_Power_Surge",
-      "duration": 4
-    },
-    "buffDuration": 90
+      "isPseudoPet": false
+    }
   }
 };

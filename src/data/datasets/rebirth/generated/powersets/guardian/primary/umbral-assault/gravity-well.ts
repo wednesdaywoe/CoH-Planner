@@ -60,12 +60,25 @@ export const GravityWell: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rechargeDebuff": 10,
+      "slow": 10
+    },
     "hold": {
       "mag": 3,
       "scale": 10,
       "table": "Melee_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.3,
+      "table": "Melee_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
       "jumpHeight": {
         "scale": 0.3,
         "table": "Melee_Slow"
@@ -77,20 +90,7 @@ export const GravityWell: Power = {
       "runSpeed": {
         "scale": 0.3,
         "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 10,
-      "rechargeDebuff": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.3,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 10
+    }
   }
 };

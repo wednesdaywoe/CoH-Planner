@@ -53,18 +53,15 @@ export const ShadowyBinds: Power = {
     "tickRate": 2
   },
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15,
+      "tohitDebuff": 15
+    },
     "immobilize": {
       "mag": 4,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 15,
-      "slow": 15
     },
     "slow": {
       "fly": {
@@ -72,7 +69,10 @@ export const ShadowyBinds: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 15
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_DeBuff_ToHit"
+    }
   },
   "specialEffects": [
     {

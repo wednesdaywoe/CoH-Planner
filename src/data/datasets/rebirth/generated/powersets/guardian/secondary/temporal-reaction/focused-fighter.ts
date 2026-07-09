@@ -40,6 +40,18 @@ export const FocusedFighter: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.8,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "melee": {
         "scale": 0.75,
@@ -47,22 +59,10 @@ export const FocusedFighter: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
       "confuse": 0.75,
-      "debuffResistance": 0.75
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.8,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
+    "effectDuration": 0.75
   }
 };

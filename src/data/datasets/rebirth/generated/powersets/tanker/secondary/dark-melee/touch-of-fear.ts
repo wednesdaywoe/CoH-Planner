@@ -45,23 +45,23 @@ export const TouchofFear: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "tohitDebuff": 20
+    },
     "fear": {
       "mag": 3,
       "scale": 15,
       "table": "Melee_Fear"
     },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 20
-    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     },
-    "buffDuration": 20
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Melee_DeBuff_ToHit"
+    }
   },
   "specialEffects": [
     {

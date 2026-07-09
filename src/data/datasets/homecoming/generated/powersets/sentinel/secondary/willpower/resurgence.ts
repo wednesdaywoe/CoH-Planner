@@ -44,35 +44,36 @@ export const Resurgence: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "rechargeBuff": 90,
+      "recoveryBuff": 90,
+      "resistance": 90,
+      "stealth": 15,
+      "untouchable": 15
+    },
     "enduranceGain": {
       "scale": 0.5,
+      "table": "Ranged_Ones"
+    },
+    "rechargeBuff": {
+      "scale": 1,
       "table": "Ranged_Ones"
     },
     "recoveryBuff": {
       "scale": 2,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "recoveryBuff": 90,
-      "rechargeBuff": 90,
-      "resistance": 90,
-      "untouchable": 15,
-      "stealth": 15
-    },
-    "rechargeBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
     "resistance": {
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
       "cold": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
       "energy": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
@@ -89,16 +90,15 @@ export const Resurgence: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "untouchable": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
     "stealth": {
       "stealthPvE": {
         "scale": 300,
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 90
+    "untouchable": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    }
   }
 };

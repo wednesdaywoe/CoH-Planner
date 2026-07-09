@@ -36,13 +36,13 @@ export const LightForm: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 90,
     "durations": {
       "recoveryBuff": 90
     },
-    "buffDuration": 90
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    }
   }
 };

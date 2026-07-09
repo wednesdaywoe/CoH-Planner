@@ -45,9 +45,9 @@ export const WaterGolem: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "Pets_Water_Control_Water_Golem",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

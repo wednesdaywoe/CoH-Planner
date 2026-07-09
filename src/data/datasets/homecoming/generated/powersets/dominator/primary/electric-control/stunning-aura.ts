@@ -43,22 +43,22 @@ export const StunningAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2,
+    "durations": {
+      "recoveryBuff": 2,
+      "regenBuff": 2
+    },
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Ranged_Ones"
-    },
-    "regenBuff": {
-      "scale": 0.05,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenBuff": 2,
-      "recoveryBuff": 2
     },
     "recoveryBuff": {
       "scale": 0.0313,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 2
+    "regenBuff": {
+      "scale": 0.05,
+      "table": "Ranged_Ones"
+    }
   }
 };

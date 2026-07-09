@@ -34,19 +34,16 @@ export const WhiteDwarfStep: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
+    "buffDuration": 4,
+    "durations": {
+      "movement": 4,
+      "slow": 4
     },
     "movement": {
       "fly": {
         "scale": 1,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "movement": 4,
-      "slow": 4
     },
     "slow": {
       "flySpeed": {
@@ -65,7 +62,10 @@ export const WhiteDwarfStep: Power = {
         "toWho": "Self"
       }
     },
-    "buffDuration": 4,
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "fly"

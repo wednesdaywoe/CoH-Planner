@@ -38,9 +38,9 @@ export const Riptide: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 20,
       "entity": "Pets_Water_Control_Riptide",
-      "duration": 20
+      "isPseudoPet": false
     }
   }
 };

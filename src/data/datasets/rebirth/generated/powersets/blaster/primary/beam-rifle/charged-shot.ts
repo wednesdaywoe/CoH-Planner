@@ -52,10 +52,7 @@ export const ChargedShot: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 9.17,
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
@@ -63,7 +60,10 @@ export const ChargedShot: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17,
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"
@@ -82,9 +82,9 @@ export const ChargedShot: Power = {
       },
       "effects": {
         "summon": {
-          "isPseudoPet": false,
+          "duration": 6,
           "entity": "Pets_DisintegrateSpread",
-          "duration": 6
+          "isPseudoPet": false
         }
       }
     }

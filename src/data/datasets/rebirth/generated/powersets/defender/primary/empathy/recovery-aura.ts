@@ -36,13 +36,13 @@ export const RecoveryAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 90,
     "durations": {
       "recoveryBuff": 90
     },
-    "buffDuration": 90
+    "recoveryBuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    }
   }
 };

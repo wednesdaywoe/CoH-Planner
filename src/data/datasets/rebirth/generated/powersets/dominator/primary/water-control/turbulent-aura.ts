@@ -44,14 +44,14 @@ export const TurbulentAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 1,
     "durations": {
       "knockback": 1
     },
-    "buffDuration": 1
+    "knockback": {
+      "scale": 0.67,
+      "table": "Ranged_Ones"
+    }
   },
   "conditionalEffects": [
     {
@@ -66,14 +66,14 @@ export const TurbulentAura: Power = {
         "table": "Ranged_HealSelf"
       },
       "effects": {
-        "knockback": {
-          "scale": 0.67,
-          "table": "Ranged_Ones"
-        },
+        "buffDuration": 1,
         "durations": {
           "knockback": 1
         },
-        "buffDuration": 1
+        "knockback": {
+          "scale": 0.67,
+          "table": "Ranged_Ones"
+        }
       }
     }
   ],

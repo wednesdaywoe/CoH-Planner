@@ -30,20 +30,20 @@ export const StoneSkin: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
+    "buffDuration": 10.25,
     "durations": {
       "resistance": 10.25
     },
-    "buffDuration": 10.25
+    "resistance": {
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    }
   },
   "mechanicType": "parentMechanic"
 };

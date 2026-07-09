@@ -38,18 +38,18 @@ export const DetentionField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "untouchable": {
-      "scale": 6,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 30,
     "durations": {
-      "untouchable": 30,
-      "onlyAffectsSelf": 30
+      "onlyAffectsSelf": 30,
+      "untouchable": 30
     },
     "onlyAffectsSelf": {
       "scale": 6,
       "table": "Ranged_Immobilize"
     },
-    "buffDuration": 30
+    "untouchable": {
+      "scale": 6,
+      "table": "Ranged_Immobilize"
+    }
   }
 };

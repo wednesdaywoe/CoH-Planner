@@ -38,6 +38,10 @@ export const TimeStop: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "regenDebuff": 20
+    },
     "hold": {
       "mag": 3,
       "scale": 8,
@@ -46,11 +50,7 @@ export const TimeStop: Power = {
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 20
-    },
-    "buffDuration": 20
+    }
   },
   "conditionalEffects": [
     {

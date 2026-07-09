@@ -40,16 +40,9 @@ export const Hide: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "smashing": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.375,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
+      "aoe": {
         "scale": 0.375,
         "table": "Melee_Buff_Def"
       },
@@ -61,7 +54,11 @@ export const Hide: Power = {
         "scale": 0.375,
         "table": "Melee_Buff_Def"
       },
-      "negative": {
+      "fire": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
         "scale": 0.375,
         "table": "Melee_Buff_Def"
       },
@@ -69,18 +66,21 @@ export const Hide: Power = {
         "scale": 0.375,
         "table": "Melee_Buff_Def"
       },
+      "negative": {
+        "scale": 0.375,
+        "table": "Melee_Buff_Def"
+      },
       "ranged": {
         "scale": 0.375,
         "table": "Melee_Buff_Def"
       },
-      "aoe": {
+      "smashing": {
         "scale": 0.375,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

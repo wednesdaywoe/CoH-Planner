@@ -43,11 +43,11 @@ export const CallReinforcements: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
-      "duration": 240,
       "copyBoosts": true,
-      "entityCount": 2
+      "duration": 240,
+      "entity": "Pets_Patron_Powers_Arachnobot_Disrupter",
+      "entityCount": 2,
+      "isPseudoPet": false
     }
   }
 };

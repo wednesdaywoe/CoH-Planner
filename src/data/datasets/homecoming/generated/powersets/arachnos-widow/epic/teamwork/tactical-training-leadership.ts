@@ -42,17 +42,11 @@ export const TacticalTrainingLeadership: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 2.25,
-      "debuffResistance": 2.25,
-      "perceptionBuff": 2.25,
-      "mezResistance": 2.25,
-      "confuse": 2.25,
-      "fear": 2.25
+    "buffDuration": 2.25,
+    "confuse": {
+      "mag": 1,
+      "scale": 15,
+      "table": "Ranged_Res_Boolean"
     },
     "debuffResistance": {
       "perception": {
@@ -60,8 +54,18 @@ export const TacticalTrainingLeadership: Power = {
         "table": "Ranged_Res_Boolean"
       }
     },
-    "perceptionBuff": {
-      "scale": 2,
+    "durations": {
+      "confuse": 2.25,
+      "debuffResistance": 2.25,
+      "fear": 2.25,
+      "mezResistance": 2.25,
+      "perceptionBuff": 2.25,
+      "tohitBuff": 2.25
+    },
+    "effectDuration": 2.25,
+    "fear": {
+      "mag": 1,
+      "scale": 15,
       "table": "Ranged_Res_Boolean"
     },
     "mezResistance": {
@@ -74,17 +78,13 @@ export const TacticalTrainingLeadership: Power = {
         "table": "Ranged_Res_Boolean"
       }
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 15,
+    "perceptionBuff": {
+      "scale": 2,
       "table": "Ranged_Res_Boolean"
     },
-    "effectDuration": 2.25,
-    "fear": {
-      "mag": 1,
-      "scale": 15,
-      "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 2.25
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
+    }
   }
 };

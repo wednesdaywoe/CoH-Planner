@@ -47,11 +47,7 @@ export const FrozenAura: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "sleep": {
-      "mag": 2,
-      "scale": 10,
-      "table": "Ranged_Sleep"
-    },
+    "buffDuration": 9.6,
     "damageBuff": {
       "scale": 0.055,
       "table": "Ranged_Ones"
@@ -59,6 +55,10 @@ export const FrozenAura: Power = {
     "durations": {
       "damageBuff": 9.6
     },
-    "buffDuration": 9.6
+    "sleep": {
+      "mag": 2,
+      "scale": 10,
+      "table": "Ranged_Sleep"
+    }
   }
 };

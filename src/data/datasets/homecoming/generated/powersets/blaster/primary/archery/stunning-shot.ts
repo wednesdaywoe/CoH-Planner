@@ -46,6 +46,7 @@ export const StunningShot: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
@@ -58,7 +59,6 @@ export const StunningShot: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     },
-    "buffDuration": 8.5,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

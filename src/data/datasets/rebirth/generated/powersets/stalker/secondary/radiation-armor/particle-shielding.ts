@@ -38,19 +38,19 @@ export const ParticleShielding: Power = {
       "scale": 0.075,
       "table": "Melee_Ones"
     },
+    "buffDuration": 30,
     "durations": {
       "absorb": 5,
       "regenBuff": 30
     },
+    "maxStacks": 7,
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "maxStacks": 7,
+    "stackInterval": 5,
     "stacksLinear": [
       "absorb"
-    ],
-    "stackInterval": 5,
-    "buffDuration": 30
+    ]
   }
 };

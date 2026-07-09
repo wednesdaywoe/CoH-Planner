@@ -36,23 +36,23 @@ export const Overgrowth: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 60,
-      "damageBuff": 60,
-      "enduranceDiscount": 60
-    },
+    "buffDuration": 60,
     "damageBuff": {
       "scale": 6.6,
       "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 60,
+      "enduranceDiscount": 60,
+      "tohitBuff": 60
     },
     "enduranceDiscount": {
       "scale": 0.5,
       "table": "Ranged_Stun"
     },
-    "buffDuration": 60
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
+    }
   }
 };

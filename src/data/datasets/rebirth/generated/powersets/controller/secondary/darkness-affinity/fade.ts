@@ -38,24 +38,15 @@ export const Fade: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "debuffResistance": {
+      "defense": {
+        "scale": 1,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
     "defenseBuff": {
-      "melee": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
       },
@@ -63,7 +54,23 @@ export const Fade: Power = {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
       },
+      "energy": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
       "fire": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
       },
@@ -71,44 +78,37 @@ export const Fade: Power = {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
       },
-      "energy": {
+      "ranged": {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
       },
-      "negative": {
+      "smashing": {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
       }
     },
     "durations": {
-      "defenseBuff": 60,
       "debuffResistance": 60,
+      "defenseBuff": 60,
       "resistance": 60
     },
-    "debuffResistance": {
-      "defense": {
-        "scale": 1,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
     "resistance": {
-      "psionic": {
+      "lethal": {
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
       "negative": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
       },
       "smashing": {
         "scale": 1.25,
         "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Ranged_Res_Dmg"
       }
-    },
-    "buffDuration": 60
+    }
   }
 };

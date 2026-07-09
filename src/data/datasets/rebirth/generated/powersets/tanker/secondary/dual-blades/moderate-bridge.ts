@@ -53,6 +53,7 @@ export const ModerateBridge: Power = {
     "tickRate": 0.4000000059604645
   },
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
@@ -63,7 +64,6 @@ export const ModerateBridge: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 10
+    }
   }
 };

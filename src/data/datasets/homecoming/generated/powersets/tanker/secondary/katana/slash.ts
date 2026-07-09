@@ -53,14 +53,14 @@ export const Slash: Power = {
     "tickRate": 0.25
   },
   "effects": {
+    "buffDuration": 6,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 6
-    },
-    "buffDuration": 6
+    }
   },
   "requires": "Tanker_Defense.Shield_Defense !"
 };

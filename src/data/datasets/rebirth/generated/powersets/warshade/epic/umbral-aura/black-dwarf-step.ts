@@ -34,19 +34,16 @@ export const BlackDwarfStep: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
+    "buffDuration": 14,
+    "durations": {
+      "movement": 14,
+      "slow": 14
     },
     "movement": {
       "fly": {
         "scale": 1,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "movement": 14,
-      "slow": 14
     },
     "slow": {
       "flySpeed": {
@@ -65,7 +62,10 @@ export const BlackDwarfStep: Power = {
         "toWho": "Self"
       }
     },
-    "buffDuration": 14,
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "fly"

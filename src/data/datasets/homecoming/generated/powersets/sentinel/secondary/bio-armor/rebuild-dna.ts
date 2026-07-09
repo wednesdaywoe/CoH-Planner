@@ -83,6 +83,7 @@ export const RebuildDNA: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 30,
         "debuffResistance": {
           "perception": {
             "scale": 0.6,
@@ -96,8 +97,7 @@ export const RebuildDNA: Power = {
         "perceptionBuff": {
           "scale": 0.6,
           "table": "Melee_Ones"
-        },
-        "buffDuration": 30
+        }
       },
       "group": "adaptation"
     }

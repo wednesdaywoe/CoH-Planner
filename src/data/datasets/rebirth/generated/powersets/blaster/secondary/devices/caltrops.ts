@@ -41,11 +41,7 @@ export const Caltrops: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Caltrops",
-      "duration": 45
-    },
+    "buffDuration": 8.57,
     "damageBuff": {
       "scale": 0.071,
       "table": "Ranged_Ones"
@@ -53,6 +49,10 @@ export const Caltrops: Power = {
     "durations": {
       "damageBuff": 8.57
     },
-    "buffDuration": 8.57
+    "summon": {
+      "duration": 45,
+      "entity": "Pets_Caltrops",
+      "isPseudoPet": false
+    }
   }
 };

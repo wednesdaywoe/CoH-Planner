@@ -38,13 +38,13 @@ export const PrimalHowl: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 60,
     "durations": {
       "regenBuff": 60
     },
-    "buffDuration": 60
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
   }
 };

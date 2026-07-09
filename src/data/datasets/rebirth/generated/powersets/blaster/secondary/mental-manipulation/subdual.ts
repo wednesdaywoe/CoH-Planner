@@ -55,11 +55,7 @@ export const Subdual: Power = {
     "tickRate": 2
   },
   "effects": {
-    "immobilize": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 9.17,
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
@@ -67,7 +63,11 @@ export const Subdual: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17,
+    "immobilize": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

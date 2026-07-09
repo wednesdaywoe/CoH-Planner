@@ -40,20 +40,7 @@ export const StaticShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "mezResistance": {
-      "teleport": {
-        "scale": 1,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "mezResistance": 0.75,
-      "debuffResistance": 0.75,
-      "hold": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
-      "resistance": 0.75
-    },
+    "buffDuration": 0.75,
     "debuffResistance": {
       "endurance": {
         "scale": 3,
@@ -64,21 +51,25 @@ export const StaticShield: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
+    "durations": {
+      "debuffResistance": 0.75,
+      "hold": 0.75,
+      "mezResistance": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
     "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75,
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+    "mezResistance": {
+      "teleport": {
+        "scale": 1,
+        "table": "Melee_Ones"
+      }
     },
     "resistance": {
       "psionic": {
@@ -90,6 +81,15 @@ export const StaticShield: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 0.75
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

@@ -42,10 +42,10 @@ export const DarkExtraction: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Warshade_Extraction",
+      "copyBoosts": true,
       "duration": 200,
-      "copyBoosts": true
+      "entity": "Pets_Warshade_Extraction",
+      "isPseudoPet": false
     }
   }
 };

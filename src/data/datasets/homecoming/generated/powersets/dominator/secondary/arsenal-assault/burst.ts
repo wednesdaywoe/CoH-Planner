@@ -48,13 +48,13 @@ export const Burst: Power = {
     "tickRate": 0.30000001192092896
   },
   "effects": {
+    "buffDuration": 8,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 8
-    },
-    "buffDuration": 8
+    }
   }
 };

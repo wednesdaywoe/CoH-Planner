@@ -44,9 +44,9 @@ export const Fallout: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 1,
       "entity": "Pets_Fallout_Controller",
-      "duration": 1
+      "isPseudoPet": false
     }
   }
 };

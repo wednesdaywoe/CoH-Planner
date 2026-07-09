@@ -40,6 +40,25 @@ export const CrystallineArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.6,
+        "table": "Melee_Res_Boolean"
+      },
+      "endurance": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "energy": {
         "scale": 1.6,
@@ -51,32 +70,13 @@ export const CrystallineArmor: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
       "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
       "perceptionBuff": 0.75
-    },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.6,
-        "table": "Melee_Res_Boolean"
-      },
-      "recovery": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "endurance": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
     },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

@@ -49,11 +49,7 @@ export const Stalagmites: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
-    },
+    "buffDuration": 12,
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
@@ -61,7 +57,11 @@ export const Stalagmites: Power = {
     "durations": {
       "defenseDebuff": 12
     },
-    "buffDuration": 12
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    }
   },
   "specialEffects": [
     {

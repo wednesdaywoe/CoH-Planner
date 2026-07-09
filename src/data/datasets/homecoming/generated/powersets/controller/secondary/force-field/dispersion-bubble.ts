@@ -42,28 +42,9 @@ export const DispersionBubble: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15,
     "defenseBuff": {
-      "ranged": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
@@ -75,11 +56,31 @@ export const DispersionBubble: Power = {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
+      "fire": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
       "negative": {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
       "psionic": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
@@ -94,12 +95,12 @@ export const DispersionBubble: Power = {
       "immobilize": 15,
       "stun": 15
     },
+    "effectDuration": 15,
     "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
-    "effectDuration": 15,
     "immobilize": {
       "mag": 1,
       "scale": 30,
@@ -109,7 +110,6 @@ export const DispersionBubble: Power = {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
-    },
-    "buffDuration": 15
+    }
   }
 };

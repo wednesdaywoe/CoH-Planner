@@ -42,6 +42,7 @@ export const ActiveDefense: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "melee": {
         "scale": 1.65,
@@ -50,8 +51,7 @@ export const ActiveDefense: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   },
   "requires": "Tanker_Melee.Staff_Fighting Tanker_Melee.Titan_Weapons || Tanker_Melee.Dual_Blades || Tanker_Melee.Pale_Blade || !"
 };

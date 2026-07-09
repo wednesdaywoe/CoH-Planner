@@ -45,10 +45,10 @@ export const ChilloftheNight: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_DarkServant",
+      "copyBoosts": true,
       "duration": 240,
-      "copyBoosts": true
+      "entity": "Pets_DarkServant",
+      "isPseudoPet": false
     }
   }
 };

@@ -50,14 +50,14 @@ export const BrightNovaScatter: Power = {
     "table": "Ranged_InherentDamage"
   },
   "effects": {
+    "buffDuration": 8,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 8
-    },
-    "buffDuration": 8
+    }
   },
   "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Scatter ! &&",
   "modesRequired": [

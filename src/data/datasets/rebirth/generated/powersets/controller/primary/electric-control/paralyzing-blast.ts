@@ -42,23 +42,23 @@ export const ParalyzingBlast: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
+    "buffDuration": 8,
+    "durations": {
+      "recoveryDebuff": 8
     },
     "enduranceDrain": {
       "scale": 0.07,
       "table": "Ranged_Ones"
     },
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 8
-    },
-    "buffDuration": 8
+    }
   },
   "specialEffects": [
     {

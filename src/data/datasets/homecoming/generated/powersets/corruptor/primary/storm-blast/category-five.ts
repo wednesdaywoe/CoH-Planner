@@ -42,16 +42,16 @@ export const CategoryFive: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Category Five",
+      "duration": 20,
+      "entity": "PL_StaticObject",
+      "entityCount": 2,
+      "isPseudoPet": false,
       "powers": [
         "Pets.ResistAll_NoFly.ResistAll",
         "Redirects.Storm_Blast.Category_Five"
       ],
-      "duration": 20,
-      "copyBoosts": true,
-      "entityCount": 2,
       "resolvedEntities": [
         {
           "displayName": "Category Five",

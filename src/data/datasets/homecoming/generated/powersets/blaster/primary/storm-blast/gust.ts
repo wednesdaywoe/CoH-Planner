@@ -50,16 +50,16 @@ export const Gust: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 4,
+    "durations": {
+      "slow": 4
+    },
     "slow": {
       "fly": {
         "scale": 2.6,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "slow": 4
-    },
-    "buffDuration": 4
+    }
   },
   "conditionalEffects": [
     {

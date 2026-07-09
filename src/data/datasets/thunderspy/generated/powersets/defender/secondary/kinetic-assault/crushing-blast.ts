@@ -46,15 +46,20 @@ export const CrushingBlast: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
+    "buffDuration": 10,
     "durations": {
       "rechargeDebuff": 10,
       "slow": 10
     },
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.15,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.15,
         "table": "Ranged_Slow"
@@ -66,12 +71,7 @@ export const CrushingBlast: Power = {
       "runSpeed": {
         "scale": 0.15,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
       }
-    },
-    "buffDuration": 10
+    }
   }
 };

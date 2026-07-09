@@ -39,14 +39,14 @@ export const Serum: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
+    "buffDuration": 120,
+    "durations": {
+      "maxHPBuff": 120
+    },
     "maxHPBuff": {
       "scale": 4,
       "table": "Melee_HealSelf"
     },
-    "durations": {
-      "maxHPBuff": 120
-    },
-    "buffDuration": 120,
     "maxStacks": 2,
     "stacksLinear": [
       "maxHPBuff"

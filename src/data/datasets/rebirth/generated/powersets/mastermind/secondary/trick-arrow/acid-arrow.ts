@@ -51,12 +51,21 @@ export const AcidArrow: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 20,
+    "defenseDebuff": {
+      "scale": 2,
+      "table": "Ranged_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 20,
+      "resistanceDebuff": 20
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
@@ -64,11 +73,7 @@ export const AcidArrow: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
@@ -80,20 +85,15 @@ export const AcidArrow: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 20,
-      "defenseDebuff": 20
-    },
-    "defenseDebuff": {
-      "scale": 2,
-      "table": "Ranged_Debuff_Def"
-    },
-    "buffDuration": 20
+    }
   },
   "conditionalEffects": [
     {
@@ -102,12 +102,21 @@ export const AcidArrow: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 20,
+        "defenseDebuff": {
+          "scale": 0.4,
+          "table": "Ranged_Debuff_Def"
+        },
+        "durations": {
+          "defenseDebuff": 20,
+          "resistanceDebuff": 20
+        },
         "resistanceDebuff": {
-          "smashing": {
+          "cold": {
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
-          "lethal": {
+          "energy": {
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
@@ -115,11 +124,7 @@ export const AcidArrow: Power = {
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
-          "cold": {
-            "scale": 0.6,
-            "table": "Ranged_Res_Dmg"
-          },
-          "energy": {
+          "lethal": {
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
@@ -131,20 +136,15 @@ export const AcidArrow: Power = {
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           },
+          "smashing": {
+            "scale": 0.6,
+            "table": "Ranged_Res_Dmg"
+          },
           "toxic": {
             "scale": 0.6,
             "table": "Ranged_Res_Dmg"
           }
-        },
-        "durations": {
-          "resistanceDebuff": 20,
-          "defenseDebuff": 20
-        },
-        "defenseDebuff": {
-          "scale": 0.4,
-          "table": "Ranged_Debuff_Def"
-        },
-        "buffDuration": 20
+        }
       }
     }
   ]

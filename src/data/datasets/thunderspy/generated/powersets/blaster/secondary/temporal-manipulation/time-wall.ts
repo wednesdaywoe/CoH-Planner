@@ -45,6 +45,10 @@ export const TimeWall: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "regenDebuff": 20
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
@@ -53,10 +57,6 @@ export const TimeWall: Power = {
     "regenDebuff": {
       "scale": 0.25,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 20
-    },
-    "buffDuration": 20
+    }
   }
 };

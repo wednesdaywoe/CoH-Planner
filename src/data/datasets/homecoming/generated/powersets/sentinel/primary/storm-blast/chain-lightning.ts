@@ -68,14 +68,14 @@ export const ChainLightning: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "enduranceDrain": {
-          "scale": 0.035,
-          "table": "Ranged_EndDrain"
-        },
+        "buffDuration": 4.4,
         "durations": {
           "enduranceDrain": 4.4
         },
-        "buffDuration": 4.4
+        "enduranceDrain": {
+          "scale": 0.035,
+          "table": "Ranged_EndDrain"
+        }
       }
     }
   ]

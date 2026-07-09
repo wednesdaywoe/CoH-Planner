@@ -40,50 +40,16 @@ export const Fortification: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 2.5,
-        "table": "Melee_Res_Dmg"
-      }
-    },
+    "buffDuration": 0.75,
     "durations": {
-      "resistance": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
+      "hold": 0.75,
       "immobilize": 0.75,
-      "hold": 0.75
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 24,
-      "table": "Melee_Res_Boolean"
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
     },
     "effectDuration": 0.75,
-    "sleep": {
+    "hold": {
       "mag": 1,
       "scale": 24,
       "table": "Melee_Res_Boolean"
@@ -93,11 +59,45 @@ export const Fortification: Power = {
       "scale": 24,
       "table": "Melee_Res_Boolean"
     },
-    "hold": {
+    "resistance": {
+      "cold": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2.5,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "sleep": {
       "mag": 1,
       "scale": 24,
       "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 0.75
+    "stun": {
+      "mag": 1,
+      "scale": 24,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

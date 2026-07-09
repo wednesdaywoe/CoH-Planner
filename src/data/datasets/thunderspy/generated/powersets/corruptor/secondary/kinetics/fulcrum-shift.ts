@@ -34,9 +34,9 @@ export const FulcrumShift: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 1,
       "entity": "Pets_KineticTransferDebuff_Controller",
-      "duration": 1
+      "isPseudoPet": false
     }
   }
 };

@@ -63,6 +63,7 @@ export const WhirlingSword: Power = {
       "defaultActive": false,
       "mode": "replace",
       "effects": {
+        "buffDuration": 5,
         "defenseBuff": {
           "ranged": {
             "scale": 2,
@@ -71,8 +72,7 @@ export const WhirlingSword: Power = {
         },
         "durations": {
           "defenseBuff": 5
-        },
-        "buffDuration": 5
+        }
       }
     }
   ]

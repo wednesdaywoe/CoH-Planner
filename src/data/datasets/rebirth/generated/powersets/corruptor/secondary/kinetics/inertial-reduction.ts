@@ -37,6 +37,10 @@ export const InertialReduction: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "movement": 60
+    },
     "movement": {
       "jumpHeight": {
         "scale": 1,
@@ -54,10 +58,6 @@ export const InertialReduction: Power = {
         "scale": 10,
         "table": "Melee_Friction"
       }
-    },
-    "durations": {
-      "movement": 60
-    },
-    "buffDuration": 60
+    }
   }
 };

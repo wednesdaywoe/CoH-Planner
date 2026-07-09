@@ -53,6 +53,7 @@ export const DefensiveSweep: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 10,
     "defenseBuff": {
       "melee": {
         "scale": 1.5,
@@ -65,8 +66,7 @@ export const DefensiveSweep: Power = {
     },
     "durations": {
       "defenseBuff": 10
-    },
-    "buffDuration": 10
+    }
   },
   "requires": "Tanker_Defense.Shield_Defense !"
 };

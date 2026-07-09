@@ -41,13 +41,13 @@ export const Bonfire: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "copyBoosts": true,
+      "duration": 45,
       "entity": "Bonfire",
+      "isPseudoPet": false,
       "powers": [
         "Pets.Bonfire.Bonfire"
-      ],
-      "duration": 45,
-      "copyBoosts": true
+      ]
     }
   }
 };

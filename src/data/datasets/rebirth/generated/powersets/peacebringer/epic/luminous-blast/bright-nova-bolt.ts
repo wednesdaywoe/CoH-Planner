@@ -48,14 +48,14 @@ export const BrightNovaBolt: Power = {
     "table": "Ranged_SSDamage"
   },
   "effects": {
+    "buffDuration": 3,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 3
-    },
-    "buffDuration": 3
+    }
   },
   "requires": "0",
   "modesRequired": [

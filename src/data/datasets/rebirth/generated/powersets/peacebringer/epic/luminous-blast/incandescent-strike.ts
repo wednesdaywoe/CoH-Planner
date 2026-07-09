@@ -61,6 +61,20 @@ export const IncandescentStrike: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 30,
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "defenseDebuff": 10,
+      "slow": 30
+    },
+    "hold": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Melee_Ones"
@@ -70,21 +84,7 @@ export const IncandescentStrike: Power = {
         "scale": 1,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "slow": 30,
-      "defenseDebuff": 10
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
-    "buffDuration": 30
+    }
   },
   "specialEffects": [
     {

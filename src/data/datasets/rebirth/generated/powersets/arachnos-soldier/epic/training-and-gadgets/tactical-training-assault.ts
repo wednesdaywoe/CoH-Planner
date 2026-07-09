@@ -38,23 +38,23 @@ export const TacticalTrainingAssault: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
     "damageBuff": {
       "scale": 1.5,
       "table": "Ranged_Buff_Dmg"
     },
     "durations": {
       "damageBuff": 2.25,
-      "taunt": 2.25,
-      "placate": 2.25
-    },
-    "taunt": {
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
+      "placate": 2.25,
+      "taunt": 2.25
     },
     "placate": {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
-    "buffDuration": 2.25
+    "taunt": {
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    }
   }
 };

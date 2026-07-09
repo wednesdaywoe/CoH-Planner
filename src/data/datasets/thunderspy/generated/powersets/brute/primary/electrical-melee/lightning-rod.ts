@@ -44,17 +44,17 @@ export const LightningRod: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
       "entities": [
         {
-          "entity": "Pets_Lightning_Rod_Brute",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Lightning_Rod_Brute"
         },
         {
-          "entity": "Pets_Embraced_Lightning_Rod_Brute",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Embraced_Lightning_Rod_Brute"
         }
-      ]
+      ],
+      "isPseudoPet": false
     }
   }
 };

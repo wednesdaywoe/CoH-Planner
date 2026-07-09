@@ -32,15 +32,12 @@ export const Enduring: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 0.75,
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75,
-      "resistance": 0.75
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.2,
+        "table": "Melee_Res_Boolean"
+      }
     },
     "defenseBuff": {
       "psionic": {
@@ -48,25 +45,17 @@ export const Enduring: Power = {
         "table": "Melee_Buff_Def"
       }
     },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.2,
-        "table": "Melee_Res_Boolean"
-      }
+    "durations": {
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "recoveryBuff": 0.75,
+      "resistance": 0.75
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
     },
     "resistance": {
-      "smashing": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
       "cold": {
         "scale": 0,
         "table": "Melee_Ones"
@@ -75,12 +64,23 @@ export const Enduring: Power = {
         "scale": 0,
         "table": "Melee_Ones"
       },
+      "fire": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
       "negative": {
         "scale": 0,
         "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0,
+        "table": "Melee_Ones"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "mechanicType": "parentMechanic"
 };

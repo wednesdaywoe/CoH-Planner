@@ -42,36 +42,36 @@ export const SoundBarrier: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 2.25,
-      "absorb": 12,
-      "recoveryBuff": 3,
-      "sleep": 2.25
-    },
     "absorb": {
       "scale": 0.3,
       "table": "Melee_HealSelf"
     },
+    "buffDuration": 2.25,
+    "durations": {
+      "absorb": 12,
+      "recoveryBuff": 3,
+      "resistance": 2.25,
+      "sleep": 2.25
+    },
+    "effectDuration": 2.25,
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "resistance": {
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
     },
     "sleep": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 2.25,
-    "buffDuration": 2.25
+    }
   }
 };

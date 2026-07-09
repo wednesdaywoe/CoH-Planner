@@ -48,7 +48,20 @@ export const MassDriver: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 12,
+    "durations": {
+      "rechargeDebuff": 12,
+      "slow": 12
+    },
+    "rechargeDebuff": {
+      "scale": 0.15,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.15,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.15,
         "table": "Ranged_Slow"
@@ -60,21 +73,8 @@ export const MassDriver: Power = {
       "runSpeed": {
         "scale": 0.15,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.15,
-        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 12,
-      "rechargeDebuff": 12
-    },
-    "rechargeDebuff": {
-      "scale": 0.15,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 12
+    }
   },
   "conditionalEffects": [
     {
@@ -105,8 +105,12 @@ export const MassDriver: Power = {
         }
       ],
       "effects": {
+        "buffDuration": 8,
+        "durations": {
+          "resistanceDebuff": 8
+        },
         "resistanceDebuff": {
-          "smashing": {
+          "energy": {
             "scale": 1.5,
             "table": "Ranged_Res_Dmg"
           },
@@ -114,15 +118,11 @@ export const MassDriver: Power = {
             "scale": 1.5,
             "table": "Ranged_Res_Dmg"
           },
-          "energy": {
+          "smashing": {
             "scale": 1.5,
             "table": "Ranged_Res_Dmg"
           }
-        },
-        "durations": {
-          "resistanceDebuff": 8
-        },
-        "buffDuration": 8
+        }
       }
     }
   ],

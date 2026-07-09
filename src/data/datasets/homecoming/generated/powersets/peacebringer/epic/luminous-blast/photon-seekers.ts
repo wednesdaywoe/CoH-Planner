@@ -41,23 +41,23 @@ export const PhotonSeekers: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "duration": 60,
       "copyBoosts": true,
+      "duration": 60,
       "entities": [
         {
-          "entity": "Pets_LightDrone1",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_LightDrone1"
         },
         {
-          "entity": "Pets_LightDrone2",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_LightDrone2"
         },
         {
-          "entity": "Pets_LightDrone3",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_LightDrone3"
         }
-      ]
+      ],
+      "isPseudoPet": false
     }
   }
 };

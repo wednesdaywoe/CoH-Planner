@@ -41,15 +41,15 @@ export const Confuse: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1,
     "confuse": {
       "mag": 4,
       "scale": 4,
       "table": "Ranged_Immobilize"
     },
-    "effectDuration": 1,
     "durations": {
       "confuse": 1
     },
-    "buffDuration": 1
+    "effectDuration": 1
   }
 };

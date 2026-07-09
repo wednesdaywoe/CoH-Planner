@@ -56,14 +56,14 @@ export const FullAuto: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 11.5,
     "damageBuff": {
       "scale": 0.087,
       "table": "Ranged_Ones"
     },
     "durations": {
       "damageBuff": 11.5
-    },
-    "buffDuration": 11.5
+    }
   },
   "specialEffects": [
     {

@@ -54,14 +54,14 @@ export const CrushingUppercut: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "knockup": {
+      "scale": 3,
+      "table": "Melee_Knockback"
+    },
     "stun": {
       "mag": 3,
       "scale": 7.5,
       "table": "Melee_Stun"
-    },
-    "knockup": {
-      "scale": 3,
-      "table": "Melee_Knockback"
     },
     "taunt": {
       "scale": 1,

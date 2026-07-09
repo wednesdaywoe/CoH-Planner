@@ -53,12 +53,20 @@ export const Whitecap: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "resistanceDebuff": 30
+    },
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
@@ -66,11 +74,7 @@ export const Whitecap: Power = {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
@@ -82,23 +86,19 @@ export const Whitecap: Power = {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.5,
         "table": "Ranged_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 30
-    },
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
     "teleport": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30,
     "maxStacks": 2,
     "stacksLinear": [
       "specialBuff"

@@ -31,31 +31,31 @@ export const TerraFirma: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 0.25,
-      "table": "Melee_Buff_ToHit"
+    "accuracyBuff": {
+      "scale": 0.1,
+      "table": "Melee_Ones"
     },
-    "durations": {
-      "tohitBuff": 0.75,
-      "debuffResistance": 0.75,
-      "accuracyBuff": 0.75,
-      "rangeBuff": 0.75
-    },
+    "buffDuration": 0.75,
     "debuffResistance": {
       "tohit": {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
     },
-    "accuracyBuff": {
-      "scale": 0.1,
-      "table": "Melee_Ones"
+    "durations": {
+      "accuracyBuff": 0.75,
+      "debuffResistance": 0.75,
+      "rangeBuff": 0.75,
+      "tohitBuff": 0.75
     },
     "rangeBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
     },
-    "buffDuration": 0.75
+    "tohitBuff": {
+      "scale": 0.25,
+      "table": "Melee_Buff_ToHit"
+    }
   },
   "mechanicType": "parentMechanic"
 };

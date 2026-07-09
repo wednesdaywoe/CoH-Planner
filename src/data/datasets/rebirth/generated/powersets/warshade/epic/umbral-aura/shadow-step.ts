@@ -34,19 +34,16 @@ export const ShadowStep: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
+    "buffDuration": 4,
+    "durations": {
+      "movement": 4,
+      "slow": 4
     },
     "movement": {
       "fly": {
         "scale": 1,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "movement": 4,
-      "slow": 4
     },
     "slow": {
       "flySpeed": {
@@ -65,7 +62,10 @@ export const ShadowStep: Power = {
         "toWho": "Self"
       }
     },
-    "buffDuration": 4,
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "fly"
@@ -78,14 +78,14 @@ export const ShadowStep: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "rangeBuff": {
-          "scale": 0.5,
-          "table": "Ranged_Ones"
-        },
+        "buffDuration": 10,
         "durations": {
           "rangeBuff": 10
         },
-        "buffDuration": 10
+        "rangeBuff": {
+          "scale": 0.5,
+          "table": "Ranged_Ones"
+        }
       }
     }
   ],

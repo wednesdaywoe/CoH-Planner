@@ -41,16 +41,17 @@ export const ParasiticLeech: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 45,
+    "durations": {
+      "absorb": 45,
+      "recoveryBuff": 45,
+      "regenBuff": 45,
+      "regenDebuff": 30
+    },
     "recoveryBuff": {
       "scale": 0.558,
       "table": "Melee_Ones",
       "perTarget": 0.558
-    },
-    "durations": {
-      "recoveryBuff": 45,
-      "regenBuff": 45,
-      "absorb": 45,
-      "regenDebuff": 30
     },
     "regenBuff": {
       "scale": 0.9279999999999999,
@@ -61,7 +62,6 @@ export const ParasiticLeech: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 45,
     "absorb": {
       "scale": 0.186,
       "table": "Melee_Ones",
@@ -75,14 +75,14 @@ export const ParasiticLeech: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "regenDebuff": {
-          "scale": 1.3,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 30,
         "durations": {
           "regenDebuff": 30
         },
-        "buffDuration": 30
+        "regenDebuff": {
+          "scale": 1.3,
+          "table": "Melee_Ones"
+        }
       },
       "group": "adaptation"
     },
@@ -92,19 +92,19 @@ export const ParasiticLeech: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "recoveryBuffUnenhanced": {
-          "scale": 0.129,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 45,
         "durations": {
           "recoveryBuffUnenhanced": 45,
           "regenBuffUnenhanced": 45
         },
+        "recoveryBuffUnenhanced": {
+          "scale": 0.129,
+          "table": "Melee_Ones"
+        },
         "regenBuffUnenhanced": {
           "scale": 0.214,
           "table": "Melee_Ones"
-        },
-        "buffDuration": 45
+        }
       },
       "group": "adaptation"
     },
@@ -114,15 +114,15 @@ export const ParasiticLeech: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "durations": {
-          "absorb": 45,
-          "damageDebuff": 30
-        },
+        "buffDuration": 45,
         "damageDebuff": {
           "scale": 2.66,
           "table": "Melee_Debuff_Dam"
         },
-        "buffDuration": 45
+        "durations": {
+          "absorb": 45,
+          "damageDebuff": 30
+        }
       },
       "group": "adaptation"
     }

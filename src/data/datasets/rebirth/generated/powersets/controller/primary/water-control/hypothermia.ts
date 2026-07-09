@@ -44,21 +44,18 @@ export const Hypothermia: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15.1,
+    "durations": {
+      "sleep": 15.1,
+      "slow": 15
+    },
+    "effectDuration": 15.1,
     "sleep": {
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Sleep"
     },
-    "effectDuration": 15.1,
-    "durations": {
-      "sleep": 15.1,
-      "slow": 15
-    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.35,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
         "scale": 0.35,
         "table": "Ranged_Slow"
@@ -70,9 +67,12 @@ export const Hypothermia: Power = {
       "jumpSpeed": {
         "scale": 0.35,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.35,
+        "table": "Ranged_Slow"
       }
-    },
-    "buffDuration": 15.1
+    }
   },
   "conditionalEffects": [
     {
@@ -82,21 +82,18 @@ export const Hypothermia: Power = {
       "defaultActive": false,
       "mode": "replace",
       "effects": {
+        "buffDuration": 15.1,
+        "durations": {
+          "sleep": 15.1,
+          "slow": 15
+        },
+        "effectDuration": 15.1,
         "sleep": {
           "mag": 3,
           "scale": 4,
           "table": "Ranged_Sleep"
         },
-        "effectDuration": 15.1,
-        "durations": {
-          "sleep": 15.1,
-          "slow": 15
-        },
         "slow": {
-          "runSpeed": {
-            "scale": 0.4375,
-            "table": "Ranged_Slow"
-          },
           "flySpeed": {
             "scale": 0.4375,
             "table": "Ranged_Slow"
@@ -108,9 +105,12 @@ export const Hypothermia: Power = {
           "jumpSpeed": {
             "scale": 0.4375,
             "table": "Ranged_Slow"
+          },
+          "runSpeed": {
+            "scale": 0.4375,
+            "table": "Ranged_Slow"
           }
-        },
-        "buffDuration": 15.1
+        }
       }
     }
   ],

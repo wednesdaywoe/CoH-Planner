@@ -41,17 +41,17 @@ export const Gymnastics: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_OilSlickOil_Blaster",
-      "duration": 30,
-      "copyBoosts": true,
       "conditionalEntities": [
         {
           "entity": "Pets_OilSlickBurn_Blaster",
-          "toggleId": "oilslick_ignited",
-          "label": "Oil Slick Ignited"
+          "label": "Oil Slick Ignited",
+          "toggleId": "oilslick_ignited"
         }
-      ]
+      ],
+      "copyBoosts": true,
+      "duration": 30,
+      "entity": "Pets_OilSlickOil_Blaster",
+      "isPseudoPet": false
     }
   },
   "conditionalEffects": [

@@ -52,23 +52,23 @@ export const ChronoShift: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "rechargeBuff": 90,
+      "recoveryBuff": 30
+    },
     "enduranceGain": {
       "scale": 0.15,
       "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 30,
-      "rechargeBuff": 90
     },
     "rechargeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 90
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    }
   },
   "conditionalEffects": [
     {

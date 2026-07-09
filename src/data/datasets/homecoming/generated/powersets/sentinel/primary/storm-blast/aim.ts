@@ -34,24 +34,24 @@ export const Aim: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10,
-      "rangeBuff": 10
-    },
+    "buffDuration": 10,
     "damageBuff": {
       "scale": 2.5,
       "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 10,
+      "rangeBuff": 10,
+      "tohitBuff": 10
     },
     "rangeBuff": {
       "scale": 0.333,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10,
+    "tohitBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_ToHit"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

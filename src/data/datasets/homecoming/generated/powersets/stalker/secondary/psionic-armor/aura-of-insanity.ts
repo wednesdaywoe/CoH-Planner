@@ -54,28 +54,53 @@ export const AuraofInsanity: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
+    "buffDuration": 4,
+    "confuse": {
+      "mag": 2,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "damageDebuff": {
+      "scale": 1.995,
+      "table": "Melee_Debuff_Dam"
+    },
+    "defenseDebuff": {
+      "scale": 1,
+      "table": "Melee_Debuff_Def"
+    },
+    "durations": {
+      "confuse": 4,
+      "damageDebuff": 4,
+      "defenseDebuff": 4,
+      "fear": 4,
+      "hold": 4,
+      "regenDebuff": 4,
+      "resistanceDebuff": 4,
+      "sleep": 4,
+      "stun": 4,
+      "tohitDebuff": 4
+    },
+    "effectDuration": 4,
+    "fear": {
+      "mag": 2,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 2,
+      "scale": 2,
+      "table": "Melee_Ones"
+    },
     "regenDebuff": {
       "scale": 0.75,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "regenDebuff": 4,
-      "resistanceDebuff": 4,
-      "defenseDebuff": 4,
-      "tohitDebuff": 4,
-      "damageDebuff": 4,
-      "confuse": 4,
-      "stun": 4,
-      "sleep": 4,
-      "hold": 4,
-      "fear": 4
-    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1,
         "table": "Melee_Debuff_Def"
       },
-      "lethal": {
+      "energy": {
         "scale": 1,
         "table": "Melee_Debuff_Def"
       },
@@ -83,11 +108,7 @@ export const AuraofInsanity: Power = {
         "scale": 1,
         "table": "Melee_Debuff_Def"
       },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Debuff_Def"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1,
         "table": "Melee_Debuff_Def"
       },
@@ -99,50 +120,29 @@ export const AuraofInsanity: Power = {
         "scale": 1,
         "table": "Melee_Debuff_Def"
       },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Debuff_Def"
+      },
       "toxic": {
         "scale": 1,
         "table": "Melee_Debuff_Def"
       }
-    },
-    "defenseDebuff": {
-      "scale": 1,
-      "table": "Melee_Debuff_Def"
-    },
-    "tohitDebuff": {
-      "scale": 1,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "damageDebuff": {
-      "scale": 1.995,
-      "table": "Melee_Debuff_Dam"
-    },
-    "confuse": {
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 4,
-    "stun": {
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
     },
     "sleep": {
       "mag": 2,
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "hold": {
+    "stun": {
       "mag": 2,
       "scale": 2,
       "table": "Melee_Ones"
     },
-    "fear": {
-      "mag": 2,
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 4
+    "tohitDebuff": {
+      "scale": 1,
+      "table": "Melee_DeBuff_ToHit"
+    }
   },
   "specialEffects": [
     {

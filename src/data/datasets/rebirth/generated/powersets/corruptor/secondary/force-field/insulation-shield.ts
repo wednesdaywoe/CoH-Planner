@@ -38,8 +38,19 @@ export const InsulationShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 240,
+    "debuffResistance": {
+      "endurance": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      },
+      "recovery": {
+        "scale": 2,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
     "defenseBuff": {
-      "fire": {
+      "aoe": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       },
@@ -51,6 +62,10 @@ export const InsulationShield: Power = {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       },
+      "fire": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
       "negative": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
@@ -58,26 +73,11 @@ export const InsulationShield: Power = {
       "ranged": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
       }
     },
     "durations": {
-      "defenseBuff": 240,
-      "debuffResistance": 240
-    },
-    "debuffResistance": {
-      "recovery": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      },
-      "endurance": {
-        "scale": 2,
-        "table": "Ranged_Res_Boolean"
-      }
-    },
-    "buffDuration": 240
+      "debuffResistance": 240,
+      "defenseBuff": 240
+    }
   }
 };

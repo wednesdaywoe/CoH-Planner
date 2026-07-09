@@ -50,18 +50,18 @@ export const Liquefy: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
       "duration": 30,
       "entities": [
         {
-          "entity": "Pets_Liquefy_MM",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Liquefy_MM"
         },
         {
-          "entity": "Pets_ShockMM",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_ShockMM"
         }
-      ]
+      ],
+      "isPseudoPet": false
     }
   }
 };

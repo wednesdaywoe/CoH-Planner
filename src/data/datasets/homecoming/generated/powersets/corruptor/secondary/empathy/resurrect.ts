@@ -39,6 +39,10 @@ export const Resurrect: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "stealth": 15
+    },
     "enduranceGain": {
       "scale": 1,
       "table": "Ranged_Ones"
@@ -48,10 +52,6 @@ export const Resurrect: Power = {
         "scale": 300,
         "table": "Melee_Ones"
       }
-    },
-    "durations": {
-      "stealth": 15
-    },
-    "buffDuration": 15
+    }
   }
 };

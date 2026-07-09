@@ -38,16 +38,17 @@ export const DeflectionShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 240,
     "defenseBuff": {
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
       "melee": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       },
       "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       }
@@ -61,7 +62,6 @@ export const DeflectionShield: Power = {
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "buffDuration": 240
+    }
   }
 };

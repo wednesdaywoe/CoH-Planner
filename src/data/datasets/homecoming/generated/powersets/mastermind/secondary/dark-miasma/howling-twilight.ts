@@ -49,12 +49,31 @@ export const HowlingTwilight: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "rechargeDebuff": 30,
+      "regenDebuff": 30,
+      "slow": 30
+    },
+    "fear": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Ones"
+    },
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    },
+    "regenDebuff": {
+      "scale": 5,
+      "table": "Ranged_Ones"
+    },
     "slow": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
-      "flySpeed": {
+      "jumpHeight": {
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
@@ -62,40 +81,21 @@ export const HowlingTwilight: Power = {
         "scale": 0.5,
         "table": "Ranged_Slow"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.5,
         "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 30,
-      "rechargeDebuff": 30,
-      "regenDebuff": 30
-    },
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
-    "fear": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Ones"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_HowlingVillain",
-      "duration": 1,
-      "copyBoosts": true
     },
     "stun": {
       "mag": 2,
       "scale": 15,
       "table": "Ranged_Ones"
     },
-    "regenDebuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 30
+    "summon": {
+      "copyBoosts": true,
+      "duration": 1,
+      "entity": "Pets_HowlingVillain",
+      "isPseudoPet": false
+    }
   }
 };

@@ -39,34 +39,22 @@ export const EntanglingArrow: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "fly": {
-        "scale": 10,
-        "table": "Ranged_Ones"
-      },
-      "jumpHeight": {
-        "scale": 500,
-        "table": "Ranged_Ones"
-      }
-    },
+    "buffDuration": 30,
     "durations": {
-      "slow": 30,
-      "resistanceDebuff": 30
+      "resistanceDebuff": 30,
+      "slow": 30
+    },
+    "immobilize": {
+      "mag": 3,
+      "scale": 7,
+      "table": "Ranged_Immobilize"
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -74,11 +62,7 @@ export const EntanglingArrow: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -90,16 +74,32 @@ export const EntanglingArrow: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
     },
-    "immobilize": {
-      "mag": 3,
-      "scale": 7,
-      "table": "Ranged_Immobilize"
-    },
-    "buffDuration": 30
+    "slow": {
+      "fly": {
+        "scale": 10,
+        "table": "Ranged_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      },
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    }
   }
 };

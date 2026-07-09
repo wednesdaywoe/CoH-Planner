@@ -40,33 +40,33 @@ export const FrostArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "defenseBuff": {
-      "smashing": {
-        "scale": 1.7,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.7,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "resistance": 0.75,
-      "debuffResistance": 0.75
-    },
-    "resistance": {
-      "cold": {
-        "scale": 3,
-        "table": "Melee_Res_Dmg"
-      }
-    },
+    "buffDuration": 0.75,
     "debuffResistance": {
       "defense": {
         "scale": 0.4,
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 0.75
+    "defenseBuff": {
+      "lethal": {
+        "scale": 1.7,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1.7,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "resistance": 0.75
+    },
+    "resistance": {
+      "cold": {
+        "scale": 3,
+        "table": "Melee_Res_Dmg"
+      }
+    }
   }
 };

@@ -45,10 +45,10 @@ export const Blizzard: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Blizzard_Sentinel",
+      "copyBoosts": true,
       "duration": 8,
-      "copyBoosts": true
+      "entity": "Pets_Blizzard_Sentinel",
+      "isPseudoPet": false
     }
   }
 };

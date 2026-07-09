@@ -39,10 +39,10 @@ export const Wellspring: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Wellspring_Def",
+      "copyBoosts": true,
       "duration": 240,
-      "copyBoosts": true
+      "entity": "Pets_Wellspring_Def",
+      "isPseudoPet": false
     }
   }
 };

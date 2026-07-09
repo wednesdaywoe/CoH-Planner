@@ -42,40 +42,40 @@ export const SpeedBoost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 120,
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.5,
+        "table": "Melee_SpeedFlying"
+      },
+      "recharge": {
+        "scale": 0.5,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "debuffResistance": 120,
+      "movement": 120,
+      "rechargeBuff": 120,
+      "recoveryBuff": 120
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedFlying"
+      },
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "rechargeBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "rechargeBuff": 120,
-      "recoveryBuff": 120,
-      "debuffResistance": 120,
-      "movement": 120
-    },
     "recoveryBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "recharge": {
-        "scale": 0.5,
-        "table": "Melee_Ones"
-      },
-      "movement": {
-        "scale": 0.5,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.5,
-        "table": "Melee_SpeedRunning"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Melee_SpeedFlying"
-      }
-    },
-    "buffDuration": 120
+    }
   }
 };

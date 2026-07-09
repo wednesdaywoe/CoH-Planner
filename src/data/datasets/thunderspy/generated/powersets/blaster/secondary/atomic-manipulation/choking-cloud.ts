@@ -47,8 +47,8 @@ export const ChokingCloud: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet"
+      "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
+      "isPseudoPet": false
     }
   }
 };

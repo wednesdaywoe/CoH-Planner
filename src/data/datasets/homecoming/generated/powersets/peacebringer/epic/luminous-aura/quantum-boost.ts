@@ -27,23 +27,23 @@ export const QuantumBoost: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "movement": 0.75,
+      "specialBuff": 0.75
+    },
     "movement": {
       "flySpeed": {
         "scale": 1,
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "movement": 0.75,
-      "specialBuff": 0.75
-    },
     "specialBuff": {
       "movement": {
         "scale": 0.35,
         "table": "Ranged_SpeedFlying"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "requires": "Peacebringer_Defensive.Luminous_Aura.Energy_Flight",
   "modesSuspended": [

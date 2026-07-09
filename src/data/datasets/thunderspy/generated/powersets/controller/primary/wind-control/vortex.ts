@@ -48,9 +48,9 @@ export const Vortex: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "Pets_WindControl_Vortex",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

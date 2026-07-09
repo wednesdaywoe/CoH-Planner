@@ -35,10 +35,10 @@ export const TriageBeacon: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Traps_Triage_Beacon",
+      "copyBoosts": true,
       "duration": 90,
-      "copyBoosts": true
+      "entity": "Pets_Traps_Triage_Beacon",
+      "isPseudoPet": false
     }
   }
 };

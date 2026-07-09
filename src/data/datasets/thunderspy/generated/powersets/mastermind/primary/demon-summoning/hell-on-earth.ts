@@ -41,9 +41,9 @@ export const HellonEarth: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
       "entity": "Pets_Living_Hellfire",
-      "entityCount": 10
+      "entityCount": 10,
+      "isPseudoPet": false
     }
   }
 };

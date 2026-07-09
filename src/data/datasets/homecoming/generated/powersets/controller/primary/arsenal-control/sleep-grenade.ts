@@ -44,16 +44,16 @@ export const SleepGrenade: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Class_Minion_Pets",
+      "copyBoosts": true,
       "displayName": "Sleep Grenade",
+      "duration": 30,
+      "entity": "Class_Minion_Pets",
+      "isPseudoPet": false,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Redirects.Assault_Rifle.Sleep_Grenade",
         "Redirects.Assault_Rifle.Sleep_Grenade_Damage"
       ],
-      "duration": 30,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Sleep Grenade",

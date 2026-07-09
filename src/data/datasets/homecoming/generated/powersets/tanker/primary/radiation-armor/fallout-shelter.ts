@@ -40,62 +40,63 @@ export const FalloutShelter: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "movement": {
+        "scale": 1.05,
+        "table": "Melee_Res_Boolean"
+      },
+      "recharge": {
+        "scale": 1.05,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "mezResistance": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
     "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "durations": {
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
-      "mezResistance": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
-      "resistance": 0.75,
-      "debuffResistance": 0.75
     },
     "immobilize": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
     "knockup": {
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
     },
     "resistance": {
-      "fire": {
+      "energy": {
         "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
-      "energy": {
+      "fire": {
         "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
@@ -112,16 +113,15 @@ export const FalloutShelter: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "debuffResistance": {
-      "movement": {
-        "scale": 1.05,
-        "table": "Melee_Res_Boolean"
-      },
-      "recharge": {
-        "scale": 1.05,
-        "table": "Melee_Res_Boolean"
-      }
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 0.75
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

@@ -42,12 +42,9 @@ export const DispersionBubble: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
     "defenseBuff": {
-      "smashing": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
+      "aoe": {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
@@ -59,6 +56,14 @@ export const DispersionBubble: Power = {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
+      "fire": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
       "negative": {
         "scale": 1,
         "table": "Ranged_Buff_Def"
@@ -67,22 +72,17 @@ export const DispersionBubble: Power = {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
-      "melee": {
-        "scale": 1,
-        "table": "Ranged_Buff_Def"
-      },
       "ranged": {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       },
-      "aoe": {
+      "smashing": {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 2.25
-    },
-    "buffDuration": 2.25
+    }
   }
 };

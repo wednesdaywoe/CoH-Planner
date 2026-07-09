@@ -38,28 +38,11 @@ export const TimeCrawl: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      },
-      "jumpHeight": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.5,
-        "table": "Ranged_Slow"
-      }
-    },
+    "buffDuration": 20,
     "durations": {
-      "slow": 20,
       "rechargeDebuff": 20,
-      "regenDebuff": 20
+      "regenDebuff": 20,
+      "slow": 20
     },
     "rechargeDebuff": {
       "scale": 0.6,
@@ -69,7 +52,24 @@ export const TimeCrawl: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 20
+    "slow": {
+      "flySpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    }
   },
   "setsModes": [
     "Peacebringer_Blaster_Mode"

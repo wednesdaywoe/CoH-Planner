@@ -39,12 +39,16 @@ export const DisruptionField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistanceDebuff": 0.75
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
@@ -52,11 +56,7 @@ export const DisruptionField: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 3,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
@@ -68,14 +68,14 @@ export const DisruptionField: Power = {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 3,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistanceDebuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

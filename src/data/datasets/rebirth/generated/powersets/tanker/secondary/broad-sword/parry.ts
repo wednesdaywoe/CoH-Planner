@@ -49,13 +49,14 @@ export const Parry: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 10,
     "defenseBuff": {
-      "melee": {
+      "lethal": {
         "scale": 1.5,
         "table": "Melee_Buff_Def",
         "perTarget": 1.5
       },
-      "lethal": {
+      "melee": {
         "scale": 1.5,
         "table": "Melee_Buff_Def",
         "perTarget": 1.5
@@ -67,7 +68,6 @@ export const Parry: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 10
+    }
   }
 };

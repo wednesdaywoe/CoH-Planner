@@ -42,16 +42,17 @@ export const EnvironmentalAdaptation: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "fire": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
       "cold": {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
       "energy": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
@@ -62,7 +63,6 @@ export const EnvironmentalAdaptation: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

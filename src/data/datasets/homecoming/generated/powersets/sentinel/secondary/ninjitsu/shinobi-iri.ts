@@ -39,8 +39,13 @@ export const ShinobiIri: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "damageBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_Dmg"
+    },
     "defenseBuff": {
-      "ranged": {
+      "aoe": {
         "scale": 0.45,
         "table": "Melee_Buff_Def"
       },
@@ -48,26 +53,22 @@ export const ShinobiIri: Power = {
         "scale": 0.45,
         "table": "Melee_Buff_Def"
       },
-      "aoe": {
+      "ranged": {
         "scale": 0.45,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
       "damageBuff": 0.75,
+      "defenseBuff": 0.75,
       "stealth": 0.75
     },
-    "damageBuff": {
-      "scale": 1,
-      "table": "Melee_Buff_Dmg"
-    },
     "stealth": {
+      "stackKey": "NictusFX",
       "stealthPvE": {
         "scale": 35.5,
         "table": "Melee_Ones"
       },
-      "stackKey": "NictusFX",
       "stealthPvP": {
         "scale": 390,
         "table": "Melee_Ones"
@@ -76,8 +77,7 @@ export const ShinobiIri: Power = {
         "scale": 0.3,
         "table": "Melee_Ones"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "setsModes": [
     "Hidden_Attack"

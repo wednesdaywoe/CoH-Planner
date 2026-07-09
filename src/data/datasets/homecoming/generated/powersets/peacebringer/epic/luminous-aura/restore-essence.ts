@@ -40,23 +40,23 @@ export const RestoreEssence: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "untouchable": 15
+    },
     "enduranceGain": {
       "scale": 50,
       "table": "Melee_Ones"
-    },
-    "untouchable": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "untouchable": 15
     },
     "immobilize": {
       "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "buffDuration": 15,
+    "untouchable": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "enduranceGain"

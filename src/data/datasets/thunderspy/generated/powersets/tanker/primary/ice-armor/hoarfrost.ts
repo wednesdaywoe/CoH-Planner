@@ -34,13 +34,13 @@ export const Hoarfrost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 30,
     "durations": {
       "regenBuff": 30
     },
-    "buffDuration": 30
+    "regenBuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    }
   }
 };

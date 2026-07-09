@@ -35,13 +35,13 @@ export const Rage: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "enduranceDrain": {
-      "scale": 15,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 90,
     "durations": {
       "enduranceDrain": 90
     },
-    "buffDuration": 90
+    "enduranceDrain": {
+      "scale": 15,
+      "table": "Melee_Ones"
+    }
   }
 };

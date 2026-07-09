@@ -54,17 +54,21 @@ export const DreadfulWail: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Ranged_Stun"
+    "buffDuration": 20,
+    "damageBuff": {
+      "scale": 0.027,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 9.47,
+      "resistanceDebuff": 20
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -72,11 +76,7 @@ export const DreadfulWail: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "cold": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -88,19 +88,19 @@ export const DreadfulWail: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
+      "smashing": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
       "toxic": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 20,
-      "damageBuff": 9.47
-    },
-    "damageBuff": {
-      "scale": 0.027,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 20
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Ranged_Stun"
+    }
   }
 };

@@ -38,28 +38,9 @@ export const GraceofNature: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 45,
     "defenseBuff": {
-      "melee": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 2,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 2,
         "table": "Melee_Buff_Def"
       },
@@ -71,6 +52,18 @@ export const GraceofNature: Power = {
         "scale": 2,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 2,
         "table": "Melee_Buff_Def"
@@ -78,11 +71,18 @@ export const GraceofNature: Power = {
       "psionic": {
         "scale": 2,
         "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 2,
+        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 45
-    },
-    "buffDuration": 45
+    }
   }
 };

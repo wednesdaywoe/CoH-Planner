@@ -42,14 +42,14 @@ export const LightningClap: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "knockback": {
+      "scale": 2,
+      "table": "Melee_Knockback"
+    },
     "stun": {
       "mag": 2,
       "scale": 8,
       "table": "Melee_Stun"
-    },
-    "knockback": {
-      "scale": 2,
-      "table": "Melee_Knockback"
     },
     "taunt": {
       "scale": 1,

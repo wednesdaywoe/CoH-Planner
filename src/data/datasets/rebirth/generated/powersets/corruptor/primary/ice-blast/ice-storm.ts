@@ -43,9 +43,9 @@ export const IceStorm: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 15,
       "entity": "Pets_Corruptor_IceStorm",
-      "duration": 15
+      "isPseudoPet": false
     }
   }
 };

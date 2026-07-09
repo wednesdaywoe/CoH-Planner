@@ -41,6 +41,7 @@ export const DarkestNight: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "damageDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Dam"
@@ -52,7 +53,6 @@ export const DarkestNight: Power = {
     "tohitDebuff": {
       "scale": 1.5,
       "table": "Ranged_DeBuff_ToHit"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

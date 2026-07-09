@@ -40,10 +40,10 @@ export const RainofFire: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Defender_RainofFire",
+      "copyBoosts": true,
       "duration": 15,
-      "copyBoosts": true
+      "entity": "Pets_Defender_RainofFire",
+      "isPseudoPet": false
     }
   }
 };

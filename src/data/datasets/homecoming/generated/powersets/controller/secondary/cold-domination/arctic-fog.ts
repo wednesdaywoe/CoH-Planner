@@ -44,28 +44,19 @@ export const ArcticFog: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.6,
+        "table": "Ranged_Ones"
+      },
+      "recharge": {
+        "scale": 0.6,
+        "table": "Ranged_Ones"
+      }
+    },
     "defenseBuff": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
@@ -74,6 +65,18 @@ export const ArcticFog: Power = {
         "table": "Ranged_Buff_Def"
       },
       "energy": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
@@ -85,47 +88,26 @@ export const ArcticFog: Power = {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
       "toxic": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
       "debuffResistance": 0.75,
-      "stealth": 0.75,
-      "resistance": 0.75
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.6,
-        "table": "Ranged_Ones"
-      },
-      "recharge": {
-        "scale": 0.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "stealth": {
-      "translucency": {
-        "scale": 0.7,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      },
-      "stackKey": "NictusFX",
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      }
+      "defenseBuff": 0.75,
+      "resistance": 0.75,
+      "stealth": 0.75
     },
     "resistance": {
-      "fire": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
       "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
@@ -133,9 +115,27 @@ export const ArcticFog: Power = {
       "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
       }
     },
-    "buffDuration": 0.75
+    "stealth": {
+      "stackKey": "NictusFX",
+      "stealthPvE": {
+        "scale": 35.5,
+        "table": "Melee_Ones"
+      },
+      "stealthPvP": {
+        "scale": 390,
+        "table": "Melee_Ones"
+      },
+      "translucency": {
+        "scale": 0.7,
+        "table": "Melee_Ones"
+      }
+    }
   },
   "setsModes": [
     "Hidden_Attack"

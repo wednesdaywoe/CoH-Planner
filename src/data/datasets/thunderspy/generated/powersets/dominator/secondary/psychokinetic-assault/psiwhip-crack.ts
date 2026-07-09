@@ -50,9 +50,9 @@ export const PsiWhipCrack: Power = {
       "table": "Ranged_Knockback"
     },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 15,
       "entity": "Pets_Telekinetic_Sword",
-      "duration": 15
+      "isPseudoPet": false
     }
   }
 };

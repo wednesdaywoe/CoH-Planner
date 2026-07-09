@@ -40,12 +40,19 @@ export const HardenedCarapace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
     "resistance": {
-      "smashing": {
+      "lethal": {
         "scale": 2.5,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "smashing": {
         "scale": 2.5,
         "table": "Melee_Res_Dmg"
       },
@@ -54,23 +61,16 @@ export const HardenedCarapace: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "resistance": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
     "sleep": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 0.75
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   },
   "conditionalEffects": [
     {
@@ -79,12 +79,16 @@ export const HardenedCarapace: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 0.75,
+        "durations": {
+          "resistance": 0.75
+        },
         "resistance": {
-          "smashing": {
+          "lethal": {
             "scale": 0.75,
             "table": "Melee_Res_Dmg"
           },
-          "lethal": {
+          "smashing": {
             "scale": 0.75,
             "table": "Melee_Res_Dmg"
           },
@@ -92,11 +96,7 @@ export const HardenedCarapace: Power = {
             "scale": 0.75,
             "table": "Melee_Res_Dmg"
           }
-        },
-        "durations": {
-          "resistance": 0.75
-        },
-        "buffDuration": 0.75
+        }
       },
       "group": "adaptation"
     },
@@ -106,14 +106,14 @@ export const HardenedCarapace: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 0.75,
         "damageBuff": {
           "scale": 2.5,
           "table": "Melee_Buff_Dmg"
         },
         "durations": {
           "damageBuff": 0.75
-        },
-        "buffDuration": 0.75
+        }
       },
       "group": "adaptation"
     },
@@ -123,14 +123,14 @@ export const HardenedCarapace: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "enduranceDiscount": {
-          "scale": 0.25,
-          "table": "Melee_Stun"
-        },
+        "buffDuration": 0.75,
         "durations": {
           "enduranceDiscount": 0.75
         },
-        "buffDuration": 0.75
+        "enduranceDiscount": {
+          "scale": 0.25,
+          "table": "Melee_Stun"
+        }
       },
       "group": "adaptation"
     }

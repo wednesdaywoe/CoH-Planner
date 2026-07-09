@@ -71,16 +71,7 @@ export const SuppressiveFire: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Sleep"
-    },
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Sleep"
-    },
+    "buffDuration": 9.17,
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
@@ -88,7 +79,16 @@ export const SuppressiveFire: Power = {
     "durations": {
       "damageBuff": 9.17
     },
-    "buffDuration": 9.17,
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Sleep"
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Sleep"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

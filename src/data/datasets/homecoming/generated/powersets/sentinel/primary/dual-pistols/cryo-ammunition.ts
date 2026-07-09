@@ -32,14 +32,14 @@ export const CryoAmmunition: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "effects": {
-    "rangeBuff": {
-      "scale": 0.333,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 0.75,
     "durations": {
       "rangeBuff": 0.75
     },
-    "buffDuration": 0.75
+    "rangeBuff": {
+      "scale": 0.333,
+      "table": "Ranged_Ones"
+    }
   },
   "requires": "Sentinel_Ranged.Dual_Pistols.Swap_Ammo",
   "setsModes": [

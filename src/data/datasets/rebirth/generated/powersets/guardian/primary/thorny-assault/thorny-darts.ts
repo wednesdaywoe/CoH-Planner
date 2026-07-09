@@ -57,14 +57,14 @@ export const ThornyDarts: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 5,
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 5
-    },
-    "buffDuration": 5
+    }
   },
   "specialEffects": [
     {

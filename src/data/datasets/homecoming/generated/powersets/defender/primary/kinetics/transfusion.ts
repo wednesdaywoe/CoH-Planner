@@ -45,6 +45,10 @@ export const Transfusion: Power = {
     "table": "Ranged_Heal"
   },
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "regenDebuff": 20
+    },
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Ranged_EndDrain"
@@ -52,10 +56,6 @@ export const Transfusion: Power = {
     "regenDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 20
-    },
-    "buffDuration": 20
+    }
   }
 };

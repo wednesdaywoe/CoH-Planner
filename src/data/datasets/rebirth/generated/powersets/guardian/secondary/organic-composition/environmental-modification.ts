@@ -40,16 +40,17 @@ export const EnvironmentalModification: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "fire": {
-        "scale": 1.5,
-        "table": "Melee_Buff_Def"
-      },
       "cold": {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
       "energy": {
+        "scale": 1.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
         "scale": 1.5,
         "table": "Melee_Buff_Def"
       },
@@ -65,26 +66,21 @@ export const EnvironmentalModification: Power = {
     "durations": {
       "defenseBuff": 0.75,
       "hold": 0.75,
-      "mezResistance": 0.75,
+      "immobilize": 0.75,
       "knockback": 0.75,
       "knockup": 0.75,
-      "immobilize": 0.75
+      "mezResistance": 0.75
     },
+    "effectDuration": 0.75,
     "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 0.75,
-    "mezResistance": {
-      "knockback": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      },
-      "knockup": {
-        "scale": 100,
-        "table": "Melee_Ones"
-      }
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     },
     "knockback": {
       "scale": 10,
@@ -94,11 +90,15 @@ export const EnvironmentalModification: Power = {
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "buffDuration": 0.75
+    "mezResistance": {
+      "knockback": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 100,
+        "table": "Melee_Ones"
+      }
+    }
   }
 };

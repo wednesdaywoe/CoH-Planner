@@ -55,32 +55,32 @@ export const ChargedBrawl: Power = {
     }
   ],
   "effects": {
-    "sleep": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Sleep"
+    "buffDuration": 8.33,
+    "damageBuff": {
+      "scale": 0.055,
+      "table": "Melee_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.33,
+      "recoveryDebuff": 2
     },
     "enduranceDrain": {
       "scale": 0.07,
+      "table": "Melee_Ones"
+    },
+    "enduranceGain": {
+      "scale": 5.095,
       "table": "Melee_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "recoveryDebuff": 2,
-      "damageBuff": 8.33
+    "sleep": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Sleep"
     },
-    "enduranceGain": {
-      "scale": 5.095,
-      "table": "Melee_Ones"
-    },
-    "damageBuff": {
-      "scale": 0.055,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 8.33,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

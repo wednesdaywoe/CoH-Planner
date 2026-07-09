@@ -43,14 +43,14 @@ export const ShieldCharge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "summon": {
+      "duration": 4,
+      "entity": "Pets_Shield_Charge_Brute",
+      "isPseudoPet": false
+    },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Shield_Charge_Brute",
-      "duration": 4
     }
   }
 };

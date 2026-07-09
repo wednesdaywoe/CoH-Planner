@@ -30,20 +30,21 @@ export const ForceAffinity: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.25,
+    "durations": {
+      "enduranceDiscount": 10.25,
+      "resistance": 10.25
+    },
+    "enduranceDiscount": {
+      "scale": 0.35,
+      "table": "Melee_Ones"
+    },
     "resistance": {
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
+      "cold": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
-      "negative": {
+      "energy": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
@@ -51,24 +52,23 @@ export const ForceAffinity: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
         "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
       "toxic": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "enduranceDiscount": 10.25
-    },
-    "enduranceDiscount": {
-      "scale": 0.35,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

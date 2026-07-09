@@ -38,6 +38,11 @@ export const EnergyFlight: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "movement": 0.75,
+      "slow": 0.75
+    },
     "movement": {
       "fly": {
         "scale": 1,
@@ -56,18 +61,13 @@ export const EnergyFlight: Power = {
         "table": "Melee_Friction"
       }
     },
-    "durations": {
-      "movement": 0.75,
-      "slow": 0.75
-    },
     "slow": {
       "flySpeed": {
         "scale": 1.01,
         "table": "Melee_Ones",
         "toWho": "Self"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "requires": "Inherent.Inherent.Energy_Flight !"
 };

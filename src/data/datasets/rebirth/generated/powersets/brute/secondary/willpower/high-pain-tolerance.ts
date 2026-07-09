@@ -32,20 +32,21 @@ export const HighPainTolerance: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
+    "buffDuration": 10.25,
     "durations": {
       "maxHPBuff": 10.25,
       "resistance": 10.25
     },
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    },
     "resistance": {
-      "smashing": {
+      "cold": {
         "scale": 0.75,
         "table": "Melee_Res_DMG"
       },
-      "lethal": {
+      "energy": {
         "scale": 0.75,
         "table": "Melee_Res_DMG"
       },
@@ -53,11 +54,7 @@ export const HighPainTolerance: Power = {
         "scale": 0.75,
         "table": "Melee_Res_DMG"
       },
-      "cold": {
-        "scale": 0.75,
-        "table": "Melee_Res_DMG"
-      },
-      "energy": {
+      "lethal": {
         "scale": 0.75,
         "table": "Melee_Res_DMG"
       },
@@ -69,12 +66,15 @@ export const HighPainTolerance: Power = {
         "scale": 0.75,
         "table": "Melee_Res_DMG"
       },
+      "smashing": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
       "toxic": {
         "scale": 0.75,
         "table": "Melee_Res_DMG"
       }
-    },
-    "buffDuration": 10.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

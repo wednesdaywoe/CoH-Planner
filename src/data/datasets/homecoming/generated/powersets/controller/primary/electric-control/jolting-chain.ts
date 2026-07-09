@@ -49,21 +49,21 @@ export const JoltingChain: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.66,
-      "table": "Ranged_Ones"
+    "buffDuration": 8,
+    "durations": {
+      "recoveryDebuff": 8
     },
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Ranged_Ones"
     },
+    "knockback": {
+      "scale": 0.66,
+      "table": "Ranged_Ones"
+    },
     "recoveryDebuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 8
-    },
-    "buffDuration": 8
+    }
   }
 };

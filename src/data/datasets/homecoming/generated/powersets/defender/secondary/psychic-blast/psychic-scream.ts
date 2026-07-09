@@ -47,13 +47,13 @@ export const PsychicScream: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
+    "buffDuration": 10,
     "durations": {
       "rechargeDebuff": 10
     },
-    "buffDuration": 10
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    }
   }
 };

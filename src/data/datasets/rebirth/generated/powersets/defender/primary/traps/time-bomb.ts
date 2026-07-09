@@ -41,9 +41,9 @@ export const TimeBomb: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 21,
       "entity": "Pets_Bomb_Defender",
-      "duration": 21
+      "isPseudoPet": false
     }
   }
 };

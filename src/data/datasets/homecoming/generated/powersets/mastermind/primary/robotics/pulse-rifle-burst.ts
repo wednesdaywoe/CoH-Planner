@@ -46,10 +46,7 @@ export const PulseRifleBurst: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "regenDebuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 30,
     "durations": {
       "regenDebuff": 30
     },
@@ -57,7 +54,10 @@ export const PulseRifleBurst: Power = {
       "scale": 1.5,
       "table": "Ranged_Knockback"
     },
-    "buffDuration": 30
+    "regenDebuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    }
   },
   "specialEffects": [
     {

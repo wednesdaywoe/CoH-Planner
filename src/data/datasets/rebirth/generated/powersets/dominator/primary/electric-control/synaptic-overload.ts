@@ -40,10 +40,14 @@ export const SynapticOverload: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 8,
     "confuse": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
+    },
+    "durations": {
+      "recoveryDebuff": 8
     },
     "enduranceDrain": {
       "scale": 0.1,
@@ -52,11 +56,7 @@ export const SynapticOverload: Power = {
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 8
-    },
-    "buffDuration": 8
+    }
   },
   "conditionalEffects": [
     {

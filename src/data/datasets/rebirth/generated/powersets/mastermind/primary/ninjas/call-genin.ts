@@ -43,9 +43,9 @@ export const CallGenin: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "MastermindPets_Genin",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

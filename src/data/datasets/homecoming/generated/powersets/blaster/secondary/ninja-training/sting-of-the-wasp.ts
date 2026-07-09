@@ -49,13 +49,13 @@ export const StingoftheWasp: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "buffDuration": 10
+    }
   }
 };

@@ -52,27 +52,27 @@ export const LightningClap: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "recoveryBuff": 2.25,
+      "regenBuff": 2.25,
+      "regenBuffUnenhanced": 2.25
+    },
     "enduranceDrain": {
       "scale": 0.02,
-      "table": "Melee_Ones"
-    },
-    "regenBuffUnenhanced": {
-      "scale": 1.125,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuffUnenhanced": 2.25,
-      "regenBuff": 2.25,
-      "recoveryBuff": 2.25
-    },
-    "regenBuff": {
-      "scale": 1.125,
       "table": "Melee_Ones"
     },
     "recoveryBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "buffDuration": 2.25
+    "regenBuff": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    },
+    "regenBuffUnenhanced": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    }
   }
 };

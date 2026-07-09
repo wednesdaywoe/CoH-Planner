@@ -46,18 +46,18 @@ export const Vacuum: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_WindControl_Vacuum_Controller",
-      "powers": [
-        "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure"
-      ],
-      "duration": 8
-    },
     "hold": {
       "mag": 3,
       "scale": 10,
       "table": "Ranged_Immobilize"
+    },
+    "summon": {
+      "duration": 8,
+      "entity": "Pets_WindControl_Vacuum_Controller",
+      "isPseudoPet": false,
+      "powers": [
+        "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure"
+      ]
     }
   }
 };

@@ -36,34 +36,9 @@ export const GroupInvisibility: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 60,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 120,
-      "defenseBuff": 120
-    },
+    "buffDuration": 120,
     "defenseBuff": {
-      "smashing": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
+      "aoe": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
@@ -71,7 +46,15 @@ export const GroupInvisibility: Power = {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
-      "psionic": {
+      "energy": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
@@ -79,15 +62,32 @@ export const GroupInvisibility: Power = {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
+      "negative": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.5,
+        "table": "Ranged_Buff_Def"
+      },
       "ranged": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       },
-      "aoe": {
+      "smashing": {
         "scale": 0.5,
         "table": "Ranged_Buff_Def"
       }
     },
-    "buffDuration": 120
+    "durations": {
+      "defenseBuff": 120,
+      "stealth": 120
+    },
+    "stealth": {
+      "stealthPvE": {
+        "scale": 60,
+        "table": "Ranged_Ones"
+      }
+    }
   }
 };

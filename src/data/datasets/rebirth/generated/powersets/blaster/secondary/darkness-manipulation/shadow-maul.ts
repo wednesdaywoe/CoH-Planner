@@ -61,19 +61,19 @@ export const ShadowMaul: Power = {
     }
   ],
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Melee_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10,
-      "damageBuff": 10.57
-    },
+    "buffDuration": 10.57,
     "damageBuff": {
       "scale": 1.304,
       "table": "Melee_Ones",
       "perTarget": 1.304
     },
-    "buffDuration": 10.57
+    "durations": {
+      "damageBuff": 10.57,
+      "tohitDebuff": 10
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Melee_DeBuff_ToHit"
+    }
   }
 };

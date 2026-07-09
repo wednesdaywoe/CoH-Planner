@@ -56,13 +56,13 @@ export const ShiftingTides: Power = {
       "scale": 0.24,
       "table": "Ranged_Buff_Dmg"
     },
-    "tohitBuff": {
-      "scale": 0.08,
-      "table": "Ranged_Buff_ToHit"
-    },
     "rechargeBuff": {
       "scale": 0.02,
       "table": "Melee_Ones"
+    },
+    "tohitBuff": {
+      "scale": 0.08,
+      "table": "Ranged_Buff_ToHit"
     }
   },
   "specialEffects": [

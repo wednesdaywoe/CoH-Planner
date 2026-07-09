@@ -40,30 +40,35 @@ export const EagleEye: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "debuffResistance": {
-      "tohit": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "debuffResistance": 0.75,
-      "accuracyBuff": 0.75,
-      "perceptionBuff": 0.75,
-      "regenBuff": 0.75,
-      "regenBuffUnenhanced": 0.75,
-      "recoveryBuff": 0.75
-    },
     "accuracyBuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
     },
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
+    "durations": {
+      "accuracyBuff": 0.75,
+      "debuffResistance": 0.75,
+      "perceptionBuff": 0.75,
+      "recoveryBuff": 0.75,
+      "regenBuff": 0.75,
+      "regenBuffUnenhanced": 0.75
+    },
     "perceptionBuff": {
       "scale": 0.6,
+      "table": "Melee_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 0.5,
       "table": "Melee_Ones"
     },
     "regenBuff": {
@@ -73,11 +78,6 @@ export const EagleEye: Power = {
     "regenBuffUnenhanced": {
       "scale": 1.125,
       "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

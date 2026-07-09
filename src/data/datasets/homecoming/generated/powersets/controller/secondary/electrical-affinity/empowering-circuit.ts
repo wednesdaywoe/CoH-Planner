@@ -40,6 +40,7 @@ export const EmpoweringCircuit: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
     "damageBuff": {
       "scale": 3,
       "table": "Ranged_Buff_Dmg"
@@ -51,7 +52,6 @@ export const EmpoweringCircuit: Power = {
     "tohitBuff": {
       "scale": 1.2,
       "table": "Ranged_Buff_ToHit"
-    },
-    "buffDuration": 60
+    }
   }
 };

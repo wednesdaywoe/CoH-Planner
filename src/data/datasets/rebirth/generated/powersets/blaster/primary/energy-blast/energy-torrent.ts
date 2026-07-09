@@ -56,10 +56,7 @@ export const EnergyTorrent: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 3,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 8.57,
     "damageBuff": {
       "scale": 0.03,
       "table": "Ranged_Ones"
@@ -67,7 +64,10 @@ export const EnergyTorrent: Power = {
     "durations": {
       "damageBuff": 8.57
     },
-    "buffDuration": 8.57
+    "knockback": {
+      "scale": 3,
+      "table": "Ranged_Knockback"
+    }
   },
   "specialEffects": [
     {

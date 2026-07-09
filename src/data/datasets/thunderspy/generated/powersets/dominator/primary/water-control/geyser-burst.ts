@@ -42,9 +42,9 @@ export const GeyserBurst: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 45,
       "entity": "Pets_Water_Control_Geyser_Burst",
-      "duration": 45
+      "isPseudoPet": false
     }
   }
 };

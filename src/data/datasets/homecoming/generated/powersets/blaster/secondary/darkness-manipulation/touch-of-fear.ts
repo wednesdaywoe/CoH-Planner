@@ -45,13 +45,13 @@ export const TouchofFear: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 8.67,
     "damageBuff": {
       "scale": 0.077,
       "table": "Melee_Ones"
     },
     "durations": {
       "damageBuff": 8.67
-    },
-    "buffDuration": 8.67
+    }
   }
 };

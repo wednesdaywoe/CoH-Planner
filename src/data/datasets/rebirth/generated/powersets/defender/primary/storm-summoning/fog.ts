@@ -46,9 +46,9 @@ export const Fog: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 15,
       "entity": "Pets_FreezingRain",
-      "duration": 15
+      "isPseudoPet": false
     }
   }
 };

@@ -53,11 +53,7 @@ export const TotalFocus: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 10,
-      "table": "Melee_Immobilize"
-    },
+    "buffDuration": 10.8,
     "damageBuff": {
       "scale": 0.218,
       "table": "Melee_Ones"
@@ -65,7 +61,11 @@ export const TotalFocus: Power = {
     "durations": {
       "damageBuff": 10.8
     },
-    "buffDuration": 10.8,
+    "stun": {
+      "mag": 3,
+      "scale": 10,
+      "table": "Melee_Immobilize"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

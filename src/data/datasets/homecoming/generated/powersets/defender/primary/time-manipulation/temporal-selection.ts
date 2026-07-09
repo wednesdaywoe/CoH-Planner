@@ -36,23 +36,23 @@ export const TemporalSelection: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "rechargeBuff": {
-      "scale": 0.3,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rechargeBuff": 120,
-      "damageBuff": 120,
-      "regenBuff": 120
-    },
+    "buffDuration": 120,
     "damageBuff": {
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },
+    "durations": {
+      "damageBuff": 120,
+      "rechargeBuff": 120,
+      "regenBuff": 120
+    },
+    "rechargeBuff": {
+      "scale": 0.3,
+      "table": "Ranged_Ones"
+    },
     "regenBuff": {
       "scale": 1.5,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 120
+    }
   }
 };

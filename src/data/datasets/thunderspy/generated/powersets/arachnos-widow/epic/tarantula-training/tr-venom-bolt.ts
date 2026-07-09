@@ -44,14 +44,14 @@ export const TRVenomBolt: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "regenDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 15,
     "durations": {
       "regenDebuff": 15
     },
-    "buffDuration": 15
+    "regenDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Ones"
+    }
   },
   "modesRequired": [
     "Widow_Tarantula_Mode"

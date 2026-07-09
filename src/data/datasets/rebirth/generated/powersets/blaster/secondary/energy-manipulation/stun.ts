@@ -55,11 +55,7 @@ export const Stun: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Melee_Stun"
-    },
+    "buffDuration": 9.3,
     "damageBuff": {
       "scale": 0.952,
       "table": "Melee_Ones",
@@ -68,7 +64,11 @@ export const Stun: Power = {
     "durations": {
       "damageBuff": 9.3
     },
-    "buffDuration": 9.3
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Melee_Stun"
+    }
   },
   "specialEffects": [
     {

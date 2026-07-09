@@ -36,25 +36,32 @@ export const BattleAgility: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 120,
     "confuse": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 120,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "durations": {
       "confuse": 120,
+      "debuffResistance": 120,
       "fear": 120,
       "hold": 120,
       "immobilize": 120,
-      "stun": 120,
-      "sleep": 120,
-      "mezResistance": 120,
-      "knockup": 120,
       "knockback": 120,
+      "knockup": 120,
+      "mezResistance": 120,
       "repel": 120,
-      "debuffResistance": 120
+      "sleep": 120,
+      "stun": 120
     },
+    "effectDuration": 120,
     "fear": {
       "mag": 1,
       "scale": 30,
@@ -70,22 +77,20 @@ export const BattleAgility: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
     },
     "mezResistance": {
-      "knockup": {
+      "knockback": {
         "scale": 100,
         "table": "Melee_Ones"
       },
-      "knockback": {
+      "knockup": {
         "scale": 100,
         "table": "Melee_Ones"
       },
@@ -94,25 +99,20 @@ export const BattleAgility: Power = {
         "table": "Melee_Ones"
       }
     },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
     "repel": {
       "scale": 10,
       "table": "Melee_Ones"
     },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 120,
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "debuffResistance"

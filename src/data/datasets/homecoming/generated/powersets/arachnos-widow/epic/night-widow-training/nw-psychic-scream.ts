@@ -47,13 +47,13 @@ export const NWPsychicScream: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.5,
-      "table": "Ranged_Slow"
-    },
+    "buffDuration": 20,
     "durations": {
       "rechargeDebuff": 20
     },
-    "buffDuration": 20
+    "rechargeDebuff": {
+      "scale": 0.5,
+      "table": "Ranged_Slow"
+    }
   }
 };

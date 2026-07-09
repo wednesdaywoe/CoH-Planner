@@ -41,23 +41,23 @@ export const LightningRod: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
     "summon": {
-      "isPseudoPet": false,
       "duration": 4,
       "entities": [
         {
-          "entity": "Pets_Lightning_Rod_Scrapper",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Lightning_Rod_Scrapper"
         },
         {
-          "entity": "Pets_Embraced_Lightning_Rod_Scrapper",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_Embraced_Lightning_Rod_Scrapper"
         }
-      ]
+      ],
+      "isPseudoPet": false
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
     }
   }
 };

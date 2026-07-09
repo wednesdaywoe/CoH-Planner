@@ -41,6 +41,10 @@ export const StarlessStep: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "tohitBuff": 5
+    },
     "teleport": {
       "scale": 1,
       "table": "Melee_Ones"
@@ -49,10 +53,6 @@ export const StarlessStep: Power = {
       "scale": 1,
       "table": "Melee_Buff_ToHit"
     },
-    "durations": {
-      "tohitBuff": 5
-    },
-    "buffDuration": 5,
     "maxStacks": 2,
     "stacksLinear": [
       "tohitBuff"

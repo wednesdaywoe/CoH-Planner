@@ -36,26 +36,26 @@ export const RimeIce: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "toxic": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 60,
-      "absorb": 30,
-      "regenBuff": 30
-    },
     "absorb": {
       "scale": 3,
       "table": "Melee_HealSelf"
+    },
+    "buffDuration": 30,
+    "durations": {
+      "absorb": 30,
+      "regenBuff": 30,
+      "resistance": 60
     },
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 30
+    "resistance": {
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      }
+    }
   },
   "requires": "Stalker_Defense.Ice_Armor.Hoarfrost !"
 };

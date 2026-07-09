@@ -46,19 +46,19 @@ export const PsychicShockwave: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Stun"
+    "buffDuration": 20,
+    "durations": {
+      "rechargeDebuff": 20
     },
     "rechargeDebuff": {
       "scale": 0.5,
       "table": "Melee_Slow"
     },
-    "durations": {
-      "rechargeDebuff": 20
-    },
-    "buffDuration": 20
+    "stun": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Stun"
+    }
   },
   "conditionalEffects": [
     {

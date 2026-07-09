@@ -43,6 +43,10 @@ export const TouchofFear: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "regenBuff": 60
+    },
     "fear": {
       "mag": 3,
       "scale": 10,
@@ -51,10 +55,6 @@ export const TouchofFear: Power = {
     "regenBuff": {
       "scale": 1.125,
       "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 60
-    },
-    "buffDuration": 60
+    }
   }
 };

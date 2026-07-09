@@ -57,6 +57,7 @@ export const TemporalMending: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 30,
     "debuffResistance": {
       "movement": {
         "scale": 0.2,
@@ -73,8 +74,7 @@ export const TemporalMending: Power = {
     },
     "durations": {
       "debuffResistance": 30
-    },
-    "buffDuration": 30
+    }
   },
   "conditionalEffects": [
     {

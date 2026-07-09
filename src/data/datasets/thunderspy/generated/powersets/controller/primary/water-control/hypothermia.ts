@@ -43,16 +43,16 @@ export const Hypothermia: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 15.1,
+    "durations": {
+      "sleep": 15.1
+    },
+    "effectDuration": 15.1,
     "sleep": {
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Sleep"
-    },
-    "effectDuration": 15.1,
-    "durations": {
-      "sleep": 15.1
-    },
-    "buffDuration": 15.1
+    }
   },
   "conditionalEffects": [
     {
@@ -62,16 +62,16 @@ export const Hypothermia: Power = {
       "defaultActive": false,
       "mode": "replace",
       "effects": {
+        "buffDuration": 15.1,
+        "durations": {
+          "sleep": 15.1
+        },
+        "effectDuration": 15.1,
         "sleep": {
           "mag": 3,
           "scale": 4,
           "table": "Ranged_Sleep"
-        },
-        "effectDuration": 15.1,
-        "durations": {
-          "sleep": 15.1
-        },
-        "buffDuration": 15.1
+        }
       }
     }
   ]

@@ -49,6 +49,7 @@ export const MercurialBlow: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 8,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
@@ -59,8 +60,7 @@ export const MercurialBlow: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 8
+    }
   },
   "requires": "Brute_Defense.Shield_Defense !"
 };

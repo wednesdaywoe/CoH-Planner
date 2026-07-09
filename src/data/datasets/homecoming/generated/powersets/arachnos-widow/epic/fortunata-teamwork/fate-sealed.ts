@@ -25,35 +25,10 @@ export const FateSealed: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "effects": {
-    "specialBuff": {
-      "confuse": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "fear": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "hold": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "immobilize": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "stun": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      },
-      "sleep": {
-        "scale": 0.33,
-        "table": "Melee_Ones"
-      }
-    },
+    "buffDuration": 0.75,
     "durations": {
-      "specialBuff": 0.75,
-      "mezResistance": 0.75
+      "mezResistance": 0.75,
+      "specialBuff": 0.75
     },
     "mezResistance": {
       "confuse": {
@@ -72,16 +47,41 @@ export const FateSealed: Power = {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
-      "stun": {
+      "sleep": {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       },
-      "sleep": {
+      "stun": {
         "scale": 1,
         "table": "Melee_Res_Boolean"
       }
     },
-    "buffDuration": 0.75
+    "specialBuff": {
+      "confuse": {
+        "scale": 0.33,
+        "table": "Melee_Ones"
+      },
+      "fear": {
+        "scale": 0.33,
+        "table": "Melee_Ones"
+      },
+      "hold": {
+        "scale": 0.33,
+        "table": "Melee_Ones"
+      },
+      "immobilize": {
+        "scale": 0.33,
+        "table": "Melee_Ones"
+      },
+      "sleep": {
+        "scale": 0.33,
+        "table": "Melee_Ones"
+      },
+      "stun": {
+        "scale": 0.33,
+        "table": "Melee_Ones"
+      }
+    }
   },
   "mechanicType": "parentMechanic"
 };

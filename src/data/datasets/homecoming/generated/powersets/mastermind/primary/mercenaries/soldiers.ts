@@ -45,11 +45,14 @@ export const Soldiers: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Soldier",
-      "duration": 99999,
-      "copyBoosts": true
+    "buffDuration": 2,
+    "durations": {
+      "stealth": 2
+    },
+    "immobilize": {
+      "mag": 500,
+      "scale": 3,
+      "table": "Melee_Ones"
     },
     "stealth": {
       "translucency": {
@@ -57,18 +60,15 @@ export const Soldiers: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "durations": {
-      "stealth": 2
+    "summon": {
+      "copyBoosts": true,
+      "duration": 99999,
+      "entity": "MastermindPets_Soldier",
+      "isPseudoPet": false
     },
     "teleport": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "immobilize": {
-      "mag": 500,
-      "scale": 3,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 2
+    }
   }
 };

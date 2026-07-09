@@ -40,20 +40,20 @@ export const UptotheChallenge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 2,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "regenBuff": 1.12,
-      "debuffResistance": 1.12
-    },
+    "buffDuration": 1.12,
     "debuffResistance": {
       "regeneration": {
         "scale": 0.15,
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 1.12
+    "durations": {
+      "debuffResistance": 1.12,
+      "regenBuff": 1.12
+    },
+    "regenBuff": {
+      "scale": 2,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -63,17 +63,16 @@ export const Screech: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Stun"
+    "buffDuration": 15,
+    "durations": {
+      "resistanceDebuff": 15
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -81,11 +80,7 @@ export const Screech: Power = {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -97,14 +92,19 @@ export const Screech: Power = {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 15
-    },
-    "buffDuration": 15
+    "stun": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Stun"
+    }
   }
 };

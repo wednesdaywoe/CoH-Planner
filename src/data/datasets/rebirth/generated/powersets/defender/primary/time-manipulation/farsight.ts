@@ -38,28 +38,15 @@ export const Farsight: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 120,
+    "debuffResistance": {
+      "perception": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Boolean"
+      }
+    },
     "defenseBuff": {
-      "melee": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
       },
@@ -71,6 +58,18 @@ export const Farsight: Power = {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
       },
+      "fire": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
       "negative": {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
@@ -78,28 +77,29 @@ export const Farsight: Power = {
       "psionic": {
         "scale": 1.25,
         "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1.25,
+        "table": "Ranged_Buff_Def"
       }
     },
     "durations": {
-      "defenseBuff": 120,
-      "tohitBuff": 120,
       "debuffResistance": 120,
-      "perceptionBuff": 120
-    },
-    "tohitBuff": {
-      "scale": 1,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 1.5,
-        "table": "Ranged_Res_Boolean"
-      }
+      "defenseBuff": 120,
+      "perceptionBuff": 120,
+      "tohitBuff": 120
     },
     "perceptionBuff": {
       "scale": 2,
       "table": "Ranged_Res_Boolean"
     },
-    "buffDuration": 120
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
+    }
   }
 };

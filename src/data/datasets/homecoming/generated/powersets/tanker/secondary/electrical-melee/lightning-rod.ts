@@ -44,21 +44,17 @@ export const LightningRod: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "teleport": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Lightning Rod",
+      "duration": 1,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Pets.Lightning_Rod_Universal.Lightning_Rod_Center",
         "Pets.Lightning_Rod_Universal.Lightning_Rod",
         "Pets.ResistAll.ResistAll"
       ],
-      "duration": 1,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Lightning Rod",
@@ -118,6 +114,10 @@ export const LightningRod: Power = {
           ]
         }
       ]
+    },
+    "teleport": {
+      "scale": 1,
+      "table": "Ranged_Ones"
     }
   }
 };

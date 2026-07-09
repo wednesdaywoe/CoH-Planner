@@ -52,14 +52,14 @@ export const UnchainEssence: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    },
     "stun": {
       "mag": 3,
       "scale": 5,
       "table": "Ranged_Stun"
-    },
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
     }
   }
 };

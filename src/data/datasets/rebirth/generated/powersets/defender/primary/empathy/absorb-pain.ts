@@ -48,13 +48,14 @@ export const AbsorbPain: Power = {
     }
   ],
   "effects": {
-    "regenDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 20,
     "durations": {
       "regenDebuff": 20,
       "resistance": 20
+    },
+    "regenDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
     },
     "resistance": {
       "heal": {
@@ -62,7 +63,6 @@ export const AbsorbPain: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 20,
     "maxStacks": 2,
     "stacksLinear": [
       "resistance"

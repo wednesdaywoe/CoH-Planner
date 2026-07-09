@@ -40,6 +40,18 @@ export const Minerals: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Ones"
+    },
+    "debuffResistance": {
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
+    },
     "defenseBuff": {
       "psionic": {
         "scale": 2.5,
@@ -47,29 +59,18 @@ export const Minerals: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
       "confuse": 0.75,
-      "mezResistance": 0.75,
       "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "mezResistance": 0.75,
       "perceptionBuff": 0.75,
       "rechargeBuff": 0.75
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Ones"
     },
     "effectDuration": 0.75,
     "mezResistance": {
       "confuse": {
         "scale": 2,
         "table": "Melee_Res_Boolean"
-      }
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
       }
     },
     "perceptionBuff": {
@@ -79,8 +80,7 @@ export const Minerals: Power = {
     "rechargeBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
+    }
   },
   "modesSuspended": [
     "Granite_Mode"

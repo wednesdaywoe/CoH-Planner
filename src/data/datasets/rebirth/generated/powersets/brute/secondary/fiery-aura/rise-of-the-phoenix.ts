@@ -49,19 +49,7 @@ export const RiseofthePhoenix: Power = {
     "tickRate": 1
   },
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Phoenix",
-      "duration": 5
-    },
-    "untouchable": {
-      "scale": 15,
-      "table": "Melee_Ones"
-    },
-    "enduranceGain": {
-      "scale": 50,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 90,
     "damageBuff": {
       "scale": 5,
       "table": "Melee_Buff_Dmg"
@@ -69,12 +57,24 @@ export const RiseofthePhoenix: Power = {
     "durations": {
       "damageBuff": 90
     },
+    "enduranceGain": {
+      "scale": 50,
+      "table": "Melee_Ones"
+    },
     "immobilize": {
       "mag": 50,
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "buffDuration": 90,
+    "summon": {
+      "duration": 5,
+      "entity": "Pets_Phoenix",
+      "isPseudoPet": false
+    },
+    "untouchable": {
+      "scale": 15,
+      "table": "Melee_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

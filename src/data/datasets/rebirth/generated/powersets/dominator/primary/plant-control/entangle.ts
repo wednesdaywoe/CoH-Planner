@@ -58,6 +58,10 @@ export const Entangle: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
+    },
     "immobilize": {
       "mag": 4,
       "scale": 15,
@@ -68,11 +72,7 @@ export const Entangle: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "slow": 15
-    },
-    "buffDuration": 15
+    }
   },
   "conditionalEffects": [
     {

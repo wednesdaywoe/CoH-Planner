@@ -40,42 +40,33 @@ export const KujiInRin: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stun": {
+    "buffDuration": 120,
+    "confuse": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "effectDuration": 120,
     "durations": {
-      "stun": 120,
-      "hold": 120,
-      "sleep": 120,
-      "immobilize": 120,
       "confuse": 120,
       "fear": 120,
-      "resistance": 120
+      "hold": 120,
+      "immobilize": 120,
+      "resistance": 120,
+      "sleep": 120,
+      "stun": 120
+    },
+    "effectDuration": 120,
+    "fear": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     },
     "hold": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
     "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "fear": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
@@ -86,7 +77,16 @@ export const KujiInRin: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "buffDuration": 120,
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "resistance"

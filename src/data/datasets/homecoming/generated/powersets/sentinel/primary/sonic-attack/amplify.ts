@@ -35,24 +35,24 @@ export const Amplify: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
+    "buffDuration": 10,
+    "damageBuff": {
       "scale": 5,
-      "table": "Melee_Buff_ToHit"
+      "table": "Melee_Buff_Dmg"
     },
     "durations": {
-      "tohitBuff": 10,
+      "damageBuff": 10,
       "rangeBuff": 10,
-      "damageBuff": 10
+      "tohitBuff": 10
     },
     "rangeBuff": {
       "scale": 0.333,
       "table": "Melee_Ones"
     },
-    "damageBuff": {
+    "tohitBuff": {
       "scale": 5,
-      "table": "Melee_Buff_Dmg"
+      "table": "Melee_Buff_ToHit"
     },
-    "buffDuration": 10,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

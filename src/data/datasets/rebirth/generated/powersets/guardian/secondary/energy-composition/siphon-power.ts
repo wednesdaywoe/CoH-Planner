@@ -33,6 +33,7 @@ export const SiphonPower: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 30,
     "damageDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Dam"
@@ -41,10 +42,9 @@ export const SiphonPower: Power = {
       "damageDebuff": 30
     },
     "summon": {
-      "isPseudoPet": false,
+      "duration": 1,
       "entity": "Pets_SiphonPower_Controller",
-      "duration": 1
-    },
-    "buffDuration": 30
+      "isPseudoPet": false
+    }
   }
 };

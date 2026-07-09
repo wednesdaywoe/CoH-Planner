@@ -50,6 +50,7 @@ export const SnapShot: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
@@ -57,7 +58,6 @@ export const SnapShot: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -41,10 +41,10 @@ export const GunDrone: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_GunDrone_Tri",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "Pets_GunDrone_Tri",
+      "isPseudoPet": false
     }
   }
 };

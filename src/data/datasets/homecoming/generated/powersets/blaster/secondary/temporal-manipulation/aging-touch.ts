@@ -55,19 +55,19 @@ export const AgingTouch: Power = {
     }
   ],
   "effects": {
-    "enduranceDrain": {
-      "scale": 0.028,
-      "table": "Melee_Ones"
-    },
-    "durations": {
-      "enduranceDrain": 2.1,
-      "damageBuff": 8.5
-    },
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Melee_Ones"
     },
-    "buffDuration": 8.5,
+    "durations": {
+      "damageBuff": 8.5,
+      "enduranceDrain": 2.1
+    },
+    "enduranceDrain": {
+      "scale": 0.028,
+      "table": "Melee_Ones"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

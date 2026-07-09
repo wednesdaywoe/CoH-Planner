@@ -44,23 +44,24 @@ export const Wormhole: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "translucency": {
-        "scale": 0,
-        "table": "Ranged_Ones"
-      }
-    },
+    "buffDuration": 15,
     "durations": {
-      "stealth": 1.5,
-      "mezResistance": 15
+      "mezResistance": 15,
+      "stealth": 1.5
     },
-    "teleport": {
-      "scale": 4.1,
-      "table": "Ranged_Ones"
+    "knockback": {
+      "scale": 7,
+      "table": "Ranged_Knockback"
     },
     "mezResistance": {
       "teleport": {
         "scale": 100,
+        "table": "Ranged_Ones"
+      }
+    },
+    "stealth": {
+      "translucency": {
+        "scale": 0,
         "table": "Ranged_Ones"
       }
     },
@@ -69,11 +70,10 @@ export const Wormhole: Power = {
       "scale": 10,
       "table": "Ranged_Stun"
     },
-    "knockback": {
-      "scale": 7,
-      "table": "Ranged_Knockback"
-    },
-    "buffDuration": 15
+    "teleport": {
+      "scale": 4.1,
+      "table": "Ranged_Ones"
+    }
   },
   "conditionalEffects": [
     {

@@ -58,10 +58,7 @@ export const PowerThrust: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 8,
-      "table": "Melee_Knockback"
-    },
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Melee_Ones"
@@ -69,7 +66,10 @@ export const PowerThrust: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5,
+    "knockback": {
+      "scale": 8,
+      "table": "Melee_Knockback"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

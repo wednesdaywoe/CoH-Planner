@@ -32,6 +32,7 @@ export const DefensiveAdaptation: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "effects": {
+    "buffDuration": 1.1,
     "damageDebuff": {
       "scale": 0.25,
       "table": "Melee_Ones",
@@ -39,8 +40,7 @@ export const DefensiveAdaptation: Power = {
     },
     "durations": {
       "damageDebuff": 1.1
-    },
-    "buffDuration": 1.1
+    }
   },
   "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation"
 };

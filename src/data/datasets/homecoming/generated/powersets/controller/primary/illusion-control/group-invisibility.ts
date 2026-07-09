@@ -36,6 +36,58 @@ export const GroupInvisibility: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 120,
+    "defenseBuff": {
+      "aoe": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      },
+      "toxic": {
+        "scale": 0.25,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 120,
+      "stealth": 120,
+      "threatDebuff": 120
+    },
     "stealth": {
       "stealthPvE": {
         "scale": 60,
@@ -50,61 +102,9 @@ export const GroupInvisibility: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "durations": {
-      "stealth": 120,
-      "defenseBuff": 120,
-      "threatDebuff": 120
-    },
-    "defenseBuff": {
-      "ranged": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.25,
-        "table": "Ranged_Buff_Def"
-      }
-    },
     "threatDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
-    },
-    "buffDuration": 120
+    }
   }
 };

@@ -53,39 +53,18 @@ export const ReactionTime: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "slow": {
-      "runSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow",
-        "toWho": "Self"
-      },
-      "flySpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow",
-        "toWho": "Self"
-      },
-      "jumpSpeed": {
-        "scale": 0.7,
-        "table": "Melee_Slow",
-        "toWho": "Self"
-      },
-      "jumpHeight": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
+    "absorb": {
+      "scale": 0.15,
+      "table": "Melee_HealSelf"
     },
+    "buffDuration": 10,
     "durations": {
-      "slow": 10,
-      "rechargeDebuff": 10,
+      "absorb": 12,
       "movement": 10,
-      "specialBuff": 10,
+      "rechargeDebuff": 10,
       "recoveryBuff": 1.25,
-      "absorb": 12
-    },
-    "rechargeDebuff": {
-      "scale": 0.4,
-      "table": "Melee_Slow",
-      "toWho": "Self"
+      "slow": 10,
+      "specialBuff": 10
     },
     "movement": {
       "runSpeed": {
@@ -93,20 +72,41 @@ export const ReactionTime: Power = {
         "table": "Melee_SpeedRunning"
       }
     },
-    "specialBuff": {
-      "movement": {
-        "scale": 0.7,
-        "table": "Melee_Slow"
-      }
+    "rechargeDebuff": {
+      "scale": 0.4,
+      "table": "Melee_Slow",
+      "toWho": "Self"
     },
     "recoveryBuff": {
       "scale": 0.5,
       "table": "Melee_Ones"
     },
-    "absorb": {
-      "scale": 0.15,
-      "table": "Melee_HealSelf"
+    "slow": {
+      "flySpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow",
+        "toWho": "Self"
+      },
+      "jumpHeight": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow",
+        "toWho": "Self"
+      },
+      "runSpeed": {
+        "scale": 0.7,
+        "table": "Melee_Slow",
+        "toWho": "Self"
+      }
     },
-    "buffDuration": 10
+    "specialBuff": {
+      "movement": {
+        "scale": 0.7,
+        "table": "Melee_Slow"
+      }
+    }
   }
 };

@@ -51,10 +51,10 @@ export const SpecOps: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Spec_Ops",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "MastermindPets_Spec_Ops",
+      "isPseudoPet": false
     }
   }
 };

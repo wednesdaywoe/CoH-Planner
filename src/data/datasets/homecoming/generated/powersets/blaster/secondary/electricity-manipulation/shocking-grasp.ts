@@ -52,33 +52,33 @@ export const ShockingGrasp: Power = {
     "tickRate": 1
   },
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Melee_Immobilize"
-    },
-    "enduranceDrain": {
-      "scale": 0.07,
+    "buffDuration": 8.5,
+    "damageBuff": {
+      "scale": 0.066,
       "table": "Melee_Ones"
     },
     "durations": {
+      "damageBuff": 8.5,
       "enduranceDrain": 8.1,
-      "recoveryDebuff": 4,
-      "damageBuff": 8.5
+      "recoveryDebuff": 4
     },
-    "recoveryDebuff": {
-      "scale": 1,
+    "enduranceDrain": {
+      "scale": 0.07,
       "table": "Melee_Ones"
     },
     "enduranceGain": {
       "scale": 9.1,
       "table": "Melee_Ones"
     },
-    "damageBuff": {
-      "scale": 0.066,
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Melee_Immobilize"
+    },
+    "recoveryDebuff": {
+      "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 8.5,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

@@ -34,14 +34,14 @@ export const Energize: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "effectDuration": 30,
+    "buffDuration": 30,
     "durations": {
       "regenBuff": 30
     },
+    "effectDuration": 30,
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 30
+    }
   }
 };

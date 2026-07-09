@@ -39,18 +39,18 @@ export const Smoke: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 60,
     "durations": {
       "perceptionDebuff": 60,
       "tohitDebuff": 60
     },
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Ranged_Ones"
+    },
     "tohitDebuff": {
       "scale": 0.5,
       "table": "Ranged_Debuff_ToHit"
-    },
-    "buffDuration": 60
+    }
   }
 };

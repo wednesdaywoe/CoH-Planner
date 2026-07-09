@@ -42,6 +42,11 @@ export const IntimidatingPresence: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2,
+    "durations": {
+      "immobilize": 2
+    },
+    "effectDuration": 2,
     "fear": {
       "mag": 3,
       "scale": 10,
@@ -51,11 +56,6 @@ export const IntimidatingPresence: Power = {
       "mag": 3,
       "scale": 15,
       "table": "Melee_Immobilize"
-    },
-    "effectDuration": 2,
-    "durations": {
-      "immobilize": 2
-    },
-    "buffDuration": 2
+    }
   }
 };

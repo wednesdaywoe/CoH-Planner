@@ -36,6 +36,78 @@ export const WetIce: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      },
+      "movement": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
+    },
+    "defenseBuff": {
+      "cold": {
+        "scale": 0.1,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.1,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.1,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.1,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.1,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.1,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "mezResistance": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "mezResistance": {
       "knockback": {
         "scale": 100,
@@ -46,93 +118,21 @@ export const WetIce: Power = {
         "table": "Melee_Ones"
       }
     },
-    "durations": {
-      "mezResistance": 0.75,
-      "knockback": 0.75,
-      "knockup": 0.75,
-      "stun": 0.75,
-      "hold": 0.75,
-      "sleep": 0.75,
-      "immobilize": 0.75,
-      "debuffResistance": 0.75,
-      "resistance": 0.75,
-      "defenseBuff": 0.75
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "resistance": {
       "cold": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       }
     },
-    "defenseBuff": {
-      "smashing": {
-        "scale": 0.1,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.1,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.1,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.1,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.1,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.1,
-        "table": "Melee_Buff_Def"
-      }
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 0.75
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

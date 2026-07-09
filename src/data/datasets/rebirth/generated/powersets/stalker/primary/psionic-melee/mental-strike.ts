@@ -50,14 +50,14 @@ export const MentalStrike: Power = {
     }
   ],
   "effects": {
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
+    "buffDuration": 6,
     "durations": {
       "rechargeDebuff": 6
     },
-    "buffDuration": 6
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    }
   },
   "conditionalEffects": [
     {

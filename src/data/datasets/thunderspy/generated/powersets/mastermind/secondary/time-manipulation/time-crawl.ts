@@ -37,13 +37,13 @@ export const TimeCrawl: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 20,
     "durations": {
       "regenDebuff": 20
     },
-    "buffDuration": 20
+    "regenDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    }
   }
 };

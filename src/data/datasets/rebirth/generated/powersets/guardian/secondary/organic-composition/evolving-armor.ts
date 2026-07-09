@@ -37,50 +37,12 @@ export const EvolvingArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistanceDebuff": {
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "fire": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "toxic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
+    "buffDuration": 0.75,
     "durations": {
-      "resistanceDebuff": 0.75,
-      "resistance": 0.75
+      "resistance": 0.75,
+      "resistanceDebuff": 0.75
     },
     "resistance": {
-      "fire": {
-        "scale": 0.413,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 0.038
-      },
       "cold": {
         "scale": 0.413,
         "table": "Melee_Res_Dmg",
@@ -90,6 +52,16 @@ export const EvolvingArmor: Power = {
         "scale": 0.413,
         "table": "Melee_Res_Dmg",
         "perTarget": 0.038
+      },
+      "fire": {
+        "scale": 0.413,
+        "table": "Melee_Res_Dmg",
+        "perTarget": 0.038
+      },
+      "lethal": {
+        "scale": 0.55,
+        "table": "Melee_Res_Dmg",
+        "perTarget": 0.05
       },
       "negative": {
         "scale": 0.413,
@@ -101,22 +73,50 @@ export const EvolvingArmor: Power = {
         "table": "Melee_Res_Dmg",
         "perTarget": 0.03
       },
-      "toxic": {
-        "scale": 0.55,
-        "table": "Melee_Res_Dmg",
-        "perTarget": 0.05
-      },
       "smashing": {
         "scale": 0.55,
         "table": "Melee_Res_Dmg",
         "perTarget": 0.05
       },
-      "lethal": {
+      "toxic": {
         "scale": 0.55,
         "table": "Melee_Res_Dmg",
         "perTarget": 0.05
       }
     },
-    "buffDuration": 0.75
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    }
   }
 };

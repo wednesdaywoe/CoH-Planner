@@ -30,6 +30,13 @@ export const Dodge: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.2,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "melee": {
         "scale": 0.75,
@@ -37,29 +44,11 @@ export const Dodge: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
       "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
       "resistance": 0.75
     },
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.2,
-        "table": "Melee_Res_Boolean"
-      }
-    },
     "resistance": {
-      "smashing": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "lethal": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
-      "fire": {
-        "scale": 0,
-        "table": "Melee_Ones"
-      },
       "cold": {
         "scale": 0,
         "table": "Melee_Ones"
@@ -68,12 +57,23 @@ export const Dodge: Power = {
         "scale": 0,
         "table": "Melee_Ones"
       },
+      "fire": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
+      "lethal": {
+        "scale": 0,
+        "table": "Melee_Ones"
+      },
       "negative": {
         "scale": 0,
         "table": "Melee_Ones"
+      },
+      "smashing": {
+        "scale": 0,
+        "table": "Melee_Ones"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "mechanicType": "parentMechanic"
 };

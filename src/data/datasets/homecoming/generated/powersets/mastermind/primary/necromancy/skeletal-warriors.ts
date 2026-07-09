@@ -46,10 +46,10 @@ export const SkeletalWarriors: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Skeletal_Warrior",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "MastermindPets_Skeletal_Warrior",
+      "isPseudoPet": false
     }
   }
 };

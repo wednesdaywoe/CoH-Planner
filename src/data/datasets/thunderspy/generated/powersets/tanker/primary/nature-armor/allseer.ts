@@ -40,28 +40,9 @@ export const Allseer: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 1.25,
     "defenseBuff": {
-      "melee": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "ranged": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
@@ -73,6 +54,18 @@ export const Allseer: Power = {
         "scale": 1,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 1,
         "table": "Melee_Buff_Def"
@@ -80,11 +73,18 @@ export const Allseer: Power = {
       "psionic": {
         "scale": 1,
         "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Buff_Def"
       }
     },
     "durations": {
       "defenseBuff": 1.25
-    },
-    "buffDuration": 1.25
+    }
   }
 };

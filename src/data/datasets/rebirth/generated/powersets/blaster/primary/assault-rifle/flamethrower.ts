@@ -49,13 +49,13 @@ export const Flamethrower: Power = {
     "tickRate": 1
   },
   "effects": {
+    "buffDuration": 9.83,
     "damageBuff": {
       "scale": 0.065,
       "table": "Ranged_Ones"
     },
     "durations": {
       "damageBuff": 9.83
-    },
-    "buffDuration": 9.83
+    }
   }
 };

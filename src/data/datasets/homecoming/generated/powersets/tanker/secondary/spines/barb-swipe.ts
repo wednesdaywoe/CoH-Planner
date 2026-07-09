@@ -59,17 +59,26 @@ export const BarbSwipe: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 4,
+    "durations": {
+      "rechargeDebuff": 2,
+      "slow": 4
+    },
     "immobilize": {
       "mag": 0.33000001311302185,
       "scale": 8,
       "table": "Melee_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "runSpeed": {
+      "flySpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
-      "flySpeed": {
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
@@ -77,20 +86,11 @@ export const BarbSwipe: Power = {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
-      "jumpHeight": {
+      "runSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 4,
-      "rechargeDebuff": 2
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Melee_Slow"
-    },
-    "buffDuration": 4
+    }
   },
   "requires": "Tanker_Defense.Shield_Defense !"
 };

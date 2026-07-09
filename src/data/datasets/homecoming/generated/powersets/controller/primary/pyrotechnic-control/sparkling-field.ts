@@ -60,31 +60,26 @@ export const SparklingField: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "resistanceDebuff": 5,
+      "slow": 10
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Ranged_Ones"
-      }
-    },
-    "durations": {
-      "slow": 10,
-      "resistanceDebuff": 5
     },
     "knockback": {
       "scale": 20,
       "table": "Ranged_Ones"
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -92,11 +87,7 @@ export const SparklingField: Power = {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.2,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -108,12 +99,21 @@ export const SparklingField: Power = {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.2,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.2,
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "buffDuration": 10
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Ranged_Ones"
+      }
+    }
   },
   "specialEffects": [
     {

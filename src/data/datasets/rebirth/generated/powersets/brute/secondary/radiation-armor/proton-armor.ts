@@ -40,7 +40,15 @@ export const ProtonArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
     "resistance": {
+      "cold": {
+        "scale": 2,
+        "table": "Melee_Res_Dmg"
+      },
       "energy": {
         "scale": 4,
         "table": "Melee_Res_Dmg"
@@ -52,15 +60,7 @@ export const ProtonArmor: Power = {
       "negative": {
         "scale": 2,
         "table": "Melee_Res_Dmg"
-      },
-      "cold": {
-        "scale": 2,
-        "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

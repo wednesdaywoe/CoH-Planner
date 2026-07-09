@@ -46,45 +46,13 @@ export const Resurrect: Power = {
     "tickRate": 1
   },
   "effects": {
-    "enduranceGain": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "tohitBuff": {
-      "scale": 1.5,
-      "table": "Ranged_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 120,
-      "damageBuff": 120,
-      "defenseBuff": 120
-    },
+    "buffDuration": 120,
     "damageBuff": {
       "scale": 2.5,
       "table": "Ranged_Buff_Dmg"
     },
     "defenseBuff": {
-      "melee": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "ranged": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
       "aoe": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "smashing": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       },
@@ -96,6 +64,18 @@ export const Resurrect: Power = {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
       },
+      "fire": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "melee": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
       "negative": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
@@ -103,8 +83,28 @@ export const Resurrect: Power = {
       "psionic": {
         "scale": 1.5,
         "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
       }
     },
-    "buffDuration": 120
+    "durations": {
+      "damageBuff": 120,
+      "defenseBuff": 120,
+      "tohitBuff": 120
+    },
+    "enduranceGain": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
+    "tohitBuff": {
+      "scale": 1.5,
+      "table": "Ranged_Buff_ToHit"
+    }
   }
 };

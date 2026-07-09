@@ -57,13 +57,13 @@ export const ThornBarrage: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 1.75,
     "durations": {
       "knockback": 1.75
     },
-    "buffDuration": 1.75
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    }
   }
 };

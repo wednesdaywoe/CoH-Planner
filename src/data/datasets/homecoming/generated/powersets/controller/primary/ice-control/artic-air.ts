@@ -45,22 +45,34 @@ export const ArticAir: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
+    "confuse": {
+      "mag": 3,
+      "scale": 2,
+      "table": "Ranged_Fear"
+    },
+    "durations": {
+      "fear": 2,
+      "rechargeDebuff": 2.25,
+      "slow": 2.25,
+      "stealth": 2.25
+    },
+    "effectDuration": 2,
+    "fear": {
+      "mag": 1,
+      "scale": 3,
+      "table": "Ranged_Ones"
+    },
     "rechargeDebuff": {
       "scale": 0.5,
       "table": "Ranged_Slow"
     },
-    "durations": {
-      "rechargeDebuff": 2.25,
-      "slow": 2.25,
-      "stealth": 2.25,
-      "fear": 2
-    },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Ranged_SpeedRunning"
-      },
       "flySpeed": {
+        "scale": 0.65,
+        "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
@@ -68,9 +80,9 @@ export const ArticAir: Power = {
         "scale": 0.65,
         "table": "Ranged_Slow"
       },
-      "jumpHeight": {
-        "scale": 0.65,
-        "table": "Ranged_Slow"
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
       }
     },
     "stealth": {
@@ -82,19 +94,7 @@ export const ArticAir: Power = {
         "scale": 389,
         "table": "Ranged_Ones"
       }
-    },
-    "confuse": {
-      "mag": 3,
-      "scale": 2,
-      "table": "Ranged_Fear"
-    },
-    "fear": {
-      "mag": 1,
-      "scale": 3,
-      "table": "Ranged_Ones"
-    },
-    "effectDuration": 2,
-    "buffDuration": 2.25
+    }
   },
   "specialEffects": [
     {

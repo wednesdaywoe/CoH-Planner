@@ -56,19 +56,19 @@ export const ThornBarrage: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 1,
-      "table": "Ranged_Knockback"
-    },
-    "durations": {
-      "knockback": 1.75,
-      "defenseDebuff": 12
-    },
+    "buffDuration": 12,
     "defenseDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Def"
     },
-    "buffDuration": 12
+    "durations": {
+      "defenseDebuff": 12,
+      "knockback": 1.75
+    },
+    "knockback": {
+      "scale": 1,
+      "table": "Ranged_Knockback"
+    }
   },
   "specialEffects": [
     {

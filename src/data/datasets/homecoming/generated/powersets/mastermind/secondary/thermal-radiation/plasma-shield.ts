@@ -38,12 +38,16 @@ export const PlasmaShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 240,
+    "durations": {
+      "resistance": 240
+    },
     "resistance": {
-      "fire": {
+      "energy": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
-      "energy": {
+      "fire": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
@@ -51,10 +55,6 @@ export const PlasmaShield: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 240
-    },
-    "buffDuration": 240
+    }
   }
 };

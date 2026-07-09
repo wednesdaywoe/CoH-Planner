@@ -32,20 +32,21 @@ export const PowerArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "maxHPBuff": {
-      "scale": 2,
-      "table": "Melee_HealSelf"
-    },
+    "buffDuration": 10.25,
     "durations": {
       "maxHPBuff": 10.25,
       "resistance": 10.25
     },
+    "maxHPBuff": {
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    },
     "resistance": {
-      "smashing": {
+      "cold": {
         "scale": 0.75,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 0.75,
         "table": "Melee_Res_Dmg"
       },
@@ -53,11 +54,7 @@ export const PowerArmor: Power = {
         "scale": 0.75,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
-        "scale": 0.75,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 0.75,
         "table": "Melee_Res_Dmg"
       },
@@ -69,12 +66,15 @@ export const PowerArmor: Power = {
         "scale": 0.75,
         "table": "Melee_Res_Dmg"
       },
+      "smashing": {
+        "scale": 0.75,
+        "table": "Melee_Res_Dmg"
+      },
       "toxic": {
         "scale": 0.75,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "buffDuration": 10.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

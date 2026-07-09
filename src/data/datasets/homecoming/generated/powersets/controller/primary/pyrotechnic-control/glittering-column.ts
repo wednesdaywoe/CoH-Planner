@@ -44,17 +44,17 @@ export const GlitteringColumn: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_FightPreferMelee",
+      "copyBoosts": true,
       "displayName": "Glittering Column",
+      "duration": 7,
+      "entity": "PL_FightPreferMelee",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Pyrotechnic_Control.GlitteringColumn_Skin",
         "Redirects.Pyrotechnic_Control.GlitteringColumn_Aura",
         "Redirects.Pyrotechnic_Control.GlitteringColumn_ToHitAura",
         "Redirects.Pyrotechnic_Control.GlitteringColumn_SelfDestruct"
       ],
-      "duration": 7,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Glittering Column",

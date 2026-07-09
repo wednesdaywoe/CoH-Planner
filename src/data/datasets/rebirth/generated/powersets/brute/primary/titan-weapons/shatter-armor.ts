@@ -49,6 +49,7 @@ export const ShatterArmor: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
@@ -58,11 +59,11 @@ export const ShatterArmor: Power = {
       "resistanceDebuff": 8
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
@@ -70,11 +71,7 @@ export const ShatterArmor: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
-      "cold": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
@@ -86,6 +83,10 @@ export const ShatterArmor: Power = {
         "scale": 1,
         "table": "Melee_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      },
       "toxic": {
         "scale": 1,
         "table": "Melee_Res_Dmg"
@@ -94,7 +95,6 @@ export const ShatterArmor: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 10
+    }
   }
 };

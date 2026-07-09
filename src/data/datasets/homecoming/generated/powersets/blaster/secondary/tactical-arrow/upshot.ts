@@ -34,24 +34,24 @@ export const Upshot: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "tohitBuff": {
-      "scale": 1.5,
-      "table": "Melee_Buff_ToHit"
-    },
-    "durations": {
-      "tohitBuff": 10,
-      "damageBuff": 10,
-      "rechargeBuff": 10
-    },
+    "buffDuration": 10,
     "damageBuff": {
       "scale": 6.5,
       "table": "Melee_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 10,
+      "rechargeBuff": 10,
+      "tohitBuff": 10
     },
     "rechargeBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
     },
-    "buffDuration": 10,
+    "tohitBuff": {
+      "scale": 1.5,
+      "table": "Melee_Buff_ToHit"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

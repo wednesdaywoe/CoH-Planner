@@ -30,24 +30,35 @@ export const Permafrost: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.25,
+    "debuffResistance": {
+      "movement": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      },
+      "recharge": {
+        "scale": 0.2,
+        "table": "Melee_Ones"
+      }
+    },
+    "durations": {
+      "debuffResistance": 10.25,
+      "resistance": 10.25
+    },
     "resistance": {
       "cold": {
         "scale": 3,
+        "table": "Melee_Res_Dmg"
+      },
+      "energy": {
+        "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
       "fire": {
         "scale": 1.25,
         "table": "Melee_Res_Dmg"
       },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
       "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Res_Dmg"
-      },
-      "energy": {
         "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
@@ -59,26 +70,15 @@ export const Permafrost: Power = {
         "scale": 0.5,
         "table": "Melee_Res_Dmg"
       },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Res_Dmg"
+      },
       "toxic": {
         "scale": 0.5,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "debuffResistance": 10.25
-    },
-    "debuffResistance": {
-      "movement": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      },
-      "recharge": {
-        "scale": 0.2,
-        "table": "Melee_Ones"
-      }
-    },
-    "buffDuration": 10.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

@@ -41,16 +41,17 @@ export const Elude: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
     "defenseBuff": {
+      "aoe": {
+        "scale": 3,
+        "table": "Melee_Buff_Def"
+      },
       "melee": {
         "scale": 3,
         "table": "Melee_Buff_Def"
       },
       "ranged": {
-        "scale": 3,
-        "table": "Melee_Buff_Def"
-      },
-      "aoe": {
         "scale": 3,
         "table": "Melee_Buff_Def"
       }
@@ -62,7 +63,6 @@ export const Elude: Power = {
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 60
+    }
   }
 };

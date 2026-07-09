@@ -44,14 +44,14 @@ export const Rejuvenate: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "recoveryBuff": {
-          "scale": 0.5,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 30,
         "durations": {
           "recoveryBuff": 30
         },
-        "buffDuration": 30
+        "recoveryBuff": {
+          "scale": 0.5,
+          "table": "Melee_Ones"
+        }
       }
     }
   ]

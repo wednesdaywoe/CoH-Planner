@@ -57,29 +57,11 @@ export const SoulTransfer: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 30,
-      "scale": 10,
-      "table": "Melee_Stun"
-    },
-    "recoveryBuff": {
-      "scale": 0.05,
-      "table": "Ranged_Ones",
-      "perTarget": 0.05
-    },
+    "buffDuration": 90,
     "durations": {
       "recoveryBuff": 90,
       "regenBuff": 90,
       "untouchable": 15
-    },
-    "regenBuff": {
-      "scale": 0.15,
-      "table": "Melee_Ones",
-      "perTarget": 0.15
-    },
-    "untouchable": {
-      "scale": 10,
-      "table": "Melee_Ones"
     },
     "enduranceGain": {
       "scale": 30,
@@ -91,6 +73,24 @@ export const SoulTransfer: Power = {
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "buffDuration": 90
+    "recoveryBuff": {
+      "scale": 0.05,
+      "table": "Ranged_Ones",
+      "perTarget": 0.05
+    },
+    "regenBuff": {
+      "scale": 0.15,
+      "table": "Melee_Ones",
+      "perTarget": 0.15
+    },
+    "stun": {
+      "mag": 30,
+      "scale": 10,
+      "table": "Melee_Stun"
+    },
+    "untouchable": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    }
   }
 };

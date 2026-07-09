@@ -83,14 +83,14 @@ export const Pistols: Power = {
     }
   ],
   "effects": {
-    "durations": {
-      "damageBuff": 8.5
-    },
+    "buffDuration": 8,
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8,
+    "durations": {
+      "damageBuff": 8.5
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"
@@ -126,10 +126,6 @@ export const Pistols: Power = {
           "table": "Ranged_Slow"
         },
         "slow": {
-          "runSpeed": {
-            "scale": 0.12,
-            "table": "Ranged_Slow"
-          },
           "flySpeed": {
             "scale": 0.12,
             "table": "Ranged_Slow"
@@ -139,6 +135,10 @@ export const Pistols: Power = {
             "table": "Ranged_Slow"
           },
           "jumpSpeed": {
+            "scale": 0.12,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
             "scale": 0.12,
             "table": "Ranged_Slow"
           }

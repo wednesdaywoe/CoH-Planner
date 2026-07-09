@@ -40,6 +40,7 @@ export const HeightenedSenses: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "smashing": {
         "scale": 0.33,
@@ -48,7 +49,6 @@ export const HeightenedSenses: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

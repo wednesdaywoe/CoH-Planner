@@ -37,14 +37,14 @@ export const Transference: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Transference",
-      "duration": 1
-    },
     "enduranceDrain": {
       "scale": 0.55,
       "table": "Ranged_Ones"
+    },
+    "summon": {
+      "duration": 1,
+      "entity": "Pets_Transference",
+      "isPseudoPet": false
     }
   }
 };

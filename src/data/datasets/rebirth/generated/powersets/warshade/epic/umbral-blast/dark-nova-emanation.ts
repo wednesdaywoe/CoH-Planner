@@ -50,7 +50,20 @@ export const DarkNovaEmanation: Power = {
     "table": "Ranged_SSDamage"
   },
   "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "rechargeDebuff": 8,
+      "slow": 8
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Slow"
+    },
     "slow": {
+      "flySpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
+      },
       "jumpHeight": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -62,21 +75,8 @@ export const DarkNovaEmanation: Power = {
       "runSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 8,
-      "rechargeDebuff": 8
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 8
+    }
   },
   "requires": "0",
   "modesRequired": [

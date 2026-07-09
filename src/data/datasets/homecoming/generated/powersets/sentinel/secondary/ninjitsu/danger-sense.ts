@@ -40,35 +40,35 @@ export const DangerSense: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.5,
+        "table": "Melee_Res_Boolean"
+      },
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
+    },
     "defenseBuff": {
-      "ranged": {
+      "aoe": {
         "scale": 1.85,
         "table": "Melee_Buff_Def"
       },
-      "aoe": {
+      "ranged": {
         "scale": 1.85,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
       "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
       "perceptionBuff": 0.75
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "defense": {
-        "scale": 0.5,
-        "table": "Melee_Res_Boolean"
-      }
     },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 0.75
+    }
   }
 };

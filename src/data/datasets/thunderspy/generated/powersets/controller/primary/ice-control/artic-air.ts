@@ -53,14 +53,14 @@ export const ArticAir: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "fear": {
-      "mag": 3,
-      "scale": 2,
-      "table": "Ranged_Fear"
-    },
     "confuse": {
       "mag": 3,
       "scale": 4,
+      "table": "Ranged_Fear"
+    },
+    "fear": {
+      "mag": 3,
+      "scale": 2,
       "table": "Ranged_Fear"
     }
   }

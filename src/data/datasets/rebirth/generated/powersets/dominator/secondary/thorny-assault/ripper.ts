@@ -60,10 +60,7 @@ export const Ripper: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 12,
     "defenseDebuff": {
       "scale": 3,
       "table": "Melee_Debuff_Def"
@@ -71,7 +68,10 @@ export const Ripper: Power = {
     "durations": {
       "defenseDebuff": 12
     },
-    "buffDuration": 12
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   },
   "specialEffects": [
     {

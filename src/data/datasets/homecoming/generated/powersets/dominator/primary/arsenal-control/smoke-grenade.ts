@@ -42,16 +42,16 @@ export const SmokeGrenade: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Class_Minion_Pets",
+      "copyBoosts": true,
       "displayName": "Smoke Grenade",
+      "duration": 30,
+      "entity": "Class_Minion_Pets",
+      "isPseudoPet": false,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Redirects.Assault_Rifle.Smoke_Grenade",
         "Redirects.Assault_Rifle.Smoke_Confusion"
       ],
-      "duration": 30,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Smoke Grenade",

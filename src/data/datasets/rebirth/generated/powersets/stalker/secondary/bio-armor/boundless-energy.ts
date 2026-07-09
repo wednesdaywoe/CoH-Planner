@@ -32,24 +32,7 @@ export const BoundlessEnergy: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "maxHPBuff": {
-      "scale": 1.25,
-      "table": "Melee_HealSelf"
-    },
-    "durations": {
-      "maxHPBuff": 5.25,
-      "regenBuff": 5.25,
-      "recoveryBuff": 5.25,
-      "debuffResistance": 5.25
-    },
-    "regenBuff": {
-      "scale": 0.65,
-      "table": "Melee_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 0.325,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 5.25,
     "debuffResistance": {
       "endurance": {
         "scale": 2,
@@ -64,7 +47,24 @@ export const BoundlessEnergy: Power = {
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 5.25
+    "durations": {
+      "debuffResistance": 5.25,
+      "maxHPBuff": 5.25,
+      "recoveryBuff": 5.25,
+      "regenBuff": 5.25
+    },
+    "maxHPBuff": {
+      "scale": 1.25,
+      "table": "Melee_HealSelf"
+    },
+    "recoveryBuff": {
+      "scale": 0.325,
+      "table": "Melee_Ones"
+    },
+    "regenBuff": {
+      "scale": 0.65,
+      "table": "Melee_Ones"
+    }
   },
   "conditionalEffects": [
     {
@@ -73,14 +73,14 @@ export const BoundlessEnergy: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "maxHPBuff": {
-          "scale": 0.5625,
-          "table": "Melee_HealSelf"
-        },
+        "buffDuration": 5.25,
         "durations": {
           "maxHPBuff": 5.25
         },
-        "buffDuration": 5.25
+        "maxHPBuff": {
+          "scale": 0.5625,
+          "table": "Melee_HealSelf"
+        }
       },
       "group": "adaptation"
     },
@@ -90,19 +90,19 @@ export const BoundlessEnergy: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "regenBuffUnenhanced": {
-          "scale": 0.195,
-          "table": "Melee_Ones"
-        },
+        "buffDuration": 5.25,
         "durations": {
-          "regenBuffUnenhanced": 5.25,
-          "recoveryBuffUnenhanced": 5.25
+          "recoveryBuffUnenhanced": 5.25,
+          "regenBuffUnenhanced": 5.25
         },
         "recoveryBuffUnenhanced": {
           "scale": 0.13,
           "table": "Melee_Ones"
         },
-        "buffDuration": 5.25
+        "regenBuffUnenhanced": {
+          "scale": 0.195,
+          "table": "Melee_Ones"
+        }
       },
       "group": "adaptation"
     }

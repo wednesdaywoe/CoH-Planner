@@ -47,13 +47,13 @@ export const Channelgun: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 5,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 5
-    },
-    "buffDuration": 5
+    }
   }
 };

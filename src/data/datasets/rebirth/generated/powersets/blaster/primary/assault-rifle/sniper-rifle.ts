@@ -49,10 +49,7 @@ export const SniperRifle: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.7,
-      "table": "Ranged_Knockback"
-    },
+    "buffDuration": 8.17,
     "damageBuff": {
       "scale": 0.044,
       "table": "Ranged_Ones"
@@ -60,7 +57,10 @@ export const SniperRifle: Power = {
     "durations": {
       "damageBuff": 8.17
     },
-    "buffDuration": 8.17,
+    "knockback": {
+      "scale": 0.7,
+      "table": "Ranged_Knockback"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

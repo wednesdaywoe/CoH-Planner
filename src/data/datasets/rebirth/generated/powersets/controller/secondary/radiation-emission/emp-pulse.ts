@@ -41,28 +41,28 @@ export const EMPPulse: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 15,
-      "table": "Ranged_Immobilize"
+    "buffDuration": 15,
+    "durations": {
+      "recoveryDebuff": 15,
+      "regenDebuff": 15
     },
     "enduranceDrain": {
       "scale": 0.4,
       "table": "Ranged_Ones"
     },
-    "regenDebuff": {
-      "scale": 10,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "regenDebuff": 15,
-      "recoveryDebuff": 15
+    "hold": {
+      "mag": 3,
+      "scale": 15,
+      "table": "Ranged_Immobilize"
     },
     "recoveryDebuff": {
       "scale": 10,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 15
+    "regenDebuff": {
+      "scale": 10,
+      "table": "Ranged_Ones"
+    }
   },
   "conditionalEffects": [
     {

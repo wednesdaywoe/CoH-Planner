@@ -38,11 +38,11 @@ export const SonicHaven: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 240,
+    "durations": {
+      "resistance": 240
+    },
     "resistance": {
-      "fire": {
-        "scale": 2,
-        "table": "Ranged_Res_Dmg"
-      },
       "cold": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
@@ -51,14 +51,14 @@ export const SonicHaven: Power = {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       },
+      "fire": {
+        "scale": 2,
+        "table": "Ranged_Res_Dmg"
+      },
       "negative": {
         "scale": 2,
         "table": "Ranged_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 240
-    },
-    "buffDuration": 240
+    }
   }
 };

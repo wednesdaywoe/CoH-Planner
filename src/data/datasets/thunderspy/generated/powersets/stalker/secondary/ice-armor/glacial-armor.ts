@@ -42,6 +42,7 @@ export const GlacialArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "energy": {
         "scale": 2,
@@ -54,7 +55,6 @@ export const GlacialArmor: Power = {
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

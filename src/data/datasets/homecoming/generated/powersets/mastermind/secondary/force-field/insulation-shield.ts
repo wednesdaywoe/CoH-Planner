@@ -38,36 +38,7 @@ export const InsulationShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "defenseBuff": {
-      "ranged": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "aoe": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "fire": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "energy": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "negative": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 240,
-      "debuffResistance": 240
-    },
+    "buffDuration": 240,
     "debuffResistance": {
       "endurance": {
         "scale": 2,
@@ -78,6 +49,35 @@ export const InsulationShield: Power = {
         "table": "Ranged_Res_Boolean"
       }
     },
-    "buffDuration": 240
+    "defenseBuff": {
+      "aoe": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "cold": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.5,
+        "table": "Ranged_Buff_Def"
+      }
+    },
+    "durations": {
+      "debuffResistance": 240,
+      "defenseBuff": 240
+    }
   }
 };

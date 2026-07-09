@@ -114,11 +114,11 @@ export const EmptyClips: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8,
     "knockback": {
       "scale": 0.4,
       "table": "Ranged_Knockback"
-    },
-    "buffDuration": 8
+    }
   },
   "specialEffects": [
     {
@@ -157,11 +157,11 @@ export const EmptyClips: Power = {
           "table": "Ranged_Slow"
         },
         "slow": {
-          "runSpeed": {
+          "flySpeed": {
             "scale": 0.15,
             "table": "Ranged_Slow"
           },
-          "flySpeed": {
+          "jumpHeight": {
             "scale": 0.15,
             "table": "Ranged_Slow"
           },
@@ -169,7 +169,7 @@ export const EmptyClips: Power = {
             "scale": 0.15,
             "table": "Ranged_Slow"
           },
-          "jumpHeight": {
+          "runSpeed": {
             "scale": 0.15,
             "table": "Ranged_Slow"
           }

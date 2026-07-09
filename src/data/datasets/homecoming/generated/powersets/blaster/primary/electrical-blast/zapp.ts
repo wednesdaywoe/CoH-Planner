@@ -50,6 +50,10 @@ export const Zapp: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "rangeBuff": 10
+    },
     "enduranceDrain": {
       "scale": 0.3,
       "table": "Ranged_EndDrain"
@@ -57,11 +61,7 @@ export const Zapp: Power = {
     "rangeBuff": {
       "scale": 0.5,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "rangeBuff": 10
-    },
-    "buffDuration": 10
+    }
   },
   "quickSnipe": {
     "stats": {

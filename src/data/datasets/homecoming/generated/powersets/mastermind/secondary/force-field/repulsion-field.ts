@@ -42,6 +42,10 @@ export const RepulsionField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.25,
+    "durations": {
+      "repel": 0.25
+    },
     "knockback": {
       "scale": 3,
       "table": "Ranged_Knockback"
@@ -49,10 +53,6 @@ export const RepulsionField: Power = {
     "repel": {
       "scale": 10,
       "table": "Ranged_Ones"
-    },
-    "durations": {
-      "repel": 0.25
-    },
-    "buffDuration": 0.25
+    }
   }
 };

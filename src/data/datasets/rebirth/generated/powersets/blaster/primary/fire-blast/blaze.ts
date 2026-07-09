@@ -53,6 +53,7 @@ export const Blaze: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8.5,
     "damageBuff": {
       "scale": 0.066,
       "table": "Ranged_Ones"
@@ -60,7 +61,6 @@ export const Blaze: Power = {
     "durations": {
       "damageBuff": 8.5
     },
-    "buffDuration": 8.5,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

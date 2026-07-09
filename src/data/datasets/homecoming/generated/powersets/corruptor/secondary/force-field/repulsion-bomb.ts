@@ -50,12 +50,20 @@ export const RepulsionBomb: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "resistanceDebuff": 30
+    },
+    "knockback": {
+      "scale": 9,
+      "table": "Ranged_Ones"
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -63,11 +71,7 @@ export const RepulsionBomb: Power = {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.5,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -79,24 +83,20 @@ export const RepulsionBomb: Power = {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.5,
         "table": "Ranged_Debuff_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 30
-    },
-    "knockback": {
-      "scale": 9,
-      "table": "Ranged_Ones"
-    },
     "stun": {
       "mag": 2,
       "scale": 8,
       "table": "Ranged_Stun"
-    },
-    "buffDuration": 30
+    }
   },
   "specialEffects": [
     {

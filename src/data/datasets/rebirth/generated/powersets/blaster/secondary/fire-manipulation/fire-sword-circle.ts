@@ -58,14 +58,14 @@ export const FireSwordCircle: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10.17,
     "damageBuff": {
       "scale": 0.07,
       "table": "Melee_Ones"
     },
     "durations": {
       "damageBuff": 10.17
-    },
-    "buffDuration": 10.17
+    }
   },
   "specialEffects": [
     {

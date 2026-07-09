@@ -40,9 +40,9 @@ export const LifegivingSpores: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "Pets_Lifegiving_Spores_Defender",
-      "duration": 99999
+      "isPseudoPet": false
     }
   },
   "requires": "Defender_Buff.Nature_Affinity.Living_Spores !"

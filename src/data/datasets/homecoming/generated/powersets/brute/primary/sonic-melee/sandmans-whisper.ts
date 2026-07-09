@@ -58,12 +58,16 @@ export const SandmansWhisper: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "resistanceDebuff": 15
+    },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
@@ -71,11 +75,7 @@ export const SandmansWhisper: Power = {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
@@ -87,19 +87,19 @@ export const SandmansWhisper: Power = {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       }
     },
-    "durations": {
-      "resistanceDebuff": 15
-    },
     "sleep": {
       "mag": 3,
       "scale": 15,
       "table": "Melee_Sleep"
-    },
-    "buffDuration": 15
+    }
   }
 };

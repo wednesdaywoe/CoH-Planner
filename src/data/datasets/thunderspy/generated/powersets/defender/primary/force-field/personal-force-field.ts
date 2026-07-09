@@ -42,13 +42,13 @@ export const PersonalForceField: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "defenseBuff": {
       "scale": 7.5,
       "table": "Melee_Buff_Def"
     },
     "durations": {
       "defenseBuff": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

@@ -47,11 +47,7 @@ export const WillDomination: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
-    "sleep": {
-      "mag": 3,
-      "scale": 16,
-      "table": "Ranged_Sleep"
-    },
+    "buffDuration": 8.6,
     "damageBuff": {
       "scale": 0.073,
       "table": "Ranged_Ones"
@@ -59,7 +55,11 @@ export const WillDomination: Power = {
     "durations": {
       "damageBuff": 8.6
     },
-    "buffDuration": 8.6,
+    "sleep": {
+      "mag": 3,
+      "scale": 16,
+      "table": "Ranged_Sleep"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

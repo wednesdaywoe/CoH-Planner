@@ -43,10 +43,7 @@ export const PaleWind: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenDebuff": {
-      "scale": 0.2,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 15,
     "durations": {
       "regenDebuff": 15
     },
@@ -55,7 +52,10 @@ export const PaleWind: Power = {
       "scale": 0.5,
       "table": "Melee_Fear"
     },
-    "buffDuration": 15
+    "regenDebuff": {
+      "scale": 0.2,
+      "table": "Ranged_Ones"
+    }
   },
   "conditionalEffects": [
     {

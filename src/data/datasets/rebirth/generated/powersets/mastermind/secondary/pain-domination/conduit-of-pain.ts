@@ -46,45 +46,45 @@ export const ConduitofPain: Power = {
     "tickRate": 1
   },
   "effects": {
-    "enduranceGain": {
-      "scale": 4,
-      "table": "Ranged_Ones"
-    },
-    "recoveryBuff": {
-      "scale": 1.75,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryBuff": 60,
-      "rechargeBuff": 60,
-      "damageBuff": 60,
-      "tohitBuff": 60,
-      "damageDebuff": 30,
-      "tohitDebuff": 30
-    },
-    "rechargeBuff": {
-      "scale": 0.75,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 60,
     "damageBuff": {
       "scale": 3,
       "table": "Ranged_Buff_Dmg"
-    },
-    "tohitBuff": {
-      "scale": 2,
-      "table": "Ranged_Buff_ToHit"
     },
     "damageDebuff": {
       "scale": 3,
       "table": "Ranged_Debuff_Dam",
       "toWho": "Self"
     },
+    "durations": {
+      "damageBuff": 60,
+      "damageDebuff": 30,
+      "rechargeBuff": 60,
+      "recoveryBuff": 60,
+      "tohitBuff": 60,
+      "tohitDebuff": 30
+    },
+    "enduranceGain": {
+      "scale": 4,
+      "table": "Ranged_Ones"
+    },
+    "rechargeBuff": {
+      "scale": 0.75,
+      "table": "Ranged_Ones"
+    },
+    "recoveryBuff": {
+      "scale": 1.75,
+      "table": "Ranged_Ones"
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Ranged_Buff_ToHit"
+    },
     "tohitDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_ToHit",
       "toWho": "Self"
     },
-    "buffDuration": 60,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

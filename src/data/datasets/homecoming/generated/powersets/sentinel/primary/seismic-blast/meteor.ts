@@ -42,14 +42,14 @@ export const Meteor: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "copyBoosts": true,
+      "duration": 10,
       "entity": "Meteor",
+      "isPseudoPet": false,
       "powers": [
         "Pets.ResistAll.ResistAll",
         "Redirects.Seismic_Blast.Sentinel_Meteor"
       ],
-      "duration": 10,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Meteor",

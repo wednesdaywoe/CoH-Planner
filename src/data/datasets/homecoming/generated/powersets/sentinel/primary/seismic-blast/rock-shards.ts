@@ -64,13 +64,13 @@ export const RockShards: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 8,
     "defenseDebuff": {
       "scale": 0.5,
       "table": "Ranged_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 8
-    },
-    "buffDuration": 8
+    }
   }
 };

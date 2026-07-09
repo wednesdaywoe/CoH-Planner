@@ -30,8 +30,19 @@ export const Precognition: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.25,
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.2312,
+        "table": "Melee_Res_Boolean"
+      },
+      "perception": {
+        "scale": 0.6,
+        "table": "Melee_Ones"
+      }
+    },
     "defenseBuff": {
-      "ranged": {
+      "aoe": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -39,35 +50,24 @@ export const Precognition: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
-      "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
       "psionic": {
         "scale": 1,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.5,
         "table": "Melee_Buff_Def"
       }
     },
     "durations": {
+      "debuffResistance": 10.25,
       "defenseBuff": 10.25,
-      "perceptionBuff": 0.75,
-      "debuffResistance": 10.25
+      "perceptionBuff": 0.75
     },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
-    },
-    "debuffResistance": {
-      "perception": {
-        "scale": 0.6,
-        "table": "Melee_Ones"
-      },
-      "defense": {
-        "scale": 0.2312,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 10.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

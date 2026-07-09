@@ -31,14 +31,14 @@ export const FastHealing: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 0.75,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 10.25,
     "durations": {
       "regenBuff": 10.25
     },
-    "buffDuration": 10.25
+    "regenBuff": {
+      "scale": 0.75,
+      "table": "Melee_Ones"
+    }
   },
   "mechanicType": "parentMechanic"
 };

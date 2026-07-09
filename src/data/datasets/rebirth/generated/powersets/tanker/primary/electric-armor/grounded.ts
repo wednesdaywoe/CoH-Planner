@@ -31,28 +31,25 @@ export const Grounded: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "energy": {
-        "scale": 1.25,
-        "table": "Melee_Res_Dmg"
-      },
-      "negative": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 10.25,
-      "debuffResistance": 10.25,
-      "knockback": 10.25,
-      "knockup": 10.25,
-      "immobilize": 10.25
-    },
+    "buffDuration": 10.25,
     "debuffResistance": {
       "endurance": {
         "scale": 2,
         "table": "Melee_Res_Boolean"
       }
+    },
+    "durations": {
+      "debuffResistance": 10.25,
+      "immobilize": 10.25,
+      "knockback": 10.25,
+      "knockup": 10.25,
+      "resistance": 10.25
+    },
+    "effectDuration": 10.25,
+    "immobilize": {
+      "mag": 1,
+      "scale": 6,
+      "table": "Melee_Ones"
     },
     "knockback": {
       "scale": 6,
@@ -62,13 +59,16 @@ export const Grounded: Power = {
       "scale": 6,
       "table": "Melee_Knockback"
     },
-    "immobilize": {
-      "mag": 1,
-      "scale": 6,
-      "table": "Melee_Ones"
-    },
-    "effectDuration": 10.25,
-    "buffDuration": 10.25
+    "resistance": {
+      "energy": {
+        "scale": 1.25,
+        "table": "Melee_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    }
   },
   "mechanicType": "parentMechanic"
 };

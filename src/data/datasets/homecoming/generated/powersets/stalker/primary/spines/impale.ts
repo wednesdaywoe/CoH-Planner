@@ -57,37 +57,16 @@ export const Impale: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "rechargeDebuff": 8,
+      "regenDebuff": 15,
+      "slow": 15
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Melee_Immobilize"
-    },
-    "slow": {
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
-      },
-      "runSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "flySpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpSpeed": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      },
-      "jumpHeight": {
-        "scale": 0.3,
-        "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "slow": 15,
-      "rechargeDebuff": 8,
-      "regenDebuff": 15
     },
     "rechargeDebuff": {
       "scale": 0.1,
@@ -97,7 +76,28 @@ export const Impale: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "buffDuration": 15
+    "slow": {
+      "fly": {
+        "scale": 1.6,
+        "table": "Melee_Ones"
+      },
+      "flySpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "jumpSpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.3,
+        "table": "Melee_Slow"
+      }
+    }
   },
   "specialEffects": [
     {

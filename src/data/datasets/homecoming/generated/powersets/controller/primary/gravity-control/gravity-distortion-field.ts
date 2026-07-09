@@ -41,17 +41,17 @@ export const GravityDistortionField: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "PL_StaticObject",
+      "copyBoosts": true,
       "displayName": "Gravity Distortion Field",
+      "duration": 60,
+      "entity": "PL_StaticObject",
+      "isPseudoPet": false,
       "powers": [
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Pulse",
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Slow",
         "Redirects.Gravity_Control.Gravity_Distortion_Field_Oneshot",
         "Redirects.Gravity_Control.Self_Destruct"
       ],
-      "duration": 60,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Gravity Distortion Field",

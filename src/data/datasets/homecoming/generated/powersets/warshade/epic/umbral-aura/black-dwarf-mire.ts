@@ -49,45 +49,45 @@ export const BlackDwarfMire: Power = {
     "table": "Melee_InherentDamage"
   },
   "effects": {
+    "buffDuration": 10,
+    "damageBuff": {
+      "scale": 1.25,
+      "table": "Melee_Buff_Dmg",
+      "perTarget": 1.25
+    },
+    "durations": {
+      "damageBuff": 10,
+      "rechargeDebuff": 6,
+      "slow": 6,
+      "tohitBuff": 10
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Slow"
+    },
     "slow": {
-      "jumpHeight": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Melee_Slow"
-      },
       "flySpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
+      },
+      "jumpHeight": {
         "scale": 0.2,
         "table": "Melee_Slow"
       },
       "jumpSpeed": {
         "scale": 0.2,
         "table": "Melee_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Melee_Slow"
       }
-    },
-    "durations": {
-      "slow": 6,
-      "rechargeDebuff": 6,
-      "tohitBuff": 10,
-      "damageBuff": 10
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Slow"
     },
     "tohitBuff": {
       "scale": 0.5,
       "table": "Melee_Buff_ToHit",
       "perTarget": 0.5
-    },
-    "damageBuff": {
-      "scale": 1.25,
-      "table": "Melee_Buff_Dmg",
-      "perTarget": 1.25
-    },
-    "buffDuration": 10
+    }
   },
   "requires": "Warshade_Defensive.Umbral_Aura.Black_Dwarf Inherent.Inherent.Black_Dwarf_Mire ! &&",
   "modesRequired": [

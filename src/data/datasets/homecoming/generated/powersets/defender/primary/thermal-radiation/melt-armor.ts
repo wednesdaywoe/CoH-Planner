@@ -40,6 +40,7 @@ export const MeltArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 40,
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
@@ -49,11 +50,11 @@ export const MeltArmor: Power = {
       "resistanceDebuff": 40
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -61,11 +62,7 @@ export const MeltArmor: Power = {
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 3,
-        "table": "Ranged_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
@@ -77,11 +74,14 @@ export const MeltArmor: Power = {
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 3,
         "table": "Ranged_Debuff_Res_Dmg"
       }
-    },
-    "buffDuration": 40
+    }
   }
 };

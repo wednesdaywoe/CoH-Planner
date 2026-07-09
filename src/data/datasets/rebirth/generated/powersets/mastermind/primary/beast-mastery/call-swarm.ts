@@ -51,6 +51,7 @@ export const CallSwarm: Power = {
     "tickRate": 0.75
   },
   "effects": {
+    "buffDuration": 8,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
@@ -60,10 +61,6 @@ export const CallSwarm: Power = {
       "slow": 8
     },
     "slow": {
-      "runSpeed": {
-        "scale": 0.2,
-        "table": "Ranged_Slow"
-      },
       "flySpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
@@ -75,9 +72,12 @@ export const CallSwarm: Power = {
       "jumpSpeed": {
         "scale": 0.2,
         "table": "Ranged_Slow"
+      },
+      "runSpeed": {
+        "scale": 0.2,
+        "table": "Ranged_Slow"
       }
-    },
-    "buffDuration": 8
+    }
   },
   "specialEffects": [
     {

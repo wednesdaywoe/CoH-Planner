@@ -117,12 +117,12 @@ export const CrushingUppercut: Power = {
         "table": "Melee_Damage"
       },
       "effects": {
-        "stun": {
+        "hold": {
           "mag": 3,
           "scale": 10.5,
           "table": "Melee_Stun"
         },
-        "hold": {
+        "stun": {
           "mag": 3,
           "scale": 10.5,
           "table": "Melee_Stun"

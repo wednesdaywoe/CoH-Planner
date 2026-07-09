@@ -55,14 +55,7 @@ export const WhiteDwarfStrike: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
-    "taunt": {
-      "scale": 1,
-      "table": "Melee_InherentTaunt"
-    },
+    "buffDuration": 6,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
@@ -70,7 +63,14 @@ export const WhiteDwarfStrike: Power = {
     "durations": {
       "defenseDebuff": 6
     },
-    "buffDuration": 6
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    },
+    "taunt": {
+      "scale": 1,
+      "table": "Melee_InherentTaunt"
+    }
   },
   "specialEffects": [
     {

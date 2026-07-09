@@ -32,6 +32,7 @@ export const CombatTrainingDefensive: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.25,
     "defenseBuff": {
       "ranged": {
         "scale": 0.75,
@@ -45,8 +46,7 @@ export const CombatTrainingDefensive: Power = {
     "rechargeBuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 10.25
+    }
   },
   "mechanicType": "parentMechanic"
 };

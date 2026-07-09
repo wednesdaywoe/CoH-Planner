@@ -40,12 +40,19 @@ export const HardenedCarapace: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
+    },
+    "effectDuration": 0.75,
     "resistance": {
-      "smashing": {
+      "lethal": {
         "scale": 2.5,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "smashing": {
         "scale": 2.5,
         "table": "Melee_Res_Dmg"
       },
@@ -54,22 +61,15 @@ export const HardenedCarapace: Power = {
         "table": "Melee_Res_Dmg"
       }
     },
-    "durations": {
-      "resistance": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
     "sleep": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "buffDuration": 0.75
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

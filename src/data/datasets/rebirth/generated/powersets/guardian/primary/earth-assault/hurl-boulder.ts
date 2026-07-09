@@ -46,6 +46,10 @@ export const HurlBoulder: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "slow": 15
+    },
     "knockback": {
       "scale": 3,
       "table": "Ranged_Knockback"
@@ -55,11 +59,7 @@ export const HurlBoulder: Power = {
         "scale": 1.6,
         "table": "Ranged_Ones"
       }
-    },
-    "durations": {
-      "slow": 15
-    },
-    "buffDuration": 15
+    }
   },
   "specialEffects": [
     {

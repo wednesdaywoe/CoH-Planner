@@ -40,19 +40,37 @@ export const Serum: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "damageBuff": {
+      "scale": 10,
+      "table": "Ranged_Buff_Dmg"
+    },
+    "durations": {
+      "damageBuff": 60,
+      "hold": 60,
+      "immobilize": 60,
+      "recoveryBuff": 60,
+      "resistance": 60,
+      "sleep": 60,
+      "stun": 60,
+      "tohitBuff": 60
+    },
+    "effectDuration": 60,
+    "hold": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Ranged_Res_Boolean"
+    },
+    "recoveryBuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    },
     "resistance": {
-      "smashing": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "lethal": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
-      "fire": {
-        "scale": 4,
-        "table": "Ranged_Res_Dmg"
-      },
       "cold": {
         "scale": 4,
         "table": "Ranged_Res_Dmg"
@@ -61,7 +79,19 @@ export const Serum: Power = {
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
+      "fire": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      },
       "negative": {
+        "scale": 4,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
         "scale": 4,
         "table": "Ranged_Res_Dmg"
       },
@@ -70,23 +100,7 @@ export const Serum: Power = {
         "table": "Ranged_Res_Dmg"
       }
     },
-    "durations": {
-      "resistance": 60,
-      "hold": 60,
-      "immobilize": 60,
-      "stun": 60,
-      "sleep": 60,
-      "damageBuff": 60,
-      "tohitBuff": 60,
-      "recoveryBuff": 60
-    },
-    "hold": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "effectDuration": 60,
-    "immobilize": {
+    "sleep": {
       "mag": 1,
       "scale": 30,
       "table": "Ranged_Res_Boolean"
@@ -96,23 +110,9 @@ export const Serum: Power = {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     },
-    "sleep": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Ranged_Res_Boolean"
-    },
-    "damageBuff": {
-      "scale": 10,
-      "table": "Ranged_Buff_Dmg"
-    },
     "tohitBuff": {
       "scale": 1,
       "table": "Ranged_Buff_ToHit"
-    },
-    "recoveryBuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 60
+    }
   }
 };

@@ -51,10 +51,7 @@ export const Chop: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
-    "knockback": {
-      "scale": 0.67,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 8,
     "defenseDebuff": {
       "scale": 1,
       "table": "Melee_Debuff_Def"
@@ -62,7 +59,10 @@ export const Chop: Power = {
     "durations": {
       "defenseDebuff": 8
     },
-    "buffDuration": 8
+    "knockback": {
+      "scale": 0.67,
+      "table": "Melee_Ones"
+    }
   },
   "specialEffects": [
     {

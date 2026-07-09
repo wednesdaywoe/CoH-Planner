@@ -38,18 +38,18 @@ export const NWSmokeGrenade: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "perceptionDebuff": {
-      "scale": 0.9,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 60,
     "durations": {
       "perceptionDebuff": 60,
       "tohitDebuff": 60
     },
+    "perceptionDebuff": {
+      "scale": 0.9,
+      "table": "Melee_Ones"
+    },
     "tohitDebuff": {
       "scale": 0.5,
       "table": "Melee_DeBuff_ToHit"
-    },
-    "buffDuration": 60
+    }
   }
 };

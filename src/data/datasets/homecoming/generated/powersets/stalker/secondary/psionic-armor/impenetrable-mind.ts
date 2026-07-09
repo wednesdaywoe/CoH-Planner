@@ -40,28 +40,23 @@ export const ImpenetrableMind: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "resistance": {
-      "psionic": {
-        "scale": 1,
-        "table": "Melee_Res_Dmg"
-      }
-    },
-    "durations": {
-      "resistance": 0.75,
-      "confuse": 0.75,
-      "fear": 0.75,
-      "hold": 0.75,
-      "immobilize": 0.75,
-      "stun": 0.75,
-      "sleep": 0.75,
-      "knockup": 0.75,
-      "knockback": 0.75,
-      "mezResistance": 0.75
-    },
+    "buffDuration": 0.75,
     "confuse": {
       "mag": 1,
       "scale": 30,
       "table": "Melee_Res_Boolean"
+    },
+    "durations": {
+      "confuse": 0.75,
+      "fear": 0.75,
+      "hold": 0.75,
+      "immobilize": 0.75,
+      "knockback": 0.75,
+      "knockup": 0.75,
+      "mezResistance": 0.75,
+      "resistance": 0.75,
+      "sleep": 0.75,
+      "stun": 0.75
     },
     "effectDuration": 0.75,
     "fear": {
@@ -79,13 +74,7 @@ export const ImpenetrableMind: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "stun": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "sleep": {
-      "mag": 1,
+    "knockback": {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
@@ -93,20 +82,31 @@ export const ImpenetrableMind: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     },
-    "knockback": {
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
     "mezResistance": {
-      "knockup": {
+      "knockback": {
         "scale": 1,
         "table": "Melee_Ones"
       },
-      "knockback": {
+      "knockup": {
         "scale": 1,
         "table": "Melee_Ones"
       }
     },
-    "buffDuration": 0.75
+    "resistance": {
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_Dmg"
+      }
+    },
+    "sleep": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "stun": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    }
   }
 };

@@ -56,19 +56,19 @@ export const Gloom: Power = {
     "tickRate": 0.5
   },
   "effects": {
-    "tohitDebuff": {
-      "scale": 0.75,
-      "table": "Ranged_DeBuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 10,
-      "damageBuff": 9.17
-    },
+    "buffDuration": 10,
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10,
+    "durations": {
+      "damageBuff": 9.17,
+      "tohitDebuff": 10
+    },
+    "tohitDebuff": {
+      "scale": 0.75,
+      "table": "Ranged_DeBuff_ToHit"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"

@@ -39,25 +39,79 @@ export const StrengthofWill: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 120,
+    "durations": {
+      "hold": 120,
+      "immobilize": 120,
+      "knockback": 120,
+      "knockup": 120,
+      "mezResistance": 120,
+      "recoveryBuff": 120,
+      "repel": 120,
+      "resistance": 120,
+      "sleep": 120,
+      "stun": 120
+    },
+    "effectDuration": 120,
+    "enduranceDrain": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
+    },
+    "hold": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "immobilize": {
+      "mag": 1,
+      "scale": 50,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 100,
+      "table": "Melee_Ones"
+    },
+    "mezResistance": {
+      "knockback": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "knockup": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      },
+      "repel": {
+        "scale": 10,
+        "table": "Melee_Ones"
+      }
+    },
+    "recoveryBuff": {
+      "scale": 0.3,
+      "table": "Melee_Ones"
+    },
+    "repel": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "resistance": {
-      "smashing": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "lethal": {
-        "scale": 2.5,
-        "table": "Melee_Res_DMG"
-      },
-      "fire": {
-        "scale": 1.25,
-        "table": "Melee_Res_DMG"
-      },
       "cold": {
         "scale": 1.25,
         "table": "Melee_Res_DMG"
       },
       "energy": {
         "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 2.5,
         "table": "Melee_Res_DMG"
       },
       "negative": {
@@ -68,78 +122,24 @@ export const StrengthofWill: Power = {
         "scale": 1.25,
         "table": "Melee_Res_DMG"
       },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
       "toxic": {
         "scale": 1.25,
         "table": "Melee_Res_DMG"
       }
-    },
-    "durations": {
-      "resistance": 120,
-      "knockup": 120,
-      "mezResistance": 120,
-      "knockback": 120,
-      "repel": 120,
-      "stun": 120,
-      "hold": 120,
-      "sleep": 120,
-      "immobilize": 120,
-      "recoveryBuff": 120
-    },
-    "knockup": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "mezResistance": {
-      "knockup": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "knockback": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      },
-      "repel": {
-        "scale": 10,
-        "table": "Melee_Ones"
-      }
-    },
-    "knockback": {
-      "scale": 100,
-      "table": "Melee_Ones"
-    },
-    "repel": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "stun": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 120,
-    "hold": {
-      "mag": 1,
-      "scale": 50,
-      "table": "Melee_Res_Boolean"
     },
     "sleep": {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
     },
-    "immobilize": {
+    "stun": {
       "mag": 1,
       "scale": 50,
       "table": "Melee_Res_Boolean"
-    },
-    "recoveryBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "enduranceDrain": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 120
+    }
   }
 };

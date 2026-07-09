@@ -40,20 +40,8 @@ export const InstantHealing: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenBuff": {
-      "scale": 2,
-      "table": "Melee_Ones",
-      "perTarget": 0.25
-    },
-    "durations": {
-      "regenBuff": 2.25,
-      "debuffResistance": 20
-    },
+    "buffDuration": 20,
     "debuffResistance": {
-      "regeneration": {
-        "scale": 0.055,
-        "table": "Melee_Ones"
-      },
       "endurance": {
         "scale": 0.03,
         "table": "Melee_Ones"
@@ -61,8 +49,20 @@ export const InstantHealing: Power = {
       "recovery": {
         "scale": 0.03,
         "table": "Melee_Ones"
+      },
+      "regeneration": {
+        "scale": 0.055,
+        "table": "Melee_Ones"
       }
     },
-    "buffDuration": 20
+    "durations": {
+      "debuffResistance": 20,
+      "regenBuff": 2.25
+    },
+    "regenBuff": {
+      "scale": 2,
+      "table": "Melee_Ones",
+      "perTarget": 0.25
+    }
   }
 };

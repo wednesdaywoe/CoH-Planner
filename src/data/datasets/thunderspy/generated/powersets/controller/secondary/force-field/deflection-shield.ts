@@ -37,6 +37,7 @@ export const DeflectionShield: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 240,
     "defenseBuff": {
       "smashing": {
         "scale": 0.75,
@@ -45,7 +46,6 @@ export const DeflectionShield: Power = {
     },
     "durations": {
       "defenseBuff": 240
-    },
-    "buffDuration": 240
+    }
   }
 };

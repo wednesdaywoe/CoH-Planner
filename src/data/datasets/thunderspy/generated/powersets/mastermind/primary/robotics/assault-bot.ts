@@ -42,9 +42,9 @@ export const AssaultBot: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "MastermindPets_Assault_Bot",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

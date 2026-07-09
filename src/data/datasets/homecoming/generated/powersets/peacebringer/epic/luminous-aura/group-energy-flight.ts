@@ -41,6 +41,10 @@ export const GroupEnergyFlight: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "movement": 2.25
+    },
     "movement": {
       "fly": {
         "scale": 2,
@@ -58,11 +62,7 @@ export const GroupEnergyFlight: Power = {
         "scale": 10,
         "table": "Melee_Friction"
       }
-    },
-    "durations": {
-      "movement": 2.25
-    },
-    "buffDuration": 2.25
+    }
   },
   "modesSuspended": [
     "Peacebringer_Blaster_Mode",

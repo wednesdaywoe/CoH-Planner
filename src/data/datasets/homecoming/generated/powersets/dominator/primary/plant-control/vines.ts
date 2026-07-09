@@ -42,8 +42,10 @@ export const Vines: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "copyBoosts": true,
+      "duration": 60,
       "entity": "Vines",
+      "isPseudoPet": false,
       "powers": [
         "Villain_Pets.Vines.Self_Destruct",
         "Pets.ResistAll.ResistAll",
@@ -51,8 +53,6 @@ export const Vines: Power = {
         "Villain_Pets.Vines.Vines_Debuff",
         "Villain_Pets.Vines.Vines_OneShot"
       ],
-      "duration": 60,
-      "copyBoosts": true,
       "resolvedEntities": [
         {
           "displayName": "Vines",

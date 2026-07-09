@@ -41,9 +41,9 @@ export const Aim: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 10,
       "entity": "Pets_Corruptor_FlameThrower",
-      "duration": 10
+      "isPseudoPet": false
     }
   }
 };

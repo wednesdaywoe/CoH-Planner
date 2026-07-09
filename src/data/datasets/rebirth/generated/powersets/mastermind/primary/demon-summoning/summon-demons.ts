@@ -45,9 +45,9 @@ export const SummonDemons: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
+      "duration": 99999,
       "entity": "MastermindPets_Ember_Demon",
-      "duration": 99999
+      "isPseudoPet": false
     }
   }
 };

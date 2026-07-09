@@ -44,10 +44,19 @@ export const MudPots: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "slow": 5
+    },
+    "immobilize": {
+      "mag": 2,
+      "scale": 2.25,
+      "table": "Melee_Ones"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+      "fly": {
+        "scale": 1.6,
+        "table": "Melee_Ones"
       },
       "jumpHeight": {
         "scale": 0.5,
@@ -57,23 +66,14 @@ export const MudPots: Power = {
         "scale": 0.5,
         "table": "Melee_Slow"
       },
-      "fly": {
-        "scale": 1.6,
-        "table": "Melee_Ones"
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
       }
-    },
-    "durations": {
-      "slow": 5
-    },
-    "immobilize": {
-      "mag": 2,
-      "scale": 2.25,
-      "table": "Melee_Ones"
     },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 5
+    }
   }
 };

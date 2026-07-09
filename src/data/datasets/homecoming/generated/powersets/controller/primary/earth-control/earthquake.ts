@@ -41,10 +41,10 @@ export const Earthquake: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Earthquake",
+      "copyBoosts": true,
       "duration": 30,
-      "copyBoosts": true
+      "entity": "Pets_Earthquake",
+      "isPseudoPet": false
     }
   }
 };

@@ -44,10 +44,10 @@ export const Commando: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Commando",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "MastermindPets_Commando",
+      "isPseudoPet": false
     }
   }
 };

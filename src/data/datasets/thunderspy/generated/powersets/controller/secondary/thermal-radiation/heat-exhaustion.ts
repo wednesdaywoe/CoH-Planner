@@ -33,13 +33,13 @@ export const HeatExhaustion: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenDebuff": {
-      "scale": 5,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 40,
     "durations": {
       "regenDebuff": 40
     },
-    "buffDuration": 40
+    "regenDebuff": {
+      "scale": 5,
+      "table": "Ranged_Ones"
+    }
   }
 };

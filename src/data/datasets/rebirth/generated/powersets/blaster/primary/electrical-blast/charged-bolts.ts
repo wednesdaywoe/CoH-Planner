@@ -52,27 +52,27 @@ export const ChargedBolts: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 8.5,
+    "damageBuff": {
+      "scale": 0.066,
+      "table": "Ranged_Ones"
+    },
+    "durations": {
+      "damageBuff": 8.5,
+      "recoveryDebuff": 2
+    },
     "enduranceDrain": {
       "scale": 0.07,
+      "table": "Ranged_Ones"
+    },
+    "enduranceGain": {
+      "scale": 2.6,
       "table": "Ranged_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Ranged_Ones"
     },
-    "durations": {
-      "recoveryDebuff": 2,
-      "damageBuff": 8.5
-    },
-    "enduranceGain": {
-      "scale": 2.6,
-      "table": "Ranged_Ones"
-    },
-    "damageBuff": {
-      "scale": 0.066,
-      "table": "Ranged_Ones"
-    },
-    "buffDuration": 8.5,
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff",

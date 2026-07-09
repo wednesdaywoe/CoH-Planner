@@ -84,18 +84,18 @@ export const DualWield: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 0.75,
-      "table": "Ranged_Knockback"
-    },
-    "durations": {
-      "damageBuff": 9.17
-    },
+    "buffDuration": 8,
     "damageBuff": {
       "scale": 0.11,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 8,
+    "durations": {
+      "damageBuff": 9.17
+    },
+    "knockback": {
+      "scale": 0.75,
+      "table": "Ranged_Knockback"
+    },
     "maxStacks": 2,
     "stacksLinear": [
       "damageBuff"
@@ -121,10 +121,6 @@ export const DualWield: Power = {
           "table": "Ranged_Slow"
         },
         "slow": {
-          "runSpeed": {
-            "scale": 0.15,
-            "table": "Ranged_Slow"
-          },
           "flySpeed": {
             "scale": 0.15,
             "table": "Ranged_Slow"
@@ -134,6 +130,10 @@ export const DualWield: Power = {
             "table": "Ranged_Slow"
           },
           "jumpSpeed": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
             "scale": 0.15,
             "table": "Ranged_Slow"
           }

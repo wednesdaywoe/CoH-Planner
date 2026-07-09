@@ -40,35 +40,35 @@ export const TargetingDrone: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
     "damageBuff": {
       "scale": 1.6,
       "table": "Melee_Buff_Dmg"
     },
-    "durations": {
-      "damageBuff": 0.6,
-      "tohitBuff": 0.75,
-      "debuffResistance": 0.75,
-      "perceptionBuff": 0.75
-    },
-    "tohitBuff": {
-      "scale": 1.85,
-      "table": "Melee_Buff_ToHit"
-    },
     "debuffResistance": {
-      "tohit": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
-      },
       "perception": {
         "scale": 0.6,
         "table": "Melee_Ones"
+      },
+      "tohit": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
       }
+    },
+    "durations": {
+      "damageBuff": 0.6,
+      "debuffResistance": 0.75,
+      "perceptionBuff": 0.75,
+      "tohitBuff": 0.75
     },
     "perceptionBuff": {
       "scale": 0.6,
       "table": "Melee_Ones"
     },
-    "buffDuration": 0.75
+    "tohitBuff": {
+      "scale": 1.85,
+      "table": "Melee_Buff_ToHit"
+    }
   },
   "conditionalEffects": [
     {
@@ -77,14 +77,14 @@ export const TargetingDrone: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "buffDuration": 0.75,
         "damageBuff": {
           "scale": 4.8,
           "table": "Melee_Buff_Dmg"
         },
         "durations": {
           "damageBuff": 0.75
-        },
-        "buffDuration": 0.75
+        }
       }
     }
   ]

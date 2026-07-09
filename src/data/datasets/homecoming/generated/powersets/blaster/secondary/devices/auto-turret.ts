@@ -41,10 +41,10 @@ export const AutoTurret: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "Pets_Turret",
+      "copyBoosts": true,
       "duration": 90,
-      "copyBoosts": true
+      "entity": "Pets_Turret",
+      "isPseudoPet": false
     }
   }
 };

@@ -40,6 +40,18 @@ export const FocusedFighting: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "debuffResistance": {
+      "defense": {
+        "scale": 0.4,
+        "table": "Melee_Res_Boolean"
+      }
+    },
     "defenseBuff": {
       "melee": {
         "scale": 1.85,
@@ -47,23 +59,11 @@ export const FocusedFighting: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75,
       "confuse": 0.75,
-      "debuffResistance": 0.75
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75
     },
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "debuffResistance": {
-      "defense": {
-        "scale": 0.4,
-        "table": "Melee_Res_Boolean"
-      }
-    },
-    "buffDuration": 0.75
+    "effectDuration": 0.75
   },
   "conditionalEffects": [
     {
@@ -72,30 +72,30 @@ export const FocusedFighting: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
-        "mezResistance": {
-          "knockup": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          },
-          "knockback": {
-            "scale": 100,
-            "table": "Melee_Ones"
-          }
-        },
+        "buffDuration": 0.75,
         "durations": {
-          "mezResistance": 0.75,
+          "knockback": 0.75,
           "knockup": 0.75,
-          "knockback": 0.75
-        },
-        "knockup": {
-          "scale": 10,
-          "table": "Melee_Ones"
+          "mezResistance": 0.75
         },
         "knockback": {
           "scale": 10,
           "table": "Melee_Ones"
         },
-        "buffDuration": 0.75
+        "knockup": {
+          "scale": 10,
+          "table": "Melee_Ones"
+        },
+        "mezResistance": {
+          "knockback": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "scale": 100,
+            "table": "Melee_Ones"
+          }
+        }
       }
     }
   ]

@@ -40,29 +40,11 @@ export const RockyArmor: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "defenseBuff": {
-      "smashing": {
-        "scale": 1.6,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 1.6,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 2.5,
-        "table": "Melee_Buff_Def"
-      }
-    },
-    "durations": {
-      "defenseBuff": 0.75,
-      "debuffResistance": 0.75,
-      "mezResistance": 0.75,
-      "knockback": 10.25,
-      "knockup": 10.25,
-      "repel": 10.25,
-      "immobilize": 10.25,
-      "confuse": 0.75
+    "buffDuration": 10.25,
+    "confuse": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Ones"
     },
     "debuffResistance": {
       "defense": {
@@ -70,7 +52,49 @@ export const RockyArmor: Power = {
         "table": "Melee_Res_Boolean"
       }
     },
+    "defenseBuff": {
+      "lethal": {
+        "scale": 1.6,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 1.6,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "confuse": 0.75,
+      "debuffResistance": 0.75,
+      "defenseBuff": 0.75,
+      "immobilize": 10.25,
+      "knockback": 10.25,
+      "knockup": 10.25,
+      "mezResistance": 0.75,
+      "repel": 10.25
+    },
+    "effectDuration": 0.75,
+    "immobilize": {
+      "mag": 1,
+      "scale": 30,
+      "table": "Melee_Res_Boolean"
+    },
+    "knockback": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
+    "knockup": {
+      "scale": 10,
+      "table": "Melee_Ones"
+    },
     "mezResistance": {
+      "confuse": {
+        "scale": 2,
+        "table": "Melee_Res_Boolean"
+      },
       "knockback": {
         "scale": 100,
         "table": "Melee_Ones"
@@ -82,35 +106,11 @@ export const RockyArmor: Power = {
       "repel": {
         "scale": 10,
         "table": "Melee_Ones"
-      },
-      "confuse": {
-        "scale": 2,
-        "table": "Melee_Res_Boolean"
       }
-    },
-    "knockback": {
-      "scale": 10,
-      "table": "Melee_Ones"
-    },
-    "knockup": {
-      "scale": 10,
-      "table": "Melee_Ones"
     },
     "repel": {
       "scale": 10,
       "table": "Melee_Ones"
-    },
-    "immobilize": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Res_Boolean"
-    },
-    "effectDuration": 0.75,
-    "confuse": {
-      "mag": 1,
-      "scale": 30,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 10.25
+    }
   }
 };

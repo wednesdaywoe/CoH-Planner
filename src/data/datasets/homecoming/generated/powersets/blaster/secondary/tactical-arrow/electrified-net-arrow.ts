@@ -56,20 +56,21 @@ export const ElectrifiedNetArrow: Power = {
     "tickRate": 2
   },
   "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "rechargeDebuff": 15,
+      "slow": 15
+    },
     "immobilize": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Immobilize"
     },
+    "rechargeDebuff": {
+      "scale": 0.1,
+      "table": "Ranged_Slow"
+    },
     "slow": {
-      "runSpeed": {
-        "scale": 0.1,
-        "table": "Ranged_Slow"
-      },
-      "jumpHeight": {
-        "scale": 500,
-        "table": "Ranged_Ones"
-      },
       "fly": {
         "scale": 10,
         "table": "Ranged_Ones"
@@ -77,16 +78,15 @@ export const ElectrifiedNetArrow: Power = {
       "flySpeed": {
         "scale": 0.1,
         "table": "Ranged_Slow"
+      },
+      "jumpHeight": {
+        "scale": 500,
+        "table": "Ranged_Ones"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Ranged_Slow"
       }
-    },
-    "durations": {
-      "slow": 15,
-      "rechargeDebuff": 15
-    },
-    "rechargeDebuff": {
-      "scale": 0.1,
-      "table": "Ranged_Slow"
-    },
-    "buffDuration": 15
+    }
   }
 };

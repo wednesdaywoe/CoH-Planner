@@ -49,17 +49,14 @@ export const Thundergust: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 12,
+    "durations": {
+      "slow": 12,
+      "tohitDebuff": 12
+    },
     "knockback": {
       "scale": 0.67,
       "table": "Ranged_Ones"
-    },
-    "tohitDebuff": {
-      "scale": 1.5,
-      "table": "Ranged_Debuff_ToHit"
-    },
-    "durations": {
-      "tohitDebuff": 12,
-      "slow": 12
     },
     "slow": {
       "fly": {
@@ -67,7 +64,10 @@ export const Thundergust: Power = {
         "table": "Ranged_Ones"
       }
     },
-    "buffDuration": 12
+    "tohitDebuff": {
+      "scale": 1.5,
+      "table": "Ranged_Debuff_ToHit"
+    }
   },
   "specialEffects": [
     {

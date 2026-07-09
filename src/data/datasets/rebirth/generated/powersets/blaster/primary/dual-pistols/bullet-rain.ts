@@ -90,18 +90,18 @@ export const BulletRain: Power = {
     }
   ],
   "effects": {
-    "knockback": {
-      "scale": 2,
-      "table": "Ranged_Knockback"
-    },
-    "durations": {
-      "damageBuff": 9.17
-    },
+    "buffDuration": 10,
     "damageBuff": {
       "scale": 0.034,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 10
+    "durations": {
+      "damageBuff": 9.17
+    },
+    "knockback": {
+      "scale": 2,
+      "table": "Ranged_Knockback"
+    }
   },
   "specialEffects": [
     {
@@ -123,10 +123,6 @@ export const BulletRain: Power = {
           "table": "Ranged_Slow"
         },
         "slow": {
-          "runSpeed": {
-            "scale": 0.15,
-            "table": "Ranged_Slow"
-          },
           "flySpeed": {
             "scale": 0.15,
             "table": "Ranged_Slow"
@@ -136,6 +132,10 @@ export const BulletRain: Power = {
             "table": "Ranged_Slow"
           },
           "jumpSpeed": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          },
+          "runSpeed": {
             "scale": 0.15,
             "table": "Ranged_Slow"
           }

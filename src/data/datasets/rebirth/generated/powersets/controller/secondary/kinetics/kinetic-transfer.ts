@@ -34,18 +34,18 @@ export const KineticTransfer: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
       "duration": 1,
       "entities": [
         {
-          "entity": "Pets_KineticTransferDebuff_Controller",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_KineticTransferDebuff_Controller"
         },
         {
-          "entity": "Pets_KineticTransferBuffSelf_Controller",
-          "count": 1
+          "count": 1,
+          "entity": "Pets_KineticTransferBuffSelf_Controller"
         }
-      ]
+      ],
+      "isPseudoPet": false
     }
   }
 };

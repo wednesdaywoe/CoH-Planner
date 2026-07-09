@@ -39,23 +39,23 @@ export const ConservePower: Power = {
     "table": "Melee_HealSelf"
   },
   "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "enduranceDiscount": 60,
+      "regenBuff": 60,
+      "regenBuffUnenhanced": 60
+    },
     "enduranceDiscount": {
       "scale": 1,
       "table": "Melee_Stun"
-    },
-    "durations": {
-      "enduranceDiscount": 60,
-      "regenBuffUnenhanced": 60,
-      "regenBuff": 60
-    },
-    "regenBuffUnenhanced": {
-      "scale": 1.125,
-      "table": "Melee_Ones"
     },
     "regenBuff": {
       "scale": 1.125,
       "table": "Melee_Ones"
     },
-    "buffDuration": 60
+    "regenBuffUnenhanced": {
+      "scale": 1.125,
+      "table": "Melee_Ones"
+    }
   }
 };

@@ -39,13 +39,13 @@ export const SporeCloud: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "regenDebuff": {
-      "scale": 2,
-      "table": "Ranged_Ones"
-    },
+    "buffDuration": 5,
     "durations": {
       "regenDebuff": 5
     },
-    "buffDuration": 5
+    "regenDebuff": {
+      "scale": 2,
+      "table": "Ranged_Ones"
+    }
   }
 };

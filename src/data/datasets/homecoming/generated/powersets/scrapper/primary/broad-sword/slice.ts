@@ -52,6 +52,7 @@ export const Slice: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 15,
     "defenseDebuff": {
       "scale": 0.5,
       "table": "Melee_Debuff_Def"
@@ -61,11 +62,11 @@ export const Slice: Power = {
       "resistanceDebuff": 15
     },
     "resistanceDebuff": {
-      "smashing": {
+      "cold": {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "lethal": {
+      "energy": {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
@@ -73,11 +74,7 @@ export const Slice: Power = {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
-      "cold": {
-        "scale": 1.2,
-        "table": "Melee_Debuff_Res_Dmg"
-      },
-      "energy": {
+      "lethal": {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
@@ -89,12 +86,15 @@ export const Slice: Power = {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       },
+      "smashing": {
+        "scale": 1.2,
+        "table": "Melee_Debuff_Res_Dmg"
+      },
       "toxic": {
         "scale": 1.2,
         "table": "Melee_Debuff_Res_Dmg"
       }
-    },
-    "buffDuration": 15
+    }
   },
   "conditionalEffects": [
     {

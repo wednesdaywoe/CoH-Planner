@@ -42,51 +42,9 @@ export const CloakingDevice: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "stealth": {
-      "stealthPvE": {
-        "scale": 35.5,
-        "table": "Melee_Ones"
-      },
-      "stackKey": "NictusFX",
-      "translucency": {
-        "scale": 0.1,
-        "table": "Melee_Ones"
-      },
-      "stealthPvP": {
-        "scale": 390,
-        "table": "Melee_Ones"
-      }
-    },
-    "durations": {
-      "stealth": 0.75,
-      "defenseBuff": 0.75,
-      "regenBuff": 0.75,
-      "regenBuffUnenhanced": 0.75,
-      "recoveryBuff": 0.75,
-      "defenseBuffSuppressible": 0.75
-    },
+    "buffDuration": 0.75,
     "defenseBuff": {
-      "ranged": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "melee": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
       "aoe": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
@@ -98,6 +56,18 @@ export const CloakingDevice: Power = {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
@@ -106,10 +76,76 @@ export const CloakingDevice: Power = {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
+      "ranged": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
       "toxic": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       }
+    },
+    "defenseBuffSuppressible": {
+      "aoe": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "melee": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
+      "toxic": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      }
+    },
+    "durations": {
+      "defenseBuff": 0.75,
+      "defenseBuffSuppressible": 0.75,
+      "recoveryBuff": 0.75,
+      "regenBuff": 0.75,
+      "regenBuffUnenhanced": 0.75,
+      "stealth": 0.75
+    },
+    "recoveryBuff": {
+      "scale": 0.5,
+      "table": "Melee_Ones"
     },
     "regenBuff": {
       "scale": 1.125,
@@ -119,57 +155,21 @@ export const CloakingDevice: Power = {
       "scale": 1.125,
       "table": "Melee_Ones"
     },
-    "recoveryBuff": {
-      "scale": 0.5,
-      "table": "Melee_Ones"
-    },
-    "defenseBuffSuppressible": {
-      "ranged": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
+    "stealth": {
+      "stackKey": "NictusFX",
+      "stealthPvE": {
+        "scale": 35.5,
+        "table": "Melee_Ones"
       },
-      "melee": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
+      "stealthPvP": {
+        "scale": 390,
+        "table": "Melee_Ones"
       },
-      "aoe": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "smashing": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "negative": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "psionic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "toxic": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
+      "translucency": {
+        "scale": 0.1,
+        "table": "Melee_Ones"
       }
-    },
-    "buffDuration": 0.75
+    }
   },
   "setsModes": [
     "Hidden_Attack"

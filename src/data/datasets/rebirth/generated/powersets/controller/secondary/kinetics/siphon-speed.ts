@@ -38,11 +38,32 @@ export const SiphonSpeed: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "slow": {
-      "runSpeed": {
-        "scale": 1,
-        "table": "Melee_SpeedRunning"
+    "buffDuration": 60,
+    "durations": {
+      "movement": 60,
+      "rechargeBuff": 60,
+      "rechargeDebuff": 60,
+      "slow": 60
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.85,
+        "table": "Melee_SpeedFlying"
       },
+      "runSpeed": {
+        "scale": 0.85,
+        "table": "Melee_SpeedRunning"
+      }
+    },
+    "rechargeBuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "rechargeDebuff": {
+      "scale": 0.2,
+      "table": "Melee_Ones"
+    },
+    "slow": {
       "flySpeed": {
         "scale": 0.5,
         "table": "Melee_Slow"
@@ -54,33 +75,12 @@ export const SiphonSpeed: Power = {
       "jumpSpeed": {
         "scale": 0.5,
         "table": "Melee_Slow"
-      }
-    },
-    "durations": {
-      "slow": 60,
-      "rechargeDebuff": 60,
-      "movement": 60,
-      "rechargeBuff": 60
-    },
-    "rechargeDebuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "movement": {
-      "runSpeed": {
-        "scale": 0.85,
-        "table": "Melee_SpeedRunning"
       },
-      "flySpeed": {
-        "scale": 0.85,
-        "table": "Melee_SpeedFlying"
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
       }
     },
-    "rechargeBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones"
-    },
-    "buffDuration": 60,
     "maxStacks": 2,
     "stacksLinear": [
       "flySpeed",

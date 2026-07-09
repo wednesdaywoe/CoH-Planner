@@ -52,6 +52,7 @@ export const LuminousDetonation: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1,
       "table": "Ranged_Debuff_Def"
@@ -62,8 +63,7 @@ export const LuminousDetonation: Power = {
     "knockback": {
       "scale": 2,
       "table": "Ranged_Knockback"
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

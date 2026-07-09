@@ -63,17 +63,17 @@ export const RadiationTherapy: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "regenDebuff": 30
+    },
     "regenDebuff": {
       "scale": 1.5,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "regenDebuff": 30
-    },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 30
+    }
   }
 };

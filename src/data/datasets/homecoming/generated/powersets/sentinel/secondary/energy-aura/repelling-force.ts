@@ -30,12 +30,13 @@ export const RepellingForce: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.3,
     "defenseBuff": {
-      "smashing": {
+      "cold": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
-      "lethal": {
+      "energy": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -43,11 +44,7 @@ export const RepellingForce: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
-      "cold": {
-        "scale": 0.5,
-        "table": "Melee_Buff_Def"
-      },
-      "energy": {
+      "lethal": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
@@ -59,6 +56,10 @@ export const RepellingForce: Power = {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
       },
+      "smashing": {
+        "scale": 0.5,
+        "table": "Melee_Buff_Def"
+      },
       "toxic": {
         "scale": 0.5,
         "table": "Melee_Buff_Def"
@@ -66,8 +67,7 @@ export const RepellingForce: Power = {
     },
     "durations": {
       "defenseBuff": 10.3
-    },
-    "buffDuration": 10.3
+    }
   },
   "mechanicType": "parentMechanic"
 };

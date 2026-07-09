@@ -45,10 +45,10 @@ export const SummonDemonPrince: Power = {
   "maxSlots": 6,
   "effects": {
     "summon": {
-      "isPseudoPet": false,
-      "entity": "MastermindPets_Demon_Prince",
+      "copyBoosts": true,
       "duration": 99999,
-      "copyBoosts": true
+      "entity": "MastermindPets_Demon_Prince",
+      "isPseudoPet": false
     }
   }
 };

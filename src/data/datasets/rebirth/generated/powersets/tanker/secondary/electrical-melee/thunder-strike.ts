@@ -59,31 +59,31 @@ export const ThunderStrike: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
     },
     "enduranceDrain": {
       "scale": 0.07,
+      "table": "Melee_Ones"
+    },
+    "knockback": {
+      "scale": 0.64,
       "table": "Melee_Ones"
     },
     "recoveryDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
-    "durations": {
-      "recoveryDebuff": 4
-    },
-    "knockback": {
-      "scale": 0.64,
-      "table": "Melee_Ones"
+    "stun": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Stun"
     },
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "buffDuration": 4
+    }
   },
   "specialEffects": [
     {

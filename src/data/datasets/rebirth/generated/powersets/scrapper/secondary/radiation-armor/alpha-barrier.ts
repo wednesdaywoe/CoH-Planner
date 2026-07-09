@@ -40,12 +40,16 @@ export const AlphaBarrier: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
     "resistance": {
-      "smashing": {
+      "lethal": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       },
-      "lethal": {
+      "smashing": {
         "scale": 3,
         "table": "Melee_Res_Dmg"
       },
@@ -53,10 +57,6 @@ export const AlphaBarrier: Power = {
         "scale": 3.5,
         "table": "Melee_Res_Dmg"
       }
-    },
-    "durations": {
-      "resistance": 0.75
-    },
-    "buffDuration": 0.75
+    }
   }
 };

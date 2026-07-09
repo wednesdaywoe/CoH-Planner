@@ -57,15 +57,7 @@ export const PowerSink: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 3,
-      "scale": 5,
-      "table": "Melee_Stun"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    },
+    "buffDuration": 4,
     "durations": {
       "recoveryDebuff": 4
     },
@@ -73,7 +65,15 @@ export const PowerSink: Power = {
       "scale": 0.67,
       "table": "Melee_Ones"
     },
-    "buffDuration": 4
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Melee_Ones"
+    },
+    "stun": {
+      "mag": 3,
+      "scale": 5,
+      "table": "Melee_Stun"
+    }
   },
   "conditionalEffects": [
     {

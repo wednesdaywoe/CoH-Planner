@@ -67,14 +67,14 @@ export const TheLotusDrops: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 0.6,
       "table": "Melee_Debuff_Def"
     },
     "durations": {
       "defenseDebuff": 10
-    },
-    "buffDuration": 10
+    }
   },
   "specialEffects": [
     {

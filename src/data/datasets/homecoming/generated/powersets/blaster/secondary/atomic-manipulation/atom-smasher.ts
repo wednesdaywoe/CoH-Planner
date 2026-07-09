@@ -59,11 +59,7 @@ export const AtomSmasher: Power = {
     }
   ],
   "effects": {
-    "stun": {
-      "mag": 2,
-      "scale": 6,
-      "table": "Melee_Immobilize"
-    },
+    "buffDuration": 10,
     "defenseDebuff": {
       "scale": 1.2,
       "table": "Melee_Debuff_Def"
@@ -71,7 +67,11 @@ export const AtomSmasher: Power = {
     "durations": {
       "defenseDebuff": 10
     },
-    "buffDuration": 10
+    "stun": {
+      "mag": 2,
+      "scale": 6,
+      "table": "Melee_Immobilize"
+    }
   },
   "specialEffects": [
     {

@@ -32,19 +32,8 @@ export const TenebrousRegeneration: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 10.3,
     "defenseBuff": {
-      "smashing": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "lethal": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
-      "fire": {
-        "scale": 0.25,
-        "table": "Melee_Buff_Def"
-      },
       "cold": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
@@ -53,7 +42,19 @@ export const TenebrousRegeneration: Power = {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       },
+      "fire": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
       "negative": {
+        "scale": 0.25,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 0.25,
         "table": "Melee_Buff_Def"
       }
@@ -65,8 +66,7 @@ export const TenebrousRegeneration: Power = {
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "buffDuration": 10.3
+    }
   },
   "mechanicType": "parentMechanic"
 };

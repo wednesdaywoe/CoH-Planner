@@ -46,21 +46,21 @@ export const LightningBolt: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 4,
+    "durations": {
+      "recoveryDebuff": 4
+    },
     "enduranceDrain": {
       "scale": 0.1,
       "table": "Ranged_Ones"
-    },
-    "recoveryDebuff": {
-      "scale": 1,
-      "table": "Ranged_Ones"
-    },
-    "durations": {
-      "recoveryDebuff": 4
     },
     "enduranceGain": {
       "scale": 4.265,
       "table": "Ranged_Ones"
     },
-    "buffDuration": 4
+    "recoveryDebuff": {
+      "scale": 1,
+      "table": "Ranged_Ones"
+    }
   }
 };

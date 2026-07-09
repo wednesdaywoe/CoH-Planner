@@ -45,11 +45,7 @@ export const DrowningPool: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "hold": {
-      "mag": 3,
-      "scale": 8,
-      "table": "Ranged_Immobilize"
-    },
+    "buffDuration": 15,
     "defenseDebuff": {
       "scale": 2,
       "table": "Ranged_Debuff_Def"
@@ -57,7 +53,11 @@ export const DrowningPool: Power = {
     "durations": {
       "defenseDebuff": 15
     },
-    "buffDuration": 15
+    "hold": {
+      "mag": 3,
+      "scale": 8,
+      "table": "Ranged_Immobilize"
+    }
   },
   "conditionalEffects": [
     {
@@ -80,14 +80,14 @@ export const DrowningPool: Power = {
       "defaultActive": false,
       "mode": "replace",
       "effects": {
+        "buffDuration": 15,
         "defenseDebuff": {
           "scale": 2.5,
           "table": "Ranged_Debuff_Def"
         },
         "durations": {
           "defenseDebuff": 15
-        },
-        "buffDuration": 15
+        }
       }
     }
   ],
