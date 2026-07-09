@@ -91,11 +91,71 @@ revisit.
   column leaves the grid regardless of its stored `visible` flag; the Columns menu
   shows it as "floating" and disables its checkbox while undocked.
   verify: file:src/pages/PlannerPage.tsx
+- [x] **LAY8** — split the combined Pool column into two independent sections:
+  **Pool & Epic Powers** (`pool`) and **Inherent Powers** (`inherent`, the Fitness
+  / Basic / Prestige Sprints / archetype-inherent groups). New `InherentPowers`
+  component exported from `PoolPowers.tsx` (shares the private `InherentPowerGroup`);
+  `PoolPowers` now renders only pools + epic. New `'inherent'` `PlannerSectionId`,
+  added to `defaultPlannerLayout.category` after `pool` — the `merge()` reconcile
+  appends it for existing users automatically. Section descriptor + label added to
+  `PlannerLayoutMenu`; mobile/md fallback renders both. Verified in-app: six clean
+  columns, Fitness/Fury live in Inherent, no console errors, reconcile appends for
+  saved layouts. verify: file:src/components/powers/PoolPowers.tsx, fn:InherentPowers
+- [x] **LAY7** — horizontal column resize (Tier 2, safe axis) on the existing
+  `weight` field. Drag a divider between two columns to shift fr-weight from one to
+  the other (pair sum constant, other columns untouched); persists per-view via
+  `setPlannerSectionWeights`. Grid template is `minmax(260px, …fr)` so no column
+  renders below the audited clean floor (`MIN_COL_PX`) — grid overflow-scrolls
+  instead of deforming — and the drag clamps both neighbors to ≥260px. Divider is
+  suppressed during a header reorder drag so the two gestures don't fight. Existing
+  Reset clears weights (defaults carry none → 1fr). Verified in-app: 1:1 tracking up
+  to the neighbor's floor, clamp holds, weights persist to `coh-planner-ui`, 6-slot
+  rows stay inline at the 260 floor. verify: file:src/pages/PlannerPage.tsx, fn:startColumnResize
+
+## Min-size audit (2026-07-09)
+
+Empirical de-risking for any resize feature (and the "snap to shapes" concern):
+drove each populated section down to narrow column widths in-app (Playwright,
+forced `gridTemplateColumns`, full Brute/Battle Axe/Bio Armor build with a
+6-slotted power). Result — the horizontal axis has hard floors; the **vertical
+axis is safe** (every body is `flex-1 overflow-y-auto`, so shrinking height just
+scrolls, no render break).
+
+Two floors per section: the **clip floor** (content is cut off / unusable) and the
+**clean-render floor** (fits without deforming — no wrap of the ghost slot, no
+truncated names, no h-scroll). The snap value is the *clean* floor.
+
+| Section | Clean floor | Clip floor | Binding constraint | How to lower the clean floor |
+|---|---|---|---|---|
+| **Available Powers** | ~260px | ~200px | internal `grid-cols-2` split (Primary \| Secondary sub-lists) — each sub-col ≈125px at 260, names truncate to "Behea"/"Evolvi Armor" below | make the 2-col split stack to 1 col below a breakpoint (container query) → ~200px |
+| **Selected** (Primary / Secondary / Pool) | ~240px | ~200px | the slot row is **6 md-hexes (24px) + ghost + optional toggle** ≈220px content; the ghost is the 7th item and wraps first, floating the bottom-aligned icon onto its own line | drop slot size lg→sm (24→20px) → ~190px |
+| **Info Panel** | ~240px | ~240px | fixed multi-col stat tables (POWER EFFECTS `STAT/BASE/ENHANCED/FINAL`, DAMAGE tiles) don't reflow → h-scrollbar below ~240px (scrolls gracefully, not a hard break) | reflow the stat table to stacked rows under a breakpoint |
+| **Powers by Level** (chrono) | ~240px (inferred) | ~200px | reuses the same slotted rows grouped by level; shares the Selected floor | same as Selected |
+
+**Verified in-app 2026-07-09:** at a forced `260px / 240px / 230px` column split on a
+build with fully 6-slotted powers, Primary (260) and Secondary (240, *with* toggles)
+both render the full slot row + ghost inline, icon inline, zero deform. The deform the
+user reported was at the 200–220px *clip* floor, below the clean floor.
+
+**Snap-stop conclusion.** Sections are freely reorderable (any section can occupy any
+column), so the safe *global* min-width is the max of the clean floors ≈ **260px**.
+Clamp/snap columns to ≥260px and free horizontal resize needs **zero** changes to any
+section internals — the slot-row deform does not occur at this width. Optional later
+unlocks, in order of payoff: (1) make Available's 2-col split responsive → ~240px
+global (then Selected + Info are the joint floor); (2) shrink Selected slot size + (3)
+reflow Info stat tables → ~200px. Ship **clamp-at-260** first; these are independent
+follow-ups, not prerequisites.
 
 ## Deferred
 
-- Tier 2: independently resizable / free-form dock grid on the same `plannerLayout`
-  slice (react-grid-layout-style). Grows from LAY1's data model.
+- Tier 2 remainder: the *horizontal* axis shipped in LAY7 (column resize on the
+  `weight` field). Still deferred: vertical resize / 2D free-form dock grid
+  (react-grid-layout-style). The audit found vertical is render-safe (bodies scroll)
+  but a 2D grid needs a mobile/reset story and is a larger lift.
+- Optional floor-lowering follow-ups (from the audit; independent, not blocking):
+  make Available's `grid-cols-2` split responsive (→240px global floor), then shrink
+  Selected slot size + reflow Info stat tables (→200px). Only worth it if users hit
+  the 260px clamp and want narrower columns.
 - Unify the two hand-rolled floating-window implementations
   ([PopOutInfoPanel.tsx](../src/components/info/PopOutInfoPanel.tsx) +
   [SetBonusPopup.tsx](../src/components/info/SetBonusPopup.tsx), which duplicate the

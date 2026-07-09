@@ -493,6 +493,10 @@ interface UIActions {
   reorderPlannerSections: (view: keyof PlannerLayoutState, sections: PlannerSectionConfig[]) => void;
   /** Show/hide a single planner section in a view mode */
   setPlannerSectionVisible: (view: keyof PlannerLayoutState, id: PlannerSectionId, visible: boolean) => void;
+  /** Set fr-weights for one or more columns (drag-to-resize). Merges the given
+   *  `{ id: weight }` map onto the existing layout, leaving other columns' weights
+   *  untouched. */
+  setPlannerSectionWeights: (view: keyof PlannerLayoutState, weights: Partial<Record<PlannerSectionId, number>>) => void;
   /** Restore a view mode's columns to the default order + visibility */
   resetPlannerLayout: (view: keyof PlannerLayoutState) => void;
 
@@ -773,6 +777,7 @@ const defaultPlannerLayout: PlannerLayoutState = {
     { id: 'primary', visible: true },
     { id: 'secondary', visible: true },
     { id: 'pool', visible: true },
+    { id: 'inherent', visible: true },
     { id: 'info', visible: true },
   ],
   chronological: [
@@ -1313,6 +1318,16 @@ export const useUIStore = create<UIStore>()(
             ...state.plannerLayout,
             [view]: state.plannerLayout[view].map((s) =>
               s.id === id ? { ...s, visible } : s
+            ),
+          },
+        })),
+
+      setPlannerSectionWeights: (view, weights) =>
+        set((state) => ({
+          plannerLayout: {
+            ...state.plannerLayout,
+            [view]: state.plannerLayout[view].map((s) =>
+              weights[s.id] !== undefined ? { ...s, weight: weights[s.id] } : s
             ),
           },
         })),

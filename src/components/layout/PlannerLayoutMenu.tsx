@@ -16,7 +16,8 @@ const SECTION_LABELS: Record<PlannerSectionId, string> = {
   available: 'Available Powers',
   primary: 'Primary Powers',
   secondary: 'Secondary Powers',
-  pool: 'Pool Powers',
+  pool: 'Pool & Epic Powers',
+  inherent: 'Inherent Powers',
   info: 'Power Info',
   bylevel: 'Powers by Level',
 };

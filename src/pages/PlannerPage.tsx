@@ -14,13 +14,13 @@
  * on a phone isn't a real use case and the md split is bespoke.
  */
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useBuildStore, useUIStore, usePowerViewMode } from '@/stores';
 import { useUrlBuildSync } from '@/utils/url-build-sync';
 import { AvailablePowers } from '@/components/powers/AvailablePowers';
 import { AvailablePoolPowers } from '@/components/powers/AvailablePoolPowers';
 import { SelectedPowers } from '@/components/powers/SelectedPowers';
-import { PoolPowers } from '@/components/powers/PoolPowers';
+import { PoolPowers, InherentPowers } from '@/components/powers/PoolPowers';
 import { PlannerHintBar } from '@/components/powers/PlannerHintBar';
 import { ChronologicalPowerView } from '@/components/powers/ChronologicalPowerView';
 import { InfoPanel } from '@/components/info/InfoPanel';
@@ -45,6 +45,14 @@ function UndockButton({ onClick }: { onClick: () => void }) {
     </button>
   );
 }
+
+/** Minimum rendered width for any planner column. The min-size audit (see
+ *  streams/REARRANGEABLE_LAYOUT_PLAN.md) found the widest clean-render floor is
+ *  Available's ~260px; below it sections deform (truncated names, wrapped ghost
+ *  slot, h-scrolling info tables). The grid uses `minmax(MIN, …fr)` so columns
+ *  hold this floor and the grid overflow-scrolls rather than deforming, and the
+ *  resize drag clamps neighbors so neither is pushed under it. */
+const MIN_COL_PX = 260;
 
 /** Drag-handle grip shown in each desktop column header. */
 function GripHandle(props: React.HTMLAttributes<HTMLDivElement>) {
@@ -103,11 +111,15 @@ export function PlannerPage() {
   const view = powerViewMode === 'chronological' ? 'chronological' : 'category';
   const sections = useUIStore((s) => s.plannerLayout[view]);
   const reorderPlannerSections = useUIStore((s) => s.reorderPlannerSections);
+  const setPlannerSectionWeights = useUIStore((s) => s.setPlannerSectionWeights);
 
   // Desktop drag-reorder state (native HTML5 DnD; a 5-item reorder doesn't
   // warrant a DnD library dependency).
   const [dragId, setDragId] = useState<PlannerSectionId | null>(null);
   const [overId, setOverId] = useState<PlannerSectionId | null>(null);
+  // Grid element ref — needed to measure usable px width when converting a
+  // resize-drag delta into fr weights.
+  const gridRef = useRef<HTMLDivElement>(null);
 
   // Check if 24-power limit reached (exclude auto-granted form sub-powers)
   const countNonGranted = (powers: { isAutoGranted?: boolean }[]) =>
@@ -269,8 +281,14 @@ export function PlannerPage() {
         };
       case 'pool':
         return {
-          title: 'Pool Powers',
+          title: 'Pool & Epic Powers',
           body: <PoolPowers />,
+          bodyClassName: 'flex-1 overflow-y-auto p-2',
+        };
+      case 'inherent':
+        return {
+          title: 'Inherent Powers',
+          body: <InherentPowers />,
           bodyClassName: 'flex-1 overflow-y-auto p-2',
         };
       case 'bylevel':
@@ -297,7 +315,12 @@ export function PlannerPage() {
   const gridSections = sections.filter(
     (s) => s.visible && !(s.id === 'info' && undocked),
   );
-  const gridTemplateColumns = gridSections.map((s) => `${s.weight ?? 1}fr`).join(' ');
+  // `minmax(MIN, …fr)` clamps every column to the clean-render floor: extra width
+  // distributes by fr weight, but a column never shrinks below MIN_COL_PX — the
+  // grid (overflow-auto) scrolls instead of deforming its contents.
+  const gridTemplateColumns = gridSections
+    .map((s) => `minmax(${MIN_COL_PX}px, ${s.weight ?? 1}fr)`)
+    .join(' ');
 
   const handleDrop = (targetId: PlannerSectionId) => {
     if (dragId && dragId !== targetId) {
@@ -307,24 +330,66 @@ export function PlannerPage() {
     setOverId(null);
   };
 
+  // Drag the divider between column `leftIdx` and its right neighbor: shift fr
+  // weight from one to the other, keeping the pair's combined weight constant so
+  // other columns are untouched. Both neighbors are clamped to MIN_COL_PX.
+  const startColumnResize = (e: React.PointerEvent, leftIdx: number) => {
+    const grid = gridRef.current;
+    const left = gridSections[leftIdx];
+    const right = gridSections[leftIdx + 1];
+    if (!grid || !left || !right) return;
+    const gapTotal = Math.max(0, gridSections.length - 1); // gap-px = 1px each
+    const usable = grid.clientWidth - gapTotal;
+    const sumWeight = gridSections.reduce((sum, c) => sum + (c.weight ?? 1), 0);
+    const pxPerWeight = usable / sumWeight;
+    const pairPx = ((left.weight ?? 1) + (right.weight ?? 1)) * pxPerWeight;
+    // Not enough room to give both neighbors their floor — resizing this pair
+    // can't produce a valid split, so ignore the drag.
+    if (pairPx < MIN_COL_PX * 2 || pxPerWeight <= 0) return;
+    const pxL0 = (left.weight ?? 1) * pxPerWeight;
+    const startX = e.clientX;
+    const handleEl = e.currentTarget as HTMLElement;
+    handleEl.setPointerCapture(e.pointerId);
+
+    const onMove = (ev: PointerEvent) => {
+      const newL = Math.max(
+        MIN_COL_PX,
+        Math.min(pairPx - MIN_COL_PX, pxL0 + (ev.clientX - startX)),
+      );
+      setPlannerSectionWeights(view, {
+        [left.id]: newL / pxPerWeight,
+        [right.id]: (pairPx - newL) / pxPerWeight,
+      });
+    };
+    const onUp = () => {
+      handleEl.releasePointerCapture?.(e.pointerId);
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+    };
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+  };
+
   return (
     <>
       <PlannerHintBar />
 
       {/* ── Desktop (lg+): rearrangeable column grid ── */}
       <div
+        ref={gridRef}
         className="hidden lg:grid gap-px bg-slate-700 flex-1 overflow-auto"
         style={{ gridTemplateColumns, gridTemplateRows: 'minmax(0,1fr)' }}
       >
-        {gridSections.map((cfg) => {
+        {gridSections.map((cfg, idx) => {
           const section = getSection(cfg.id);
+          const isLast = idx === gridSections.length - 1;
           return (
             <div
               key={cfg.id}
               data-onboarding={section.onboarding}
               onDragOver={(e) => { if (dragId) { e.preventDefault(); setOverId(cfg.id); } }}
               onDrop={() => handleDrop(cfg.id)}
-              className={`bg-slate-900 flex flex-col overflow-hidden min-h-0 transition-opacity ${
+              className={`relative bg-slate-900 flex flex-col overflow-hidden min-h-0 transition-opacity ${
                 dragId === cfg.id ? 'opacity-40' : ''
               } ${overId === cfg.id && dragId !== cfg.id ? 'ring-2 ring-inset ring-[var(--color-primary)]' : ''}`}
             >
@@ -342,6 +407,20 @@ export function PlannerPage() {
                 {section.headerRight}
               </div>
               <div className={section.bodyClassName}>{section.body}</div>
+
+              {/* Resize divider straddling the gap to the right neighbor.
+                  Hidden while a reorder drag is in flight so the two gestures
+                  never fight. */}
+              {!isLast && !dragId && (
+                <div
+                  onPointerDown={(e) => { e.preventDefault(); startColumnResize(e, idx); }}
+                  className="absolute top-0 bottom-0 right-0 w-2 translate-x-1/2 z-20 cursor-col-resize group/resize"
+                  title="Drag to resize columns"
+                  aria-label="Resize column"
+                >
+                  <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-transparent group-hover/resize:bg-[var(--color-primary)] transition-colors" />
+                </div>
+              )}
             </div>
           );
         })}
@@ -489,15 +568,27 @@ export function PlannerPage() {
             </div>
           </div>
 
-          {/* Pool/Epic/Inherent Powers */}
+          {/* Pool & Epic Powers */}
           <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px]">
             <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
               <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
-                Pool Powers
+                Pool &amp; Epic Powers
               </h2>
             </div>
             <div className="flex-1 overflow-y-auto p-2">
               <PoolPowers />
+            </div>
+          </div>
+
+          {/* Inherent Powers */}
+          <div className="bg-slate-900 flex flex-col overflow-hidden min-h-[300px]">
+            <div className="bg-slate-800 border-b border-slate-700 px-3 min-h-[2.5rem] flex items-center">
+              <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
+                Inherent Powers
+              </h2>
+            </div>
+            <div className="flex-1 overflow-y-auto p-2">
+              <InherentPowers />
             </div>
           </div>
 

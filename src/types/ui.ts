@@ -81,14 +81,17 @@ export interface StatDisplayConfig {
 
 /**
  * Identifiers for the rearrangeable planner columns. Category view uses
- * available/primary/secondary/pool/info; chronological view uses
- * available/bylevel/info. `info` is shared by both.
+ * available/primary/secondary/pool/inherent/info; chronological view uses
+ * available/bylevel/info. `info` is shared by both. `pool` holds pool + epic
+ * powers; `inherent` (Fitness / Basic / Prestige / archetype inherent) is its
+ * own column so users can place or hide it independently.
  */
 export type PlannerSectionId =
   | 'available'
   | 'primary'
   | 'secondary'
   | 'pool'
+  | 'inherent'
   | 'info'
   | 'bylevel';
 
