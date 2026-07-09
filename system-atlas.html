@@ -1,0 +1,554 @@
+// GH Dec 26 2025; BD Aug 10 2024
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CoH Sidekick — System Atlas</title>
+<style>
+  :root {
+    --bg: #0a1120;
+    --bg-raise: #101a30;
+    --panel: #0e1729;
+    --ink: #e8eef9;
+    --ink-dim: #93a1bb;
+    --line: #23304c;
+    --edge: rgba(147,161,187,0.22);
+    --gold: #ffc857;
+    --c-input: #9aa7bd;
+    --c-entry: #ffc857;
+    --c-import: #64d8cb;
+    --c-store: #5ea2ff;
+    --c-calc: #c792ea;
+    --c-data: #7ed491;
+    --c-ui: #e879b9;
+    --c-svc: #ff9a5c;
+    --c-pipe: #d9995b;
+    --node-fill: #121e38;
+    --shadow: 0 12px 40px rgba(0,0,0,0.45);
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #e9edf4; --bg-raise: #f4f7fb; --panel: #fbfcfe;
+      --ink: #16233a; --ink-dim: #5a6a85; --line: #c8d2e2;
+      --edge: rgba(60,80,110,0.25);
+      --gold: #a97b0a;
+      --c-input: #5f6f8c; --c-entry: #a97b0a; --c-import: #0f8f83;
+      --c-store: #2465c9; --c-calc: #8446b8; --c-data: #2b8a4b;
+      --c-ui: #bd3d85; --c-svc: #c25d17; --c-pipe: #a05f2c;
+      --node-fill: #ffffff;
+      --shadow: 0 10px 30px rgba(30,45,70,0.18);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0a1120; --bg-raise: #101a30; --panel: #0e1729;
+    --ink: #e8eef9; --ink-dim: #93a1bb; --line: #23304c;
+    --edge: rgba(147,161,187,0.22);
+    --gold: #ffc857;
+    --c-input: #9aa7bd; --c-entry: #ffc857; --c-import: #64d8cb;
+    --c-store: #5ea2ff; --c-calc: #c792ea; --c-data: #7ed491;
+    --c-ui: #e879b9; --c-svc: #ff9a5c; --c-pipe: #d9995b;
+    --node-fill: #121e38;
+    --shadow: 0 12px 40px rgba(0,0,0,0.45);
+  }
+  :root[data-theme="light"] {
+    --bg: #e9edf4; --bg-raise: #f4f7fb; --panel: #fbfcfe;
+    --ink: #16233a; --ink-dim: #5a6a85; --line: #c8d2e2;
+    --edge: rgba(60,80,110,0.25);
+    --gold: #a97b0a;
+    --c-input: #5f6f8c; --c-entry: #a97b0a; --c-import: #0f8f83;
+    --c-store: #2465c9; --c-calc: #8446b8; --c-data: #2b8a4b;
+    --c-ui: #bd3d85; --c-svc: #c25d17; --c-pipe: #a05f2c;
+    --node-fill: #ffffff;
+    --shadow: 0 10px 30px rgba(30,45,70,0.18);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .display { font-family: "Bahnschrift", "Avenir Next Condensed", "Arial Narrow", "Roboto Condensed", system-ui, sans-serif; }
+  .mono { font-family: "JetBrains Mono", "Cascadia Code", ui-monospace, "SF Mono", Menlo, monospace; }
+
+  header {
+    flex: 0 0 auto;
+    display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap;
+    padding: 14px 22px 10px;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(180deg, var(--bg-raise), var(--bg));
+  }
+  header h1 {
+    margin: 0; font-size: 26px; letter-spacing: 0.06em;
+    text-transform: uppercase; font-weight: 700;
+  }
+  header h1 .side { color: var(--gold); }
+  header .sub { color: var(--ink-dim); font-size: 13px; }
+  header .spacer { flex: 1; }
+  .stats { display: flex; gap: 16px; font-size: 12px; color: var(--ink-dim); }
+  .stats b { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  #legend {
+    flex: 0 0 auto; display: flex; gap: 8px; flex-wrap: wrap;
+    padding: 8px 22px; border-bottom: 1px solid var(--line);
+    align-items: center;
+  }
+  #legend .hint { font-size: 11.5px; color: var(--ink-dim); margin-left: auto; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 3px 11px 3px 8px; border-radius: 999px;
+    border: 1px solid var(--line); background: transparent;
+    color: var(--ink); font-size: 12px; letter-spacing: 0.03em;
+    cursor: pointer; font-family: inherit;
+  }
+  .chip .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--dot); }
+  .chip[aria-pressed="true"] { background: var(--bg-raise); border-color: var(--dot); }
+  .chip:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .chip.dimmed { opacity: 0.35; }
+
+  #stage { flex: 1; position: relative; overflow: hidden; }
+  #stage svg { width: 100%; height: 100%; display: block; cursor: grab; }
+  #stage svg.panning { cursor: grabbing; }
+
+  .node rect {
+    fill: var(--node-fill); stroke-width: 1.4;
+    transition: opacity 0.15s ease;
+  }
+  .node text { pointer-events: none; }
+  .node .lbl { font-size: 12.5px; fill: var(--ink); }
+  .node .meta { font-size: 10px; fill: var(--ink-dim); letter-spacing: 0.04em; }
+  .node { cursor: pointer; }
+  .node.faded, .edge.faded { opacity: 0.13; }
+  .node.selected rect { stroke-width: 2.6; }
+  .edge { fill: none; stroke: var(--edge); stroke-width: 1.4; transition: opacity 0.15s ease; }
+  .edge.hot { stroke-width: 2.2; }
+  .edge.pipejoin { stroke-dasharray: 6 5; stroke-width: 1.8; }
+  .band-label { font-size: 11px; letter-spacing: 0.22em; fill: var(--ink-dim); text-transform: uppercase; }
+  .band-rule { stroke: var(--line); stroke-dasharray: 2 6; }
+  .col-label { font-size: 10.5px; letter-spacing: 0.18em; fill: var(--ink-dim); text-transform: uppercase; text-anchor: middle; }
+
+  #panel {
+    position: absolute; top: 14px; right: 14px; width: 320px; max-height: calc(100% - 28px);
+    overflow-y: auto;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    box-shadow: var(--shadow); padding: 16px 18px;
+    display: none;
+  }
+  #panel.open { display: block; }
+  #panel h2 { margin: 0 0 2px; font-size: 17px; letter-spacing: 0.03em; }
+  #panel .grouptag {
+    display: inline-block; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 4px; margin-bottom: 10px;
+    color: var(--bg); font-weight: 700;
+  }
+  #panel p { margin: 8px 0; font-size: 13.5px; color: var(--ink); max-width: 60ch; }
+  #panel .loc { color: var(--ink-dim); font-size: 12px; }
+  #panel h3 { margin: 14px 0 4px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-dim); }
+  #panel ul { margin: 0; padding: 0; list-style: none; font-size: 12.5px; }
+  #panel li { padding: 3px 0; border-bottom: 1px solid var(--line); }
+  #panel li:last-child { border-bottom: none; }
+  #panel li .arrow { color: var(--ink-dim); margin-right: 6px; }
+  #panel .close {
+    position: absolute; top: 10px; right: 10px;
+    background: none; border: 1px solid var(--line); color: var(--ink-dim);
+    border-radius: 6px; width: 24px; height: 24px; cursor: pointer; font-size: 13px; line-height: 1;
+  }
+  #controls {
+    position: absolute; left: 14px; bottom: 14px; display: flex; gap: 6px;
+  }
+  #controls button {
+    background: var(--panel); color: var(--ink); border: 1px solid var(--line);
+    border-radius: 8px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit;
+  }
+  #controls button:hover { border-color: var(--gold); }
+  footer.note {
+    position: absolute; right: 14px; bottom: 14px;
+    font-size: 11px; color: var(--ink-dim); background: var(--panel);
+    border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .node rect, .edge { transition: none; }
+  }
+  @media (max-width: 760px) {
+    #panel { width: calc(100% - 28px); max-height: 46%; }
+    header h1 { font-size: 20px; }
+    .stats { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="display">CoH <span class="side">Sidekick</span> · System Atlas</h1>
+  <div class="sub">City of Heroes build planner — module structure &amp; data flow</div>
+  <div class="spacer"></div>
+  <div class="stats mono">
+    <span><b>2</b> worlds</span>
+    <span><b>~80k</b> lines TS</span>
+    <span><b>3</b> game servers</span>
+    <span>scanned <b>2026-07-07</b></span>
+  </div>
+</header>
+
+<div id="legend" role="group" aria-label="Subsystem filter"></div>
+
+<div id="stage">
+  <svg id="graph" viewBox="0 0 1680 1010" role="img" aria-label="Dependency graph of CoH Sidekick modules"></svg>
+  <aside id="panel" aria-live="polite">
+    <button class="close" id="panelClose" aria-label="Close details">✕</button>
+    <div id="panelBody"></div>
+  </aside>
+  <div id="controls">
+    <button id="fitBtn">Fit view</button>
+    <button id="clearBtn">Clear focus</button>
+  </div>
+  <footer class="note">hover to trace flow · click a node for details · scroll to zoom, drag to pan</footer>
+</div>
+
+<script>
+const GROUPS = {
+  input:  { name: 'Inputs',          color: 'var(--c-input)' },
+  entry:  { name: 'Entry / boot',    color: 'var(--c-entry)' },
+  import: { name: 'Importers',       color: 'var(--c-import)' },
+  store:  { name: 'State stores',    color: 'var(--c-store)' },
+  calc:   { name: 'Calc engine',     color: 'var(--c-calc)' },
+  data:   { name: 'Game data layer', color: 'var(--c-data)' },
+  ui:     { name: 'UI',              color: 'var(--c-ui)' },
+  svc:    { name: 'Services / external', color: 'var(--c-svc)' },
+  pipe:   { name: 'Offline pipeline (Python)', color: 'var(--c-pipe)' },
+};
+
+// col: runtime layer 0..7 (left→right). band:'pipe' nodes lay out along the bottom.
+const NODES = [
+  { id:'gameclient', label:'game client /import#…', group:'input', col:0, loc:'URL fragment',
+    desc:'The Homecoming game client exports a build as a pako-deflated, base64 URL fragment. Opening the link drops the player straight into the planner with their live character.' },
+  { id:'buildfiles', label:'.skif · .mbd · .mxd files', group:'input', col:0, loc:'file open / paste',
+    desc:'Build files from Sidekick itself (.skif, PWA file association), Mids Reborn (.mbd), legacy Mids text (.mxd), and in-game /buildsave exports.' },
+  { id:'localstore', label:'localStorage', group:'input', col:0, loc:'persisted state',
+    desc:'coh-planner-build and coh-planner-ui keys. The build store and UI store rehydrate from here on boot and persist back on every change.' },
+
+  { id:'main', label:'main.tsx', group:'entry', col:1, loc:'~190 lines',
+    desc:'The single entry point. Boots the color theme, installs error handling and Sentry, resolves the active game server, loads the dataset, rehydrates the build store, then mounts React. Also receives .skif files opened via the PWA.' },
+  { id:'router', label:'App + router', group:'entry', col:1, loc:'~130 lines',
+    desc:'TanStack Router route tree: planner, shared-builds browser, build detail, author pages, settings, and the game-client import route.' },
+
+  { id:'importurl', label:'import-url', group:'import', col:2, loc:'fragment decoder',
+    desc:'Decodes the pako+base64 import fragment produced by the game client into planner JSON.' },
+  { id:'midsimport', label:'mids-import/', group:'import', col:2, loc:'~3,254 lines',
+    desc:'Parses Mids Reborn .mbd binary build files — the largest importer, mapping Mids concepts onto Sidekick’s build model.' },
+  { id:'mxdimport', label:'mxd-import/', group:'import', col:2, loc:'~1,055 lines',
+    desc:'Parses legacy Mids .mxd text exports.' },
+  { id:'gameimport', label:'game-importer/', group:'import', col:2, loc:'/buildsave text',
+    desc:'Parses the in-game /buildsave export format.' },
+  { id:'extimport', label:'external-import/', group:'import', col:2, loc:'~515 lines',
+    desc:'Imports external planner JSON — the format the game-client URL fragment decodes into.' },
+
+  { id:'buildstore', label:'buildStore', group:'store', col:3, loc:'2,983 lines',
+    desc:'The heart of the app: archetype, powers, slots, enhancements and incarnates for the current build. Every mutation, all import dispatch, and slim/hydrate serialization to localStorage live here.' },
+  { id:'uistore', label:'uiStore', group:'store', col:3, loc:'1,949 lines',
+    desc:'UI and configuration state: open modals, exemplar level, incarnate toggles, proc settings, theme. Persisted separately from the build.' },
+  { id:'historystore', label:'historyStore', group:'store', col:3, loc:'undo / redo',
+    desc:'Snapshot stack giving the planner undo/redo over build mutations.' },
+  { id:'authstore', label:'authStore', group:'store', col:3, loc:'session',
+    desc:'Holds the Supabase session for build sharing and profiles.' },
+
+  { id:'usecalc', label:'useCalculatedStats', group:'calc', col:4, loc:'memo bridge',
+    desc:'The bridge between state and math: reads build + UI stores and memoizes calculateCharacterTotals so the dashboard recomputes only when inputs change.' },
+  { id:'totals', label:'character-totals', group:'calc', col:4, loc:'3,850 lines',
+    desc:'The main calculation pipeline — ten ordered steps from set bonuses through powers, incarnates, procs and accolades to final stats and hit chance.' },
+  { id:'calcmods', label:'calc modules ×17', group:'calc', col:4, loc:'~9,000 lines',
+    desc:'Specialist math: archetype inherents (Fury, Scourge…), damage, enhancement diversification, set bonuses, pet damage, attack chains, perma calculations and more.' },
+
+  { id:'facades', label:'data facades + registries', group:'data', col:5, loc:'~14,900 lines',
+    desc:'Typed access to everything the game defines: archetypes, powersets, IO sets, enhancements, incarnates, proc data, purple patch, stat definitions. All forward to the active dataset.' },
+  { id:'dataset', label:'dataset loader', group:'data', col:5, loc:'multi-server',
+    desc:'Loads the dataset for the selected server as a dynamic chunk and exposes it behind the Dataset interface.' },
+  { id:'datasets', label:'datasets/<server>', group:'data', col:5, loc:'homecoming · rebirth · thunderspy',
+    desc:'Per-server game data: generated files from the offline pipeline merged with hand-maintained overrides into composed powersets.' },
+
+  { id:'pages', label:'pages ×7', group:'ui', col:6, loc:'~2,440 lines',
+    desc:'Planner, shared-builds browser, build detail, author profile, settings and the game-client import landing page.' },
+  { id:'dashboard', label:'StatsDashboard + layout', group:'ui', col:6, loc:'~4,200 lines',
+    desc:'The live totals view — defense, resistance, damage and every other stat, recomputed on each build change.' },
+  { id:'infopanel', label:'info panel + tooltips', group:'ui', col:6, loc:'~9,460 lines',
+    desc:'Per-power detail: effect blocks, damage breakdowns and calculation tooltips.' },
+  { id:'modals', label:'modals ×26', group:'ui', col:6, loc:'~9,200 lines',
+    desc:'Import/export, compare slotting, detailed totals, attack chains, changelog, help, feedback, donate — the planner’s dialog layer.' },
+  { id:'powers', label:'powers tray + slots', group:'ui', col:6, loc:'~6,300 lines',
+    desc:'Power selection, level assignment and drag-and-drop enhancement slotting.' },
+  { id:'enhance', label:'enhancement picker', group:'ui', col:6, loc:'~2,900 lines',
+    desc:'IO-set browser, enhancement picker and set-bonus display.' },
+  { id:'incarnate', label:'incarnate UI', group:'ui', col:6, loc:'~2,970 lines',
+    desc:'Incarnate slot management and the crafting tree.' },
+
+  { id:'services', label:'services/', group:'svc', col:7, loc:'~1,080 lines',
+    desc:'auth (Discord + SimpleLogin OAuth), sharedBuilds (share/list/delete), profile, and auction price lookups.' },
+  { id:'supabase', label:'Supabase', group:'svc', col:7, loc:'auth + 6 edge fns',
+    desc:'Postgres + Auth + Deno Edge Functions: share-build, delete-build, update-build-visibility, claim-builds, update-profile, auction-prices.' },
+  { id:'exports', label:'exporters', group:'svc', col:7, loc:'image · print · forum · mids',
+    desc:'Outbound formats: PNG build cards (html-to-image), print sheets, forum markup and Mids-compatible exports.' },
+  { id:'feedback', label:'feedback-worker', group:'svc', col:7, loc:'Cloudflare Worker',
+    desc:'Tiny Cloudflare Worker that receives in-app feedback submissions.' },
+  { id:'sentry', label:'Sentry', group:'svc', col:7, loc:'prod errors',
+    desc:'Production error reporting, initialized at boot.' },
+
+  { id:'pigg', label:'.pigg archives', group:'pipe', band:'pipe', pcol:0, loc:'game files',
+    desc:'The game’s packed archive format — the raw source of all power data.' },
+  { id:'wrangler', label:'pigg-wrangler :8085', group:'pipe', band:'pipe', pcol:1, loc:'Python',
+    desc:'Library + web UI for reading .pigg archives, including texture extraction.' },
+  { id:'crawler', label:'bin-crawler :8090', group:'pipe', band:'pipe', pcol:2, loc:'Python',
+    desc:'Parse6/Parse7 binary parser for the game’s .bin definitions — powers, powersets, classes, boost sets, entities — with an HTTP API and JSON exporter.' },
+  { id:'launcher', label:'sidekick-launcher :8000', group:'pipe', band:'pipe', pcol:0, prow:1, loc:'Python',
+    desc:'Thin stdlib dashboard that launches and monitors the other two tools.' },
+  { id:'exported', label:'exported_powers/*.json', group:'pipe', band:'pipe', pcol:3, loc:'committed artifact',
+    desc:'The committed JSON snapshot of extracted game data — the only bridge between the Python world and the web app.' },
+  { id:'convert', label:'scripts/regen-all', group:'pipe', band:'pipe', pcol:4, loc:'Node converters',
+    desc:'Orchestrated converters and validators that turn exported JSON into typed TypeScript datasets, with structural CI gates.' },
+  { id:'generated', label:'generated/*.ts + overrides', group:'pipe', band:'pipe', pcol:5, loc:'per server',
+    desc:'Generated dataset files merged with hand overrides — what actually ships inside the web app.' },
+];
+
+const EDGES = [
+  ['gameclient','importurl'], ['importurl','extimport'],
+  ['buildfiles','main'], ['buildfiles','midsimport'], ['buildfiles','mxdimport'], ['buildfiles','gameimport'],
+  ['midsimport','buildstore'], ['mxdimport','buildstore'], ['gameimport','buildstore'], ['extimport','buildstore'],
+  ['localstore','buildstore'], ['localstore','uistore'],
+  ['main','dataset'], ['main','buildstore'], ['main','router'], ['main','sentry'],
+  ['router','pages'],
+  ['pages','services'], ['pages','dashboard'], ['pages','powers'],
+  ['dashboard','usecalc'], ['infopanel','totals'], ['modals','totals'],
+  ['modals','feedback'], ['modals','exports'], ['modals','uistore'],
+  ['powers','buildstore'], ['enhance','buildstore'], ['incarnate','buildstore'],
+  ['usecalc','buildstore'], ['usecalc','uistore'], ['usecalc','totals'],
+  ['totals','calcmods'], ['totals','facades'],
+  ['facades','dataset'], ['dataset','datasets'],
+  ['buildstore','historystore'], ['buildstore','uistore'],
+  ['authstore','supabase'], ['services','supabase'],
+  ['pigg','wrangler'], ['wrangler','crawler'], ['crawler','exported'],
+  ['exported','convert'], ['convert','generated'],
+  ['launcher','wrangler'], ['launcher','crawler'],
+  ['generated','datasets','pipejoin'],
+];
+
+const COLS = ['Sources','Boot','Importers','Stores','Calculation','Game data','Interface','Outbound'];
+const W = 2060, H = 1010, RUNTIME_H = 790, PIPE_Y = 908;
+const colX = c => 56 + c * 250;
+const NODE_H = 42;
+
+const nodeById = {};
+NODES.forEach(n => nodeById[n.id] = n);
+
+// layout: stack runtime nodes per column, centered on the runtime band midline
+const byCol = {};
+NODES.filter(n => !n.band).forEach(n => (byCol[n.col] = byCol[n.col] || []).push(n));
+Object.entries(byCol).forEach(([c, arr]) => {
+  const gap = 26, total = arr.length * NODE_H + (arr.length - 1) * gap;
+  let y = 96 + (RUNTIME_H - 96 - total) / 2;
+  arr.forEach(n => { n.x = colX(+c); n.y = y; y += NODE_H + gap; });
+});
+NODES.filter(n => n.band).forEach(n => {
+  n.x = 140 + n.pcol * 290;
+  n.y = PIPE_Y - 14 + (n.prow ? 58 : 0);
+});
+NODES.forEach(n => {
+  n.w = Math.max(120, n.label.length * 7.9 + 26, n.loc.length * 6.4 + 26);
+});
+
+const svg = document.getElementById('graph');
+const NS = 'http://www.w3.org/2000/svg';
+const el = (tag, attrs, parent) => {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  (parent || svg).appendChild(e); return e;
+};
+
+const scene = el('g', { id: 'scene' });
+
+// column labels + pipeline band chrome
+COLS.forEach((name, i) => {
+  const t = el('text', { x: colX(i) + 95, y: 66, class: 'col-label display' }, scene);
+  t.textContent = name;
+});
+el('line', { x1: 30, y1: RUNTIME_H + 34, x2: W - 30, y2: RUNTIME_H + 34, class: 'band-rule' }, scene);
+const bl = el('text', { x: 34, y: RUNTIME_H + 62, class: 'band-label display' }, scene);
+bl.textContent = 'Offline data pipeline — joined to the app only through committed data';
+
+// edges under nodes
+const edgeEls = [];
+EDGES.forEach(([a, b, kind]) => {
+  const s = nodeById[a], t = nodeById[b];
+  let sx, sy, tx, ty;
+  const sc = s.band ? -1 : s.col, tc = t.band ? -1 : t.col;
+  if (s.band && !t.band) { // pipeline → runtime: rise from top of source to bottom of target
+    sx = s.x + s.w / 2; sy = s.y; tx = t.x + t.w / 2; ty = t.y + NODE_H;
+  } else if (s.band && t.band) {
+    if (s.prow) { sx = s.x + s.w / 2; sy = s.y; tx = t.x + t.w / 4; ty = t.y + NODE_H; }
+    else { sx = s.x + s.w; sy = s.y + NODE_H / 2; tx = t.x; ty = t.y + NODE_H / 2; }
+  } else if (sc === tc) { // same column: bow out left
+    sx = s.x; sy = s.y + NODE_H / 2; tx = t.x; ty = t.y + NODE_H / 2;
+  } else if (tc > sc) {
+    sx = s.x + s.w; sy = s.y + NODE_H / 2; tx = t.x; ty = t.y + NODE_H / 2;
+  } else {
+    sx = s.x; sy = s.y + NODE_H / 2; tx = t.x + t.w; ty = t.y + NODE_H / 2;
+  }
+  let d;
+  if (!s.band && !t.band && sc === tc) {
+    const bow = 46 + Math.abs(ty - sy) * 0.08;
+    d = `M ${sx} ${sy} C ${sx - bow} ${sy}, ${tx - bow} ${ty}, ${tx} ${ty}`;
+  } else if (s.band && !t.band) {
+    d = `M ${sx} ${sy} C ${sx} ${sy - 90}, ${tx} ${ty + 110}, ${tx} ${ty}`;
+  } else if (s.band && t.band && s.prow) {
+    d = `M ${sx} ${sy} C ${sx} ${sy - 30}, ${tx} ${ty + 30}, ${tx} ${ty}`;
+  } else {
+    const mx = (sx + tx) / 2;
+    d = `M ${sx} ${sy} C ${mx} ${sy}, ${mx} ${ty}, ${tx} ${ty}`;
+  }
+  const p = el('path', { d, class: 'edge' + (kind ? ' ' + kind : '') }, scene);
+  edgeEls.push({ el: p, a, b, group: s.group });
+});
+
+// nodes
+const nodeEls = {};
+NODES.forEach(n => {
+  const g = el('g', { class: 'node', transform: `translate(${n.x},${n.y})`, tabindex: 0, role: 'button' }, scene);
+  g.setAttribute('aria-label', n.label + ', ' + GROUPS[n.group].name);
+  el('rect', { width: n.w, height: NODE_H, rx: 7, stroke: GROUPS[n.group].color }, g);
+  el('rect', { width: 4, height: NODE_H, rx: 2, fill: GROUPS[n.group].color, stroke: 'none' }, g);
+  const l1 = el('text', { x: 13, y: 18, class: 'lbl mono' }, g); l1.textContent = n.label;
+  const l2 = el('text', { x: 13, y: 33, class: 'meta mono' }, g); l2.textContent = n.loc;
+  nodeEls[n.id] = g;
+  g.addEventListener('mouseenter', () => focusNode(n.id, false));
+  g.addEventListener('mouseleave', () => { if (!selected) clearFocus(); else focusNode(selected, true); });
+  g.addEventListener('click', ev => { ev.stopPropagation(); select(n.id); });
+  g.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); select(n.id); } });
+});
+
+// ---- focus / selection ----
+let selected = null;
+const neighbors = id => {
+  const set = new Set([id]);
+  EDGES.forEach(([a, b]) => { if (a === id) set.add(b); if (b === id) set.add(a); });
+  return set;
+};
+function focusNode(id, keepPanel) {
+  const near = neighbors(id);
+  NODES.forEach(n => nodeEls[n.id].classList.toggle('faded', !near.has(n.id)));
+  edgeEls.forEach(e => {
+    const hot = e.a === id || e.b === id;
+    e.el.classList.toggle('faded', !hot);
+    e.el.classList.toggle('hot', hot);
+    e.el.style.stroke = hot ? GROUPS[nodeById[e.a].group].color : '';
+  });
+}
+function clearFocus() {
+  NODES.forEach(n => nodeEls[n.id].classList.remove('faded'));
+  edgeEls.forEach(e => { e.el.classList.remove('faded', 'hot'); e.el.style.stroke = ''; });
+  applyGroupFilter();
+}
+function select(id) {
+  if (selected) nodeEls[selected].classList.remove('selected');
+  selected = id;
+  nodeEls[id].classList.add('selected');
+  focusNode(id, true);
+  showPanel(nodeById[id]);
+}
+function deselect() {
+  if (selected) nodeEls[selected].classList.remove('selected');
+  selected = null;
+  panel.classList.remove('open');
+  clearFocus();
+}
+
+// ---- detail panel ----
+const panel = document.getElementById('panel');
+const panelBody = document.getElementById('panelBody');
+document.getElementById('panelClose').addEventListener('click', deselect);
+function showPanel(n) {
+  const outs = EDGES.filter(e => e[0] === n.id).map(e => nodeById[e[1]]);
+  const ins  = EDGES.filter(e => e[1] === n.id).map(e => nodeById[e[0]]);
+  const li = arr => arr.map(m => `<li><span class="arrow">${arr === outs ? '→' : '←'}</span><span class="mono">${m.label}</span></li>`).join('') || '<li class="loc">none</li>';
+  panelBody.innerHTML = `
+    <h2 class="mono">${n.label}</h2>
+    <span class="grouptag display" style="background:${GROUPS[n.group].color}">${GROUPS[n.group].name}</span>
+    <div class="loc mono">${n.loc}</div>
+    <p>${n.desc}</p>
+    ${outs.length ? `<h3>Feeds into</h3><ul>${li(outs)}</ul>` : ''}
+    ${ins.length ? `<h3>Fed by</h3><ul>${li(ins)}</ul>` : ''}`;
+  panel.classList.add('open');
+}
+
+// ---- legend group filter ----
+const legend = document.getElementById('legend');
+const activeGroups = new Set(Object.keys(GROUPS));
+Object.entries(GROUPS).forEach(([key, gdef]) => {
+  const b = document.createElement('button');
+  b.className = 'chip';
+  b.style.setProperty('--dot', gdef.color);
+  b.setAttribute('aria-pressed', 'true');
+  b.innerHTML = `<span class="dot"></span>${gdef.name}`;
+  b.addEventListener('click', () => {
+    if (activeGroups.has(key) && activeGroups.size === Object.keys(GROUPS).length) {
+      activeGroups.clear(); activeGroups.add(key); // first click isolates
+    } else if (activeGroups.has(key)) {
+      activeGroups.delete(key);
+      if (!activeGroups.size) Object.keys(GROUPS).forEach(k => activeGroups.add(k));
+    } else activeGroups.add(key);
+    legend.querySelectorAll('.chip').forEach((c, i) => {
+      const k = Object.keys(GROUPS)[i];
+      c.setAttribute('aria-pressed', String(activeGroups.has(k)));
+      c.classList.toggle('dimmed', !activeGroups.has(k));
+    });
+    deselect(); applyGroupFilter();
+  });
+  legend.appendChild(b);
+});
+const hint = document.createElement('span');
+hint.className = 'hint'; hint.textContent = 'click a chip to isolate a subsystem';
+legend.appendChild(hint);
+function applyGroupFilter() {
+  const all = activeGroups.size === Object.keys(GROUPS).length;
+  NODES.forEach(n => nodeEls[n.id].classList.toggle('faded', !all && !activeGroups.has(n.group)));
+  edgeEls.forEach(e => {
+    const on = all || (activeGroups.has(nodeById[e.a].group) && activeGroups.has(nodeById[e.b].group));
+    e.el.classList.toggle('faded', !on);
+  });
+}
+
+// ---- pan & zoom ----
+let view = { x: 0, y: 0, k: 1 };
+const applyView = () => scene.setAttribute('transform', `translate(${view.x},${view.y}) scale(${view.k})`);
+svg.addEventListener('wheel', ev => {
+  ev.preventDefault();
+  const pt = svgPoint(ev);
+  const k = Math.min(3, Math.max(0.4, view.k * (ev.deltaY < 0 ? 1.12 : 0.89)));
+  view.x = pt.x - (pt.x - view.x) * (k / view.k);
+  view.y = pt.y - (pt.y - view.y) * (k / view.k);
+  view.k = k; applyView();
+}, { passive: false });
+let drag = null;
+svg.addEventListener('pointerdown', ev => {
+  if (ev.target.closest('.node')) return;
+  drag = { x: ev.clientX, y: ev.clientY, vx: view.x, vy: view.y };
+  svg.classList.add('panning'); svg.setPointerCapture(ev.pointerId);
+});
+svg.addEventListener('pointermove', ev => {
+  if (!drag) return;
+  const r = svg.getBoundingClientRect(), s = W / r.width;
+  view.x = drag.vx + (ev.clientX - drag.x) * s;
+  view.y = drag.vy + (ev.clientY - drag.y) * s;
+  applyView();
+});
+svg.addEventListener('pointerup', () => { drag = null; svg.classList.remove('panning'); });
+svg.addEventListener('click', ev => { if (!ev.target.closest('.node')) deselect(); });
+function svgPoint(ev) {
+  const r = svg.getBoundingClientRect();
+  return { x: (ev.clientX - r.left) * (W / r.width), y: (ev.clientY - r.top) * (H / r.height) };
+}
+document.getElementById('fitBtn').addEventListener('click', () => { view = { x: 0, y: 0, k: 1 }; applyView(); });
+document.getElementById('clearBtn').addEventListener('click', deselect);
+document.addEventListener('keydown', ev => { if (ev.key === 'Escape') deselect(); });
+</script>
+</body>
+</html>

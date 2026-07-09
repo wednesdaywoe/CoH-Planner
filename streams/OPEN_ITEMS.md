@@ -440,5 +440,3 @@ per-field evidence trail:
 - **HTTP/2-505 mitigation** [optional] — If a browser genuinely leads with an
   HTTP/2 preface, the durable fix (fresh port, or an `Alt-Svc: clear` header on
   Bin Crawler responses) is unimplemented.
-
-  

@@ -122,7 +122,9 @@
       "Bash(bash /tmp/analyze_accent_colors.sh)",
       "Bash(git checkout *)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git -C /home/jiiwii/Github/CoH-Sidekick status)",
+      "Bash(time node -e \"require\\('tsx/cjs'\\); const a=require\\('./src/data/core/atomic-effect.ts'\\); console.log\\(typeof a.bridgeAttrib\\)\")"
     ],
     "additionalDirectories": [
       "/tmp"
