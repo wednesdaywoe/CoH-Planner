@@ -543,7 +543,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   jumpspeed: {
     id: 'jumpspeed',
-    label: 'Jump Spd',
+    label: 'Jmp Spd',
     getValue: (stats) => stats.jumpSpeed,
     format: (v) => {
       const { value, capped } = applyMovementBuff('jumpSpeed', Number(v));
@@ -556,7 +556,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   jumpheight: {
     id: 'jumpheight',
-    label: 'Jump Ht',
+    label: 'Jmp Ht',
     getValue: (stats) => stats.jumpHeight,
     format: (v) => {
       const { value } = applyMovementBuff('jumpHeight', Number(v));
@@ -1006,7 +1006,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   heal_received: {
     id: 'heal_received',
-    label: 'Healing Received',
+    label: 'Heal Rec',
     getValue: () => 0, // Requires globalBonuses, handled via override
     // Positive = more healing received (Res(Heal) buff, e.g. Incandescence
     // Destiny +50%). Can be negative if a power reduces healing received.
@@ -1050,7 +1050,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   },
   perception_bonus: {
     id: 'perception_bonus',
-    label: 'Perception',
+    label: 'Percep',
     getValue: () => 0, // Requires globalBonuses
     format: (v) => `+${pct2(Number(v))}%`,
     color: STAT_COLORS.accuracy,
@@ -1108,7 +1108,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
   // ============================================
   level_shift: {
     id: 'level_shift',
-    label: 'Level Shift',
+    label: 'Lvl Shift',
     getValue: () => 0, // Overridden by GLOBAL_BONUS_OVERRIDES → globalBonuses.levelShift
     format: (v) => Number(v) > 0 ? `+${Number(v)}` : '0',
     color: 'text-amber-400',

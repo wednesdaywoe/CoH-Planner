@@ -176,7 +176,7 @@ const SETTINGS_STATS: StatToggle[] = [
   { stat: 'health', label: 'Max HP' },
   { stat: 'regeneration', label: 'Regeneration' },
   { stat: 'heal_other', label: 'Heal Bonus', colorOverride: 'health' },
-  { stat: 'heal_received', label: 'Healing Received', colorOverride: 'health' },
+  { stat: 'heal_received', label: 'Heal Rec', colorOverride: 'health' },
   { stat: 'maxend', label: 'Max End', colorOverride: 'endurance' },
   { stat: 'recovery', label: 'Recovery', colorOverride: 'endurance' },
   { stat: 'endreduction', label: 'End Reduction', colorOverride: 'endurance' },
