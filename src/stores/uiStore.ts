@@ -30,7 +30,7 @@ import type {
   Enhancement,
 } from '@/types';
 import { createDefaultIncarnateActiveState } from '@/types';
-import { reconcilePlannerColumns } from '@/utils/planner-layout';
+import { reconcilePlannerColumns, isPreAtomicSplitCategory } from '@/utils/planner-layout';
 import { type ColorThemeId, DEFAULT_COLOR_THEME, applyColorTheme, type ColorMode, DEFAULT_COLOR_MODE, applyColorMode } from '@/data/core/themes';
 import type { SlotLevelRef } from '@/utils/slot-levels';
 import type { PowerMetric } from '@/utils/calculations/attack-chain';
@@ -1935,6 +1935,14 @@ export const useUIStore = create<UIStore>()(
             const defaults = defaultPlannerLayout[view];
             const known = new Set(defaults.map((s) => s.id));
             const saved = Array.isArray(persistedLayout[view]) ? persistedLayout[view] : [];
+            // One-time migration for the atomic-section split: a pre-split saved
+            // category layout would otherwise scatter the five new sections into
+            // their own trailing columns on upgrade (the "every cell its own
+            // column" regression). Adopt the curated new default instead.
+            // Chronological never split, so it's exempt.
+            if (view === 'category' && isPreAtomicSplitCategory(saved)) {
+              return defaults;
+            }
             const kept = saved.filter((s) => known.has(s.id));
             const present = new Set(kept.map((s) => s.id));
             const missing = defaults.filter((s) => !present.has(s.id));

@@ -21,6 +21,29 @@ import type { PlannerSectionConfig, PlannerSectionId } from '@/types';
 /** Where a dragged section lands relative to the cell it's dropped on. */
 export type DropZone = 'above' | 'below' | 'colBefore' | 'colAfter';
 
+/** Section ids introduced by the atomic-section split (goal 2): `epic` + the
+ *  four `inherent-*` groups, which replaced the combined `pool`/`inherent`
+ *  columns. Used to tell a post-split saved layout from a pre-split one. */
+const ATOMIC_SPLIT_SECTION_IDS = new Set<string>([
+  'epic',
+  'inherent-fitness',
+  'inherent-basic',
+  'inherent-prestige',
+  'inherent-archetype',
+]);
+
+/**
+ * True when a persisted *category* layout predates the atomic-section split — it
+ * has entries but references none of the new atomic ids. Such a layout must be
+ * migrated wholesale to the current default: the normal append-missing reconcile
+ * would scatter the five new sections into their own trailing columns (the
+ * "every cell its own column" regression on upgrade). A post-split layout has at
+ * least one atomic id and reconciles normally, preserving user customization.
+ */
+export function isPreAtomicSplitCategory(saved: { id: string }[]): boolean {
+  return saved.length > 0 && !saved.some((s) => ATOMIC_SPLIT_SECTION_IDS.has(s.id));
+}
+
 /**
  * Group a flat section list into columns of stacked rows. Columns come out
  * ordered left-to-right (ascending `column`); rows within a column keep the
