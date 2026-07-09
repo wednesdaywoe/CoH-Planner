@@ -80,13 +80,13 @@ revisit.
   verify: file:src/pages/PlannerPage.tsx, fn:moveSection
 - [x] **LAY4** — drag-to-reorder the desktop columns via native HTML5 DnD on a
   header grip (see Deviation above). verify: file:src/pages/PlannerPage.tsx
-- [x] **LAY5** — layout control UI. First shipped as a "Columns" popover in the
-  hint bar, then relabeled "Layout" and moved to the dashboard toolbar (next to
-  Configure/Controls) as `LayoutModal` — a view-aware ordered list with up/down
-  reorder + show/hide checkboxes + Reset (decision 2026-07-09, user-chosen: the
-  hint-bar popover risked going unnoticed and the toolbar row's `overflow-x-auto`
-  would clip an inline popover, so a modal matches the row's other buttons).
-  Column-header drag still works as a power-user affordance.
+- [x] **LAY5** — layout control UI = `LayoutModal` (view-aware ordered list with
+  up/down reorder + show/hide checkboxes + Reset). Trigger placement iterated for
+  discoverability (all 2026-07-09, user-driven): hint-bar "Columns" popover →
+  dashboard toolbar → **top header row next to Menu/Options** (final). Made a modal
+  rather than a popover because the toolbar row's `overflow-x-auto` would clip an
+  inline dropdown and a modal matches the surrounding triggers. Column-header drag
+  remains as a power-user affordance.
   verify: file:src/components/modals/LayoutModal.tsx, fn:openLayoutModal
 - [x] **LAY6** — InfoPanel undock reconciled with visibility: an undocked info
   column leaves the grid regardless of its stored `visible` flag; the Columns menu
