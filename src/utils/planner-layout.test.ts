@@ -14,7 +14,7 @@ const singleRow: PlannerSectionConfig[] = [
   { id: 'primary', visible: true, column: 1 },
   { id: 'secondary', visible: true, column: 2 },
   { id: 'pool', visible: true, column: 3 },
-  { id: 'inherent', visible: true, column: 4 },
+  { id: 'epic', visible: true, column: 4 },
   { id: 'info', visible: true, column: 5 },
 ];
 
@@ -56,28 +56,28 @@ describe('applyDrop', () => {
     const next = applyDrop(singleRow, 'info', 'primary', 'below');
     // info leaves column 5, joins primary's column under it; columns re-densify.
     expect(shape(next)).toEqual([
-      ['available'], ['primary', 'info'], ['secondary'], ['pool'], ['inherent'],
+      ['available'], ['primary', 'info'], ['secondary'], ['pool'], ['epic'],
     ]);
   });
 
   it('stacks above a target into the same column', () => {
     const next = applyDrop(singleRow, 'info', 'primary', 'above');
     expect(shape(next)).toEqual([
-      ['available'], ['info', 'primary'], ['secondary'], ['pool'], ['inherent'],
+      ['available'], ['info', 'primary'], ['secondary'], ['pool'], ['epic'],
     ]);
   });
 
   it('colBefore inserts the dragged section as its own column left of target', () => {
     const next = applyDrop(singleRow, 'info', 'available', 'colBefore');
     expect(shape(next)).toEqual([
-      ['info'], ['available'], ['primary'], ['secondary'], ['pool'], ['inherent'],
+      ['info'], ['available'], ['primary'], ['secondary'], ['pool'], ['epic'],
     ]);
   });
 
   it('colAfter inserts right of target', () => {
     const next = applyDrop(singleRow, 'available', 'info', 'colAfter');
     expect(shape(next)).toEqual([
-      ['primary'], ['secondary'], ['pool'], ['inherent'], ['info'], ['available'],
+      ['primary'], ['secondary'], ['pool'], ['epic'], ['info'], ['available'],
     ]);
   });
 
@@ -126,7 +126,7 @@ describe('applyDrop', () => {
     // collapses so indices stay dense (last column holds the new stack).
     const next = applyDrop(singleRow, 'secondary', 'info', 'below');
     expect(shape(next)).toEqual([
-      ['available'], ['primary'], ['pool'], ['inherent'], ['info', 'secondary'],
+      ['available'], ['primary'], ['pool'], ['epic'], ['info', 'secondary'],
     ]);
     expect(next.map((s) => s.column)).toEqual([0, 1, 2, 3, 4, 4]);
   });
@@ -136,14 +136,14 @@ describe('shiftColumn', () => {
   it('moves a section one column left', () => {
     const next = shiftColumn(singleRow, 'secondary', -1);
     expect(shape(next)).toEqual([
-      ['available'], ['secondary'], ['primary'], ['pool'], ['inherent'], ['info'],
+      ['available'], ['secondary'], ['primary'], ['pool'], ['epic'], ['info'],
     ]);
   });
 
   it('moves a section one column right', () => {
     const next = shiftColumn(singleRow, 'primary', 1);
     expect(shape(next)).toEqual([
-      ['available'], ['secondary'], ['primary'], ['pool'], ['inherent'], ['info'],
+      ['available'], ['secondary'], ['primary'], ['pool'], ['epic'], ['info'],
     ]);
   });
 
@@ -181,10 +181,10 @@ describe('reconcilePlannerColumns (merge migration)', () => {
       { id: 'available', visible: true, column: 0 },
       { id: 'primary', visible: true, column: 1 },
     ];
-    const missing: PlannerSectionConfig[] = [{ id: 'inherent', visible: true, column: 4 }];
+    const missing: PlannerSectionConfig[] = [{ id: 'epic', visible: true, column: 4 }];
     const out = reconcilePlannerColumns(kept, missing);
-    expect(shape(out)).toEqual([['available'], ['primary'], ['inherent']]);
-    expect(out.find((s) => s.id === 'inherent')!.column).toBe(2);
+    expect(shape(out)).toEqual([['available'], ['primary'], ['epic']]);
+    expect(out.find((s) => s.id === 'epic')!.column).toBe(2);
   });
 
   it('preserves an existing stack while appending', () => {
@@ -193,8 +193,8 @@ describe('reconcilePlannerColumns (merge migration)', () => {
       { id: 'primary', visible: true, column: 1 },
       { id: 'secondary', visible: true, column: 1 },
     ];
-    const missing: PlannerSectionConfig[] = [{ id: 'inherent', visible: true, column: 9 }];
+    const missing: PlannerSectionConfig[] = [{ id: 'epic', visible: true, column: 9 }];
     const out = reconcilePlannerColumns(kept, missing);
-    expect(shape(out)).toEqual([['available'], ['primary', 'secondary'], ['inherent']]);
+    expect(shape(out)).toEqual([['available'], ['primary', 'secondary'], ['epic']]);
   });
 });

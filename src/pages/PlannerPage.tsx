@@ -20,7 +20,7 @@ import { useUrlBuildSync } from '@/utils/url-build-sync';
 import { AvailablePowers } from '@/components/powers/AvailablePowers';
 import { AvailablePoolPowers } from '@/components/powers/AvailablePoolPowers';
 import { SelectedPowers } from '@/components/powers/SelectedPowers';
-import { PoolPowers, InherentPowers } from '@/components/powers/PoolPowers';
+import { PoolPowers, EpicPowers, InherentPowers } from '@/components/powers/PoolPowers';
 import { PlannerHintBar } from '@/components/powers/PlannerHintBar';
 import { ChronologicalPowerView } from '@/components/powers/ChronologicalPowerView';
 import { InfoPanel } from '@/components/info/InfoPanel';
@@ -169,6 +169,17 @@ export function PlannerPage() {
   const [dragId, setDragId] = useState<PlannerSectionId | null>(null);
   const [overId, setOverId] = useState<PlannerSectionId | null>(null);
   const [overZone, setOverZone] = useState<DropZone | null>(null);
+  // Per-cell collapse (ephemeral, like the old inherent-group collapse it
+  // replaces): a collapsed cell hides its body and shrinks to its header bar.
+  // Lives at the cell level because the atomic inherent-group cells are
+  // `headerless` — the cell header is their only collapse affordance.
+  const [collapsedCells, setCollapsedCells] = useState<Set<PlannerSectionId>>(() => new Set());
+  const toggleCollapsed = (id: PlannerSectionId) =>
+    setCollapsedCells((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
   // Grid element ref — needed to measure usable px width when converting a
   // resize-drag delta into fr weights.
   const gridRef = useRef<HTMLDivElement>(null);
@@ -340,14 +351,38 @@ export function PlannerPage() {
         };
       case 'pool':
         return {
-          title: 'Pool & Epic Powers',
+          title: 'Pool Powers',
           body: <PoolPowers />,
           bodyClassName: 'flex-1 overflow-y-auto p-2',
         };
-      case 'inherent':
+      case 'epic':
         return {
-          title: 'Inherent Powers',
-          body: <InherentPowers />,
+          title: 'Epic & Patron Powers',
+          body: <EpicPowers />,
+          bodyClassName: 'flex-1 overflow-y-auto p-2',
+        };
+      case 'inherent-fitness':
+        return {
+          title: 'Fitness',
+          body: <InherentPowers group="fitness" />,
+          bodyClassName: 'flex-1 overflow-y-auto p-2',
+        };
+      case 'inherent-basic':
+        return {
+          title: 'Basic',
+          body: <InherentPowers group="basic" />,
+          bodyClassName: 'flex-1 overflow-y-auto p-2',
+        };
+      case 'inherent-prestige':
+        return {
+          title: 'Prestige Sprints',
+          body: <InherentPowers group="prestige" />,
+          bodyClassName: 'flex-1 overflow-y-auto p-2',
+        };
+      case 'inherent-archetype':
+        return {
+          title: `${build.archetype.name || 'Archetype'} Inherent`,
+          body: <InherentPowers group="archetype" />,
           bodyClassName: 'flex-1 overflow-y-auto p-2',
         };
       case 'bylevel':
@@ -517,20 +552,30 @@ export function PlannerPage() {
           const isLastCol = colIdx === columns.length - 1;
           // A column is weight-driven once the user drags a divider in it (any
           // cell carries a `rowWeight`); until then each cell sizes to its own
-          // content (`flex-basis: auto`), shrinking proportionally only when the
-          // column can't fit everything — so a tall upper cell keeps its height
-          // instead of being forced to an even split + scrollbar.
+          // content (`flex-basis: auto` + `flex-grow: 0`), shrinking
+          // proportionally only when the column can't fit everything. Not growing
+          // to fill is deliberate: a lone short cell (e.g. Inherent) stays as tall
+          // as its contents and leaves the column canvas empty below it, so it
+          // reads as a discrete *tile* rather than a bottomless column. A tall
+          // cell (a full power list) still overflows → `flex-shrink` clamps it to
+          // the column height and its body scrolls, so it fills — because it
+          // needs the space.
           const weightDriven = col.rows.some((r) => r.rowWeight !== undefined);
           return (
             <div
               key={`col-${colIdx}`}
               data-column
-              className="relative flex flex-col gap-px bg-slate-700 min-h-0"
+              // bg-slate-900 (not -700) so the empty canvas below content-sized
+              // tiles is seamless with the tiles themselves; the per-cell `ring`
+              // frame (LAY12) carries the stacked-cell separation, and the column
+              // seams are the grid-level gap, unaffected.
+              className="relative flex flex-col gap-px bg-slate-900 min-h-0"
             >
               {col.rows.map((cfg, rowIdx) => {
                 const section = getSection(cfg.id);
                 const isLastRow = rowIdx === col.rows.length - 1;
                 const isDropTarget = overId === cfg.id && dragId !== null && dragId !== cfg.id && overZone !== null;
+                const isCollapsed = collapsedCells.has(cfg.id);
                 return (
                   <div
                     key={cfg.id}
@@ -539,9 +584,11 @@ export function PlannerPage() {
                     onDragOver={(e) => handleDragOver(e, cfg.id)}
                     onDrop={() => handleDrop(cfg.id)}
                     style={
-                      weightDriven
-                        ? { flexGrow: cfg.rowWeight ?? 1, flexShrink: 1, flexBasis: 0, minHeight: MIN_CELL_PX }
-                        : { flexGrow: 1, flexShrink: 1, flexBasis: 'auto', minHeight: MIN_CELL_PX }
+                      isCollapsed
+                        ? { flexGrow: 0, flexShrink: 0, flexBasis: 'auto', minHeight: 0 }
+                        : weightDriven
+                          ? { flexGrow: cfg.rowWeight ?? 1, flexShrink: 1, flexBasis: 0, minHeight: MIN_CELL_PX }
+                          : { flexGrow: 0, flexShrink: 1, flexBasis: 'auto', minHeight: MIN_CELL_PX }
                     }
                     className={`relative bg-slate-900 flex flex-col overflow-hidden min-h-0 transition-opacity ring-1 ring-inset ring-slate-600/60 ${
                       dragId === cfg.id ? 'opacity-40' : ''
@@ -554,13 +601,21 @@ export function PlannerPage() {
                           onDragStart={() => setDragId(cfg.id)}
                           onDragEnd={() => { setDragId(null); setOverId(null); setOverZone(null); }}
                         />
+                        <button
+                          onClick={() => toggleCollapsed(cfg.id)}
+                          className="text-slate-500 hover:text-slate-300 transition-colors flex-shrink-0"
+                          title={isCollapsed ? 'Expand section' : 'Collapse section'}
+                          aria-label={isCollapsed ? 'Expand section' : 'Collapse section'}
+                        >
+                          <span className={`inline-block text-[10px] transition-transform ${isCollapsed ? '' : 'rotate-90'}`}>▶</span>
+                        </button>
                         <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
                           {section.title}
                         </h2>
                       </div>
-                      {section.headerRight}
+                      {!isCollapsed && section.headerRight}
                     </div>
-                    <div className={section.bodyClassName}>{section.body}</div>
+                    {!isCollapsed && <div className={section.bodyClassName}>{section.body}</div>}
 
                     {/* Drop-zone edge marker (above/below stack · left/right new column). */}
                     {isDropTarget && (
@@ -572,7 +627,7 @@ export function PlannerPage() {
 
                     {/* Vertical resize divider to the stacked row below. Hidden
                         during a reorder drag so the gestures never fight. */}
-                    {!isLastRow && !dragId && (
+                    {!isLastRow && !dragId && !isCollapsed && (
                       <ResizeDivider
                         axis="y"
                         onPointerDown={(e) => { e.preventDefault(); startRowResize(e, rowIdx); }}
@@ -581,6 +636,27 @@ export function PlannerPage() {
                   </div>
                 );
               })}
+
+              {/* Drop catcher for the empty canvas below content-sized tiles.
+                  Goal 1 (flex-grow:0) leaves real slack under a short column's
+                  last tile; that slack is the column div, which has no drop
+                  handler — so a "below" drop released there would paint the blue
+                  line but silently fail. This spacer fills the slack (grows only
+                  in content-driven mode; 0 height when the column is weight-driven
+                  or full) and routes a drop there to "below the last cell". */}
+              {col.rows.length > 0 && (
+                <div
+                  style={{ flexGrow: weightDriven ? 0 : 1, flexBasis: 0, minHeight: 0 }}
+                  onDragOver={(e) => {
+                    const lastId = col.rows[col.rows.length - 1].id;
+                    if (!dragId || dragId === lastId) return;
+                    e.preventDefault();
+                    setOverId(lastId);
+                    setOverZone('below');
+                  }}
+                  onDrop={() => handleDrop(col.rows[col.rows.length - 1].id)}
+                />
+              )}
 
               {/* Horizontal resize divider straddling the gap to the right
                   neighbor column. Hidden during a reorder drag. */}
@@ -744,8 +820,9 @@ export function PlannerPage() {
                 Pool &amp; Epic Powers
               </h2>
             </div>
-            <div className="flex-1 overflow-y-auto p-2">
+            <div className="flex-1 overflow-y-auto p-2 space-y-2">
               <PoolPowers />
+              <EpicPowers />
             </div>
           </div>
 

@@ -82,16 +82,24 @@ export interface StatDisplayConfig {
 /**
  * Identifiers for the rearrangeable planner columns. Category view uses
  * available/primary/secondary/pool/inherent/info; chronological view uses
- * available/bylevel/info. `info` is shared by both. `pool` holds pool + epic
- * powers; `inherent` (Fitness / Basic / Prestige / archetype inherent) is its
- * own column so users can place or hide it independently.
+ * available/bylevel/info. `info` is shared by both. The power-pool, epic and
+ * inherent trays are split into atomic sections (goal 2): `pool` (power pools
+ * only), `epic` (epic/patron), and one section per inherent group
+ * (`inherent-fitness` / `inherent-basic` / `inherent-prestige` /
+ * `inherent-archetype`), so each can be placed, stacked or hidden on its own.
+ * The default layout stacks the atomic sections into shared columns so the row
+ * stays 6 columns wide (see `defaultPlannerLayout`).
  */
 export type PlannerSectionId =
   | 'available'
   | 'primary'
   | 'secondary'
   | 'pool'
-  | 'inherent'
+  | 'epic'
+  | 'inherent-fitness'
+  | 'inherent-basic'
+  | 'inherent-prestige'
+  | 'inherent-archetype'
   | 'info'
   | 'bylevel';
 

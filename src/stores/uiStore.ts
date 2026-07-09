@@ -795,8 +795,15 @@ const defaultPlannerLayout: PlannerLayoutState = {
     { id: 'available', visible: true, column: 0 },
     { id: 'primary', visible: true, column: 1 },
     { id: 'secondary', visible: true, column: 2 },
+    // Pool + Epic stack in column 3; the four inherent groups stack in column 4.
+    // Content-first sizing (goal 1) makes each stacked cell read as its own tile,
+    // so the atomic split keeps the default a familiar 6-column row.
     { id: 'pool', visible: true, column: 3 },
-    { id: 'inherent', visible: true, column: 4 },
+    { id: 'epic', visible: true, column: 3 },
+    { id: 'inherent-fitness', visible: true, column: 4 },
+    { id: 'inherent-basic', visible: true, column: 4 },
+    { id: 'inherent-prestige', visible: true, column: 4 },
+    { id: 'inherent-archetype', visible: true, column: 4 },
     { id: 'info', visible: true, column: 5 },
   ],
   chronological: [

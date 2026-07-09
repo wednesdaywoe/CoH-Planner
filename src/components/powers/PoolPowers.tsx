@@ -108,13 +108,12 @@ export function PoolPowers() {
     return infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === powerName;
   };
 
-  // Check if there are any selected pool or epic powers to display. Inherent
-  // powers render in their own `InherentPowers` column (see below).
+  // Pool powers only. Epic/Patron powers render in their own `EpicPowers`
+  // section and inherent powers in `InherentPowers` (both below), so each reads
+  // as its own atomic planner cell.
   const hasSelectedPoolPowers = pools.some((p) => p.powers.length > 0);
-  const hasEpicPowers = build.epicPool && build.epicPool.powers.length > 0;
-  const hasAnything = hasSelectedPoolPowers || hasEpicPowers;
 
-  if (!hasAnything) {
+  if (!hasSelectedPoolPowers) {
     return (
       <div className="text-xs text-slate-500 italic py-4 text-center">
         No pool powers yet
@@ -161,15 +160,45 @@ export function PoolPowers() {
           />
         );
       })}
+    </div>
+  );
+}
 
-      {/* Epic/Patron Pool — only show if has selected powers */}
-      {hasEpicPowers && (
-        <EpicPoolSelectedPowers
-          epicPool={build.epicPool!}
-          isPowerLocked={isPowerLocked}
-          slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
-        />
-      )}
+// ============================================
+// EPIC POWERS (separate planner column)
+// ============================================
+
+/**
+ * Epic / Patron pool selected powers, rendered as their own planner section so
+ * users can place or hide them independently of the power pools. Split out of
+ * `PoolPowers` 2026-07-09 (goal 2 "atomic cells").
+ */
+export function EpicPowers() {
+  const build = useBuildStore((s) => s.build);
+  const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
+  const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
+  const showSlotLevels = useShowSlotLevels();
+  const slotLevelsMap = useSlotLevels();
+
+  const isPowerLocked = (powerName: string) =>
+    infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === powerName;
+
+  const hasEpicPowers = build.epicPool && build.epicPool.powers.length > 0;
+  if (!hasEpicPowers) {
+    return (
+      <div className="text-xs text-slate-500 italic py-4 text-center">
+        No epic powers yet
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-2">
+      <EpicPoolSelectedPowers
+        epicPool={build.epicPool!}
+        isPowerLocked={isPowerLocked}
+        slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
+      />
     </div>
   );
 }
@@ -178,12 +207,15 @@ export function PoolPowers() {
 // INHERENT POWERS (separate planner column)
 // ============================================
 
+/** The fixed inherent groups, each surfaced as its own atomic planner cell. */
+export type InherentGroupKey = 'fitness' | 'basic' | 'prestige' | 'archetype';
+
 /**
  * Inherent powers (Fitness / Basic / Prestige Sprints / archetype inherent),
  * rendered as their own planner section so users can position or hide them
  * independently of pool/epic powers. Split out of `PoolPowers` 2026-07-09.
  */
-export function InherentPowers() {
+export function InherentPowers({ group }: { group?: InherentGroupKey } = {}) {
   const build = useBuildStore((s) => s.build);
   const addSlot = useBuildStore((s) => s.addSlot);
   const removeSlot = useBuildStore((s) => s.removeSlot);
@@ -251,14 +283,6 @@ export function InherentPowers() {
     return groups;
   }, [build.inherents]);
 
-  if (build.inherents.length === 0) {
-    return (
-      <div className="text-xs text-slate-500 italic py-4 text-center">
-        No inherent powers yet
-      </div>
-    );
-  }
-
   const groupProps = {
     isPowerLocked,
     onPowerHover: handlePowerHover,
@@ -273,6 +297,30 @@ export function InherentPowers() {
     onInfoClick: handleInfoClick,
     slotLevelsMap: showSlotLevels ? slotLevelsMap : undefined,
   };
+
+  // Single-group mode (desktop atomic cells): render just this group's rows.
+  // The planner cell header already names the group, so the inner group header
+  // is suppressed (`headerless`) to avoid a redundant second title.
+  if (group) {
+    const powers = inherentGroups[group] ?? [];
+    if (powers.length === 0) {
+      return <div className="text-xs text-slate-500 italic py-4 text-center">None</div>;
+    }
+    return (
+      <div className="space-y-2">
+        <InherentPowerGroup title={group} powers={powers} headerless {...groupProps} />
+      </div>
+    );
+  }
+
+  // Combined mode (mobile/md fallback): all groups with their own headers.
+  if (build.inherents.length === 0) {
+    return (
+      <div className="text-xs text-slate-500 italic py-4 text-center">
+        No inherent powers yet
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-2">
@@ -723,6 +771,9 @@ interface InherentPowerGroupProps {
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
   onInfoClick: (power: SelectedPower) => void;
   defaultCollapsed?: boolean;
+  /** Suppress the group's own header/collapse chrome — used when the group is a
+   *  standalone planner cell whose cell header already names it (goal 2). */
+  headerless?: boolean;
   slotLevelsMap?: Map<string, number[]>;
 }
 
@@ -741,6 +792,7 @@ function InherentPowerGroup({
   onClearAllEnhancements,
   onInfoClick,
   defaultCollapsed = false,
+  headerless = false,
   slotLevelsMap,
 }: InherentPowerGroupProps) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
@@ -749,9 +801,12 @@ function InherentPowerGroup({
   const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
 
   const sortedPowers = [...powers].sort((a, b) => a.available - b.available);
+  // Headerless standalone-cell mode is never collapsed (the cell can be hidden).
+  const showRows = headerless || !collapsed;
 
   return (
     <div>
+      {!headerless && (
       <div
         className="flex items-center gap-1 mb-1.5 cursor-pointer select-none"
         onClick={() => setCollapsed(!collapsed)}
@@ -764,8 +819,9 @@ function InherentPowerGroup({
         </h4>
         <span className="text-[9px] text-slate-600">({sortedPowers.length})</span>
       </div>
+      )}
 
-      {!collapsed && (
+      {showRows && (
         <div className="space-y-0.5">
           {sortedPowers.map((power) => {
             const isLocked = isPowerLocked(power.internalName);
