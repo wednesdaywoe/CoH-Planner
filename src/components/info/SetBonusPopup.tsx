@@ -16,11 +16,10 @@
  * names (e.g. "defEnergy") the engine emits.
  */
 
-import { useEffect, useMemo, useRef, useState, useCallback } from 'react';
-import { createPortal } from 'react-dom';
+import { useMemo, useState, useCallback } from 'react';
 import { useUIStore } from '@/stores';
 import { useBonusTracking, useStatBreakdowns, useIsTouchDevice } from '@/hooks';
-import { Tooltip } from '@/components/ui';
+import { Tooltip, FloatingWindow } from '@/components/ui';
 import { Modal } from '@/components/modals/Modal';
 import { formatBonusValue } from '@/utils/set-bonus-format';
 import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY } from '@/data/set-bonus-groups';
@@ -151,60 +150,6 @@ export function SetBonusPopup() {
     });
   }, []);
 
-  // ---- Floating window position/size + drag/resize (desktop only) ----
-  const [pos, setPos] = useState(() => ({
-    x: Math.max(16, window.innerWidth - DEFAULT_WIDTH - 16),
-    y: 96,
-  }));
-  const [size, setSize] = useState({ w: DEFAULT_WIDTH, h: DEFAULT_HEIGHT });
-  const dragging = useRef(false);
-  const dragOffset = useRef({ x: 0, y: 0 });
-  const resizing = useRef(false);
-  const resizeStart = useRef({ x: 0, y: 0, w: 0, h: 0 });
-
-  const onDragStart = useCallback((e: React.MouseEvent) => {
-    if ((e.target as HTMLElement).closest('button')) return;
-    e.preventDefault();
-    dragging.current = true;
-    dragOffset.current = { x: e.clientX - pos.x, y: e.clientY - pos.y };
-  }, [pos.x, pos.y]);
-
-  const onResizeStart = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    resizing.current = true;
-    resizeStart.current = { x: e.clientX, y: e.clientY, w: size.w, h: size.h };
-  }, [size.w, size.h]);
-
-  useEffect(() => {
-    if (isTouch) return; // no drag/resize listeners on touch
-    const onMouseMove = (e: MouseEvent) => {
-      if (dragging.current) {
-        const newX = Math.max(0, Math.min(window.innerWidth - 100, e.clientX - dragOffset.current.x));
-        const newY = Math.max(0, Math.min(window.innerHeight - 40, e.clientY - dragOffset.current.y));
-        setPos({ x: newX, y: newY });
-      }
-      if (resizing.current) {
-        const dx = e.clientX - resizeStart.current.x;
-        const dy = e.clientY - resizeStart.current.y;
-        setSize({
-          w: Math.max(MIN_WIDTH, resizeStart.current.w + dx),
-          h: Math.max(MIN_HEIGHT, resizeStart.current.h + dy),
-        });
-      }
-    };
-    const onMouseUp = () => {
-      dragging.current = false;
-      resizing.current = false;
-    };
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseup', onMouseUp);
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseup', onMouseUp);
-    };
-  }, [isTouch]);
-
   // ---- Shared bits ----
   const wastedDot = (n: number) =>
     n > 0 ? (
@@ -312,16 +257,16 @@ export function SetBonusPopup() {
   }
 
   // ---- Desktop: floating draggable/resizable window ----
-  return createPortal(
-    <div
-      className="fixed z-50 flex flex-col bg-slate-900 border border-slate-600 rounded-lg shadow-2xl overflow-hidden"
-      style={{ left: pos.x, top: pos.y, width: size.w, height: size.h }}
-    >
-      <div
-        className="flex items-center justify-between px-3 py-1.5 bg-slate-800 border-b border-slate-700 shrink-0 cursor-move select-none"
-        onMouseDown={onDragStart}
-      >
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-300">Set Bonus Totals</h2>
+  return (
+    <FloatingWindow
+      title="Set Bonus Totals"
+      persistKey="set-bonus-totals"
+      defaultWidth={DEFAULT_WIDTH}
+      defaultHeight={DEFAULT_HEIGHT}
+      minWidth={MIN_WIDTH}
+      minHeight={MIN_HEIGHT}
+      defaultY={96}
+      headerRight={
         <button
           onClick={closeSetBonusPopup}
           className="flex items-center justify-center w-6 h-6 text-slate-400 hover:text-white bg-slate-700 hover:bg-slate-600 rounded transition-colors"
@@ -332,17 +277,10 @@ export function SetBonusPopup() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-      </div>
-
-      <div className="flex-1 overflow-y-auto p-2">{renderGroups()}</div>
-
-      <div className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize" onMouseDown={onResizeStart}>
-        <svg className="w-4 h-4 text-slate-500" viewBox="0 0 16 16" fill="currentColor">
-          <path d="M14 14H12V12H14V14ZM14 10H12V8H14V10ZM10 14H8V12H10V14Z" />
-        </svg>
-      </div>
-    </div>,
-    document.body
+      }
+    >
+      {renderGroups()}
+    </FloatingWindow>
   );
 }
 

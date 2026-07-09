@@ -23,3 +23,5 @@ export { Input } from './Input';
 export { CollapsibleSection } from './CollapsibleSection';
 
 export { LevelSpinner } from './LevelSpinner';
+
+export { FloatingWindow } from './FloatingWindow';

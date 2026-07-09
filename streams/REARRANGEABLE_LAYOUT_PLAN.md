@@ -135,25 +135,30 @@ revisit.
   layout (chronological) unchanged — it's a single wide column, rarely squeezed.
   verify: file:src/components/powers/PowerRow.tsx, fn:renderNameRow
 
-## Planned
-
-- [ ] **LAY10** — unify the two hand-rolled floating windows
+- [x] **LAY10** — unify the two hand-rolled floating windows
   ([PopOutInfoPanel.tsx](../src/components/info/PopOutInfoPanel.tsx) +
   [SetBonusPopup.tsx](../src/components/info/SetBonusPopup.tsx)) into one reusable
-  `FloatingWindow` primitive. Both duplicate the *same* drag/resize/portal code
-  today — `PopOutInfoPanel` lines 22–83 ≈ `SetBonusPopup` lines 154–206 (identical
-  `DEFAULT_WIDTH`/`MIN_WIDTH` constants, `onDragStart`/`onResizeStart`, the global
-  `mousemove`/`mouseup` clamp math, the `createPortal(...document.body)` shell, and
-  the corner-handle SVG). Extract a `<FloatingWindow title header={…} onClose|onDock
-  defaultWidth defaultHeight minWidth minHeight persistKey?>` component that owns
-  position/size + the drag/resize listeners; each caller becomes ~10 lines of body +
-  a header action. New capability the extraction earns cheaply: **persist position &
-  size** to `uiStore` (positions are non-persisted today) — hence the optional
-  `persistKey`. Keep `SetBonusPopup`'s touch branch (Modal sheet) as-is: only the
-  desktop floating branch moves into the primitive. This is the "one reusable
-  drag/dock primitive" the Deferred note called for; it is a self-contained refactor
-  with no behavior change beyond optional persistence.
+  `FloatingWindow` primitive. Both duplicated the *same* drag/resize/portal code —
+  identical `DEFAULT_WIDTH`/`MIN_WIDTH` constants, `onDragStart`/`onResizeStart`, the
+  global `mousemove`/`mouseup` clamp math, the `createPortal(...document.body)` shell,
+  and the corner-handle SVG. Extracted `<FloatingWindow title headerRight={…}
+  defaultWidth defaultHeight minWidth minHeight defaultY persistKey?>` which owns
+  position/size + the drag/resize listeners; each caller is now ~10 lines of body + a
+  header action. New capability earned cheaply: **persist position & size** to
+  `uiStore.floatingWindows` (keyed by `persistKey` — `info-panel` / `set-bonus-totals`;
+  added to `partialize`, defaults `{}`) — positions were non-persisted before.
+  `SetBonusPopup`'s touch branch (Modal sheet) is untouched; only the desktop floating
+  branch moved into the primitive. **Implementation gotcha found in-app:** the persist
+  write on `mouseup` must read geometry from a ref updated *synchronously in the move
+  handler*, not one synced during render — the initial ref-per-render approach
+  persisted a stale (pre-final-move) position because `mouseup` fires before React
+  commits the last `mousemove`'s `setState`. Verified in-app (Playwright): both windows
+  open at defaults, drag + corner-resize track 1:1, geometry persists to
+  `coh-planner-ui` under independent keys, a reload + re-pop restores the saved
+  position/size, Dock/Close still work, zero console errors, store tests + tsc green.
   verify: file:src/components/ui/FloatingWindow.tsx
+
+## Planned
 
 - [ ] **LAY11** — 2D dock grid (vertical stacking). Today the desktop grid is a
   **single row** of `minmax(240px, Nfr)` columns with horizontal resize (LAY7).
@@ -253,9 +258,10 @@ follow-ups, not prerequisites.
   revisit if a real user complaint lands. (A CSS-`zoom`-based density shrink was
   identified as the cheap way to hit ~205 if ever wanted.)
 - Unifying the two hand-rolled floating windows into one reusable drag/dock
-  primitive is now planned as **LAY10** (see Planned). Was correctly kept out of the
-  Tier-1 pass; it is independent of the dock grid (floating panels ≠ the docked
-  workspace), so LAY10 and LAY11 carry no dependency between them.
+  primitive **shipped as LAY10** (2026-07-09; `FloatingWindow` + optional geometry
+  persistence). Was correctly kept out of the Tier-1 pass; it is independent of the
+  dock grid (floating panels ≠ the docked workspace), so LAY10 and LAY11 carried no
+  dependency between them.
 - Extend rearrangeability to app chrome beyond the planner grid (StatsDashboard as
   a dockable side column, etc.). StatsDashboard assumes a wide-short horizontal
   band — needs layout testing before it's a candidate.

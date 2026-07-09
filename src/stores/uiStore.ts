@@ -34,6 +34,14 @@ import { type ColorThemeId, DEFAULT_COLOR_THEME, applyColorTheme, type ColorMode
 import type { SlotLevelRef } from '@/utils/slot-levels';
 import type { PowerMetric } from '@/utils/calculations/attack-chain';
 
+/** Persisted geometry of a floating window (see `FloatingWindow`). */
+export interface FloatingWindowRect {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
 // ============================================
 // PROC SETTINGS
 // ============================================
@@ -258,6 +266,9 @@ interface UIState {
 
   /** Rearrangeable planner column layout, per view mode (desktop / lg+ only) */
   plannerLayout: PlannerLayoutState;
+
+  /** Persisted position + size of floating windows, keyed by `FloatingWindow` persistKey */
+  floatingWindows: Record<string, FloatingWindowRect>;
 
   /** Tooltip state */
   tooltip: TooltipState;
@@ -499,6 +510,9 @@ interface UIActions {
   setPlannerSectionWeights: (view: keyof PlannerLayoutState, weights: Partial<Record<PlannerSectionId, number>>) => void;
   /** Restore a view mode's columns to the default order + visibility */
   resetPlannerLayout: (view: keyof PlannerLayoutState) => void;
+
+  /** Persist a floating window's position + size (keyed by its `persistKey`) */
+  setFloatingWindow: (key: string, rect: FloatingWindowRect) => void;
 
   // Accolades Modal
   openAccoladesModal: () => void;
@@ -847,6 +861,7 @@ export const useUIStore = create<UIStore>()(
       infoPanel: defaultInfoPanel,
       statsConfig: defaultStatsConfig,
       plannerLayout: defaultPlannerLayout,
+      floatingWindows: {},
       tooltip: defaultTooltip,
       dashboardCollapsed: false,
       uiScale: 1.0,
@@ -1340,6 +1355,11 @@ export const useUIStore = create<UIStore>()(
           },
         })),
 
+      setFloatingWindow: (key, rect) =>
+        set((state) => ({
+          floatingWindows: { ...state.floatingWindows, [key]: rect },
+        })),
+
       // Accolades Modal
       openAccoladesModal: () =>
         set({ accoladesModalOpen: true }),
@@ -1786,6 +1806,7 @@ export const useUIStore = create<UIStore>()(
         infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled, undocked: false },
         statsConfig: state.statsConfig,
         plannerLayout: state.plannerLayout,
+        floatingWindows: state.floatingWindows,
         dashboardCollapsed: state.dashboardCollapsed,
         uiScale: state.uiScale,
         colorTheme: state.colorTheme,
