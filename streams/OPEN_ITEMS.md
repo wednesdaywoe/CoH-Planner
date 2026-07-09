@@ -370,15 +370,65 @@ per-field evidence trail:
 - **TSPY8 — code-split dataset bundles** [L, perf-only] — All 3 datasets ship in
   one ~14 MB chunk (drove the deploy heap bump to 6144 MB); a dynamic-import
   split would cut initial page weight. Explicitly not a scaling need.
+- **TSPY11 — restore dropped Thunderspy player-power effect vocabulary** [M/L,
+  deferred 2026-07-09] — **~1,000 tspy powers (rough harness count 998 / 2,806,
+  ~36%) ship with NO effects** because the powerset converter
+  (`scripts/convert-powerset.cjs`) routes on HC-shaped attrib maps and tspy names
+  its non-damage attribs differently. **Converter-side only — the raw export has
+  the data** (no re-parse/re-export); mirror the tspy vocabulary already solved
+  for pets in `convert-pet-entities.cjs` (`_TSPY_DEBUFF_NAMED`, the `*_Ones`
+  marker guard, `Res_DMG` sign-discrimination). **Pre-existing / zero regression:**
+  the DSH6 byte-identical rewrite dropped these identically before and after.
+  *NB the "66% atoms Unmapped in the bridge" figure is the DSH4 bridge's
+  `effectType` classification, NOT app drops — generic `Damage` renders fine
+  (Aimed Shot shows Lethal 1.32); the bridge and the converter's raw-attrib
+  routing are independent.*
+
+  Ground-truth (actual `generated/` files): **Infrigidate** (-Def/-Dmg/-Slow) →
+  empty; **Clear Mind** (mez protection) → empty; **Heal Other** / **Frostwork**
+  → empty; **Aim / Build Up** (`Buff_ToHit`+`Buff_Dmg`) → empty; **Glacial
+  Shield** (+Res Cold) → **MISLABELED as "Cold damage 4.5"** — `Res_DMG` on a
+  `Ranged_Res_Dmg` (resistance) table routed to `damage` (the same `_Dmg`-table-
+  suffix trap family as the HC KB/heal flattening bugs).
+
+  Attrib inventory (top unmapped, atom count · powers):
+  - **Real stats to restore:** `Res_DMG` (332·126, sign-discriminated: +self
+    armor / −foe debuff — also the mislabel source), `Debuff_Def` (254·83),
+    `Slow` (284·122), `Buff_ToHit` (196·50) + `Buff_Dmg` (188·46) [Aim/Build Up;
+    scale 5.0 with EMPTY table → resolve table-vs-literal semantics],
+    `DeBuff_ToHit` (151·51), `SpeedRunning`/`SpeedFlying`/`SpeedJumping`/`Leap`
+    (~180 total, movement), `HealSelf` (110·47) + `Heal` (91·27), `Debuff_Dam`
+    (69·21), `EndDrain` (8), named per-type dmg `ToxicDamage`/`ColdDamage`/
+    `FireDamage`/`FireDamageDoT` (verify — generic `Damage` covers most),
+    mez `Stun`/`Immobilize`/`Control` (verify — may already route via MEZ path).
+    `Res_Boolean` (294·96, Clear Mind mez-protection) needs care — boolean, not a
+    scalar.
+  - **Markers — keep dropping:** `Ones` (1123, placeholder table), `InherentTaunt`
+    (313), `FieryEmbrace` (446), `Contaminated`/`Contamination`, `PerfectionofBody/
+    Mind/Soul` (35 ea), `Defiance`, `BossCrit`, `GlobalCrash`, `Friction`,
+    `StealthOn`, `SummerIOTornado`, `LethalKB70`, `ShredRecharge`.
+
+  Prereqs to do it right: DSH4 bridge mappings for these attribs (so the HC-only
+  completeness gate can be extended to protect tspy), a guard test, and in-game
+  spot-checks (table-vs-literal scale; markers-stay-dropped discrimination). My
+  prior-session recommendation was to do this AFTER the output-identical DSH6
+  refactors settled — which they now have (Phases 2R/3 + legacy deletion shipped
+  on branch `converter-rewrite`). Not started; deferred per 2026-07-09 decision.
 
 ## 10. Deductive Schema Harness residuals
 
-- **DSH6 — retire `unresistable` / `durationVariants` bolt-ons** [~, deferred] —
-  Neither is independently retireable: each projects multiple atomic records into
-  one single-value `PowerEffects` slot, so retiring them needs the full
-  "`PowerEffects` becomes a list" rewrite (`extractEffects()` ~L3369 in
-  `scripts/convert-powerset.cjs`). Fixes no observable bug (detector green);
-  deferred until a new collapse site surfaces. `selfPenalty` already done.
+- **DSH6 — converter atom-projection rewrite: COMPLETE** (branch `converter-rewrite`,
+  2026-07-08/09, not yet merged to main). PotD's ally-+Range 2-month silent drop
+  falsified the YAGNI deferral. `extractEffects` = `templatesToAtoms →
+  projectAtomsToEffects → extractSummon` — one home for routing. Phase 2R retired
+  `durationVariants` (RESOURCES slots = per-slot queues + `foldResourceSlot` pure
+  fold); Phase 3 retired `unresistable` (twin handling derives from the atom's
+  `resistible` via a `twinRole` map, no list mutation); `extractEffectsLegacy`
+  (~1,030 lines) + the `DSH6_SHADOW_COMPARE`/`__DSH6_ATOM_SINK__` hooks + the
+  `dsh6-shadow-project.cjs` comparator all deleted. All byte-identical, 901 tests,
+  gates ×3. `selfPenalty` was done earlier. The remaining data-correctness item is
+  the tspy vocabulary restoration (§9 TSPY11) — deliberately a separate slice, not
+  part of the architecture rewrite.
 - **DSH6 — CONDTAG allowlist extension** — `SURFACEABLE_TARGET_TAGS` in
   `_classifyConditionalGate` maps only `Electronic → Machines/Robots`;
   Undead/Demon/Ghost/Human/Generator are candidate additions pending per-power
