@@ -36,5 +36,41 @@ export const IcyBastion: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "resistance": 30
+    },
+    "resistance": {
+      "cold": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

@@ -30,5 +30,17 @@ export const Grounded: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 10.25,
+    "durations": {
+      "resistance": 10.25
+    },
+    "resistance": {
+      "energy": {
+        "scale": 1.25,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  },
   "mechanicType": "parentMechanic"
 };

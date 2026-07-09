@@ -33,5 +33,15 @@ export const PressOn: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 59,
+    "durations": {
+      "tohitBuff": 59
+    },
+    "tohitBuff": {
+      "scale": 2.5,
+      "table": "Ranged_Buff_ToHit"
+    }
+  }
 };

@@ -36,11 +36,16 @@ export const HardLife: Power = {
   "effects": {
     "buffDuration": 30,
     "durations": {
-      "rechargeBuff": 30
+      "rechargeBuff": 30,
+      "tohitBuff": 30
     },
     "rechargeBuff": {
       "scale": 0.3,
       "table": "Melee_Ones"
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
     }
   }
 };

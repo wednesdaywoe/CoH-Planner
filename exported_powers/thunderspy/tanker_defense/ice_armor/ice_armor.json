@@ -106,11 +106,11 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Cold_Dmg"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Resistance",
           "target": "",
           "table": "Melee_Res_DMG",
           "scale": 3.0,

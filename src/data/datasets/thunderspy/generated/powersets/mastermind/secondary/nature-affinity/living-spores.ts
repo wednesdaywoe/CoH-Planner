@@ -45,7 +45,7 @@ export const LivingSpores: Power = {
   "effects": {
     "summon": {
       "duration": 5,
-      "entity": "Pets_Lifegiving_Spores_Defender",
+      "entity": "Pets_Lifegiving_Spores_Mastermind",
       "isPseudoPet": false
     }
   },

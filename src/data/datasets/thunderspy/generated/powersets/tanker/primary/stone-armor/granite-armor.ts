@@ -70,7 +70,14 @@ export const GraniteArmor: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "resistance": 0.75
+    },
+    "resistance": {
+      "smashing": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      }
     }
   }
 };

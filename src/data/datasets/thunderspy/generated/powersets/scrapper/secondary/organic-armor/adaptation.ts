@@ -36,5 +36,29 @@ export const Adaptation: Power = {
     "Resist Damage",
     "Threat Duration"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
+    "resistance": {
+      "cold": {
+        "scale": 0.375,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 0.375,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 0.375,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 0.375,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

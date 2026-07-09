@@ -29,5 +29,17 @@ export const TemperatureProtection: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 10.25,
+    "durations": {
+      "resistance": 10.25
+    },
+    "resistance": {
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  },
   "mechanicType": "parentMechanic"
 };

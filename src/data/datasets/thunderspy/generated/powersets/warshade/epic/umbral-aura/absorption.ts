@@ -29,6 +29,21 @@ export const Absorption: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "effects": {},
+  "effects": {
+    "buffDuration": 10.25,
+    "durations": {
+      "resistance": 10.25
+    },
+    "resistance": {
+      "energy": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  },
   "mechanicType": "parentMechanic"
 };

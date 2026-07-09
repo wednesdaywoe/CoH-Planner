@@ -40,5 +40,15 @@ export const TacticalTrainingLeadership: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "tohitBuff": 2.25
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
+    }
+  }
 };

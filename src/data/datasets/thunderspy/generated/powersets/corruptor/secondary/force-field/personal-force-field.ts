@@ -48,7 +48,38 @@ export const PersonalForceField: Power = {
       "table": "Melee_Buff_Def"
     },
     "durations": {
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "resistance": 0.75
+    },
+    "resistance": {
+      "cold": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      }
     }
   }
 };

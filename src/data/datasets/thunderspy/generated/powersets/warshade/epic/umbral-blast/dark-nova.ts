@@ -40,5 +40,15 @@ export const DarkNova: Power = {
     "To Hit Buff",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 2,
+    "durations": {
+      "tohitBuff": 2
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    }
+  }
 };

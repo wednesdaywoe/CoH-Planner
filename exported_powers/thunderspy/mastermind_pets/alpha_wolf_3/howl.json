@@ -98,7 +98,7 @@
       "templates": [
         {
           "attribs": [
-            "Buff_ToHit"
+            "ToHit"
           ],
           "type": "",
           "application_type": "",

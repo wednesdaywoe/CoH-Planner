@@ -38,5 +38,15 @@ export const TargetingDrone: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "tohitBuff": 0.75
+    },
+    "tohitBuff": {
+      "scale": 1.85,
+      "table": "Melee_Buff_ToHit"
+    }
+  }
 };

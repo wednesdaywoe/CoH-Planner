@@ -54,11 +54,16 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Smashing_Dmg",
+            "Negative_Energy_Dmg",
+            "Energy_Dmg",
+            "Cold_Dmg",
+            "Toxic_Dmg",
+            "Psionic_Dmg"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Resistance",
           "target": "",
           "table": "Melee_Res_DMG",
           "scale": 3.0,

@@ -45,5 +45,45 @@ export const OneWithAll: Power = {
     "type": "Special",
     "scale": 3,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "resistance": 30
+    },
+    "resistance": {
+      "cold": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      }
+    }
   }
 };

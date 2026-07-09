@@ -40,5 +40,17 @@ export const PhantasmalPhase: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 2.25,
+    "durations": {
+      "resistance": 2.25
+    },
+    "resistance": {
+      "negative": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

@@ -38,5 +38,25 @@ export const HardenedCarapace: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
+    "resistance": {
+      "lethal": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

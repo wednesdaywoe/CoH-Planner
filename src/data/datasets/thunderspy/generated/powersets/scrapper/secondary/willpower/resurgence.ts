@@ -31,5 +31,15 @@ export const Resurgence: Power = {
   "allowedSetCategories": [
     "Endurance Modification"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "tohitBuff": 90
+    },
+    "tohitBuff": {
+      "scale": 3,
+      "table": "Ranged_Buff_ToHit"
+    }
+  }
 };

@@ -37,5 +37,21 @@ export const StrengthofWill: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 120,
+    "durations": {
+      "resistance": 120
+    },
+    "resistance": {
+      "lethal": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

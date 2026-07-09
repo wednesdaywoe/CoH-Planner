@@ -37,11 +37,16 @@ export const Rage: Power = {
   "effects": {
     "buffDuration": 90,
     "durations": {
-      "enduranceDrain": 90
+      "enduranceDrain": 90,
+      "tohitBuff": 90
     },
     "enduranceDrain": {
       "scale": 15,
       "table": "Melee_Ones"
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
     }
   }
 };

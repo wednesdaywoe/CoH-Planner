@@ -32,5 +32,15 @@ export const EnvenomedBlades: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 40,
+    "durations": {
+      "tohitBuff": 40
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
+    }
+  }
 };

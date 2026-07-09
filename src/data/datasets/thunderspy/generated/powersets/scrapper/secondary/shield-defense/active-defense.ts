@@ -50,7 +50,18 @@ export const ActiveDefense: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "resistance": 0.75
+    },
+    "resistance": {
+      "lethal": {
+        "scale": 1.65,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 1.65,
+        "table": "Melee_Res_DMG"
+      }
     }
   },
   "requires": "Scrapper_Melee.Dual_Blades Scrapper_Melee.Claws || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Katana || Scrapper_Melee.Titan_Weapons || !"

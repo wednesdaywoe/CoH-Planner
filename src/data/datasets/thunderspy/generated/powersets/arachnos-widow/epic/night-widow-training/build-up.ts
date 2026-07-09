@@ -33,5 +33,15 @@ export const BuildUp: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "tohitBuff": 10
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
+    }
+  },
   "requires": "Widow_Training.Widow_Training.Follow_Up !"
 };

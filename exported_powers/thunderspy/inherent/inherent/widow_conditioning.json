@@ -93,7 +93,7 @@
       "templates": [
         {
           "attribs": [
-            "Buff_ToHit"
+            "Accuracy"
           ],
           "type": "",
           "application_type": "",

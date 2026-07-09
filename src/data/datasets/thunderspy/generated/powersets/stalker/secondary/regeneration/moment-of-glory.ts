@@ -65,7 +65,38 @@ export const MomentofGlory: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 15
+      "defenseBuff": 15,
+      "resistance": 15
+    },
+    "resistance": {
+      "cold": {
+        "scale": 9.5,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 9.5,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 9.5,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 9.5,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 9.5,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 9.5,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 9.5,
+        "table": "Melee_Res_DMG"
+      }
     }
   }
 };

@@ -30,5 +30,15 @@ export const BuildUp: Power = {
     "Recharge",
     "ToHit"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 5.25,
+    "durations": {
+      "tohitBuff": 5.25
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    }
+  }
 };

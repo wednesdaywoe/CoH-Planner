@@ -46,6 +46,16 @@ export const MotivateAllies: Power = {
         "type": "Special",
         "scale": 2.5,
         "table": "Ranged_Damage"
+      },
+      "effects": {
+        "buffDuration": 30,
+        "durations": {
+          "tohitBuff": 30
+        },
+        "tohitBuff": {
+          "scale": 1.5,
+          "table": "Ranged_Buff_ToHit"
+        }
       }
     }
   ]

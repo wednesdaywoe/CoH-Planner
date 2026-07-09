@@ -93,7 +93,7 @@
           "stack_key": null,
           "params": {
             "type": "EntCreate",
-            "entity_def": "Pets_Lifegiving_Spores_Defender",
+            "entity_def": "Pets_Lifegiving_Spores_Corruptor",
             "priority_list": "PL_StaticObject"
           }
         }

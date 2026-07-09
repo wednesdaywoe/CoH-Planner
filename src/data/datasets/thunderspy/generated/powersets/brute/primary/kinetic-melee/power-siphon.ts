@@ -32,5 +32,15 @@ export const PowerSiphon: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "tohitBuff": 20
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
+    }
+  }
 };

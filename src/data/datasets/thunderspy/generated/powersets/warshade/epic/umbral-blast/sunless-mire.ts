@@ -46,5 +46,15 @@ export const SunlessMire: Power = {
     "type": "Negative",
     "scale": 1,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "tohitBuff": 30
+    },
+    "tohitBuff": {
+      "scale": 0.5,
+      "table": "Melee_Buff_ToHit"
+    }
   }
 };

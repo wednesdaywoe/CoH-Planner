@@ -64,11 +64,12 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Fire_Dmg",
+            "Cold_Dmg"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Resistance",
           "target": "",
           "table": "Melee_Res_DMG",
           "scale": 2.5,

@@ -38,9 +38,47 @@ export const Eclipse: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "resistance": 90
+    },
     "enduranceDrain": {
       "scale": 0.33,
       "table": "Melee_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 1.5,
+        "table": "Melee_Res_DMG"
+      }
     }
   }
 };

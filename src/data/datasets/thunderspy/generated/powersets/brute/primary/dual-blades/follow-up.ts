@@ -45,5 +45,33 @@ export const FollowUp: Power = {
     "type": "Lethal",
     "scale": 0.8,
     "table": "Melee_Damage"
-  }
+  },
+  "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "tohitBuff": 15
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    }
+  },
+  "conditionalEffects": [
+    {
+      "id": "comboblade3",
+      "label": "ComboBlade3",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 20,
+        "durations": {
+          "tohitBuff": 20
+        },
+        "tohitBuff": {
+          "scale": 0.5,
+          "table": "Melee_Buff_ToHit"
+        }
+      }
+    }
+  ]
 };

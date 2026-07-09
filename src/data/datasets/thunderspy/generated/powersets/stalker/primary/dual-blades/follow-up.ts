@@ -43,5 +43,15 @@ export const FollowUp: Power = {
     "scale": 0.8,
     "table": "Melee_Damage"
   },
+  "effects": {
+    "buffDuration": 15,
+    "durations": {
+      "tohitBuff": 15
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    }
+  },
   "requires": "Stalker_Melee.Dual_Blades.Build_Up !"
 };

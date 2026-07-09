@@ -33,6 +33,16 @@ export const TRBuildUp: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "tohitBuff": 10
+    },
+    "tohitBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_ToHit"
+    }
+  },
   "modesRequired": [
     "Widow_Tarantula_Mode"
   ]

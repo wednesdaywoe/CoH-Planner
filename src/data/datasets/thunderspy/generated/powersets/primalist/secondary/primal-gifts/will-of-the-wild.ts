@@ -43,11 +43,46 @@ export const WilloftheWild: Power = {
   "effects": {
     "buffDuration": 120,
     "durations": {
-      "regenBuff": 120
+      "regenBuff": 120,
+      "resistance": 120
     },
     "regenBuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 2.5,
+        "table": "Melee_Res_DMG"
+      }
     }
   }
 };

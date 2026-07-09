@@ -54,11 +54,11 @@
       "templates": [
         {
           "attribs": [
-            "Res_DMG"
+            "Smashing_Dmg"
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Resistance",
           "target": "",
           "table": "Melee_Res_DMG",
           "scale": 7.0,
@@ -171,7 +171,7 @@
       "templates": [
         {
           "attribs": [
-            "Buff_ToHit"
+            "ToHit"
           ],
           "type": "",
           "application_type": "",

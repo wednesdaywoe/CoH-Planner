@@ -38,5 +38,17 @@ export const MurkyCloud: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
+    "resistance": {
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

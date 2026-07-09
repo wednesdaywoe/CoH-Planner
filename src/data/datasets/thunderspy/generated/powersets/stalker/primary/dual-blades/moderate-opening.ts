@@ -43,5 +43,24 @@ export const ModerateOpening: Power = {
     "table": "Melee_Damage",
     "duration": 1,
     "tickRate": 0.4000000059604645
-  }
+  },
+  "conditionalEffects": [
+    {
+      "id": "comboblade3",
+      "label": "ComboBlade3",
+      "scope": "global",
+      "defaultActive": false,
+      "mode": "replace",
+      "effects": {
+        "buffDuration": 20,
+        "durations": {
+          "tohitBuff": 20
+        },
+        "tohitBuff": {
+          "scale": 0.5,
+          "table": "Melee_Buff_ToHit"
+        }
+      }
+    }
+  ]
 };

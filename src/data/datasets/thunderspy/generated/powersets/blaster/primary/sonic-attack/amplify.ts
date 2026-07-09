@@ -32,5 +32,15 @@ export const Amplify: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "tohitBuff": 10
+    },
+    "tohitBuff": {
+      "scale": 5,
+      "table": "Melee_Buff_ToHit"
+    }
+  }
 };

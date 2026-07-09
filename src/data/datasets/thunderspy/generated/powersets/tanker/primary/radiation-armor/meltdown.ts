@@ -38,11 +38,46 @@ export const Meltdown: Power = {
   "effects": {
     "buffDuration": 60,
     "durations": {
-      "recoveryBuff": 60
+      "recoveryBuff": 60,
+      "resistance": 60
     },
     "recoveryBuff": {
       "scale": 0.3,
       "table": "Melee_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      }
     }
   },
   "requires": "accesslevel char> 0 >="

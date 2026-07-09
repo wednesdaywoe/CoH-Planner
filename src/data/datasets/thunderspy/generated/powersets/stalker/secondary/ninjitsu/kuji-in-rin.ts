@@ -32,5 +32,17 @@ export const KujiInRin: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 120,
+    "durations": {
+      "resistance": 120
+    },
+    "resistance": {
+      "psionic": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

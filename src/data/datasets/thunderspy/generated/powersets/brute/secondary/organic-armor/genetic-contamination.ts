@@ -58,6 +58,42 @@ export const GeneticContamination: Power = {
         "table": "Melee_Damage",
         "duration": 6,
         "tickRate": 0.4000000059604645
+      },
+      "effects": {
+        "buffDuration": 2,
+        "durations": {
+          "resistanceDebuff": 2
+        },
+        "resistanceDebuff": {
+          "cold": {
+            "scale": 0.3,
+            "table": "Melee_Res_DMG"
+          },
+          "energy": {
+            "scale": 0.3,
+            "table": "Melee_Res_DMG"
+          },
+          "fire": {
+            "scale": 0.3,
+            "table": "Melee_Res_DMG"
+          },
+          "lethal": {
+            "scale": 0.3,
+            "table": "Melee_Res_DMG"
+          },
+          "negative": {
+            "scale": 0.3,
+            "table": "Melee_Res_DMG"
+          },
+          "psionic": {
+            "scale": 0.3,
+            "table": "Melee_Res_DMG"
+          },
+          "smashing": {
+            "scale": 0.3,
+            "table": "Melee_Res_DMG"
+          }
+        }
       }
     }
   ]

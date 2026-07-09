@@ -29,5 +29,15 @@ export const NuclearMutation: Power = {
     "Range",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "tohitBuff": 90
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Ranged_Buff_ToHit"
+    }
+  }
 };

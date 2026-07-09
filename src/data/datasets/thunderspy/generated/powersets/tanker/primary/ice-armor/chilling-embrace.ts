@@ -40,11 +40,42 @@ export const ChillingEmbrace: Power = {
   "effects": {
     "buffDuration": 30,
     "durations": {
-      "regenBuff": 30
+      "regenBuff": 30,
+      "resistance": 30
     },
     "regenBuff": {
       "scale": 4,
       "table": "Melee_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 5,
+        "table": "Melee_Res_DMG"
+      }
     }
   }
 };

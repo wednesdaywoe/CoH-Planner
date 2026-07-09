@@ -46,7 +46,12 @@ export const NWTacticalTrainingVengeance: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 120
+      "defenseBuff": 120,
+      "tohitBuff": 120
+    },
+    "tohitBuff": {
+      "scale": 3.5,
+      "table": "Melee_Buff_ToHit"
     }
   }
 };

@@ -34,5 +34,17 @@ export const Surveillance: Power = {
     "Accurate Defense Debuff",
     "Defense Debuff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "resistanceDebuff": 20
+    },
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

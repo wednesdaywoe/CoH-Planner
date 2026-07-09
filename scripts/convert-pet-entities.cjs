@@ -352,6 +352,19 @@ function extractEffects(powerData) {
               if (signed && template.scale < 0
                   && !/_ones$/i.test(template.table || '')) debuffType = signed;
             }
+            // Surfaced per-type resistance: the powers parser now expands a
+            // `Res_DMG`-front template into its real `*_Dmg` index attribs and
+            // synthesizes aspect='Resistance' (Mind Over Body, Freezing Rain, Tar
+            // Patch, …). This replaces the bare `res_dmg`-front `_TSPY_DEBUFF_SIGNED`
+            // path above, so recognize the new shape here with the SAME semantics:
+            // negative = the foe -Resistance debuff we surface (once, deduped across
+            // the per-type rows); positive = a pet self-buff, dropped. Gated to a
+            // real magnitude table, mirroring the `*_Ones`-marker exclusion above.
+            if (!debuffType && template.aspect === 'Resistance'
+                && attribLower.endsWith('_dmg') && template.scale < 0
+                && !/_ones$/i.test(template.table || '')) {
+              debuffType = 'ResistanceDebuff';
+            }
             if (debuffType && !seenTypes.has(debuffType)) {
               // Skip a scale-0 slow tag row (a marker, not a real slow).
               if (!(debuffType === 'Slow' && Math.abs(template.scale || 0) < 0.001)) {

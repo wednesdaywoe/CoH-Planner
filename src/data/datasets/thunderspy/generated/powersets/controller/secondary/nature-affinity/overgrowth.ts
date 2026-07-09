@@ -34,5 +34,16 @@ export const Overgrowth: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "tohitBuff": 60
+    },
+    "effectDuration": 60,
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
+    }
+  }
 };

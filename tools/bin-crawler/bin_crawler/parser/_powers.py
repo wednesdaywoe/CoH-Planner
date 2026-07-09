@@ -1636,6 +1636,24 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     if table and 'Buff_Def' in table and _idx_attribs:
         attribs = _idx_attribs
 
+    # Resistance-armor / ToHit-buff templates: same shape as Buff_Def above — the
+    # front string-attrib is only the enhancement CATEGORY token (`Res_DMG`,
+    # `Buff_ToHit`), while the AFFECTED attribs (`Smashing_Dmg`, `Lethal_Dmg`, …
+    # for resistance; `ToHit` for the buff) live in the index array. Without this,
+    # every tspy resistance-armor toggle (Mind Over Body, Willpower, …) and the
+    # ToHit half of team buffs (Link Minds) drop to zero effects. Surface the index
+    # attribs here; the resistance aspect is synthesized below (after the `aspect`
+    # reset). ToHit needs no aspect — a bare positive `ToHit` attrib is the
+    # converter's plain tohitBuff. (Verified 2026-07-09 against the raw tspy bin:
+    # `Res_DMG`-front templates carry per-type `*_Dmg` index attribs on `*_Res_DMG`
+    # tables; `Buff_ToHit` → [`ToHit`].)
+    _tspy_res_surfaced = False
+    if table and 'Res_DMG' in table and attribs == ['Res_DMG'] and _idx_attribs:
+        attribs = _idx_attribs
+        _tspy_res_surfaced = True
+    elif table and 'Buff_ToHit' in table and attribs == ['Buff_ToHit'] and _idx_attribs:
+        attribs = _idx_attribs
+
     # For damage attacks, table-scale supersedes the template-level magnitude
     # default (which is the unscaled "1.0" placeholder). Magnitude only matters
     # for non-table effects like raw mez magnitudes.
@@ -1647,6 +1665,15 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     # via table/target context). The scoped hybrid relabel below is the one place
     # the parser can safely synthesize it from the front category.
     aspect = ""
+
+    # Resistance armor surfaced above (`Res_DMG`-front → per-type `*_Dmg` index
+    # attribs on a `*_Res_DMG` table): synthesize aspect='Resistance' so the `*_Dmg`
+    # rows route to the converter's resistance branch instead of the damage branch
+    # (the `_Dmg`-table-suffix trap). Done after the reset above so it isn't
+    # clobbered; sign is left to `scale` (a −resistance debuff is aspect=Resistance
+    # too, split buff-vs-debuff by the converter).
+    if _tspy_res_surfaced:
+        aspect = "Resistance"
 
     # Thunderspy INCARNATE HYBRID generic-token relabel. The Support/Melee/… Hybrid
     # buffs collapse every affected stat to a single generic *category* front token

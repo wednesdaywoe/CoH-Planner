@@ -44,7 +44,19 @@ export const TRMindLink: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 90
+      "defenseBuff": 90,
+      "resistance": 90,
+      "tohitBuff": 90
+    },
+    "resistance": {
+      "psionic": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      }
+    },
+    "tohitBuff": {
+      "scale": 0.5,
+      "table": "Melee_Buff_ToHit"
     }
   },
   "modesRequired": [

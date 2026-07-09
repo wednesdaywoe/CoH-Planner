@@ -31,5 +31,45 @@ export const HighPainTolerance: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 10.25,
+    "durations": {
+      "resistance": 10.25
+    },
+    "resistance": {
+      "cold": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 0.75,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  },
   "mechanicType": "parentMechanic"
 };

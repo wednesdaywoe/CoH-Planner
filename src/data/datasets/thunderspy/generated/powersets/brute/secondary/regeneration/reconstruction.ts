@@ -34,5 +34,17 @@ export const Reconstruction: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "resistance": 60
+    },
+    "resistance": {
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

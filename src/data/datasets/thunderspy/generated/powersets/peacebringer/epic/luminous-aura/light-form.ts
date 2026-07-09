@@ -38,11 +38,18 @@ export const LightForm: Power = {
   "effects": {
     "buffDuration": 90,
     "durations": {
-      "recoveryBuff": 90
+      "recoveryBuff": 90,
+      "resistance": 90
     },
     "recoveryBuff": {
       "scale": 0.3,
       "table": "Melee_Ones"
+    },
+    "resistance": {
+      "smashing": {
+        "scale": 7,
+        "table": "Melee_Res_DMG"
+      }
     }
   }
 };

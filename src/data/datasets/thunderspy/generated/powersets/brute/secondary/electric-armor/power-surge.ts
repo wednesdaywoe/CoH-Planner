@@ -41,11 +41,34 @@ export const PowerSurge: Power = {
   "effects": {
     "buffDuration": 90,
     "durations": {
-      "recoveryBuff": 90
+      "recoveryBuff": 90,
+      "resistance": 90
     },
     "recoveryBuff": {
       "scale": 1,
       "table": "Melee_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      }
     },
     "summon": {
       "duration": 90,

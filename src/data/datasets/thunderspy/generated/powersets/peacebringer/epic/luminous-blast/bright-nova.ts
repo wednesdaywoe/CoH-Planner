@@ -40,5 +40,15 @@ export const BrightNova: Power = {
     "To Hit Buff",
     "Universal Travel"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 1.5,
+    "durations": {
+      "tohitBuff": 1.5
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    }
+  }
 };

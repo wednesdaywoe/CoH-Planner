@@ -29,5 +29,15 @@ export const FollowUp: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 1.25,
+    "durations": {
+      "tohitBuff": 1.25
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Melee_Buff_ToHit"
+    }
+  },
   "mechanicType": "parentMechanic"
 };

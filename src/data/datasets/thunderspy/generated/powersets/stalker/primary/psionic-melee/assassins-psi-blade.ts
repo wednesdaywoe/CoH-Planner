@@ -44,5 +44,17 @@ export const AssassinsPsiBlade: Power = {
     "table": "Melee_Damage"
   },
   "fromHideBonus": 0.4571428571428571,
-  "midCombatCast": 1
+  "midCombatCast": 1,
+  "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "resistanceDebuff": 5
+    },
+    "resistanceDebuff": {
+      "psionic": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

@@ -50,7 +50,18 @@ export const ActiveDefense: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "resistance": 0.75
+    },
+    "resistance": {
+      "lethal": {
+        "scale": 1.65,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 1.65,
+        "table": "Melee_Res_DMG"
+      }
     }
   },
   "requires": "Tanker_Melee.Staff_Fighting Tanker_Melee.Titan_Weapons || Tanker_Melee.Dual_Blades || Tanker_Melee.Pale_Blade || !"

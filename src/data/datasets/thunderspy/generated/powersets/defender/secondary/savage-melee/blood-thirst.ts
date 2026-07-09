@@ -32,5 +32,15 @@ export const BloodThirst: Power = {
   "allowedSetCategories": [
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "tohitBuff": 20
+    },
+    "tohitBuff": {
+      "scale": 1.5,
+      "table": "Melee_Buff_ToHit"
+    }
+  }
 };

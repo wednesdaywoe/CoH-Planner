@@ -40,5 +40,45 @@ export const Geomancy: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 1.25,
+    "durations": {
+      "resistance": 1.25
+    },
+    "resistance": {
+      "cold": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 0.07,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

@@ -38,5 +38,33 @@ export const WildArmor: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 1.25,
+    "durations": {
+      "resistance": 1.25
+    },
+    "resistance": {
+      "cold": {
+        "scale": 2.19,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 2.19,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 2.19,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 2.19,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 2.19,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

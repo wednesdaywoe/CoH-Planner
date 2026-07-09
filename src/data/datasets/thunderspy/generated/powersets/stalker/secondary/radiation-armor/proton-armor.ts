@@ -38,5 +38,17 @@ export const ProtonArmor: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
+    "resistance": {
+      "energy": {
+        "scale": 4,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

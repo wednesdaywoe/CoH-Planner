@@ -57,9 +57,19 @@ export const AoEBridge: Power = {
         "table": "Melee_Damage"
       },
       "effects": {
+        "buffDuration": 35,
+        "durations": {
+          "resistanceDebuff": 35
+        },
         "knockback": {
           "scale": 0.67,
           "table": "Melee_Ones"
+        },
+        "resistanceDebuff": {
+          "lethal": {
+            "scale": 1.34,
+            "table": "Melee_Res_DMG"
+          }
         }
       }
     }

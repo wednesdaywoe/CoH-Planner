@@ -66,6 +66,18 @@ export const Khloros: Power = {
         "type": "Special",
         "scale": 0.45,
         "table": "Melee_Damage"
+      },
+      "effects": {
+        "buffDuration": 10,
+        "durations": {
+          "resistanceDebuff": 10
+        },
+        "resistanceDebuff": {
+          "smashing": {
+            "scale": 1,
+            "table": "Melee_Res_DMG"
+          }
+        }
       }
     }
   ]

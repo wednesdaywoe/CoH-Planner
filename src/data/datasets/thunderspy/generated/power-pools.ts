@@ -187,11 +187,16 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 30,
           "durations": {
-            "rechargeBuff": 30
+            "rechargeBuff": 30,
+            "tohitBuff": 30
           },
           "rechargeBuff": {
             "scale": 0.3,
             "table": "Melee_Ones"
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Melee_Buff_ToHit"
           }
         }
       },
@@ -436,7 +441,21 @@ export const POWER_POOLS_RAW = {
           "endurance": 0.1137,
           "activationTime": 3.1,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "resistance": 0.75
+          },
+          "resistance": {
+            "lethal": {
+              "scale": 1.5,
+              "table": "Melee_Res_DMG"
+            },
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_DMG"
+            }
+          }
         }
       },
       {
@@ -1039,7 +1058,15 @@ export const POWER_POOLS_RAW = {
           "recharge": 30,
           "endurance": 7.8,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 15,
+          "durations": {
+            "tohitBuff": 15
+          },
+          "tohitBuff": {
+            "scale": 0.5,
+            "table": "Ranged_Buff_ToHit"
+          }
         }
       },
       {
@@ -1668,7 +1695,17 @@ export const POWER_POOLS_RAW = {
           "activationTime": 1.5,
           "effectArea": "AoE",
           "radius": 20,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "buffDuration": 15,
+          "durations": {
+            "resistanceDebuff": 15
+          },
+          "resistanceDebuff": {
+            "smashing": {
+              "scale": 1.5,
+              "table": "Melee_Res_DMG"
+            }
+          }
         }
       },
       {
@@ -1892,7 +1929,15 @@ export const POWER_POOLS_RAW = {
           "activatePeriod": 2,
           "effectArea": "AoE",
           "radius": 60,
-          "maxTargets": 255
+          "maxTargets": 255,
+          "buffDuration": 2.25,
+          "durations": {
+            "tohitBuff": 2.25
+          },
+          "tohitBuff": {
+            "scale": 1,
+            "table": "Ranged_Buff_ToHit"
+          }
         }
       },
       {
@@ -1934,7 +1979,12 @@ export const POWER_POOLS_RAW = {
             }
           },
           "durations": {
-            "defenseBuff": 120
+            "defenseBuff": 120,
+            "tohitBuff": 120
+          },
+          "tohitBuff": {
+            "scale": 3.5,
+            "table": "Melee_Buff_ToHit"
           }
         }
       },

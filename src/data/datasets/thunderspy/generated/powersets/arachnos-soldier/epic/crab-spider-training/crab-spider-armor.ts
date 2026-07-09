@@ -30,5 +30,21 @@ export const CrabSpiderArmor: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 10.25,
+    "durations": {
+      "resistance": 10.25
+    },
+    "resistance": {
+      "lethal": {
+        "scale": 0.3,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 0.3,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  },
   "mechanicType": "parentMechanic"
 };

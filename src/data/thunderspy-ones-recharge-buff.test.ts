@@ -89,7 +89,16 @@ describe('Thunderspy Ones-attrib buff recovery (data-driven)', () => {
     // Its RechargeTime Ones template is resistance-to-slow with the aspect dropped;
     // shortHelp advertises only +Res, so no +recharge buff must surface.
     expect(Absorption.effects?.rechargeBuff).toBeUndefined();
-    expect(Absorption.effects?.buffDuration).toBeUndefined();
+    // The +Res (Energy/Negative) is now surfaced from the `Res_DMG`-front index
+    // array (tspy-resist-tohit-vocab, 2026-07-09) — byte-identical to HC's own
+    // Absorption, which likewise carries resistance.energy + a 10.25s auto-reapply
+    // `buffDuration`. So a buffDuration here is the REAL resistance duration, not the
+    // phantom recharge buff this test guards; assert it tracks the resistance.
+    expect(Absorption.effects?.resistance?.energy).toBeDefined();
+    expect(Absorption.effects?.durations?.rechargeBuff).toBeUndefined();
+    if (Absorption.effects?.buffDuration !== undefined) {
+      expect(Absorption.effects.buffDuration).toBe(Absorption.effects.durations?.resistance);
+    }
   });
 
   it('Grant Cover keeps its defense but not a phantom +recharge (its recharge is +RES(Recharge Debuff))', () => {

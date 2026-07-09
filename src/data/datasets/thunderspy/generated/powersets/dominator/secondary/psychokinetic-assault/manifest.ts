@@ -35,12 +35,19 @@ export const Manifest: Power = {
   "maxSlots": 6,
   "effects": {
     "buffDuration": 10,
+    "durations": {
+      "tohitBuff": 10
+    },
     "effectDuration": 10,
     "summon": {
       "duration": 10,
       "entity": "Pets_Telekinetic_Sword",
       "entityCount": 3,
       "isPseudoPet": false
+    },
+    "tohitBuff": {
+      "scale": 2,
+      "table": "Melee_Buff_ToHit"
     }
   }
 };

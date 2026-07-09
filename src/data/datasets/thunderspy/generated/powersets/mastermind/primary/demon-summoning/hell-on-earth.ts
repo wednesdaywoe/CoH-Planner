@@ -40,10 +40,18 @@ export const HellonEarth: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 90,
+    "durations": {
+      "tohitBuff": 90
+    },
     "summon": {
       "entity": "Pets_Living_Hellfire",
       "entityCount": 10,
       "isPseudoPet": false
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
     }
   }
 };

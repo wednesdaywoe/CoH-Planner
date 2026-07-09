@@ -67,6 +67,18 @@ export const EyeoftheStorm: Power = {
         "scale": 0.246,
         "table": "Melee_Damage"
       },
+      "effects": {
+        "buffDuration": 20,
+        "durations": {
+          "resistanceDebuff": 20
+        },
+        "resistanceDebuff": {
+          "smashing": {
+            "scale": 1,
+            "table": "Melee_Res_DMG"
+          }
+        }
+      },
       "group": "staff-form"
     },
     {

@@ -34,5 +34,17 @@ export const EssenceBoost: Power = {
     "Healing",
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 120,
+    "durations": {
+      "resistance": 120
+    },
+    "resistance": {
+      "toxic": {
+        "scale": 2,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

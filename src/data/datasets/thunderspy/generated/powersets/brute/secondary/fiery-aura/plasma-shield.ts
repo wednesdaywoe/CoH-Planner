@@ -38,5 +38,25 @@ export const PlasmaShield: Power = {
   "allowedSetCategories": [
     "Resist Damage"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
+    "resistance": {
+      "energy": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      }
+    }
+  }
 };

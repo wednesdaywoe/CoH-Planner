@@ -44,5 +44,17 @@ export const ShatterArmor: Power = {
     "type": "Smashing",
     "scale": 3.212,
     "table": "Melee_Damage"
+  },
+  "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "resistanceDebuff": 8
+    },
+    "resistanceDebuff": {
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      }
+    }
   }
 };

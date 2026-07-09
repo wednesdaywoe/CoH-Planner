@@ -35,9 +35,17 @@ export const ConduitofPain: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "tohitBuff": 60
+    },
     "enduranceGain": {
       "scale": 4,
       "table": "Ranged_Ones"
+    },
+    "tohitBuff": {
+      "scale": 1.5,
+      "table": "Ranged_Buff_ToHit"
     }
   }
 };

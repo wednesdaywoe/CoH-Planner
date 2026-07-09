@@ -71,6 +71,18 @@ export const SkySplitter: Power = {
         "scale": 0.828,
         "table": "Melee_Damage"
       },
+      "effects": {
+        "buffDuration": 40,
+        "durations": {
+          "resistance": 40
+        },
+        "resistance": {
+          "smashing": {
+            "scale": 1.33,
+            "table": "Melee_Res_DMG"
+          }
+        }
+      },
       "group": "staff-form"
     },
     {
@@ -83,6 +95,16 @@ export const SkySplitter: Power = {
         "type": "Smashing",
         "scale": 0.828,
         "table": "Melee_Damage"
+      },
+      "effects": {
+        "buffDuration": 40,
+        "durations": {
+          "tohitBuff": 40
+        },
+        "tohitBuff": {
+          "scale": 2,
+          "table": "Melee_Buff_ToHit"
+        }
       },
       "group": "staff-form"
     },

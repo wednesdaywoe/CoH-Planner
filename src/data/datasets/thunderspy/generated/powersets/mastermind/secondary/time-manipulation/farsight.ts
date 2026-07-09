@@ -46,7 +46,12 @@ export const Farsight: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 120
+      "defenseBuff": 120,
+      "tohitBuff": 120
+    },
+    "tohitBuff": {
+      "scale": 1,
+      "table": "Ranged_Buff_ToHit"
     }
   }
 };

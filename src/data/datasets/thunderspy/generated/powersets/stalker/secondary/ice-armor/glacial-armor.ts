@@ -54,7 +54,14 @@ export const GlacialArmor: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "resistance": 0.75
+    },
+    "resistance": {
+      "cold": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      }
     }
   }
 };
