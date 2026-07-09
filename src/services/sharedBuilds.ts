@@ -58,7 +58,13 @@ export class RateLimitError extends Error {
   }
 }
 
-// ---- Favorites management (localStorage) ----
+// ---- Favorites management (localStorage cache + account sync when logged in) ----
+//
+// The localStorage list is the always-available source of truth for the UI: it
+// works logged-out and gives an instant toggle. When a user is signed in, every
+// change is *also* mirrored to the `favorites` table (best-effort, fire-and-
+// forget) and `syncFavorites()` reconciles the two on login, so favourites
+// follow the account across devices. See syncFavorites for the merge semantics.
 
 function getFavoriteIds(): string[] {
   try {
@@ -72,6 +78,11 @@ function saveFavoriteIds(ids: string[]): void {
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(ids));
 }
 
+/** The signed-in user's id, or null when logged out / Supabase not configured. */
+function currentUserId(): string | null {
+  return useAuthStore.getState().user?.id ?? null;
+}
+
 export function isFavorite(buildId: string): boolean {
   return getFavoriteIds().includes(buildId);
 }
@@ -79,15 +90,93 @@ export function isFavorite(buildId: string): boolean {
 export function toggleFavorite(buildId: string): boolean {
   const ids = getFavoriteIds();
   const index = ids.indexOf(buildId);
+  const nowFav = index < 0;
   if (index >= 0) {
     ids.splice(index, 1);
-    saveFavoriteIds(ids);
-    return false;
   } else {
     ids.push(buildId);
-    saveFavoriteIds(ids);
-    return true;
   }
+  saveFavoriteIds(ids);
+
+  // Mirror to the account so the change follows the user to other devices.
+  // Fire-and-forget: the local list is already updated, so the UI is correct
+  // even if the network write fails or the user is logged out.
+  const userId = currentUserId();
+  if (supabase && userId) {
+    void persistFavorite(buildId, userId, nowFav);
+  }
+  return nowFav;
+}
+
+/** Write a single favourite change through to the `favorites` table. */
+async function persistFavorite(buildId: string, userId: string, favorited: boolean): Promise<void> {
+  if (!supabase) return;
+  try {
+    if (favorited) {
+      await supabase
+        .from('favorites')
+        .upsert({ user_id: userId, build_id: buildId }, { onConflict: 'user_id,build_id' });
+    } else {
+      await supabase.from('favorites').delete().eq('user_id', userId).eq('build_id', buildId);
+    }
+  } catch {
+    // Best-effort — the local list is authoritative for the current session and
+    // syncFavorites will reconcile on the next login.
+  }
+}
+
+/**
+ * Reconcile local favourites with the signed-in user's server-side favourites.
+ *
+ * Non-destructive **union** merge: any locally-favourited build is pushed up,
+ * any server favourite is pulled down, and the local cache becomes the union of
+ * both. This is what makes the first login after favouriting-while-logged-out
+ * "just work", and lets a build favourited on one device appear on another.
+ *
+ * Call once whenever auth resolves to a user. Best-effort: on any error the
+ * local list is left untouched.
+ */
+export async function syncFavorites(): Promise<void> {
+  const userId = currentUserId();
+  if (!supabase || !userId) return;
+
+  const localIds = getFavoriteIds();
+
+  const { data, error } = await supabase
+    .from('favorites')
+    .select('build_id')
+    .eq('user_id', userId);
+  if (error) return; // keep the local list as-is
+
+  const serverIds = (data ?? []).map((r) => r.build_id as string);
+  const serverSet = new Set(serverIds);
+
+  // Push local-only favourites up. Insert per-row (not one batch) so a favourite
+  // pointing at a since-deleted build fails only its own row via the FK, instead
+  // of aborting the whole push.
+  const toInsert = localIds.filter((id) => !serverSet.has(id));
+  if (toInsert.length > 0) {
+    await Promise.allSettled(
+      toInsert.map((build_id) =>
+        supabase!
+          .from('favorites')
+          .upsert({ user_id: userId, build_id }, { onConflict: 'user_id,build_id' }),
+      ),
+    );
+  }
+
+  // Local cache becomes the union of both sides.
+  saveFavoriteIds(Array.from(new Set([...localIds, ...serverIds])));
+}
+
+/**
+ * Clear the local favourites cache. Called on logout so a second user on the
+ * same browser doesn't inherit (or accidentally push up) the previous user's
+ * favourites. This is safe because a signed-in user's favourites live on their
+ * account and are pulled back down by syncFavorites on their next login.
+ */
+export function clearFavoritesCache(): void {
+  localStorage.removeItem(FAVORITES_KEY);
 }
 
 /** Fetch all favorited builds from Supabase */

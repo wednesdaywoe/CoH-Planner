@@ -342,6 +342,35 @@ LANGUAGE sql STABLE AS $$
 $$;
 
 -- ============================================
+-- Favorites — account-synced starred builds (APPLIED 2026-07-09)
+-- ============================================
+-- Before this, favourites lived only in localStorage ('coh-planner-favorites'),
+-- so they never followed the user across devices or survived a fresh browser.
+-- This table stores one row per (user, favourited build). Unlike shared_builds,
+-- writes go DIRECTLY from the client via RLS (no edge function) — the data is
+-- low-risk and each policy is scoped to auth.uid(), so a user can only touch
+-- their own rows. build_id FKs shared_builds so deleting a build auto-clears
+-- any favourite pointing at it.
+CREATE TABLE favorites (
+  user_id    UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  build_id   TEXT NOT NULL REFERENCES shared_builds(id) ON DELETE CASCADE,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  PRIMARY KEY (user_id, build_id)
+);
+
+CREATE INDEX idx_favorites_user ON favorites(user_id);
+
+ALTER TABLE favorites ENABLE ROW LEVEL SECURITY;
+
+-- Each authenticated user may read/insert/delete ONLY their own favourite rows.
+CREATE POLICY "own favorites read" ON favorites
+  FOR SELECT TO authenticated USING (user_id = auth.uid());
+CREATE POLICY "own favorites insert" ON favorites
+  FOR INSERT TO authenticated WITH CHECK (user_id = auth.uid());
+CREATE POLICY "own favorites delete" ON favorites
+  FOR DELETE TO authenticated USING (user_id = auth.uid());
+
+-- ============================================
 -- Admin: Assign an owner token to a legacy build
 -- ============================================
 -- 1. Pick a token (any string, e.g. a UUID):
