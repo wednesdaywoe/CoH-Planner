@@ -119,7 +119,10 @@
       "Bash(supabase --version)",
       "Bash(supabase functions *)",
       "Bash(bash /tmp/analyze.sh)",
-      "Bash(bash /tmp/analyze_accent_colors.sh)"
+      "Bash(bash /tmp/analyze_accent_colors.sh)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ],
     "additionalDirectories": [
       "/tmp"
