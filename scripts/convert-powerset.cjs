@@ -3445,17 +3445,711 @@ function _getAtomCore() {
 function templatesToAtoms(templates) {
   const { ingestTemplate, mapPvMode } = _getAtomCore();
   const atoms = [];
+  let tmplIdx = 0;
   for (const t of templates || []) {
+    tmplIdx++;
     if (!t || !t.attribs || t.attribs.length === 0) continue;
-    atoms.push(...ingestTemplate(t, {
+    const recs = ingestTemplate(t, {
       pvMode: mapPvMode(t._groupPv),
       baseProbability: t._groupChance ?? 1,
       procsPerMinute: t._groupPpm > 0 ? t._groupPpm : undefined,
       requiresExpression: t._groupRequires || undefined,
       specialCase: t._combatGated ? 'OutOfCombat' : undefined,
-    }));
+    });
+    // Converter-local provenance (underscore-prefixed, NOT part of the
+    // canonical AtomicEffect schema — identityKey/structuralKey ignore it).
+    // The projection needs these to reproduce template-level bag logic
+    // exactly: the twin pre-scan's multi-attrib signature, the AttackType
+    // marker skip, the absorb-stack pre-scan, and the raw-string tests the
+    // bag applies (empty tspy `aspect` fails a `=== 'current'` test even
+    // though the canonical Aspect defaults to 'Cur'; the bag's duration
+    // regex `([\d.]+)` ignores a leading minus, unlike parseDuration).
+    for (const a of recs) {
+      a._tmplIdx = tmplIdx;
+      a._attribCount = t.attribs.length;
+      a._aspect = t.aspect;
+      a._table = t.table;
+      a._type = t.type;
+      a._target = t.target;
+      a._duration = t.duration;
+      a._appType = t.application_type;
+      a._tickChance = t.tick_chance;
+      a._stack = t.stack;
+      a._stackKey = t.stack_key;
+      a._flags = t.flags;
+      a._suppressedByEvents = !!t.suppress_events?.some(
+        (se) => COMBAT_SUPPRESS_EVENTS.has(se.event)
+      );
+      a._combatGated = !!t._combatGated;
+    }
+    atoms.push(...recs);
   }
   return atoms;
+}
+
+/**
+ * DSH6 Phase 0b — PROJECTION: AtomicEffect[] → PowerEffects bag.
+ *
+ * A faithful port of extractEffects' routing tree operating on the atom list
+ * (from `templatesToAtoms`) instead of raw templates. Runs in SHADOW today —
+ * the comparator harness (scripts/dsh6-shadow-project.cjs) proves it emits a
+ * semantically identical bag before any slice goes live (Phase 1+).
+ *
+ * Deliberate equivalence-first choices (canonicalization comes per-slice,
+ * NOT here):
+ *   - Routes on `sourceAttrib` + the RAW template strings stamped as `_`
+ *     provenance (`_aspect`/`_type`/`_duration`/`_table`), because the bag's
+ *     tests are raw-string tests: tspy's empty `aspect` must FAIL a
+ *     `=== 'current'` test (the canonical Aspect defaults ''→'Cur'), and the
+ *     bag's duration regex `([\d.]+)` ignores a leading minus (unlike
+ *     parseDuration).
+ *   - Template-level pre-scans (resistable/unresistable twins, the AttackType
+ *     marker skip, absorb stacks) are reconstructed by grouping atoms on
+ *     `_tmplIdx`.
+ *   - ENTITY CREATION (`effects.summon` + derived conditionalEntities) stays
+ *     template-owned per the plan — `create_entity` atoms are skipped here and
+ *     `summon` is excluded from the comparator.
+ */
+function projectAtomsToEffects(atoms, powerName) {
+  const effects = {};
+
+  // Bag-exact duration parse (see raw-string note above).
+  const bagDuration = (raw) => {
+    if (raw && raw !== '0 seconds') {
+      const m = String(raw).match(/([\d.]+)\s*seconds?/i);
+      if (m) return parseFloat(m[1]);
+    }
+    return null;
+  };
+
+  // Reconstruct template groups (atoms are one-per-attrib, in template order).
+  const groups = new Map();
+  for (const a of atoms) {
+    if (!groups.has(a._tmplIdx)) groups.set(a._tmplIdx, []);
+    groups.get(a._tmplIdx).push(a);
+  }
+
+  // --- absorb-stack pre-scan (mirrors extractEffects) ---
+  // Template-level: single-attrib Absorb / aspect=Current / type Magnitude-or-
+  // empty. `g.length === 1` ⟺ attribs.length === 1 (one atom per attrib).
+  const absorbApply = [...groups.values()].filter((g) =>
+    g.length === 1 &&
+    (g[0].sourceAttrib || '').toLowerCase() === 'absorb' &&
+    (g[0]._aspect || '').toLowerCase() === 'current' &&
+    (g[0]._type === 'Magnitude' || !g[0]._type)
+  );
+  let absorbStackCount = 0;
+  if (absorbApply.length > 1) {
+    const first = absorbApply[0][0];
+    const allMatch = absorbApply.every((g) =>
+      Math.abs((g[0].scale || 0) - (first.scale || 0)) < 1e-6 &&
+      g[0]._table === first._table &&
+      g[0]._target === first._target
+    );
+    if (allMatch) absorbStackCount = absorbApply.length;
+  }
+
+  // --- resistable/unresistable twin pre-scan (mirrors extractEffects) ---
+  // Same signature, computed from the atom group; `!resistible` ⟺ the
+  // template carried IgnoreResistance. Drops every atom of the unresistable
+  // duplicate and tags the survivors `_twin` (→ `unresistable: true`).
+  const isTwinDebuff = (g) =>
+    (g[0].scale || 0) < 0 || (g[0]._table || '').toLowerCase().includes('debuff');
+  const twinSig = (g) =>
+    `${g.map((a) => (a.sourceAttrib || '').toLowerCase()).sort().join(',')}|` +
+    `${(g[0]._aspect || '').toLowerCase()}|${g[0]._table}|` +
+    `${(g[0].scale || 0).toFixed(4)}|${g[0]._duration || ''}`;
+  let workingAtoms = atoms;
+  {
+    const seen = {};
+    for (const g of groups.values()) {
+      if (!isTwinDebuff(g)) continue;
+      const sig = twinSig(g);
+      if (!seen[sig]) seen[sig] = { res: false, unres: false };
+      if (!g[0].resistible) seen[sig].unres = true;
+      else seen[sig].res = true;
+    }
+    const twinSigs = new Set(
+      Object.keys(seen).filter((k) => seen[k].res && seen[k].unres)
+    );
+    if (twinSigs.size > 0) {
+      const kept = [];
+      for (const g of groups.values()) {
+        const sig = isTwinDebuff(g) ? twinSig(g) : null;
+        if (sig && twinSigs.has(sig)) {
+          if (!g[0].resistible) continue; // drop the unresistable duplicate
+          for (const a of g) a._twin = true;
+        }
+        kept.push(...g);
+      }
+      workingAtoms = kept;
+    }
+  }
+
+  // --- AttackType-tagging marker templates (mirrors extractEffects) ---
+  // 7+ attribs, all damage types, aspect=Strength, scale 0, mag 0 → skip.
+  const markerIdx = new Set();
+  for (const [idx, g] of groups) {
+    if (
+      g.length >= 7 &&
+      g.every((a) => isDamageTypeAttrib((a.sourceAttrib || '').toLowerCase())) &&
+      (g[0]._aspect || '').toLowerCase() === 'strength' &&
+      (g[0].scale || 0) === 0 &&
+      (g[0].magnitude || 0) === 0
+    ) {
+      markerIdx.add(idx);
+    }
+  }
+
+  for (const a of workingAtoms) {
+    // Skip deactivation-only effects (bursts on toggle off).
+    if (a._appType === 'OnDeactivate') continue;
+    if (markerIdx.has(a._tmplIdx)) continue;
+
+    const isCombatSuppressed = a._suppressedByEvents || a._combatGated;
+    const aspect = a._aspect?.toLowerCase();
+    const scale = a.scale || 0;
+    const table = a._table;
+    const magnitude = a.magnitude || 1;
+    const isDebuff = scale < 0 || table?.toLowerCase().includes('debuff');
+    const isSelfTargeting = a._target === 'Self';
+    const duration = bagDuration(a._duration);
+
+    const makeEffect = (s = scale, t = table) => {
+      const e = { scale: Math.abs(s), table: t };
+      if (a._twin) e.unresistable = true;
+      return e;
+    };
+    const makeMezEffect = () => ({ mag: magnitude, scale: Math.abs(scale), table });
+    const recordDuration = (effectKey) => {
+      if (duration && duration > 0) {
+        if (!effects.durations) effects.durations = {};
+        effects.durations[effectKey] = duration;
+      }
+    };
+
+    const attrib = (a.sourceAttrib || '').toLowerCase();
+    if (!attrib) continue;
+    if (SPECIAL_ATTRIBS.has(attrib)) continue;
+
+    // ENTITY CREATION — stays template-owned (see doc comment).
+    if (attrib === 'create_entity') continue;
+
+    // ========== DAMAGE TYPE ATTRIBUTES ==========
+    if (isDamageTypeAttrib(attrib)) {
+      const dmgType = getDamageType(attrib);
+      const tableLower = table?.toLowerCase() || '';
+      const isDefenseEffect = tableLower.includes('buff_def') || tableLower.includes('debuff_def');
+
+      if (dmgType === 'Heal' && aspect === 'strength') {
+        if (!effects.specialBuff) effects.specialBuff = {};
+        effects.specialBuff.heal = makeEffect();
+        recordDuration('specialBuff');
+        continue;
+      }
+
+      if (aspect === 'strength') {
+        const isDamageAttrib = attrib.endsWith('_dmg');
+        if (!isDamageAttrib) {
+          if (isDebuff) {
+            if (!effects.specialDebuff) effects.specialDebuff = {};
+            effects.specialDebuff[dmgType.toLowerCase()] = makeEffect();
+            recordDuration('specialDebuff');
+          } else {
+            if (!effects.specialBuff) effects.specialBuff = {};
+            effects.specialBuff[dmgType.toLowerCase()] = makeEffect();
+            recordDuration('specialBuff');
+          }
+        } else if (isDebuff) {
+          effects.damageDebuff = makeEffect();
+          if (isSelfTargeting) effects.damageDebuff.toWho = 'Self';
+          recordDuration('damageDebuff');
+        } else {
+          effects.damageBuff = makeEffect();
+          recordDuration('damageBuff');
+        }
+      } else if (aspect === 'resistance') {
+        if (isDebuff) {
+          if (!effects.resistanceDebuff) effects.resistanceDebuff = {};
+          effects.resistanceDebuff[dmgType.toLowerCase()] = makeEffect();
+          recordDuration('resistanceDebuff');
+        } else {
+          if (!effects.resistance) effects.resistance = {};
+          effects.resistance[dmgType.toLowerCase()] = makeEffect();
+          recordDuration('resistance');
+        }
+      } else if (isDefenseEffect) {
+        if (isDebuff) {
+          if (!effects.defenseDebuff) effects.defenseDebuff = {};
+          effects.defenseDebuff[dmgType.toLowerCase()] = makeEffect();
+          recordDuration('defenseDebuff');
+        } else if (isCombatSuppressed) {
+          if (!effects.defenseBuffSuppressible) effects.defenseBuffSuppressible = {};
+          effects.defenseBuffSuppressible[dmgType.toLowerCase()] = makeEffect();
+          recordDuration('defenseBuffSuppressible');
+        } else {
+          if (!effects.defenseBuff) effects.defenseBuff = {};
+          effects.defenseBuff[dmgType.toLowerCase()] = makeEffect();
+          recordDuration('defenseBuff');
+        }
+      }
+      // Current/Absolute without defense table = actual damage → extractDamage().
+      continue;
+    }
+
+    // ========== DEFENSE POSITION TYPES (Melee/Ranged/AoE) ==========
+    if (isDefensePosition(attrib)) {
+      const posType = DEFENSE_POSITIONS[attrib];
+      if (aspect === 'resistance') {
+        if (isDebuff) {
+          if (!effects.resistanceDebuff) effects.resistanceDebuff = {};
+          effects.resistanceDebuff[posType.toLowerCase()] = makeEffect();
+          recordDuration('resistanceDebuff');
+        } else {
+          if (!effects.resistance) effects.resistance = {};
+          effects.resistance[posType.toLowerCase()] = makeEffect();
+          recordDuration('resistance');
+        }
+      } else if (aspect === 'strength') {
+        if (isDebuff) {
+          if (!effects.specialDebuff) effects.specialDebuff = {};
+          effects.specialDebuff[posType.toLowerCase()] = makeEffect();
+          recordDuration('specialDebuff');
+        } else {
+          if (!effects.specialBuff) effects.specialBuff = {};
+          effects.specialBuff[posType.toLowerCase()] = makeEffect();
+          recordDuration('specialBuff');
+        }
+      } else if (isDebuff) {
+        if (!effects.defenseDebuff) effects.defenseDebuff = {};
+        effects.defenseDebuff[posType.toLowerCase()] = makeEffect();
+        recordDuration('defenseDebuff');
+      } else if (isCombatSuppressed) {
+        if (!effects.defenseBuffSuppressible) effects.defenseBuffSuppressible = {};
+        effects.defenseBuffSuppressible[posType.toLowerCase()] = makeEffect();
+        recordDuration('defenseBuffSuppressible');
+      } else {
+        if (!effects.defenseBuff) effects.defenseBuff = {};
+        effects.defenseBuff[posType.toLowerCase()] = makeEffect();
+        recordDuration('defenseBuff');
+      }
+      continue;
+    }
+
+    // ========== BASE_DEFENSE special handling ==========
+    if (attrib === 'base_defense' || attrib === 'defense') {
+      if (aspect === 'resistance') {
+        if (!effects.debuffResistance) effects.debuffResistance = {};
+        effects.debuffResistance.defense = makeEffect();
+        recordDuration('debuffResistance');
+      } else if (aspect === 'strength') {
+        if (isDebuff) {
+          if (!effects.specialDebuff) effects.specialDebuff = {};
+          effects.specialDebuff.defense = makeEffect();
+          recordDuration('specialDebuff');
+        } else {
+          if (!effects.specialBuff) effects.specialBuff = {};
+          effects.specialBuff.defense = makeEffect();
+          recordDuration('specialBuff');
+        }
+      } else if (isDebuff) {
+        effects.defenseDebuff = makeEffect();
+        recordDuration('defenseDebuff');
+      } else if (isCombatSuppressed) {
+        effects.defenseBuffSuppressible = makeEffect();
+        recordDuration('defenseBuffSuppressible');
+      } else {
+        effects.defenseBuff = makeEffect();
+        recordDuration('defenseBuff');
+      }
+      continue;
+    }
+
+    // ========== ELUSIVITY ==========
+    if (ELUSIVITY_TYPES[attrib]) {
+      const elusType = ELUSIVITY_TYPES[attrib];
+      if (!effects.elusivity) effects.elusivity = {};
+      effects.elusivity[elusType.toLowerCase()] = makeEffect();
+      continue;
+    }
+
+    // ========== MEZ EFFECTS ==========
+    if (MEZ_TYPES[attrib]) {
+      const mezType = MEZ_TYPES[attrib];
+      if (aspect === 'resistance') {
+        if (!effects.mezResistance) effects.mezResistance = {};
+        if (effects.mezResistance[mezType] && effects.mezResistance[mezType].table === table) {
+          effects.mezResistance[mezType].scale += Math.abs(scale);
+        } else {
+          effects.mezResistance[mezType] = makeEffect();
+        }
+        recordDuration('mezResistance');
+      } else if (aspect === 'strength') {
+        if (!effects.specialBuff) effects.specialBuff = {};
+        effects.specialBuff[mezType] = makeEffect();
+        recordDuration('specialBuff');
+      } else if (datasetId === 'thunderspy' && scale < 0
+                 && !(table || '').toLowerCase().includes('res_boolean')) {
+        continue;
+      } else {
+        const newMez = makeMezEffect();
+        const cur = effects[mezType];
+        const newIsPvP = /pvp/i.test(table || '');
+        const curIsPvP = cur ? /pvp/i.test(cur.table || '') : false;
+        let take;
+        if (!cur) take = true;
+        else if (curIsPvP !== newIsPvP) take = curIsPvP; // prefer PvE
+        else take = newMez.mag > cur.mag;
+        if (take) effects[mezType] = newMez;
+        if (duration) effects.effectDuration = duration;
+        recordDuration(mezType);
+      }
+      continue;
+    }
+
+    // ========== KNOCKBACK/KNOCKUP/REPEL ==========
+    if (KNOCKBACK_TYPES[attrib]) {
+      const kbType = KNOCKBACK_TYPES[attrib];
+      if (!isSelfTargeting) {
+        if (aspect === 'resistance' || scale <= 0) continue;
+        if (effects[kbType] && effects[kbType].table === table) {
+          effects[kbType].scale += Math.abs(scale);
+        } else {
+          effects[kbType] = makeEffect();
+        }
+        recordDuration(kbType);
+        continue;
+      }
+      if (aspect === 'resistance') {
+        const isResBoolean = (table || '').toLowerCase().includes('res_boolean');
+        if (isResBoolean) {
+          if (effects[kbType] && effects[kbType].table === table) {
+            effects[kbType].scale += Math.abs(scale);
+          } else {
+            effects[kbType] = makeEffect();
+          }
+          recordDuration(kbType);
+        } else {
+          if (!effects.mezResistance) effects.mezResistance = {};
+          effects.mezResistance[kbType] = makeEffect();
+          recordDuration('mezResistance');
+        }
+      } else {
+        if (effects[kbType] && effects[kbType].table === table) {
+          effects[kbType].scale += Math.abs(scale);
+        } else {
+          effects[kbType] = makeEffect();
+        }
+        recordDuration(kbType);
+      }
+      continue;
+    }
+
+    // ========== MOVEMENT ==========
+    if (MOVEMENT_TYPES[attrib]) {
+      const moveType = MOVEMENT_TYPES[attrib];
+      const isSlow = isDebuff || scale < 0 || (table || '').toLowerCase().includes('slow');
+      if (aspect === 'resistance') {
+        if (!effects.debuffResistance) effects.debuffResistance = {};
+        effects.debuffResistance.movement = makeEffect();
+        recordDuration('debuffResistance');
+      } else if (isSelfTargeting && aspect === 'strength') {
+        if (!effects.specialBuff) effects.specialBuff = {};
+        effects.specialBuff.movement = makeEffect();
+        recordDuration('specialBuff');
+      } else if (isSelfTargeting && isSlow) {
+        if (!effects.slow) effects.slow = {};
+        effects.slow[moveType] = makeEffect();
+        effects.slow[moveType].toWho = 'Self';
+        recordDuration('slow');
+      } else if (isSelfTargeting) {
+        if (!effects.movement) effects.movement = {};
+        effects.movement[moveType] = makeEffect();
+        recordDuration('movement');
+      } else if (isSlow) {
+        if (!effects.slow) effects.slow = {};
+        effects.slow[moveType] = makeEffect();
+        recordDuration('slow');
+      } else if (aspect === 'current') {
+        if (!effects.movement) effects.movement = {};
+        effects.movement[moveType] = makeEffect();
+        recordDuration('movement');
+      }
+      continue;
+    }
+
+    // ========== RESOURCES (HP, End, Recovery, Regen, Absorb) ==========
+    if (RESOURCE_TYPES[attrib]) {
+      const resType = RESOURCE_TYPES[attrib];
+
+      if (resType !== 'absorb' && a._type === 'Expression' && a._tickChance === 0) {
+        continue;
+      }
+
+      const addOrAccumulate = (key) => {
+        const existing = effects[key];
+        if (existing && existing.table === table) {
+          const existingDur = effects.durations ? effects.durations[key] : undefined;
+          const incomingDur = duration && duration > 0 ? duration : null;
+          if (
+            isDebuff &&
+            existingDur != null && incomingDur != null &&
+            Math.abs(existingDur - incomingDur) > 0.001
+          ) {
+            existing.durationVariants = existing.durationVariants || [];
+            if (incomingDur > existingDur) {
+              existing.durationVariants.push({ scale: existing.scale, duration: existingDur });
+              existing.scale = Math.abs(scale);
+              if (!effects.durations) effects.durations = {};
+              effects.durations[key] = incomingDur;
+            } else {
+              existing.durationVariants.push({ scale: Math.abs(scale), duration: incomingDur });
+            }
+            return;
+          }
+          existing.scale += Math.abs(scale);
+        } else {
+          effects[key] = makeEffect();
+        }
+        recordDuration(key);
+      };
+
+      if (resType === 'hitPoints') {
+        if (aspect === 'maximum') {
+          if (isDebuff) continue;
+          addOrAccumulate('maxHPBuff');
+        } else {
+          addOrAccumulate('healing');
+        }
+      } else if (resType === 'endurance') {
+        if (aspect === 'resistance') {
+          if (!effects.debuffResistance) effects.debuffResistance = {};
+          effects.debuffResistance.endurance = makeEffect();
+          recordDuration('debuffResistance');
+        } else if (aspect === 'strength') {
+          if (!effects.specialBuff) effects.specialBuff = {};
+          effects.specialBuff.endurance = makeEffect();
+          recordDuration('specialBuff');
+        } else if (aspect === 'maximum') {
+          addOrAccumulate('maxEndBuff');
+        } else if (isDebuff || scale < 0) {
+          addOrAccumulate('enduranceDrain');
+        } else {
+          addOrAccumulate('enduranceGain');
+        }
+      } else if (resType === 'recovery') {
+        if (aspect === 'resistance') {
+          if (!effects.debuffResistance) effects.debuffResistance = {};
+          effects.debuffResistance.recovery = makeEffect();
+          recordDuration('debuffResistance');
+        } else if (isDebuff || scale < 0) {
+          addOrAccumulate('recoveryDebuff');
+        } else if (a._flags?.includes('IgnoreStrength')) {
+          addOrAccumulate('recoveryBuffUnenhanced');
+        } else {
+          addOrAccumulate('recoveryBuff');
+        }
+      } else if (resType === 'regeneration') {
+        if (aspect === 'resistance') {
+          if (!effects.debuffResistance) effects.debuffResistance = {};
+          effects.debuffResistance.regeneration = makeEffect();
+          recordDuration('debuffResistance');
+        } else if (isDebuff || scale < 0) {
+          addOrAccumulate('regenDebuff');
+        } else if (a._flags?.includes('StackByAttribAndKey')) {
+          // handled downstream by the perTarget pipeline — see extractEffects
+        } else if (a._flags?.includes('IgnoreStrength')) {
+          addOrAccumulate('regenBuffUnenhanced');
+        } else {
+          addOrAccumulate('regenBuff');
+        }
+      } else if (resType === 'absorb') {
+        if (aspect === 'maximum' && a._type === 'Expression') {
+          recordDuration('absorb');
+          continue;
+        }
+        if (aspect === 'strength') {
+          if (!effects.specialBuff) effects.specialBuff = {};
+          effects.specialBuff.absorb = makeEffect();
+          recordDuration('specialBuff');
+          continue;
+        }
+        addOrAccumulate('absorb');
+      }
+      continue;
+    }
+
+    // ========== COMBAT MODIFIERS ==========
+    if (COMBAT_MODIFIERS[attrib]) {
+      const modType = COMBAT_MODIFIERS[attrib];
+
+      if (modType === 'toHit') {
+        if (aspect === 'resistance') {
+          if (!effects.debuffResistance) effects.debuffResistance = {};
+          effects.debuffResistance.tohit = makeEffect();
+          recordDuration('debuffResistance');
+        } else if (aspect === 'strength') {
+          if (!effects.specialBuff) effects.specialBuff = {};
+          effects.specialBuff.tohit = makeEffect();
+          recordDuration('specialBuff');
+        } else if (isDebuff) {
+          effects.tohitDebuff = makeEffect();
+          if (isSelfTargeting) effects.tohitDebuff.toWho = 'Self';
+          recordDuration('tohitDebuff');
+        } else if (a._flags?.includes('IgnoreStrength')) {
+          effects.tohitBuffUnenhanced = makeEffect();
+          recordDuration('tohitBuffUnenhanced');
+        } else {
+          effects.tohitBuff = makeEffect();
+          recordDuration('tohitBuff');
+        }
+      } else if (modType === 'accuracy') {
+        if (aspect === 'resistance') {
+          if (!effects.debuffResistance) effects.debuffResistance = {};
+          effects.debuffResistance.accuracy = makeEffect();
+          recordDuration('debuffResistance');
+        } else if (isDebuff || scale < 0) {
+          effects.accuracyDebuff = makeEffect();
+          if (isSelfTargeting) effects.accuracyDebuff.toWho = 'Self';
+          recordDuration('accuracyDebuff');
+        } else {
+          effects.accuracyBuff = makeEffect();
+          recordDuration('accuracyBuff');
+        }
+      } else if (modType === 'defense') {
+        // handled by BASE_DEFENSE above
+      } else if (modType === 'rechargeTime') {
+        if (aspect === 'resistance') {
+          if (!effects.debuffResistance) effects.debuffResistance = {};
+          effects.debuffResistance.recharge = makeEffect();
+          recordDuration('debuffResistance');
+        } else if (isDebuff || scale < 0 || table?.toLowerCase().includes('slow')) {
+          effects.rechargeDebuff = makeEffect();
+          if (isSelfTargeting) effects.rechargeDebuff.toWho = 'Self';
+          recordDuration('rechargeDebuff');
+        } else {
+          effects.rechargeBuff = makeEffect();
+          recordDuration('rechargeBuff');
+        }
+      } else if (modType === 'threatLevel') {
+        if (isDebuff || scale < 0) {
+          effects.threatDebuff = makeEffect();
+          recordDuration('threatDebuff');
+        } else {
+          effects.threatBuff = makeEffect();
+          recordDuration('threatBuff');
+        }
+      } else if (modType === 'range') {
+        if (aspect === 'resistance') {
+          if (!effects.debuffResistance) effects.debuffResistance = {};
+          effects.debuffResistance.range = makeEffect();
+          recordDuration('debuffResistance');
+        } else if (isDebuff || scale < 0) {
+          if (isSelfTargeting) {
+            effects.rangeDebuff = makeEffect();
+            effects.rangeDebuff.toWho = 'Self';
+            recordDuration('rangeDebuff');
+          }
+          // else: foe-side debuff, dropped for caster-stat purposes
+        } else if (isSelfTargeting) {
+          effects.rangeBuff = makeEffect();
+          recordDuration('rangeBuff');
+        } else if (aspect === 'strength') {
+          // ally/team +Range (Power of the Depths) — see extractEffects
+          effects.rangeBuff = makeEffect();
+          recordDuration('rangeBuff');
+        }
+        // else: positive non-Strength Range on a non-Self target — skip.
+      } else if (modType === 'enduranceDiscount') {
+        effects.enduranceDiscount = makeEffect();
+        recordDuration('enduranceDiscount');
+      }
+      continue;
+    }
+
+    // ========== STEALTH/PERCEPTION ==========
+    if (STEALTH_TYPES[attrib]) {
+      const stealthType = STEALTH_TYPES[attrib];
+      if (stealthType === 'perception') {
+        if (aspect === 'resistance') {
+          if (!effects.debuffResistance) effects.debuffResistance = {};
+          effects.debuffResistance.perception = makeEffect();
+          recordDuration('debuffResistance');
+        } else if (isDebuff || scale < 0) {
+          effects.perceptionDebuff = makeEffect();
+          recordDuration('perceptionDebuff');
+        } else {
+          effects.perceptionBuff = makeEffect();
+          recordDuration('perceptionBuff');
+        }
+      } else {
+        if (!effects.stealth) effects.stealth = {};
+        effects.stealth[stealthType] = makeEffect();
+        const stealthKey = a._stackKey;
+        const keyResolved = stealthKey && stealthKey !== '4294967295' && stealthKey !== '0';
+        if (a._stack === 'Suppress' && keyResolved) {
+          effects.stealth.stackKey = stealthKey;
+        }
+        recordDuration('stealth');
+      }
+      continue;
+    }
+
+    // ========== CONTROL (Taunt, Placate, etc.) ==========
+    if (CONTROL_TYPES[attrib]) {
+      const ctrlType = CONTROL_TYPES[attrib];
+      if (aspect === 'resistance') {
+        if (!effects.mezResistance) effects.mezResistance = {};
+        if (effects.mezResistance[ctrlType] && effects.mezResistance[ctrlType].table === table) {
+          effects.mezResistance[ctrlType].scale += Math.abs(scale);
+        } else {
+          effects.mezResistance[ctrlType] = makeEffect();
+        }
+        recordDuration('mezResistance');
+      } else {
+        effects[ctrlType] = makeEffect();
+        recordDuration(ctrlType);
+      }
+      continue;
+    }
+
+    // catch-all: unmapped attribute — no slot.
+  }
+
+  // --- epilogue (mirrors extractEffects) ---
+  if (absorbStackCount > 1 && effects.absorb && typeof effects.absorb.scale === 'number') {
+    effects.absorb.scale = effects.absorb.scale / absorbStackCount;
+    effects.maxStacks = Math.max(effects.maxStacks || 0, absorbStackCount);
+    if (!effects.stacksLinear) effects.stacksLinear = [];
+    if (!effects.stacksLinear.includes('absorb')) {
+      effects.stacksLinear = [...effects.stacksLinear, 'absorb'].sort();
+    }
+    const absorbTick = effects.durations && effects.durations.absorb;
+    if (absorbTick && absorbTick > 0) {
+      effects.stackInterval = absorbTick;
+    }
+  }
+
+  if (effects.durations && Object.keys(effects.durations).length > 0) {
+    const durationCounts = {};
+    for (const [, dur] of Object.entries(effects.durations)) {
+      durationCounts[dur] = (durationCounts[dur] || 0) + 1;
+    }
+    let bestDur = null;
+    let bestCount = 0;
+    for (const [dur, count] of Object.entries(durationCounts)) {
+      const d = parseFloat(dur);
+      if (count > bestCount || (count === bestCount && d > (bestDur || 0))) {
+        bestDur = d;
+        bestCount = count;
+      }
+    }
+    if (bestDur && bestDur > 0) {
+      effects.buffDuration = bestDur;
+    }
+  }
+
+  return effects;
 }
 
 function extractEffects(templates, powerName) {
@@ -3471,6 +4165,15 @@ function extractEffects(templates, powerName) {
   if (global.__DSH6_ATOM_SINK__) {
     global.__DSH6_ATOM_SINK__(powerName, templatesToAtoms(templates));
   }
+  // DSH6 Phase 0b — env-gated self-compare. With DSH6_SHADOW_COMPARE set (to a
+  // log-file path), EVERY extractEffects call — base, redirect, activation and
+  // conditional-pipeline pulls alike — also runs the atom projection over its
+  // raw input and appends any divergence to the log. A full regen under this
+  // env var is the exhaustive equivalence proof across all real call paths
+  // (the standalone harness scripts only cover the base path). Atoms must be
+  // captured HERE: the twin pre-scan below mutates/filters the template list.
+  const _dsh6EntryAtoms = process.env.DSH6_SHADOW_COMPARE
+    ? templatesToAtoms(templates) : null;
 
   // Pre-scan for repeated-template absorb stacks. The Rebirth Spirit Ward
   // rework emits 5 identical Absorb/Current/Magnitude templates (one per
@@ -4493,6 +5196,28 @@ function extractEffects(templates, powerName) {
     effects.summon.conditionalEntities = [
       { entity: ignitedVariant, toggleId: 'oilslick_ignited', label: 'Oil Slick Ignited' },
     ];
+  }
+
+  // DSH6 Phase 0b — env-gated self-compare (see the entry block). Canonical
+  // sorted-key JSON, `summon`/`conditionalEntities` excluded (template-owned).
+  if (_dsh6EntryAtoms) {
+    const _canon = (v) => {
+      if (Array.isArray(v)) return v.map(_canon);
+      if (v && typeof v === 'object') {
+        const o = {};
+        for (const k of Object.keys(v).sort()) {
+          if (v[k] !== undefined && k !== 'summon' && k !== 'conditionalEntities') o[k] = _canon(v[k]);
+        }
+        return o;
+      }
+      return v;
+    };
+    const cBag = JSON.stringify(_canon(effects));
+    const cProj = JSON.stringify(_canon(projectAtomsToEffects(_dsh6EntryAtoms, powerName)));
+    if (cBag !== cProj) {
+      fs.appendFileSync(process.env.DSH6_SHADOW_COMPARE,
+        JSON.stringify({ power: powerName, bag: cBag, proj: cProj }) + '\n');
+    }
   }
 
   return effects;
@@ -6197,6 +6922,7 @@ module.exports = {
   guardThunderspyAppliedMez,
   extractEffects,
   templatesToAtoms,
+  projectAtomsToEffects,
   extractDamage,
   inferAllowedSetCategories,
   inferEffectiveArea,

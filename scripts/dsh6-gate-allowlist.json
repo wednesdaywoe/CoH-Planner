@@ -1,0 +1,44 @@
+{
+  "_doc": [
+    "DSH6 completeness-gate allowlist (Phase 0b). Consumed by",
+    "`dsh6-collapse-detector.cjs --gate`: EVERY detector group — collapse AND",
+    "class-absent, by-type AND scalar — must have its key here or the gate",
+    "fails. This converts the old non-gating class-absent bucket (the blind",
+    "spot that let Power of the Depths' +Range drop stay CI-green for two",
+    "months) into an enumerated, frozen exception set: a NEW whole-class drop",
+    "now fails CI and can only ship via a reviewed addition to this file,",
+    "with a reason. Keys: by-type = 'effectType|subType|sign', scalar =",
+    "'effectType|sign' (sign '' when unsigned).",
+    "Reasons distinguish 'by design' (converter documentedly drops it on",
+    "purpose) from 'known gap' (real modeling gap, tracked, not yet built)."
+  ],
+  "byTypeCollapse": {
+    "Mez|immobilize|": "Focused Fighting — display-name aggregation across NPC variants of the power, not a player last-write-wins collapse (documented FP in the worklist scope note, 2026-07-05)."
+  },
+  "classAbsent": {
+    "Mez|teleport|": "Savage Leap — the Teleport attrib is the self-teleport-to-target mechanic of the leap, not a player-facing mez; by design not surfaced as a mez slot.",
+    "Defense|all|-": "Dual Blades AoE_Bridge — combo-mode pseudopower; its -Def rides a `kDD_DebuffMode_2 Source.Mode?` gate that collectAllTemplates skips by design (mode-gated conditionals are mutually exclusive stances).",
+    "Mez|immobilize|": "Telekinesis (Mind Control) — repel/immobilize composite edge case; known gap (control/self-conditional edge cases, worklist scope note).",
+    "Resistance|smashing|+": "Genetic Corruption — self-conditional edge case (worklist scope note); known gap.",
+    "Resistance|lethal|+": "Genetic Corruption — self-conditional edge case; known gap.",
+    "Resistance|toxic|+": "Genetic Corruption — self-conditional edge case; known gap.",
+    "Resistance|fire|+": "Genetic Corruption — self-conditional edge case; known gap.",
+    "Resistance|cold|+": "Genetic Corruption — self-conditional edge case; known gap.",
+    "Resistance|energy|+": "Genetic Corruption — self-conditional edge case; known gap.",
+    "Resistance|negative|+": "Genetic Corruption — self-conditional edge case; known gap.",
+    "Resistance|psionic|+": "Genetic Corruption — self-conditional edge case; known gap.",
+    "Mez|hold|": "Focused Senses — mez edge case (worklist scope note); known gap.",
+    "Mez|stun|": "Focused Senses — mez edge case; known gap.",
+    "Mez|sleep|": "Focused Senses — mez edge case; known gap.",
+    "Mez|confuse|": "World of Confusion (Mental Manipulation) — conditional/contact-gated confuse; known gap."
+  },
+  "scalarCollapse": {},
+  "scalarClassAbsent": {
+    "Range|-": "Foe -Range debuff (Taunt family, ~75 powers) — dropped by design for caster-stat purposes; the converter's range branch documents it ('foe-side debuff, dropped'). Modeling foe -Range as a first-class debuff is a possible future restoration.",
+    "MaxHP|-": "Brine — foe -MaxHP; by design not surfaced (extractEffects: 'Target -MaxHP isn't currently modeled on the build side').",
+    "ToHit|-": "Dual Blades AoE_Bridge — mode-gated (`kDD_DebuffMode_2 Source.Mode?`) -ToHit; collector's mode-skip drops it by design.",
+    "ToHit|+": "Wind Control Clear Skies — stance-mode-gated (`kClearSkies Source.Mode?`) self buffs; collector's mode-skip drops them; stance system owns this content. Known gap if the stance system doesn't surface it.",
+    "Recovery|+": "Wind Control Clear Skies — same stance-mode gate as its ToHit|+.",
+    "Regeneration|+": "Genetic Corruption — self-conditional edge case; known gap."
+  }
+}

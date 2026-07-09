@@ -320,7 +320,15 @@ function scalarInputIdentities(sourceJson) {
     if (a.pvMode === 'PvP' || isPvpVariant(a)) continue;      // PvP-only group (flag OR `player eq` requires)
     if (!a.scale) continue;
     if (a.attribType === 'Expression') continue;
-    if (a.aspect === 'Str' || a.aspect === 'Res') continue;   // specialBuff / debuffResistance families
+    // aspect=Str is the Power-Boost→specialBuff relabel family — EXCEPT for
+    // Range and Accuracy, which have no Current variant: their Strength aspect
+    // IS the primary buff/debuff form and routes to real slots (rangeBuff/
+    // rangeDebuff/accuracyBuff — see the COMBAT section of extractEffects).
+    // Excluding them blinded this gate to the Power of the Depths class of
+    // drop (ally +Range silently skipped, CI green for ~2 months): PotD's
+    // +37.5% Range atom is aspect=Str, so it never entered the check at all.
+    const strIsPrimary = a.effectType === 'Range' || a.effectType === 'Accuracy';
+    if ((a.aspect === 'Str' && !strIsPrimary) || a.aspect === 'Res') continue; // specialBuff / debuffResistance families
     if (!SCALAR_CHECK_ET.has(a.effectType)) continue;
     const isDebuff = a.scale < 0 || /debuff/i.test(a.modifierTable || '');
     const sign = isDebuff ? '-' : '+';
@@ -455,6 +463,15 @@ function main() {
   }
   const sGroupList = [...sGroups.values()].map((g) => ({ ...g, tables: [...g.tables].slice(0, 6) }))
     .sort((a, b) => b.count - a.count);
+  // group scalar class-absent by (et, sign) — now first-class output: the
+  // completeness gate makes whole-class-absent GATING (the PotD blind spot).
+  const sAbsentGroups = new Map();
+  for (const c of scalarClassAbsent) {
+    const k = `${c.et}|${c.sign}`;
+    if (!sAbsentGroups.has(k)) sAbsentGroups.set(k, { et: c.et, sign: c.sign, count: 0, powers: [] });
+    const g = sAbsentGroups.get(k); g.count++; if (g.powers.length < 8) g.powers.push(c.power);
+  }
+  const sAbsentList = [...sAbsentGroups.values()].sort((a, b) => b.count - a.count);
 
   const result = {
     schema: 'dsh6-collapse-worklist/1',
@@ -496,6 +513,7 @@ function main() {
     collapseGroups: groupList,
     classAbsentGroups: [...absentGroups.values()].sort((a, b) => b.count - a.count),
     scalarCollapseGroups: sGroupList,
+    scalarClassAbsentGroups: sAbsentList,
     scalarCollapses,
   };
   fs.writeFileSync(OUT_PATH, JSON.stringify(result, null, 2));
@@ -505,6 +523,47 @@ function main() {
   console.log(`  BY-TYPE gate  : atoms ${cov.atomsChecked} · collapses ${collapses.length} (${groupList.length} groups) · class-absent ${classAbsent.length}`);
   console.log(`  SCALAR gate   : atoms ${cov.scalarChecked} · collapses ${scalarCollapses.length} (${sGroupList.length} groups) · class-absent ${scalarClassAbsent.length}`);
   console.log(`  worklist → ${path.relative(REPO, OUT_PATH)}`);
+
+  // -------------------------------------------------------------------------
+  // COMPLETENESS GATE (DSH6 Phase 0b, --gate). The PotD lesson: a whole-
+  // effect-type drop landed in the non-gating class-absent bucket and stayed
+  // CI-green for two months. Under --gate, EVERY group — collapse AND
+  // class-absent, by-type AND scalar — must appear in the frozen, reason-
+  // annotated allowlist (scripts/dsh6-gate-allowlist.json) or the run fails.
+  // Growing the allowlist requires a commit that explains WHY the drop is by
+  // design, which is exactly the review moment the old bucket skipped.
+  // -------------------------------------------------------------------------
+  if (argv.includes('--gate')) {
+    let allow;
+    try {
+      allow = JSON.parse(fs.readFileSync(path.join(__dirname, 'dsh6-gate-allowlist.json'), 'utf-8'));
+    } catch (e) {
+      console.error('GATE ERROR — cannot read scripts/dsh6-gate-allowlist.json:', e.message);
+      process.exit(1);
+    }
+    const violations = [];
+    const check = (list, keyFn, allowMap, label) => {
+      for (const g of list) {
+        const k = keyFn(g);
+        if (!allowMap || !(k in allowMap)) {
+          violations.push(`${label}: ${k} ×${g.count}  (e.g. ${g.powers.slice(0, 3).join(', ')})`);
+        }
+      }
+    };
+    check(groupList, (g) => `${g.et}|${g.sub}|${g.sign ?? ''}`, allow.byTypeCollapse, 'by-type COLLAPSE');
+    check([...absentGroups.values()], (g) => `${g.et}|${g.sub}|${g.sign ?? ''}`, allow.classAbsent, 'by-type CLASS-ABSENT');
+    check(sGroupList, (g) => `${g.et}|${g.sign}`, allow.scalarCollapse, 'scalar COLLAPSE');
+    check(sAbsentList, (g) => `${g.et}|${g.sign}`, allow.scalarClassAbsent, 'scalar CLASS-ABSENT');
+    if (violations.length > 0) {
+      console.error(`\nGATE FAIL — ${violations.length} group(s) not in the frozen allowlist:`);
+      for (const v of violations) console.error(`  ${v}`);
+      console.error('\nEither the converter dropped something it should emit (fix the converter),');
+      console.error('or the drop is by design (add the key to scripts/dsh6-gate-allowlist.json');
+      console.error('with a reason — that addition is the review the gate exists to force).');
+      process.exit(1);
+    }
+    console.log('  GATE PASS — every group is enumerated in dsh6-gate-allowlist.json.');
+  }
   if (TOP) {
     console.log(`\n  top ${TOP} BY-TYPE collapse groups (effectType|subType|sign  ×count  e.g. powers):`);
     for (const g of groupList.slice(0, TOP)) {

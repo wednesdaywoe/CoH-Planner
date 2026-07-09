@@ -84,5 +84,19 @@ for (const ds of datasets) {
     execSync(cmd, { stdio: 'inherit' });
   }
 }
+
+// DSH6 completeness gate (Phase 0b) — runs ONCE after the dataset loop (the
+// detector sweeps the HC generated tree only). Fails the regen if any collapse
+// or whole-class-absent group is missing from the frozen allowlist
+// (scripts/dsh6-gate-allowlist.json) — the PotD-class silent drop now fails
+// here instead of hiding in a non-gating bucket. Side effect: the detector
+// rewrites dsh6-collapse-worklist.json, so the CI regen-diff also catches a
+// stale committed worklist. Skipped for a single non-HC --dataset run (the
+// HC generated tree it checks wasn't touched).
+if (datasets.includes('homecoming')) {
+  const cmd = 'node scripts/dsh6-collapse-detector.cjs --gate';
+  console.log(`\n>>> ${cmd}`);
+  execSync(cmd, { stdio: 'inherit' });
+}
 const secs = Number(process.hrtime.bigint() - started) / 1e9;
 console.log(`\n=== regen complete in ${secs.toFixed(0)}s ===`);

@@ -12,7 +12,7 @@
     "sourceMissing": 5,
     "requireFail": 0,
     "atomsChecked": 5985,
-    "scalarChecked": 1126
+    "scalarChecked": 1231
   },
   "summary": {
     "highConfidenceCollapses": 1,
@@ -20,7 +20,7 @@
     "classAbsent": 22,
     "scalarCollapses": 0,
     "scalarDistinctGroups": 0,
-    "scalarClassAbsent": 12
+    "scalarClassAbsent": 87
   },
   "collapseGroups": [
     {
@@ -178,5 +178,69 @@
     }
   ],
   "scalarCollapseGroups": [],
+  "scalarClassAbsentGroups": [
+    {
+      "et": "Range",
+      "sign": "-",
+      "count": 75,
+      "powers": [
+        "Black Dwarf Antagonize",
+        "Taunt",
+        "Taunt",
+        "Taunt",
+        "Taunt",
+        "Taunt",
+        "Taunt",
+        "Taunt"
+      ]
+    },
+    {
+      "et": "MaxHP",
+      "sign": "-",
+      "count": 4,
+      "powers": [
+        "Brine",
+        "Brine",
+        "Brine",
+        "Brine"
+      ]
+    },
+    {
+      "et": "ToHit",
+      "sign": "-",
+      "count": 3,
+      "powers": [
+        "tanker_melee/dual_blades/aoe_bridge.json",
+        "scrapper_melee/dual_blades/aoe_bridge.json",
+        "brute_melee/dual_blades/aoe_bridge.json"
+      ]
+    },
+    {
+      "et": "ToHit",
+      "sign": "+",
+      "count": 2,
+      "powers": [
+        "dominator_control/wind_control/clear_skies.json",
+        "controller_control/wind_control/clear_skies.json"
+      ]
+    },
+    {
+      "et": "Recovery",
+      "sign": "+",
+      "count": 2,
+      "powers": [
+        "dominator_control/wind_control/clear_skies.json",
+        "controller_control/wind_control/clear_skies.json"
+      ]
+    },
+    {
+      "et": "Regeneration",
+      "sign": "+",
+      "count": 1,
+      "powers": [
+        "Genetic Corruption"
+      ]
+    }
+  ],
   "scalarCollapses": []
 }
