@@ -14,7 +14,6 @@
 
 import { useEffect } from 'react';
 import { useUIStore } from '@/stores';
-import { PlannerLayoutMenu } from './PlannerLayoutMenu';
 
 // ============================================
 // Centralized hint text
@@ -135,13 +134,12 @@ export function PlannerHintBar() {
   }
 
   return (
-    <div className="hidden md:flex border-b border-slate-700 bg-slate-800/60 px-3 py-1 text-[11px] text-slate-300 min-h-[1.75rem] items-center flex-shrink-0 gap-2">
+    <div className="hidden md:flex border-b border-slate-700 bg-slate-800/60 px-3 py-1 text-[11px] text-slate-300 min-h-[1.75rem] items-center flex-shrink-0">
       {hint ? (
-        <span className="truncate min-w-0">{hint}</span>
+        <span className="truncate">{hint}</span>
       ) : (
-        <span className="text-slate-400 italic truncate min-w-0">{HINTS.idle}</span>
+        <span className="text-slate-400 italic">{HINTS.idle}</span>
       )}
-      <PlannerLayoutMenu />
     </div>
   );
 }
