@@ -135,6 +135,71 @@ revisit.
   layout (chronological) unchanged — it's a single wide column, rarely squeezed.
   verify: file:src/components/powers/PowerRow.tsx, fn:renderNameRow
 
+## Planned
+
+- [ ] **LAY10** — unify the two hand-rolled floating windows
+  ([PopOutInfoPanel.tsx](../src/components/info/PopOutInfoPanel.tsx) +
+  [SetBonusPopup.tsx](../src/components/info/SetBonusPopup.tsx)) into one reusable
+  `FloatingWindow` primitive. Both duplicate the *same* drag/resize/portal code
+  today — `PopOutInfoPanel` lines 22–83 ≈ `SetBonusPopup` lines 154–206 (identical
+  `DEFAULT_WIDTH`/`MIN_WIDTH` constants, `onDragStart`/`onResizeStart`, the global
+  `mousemove`/`mouseup` clamp math, the `createPortal(...document.body)` shell, and
+  the corner-handle SVG). Extract a `<FloatingWindow title header={…} onClose|onDock
+  defaultWidth defaultHeight minWidth minHeight persistKey?>` component that owns
+  position/size + the drag/resize listeners; each caller becomes ~10 lines of body +
+  a header action. New capability the extraction earns cheaply: **persist position &
+  size** to `uiStore` (positions are non-persisted today) — hence the optional
+  `persistKey`. Keep `SetBonusPopup`'s touch branch (Modal sheet) as-is: only the
+  desktop floating branch moves into the primitive. This is the "one reusable
+  drag/dock primitive" the Deferred note called for; it is a self-contained refactor
+  with no behavior change beyond optional persistence.
+  verify: file:src/components/ui/FloatingWindow.tsx
+
+- [ ] **LAY11** — 2D dock grid (vertical stacking). Today the desktop grid is a
+  **single row** of `minmax(240px, Nfr)` columns with horizontal resize (LAY7).
+  LAY11 lets a column hold 2+ sections stacked vertically, making the workspace a
+  true 2D grid. **Shape (decision 2026-07-09, user-chosen): "stacked cells in
+  columns", NOT a free-form react-grid-layout.** Rationale — every planner section is
+  a tall full-height scroll column with a hard 240px horizontal floor and
+  height-hungry content, *because a power tray is a tall column by convention*
+  (in-game, Mids, and Sidekick all present powers this way). The one panel that is
+  genuinely wide-short — the StatsDashboard — is for exactly that reason **not** a
+  dock-grid member (it's carved out as its own Deferred candidate). So the only
+  capability a free-form grid adds over column-stacking — full-width spanning/offset
+  tiles — serves a shape none of the grid's actual panels want. Stacked cells capture ~90% of realistic layouts, add
+  **zero dependency**, reuse the shipped LAY7 resize divider rotated to the Y axis
+  (same gesture/feel), degrade to the existing single-column mobile fallback for free
+  (a column of N cells = N sections in a row), and inherit the existing Reset story —
+  the same "no new dep unless it earns its weight" call LAY4 made against dnd-kit.
+  Rejected: free-form react-grid-layout (dependency weight + bespoke mobile fallback +
+  collision/compaction + a stronger reset story, all for spanning tiles these panels
+  don't want). Data-model seam: `PlannerLayoutState` is a flat
+  `PlannerSectionConfig[]` per view; stacking needs a grouping layer — either nest
+  (`columns: { rows: SectionConfig[]; weight? }[]`) or add a `column` index +
+  `rowWeight` to each config. Prefer the shape that keeps `merge()`'s
+  append-new/drop-unknown reconcile trivial. Open sub-decisions before build: (a)
+  exact data shape; (b) whether reorder DnD gains a vertical drop target or stays
+  horizontal-only in v1; (c) per-cell min-height floor (audit found the vertical axis
+  render-safe — bodies scroll — so this is a UX choice, not a clip constraint).
+  verify: file:src/types/ui.ts, file:src/pages/PlannerPage.tsx
+
+- [ ] **LAY12** — adjustability affordance. Problem (user-raised 2026-07-09): the
+  rearrange/resize handles are undiscoverable — the LAY7 column-resize divider is
+  `bg-transparent` until hover ([PlannerPage.tsx](../src/pages/PlannerPage.tsx),
+  the `group-hover/resize` rule ~line 431) and the header reorder grip is a faint
+  low-contrast grey, so a user with no visual cue won't know the layout moves. Give
+  the container borders a *persistent* (not hover-only) signal that they're
+  adjustable. Covers **both** axes — the existing horizontal dividers and LAY11's
+  future vertical ones — so factor the divider into a shared styled element rather
+  than restyling each call site. Design sub-decisions (settle at build): resting
+  treatment (e.g. a faint always-on seam that brightens on hover, vs. a small grip
+  dot/handle centered on the divider), whether to lift the header grip's resting
+  contrast to match, and whether the cue should be dampened once a user has
+  interacted (a "you've found it" fade) or stay always-on. Keep it subtle enough not
+  to clutter a 6-column row. Related: LAY4 (grip), LAY7 (horizontal divider), LAY11
+  (vertical dividers inherit whatever this establishes).
+  verify: file:src/pages/PlannerPage.tsx
+
 ## Min-size audit (2026-07-09)
 
 Empirical de-risking for any resize feature (and the "snap to shapes" concern):
@@ -172,9 +237,10 @@ follow-ups, not prerequisites.
 ## Deferred
 
 - Tier 2 remainder: the *horizontal* axis shipped in LAY7 (column resize on the
-  `weight` field). Still deferred: vertical resize / 2D free-form dock grid
-  (react-grid-layout-style). The audit found vertical is render-safe (bodies scroll)
-  but a 2D grid needs a mobile/reset story and is a larger lift.
+  `weight` field). The vertical-stacking / 2D dock grid is now planned as **LAY11**
+  (stacked-cells shape recommended over free-form; see Planned). The audit found the
+  vertical axis is render-safe (bodies scroll); the remaining cost is the data-model
+  seam + mobile/reset story captured there.
 - Floor-lowering: **240px is the final floor (decision 2026-07-09).** Available
   split responsive shipped (LAY9, →240) and the toggled-slot wrap fixed (LAY9b), so
   240 is clean for every section. The push to ~200 was scoped and **declined** — it
@@ -186,11 +252,10 @@ follow-ups, not prerequisites.
   have the escape hatch: hide a column** (5×240 = 1200px fits a 1366px laptop). Only
   revisit if a real user complaint lands. (A CSS-`zoom`-based density shrink was
   identified as the cheap way to hit ~205 if ever wanted.)
-- Unify the two hand-rolled floating-window implementations
-  ([PopOutInfoPanel.tsx](../src/components/info/PopOutInfoPanel.tsx) +
-  [SetBonusPopup.tsx](../src/components/info/SetBonusPopup.tsx), which duplicate the
-  same drag/resize/portal code with non-persisted positions) into one reusable
-  drag/dock primitive. Not required for Tier 1; do not let it creep into this pass.
+- Unifying the two hand-rolled floating windows into one reusable drag/dock
+  primitive is now planned as **LAY10** (see Planned). Was correctly kept out of the
+  Tier-1 pass; it is independent of the dock grid (floating panels ≠ the docked
+  workspace), so LAY10 and LAY11 carry no dependency between them.
 - Extend rearrangeability to app chrome beyond the planner grid (StatsDashboard as
   a dockable side column, etc.). StatsDashboard assumes a wide-short horizontal
   band — needs layout testing before it's a candidate.
