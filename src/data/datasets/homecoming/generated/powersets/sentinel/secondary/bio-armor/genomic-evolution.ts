@@ -71,6 +71,23 @@ export const GenomicEvolution: Power = {
   },
   "conditionalEffects": [
     {
+      "id": "offensiveadaptation",
+      "label": "Offensive Adaptation",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "rangeBuff": {
+          "scale": 0.15,
+          "table": "Melee_Ones"
+        },
+        "durations": {
+          "rangeBuff": 5.25
+        },
+        "buffDuration": 5.25
+      },
+      "group": "adaptation"
+    },
+    {
       "id": "restedadaptation",
       "label": "Rested Adaptation",
       "scope": "global",

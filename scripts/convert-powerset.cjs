@@ -4264,8 +4264,21 @@ function extractEffects(templates, powerName) {
           } else if (isSelfTargeting) {
             effects.rangeBuff = makeEffect();
             recordDuration('rangeBuff');
+          } else if (aspect === 'strength') {
+            // ALLY/TEAM +Range BUFF — a positive Strength-aspect Range mod on
+            // a non-Self target (AnyAffected). Power of the Depths (Marine
+            // Affinity) buffs the caster and nearby allies' Range by +37.5%.
+            // Route to rangeBuff exactly like the self buff above; the calc's
+            // targetType==='self' gate (character-totals.ts) self-applies it
+            // for self/team powers while keeping ally-only powers off the
+            // caster's own total — mirroring the ally movement-buff branch.
+            // A positive Range on a FOE is nonsensical, so a non-Self positive
+            // Range is always an ally buff. Previously dropped as "unusual",
+            // which is what broke PotD's advertised +Range after 753ce0165f.
+            effects.rangeBuff = makeEffect();
+            recordDuration('rangeBuff');
           }
-          // else: positive Range on a foe target — unusual, skip.
+          // else: positive non-Strength Range on a non-Self target — skip.
         } else if (modType === 'enduranceDiscount') {
           effects.enduranceDiscount = makeEffect();
           recordDuration('enduranceDiscount');
