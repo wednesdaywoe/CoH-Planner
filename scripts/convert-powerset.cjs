@@ -3630,17 +3630,32 @@ function projectAtomsToEffects(atoms, powerName) {
     if (allMatch) absorbStackCount = absorbApply.length;
   }
 
-  // --- resistable/unresistable twin pre-scan (mirrors extractEffects) ---
-  // Same signature, computed from the atom group; `!resistible` ⟺ the
-  // template carried IgnoreResistance. Drops every atom of the unresistable
-  // duplicate and tags the survivors `_twin` (→ `unresistable: true`).
+  // --- resistable/unresistable twin detection (DSH6 Phase 3 — no list mutation) ---
+  // HC splits many foe debuffs into two identical templates on the same
+  // attrib/aspect/table/scale/duration, differing ONLY by the IgnoreResistance
+  // flag (`!resistible` ⟺ the template carried it): one the target's debuff
+  // resistance can reduce, one that bypasses it. Both apply in game, but the
+  // single-valued PowerEffects slot below represents them as ONE value tagged
+  // `unresistable: true`.
+  //
+  // Unlike the earlier bolt-on (drop the unresistable atom + stamp a `_twin`
+  // flag on the survivor), the atom list stays IMMUTABLE — the resistible:false
+  // sibling is kept — and `unresistable` is derived at projection time from the
+  // atom's own `resistible` property: `twinRole` marks each twin template's
+  // atoms as the `res` member (route it, stamp `unresistable`) or its `unres`
+  // member (skip at routing — its resistable sibling already represents it).
+  // Skip-at-routing ≡ the old drop, since a twin's only difference is the flag,
+  // so it would route to the same slot. DEBUFFS ONLY: a self-buff twin (Dull
+  // Pain +MaxHP, heals, absorb) genuinely stacks into the full value via the
+  // accumulate-if-same-table fold and must NOT be coalesced (see the legacy
+  // note at extractEffectsLegacy). PvP twins never reach here.
   const isTwinDebuff = (g) =>
     (g[0].scale || 0) < 0 || (g[0]._table || '').toLowerCase().includes('debuff');
   const twinSig = (g) =>
     `${g.map((a) => (a.sourceAttrib || '').toLowerCase()).sort().join(',')}|` +
     `${(g[0]._aspect || '').toLowerCase()}|${g[0]._table}|` +
     `${(g[0].scale || 0).toFixed(4)}|${g[0]._duration || ''}`;
-  let workingAtoms = atoms;
+  const twinRole = new Map(); // _tmplIdx → 'res' | 'unres'
   {
     const seen = {};
     for (const g of groups.values()) {
@@ -3654,16 +3669,10 @@ function projectAtomsToEffects(atoms, powerName) {
       Object.keys(seen).filter((k) => seen[k].res && seen[k].unres)
     );
     if (twinSigs.size > 0) {
-      const kept = [];
-      for (const g of groups.values()) {
-        const sig = isTwinDebuff(g) ? twinSig(g) : null;
-        if (sig && twinSigs.has(sig)) {
-          if (!g[0].resistible) continue; // drop the unresistable duplicate
-          for (const a of g) a._twin = true;
-        }
-        kept.push(...g);
+      for (const [idx, g] of groups) {
+        if (!isTwinDebuff(g) || !twinSigs.has(twinSig(g))) continue;
+        twinRole.set(idx, g[0].resistible ? 'res' : 'unres');
       }
-      workingAtoms = kept;
     }
   }
 
@@ -3692,10 +3701,17 @@ function projectAtomsToEffects(atoms, powerName) {
     resourceSlots.get(key).push(entry);
   };
 
-  for (const a of workingAtoms) {
+  for (const a of atoms) {
     // Skip deactivation-only effects (bursts on toggle off).
     if (a._appType === 'OnDeactivate') continue;
     if (markerIdx.has(a._tmplIdx)) continue;
+
+    // Twin coalescing (Phase 3): skip the IgnoreResistance sibling (its
+    // resistable twin represents both); the resistable member routes with
+    // `unresistable: true`.
+    const twinR = twinRole.get(a._tmplIdx);
+    if (twinR === 'unres') continue;
+    const isTwin = twinR === 'res';
 
     const isCombatSuppressed = a._suppressedByEvents || a._combatGated;
     const aspect = a._aspect?.toLowerCase();
@@ -3708,7 +3724,7 @@ function projectAtomsToEffects(atoms, powerName) {
 
     const makeEffect = (s = scale, t = table) => {
       const e = { scale: Math.abs(s), table: t };
-      if (a._twin) e.unresistable = true;
+      if (isTwin) e.unresistable = true;
       return e;
     };
     const makeMezEffect = () => ({ mag: magnitude, scale: Math.abs(scale), table });
@@ -3983,7 +3999,7 @@ function projectAtomsToEffects(atoms, powerName) {
           scale,
           table,
           isDebuff,
-          twin: !!a._twin,
+          twin: isTwin,
           duration: duration && duration > 0 ? duration : null,
         });
 
