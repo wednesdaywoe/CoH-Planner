@@ -513,6 +513,8 @@ interface UIActions {
    *  (LAY11 vertical resize). Same merge semantics as `setPlannerSectionWeights`
    *  but on the within-column axis. */
   setPlannerSectionRowWeights: (view: keyof PlannerLayoutState, rowWeights: Partial<Record<PlannerSectionId, number>>) => void;
+  /** Toggle a single planner section between collapsed (header only) and expanded. */
+  togglePlannerSectionCollapsed: (view: keyof PlannerLayoutState, id: PlannerSectionId) => void;
   /** Restore a view mode's columns to the default order + visibility */
   resetPlannerLayout: (view: keyof PlannerLayoutState) => void;
 
@@ -792,19 +794,24 @@ const defaultStatsConfig: StatDisplayConfig[] = [
 // "Powers by Level" grid keeps its 2fr width via `weight`.
 const defaultPlannerLayout: PlannerLayoutState = {
   category: [
+    // 5-column default tuned for space use: atomic sections stack per column,
+    // content-first sizing (goal 1) letting each read as its own tile and some
+    // start collapsed to keep tall columns compact.
+    // Col 0: Available
     { id: 'available', visible: true, column: 0 },
+    // Col 1: Primary + Fitness
     { id: 'primary', visible: true, column: 1 },
+    { id: 'inherent-fitness', visible: true, column: 1 },
+    // Col 2: Secondary + Basic (collapsed) + Archetype + Prestige Sprints (collapsed)
     { id: 'secondary', visible: true, column: 2 },
-    // Pool + Epic stack in column 3; the four inherent groups stack in column 4.
-    // Content-first sizing (goal 1) makes each stacked cell read as its own tile,
-    // so the atomic split keeps the default a familiar 6-column row.
-    { id: 'pool', visible: true, column: 3 },
+    { id: 'inherent-basic', visible: true, column: 2, collapsed: true },
+    { id: 'inherent-archetype', visible: true, column: 2 },
+    { id: 'inherent-prestige', visible: true, column: 2, collapsed: true },
+    // Col 3: Epic + Pool
     { id: 'epic', visible: true, column: 3 },
-    { id: 'inherent-fitness', visible: true, column: 4 },
-    { id: 'inherent-basic', visible: true, column: 4 },
-    { id: 'inherent-prestige', visible: true, column: 4 },
-    { id: 'inherent-archetype', visible: true, column: 4 },
-    { id: 'info', visible: true, column: 5 },
+    { id: 'pool', visible: true, column: 3 },
+    // Col 4: Info
+    { id: 'info', visible: true, column: 4 },
   ],
   chronological: [
     { id: 'available', visible: true, column: 0 },
@@ -1365,6 +1372,16 @@ export const useUIStore = create<UIStore>()(
             ...state.plannerLayout,
             [view]: state.plannerLayout[view].map((s) =>
               rowWeights[s.id] !== undefined ? { ...s, rowWeight: rowWeights[s.id] } : s
+            ),
+          },
+        })),
+
+      togglePlannerSectionCollapsed: (view, id) =>
+        set((state) => ({
+          plannerLayout: {
+            ...state.plannerLayout,
+            [view]: state.plannerLayout[view].map((s) =>
+              s.id === id ? { ...s, collapsed: !s.collapsed } : s
             ),
           },
         })),

@@ -131,6 +131,12 @@ export interface PlannerSectionConfig {
    * resize divider drives it, mirroring `weight` on the horizontal axis.
    */
   rowWeight?: number;
+  /**
+   * Whether this section is collapsed to just its header bar (body hidden). The
+   * cell-header chevron toggles it; persisted so a user's collapse choices (and
+   * the default layout's initial collapsed sections) survive reload.
+   */
+  collapsed?: boolean;
 }
 
 /**

@@ -162,6 +162,7 @@ export function PlannerPage() {
   const reorderPlannerSections = useUIStore((s) => s.reorderPlannerSections);
   const setPlannerSectionWeights = useUIStore((s) => s.setPlannerSectionWeights);
   const setPlannerSectionRowWeights = useUIStore((s) => s.setPlannerSectionRowWeights);
+  const togglePlannerSectionCollapsed = useUIStore((s) => s.togglePlannerSectionCollapsed);
 
   // Desktop drag-reorder state (native HTML5 DnD; a 6-item reorder doesn't
   // warrant a DnD library dependency). LAY11: a drop now carries a zone
@@ -169,17 +170,6 @@ export function PlannerPage() {
   const [dragId, setDragId] = useState<PlannerSectionId | null>(null);
   const [overId, setOverId] = useState<PlannerSectionId | null>(null);
   const [overZone, setOverZone] = useState<DropZone | null>(null);
-  // Per-cell collapse (ephemeral, like the old inherent-group collapse it
-  // replaces): a collapsed cell hides its body and shrinks to its header bar.
-  // Lives at the cell level because the atomic inherent-group cells are
-  // `headerless` — the cell header is their only collapse affordance.
-  const [collapsedCells, setCollapsedCells] = useState<Set<PlannerSectionId>>(() => new Set());
-  const toggleCollapsed = (id: PlannerSectionId) =>
-    setCollapsedCells((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
-    });
   // Grid element ref — needed to measure usable px width when converting a
   // resize-drag delta into fr weights.
   const gridRef = useRef<HTMLDivElement>(null);
@@ -575,7 +565,7 @@ export function PlannerPage() {
                 const section = getSection(cfg.id);
                 const isLastRow = rowIdx === col.rows.length - 1;
                 const isDropTarget = overId === cfg.id && dragId !== null && dragId !== cfg.id && overZone !== null;
-                const isCollapsed = collapsedCells.has(cfg.id);
+                const isCollapsed = cfg.collapsed ?? false;
                 return (
                   <div
                     key={cfg.id}
@@ -602,7 +592,7 @@ export function PlannerPage() {
                           onDragEnd={() => { setDragId(null); setOverId(null); setOverZone(null); }}
                         />
                         <button
-                          onClick={() => toggleCollapsed(cfg.id)}
+                          onClick={() => togglePlannerSectionCollapsed(view, cfg.id)}
                           className="text-slate-500 hover:text-slate-300 transition-colors flex-shrink-0"
                           title={isCollapsed ? 'Expand section' : 'Collapse section'}
                           aria-label={isCollapsed ? 'Expand section' : 'Collapse section'}
