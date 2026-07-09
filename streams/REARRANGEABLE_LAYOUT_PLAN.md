@@ -80,14 +80,13 @@ revisit.
   verify: file:src/pages/PlannerPage.tsx, fn:moveSection
 - [x] **LAY4** — drag-to-reorder the desktop columns via native HTML5 DnD on a
   header grip (see Deviation above). verify: file:src/pages/PlannerPage.tsx
-- [x] **LAY5** — layout control UI = `LayoutModal` (view-aware ordered list with
-  up/down reorder + show/hide checkboxes + Reset). Trigger placement iterated for
-  discoverability (all 2026-07-09, user-driven): hint-bar "Columns" popover →
-  dashboard toolbar → **top header row next to Menu/Options** (final). Made a modal
-  rather than a popover because the toolbar row's `overflow-x-auto` would clip an
-  inline dropdown and a modal matches the surrounding triggers. Column-header drag
-  remains as a power-user affordance.
-  verify: file:src/components/modals/LayoutModal.tsx, fn:openLayoutModal
+- [x] **LAY5** — layout control UI = `PlannerLayoutMenu` (view-aware ordered list
+  with up/down reorder + show/hide checkboxes + Reset). Iterated for discoverability
+  and form (all 2026-07-09, user-driven): hint-bar "Columns" popover → dashboard
+  toolbar modal → **top header dropdown next to Menu/Options** (final). Final form is
+  a popover in the same mould as the ActionMenu/SettingsPopover header triggers
+  (own open state + click-outside/Escape), not a modal. Column-header drag remains
+  a power-user affordance. verify: file:src/components/layout/PlannerLayoutMenu.tsx
 - [x] **LAY6** — InfoPanel undock reconciled with visibility: an undocked info
   column leaves the grid regardless of its stored `visible` flag; the Columns menu
   shows it as "floating" and disables its checkbox while undocked.
