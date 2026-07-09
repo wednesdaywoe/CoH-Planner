@@ -76,6 +76,47 @@ export interface StatDisplayConfig {
 }
 
 // ============================================
+// PLANNER LAYOUT STATE
+// ============================================
+
+/**
+ * Identifiers for the rearrangeable planner columns. Category view uses
+ * available/primary/secondary/pool/info; chronological view uses
+ * available/bylevel/info. `info` is shared by both.
+ */
+export type PlannerSectionId =
+  | 'available'
+  | 'primary'
+  | 'secondary'
+  | 'pool'
+  | 'info'
+  | 'bylevel';
+
+export interface PlannerSectionConfig {
+  /** Which section this entry positions */
+  id: PlannerSectionId;
+  /** Whether the section is shown in the desktop (lg+) grid */
+  visible: boolean;
+  /**
+   * Grid track weight in fr units (defaults to 1 when omitted). Lets a section
+   * claim more horizontal space than its siblings — e.g. the chronological
+   * "Powers by Level" grid is 2fr.
+   */
+  weight?: number;
+}
+
+/**
+ * Per-view-mode desktop column arrangement. Order within each array IS the
+ * left-to-right column order. Persisted so a user's layout survives reload.
+ * Tier-1 scope: reorder + show/hide (no free-form resize yet — `weight` is the
+ * seam a future resize feature would drive).
+ */
+export interface PlannerLayoutState {
+  category: PlannerSectionConfig[];
+  chronological: PlannerSectionConfig[];
+}
+
+// ============================================
 // TOOLTIP STATE
 // ============================================
 
