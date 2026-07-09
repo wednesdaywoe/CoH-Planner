@@ -3508,6 +3508,67 @@ function _sortKeysDeep(v) {
 }
 
 /**
+ * DSH6 Phase 2R — pure fold: one resource slot's queued atom list → slot value.
+ *
+ * `durationVariants` retirement: the RESOURCES accumulate slots (healing,
+ * regenDebuff, absorb, …) used to be built by an `addOrAccumulate` closure
+ * mutating the live bag per atom — order-sensitive state threaded through
+ * `effects[key]` + `effects.durations[key]`, with `durationVariants` bolted on
+ * by patching the existing entry. Now the per-atom loop only CLASSIFIES atoms
+ * into per-slot queues and this fold computes the slot value at the end, so a
+ * slot (variants included) is a function of its atom list.
+ *
+ * Semantics are the legacy semantics exactly (byte-identical regen is the
+ * gate):
+ *   - same table            → scales accumulate (Math.abs — sign lives in the
+ *     slot name);
+ *   - table change          → last-table-wins reset (the known single-slot
+ *     collapse; the scalar-table gate holds it at zero live occurrences);
+ *   - duration-distinct DEBUFF atoms → the longest-duration atom is the
+ *     primary, the rest become `durationVariants` in encounter order (the
+ *     Trick Arrow duration-collapse fix, now a natural projection);
+ *   - slot duration = last positive duration seen; `durationOnly` entries
+ *     (Expression-typed max-Absorb templates) participate here without
+ *     creating the slot.
+ *
+ * Entry shape: { scale, table, isDebuff, twin, duration|null } or
+ * { durationOnly: true, duration }.
+ */
+function foldResourceSlot(entries) {
+  let cur = null;
+  let curDur = null;
+  for (const e of entries) {
+    if (e.durationOnly) {
+      if (e.duration) curDur = e.duration;
+      continue;
+    }
+    if (cur && cur.table === e.table) {
+      if (
+        e.isDebuff &&
+        curDur != null && e.duration != null &&
+        Math.abs(curDur - e.duration) > 0.001
+      ) {
+        cur.durationVariants = cur.durationVariants || [];
+        if (e.duration > curDur) {
+          cur.durationVariants.push({ scale: cur.scale, duration: curDur });
+          cur.scale = Math.abs(e.scale);
+          curDur = e.duration;
+        } else {
+          cur.durationVariants.push({ scale: Math.abs(e.scale), duration: e.duration });
+        }
+        continue;
+      }
+      cur.scale += Math.abs(e.scale);
+    } else {
+      cur = { scale: Math.abs(e.scale), table: e.table };
+      if (e.twin) cur.unresistable = true;
+    }
+    if (e.duration) curDur = e.duration;
+  }
+  return { effect: cur, duration: curDur };
+}
+
+/**
  * DSH6 Phase 0b — PROJECTION: AtomicEffect[] → PowerEffects bag.
  *
  * A faithful port of extractEffects' routing tree operating on the atom list
@@ -3620,6 +3681,16 @@ function projectAtomsToEffects(atoms, powerName) {
       markerIdx.add(idx);
     }
   }
+
+  // DSH6 Phase 2R — RESOURCES accumulate slots are computed by
+  // `foldResourceSlot` after the loop; the loop only queues classified atoms
+  // here (per slot key, in encounter order — the fold's semantics depend on
+  // that order exactly as the old in-loop mutation did).
+  const resourceSlots = new Map();
+  const queueResource = (key, entry) => {
+    if (!resourceSlots.has(key)) resourceSlots.set(key, []);
+    resourceSlots.get(key).push(entry);
+  };
 
   for (const a of workingAtoms) {
     // Skip deactivation-only effects (bursts on toggle off).
@@ -3906,33 +3977,15 @@ function projectAtomsToEffects(atoms, powerName) {
         continue;
       }
 
-      const addOrAccumulate = (key) => {
-        const existing = effects[key];
-        if (existing && existing.table === table) {
-          const existingDur = effects.durations ? effects.durations[key] : undefined;
-          const incomingDur = duration && duration > 0 ? duration : null;
-          if (
-            isDebuff &&
-            existingDur != null && incomingDur != null &&
-            Math.abs(existingDur - incomingDur) > 0.001
-          ) {
-            existing.durationVariants = existing.durationVariants || [];
-            if (incomingDur > existingDur) {
-              existing.durationVariants.push({ scale: existing.scale, duration: existingDur });
-              existing.scale = Math.abs(scale);
-              if (!effects.durations) effects.durations = {};
-              effects.durations[key] = incomingDur;
-            } else {
-              existing.durationVariants.push({ scale: Math.abs(scale), duration: incomingDur });
-            }
-            return;
-          }
-          existing.scale += Math.abs(scale);
-        } else {
-          effects[key] = makeEffect();
-        }
-        recordDuration(key);
-      };
+      // Phase 2R: classify only — the slot value is folded after the loop.
+      const addOrAccumulate = (key) =>
+        queueResource(key, {
+          scale,
+          table,
+          isDebuff,
+          twin: !!a._twin,
+          duration: duration && duration > 0 ? duration : null,
+        });
 
       if (resType === 'hitPoints') {
         if (aspect === 'maximum') {
@@ -3985,7 +4038,11 @@ function projectAtomsToEffects(atoms, powerName) {
         }
       } else if (resType === 'absorb') {
         if (aspect === 'maximum' && a._type === 'Expression') {
-          recordDuration('absorb');
+          // Duration-only: joins the absorb queue in encounter order so the
+          // fold sees it exactly where the old inline recordDuration ran.
+          if (duration && duration > 0) {
+            queueResource('absorb', { durationOnly: true, duration });
+          }
           continue;
         }
         if (aspect === 'strength') {
@@ -4134,6 +4191,17 @@ function projectAtomsToEffects(atoms, powerName) {
     }
 
     // catch-all: unmapped attribute — no slot.
+  }
+
+  // --- DSH6 Phase 2R: fold queued resource atoms into their slots ---
+  // (Before the absorb epilogue, which reads effects.absorb/durations.absorb.)
+  for (const [key, entries] of resourceSlots) {
+    const folded = foldResourceSlot(entries);
+    if (folded.effect) effects[key] = folded.effect;
+    if (folded.duration != null) {
+      if (!effects.durations) effects.durations = {};
+      effects.durations[key] = folded.duration;
+    }
   }
 
   // --- epilogue (mirrors extractEffects) ---
