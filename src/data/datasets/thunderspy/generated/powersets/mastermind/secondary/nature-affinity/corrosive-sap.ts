@@ -37,10 +37,44 @@ export const CorrosiveSap: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": -2.5,
-    "table": "Ranged_Res_Dmg",
-    "duration": 30
+  "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "resistanceDebuff": 30
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 2.5,
+        "table": "Ranged_Res_Dmg"
+      }
+    }
   }
 };

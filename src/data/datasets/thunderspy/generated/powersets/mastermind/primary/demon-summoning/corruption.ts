@@ -40,12 +40,6 @@ export const Corruption: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Smashing",
-      "scale": -1.25,
-      "table": "Ranged_Res_Dmg",
-      "duration": 5
-    },
-    {
       "type": "Fire",
       "scale": 1.32,
       "table": "Ranged_Damage"
@@ -57,5 +51,45 @@ export const Corruption: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
-  ]
+  ],
+  "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "resistanceDebuff": 5
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      }
+    }
+  }
 };

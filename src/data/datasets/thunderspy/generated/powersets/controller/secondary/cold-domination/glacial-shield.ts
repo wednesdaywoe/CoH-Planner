@@ -35,18 +35,16 @@ export const GlacialShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Cold",
-      "scale": 4.5,
-      "table": "Ranged_Res_Dmg",
-      "duration": 240
+  "effects": {
+    "buffDuration": 240,
+    "durations": {
+      "resistance": 240
     },
-    {
-      "type": "Cold",
-      "scale": 3.25,
-      "table": "Ranged_Res_Dmg",
-      "duration": 240
+    "resistance": {
+      "cold": {
+        "scale": 3.25,
+        "table": "Ranged_Res_Dmg"
+      }
     }
-  ]
+  }
 };

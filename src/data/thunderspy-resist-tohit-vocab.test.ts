@@ -3,6 +3,8 @@ import { loadDataset } from '@/data/dataset';
 import { MindOverBody } from './datasets/thunderspy/generated/powersets/brute/secondary/willpower/mind-over-body';
 import { HighPainTolerance } from './datasets/thunderspy/generated/powersets/brute/secondary/willpower/high-pain-tolerance';
 import { Aim } from './datasets/thunderspy/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
+import { GlacialShield } from './datasets/thunderspy/generated/powersets/defender/primary/cold-domination/glacial-shield';
+import { EnervatingField } from './datasets/thunderspy/generated/powersets/defender/primary/radiation-emission/enervating-field';
 
 /**
  * Thunderspy resistance-armor / ToHit-buff vocabulary — the parser-surfacing fix
@@ -56,5 +58,34 @@ describe('Thunderspy resistance / ToHit vocabulary surfacing (TSPY11)', () => {
     // A ToHit buff must NOT be mislabeled as a resistance debuff or a damage buff.
     expect(Aim.effects?.tohitDebuff).toBeUndefined();
     expect(Aim.effects?.damageBuff).toBeUndefined();
+  });
+});
+
+/**
+ * Case B — the real-damage-type-front `*_Res_Dmg`-table mislabel (2026-07-09).
+ *
+ * Some tspy resistance buffs/debuffs lead with the ALREADY-real damage-type token
+ * (`Cold_Dmg`, `Fire_Dmg`, …) — not the `Res_DMG` category token — while still
+ * riding a `*_Res_Dmg` resistance table with the aspect dropped. The parser used to
+ * synthesize aspect only for the `Res_DMG`-front surfaced case, so these rendered as
+ * DAMAGE (Glacial Shield "Cold damage 4.5", Enervating Field "damage -3"). The parser
+ * now also synthesizes aspect='Resistance' when EVERY attrib is a `*_Dmg` type on a
+ * `*_Res_Dmg` table (damage never uses a resistance table). See [[tspy-player-vocab-gap]].
+ */
+describe('Thunderspy Case B — damage-type-front resistance mislabel', () => {
+  it('Glacial Shield is Res(Cold), not Cold damage', () => {
+    expect(GlacialShield.effects?.resistance?.cold).toBeDefined();
+    expect(GlacialShield.effects?.resistance?.cold?.table).toMatch(/res_dmg/i);
+    // Must NOT leak back as damage.
+    expect((GlacialShield as { damage?: unknown }).damage).toBeUndefined();
+    expect(GlacialShield.effects?.damage).toBeUndefined();
+  });
+
+  it('Enervating Field is -Res(all), not damage', () => {
+    const rd = EnervatingField.effects?.resistanceDebuff ?? {};
+    for (const t of ['smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic', 'toxic']) {
+      expect(rd[t as keyof typeof rd], `missing resistanceDebuff.${t}`).toBeDefined();
+    }
+    expect(EnervatingField.effects?.damage).toBeUndefined();
   });
 });

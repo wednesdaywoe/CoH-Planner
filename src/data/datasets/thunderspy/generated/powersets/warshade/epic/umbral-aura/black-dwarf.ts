@@ -47,20 +47,45 @@ export const BlackDwarf: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 3,
-    "table": "Melee_Res_DMG",
-    "duration": 2
-  },
   "effects": {
     "buffDuration": 2,
     "durations": {
-      "recoveryBuff": 2
+      "recoveryBuff": 2,
+      "resistance": 2
     },
     "recoveryBuff": {
       "scale": 0.15,
       "table": "Melee_Ones"
+    },
+    "resistance": {
+      "cold": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      }
     }
   }
 };

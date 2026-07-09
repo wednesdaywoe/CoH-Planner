@@ -41,12 +41,6 @@ export const Lash: Power = {
   "maxSlots": 6,
   "damage": [
     {
-      "type": "Smashing",
-      "scale": -1.25,
-      "table": "Ranged_Res_Dmg",
-      "duration": 10
-    },
-    {
       "type": "Fire",
       "scale": 1.96,
       "table": "Ranged_Damage"
@@ -60,9 +54,47 @@ export const Lash: Power = {
     }
   ],
   "effects": {
+    "buffDuration": 10,
+    "durations": {
+      "resistanceDebuff": 10
+    },
     "knockback": {
       "scale": 0.64,
       "table": "Ranged_Knockback"
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 1.25,
+        "table": "Ranged_Res_Dmg"
+      }
     }
   }
 };

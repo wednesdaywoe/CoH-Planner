@@ -74,7 +74,7 @@
           ],
           "type": "",
           "application_type": "",
-          "aspect": "",
+          "aspect": "Resistance",
           "target": "",
           "table": "Ranged_Res_Dmg",
           "scale": -1.5,

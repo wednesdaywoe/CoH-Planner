@@ -39,21 +39,33 @@ export const MassDriver: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": -1.5,
-      "table": "Ranged_Res_Dmg",
-      "duration": 8
+  "damage": {
+    "type": "Special",
+    "scale": 0.26,
+    "table": "Ranged_Damage",
+    "duration": 2.1,
+    "tickRate": 1
+  },
+  "effects": {
+    "buffDuration": 8,
+    "durations": {
+      "resistanceDebuff": 8
     },
-    {
-      "type": "Special",
-      "scale": 0.26,
-      "table": "Ranged_Damage",
-      "duration": 2.1,
-      "tickRate": 1
+    "resistanceDebuff": {
+      "energy": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 1.5,
+        "table": "Ranged_Res_Dmg"
+      }
     }
-  ],
+  },
   "conditionalEffects": [
     {
       "id": "kinetic_assault_impulse",

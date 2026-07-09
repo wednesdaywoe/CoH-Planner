@@ -34,10 +34,44 @@ export const EnervatingField: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": -3,
-    "table": "Ranged_Res_Dmg",
-    "duration": 5
+  "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "resistanceDebuff": 5
+    },
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "energy": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "fire": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "lethal": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "negative": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "psionic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "smashing": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      },
+      "toxic": {
+        "scale": 3,
+        "table": "Ranged_Res_Dmg"
+      }
+    }
   }
 };

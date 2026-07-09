@@ -396,16 +396,24 @@ per-field evidence trail:
   +Def(All) shortHelp is inherited prose from the reused Widow Mind Link); dev
   verifying in-game.
 
-  **Case B — Res mislabel (WRITTEN + VERIFIED, BLOCKED on re-export, patch saved
-  `scratchpad/caseB-parser.patch`):** Glacial Shield +Res(Cold), Corrosive Sap /
-  Enervating Field -Res(all) render as *damage* — real `*_Dmg` fronts on a
-  `*_Res_Dmg` table with empty aspect (30 templates, 26 files). Fix generalizes
-  the resistance-aspect synthesis to any `*_Dmg` (excluding the bare `Res_DMG`
-  token) on a `*_Res_Dmg` table. Verified working (Glacial Shield → resistance.cold,
-  Corrosive Sap → resistanceDebuff). **Blocked:** needs a full tspy re-export,
-  which now hits TSPY12. Exact edit — in `_parse_effect_template_thunderspy`, after
-  the `_tspy_res_surfaced` aspect synthesis:
+  **Case B — Res mislabel: RESOLVED + SHIPPED 2026-07-09** (branch
+  `tspy-resist-tohit-vocab`). Glacial Shield +Res(Cold), Corrosive Sap /
+  Enervating Field -Res(all) rendered as *damage* — real `*_Dmg` fronts on a
+  `*_Res_Dmg` table with empty aspect. Fix generalizes the resistance-aspect
+  synthesis in `_parse_effect_template_thunderspy` to any `*_Dmg` (excluding the
+  bare `Res_DMG` token) on a `*_Res_Dmg` table:
   `elif (table and table.lower().endswith('_res_dmg') and attribs and all(a.lower().endswith('_dmg') and a.lower() != 'res_dmg' for a in attribs)): aspect = "Resistance"`
+  All three datasets re-exported (HC/Rebirth byte-identical, tspy 26 power files
+  flipped), regen + 906 tests + gates ×3 green. The generalized rule also correctly
+  fixed −Res *debuff components* riding a `_Res_Dmg` table on attacks (mass_driver
+  −1.5, lash −1.25, placate −1.0 — verified these are debuff components, not the
+  attacks' damage, which rides a `_Damage` table). Guards added to
+  `thunderspy-resist-tohit-vocab.test.ts` (Glacial Shield → resistance.cold,
+  Enervating Field → resistanceDebuff all-8). *(This was blocked on TSPY12, which
+  turned out to be a phantom — see below.)* Residual (pre-existing, non-blocking):
+  Glacial Shield's two same-type `Cold_Dmg` resistance groups (4.5 + 3.25) collapse
+  to one in the resistance bag — the [[converter-bag-vs-array-rootcause]] limitation,
+  not introduced here.
 
   **Case A — bare `Res_DMG` -Res debuffs still DROPPED** (296 templates, 224
   files): Sonic Attack / Venom Grenade / Piercing Beam -Res have a bare `Res_DMG`
@@ -455,28 +463,26 @@ per-field evidence trail:
   refactors settled — which they now have (Phases 2R/3 + legacy deletion shipped
   on branch `converter-rewrite`). Not started; deferred per 2026-07-09 decision.
 
-- **TSPY12 — Thunderspy summon format changed by a 2026-07-09 patch; parser
-  Create_Entity decode broken** [L, BLOCKER, discovered 2026-07-09] — running the
-  tspy client triggered the Sweet Tea launcher to patch `bin.pigg` (mtime jumped
-  to 08:04 mid-session). The **new `powers.bin` restructured how summons are
-  encoded**: the parser's tspy summon path (`_extract_thunderspy_summons` +
-  Create_Entity attrib index 469, marker 465) now decodes **1442 `Create_Entity`
-  summon templates as bare `Ones`, dropping every `entity_def`** — all pets /
-  pseudo-pets vanish. Diagnosis: marker 465 still present in the bin (1149×), but
-  the Create_Entity attrib index `469*4` collapsed from ~809 to 28, and NO
-  neighboring index (460–480) carries the missing ~809 — i.e. NOT a clean constant
-  shift, the summon sub-structure itself changed. Non-summon data (resistance,
-  ToHit, scales) is format-STABLE across the patch — only summon templates broke.
-  **Impact:** blocks any tspy re-export (would ingest the summon regression), and
-  therefore blocks TSPY11 Case B. The last-known-good tspy export (commit
-  `2e0db2ddb0`, old bin) is intact and shipped; the staleness guard checks the
-  PARSER fingerprint (passes), and CI can't re-export (no pigg/Python), so main
-  stays green. **Fix path:** oracle-driven reverse-engineer — use commit-1's
-  old-bin summon output (power → entity_def) to relocate the new encoding, update
-  the parser's format auto-detection for the new tspy summon layout, then ONE
-  clean re-export lands TSPY11 Case B + the patch's real data + fixed summons.
-  Same gotcha class as the CLAUDE.md "HC adds a field on patch → field-45b auto-
-  detect," now for tspy summons. Not started.
+- **TSPY12 — "summon format broke": RESOLVED as a PHANTOM 2026-07-09.** It was NOT
+  a format change — it was a **transient, mid-download `bin.pigg`.** The Sweet Tea
+  launcher was patching `…/Sweet Tea/tspy/bin.pigg` in place; caught mid-write at
+  08:04 (`powers.bin` = 38,651,552 B), the incomplete archive parsed 1442
+  `Create_Entity` summon templates as bare `Level`/`Ones` shells with no
+  `entity_def` — which the prior session mis-read as a permanent "restructured
+  summon encoding." By 08:40 the download **completed** (`powers.bin` = 38,678,712 B)
+  and summons parse correctly (`Create_Entity` + `entity_def`). **Proof:** a full
+  re-export from the completed bin diffs BYTE-IDENTICAL to the committed oracle —
+  8,532/8,532 powers, 0 effect/attrib/entity_def-count diffs (the only "extra"
+  committed files are `entities/` + `tables/`, produced by separate exporters). The
+  committed oracle itself was already built from this bin generation
+  (`"Thunderspy"`-tagged, `Ranged_Ones`=1 — NOT the old `Ranged_Ones`=11,479
+  archive; if it were, the summon tables wouldn't match). `piggs/bin.pigg` (62 MB,
+  June, `Ranged_Ones`=11,479) is an unrelated stale leftover — parses Summon_Wolves
+  to 0 effects — ignore it. **Consequences:** no summon-parser migration is needed;
+  Case B was unblocked and shipped. **Gotcha for next time (new class):** after a
+  launcher patch, confirm `bin.pigg` is DONE downloading (stable mtime + size)
+  before parsing — a partial pigg parses to garbage that masquerades as a format
+  change. See [[tspy-player-vocab-gap]].
 
 ## 10. Deductive Schema Harness residuals
 

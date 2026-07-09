@@ -39,10 +39,16 @@ export const TwilightShield: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Energy",
-    "scale": 3,
-    "table": "Melee_Res_DMG",
-    "duration": 0.75
+  "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "resistance": 0.75
+    },
+    "resistance": {
+      "energy": {
+        "scale": 3,
+        "table": "Melee_Res_DMG"
+      }
+    }
   }
 };

@@ -29,11 +29,29 @@ export const WolfSpiderArmor: Power = {
     "Resist Damage"
   ],
   "maxSlots": 6,
-  "damage": {
-    "type": "Smashing",
-    "scale": 0.3,
-    "table": "Melee_Res_DMG",
-    "duration": 10.25
+  "effects": {
+    "buffDuration": 10.25,
+    "durations": {
+      "resistance": 10.25
+    },
+    "resistance": {
+      "lethal": {
+        "scale": 0.3,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 0.3,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 0.3,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 0.3,
+        "table": "Melee_Res_DMG"
+      }
+    }
   },
   "mechanicType": "parentMechanic"
 };

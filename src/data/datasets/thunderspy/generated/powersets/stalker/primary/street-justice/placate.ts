@@ -37,17 +37,49 @@ export const Placate: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
-  "damage": [
-    {
-      "type": "Smashing",
-      "scale": -1,
-      "table": "Melee_Res_DMG",
-      "duration": 5
+  "damage": {
+    "type": "Special",
+    "scale": 1.32,
+    "table": "Melee_Damage"
+  },
+  "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "resistanceDebuff": 5
     },
-    {
-      "type": "Special",
-      "scale": 1.32,
-      "table": "Melee_Damage"
+    "resistanceDebuff": {
+      "cold": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "smashing": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      },
+      "toxic": {
+        "scale": 1,
+        "table": "Melee_Res_DMG"
+      }
     }
-  ]
+  }
 };
