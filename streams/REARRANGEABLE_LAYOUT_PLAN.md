@@ -175,12 +175,17 @@ follow-ups, not prerequisites.
   `weight` field). Still deferred: vertical resize / 2D free-form dock grid
   (react-grid-layout-style). The audit found vertical is render-safe (bodies scroll)
   but a 2D grid needs a mobile/reset story and is a larger lift.
-- Floor-lowering: Available split responsive **DONE (LAY9, →240px global)**.
-  Remaining unlocks to reach ~200px (independent, not blocking; deferred as
-  disproportionate for 40px): reflow the Info stat tables to stacked rows under a
-  container breakpoint, and shrink the Selected slot row when its column is narrow
-  (container-responsive slot size — needs PowerRow to take size from a container
-  query rather than a fixed prop). Only worth it if users hit the 240px clamp.
+- Floor-lowering: **240px is the final floor (decision 2026-07-09).** Available
+  split responsive shipped (LAY9, →240) and the toggled-slot wrap fixed (LAY9b), so
+  240 is clean for every section. The push to ~200 was scoped and **declined** — it
+  needs (a) container-responsive slot sizing in TouchableSlot (a core component;
+  size is a mix of CSS classes + JS pixel numbers → broad blast radius) and (b)
+  reflowing ~8 shared info stat-table grids, and in-app measurement showed the Info
+  panel below 240 only *h-scrolls* (~16px over at 210px, graceful — not a deform).
+  Disproportionate for the last 40px, **especially since narrow-screen users already
+  have the escape hatch: hide a column** (5×240 = 1200px fits a 1366px laptop). Only
+  revisit if a real user complaint lands. (A CSS-`zoom`-based density shrink was
+  identified as the cheap way to hit ~205 if ever wanted.)
 - Unify the two hand-rolled floating-window implementations
   ([PopOutInfoPanel.tsx](../src/components/info/PopOutInfoPanel.tsx) +
   [SetBonusPopup.tsx](../src/components/info/SetBonusPopup.tsx), which duplicate the
