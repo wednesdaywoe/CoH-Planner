@@ -42,6 +42,11 @@ export const ParasiticAura: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "absorb": {
+      "appliesStrength": true,
+      "maxHPFraction": 0.1,
+      "table": "Melee_Ones"
+    },
     "buffDuration": 45,
     "damageDebuff": {
       "scale": 2,
@@ -62,11 +67,6 @@ export const ParasiticAura: Power = {
       "scale": 0.65,
       "table": "Melee_Ones",
       "perTarget": 0.65
-    },
-    "absorb": {
-      "scale": 2,
-      "table": "Melee_Ones",
-      "perTarget": 2
     }
   },
   "conditionalEffects": [
@@ -98,6 +98,11 @@ export const ParasiticAura: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "absorb": {
+          "appliesStrength": true,
+          "maxHPFraction": 0.033,
+          "table": "Melee_Ones"
+        },
         "buffDuration": 45,
         "damageDebuff": {
           "scale": 2.6,

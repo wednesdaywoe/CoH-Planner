@@ -43,7 +43,7 @@ export const DETAILED_SECTIONS: { name: string; categories: StatCategory[] }[] =
 // STAT_SECTIONS order.
 export const DETAILED_STATS: string[] = [
   'damage', 'accuracy', 'tohit', 'recharge', 'range_bonus', 'threat_level', 'level_shift',
-  'health', 'regeneration', 'heal_other', 'heal_received', 'maxend', 'recovery', 'endreduction',
+  'health', 'absorb', 'regeneration', 'heal_other', 'heal_received', 'maxend', 'recovery', 'endreduction',
   'runspeed', 'flyspeed', 'jumpspeed', 'jumpheight',
   'stealth_pve', 'stealth_pvp', 'perception_bonus',
   'defense_melee', 'defense_ranged', 'defense_aoe',

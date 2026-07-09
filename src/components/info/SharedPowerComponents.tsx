@@ -961,7 +961,11 @@ export function RegistryEffectsDisplay({
 
   // Handle absorb separately (resolve AT table for actual HP values, like healing)
   const absorb = effects?.absorb;
-  if (absorb && typeof absorb === 'object' && 'scale' in absorb && absorb.scale != null) {
+  const absorbFraction = absorb && typeof absorb === 'object' && 'maxHPFraction' in absorb
+    ? absorb.maxHPFraction
+    : undefined;
+  const absorbHasScale = absorb && typeof absorb === 'object' && 'scale' in absorb && absorb.scale != null;
+  if (absorb && typeof absorb === 'object' && (absorbHasScale || absorbFraction != null)) {
     const baseAbsorbConfig = EFFECT_REGISTRY['absorb'];
     if (baseAbsorbConfig && categories.includes(baseAbsorbConfig.category as EffectCategory)) {
       // `*_Ones` tables (Melee_Ones, Ranged_Ones) are constant 1.0 across
@@ -970,22 +974,34 @@ export function RegistryEffectsDisplay({
       // Ward rework is the canonical case: scale 0.10 × Ranged_Ones means
       // 10% of the target's Max HP, NOT 0.10 HP. Without the percent
       // hint we'd display the bare scale and look broken.
-      const tableLower = absorb.table?.toLowerCase() ?? '';
+      //
+      // The recovered `maxHPFraction` form (Wild Bastion 0.25 = 25% of the
+      // caster's current Max HP, from an Expression magnitude) is shown the
+      // same "% Max HP" way — the actual HP depends on the build's Max HP,
+      // which the character-totals Absorb stat resolves.
+      const tableLower = (absorb.table?.toLowerCase()) ?? '';
       const isOnesTable = tableLower.endsWith('_ones');
-      const absorbConfig = isOnesTable
+      const isPercent = isOnesTable || absorbFraction != null;
+      const absorbConfig = isPercent
         ? { ...baseAbsorbConfig, label: `${baseAbsorbConfig.label} (% Max HP)`, format: 'percent' as const }
         : baseAbsorbConfig;
-      let baseAbsorbHP = absorb.scale;
-      if (isOnesTable) {
+      let baseAbsorbHP: number;
+      if (absorbFraction != null) {
+        // Fraction of Max HP (0.25 = 25%). 'percent' renderer prints verbatim.
+        baseAbsorbHP = absorbFraction * 100;
+      } else if (isOnesTable) {
         // `*_Ones` table → scale is a FRACTION of Max HP (0.10 = 10%). The
         // 'percent' renderer prints the value verbatim with a % suffix (it
         // does NOT multiply by 100), so convert the fraction to percent units
         // here — otherwise Spirit Ward reads "0.10%" instead of "10%".
-        baseAbsorbHP = absorb.scale * 100;
-      } else if (absorb.table && archetypeId) {
-        const tableVal = getTableValue(archetypeId, absorb.table, level ?? 50);
-        if (tableVal !== undefined) {
-          baseAbsorbHP = absorb.scale * tableVal;
+        baseAbsorbHP = (absorb as { scale: number }).scale * 100;
+      } else {
+        baseAbsorbHP = (absorb as { scale: number }).scale;
+        if (absorb.table && archetypeId) {
+          const tableVal = getTableValue(archetypeId, absorb.table, level ?? 50);
+          if (tableVal !== undefined) {
+            baseAbsorbHP = (absorb as { scale: number }).scale * tableVal;
+          }
         }
       }
       const tiers = calcEffectThreeTier(absorbConfig, baseAbsorbHP, enhancementBonuses, globalBonuses);

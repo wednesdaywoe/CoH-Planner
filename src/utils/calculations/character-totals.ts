@@ -36,6 +36,7 @@ import {
 } from './set-bonuses';
 import {
   createEmptyStats,
+  getBaselineHealth,
   type CharacterStats,
 } from './stats';
 import {
@@ -620,6 +621,13 @@ interface ActivePowerEffect {
   recoveryBuffUnenhanced?: ScalarOrScaled;
   maxHPBuff?: ScalarOrScaled;
   maxEndBuff?: ScalarOrScaled;
+  // Absorb shield. Two magnitude forms (see the aggregation below):
+  //  • flat HP     — {scale, table} on a Heal table (Psychokinetic Barrier).
+  //  • % of MaxHP  — `maxHPFraction` (recovered from the Expression magnitude,
+  //    e.g. Wild Bastion 0.25) or a `_ones`-table {scale} (bare fraction).
+  // `appliesStrength` (default true) marks the MaxHP-fraction form as scaled by
+  // +Absorb strength (Power Boost / Clarion) and slotted Heal.
+  absorb?: { scale?: number; table?: string; maxHPFraction?: number; appliesStrength?: boolean };
   // Effect targeting (SingleTarget, AoE, etc.)
   effectArea?: string;
   // Mez protection (pool/epic style — direct magnitudes)
@@ -947,7 +955,12 @@ function applyActivePowerBonuses(
   exemplarLevel?: number,
   combatMode?: boolean,
   strengthBuffs: StrengthBuffs = emptyStrengthBuffs(),
-  stealthContribs: StealthContribution[] = []
+  stealthContribs: StealthContribution[] = [],
+  // MaxHP-fraction absorb contributions (Wild Bastion etc.) are collected here
+  // and resolved to absolute HP by the caller once the build's final Max HP —
+  // including accolades and incarnates — is known. Flat-HP absorb is added to
+  // global.absorb inline below.
+  absorbFractionContribs: { name: string; fraction: number }[] = []
 ): void {
   for (const power of powers) {
     // Auto powers are always active; others require explicit isActive toggle
@@ -1506,6 +1519,41 @@ function applyActivePowerBonuses(
         value,
         type: 'active-power',
       });
+    }
+
+    // Absorb shield
+    // Mirrors the per-power display (SharedPowerComponents): a Heal-table
+    // {scale,table} resolves to absolute HP; a `_ones` table or the recovered
+    // `maxHPFraction` is a fraction of the caster's current Max HP, resolved to
+    // HP later against the final build Max HP (accolades included — which is
+    // why Wild Bastion grows with +HP accolades). Boosted like healing:
+    // slotted Heal enhancement + +Strength(Absorb) from Power Boost / Clarion.
+    if (effects.absorb !== undefined && effects.absorb !== null) {
+      const ab = effects.absorb;
+      // The MaxHP-fraction form is scaled by strength unless it opts out
+      // (appliesStrength:false — ATO procs, which don't reach this path).
+      const applyStrength = ab.maxHPFraction == null || ab.appliesStrength !== false;
+      const enhMultiplier = applyStrength
+        ? 1 + (enhBonuses.heal || 0) + strengthBuffs.absorb
+        : 1;
+      const isOnesTable = (ab.table || '').toLowerCase().endsWith('_ones');
+      if (ab.maxHPFraction != null || isOnesTable) {
+        const baseFraction = ab.maxHPFraction != null
+          ? ab.maxHPFraction
+          : resolveScaledEffect(ab as ScalarOrScaled, archetypeId, buildLevel);
+        const fraction = baseFraction * enhMultiplier;
+        if (fraction > 0) absorbFractionContribs.push({ name: power.name, fraction });
+      } else {
+        const hp = resolveScaledEffect(ab as ScalarOrScaled, archetypeId, buildLevel) * enhMultiplier;
+        if (hp > 0) {
+          global.absorb += hp;
+          addToBreakdown(breakdown, 'absorb', {
+            name: power.name,
+            value: hp,
+            type: 'active-power',
+          });
+        }
+      }
     }
 
     // Endurance Discount (e.g., Conserve Power — reduces end costs by a percentage)
@@ -3850,7 +3898,10 @@ export function calculateCharacterTotals(
   // Stealth radius is gathered from active powers AND procs, then committed
   // together by resolveStealthRadius (suppress-group max + additive sum).
   const stealthContribs: StealthContribution[] = [];
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs, stealthContribs);
+  // MaxHP-fraction absorb (Wild Bastion etc.) — resolved to HP after accolades
+  // and incarnates land on global.maxHP (see the absorb resolution below).
+  const absorbFractionContribs: { name: string; fraction: number }[] = [];
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs, stealthContribs, absorbFractionContribs);
 
   // Step 7.1: Apply active mode-/state-gated conditional contributions (Bio
   // Armor adaptation modes, …). Each active conditional is a synthetic active
@@ -3873,7 +3924,7 @@ export function calculateCharacterTotals(
     options?.mechanicAdjusters ?? {},
   );
   if (conditionalPowers.length > 0) {
-    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs);
+    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs);
   }
   if (_debug) debugGroupEnd();
 
@@ -3938,6 +3989,23 @@ export function calculateCharacterTotals(
         value: furyValue,
         type: 'inherent',
       });
+    }
+  }
+
+  // Step 9.2: Resolve MaxHP-fraction absorb (Wild Bastion etc.) to absolute HP.
+  // Runs after accolades (Step 8) and incarnates (Step 9) have landed on
+  // global.maxHP, so the fraction is taken against the build's final, capped
+  // Max HP — matching how the game scales these shields off current Max HP
+  // (which is why +HP accolades increase them).
+  if (absorbFractionContribs.length > 0) {
+    const { baseHealth, maxHealth } = getBaselineHealth(build.archetype?.id ?? undefined, build.level);
+    const buffedHP = baseHealth * (1 + globalBonuses.maxHP / 100);
+    const actualHP = maxHealth > 0 ? Math.min(buffedHP, maxHealth) : buffedHP;
+    for (const { name, fraction } of absorbFractionContribs) {
+      const hp = fraction * actualHP;
+      if (hp <= 0) continue;
+      globalBonuses.absorb += hp;
+      addToBreakdown(breakdown, 'absorb', { name, value: hp, type: 'active-power' });
     }
   }
 

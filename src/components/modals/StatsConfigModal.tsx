@@ -174,6 +174,7 @@ const SETTINGS_STATS: StatToggle[] = [
   { stat: 'threat_level', label: 'Threat', colorOverride: 'resistance' },
   { stat: 'level_shift', label: 'Level Shift', colorOverride: 'incarnate' },
   { stat: 'health', label: 'Max HP' },
+  { stat: 'absorb', label: 'Absorb', colorOverride: 'health' },
   { stat: 'regeneration', label: 'Regeneration' },
   { stat: 'heal_other', label: 'Heal Bonus', colorOverride: 'health' },
   { stat: 'heal_received', label: 'Heal Rec', colorOverride: 'health' },

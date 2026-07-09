@@ -513,6 +513,17 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
     showWhenZero: true,
     breakdownKey: 'regeneration',
   },
+  absorb: {
+    id: 'absorb',
+    label: 'Absorb',
+    // Value comes from globalBonuses.absorb (absolute HP), populated by active
+    // absorb powers + set-bonus/proc absorb; handled via GLOBAL_BONUS_OVERRIDES.
+    getValue: () => 0,
+    format: (v) => `${Math.round(Number(v))}`,
+    color: STAT_COLORS.absorb,
+    tooltip: 'Absorb shield — a temporary pool that soaks damage before your HP. Shields that scale with Max HP (e.g. Wild Bastion) grow with +HP accolades and +Absorb strength (Power Boost, Clarion). Only self-affecting absorb from active powers is counted.',
+    breakdownKey: 'absorb',
+  },
 
   // Movement — values display in mph (or feet for jump height); raw % shown in tooltip via dashboard override.
   // showWhenZero is true so the baseline values are always visible, even on builds with no movement buffs.
@@ -1139,6 +1150,7 @@ export const STAT_DEFINITIONS: Record<string, StatDefinition> = {
  * the override.
  */
 export const GLOBAL_BONUS_OVERRIDES: Record<string, keyof GlobalBonuses> = {
+  absorb: 'absorb',
   range_bonus: 'range',
   heal_other: 'healOther',
   heal_received: 'healReceived',
@@ -1202,7 +1214,7 @@ export type StatCategory =
  */
 export const STAT_SECTIONS: { category: StatCategory; stats: string[] }[] = [
   { category: 'offense', stats: ['damage', 'accuracy', 'tohit', 'recharge', 'range_bonus', 'threat_level', 'level_shift'] },
-  { category: 'health-endurance', stats: ['health', 'regeneration', 'heal_other', 'heal_received', 'maxend', 'recovery', 'endreduction', 'endcost', 'netend'] },
+  { category: 'health-endurance', stats: ['health', 'absorb', 'regeneration', 'heal_other', 'heal_received', 'maxend', 'recovery', 'endreduction', 'endcost', 'netend'] },
   { category: 'movement', stats: ['runspeed', 'flyspeed', 'jumpspeed', 'jumpheight'] },
   { category: 'stealth-perception', stats: ['stealth_pve', 'stealth_pvp', 'perception_bonus'] },
   { category: 'defense', stats: ['defense_melee', 'defense_ranged', 'defense_aoe', 'def_smashing', 'def_lethal', 'def_fire', 'def_cold', 'def_energy', 'def_negative', 'def_psionic', 'def_toxic'] },

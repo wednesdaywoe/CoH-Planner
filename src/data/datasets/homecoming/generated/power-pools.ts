@@ -1845,6 +1845,11 @@ export const POWER_POOLS_RAW = {
           "endurance": 10.4,
           "activationTime": 2.03,
           "effectArea": "SingleTarget",
+          "absorb": {
+            "appliesStrength": true,
+            "maxHPFraction": 0.25,
+            "table": "Melee_Ones"
+          },
           "buffDuration": 30,
           "durations": {
             "absorb": 30

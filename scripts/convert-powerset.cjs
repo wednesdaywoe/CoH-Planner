@@ -3472,6 +3472,7 @@ function templatesToAtoms(templates) {
       a._type = t.type;
       a._target = t.target;
       a._duration = t.duration;
+      a._magExpr = t.magnitude_expression;
       a._appType = t.application_type;
       a._tickChance = t.tick_chance;
       a._stack = t.stack;
@@ -3624,6 +3625,47 @@ function projectAtomsToEffects(atoms, powerName) {
       g[0]._target === first._target
     );
     if (allMatch) absorbStackCount = absorbApply.length;
+  }
+
+  // --- Expression MaxHP-fraction absorb pre-scan ---
+  // Some absorb templates deliver their magnitude via an Expression the
+  // converter can't evaluate as scale×table (aspect=Maximum, type=Expression).
+  // The canonical case is Wild Bastion's `Max.kHitPoints source> 0.25 * @Strength *`
+  // = 25% of the CASTER's current Max HP, boosted by +Absorb strength — which
+  // is why it grows with +HP accolades but the old converter dropped its
+  // magnitude and kept only the duration. We recover the simple
+  // `Max.kHitPoints source> C * [@Strength *]` shape here as a MaxHP fraction.
+  //
+  // DEFERRED (left duration-only, byte-identical to before): powers with
+  // MULTIPLE distinct fractions — adaptation/mode-gated conditionals like
+  // Ablative Carapace (0.3 / 0.09) and Parasitic Aura (0.1 / 0.033) — or an
+  // unparseable expression — Master Brawler's `(100 - HP%)/200`, `@StdResult`
+  // chains. The calc can't model those conditionals faithfully yet.
+  let absorbMaxHPFraction = null;
+  let absorbFractionStrength = false;
+  {
+    const SIMPLE = /^Max\.kHitPoints\s+source>\s+([\d.]+)\s+\*(?:\s+(@Strength)\s+\*)?\s*$/;
+    const fractions = new Set();
+    let complex = false;
+    let appliesStrength = false;
+    for (const a of atoms) {
+      if ((a.sourceAttrib || '').toLowerCase() !== 'absorb') continue;
+      if ((a._aspect || '').toLowerCase() !== 'maximum') continue;
+      if (a._type !== 'Expression') continue;
+      const expr = (a._magExpr || '').trim();
+      if (!expr) continue; // empty = placeholder/PvP variant — ignore
+      const m = SIMPLE.exec(expr);
+      if (m) {
+        fractions.add(parseFloat(m[1]));
+        if (m[2]) appliesStrength = true;
+      } else {
+        complex = true;
+      }
+    }
+    if (!complex && fractions.size === 1) {
+      absorbMaxHPFraction = [...fractions][0];
+      absorbFractionStrength = appliesStrength;
+    }
   }
 
   // --- resistable/unresistable twin detection (DSH6 Phase 3 — no list mutation) ---
@@ -4050,8 +4092,18 @@ function projectAtomsToEffects(atoms, powerName) {
         }
       } else if (resType === 'absorb') {
         if (aspect === 'maximum' && a._type === 'Expression') {
+          // Recovered MaxHP-fraction magnitude (Wild Bastion etc.) — see the
+          // Expression MaxHP-fraction pre-scan. `maxHPFraction` = fraction of
+          // the caster's CURRENT Max HP; `appliesStrength` means +Absorb
+          // strength (Power Boost / Clarion / slotted Heal) scales it.
+          if (absorbMaxHPFraction != null && !effects.absorb) {
+            effects.absorb = { maxHPFraction: absorbMaxHPFraction };
+            if (absorbFractionStrength) effects.absorb.appliesStrength = true;
+            if (table) effects.absorb.table = table;
+          }
           // Duration-only: joins the absorb queue in encounter order so the
-          // fold sees it exactly where the old inline recordDuration ran.
+          // fold sees it exactly where the old inline recordDuration ran. This
+          // is the ONLY output for deferred conditional absorbs (unchanged).
           if (duration && duration > 0) {
             queueResource('absorb', { durationOnly: true, duration });
           }

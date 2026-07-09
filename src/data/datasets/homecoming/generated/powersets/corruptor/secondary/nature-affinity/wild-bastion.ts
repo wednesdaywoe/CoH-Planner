@@ -43,6 +43,11 @@ export const WildBastion: Power = {
     "tickRate": 1
   },
   "effects": {
+    "absorb": {
+      "appliesStrength": true,
+      "maxHPFraction": 0.25,
+      "table": "Ranged_Ones"
+    },
     "buffDuration": 60,
     "durations": {
       "absorb": 60

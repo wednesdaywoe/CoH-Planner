@@ -53,6 +53,19 @@ export interface ScaledEffect {
 /** Helper type for effects that can be number OR scaled */
 export type NumberOrScaled = number | ScaledEffect;
 
+/** Absorb magnitude that scales off the caster's CURRENT Max HP rather than a
+ *  flat AT-table value (Wild Bastion, Ablative Carapace, Force Barrier). The
+ *  converter recovers `maxHPFraction` from the Expression magnitude
+ *  (`Max.kHitPoints source> C *`), e.g. Wild Bastion's 0.25 = 25% of Max HP —
+ *  which is why the shield grows with +HP accolades. `appliesStrength` (default
+ *  true) marks it as scaled by +Absorb strength (Power Boost / Clarion) and
+ *  slotted Heal enhancement. A flat absorb still uses {@link ScaledEffect}. */
+export interface MaxHPFractionAbsorb {
+  maxHPFraction: number;
+  appliesStrength?: boolean;
+  table?: string;
+}
+
 /**
  * Extract scale value from NumberOrScaled
  * Returns the number directly, or the scale from ScaledEffect
@@ -478,8 +491,9 @@ export interface PowerEffects {
   threatBuff?: NumberOrScaled;
   /** Perception buff */
   perceptionBuff?: NumberOrScaled;
-  /** Absorb shield */
-  absorb?: NumberOrScaled;
+  /** Absorb shield — a flat {@link ScaledEffect} (Psychokinetic Barrier) or a
+   *  {@link MaxHPFractionAbsorb} that scales off current Max HP (Wild Bastion). */
+  absorb?: NumberOrScaled | MaxHPFractionAbsorb;
 
   // === STACKING ===
   /** Max stacks for non-AoE stacking powers (e.g., Reactive Regeneration = 20).
