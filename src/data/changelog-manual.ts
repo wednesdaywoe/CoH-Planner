@@ -21,6 +21,14 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-07-09',
+
+    items:[
+      {message: '', type:'feat'},
+      {message: '', type:'feat'},
+    ]
+  },
+  {
     date: '2026-07-08',
 
     items: [
