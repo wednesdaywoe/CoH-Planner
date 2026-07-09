@@ -143,7 +143,6 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const openStatsConfigModal = useUIStore((s) => s.openStatsConfigModal);
   const closeStatsConfigModal = useUIStore((s) => s.closeStatsConfigModal);
   const layoutModalOpen = useUIStore((s) => s.layoutModalOpen);
-  const openLayoutModal = useUIStore((s) => s.openLayoutModal);
   const closeLayoutModal = useUIStore((s) => s.closeLayoutModal);
   const accoladesModalOpen = useUIStore((s) => s.accoladesModalOpen);
   const openAccoladesModal = useUIStore((s) => s.openAccoladesModal);
@@ -504,7 +503,6 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
               openStatsConfigModal={openStatsConfigModal}
               openControlsModal={openControlsModal}
               openAttackChainModal={openAttackChainModal}
-              openLayoutModal={openLayoutModal}
               variant="desktop"
             />
           </div>
@@ -696,9 +694,6 @@ interface DashboardActionButtonsProps {
   openStatsConfigModal: () => void;
   openControlsModal: () => void;
   openAttackChainModal: () => void;
-  /** Opens the planner-layout (rearrangeable columns) modal. Desktop-only
-   *  feature, so it's optional and only wired for the desktop variant. */
-  openLayoutModal?: () => void;
   variant: 'desktop' | 'mobile';
 }
 
@@ -817,14 +812,6 @@ function DashboardActionButtons(props: DashboardActionButtonsProps) {
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />,
         isMobile ? 'Enh List' : 'Enhancement List',
         'enhancement-list',
-      )}
-      {props.openLayoutModal && btn(
-        'gray',
-        props.openLayoutModal,
-        'Rearrange planner columns (order + show/hide)',
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5.25h16v13.5H4zM9.333 5.25v13.5M14.667 5.25v13.5" />,
-        'Layout',
-        'planner-layout',
       )}
       {btn(
         'gray',
