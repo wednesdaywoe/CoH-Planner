@@ -30,6 +30,7 @@ import { Toggle, CollapsibleSection } from '@/components/ui';
 import { ViewModeToggle } from '@/components/ui/ViewModeToggle';
 import { MAX_POWER_PICKS, getArchetype } from '@/data';
 import type { Power, PlannerSectionId, PlannerSectionConfig } from '@/types';
+import { toColumns, applyDrop, type DropZone } from '@/utils/planner-layout';
 
 /** Undock button icon (box with arrow pointing out) */
 function UndockButton({ onClick }: { onClick: () => void }) {
@@ -57,6 +58,24 @@ function UndockButton({ onClick }: { onClick: () => void }) {
  *  rather than deforming) and the resize drag clamps neighbors to it. */
 const MIN_COL_PX = 240;
 
+/** Minimum rendered height for a stacked cell (LAY11). The min-size audit found
+ *  the vertical axis render-safe — every body is `flex-1 overflow-y-auto`, so
+ *  shrinking height just scrolls — so this is a UX floor (keep a stacked cell
+ *  usable), not a clip constraint. The vertical resize drag clamps both
+ *  neighbors to it. */
+const MIN_CELL_PX = 120;
+
+/** Colored edge bar marking where a dragged section will land (LAY11 drop zones). */
+function dropEdgeStyle(zone: DropZone): React.CSSProperties {
+  const t = 3;
+  switch (zone) {
+    case 'above': return { top: 0, left: 0, right: 0, height: t };
+    case 'below': return { bottom: 0, left: 0, right: 0, height: t };
+    case 'colBefore': return { top: 0, bottom: 0, left: 0, width: t };
+    case 'colAfter': return { top: 0, bottom: 0, right: 0, width: t };
+  }
+}
+
 /** Drag-handle grip shown in each desktop column header. */
 function GripHandle(props: React.HTMLAttributes<HTMLDivElement>) {
   return (
@@ -73,22 +92,6 @@ function GripHandle(props: React.HTMLAttributes<HTMLDivElement>) {
       </svg>
     </div>
   );
-}
-
-/** Move `fromId` so it lands at `toId`'s position within the full section list. */
-function moveSection(
-  list: PlannerSectionConfig[],
-  fromId: PlannerSectionId,
-  toId: PlannerSectionId,
-): PlannerSectionConfig[] {
-  if (fromId === toId) return list;
-  const fromIdx = list.findIndex((s) => s.id === fromId);
-  const toIdx = list.findIndex((s) => s.id === toId);
-  if (fromIdx === -1 || toIdx === -1) return list;
-  const next = [...list];
-  const [moved] = next.splice(fromIdx, 1);
-  next.splice(toIdx, 0, moved);
-  return next;
 }
 
 /** What a section renders. Bodies are single-sourced so the desktop grid and the
@@ -115,11 +118,14 @@ export function PlannerPage() {
   const sections = useUIStore((s) => s.plannerLayout[view]);
   const reorderPlannerSections = useUIStore((s) => s.reorderPlannerSections);
   const setPlannerSectionWeights = useUIStore((s) => s.setPlannerSectionWeights);
+  const setPlannerSectionRowWeights = useUIStore((s) => s.setPlannerSectionRowWeights);
 
-  // Desktop drag-reorder state (native HTML5 DnD; a 5-item reorder doesn't
-  // warrant a DnD library dependency).
+  // Desktop drag-reorder state (native HTML5 DnD; a 6-item reorder doesn't
+  // warrant a DnD library dependency). LAY11: a drop now carries a zone
+  // (stack above/below vs. new column left/right of the target cell).
   const [dragId, setDragId] = useState<PlannerSectionId | null>(null);
   const [overId, setOverId] = useState<PlannerSectionId | null>(null);
+  const [overZone, setOverZone] = useState<DropZone | null>(null);
   // Grid element ref — needed to measure usable px width when converting a
   // resize-drag delta into fr weights.
   const gridRef = useRef<HTMLDivElement>(null);
@@ -325,38 +331,63 @@ export function PlannerPage() {
   const gridSections = sections.filter(
     (s) => s.visible && !(s.id === 'info' && undocked),
   );
+  // Derive the 2D layout (LAY11): sections sharing a `column` stack vertically.
+  // Each column's horizontal weight is the topmost section's `weight`.
+  const columns = toColumns(gridSections).map((rows) => ({
+    weight: rows[0]?.weight ?? 1,
+    rows,
+  }));
   // `minmax(MIN, …fr)` clamps every column to the clean-render floor: extra width
   // distributes by fr weight, but a column never shrinks below MIN_COL_PX — the
   // grid (overflow-auto) scrolls instead of deforming its contents.
-  const gridTemplateColumns = gridSections
-    .map((s) => `minmax(${MIN_COL_PX}px, ${s.weight ?? 1}fr)`)
+  const gridTemplateColumns = columns
+    .map((c) => `minmax(${MIN_COL_PX}px, ${c.weight}fr)`)
     .join(' ');
 
+  // Compute the drop zone from the pointer's position within the hovered cell:
+  // top/bottom bands stack above/below, the middle splits left/right into a new
+  // column before/after the target.
+  const handleDragOver = (e: React.DragEvent, id: PlannerSectionId) => {
+    if (!dragId || dragId === id) return;
+    e.preventDefault();
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const relY = (e.clientY - rect.top) / rect.height;
+    const relX = (e.clientX - rect.left) / rect.width;
+    const zone: DropZone =
+      relY < 0.25 ? 'above' : relY > 0.75 ? 'below' : relX < 0.5 ? 'colBefore' : 'colAfter';
+    setOverId(id);
+    setOverZone(zone);
+  };
+
   const handleDrop = (targetId: PlannerSectionId) => {
-    if (dragId && dragId !== targetId) {
-      reorderPlannerSections(view, moveSection(sections, dragId, targetId));
+    if (dragId && dragId !== targetId && overZone) {
+      reorderPlannerSections(view, applyDrop(sections, dragId, targetId, overZone));
     }
     setDragId(null);
     setOverId(null);
+    setOverZone(null);
   };
 
   // Drag the divider between column `leftIdx` and its right neighbor: shift fr
   // weight from one to the other, keeping the pair's combined weight constant so
-  // other columns are untouched. Both neighbors are clamped to MIN_COL_PX.
+  // other columns are untouched. Both neighbors are clamped to MIN_COL_PX. The
+  // weight is written to each column's topmost section (its canonical holder).
   const startColumnResize = (e: React.PointerEvent, leftIdx: number) => {
     const grid = gridRef.current;
-    const left = gridSections[leftIdx];
-    const right = gridSections[leftIdx + 1];
+    const left = columns[leftIdx];
+    const right = columns[leftIdx + 1];
     if (!grid || !left || !right) return;
-    const gapTotal = Math.max(0, gridSections.length - 1); // gap-px = 1px each
+    const gapTotal = Math.max(0, columns.length - 1); // gap-px = 1px each
     const usable = grid.clientWidth - gapTotal;
-    const sumWeight = gridSections.reduce((sum, c) => sum + (c.weight ?? 1), 0);
+    const sumWeight = columns.reduce((sum, c) => sum + c.weight, 0);
     const pxPerWeight = usable / sumWeight;
-    const pairPx = ((left.weight ?? 1) + (right.weight ?? 1)) * pxPerWeight;
+    const pairPx = (left.weight + right.weight) * pxPerWeight;
     // Not enough room to give both neighbors their floor — resizing this pair
     // can't produce a valid split, so ignore the drag.
     if (pairPx < MIN_COL_PX * 2 || pxPerWeight <= 0) return;
-    const pxL0 = (left.weight ?? 1) * pxPerWeight;
+    const pxL0 = left.weight * pxPerWeight;
+    const leftId = left.rows[0].id;
+    const rightId = right.rows[0].id;
     const startX = e.clientX;
     const handleEl = e.currentTarget as HTMLElement;
     handleEl.setPointerCapture(e.pointerId);
@@ -367,8 +398,50 @@ export function PlannerPage() {
         Math.min(pairPx - MIN_COL_PX, pxL0 + (ev.clientX - startX)),
       );
       setPlannerSectionWeights(view, {
-        [left.id]: newL / pxPerWeight,
-        [right.id]: (pairPx - newL) / pxPerWeight,
+        [leftId]: newL / pxPerWeight,
+        [rightId]: (pairPx - newL) / pxPerWeight,
+      });
+    };
+    const onUp = () => {
+      handleEl.releasePointerCapture?.(e.pointerId);
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerup', onUp);
+    };
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerup', onUp);
+  };
+
+  // Drag the divider between stacked rows `topIdx` and `topIdx + 1` in one
+  // column: the vertical twin of startColumnResize (shifts `rowWeight`, clamps
+  // both to MIN_CELL_PX). The column's own element supplies the usable height.
+  const startRowResize = (
+    e: React.PointerEvent,
+    rows: PlannerSectionConfig[],
+    topIdx: number,
+  ) => {
+    const container = (e.currentTarget as HTMLElement).closest('[data-column]') as HTMLElement | null;
+    const top = rows[topIdx];
+    const bottom = rows[topIdx + 1];
+    if (!container || !top || !bottom) return;
+    const gapTotal = Math.max(0, rows.length - 1);
+    const usable = container.clientHeight - gapTotal;
+    const sumWeight = rows.reduce((sum, r) => sum + (r.rowWeight ?? 1), 0);
+    const pxPerWeight = usable / sumWeight;
+    const pairPx = ((top.rowWeight ?? 1) + (bottom.rowWeight ?? 1)) * pxPerWeight;
+    if (pairPx < MIN_CELL_PX * 2 || pxPerWeight <= 0) return;
+    const pxT0 = (top.rowWeight ?? 1) * pxPerWeight;
+    const startY = e.clientY;
+    const handleEl = e.currentTarget as HTMLElement;
+    handleEl.setPointerCapture(e.pointerId);
+
+    const onMove = (ev: PointerEvent) => {
+      const newT = Math.max(
+        MIN_CELL_PX,
+        Math.min(pairPx - MIN_CELL_PX, pxT0 + (ev.clientY - startY)),
+      );
+      setPlannerSectionRowWeights(view, {
+        [top.id]: newT / pxPerWeight,
+        [bottom.id]: (pairPx - newT) / pxPerWeight,
       });
     };
     const onUp = () => {
@@ -382,48 +455,88 @@ export function PlannerPage() {
 
   return (
     <>
-      <PlannerHintBar />
+      {/* Desktop: fill `main` (which is `relative`) so the grid has a *definite*
+          height to distribute — required for the LAY11 vertical stack split + row
+          resize, and it lets each column scroll internally instead of growing the
+          page. `main` is a block box, so its `flex-1` grid never actually bounded
+          before; this wrapper supplies the bound. Plain block below lg, so the
+          mobile fallback keeps its original page-grow flow. */}
+      <div className="lg:absolute lg:inset-0 lg:flex lg:flex-col">
+        <PlannerHintBar />
 
-      {/* ── Desktop (lg+): rearrangeable column grid ── */}
-      <div
-        ref={gridRef}
-        className="hidden lg:grid gap-px bg-slate-700 flex-1 overflow-auto"
-        style={{ gridTemplateColumns, gridTemplateRows: 'minmax(0,1fr)' }}
-      >
-        {gridSections.map((cfg, idx) => {
-          const section = getSection(cfg.id);
-          const isLast = idx === gridSections.length - 1;
+        {/* ── Desktop (lg+): rearrangeable 2D dock grid (LAY11) ── */}
+        <div
+          ref={gridRef}
+          className="hidden lg:grid gap-px bg-slate-700 flex-1 min-h-0 overflow-auto"
+          style={{ gridTemplateColumns, gridTemplateRows: 'minmax(0,1fr)' }}
+        >
+        {columns.map((col, colIdx) => {
+          const isLastCol = colIdx === columns.length - 1;
           return (
             <div
-              key={cfg.id}
-              data-onboarding={section.onboarding}
-              onDragOver={(e) => { if (dragId) { e.preventDefault(); setOverId(cfg.id); } }}
-              onDrop={() => handleDrop(cfg.id)}
-              className={`relative bg-slate-900 flex flex-col overflow-hidden min-h-0 transition-opacity ${
-                dragId === cfg.id ? 'opacity-40' : ''
-              } ${overId === cfg.id && dragId !== cfg.id ? 'ring-2 ring-inset ring-[var(--color-primary)]' : ''}`}
+              key={`col-${colIdx}`}
+              data-column
+              className="relative flex flex-col gap-px bg-slate-700 min-h-0"
             >
-              <div className="bg-slate-800 border-b border-slate-700 px-2 min-h-[2.5rem] flex items-center justify-between gap-2">
-                <div className="flex items-center gap-1.5 min-w-0">
-                  <GripHandle
-                    draggable
-                    onDragStart={() => setDragId(cfg.id)}
-                    onDragEnd={() => { setDragId(null); setOverId(null); }}
-                  />
-                  <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
-                    {section.title}
-                  </h2>
-                </div>
-                {section.headerRight}
-              </div>
-              <div className={section.bodyClassName}>{section.body}</div>
+              {col.rows.map((cfg, rowIdx) => {
+                const section = getSection(cfg.id);
+                const isLastRow = rowIdx === col.rows.length - 1;
+                const isDropTarget = overId === cfg.id && dragId !== null && dragId !== cfg.id && overZone !== null;
+                return (
+                  <div
+                    key={cfg.id}
+                    data-onboarding={section.onboarding}
+                    onDragOver={(e) => handleDragOver(e, cfg.id)}
+                    onDrop={() => handleDrop(cfg.id)}
+                    style={{ flexGrow: cfg.rowWeight ?? 1, flexBasis: 0, minHeight: MIN_CELL_PX }}
+                    className={`relative bg-slate-900 flex flex-col overflow-hidden min-h-0 transition-opacity ${
+                      dragId === cfg.id ? 'opacity-40' : ''
+                    }`}
+                  >
+                    <div className="bg-slate-800 border-b border-slate-700 px-2 min-h-[2.5rem] flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <GripHandle
+                          draggable
+                          onDragStart={() => setDragId(cfg.id)}
+                          onDragEnd={() => { setDragId(null); setOverId(null); setOverZone(null); }}
+                        />
+                        <h2 className="text-xs font-semibold uppercase tracking-wide text-slate-400 truncate min-w-0">
+                          {section.title}
+                        </h2>
+                      </div>
+                      {section.headerRight}
+                    </div>
+                    <div className={section.bodyClassName}>{section.body}</div>
 
-              {/* Resize divider straddling the gap to the right neighbor.
-                  Hidden while a reorder drag is in flight so the two gestures
-                  never fight. */}
-              {!isLast && !dragId && (
+                    {/* Drop-zone edge marker (above/below stack · left/right new column). */}
+                    {isDropTarget && (
+                      <div
+                        className="absolute z-30 pointer-events-none bg-[var(--color-primary)]"
+                        style={dropEdgeStyle(overZone)}
+                      />
+                    )}
+
+                    {/* Vertical resize divider to the stacked row below. Hidden
+                        during a reorder drag so the gestures never fight. */}
+                    {!isLastRow && !dragId && (
+                      <div
+                        onPointerDown={(e) => { e.preventDefault(); startRowResize(e, col.rows, rowIdx); }}
+                        className="absolute left-0 right-0 bottom-0 h-2 translate-y-1/2 z-20 cursor-row-resize group/vresize"
+                        title="Drag to resize stacked sections"
+                        aria-label="Resize stacked section"
+                      >
+                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-transparent group-hover/vresize:bg-[var(--color-primary)] transition-colors" />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+
+              {/* Horizontal resize divider straddling the gap to the right
+                  neighbor column. Hidden during a reorder drag. */}
+              {!isLastCol && !dragId && (
                 <div
-                  onPointerDown={(e) => { e.preventDefault(); startColumnResize(e, idx); }}
+                  onPointerDown={(e) => { e.preventDefault(); startColumnResize(e, colIdx); }}
                   className="absolute top-0 bottom-0 right-0 w-2 translate-x-1/2 z-20 cursor-col-resize group/resize"
                   title="Drag to resize columns"
                   aria-label="Resize column"
@@ -616,6 +729,7 @@ export function PlannerPage() {
           )}
         </div>
       )}
+      </div>
 
       {/* Floating overlay when undocked */}
       {undocked && <PopOutInfoPanel />}

@@ -101,18 +101,36 @@ export interface PlannerSectionConfig {
   /** Whether the section is shown in the desktop (lg+) grid */
   visible: boolean;
   /**
-   * Grid track weight in fr units (defaults to 1 when omitted). Lets a section
-   * claim more horizontal space than its siblings — e.g. the chronological
-   * "Powers by Level" grid is 2fr.
+   * Horizontal grid track weight in fr units (defaults to 1 when omitted). Lets
+   * a section's column claim more horizontal space than its siblings — e.g. the
+   * chronological "Powers by Level" grid is 2fr. When several sections stack in
+   * one column (see `column`), the column's horizontal weight is taken from the
+   * topmost section (first in array order within that column).
    */
   weight?: number;
+  /**
+   * LAY11 — which desktop grid *column* this section occupies (0-based). Two or
+   * more sections sharing a `column` value stack vertically in one column, in
+   * array order (top → bottom). Columns render left-to-right by ascending
+   * `column` value. Omitted only in legacy persisted state predating LAY11;
+   * `merge()` backfills it (each section its own column = the historical single
+   * row). Kept dense (0..N-1) by the planner-layout helpers after every edit.
+   */
+  column?: number;
+  /**
+   * LAY11 — vertical fr weight *within* a stacked column (defaults to 1). Only
+   * meaningful when the section shares its `column` with others; the vertical
+   * resize divider drives it, mirroring `weight` on the horizontal axis.
+   */
+  rowWeight?: number;
 }
 
 /**
- * Per-view-mode desktop column arrangement. Order within each array IS the
- * left-to-right column order. Persisted so a user's layout survives reload.
- * Tier-1 scope: reorder + show/hide (no free-form resize yet — `weight` is the
- * seam a future resize feature would drive).
+ * Per-view-mode desktop column arrangement. A flat list per view; the
+ * left-to-right / top-to-bottom 2D layout is derived from each entry's `column`
+ * (horizontal group) and array order (vertical order within a group). Persisted
+ * so a user's layout survives reload. Kept flat (rather than nested columns) so
+ * `merge()`'s append-new / drop-unknown reconcile stays a simple list filter.
  */
 export interface PlannerLayoutState {
   category: PlannerSectionConfig[];

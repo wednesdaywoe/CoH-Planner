@@ -160,33 +160,60 @@ revisit.
 
 ## Planned
 
-- [ ] **LAY11** — 2D dock grid (vertical stacking). Today the desktop grid is a
-  **single row** of `minmax(240px, Nfr)` columns with horizontal resize (LAY7).
-  LAY11 lets a column hold 2+ sections stacked vertically, making the workspace a
-  true 2D grid. **Shape (decision 2026-07-09, user-chosen): "stacked cells in
-  columns", NOT a free-form react-grid-layout.** Rationale — every planner section is
-  a tall full-height scroll column with a hard 240px horizontal floor and
-  height-hungry content, *because a power tray is a tall column by convention*
-  (in-game, Mids, and Sidekick all present powers this way). The one panel that is
-  genuinely wide-short — the StatsDashboard — is for exactly that reason **not** a
-  dock-grid member (it's carved out as its own Deferred candidate). So the only
-  capability a free-form grid adds over column-stacking — full-width spanning/offset
-  tiles — serves a shape none of the grid's actual panels want. Stacked cells capture ~90% of realistic layouts, add
-  **zero dependency**, reuse the shipped LAY7 resize divider rotated to the Y axis
-  (same gesture/feel), degrade to the existing single-column mobile fallback for free
-  (a column of N cells = N sections in a row), and inherit the existing Reset story —
-  the same "no new dep unless it earns its weight" call LAY4 made against dnd-kit.
-  Rejected: free-form react-grid-layout (dependency weight + bespoke mobile fallback +
-  collision/compaction + a stronger reset story, all for spanning tiles these panels
-  don't want). Data-model seam: `PlannerLayoutState` is a flat
-  `PlannerSectionConfig[]` per view; stacking needs a grouping layer — either nest
-  (`columns: { rows: SectionConfig[]; weight? }[]`) or add a `column` index +
-  `rowWeight` to each config. Prefer the shape that keeps `merge()`'s
-  append-new/drop-unknown reconcile trivial. Open sub-decisions before build: (a)
-  exact data shape; (b) whether reorder DnD gains a vertical drop target or stays
-  horizontal-only in v1; (c) per-cell min-height floor (audit found the vertical axis
-  render-safe — bodies scroll — so this is a UX choice, not a clip constraint).
-  verify: file:src/types/ui.ts, file:src/pages/PlannerPage.tsx
+- [x] **LAY11** — 2D dock grid (vertical stacking). SHIPPED 2026-07-09. The
+  desktop grid was a **single row** of `minmax(240px, Nfr)` columns with horizontal
+  resize (LAY7); a column can now hold 2+ sections stacked vertically, making the
+  workspace a true 2D grid. Shape = **"stacked cells in columns", NOT free-form**
+  (a power tray is a tall column by convention; the one wide-short panel,
+  StatsDashboard, is deliberately not a grid member), so column-stacking adds zero
+  dependency, reuses the LAY7 divider rotated to Y, degrades to the single-column
+  mobile fallback for free, and inherits Reset — the same "no new dep unless it
+  earns its weight" call LAY4 made vs dnd-kit. Rejected: free-form
+  react-grid-layout (dep weight + bespoke mobile fallback + collision/compaction +
+  spanning tiles these panels don't want).
+  **Open sub-decisions — settled at build (2026-07-09, user-chosen):**
+  (a) **data shape = flat `column` index + `rowWeight` on each `PlannerSectionConfig`**
+  (chosen over nested `columns[]`): keeps the persisted slice one flat array per
+  view and is a *superset* of the pre-LAY11 type, so `merge()`'s filter-known /
+  append-missing reconcile is nearly unchanged (`reconcilePlannerColumns` just
+  backfills `column` for legacy entries → the historical single row, and appends
+  new sections in fresh trailing columns).
+  (b) **reorder DnD gains a vertical axis** (chosen over menu-only): dropping a
+  header on the top/bottom quarter of a cell stacks above/below; the middle
+  splits left/right into a new column before/after target — a colored 3px edge bar
+  marks the live zone. The Layout menu stays as the accessible fallback (its
+  up/down became **left/right column shift** via `shiftColumn`, since array-swap
+  no-ops under `column` pinning; creating stacks is drag-only).
+  (c) **per-cell min-height floor = 120px** (`MIN_CELL_PX`; the audit found the
+  vertical axis render-safe — bodies scroll — so this is a UX floor, not a clip
+  constraint; the vertical resize clamps both neighbors to it).
+  **Implementation:** new pure `src/utils/planner-layout.ts`
+  (`toColumns`/`fromColumns`/`applyDrop`/`shiftColumn`/`reconcilePlannerColumns`,
+  shared by the store migration + page + menu; 17 unit tests) — every mutation
+  renormalizes `column` dense (0..N-1) column-major so the flat list is always
+  canonical. Store gains `setPlannerSectionRowWeights` (vertical twin of
+  `setPlannerSectionWeights`). `startColumnResize` rewired to columns (writes the
+  topmost section's `weight`); new `startRowResize` is its Y-axis twin. **Weight
+  ambiguity accepted (v1):** a column's horizontal weight lives on its *topmost*
+  section, so restacking can reset a custom column width to 1fr — documented,
+  Reset fixes it. Verified in-app (Playwright): stacked render is clean (Available+
+  Inherent / Primary+Secondary), DnD drop-zone marker + stacking work, vertical
+  resize shifts + persists `rowWeight` (500/200 split), horizontal resize still
+  tracks, menu shows column grouping ("6/6 shown in 4 columns") + Reset restores
+  the 6-column row, and the stack survives reload (migration/reconcile). tsc clean
+  (LAY11 files), 20 store+util tests green.
+  **Height-chain gotcha found in-app:** a stacked column needs a *definite* height
+  for `flexGrow`/`rowWeight` to split — but the desktop grid was never actually
+  bounded: `main` is a `display:block` box, so the grid's long-standing `flex-1`
+  was inert and the grid sized to *content*. Once cells got `flexBasis:0` +
+  `minHeight:120`, that content contribution collapsed to 120px and clipped the
+  power lists (user-reported: whole lower half blank). Fix: wrap the desktop
+  workspace in `lg:absolute lg:inset-0 lg:flex lg:flex-col` (main is already
+  `relative`) so the grid fills `main` with a real height — columns now scroll
+  internally instead of growing the page, and split/resize work without a forced
+  height. Kept a plain block below `lg` so the mobile fallback's original page-grow
+  flow is untouched. (Also fixes a latent pre-existing clip for very tall builds.)
+  verify: file:src/utils/planner-layout.ts, file:src/pages/PlannerPage.tsx, fn:startRowResize
 
 - [ ] **LAY12** — adjustability affordance. Problem (user-raised 2026-07-09): the
   rearrange/resize handles are undiscoverable — the LAY7 column-resize divider is
@@ -242,10 +269,9 @@ follow-ups, not prerequisites.
 ## Deferred
 
 - Tier 2 remainder: the *horizontal* axis shipped in LAY7 (column resize on the
-  `weight` field). The vertical-stacking / 2D dock grid is now planned as **LAY11**
-  (stacked-cells shape recommended over free-form; see Planned). The audit found the
-  vertical axis is render-safe (bodies scroll); the remaining cost is the data-model
-  seam + mobile/reset story captured there.
+  `weight` field); the *vertical* axis (2D dock grid / stacking) **shipped as LAY11**
+  (2026-07-09; flat `column`+`rowWeight` shape, vertical-DnD stacking, Y-axis resize
+  divider). The full 2D workspace is now in place.
 - Floor-lowering: **240px is the final floor (decision 2026-07-09).** Available
   split responsive shipped (LAY9, →240) and the toggled-slot wrap fixed (LAY9b), so
   240 is clean for every section. The push to ~200 was scoped and **declined** — it

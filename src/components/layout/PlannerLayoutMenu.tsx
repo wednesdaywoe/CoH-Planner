@@ -10,6 +10,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useUIStore, usePowerViewMode } from '@/stores';
+import { shiftColumn } from '@/utils/planner-layout';
 import type { PlannerSectionId } from '@/types';
 
 const SECTION_LABELS: Record<PlannerSectionId, string> = {
@@ -50,15 +51,17 @@ export function PlannerLayoutMenu() {
     };
   }, [open]);
 
-  const move = (index: number, dir: -1 | 1) => {
-    const target = index + dir;
-    if (target < 0 || target >= sections.length) return;
-    const next = [...sections];
-    [next[index], next[target]] = [next[target], next[index]];
-    reorder(view, next);
+  // Move a section one column left/right (popping it into its own column). The
+  // menu handles the horizontal axis + show/hide; creating vertical stacks is a
+  // drag-only gesture (drag a header onto another column's top/bottom edge).
+  const move = (id: PlannerSectionId, dir: -1 | 1) => {
+    reorder(view, shiftColumn(sections, id, dir));
   };
 
   const visibleCount = sections.filter((s) => s.visible).length;
+  const columnCount = new Set(
+    sections.filter((s) => s.visible).map((s) => s.column ?? -1),
+  ).size;
 
   return (
     <div className="relative hidden lg:block" ref={ref}>
@@ -91,8 +94,8 @@ export function PlannerLayoutMenu() {
           </div>
 
           <p className="text-[11px] text-gray-500 mb-2 leading-snug">
-            {view === 'chronological' ? 'By Level' : 'By Powerset'} view · {visibleCount}/{sections.length} shown.
-            Drag a column&apos;s header to reorder too.
+            {view === 'chronological' ? 'By Level' : 'By Powerset'} view · {visibleCount}/{sections.length} shown in {columnCount} column{columnCount === 1 ? '' : 's'}.
+            Drag a column&apos;s header onto another&apos;s top/bottom edge to stack.
           </p>
 
           <ul className="space-y-1">
@@ -103,33 +106,31 @@ export function PlannerLayoutMenu() {
                   key={s.id}
                   className="flex items-center gap-2 rounded border border-gray-700 bg-gray-900/50 px-2 py-1.5"
                 >
-                  {/* Reorder controls */}
-                  <div className="flex flex-col -my-1">
+                  {/* Column shift controls (left / right) */}
+                  <div className="flex items-center -mx-1">
                     <button
-                      onClick={() => move(i, -1)}
-                      disabled={i === 0}
-                      className="text-gray-500 hover:text-gray-200 disabled:opacity-25 disabled:hover:text-gray-500 leading-none transition-colors"
-                      title="Move earlier"
-                      aria-label={`Move ${SECTION_LABELS[s.id]} earlier`}
+                      onClick={() => move(s.id, -1)}
+                      className="text-gray-500 hover:text-gray-200 leading-none transition-colors"
+                      title="Move to the column on the left"
+                      aria-label={`Move ${SECTION_LABELS[s.id]} left`}
                     >
                       <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 5l-7 7 7 7" />
                       </svg>
                     </button>
                     <button
-                      onClick={() => move(i, 1)}
-                      disabled={i === sections.length - 1}
-                      className="text-gray-500 hover:text-gray-200 disabled:opacity-25 disabled:hover:text-gray-500 leading-none transition-colors"
-                      title="Move later"
-                      aria-label={`Move ${SECTION_LABELS[s.id]} later`}
+                      onClick={() => move(s.id, 1)}
+                      className="text-gray-500 hover:text-gray-200 leading-none transition-colors"
+                      title="Move to the column on the right"
+                      aria-label={`Move ${SECTION_LABELS[s.id]} right`}
                     >
                       <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                       </svg>
                     </button>
                   </div>
 
-                  <span className="text-xs text-gray-500 tabular-nums w-4 text-center">{i + 1}</span>
+                  <span className="text-xs text-gray-500 tabular-nums w-4 text-center" title="Column">{(s.column ?? i) + 1}</span>
                   <span className="text-sm text-gray-200 flex-1">{SECTION_LABELS[s.id]}</span>
 
                   {isInfoFloating && (

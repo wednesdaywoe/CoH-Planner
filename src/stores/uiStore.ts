@@ -30,6 +30,7 @@ import type {
   Enhancement,
 } from '@/types';
 import { createDefaultIncarnateActiveState } from '@/types';
+import { reconcilePlannerColumns } from '@/utils/planner-layout';
 import { type ColorThemeId, DEFAULT_COLOR_THEME, applyColorTheme, type ColorMode, DEFAULT_COLOR_MODE, applyColorMode } from '@/data/core/themes';
 import type { SlotLevelRef } from '@/utils/slot-levels';
 import type { PowerMetric } from '@/utils/calculations/attack-chain';
@@ -504,10 +505,14 @@ interface UIActions {
   reorderPlannerSections: (view: keyof PlannerLayoutState, sections: PlannerSectionConfig[]) => void;
   /** Show/hide a single planner section in a view mode */
   setPlannerSectionVisible: (view: keyof PlannerLayoutState, id: PlannerSectionId, visible: boolean) => void;
-  /** Set fr-weights for one or more columns (drag-to-resize). Merges the given
-   *  `{ id: weight }` map onto the existing layout, leaving other columns' weights
-   *  untouched. */
+  /** Set horizontal fr-weights for one or more columns (drag-to-resize). Merges
+   *  the given `{ id: weight }` map onto the existing layout, leaving other
+   *  columns' weights untouched. */
   setPlannerSectionWeights: (view: keyof PlannerLayoutState, weights: Partial<Record<PlannerSectionId, number>>) => void;
+  /** Set vertical fr-weights (`rowWeight`) for one or more stacked sections
+   *  (LAY11 vertical resize). Same merge semantics as `setPlannerSectionWeights`
+   *  but on the within-column axis. */
+  setPlannerSectionRowWeights: (view: keyof PlannerLayoutState, rowWeights: Partial<Record<PlannerSectionId, number>>) => void;
   /** Restore a view mode's columns to the default order + visibility */
   resetPlannerLayout: (view: keyof PlannerLayoutState) => void;
 
@@ -787,17 +792,17 @@ const defaultStatsConfig: StatDisplayConfig[] = [
 // "Powers by Level" grid keeps its 2fr width via `weight`.
 const defaultPlannerLayout: PlannerLayoutState = {
   category: [
-    { id: 'available', visible: true },
-    { id: 'primary', visible: true },
-    { id: 'secondary', visible: true },
-    { id: 'pool', visible: true },
-    { id: 'inherent', visible: true },
-    { id: 'info', visible: true },
+    { id: 'available', visible: true, column: 0 },
+    { id: 'primary', visible: true, column: 1 },
+    { id: 'secondary', visible: true, column: 2 },
+    { id: 'pool', visible: true, column: 3 },
+    { id: 'inherent', visible: true, column: 4 },
+    { id: 'info', visible: true, column: 5 },
   ],
   chronological: [
-    { id: 'available', visible: true },
-    { id: 'bylevel', visible: true, weight: 2 },
-    { id: 'info', visible: true },
+    { id: 'available', visible: true, column: 0 },
+    { id: 'bylevel', visible: true, weight: 2, column: 1 },
+    { id: 'info', visible: true, column: 2 },
   ],
 };
 
@@ -1343,6 +1348,16 @@ export const useUIStore = create<UIStore>()(
             ...state.plannerLayout,
             [view]: state.plannerLayout[view].map((s) =>
               weights[s.id] !== undefined ? { ...s, weight: weights[s.id] } : s
+            ),
+          },
+        })),
+
+      setPlannerSectionRowWeights: (view, rowWeights) =>
+        set((state) => ({
+          plannerLayout: {
+            ...state.plannerLayout,
+            [view]: state.plannerLayout[view].map((s) =>
+              rowWeights[s.id] !== undefined ? { ...s, rowWeight: rowWeights[s.id] } : s
             ),
           },
         })),
@@ -1899,7 +1914,9 @@ export const useUIStore = create<UIStore>()(
             const kept = saved.filter((s) => known.has(s.id));
             const present = new Set(kept.map((s) => s.id));
             const missing = defaults.filter((s) => !present.has(s.id));
-            return [...kept, ...missing];
+            // reconcilePlannerColumns backfills `column` for legacy (pre-LAY11)
+            // entries and appends new sections in fresh trailing columns.
+            return reconcilePlannerColumns(kept, missing);
           };
           merged.plannerLayout = {
             category: reconcileView('category'),
