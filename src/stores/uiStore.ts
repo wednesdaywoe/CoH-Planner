@@ -95,9 +95,6 @@ interface UIState {
   /** Stats config modal open state */
   statsConfigModalOpen: boolean;
 
-  /** Planner layout (rearrangeable columns) modal open state */
-  layoutModalOpen: boolean;
-
   /** When set, the modal scrolls to the category containing this stat ID
    *  on open and briefly highlights it. Cleared after the modal consumes it. */
   statsConfigScrollTo: string | null;
@@ -498,8 +495,6 @@ interface UIActions {
   setPlannerSectionVisible: (view: keyof PlannerLayoutState, id: PlannerSectionId, visible: boolean) => void;
   /** Restore a view mode's columns to the default order + visibility */
   resetPlannerLayout: (view: keyof PlannerLayoutState) => void;
-  openLayoutModal: () => void;
-  closeLayoutModal: () => void;
 
   // Accolades Modal
   openAccoladesModal: () => void;
@@ -799,7 +794,6 @@ export const useUIStore = create<UIStore>()(
       genericPicker: defaultGenericPicker,
       originPicker: defaultOriginPicker,
       statsConfigModalOpen: false,
-      layoutModalOpen: false,
       statsConfigScrollTo: null,
       accoladesModalOpen: false,
       aboutModalOpen: false,
@@ -1330,9 +1324,6 @@ export const useUIStore = create<UIStore>()(
             [view]: defaultPlannerLayout[view],
           },
         })),
-
-      openLayoutModal: () => set({ layoutModalOpen: true }),
-      closeLayoutModal: () => set({ layoutModalOpen: false }),
 
       // Accolades Modal
       openAccoladesModal: () =>

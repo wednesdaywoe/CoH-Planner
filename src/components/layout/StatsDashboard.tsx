@@ -12,7 +12,7 @@ import { formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data';
 import { getDefenseSoftcap } from '@/data/purple-patch';
 import { Tooltip } from '@/components/ui';
-import { StatsConfigModal, LayoutModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal, BuildImageModal } from '@/components/modals';
+import { StatsConfigModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal, BuildImageModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal, DestinyTimeSlider } from '@/components/incarnate';
 import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
@@ -142,8 +142,6 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const statsConfigModalOpen = useUIStore((s) => s.statsConfigModalOpen);
   const openStatsConfigModal = useUIStore((s) => s.openStatsConfigModal);
   const closeStatsConfigModal = useUIStore((s) => s.closeStatsConfigModal);
-  const layoutModalOpen = useUIStore((s) => s.layoutModalOpen);
-  const closeLayoutModal = useUIStore((s) => s.closeLayoutModal);
   const accoladesModalOpen = useUIStore((s) => s.accoladesModalOpen);
   const openAccoladesModal = useUIStore((s) => s.openAccoladesModal);
   const closeAccoladesModal = useUIStore((s) => s.closeAccoladesModal);
@@ -553,12 +551,6 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
       <StatsConfigModal
         isOpen={statsConfigModalOpen}
         onClose={closeStatsConfigModal}
-      />
-
-      {/* Planner Layout Modal */}
-      <LayoutModal
-        isOpen={layoutModalOpen}
-        onClose={closeLayoutModal}
       />
 
       {/* Accolades Modal */}

@@ -21,6 +21,7 @@ import { quickShareBuild, RateLimitError, formatRateLimitMessage } from '@/servi
 import type { BuildExport } from '@/types/build';
 import type { DatasetId } from '@/data/dataset';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
+import { PlannerLayoutMenu } from './PlannerLayoutMenu';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, OPPORTUNITY_CRIT_MULTIPLIER } from '@/utils/calculations';
 import { isCalcDebugEnabled, enableCalcDebug, disableCalcDebug } from '@/utils/calc-debug';
 import { getProfile } from '@/services/profile';
@@ -136,7 +137,6 @@ export function Header() {
   const openAboutModal = useUIStore((s) => s.openAboutModal);
   const openWelcomeModal = useUIStore((s) => s.openWelcomeModal);
   const openChangelogModal = useUIStore((s) => s.openChangelogModal);
-  const openLayoutModal = useUIStore((s) => s.openLayoutModal);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -191,19 +191,9 @@ export function Header() {
           <SettingsPopover />
         </div>
 
-        {/* Planner layout (rearrangeable columns). Desktop-only feature, matching
-            the Menu/Options triggers which also hide below lg. */}
-        <button
-          onClick={openLayoutModal}
-          className="hidden lg:flex items-center gap-1 px-2 py-1.5 text-xs text-[var(--color-link)] hover:text-white bg-[var(--color-primary)]/20 hover:bg-[var(--color-primary)]/30 border border-[var(--color-primary)]/40 rounded transition-colors"
-          title="Planner Layout — rearrange, show, and hide the planner columns"
-          data-onboarding="planner-layout"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5.25h16v13.5H4zM9.333 5.25v13.5M14.667 5.25v13.5" />
-          </svg>
-          <span className="hidden sm:inline">Layout</span>
-        </button>
+        {/* Planner layout (rearrangeable columns). Desktop-only dropdown in the
+            same mould as Menu / Options. */}
+        <PlannerLayoutMenu />
 
         <BuildIdentityPopover />
         <DatasetBadge />
