@@ -371,11 +371,51 @@ per-field evidence trail:
   one ~14 MB chunk (drove the deploy heap bump to 6144 MB); a dynamic-import
   split would cut initial page weight. Explicitly not a scaling need.
 - **TSPY11 — restore dropped Thunderspy player-power effect vocabulary** [M/L,
-  deferred 2026-07-09] — **~1,000 tspy powers (rough harness count 998 / 2,806,
-  ~36%) ship with NO effects** because the powerset converter
+  **Res + ToHit RESOLVED 2026-07-09** (commit `2e0db2ddb0`, branch
+  `tspy-resist-tohit-vocab`); rest still open] — **~1,000 tspy powers (~36%)
+  shipped with NO effects.**
+
+  **RESOLVED slice (Res_DMG + Buff_ToHit → 419 files, 952 effect blocks):** the
+  root cause was **PARSER-side, not converter-side** — the original "converter-
+  side only, no re-parse" theory below was WRONG. tspy stores resistance armor
+  and ToHit buffs with only an enhancement-CATEGORY token as the front attrib
+  (`Res_DMG`, `Buff_ToHit`); the real affected attribs (`Smashing_Dmg`…, `ToHit`)
+  live in the post-`requires` INDEX array — the SAME shape the parser already
+  surfaced for `Buff_Def` positional defense. Fix (`_parse_effect_template_
+  thunderspy`): prefer the index array for these fronts and synthesize
+  aspect='Resistance' for `*_Dmg`-on-`*_Res_DMG` rows (so they route to the
+  converter's resistance branch, not the damage branch — the `_Dmg`-table trap).
+  Verified: Mind Over Body is Smashing-ONLY in tspy's bin (Lethal/Psi absent vs
+  HC's 3 templates — faithful, eff_count=1); High Pain Tolerance decodes all 8
+  types; Absorption is byte-identical to HC's own. `convert-pet-entities.cjs`
+  updated to recognize the surfaced `*_dmg`+Resistance shape (keeps Tar Patch /
+  Sleet -Res). Guard: `thunderspy-resist-tohit-vocab.test.ts`. Lesson: the
+  "converter-side only" framing missed that the parser already had a proven
+  index-array-surfacing pattern to extend. **Link Minds' melee-only defense left
+  AS-IS** — its defense index array genuinely contains only `Melee` (the
+  +Def(All) shortHelp is inherited prose from the reused Widow Mind Link); dev
+  verifying in-game.
+
+  **Case B — Res mislabel (WRITTEN + VERIFIED, BLOCKED on re-export, patch saved
+  `scratchpad/caseB-parser.patch`):** Glacial Shield +Res(Cold), Corrosive Sap /
+  Enervating Field -Res(all) render as *damage* — real `*_Dmg` fronts on a
+  `*_Res_Dmg` table with empty aspect (30 templates, 26 files). Fix generalizes
+  the resistance-aspect synthesis to any `*_Dmg` (excluding the bare `Res_DMG`
+  token) on a `*_Res_Dmg` table. Verified working (Glacial Shield → resistance.cold,
+  Corrosive Sap → resistanceDebuff). **Blocked:** needs a full tspy re-export,
+  which now hits TSPY12. Exact edit — in `_parse_effect_template_thunderspy`, after
+  the `_tspy_res_surfaced` aspect synthesis:
+  `elif (table and table.lower().endswith('_res_dmg') and attribs and all(a.lower().endswith('_dmg') and a.lower() != 'res_dmg' for a in attribs)): aspect = "Resistance"`
+
+  **Case A — bare `Res_DMG` -Res debuffs still DROPPED** (296 templates, 224
+  files): Sonic Attack / Venom Grenade / Piercing Beam -Res have a bare `Res_DMG`
+  front with NO index array (implicit -Res(All)); needs an -Res(All) modeling
+  decision (which types) before surfacing. Still open.
+
+  --- *(original theory, partly superseded — kept for the attrib inventory)* ---
+  ~1,000 tspy powers ship with NO effects because the powerset converter
   (`scripts/convert-powerset.cjs`) routes on HC-shaped attrib maps and tspy names
-  its non-damage attribs differently. **Converter-side only — the raw export has
-  the data** (no re-parse/re-export); mirror the tspy vocabulary already solved
+  its non-damage attribs differently. Mirror the tspy vocabulary already solved
   for pets in `convert-pet-entities.cjs` (`_TSPY_DEBUFF_NAMED`, the `*_Ones`
   marker guard, `Res_DMG` sign-discrimination). **Pre-existing / zero regression:**
   the DSH6 byte-identical rewrite dropped these identically before and after.
@@ -414,6 +454,29 @@ per-field evidence trail:
   prior-session recommendation was to do this AFTER the output-identical DSH6
   refactors settled — which they now have (Phases 2R/3 + legacy deletion shipped
   on branch `converter-rewrite`). Not started; deferred per 2026-07-09 decision.
+
+- **TSPY12 — Thunderspy summon format changed by a 2026-07-09 patch; parser
+  Create_Entity decode broken** [L, BLOCKER, discovered 2026-07-09] — running the
+  tspy client triggered the Sweet Tea launcher to patch `bin.pigg` (mtime jumped
+  to 08:04 mid-session). The **new `powers.bin` restructured how summons are
+  encoded**: the parser's tspy summon path (`_extract_thunderspy_summons` +
+  Create_Entity attrib index 469, marker 465) now decodes **1442 `Create_Entity`
+  summon templates as bare `Ones`, dropping every `entity_def`** — all pets /
+  pseudo-pets vanish. Diagnosis: marker 465 still present in the bin (1149×), but
+  the Create_Entity attrib index `469*4` collapsed from ~809 to 28, and NO
+  neighboring index (460–480) carries the missing ~809 — i.e. NOT a clean constant
+  shift, the summon sub-structure itself changed. Non-summon data (resistance,
+  ToHit, scales) is format-STABLE across the patch — only summon templates broke.
+  **Impact:** blocks any tspy re-export (would ingest the summon regression), and
+  therefore blocks TSPY11 Case B. The last-known-good tspy export (commit
+  `2e0db2ddb0`, old bin) is intact and shipped; the staleness guard checks the
+  PARSER fingerprint (passes), and CI can't re-export (no pigg/Python), so main
+  stays green. **Fix path:** oracle-driven reverse-engineer — use commit-1's
+  old-bin summon output (power → entity_def) to relocate the new encoding, update
+  the parser's format auto-detection for the new tspy summon layout, then ONE
+  clean re-export lands TSPY11 Case B + the patch's real data + fixed summons.
+  Same gotcha class as the CLAUDE.md "HC adds a field on patch → field-45b auto-
+  detect," now for tspy summons. Not started.
 
 ## 10. Deductive Schema Harness residuals
 
