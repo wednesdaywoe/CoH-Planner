@@ -144,7 +144,11 @@
       "templates": [
         {
           "attribs": [
-            "Smashing"
+            "Smashing",
+            "Lethal",
+            "Energy",
+            "Negative_Energy",
+            "Psionic"
           ],
           "type": "",
           "application_type": "",

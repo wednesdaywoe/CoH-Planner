@@ -63,7 +63,11 @@
       "templates": [
         {
           "attribs": [
-            "Fire"
+            "Ranged",
+            "Area",
+            "Fire",
+            "Energy",
+            "Negative_Energy"
           ],
           "type": "",
           "application_type": "",
@@ -141,7 +145,11 @@
       "templates": [
         {
           "attribs": [
-            "Fire"
+            "Ranged",
+            "Area",
+            "Fire",
+            "Energy",
+            "Negative_Energy"
           ],
           "type": "",
           "application_type": "",

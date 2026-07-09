@@ -183,7 +183,12 @@
       "templates": [
         {
           "attribs": [
-            "Smashing"
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy"
           ],
           "type": "",
           "application_type": "",

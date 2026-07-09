@@ -56,7 +56,16 @@
       "templates": [
         {
           "attribs": [
-            "ToHit"
+            "Ranged",
+            "Melee",
+            "Area",
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy",
+            "Psionic"
           ],
           "type": "",
           "application_type": "",

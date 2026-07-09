@@ -93,7 +93,9 @@
       "templates": [
         {
           "attribs": [
-            "Melee"
+            "Ranged",
+            "Melee",
+            "Area"
           ],
           "type": "",
           "application_type": "",

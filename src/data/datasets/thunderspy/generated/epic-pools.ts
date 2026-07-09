@@ -11964,7 +11964,43 @@ export const EPIC_POOLS_RAW = {
           "maxTargets": 255,
           "buffDuration": 90,
           "defenseBuff": {
+            "aoe": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
             "melee": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 1,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
               "scale": 1,
               "table": "Melee_Buff_Def"
             }
@@ -13346,7 +13382,43 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 15,
           "defenseBuff": {
+            "aoe": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "cold": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "energy": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "fire": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "lethal": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
             "melee": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "negative": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "psionic": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "ranged": {
+              "scale": 2.7,
+              "table": "Melee_Buff_Def"
+            },
+            "smashing": {
               "scale": 2.7,
               "table": "Melee_Buff_Def"
             }

@@ -40,7 +40,43 @@ export const NWTacticalTrainingVengeance: Power = {
   "effects": {
     "buffDuration": 120,
     "defenseBuff": {
+      "aoe": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
       "melee": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "psionic": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 2.5,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 2.5,
         "table": "Melee_Buff_Def"
       }

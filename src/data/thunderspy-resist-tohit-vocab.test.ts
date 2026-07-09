@@ -5,6 +5,8 @@ import { HighPainTolerance } from './datasets/thunderspy/generated/powersets/bru
 import { Aim } from './datasets/thunderspy/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
 import { GlacialShield } from './datasets/thunderspy/generated/powersets/defender/primary/cold-domination/glacial-shield';
 import { EnervatingField } from './datasets/thunderspy/generated/powersets/defender/primary/radiation-emission/enervating-field';
+import { NWMindLink } from './datasets/thunderspy/generated/powersets/arachnos-widow/epic/widow-teamwork/nw-mind-link';
+import { CloakofDarkness } from './datasets/thunderspy/generated/powersets/brute/secondary/dark-armor/cloak-of-darkness';
 
 /**
  * Thunderspy resistance-armor / ToHit-buff vocabulary — the parser-surfacing fix
@@ -87,5 +89,36 @@ describe('Thunderspy Case B — damage-type-front resistance mislabel', () => {
       expect(rd[t as keyof typeof rd], `missing resistanceDebuff.${t}`).toBeDefined();
     }
     expect(EnervatingField.effects?.damage).toBeUndefined();
+  });
+});
+
+/**
+ * Displaced defense index-array recovery (2026-07-09).
+ *
+ * Thunderspy stores a Buff_Def template's affected attribs as a count-prefixed index
+ * array. Simple toggles keep it at the fixed post-`requires` offset the parser reads,
+ * but powers with a requires/redirect block (Mind Link / Link Minds, Fade, Farsight,
+ * armor passives) carry only a 1-type SHIM there and push the real multi-type array
+ * downstream — so ~165 tspy defense powers rendered as SINGLE-type defense (Mind Link
+ * → Def(Melee) instead of Def(All)). The parser now unions the shim with the widest
+ * count-prefixed defense array in the element when the fixed read yields <=1 type.
+ * Zero-regression: multi-type reads are used unchanged. See [[tspy-player-vocab-gap]].
+ */
+describe('Thunderspy displaced-defense index-array recovery', () => {
+  it('Mind Link grants multi-type defense, not Melee-only', () => {
+    const def = NWMindLink.effects?.defenseBuff ?? {};
+    // Was ['melee'] only. Should now carry positional + typed defense (Def-All-ish).
+    for (const t of ['melee', 'ranged', 'aoe', 'smashing', 'lethal', 'fire', 'cold', 'energy', 'negative', 'psionic']) {
+      expect(def[t as keyof typeof def], `missing defenseBuff.${t}`).toBeDefined();
+    }
+  });
+
+  it('a currently-correct armor toggle keeps its full defense (no regression)', () => {
+    // Cloak of Darkness read correctly before the fix (its array sits at the fixed
+    // offset); confirm the recovery path left it whole.
+    const def = CloakofDarkness.effects?.defenseBuff ?? {};
+    for (const t of ['melee', 'ranged', 'aoe', 'smashing', 'lethal', 'psionic']) {
+      expect(def[t as keyof typeof def], `missing defenseBuff.${t}`).toBeDefined();
+    }
   });
 });

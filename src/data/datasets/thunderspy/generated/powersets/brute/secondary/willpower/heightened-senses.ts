@@ -42,6 +42,22 @@ export const HeightenedSenses: Power = {
   "effects": {
     "buffDuration": 0.75,
     "defenseBuff": {
+      "cold": {
+        "scale": 0.33,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.33,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.33,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.33,
+        "table": "Melee_Buff_Def"
+      },
       "smashing": {
         "scale": 0.33,
         "table": "Melee_Buff_Def"

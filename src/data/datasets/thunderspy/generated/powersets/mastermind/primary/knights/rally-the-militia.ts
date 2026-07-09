@@ -47,7 +47,35 @@ export const RallyTheMilitia: Power = {
   "effects": {
     "buffDuration": 90,
     "defenseBuff": {
+      "cold": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "fire": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
       "melee": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "psionic": {
+        "scale": 1,
+        "table": "Ranged_Buff_Def"
+      },
+      "smashing": {
         "scale": 1,
         "table": "Ranged_Buff_Def"
       }

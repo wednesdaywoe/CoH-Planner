@@ -44,7 +44,39 @@ export const GrantCover: Power = {
   "effects": {
     "buffDuration": 2.25,
     "defenseBuff": {
+      "aoe": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "cold": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
       "melee": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "ranged": {
+        "scale": 1.125,
+        "table": "Melee_Buff_Def"
+      },
+      "smashing": {
         "scale": 1.125,
         "table": "Melee_Buff_Def"
       }

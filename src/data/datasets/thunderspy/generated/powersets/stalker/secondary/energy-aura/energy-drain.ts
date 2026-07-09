@@ -40,6 +40,26 @@ export const EnergyDrain: Power = {
   "effects": {
     "buffDuration": 45,
     "defenseBuff": {
+      "cold": {
+        "scale": 0.05,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.05,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 0.05,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 0.05,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.05,
+        "table": "Melee_Buff_Def"
+      },
       "smashing": {
         "scale": 0.05,
         "table": "Melee_Buff_Def"

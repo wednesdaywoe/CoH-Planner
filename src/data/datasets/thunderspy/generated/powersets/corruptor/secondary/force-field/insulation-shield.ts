@@ -39,7 +39,23 @@ export const InsulationShield: Power = {
   "effects": {
     "buffDuration": 240,
     "defenseBuff": {
+      "aoe": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      },
+      "energy": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      },
       "fire": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      },
+      "negative": {
+        "scale": 0.75,
+        "table": "Ranged_Buff_Def"
+      },
+      "ranged": {
         "scale": 0.75,
         "table": "Ranged_Buff_Def"
       }

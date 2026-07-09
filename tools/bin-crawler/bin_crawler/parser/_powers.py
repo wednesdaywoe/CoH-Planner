@@ -1455,6 +1455,34 @@ def _extract_thunderspy_summons(strtab_data, start: int, end: int,
     return out
 
 
+# Defense-class attrib indices: positional Ranged(26)/Melee(27)/Area(28) + the eight
+# damage-type defenses Smashing(29)…Toxic(36). Used to relocate a Buff_Def template's
+# affected-attrib array when a requires/redirect block displaces it (see below).
+_TSPY_DEFENSE_IDX = frozenset(range(26, 37))
+
+
+def _tspy_scan_defense_arrays(strtab_data, start: int, end: int) -> list[list[str]]:
+    """Every count-prefixed array in [start, end) whose entries are ALL defense-class
+    attrib indices. Thunderspy stores a defense template's affected attribs as a
+    `[count][count × attribIndex*4]` array. Simple toggles keep it at the fixed
+    post-`requires` offset the header read below targets; but powers with a
+    requires/redirect block carry only a 1-type SHIM there and push the real
+    multi-type array ~140 bytes downstream. Returns each qualifying array's decoded
+    attrib-name list, in file order."""
+    out: list[list[str]] = []
+    i = start
+    while i < end - 4:
+        k = struct.unpack_from('<I', strtab_data, i)[0]
+        if 1 <= k <= 24 and i + 4 + k * 4 <= end:
+            idxs = struct.unpack_from('<%dI' % k, strtab_data, i + 4)
+            if all(v % 4 == 0 and (v // 4) in _TSPY_DEFENSE_IDX for v in idxs):
+                out.append([ATTRIB_NAME_THUNDERSPY[v // 4] for v in idxs])
+                i += 4 + k * 4
+                continue
+        i += 4
+    return out
+
+
 def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
                                       *, incarnate_scope: str | None = None) -> EffectTemplate:
     """Parse a Thunderspy AttribMod template.
@@ -1497,6 +1525,11 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
         if not s or not all(0x20 <= ord(c) < 0x7f for c in s):
             return None
         return s
+
+    # Element bounds (r is a sub_reader scoped to this one effect element) — used by
+    # the Buff_Def index-array recovery below to scan the whole element for the real
+    # displaced defense array.
+    _elem_start = r._pos
 
     # Attribs (front, string-offset form): populated for damage / single-attrib
     # templates whose attrib carries a string name (Damage, Knockback, Ones, …).
@@ -1633,8 +1666,31 @@ def _parse_effect_template_thunderspy(r: BinReader, strtab_data, strtab_base,
     # templates carry clean positional defense types in the index array; the
     # converter's defense-position/type filter ignores any stray non-defense
     # attrib, so this is safe for the handful that don't.)
-    if table and 'Buff_Def' in table and _idx_attribs:
-        attribs = _idx_attribs
+    if table and 'Buff_Def' in table:
+        # The fixed post-`requires` index read (above) lands on the real affected-attrib
+        # array for simple defense toggles (Maneuvers, Cloak of Darkness — count>=2
+        # there). But powers with a requires/redirect block (Mind Link / Link Minds,
+        # Fade, Farsight, Invincibility, most armor passives) carry only a 1-type SHIM
+        # at that offset, with the real multi-type defense array pushed ~140 bytes
+        # downstream — so the fixed read alone rendered ~165 tspy powers as single-type
+        # defense (Mind Link → Def(Melee) instead of Def(All)). When the read yields the
+        # shim (<=1 decoded type), recover the real array by unioning the shim with the
+        # WIDEST count-prefixed defense array in the element. Zero-regression: a
+        # multi-type read (count>=2) IS the real array and is used byte-for-byte as
+        # before. Verified vs the HC structural oracle: 226/241 exact-or-subset; the
+        # residual diffs are systematic tspy rebalances (Ice Shield, Dodge, Focused
+        # Senses), not misreads.
+        if _idx_attribs and len(_idx_attribs) >= 2:
+            attribs = _idx_attribs
+        else:
+            _def_arrs = _tspy_scan_defense_arrays(strtab_data, _elem_start, r._end)
+            _widest = max(_def_arrs, key=len, default=None)
+            if _widest and len(_widest) >= 2:
+                _union = set(_idx_attribs) | set(_widest)
+                attribs = [ATTRIB_NAME_THUNDERSPY[i] for i in sorted(_TSPY_DEFENSE_IDX)
+                           if ATTRIB_NAME_THUNDERSPY[i] in _union]
+            elif _idx_attribs:
+                attribs = _idx_attribs
 
     # Resistance-armor / ToHit-buff templates: same shape as Buff_Def above — the
     # front string-attrib is only the enhancement CATEGORY token (`Res_DMG`,

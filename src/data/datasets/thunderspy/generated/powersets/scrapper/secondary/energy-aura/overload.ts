@@ -41,6 +41,26 @@ export const Overload: Power = {
   "effects": {
     "buffDuration": 90,
     "defenseBuff": {
+      "cold": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
+      "fire": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
+      "lethal": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
+      "negative": {
+        "scale": 6,
+        "table": "Melee_Buff_Def"
+      },
       "smashing": {
         "scale": 6,
         "table": "Melee_Buff_Def"

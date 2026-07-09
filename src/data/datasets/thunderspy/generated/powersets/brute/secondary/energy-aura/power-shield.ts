@@ -42,6 +42,14 @@ export const PowerShield: Power = {
   "effects": {
     "buffDuration": 0.75,
     "defenseBuff": {
+      "cold": {
+        "scale": 2.2,
+        "table": "Melee_Buff_Def"
+      },
+      "energy": {
+        "scale": 2.2,
+        "table": "Melee_Buff_Def"
+      },
       "fire": {
         "scale": 2.2,
         "table": "Melee_Buff_Def"

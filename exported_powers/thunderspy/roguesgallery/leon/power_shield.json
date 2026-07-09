@@ -54,7 +54,9 @@
       "templates": [
         {
           "attribs": [
-            "Fire"
+            "Fire",
+            "Cold",
+            "Energy"
           ],
           "type": "",
           "application_type": "",
