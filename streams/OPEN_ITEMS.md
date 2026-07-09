@@ -391,10 +391,26 @@ per-field evidence trail:
   updated to recognize the surfaced `*_dmg`+Resistance shape (keeps Tar Patch /
   Sleet -Res). Guard: `thunderspy-resist-tohit-vocab.test.ts`. Lesson: the
   "converter-side only" framing missed that the parser already had a proven
-  index-array-surfacing pattern to extend. **Link Minds' melee-only defense left
-  AS-IS** — its defense index array genuinely contains only `Melee` (the
-  +Def(All) shortHelp is inherited prose from the reused Widow Mind Link); dev
-  verifying in-game.
+  index-array-surfacing pattern to extend.
+
+  **Mind Link / Link Minds melee-only defense — RESOLVED 2026-07-09** (commit
+  `6530af4e10`). The earlier "bin genuinely contains only Melee" reading was WRONG:
+  tspy stores a Buff_Def template's affected attribs as a count-prefixed index array,
+  and the parser read it at a FIXED post-`requires` offset (`r._pos+16`). That offset
+  is correct for simple defense toggles (Maneuvers, Cloak of Darkness — count>=2
+  there), but powers with a requires/redirect block (Mind Link, Fade, Farsight,
+  Invincibility, most armor passives) carry only a 1-type SHIM at that offset with the
+  real multi-type array pushed ~140 bytes downstream — so ~165 tspy defense powers
+  rendered SINGLE-type. Fix (`_parse_effect_template_thunderspy` + new
+  `_tspy_scan_defense_arrays`): when the fixed read yields <=1 type, union the shim
+  with the WIDEST count-prefixed defense array (idx 26-36) in the element. Scoped to
+  Buff_Def; zero-regression (multi-type reads byte-identical). Validated vs HC oracle:
+  226/241 exact-or-subset (residual = systematic tspy rebalances Ice Shield / Dodge /
+  Focused Senses, never false types). Mind Link/Link Minds/Fade → 10 types,
+  Farsight/Energy Cloak/Invincibility 1→6-9; 89 tspy files; HC/Rebirth byte-identical;
+  regen + 908 tests + gates ×3 green; guards added. Lesson: a "faithful single-type"
+  reading from a fixed-offset heuristic is suspect when the HC equivalent is multi-type
+  — check for a displaced array before concluding rebalance.
 
   **Case B — Res mislabel: RESOLVED + SHIPPED 2026-07-09** (branch
   `tspy-resist-tohit-vocab`). Glacial Shield +Res(Cold), Corrosive Sap /
