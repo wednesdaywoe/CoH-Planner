@@ -27,8 +27,11 @@
 
 const fs = require('fs');
 const path = require('path');
+// NB Phase 1 flipped extractEffects to the projection; the harness now
+// compares against the retained LEGACY routing (extractEffectsLegacy).
 const {
-  collectAllTemplates, templatesToAtoms, projectAtomsToEffects, extractEffects,
+  collectAllTemplates, templatesToAtoms, projectAtomsToEffects,
+  extractEffectsLegacy: extractEffects,
   RAW_DATA_PATH, CATEGORY_MAP,
 } = require('./convert-powerset.cjs');
 

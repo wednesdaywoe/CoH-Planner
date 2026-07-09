@@ -4172,28 +4172,142 @@ function projectAtomsToEffects(atoms, powerName) {
   return _sortKeysDeep(effects); // canonical emit order (Phase 0c)
 }
 
+/**
+ * DSH6 Phase 1 — extractEffects IS the atom projection now.
+ *
+ * The template bag-routing below survives as `extractEffectsLegacy`, used only
+ * by the env-gated shadow compare (DSH6_SHADOW_COMPARE=<log> during a regen
+ * proves projection ≡ legacy on every call path; direction is now inverted —
+ * the projection is live, the legacy loop is the shadow). It is scheduled for
+ * deletion once a few slices of divergence-fix work (intended restorations)
+ * land and the compare has no remaining audience.
+ *
+ * `summon` (ENTITY CREATION) stays template-owned in `extractSummon` per the
+ * Phase 0 plan — it consumes `params`/pet-lifespan context that is not part of
+ * the atomic effect model.
+ */
 function extractEffects(templates, powerName) {
-  const effects = {};
-  const unmappedAttribs = new Set();
-
-  // DSH6 Phase 0a — SHADOW MODE. When a sink is installed (by the shadow
-  // harness scripts, never during a normal regen), hand it the atom encoding of
-  // the RAW input template list — before the twin pre-scan below drops the
-  // IgnoreResistance duplicates — so the atom list keeps both twins as distinct
-  // records (the Phase 3 `resistible:false` representation). Zero effect on
-  // output; the bag pipeline below is untouched.
+  // Shadow sink for harness scripts (see dsh6-shadow-atoms.cjs).
   if (global.__DSH6_ATOM_SINK__) {
     global.__DSH6_ATOM_SINK__(powerName, templatesToAtoms(templates));
   }
-  // DSH6 Phase 0b — env-gated self-compare. With DSH6_SHADOW_COMPARE set (to a
-  // log-file path), EVERY extractEffects call — base, redirect, activation and
-  // conditional-pipeline pulls alike — also runs the atom projection over its
-  // raw input and appends any divergence to the log. A full regen under this
-  // env var is the exhaustive equivalence proof across all real call paths
-  // (the standalone harness scripts only cover the base path). Atoms must be
-  // captured HERE: the twin pre-scan below mutates/filters the template list.
-  const _dsh6EntryAtoms = process.env.DSH6_SHADOW_COMPARE
-    ? templatesToAtoms(templates) : null;
+
+  const atoms = templatesToAtoms(templates);
+  let effects = projectAtomsToEffects(atoms, powerName);
+  const summon = extractSummon(templates, powerName);
+  if (summon) {
+    effects.summon = summon;
+    effects = _sortKeysDeep(effects); // keep canonical order with summon merged
+  }
+
+  // Env-gated equivalence proof vs the legacy bag routing (inverted 0b hook).
+  if (process.env.DSH6_SHADOW_COMPARE) {
+    const _canon = (v) => {
+      if (Array.isArray(v)) return v.map(_canon);
+      if (v && typeof v === 'object') {
+        const o = {};
+        for (const k of Object.keys(v).sort()) {
+          if (v[k] !== undefined && k !== 'summon' && k !== 'conditionalEntities') o[k] = _canon(v[k]);
+        }
+        return o;
+      }
+      return v;
+    };
+    const cLegacy = JSON.stringify(_canon(extractEffectsLegacy(templates, powerName)));
+    const cLive = JSON.stringify(_canon(effects));
+    if (cLegacy !== cLive) {
+      fs.appendFileSync(process.env.DSH6_SHADOW_COMPARE,
+        JSON.stringify({ power: powerName, legacy: cLegacy, live: cLive }) + '\n');
+    }
+  }
+
+  return effects;
+}
+
+/**
+ * ENTITY CREATION — template-owned summon extraction (verbatim port of the
+ * legacy extractEffects EntCreate section + its phash/ignited epilogue).
+ * Returns the summon object or null.
+ */
+function extractSummon(templates, powerName) {
+  let summon = null;
+  for (const template of templates) {
+    if (!template.attribs || template.attribs.length === 0) continue;
+    if (template.application_type === 'OnDeactivate') continue;
+
+    // Parse duration if present (bag-exact regex).
+    let duration = null;
+    if (template.duration && template.duration !== '0 seconds') {
+      const match = template.duration.match(/([\d.]+)\s*seconds?/i);
+      if (match) duration = parseFloat(match[1]);
+    }
+
+    for (const rawAttrib of template.attribs) {
+      const attrib = rawAttrib?.toLowerCase();
+      if (attrib !== 'create_entity') continue;
+      const params = template.params;
+      if (!(params && params.type === 'EntCreate')) continue;
+      const isPseudoPet = template.flags?.some(f => f.includes('PseudoPet')) || false;
+      const hasCopyBoosts = template.flags?.some(f => f.includes('CopyBoosts')) || false;
+
+      if (!summon) {
+        // First entity encountered. (See the legacy section for the P-hash /
+        // priority_list rationale.)
+        const entityInfo = { isPseudoPet };
+        if (params.entity_def) entityInfo.entity = params.entity_def;
+        if (/^P\d+$/.test(params.entity_def || '') && params.priority_list) {
+          entityInfo._phashPriorityList = params.priority_list;
+        }
+        if (params.display_name) entityInfo.displayName = DISPLAY_NAME_OVERRIDES[powerName] || params.display_name;
+        if (params.redirects?.length > 0) entityInfo.powers = params.redirects;
+        const effectiveDuration = duration || resolvePetLifespan(params);
+        if (effectiveDuration > 0) entityInfo.duration = effectiveDuration;
+        if (hasCopyBoosts) entityInfo.copyBoosts = true;
+        summon = entityInfo;
+      } else if (summon.entities) {
+        const existing = summon.entities.find(e => e.entity === params.entity_def);
+        if (existing) {
+          existing.count++;
+        } else {
+          summon.entities.push({ entity: params.entity_def, count: 1 });
+        }
+      } else if (summon.entity === params.entity_def) {
+        summon.entityCount = (summon.entityCount || 1) + 1;
+      } else if (params.entity_def && !isPseudoPet && summon.entity) {
+        summon.entities = [
+          { entity: summon.entity, count: summon.entityCount || 1 },
+          { entity: params.entity_def, count: 1 },
+        ];
+        delete summon.entity;
+        delete summon.entityCount;
+      }
+    }
+  }
+
+  if (!summon) return null;
+
+  // Resolve an opaque-P-hash entity to its real pet name (single-entity only).
+  if (summon._phashPriorityList) {
+    if (summon.entity && /^P\d+$/.test(summon.entity)) {
+      summon.entity = summon._phashPriorityList;
+    }
+    delete summon._phashPriorityList;
+  }
+
+  // Ignited variant (Oil Slick Arrow) — conditional entity toggle.
+  const ignitedVariant = IGNITED_ENTITY_VARIANT[summon.entity];
+  if (ignitedVariant) {
+    summon.conditionalEntities = [
+      { entity: ignitedVariant, toggleId: 'oilslick_ignited', label: 'Oil Slick Ignited' },
+    ];
+  }
+
+  return summon;
+}
+
+function extractEffectsLegacy(templates, powerName) {
+  const effects = {};
+  const unmappedAttribs = new Set();
 
   // Pre-scan for repeated-template absorb stacks. The Rebirth Spirit Ward
   // rework emits 5 identical Absorb/Current/Magnitude templates (one per
@@ -5216,28 +5330,6 @@ function extractEffects(templates, powerName) {
     effects.summon.conditionalEntities = [
       { entity: ignitedVariant, toggleId: 'oilslick_ignited', label: 'Oil Slick Ignited' },
     ];
-  }
-
-  // DSH6 Phase 0b — env-gated self-compare (see the entry block). Canonical
-  // sorted-key JSON, `summon`/`conditionalEntities` excluded (template-owned).
-  if (_dsh6EntryAtoms) {
-    const _canon = (v) => {
-      if (Array.isArray(v)) return v.map(_canon);
-      if (v && typeof v === 'object') {
-        const o = {};
-        for (const k of Object.keys(v).sort()) {
-          if (v[k] !== undefined && k !== 'summon' && k !== 'conditionalEntities') o[k] = _canon(v[k]);
-        }
-        return o;
-      }
-      return v;
-    };
-    const cBag = JSON.stringify(_canon(effects));
-    const cProj = JSON.stringify(_canon(projectAtomsToEffects(_dsh6EntryAtoms, powerName)));
-    if (cBag !== cProj) {
-      fs.appendFileSync(process.env.DSH6_SHADOW_COMPARE,
-        JSON.stringify({ power: powerName, bag: cBag, proj: cProj }) + '\n');
-    }
   }
 
   return _sortKeysDeep(effects); // canonical emit order (Phase 0c)
@@ -6941,6 +7033,7 @@ module.exports = {
   guardThunderspyOnesBuffs,
   guardThunderspyAppliedMez,
   extractEffects,
+  extractEffectsLegacy,
   templatesToAtoms,
   projectAtomsToEffects,
   extractDamage,
