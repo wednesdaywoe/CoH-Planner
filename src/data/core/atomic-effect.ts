@@ -407,51 +407,83 @@ export function parseDuration(d?: string | number): number {
 }
 
 /**
- * Ingest one export effect group's templates into AtomicEffect records — one per
- * (template × mapped attrib). Every attrib produces a record; an unbridged attrib
- * yields an `effectType:'Unmapped'` record (never dropped) so the caller can measure
- * coverage. This is the *reference* encoder that validates the schema/key against
- * real data; the production encoder lives in the converter (DSH6).
+ * Group-level context an `ExportTemplate` inherits from its enclosing effect
+ * group (or, in the converter's flattened-template world, from the `_group*`
+ * tags the collectors stamp onto each template). `mapPvMode` converts the raw
+ * export `is_pvp` string.
  */
-export function ingestExportGroup(group: ExportGroup): AtomicEffect[] {
-  const pvMode = PV_MAP[group.is_pvp || 'EITHER'] ?? 'Any';
-  const baseProbability = group.chance ?? 1;
-  const ppm = group.ppm && group.ppm > 0 ? group.ppm : undefined;
-  const requiresExpression = group.requires_expression || undefined;
+export interface IngestContext {
+  pvMode: PvMode;
+  baseProbability: number;
+  procsPerMinute?: number;
+  requiresExpression?: string;
+  /** e.g. 'OutOfCombat' for combat-gated (suppressible) templates. */
+  specialCase?: string;
+}
+
+/** Raw export `is_pvp` string → PvMode ('EITHER'/undefined ⇒ 'Any'). */
+export function mapPvMode(isPvp?: string): PvMode {
+  return PV_MAP[isPvp || 'EITHER'] ?? 'Any';
+}
+
+/**
+ * Ingest ONE export template into AtomicEffect records — one per mapped attrib.
+ * Every attrib produces a record; an unbridged attrib yields an
+ * `effectType:'Unmapped'` record (never dropped) so the caller can measure
+ * coverage. Shared by the reference encoder below AND the converter's
+ * production ingest (DSH6 — `templatesToAtoms` in convert-powerset.cjs), so
+ * both sides encode a template identically by construction.
+ */
+export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEffect[] {
+  const resistible = !(t.flags ?? []).includes('IgnoreResistance');
+  const ignoreStrength = (t.flags ?? []).includes('IgnoreStrength');
+  const aspect = ASPECT_MAP[t.aspect ?? ''] ?? 'Cur';
+  const attribType = mapAttribType(t.type);
+  const toWho = mapToWho(t.target);
+  const stacking = mapStacking(t.stack);
   const out: AtomicEffect[] = [];
-  for (const t of group.templates ?? []) {
-    const resistible = !(t.flags ?? []).includes('IgnoreResistance');
-    const ignoreStrength = (t.flags ?? []).includes('IgnoreStrength');
-    const aspect = ASPECT_MAP[t.aspect ?? ''] ?? 'Cur';
-    const attribType = mapAttribType(t.type);
-    const toWho = mapToWho(t.target);
-    const stacking = mapStacking(t.stack);
-    for (const attrib of t.attribs ?? []) {
-      const bridged = bridgeAttrib(attrib, t.aspect, t.table);
-      out.push({
-        effectType: bridged.effectType,
-        subType: bridged.subType,
-        pvMode,
-        resistible,
-        toWho,
-        attribType,
-        aspect,
-        modifierTable: t.table ?? '',
-        scale: t.scale ?? 0,
-        magnitude: t.magnitude ?? 0,
-        duration: parseDuration(t.duration),
-        applicationPeriod: t.application_period || undefined,
-        stacking,
-        stackCap: t.stack_limit && t.stack_limit > 0 ? t.stack_limit : undefined,
-        baseProbability,
-        procsPerMinute: ppm,
-        ignoreStrength: ignoreStrength || undefined,
-        requiresExpression,
-        sourceAttrib: attrib,
-      });
-    }
+  for (const attrib of t.attribs ?? []) {
+    const bridged = bridgeAttrib(attrib, t.aspect, t.table);
+    out.push({
+      effectType: bridged.effectType,
+      subType: bridged.subType,
+      pvMode: ctx.pvMode,
+      resistible,
+      toWho,
+      attribType,
+      aspect,
+      modifierTable: t.table ?? '',
+      scale: t.scale ?? 0,
+      magnitude: t.magnitude ?? 0,
+      duration: parseDuration(t.duration),
+      applicationPeriod: t.application_period || undefined,
+      stacking,
+      stackCap: t.stack_limit && t.stack_limit > 0 ? t.stack_limit : undefined,
+      baseProbability: ctx.baseProbability,
+      procsPerMinute: ctx.procsPerMinute,
+      ignoreStrength: ignoreStrength || undefined,
+      specialCase: ctx.specialCase,
+      requiresExpression: ctx.requiresExpression,
+      sourceAttrib: attrib,
+    });
   }
   return out;
+}
+
+/**
+ * Ingest one export effect group's templates into AtomicEffect records — one per
+ * (template × mapped attrib). This is the *reference* encoder that validates the
+ * schema/key against real data; the converter's production ingest shares
+ * `ingestTemplate` above.
+ */
+export function ingestExportGroup(group: ExportGroup): AtomicEffect[] {
+  const ctx: IngestContext = {
+    pvMode: mapPvMode(group.is_pvp),
+    baseProbability: group.chance ?? 1,
+    procsPerMinute: group.ppm && group.ppm > 0 ? group.ppm : undefined,
+    requiresExpression: group.requires_expression || undefined,
+  };
+  return (group.templates ?? []).flatMap((t) => ingestTemplate(t, ctx));
 }
 
 /** Ingest a whole power JSON (`{ effects: ExportGroup[] }`). */

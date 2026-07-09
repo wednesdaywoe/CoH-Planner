@@ -44,7 +44,9 @@ describe('Ally/team +Range buff — homecoming', () => {
       const rangeBuff = potd!.effects?.rangeBuff;
       expect(rangeBuff, `${setId} rangeBuff`).toBeTruthy();
       // 0.375 scale == +37.5% Range. targetType Self → self-applies in calc.
-      expect(rangeBuff!.scale).toBeCloseTo(0.375, 3);
+      // rangeBuff is NumberOrScaled; PotD's is always the ScaledEffect form.
+      expect(typeof rangeBuff).toBe('object');
+      expect((rangeBuff as { scale: number }).scale).toBeCloseTo(0.375, 3);
       expect(potd!.targetType?.toLowerCase()).toBe('self');
     });
   }

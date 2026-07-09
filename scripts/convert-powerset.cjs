@@ -657,6 +657,19 @@ function isPvpEnttypeVariant(requiresExpression) {
   return /\benttype\s+target>\s+player\s+eq/.test(requiresExpression || '');
 }
 
+// DSH6 Phase 0a — stamp the enclosing effect group's context onto each template
+// as it is collected. `collectAllTemplates`/`collectTemplatesDeep` return a FLAT
+// template list, discarding the group wrapper (is_pvp / chance / ppm /
+// requires_expression) that the atomic model needs per record. Same mutate-the-
+// template convention as `_tagCombatGated`; first stamp wins (a template object
+// can be walked by more than one collector, always under the same group).
+function _tagGroupContext(template, effect) {
+  if (template._groupPv === undefined) template._groupPv = effect.is_pvp;
+  if (template._groupChance === undefined) template._groupChance = effect.chance;
+  if (template._groupPpm === undefined) template._groupPpm = effect.ppm;
+  if (template._groupRequires === undefined) template._groupRequires = effect.requires_expression;
+}
+
 function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCombatGated = false) {
   const templates = [];
   const MAX_DEPTH = 3;
@@ -746,6 +759,7 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
           }
         } else {
           if (combatGated) _tagCombatGated(template);
+          _tagGroupContext(template, effect);
           templates.push(template);
         }
       }
@@ -3281,6 +3295,7 @@ function collectAllTemplates(effects, parentCombatGated = false) {
     if (effect.templates && effect.templates.length > 0) {
       for (const t of effect.templates) {
         if (combatGated) _tagCombatGated(t);
+        _tagGroupContext(t, effect);
         templates.push(t);
       }
     }
@@ -3410,9 +3425,52 @@ function extractDamage(templates) {
  * - "Magnitude" = magnitude-based effect
  * - "Duration" = duration-based effect (used for mez)
  */
+// DSH6 Phase 0a — converter-local atom ingest. Maps the flattened template list
+// (with the `_group*` context tags stamped by the collectors) into the canonical
+// `AtomicEffect[]` via the SHARED per-template encoder in
+// src/data/core/atomic-effect.ts (`ingestTemplate`, same code path as the
+// reference `ingestExportGroup`), so the converter and the DSH detectors encode
+// a template identically by construction. tsx is loaded lazily+memoized so a
+// plain regen (610 per-powerset node spawns × 3 datasets) pays the TS-require
+// cost only when the atom path is actually exercised.
+let _atomCore = null;
+function _getAtomCore() {
+  if (!_atomCore) {
+    require('tsx/cjs');
+    _atomCore = require('../src/data/core/atomic-effect.ts');
+  }
+  return _atomCore;
+}
+
+function templatesToAtoms(templates) {
+  const { ingestTemplate, mapPvMode } = _getAtomCore();
+  const atoms = [];
+  for (const t of templates || []) {
+    if (!t || !t.attribs || t.attribs.length === 0) continue;
+    atoms.push(...ingestTemplate(t, {
+      pvMode: mapPvMode(t._groupPv),
+      baseProbability: t._groupChance ?? 1,
+      procsPerMinute: t._groupPpm > 0 ? t._groupPpm : undefined,
+      requiresExpression: t._groupRequires || undefined,
+      specialCase: t._combatGated ? 'OutOfCombat' : undefined,
+    }));
+  }
+  return atoms;
+}
+
 function extractEffects(templates, powerName) {
   const effects = {};
   const unmappedAttribs = new Set();
+
+  // DSH6 Phase 0a — SHADOW MODE. When a sink is installed (by the shadow
+  // harness scripts, never during a normal regen), hand it the atom encoding of
+  // the RAW input template list — before the twin pre-scan below drops the
+  // IgnoreResistance duplicates — so the atom list keeps both twins as distinct
+  // records (the Phase 3 `resistible:false` representation). Zero effect on
+  // output; the bag pipeline below is untouched.
+  if (global.__DSH6_ATOM_SINK__) {
+    global.__DSH6_ATOM_SINK__(powerName, templatesToAtoms(templates));
+  }
 
   // Pre-scan for repeated-template absorb stacks. The Rebirth Spirit Ward
   // rework emits 5 identical Absorb/Current/Magnitude templates (one per
@@ -6138,6 +6196,7 @@ module.exports = {
   guardThunderspyOnesBuffs,
   guardThunderspyAppliedMez,
   extractEffects,
+  templatesToAtoms,
   extractDamage,
   inferAllowedSetCategories,
   inferEffectiveArea,
