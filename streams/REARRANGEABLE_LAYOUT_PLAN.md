@@ -50,31 +50,43 @@ Key files: [PlannerPage.tsx](../src/pages/PlannerPage.tsx) (the grid + hard-code
 [PopOutInfoPanel.tsx](../src/components/info/PopOutInfoPanel.tsx) (existing binary
 `undocked` dock toggle).
 
+All Active items shipped 2026-07-09 (commits: LAY1 store slice; LAY2–6 in one
+follow-up). Verified in-app via Playwright: drag-reorder persists to the
+`coh-planner-ui` key, hiding a column reflows the desktop grid, Reset restores
+defaults, chronological keeps its 2fr middle column, and the mobile/md fallback is
+unchanged.
+
+**Deviation (decision 2026-07-09):** LAY4 uses native HTML5 drag-and-drop on a
+header grip instead of dnd-kit. Rationale: a 5-item reorder doesn't warrant a new
+dependency (the repo had zero DnD libs and the stats reorder is toggle-only), and
+native DnD keeps the "don't over-engineer" ethos. Rejected: dnd-kit (dependency
+weight unjustified at this scale). If a future Tier 2 needs free-form resize/drag,
+revisit.
+
 ## Active
 
-- [ ] **LAY1** — add persisted `plannerLayout` slice to `uiStore`: per-view-mode
-  ordered array of `{ id, visible, weight? }`. Add to `partialize`; extend
-  `merge()` to inject defaults when the key is absent (mirror the `statsConfig`
-  default-injection). Reorder/toggle/reset actions modeled on `reorderStats`.
-- [ ] **LAY2** — extract a `PlannerSection` registry: `Record<SectionId, { label,
-  render }>` so section content is looked up by id rather than hard-coded JSX. The
-  existing shared shell + `infoPanelHeader` const becomes the reusable `<Shell>`.
-  needs: REARRANGEABLE_LAYOUT_PLAN#LAY1
-- [ ] **LAY3** — drive the grid from the layout slice: compute
-  `gridTemplateColumns` from visible sections' weights; delete the hard-coded
-  `grid-cols-[1fr_1fr_1fr_1fr_1fr]` strings and the `md:`/`lg:` visibility
-  duplication (incl. the md-only split columns) in favor of one map over visible
-  sections. needs: REARRANGEABLE_LAYOUT_PLAN#LAY2
-- [ ] **LAY4** — drag-to-reorder the top-level columns via dnd-kit (new dep; chosen
-  for fit with the existing reorderable-stats mental model). needs:
-  REARRANGEABLE_LAYOUT_PLAN#LAY3
-- [ ] **LAY5** — layout control UI: visibility checklist popover (reuse the
-  `statsConfig` control pattern) + a "reset layout" button (the escape hatch that
-  makes the feature safe to ship). needs: REARRANGEABLE_LAYOUT_PLAN#LAY1
-- [ ] **LAY6** — reconcile InfoPanel's existing `undocked` toggle with section
-  visibility: treat undock as a section state — when popped out, the section is
-  `visible:false` in the grid and the floating panel renders. One model, no
-  special-casing. needs: REARRANGEABLE_LAYOUT_PLAN#LAY2
+- [x] **LAY1** — add persisted `plannerLayout` slice to `uiStore`: per-view-mode
+  ordered array of `{ id, visible, weight? }`. Added to `partialize`; `merge()`
+  reconciles saved layouts against defaults (append new sections, drop unknown
+  ids). Reorder/toggle/reset actions modeled on `reorderStats`.
+  verify: file:src/stores/uiStore.ts, fn:reorderPlannerSections
+- [x] **LAY2** — section content single-sourced via a `getSection()` descriptor
+  (`{ title, headerRight, body, bodyClassName }`), reused by both the desktop grid
+  and the mobile/md fallback so no body markup is duplicated.
+  verify: file:src/pages/PlannerPage.tsx
+- [x] **LAY3** — grid driven from the layout slice: `gridTemplateColumns` computed
+  from visible sections' fr weights; the hard-coded `grid-cols-[…]` strings and the
+  `md:`/`lg:` visibility juggling are gone from the desktop path.
+  verify: file:src/pages/PlannerPage.tsx, fn:moveSection
+- [x] **LAY4** — drag-to-reorder the desktop columns via native HTML5 DnD on a
+  header grip (see Deviation above). verify: file:src/pages/PlannerPage.tsx
+- [x] **LAY5** — `PlannerLayoutMenu` "Columns" popover in the hint bar: per-section
+  visibility checkboxes + a Reset button (the only way to restore a hidden column).
+  verify: file:src/components/powers/PlannerLayoutMenu.tsx
+- [x] **LAY6** — InfoPanel undock reconciled with visibility: an undocked info
+  column leaves the grid regardless of its stored `visible` flag; the Columns menu
+  shows it as "floating" and disables its checkbox while undocked.
+  verify: file:src/pages/PlannerPage.tsx
 
 ## Deferred
 
