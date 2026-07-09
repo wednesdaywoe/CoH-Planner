@@ -25,6 +25,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
 
     items:[
       {message: 'Added account-synced favorites with local cache reconciliation', type: 'fix'},
+      {message: 'Added a neat system atlas for the nerds 🤓: Menu > System Atlas', type: 'feat' },
       {message: 'New "Absorb" stat — a trackable total for your absorb shield (the temporary HP layer that soaks damage before your health). Enable it under Settings → Stats → Survival & Mobility, or read it in the Detailed Totals sheet. It sums absorb from your active powers plus set-bonus/proc absorb.', type:'feat'},
       {message: 'Absorb shields that scale off Max HP now compute correctly. Wild Bastion, Ablative Carapace, Parasitic Aura and Force Barrier deliver their absorb via a Max-HP formula the old converter dropped (keeping only the duration), so their shield amount never showed. These now read as a % of your current Max HP — growing with +HP accolades and with +Absorb strength from Power Boost / Clarion Radial — while flat shields like Psychokinetic Barrier stay fixed regardless of Max HP. A few conditional cases (e.g. Master Brawler\'s missing-HP formula) remain duration-only for now.', type:'fix'},
       {message: 'Thunderspy: ~1,000 powers that were showing no effects should now display correctly. Resistance armors (Mind Over Body, Willpower, High Pain Tolerance, Absorption) and the +To-Hit portion of buffs (Aim, Build Up, Link Minds) stored their real data in a format the parser wasn\'t reading, so they came through empty', type:'fix'},

@@ -1083,6 +1083,12 @@ function ActionMenu({
             </svg>
             Changelog
           </button>
+          <button onClick={() => { window.open('/system-atlas.html', '_blank', 'noopener,noreferrer'); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Interactive map of how Sidekick's systems fit together (opens in a new tab).">
+            <svg className="w-4 h-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+            </svg>
+            System Atlas
+          </button>
           <button onClick={() => { onAbout(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="App version, credits, and recent changes.">
             <img src="img/favicon-32x32.png" alt="" className="w-4 h-4" />
             About Sidekick

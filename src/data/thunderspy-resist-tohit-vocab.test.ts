@@ -1,5 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
+import { isScaledEffect, type NumberOrScaled } from '@/types/power';
 import { MindOverBody } from './datasets/thunderspy/generated/powersets/brute/secondary/willpower/mind-over-body';
 import { HighPainTolerance } from './datasets/thunderspy/generated/powersets/brute/secondary/willpower/high-pain-tolerance';
 import { Aim } from './datasets/thunderspy/generated/powersets/arachnos-soldier/epic/crab-spider-soldier/aim';
@@ -30,6 +31,14 @@ import { CloakofDarkness } from './datasets/thunderspy/generated/powersets/brute
  * These re-read the committed dataset so a future regen can't silently undo it
  * (GAME-DATA-PRINCIPLES §9). See [[tspy-player-vocab-gap]].
  */
+/** Narrow a NumberOrScaled to a ScaledEffect, failing the test if it is a bare
+ *  number (these slots are all table-backed ScaledEffects — the surfacing fix's
+ *  whole point). */
+function asScaled(value: NumberOrScaled | undefined, label: string) {
+  expect(isScaledEffect(value), `${label} should be a ScaledEffect`).toBe(true);
+  return value as { scale: number; table: string };
+}
+
 describe('Thunderspy resistance / ToHit vocabulary surfacing (TSPY11)', () => {
   beforeAll(async () => {
     await loadDataset('thunderspy');
@@ -40,8 +49,9 @@ describe('Thunderspy resistance / ToHit vocabulary surfacing (TSPY11)', () => {
     // from the tspy data, unlike HC's 3 templates — faithful to the bin).
     const res = MindOverBody.effects?.resistance;
     expect(res).toBeDefined();
-    expect(res?.smashing?.scale).toBeCloseTo(2.25, 5);
-    expect(res?.smashing?.table).toMatch(/res_dmg/i);
+    const smashing = asScaled(res?.smashing, 'resistance.smashing');
+    expect(smashing.scale).toBeCloseTo(2.25, 5);
+    expect(smashing.table).toMatch(/res_dmg/i);
   });
 
   it('High Pain Tolerance surfaces ALL its per-type resistances (multi-attrib index)', () => {
@@ -55,8 +65,9 @@ describe('Thunderspy resistance / ToHit vocabulary surfacing (TSPY11)', () => {
   it('Aim surfaces its ToHit buff (Buff_ToHit-front → ToHit) with no bogus aspect', () => {
     // scale 5 × Melee_Buff_ToHit resolves to the HC-sane ~+37.5% — the table-vs-literal
     // ambiguity resolves in favor of the table.
-    expect(Aim.effects?.tohitBuff?.scale).toBeCloseTo(5, 5);
-    expect(Aim.effects?.tohitBuff?.table).toMatch(/buff_tohit/i);
+    const tohit = asScaled(Aim.effects?.tohitBuff, 'tohitBuff');
+    expect(tohit.scale).toBeCloseTo(5, 5);
+    expect(tohit.table).toMatch(/buff_tohit/i);
     // A ToHit buff must NOT be mislabeled as a resistance debuff or a damage buff.
     expect(Aim.effects?.tohitDebuff).toBeUndefined();
     expect(Aim.effects?.damageBuff).toBeUndefined();
@@ -77,7 +88,8 @@ describe('Thunderspy resistance / ToHit vocabulary surfacing (TSPY11)', () => {
 describe('Thunderspy Case B — damage-type-front resistance mislabel', () => {
   it('Glacial Shield is Res(Cold), not Cold damage', () => {
     expect(GlacialShield.effects?.resistance?.cold).toBeDefined();
-    expect(GlacialShield.effects?.resistance?.cold?.table).toMatch(/res_dmg/i);
+    const cold = asScaled(GlacialShield.effects?.resistance?.cold, 'resistance.cold');
+    expect(cold.table).toMatch(/res_dmg/i);
     // Must NOT leak back as damage.
     expect((GlacialShield as { damage?: unknown }).damage).toBeUndefined();
     expect(GlacialShield.effects?.damage).toBeUndefined();

@@ -378,6 +378,7 @@ function MobileMenuContent({
           </svg>
           <span>Join Sidekick Discord</span>
         </button>
+        {item('System Atlas', () => window.open('/system-atlas.html', '_blank', 'noopener,noreferrer'))}
         {item('About Sidekick', openAboutModal)}
         {item('☕ Support Sidekick', openDonateModal)}
       </Section>
