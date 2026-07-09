@@ -279,10 +279,12 @@ export function AvailablePoolPowers({ compact = false }: AvailablePoolPowersProp
 
   // Compact mode: single column on mobile, 2-column grid on sm+.
   // Order: existing pools → "+ Add Pool" → epic (always last).
+  // No gap/container-bg: tiles sit flush (no interior hairline dividers), so an
+  // empty cell on an odd count shows the parent slate-900 and needs no filler.
   if (compact) {
     return (
       <>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-slate-700">
+        <div className="grid grid-cols-1 sm:grid-cols-2">
           {poolTiles}
           {addPoolDropdown}
           {epicTile}

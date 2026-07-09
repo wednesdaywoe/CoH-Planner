@@ -76,12 +76,14 @@ function dropEdgeStyle(zone: DropZone): React.CSSProperties {
   }
 }
 
-/** Drag-handle grip shown in each desktop column header. */
+/** Drag-handle grip shown in each desktop column header. Resting contrast lifted
+ *  (slate-500, was slate-600) so the reorder affordance reads without hover — the
+ *  header twin of the always-on divider seam (LAY12 discoverability). */
 function GripHandle(props: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       {...props}
-      className="cursor-grab active:cursor-grabbing text-slate-600 hover:text-slate-400 transition-colors flex-shrink-0"
+      className="cursor-grab active:cursor-grabbing text-slate-500 hover:text-slate-300 transition-colors flex-shrink-0"
       title="Drag to reorder this column"
       aria-label="Reorder column"
     >
@@ -90,6 +92,47 @@ function GripHandle(props: React.HTMLAttributes<HTMLDivElement>) {
         <circle cx="9" cy="12" r="1.6" /><circle cx="15" cy="12" r="1.6" />
         <circle cx="9" cy="18" r="1.6" /><circle cx="15" cy="18" r="1.6" />
       </svg>
+    </div>
+  );
+}
+
+/** Shared resize divider straddling the gap between two columns (`axis='x'`,
+ *  vertical seam) or two stacked cells (`axis='y'`, horizontal seam). Both LAY7's
+ *  horizontal resize and LAY11's vertical resize route through this one element so
+ *  the discoverability treatment stays in a single place (LAY12).
+ *
+ *  Treatment: the *persistent* resting cue is the thin frame each cell carries
+ *  (`ring-slate-600`, one step brighter than the `bg-slate-700` gap it sits on) —
+ *  it reads the whole panel as an adjustable tile, not a lone hairline. So this
+ *  divider only needs to mark the *grab edge* on hover: it brightens that edge to
+ *  the primary color and thickens to 2px. The hit area (w-2 / h-2) stays wider
+ *  than the visible edge for an easy grab. */
+function ResizeDivider({
+  axis,
+  onPointerDown,
+}: {
+  axis: 'x' | 'y';
+  onPointerDown: (e: React.PointerEvent) => void;
+}) {
+  const isX = axis === 'x';
+  return (
+    <div
+      onPointerDown={onPointerDown}
+      className={`absolute z-20 group/resize ${
+        isX
+          ? 'top-0 bottom-0 right-0 w-2 translate-x-1/2 cursor-col-resize'
+          : 'left-0 right-0 bottom-0 h-2 translate-y-1/2 cursor-row-resize'
+      }`}
+      title={isX ? 'Drag to resize columns' : 'Drag to resize stacked sections'}
+      aria-label={isX ? 'Resize column' : 'Resize stacked section'}
+    >
+      <div
+        className={`absolute bg-transparent group-hover/resize:bg-[var(--color-primary)] transition-colors ${
+          isX
+            ? 'inset-y-0 left-1/2 -translate-x-1/2 w-px group-hover/resize:w-0.5'
+            : 'inset-x-0 top-1/2 -translate-y-1/2 h-px group-hover/resize:h-0.5'
+        }`}
+      />
     </div>
   );
 }
@@ -500,7 +543,7 @@ export function PlannerPage() {
                         ? { flexGrow: cfg.rowWeight ?? 1, flexShrink: 1, flexBasis: 0, minHeight: MIN_CELL_PX }
                         : { flexGrow: 1, flexShrink: 1, flexBasis: 'auto', minHeight: MIN_CELL_PX }
                     }
-                    className={`relative bg-slate-900 flex flex-col overflow-hidden min-h-0 transition-opacity ${
+                    className={`relative bg-slate-900 flex flex-col overflow-hidden min-h-0 transition-opacity ring-1 ring-inset ring-slate-600/60 ${
                       dragId === cfg.id ? 'opacity-40' : ''
                     }`}
                   >
@@ -530,14 +573,10 @@ export function PlannerPage() {
                     {/* Vertical resize divider to the stacked row below. Hidden
                         during a reorder drag so the gestures never fight. */}
                     {!isLastRow && !dragId && (
-                      <div
+                      <ResizeDivider
+                        axis="y"
                         onPointerDown={(e) => { e.preventDefault(); startRowResize(e, rowIdx); }}
-                        className="absolute left-0 right-0 bottom-0 h-2 translate-y-1/2 z-20 cursor-row-resize group/vresize"
-                        title="Drag to resize stacked sections"
-                        aria-label="Resize stacked section"
-                      >
-                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-transparent group-hover/vresize:bg-[var(--color-primary)] transition-colors" />
-                      </div>
+                      />
                     )}
                   </div>
                 );
@@ -546,14 +585,10 @@ export function PlannerPage() {
               {/* Horizontal resize divider straddling the gap to the right
                   neighbor column. Hidden during a reorder drag. */}
               {!isLastCol && !dragId && (
-                <div
+                <ResizeDivider
+                  axis="x"
                   onPointerDown={(e) => { e.preventDefault(); startColumnResize(e, colIdx); }}
-                  className="absolute top-0 bottom-0 right-0 w-2 translate-x-1/2 z-20 cursor-col-resize group/resize"
-                  title="Drag to resize columns"
-                  aria-label="Resize column"
-                >
-                  <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-transparent group-hover/resize:bg-[var(--color-primary)] transition-colors" />
-                </div>
+                />
               )}
             </div>
           );

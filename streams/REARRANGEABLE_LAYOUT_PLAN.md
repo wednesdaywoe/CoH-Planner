@@ -225,22 +225,30 @@ revisit.
   flow is untouched. (Also fixes a latent pre-existing clip for very tall builds.)
   verify: file:src/utils/planner-layout.ts, file:src/pages/PlannerPage.tsx, fn:startRowResize
 
-- [ ] **LAY12** — adjustability affordance. Problem (user-raised 2026-07-09): the
-  rearrange/resize handles are undiscoverable — the LAY7 column-resize divider is
-  `bg-transparent` until hover ([PlannerPage.tsx](../src/pages/PlannerPage.tsx),
-  the `group-hover/resize` rule ~line 431) and the header reorder grip is a faint
-  low-contrast grey, so a user with no visual cue won't know the layout moves. Give
-  the container borders a *persistent* (not hover-only) signal that they're
-  adjustable. Covers **both** axes — the existing horizontal dividers and LAY11's
-  future vertical ones — so factor the divider into a shared styled element rather
-  than restyling each call site. Design sub-decisions (settle at build): resting
-  treatment (e.g. a faint always-on seam that brightens on hover, vs. a small grip
-  dot/handle centered on the divider), whether to lift the header grip's resting
-  contrast to match, and whether the cue should be dampened once a user has
-  interacted (a "you've found it" fade) or stay always-on. Keep it subtle enough not
-  to clutter a 6-column row. Related: LAY4 (grip), LAY7 (horizontal divider), LAY11
-  (vertical dividers inherit whatever this establishes).
-  verify: file:src/pages/PlannerPage.tsx
+- [x] **LAY12** — adjustability affordance. SHIPPED 2026-07-09. Problem
+  (user-raised): the rearrange/resize handles were undiscoverable — the LAY7/LAY11
+  dividers were `bg-transparent` until hover and the header reorder grip was a faint
+  low-contrast grey, so a user with no visual cue wouldn't know the layout moves.
+  **Settled sub-decisions:** (a) resting treatment = a *persistent* thin **frame**
+  around each cell (`ring-1 ring-inset ring-slate-600/60`, one step brighter than
+  the `bg-slate-700` gap) so the whole panel reads as an adjustable *tile*, not a
+  lone hairline — iterated from an initial center-seam (user: "needs something more
+  like a thin frame instead of a line", 2026-07-09); the frame carries the resting
+  cue, so the divider itself is transparent at rest and only brightens the *grab
+  edge* to `--color-primary` (thickening 1→2px) on hover. Chosen over a grip
+  dot/handle, which would clutter a 6-column row. (b) header
+  grip resting contrast lifted `slate-600`→`slate-500` (hover `slate-400`→`slate-300`)
+  so the reorder affordance reads at rest too — the header twin of the seam. (c) no
+  post-interaction "you've found it" fade — always-on-subtle, avoiding the
+  state/persistence cost (honors the "don't over-engineer" ethos). **Both axes
+  factored into one shared `ResizeDivider` (`axis: 'x' | 'y'`)** — LAY7's horizontal
+  column resize and LAY11's vertical cell resize now route through the same element,
+  so the treatment lives in one place; the two former call sites (~13 lines each)
+  collapsed to a 4-line `<ResizeDivider>`. Verified in-app (Playwright): each of the
+  6 panels renders its persistent slate-600 frame at rest, the drag still tracks, and
+  the neighbor-floor clamp holds (dragged 120px, left column grew 266→292 then
+  stopped at the right neighbor's 240px floor); tsc clean.
+  verify: file:src/pages/PlannerPage.tsx, fn:ResizeDivider
 
 ## Min-size audit (2026-07-09)
 
