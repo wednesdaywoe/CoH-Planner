@@ -47,7 +47,7 @@ export const EarthsEmbrace: Power = {
       "resistance": 60
     },
     "maxHPBuff": {
-      "scale": 4,
+      "scale": 2,
       "table": "Melee_HealSelf"
     },
     "resistance": {

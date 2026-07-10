@@ -72,7 +72,7 @@ export const Revive: Power = {
       "resistanceDebuff": 10.3
     },
     "maxHPBuff": {
-      "scale": 2.4,
+      "scale": 1.2,
       "table": "Melee_HealSelf"
     },
     "resistanceDebuff": {

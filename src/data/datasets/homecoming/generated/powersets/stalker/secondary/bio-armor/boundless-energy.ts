@@ -54,7 +54,7 @@ export const BoundlessEnergy: Power = {
       "regenBuff": 5.25
     },
     "maxHPBuff": {
-      "scale": 1.25,
+      "scale": 0.625,
       "table": "Melee_HealSelf"
     },
     "recoveryBuff": {

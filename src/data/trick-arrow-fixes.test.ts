@@ -5,6 +5,8 @@ import { FlashArrow } from '@/data/datasets/homecoming/powersets/defender/primar
 import { IceArrow } from '@/data/datasets/homecoming/powersets/defender/primary/trick-arrow/ice-arrow';
 import { PoisonGasArrow } from '@/data/datasets/homecoming/powersets/defender/primary/trick-arrow/poison-gas-arrow';
 import { DullPain } from '@/data/datasets/homecoming/powersets/scrapper/secondary/regeneration/dull-pain';
+import { Revive } from '@/data/datasets/homecoming/powersets/brute/secondary/regeneration/revive';
+import { EarthsEmbrace } from '@/data/datasets/homecoming/powersets/brute/secondary/stone-armor/earths-embrace';
 import { EMPArrow } from '@/data/datasets/homecoming/powersets/defender/primary/trick-arrow/emp-arrow';
 import { ThunderousBlast } from '@/data/datasets/homecoming/powersets/sentinel/primary/electrical-blast/thunderous-blast';
 import { Hibernate } from '@/data/datasets/homecoming/powersets/tanker/primary/ice-armor/hibernate';
@@ -62,6 +64,18 @@ describe('Trick Arrow effect-collapse fixes', () => {
     const e = eff(DullPain);
     expect(scaled(e.maxHPBuff).scale).toBe(2);
     expect(scaled(e.maxHPBuff).unresistable).toBeUndefined();
+  });
+
+  // ⑥ The IgnoreStrength/enhanceable +MaxHP twin combines per the templates'
+  // `stack` mode, not blindly. Dull Pain (above) uses stack=Stack → its two
+  // scale-1 templates SUM to 2 (+20%, verified in-game). Ailment Resistance
+  // (Revive) and Earth's Embrace use stack=Replace → their equal twins must NOT
+  // sum: a level-50 Brute reads +188.79 Max HP from Ailment Resistance in-game
+  // (scale 1.2 × Melee_HealSelf[50] 160.6345), which blind summation doubled to
+  // scale 2.4. Guards foldResourceSlot's Replace-collapse branch.
+  it('⑥ Replace-mode +MaxHP twins collapse (Ailment Resistance 1.2, Earth\'s Embrace 2)', () => {
+    expect(scaled(eff(Revive).maxHPBuff).scale).toBe(1.2);
+    expect(scaled(eff(EarthsEmbrace).maxHPBuff).scale).toBe(2);
   });
 
   it('⑤ EMP Field surfaces the +Resistance buff and mez PROTECTION (not offense)', () => {

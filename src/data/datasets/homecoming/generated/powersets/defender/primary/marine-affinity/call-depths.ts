@@ -50,7 +50,7 @@ export const CallDepths: Power = {
       "table": "Ranged_Ones"
     },
     "maxHPBuff": {
-      "scale": 4,
+      "scale": 2,
       "table": "Ranged_Heal"
     },
     "rangeBuff": {

@@ -3559,7 +3559,17 @@ function foldResourceSlot(entries) {
         }
         continue;
       }
-      cur.scale += Math.abs(e.scale);
+      // `Replace`-mode atoms replace rather than accumulate onto the running
+      // scale (`Stack` mode still sums). This distinguishes the IgnoreStrength
+      // /enhanceable +MaxHP twin idiom: Second Wind (Dull Pain) uses stack=Stack
+      // (scale 1 + 1 → +20%, verified in-game) but Ailment Resistance (Revive)
+      // uses stack=Replace (scale 1.2 + 1.2 must stay 1.2 → +188.79 HP for a
+      // level-50 Brute, matching in-game). Blind summation doubled the latter.
+      if (e.stack === 'Replace') {
+        cur.scale = Math.max(cur.scale, Math.abs(e.scale));
+      } else {
+        cur.scale += Math.abs(e.scale);
+      }
     } else {
       cur = { scale: Math.abs(e.scale), table: e.table };
       if (e.twin) cur.unresistable = true;
@@ -4038,6 +4048,10 @@ function projectAtomsToEffects(atoms, powerName) {
           table,
           isDebuff,
           twin: isTwin,
+          // `stack` is consumed by foldResourceSlot's Replace-collapse branch,
+          // which only fires for the +MaxHP twin idiom. Carry it on maxHPBuff
+          // alone so every other resource slot folds byte-identically.
+          ...(key === 'maxHPBuff' ? { stack: a._stack } : {}),
           duration: duration && duration > 0 ? duration : null,
         });
 

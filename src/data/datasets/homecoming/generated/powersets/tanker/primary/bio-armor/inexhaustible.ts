@@ -54,7 +54,7 @@ export const Inexhaustible: Power = {
       "regenBuff": 5.25
     },
     "maxHPBuff": {
-      "scale": 1,
+      "scale": 0.5,
       "table": "Melee_HealSelf"
     },
     "recoveryBuff": {

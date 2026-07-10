@@ -38,7 +38,7 @@ export const HighPainTolerance: Power = {
       "resistance": 10.25
     },
     "maxHPBuff": {
-      "scale": 2,
+      "scale": 1,
       "table": "Melee_HealSelf"
     },
     "resistance": {
