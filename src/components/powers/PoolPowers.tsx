@@ -104,83 +104,19 @@ export function PoolPowers() {
     }
   };
 
-  // Inherent power handlers (separate from pool handlers to use correct category)
-  const handleInherentAddSlots = (powerName: string, count: number) => {
-    for (let i = 0; i < count; i++) {
-      addSlot(powerName, 'inherent');
-    }
-  };
-  const handleInherentRemoveSlot = (powerName: string, slotIndex: number) => {
-    removeSlot(powerName, slotIndex, 'inherent');
-  };
-  const handleInherentRemoveAllSlots = (powerName: string, totalSlots: number) => {
-    for (let i = totalSlots - 1; i > 0; i--) {
-      removeSlot(powerName, i, 'inherent');
-    }
-  };
-  const handleInherentClearEnhancement = (powerName: string, slotIndex: number) => {
-    clearEnhancement(powerName, slotIndex, 'inherent');
-  };
-  const handleInherentClearAllEnhancements = (powerName: string, totalSlots: number) => {
-    for (let i = 0; i < totalSlots; i++) {
-      clearEnhancement(powerName, i, 'inherent');
-    }
-  };
-
   const isPowerLocked = (powerName: string) => {
     return infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === powerName;
   };
 
-  // Group inherent powers by category
-  const inherentGroups = useMemo(() => {
-    const groups: Record<string, SelectedPower[]> = {
-      fitness: [],
-      basic: [],
-      prestige: [],
-      archetype: [],
-    };
-
-    for (const power of build.inherents) {
-      const category = power.inherentCategory || 'basic';
-      if (groups[category]) {
-        groups[category].push(power);
-      }
-    }
-
-    return groups;
-  }, [build.inherents]);
-
-  const handleInherentPowerHover = (power: SelectedPower) => {
-    setInfoPanelContent({
-      type: 'power',
-      powerName: power.internalName,
-      powerSet: 'Inherent',
-    });
-  };
-
-  const handleInherentPowerRightClick = (e: React.MouseEvent, power: SelectedPower) => {
-    e.preventDefault();
-    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.internalName) {
-      unlockInfoPanel();
-    } else {
-      lockInfoPanel({
-        type: 'power',
-        powerName: power.internalName,
-        powerSet: 'Inherent',
-      });
-    }
-  };
-
-  // Check if there are any selected powers or inherents to display
+  // Pool powers only. Epic/Patron powers render in their own `EpicPowers`
+  // section and inherent powers in `InherentPowers` (both below), so each reads
+  // as its own atomic planner cell.
   const hasSelectedPoolPowers = pools.some((p) => p.powers.length > 0);
-  const hasEpicPowers = build.epicPool && build.epicPool.powers.length > 0;
-  const hasInherents = build.inherents.length > 0;
-  const hasAnything = hasSelectedPoolPowers || hasEpicPowers || hasInherents;
 
-  if (!hasAnything) {
+  if (!hasSelectedPoolPowers) {
     return (
       <div className="text-xs text-slate-500 italic py-4 text-center">
-        No pool powers or inherents yet
+        No pool powers yet
       </div>
     );
   }
@@ -224,124 +160,190 @@ export function PoolPowers() {
           />
         );
       })}
+    </div>
+  );
+}
 
-      {/* Epic/Patron Pool — only show if has selected powers */}
-      {hasEpicPowers && (
-        <EpicPoolSelectedPowers
-          epicPool={build.epicPool!}
-          isPowerLocked={isPowerLocked}
-          slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
-        />
+// ============================================
+// EPIC POWERS (separate planner column)
+// ============================================
+
+/**
+ * Epic / Patron pool selected powers, rendered as their own planner section so
+ * users can place or hide them independently of the power pools. Split out of
+ * `PoolPowers` 2026-07-09 (goal 2 "atomic cells").
+ */
+export function EpicPowers() {
+  const build = useBuildStore((s) => s.build);
+  const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
+  const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
+  const showSlotLevels = useShowSlotLevels();
+  const slotLevelsMap = useSlotLevels();
+
+  const isPowerLocked = (powerName: string) =>
+    infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === powerName;
+
+  const hasEpicPowers = build.epicPool && build.epicPool.powers.length > 0;
+  if (!hasEpicPowers) {
+    return (
+      <div className="text-xs text-slate-500 italic py-4 text-center">
+        No epic powers yet
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-2">
+      <EpicPoolSelectedPowers
+        epicPool={build.epicPool!}
+        isPowerLocked={isPowerLocked}
+        slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
+      />
+    </div>
+  );
+}
+
+// ============================================
+// INHERENT POWERS (separate planner column)
+// ============================================
+
+/** The fixed inherent groups, each surfaced as its own atomic planner cell. */
+export type InherentGroupKey = 'fitness' | 'basic' | 'prestige' | 'archetype';
+
+/**
+ * Inherent powers (Fitness / Basic / Prestige Sprints / archetype inherent),
+ * rendered as their own planner section so users can position or hide them
+ * independently of pool/epic powers. Split out of `PoolPowers` 2026-07-09.
+ */
+export function InherentPowers({ group }: { group?: InherentGroupKey } = {}) {
+  const build = useBuildStore((s) => s.build);
+  const addSlot = useBuildStore((s) => s.addSlot);
+  const removeSlot = useBuildStore((s) => s.removeSlot);
+  const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
+  const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
+  const lockInfoPanel = useUIStore((s) => s.lockInfoPanel);
+  const unlockInfoPanel = useUIStore((s) => s.unlockInfoPanel);
+  const infoPanelLocked = useUIStore((s) => s.infoPanel.locked);
+  const lockedContent = useUIStore((s) => s.infoPanel.lockedContent);
+
+  const showSlotLevels = useShowSlotLevels();
+  const slotLevelsMap = useSlotLevels();
+
+  const isPowerLocked = (powerName: string) =>
+    infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === powerName;
+
+  const handleAddSlots = (powerName: string, count: number) => {
+    for (let i = 0; i < count; i++) addSlot(powerName, 'inherent');
+  };
+  const handleRemoveSlot = (powerName: string, slotIndex: number) => {
+    removeSlot(powerName, slotIndex, 'inherent');
+  };
+  const handleRemoveAllSlots = (powerName: string, totalSlots: number) => {
+    for (let i = totalSlots - 1; i > 0; i--) removeSlot(powerName, i, 'inherent');
+  };
+  const handleClearEnhancement = (powerName: string, slotIndex: number) => {
+    clearEnhancement(powerName, slotIndex, 'inherent');
+  };
+  const handleClearAllEnhancements = (powerName: string, totalSlots: number) => {
+    for (let i = 0; i < totalSlots; i++) clearEnhancement(powerName, i, 'inherent');
+  };
+
+  const handlePowerHover = (power: SelectedPower) => {
+    setInfoPanelContent({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
+  };
+  const handlePowerLeave = () => {
+    // Keep showing the last-hovered power until a new one is hovered.
+  };
+  const handleEnhancementHover = (powerName: string, slotIndex: number) => {
+    setInfoPanelContent({ type: 'slotted-enhancement', powerName, slotIndex });
+  };
+  const handlePowerRightClick = (e: React.MouseEvent, power: SelectedPower) => {
+    e.preventDefault();
+    if (infoPanelLocked && lockedContent?.type === 'power' && lockedContent.powerName === power.internalName) {
+      unlockInfoPanel();
+    } else {
+      lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
+    }
+  };
+  const handleInfoClick = (power: SelectedPower) => {
+    if (isPowerLocked(power.internalName)) {
+      unlockInfoPanel();
+    } else {
+      lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
+    }
+  };
+
+  // Group inherent powers by category.
+  const inherentGroups = useMemo(() => {
+    const groups: Record<string, SelectedPower[]> = { fitness: [], basic: [], prestige: [], archetype: [] };
+    for (const power of build.inherents) {
+      const category = power.inherentCategory || 'basic';
+      if (groups[category]) groups[category].push(power);
+    }
+    return groups;
+  }, [build.inherents]);
+
+  const groupProps = {
+    isPowerLocked,
+    onPowerHover: handlePowerHover,
+    onPowerLeave: handlePowerLeave,
+    onPowerRightClick: handlePowerRightClick,
+    onEnhancementHover: handleEnhancementHover,
+    onClearEnhancement: handleClearEnhancement,
+    onAddSlots: handleAddSlots,
+    onRemoveSlot: handleRemoveSlot,
+    onRemoveAllSlots: handleRemoveAllSlots,
+    onClearAllEnhancements: handleClearAllEnhancements,
+    onInfoClick: handleInfoClick,
+    slotLevelsMap: showSlotLevels ? slotLevelsMap : undefined,
+  };
+
+  // Single-group mode (desktop atomic cells): render just this group's rows.
+  // The planner cell header already names the group, so the inner group header
+  // is suppressed (`headerless`) to avoid a redundant second title.
+  if (group) {
+    const powers = inherentGroups[group] ?? [];
+    if (powers.length === 0) {
+      return <div className="text-xs text-slate-500 italic py-4 text-center">None</div>;
+    }
+    return (
+      <div className="space-y-2">
+        <InherentPowerGroup title={group} powers={powers} headerless {...groupProps} />
+      </div>
+    );
+  }
+
+  // Combined mode (mobile/md fallback): all groups with their own headers.
+  if (build.inherents.length === 0) {
+    return (
+      <div className="text-xs text-slate-500 italic py-4 text-center">
+        No inherent powers yet
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-2">
+      {inherentGroups.fitness.length > 0 && (
+        <InherentPowerGroup title="Fitness" powers={inherentGroups.fitness} {...groupProps} />
       )}
-
-      {/* Inherent Powers */}
-      {hasInherents && (
-        <>
-          {inherentGroups.fitness.length > 0 && (
-            <InherentPowerGroup
-              title="Fitness"
-              powers={inherentGroups.fitness}
-              isPowerLocked={isPowerLocked}
-              onPowerHover={handleInherentPowerHover}
-              onPowerLeave={handlePowerLeave}
-              onPowerRightClick={handleInherentPowerRightClick}
-              onEnhancementHover={handleEnhancementHover}
-              onClearEnhancement={handleInherentClearEnhancement}
-              onAddSlots={handleInherentAddSlots}
-              onRemoveSlot={handleInherentRemoveSlot}
-              onRemoveAllSlots={handleInherentRemoveAllSlots}
-              onClearAllEnhancements={handleInherentClearAllEnhancements}
-              onInfoClick={(power) => {
-                if (isPowerLocked(power.internalName)) {
-                  unlockInfoPanel();
-                } else {
-                  lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
-                }
-              }}
-              slotLevelsMap={showSlotLevels ? slotLevelsMap : undefined}
-            />
-          )}
-
-          {inherentGroups.basic.length > 0 && (
-            <InherentPowerGroup
-              title="Basic"
-              powers={inherentGroups.basic}
-              isPowerLocked={isPowerLocked}
-              onPowerHover={handleInherentPowerHover}
-              onPowerLeave={handlePowerLeave}
-              onPowerRightClick={handleInherentPowerRightClick}
-              onEnhancementHover={handleEnhancementHover}
-              onClearEnhancement={handleInherentClearEnhancement}
-              onAddSlots={handleInherentAddSlots}
-              onRemoveSlot={handleInherentRemoveSlot}
-              onRemoveAllSlots={handleInherentRemoveAllSlots}
-              onClearAllEnhancements={handleInherentClearAllEnhancements}
-              onInfoClick={(power) => {
-                if (isPowerLocked(power.internalName)) {
-                  unlockInfoPanel();
-                } else {
-                  lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
-                }
-              }}
-              defaultCollapsed
-            />
-          )}
-
-          {inherentGroups.prestige.length > 0 && (
-            <InherentPowerGroup
-              title="Prestige Sprints"
-              powers={inherentGroups.prestige}
-              isPowerLocked={isPowerLocked}
-              onPowerHover={handleInherentPowerHover}
-              onPowerLeave={handlePowerLeave}
-              onPowerRightClick={handleInherentPowerRightClick}
-              onEnhancementHover={handleEnhancementHover}
-              onClearEnhancement={handleInherentClearEnhancement}
-              onAddSlots={handleInherentAddSlots}
-              onRemoveSlot={handleInherentRemoveSlot}
-              onRemoveAllSlots={handleInherentRemoveAllSlots}
-              onClearAllEnhancements={handleInherentClearAllEnhancements}
-              onInfoClick={(power) => {
-                if (isPowerLocked(power.internalName)) {
-                  unlockInfoPanel();
-                } else {
-                  lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
-                }
-              }}
-              defaultCollapsed
-            />
-          )}
-
-          {/* Archetype inherent group: the AT inherent (Cosmic Balance /
-              Defiance / …) plus auto-granted archetype powers such as the
-              Kheldian travel toggles (Energy/Combat Flight, Shadow Step/Recall).
-              Kept EXPANDED (no defaultCollapsed) so these always-on powers stay
-              discoverable — hiding them behind a collapsed header was the
-              "missing Energy Flight" bug. */}
-          {inherentGroups.archetype.length > 0 && (
-            <InherentPowerGroup
-              title={`${build.archetype.name || 'Archetype'} Inherent`}
-              powers={inherentGroups.archetype}
-              isPowerLocked={isPowerLocked}
-              onPowerHover={handleInherentPowerHover}
-              onPowerLeave={handlePowerLeave}
-              onPowerRightClick={handleInherentPowerRightClick}
-              onEnhancementHover={handleEnhancementHover}
-              onClearEnhancement={handleInherentClearEnhancement}
-              onAddSlots={handleInherentAddSlots}
-              onRemoveSlot={handleInherentRemoveSlot}
-              onRemoveAllSlots={handleInherentRemoveAllSlots}
-              onClearAllEnhancements={handleInherentClearAllEnhancements}
-              onInfoClick={(power) => {
-                if (isPowerLocked(power.internalName)) {
-                  unlockInfoPanel();
-                } else {
-                  lockInfoPanel({ type: 'power', powerName: power.internalName, powerSet: 'Inherent' });
-                }
-              }}
-            />
-          )}
-        </>
+      {inherentGroups.basic.length > 0 && (
+        <InherentPowerGroup title="Basic" powers={inherentGroups.basic} {...groupProps} defaultCollapsed />
+      )}
+      {inherentGroups.prestige.length > 0 && (
+        <InherentPowerGroup title="Prestige Sprints" powers={inherentGroups.prestige} {...groupProps} defaultCollapsed />
+      )}
+      {/* Archetype inherent group: the AT inherent (Cosmic Balance / Defiance /
+          …) plus auto-granted archetype powers such as the Kheldian travel
+          toggles (Energy/Combat Flight, Shadow Step/Recall). Kept EXPANDED (no
+          defaultCollapsed) so these always-on powers stay discoverable — hiding
+          them behind a collapsed header was the "missing Energy Flight" bug. */}
+      {inherentGroups.archetype.length > 0 && (
+        <InherentPowerGroup
+          title={`${build.archetype.name || 'Archetype'} Inherent`}
+          powers={inherentGroups.archetype}
+          {...groupProps}
+        />
       )}
     </div>
   );
@@ -769,6 +771,9 @@ interface InherentPowerGroupProps {
   onClearAllEnhancements: (powerName: string, totalSlots: number) => void;
   onInfoClick: (power: SelectedPower) => void;
   defaultCollapsed?: boolean;
+  /** Suppress the group's own header/collapse chrome — used when the group is a
+   *  standalone planner cell whose cell header already names it (goal 2). */
+  headerless?: boolean;
   slotLevelsMap?: Map<string, number[]>;
 }
 
@@ -787,6 +792,7 @@ function InherentPowerGroup({
   onClearAllEnhancements,
   onInfoClick,
   defaultCollapsed = false,
+  headerless = false,
   slotLevelsMap,
 }: InherentPowerGroupProps) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
@@ -795,9 +801,12 @@ function InherentPowerGroup({
   const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
 
   const sortedPowers = [...powers].sort((a, b) => a.available - b.available);
+  // Headerless standalone-cell mode is never collapsed (the cell can be hidden).
+  const showRows = headerless || !collapsed;
 
   return (
     <div>
+      {!headerless && (
       <div
         className="flex items-center gap-1 mb-1.5 cursor-pointer select-none"
         onClick={() => setCollapsed(!collapsed)}
@@ -810,8 +819,9 @@ function InherentPowerGroup({
         </h4>
         <span className="text-[9px] text-slate-600">({sortedPowers.length})</span>
       </div>
+      )}
 
-      {!collapsed && (
+      {showRows && (
         <div className="space-y-0.5">
           {sortedPowers.map((power) => {
             const isLocked = isPowerLocked(power.internalName);

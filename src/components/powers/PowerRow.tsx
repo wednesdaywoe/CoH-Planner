@@ -437,6 +437,11 @@ export function PowerRow({
       {showAutoLabel && (
         <span className="text-[9px] text-slate-500 ml-1 flex-shrink-0">(Auto)</span>
       )}
+      {/* Toggle lives in the name row (stacked layout) rather than beside the
+          slots: a 6-slot row + ghost already fills a narrow column, and letting
+          the toggle share that row pushed the ghost — and the bottom-aligned
+          icon — onto a third line. Up here it never competes with the slots. */}
+      <span className="ml-1 flex-shrink-0 flex items-center">{renderToggle()}</span>
       {renderActions()}
     </div>
   );
@@ -542,12 +547,13 @@ export function PowerRow({
             {renderIcon(level !== undefined ? 'mt-0.5' : undefined)}
           </div>
 
-          {/* Right column: Name (row 1) + Slots (row 2) */}
+          {/* Right column: Name+toggle (row 1) + Slots (row 2). The toggle is in
+              the name row (see renderNameRow) so the slot row gets the full width
+              and the 6-slot + ghost run never wraps onto a third line. */}
           <div className="flex flex-col flex-1 min-w-0">
             {renderNameRow()}
             <div className="flex items-center mt-0.5">
               {renderSlots()}
-              {renderToggle()}
             </div>
           </div>
         </div>

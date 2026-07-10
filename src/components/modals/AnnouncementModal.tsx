@@ -116,7 +116,7 @@ export function AnnouncementModal() {
         </label>
         <div className="flex items-center gap-2">
           <Button variant="ghost" onClick={close}>
-            Maybe later
+            Ok!
           </Button>
           {active.cta && (
             <Button variant="primary" onClick={act}>

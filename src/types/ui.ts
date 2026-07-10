@@ -76,6 +76,82 @@ export interface StatDisplayConfig {
 }
 
 // ============================================
+// PLANNER LAYOUT STATE
+// ============================================
+
+/**
+ * Identifiers for the rearrangeable planner columns. Category view uses
+ * available/primary/secondary/pool/inherent/info; chronological view uses
+ * available/bylevel/info. `info` is shared by both. The power-pool, epic and
+ * inherent trays are split into atomic sections (goal 2): `pool` (power pools
+ * only), `epic` (epic/patron), and one section per inherent group
+ * (`inherent-fitness` / `inherent-basic` / `inherent-prestige` /
+ * `inherent-archetype`), so each can be placed, stacked or hidden on its own.
+ * The default layout stacks the atomic sections into shared columns so the row
+ * stays 6 columns wide (see `defaultPlannerLayout`).
+ */
+export type PlannerSectionId =
+  | 'available'
+  | 'primary'
+  | 'secondary'
+  | 'pool'
+  | 'epic'
+  | 'inherent-fitness'
+  | 'inherent-basic'
+  | 'inherent-prestige'
+  | 'inherent-archetype'
+  | 'info'
+  | 'bylevel';
+
+export interface PlannerSectionConfig {
+  /** Which section this entry positions */
+  id: PlannerSectionId;
+  /** Whether the section is shown in the desktop (lg+) grid */
+  visible: boolean;
+  /**
+   * Horizontal grid track weight in fr units (defaults to 1 when omitted). Lets
+   * a section's column claim more horizontal space than its siblings — e.g. the
+   * chronological "Powers by Level" grid is 2fr. When several sections stack in
+   * one column (see `column`), the column's horizontal weight is taken from the
+   * topmost section (first in array order within that column).
+   */
+  weight?: number;
+  /**
+   * LAY11 — which desktop grid *column* this section occupies (0-based). Two or
+   * more sections sharing a `column` value stack vertically in one column, in
+   * array order (top → bottom). Columns render left-to-right by ascending
+   * `column` value. Omitted only in legacy persisted state predating LAY11;
+   * `merge()` backfills it (each section its own column = the historical single
+   * row). Kept dense (0..N-1) by the planner-layout helpers after every edit.
+   */
+  column?: number;
+  /**
+   * LAY11 — vertical fr weight *within* a stacked column (defaults to 1). Only
+   * meaningful when the section shares its `column` with others; the vertical
+   * resize divider drives it, mirroring `weight` on the horizontal axis.
+   */
+  rowWeight?: number;
+  /**
+   * Whether this section is collapsed to just its header bar (body hidden). The
+   * cell-header chevron toggles it; persisted so a user's collapse choices (and
+   * the default layout's initial collapsed sections) survive reload.
+   */
+  collapsed?: boolean;
+}
+
+/**
+ * Per-view-mode desktop column arrangement. A flat list per view; the
+ * left-to-right / top-to-bottom 2D layout is derived from each entry's `column`
+ * (horizontal group) and array order (vertical order within a group). Persisted
+ * so a user's layout survives reload. Kept flat (rather than nested columns) so
+ * `merge()`'s append-new / drop-unknown reconcile stays a simple list filter.
+ */
+export interface PlannerLayoutState {
+  category: PlannerSectionConfig[];
+  chronological: PlannerSectionConfig[];
+}
+
+// ============================================
 // TOOLTIP STATE
 // ============================================
 

@@ -22,6 +22,7 @@ import { quickShareBuild, RateLimitError, formatRateLimitMessage } from '@/servi
 import type { BuildExport } from '@/types/build';
 import type { DatasetId } from '@/data/dataset';
 import { ConfirmModal } from '@/components/modals/ConfirmModal';
+import { PlannerLayoutMenu } from './PlannerLayoutMenu';
 import { calculateVigilanceDamageBonus, calculateAssassinationDamageBonus, OPPORTUNITY_CRIT_MULTIPLIER } from '@/utils/calculations';
 import { isCalcDebugEnabled, enableCalcDebug, disableCalcDebug } from '@/utils/calc-debug';
 import { getProfile } from '@/services/profile';
@@ -190,6 +191,11 @@ export function Header() {
         <div className="hidden lg:block">
           <SettingsPopover />
         </div>
+
+        {/* Planner layout (rearrangeable columns). Desktop-only dropdown in the
+            same mould as Menu / Options. */}
+        <PlannerLayoutMenu />
+
         <BuildIdentityPopover />
         <DatasetBadge />
 

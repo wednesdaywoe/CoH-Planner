@@ -17,6 +17,9 @@ import type {
   InfoPanelState,
   InfoPanelContent,
   StatDisplayConfig,
+  PlannerSectionId,
+  PlannerSectionConfig,
+  PlannerLayoutState,
   EnhancementStatType,
   EnhancementTier,
   IOSetRarity,
@@ -27,9 +30,18 @@ import type {
   Enhancement,
 } from '@/types';
 import { createDefaultIncarnateActiveState } from '@/types';
+import { reconcilePlannerColumns, isPreAtomicSplitCategory } from '@/utils/planner-layout';
 import { type ColorThemeId, DEFAULT_COLOR_THEME, applyColorTheme, type ColorMode, DEFAULT_COLOR_MODE, applyColorMode } from '@/data/core/themes';
 import type { SlotLevelRef } from '@/utils/slot-levels';
 import type { PowerMetric } from '@/utils/calculations/attack-chain';
+
+/** Persisted geometry of a floating window (see `FloatingWindow`). */
+export interface FloatingWindowRect {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
 
 // ============================================
 // PROC SETTINGS
@@ -252,6 +264,12 @@ interface UIState {
 
   /** Stats display configuration */
   statsConfig: StatDisplayConfig[];
+
+  /** Rearrangeable planner column layout, per view mode (desktop / lg+ only) */
+  plannerLayout: PlannerLayoutState;
+
+  /** Persisted position + size of floating windows, keyed by `FloatingWindow` persistKey */
+  floatingWindows: Record<string, FloatingWindowRect>;
 
   /** Tooltip state */
   tooltip: TooltipState;
@@ -482,6 +500,26 @@ interface UIActions {
   setStatVisible: (stat: string, visible: boolean) => void;
   reorderStats: (stats: StatDisplayConfig[]) => void;
   resetStatsConfig: () => void;
+
+  /** Replace the ordered section list for a planner view mode (drag reorder) */
+  reorderPlannerSections: (view: keyof PlannerLayoutState, sections: PlannerSectionConfig[]) => void;
+  /** Show/hide a single planner section in a view mode */
+  setPlannerSectionVisible: (view: keyof PlannerLayoutState, id: PlannerSectionId, visible: boolean) => void;
+  /** Set horizontal fr-weights for one or more columns (drag-to-resize). Merges
+   *  the given `{ id: weight }` map onto the existing layout, leaving other
+   *  columns' weights untouched. */
+  setPlannerSectionWeights: (view: keyof PlannerLayoutState, weights: Partial<Record<PlannerSectionId, number>>) => void;
+  /** Set vertical fr-weights (`rowWeight`) for one or more stacked sections
+   *  (LAY11 vertical resize). Same merge semantics as `setPlannerSectionWeights`
+   *  but on the within-column axis. */
+  setPlannerSectionRowWeights: (view: keyof PlannerLayoutState, rowWeights: Partial<Record<PlannerSectionId, number>>) => void;
+  /** Toggle a single planner section between collapsed (header only) and expanded. */
+  togglePlannerSectionCollapsed: (view: keyof PlannerLayoutState, id: PlannerSectionId) => void;
+  /** Restore a view mode's columns to the default order + visibility */
+  resetPlannerLayout: (view: keyof PlannerLayoutState) => void;
+
+  /** Persist a floating window's position + size (keyed by its `persistKey`) */
+  setFloatingWindow: (key: string, rect: FloatingWindowRect) => void;
 
   // Accolades Modal
   openAccoladesModal: () => void;
@@ -751,6 +789,37 @@ const defaultStatsConfig: StatDisplayConfig[] = [
   { stat: 'res_smashing', visible: true, order: 12 },
 ];
 
+// Default planner column arrangement. Order = left-to-right column order and
+// reproduces the historical fixed layout (all sections visible). Chronological's
+// "Powers by Level" grid keeps its 2fr width via `weight`.
+const defaultPlannerLayout: PlannerLayoutState = {
+  category: [
+    // 5-column default tuned for space use: atomic sections stack per column,
+    // content-first sizing (goal 1) letting each read as its own tile and some
+    // start collapsed to keep tall columns compact.
+    // Col 0: Available
+    { id: 'available', visible: true, column: 0 },
+    // Col 1: Primary + Fitness
+    { id: 'primary', visible: true, column: 1 },
+    { id: 'inherent-fitness', visible: true, column: 1 },
+    // Col 2: Secondary + Basic (collapsed) + Archetype + Prestige Sprints (collapsed)
+    { id: 'secondary', visible: true, column: 2 },
+    { id: 'inherent-basic', visible: true, column: 2, collapsed: true },
+    { id: 'inherent-archetype', visible: true, column: 2 },
+    { id: 'inherent-prestige', visible: true, column: 2, collapsed: true },
+    // Col 3: Epic + Pool
+    { id: 'epic', visible: true, column: 3 },
+    { id: 'pool', visible: true, column: 3 },
+    // Col 4: Info
+    { id: 'info', visible: true, column: 4 },
+  ],
+  chronological: [
+    { id: 'available', visible: true, column: 0 },
+    { id: 'bylevel', visible: true, weight: 2, column: 1 },
+    { id: 'info', visible: true, column: 2 },
+  ],
+};
+
 // ============================================
 // STORE CREATION
 // ============================================
@@ -810,6 +879,8 @@ export const useUIStore = create<UIStore>()(
       hintsEnabled: true,
       infoPanel: defaultInfoPanel,
       statsConfig: defaultStatsConfig,
+      plannerLayout: defaultPlannerLayout,
+      floatingWindows: {},
       tooltip: defaultTooltip,
       dashboardCollapsed: false,
       uiScale: 1.0,
@@ -1270,6 +1341,64 @@ export const useUIStore = create<UIStore>()(
           statsConfig: defaultStatsConfig,
         }),
 
+      reorderPlannerSections: (view, sections) =>
+        set((state) => ({
+          plannerLayout: { ...state.plannerLayout, [view]: sections },
+        })),
+
+      setPlannerSectionVisible: (view, id, visible) =>
+        set((state) => ({
+          plannerLayout: {
+            ...state.plannerLayout,
+            [view]: state.plannerLayout[view].map((s) =>
+              s.id === id ? { ...s, visible } : s
+            ),
+          },
+        })),
+
+      setPlannerSectionWeights: (view, weights) =>
+        set((state) => ({
+          plannerLayout: {
+            ...state.plannerLayout,
+            [view]: state.plannerLayout[view].map((s) =>
+              weights[s.id] !== undefined ? { ...s, weight: weights[s.id] } : s
+            ),
+          },
+        })),
+
+      setPlannerSectionRowWeights: (view, rowWeights) =>
+        set((state) => ({
+          plannerLayout: {
+            ...state.plannerLayout,
+            [view]: state.plannerLayout[view].map((s) =>
+              rowWeights[s.id] !== undefined ? { ...s, rowWeight: rowWeights[s.id] } : s
+            ),
+          },
+        })),
+
+      togglePlannerSectionCollapsed: (view, id) =>
+        set((state) => ({
+          plannerLayout: {
+            ...state.plannerLayout,
+            [view]: state.plannerLayout[view].map((s) =>
+              s.id === id ? { ...s, collapsed: !s.collapsed } : s
+            ),
+          },
+        })),
+
+      resetPlannerLayout: (view) =>
+        set((state) => ({
+          plannerLayout: {
+            ...state.plannerLayout,
+            [view]: defaultPlannerLayout[view],
+          },
+        })),
+
+      setFloatingWindow: (key, rect) =>
+        set((state) => ({
+          floatingWindows: { ...state.floatingWindows, [key]: rect },
+        })),
+
       // Accolades Modal
       openAccoladesModal: () =>
         set({ accoladesModalOpen: true }),
@@ -1715,6 +1844,8 @@ export const useUIStore = create<UIStore>()(
         hintsEnabled: state.hintsEnabled,
         infoPanel: { enabled: state.infoPanel.enabled, content: null, locked: false, lockedContent: null, tooltipEnabled: state.infoPanel.tooltipEnabled, undocked: false },
         statsConfig: state.statsConfig,
+        plannerLayout: state.plannerLayout,
+        floatingWindows: state.floatingWindows,
         dashboardCollapsed: state.dashboardCollapsed,
         uiScale: state.uiScale,
         colorTheme: state.colorTheme,
@@ -1794,6 +1925,39 @@ export const useUIStore = create<UIStore>()(
         if (merged.incarnateActive) {
           merged.incarnateActive = { ...createDefaultIncarnateActiveState(), ...merged.incarnateActive };
         }
+        // Reconcile the persisted planner layout against the current defaults:
+        // keep the user's order/visibility, append any sections added since they
+        // last saved, and drop any ids the app no longer knows. Done per view so
+        // a schema change to one view can't strand the other.
+        const persistedLayout = (persisted as Partial<UIStore>)?.plannerLayout;
+        if (persistedLayout) {
+          const reconcileView = (view: keyof PlannerLayoutState): PlannerSectionConfig[] => {
+            const defaults = defaultPlannerLayout[view];
+            const known = new Set(defaults.map((s) => s.id));
+            const saved = Array.isArray(persistedLayout[view]) ? persistedLayout[view] : [];
+            // One-time migration for the atomic-section split: a pre-split saved
+            // category layout would otherwise scatter the five new sections into
+            // their own trailing columns on upgrade (the "every cell its own
+            // column" regression). Adopt the curated new default instead.
+            // Chronological never split, so it's exempt.
+            if (view === 'category' && isPreAtomicSplitCategory(saved)) {
+              return defaults;
+            }
+            const kept = saved.filter((s) => known.has(s.id));
+            const present = new Set(kept.map((s) => s.id));
+            const missing = defaults.filter((s) => !present.has(s.id));
+            // reconcilePlannerColumns backfills `column` for legacy (pre-LAY11)
+            // entries and appends new sections in fresh trailing columns.
+            return reconcilePlannerColumns(kept, missing);
+          };
+          merged.plannerLayout = {
+            category: reconcileView('category'),
+            chronological: reconcileView('chronological'),
+          };
+        } else {
+          merged.plannerLayout = defaultPlannerLayout;
+        }
+
         // Inject any new default stats that aren't in the persisted config
         const persistedStats = (persisted as Partial<UIStore>)?.statsConfig;
         if (persistedStats) {

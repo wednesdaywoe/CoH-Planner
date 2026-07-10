@@ -1,9 +1,9 @@
 Section,Field,Type,Required,Default,Notes
-Envelope,version,number,yes,,"Write exactly 4. Only 2/3/4 use the slim format; any other value (including a missing/typo'd version) falls into the legacy v1 full-Build path and mis-parses slim data (import returns false, no clean error)."
+Envelope,version,number,yes,,"Write 4. Only 2/3/4 use the slim format; any other value (including a missing/typo'd version) falls into the legacy v1 full-Build path and mis-parses"
 Envelope,build,object,yes,,Slim build object (see build.* rows).
 Envelope,meta,object,no,,"Ignored on import. Sub-fields: exportedAt, buildAlias, authorName, authorServer."
 build,name,string,no,"""Imported Build""",
-build,serverId,"""homecoming""|""rebirth""|""thunderspy""",yes (*),"""homecoming""",Missing/wrong value hydrates as Homecoming.
+build,serverId,"""homecoming""|""rebirth""|""thunderspy""",yes (*),"""homecoming""",Missing/wrong value defaults to Homecoming.
 build,archetype,"{id, name}",yes (*),"{id: null, name: """"}",id from archetype id vocabulary; name is display-only.
 build,level,number,no,50,1-50
 build,progressionMode,"""auto""|""freeform""",no,"""auto""",
@@ -14,12 +14,12 @@ build,epicPool,powerset selection|null,no,null,
 build,inherents,SlimPower[],no,auto-populated,Sparse: only modified inherents; merged by internalName (fallback: case-insensitive display name).
 build,accolades,Accolade[],no,[],"Verbatim: id, name, description, icon, bonuses[], excludes?"
 build,settings,{origin},no,"{origin: ""Natural""}","origin in Magic, Mutation, Natural, Science, Technology"
-build,sets,"Record<setId, {count, pieces[]}>",no (write if any IO set slotted),{},"NOT recomputed on import — omit and set bonuses won't register. See ""sets tracking entry"" rows."
-build,incarnates,IncarnateBuildState,no,all-null,
+build,sets,"Record<setId, {count, pieces[]}>",no (write if any IO set slotted),{},"NOT recomputed on import. Omit and set bonuses won't register. See ""sets tracking entry"" rows."
+build,incarnates,IncarnateBuildState,no,all-null,"Object keyed by slot name — {alpha, judgement, interface, destiny, lore, hybrid, genesis}, each value an ""incarnate slot"" object or null (NOT an array). genesis is Rebirth-only (null elsewhere). Passed verbatim on import so the shape must be exact. See ""incarnate slot"" rows."
 build,craftingChecklist,object,no,{},UI state - omit.
 build,incarnateObtained,object,no,{},UI state - omit.
 build,shoppingListAcquired,object,no,{},UI state - omit.
-build,slotOrder,entry[],no,[],"Omit — the importer back-fills from power-pick order. The game doesn't track slot-placement levels, so an exporter has none to write. (Entry shape in ""slotOrder entry"" rows, only if you do write it.)"
+build,slotOrder,entry[],no,[],"Omit. the importer back-fills from power-pick order (Entry shape in ""slotOrder entry"" rows, only if you do write it)"
 build,kheldianForm,"""human""|""nova""|""dwarf""",no,absent,Peacebringer/Warshade only.
 build,attackChains,"{id, name, powers[]}[]",no,absent,Omit. powers entries are ""bucket:internalName"".
 build,procOverrides,"Record<""internalName:slotIndex"", ProcOverride>",no,absent,Omit. Value: {enabled, mode, stacks?, hpPct?}.
@@ -48,7 +48,7 @@ SlimPower,isAutoGranted,boolean,no,,
 SlimPower,grantedByPower,string,no,,internalName of the granting power.
 SlimPower,inherentSlotCount,number,no,,Inherents only.
 SlimEnhancement io-set,type,"""io-set""",yes,,
-SlimEnhancement io-set,setId,string,yes,,"snake_case of the set's DISPLAY name (Luck of the Gambler -> luck_of_the_gambler), NOT the game's internal set id — needs a mapping. Unmatched setId -> slot silently dropped."
+SlimEnhancement io-set,setId,string,yes,,"snake_case of the set's DISPLAY name (Luck of the Gambler -> luck_of_the_gambler), NOT the game's internal set id. Needs a mapping. Unmatched setId -> slot silently dropped."
 SlimEnhancement io-set,pieceNum,number,yes,,1-based piece num within the set.
 SlimEnhancement io-set,level,number,no,50,Non-attuned pieces only.
 SlimEnhancement io-set,boost,number,no,,1-5. Discarded on pure procs or attuned pieces.
