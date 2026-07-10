@@ -16,6 +16,7 @@ import { countPlacedBudgetSlots } from '@/utils/slot-levels';
 import { Badge, Button, Select, Slider, Toggle, Tooltip } from '@/components/ui';
 import type { BadgeVariant } from '@/components/ui';
 import { getActiveDataset } from '@/data/dataset';
+import { showDatasetSwitchOverlay } from '@/utils/dataset-switch-overlay';
 import { buildShareUrl } from '@/utils/url-build-sync';
 import { quickShareBuild, RateLimitError, formatRateLimitMessage } from '@/services/sharedBuilds';
 import type { BuildExport } from '@/types/build';
@@ -581,47 +582,19 @@ function BuildIdentityPopover() {
 
     const serverLabel = SERVER_OPTIONS.find((o) => o.value === newId)?.label ?? newId;
 
-    // Switching datasets invalidates every powerset/power reference in the
-    // current build. The minimum-viable UX (per MULTI_DATASET_PLAN.md) is
-    // warn-and-clear; cross-server inference mapping is future work.
-    const hasPicks = !!build.archetype.id || !!build.primary.id || !!build.secondary.id;
-    if (hasPicks && !window.confirm(
-      `Switching to ${serverLabel} will reset your current build. Continue?`,
-    )) {
-      return;
-    }
-
-    // We reload with `?serverId=<newId>` (below). buildStore's onRehydrateStorage
-    // URL-param sync is the single source of truth for this: on next boot it sees
-    // the param differs from the persisted build.serverId and authoritatively sets
-    // serverId + clears the now-invalid archetype/powerset picks (with the canonical
-    // empty shape). We deliberately do NOT hand-write the persist envelope here —
-    // doing so pre-set serverId, which suppressed that canonical path and left a
-    // malformed partial archetype.
+    // Per-server build storage makes switching non-destructive: the current
+    // build is already persisted under its own server slot, and on the next
+    // boot buildStore's per-server `merge` loads the target server's OWN build
+    // (or an empty one) — the current build is preserved and restored when you
+    // switch back. So no "this will reset your build" confirm is needed. We
+    // reload with `?serverId=<newId>` because the active dataset is a boot-time
+    // singleton (data/dataset.ts) that can't be hot-swapped.
 
     // The reload itself is fast, but the post-reload dataset boot pulls in
     // a fresh chunk graph (powersets + IO sets + AT tables). Drop a
     // full-screen overlay so the user gets immediate feedback that
     // something's happening — survives until the new page paints over it.
-    const overlay = document.createElement('div');
-    overlay.setAttribute('role', 'status');
-    overlay.setAttribute('aria-live', 'polite');
-    overlay.style.cssText = [
-      'position:fixed', 'inset:0', 'z-index:99999',
-      'background:rgba(15,23,42,0.92)', 'backdrop-filter:blur(2px)',
-      'display:flex', 'flex-direction:column',
-      'align-items:center', 'justify-content:center',
-      'gap:18px', 'color:#e2e8f0',
-      "font-family:'SN Pro','Nunito',system-ui,sans-serif",
-    ].join(';');
-    overlay.innerHTML = `
-      <div style="width:48px;height:48px;border:3px solid #1e293b;border-top-color:#3b82f6;border-radius:50%;animation:spin 1s linear infinite;"></div>
-      <div style="font-size:18px;font-weight:600;">Switching to ${serverLabel}…</div>
-      <div style="font-size:13px;color:#94a3b8;max-width:320px;text-align:center;line-height:1.45;">
-        Loading the new dataset. This can take a moment on first switch.
-      </div>
-    `;
-    document.body.appendChild(overlay);
+    showDatasetSwitchOverlay(serverLabel);
 
     window.location.assign(`?serverId=${newId}`);
   };

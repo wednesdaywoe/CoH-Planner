@@ -14,30 +14,15 @@
 
 import { useEffect, useRef } from 'react';
 import { useBuildStore } from '@/stores';
-import { slimBuild } from '@/utils/build-serialization';
-import { encodeImportFragment, decodeImportFragment } from '@/utils/import-url';
+import { encodeBuildToHash } from '@/utils/build-serialization';
+import { decodeImportFragment } from '@/utils/import-url';
 import type { Build } from '@/types';
 
-const SYNC_DEBOUNCE_MS = 300;
+// Re-export for existing consumers; the encoder now lives (store-free) next to
+// slimBuild in build-serialization so buildStore can reach it without a cycle.
+export { encodeBuildToHash };
 
-/** slimBuild → JSON → deflate-raw → base64.
- *
- * Strips personal progress (`craftingChecklist`, `incarnateObtained`,
- * `shoppingListAcquired`) before encoding. These are device-local crafting
- * state, not part of the build itself, and they would otherwise:
- *   - bloat shared URLs with data the recipient can't act on
- *   - cause every checklist tick to mutate the URL
- *   - get blown away on the recipient's device when they paste the link
- * The hash-equality check in `useUrlBuildSync` means a user reloading
- * their own URL keeps their localStorage checklist, since both sides
- * encode without it and so the hashes match. */
-export function encodeBuildToHash(build: Build): string {
-  const slim = slimBuild(build);
-  // Drop fields that aren't part of the shareable build identity
-  const { craftingChecklist: _cc, incarnateObtained: _io, shoppingListAcquired: _sl, ...shareable } = slim;
-  void _cc; void _io; void _sl;
-  return encodeImportFragment(JSON.stringify({ version: 4, build: shareable }));
-}
+const SYNC_DEBOUNCE_MS = 300;
 
 /** Build the full shareable URL for a given build, anchored to the planner ("/"). */
 export function buildShareUrl(build: Build): string {

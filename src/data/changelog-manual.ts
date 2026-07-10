@@ -21,6 +21,15 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-07-10',
+
+    items: [
+      { message: 'Switching servers now keeps a separate build for each one. Your Homecoming, Rebirth and Thunderspy builds are saved independently, so moving between datasets no longer clears your work — switch away and come back and it\'s exactly where you left it. No account needed.', type: 'feat' },
+      { message: 'Server launchers and sites can now deeplink straight into the planner for their dataset (e.g. a link that opens Sidekick already set to Rebirth). Following one never disturbs a build you have on another server.', type: 'feat' },
+      { message: 'Importing a shared build (or opening a .skif) made on a different server now correctly switches Sidekick to that server\'s dataset instead of staying on Homecoming.', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-07-09',
 
     items:[

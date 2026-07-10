@@ -55,7 +55,15 @@ import {
   pruneProcOverridesForRemovedPowers,
   reindexProcOverridesForRemovedSlot,
 } from '@/data/proc-data';
-import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
+import { slimBuild, hydrateBuild, encodeBuildToHash } from '@/utils/build-serialization';
+import { getActiveDataset, getAllDatasetMetadata } from '@/data/dataset';
+import { showDatasetSwitchOverlay } from '@/utils/dataset-switch-overlay';
+import {
+  migratePerServerState,
+  selectActiveBuild,
+  composePersistedState,
+  type StoredBuild,
+} from '@/utils/per-server-builds';
 import { findNextAvailableGrantLevel, backfillSlotOrderLevels, ensureSlotOrderPopulated, canMoveSlotLevel, applySlotLevelMove, canRelocateSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
 import { enhancementAllowedInPower } from '@/utils/enhancement-eligibility';
 import { dedupePools } from '@/utils/build-powers';
@@ -78,6 +86,14 @@ interface BuildState {
 
   /** Whether the store has been hydrated from storage */
   _hasHydrated: boolean;
+
+  /**
+   * Working builds for servers OTHER than the loaded one, kept as opaque
+   * stored blobs so a dataset switch (dropdown or `?serverId=` deeplink)
+   * preserves each server's build rather than clobbering it. Set at rehydrate,
+   * carried through `partialize` untouched. See {@link file://./../utils/per-server-builds.ts}.
+   */
+  _inactiveServerBuilds: Partial<Record<Build['serverId'], StoredBuild>>;
 }
 
 interface BuildActions {
@@ -1197,6 +1213,7 @@ export const useBuildStore = create<BuildStore>()(
       // Initial state
       build: createEmptyBuild(),
       _hasHydrated: false,
+      _inactiveServerBuilds: {},
 
       // Hydration tracking
       setHasHydrated: (value) => set({ _hasHydrated: value }),
@@ -2483,6 +2500,36 @@ export const useBuildStore = create<BuildStore>()(
             };
           }
 
+          // Cross-dataset import: the imported build belongs to a different
+          // server than the one currently loaded. The active dataset is a
+          // boot-time singleton (data/dataset.ts) and can't be hot-swapped, so
+          // we reload with `?serverId=<id>` and carry the build across in the
+          // URL hash — exactly the share-link path (bootServerId reads the
+          // query param → loads the right dataset; useUrlBuildSync re-imports
+          // the hash against it, where serverIds now match and this branch is
+          // skipped, so there's no reload loop).
+          //
+          // Compare against the ACTIVE DATASET id, not get().build.serverId:
+          // after such a reload the persisted build is still the old server and
+          // onRehydrateStorage skips its URL-param sync while a hash is present,
+          // so the store's serverId would be stale and re-trigger the reload —
+          // an infinite loop. getActiveDataset().id reflects what's actually
+          // loaded and, post-reload, already matches the imported build.
+          //
+          // We deliberately return BEFORE syncBuildDefinitions: it resolves
+          // powers against the active (still-wrong) dataset, which would corrupt
+          // the imported build's server-specific powers.
+          if (typeof window !== 'undefined' && build.serverId !== getActiveDataset().id) {
+            const label =
+              getAllDatasetMetadata().find((d) => d.id === build.serverId)?.displayName
+              ?? build.serverId;
+            showDatasetSwitchOverlay(label);
+            const url = new URL(window.location.href);
+            url.searchParams.set('serverId', build.serverId);
+            window.location.assign(`${url.pathname}${url.search}#${encodeBuildToHash(build)}`);
+            return true;
+          }
+
           // Default slotOrder for builds that don't have it (older saves)
           if (!build.slotOrder) {
             build.slotOrder = [];
@@ -2640,20 +2687,43 @@ export const useBuildStore = create<BuildStore>()(
       // appended, slots weren't reconciled). Skip auto-hydration and rehydrate
       // explicitly in main.tsx after the dataset is loaded.
       skipHydration: true,
-      partialize: (state) => ({
-        build: {
-          ...state.build,
-          // Convert Sets to arrays for storage
-          sets: Object.fromEntries(
-            Object.entries(state.build.sets).map(([setId, tracking]) => [
-              setId,
-              { count: tracking.count, pieces: Array.from(tracking.pieces) },
-            ])
-          ),
-        },
-      }),
+      // Per-server build storage: `{ activeServerId, buildsByServer }`. Each
+      // server keeps its own working build so switching datasets is
+      // non-destructive. v0 was the single-slot `{ build }` shape.
+      version: 1,
+      migrate: (persisted, version) => migratePerServerState(persisted, version),
+      // Reconstruct the active build from the per-server map, keyed off the
+      // dataset actually LOADED this boot (getActiveDataset) — not the persisted
+      // activeServerId, which a `?serverId=` deeplink may have overridden. The
+      // other servers' builds are stashed on `_inactiveServerBuilds`, preserved
+      // and re-persisted verbatim. migratePerServerState is idempotent, so
+      // calling it here is safe whether or not `migrate` already ran.
+      merge: (persisted, current) => {
+        const normalized = migratePerServerState(persisted);
+        const { build, inactiveServerBuilds } = selectActiveBuild(
+          normalized,
+          getActiveDataset().id,
+        );
+        return {
+          ...(current as BuildStore),
+          build: build as unknown as Build,
+          _inactiveServerBuilds: inactiveServerBuilds,
+        } as BuildStore;
+      },
+      partialize: (state) => composePersistedState(state.build, state._inactiveServerBuilds),
       onRehydrateStorage: () => (state) => {
         if (state) {
+          // Align the build's server with the dataset actually loaded this boot.
+          // `merge` handles this whenever there's persisted data, but for a
+          // first-time visitor (empty storage) merge may not run — leaving the
+          // hardcoded initial `homecoming` stamp on a build that boot loaded a
+          // different dataset for (e.g. a `?serverId=rebirth` launcher deeplink).
+          // Start a clean build on the loaded server so the stamp matches.
+          const activeId = getActiveDataset().id;
+          if (state.build.serverId !== activeId) {
+            state.build = createEmptyBuild(activeId);
+          }
+
           // Early structural init: the fields below are dereferenced
           // *unguarded* by later migrations (e.g. `inherents.length`,
           // `primary.powers`). Initialize them FIRST so that if any single
@@ -2739,39 +2809,13 @@ export const useBuildStore = create<BuildStore>()(
             state.build.inherents = reconcileInherentSlots(state.build.inherents, state.build.level);
           }
 
-          // Migration: Initialize serverId if missing (builds before
-          // multi-dataset support default to Homecoming, the only
-          // dataset shipped at the time of pre-migration builds).
-          if (!state.build.serverId) {
-            state.build.serverId = 'homecoming';
-          }
-
-          // URL-param sync: when the user opens `?serverId=X` (e.g. a
-          // bookmarked link to a specific dataset) and the persisted
-          // build belongs to a different server, treat the URL as
-          // authoritative — main.tsx has already loaded the URL's
-          // dataset, so we need build.serverId to agree or the header
-          // dropdown, the URL writer, and the dataset facade will all
-          // read different values. Skipped when a hash is present,
-          // because the hash carries its own serverId via importBuild.
-          try {
-            if (typeof window !== 'undefined') {
-              const hasHash = !!window.location.hash && window.location.hash !== '#';
-              if (!hasHash) {
-                const param = new URLSearchParams(window.location.search).get('serverId');
-                if ((param === 'homecoming' || param === 'rebirth' || param === 'thunderspy') && param !== state.build.serverId) {
-                  state.build.serverId = param;
-                  // Archetype/primary/secondary picks reference dataset-
-                  // specific IDs; clear them to mirror handleServerChange.
-                  state.build.archetype = { id: null, name: '', stats: null, inherent: null };
-                  state.build.primary = { id: null, name: '', powers: [] };
-                  state.build.secondary = { id: null, name: '', powers: [] };
-                }
-              }
-            }
-          } catch {
-            // URL access blocked (e.g. SSR / sandbox) — leave build untouched.
-          }
+          // serverId alignment is handled up front (the `activeId` guard above)
+          // and by per-server `merge`: the loaded server's own build is chosen
+          // from `buildsByServer`, so `?serverId=X` deeplinks are honored
+          // WITHOUT clearing picks — each server keeps its own build. The old
+          // "URL-param sync clears archetype/primary/secondary on mismatch"
+          // block is gone; under per-server storage there is no cross-server
+          // build to clear.
 
           // Migration: Initialize incarnates if missing (for builds created before incarnate system)
           if (!state.build.incarnates) {

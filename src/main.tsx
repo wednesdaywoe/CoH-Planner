@@ -144,7 +144,10 @@ function bootServerId(): DatasetId {
     const raw = localStorage.getItem('coh-planner-build');
     if (!raw) return 'homecoming';
     const parsed = JSON.parse(raw);
-    const id = parsed?.state?.build?.serverId;
+    // New per-server shape stores the last-active server; fall back to the
+    // legacy single-slot `build.serverId` for stores that haven't migrated yet
+    // (bootServerId runs against raw localStorage, before persist migrate).
+    const id = parsed?.state?.activeServerId ?? parsed?.state?.build?.serverId;
     return isKnown(id) ? id : 'homecoming';
   } catch {
     return 'homecoming';

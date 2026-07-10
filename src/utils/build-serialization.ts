@@ -40,6 +40,7 @@ import {
   getInherentAutoGrantedSlotCount,
 } from '@/data';
 import type { InherentPowerDef } from '@/data';
+import { encodeImportFragment } from '@/utils/import-url';
 
 // ============================================
 // SLIM TYPES (exported for BuildExport typing)
@@ -112,6 +113,23 @@ export function slimBuild(build: Build): SlimBuildData {
     attackChains: build.attackChains ?? [],
     procOverrides: build.procOverrides ?? {},
   };
+}
+
+/**
+ * slimBuild → JSON → deflate-raw → base64, the encoding used by share links
+ * and the `/import` route. Lives here (next to `slimBuild`, store-free) so
+ * both `url-build-sync` and `buildStore.importBuild` can reach it without a
+ * store import cycle.
+ *
+ * Strips device-local progress (`craftingChecklist`, `incarnateObtained`,
+ * `shoppingListAcquired`) — these reference inventory items, not the build
+ * identity, and shouldn't ride along in a shared/reload URL.
+ */
+export function encodeBuildToHash(build: Build): string {
+  const slim = slimBuild(build);
+  const { craftingChecklist: _cc, incarnateObtained: _io, shoppingListAcquired: _sl, ...shareable } = slim;
+  void _cc; void _io; void _sl;
+  return encodeImportFragment(JSON.stringify({ version: 4, build: shareable }));
 }
 
 function slimPowersetSelection(ps: { id: string | null; name: string; powers: SelectedPower[] }): SlimPowersetSelection {
