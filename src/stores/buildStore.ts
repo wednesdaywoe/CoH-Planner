@@ -55,7 +55,8 @@ import {
   pruneProcOverridesForRemovedPowers,
   reindexProcOverridesForRemovedSlot,
 } from '@/data/proc-data';
-import { slimBuild, hydrateBuild, encodeBuildToHash } from '@/utils/build-serialization';
+import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
+import { encodeImportFragment } from '@/utils/import-url';
 import { getActiveDataset, getAllDatasetMetadata } from '@/data/dataset';
 import { showDatasetSwitchOverlay } from '@/utils/dataset-switch-overlay';
 import {
@@ -2476,6 +2477,43 @@ export const useBuildStore = create<BuildStore>()(
         historyCheckpoint();
         try {
           const data = JSON.parse(json);
+
+          // Cross-dataset import: the imported build belongs to a different
+          // server than the one currently loaded. The active dataset is a
+          // boot-time singleton (data/dataset.ts) and can't be hot-swapped, so
+          // we reload with `?serverId=<id>` and carry the build across in the
+          // URL hash — exactly the share-link path (bootServerId reads the
+          // query param → loads the right dataset; useUrlBuildSync re-imports
+          // the hash against it, where serverIds now match and this branch is
+          // skipped, so there's no reload loop).
+          //
+          // This check MUST run on the RAW payload, before hydrateBuild():
+          // hydration resolves the build against the *active* (still-wrong)
+          // dataset and drops any powers/enhancements foreign to it — so a
+          // Rebirth build hydrated under Homecoming loses its Rebirth-only
+          // enhancements before we ever reload. We read serverId off the raw
+          // data and carry the ORIGINAL, un-hydrated `json` across the hash, so
+          // the post-reload re-import hydrates it against the correct dataset.
+          //
+          // Compare against the ACTIVE DATASET id, not get().build.serverId:
+          // after such a reload the persisted build is still the old server and
+          // onRehydrateStorage skips its URL-param sync while a hash is present,
+          // so the store's serverId would be stale and re-trigger the reload —
+          // an infinite loop. getActiveDataset().id reflects what's actually
+          // loaded and, post-reload, already matches the imported build.
+          const targetServerId: Build['serverId'] =
+            (data.build?.serverId as Build['serverId']) ?? 'homecoming';
+          if (typeof window !== 'undefined' && targetServerId !== getActiveDataset().id) {
+            const label =
+              getAllDatasetMetadata().find((d) => d.id === targetServerId)?.displayName
+              ?? targetServerId;
+            showDatasetSwitchOverlay(label);
+            const url = new URL(window.location.href);
+            url.searchParams.set('serverId', targetServerId);
+            window.location.assign(`${url.pathname}${url.search}#${encodeImportFragment(json)}`);
+            return true;
+          }
+
           let build: Build;
 
           if (data.version === 2 || data.version === 3 || data.version === 4) {
@@ -2498,36 +2536,6 @@ export const useBuildStore = create<BuildStore>()(
                 ])
               ),
             };
-          }
-
-          // Cross-dataset import: the imported build belongs to a different
-          // server than the one currently loaded. The active dataset is a
-          // boot-time singleton (data/dataset.ts) and can't be hot-swapped, so
-          // we reload with `?serverId=<id>` and carry the build across in the
-          // URL hash — exactly the share-link path (bootServerId reads the
-          // query param → loads the right dataset; useUrlBuildSync re-imports
-          // the hash against it, where serverIds now match and this branch is
-          // skipped, so there's no reload loop).
-          //
-          // Compare against the ACTIVE DATASET id, not get().build.serverId:
-          // after such a reload the persisted build is still the old server and
-          // onRehydrateStorage skips its URL-param sync while a hash is present,
-          // so the store's serverId would be stale and re-trigger the reload —
-          // an infinite loop. getActiveDataset().id reflects what's actually
-          // loaded and, post-reload, already matches the imported build.
-          //
-          // We deliberately return BEFORE syncBuildDefinitions: it resolves
-          // powers against the active (still-wrong) dataset, which would corrupt
-          // the imported build's server-specific powers.
-          if (typeof window !== 'undefined' && build.serverId !== getActiveDataset().id) {
-            const label =
-              getAllDatasetMetadata().find((d) => d.id === build.serverId)?.displayName
-              ?? build.serverId;
-            showDatasetSwitchOverlay(label);
-            const url = new URL(window.location.href);
-            url.searchParams.set('serverId', build.serverId);
-            window.location.assign(`${url.pathname}${url.search}#${encodeBuildToHash(build)}`);
-            return true;
           }
 
           // Default slotOrder for builds that don't have it (older saves)

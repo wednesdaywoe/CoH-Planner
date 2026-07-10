@@ -30,9 +30,10 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     ]
   },
   {
-    date: '2026-07-09',
+    date: '2026-07-10',
 
     items:[
+      {message: 'Loaded builds should now load the appropriate server dataset BEFORE loading the rest of the build', type: 'fix'},
       {message: 'Added account-synced favorites with local cache reconciliation', type: 'fix'},
       {message: 'Added a neat system atlas for the nerds 🤓: Menu > System Atlas', type: 'feat' },
       {message: 'New "Absorb" stat — a trackable total for your absorb shield (the temporary HP layer that soaks damage before your health). Enable it under Settings → Stats → Survival & Mobility, or read it in the Detailed Totals sheet. It sums absorb from your active powers plus set-bonus/proc absorb.', type:'feat'},

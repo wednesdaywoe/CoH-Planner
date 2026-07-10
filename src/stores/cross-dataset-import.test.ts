@@ -5,6 +5,7 @@ import { describe, it, expect, beforeAll, afterEach, vi } from 'vitest';
 import { loadDataset } from '@/data/dataset';
 import { createEmptyBuild } from '@/types/build';
 import { slimBuild } from '@/utils/build-serialization';
+import { decodeImportFragment } from '@/utils/import-url';
 import { useBuildStore } from '@/stores/buildStore';
 
 /**
@@ -60,6 +61,13 @@ describe('cross-dataset import reloads instead of applying in-session', () => {
     expect(target).toMatch(/^\/\?serverId=rebirth#.+/);
     // ...and did NOT apply the Rebirth build against the loaded Homecoming data.
     expect(useBuildStore.getState().build.serverId).toBe('homecoming');
+
+    // Critically: the hash carries the ORIGINAL, un-hydrated payload — NOT a
+    // build re-hydrated against the (wrong) Homecoming dataset, which would have
+    // stripped Rebirth-only enhancements before the reload. Decoding it must
+    // reproduce the exact input we passed in.
+    const carried = decodeImportFragment(target.split('#')[1]);
+    expect(carried).toBe(slimJson('rebirth'));
   });
 
   it('applies the build in-session when it matches the loaded server', () => {
