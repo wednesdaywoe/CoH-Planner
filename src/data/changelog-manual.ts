@@ -26,7 +26,6 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     items: [
       { message: 'Added an import guard that warns you when the import has created an illegal build (and then reports you to the PPD). This typically happens when importing from a Mids file and is caused by a name mismatch', type: 'feat'},
       { message: 'Switching servers now keeps a separate build for each one. Your Homecoming, Rebirth and Thunderspy builds are saved independently, so moving between datasets no longer clears your work. No account needed.', type: 'feat' },
-      { message: 'Server launchers and sites can now deeplink straight into the planner for their dataset (e.g. a link that opens Sidekick already set to Rebirth)', type: 'feat' },
       { message: 'Importing a shared build (or opening a .skif) made on a different server now correctly switches Sidekick to that server\'s dataset.', type: 'fix' },
     ]
   },
