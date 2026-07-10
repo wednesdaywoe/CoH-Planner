@@ -2,11 +2,6 @@
   "version": 1,
   "posted": [
     {
-      "hash": "c45fd74f60d8",
-      "date": "2026-07-10",
-      "preview": "Shortened a few stat labels (healing and jump) so the totals panel reads more cl"
-    },
-    {
       "hash": "6e63f43b87c6",
       "date": "2026-07-08",
       "preview": "New \"Slotted Procs\" controls in the power info panel: each slotted proc now has "
