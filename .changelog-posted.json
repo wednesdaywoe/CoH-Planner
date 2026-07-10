@@ -100,6 +100,16 @@
       "hash": "c4b95d99d46d",
       "date": "2026-07-08",
       "preview": "Added support for Incarnate Judgement power in attack chain calculations"
+    },
+    {
+      "hash": "ba26362ed20f",
+      "date": "2026-07-10",
+      "preview": "The Sidekick main planner surface can now be reorganized with drag-n-drop, adjus"
+    },
+    {
+      "hash": "0e920efff2ea",
+      "date": "2026-07-10",
+      "preview": "Added an import guard that warns you when the import has created an illegal buil"
     }
   ]
 }
