@@ -17,7 +17,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "import-mids": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/bulk-import-mids.ts",
-    "delete-user-builds": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/delete-user-shared-builds.ts"
+    "delete-user-builds": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/delete-user-shared-builds.ts",
+    "changelog:push": "tsx --env-file-if-exists=.env scripts/push-changelog-discord.ts",
+    "hooks:install": "git config core.hooksPath scripts/git-hooks"
   },
   "repository": {
     "type": "git",

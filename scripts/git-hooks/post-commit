@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+#
+# post-commit hook: when a commit changes the manual changelog, push the new
+# entries to Discord and record what was posted in a small follow-up commit.
+#
+# Installed via `npm run hooks:install` (sets core.hooksPath to scripts/git-hooks).
+# This hook is version-controlled so it stays in sync across your machines.
+#
+# Design notes:
+#  - Runs AFTER the commit, so it can never block or abort a commit.
+#  - The follow-up state commit only touches .changelog-posted.json (never the
+#    changelog source), so the guard below skips it — no infinite loop.
+#  - Skips during rebase/merge/cherry-pick to avoid spamming the channel.
+
+set -euo pipefail
+
+CHANGELOG_SRC="src/data/changelog-manual.ts"
+STATE_FILE=".changelog-posted.json"
+
+# Move to the repo root regardless of where git invoked us from.
+cd "$(git rev-parse --show-toplevel)"
+
+# Don't fire mid-rebase / mid-merge / mid-cherry-pick — those replay many commits.
+GIT_DIR="$(git rev-parse --git-dir)"
+if [ -d "$GIT_DIR/rebase-merge" ] || [ -d "$GIT_DIR/rebase-apply" ] \
+  || [ -f "$GIT_DIR/MERGE_HEAD" ] || [ -f "$GIT_DIR/CHERRY_PICK_HEAD" ]; then
+  exit 0
+fi
+
+# Only act if this commit actually changed the changelog source.
+if ! git diff-tree --no-commit-id --name-only -r HEAD | grep -qx "$CHANGELOG_SRC"; then
+  exit 0
+fi
+
+echo "[changelog] Changelog changed — checking for new entries to post…"
+
+# Push new entries (script no-ops when there's nothing new or no webhook configured).
+# Never let a failure here disturb the working tree; the script already exits 0 on error.
+npm run --silent changelog:push || echo "[changelog] push script exited non-zero (ignored)."
+
+# If the push updated the state file, record it in a tiny follow-up commit so the
+# "already posted" record travels with the repo. This commit does NOT touch the
+# changelog source, so this hook will skip it on its own re-trigger.
+if ! git diff --quiet -- "$STATE_FILE" 2>/dev/null; then
+  git add "$STATE_FILE"
+  git commit --no-verify --no-gpg-sign -m "chore(changelog): record entries posted to Discord" >/dev/null
+  echo "[changelog] Recorded posted entries in a follow-up commit."
+fi
+
+exit 0
