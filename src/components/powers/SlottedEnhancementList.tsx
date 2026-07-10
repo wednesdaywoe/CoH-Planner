@@ -23,6 +23,9 @@ interface SlottedEnhancementListProps {
   slots: (Enhancement | null)[];
   /** Open the picker for a slot (same handler the slot strip uses). */
   onSelectSlot: (index: number) => void;
+  /** Slot indices holding an enhancement the game forbids here — excluded from
+   *  totals; the row is marked so the user can move or clear it. */
+  invalidSlots?: ReadonlySet<number>;
 }
 
 /** Primary/secondary label text for a slotted enhancement. */
@@ -66,7 +69,7 @@ const ROW_CLASS =
   'w-full flex items-center gap-1.5 min-w-0 rounded-sm px-1 py-1 text-left ' +
   'active:bg-slate-700/70 hover:bg-slate-700/50 transition-colors';
 
-export function SlottedEnhancementList({ slots, onSelectSlot }: SlottedEnhancementListProps) {
+export function SlottedEnhancementList({ slots, onSelectSlot, invalidSlots }: SlottedEnhancementListProps) {
   return (
     <div className="mt-1 rounded-sm bg-slate-900/60 border border-slate-700/70 p-0.5 space-y-px">
       {slots.length === 0 && (
@@ -77,13 +80,15 @@ export function SlottedEnhancementList({ slots, onSelectSlot }: SlottedEnhanceme
           (() => {
             const { primary, secondary } = enhancementLabel(enh);
             const meta = enhancementMeta(enh);
+            const invalid = invalidSlots?.has(index) ?? false;
             return (
               <button
                 key={index}
                 type="button"
                 onClick={() => onSelectSlot(index)}
-                className={ROW_CLASS}
-                aria-label={`Change enhancement in slot ${index + 1}: ${primary}${secondary ? ` ${secondary}` : ''}`}
+                className={`${ROW_CLASS}${invalid ? ' ring-1 ring-red-500/70 bg-red-900/25' : ''}`}
+                title={invalid ? `${primary} can't be slotted in this power in-game — it's excluded from all totals. Please move or clear it to fix your build.` : undefined}
+                aria-label={`${invalid ? 'Invalid: ' : ''}Change enhancement in slot ${index + 1}: ${primary}${secondary ? ` ${secondary}` : ''}`}
               >
                 <span className="flex-shrink-0 w-4 h-4 flex items-center justify-center">
                   <SlottedEnhancementIcon enhancement={enh} size={16} />
@@ -91,6 +96,7 @@ export function SlottedEnhancementList({ slots, onSelectSlot }: SlottedEnhanceme
                 <span className="text-[11px] text-slate-200 truncate min-w-0 flex-1">
                   {primary}
                   {secondary && <span className="text-slate-400">: {secondary}</span>}
+                  {invalid && <span className="text-red-400"> ⚠</span>}
                 </span>
                 {meta && (
                   <span className="text-[10px] text-slate-400 font-medium flex-shrink-0">{meta}</span>

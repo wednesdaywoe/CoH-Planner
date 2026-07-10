@@ -5,9 +5,10 @@
  * Supports multiple size variants and layout modes.
  */
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import type { Enhancement, SelectedPower } from '@/types';
 import { resolvePath } from '@/utils/paths';
+import { powerIllegalSlotIndices } from '@/utils/build-enhancement-validation';
 import { useIsTouchDevice, useOffendingPowerReasons } from '@/hooks';
 import { Tooltip } from '@/components/ui';
 import { TouchableSlot } from './TouchableSlot';
@@ -20,6 +21,9 @@ import { useBuildStore, useUIStore, type PowerCategory } from '@/stores';
 import { isMovableSlot, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
 
 type PowerRowSize = 'xs' | 'sm' | 'md' | 'lg';
+
+/** Stable empty set so the invalid-slots memo doesn't churn for clean powers. */
+const EMPTY_INVALID_SET: ReadonlySet<number> = new Set();
 
 const SLOT_SIZE_MAP: Record<PowerRowSize, SlotSize> = {
   xs: 'xs',
@@ -147,6 +151,13 @@ export function PowerRow({
   // slot the user clicks becomes the swap target. Enhancers never move — only
   // the grant levels swap (see applySlotLevelMove).
   const internalName = selectedPower?.internalName;
+  // Slots holding an enhancement the game wouldn't allow here (mis-routed by an
+  // import or a permuted-internal-name powerset). Excluded from all totals by
+  // the calc; flagged in the UI so the user can move or clear them.
+  const invalidSlots = useMemo(
+    () => (selectedPower ? new Set(powerIllegalSlotIndices(selectedPower)) : EMPTY_INVALID_SET),
+    [selectedPower],
+  );
   const slotMoveSource = useUIStore((s) => s.slotMoveSource);
   const beginSlotLevelMove = useUIStore((s) => s.beginSlotLevelMove);
   const cancelSlotLevelMove = useUIStore((s) => s.cancelSlotLevelMove);
@@ -453,6 +464,7 @@ export function PowerRow({
           filledSlotCount={filledSlotCount}
           onDragStateChange={handleDragStateChange}
           highlightRemoval={highlightedSlots.get(index) ?? null}
+          invalid={!!slot && invalidSlots.has(index)}
           moveHighlight={highlightFor(index)}
           onMoveSlotLevel={
             internalName && !moveActive && !relocateActive && isMovableSlot(build, slotRef(index))
@@ -541,7 +553,7 @@ export function PowerRow({
         </div>
         {isTouch && showSlotting && (
           <>
-            <SlottedEnhancementList slots={slots} onSelectSlot={handleSlotClick} />
+            <SlottedEnhancementList slots={slots} invalidSlots={invalidSlots} onSelectSlot={handleSlotClick} />
             <SlottedSetBonuses slots={slots} />
           </>
         )}
@@ -590,7 +602,7 @@ export function PowerRow({
       </div>
 
       {isTouch && showSlotting && (
-        <SlottedEnhancementList slots={slots} onSelectSlot={handleSlotClick} />
+        <SlottedEnhancementList slots={slots} invalidSlots={invalidSlots} onSelectSlot={handleSlotClick} />
       )}
     </div>
   );

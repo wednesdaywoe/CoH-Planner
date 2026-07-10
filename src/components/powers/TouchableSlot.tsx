@@ -50,6 +50,10 @@ interface TouchableSlotProps {
   onDragStateChange?: (state: { mode: 'slots' | 'enhancements'; count: number } | null) => void;
   /** Whether this slot is highlighted for pending removal */
   highlightRemoval?: 'slot' | 'enhancement' | null;
+  /** The game won't allow this enhancement in this power (mis-routed import,
+   *  permuted-internal-name powerset). It's excluded from all stats; the ring
+   *  marks it so the user can move or clear it. */
+  invalid?: boolean;
   /** Begin a slot-level move with this slot as the source. Omitted when the
    *  slot can't be a move source (base slot, auto-granted inherent slot). */
   onMoveSlotLevel?: () => void;
@@ -80,6 +84,7 @@ export function TouchableSlot({
   filledSlotCount = 0,
   onDragStateChange,
   highlightRemoval,
+  invalid,
   onMoveSlotLevel,
   onMoveSlotToPower,
   moveHighlight,
@@ -319,17 +324,21 @@ export function TouchableSlot({
                     ? 'border-amber-500 bg-amber-900/40 ring-1 ring-amber-500/50'
                     : highlightRemoval === 'slot'
                       ? 'border-red-500 bg-red-900/40 ring-1 ring-red-500/50'
-                      : slot
-                        ? 'border-transparent bg-transparent'
-                        : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-[var(--color-selected)] hover:bg-slate-600'
+                      : invalid
+                        ? 'border-red-500 bg-red-900/40 ring-2 ring-red-500/70'
+                        : slot
+                          ? 'border-transparent bg-transparent'
+                          : 'border-slate-600 bg-slate-700/50 text-slate-500 hover:border-[var(--color-selected)] hover:bg-slate-600'
             }
           `}
           style={{ WebkitTouchCallout: 'none', WebkitUserSelect: 'none' }}
           {...(!slot ? { 'data-onboarding': 'slot-enhancement' } : {})}
           title={
-            slot
-              ? undefined
-              : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', right-click to remove, drag to remove multiple' : ''}`
+            invalid
+              ? `${slot?.name ?? 'This enhancement'} can't be slotted in this power in-game — it's excluded from all totals. Move or clear it.`
+              : slot
+                ? undefined
+                : `Empty slot ${index + 1} - tap to add${canRemoveSlot ? ', right-click to remove, drag to remove multiple' : ''}`
           }
         >
           {slot ? (

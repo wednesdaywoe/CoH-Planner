@@ -20,6 +20,7 @@ import { getAllDatasetMetadata } from '@/data/dataset';
 import { generatePopmenu } from '@/utils/export-popmenu';
 import { openPrintView } from '@/utils/export-print';
 import { exportToMids } from '@/utils/mids-export';
+import { findIllegalSlots } from '@/utils/build-enhancement-validation';
 
 interface ExportImportModalProps {
   isOpen: boolean;
@@ -727,7 +728,21 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
     resultBuild: NonNullable<MidsImportResult['build']> | NonNullable<GameImportResult['build']>,
     summary: { powersImported: number; powersFailed: number; enhancementsImported: number; enhancementsFailed: number },
     characterName?: string,
-  ) => (
+  ) => {
+    // Enhancements the source tool routed into a power the game won't allow them
+    // in — most often a power-name mismatch (e.g. Shield Defense's internal
+    // names are permuted vs their display names, so a defense set can land in
+    // the mez-only "Active Defense"). They're excluded from totals and flagged
+    // in the build; tell the user so they can move or clear them.
+    const illegal = findIllegalSlots(resultBuild);
+    const illegalByPower = new Map<string, string[]>();
+    for (const s of illegal) {
+      const list = illegalByPower.get(s.powerName) ?? [];
+      list.push(s.enhancement.name);
+      illegalByPower.set(s.powerName, list);
+    }
+    return (
+    <>
     <div className="bg-[var(--color-success)]/15 border border-[var(--color-success)]/50 rounded p-3 text-sm text-[var(--color-success-fg)]">
       <p className="font-semibold mb-2">Parse Successful</p>
       <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
@@ -771,7 +786,26 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
         )}
       </div>
     </div>
-  );
+    {illegalByPower.size > 0 && (
+      <div className="mt-2 bg-amber-500/10 border border-amber-500/50 rounded p-3 text-xs text-amber-200">
+        <p className="font-semibold mb-1">
+          {illegal.length} enhancement{illegal.length === 1 ? '' : 's'} can&apos;t be slotted where the source put {illegal.length === 1 ? 'it' : 'them'}
+        </p>
+        <p className="mb-2 text-amber-200/80">
+          The originating tool routed {illegal.length === 1 ? 'it' : 'them'} into {illegalByPower.size === 1 ? 'a power' : 'powers'} the game won&apos;t allow (usually a power-name mismatch). {illegal.length === 1 ? 'It is' : 'They are'} excluded from all totals and flagged red in the build — move or clear {illegal.length === 1 ? 'it' : 'them'} to fix your slotting.
+        </p>
+        <ul className="space-y-0.5">
+          {[...illegalByPower.entries()].map(([powerName, enhNames]) => (
+            <li key={powerName}>
+              <span className="text-white">{powerName}</span>: {enhNames.join(', ')}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    </>
+    );
+  };
 
   // ============================================
   // RENDER

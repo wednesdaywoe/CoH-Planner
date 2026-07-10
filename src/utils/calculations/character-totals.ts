@@ -16,6 +16,7 @@ import type { Build, Accolade, ConditionalEffect, Enhancement, EnhancementStatTy
 import type { ProcSettings } from '@/stores/uiStore';
 import { isSelfDirectedEffect } from '@/types';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
+import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
 import { stanceAdjusterOverrides } from '@/data';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees, getProcControlType, DEFAULT_STACK_COUNT, resolveProcContribution, procOverrideKey } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
@@ -3762,6 +3763,13 @@ export function calculateCharacterTotals(
   incarnateActive?: IncarnateActiveState,
   options?: CalculationOptions
 ): CharacterCalculationResult {
+  // Enhancements the game wouldn't allow in their host power (mis-routed by an
+  // import, a share-link, or a permuted-internal-name powerset) must not
+  // contribute enhancement values or set bonuses. Compute against a copy with
+  // those slots nulled; the store's build is left untouched (the UI flags them
+  // separately). No-op — same reference — when the build is clean.
+  build = withoutIllegalSlots(build);
+
   const breakdown = new Map<string, DashboardStatBreakdown>();
   const globalBonuses = createEmptyGlobalBonuses();
   const _debug = isCalcDebugEnabled();
