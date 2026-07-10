@@ -35,6 +35,20 @@ export interface Announcement {
 
 export const ANNOUNCEMENTS: Announcement[] = [
   {
+    id: 'rearrangeable-layout',
+    tabLabel: 'Custom Layout',
+    badge: 'New',
+    title: 'Make the planner your own 🏡',
+    body: (
+      <>
+        The planner is now yours to rearrange! Drag sections to reorder them,
+        resize panels to fit what matters most, and collapse anything you
+        don&apos;t need. You can even hide entire sections through the Layout button at the top. Your layout is remembered between sessions. 
+      </>
+    ),
+    image: '/rearrange.webp',
+  },
+  {
     id: 'color-themes',
     tabLabel: 'Color Themes',
     badge: 'New',
