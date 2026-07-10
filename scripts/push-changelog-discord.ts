@@ -139,7 +139,11 @@ async function postBatch(webhook: string, embeds: unknown[]): Promise<void> {
   const res = await fetch(webhook, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: 'Sidekick Changelog', embeds }),
+    body: JSON.stringify({
+      username: 'Sidekick Dispatch',
+      avatar_url: 'https://coh-sidekick.com/img/favicon-512x512.png',
+      embeds,
+    }),
   });
   if (!res.ok) {
     const body = await res.text().catch(() => '');

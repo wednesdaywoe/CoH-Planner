@@ -2,61 +2,6 @@
   "version": 1,
   "posted": [
     {
-      "hash": "d2eb7f197e68",
-      "date": "2026-07-10",
-      "preview": "Added an import guard that warns you when the import has created an illegal buil"
-    },
-    {
-      "hash": "48cf195a7762",
-      "date": "2026-07-10",
-      "preview": "Switching servers now keeps a separate build for each one. Your Homecoming, Rebi"
-    },
-    {
-      "hash": "64c4e9e4cb59",
-      "date": "2026-07-10",
-      "preview": "Importing a shared build (or opening a .skif) made on a different server now cor"
-    },
-    {
-      "hash": "16baed8f7899",
-      "date": "2026-07-10",
-      "preview": "Loaded builds should now load the appropriate server dataset BEFORE loading the "
-    },
-    {
-      "hash": "8f264dd174ee",
-      "date": "2026-07-10",
-      "preview": "Added account-synced favorites with local cache reconciliation"
-    },
-    {
-      "hash": "5d719433688c",
-      "date": "2026-07-10",
-      "preview": "Added a neat system atlas for the nerds 🤓: Menu > System Atlas"
-    },
-    {
-      "hash": "309d49c374b0",
-      "date": "2026-07-10",
-      "preview": "New \"Absorb\" stat — a trackable total for your absorb shield (the temporary HP l"
-    },
-    {
-      "hash": "84e296ee3f6e",
-      "date": "2026-07-10",
-      "preview": "Absorb shields that scale off Max HP now compute correctly. Wild Bastion, Ablati"
-    },
-    {
-      "hash": "4b9057d06bd1",
-      "date": "2026-07-10",
-      "preview": "Thunderspy: ~1,000 powers that were showing no effects should now display correc"
-    },
-    {
-      "hash": "5ddc7cc92d98",
-      "date": "2026-07-10",
-      "preview": "Thunderspy: multi-type defense powers now show all their defense types. Mind Lin"
-    },
-    {
-      "hash": "fcf665f46c43",
-      "date": "2026-07-10",
-      "preview": "Thunderspy: some damage-type resistances were mislabeled as damage. Glacial Shie"
-    },
-    {
       "hash": "c45fd74f60d8",
       "date": "2026-07-10",
       "preview": "Shortened a few stat labels (healing and jump) so the totals panel reads more cl"
