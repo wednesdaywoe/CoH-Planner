@@ -5,11 +5,11 @@ Envelope
 Example:
 
 {
-“version”: 4,
-“build”: { … },
-“meta”: {
-“exportedAt”: “2026-07-08T18:25:43Z”
-}
+  "version": 4,
+  "build": { ... },
+  "meta": {
+    "exportedAt": "2026-07-08T18:25:43Z"
+  }
 }
 
 * version — please write 4.
@@ -30,7 +30,7 @@ Example:
         * its pick level (1–49)
         * a slots array
     * The slots array is ordered, with the base slot at index 0. Each entry is either an enhancement or null.
-    * There is nowhere to store a per-slot level.
+    * There is nowhere to store a per-slot level. 
     * Omit slotOrder; the importer reconstructs it from pick order.
 * Join keys — these must be exact or the slot/power silently degrades.
     * Power internalName
@@ -57,6 +57,12 @@ Example:
     * pieces is the sorted list of distinct pieceNum values.
     * This is not recomputed during import.
     * If omitted, set bonuses will not register.
+* Incarnates (optional — omit for an all-null build).
+    * incarnates is an object keyed by slot name, not an array:
+        * { alpha, judgement, interface, destiny, lore, hybrid, genesis }
+    * Each value is either an "incarnate slot" object (see the CSV) or null.
+    * genesis is Rebirth-only; leave it null on other servers.
+    * It is passed through verbatim with no validation, so the shape must be exact. An array here produces silently broken incarnates.
 * Omit the following fields because they are marked “omit” in the CSV:
     * craftingChecklist
     * incarnateObtained
