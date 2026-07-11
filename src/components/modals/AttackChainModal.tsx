@@ -734,9 +734,9 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                 className="h-6 px-1.5 bg-gray-800 border border-gray-700 rounded text-gray-200 text-[11px]"
                 title="Metric that ranks powers — palette order, color intensity, and compactness weighting"
               >
-                <option value="damage">Damage (per cast)</option>
-                <option value="dpa">DPA (dmg / animation)</option>
-                <option value="dps">DPS (dmg / cast+rech)</option>
+                <option value="damage">Damage (total dmg)</option>
+                <option value="dpa">DPA (dmg / actvn)</option>
+                <option value="dps">DPS (dmg / actvn + rech)</option>
               </select>
             </label>
           </div>
