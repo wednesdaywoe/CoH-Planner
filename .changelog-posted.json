@@ -2,6 +2,16 @@
   "version": 1,
   "posted": [
     {
+      "hash": "e75db8389064",
+      "date": "2026-07-11",
+      "preview": "Fix for Rebirth's Tanker Martial Prowess epic pool, Art of War was listed as the"
+    },
+    {
+      "hash": "122b8ba8ff61",
+      "date": "2026-07-11",
+      "preview": "Added buff-pet aura toggle and calculations for character totals"
+    },
+    {
       "hash": "ba26362ed20f",
       "date": "2026-07-10",
       "preview": "The Sidekick main planner surface can now be reorganized with drag-n-drop, adjus"
