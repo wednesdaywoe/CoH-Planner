@@ -16,6 +16,8 @@ import type { Build, Accolade, ConditionalEffect, Enhancement, EnhancementStatTy
 import type { ProcSettings } from '@/stores/uiStore';
 import { isSelfDirectedEffect } from '@/types';
 import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
+import { getBuffPetSources, BUFF_PET_TOGGLE_ID, type BuffPetSource } from './buff-pet-auras';
+import type { SummonEffect } from '@/types/power';
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
 import { stanceAdjusterOverrides } from '@/data';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees, getProcControlType, DEFAULT_STACK_COUNT, resolveProcContribution, procOverrideKey } from '@/data';
@@ -3704,6 +3706,111 @@ function expandActiveConditionals(
 }
 
 /**
+ * Translate a buff-pet's aura PetEffects into the ActivePowerEffect shape the
+ * totals loop consumes (defense/resistance/absorb/regen/…). Deduped so a pet
+ * that lists the same aura on more than one ability contributes it once.
+ *
+ * Scalars use ScalarOrScaled {scale,table} so the loop level-resolves them just
+ * like a player buff; ToHit uses the *Unenhanced* channel (pet ToHit auras don't
+ * copy the player's slotted ToHit). The synthetic carries the summon power's
+ * slots only when copyBoosts is set (see expandBuffPetAuras), so Defense IOs
+ * slotted in the Force Field Generator power enhance its bubble — and nothing
+ * else does, because it is applied with empty strength / no Alpha.
+ */
+function buffPetAuraEffects(sources: BuffPetSource[]): ActivePowerEffect {
+  const effects: ActivePowerEffect = {};
+  const seen = new Set<string>();
+  for (const src of sources) {
+    for (const a of src.auras) {
+      const sub = (a.defenseTypes ?? a.resistanceTypes ?? []).join(',');
+      const key = `${a.type}|${a.scale ?? ''}|${a.table ?? ''}|${sub}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const sc: ScalarOrScaled = { scale: a.scale ?? 0, table: a.table ?? '' };
+      switch (a.type) {
+        case 'DefenseBuff':
+          effects.defense = effects.defense ?? {};
+          for (const t of a.defenseTypes ?? []) effects.defense[t] = sc;
+          break;
+        case 'ResistanceBuff':
+          effects.resistance = effects.resistance ?? {};
+          for (const t of a.resistanceTypes ?? []) effects.resistance[t] = sc;
+          break;
+        case 'Absorb':
+          // Flat-HP absorb off a Heal table (the game folds a pet's aspect=Maximum
+          // Absorb to a flat amount; the MaxHP-fraction form is an Expression the
+          // pet parser doesn't carry). Resolved to HP by the flat-absorb path.
+          effects.absorb = { scale: a.scale, table: a.table };
+          break;
+        case 'RegenBuff':
+          effects.regenBuff = sc;
+          break;
+        case 'RecoveryBuff':
+          effects.recoveryBuff = sc;
+          break;
+        case 'ToHitBuff':
+          effects.tohitBuffUnenhanced = sc;
+          break;
+        case 'RechargeBuff':
+          effects.rechargeBuff = sc;
+          break;
+      }
+    }
+  }
+  return effects;
+}
+
+/**
+ * Expand the *toggled-on* buff-pet auras of the build's summon powers into
+ * synthetic active-power contributions (Step 7.2), mirroring
+ * `expandActiveConditionals`. Each buff-pet (Force Field Generator, Barrier Reef,
+ * Triage Beacon, …) whose per-pet toggle is enabled becomes one synthetic Auto
+ * power carrying the pet's aura effects, so they SUM into the dashboard totals
+ * with a per-pet breakdown row.
+ *
+ * OPT-IN: the toggle is off by default (`?? false`), so a build that hasn't
+ * enabled any buff-pet produces zero synthetics and totals are byte-identical to
+ * before this pass existed. Taking the summon power is enough to see the toggle;
+ * flipping it is what folds the aura in (a click summon has no persistent
+ * isActive, so the toggle — not the parent's active state — is the gate).
+ */
+function expandBuffPetAuras(
+  powers: PowerWithToggle[],
+  mechanicAdjusters: Record<string, boolean>,
+): PowerWithToggle[] {
+  const synthetics: PowerWithToggle[] = [];
+  for (const power of powers) {
+    const summon = (power.effects as unknown as { summon?: SummonEffect } | undefined)?.summon;
+    if (!summon) continue;
+    const sources = getBuffPetSources(summon);
+    if (sources.length === 0) continue;
+
+    const on = mechanicAdjusters[`${power.internalName}:${BUFF_PET_TOGGLE_ID}`] ?? false;
+    if (!on) continue;
+
+    const effects = buffPetAuraEffects(sources);
+    if (Object.keys(effects).length === 0) continue;
+
+    synthetics.push({
+      name: power.name,
+      internalName: power.internalName,
+      // Force active so applyActivePowerBonuses processes it regardless of the
+      // click summon's (absent) isActive; Self target so it's never ally-skipped.
+      powerType: 'Auto',
+      targetType: 'Self',
+      effectArea: power.effectArea,
+      isActive: true,
+      effects,
+      // copyBoosts → the pet inherits the summon power's slotted enhancements, so
+      // carry them for the enhancement calc; otherwise the aura is unenhanced.
+      slots: summon.copyBoosts ? power.slots : undefined,
+      allowedEnhancements: summon.copyBoosts ? power.allowedEnhancements : undefined,
+    });
+  }
+  return synthetics;
+}
+
+/**
  * Convert Build to BuildPowers format for set bonus calculation
  */
 function buildToBuildPowers(build: Build): BuildPowers {
@@ -3933,6 +4040,17 @@ export function calculateCharacterTotals(
   );
   if (conditionalPowers.length > 0) {
     applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs);
+  }
+
+  // Step 7.2: Fold toggled-on buff-pet auras (Force Field Generator, Barrier
+  // Reef, Triage Beacon, …) into the totals. Each is a synthetic Auto power whose
+  // aura effects SUM onto the caster's totals with a per-pet breakdown row.
+  // Applied with NO Alpha / NO strength buffs (pets don't inherit those); the
+  // aura is enhanced only by the summon power's own slots when copyBoosts is set.
+  // Default-safe: no buff-pet toggled → no synthetics → totals unchanged.
+  const buffPetPowers = expandBuffPetAuras(allPowers, options?.mechanicAdjusters ?? {});
+  if (buffPetPowers.length > 0) {
+    applyActivePowerBonuses(buffPetPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs);
   }
   if (_debug) debugGroupEnd();
 

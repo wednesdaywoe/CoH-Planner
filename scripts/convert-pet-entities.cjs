@@ -150,6 +150,141 @@ const _TSPY_DEBUFF_SIGNED = {
   'endurance': 'EndDrain', 'enddrain': 'EndDrain',
 };
 
+// ---------------------------------------------------------------------------
+// Ally-buff-aura vocabulary (buff-pets: Force Field Generator, Barrier Reef,
+// Triage Beacon, Tree of Life, …). These "floaty" pets exist only to project a
+// PBAoE buff onto the caster/team. The buff lives on the pet's own toggle/Auto
+// power (FFG's Dispersion_Bubble) or on a Redirect power the entity references
+// (Marine's Wellspring_Barrier_Def) — either way it reaches extractEffects as a
+// template with target != Self (an aura), positive scale, and a buff aspect.
+//
+// The historical extractEffects vocabulary was ENTIRELY foe-facing (mez / debuff
+// / -res) plus ally Heal, so these Def/Res/Absorb auras were parsed from the bin
+// and then silently dropped on conversion — the root cause of "buff-pet stats
+// can't be seen in your totals." A pet's OWN self-buff (FFG's ResistAll) stays
+// dropped because it targets Self and never reaches this vocabulary.
+//
+// Defense attribs arrive as bare position/type names (Ranged/Melee/Area +
+// Smashing/Lethal/…) on a `*_Buff_Def` table; normalize each to the calc's
+// def sub-type key (matches DEFENSE_POSITIONS + the damage-type keys in
+// character-totals' GlobalBonuses: defMelee/defRanged/defAoE/defSmashing/…).
+const BUFF_DEF_TYPE_MAP = {
+  melee: 'melee', ranged: 'ranged', area: 'aoe', aoe: 'aoe',
+  smashing: 'smashing', lethal: 'lethal', fire: 'fire', cold: 'cold',
+  energy: 'energy', negative_energy: 'negative', negative: 'negative',
+  psionic: 'psionic', toxic: 'toxic',
+};
+
+// Resistance-buff attribs arrive as damage-type `*_Dmg` names on a resistance
+// aspect; normalize to the calc's res sub-type key (resSmashing/resLethal/…).
+const BUFF_RES_TYPE_MAP = {
+  smashing_dmg: 'smashing', lethal_dmg: 'lethal', fire_dmg: 'fire', cold_dmg: 'cold',
+  energy_dmg: 'energy', negative_energy_dmg: 'negative', psionic_dmg: 'psionic',
+  toxic_dmg: 'toxic',
+};
+
+// Scalar ally-buff attribs (single-value stats). aspect=Current + positive scale.
+// Several of these attribs ALSO key DEBUFF_ATTRIBS (a negative `recovery` is a
+// -Recovery debuff, a negative `rechargetime` is a Slow) — so the caller must
+// skip the debuff path for an attrib we've consumed here as a positive buff, or
+// a Triage-Beacon-style +Regen aura would emit both a RegenBuff and a phantom
+// debuff. Regeneration isn't in DEBUFF_ATTRIBS, but list it here for symmetry.
+const BUFF_SCALAR_ATTRIBS = {
+  regeneration: 'RegenBuff',
+  recovery: 'RecoveryBuff',
+  tohit: 'ToHitBuff',
+  rechargetime: 'RechargeBuff',
+};
+
+/**
+ * Classify an ally-buff-aura template (Defense / Resistance / Absorb / +Regen /
+ * +Recovery / +ToHit / +Recharge — the vocabulary of "floaty" buff-pets: Force
+ * Field Generator, Barrier Reef, Triage Beacon, …). Returns `{ effects, consumed }`:
+ * `effects` is an array of buff PetEffect objects (Defense/Resistance collapse
+ * their many sub-type attribs into ONE effect carrying a `defenseTypes`/
+ * `resistanceTypes` list — one aura buffs all of them at the same scale/table);
+ * `consumed` is the set of lowercased attrib names turned into buffs, which the
+ * caller uses to suppress the overlapping DEBUFF_ATTRIBS classification. Both are
+ * empty for a non-buff template, so the caller falls through to mez/debuff/heal.
+ *
+ * Gating (all datasets — keyed on table/aspect/attrib, which survive the tspy
+ * aspect-drop for the table-based branches):
+ *  • target != Self is already guaranteed by isDebuffTemplate at the call site.
+ *  • scale > 0 — a negative scale here is a foe DEBUFF (a -Defense on a Buff_Def
+ *    table, a -ToHit, a Slow), handled by the DEBUFF_ATTRIBS path, not here.
+ */
+function extractBuffAura(template) {
+  const out = [];
+  const consumed = new Set();
+  const scale = template.scale;
+  if (!(typeof scale === 'number' && scale > 0) || !template.table) {
+    return { effects: out, consumed };
+  }
+  const aspect = template.aspect;
+  const tableLower = template.table.toLowerCase();
+  const attribsLower = (template.attribs || []).map(a => a.toLowerCase());
+
+  // Buff vs debuff is encoded in the TABLE name, not the sign: a foe -ToHit is
+  // stored as a POSITIVE scale on a `*_Debuff_ToHit` table (verified: Liquefy
+  // 2.856, Earthquake 1.0), and a -Recharge foe debuff rides a `*_Slow` table.
+  // So an ally buff is a positive scale on a table that is neither (mirrors
+  // convert-powerset's `isDebuff = scale < 0 || table.includes('debuff')`).
+  const isBuffTable = !tableLower.includes('debuff') && !tableLower.endsWith('_slow');
+
+  // Defense buff: `*_Buff_Def` table (aspect Current). Collect every def sub-type.
+  // The leading underscore + debuff guard keeps `*_Debuff_Def` (a foe -Def) out.
+  if (/_buff_def$/.test(tableLower) && isBuffTable) {
+    const defenseTypes = [];
+    for (const a of attribsLower) {
+      const key = BUFF_DEF_TYPE_MAP[a];
+      if (key && !defenseTypes.includes(key)) { defenseTypes.push(key); consumed.add(a); }
+    }
+    if (defenseTypes.length > 0) {
+      out.push({ type: 'DefenseBuff', scale, table: template.table, defenseTypes });
+    }
+  }
+
+  // Resistance buff to allies: positive aspect=Resistance on damage-type attribs.
+  // (A pet's own +res is target=Self and never reaches here.)
+  if (aspect === 'Resistance') {
+    const resistanceTypes = [];
+    for (const a of attribsLower) {
+      const key = BUFF_RES_TYPE_MAP[a];
+      if (key && !resistanceTypes.includes(key)) { resistanceTypes.push(key); consumed.add(a); }
+    }
+    if (resistanceTypes.length > 0) {
+      out.push({ type: 'ResistanceBuff', scale, table: template.table, resistanceTypes });
+    }
+  }
+
+  // Absorb: `Absorb` attrib. aspect=Maximum → the game folds this to a flat
+  // absorb amount off a Heal table (the MaxHP-fraction form is an Expression the
+  // pet parser doesn't carry; convert-powerset treats non-Expression Maximum
+  // absorb as flat too). Carry the aspect for provenance; the calc resolves it
+  // as a flat {scale,table} absorb.
+  if (attribsLower.includes('absorb')) {
+    out.push({ type: 'Absorb', scale, table: template.table, absorbAspect: aspect });
+    consumed.add('absorb');
+  }
+
+  // Scalar buffs (+Regen / +Recovery / +ToHit / +Recharge). aspect=Current, on a
+  // buff (non-debuff, non-slow) table — the table gate is what separates an ally
+  // +ToHit aura from the many foe -ToHit debuff pseudo-pets (Liquefy, Earthquake,
+  // Seekers) that store their debuff as a positive scale on a `*_Debuff_ToHit`
+  // table.
+  if (aspect === 'Current' && isBuffTable) {
+    for (const a of attribsLower) {
+      const type = BUFF_SCALAR_ATTRIBS[a];
+      if (type) {
+        out.push({ type, scale, table: template.table });
+        consumed.add(a);
+      }
+    }
+  }
+
+  return { effects: out, consumed };
+}
+
 // Attrib cache values that indicate non-attack utility powers
 const UTILITY_ATTRIBS = new Set([
   'fly', 'untouchable', 'translucency', 'stealth',
@@ -315,8 +450,23 @@ function extractEffects(powerData) {
       for (const template of (templates || [])) {
         if (!isDebuffTemplate(template, effectGroup)) continue;
 
+        // Ally-buff auras (Def/Res/Absorb/+Regen/…) — the whole point of a buff-pet.
+        // Runs for all datasets (table/aspect/attrib based). Deduped per type so a
+        // single power contributes at most one Defense + one Absorb + … effect.
+        // `buffConsumed` names the attribs turned into positive buffs so the
+        // debuff loop below skips them (a positive `recovery`/`rechargetime` must
+        // not ALSO surface as a -Recovery/Slow debuff).
+        const { effects: buffAuras, consumed: buffConsumed } = extractBuffAura(template);
+        for (const buff of buffAuras) {
+          if (seenTypes.has(buff.type)) continue;
+          seenTypes.add(buff.type);
+          if (chance < 1.0) buff.chance = chance;
+          effects.push(buff);
+        }
+
         for (const attrib of (template.attribs || [])) {
           const attribLower = attrib.toLowerCase();
+          if (buffConsumed.has(attribLower)) continue;
 
           // Check mez effects
           const mezType = MEZ_ATTRIBS[attribLower];
@@ -783,6 +933,14 @@ function generateTypeScript(entities) {
   lines.push(`  chance?: number;`);
   lines.push(`  scale?: number;`);
   lines.push(`  table?: string;`);
+  lines.push(`  /** Ally-buff auras (buff-pets like Force Field Generator / Barrier Reef).`);
+  lines.push(`   *  A DefenseBuff/ResistanceBuff aura buffs every listed sub-type at the`);
+  lines.push(`   *  same scale/table; absorbAspect distinguishes MaxHP-fraction (Maximum)`);
+  lines.push(`   *  from flat (Absolute) absorb. Folded into character totals when the`);
+  lines.push(`   *  summon's buff-pet toggle is enabled. */`);
+  lines.push(`  defenseTypes?: string[];`);
+  lines.push(`  resistanceTypes?: string[];`);
+  lines.push(`  absorbAspect?: string;`);
   lines.push(`}`);
   lines.push(``);
   lines.push(`export interface PetAbility {`);

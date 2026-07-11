@@ -59,6 +59,14 @@ export interface PetEffect {
   chance?: number;
   scale?: number;
   table?: string;
+  /** Ally-buff auras (buff-pets like Force Field Generator / Barrier Reef).
+   *  A DefenseBuff/ResistanceBuff aura buffs every listed sub-type at the same
+   *  scale/table; absorbAspect records the source aspect (Maximum/Absolute) for
+   *  provenance. Folded into character totals when the summon's buff-pet toggle
+   *  is enabled. See src/utils/calculations/buff-pet-auras.ts. */
+  defenseTypes?: string[];
+  resistanceTypes?: string[];
+  absorbAspect?: string;
 }
 
 export interface PetAbility {

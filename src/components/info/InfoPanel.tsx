@@ -52,6 +52,7 @@ import { useModeSuppression } from '@/hooks/useModeSuppression';
 import { modeLabel } from '@/utils/mode-suppression';
 import { EnhancementInfoContent } from './EnhancementInfoContent';
 import { MechanicAdjusters } from './MechanicAdjusters';
+import { BuffPetAuraToggle } from './BuffPetAuraToggle';
 import { SlottedProcControls } from './SlottedProcControls';
 import { DamageBlock } from './DamageBlock';
 import { ShortHelpChips } from './TagsRow';
@@ -1097,6 +1098,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           archetypeId={archetypeId ?? undefined}
         />
       )}
+
+      {/* Buff-pet aura toggle — for summonable buff drones (Force Field Generator,
+        * Barrier Reef, Triage Beacon) whose AoE buffs the top-of-screen totals
+        * couldn't previously show. Opt-in; folds into totals via Step 7.2. Renders
+        * nothing when the summon isn't a buff-pet. */}
+      {power && <BuffPetAuraToggle power={power} />}
 
       {/* Stacking slider (per-target or per-stack) */}
       {stackingInfo && (() => {
@@ -2335,6 +2342,14 @@ const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = {
   Slow: { label: '-Speed', color: 'text-teal-400' },
   // Ally-facing pseudo-pet field buffs / protection (EMP Field, Faraday Cage).
   ResistanceBuff: { label: '+Resistance', color: 'text-green-400' },
+  // Buff-pet auras (Force Field Generator, Barrier Reef, Triage Beacon) — the
+  // persistent AoE buffs a summoned buff drone projects onto the team.
+  DefenseBuff: { label: '+Defense', color: 'text-green-400' },
+  Absorb: { label: 'Absorb', color: 'text-green-400' },
+  RegenBuff: { label: '+Regen', color: 'text-green-400' },
+  RecoveryBuff: { label: '+Recovery', color: 'text-green-400' },
+  ToHitBuff: { label: '+ToHit', color: 'text-green-400' },
+  RechargeBuff: { label: '+Recharge', color: 'text-green-400' },
   HoldProtection: { label: 'Hold Protection', color: 'text-sky-400' },
   StunProtection: { label: 'Stun Protection', color: 'text-sky-400' },
   SleepProtection: { label: 'Sleep Protection', color: 'text-sky-400' },
@@ -2355,6 +2370,8 @@ const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = {
 const PERCENT_PET_EFFECTS = new Set([
   'RechargeDebuff', 'Slow', 'ToHitDebuff', 'DefenseDebuff', 'ResistanceDebuff', 'DamageDebuff', 'RecoveryDebuff',
   'ResistanceBuff',
+  // Buff-pet aura percentages (Absorb is shown as raw HP points, not a percent).
+  'DefenseBuff', 'RegenBuff', 'RecoveryBuff', 'ToHitBuff', 'RechargeBuff',
   // Ally debuff resistances from a summoned field render as a resistance percent.
   'EndDrainResist', 'RecoveryDebuffResist', 'RegenDebuffResist', 'RechargeDebuffResist',
 ]);

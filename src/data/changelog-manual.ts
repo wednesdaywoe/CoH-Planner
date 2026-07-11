@@ -19,7 +19,14 @@ export interface ManualEntry {
 }
 
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
-  // ───────────────────────────────────────────────────────────────────────
+  // ───────────────────────────────────────────────────────────────────────  
+  {
+    date: '2026-07-11',
+
+    items: [
+      { message: 'add buff-pet aura toggle and calculations for character totals', type: 'feat'},
+    ]
+  },
   {
     date: '2026-07-10',
 
