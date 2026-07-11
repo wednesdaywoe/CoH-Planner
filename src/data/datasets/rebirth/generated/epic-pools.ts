@@ -15013,28 +15013,9 @@ export const EPIC_POOLS_RAW = {
     "minLevel": 35,
     "powers": [
       {
-        "name": "Art of War",
-        "fullName": "Epic.Martial_Mastery_Tanker.Art_of_War",
-        "rank": 1,
-        "available": 0,
-        "description": "Your practiced moves allow you to get into a rhythm that blends a perfect combination of offense and defense. Every attack you make has a high chance of increasing your damage (all) and endurance discount for 10 seconds as your rhythm makes your attacks more efficient. This effect stacks 3 times. You must be level 41 and own Throwing Dagger or Battle Hardened to purchase this power.",
-        "shortHelp": "Auto: Global Chance of +DMG (all), +End Discount",
-        "icon": "martialmastery_artofwarpower.png",
-        "powerType": "Auto",
-        "targetType": "Self",
-        "requires": "Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Battle_Hardened ||",
-        "maxSlots": 6,
-        "allowedEnhancements": [],
-        "allowedSetCategories": [],
-        "effects": {
-          "accuracy": 1,
-          "effectArea": "SingleTarget"
-        }
-      },
-      {
         "name": "Throwing Dagger",
         "fullName": "Epic.Martial_Mastery_Tanker.Throwing_Dagger",
-        "rank": 2,
+        "rank": 1,
         "available": 34,
         "description": "Scouts and warriors have used small throwing blades to distract and weaken since metal was first smelted. You throw a knife to strike at a vital point on your foe. This causes a wound that immobilizes, deals minor lethal damage over time, and reduces their ability to regenerate. Recharge: Moderate",
         "shortHelp": "Ranged Immobilize, Minor DOT(Lethal), -Regen",
@@ -15098,7 +15079,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Battle Hardened",
         "fullName": "Epic.Martial_Mastery_Tanker.Battle_Hardened",
-        "rank": 3,
+        "rank": 2,
         "available": 34,
         "description": "Your experience in combat has given you strength and stamina! This power costs no endurance and increases your Max HP and Endurance.",
         "shortHelp": "Auto: +Max HP, +Max End",
@@ -15137,7 +15118,7 @@ export const EPIC_POOLS_RAW = {
       {
         "name": "Bodkin Bolt",
         "fullName": "Epic.Martial_Mastery_Tanker.Bodkin_Bolt",
-        "rank": 4,
+        "rank": 3,
         "available": 40,
         "description": "You employ a crossbow to launch an armor-piercing bodkin bolt at your target. This will strike for high damage and leave the enemy with less resistance and defense for a short while.  You must be level 41 and own Throwing Dagger or Battle Hardened to purchase this power. Damage: High, Recharge: High",
         "shortHelp": "Ranged, High DMG(Lethal), -Def (All), -Res(All)",
@@ -15222,6 +15203,25 @@ export const EPIC_POOLS_RAW = {
               "table": "Melee_Res_Dmg"
             }
           }
+        }
+      },
+      {
+        "name": "Art of War",
+        "fullName": "Epic.Martial_Mastery_Tanker.Art_of_War",
+        "rank": 4,
+        "available": 40,
+        "description": "Your practiced moves allow you to get into a rhythm that blends a perfect combination of offense and defense. Every attack you make has a high chance of increasing your damage (all) and endurance discount for 10 seconds as your rhythm makes your attacks more efficient. This effect stacks 3 times. You must be level 41 and own Throwing Dagger or Battle Hardened to purchase this power.",
+        "shortHelp": "Auto: Global Chance of +DMG (all), +End Discount",
+        "icon": "martialmastery_artofwarpower.png",
+        "powerType": "Auto",
+        "targetType": "Self",
+        "requires": "Epic.Martial_Mastery_Tanker.Throwing_Dagger Epic.Martial_Mastery_Tanker.Battle_Hardened ||",
+        "maxSlots": 6,
+        "allowedEnhancements": [],
+        "allowedSetCategories": [],
+        "effects": {
+          "accuracy": 1,
+          "effectArea": "SingleTarget"
         }
       },
       {

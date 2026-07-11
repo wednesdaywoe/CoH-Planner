@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
-import { getEpicPoolsForArchetype } from '@/data/epic-pools';
+import { getEpicPoolsForArchetype, isEpicPowerAvailable } from '@/data/epic-pools';
 
 /**
  * Which Ancillary/Patron pools an archetype may take.
@@ -62,6 +62,43 @@ describe('Mastermind ancillary/patron availability (rebirth)', () => {
     for (const expected of ['Dark Mastery', 'Electricity Mastery', 'Power Mastery', 'Psychic Mastery']) {
       expect(names.has(expected)).toBe(true);
     }
+  });
+});
+
+/**
+ * @Quazzar Rebirth Tanker report: the Martial Prowess (Martial_Mastery_Tanker)
+ * pool listed "Art of War" as the first pick instead of Throwing Dagger /
+ * Battle Hardened. Rebirth leaves `available_level = 0` on Art of War and gates
+ * it purely via its `requires` clause ("own Throwing Dagger or Battle Hardened")
+ * + description ("You must be level 41 ..."). A raw 0 made the converter's
+ * level-sort float it to the front as the level-35 tier-1 pick. The converter
+ * now treats the 0 sentinel (with a requires clause naming sibling pool powers)
+ * as the prerequisite tier, mirroring the Brute pool's layout exactly.
+ */
+describe('Rebirth Tanker Martial Prowess prerequisite ordering', () => {
+  beforeAll(async () => {
+    await loadDataset('rebirth');
+  });
+
+  const pool = () =>
+    getEpicPoolsForArchetype('tanker').find((p) => p.id === 'martial_mastery_tanker')!;
+
+  it('lists Throwing Dagger and Battle Hardened as the first two picks, not Art of War', () => {
+    const names = pool().powers.map((p) => p.name);
+    expect(names.slice(0, 2)).toEqual(['Throwing Dagger', 'Battle Hardened']);
+    expect(names[0]).not.toBe('Art of War');
+    // Art of War is the level-41 self-buff tier, sitting where the Brute pool
+    // puts Reckless Abandon (rank 4, ahead of the rank-5 capstone Valiance).
+    const aow = pool().powers.find((p) => p.name === 'Art of War')!;
+    expect(aow.rank).toBe(4);
+    expect(aow.available).toBe(40);
+  });
+
+  it('gates Art of War at level 41 with one prior pool pick, not level 35 with none', () => {
+    const aow = pool().powers.find((p) => p.name === 'Art of War')!;
+    expect(isEpicPowerAvailable(aow, 35, [])).toBe(false);
+    expect(isEpicPowerAvailable(aow, 41, [])).toBe(false);
+    expect(isEpicPowerAvailable(aow, 41, ['Throwing Dagger'])).toBe(true);
   });
 });
 

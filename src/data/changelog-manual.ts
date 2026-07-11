@@ -24,7 +24,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-07-11',
 
     items: [
-      { message: 'add buff-pet aura toggle and calculations for character totals', type: 'feat'},
+      { message: 'Fix for Rebirth\'s Tanker Martial Prowess epic pool, Art of War was listed as the first selectable power instead of Throwing Dagger and Battle Hardened', type: 'fix'},
+      { message: 'Added buff-pet aura toggle and calculations for character totals', type: 'feat'},
     ]
   },
   {
