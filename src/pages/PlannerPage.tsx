@@ -385,10 +385,8 @@ export function PlannerPage() {
         return {
           title: 'Power Info',
           headerRight: infoHeaderRight,
-          // pb-24 keeps the scrolled bottom of long power info clear of the
-          // fixed floating help/coffee cluster (lg+).
           body: <InfoPanel />,
-          bodyClassName: 'flex-1 overflow-y-auto p-2 pb-24',
+          bodyClassName: 'flex-1 overflow-y-auto p-2',
           onboarding: 'info-panel',
         };
     }
@@ -605,7 +603,17 @@ export function PlannerPage() {
                       </div>
                       {!isCollapsed && section.headerRight}
                     </div>
-                    {!isCollapsed && <div className={section.bodyClassName}>{section.body}</div>}
+                    {/* The bottom cell of every column touches the window's
+                        bottom edge, where the fixed floating help/coffee cluster
+                        (lg+) sits. Reserve scroll clearance so scrolled-to-end
+                        content clears the pills — appears only when scrolled, so
+                        it costs no permanent vertical space. Any section can land
+                        here after a rearrange, so it can't live on one panel. */}
+                    {!isCollapsed && (
+                      <div className={`${section.bodyClassName}${isLastRow ? ' pb-20' : ''}`}>
+                        {section.body}
+                      </div>
+                    )}
 
                     {/* Drop-zone edge marker (above/below stack · left/right new column). */}
                     {isDropTarget && (
