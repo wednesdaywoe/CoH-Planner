@@ -1336,7 +1336,24 @@ export function RegistryEffectsDisplay({
               const enhancedDuration = baseDuration * (1 + enhBonus);
               // No global mez bonus exists, but support it for correctness
               const globalBonus = globalBonuses[key] || 0;
-              const finalDuration = baseDuration * (1 + enhBonus + globalBonus);
+              // Enemy-level scaling (purple patch). Mez is the effect class the
+              // game flags UseDurationCombatMods — verified against Rebirth's
+              // decodable flag: it maps to exactly {Held, Immobilized, Stunned,
+              // Sleep, Confused, Terrorized, Afraid}. So a hold that lasts 12s on
+              // an even-con enemy lasts 12·0.48 ≈ 5.8s on a +4. The game keeps a
+              // separate `pfDuration` array from the magnitude one, but it is
+              // server-side (not in the client bins) and the wikis document mez
+              // duration as scaling by the same combat-mod curve as damage — so we
+              // reuse the already-computed magnitude modifier here (same
+              // effectiveLevelDiff, so level-shift is honored). If HC's real
+              // pfDuration ever surfaces and diverges, thread a distinct
+              // `durationCombatModifier` through purplePatchInfo — this is the only
+              // consumer.
+              const durCombatMod = purplePatchInfo && purplePatchInfo.offset !== 0
+                ? purplePatchInfo.combatModifier
+                : 1;
+              const finalDuration = baseDuration * (1 + enhBonus + globalBonus) * durCombatMod;
+              const durConArrow = durCombatMod !== 1 ? getConArrow(purplePatchInfo!.offset) : null;
               const hasEnh = Math.abs(enhancedDuration - baseDuration) > 0.001;
               const hasFinal = Math.abs(finalDuration - enhancedDuration) > 0.001;
 
@@ -1361,6 +1378,7 @@ export function RegistryEffectsDisplay({
                   </span>
                   <span className={hasFinal ? finalColumnColor : 'text-slate-300'}>
                     {finalDuration.toFixed(1)}s
+                    {durConArrow && <span className={`${durConArrow.colorClass} ml-0.5 text-[11px]`}>{durConArrow.symbol}</span>}
                   </span>
                 </div>
               );
