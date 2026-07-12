@@ -172,7 +172,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "usFX",
+          "stack_key": "TravelTurboBuff",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -216,7 +216,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "sFX",
+          "stack_key": "TravelTurboMaxBuff",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",

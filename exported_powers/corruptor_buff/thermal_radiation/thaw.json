@@ -232,7 +232,7 @@
           "caster_stack": "Unlimited",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "thColumn.5thColumnEndgame.NictusFX",
+          "stack_key": "PvPMezProt",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",

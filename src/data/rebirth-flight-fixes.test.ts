@@ -7,7 +7,8 @@ import {
   getInherentPowers,
   getInherentPowerDef,
 } from '@/data';
-import { TRAVEL_CAP_BUMPS } from '@/data/core/movement-constants';
+import { getEffectiveMovementCaps, MOVEMENT_CAPS, MPH_PER_SCALE } from '@/data/core/movement-constants';
+import type { MovementEffect } from '@/types/power';
 
 /**
  * @Redlynne Rebirth Flight pool report:
@@ -59,11 +60,20 @@ describe('Rebirth Flight pool bonus-power fixes', () => {
   });
 
   // ---- Issue 4: Afterburner raises the max fly-speed cap ------------------
+  // Data-driven since 2026-07-12: the cap raise is the power's own
+  // aspect=Maximum template (effects.movementCapBump), not a hardcoded
+  // per-fullName table. Rebirth's Fly_Afterburner carries +1.0 fly-cap units
+  // (z_rebirth_bin.pigg); Rebirth's Fly has NO Maximum template (unlike HC),
+  // so Afterburner is the only fly-cap source there.
   it('Rebirth Afterburner (Fly_Afterburner) bumps the fly-speed cap', () => {
-    const bump = TRAVEL_CAP_BUMPS['Pool.Flight.Fly_Afterburner'];
+    const flight = getPowerPool('flight');
+    const afterburner = flight?.powers.find((p) => p.internalName === 'Fly_Afterburner');
+    const bump = (afterburner?.effects?.movementCapBump as { flySpeed?: MovementEffect } | undefined)?.flySpeed;
     expect(bump).toBeDefined();
-    expect(bump.stat).toBe('flySpeed');
-    expect(bump.cap).toBeGreaterThan(TRAVEL_CAP_BUMPS['Pool.Flight.Fly'].cap);
+    expect(bump!.scale).toBeGreaterThan(0);
+    const caps = getEffectiveMovementCaps([{ stat: 'flySpeed', scale: bump!.scale, stackKey: bump!.stackKey, suppressible: bump!.suppressible }]);
+    expect(caps.flySpeed).toBeCloseTo(MOVEMENT_CAPS.flySpeed + bump!.scale * MPH_PER_SCALE, 2);
+    expect(caps.flySpeed).toBeGreaterThan(MOVEMENT_CAPS.flySpeed);
   });
 
   // ---- Issue 2: Athletic Run is not granted on Rebirth -------------------

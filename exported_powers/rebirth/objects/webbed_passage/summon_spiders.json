@@ -75,7 +75,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnoids_Arachnoid",
@@ -119,7 +119,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnoids_Arachnoid_Spitter",
@@ -163,7 +163,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnoids_Super_Arachnoid_High",
@@ -207,7 +207,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnoids_Arachnoid",
@@ -251,7 +251,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnoids_Arachnoid_Spitter",
@@ -295,7 +295,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnoids_Super_Arachnoid_High",
@@ -339,7 +339,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnoids_Arachnoid",
@@ -383,7 +383,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnoids_Arachnoid_Spitter",

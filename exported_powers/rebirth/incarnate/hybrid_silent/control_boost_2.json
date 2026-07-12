@@ -82,7 +82,7 @@
           "caster_stack": "Unlimited",
           "stack": "Stack",
           "stack_limit": 4,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreCombatMods"

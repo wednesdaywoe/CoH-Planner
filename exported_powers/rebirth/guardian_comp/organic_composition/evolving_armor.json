@@ -81,7 +81,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -129,7 +129,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -177,7 +177,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -225,7 +225,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -273,7 +273,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -321,7 +321,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -369,7 +369,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -417,7 +417,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -465,7 +465,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -513,7 +513,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -561,7 +561,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -609,7 +609,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -657,7 +657,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -705,7 +705,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -753,7 +753,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -801,7 +801,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -849,7 +849,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -897,7 +897,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -945,7 +945,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -993,7 +993,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -1041,7 +1041,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -1089,7 +1089,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -1137,7 +1137,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",
@@ -1185,7 +1185,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "cancel_events": [
             "Damaged",
             "Event_19",

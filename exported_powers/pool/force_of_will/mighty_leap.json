@@ -164,7 +164,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX",
+          "stack_key": "TravelBuff",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -207,7 +207,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX",
+          "stack_key": "TravelBuff",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -250,7 +250,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "tusFX",
+          "stack_key": "TravelMaxBuff",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -294,7 +294,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX",
+          "stack_key": "TravelBuff",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -337,7 +337,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX",
+          "stack_key": "TravelBuff",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -396,7 +396,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX",
+          "stack_key": "TravelBuff",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -431,7 +431,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX",
+          "stack_key": "TravelBuff",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -466,7 +466,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX",
+          "stack_key": "TravelBuff",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -501,7 +501,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ictusFX",
+          "stack_key": "TravelBuff",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -536,7 +536,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "tusFX",
+          "stack_key": "TravelMaxBuff",
           "cancel_events": [
             "Stunned",
             "Held",

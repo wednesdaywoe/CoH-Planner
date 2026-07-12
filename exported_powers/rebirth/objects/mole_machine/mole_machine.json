@@ -75,7 +75,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Sniper_noexp"
@@ -118,7 +118,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Lieutenant_noexp"
@@ -161,7 +161,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Elite_noexp"
@@ -204,7 +204,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Sniper_GasMask_noexp"
@@ -247,7 +247,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Lieutenant_GasMask_noexp"
@@ -290,7 +290,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Elite_GasMask_noexp"
@@ -333,7 +333,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Jaeger_noexp"
@@ -376,7 +376,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Jaeger_Slicer_noexp"
@@ -419,7 +419,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Jaeger_Bomber_noexp"
@@ -462,7 +462,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Nemesis_Warhulk_noexp"
@@ -505,7 +505,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Nemesis_Fake_Nemesis_noexp"

@@ -75,7 +75,7 @@
           "caster_stack": "Individual",
           "stack": "StackThenIgnore",
           "stack_limit": 10,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Clockwork_Summoned_Sprocket_Babbage",

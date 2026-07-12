@@ -29,12 +29,14 @@ export const QuantumBoost: Power = {
   "effects": {
     "buffDuration": 0.75,
     "durations": {
-      "movement": 0.75,
+      "movementCapBump": 0.75,
       "specialBuff": 0.75
     },
-    "movement": {
+    "movementCapBump": {
       "flySpeed": {
         "scale": 1,
+        "stackKey": "TravelTurboMaxBuff",
+        "suppressible": true,
         "table": "Melee_Ones"
       }
     },

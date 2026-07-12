@@ -82,7 +82,7 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 8,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength"

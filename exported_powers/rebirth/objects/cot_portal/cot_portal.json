@@ -75,7 +75,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp"
@@ -118,7 +118,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp"
@@ -161,7 +161,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnos_Mu_Striker_High_Ghost_Noexp"
@@ -204,7 +204,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnos_Mu_Adept_High_Ghost_Noexp"
@@ -247,7 +247,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "Arachnos_Mu_Guardian_High_Ghost_Noexp"

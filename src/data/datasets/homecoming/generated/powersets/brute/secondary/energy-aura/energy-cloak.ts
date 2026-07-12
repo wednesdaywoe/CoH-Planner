@@ -92,7 +92,7 @@ export const EnergyCloak: Power = {
       "stealth": 0.75
     },
     "stealth": {
-      "stackKey": "NictusFX",
+      "stackKey": "StealthToggle",
       "stealthPvE": {
         "scale": 36.5,
         "table": "Melee_Ones"

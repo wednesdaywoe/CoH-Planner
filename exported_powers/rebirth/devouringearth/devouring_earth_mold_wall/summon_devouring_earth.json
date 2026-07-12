@@ -75,7 +75,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Eden_Trial_Mushroom_Beast_Summoned",
@@ -123,7 +123,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Eden_Trial_Mushroom_Beast_Summoned",
@@ -171,7 +171,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Eden_Trial_Greater_Devoured_Boss_Summoned",
@@ -219,7 +219,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "DevouringEarth_Eden_Trial_Mushroom_Beast_Lieutenant_Summoned",

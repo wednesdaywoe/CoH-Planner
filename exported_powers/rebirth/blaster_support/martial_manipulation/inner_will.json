@@ -86,7 +86,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -130,7 +130,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -174,7 +174,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -218,7 +218,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -262,7 +262,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -306,7 +306,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -350,7 +350,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -394,7 +394,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -438,7 +438,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -482,7 +482,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -526,7 +526,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -570,7 +570,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -614,7 +614,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -658,7 +658,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -702,7 +702,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -746,7 +746,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -790,7 +790,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -834,7 +834,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -878,7 +878,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -921,7 +921,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreResistance"
           ]

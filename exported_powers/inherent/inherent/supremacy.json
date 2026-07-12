@@ -144,7 +144,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+          "stack_key": "PetBuffAura",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -182,7 +182,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+          "stack_key": "PetBuffAura",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -213,7 +213,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+          "stack_key": "PetBuffAura",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",

@@ -1213,6 +1213,7 @@ export const POWER_POOLS_RAW = {
           "buffDuration": 0.75,
           "durations": {
             "movement": 0.75,
+            "movementCapBump": 0.75,
             "slow": 0.75
           },
           "movement": {
@@ -1220,6 +1221,12 @@ export const POWER_POOLS_RAW = {
               "scale": 2,
               "table": "Melee_Ones"
             },
+            "flySpeed": {
+              "scale": 1,
+              "table": "Melee_Ones"
+            }
+          },
+          "movementCapBump": {
             "flySpeed": {
               "scale": 1,
               "table": "Melee_Ones"
@@ -1896,7 +1903,8 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 30,
           "durations": {
-            "movement": 30
+            "movement": 30,
+            "movementCapBump": 30
           },
           "movement": {
             "flySpeed": {
@@ -1910,6 +1918,12 @@ export const POWER_POOLS_RAW = {
             "movementFriction": {
               "scale": 15,
               "table": "Ranged_Friction"
+            }
+          },
+          "movementCapBump": {
+            "flySpeed": {
+              "scale": 1,
+              "table": "Ranged_Ones"
             }
           }
         }
@@ -4179,7 +4193,8 @@ export const POWER_POOLS_RAW = {
             "debuffResistance": 60,
             "defenseBuff": 60,
             "maxEndBuff": 60,
-            "movement": 60
+            "movement": 60,
+            "movementCapBump": 60
           },
           "maxEndBuff": {
             "scale": 25,
@@ -4193,6 +4208,12 @@ export const POWER_POOLS_RAW = {
             "runSpeed": {
               "scale": 0.5,
               "table": "Melee_SpeedRunning"
+            }
+          },
+          "movementCapBump": {
+            "runSpeed": {
+              "scale": 1,
+              "table": "Melee_Ones"
             }
           }
         }

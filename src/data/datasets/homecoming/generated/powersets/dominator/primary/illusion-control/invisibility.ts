@@ -140,7 +140,7 @@ export const Invisibility: Power = {
       "threatDebuff": 0.75
     },
     "stealth": {
-      "stackKey": "NictusFX",
+      "stackKey": "StealthToggle",
       "stealthPvE": {
         "scale": 200,
         "table": "Melee_Ones"

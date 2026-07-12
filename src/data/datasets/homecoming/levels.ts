@@ -621,9 +621,13 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
       // real-numbers rate (0.5688/s) rather than a re-derived bin figure.
       // Stored already-per-second like Sprint above; EndRdx scales it linearly.
       enduranceCost: 0.5688,
-      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning' },
-      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping' },
-      jumpHeight: { scale: 0.25, table: 'Melee_Leap' },
+      // All three movement buffs are in the kTravelBuff suppress group and
+      // carry `Suppress ActivateAttackClick` (bin-verified on the granted
+      // Prestige.Prestige_Travel toggle): they suppress against CJ/SJ/SS/Fly
+      // (strongest wins) and shut off in combat.
+      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning', stackKey: 'TravelBuff', suppressible: true },
+      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping', stackKey: 'TravelBuff', suppressible: true },
+      jumpHeight: { scale: 0.25, table: 'Melee_Leap', stackKey: 'TravelBuff', suppressible: true },
     },
   },
   {
@@ -646,9 +650,13 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
       // Beast Run mirrors Ninja Run exactly in-game (same granted-toggle drain);
       // see the Ninja Run note above. 0.5688/s in-game real-numbers rate.
       enduranceCost: 0.5688,
-      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning' },
-      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping' },
-      jumpHeight: { scale: 0.25, table: 'Melee_Leap' },
+      // All three movement buffs are in the kTravelBuff suppress group and
+      // carry `Suppress ActivateAttackClick` (bin-verified on the granted
+      // Prestige.Prestige_Travel toggle): they suppress against CJ/SJ/SS/Fly
+      // (strongest wins) and shut off in combat.
+      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning', stackKey: 'TravelBuff', suppressible: true },
+      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping', stackKey: 'TravelBuff', suppressible: true },
+      jumpHeight: { scale: 0.25, table: 'Melee_Leap', stackKey: 'TravelBuff', suppressible: true },
     },
   },
   // Athletic Run — HC grants this free travel toggle at level 4 (per in-game
@@ -681,9 +689,13 @@ export const BASIC_INHERENT_POWERS: InherentPowerDef[] = [
     category: 'basic',
     effects: {
       enduranceCost: 0.5688,
-      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning' },
-      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping' },
-      jumpHeight: { scale: 0.25, table: 'Melee_Leap' },
+      // All three movement buffs are in the kTravelBuff suppress group and
+      // carry `Suppress ActivateAttackClick` (bin-verified on the granted
+      // Prestige.Prestige_Travel toggle): they suppress against CJ/SJ/SS/Fly
+      // (strongest wins) and shut off in combat.
+      runSpeed: { scale: 0.4, table: 'Melee_SpeedRunning', stackKey: 'TravelBuff', suppressible: true },
+      jumpSpeed: { scale: 0.55, table: 'Melee_SpeedJumping', stackKey: 'TravelBuff', suppressible: true },
+      jumpHeight: { scale: 0.25, table: 'Melee_Leap', stackKey: 'TravelBuff', suppressible: true },
     },
   },
 ];

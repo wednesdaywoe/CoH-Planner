@@ -79,7 +79,7 @@
           "caster_stack": "Individual",
           "stack": "Extend",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "EntCreate",
             "entity_def": "CLOCKWORK_LOYALIST_VICTORIA_01_PLAYER"
@@ -126,7 +126,7 @@
           "caster_stack": "Individual",
           "stack": "Extend",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

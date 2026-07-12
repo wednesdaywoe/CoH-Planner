@@ -97,7 +97,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -140,7 +140,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -183,7 +183,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -226,7 +226,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -269,7 +269,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -312,7 +312,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -355,7 +355,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -398,7 +398,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -441,7 +441,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -484,7 +484,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -527,7 +527,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -570,7 +570,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -613,7 +613,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -656,7 +656,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -699,7 +699,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -742,7 +742,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -785,7 +785,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -828,7 +828,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -871,7 +871,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -914,7 +914,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -957,7 +957,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1000,7 +1000,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1043,7 +1043,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1086,7 +1086,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1129,7 +1129,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1172,7 +1172,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1215,7 +1215,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1258,7 +1258,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1301,7 +1301,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1344,7 +1344,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1387,7 +1387,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1430,7 +1430,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1473,7 +1473,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1516,7 +1516,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1559,7 +1559,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1602,7 +1602,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1645,7 +1645,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1688,7 +1688,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1731,7 +1731,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1774,7 +1774,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1817,7 +1817,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1860,7 +1860,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1903,7 +1903,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1946,7 +1946,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -1989,7 +1989,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "2",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -2032,7 +2032,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -2075,7 +2075,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -2118,7 +2118,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -2161,7 +2161,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -2204,7 +2204,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -2247,7 +2247,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -2290,7 +2290,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -2333,7 +2333,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -2376,7 +2376,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 5,
-          "stack_key": "1",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -2419,7 +2419,7 @@
           "caster_stack": "Individual",
           "stack": "Ignore",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "Power",
             "power_names": [
@@ -2468,7 +2468,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "Power",
             "power_names": [
@@ -2517,7 +2517,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "Power",
             "power_names": [

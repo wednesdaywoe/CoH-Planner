@@ -576,7 +576,18 @@ def _parse_effect_template(r: BinReader, *, veracity: bool = False) -> EffectTem
     _stack_raw = r.read_u4()
     stack = ATTRIB_MOD_STACK.get(_stack_raw, f"Unknown({_stack_raw})")
     stack_limit = r.read_u4()
-    stack_key = r.read_string() or None
+    # StackKey: a u4 ID into the global StackKeys registry (attrib_names.bin
+    # StackKeys sub-array; see parse_stack_key_table), NOT a string offset.
+    # The old read_string() decode dereferenced the small ID into powers.bin's
+    # string table head, yielding suffixes of its first entry ("5thColumn.
+    # 5thColumnEndgame.NictusFX" → 'NictusFX'/'ictusFX'/'tusFX' at IDs
+    # 28/29/31). ID→name (kStealthToggle/kTravelBuff/kTravelMaxBuff/...) is
+    # resolved at export time; -1 (0xFFFFFFFF) = no key, normalized to 0
+    # (registry[0] is the unreferenced TestStack filler, so the collision is
+    # moot). Verified vs the CoD2 `.powers` oracle (kPvPMezProt=2 ...
+    # kHasteBuff=35, all direct registry indices).
+    _stack_key_raw = r.read_u4()
+    stack_key_id = 0 if _stack_key_raw == 0xFFFFFFFF else _stack_key_raw
 
     # AttribMod tail. Per the Ghidra-extracted struct descriptor, layout is:
     #   CancelEvents, RequiredEvent, Suppress, BoostModAllowed, Flags,
@@ -674,7 +685,7 @@ def _parse_effect_template(r: BinReader, *, veracity: bool = False) -> EffectTem
         caster_stack=caster_stack,
         stack=stack,
         stack_limit=stack_limit,
-        stack_key=stack_key,
+        stack_key_id=stack_key_id,
         cancel_events=cancel_events,
         suppress_events=suppress_events,
         required_events=required_events,
@@ -1959,8 +1970,14 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
     stack_raw = r.read_u4()
     stack = ATTRIB_MOD_STACK.get(stack_raw, f"Unknown({stack_raw})")
     stack_limit = r.read_u4()
-    stack_key_raw = r.read_u4()
-    stack_key = str(stack_key_raw) if stack_key_raw else None
+    # StackKeys-registry ID (this path always read it as a u4 — it was never
+    # subject to the Parse7 string-offset misread, though the old code leaked
+    # the no-key sentinel as the literal string "4294967295"). Same
+    # convention as Parse7: direct registry index, -1 = no key (normalized
+    # to 0 — registry[0] is the unreferenced TestStack filler, so the
+    # collision is moot). Resolved to its name at export time.
+    _stack_key_raw = r.read_u4()
+    stack_key_id = 0 if _stack_key_raw == 0xFFFFFFFF else _stack_key_raw
 
     # Duration + DurationExpr + Magnitude + MagnitudeExpr.
     #
@@ -2018,7 +2035,7 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
         caster_stack=caster_stack,
         stack=stack,
         stack_limit=stack_limit,
-        stack_key=stack_key,
+        stack_key_id=stack_key_id,
         cancel_events=cancel_events,
         flags=flags,
         params=params,

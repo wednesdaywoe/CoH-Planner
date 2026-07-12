@@ -44,18 +44,22 @@ export const QuantumFlight: Power = {
     "movement": {
       "fly": {
         "scale": 1,
+        "stackKey": "TravelBuff",
         "table": "Melee_Ones"
       },
       "flySpeed": {
         "scale": 5,
+        "stackKey": "TravelBuff",
         "table": "Melee_SpeedFlying"
       },
       "movementControl": {
         "scale": 3,
+        "stackKey": "TravelBuff",
         "table": "Melee_Control"
       },
       "movementFriction": {
         "scale": 3,
+        "stackKey": "TravelBuff",
         "table": "Melee_Friction"
       }
     },

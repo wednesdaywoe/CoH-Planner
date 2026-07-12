@@ -356,7 +356,7 @@
                   "caster_stack": "Individual",
                   "stack": "Replace",
                   "stack_limit": 2,
-                  "stack_key": "S/5THCOLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+                  "stack_key": "ArcticAir",
                   "flags": [
                     "DeepSleep",
                     "StackByAttribAndKey"
@@ -400,7 +400,7 @@
                   "caster_stack": "Individual",
                   "stack": "Replace",
                   "stack_limit": 2,
-                  "stack_key": "S/5THCOLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+                  "stack_key": "ArcticAir",
                   "flags": [
                     "DeepSleep",
                     "StackByAttribAndKey"

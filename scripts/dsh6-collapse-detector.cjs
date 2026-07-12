@@ -91,8 +91,12 @@ const SLOT_TABLE = {
   knockup: { et: 'Mez', sign: null, sub: 'Knockup' },
   repel: { et: 'Mez', sign: null, sub: 'Repel' },
   mezResistance: { et: 'MezResist', sign: null, byType: true },
-  // movement (by axis) — buff (movement) vs slow both applied; sign null
+  // movement (by axis) — buff (movement) vs slow both applied; sign null.
+  // movementCapBump holds the aspect=Maximum speed-cap raises (Super Speed
+  // +1.938 run cap etc.) split out of `movement` 2026-07-12 — same Movement
+  // class, distinct output slot so the Current-aspect buff isn't clobbered.
   movement: { et: 'Movement', sign: null, byType: true },
+  movementCapBump: { et: 'Movement', sign: null, byType: true },
   slow: { et: 'Movement', sign: null, byType: true },
   // resources
   maxHPBuff: { et: 'MaxHP', sign: '+' },

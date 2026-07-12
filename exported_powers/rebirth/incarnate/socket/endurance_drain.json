@@ -82,7 +82,7 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -125,7 +125,7 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength"
@@ -168,7 +168,7 @@
           "caster_stack": "Unlimited",
           "stack": "StackThenIgnore",
           "stack_limit": 4,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "CancelOnMiss",
             "IgnoreStrength"

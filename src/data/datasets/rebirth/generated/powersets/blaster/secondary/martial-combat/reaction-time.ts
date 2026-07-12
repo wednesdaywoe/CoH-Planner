@@ -53,12 +53,12 @@ export const ReactionTime: Power = {
   "effects": {
     "buffDuration": 10,
     "durations": {
-      "movement": 10,
+      "movementCapBump": 10,
       "rechargeDebuff": 10,
       "slow": 10,
       "specialBuff": 10
     },
-    "movement": {
+    "movementCapBump": {
       "runSpeed": {
         "scale": 1,
         "table": "Melee_SpeedRunning"

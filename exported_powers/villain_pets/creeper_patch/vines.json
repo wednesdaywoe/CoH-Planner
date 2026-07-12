@@ -121,7 +121,7 @@
               "caster_stack": "Individual",
               "stack": "Ignore",
               "stack_limit": 2,
-              "stack_key": "COLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+              "stack_key": "CreeperVine",
               "params": {
                 "type": "EntCreate",
                 "entity_def": "Pets_Creeper_Vine",

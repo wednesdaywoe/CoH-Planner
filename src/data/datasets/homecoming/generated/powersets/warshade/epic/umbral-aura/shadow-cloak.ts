@@ -111,7 +111,7 @@ export const ShadowCloak: Power = {
       "table": "Melee_Ones"
     },
     "stealth": {
-      "stackKey": "NictusFX",
+      "stackKey": "StealthToggle",
       "stealthPvE": {
         "scale": 35.5,
         "table": "Melee_Ones"

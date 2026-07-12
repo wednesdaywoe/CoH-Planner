@@ -316,7 +316,7 @@
           "caster_stack": "Unlimited",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "ctusFX",
+          "stack_key": "TravelDebuff",
           "flags": [
             "IgnoreStrength",
             "StackByAttribAndKey"

@@ -52,14 +52,17 @@ export const GroupEnergyFlight: Power = {
       },
       "flySpeed": {
         "scale": 0.5,
+        "stackKey": "TravelBuff",
         "table": "Melee_SpeedFlying"
       },
       "movementControl": {
         "scale": 10,
+        "stackKey": "TravelBuff",
         "table": "Melee_Control"
       },
       "movementFriction": {
         "scale": 10,
+        "stackKey": "TravelBuff",
         "table": "Melee_Friction"
       }
     }

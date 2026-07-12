@@ -94,7 +94,7 @@
               "caster_stack": "Individual",
               "stack": "RefreshToCount",
               "stack_limit": 1,
-              "stack_key": "THCOLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+              "stack_key": "AoEHold",
               "flags": [
                 "DeepSleep",
                 "StackByAttribAndKey"
@@ -140,7 +140,7 @@
               "caster_stack": "Individual",
               "stack": "RefreshToCount",
               "stack_limit": 1,
-              "stack_key": "HCOLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+              "stack_key": "AoEHoldInherent",
               "flags": [
                 "DeepSleep",
                 "StackByAttribAndKey"
@@ -212,7 +212,7 @@
               "caster_stack": "Individual",
               "stack": "RefreshToCount",
               "stack_limit": 1,
-              "stack_key": "HCOLUMN/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+              "stack_key": "AoEHoldInherent",
               "flags": [
                 "DeepSleep",
                 "StackByAttribAndKey"

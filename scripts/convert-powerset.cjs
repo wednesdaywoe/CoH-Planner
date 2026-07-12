@@ -631,9 +631,14 @@ function inferEffectiveArea(powerJson) {
 // Combat-suppressing events from EVENT_NAME (parser/_enums.py). When an
 // AttribMod's Suppress array lists any of these, the buff is suppressed
 // during combat (the In-Combat toggle in the planner removes it from totals).
+// ActivateAttackClick (the caster clicking an attack) is the ONLY suppress
+// event on travel-power speed buffs (Super Speed run, Super Jump jump, Fly
+// speed, Afterburner's cap raise: `Suppress ActivateAttackClick 4 Always`) —
+// omitting it left every travel buff un-suppressible in combat mode.
 const COMBAT_SUPPRESS_EVENTS = new Set([
   'Attacked', 'Damaged', 'MissionObjectClick', 'PseudoPetAttacked',
   'PseudoPetHelped', 'Helped', 'HitByFoe', 'CommandedPet',
+  'ActivateAttackClick',
 ]);
 
 /**
@@ -4017,6 +4022,18 @@ function projectAtomsToEffects(atoms, powerName) {
     if (MOVEMENT_TYPES[attrib]) {
       const moveType = MOVEMENT_TYPES[attrib];
       const isSlow = isDebuff || scale < 0 || (table || '').toLowerCase().includes('slow');
+      // Travel-suppression metadata. `stackKey` is the binary suppress group
+      // (kTravelBuff on CJ/SJ/SS/Fly & the SS momentum effects): active
+      // powers sharing a key mutually suppress per stat — only the strongest
+      // applies (the calc's strongest-wins pass). `suppressible` marks buffs
+      // the game turns off in combat (Suppress ActivateAttackClick — SS run,
+      // SJ jump, Fly speed; Combat Jumping/Hover carry no suppress events
+      // and keep working, which is their whole point).
+      const attachTravelMeta = (e) => {
+        if (a._stack === 'Suppress' && a._stackKey) e.stackKey = a._stackKey;
+        if (isCombatSuppressed) e.suppressible = true;
+        return e;
+      };
       if (aspect === 'resistance') {
         if (!effects.debuffResistance) effects.debuffResistance = {};
         effects.debuffResistance.movement = makeEffect();
@@ -4025,6 +4042,20 @@ function projectAtomsToEffects(atoms, powerName) {
         if (!effects.specialBuff) effects.specialBuff = {};
         effects.specialBuff.movement = makeEffect();
         recordDuration('specialBuff');
+      } else if (isSelfTargeting && aspect === 'maximum' && scale > 0 &&
+                 moveType !== 'movementControl' && moveType !== 'movementFriction') {
+        // aspect=Maximum on a movement speed = a travel-power CAP raise
+        // (Super Speed +1.938 run-cap units → 120.25 mph; Super Jump +1.65
+        // jump → 101.80; Fly +2.0475 → 87.95; Afterburner +1.0 on top →
+        // 102.27). These previously fell into the generic movement slot and
+        // CLOBBERED the real Current-aspect buff (SS showed 1.938×Melee_Ones
+        // instead of 1.0×Melee_SpeedRunning) — the bag-vs-array collapse.
+        // Kept separate so the UI derives caps from data instead of the
+        // hardcoded TRAVEL_CAP_BUMPS table. Negative Maximum (cap DEBUFF)
+        // still routes to `slow` below, as before.
+        if (!effects.movementCapBump) effects.movementCapBump = {};
+        effects.movementCapBump[moveType] = attachTravelMeta(makeEffect());
+        recordDuration('movementCapBump');
       } else if (isSelfTargeting && isSlow) {
         if (!effects.slow) effects.slow = {};
         effects.slow[moveType] = makeEffect();
@@ -4032,7 +4063,7 @@ function projectAtomsToEffects(atoms, powerName) {
         recordDuration('slow');
       } else if (isSelfTargeting) {
         if (!effects.movement) effects.movement = {};
-        effects.movement[moveType] = makeEffect();
+        effects.movement[moveType] = attachTravelMeta(makeEffect());
         recordDuration('movement');
       } else if (isSlow) {
         if (!effects.slow) effects.slow = {};
@@ -4040,7 +4071,7 @@ function projectAtomsToEffects(atoms, powerName) {
         recordDuration('slow');
       } else if (aspect === 'current') {
         if (!effects.movement) effects.movement = {};
-        effects.movement[moveType] = makeEffect();
+        effects.movement[moveType] = attachTravelMeta(makeEffect());
         recordDuration('movement');
       }
       continue;

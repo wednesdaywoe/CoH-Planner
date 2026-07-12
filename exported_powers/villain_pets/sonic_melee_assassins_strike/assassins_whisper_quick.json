@@ -443,7 +443,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "N/5THCOLUMNENDGAME/NICTUSFX.POWERS",
+          "stack_key": "SonicWhisper",
           "flags": [
             "IgnoreStrength",
             "StackByAttribAndKey"

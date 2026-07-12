@@ -40,7 +40,8 @@ export const EnergyFlight: Power = {
   "effects": {
     "buffDuration": 0.75,
     "durations": {
-      "movement": 0.75
+      "movement": 0.75,
+      "movementCapBump": 0.75
     },
     "movement": {
       "fly": {
@@ -48,16 +49,27 @@ export const EnergyFlight: Power = {
         "table": "Melee_Ones"
       },
       "flySpeed": {
-        "scale": 2.0475,
-        "table": "Melee_Ones"
+        "scale": 1.1788,
+        "stackKey": "TravelBuff",
+        "suppressible": true,
+        "table": "Melee_SpeedFlying"
       },
       "movementControl": {
         "scale": 2,
+        "stackKey": "TravelBuff",
         "table": "Melee_Control"
       },
       "movementFriction": {
         "scale": 2,
+        "stackKey": "TravelBuff",
         "table": "Melee_Friction"
+      }
+    },
+    "movementCapBump": {
+      "flySpeed": {
+        "scale": 2.0475,
+        "stackKey": "TravelMaxBuff",
+        "table": "Melee_Ones"
       }
     }
   },

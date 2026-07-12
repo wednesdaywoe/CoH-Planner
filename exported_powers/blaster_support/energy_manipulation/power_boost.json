@@ -135,7 +135,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "me.NictusFX",
+          "stack_key": "PowerBoost",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -193,7 +193,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "me.NictusFX",
+          "stack_key": "PowerBoost",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",

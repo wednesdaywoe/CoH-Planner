@@ -86,7 +86,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX",
+          "stack_key": "IcyBastion",
           "flags": [
             "IgnoreResistance",
             "StackByAttribAndKey"
@@ -116,7 +116,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX",
+          "stack_key": "IcyBastion",
           "flags": [
             "IgnoreResistance",
             "StackByAttribAndKey"
@@ -152,7 +152,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX",
+          "stack_key": "IcyBastion",
           "flags": [
             "IgnoreResistance",
             "StackByAttribAndKey"
@@ -184,7 +184,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX",
+          "stack_key": "IcyBastion",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -217,7 +217,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX",
+          "stack_key": "IcyBastion",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
@@ -267,7 +267,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX",
+          "stack_key": "IcyBastion",
           "flags": [
             "IgnoreResistance",
             "StackByAttribAndKey"
@@ -315,7 +315,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX",
+          "stack_key": "IcyBastion",
           "flags": [
             "IgnoreResistance",
             "StackByAttribAndKey"
@@ -345,7 +345,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "ame.NictusFX",
+          "stack_key": "IcyBastion",
           "flags": [
             "IgnoreResistance",
             "StackByAttribAndKey"

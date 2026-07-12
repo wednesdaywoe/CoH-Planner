@@ -148,7 +148,7 @@
           "caster_stack": "Unlimited",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "umn.5thColumnEndgame.NictusFX",
+          "stack_key": "Bruising",
           "flags": [
             "IgnoreStrength",
             "StackByAttribAndKey"

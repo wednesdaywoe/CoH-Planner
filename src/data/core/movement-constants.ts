@@ -42,32 +42,58 @@ export type MovementStat = keyof typeof MOVEMENT_BASES;
 export type MovementCaps = Record<MovementStat, number>;
 
 /**
- * Travel toggles that raise the cap of one movement stat while active.
- * Keyed by the canonical power fullName ("Pool.<set>.<powerInternalName>").
- * Multiple active bumps for the same stat take the maximum (game rule:
- * "only the strongest buff applies"). When the In-Combat toggle is on,
- * none of these apply (the game suppresses the cap bump on attack).
+ * One active travel-power cap raise, read from the power's generated
+ * `effects.movementCapBump` (the binary's aspect=Maximum movement templates —
+ * data-driven, replacing the old hardcoded per-fullName TRAVEL_CAP_BUMPS
+ * table). `scale` is in movement-scale units (Melee_Ones): 1 unit = 21 fps =
+ * MPH_PER_SCALE mph. Super Speed +1.938 run (→120.25 mph), Super Jump +1.65
+ * jump (→101.80), Fly +2.0475 fly (→87.95), Afterburner +1.0 fly on top
+ * (→102.27).
  */
-export const TRAVEL_CAP_BUMPS: Record<string, { stat: MovementStat; cap: number }> = {
-  'Pool.Speed.Super_Speed':              { stat: 'runSpeed',  cap: 120.25 },
-  'Pool.Experimentation.Speed_of_Sound': { stat: 'runSpeed',  cap: 120.25 },
-  'Pool.Leaping.Long_Jump':              { stat: 'jumpSpeed', cap: 101.80 }, // Super Jump
-  'Pool.Force_of_Will.Mighty_Leap':      { stat: 'jumpSpeed', cap: 101.80 },
-  'Pool.Flight.Fly':                     { stat: 'flySpeed',  cap: 87.90 },
-  'Pool.Sorcery.Mystic_Flight':          { stat: 'flySpeed',  cap: 87.90 },
-  'Pool.Flight.Fly_Boost':               { stat: 'flySpeed',  cap: 102.27 }, // Afterburner (HC)
-  'Pool.Flight.Fly_Afterburner':         { stat: 'flySpeed',  cap: 102.27 }, // Afterburner (Rebirth — Dive Attack + Fly)
-};
+export interface MovementCapBump {
+  stat: MovementStat;
+  scale: number;
+  /** Binary suppress group (kTravelMaxBuff etc.): within a group only the
+   *  strongest bump applies; distinct groups ADD (Fly's TravelMaxBuff +
+   *  Afterburner's TravelTurboMaxBuff = 102.27). Absent = always adds. */
+  stackKey?: string;
+  /** True when the game suppresses the cap raise in combat (`Suppress
+   *  ActivateAttackClick`): Super Jump's and Afterburner's do; Super Speed's
+   *  and Fly's persist — the old blanket "combat removes all cap bumps" rule
+   *  was wrong for the latter two. */
+  suppressible?: boolean;
+}
 
 /**
- * Compute the effective movement caps given a set of active travel toggles.
- * Falls back to MOVEMENT_CAPS for any stat not bumped.
+ * Compute the effective movement caps given the active powers' cap bumps.
+ * Falls back to MOVEMENT_CAPS for any stat not bumped. In combat mode,
+ * suppressible bumps are dropped; the rest resolve strongest-per-suppress-
+ * group, then groups add onto the standard cap.
  */
-export function getEffectiveMovementCaps(activeFullNames: Iterable<string>): MovementCaps {
+export function getEffectiveMovementCaps(
+  bumps: Iterable<MovementCapBump>,
+  combatMode = false,
+): MovementCaps {
   const caps: MovementCaps = { ...MOVEMENT_CAPS };
-  for (const name of activeFullNames) {
-    const bump = TRAVEL_CAP_BUMPS[name];
-    if (bump && bump.cap > caps[bump.stat]) caps[bump.stat] = bump.cap;
+  // stat → (group key → strongest scale). Unkeyed bumps each form their own
+  // group (they always add).
+  const groups = new Map<MovementStat, Map<string, number>>();
+  let unkeyed = 0;
+  for (const b of bumps) {
+    if (!b || b.scale <= 0) continue;
+    if (combatMode && b.suppressible) continue;
+    const key = b.stackKey ?? `__unkeyed_${unkeyed++}`;
+    let g = groups.get(b.stat);
+    if (!g) groups.set(b.stat, (g = new Map()));
+    const cur = g.get(key);
+    if (cur === undefined || b.scale > cur) g.set(key, b.scale);
+  }
+  for (const [stat, g] of groups) {
+    let total = 0;
+    for (const v of g.values()) total += v;
+    if (total > 0 && Number.isFinite(caps[stat])) {
+      caps[stat] = caps[stat] + total * MPH_PER_SCALE;
+    }
   }
   return caps;
 }

@@ -48,6 +48,18 @@ export interface ScaledEffect {
    *  with a self slow (Rebirth Granite's foe -JumpHeight) no longer rides a
    *  bag-wide flag onto the caster. Read via `isSelfDirectedEffect`. */
   toWho?: 'Self';
+  /** Binary suppress group (StackType kSuppress + StackByAttribAndKey): active
+   *  powers sharing a key mutually suppress per stat — only the strongest
+   *  applies. 'TravelBuff' covers the travel-power movement buffs (Combat
+   *  Jumping, Super Jump, Super Speed's momentum, Fly, Ninja Run, …), which
+   *  the calc resolves via strongest-wins grouping (resolveMovementTotals).
+   *  Absent = stacks additively. */
+  stackKey?: string;
+  /** True when the game suppresses this buff in combat (the AttribMod carries
+   *  `Suppress ActivateAttackClick/Attacked/Damaged…`) — Super Speed's run
+   *  buff, Super Jump's jump buffs, Fly's speed. The In-Combat toggle drops
+   *  these from totals. Combat Jumping / Hover have no suppress events. */
+  suppressible?: boolean;
 }
 
 /** Helper type for effects that can be number OR scaled */
@@ -420,6 +432,10 @@ export interface DebuffResistance {
 export interface MovementEffect {
   scale: number;
   table?: string;
+  /** Binary suppress group — see {@link ScaledEffect.stackKey}. */
+  stackKey?: string;
+  /** Suppressed in combat — see {@link ScaledEffect.suppressible}. */
+  suppressible?: boolean;
 }
 
 // ============================================
@@ -578,6 +594,15 @@ export interface PowerEffects {
   elusivity?: ElusivityByType;
   /** Movement buffs */
   movement?: MovementByType;
+  /** Travel-power movement-speed CAP raises (aspect=Maximum templates):
+   *  Super Speed +1.938 run-cap units (→120.25 mph), Super Jump +1.65 jump
+   *  (→101.80), Fly +2.0475 fly (→87.95), Afterburner +1.0 on top (→102.27).
+   *  Scale is in movement-scale units (Melee_Ones table): 1 unit = 21 fps =
+   *  14.318 mph. Keyed like `movement` (runSpeed/jumpSpeed/flySpeed); each
+   *  entry may carry `stackKey` (max per group, groups add) and
+   *  `suppressible` (cap raise drops in combat — Super Jump's does, Super
+   *  Speed's and Fly's persist). Consumed by getEffectiveMovementCaps. */
+  movementCapBump?: MovementByType;
   /** Stealth effects */
   stealth?: StealthEffects;
   /** Debuff resistance */

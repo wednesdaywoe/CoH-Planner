@@ -80,7 +80,7 @@
           "caster_stack": "Unlimited",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "olumn.5thColumnEndgame.NictusFX",
+          "stack_key": "RecoveryBuff",
           "flags": [
             "IgnoreResistance"
           ],
@@ -109,7 +109,7 @@
           "caster_stack": "Unlimited",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "lumn.5thColumnEndgame.NictusFX",
+          "stack_key": "EnduranceCostBuff",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

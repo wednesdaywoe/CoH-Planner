@@ -91,7 +91,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": null
         }
       ]
     },
@@ -130,7 +130,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": null
         }
       ]
     },
@@ -169,7 +169,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "NearGround"
           ]
@@ -211,7 +211,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "NearGround"
           ]
@@ -253,7 +253,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": null
         }
       ]
     },
@@ -292,7 +292,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": null
         }
       ]
     },
@@ -331,7 +331,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295"
+          "stack_key": null
         }
       ]
     },
@@ -370,7 +370,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "params": {
             "type": "Power",
             "power_names": [
@@ -419,7 +419,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -463,7 +463,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -505,7 +505,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -547,7 +547,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -589,7 +589,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -631,7 +631,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -673,7 +673,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -715,7 +715,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -757,7 +757,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -799,7 +799,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -841,7 +841,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -883,7 +883,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -925,7 +925,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -967,7 +967,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -1009,7 +1009,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -1051,7 +1051,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -1093,7 +1093,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -1135,7 +1135,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]
@@ -1177,7 +1177,7 @@
           "caster_stack": "Individual",
           "stack": "Replace",
           "stack_limit": 2,
-          "stack_key": "4294967295",
+          "stack_key": null,
           "flags": [
             "IgnoreStrength"
           ]

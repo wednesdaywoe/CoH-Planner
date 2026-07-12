@@ -31,7 +31,15 @@ class EffectTemplate:
     caster_stack: str = ""   # "Individual", "Unlimited", etc.
     stack: str = ""          # "Stack", "Replace", "Suppress", etc.
     stack_limit: int = 0
+    # Legacy resolved-string slot (still populated by the VillainDef template
+    # path as a numeric string). The Parse7 power path leaves it None and
+    # fills `stack_key_id` instead — the export layer resolves the ID to its
+    # real name (TravelBuff, StealthToggle, ...) via parse_stack_key_table.
     stack_key: str | None = None
+    # Serialized index into the global StackKeys registry (attrib_names.bin).
+    # 0 = no key. NOT a string offset — the old read_string() decode yielded
+    # garbage suffixes of the string table's first entry ('ictusFX' etc.).
+    stack_key_id: int = 0
     cancel_events: list[str] = field(default_factory=list)
     boost_mod_allowed: str = ""
     flags: list[str] = field(default_factory=list)

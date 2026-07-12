@@ -18,11 +18,11 @@ import { HINTS } from '@/components/powers';
 import { PinnedPowersBar } from './PinnedPowersBar';
 import { INCARNATE_REQUIRED_LEVEL, createEmptyIncarnateBuildState } from '@/types';
 import { getEffectiveLevel, areIncarnatesSuppressed } from '@/utils/calculations';
-import type { IncarnateSlotId, ToggleableIncarnateSlot } from '@/types';
+import type { IncarnateSlotId, ToggleableIncarnateSlot, SelectedPower } from '@/types';
 import type { DashboardStatBreakdown } from '@/hooks/useCalculatedStats';
 import { STAT_DEFINITIONS, resolveStatValue, STAT_CATEGORY } from '@/data/stat-definitions';
 import type { StatDefinition, StatValue, CompoundStatValue, MezStatValue, StatCategory } from '@/data/stat-definitions';
-import { applyMovementBuff, getEffectiveMovementCaps, TRAVEL_CAP_BUMPS } from '@/data/core/movement-constants';
+import { applyMovementBuff, getEffectiveMovementCaps, type MovementCapBump, type MovementStat } from '@/data/core/movement-constants';
 import type { GlobalBonuses } from '@/utils/calculations/character-totals';
 
 // Re-export for any consumers that imported from here
@@ -229,24 +229,39 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   // Level-scoped power-pick and slot budgets (shared with the mobile build bar).
   const { currentPowerCount, powerBudget, currentSlotCount, slotBudget } = useBuildBudget();
 
-  // Effective movement caps — travel toggles (Super Speed / Mighty Leap / Fly /
-  // Afterburner / etc.) raise the cap of their corresponding stat while active,
-  // unless the In-Combat toggle is on (the game suppresses the cap bump on
-  // attack; we use combatMode as a conservative proxy since we can't detect
-  // which active toggles actually land damage on a foe).
+  // Effective movement caps — active travel powers raise the cap of their
+  // corresponding stat via their binary aspect=Maximum templates, carried in
+  // the generated `effects.movementCapBump` (Super Speed → 120.25 mph run,
+  // Super Jump → 101.80 jump, Fly → 87.95 fly, +Afterburner → 102.27).
+  // Data-driven: within a suppress group (kTravelMaxBuff…) the strongest bump
+  // wins, distinct groups add, and in combat mode only bumps the binary marks
+  // suppressible drop (Super Jump's / Afterburner's do; Super Speed's and
+  // Fly's persist — the old blanket combat gate wrongly removed those too).
   const effectiveMovementCaps = useMemo(() => {
-    if (combatMode) return getEffectiveMovementCaps([]);
-    const activeNames: string[] = [];
-    const collect = (powers: { fullName?: string; isActive?: boolean }[]) => {
+    const bumps: MovementCapBump[] = [];
+    const collect = (powers: SelectedPower[]) => {
       for (const p of powers) {
-        if (p.isActive && p.fullName && TRAVEL_CAP_BUMPS[p.fullName]) activeNames.push(p.fullName);
+        const isAuto = p.powerType?.toLowerCase() === 'auto';
+        if (!(isAuto || p.isActive) || !p.effects?.movementCapBump) continue;
+        for (const [stat, bump] of Object.entries(p.effects.movementCapBump)) {
+          if (!bump || typeof bump === 'number' || typeof bump.scale !== 'number') continue;
+          const b = bump as { scale: number; stackKey?: string; suppressible?: boolean };
+          bumps.push({
+            stat: stat as MovementStat,
+            scale: b.scale,
+            stackKey: b.stackKey,
+            suppressible: b.suppressible,
+          });
+        }
       }
     };
+    collect(build.primary.powers);
+    collect(build.secondary.powers);
     for (const pool of build.pools) collect(pool.powers);
     if (build.epicPool) collect(build.epicPool.powers);
     collect(build.inherents);
-    return getEffectiveMovementCaps(activeNames);
-  }, [build.pools, build.epicPool, build.inherents, combatMode]);
+    return getEffectiveMovementCaps(bumps, combatMode);
+  }, [build.primary.powers, build.secondary.powers, build.pools, build.epicPool, build.inherents, combatMode]);
 
   // Get visible stats based on config
   const visibleStats = useMemo(() => {

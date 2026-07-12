@@ -177,9 +177,18 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 0.75,
           "durations": {
-            "movement": 0.75
+            "movement": 0.75,
+            "movementCapBump": 0.75
           },
           "movement": {
+            "runSpeed": {
+              "scale": 1,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
+              "table": "Melee_SpeedRunning"
+            }
+          },
+          "movementCapBump": {
             "runSpeed": {
               "scale": 1.938,
               "table": "Melee_Ones"
@@ -916,14 +925,17 @@ export const POWER_POOLS_RAW = {
             },
             "flySpeed": {
               "scale": 0,
+              "stackKey": "TravelBuff",
               "table": "Melee_Ones"
             },
             "movementControl": {
               "scale": 25,
+              "stackKey": "TravelBuff",
               "table": "Melee_Control"
             },
             "movementFriction": {
               "scale": 25,
+              "stackKey": "TravelBuff",
               "table": "Melee_Friction"
             }
           }
@@ -1009,7 +1021,8 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 0.75,
           "durations": {
-            "movement": 0.75
+            "movement": 0.75,
+            "movementCapBump": 0.75
           },
           "movement": {
             "fly": {
@@ -1017,16 +1030,27 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_Ones"
             },
             "flySpeed": {
-              "scale": 2.0475,
-              "table": "Melee_Ones"
+              "scale": 1.1788,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
+              "table": "Melee_SpeedFlying"
             },
             "movementControl": {
               "scale": 2,
+              "stackKey": "TravelBuff",
               "table": "Melee_Control"
             },
             "movementFriction": {
               "scale": 2,
+              "stackKey": "TravelBuff",
               "table": "Melee_Friction"
+            }
+          },
+          "movementCapBump": {
+            "flySpeed": {
+              "scale": 2.0475,
+              "stackKey": "TravelMaxBuff",
+              "table": "Melee_Ones"
             }
           }
         }
@@ -1070,14 +1094,17 @@ export const POWER_POOLS_RAW = {
             },
             "flySpeed": {
               "scale": 0.5,
+              "stackKey": "TravelBuff",
               "table": "Melee_SpeedFlying"
             },
             "movementControl": {
               "scale": 10,
+              "stackKey": "TravelBuff",
               "table": "Melee_Control"
             },
             "movementFriction": {
               "scale": 10,
+              "stackKey": "TravelBuff",
               "table": "Melee_Friction"
             }
           }
@@ -1224,12 +1251,14 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 0.75,
           "durations": {
-            "movement": 0.75,
+            "movementCapBump": 0.75,
             "specialBuff": 0.75
           },
-          "movement": {
+          "movementCapBump": {
             "flySpeed": {
               "scale": 1,
+              "stackKey": "TravelTurboMaxBuff",
+              "suppressible": true,
               "table": "Melee_Ones"
             }
           },
@@ -1405,23 +1434,40 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 0.75,
           "durations": {
-            "movement": 0.75
+            "movement": 0.75,
+            "movementCapBump": 0.75
           },
           "movement": {
             "jumpHeight": {
               "scale": 1,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_Leap"
             },
             "jumpSpeed": {
-              "scale": 1.65,
-              "table": "Melee_Ones"
+              "scale": 1,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
+              "table": "Melee_SpeedJumping"
             },
             "movementControl": {
               "scale": 10,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "movementFriction": {
               "scale": 2,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
+              "table": "Melee_Ones"
+            }
+          },
+          "movementCapBump": {
+            "jumpSpeed": {
+              "scale": 1.65,
+              "stackKey": "TravelMaxBuff",
+              "suppressible": true,
               "table": "Melee_Ones"
             }
           }
@@ -1745,7 +1791,8 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 0.75,
           "durations": {
-            "movement": 0.75
+            "movement": 0.75,
+            "movementCapBump": 0.75
           },
           "movement": {
             "fly": {
@@ -1753,16 +1800,27 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_Ones"
             },
             "flySpeed": {
-              "scale": 2.0475,
-              "table": "Melee_Ones"
+              "scale": 1.1788,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
+              "table": "Melee_SpeedFlying"
             },
             "movementControl": {
               "scale": 2,
+              "stackKey": "TravelBuff",
               "table": "Melee_Control"
             },
             "movementFriction": {
               "scale": 2,
+              "stackKey": "TravelBuff",
               "table": "Melee_Friction"
+            }
+          },
+          "movementCapBump": {
+            "flySpeed": {
+              "scale": 2.0475,
+              "stackKey": "TravelMaxBuff",
+              "table": "Melee_Ones"
             }
           }
         }
@@ -1880,12 +1938,22 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 0.75,
           "durations": {
-            "movement": 0.75
+            "movement": 0.75,
+            "movementCapBump": 0.75
           },
           "movement": {
             "flySpeed": {
               "scale": 10,
+              "stackKey": "TravelTurboBuff",
+              "suppressible": true,
               "table": "Ranged_SpeedFlying"
+            }
+          },
+          "movementCapBump": {
+            "flySpeed": {
+              "scale": 1.0238,
+              "stackKey": "TravelTurboMaxBuff",
+              "table": "Ranged_Ones"
             }
           }
         }
@@ -2026,7 +2094,7 @@ export const POWER_POOLS_RAW = {
             "threatDebuff": 0.75
           },
           "stealth": {
-            "stackKey": "NictusFX",
+            "stackKey": "StealthToggle",
             "stealthPvE": {
               "scale": 55,
               "table": "Melee_Ones"
@@ -2272,7 +2340,7 @@ export const POWER_POOLS_RAW = {
             "stealth": 0.75
           },
           "stealth": {
-            "stackKey": "NictusFX",
+            "stackKey": "StealthToggle",
             "stealthPvE": {
               "scale": 36,
               "table": "Melee_Ones"
@@ -2933,18 +3001,22 @@ export const POWER_POOLS_RAW = {
           "movement": {
             "jumpHeight": {
               "scale": 2,
+              "stackKey": "TravelBuff",
               "table": "Melee_Ones"
             },
             "jumpSpeed": {
               "scale": 0.01,
+              "stackKey": "TravelBuff",
               "table": "Melee_Ones"
             },
             "movementControl": {
               "scale": 10,
+              "stackKey": "TravelBuff",
               "table": "Melee_Control"
             },
             "movementFriction": {
               "scale": 0.2,
+              "stackKey": "TravelBuff",
               "table": "Melee_Ones"
             }
           }
@@ -2978,23 +3050,40 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 0.75,
           "durations": {
-            "movement": 0.75
+            "movement": 0.75,
+            "movementCapBump": 0.75
           },
           "movement": {
             "jumpHeight": {
               "scale": 1,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_Leap"
             },
             "jumpSpeed": {
-              "scale": 1.65,
-              "table": "Melee_Ones"
+              "scale": 1,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
+              "table": "Melee_SpeedJumping"
             },
             "movementControl": {
               "scale": 10,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "movementFriction": {
               "scale": 2,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
+              "table": "Melee_Ones"
+            }
+          },
+          "movementCapBump": {
+            "jumpSpeed": {
+              "scale": 1.65,
+              "stackKey": "TravelMaxBuff",
+              "suppressible": true,
               "table": "Melee_Ones"
             }
           }
@@ -3671,7 +3760,8 @@ export const POWER_POOLS_RAW = {
           "effectArea": "SingleTarget",
           "buffDuration": 0.75,
           "durations": {
-            "movement": 0.75
+            "movement": 0.75,
+            "movementCapBump": 0.75
           },
           "movement": {
             "fly": {
@@ -3679,16 +3769,27 @@ export const POWER_POOLS_RAW = {
               "table": "Melee_Ones"
             },
             "flySpeed": {
-              "scale": 2.0475,
-              "table": "Melee_Ones"
+              "scale": 1.1788,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
+              "table": "Melee_SpeedFlying"
             },
             "movementControl": {
               "scale": 2,
+              "stackKey": "TravelBuff",
               "table": "Melee_Control"
             },
             "movementFriction": {
               "scale": 2,
+              "stackKey": "TravelBuff",
               "table": "Melee_Friction"
+            }
+          },
+          "movementCapBump": {
+            "flySpeed": {
+              "scale": 2.0475,
+              "stackKey": "TravelMaxBuff",
+              "table": "Melee_Ones"
             }
           }
         }
@@ -4029,6 +4130,7 @@ export const POWER_POOLS_RAW = {
           "buffDuration": 0.75,
           "durations": {
             "movement": 0.75,
+            "movementCapBump": 0.75,
             "slow": 0.75,
             "stealth": 0.75,
             "threatDebuff": 0.75
@@ -4036,12 +4138,24 @@ export const POWER_POOLS_RAW = {
           "movement": {
             "jumpHeight": {
               "scale": 0.1,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_Leap"
             },
             "jumpSpeed": {
               "scale": 0.075,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_SpeedJumping"
             },
+            "runSpeed": {
+              "scale": 1,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
+              "table": "Melee_SpeedRunning"
+            }
+          },
+          "movementCapBump": {
             "runSpeed": {
               "scale": 1.938,
               "table": "Melee_Ones"
@@ -4060,7 +4174,7 @@ export const POWER_POOLS_RAW = {
             }
           },
           "stealth": {
-            "stackKey": "NictusFX",
+            "stackKey": "StealthToggle",
             "stealthPvE": {
               "scale": 35,
               "table": "Melee_Ones"
@@ -4573,22 +4687,32 @@ export const POWER_POOLS_RAW = {
           "movement": {
             "jumpHeight": {
               "scale": 0.25,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_Leap"
             },
             "jumpSpeed": {
               "scale": 0.55,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_SpeedJumping"
             },
             "movementControl": {
               "scale": 10,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "movementFriction": {
               "scale": 2,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "runSpeed": {
               "scale": 0.4,
+              "stackKey": "TravelBuff",
+              "suppressible": true,
               "table": "Melee_SpeedRunning"
             }
           }
@@ -4719,22 +4843,27 @@ export const POWER_POOLS_RAW = {
           "movement": {
             "jumpHeight": {
               "scale": 0.3,
+              "suppressible": true,
               "table": "Melee_Leap"
             },
             "jumpSpeed": {
               "scale": 0.66,
+              "suppressible": true,
               "table": "Melee_SpeedJumping"
             },
             "movementControl": {
               "scale": 10,
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "movementFriction": {
               "scale": 2,
+              "suppressible": true,
               "table": "Melee_Ones"
             },
             "runSpeed": {
               "scale": 0.5,
+              "suppressible": true,
               "table": "Melee_SpeedRunning"
             }
           }

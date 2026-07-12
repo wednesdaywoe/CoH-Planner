@@ -125,7 +125,7 @@ export const ShadowFall: Power = {
       }
     },
     "stealth": {
-      "stackKey": "NictusFX",
+      "stackKey": "StealthToggle",
       "stealthPvE": {
         "scale": 35.5,
         "table": "Melee_Ones"

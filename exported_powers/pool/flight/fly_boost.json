@@ -75,7 +75,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "sFX",
+          "stack_key": "TravelTurboMaxBuff",
           "suppress_events": [
             {
               "event": "ActivateAttackClick",
@@ -114,7 +114,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "usFX",
+          "stack_key": "TravelTurboBuff",
           "suppress_events": [
             {
               "event": "ActivateAttackClick",

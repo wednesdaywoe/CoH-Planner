@@ -96,7 +96,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "hColumn.5thColumnEndgame.NictusFX",
+          "stack_key": "HybridSupport",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"
@@ -128,7 +128,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "Column.5thColumnEndgame.NictusFX",
+          "stack_key": "HybridDefense",
           "flags": [
             "IgnoreResistance",
             "IgnoreCombatMods"

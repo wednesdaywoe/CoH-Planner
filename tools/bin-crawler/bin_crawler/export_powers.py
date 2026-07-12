@@ -29,7 +29,7 @@ from bin_crawler.parser._powercats import parse_powercats
 from bin_crawler.parser._classes import parse_classes
 from bin_crawler.parser._boostsets import parse_boostsets, build_power_category_index
 from bin_crawler.parser._messages import load_messages
-from bin_crawler.parser._attrib_names import parse_mode_table
+from bin_crawler.parser._attrib_names import parse_mode_table, parse_stack_key_table
 from bin_crawler.parser._pigg import BinResolver
 from bin_crawler.assets_dir import resolve_assets_dir
 from bin_crawler._export_fingerprint import parser_fingerprint
@@ -145,7 +145,8 @@ def format_duration(seconds: float) -> str:
     return f"{seconds:.2f} seconds"
 
 
-def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None) -> dict:
+def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
+                  stack_key_table=None) -> dict:
     """Convert a PowerRecord to CoD2-compatible JSON dict.
 
     set_cats_index maps `full_name` → list of planner set-category strings
@@ -252,7 +253,17 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None) -> dict:
                 'caster_stack': t.caster_stack,
                 'stack': t.stack,
                 'stack_limit': t.stack_limit,
-                'stack_key': t.stack_key,
+                # Resolve the StackKeys-registry ID (attrib_names.bin) to its
+                # key name — 'TravelBuff', 'StealthToggle', etc. Falls back to
+                # a stable 'Key<N>' placeholder when the registry is missing
+                # or the ID is out of range, so suppress-group GROUPING stays
+                # correct even unresolved. (The pre-2026-07 exports decoded
+                # this field as a string offset, yielding garbage suffixes of
+                # the string table's first entry: 'ictusFX' = TravelBuff.)
+                'stack_key': (
+                    (stack_key_table or {}).get(t.stack_key_id, f'Key{t.stack_key_id}')
+                    if t.stack_key_id else None
+                ),
             }
             if t.params:
                 tmpl_dict['params'] = t.params
@@ -409,10 +420,16 @@ def main():
     # some sources (Rebirth/Thunderspy piggs that don't ship attrib_names.bin),
     # in which case Set_Mode templates simply carry no `mode` field.
     mode_table = {}
+    stack_key_table = {}
     if resolver.has('attrib_names.bin'):
         print('Loading mode table (attrib_names.bin)...', flush=True)
-        mode_table = parse_mode_table(resolver.read('attrib_names.bin'))
+        _attrib_names_data = resolver.read('attrib_names.bin')
+        mode_table = parse_mode_table(_attrib_names_data)
         print(f'  {len(mode_table)} modes loaded.', flush=True)
+        # StackKeys registry from the same file — resolves each template's
+        # stack_key ID to its suppress-group name (TravelBuff, StealthToggle…).
+        stack_key_table = parse_stack_key_table(_attrib_names_data)
+        print(f'  {len(stack_key_table)} stack keys loaded.', flush=True)
 
     # Parse powers
     print('Parsing powers.bin...', flush=True)
@@ -545,7 +562,8 @@ def main():
             # Write individual power files
             for pw in powers_in_set:
                 pw_dict = power_to_dict(pw, msgs, set_cats_index=set_cats_index,
-                                        mode_table=mode_table)
+                                        mode_table=mode_table,
+                                        stack_key_table=stack_key_table)
                 pw_dict['available_level'] = ps_available.get(pw.full_name, 0)
                 pw_dict['powerset'] = ps_key
 

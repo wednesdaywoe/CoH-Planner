@@ -98,14 +98,17 @@ export const CombatFlight: Power = {
       },
       "flySpeed": {
         "scale": 0,
+        "stackKey": "TravelBuff",
         "table": "Melee_Ones"
       },
       "movementControl": {
         "scale": 25,
+        "stackKey": "TravelBuff",
         "table": "Melee_Control"
       },
       "movementFriction": {
         "scale": 25,
+        "stackKey": "TravelBuff",
         "table": "Melee_Friction"
       }
     }

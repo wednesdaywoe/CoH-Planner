@@ -99,7 +99,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "NictusFX",
+          "stack_key": "StealthToggle",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -354,7 +354,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "NictusFX",
+          "stack_key": "StealthToggle",
           "cancel_events": [
             "Attacked",
             "HitByFoe",
@@ -406,7 +406,7 @@
           "caster_stack": "Individual",
           "stack": "Suppress",
           "stack_limit": 2,
-          "stack_key": "NictusFX",
+          "stack_key": "StealthToggle",
           "cancel_events": [
             "Stunned",
             "Held",
@@ -456,7 +456,7 @@
           "caster_stack": "Individual",
           "stack": "Stack",
           "stack_limit": 2,
-          "stack_key": "NictusFX",
+          "stack_key": "StealthToggle",
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",

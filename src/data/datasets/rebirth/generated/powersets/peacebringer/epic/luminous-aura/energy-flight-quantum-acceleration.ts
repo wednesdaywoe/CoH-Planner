@@ -35,6 +35,7 @@ export const EnergyFlightQuantumAcceleration: Power = {
     "buffDuration": 0.75,
     "durations": {
       "movement": 0.75,
+      "movementCapBump": 0.75,
       "slow": 0.75
     },
     "movement": {
@@ -44,6 +45,12 @@ export const EnergyFlightQuantumAcceleration: Power = {
       },
       "flySpeed": {
         "scale": 2,
+        "table": "Melee_Ones"
+      }
+    },
+    "movementCapBump": {
+      "flySpeed": {
+        "scale": 1,
         "table": "Melee_Ones"
       }
     },

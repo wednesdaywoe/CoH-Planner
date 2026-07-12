@@ -946,6 +946,87 @@ function resolveStealthRadius(
   }
 }
 
+/**
+ * One movement-percent contribution (run/fly/jump speed, jump height),
+ * gathered across active powers and resolved together by
+ * resolveMovementTotals once every source is known.
+ *
+ * `stackKey` is the binary suppress group (StackType kSuppress +
+ * StackByAttribAndKey): active powers sharing a key mutually suppress per
+ * stat — only the strongest applies. kTravelBuff covers Combat Jumping /
+ * Super Jump / Super Speed's momentum effects / Fly / Ninja Run etc., which
+ * previously all stacked additively. A null key stacks (Sprint, Swift,
+ * Hurdle, set bonuses — and all of Rebirth, whose i25-era data predates the
+ * travel suppress groups).
+ *
+ * `suppressible` marks buffs the game shuts off in combat (`Suppress
+ * ActivateAttackClick` — Super Speed's run buff, Super Jump's jump buffs,
+ * Fly's speed). Combat Jumping / Hover carry no suppress events and persist,
+ * which is their whole point.
+ */
+interface MovementContribution {
+  stat: 'runSpeed' | 'flySpeed' | 'jumpSpeed' | 'jumpHeight';
+  /** Resolved buff percent (post AT-table, post enhancement). */
+  value: number;
+  stackKey: string | null;
+  suppressible: boolean;
+  sourceName: string;
+  type: 'active-power';
+}
+
+/**
+ * Commit the gathered movement contributions to global run/fly/jump totals.
+ * In combat mode, suppressible buffs contribute nothing. Each keyed
+ * (suppress) group contributes only its strongest member; null-key
+ * contributions stack additively. Every contributor is recorded in the
+ * breakdown — suppressed entries (combat-suppressed or group losers) are
+ * flagged `capped` so the tooltip explains why the total isn't the naive sum.
+ */
+function resolveMovementTotals(
+  contribs: MovementContribution[],
+  global: GlobalBonuses,
+  breakdown: Map<string, DashboardStatBreakdown>,
+  combatMode?: boolean,
+): void {
+  const stats = ['runSpeed', 'flySpeed', 'jumpSpeed', 'jumpHeight'] as const;
+  for (const stat of stats) {
+    const all = contribs.filter((c) => c.stat === stat && c.value !== 0);
+    if (all.length === 0) continue;
+    const eligible = all.filter((c) => !(combatMode && c.suppressible));
+    // Strongest per keyed (suppress) group; null-key entries stack.
+    const groupMax = new Map<string, number>();
+    for (const c of eligible) {
+      if (!c.stackKey) continue;
+      const cur = groupMax.get(c.stackKey);
+      if (cur === undefined || c.value > cur) groupMax.set(c.stackKey, c.value);
+    }
+    let total = 0;
+    for (const v of groupMax.values()) total += v;
+    for (const c of eligible) {
+      if (!c.stackKey) total += c.value;
+    }
+    global[stat] += total;
+    for (const c of all) {
+      const combatSuppressed = !!(combatMode && c.suppressible);
+      const groupLoser =
+        !combatSuppressed && !!c.stackKey && c.value < (groupMax.get(c.stackKey) ?? 0);
+      addToBreakdown(breakdown, stat, {
+        name: c.sourceName,
+        value: c.value,
+        type: c.type,
+        ...(combatSuppressed || groupLoser ? { capped: true } : {}),
+      });
+    }
+  }
+}
+
+/** Read the travel-suppression metadata off a scaled movement effect. */
+function movementMeta(effect: ScalarOrScaled | undefined): { stackKey: string | null; suppressible: boolean } {
+  if (typeof effect !== 'object' || effect === null) return { stackKey: null, suppressible: false };
+  const o = effect as { stackKey?: string; suppressible?: boolean };
+  return { stackKey: o.stackKey ?? null, suppressible: !!o.suppressible };
+}
+
 function applyActivePowerBonuses(
   powers: PowerWithToggle[],
   global: GlobalBonuses,
@@ -963,7 +1044,12 @@ function applyActivePowerBonuses(
   // and resolved to absolute HP by the caller once the build's final Max HP —
   // including accolades and incarnates — is known. Flat-HP absorb is added to
   // global.absorb inline below.
-  absorbFractionContribs: { name: string; fraction: number }[] = []
+  absorbFractionContribs: { name: string; fraction: number }[] = [],
+  // Movement contributions are gathered here and committed by
+  // resolveMovementTotals once every active-power pass has run — travel
+  // suppress groups (kTravelBuff) take their strongest member instead of
+  // summing, and combat mode drops suppressible buffs.
+  movementContribs: MovementContribution[] = []
 ): void {
   for (const power of powers) {
     // Auto powers are always active; others require explicit isActive toggle
@@ -1253,12 +1339,7 @@ function applyActivePowerBonuses(
       const enhMultiplier = 1 + (enhBonuses.run || 0);
       const adjusted = adjustForStacking(effects.runSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'runSpeed', effects.maxStacks, effects.stackCaps);
       const value = resolveMovementPercent(adjusted, 'runSpeed', archetypeId, buildLevel) * enhMultiplier;
-      global.runSpeed += value;
-      addToBreakdown(breakdown, 'runSpeed', {
-        name: power.name,
-        value,
-        type: 'active-power',
-      });
+      movementContribs.push({ stat: 'runSpeed', value, sourceName: power.name, type: 'active-power', ...movementMeta(effects.runSpeed as ScalarOrScaled) });
     }
 
     // Unenhanceable run-speed template (IgnoreStrength) — e.g. Sprint's second
@@ -1266,48 +1347,28 @@ function applyActivePowerBonuses(
     if (effects.runSpeedUnenhanced !== undefined) {
       const adjusted = adjustForStacking(effects.runSpeedUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'runSpeedUnenhanced', effects.maxStacks, effects.stackCaps);
       const value = resolveMovementPercent(adjusted, 'runSpeed', archetypeId, buildLevel);
-      global.runSpeed += value;
-      addToBreakdown(breakdown, 'runSpeed', {
-        name: power.name,
-        value,
-        type: 'active-power',
-      });
+      movementContribs.push({ stat: 'runSpeed', value, sourceName: power.name, type: 'active-power', ...movementMeta(effects.runSpeedUnenhanced as ScalarOrScaled) });
     }
 
     if (effects.flySpeed !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.fly || 0);
       const adjusted = adjustForStacking(effects.flySpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'flySpeed', effects.maxStacks, effects.stackCaps);
       const value = resolveMovementPercent(adjusted, 'flySpeed', archetypeId, buildLevel) * enhMultiplier;
-      global.flySpeed += value;
-      addToBreakdown(breakdown, 'flySpeed', {
-        name: power.name,
-        value,
-        type: 'active-power',
-      });
+      movementContribs.push({ stat: 'flySpeed', value, sourceName: power.name, type: 'active-power', ...movementMeta(effects.flySpeed as ScalarOrScaled) });
     }
 
     if (effects.jumpHeight !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.jump || 0);
       const adjusted = adjustForStacking(effects.jumpHeight as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'jumpHeight', effects.maxStacks, effects.stackCaps);
       const value = resolveMovementPercent(adjusted, 'jumpHeight', archetypeId, buildLevel) * enhMultiplier;
-      global.jumpHeight += value;
-      addToBreakdown(breakdown, 'jumpHeight', {
-        name: power.name,
-        value,
-        type: 'active-power',
-      });
+      movementContribs.push({ stat: 'jumpHeight', value, sourceName: power.name, type: 'active-power', ...movementMeta(effects.jumpHeight as ScalarOrScaled) });
     }
 
     if (effects.jumpSpeed !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.jump || 0);
       const adjusted = adjustForStacking(effects.jumpSpeed as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'jumpSpeed', effects.maxStacks, effects.stackCaps);
       const value = resolveMovementPercent(adjusted, 'jumpSpeed', archetypeId, buildLevel) * enhMultiplier;
-      global.jumpSpeed += value;
-      addToBreakdown(breakdown, 'jumpSpeed', {
-        name: power.name,
-        value,
-        type: 'active-power',
-      });
+      movementContribs.push({ stat: 'jumpSpeed', value, sourceName: power.name, type: 'active-power', ...movementMeta(effects.jumpSpeed as ScalarOrScaled) });
     }
 
     // Movement buffs (new format — e.g., Lightning Reflexes, Reaction Time)
@@ -1316,10 +1377,14 @@ function applyActivePowerBonuses(
     // foe slow, not a self-buff
     if (effects.movement && typeof effects.movement === 'object' &&
         effects.tohitDebuff === undefined && effects.damageDebuff === undefined) {
-      const movementKeyMap: Record<string, keyof GlobalBonuses> = {
+      // NOTE: the `fly` entry (the kFly attrib) is deliberately NOT mapped.
+      // It's the flight-mode grant (magnitude > 0 = "can fly"), not a speed
+      // buff — mapping it into flySpeed double-counted Fly (+200% from the
+      // grant on top of the real +160.9% FlyingSpeed buff). The kFly scale
+      // (Hover 4.0, Fly 2.0/1.0) is a mode magnitude, not a percentage.
+      const movementKeyMap: Record<string, MovementContribution['stat']> = {
         runSpeed: 'runSpeed',
         flySpeed: 'flySpeed',
-        fly: 'flySpeed',
         jumpHeight: 'jumpHeight',
         jumpSpeed: 'jumpSpeed',
       };
@@ -1339,12 +1404,7 @@ function applyActivePowerBonuses(
           const enhMultiplier = 1 + (enhBonuses[movementAspectMap[key]] || 0);
           const adjusted = adjustForStacking(val as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, type, effects.maxStacks, effects.stackCaps);
           const value = resolveMovementPercent(adjusted, key, archetypeId, buildLevel) * enhMultiplier;
-          global[key] += value;
-          addToBreakdown(breakdown, key, {
-            name: power.name,
-            value,
-            type: 'active-power',
-          });
+          movementContribs.push({ stat: key, value, sourceName: power.name, type: 'active-power', ...movementMeta(val as ScalarOrScaled) });
         }
       }
     }
@@ -1970,6 +2030,7 @@ function addToBreakdown(
  *   Swift:   runSpeed  { scale: 0.1,  table: 'Melee_SpeedRunning' } → table-resolved (~35% @50)
  *            flySpeed  { scale: 0.1,  table: 'Melee_SpeedFlying' }  → table-resolved (~14% @50)
  *   Hurdle:  jumpHeight { scale: 0.06, table: 'Melee_Leap' }        → table-resolved (~167% @50)
+ *            jumpSpeed  { scale: 0.5,  table: 'Melee_SpeedJumping' } → table-resolved (~124.5% @50)
  *   Health:  regenBuff  { scale: 0.4,  table: 'Melee_Ones' }        → 40%
  *   Stamina: recoveryBuff { scale: 0.25, table: 'Melee_Ones' }      → 25%
  */
@@ -1989,6 +2050,7 @@ const FITNESS_POWER_EFFECTS: Record<string, FitnessEffect[]> = {
   ],
   'Hurdle': [
     { stat: 'jumpHeight', value: 6, enhancementType: 'jump' },
+    { stat: 'jumpSpeed', value: 50, enhancementType: 'jump' },
   ],
   'Health': [
     { stat: 'regeneration', value: 40, enhancementType: 'heal' },
@@ -4016,7 +4078,11 @@ export function calculateCharacterTotals(
   // MaxHP-fraction absorb (Wild Bastion etc.) — resolved to HP after accolades
   // and incarnates land on global.maxHP (see the absorb resolution below).
   const absorbFractionContribs: { name: string; fraction: number }[] = [];
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs, stealthContribs, absorbFractionContribs);
+  // Movement percents are gathered across all three active-power passes and
+  // committed together by resolveMovementTotals (travel suppress-group max +
+  // additive sum + combat-mode suppression).
+  const movementContribs: MovementContribution[] = [];
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs, stealthContribs, absorbFractionContribs, movementContribs);
 
   // Step 7.1: Apply active mode-/state-gated conditional contributions (Bio
   // Armor adaptation modes, …). Each active conditional is a synthetic active
@@ -4039,7 +4105,7 @@ export function calculateCharacterTotals(
     options?.mechanicAdjusters ?? {},
   );
   if (conditionalPowers.length > 0) {
-    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs);
+    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs, movementContribs);
   }
 
   // Step 7.2: Fold toggled-on buff-pet auras (Force Field Generator, Barrier
@@ -4050,9 +4116,16 @@ export function calculateCharacterTotals(
   // Default-safe: no buff-pet toggled → no synthetics → totals unchanged.
   const buffPetPowers = expandBuffPetAuras(allPowers, options?.mechanicAdjusters ?? {});
   if (buffPetPowers.length > 0) {
-    applyActivePowerBonuses(buffPetPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs);
+    applyActivePowerBonuses(buffPetPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs, movementContribs);
   }
   if (_debug) debugGroupEnd();
+
+  // Step 7.3: Commit movement totals now that every active-power source is
+  // gathered — travel suppress groups (kTravelBuff: CJ / SJ / SS momentum /
+  // Fly / Ninja Run …) contribute only their strongest member, the rest sum,
+  // and combat mode drops in-combat-suppressible buffs (SS run, SJ jump, Fly
+  // speed — but not Combat Jumping / Hover, which have no suppress events).
+  resolveMovementTotals(movementContribs, globalBonuses, breakdown, options?.combatMode);
 
   // Step 7.5: Apply always-on proc bonuses (Global and Proc120s in Auto/Toggle powers)
   // Procs have their own Rule of 5 tracking, separate from set bonuses
