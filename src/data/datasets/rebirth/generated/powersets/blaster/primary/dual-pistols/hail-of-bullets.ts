@@ -48,14 +48,16 @@ export const HailofBullets: Power = {
       "scale": 0.3178,
       "table": "Ranged_Damage",
       "duration": 3.5,
-      "tickRate": 0.30000001192092896
+      "tickRate": 0.30000001192092896,
+      "chance": 0.6
     },
     {
       "type": "Lethal",
       "scale": 0.1362,
       "table": "Ranged_Damage",
       "duration": 3.5,
-      "tickRate": 0.30000001192092896
+      "tickRate": 0.30000001192092896,
+      "chance": 0.6
     },
     {
       "type": "Fire",

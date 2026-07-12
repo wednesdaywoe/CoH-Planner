@@ -1187,10 +1187,11 @@ export function RegistryEffectsDisplay({
           const dotFinalDamage = dot && applyInherentBonus ? applyInherentBonus(dot.final) : dot?.final ?? 0;
           const adjustedDotFinal = showCombatMod ? dotFinalDamage * combatMod : dotFinalDamage;
 
-          // DoT totals
-          const dotTotalBase = dot ? dot.base * dot.ticks : 0;
-          const dotTotalEnhanced = dot ? dot.enhanced * dot.ticks : 0;
-          const dotTotalFinal = dot ? adjustedDotFinal * dot.ticks : 0;
+          // DoT totals — probability-weighted ticks (cancel-on-miss / chance-gated).
+          const dotEffTicks = dot ? dot.effectiveTicks : 0;
+          const dotTotalBase = dot ? dot.base * dotEffTicks : 0;
+          const dotTotalEnhanced = dot ? dot.enhanced * dotEffTicks : 0;
+          const dotTotalFinal = dot ? adjustedDotFinal * dotEffTicks : 0;
 
           return (
             <>
@@ -1245,6 +1246,7 @@ export function RegistryEffectsDisplay({
                     </div>
                     <div className={`${compact ? 'text-[10px]' : 'text-[11px]'} text-orange-400/70 italic mt-0.5 ml-1`}>
                       {dot.ticks} ticks over {dot.duration}s ({Number(dot.tickRate.toFixed(2))}s/tick)
+                      {dot.chance !== undefined && ` @ ${Math.round(dot.chance * 100)}% (${dot.effectiveTicks.toFixed(2)} avg)`}
                     </div>
                   </>
                 );

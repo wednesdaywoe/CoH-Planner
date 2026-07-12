@@ -53,7 +53,8 @@ export const Impale: Power = {
       "scale": 0.2,
       "table": "Melee_Damage",
       "duration": 15.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8
     }
   ],
   "effects": {

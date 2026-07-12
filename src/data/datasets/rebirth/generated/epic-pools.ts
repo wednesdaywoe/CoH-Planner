@@ -1118,7 +1118,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.1,
               "table": "Melee_Damage",
               "duration": 3.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             }
           ]
         }
@@ -1249,7 +1251,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.1,
               "table": "Melee_Damage",
               "duration": 2.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             }
           ]
         }
@@ -8974,7 +8978,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.1,
               "table": "Ranged_Damage",
               "duration": 3.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             }
           ]
         }
@@ -9027,7 +9033,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.1,
               "table": "Ranged_Damage",
               "duration": 2.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             }
           ]
         }
@@ -9301,7 +9309,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.1,
               "table": "Ranged_Damage",
               "duration": 2.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             }
           ]
         }
@@ -10573,7 +10583,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.1,
               "table": "Ranged_Damage",
               "duration": 2.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             }
           ]
         }
@@ -10710,7 +10722,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.2,
               "table": "Melee_Damage",
               "duration": 4.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             }
           ]
         }
@@ -13080,7 +13094,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.1,
               "table": "Ranged_Damage",
               "duration": 3.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             }
           ]
         }
@@ -13133,7 +13149,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.1,
               "table": "Ranged_Damage",
               "duration": 2.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             }
           ]
         }
@@ -18661,7 +18679,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.1,
               "table": "Melee_Damage",
               "duration": 3.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             },
             {
               "type": "Fire",
@@ -18809,7 +18829,9 @@ export const EPIC_POOLS_RAW = {
               "scale": 0.1,
               "table": "Melee_Damage",
               "duration": 2.1,
-              "tickRate": 1
+              "tickRate": 1,
+              "chance": 0.8,
+              "cancelOnMiss": true
             },
             {
               "type": "Fire",

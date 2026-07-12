@@ -115,6 +115,16 @@
       "hash": "c4b95d99d46d",
       "date": "2026-07-08",
       "preview": "Added support for Incarnate Judgement power in attack chain calculations"
+    },
+    {
+      "hash": "59a31cc24417",
+      "date": "2026-07-11",
+      "preview": "Removed vertical cell adjustment for now, it has some unintended consequences th"
+    },
+    {
+      "hash": "e22e6c228047",
+      "date": "2026-07-11",
+      "preview": "Fix for DoT damage being overstated; this was widespread"
     }
   ]
 }

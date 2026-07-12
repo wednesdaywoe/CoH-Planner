@@ -53,7 +53,9 @@ export const SavageStrike: Power = {
       "scale": 0.137,
       "table": "Melee_Damage",
       "duration": 3.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.75,
+      "cancelOnMiss": true
     }
   ],
   "specialEffects": [

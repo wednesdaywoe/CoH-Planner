@@ -92,9 +92,10 @@ export function useBuildMaxAttackDamage(): number {
 
       const dot = dmg.dotDamage;
       const isPureDot = dot && Math.abs(dmg.base - dot.base) <= 0.001;
+      const et = dot ? dot.effectiveTicks : 0;
       const totalFinal = isPureDot
-        ? dot.final * dot.ticks
-        : dmg.final + (dot ? dot.final * dot.ticks : 0);
+        ? dot.final * et
+        : dmg.final + (dot ? dot.final * et : 0);
       if (totalFinal > max) max = totalFinal;
     }
 

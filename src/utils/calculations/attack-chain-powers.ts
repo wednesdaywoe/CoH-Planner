@@ -311,7 +311,9 @@ export function buildChainPowers(
       const dotData = dmg?.dotDamage ?? null;
       const isPureDot = dotData ? Math.abs((dmg?.base ?? 0) - dotData.base) <= 0.001 : false;
       const directHit = isPureDot ? 0 : (dmg?.final ?? 0);
-      const dotTotal = dotData ? dotData.final * dotData.ticks : 0;
+      // Probability-weighted ticks (cancel-on-miss / chance-gated) for the
+      // in-cast fold; the trailing DoT weights per tick on the timeline instead.
+      const dotTotal = dotData ? dotData.final * dotData.effectiveTicks : 0;
       // A DoT that fits inside the animation ticks during the swing (fold into
       // the hit); one that outlasts it lingers after the cast (trailing marks).
       const rawCastP = powerCastTime(p);
@@ -329,7 +331,13 @@ export function buildChainPowers(
         buildLevel: build.level,
       });
       const dot = dotData && !dotInCast
-        ? { ticks: dotData.ticks, period: dotData.tickRate, perTick: dotData.final * mult }
+        ? {
+            ticks: dotData.ticks,
+            period: dotData.tickRate,
+            perTick: dotData.final * mult,
+            ...(dotData.chance !== undefined ? { chance: dotData.chance } : {}),
+            ...(dotData.cancelOnMiss ? { cancelOnMiss: true } : {}),
+          }
         : null;
       const damage = mult * (directHit + (dotInCast ? dotTotal : 0)) + procDmg;
       return { damage, dot };

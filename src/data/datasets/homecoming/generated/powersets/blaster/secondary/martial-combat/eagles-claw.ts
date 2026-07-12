@@ -53,7 +53,9 @@ export const EaglesClaw: Power = {
       "scale": 0.5,
       "table": "Melee_Damage",
       "duration": 5,
-      "tickRate": 0.5
+      "tickRate": 0.5,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {

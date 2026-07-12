@@ -135,6 +135,14 @@ export interface DamageEffect {
   scale: number;
   /** Optional: damage table reference */
   table?: string;
+  /** DoT total duration in seconds (present on periodic damage entries). */
+  duration?: number;
+  /** DoT tick period in seconds (present on periodic damage entries). */
+  tickRate?: number;
+  /** Per-tick apply chance (< 1) when the DoT is chance-gated. */
+  chance?: number;
+  /** Whether a missed tick cancels the remaining DoT chain (geometric decay). */
+  cancelOnMiss?: boolean;
 }
 
 export interface MultiDamageEffect {
@@ -694,6 +702,10 @@ export interface ScaledDamageEntry {
   duration?: number;
   /** Tick rate for DoT entries */
   tickRate?: number;
+  /** Per-tick apply chance (< 1) when the DoT is chance-gated. */
+  chance?: number;
+  /** Whether a missed tick cancels the remaining DoT chain (geometric decay). */
+  cancelOnMiss?: boolean;
   /** For `type: 'Heal'` entries flagged IgnoreStrength — the heal is not boosted
    *  by Healing enhancement or global +Heal. */
   ignoreStrength?: boolean;

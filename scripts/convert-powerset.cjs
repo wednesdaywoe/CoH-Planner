@@ -3405,6 +3405,19 @@ function extractDamage(templates) {
         dmg.tickRate = template.application_period;
       }
 
+      // Per-tick apply chance. Many DoTs roll `tick_chance` < 1 each tick rather
+      // than applying unconditionally, and CoH's CancelOnMiss flag ends the DoT
+      // chain on the first miss (so tick k needs k consecutive hits — the calc
+      // averages Σ chance^k, not chance·n). Capturing both lets the average match
+      // the in-game tooltip; a chance of exactly 1 (or its absence) means every
+      // tick lands. Only meaningful on a periodic DoT, so gate on tickRate.
+      if (dmg.tickRate !== undefined &&
+          typeof template.tick_chance === 'number' &&
+          template.tick_chance > 0 && template.tick_chance < 1) {
+        dmg.chance = Math.round(template.tick_chance * 100) / 100;
+        if ((template.flags || []).includes('CancelOnMiss')) dmg.cancelOnMiss = true;
+      }
+
       damages.push(dmg);
     }
   }

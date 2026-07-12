@@ -48,42 +48,48 @@ export const HailofBullets: Power = {
       "scale": 0.131,
       "table": "Ranged_Damage",
       "duration": 2.3,
-      "tickRate": 0.20000000298023224
+      "tickRate": 0.20000000298023224,
+      "chance": 0.6
     },
     {
       "type": "Lethal",
       "scale": 0.054,
       "table": "Ranged_Damage",
       "duration": 2.3,
-      "tickRate": 0.20000000298023224
+      "tickRate": 0.20000000298023224,
+      "chance": 0.6
     },
     {
       "type": "Lethal",
       "scale": 0.054,
       "table": "Ranged_InherentDamage",
       "duration": 2.3,
-      "tickRate": 0.20000000298023224
+      "tickRate": 0.20000000298023224,
+      "chance": 0.6
     },
     {
       "type": "Lethal",
       "scale": 0.131,
       "table": "Ranged_Damage",
       "duration": 2.3,
-      "tickRate": 0.20000000298023224
+      "tickRate": 0.20000000298023224,
+      "chance": 0.6
     },
     {
       "type": "Lethal",
       "scale": 0.054,
       "table": "Ranged_Damage",
       "duration": 2.3,
-      "tickRate": 0.20000000298023224
+      "tickRate": 0.20000000298023224,
+      "chance": 0.6
     },
     {
       "type": "Lethal",
       "scale": 0.054,
       "table": "Ranged_InherentDamage",
       "duration": 2.3,
-      "tickRate": 0.20000000298023224
+      "tickRate": 0.20000000298023224,
+      "chance": 0.6
     },
     {
       "type": "Fire",

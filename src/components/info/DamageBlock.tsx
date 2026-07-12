@@ -181,7 +181,9 @@ function DamageTiers({
   // calculatedDamage.base IS the per-tick value, so use only the DoT total.
   const dot = cd.dotDamage;
   const isPureDot = dot ? Math.abs(cd.base - dot.base) <= 0.001 : false;
-  const lt = (perTick: number) => (dot ? perTick * dot.ticks : 0);
+  // Probability-weighted ticks: chance-gated / cancel-on-miss DoTs land fewer
+  // than the nominal tick count on average (matches the in-game tooltip).
+  const lt = (perTick: number) => (dot ? perTick * dot.effectiveTicks : 0);
   const totalBase = isPureDot ? lt(dot!.base) : cd.base + (dot ? lt(dot.base) : 0);
   const totalEnh = isPureDot ? lt(dot!.enhanced) : cd.enhanced + (dot ? lt(dot.enhanced) : 0);
   const totalFinalRaw = isPureDot ? lt(dot!.final) : cd.final + (dot ? lt(dot.final) : 0);
@@ -315,15 +317,17 @@ function DamageBar({ calculatedDamage, archetypeId, procDamagePerActivation, max
 
   const dot = calculatedDamage.dotDamage;
   const isPureDot = dot && Math.abs(calculatedDamage.base - dot.base) <= 0.001;
+  // Probability-weighted ticks (cancel-on-miss geometric decay / chance-gated).
+  const et = dot ? dot.effectiveTicks : 0;
   const totalBase = isPureDot
-    ? dot.base * dot.ticks
-    : calculatedDamage.base + (dot ? dot.base * dot.ticks : 0);
+    ? dot.base * et
+    : calculatedDamage.base + (dot ? dot.base * et : 0);
   const totalEnhanced = isPureDot
-    ? dot.enhanced * dot.ticks
-    : calculatedDamage.enhanced + (dot ? dot.enhanced * dot.ticks : 0);
+    ? dot.enhanced * et
+    : calculatedDamage.enhanced + (dot ? dot.enhanced * et : 0);
   const totalFinal = isPureDot
-    ? dot.final * dot.ticks
-    : calculatedDamage.final + (dot ? dot.final * dot.ticks : 0);
+    ? dot.final * et
+    : calculatedDamage.final + (dot ? dot.final * et : 0);
 
   // Normalize to the build's highest-damage attack (Mids-style) so bar length
   // is comparable across powers: the hardest hitter fills the bar and the rest
@@ -431,6 +435,13 @@ function DamageContext({
       {dot && (
         <div className="text-orange-400/80">
           DoT: {dot.ticks} ticks × {dot.final.toFixed(2)} over {dot.duration}s ({Number(dot.tickRate.toFixed(2))}s/tick)
+          {dot.chance !== undefined && (
+            <span title={dot.cancelOnMiss
+              ? `${Math.round(dot.chance * 100)}% per tick, cancel-on-miss → ${dot.effectiveTicks.toFixed(2)} avg ticks`
+              : `${Math.round(dot.chance * 100)}% per tick → ${dot.effectiveTicks.toFixed(2)} avg ticks`}>
+              {' '}@ {Math.round(dot.chance * 100)}% ({dot.effectiveTicks.toFixed(2)} avg)
+            </span>
+          )}
         </div>
       )}
     </div>

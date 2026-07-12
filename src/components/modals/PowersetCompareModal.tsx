@@ -10,7 +10,7 @@ import { Select } from '@/components/ui';
 import { useUIStore } from '@/stores';
 import { getArchetype, getArchetypeIds } from '@/data/archetypes';
 import { getPowerset } from '@/data/powersets';
-import { calculateDamageWithATTable, dotTickCount } from '@/utils/calculations/damage';
+import { calculateDamageWithATTable, dotTickCount, expectedDotTicks } from '@/utils/calculations/damage';
 import type { Power, ScaledDamageEntry } from '@/types/power';
 import type { ArchetypeId } from '@/types/archetype';
 import type { SelectOption } from '@/components/ui/Select';
@@ -119,9 +119,10 @@ function calculateMetric(
       for (const d of damages) {
         const val = calculateDamageWithATTable(d.scale, d.table, archetypeId, level);
         if (val !== null) {
-          // For DoT, multiply by tick count
+          // For DoT, multiply by probability-weighted tick count (cancel-on-miss
+          // / chance-gated DoTs land fewer than the nominal ticks on average).
           if (d.duration && d.tickRate && d.tickRate > 0) {
-            const ticks = dotTickCount(d.duration, d.tickRate);
+            const ticks = expectedDotTicks(dotTickCount(d.duration, d.tickRate), d.chance, d.cancelOnMiss);
             total += val * ticks;
           } else {
             total += val;

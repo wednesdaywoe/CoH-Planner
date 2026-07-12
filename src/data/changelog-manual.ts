@@ -24,6 +24,8 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-07-11',
 
     items: [
+      { message: 'Removed vertical cell adjustment for now, it has some unintended consequences that are not great. Rearrange and expand/collapse remain', type: 'fix'},
+      { message: 'Fix for DoT damage being overstated; this was widespread', type: 'fix'},
       { message: 'Fix for Rebirth\'s Tanker Martial Prowess epic pool, Art of War was listed as the first selectable power instead of Throwing Dagger and Battle Hardened', type: 'fix'},
       { message: 'Added buff-pet aura toggle and calculations for character totals', type: 'feat'},
     ]

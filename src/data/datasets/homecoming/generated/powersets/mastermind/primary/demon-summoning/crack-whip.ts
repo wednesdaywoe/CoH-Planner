@@ -53,7 +53,9 @@ export const CrackWhip: Power = {
       "scale": 0.222,
       "table": "Ranged_Damage",
       "duration": 2.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {

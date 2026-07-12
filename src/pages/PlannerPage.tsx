@@ -58,13 +58,6 @@ function UndockButton({ onClick }: { onClick: () => void }) {
  *  rather than deforming) and the resize drag clamps neighbors to it. */
 const MIN_COL_PX = 240;
 
-/** Minimum rendered height for a stacked cell (LAY11). The min-size audit found
- *  the vertical axis render-safe — every body is `flex-1 overflow-y-auto`, so
- *  shrinking height just scrolls — so this is a UX floor (keep a stacked cell
- *  usable), not a clip constraint. The vertical resize drag clamps both
- *  neighbors to it. */
-const MIN_CELL_PX = 120;
-
 /** Colored edge bar marking where a dragged section will land (LAY11 drop zones). */
 function dropEdgeStyle(zone: DropZone): React.CSSProperties {
   const t = 3;
@@ -161,7 +154,6 @@ export function PlannerPage() {
   const sections = useUIStore((s) => s.plannerLayout[view]);
   const reorderPlannerSections = useUIStore((s) => s.reorderPlannerSections);
   const setPlannerSectionWeights = useUIStore((s) => s.setPlannerSectionWeights);
-  const setPlannerSectionRowWeights = useUIStore((s) => s.setPlannerSectionRowWeights);
   const togglePlannerSectionCollapsed = useUIStore((s) => s.togglePlannerSectionCollapsed);
 
   // Desktop drag-reorder state (native HTML5 DnD; a 6-item reorder doesn't
@@ -171,7 +163,7 @@ export function PlannerPage() {
   const [overId, setOverId] = useState<PlannerSectionId | null>(null);
   const [overZone, setOverZone] = useState<DropZone | null>(null);
   // Grid element ref — needed to measure usable px width when converting a
-  // resize-drag delta into fr weights.
+  // column resize-drag delta into fr weights.
   const gridRef = useRef<HTMLDivElement>(null);
 
   // Check if 24-power limit reached (exclude auto-granted form sub-powers)
@@ -477,78 +469,29 @@ export function PlannerPage() {
     window.addEventListener('pointerup', onUp);
   };
 
-  // Drag the divider between stacked cells `topIdx` and `topIdx + 1`: the vertical
-  // twin of startColumnResize. Reads the *actual* current cell heights from the DOM
-  // (px), so it starts seamlessly whether the column is content-driven (default) or
-  // already weight-driven — and seeds every cell's `rowWeight` from its measured
-  // height, converting the whole column to weight-driven in one consistent step
-  // (px used as fr; only ratios matter). Both neighbors clamp to MIN_CELL_PX.
-  const startRowResize = (e: React.PointerEvent, topIdx: number) => {
-    const container = (e.currentTarget as HTMLElement).closest('[data-column]') as HTMLElement | null;
-    if (!container) return;
-    const cellEls = [...container.querySelectorAll<HTMLElement>(':scope > [data-cell]')];
-    const topEl = cellEls[topIdx];
-    const bottomEl = cellEls[topIdx + 1];
-    if (!topEl || !bottomEl) return;
-    const heights = cellEls.map((el) => el.getBoundingClientRect().height);
-    const ids = cellEls.map((el) => el.getAttribute('data-cell') as PlannerSectionId);
-    const pairPx = heights[topIdx] + heights[topIdx + 1];
-    if (pairPx < MIN_CELL_PX * 2) return;
-    const topH0 = heights[topIdx];
-    const startY = e.clientY;
-    const handleEl = e.currentTarget as HTMLElement;
-    handleEl.setPointerCapture(e.pointerId);
-
-    const onMove = (ev: PointerEvent) => {
-      const newTop = Math.max(
-        MIN_CELL_PX,
-        Math.min(pairPx - MIN_CELL_PX, topH0 + (ev.clientY - startY)),
-      );
-      const weights: Partial<Record<PlannerSectionId, number>> = {};
-      ids.forEach((id, i) => { weights[id] = heights[i]; });
-      weights[ids[topIdx]] = newTop;
-      weights[ids[topIdx + 1]] = pairPx - newTop;
-      setPlannerSectionRowWeights(view, weights);
-    };
-    const onUp = () => {
-      handleEl.releasePointerCapture?.(e.pointerId);
-      window.removeEventListener('pointermove', onMove);
-      window.removeEventListener('pointerup', onUp);
-    };
-    window.addEventListener('pointermove', onMove);
-    window.addEventListener('pointerup', onUp);
-  };
-
   return (
     <>
-      {/* Desktop: fill `main` (which is `relative`) so the grid has a *definite*
-          height to distribute — required for the LAY11 vertical stack split + row
-          resize, and it lets each column scroll internally instead of growing the
-          page. `main` is a block box, so its `flex-1` grid never actually bounded
-          before; this wrapper supplies the bound. Plain block below lg, so the
-          mobile fallback keeps its original page-grow flow. */}
-      <div className="lg:absolute lg:inset-0 lg:flex lg:flex-col">
+      {/* Desktop planner wrapper. Content-flow (not viewport-pinned): a static
+          block that grows with its content so the *whole page* scrolls — `main`
+          is `lg:overflow-visible`, so a tall build simply makes the page taller.
+          Sections expand to their full height rather than each scrolling in its
+          own box (the vertical row-resize that needed a fixed height is gone).
+          Plain block below lg, so the mobile fallback keeps its own flow. */}
+      <div className="lg:flex lg:flex-col">
         <PlannerHintBar />
 
-        {/* ── Desktop (lg+): rearrangeable 2D dock grid (LAY11) ── */}
+        {/* ── Desktop (lg+): rearrangeable columns (LAY11), content-flow ── */}
         <div
           ref={gridRef}
-          className="hidden lg:grid gap-px bg-slate-700 flex-1 min-h-0 overflow-auto"
-          style={{ gridTemplateColumns, gridTemplateRows: 'minmax(0,1fr)' }}
+          // `overflow-x-auto` keeps the columns side-by-side and only scrolls
+          // horizontally when they don't fit; height is `auto` (row `auto`), so
+          // the grid grows with content and the page — never the grid — scrolls
+          // vertically. No cell ever traps content in an internal scrollbox.
+          className="hidden lg:grid gap-px bg-slate-700 overflow-x-auto"
+          style={{ gridTemplateColumns, gridTemplateRows: 'auto' }}
         >
         {columns.map((col, colIdx) => {
           const isLastCol = colIdx === columns.length - 1;
-          // A column is weight-driven once the user drags a divider in it (any
-          // cell carries a `rowWeight`); until then each cell sizes to its own
-          // content (`flex-basis: auto` + `flex-grow: 0`), shrinking
-          // proportionally only when the column can't fit everything. Not growing
-          // to fill is deliberate: a lone short cell (e.g. Inherent) stays as tall
-          // as its contents and leaves the column canvas empty below it, so it
-          // reads as a discrete *tile* rather than a bottomless column. A tall
-          // cell (a full power list) still overflows → `flex-shrink` clamps it to
-          // the column height and its body scrolls, so it fills — because it
-          // needs the space.
-          const weightDriven = col.rows.some((r) => r.rowWeight !== undefined);
           return (
             <div
               key={`col-${colIdx}`}
@@ -571,13 +514,12 @@ export function PlannerPage() {
                     data-onboarding={section.onboarding}
                     onDragOver={(e) => handleDragOver(e, cfg.id)}
                     onDrop={() => handleDrop(cfg.id)}
-                    style={
-                      isCollapsed
-                        ? { flexGrow: 0, flexShrink: 0, flexBasis: 'auto', minHeight: 0 }
-                        : weightDriven
-                          ? { flexGrow: cfg.rowWeight ?? 1, flexShrink: 1, flexBasis: 0, minHeight: MIN_CELL_PX }
-                          : { flexGrow: 0, flexShrink: 1, flexBasis: 'auto', minHeight: MIN_CELL_PX }
-                    }
+                    // Content-flow: every cell sizes to its own content and never
+                    // shrinks, so its body (`flex-1 overflow-y-auto`) shows in
+                    // full and the page — not the cell — scrolls. A collapsed
+                    // cell is just its header (no body rendered), so the same
+                    // rule sizes it correctly.
+                    style={{ flexGrow: 0, flexShrink: 0, flexBasis: 'auto', minHeight: 0 }}
                     className={`relative bg-slate-900 flex flex-col overflow-hidden min-h-0 transition-opacity ring-1 ring-inset ring-slate-600/60 ${
                       dragId === cfg.id ? 'opacity-40' : ''
                     }`}
@@ -623,28 +565,20 @@ export function PlannerPage() {
                       />
                     )}
 
-                    {/* Vertical resize divider to the stacked row below. Hidden
-                        during a reorder drag so the gestures never fight. */}
-                    {!isLastRow && !dragId && !isCollapsed && (
-                      <ResizeDivider
-                        axis="y"
-                        onPointerDown={(e) => { e.preventDefault(); startRowResize(e, rowIdx); }}
-                      />
-                    )}
                   </div>
                 );
               })}
 
               {/* Drop catcher for the empty canvas below content-sized tiles.
-                  Goal 1 (flex-grow:0) leaves real slack under a short column's
-                  last tile; that slack is the column div, which has no drop
-                  handler — so a "below" drop released there would paint the blue
-                  line but silently fail. This spacer fills the slack (grows only
-                  in content-driven mode; 0 height when the column is weight-driven
-                  or full) and routes a drop there to "below the last cell". */}
+                  A column stretches to the tallest column's height (grid row),
+                  leaving slack under a short column's last tile; that slack is
+                  the column div, which has no drop handler — so a "below" drop
+                  released there would paint the blue line but silently fail. This
+                  spacer grows to fill the slack and routes such a drop to "below
+                  the last cell". */}
               {col.rows.length > 0 && (
                 <div
-                  style={{ flexGrow: weightDriven ? 0 : 1, flexBasis: 0, minHeight: 0 }}
+                  style={{ flexGrow: 1, flexBasis: 0, minHeight: 0 }}
                   onDragOver={(e) => {
                     const lastId = col.rows[col.rows.length - 1].id;
                     if (!dragId || dragId === lastId) return;

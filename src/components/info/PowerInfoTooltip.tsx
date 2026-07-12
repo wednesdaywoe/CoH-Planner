@@ -561,18 +561,21 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       {calculatedDamage && !calculatedDamage.unknown && calculatedDamage.scale && (() => {
         const damageCap = getDamageCap(archetypeId ?? '');
 
-        // Include DoT total damage in the bar (direct + DoT×ticks)
+        // Include DoT total damage in the bar (direct + DoT×effectiveTicks).
+        // effectiveTicks weights chance-gated / cancel-on-miss DoTs so the bar
+        // matches the in-game average.
         const dot = calculatedDamage.dotDamage;
         const isPureDot = dot && Math.abs(calculatedDamage.base - dot.base) <= 0.001;
+        const et = dot ? dot.effectiveTicks : 0;
         const totalBase = isPureDot
-          ? dot.base * dot.ticks
-          : calculatedDamage.base + (dot ? dot.base * dot.ticks : 0);
+          ? dot.base * et
+          : calculatedDamage.base + (dot ? dot.base * et : 0);
         const totalEnhanced = isPureDot
-          ? dot.enhanced * dot.ticks
-          : calculatedDamage.enhanced + (dot ? dot.enhanced * dot.ticks : 0);
+          ? dot.enhanced * et
+          : calculatedDamage.enhanced + (dot ? dot.enhanced * et : 0);
         const totalFinal = isPureDot
-          ? dot.final * dot.ticks
-          : calculatedDamage.final + (dot ? dot.final * dot.ticks : 0);
+          ? dot.final * et
+          : calculatedDamage.final + (dot ? dot.final * et : 0);
 
         // Normalize to the build's highest-damage attack so bar length is
         // comparable across powers (Mids-style). Matches DamageBar; falls back

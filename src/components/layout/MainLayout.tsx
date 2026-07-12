@@ -92,7 +92,15 @@ export function MainLayout({ children }: MainLayoutProps) {
        *  Top-of-page banner blindness was causing users to miss it. */}
       <RuleOf5Banner />
       <ExemplarModeBanner />
-      <main className="flex-1 overflow-hidden relative">
+      {/* `lg:overflow-visible` lets `main` grow past the viewport so the whole
+          page can scroll. On a tall screen the planner pins itself to `main` with
+          `absolute inset-0` and scrolls its columns internally (nothing overflows
+          `main`, so this is a no-op); on a short screen the planner switches to
+          content-flow (see PlannerPage's `tallViewport`), grows taller than the
+          viewport, and the page scrolls instead of trapping content in tiny
+          internal scrollboxes. Base stays `overflow-hidden` for the mobile
+          fallback, which manages its own scroll. */}
+      <main className="flex-1 overflow-hidden lg:overflow-visible relative">
         {children}
       </main>
 

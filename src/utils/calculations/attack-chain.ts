@@ -23,6 +23,18 @@ export interface ChainDoT {
   period: number;
   /** enhanced damage per tick */
   perTick: number;
+  /** Per-tick apply chance (< 1) when the DoT is chance-gated. Absent = always. */
+  chance?: number;
+  /** Whether a missed tick cancels the remaining chain (geometric decay). */
+  cancelOnMiss?: boolean;
+}
+
+/** Probability that DoT tick `t` (1-indexed) actually lands. For cancel-on-miss
+ *  DoTs a tick needs every prior tick to have hit (chance^t); independent DoTs
+ *  roll each tick separately (chance); unconditional DoTs always land. */
+export function chainDotTickProbability(dot: ChainDoT, t: number): number {
+  if (dot.chance === undefined || dot.chance >= 1 || dot.chance <= 0) return 1;
+  return dot.cancelOnMiss ? Math.pow(dot.chance, t) : dot.chance;
 }
 
 /** When an alternate form of a power is legal. The chain auto-picks the form
@@ -228,9 +240,14 @@ export function effectiveStats(
   return { cast: p.cast, damage: p.damage, endCost: p.endCost, dot: p.dot };
 }
 
-/** Per-cast nominal damage (direct hit + every DoT tick). */
+/** Per-cast nominal damage (direct hit + expected DoT damage, weighting each
+ *  tick by its apply chance so cancel-on-miss / chance-gated DoTs match the
+ *  in-game average). */
 function nominalDamage(p: ChainPower): number {
-  return p.damage + (p.dot ? p.dot.ticks * p.dot.perTick : 0);
+  if (!p.dot) return p.damage;
+  let dotTotal = 0;
+  for (let t = 1; t <= p.dot.ticks; t++) dotTotal += p.dot.perTick * chainDotTickProbability(p.dot, t);
+  return p.damage + dotTotal;
 }
 
 /** The ranking value for a power under the chosen metric. dps needs the global
@@ -420,7 +437,7 @@ function activationDamage(powers: ChainPower[], act: Activation, cycleSec: numbe
   if (e.dot) {
     for (let t = 1; t <= e.dot.ticks; t++) {
       const tickT = act.start + e.cast + t * e.dot.period;
-      if (tickT <= cycleSec + EPS) dmg += e.dot.perTick;
+      if (tickT <= cycleSec + EPS) dmg += e.dot.perTick * chainDotTickProbability(e.dot, t);
     }
   }
   return dmg;

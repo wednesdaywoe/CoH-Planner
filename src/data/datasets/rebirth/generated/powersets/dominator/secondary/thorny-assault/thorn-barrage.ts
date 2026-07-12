@@ -52,7 +52,9 @@ export const ThornBarrage: Power = {
       "scale": 0.1,
       "table": "Ranged_Damage",
       "duration": 3.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {

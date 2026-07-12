@@ -53,7 +53,9 @@ export const Skewer: Power = {
       "scale": 0.0805,
       "table": "Melee_Damage",
       "duration": 3.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.85,
+      "cancelOnMiss": true
     }
   ],
   "effects": {

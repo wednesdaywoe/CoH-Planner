@@ -52,7 +52,9 @@ export const BlazingBolt: Power = {
       "scale": 0.225,
       "table": "Ranged_Damage",
       "duration": 3.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "quickSnipe": {
@@ -71,7 +73,9 @@ export const BlazingBolt: Power = {
         "scale": 0.225,
         "table": "Ranged_Damage",
         "duration": 3.1,
-        "tickRate": 1
+        "tickRate": 1,
+        "chance": 0.8,
+        "cancelOnMiss": true
       }
     ]
   }

@@ -32,6 +32,34 @@ export function dotTickCount(duration: number, period: number): number {
   return Math.floor(duration / period + 1e-4) + 1;
 }
 
+/**
+ * Probability-weighted (expected) number of DoT ticks that actually land.
+ *
+ * Many CoH DoTs roll a per-tick chance (`chance` < 1) rather than applying
+ * every tick unconditionally. How the misses compound depends on the
+ * `CancelOnMiss` flag the binary stores on the effect template:
+ *
+ *   • cancelOnMiss (the common case — Fire Blast, most attack DoTs): the whole
+ *     DoT chain STOPS the moment a tick misses, so tick k only fires if every
+ *     prior tick landed. P(tick k) = chance^k, and the expected tick count is
+ *     the geometric partial sum Σ_{k=1..n} chance^k.
+ *   • independent (rare): each tick rolls on its own; expected count = n·chance.
+ *
+ * This is why the in-game tooltip shows a lower average than n·perTick — e.g.
+ * Flares' "4 Ticks of 80% chance" averages 0.8+0.64+0.512+0.4096 = 2.3616
+ * ticks, not 4. Returns `nominalTicks` unchanged when there is no chance gate.
+ */
+export function expectedDotTicks(
+  nominalTicks: number,
+  chance?: number,
+  cancelOnMiss?: boolean,
+): number {
+  if (chance === undefined || chance >= 1 || chance <= 0) return nominalTicks;
+  if (!cancelOnMiss) return nominalTicks * chance;
+  // Geometric partial sum Σ_{k=1..n} chance^k = chance·(1 − chance^n)/(1 − chance).
+  return (chance * (1 - Math.pow(chance, nominalTicks))) / (1 - chance);
+}
+
 // ============================================
 // DAMAGE TABLES
 // ============================================
@@ -350,7 +378,19 @@ export interface PowerDamageResult {
     type: string;
     duration: number;
     tickRate: number;
+    /** Nominal tick count over the duration (for the "N ticks" label). */
     ticks: number;
+    /**
+     * Probability-weighted tick count that actually lands. Equals `ticks` for
+     * unconditional DoTs; less for chance-gated ones (cancel-on-miss geometric
+     * decay or independent per-tick). ALL total-damage multipliers must use
+     * this, not `ticks`, so the average matches the in-game tooltip.
+     */
+    effectiveTicks: number;
+    /** Per-tick apply chance (< 1) when the DoT is chance-gated. */
+    chance?: number;
+    /** Whether a missed tick cancels the remaining DoT chain. */
+    cancelOnMiss?: boolean;
   };
 }
 
@@ -414,12 +454,12 @@ export function calculatePowerDamage(
   // Normalize array format: [{ type, scale, table }, ...] → { types: [...], scale, table }
   // Filter out Heal entries (those are handled separately as healing effects)
   // Separate direct damage from DoT damage (entries with duration/tickRate)
-  type DotEntry = { type: string; scale: number; table?: string; duration: number; tickRate: number };
+  type DotEntry = { type: string; scale: number; table?: string; duration: number; tickRate: number; chance?: number; cancelOnMiss?: boolean };
   let pendingDotEntries: DotEntry[] = [];
   let isPureDot = false;
 
   if (Array.isArray(damageEffect)) {
-    type ArrayEntry = { type: string; scale: number; table?: string; duration?: number; tickRate?: number };
+    type ArrayEntry = { type: string; scale: number; table?: string; duration?: number; tickRate?: number; chance?: number; cancelOnMiss?: boolean };
     // Filter:
     //   • Heal entries (handled separately)
     //   • PvP-table entries — PvP variants of the same damage. The
@@ -480,7 +520,7 @@ export function calculatePowerDamage(
     }
   } else if (typeof damageEffect === 'object' && 'duration' in damageEffect && 'tickRate' in damageEffect) {
     // Single-object DoT (e.g. Gloom, Abyssal Gaze): { type, scale, table, duration, tickRate }
-    const de = damageEffect as { type: string; scale: number; table?: string; duration: number; tickRate: number };
+    const de = damageEffect as { type: string; scale: number; table?: string; duration: number; tickRate: number; chance?: number; cancelOnMiss?: boolean };
     if (de.duration > 0 && de.tickRate > 0) {
       isPureDot = true;
       pendingDotEntries = [de];
@@ -669,6 +709,16 @@ export function calculatePowerDamage(
     const dotTickRate = pendingDotEntries[0].tickRate;
     const dotTicks = dotTickCount(dotDuration, dotTickRate);
     const dotTypeName = [...new Set(pendingDotEntries.map(e => e.type))].join('/');
+    // Chance gate (cancel-on-miss geometric decay, or independent per-tick). The
+    // DoT entries of one power share a tick chance; take the first that defines
+    // one. effectiveTicks is the probability-weighted count all totals multiply by.
+    const chanceEntry = pendingDotEntries.find(e => e.chance !== undefined && e.chance < 1);
+    const dotChance = chanceEntry?.chance;
+    const dotCancelOnMiss = chanceEntry?.cancelOnMiss;
+    const dotEffectiveTicks = expectedDotTicks(dotTicks, dotChance, dotCancelOnMiss);
+    const chanceMeta = dotChance !== undefined
+      ? { chance: dotChance, ...(dotCancelOnMiss ? { cancelOnMiss: true } : {}) }
+      : {};
 
     if (isPureDot) {
       // Pure DoT: main result already has per-tick values, just add timing metadata
@@ -680,6 +730,8 @@ export function calculatePowerDamage(
         duration: dotDuration,
         tickRate: dotTickRate,
         ticks: dotTicks,
+        effectiveTicks: dotEffectiveTicks,
+        ...chanceMeta,
       };
     } else {
       // Mixed: calculate DoT per-tick damage separately
@@ -723,6 +775,8 @@ export function calculatePowerDamage(
         duration: dotDuration,
         tickRate: dotTickRate,
         ticks: dotTicks,
+        effectiveTicks: dotEffectiveTicks,
+        ...chanceMeta,
       };
     }
   }

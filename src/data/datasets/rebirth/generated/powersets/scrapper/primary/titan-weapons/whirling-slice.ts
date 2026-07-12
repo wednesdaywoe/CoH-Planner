@@ -51,7 +51,9 @@ export const WhirlingSlice: Power = {
       "scale": 0.1,
       "table": "Melee_Damage",
       "duration": 2.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.85,
+      "cancelOnMiss": true
     }
   ],
   "effects": {

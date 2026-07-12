@@ -52,7 +52,9 @@ export const TheLotusDrops: Power = {
       "scale": 0.06,
       "table": "Melee_Damage",
       "duration": 3.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     },
     {
       "type": "Lethal",

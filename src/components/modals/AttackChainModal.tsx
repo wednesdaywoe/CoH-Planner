@@ -36,6 +36,7 @@ import {
   computeChain,
   effectiveRecharge,
   powerMetricValue,
+  chainDotTickProbability,
   MIN_RECHARGE_DENOM,
   type ChainPower,
   type PowerMetric,
@@ -959,6 +960,9 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                 Array.from({ length: p.dot.ticks }).map((_, t) => {
                                   const tickT = act.start + effCast + (t + 1) * p.dot!.period;
                                   const inWin = tickT <= cycleSec;
+                                  // Fade each mark by its landing probability so
+                                  // cancel-on-miss / chance-gated decay reads visually.
+                                  const prob = chainDotTickProbability(p.dot!, t + 1);
                                   return (
                                     <div
                                       key={t}
@@ -970,7 +974,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
                                         height: 10,
                                         background: '#F2A83A',
                                         borderRadius: 1,
-                                        opacity: inWin ? 0.85 : 0.25,
+                                        opacity: (inWin ? 0.85 : 0.25) * prob,
                                         zIndex: 2,
                                       }}
                                     />

@@ -61,7 +61,9 @@ export const Ripper: Power = {
       "scale": 0.2,
       "table": "Melee_Damage",
       "duration": 7.1,
-      "tickRate": 1
+      "tickRate": 1,
+      "chance": 0.8,
+      "cancelOnMiss": true
     }
   ],
   "effects": {
