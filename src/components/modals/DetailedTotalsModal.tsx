@@ -172,18 +172,22 @@ function BreakdownPanel({
             {sources.map((source, i) => (
               <div
                 key={i}
-                className={`flex justify-between text-[10px] ${source.capped ? 'opacity-70' : ''}`}
+                className={`flex justify-between text-[10px] ${source.capped || source.suppressed ? 'opacity-70' : ''}`}
               >
                 <span
                   className={`${
-                    source.capped ? 'text-warning-fg line-through' : 'text-slate-300'
+                    source.capped ? 'text-warning-fg line-through'
+                      : source.suppressed ? 'text-slate-400 line-through'
+                      : 'text-slate-300'
                   } truncate max-w-[200px]`}
                 >
                   {source.name}
                 </span>
                 <span
                   className={`ml-2 flex-shrink-0 ${
-                    source.capped ? 'text-warning-fg line-through' : srcColor
+                    source.capped ? 'text-warning-fg line-through'
+                      : source.suppressed ? 'text-slate-400 line-through'
+                      : srcColor
                   }`}
                 >
                   {renderSourceValue(source.value)}{unit}

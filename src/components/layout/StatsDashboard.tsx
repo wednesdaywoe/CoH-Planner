@@ -967,14 +967,18 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
           </div>
         )}
 
-        {/* Active Powers */}
+        {/* Active Powers. `suppressed` sources (a stronger same-group travel/
+            stealth buff wins, or In-Combat suppresses them) render struck-
+            through and dimmed so the list still explains why the total isn't
+            the naive sum — but WITHOUT the amber warning color, since
+            suppression is normal mechanics, not a Rule of 5 problem. */}
         {activePowerSources.length > 0 && (
           <div>
             <div className="text-[9px] text-slate-400 uppercase mb-0.5">Active Powers</div>
             {activePowerSources.map((source, i) => (
-              <div key={i} className="flex justify-between text-[10px]">
-                <span className="text-slate-300">{source.name}</span>
-                <span className="text-amber-400 ml-2 whitespace-nowrap">{renderSourceValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+              <div key={i} className={`flex justify-between text-[10px] ${source.suppressed ? 'opacity-60' : ''}`}>
+                <span className={`${source.suppressed ? 'text-slate-400 line-through' : 'text-slate-300'}`}>{source.name}</span>
+                <span className={`ml-2 whitespace-nowrap ${source.suppressed ? 'text-slate-400 line-through' : 'text-amber-400'}`}>{renderSourceValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>
@@ -985,9 +989,9 @@ function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, b
           <div>
             <div className="text-[9px] text-slate-400 uppercase mb-0.5">Inherent Powers</div>
             {inherentSources.map((source, i) => (
-              <div key={i} className="flex justify-between text-[10px]">
-                <span className="text-slate-300">{source.name}</span>
-                <span className="text-blue-400 ml-2 whitespace-nowrap">{renderSourceValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
+              <div key={i} className={`flex justify-between text-[10px] ${source.suppressed ? 'opacity-60' : ''}`}>
+                <span className={`${source.suppressed ? 'text-slate-400 line-through' : 'text-slate-300'}`}>{source.name}</span>
+                <span className={`ml-2 whitespace-nowrap ${source.suppressed ? 'text-slate-400 line-through' : 'text-blue-400'}`}>{renderSourceValue(source.value)}{breakdownUnit}{isRegen && <span className="text-slate-400">{hpsSuffix(source.value)}</span>}</span>
               </div>
             ))}
           </div>

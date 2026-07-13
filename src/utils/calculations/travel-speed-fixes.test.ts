@@ -62,6 +62,9 @@ const makeBuild = (opts: {
 const totals = (b: AnyBuild, combatMode = false) =>
   calculateCharacterTotals(b, false, undefined, { combatMode }).globalBonuses;
 
+const breakdownOf = (b: AnyBuild, key: string, combatMode = false) =>
+  calculateCharacterTotals(b, false, undefined, { combatMode }).breakdown.get(key);
+
 describe('travel-speed fixes (HC)', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
@@ -206,5 +209,43 @@ describe('travel-speed fixes (HC)', () => {
     expect(bump?.scale).toBeCloseTo(1.65, 3);
     expect(bump?.suppressible).toBe(true);
     expect(bump?.stackKey).toBe('TravelMaxBuff');
+  });
+
+  // ---- Suppression is NOT a Rule of 5 violation ----------------------------
+  // A suppress-group loser (or combat-suppressed buff) must be flagged
+  // `suppressed`, NOT `capped` — `capped` drives the Rule-of-5 warning ring,
+  // and travel/stealth mutual suppression is normal game mechanics. This
+  // regressed the moment TravelBuff grouping shipped: Combat Jumping + Super
+  // Jump on nearly every build was tripping a spurious Rule of 5 warning.
+  it('a suppress-group loser is marked `suppressed`, never `capped` (no false Rule of 5)', () => {
+    const cj = poolPower('leaping', 'Combat_Jumping');
+    const sj = poolPower('leaping', 'Long_Jump');
+    const b = makeBuild({ pools: [{ id: 'leaping', powers: [cj, sj] }] });
+    for (const stat of ['jumpHeight', 'jumpSpeed', 'runSpeed']) {
+      const bd = breakdownOf(b, stat);
+      for (const src of bd?.sources ?? []) {
+        // Nothing in a travel suppress group may be `capped` (Rule of 5).
+        expect(src.capped).toBeFalsy();
+      }
+      // The total must exclude any suppressed loser (not the naive sum).
+      if (bd) {
+        const naiveSum = bd.sources.reduce((s, x) => s + x.value, 0);
+        const survivingSum = bd.sources.filter((x) => !x.suppressed && !x.capped).reduce((s, x) => s + x.value, 0);
+        expect(bd.total).toBeCloseTo(survivingSum, 5);
+        if (bd.sources.some((x) => x.suppressed)) expect(bd.total).toBeLessThan(naiveSum);
+      }
+    }
+    // At least one jump stat actually has a suppressed loser (CJ vs SJ share
+    // kTravelBuff), else this test proves nothing.
+    const jh = breakdownOf(b, 'jumpHeight');
+    expect(jh?.sources.some((s) => s.suppressed)).toBe(true);
+  });
+
+  it('combat-suppressed buffs are flagged `suppressed`, not `capped`', () => {
+    const b = makeBuild({ pools: [{ id: 'speed', powers: [poolPower('speed', 'Super_Speed')] }] });
+    const bd = breakdownOf(b, 'runSpeed', true);
+    expect(bd?.sources.some((s) => s.capped)).toBeFalsy();
+    expect(bd?.sources.some((s) => s.suppressed)).toBe(true);
+    expect(bd?.total).toBeCloseTo(0, 5);
   });
 });

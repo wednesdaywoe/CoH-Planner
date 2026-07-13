@@ -208,6 +208,13 @@ export interface StatSource {
   setId?: string;
   pieces?: number;
   capped?: boolean; // True if this instance hit the Rule of 5 cap
+  /** True if this instance is excluded because a STRONGER same-group buff wins
+   *  (mutual suppression: travel-speed `kTravelBuff` powers, stealth-radius
+   *  `StealthToggle` powers — only the largest applies) or the In-Combat toggle
+   *  suppresses it. Distinct from `capped`: suppression is normal game mechanics,
+   *  NOT a Rule of 5 violation, so it dims the breakdown row (like capped) but
+   *  must NOT feed the Rule-of-5 warning ring / banner / auto-track. */
+  suppressed?: boolean;
   /** Display name of the power that supplied this source (set bonus / proc), used to highlight powers contributing capped bonuses. */
   powerName?: string;
 }
@@ -930,7 +937,10 @@ function resolveStealthRadius(
       if (v > 0 && !c.stackKey) total += v;
     }
     global[key] = total;
-    // Breakdown: list every contributor; mark suppressed keyed losers capped.
+    // Breakdown: list every contributor; mark suppress-group losers as
+    // `suppressed` (NOT `capped`) — stealth mutual suppression is normal game
+    // mechanics, not a Rule of 5 violation. Using `capped` here previously
+    // flagged the losing stealth power with a spurious Rule-of-5 warning ring.
     for (const c of contribs) {
       const v = c[axis];
       if (v <= 0) continue;
@@ -940,7 +950,7 @@ function resolveStealthRadius(
         value: v,
         type: c.type,
         powerName: c.powerName,
-        ...(suppressed ? { capped: true } : {}),
+        ...(suppressed ? { suppressed: true } : {}),
       });
     }
   }
@@ -1014,7 +1024,10 @@ function resolveMovementTotals(
         name: c.sourceName,
         value: c.value,
         type: c.type,
-        ...(combatSuppressed || groupLoser ? { capped: true } : {}),
+        // `suppressed`, NOT `capped`: travel-buff mutual suppression / combat
+        // suppression is normal game mechanics, not a Rule of 5 violation — so
+        // the row dims but no Rule-of-5 warning fires (see StatSource.suppressed).
+        ...(combatSuppressed || groupLoser ? { suppressed: true } : {}),
       });
     }
   }
@@ -4250,9 +4263,11 @@ export function calculateCharacterTotals(
     debugEnd();
   }
 
-  // Update breakdown totals from final values (exclude capped/Rule-of-5 sources)
+  // Update breakdown totals from final values (exclude capped/Rule-of-5 sources
+  // AND suppress-group losers — both are present in the source list for display
+  // but neither counts toward the total).
   for (const [, bd] of breakdown) {
-    bd.total = bd.sources.reduce((sum, s) => s.capped ? sum : sum + s.value, 0);
+    bd.total = bd.sources.reduce((sum, s) => (s.capped || s.suppressed) ? sum : sum + s.value, 0);
   }
 
   return {
