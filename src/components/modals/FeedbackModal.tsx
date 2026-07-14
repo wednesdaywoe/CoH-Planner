@@ -8,6 +8,7 @@ import { DISCORD_INVITE_URL, DISCORD_FEEDBACK_DM_URL } from '@/lib/links';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './Modal';
 import { Button } from '../ui/Button';
 import { useBuildStore } from '@/stores/buildStore';
+import { useAuthStore } from '@/stores/authStore';
 import { getDiagnosticsSnapshot } from '@/utils/diagnostics';
 
 // Worker endpoint URL - update this after deploying the Cloudflare Worker
@@ -56,6 +57,7 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
 
   const build = useBuildStore((s) => s.build);
   const exportBuild = useBuildStore((s) => s.exportBuild);
+  const user = useAuthStore((s) => s.user);
 
   const getBuildContext = () => {
     // Count total powers and slots across all sets
@@ -102,6 +104,15 @@ export function FeedbackModal({ isOpen, onClose }: FeedbackModalProps) {
       type: feedbackType,
       description: description.trim(),
       globalName: globalName.trim() || undefined,
+      // Signed-in account identity, auto-attached when logged in. Uses the same
+      // display-name derivation as the rest of the app (Discord OAuth metadata).
+      userId: user?.id,
+      userName: user
+        ? ((user.user_metadata?.full_name as string | undefined) ||
+           (user.user_metadata?.name as string | undefined) ||
+           user.email ||
+           undefined)
+        : undefined,
       buildContext: getBuildContext(),
       buildSnapshot: includeSnapshot ? exportBuild() : undefined,
       diagnostics: includeSnapshot ? getDiagnosticsSnapshot() : undefined,

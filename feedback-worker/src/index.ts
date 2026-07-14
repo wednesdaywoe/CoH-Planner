@@ -37,6 +37,10 @@ interface FeedbackPayload {
   type: 'bug' | 'suggestion' | 'other';
   description: string;
   globalName?: string;
+  /** Supabase account UUID, auto-attached when the submitter is logged in */
+  userId?: string;
+  /** Display name of the signed-in account (Discord name / email) */
+  userName?: string;
   buildContext?: BuildContext;
   buildSnapshot?: string;
   diagnostics?: DiagnosticsSnapshot;
@@ -179,6 +183,16 @@ function buildEmailHtml(payload: FeedbackPayload): string {
       </table>`;
   }
 
+  let accountHtml = '';
+  if (payload.userId || payload.userName) {
+    accountHtml = `
+      <h3 style="color: #94a3b8; margin-top: 16px;">Account</h3>
+      <table style="width: 100%; border-collapse: collapse;">
+        ${payload.userName ? `<tr><td style="color: #64748b; padding: 4px 8px;">Name</td><td style="color: #60a5fa; padding: 4px 8px;">${escapeHtml(payload.userName)}</td></tr>` : ''}
+        ${payload.userId ? `<tr><td style="color: #64748b; padding: 4px 8px;">User ID</td><td style="color: #e2e8f0; padding: 4px 8px;"><code>${escapeHtml(payload.userId)}</code></td></tr>` : ''}
+      </table>`;
+  }
+
   let contactHtml = '';
   if (payload.globalName) {
     contactHtml = `
@@ -206,6 +220,7 @@ function buildEmailHtml(payload: FeedbackPayload): string {
       <div style="background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 0 0 8px 8px;">
         <h3 style="color: #94a3b8; margin-top: 0;">Description</h3>
         <p style="white-space: pre-wrap; line-height: 1.5;">${escapeHtml(payload.description)}</p>
+        ${accountHtml}
         ${contactHtml}
         ${contextHtml}
         ${diagnosticsHtml}
