@@ -19,7 +19,14 @@ export interface ManualEntry {
 }
 
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
-  // ───────────────────────────────────────────────────────────────────────  
+  // ───────────────────────────────────────────────────────────────────────
+  {
+    date: '2026-07-14',
+
+    items: [
+      { message: 'Fixed a slowdown on completed builds where toggling powers, adjusting sliders, or swapping enhancements had a ~0.5–1s delay before updating. The character totals were being recalculated once per power/slot instead of a single shared time. they\'re now computed once and reused. Most noticeable in Chrome.', type: 'fix'},
+    ]
+  },
   {
     date: '2026-07-13',
 
