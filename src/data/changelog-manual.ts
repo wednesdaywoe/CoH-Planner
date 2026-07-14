@@ -21,9 +21,10 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────  
   {
-    date: '2026-07-12',
+    date: '2026-07-13',
 
     items: [
+      { message: 'Fixed some movement speed oddities', type: 'fix'},
       { message: 'Fixed combat suppression for travel powers', type: 'fix'},
       { message: 'Removed vertical cell adjustment for now, it has some unintended consequences that are not great. Rearrange and expand/collapse remain', type: 'fix'},
       { message: 'Fix for DoT damage being overstated; this was widespread', type: 'fix'},
