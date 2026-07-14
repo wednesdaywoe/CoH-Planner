@@ -125,6 +125,36 @@
       "hash": "e22e6c228047",
       "date": "2026-07-11",
       "preview": "Fix for DoT damage being overstated; this was widespread"
+    },
+    {
+      "hash": "d5e9168503cb",
+      "date": "2026-07-13",
+      "preview": "Fixed some movement speed oddities"
+    },
+    {
+      "hash": "758e8b7f6c09",
+      "date": "2026-07-13",
+      "preview": "Fixed combat suppression for travel powers"
+    },
+    {
+      "hash": "e97c0e9645f3",
+      "date": "2026-07-13",
+      "preview": "Removed vertical cell adjustment for now, it has some unintended consequences th"
+    },
+    {
+      "hash": "e74b12c1e799",
+      "date": "2026-07-13",
+      "preview": "Fix for DoT damage being overstated; this was widespread"
+    },
+    {
+      "hash": "f00253e999de",
+      "date": "2026-07-13",
+      "preview": "Fix for Rebirth's Tanker Martial Prowess epic pool, Art of War was listed as the"
+    },
+    {
+      "hash": "abe16c708e81",
+      "date": "2026-07-13",
+      "preview": "Added buff-pet aura toggle and calculations for character totals"
     }
   ]
 }
