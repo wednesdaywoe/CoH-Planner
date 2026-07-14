@@ -47,12 +47,7 @@ export const Placate: Power = {
         "scale": 380,
         "table": "Melee_Ones"
       }
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "damageBuff",
-      "tohitBuff"
-    ]
+    }
   },
   "conditionalEffects": [
     {

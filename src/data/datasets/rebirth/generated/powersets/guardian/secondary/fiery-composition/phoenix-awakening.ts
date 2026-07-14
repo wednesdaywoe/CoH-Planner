@@ -67,11 +67,6 @@ export const PhoenixAwakening: Power = {
         }
       ],
       "isPseudoPet": false
-    },
-    "enduranceGain": {
-      "scale": 1,
-      "table": "Melee_Ones",
-      "perTarget": 1
     }
   },
   "conditionalEffects": [
@@ -95,7 +90,8 @@ export const PhoenixAwakening: Power = {
         },
         "enduranceGain": {
           "scale": 1,
-          "table": "Melee_Ones"
+          "table": "Melee_Ones",
+          "perTarget": 1
         },
         "untouchable": {
           "scale": 10,

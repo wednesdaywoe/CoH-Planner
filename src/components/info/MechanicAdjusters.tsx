@@ -190,7 +190,6 @@ function StanceModeGroup({
             power={power}
             entry={entry}
             labelOverride={option.label}
-            name={`stance-${power.internalName}-${group.key}`}
             checked={active}
             onSelect={() => setActiveSubPower(parent.internalName, active ? null : (option.subPower ?? null))}
           />
@@ -306,7 +305,6 @@ function GlobalRadioGroup({ power, groupId, members }: { power: Power; groupId: 
           key={m.id}
           power={power}
           entry={m}
-          name={`group-${groupId}`}
           checked={activeId === m.id}
           onSelect={() =>
             setGlobalAdjusterGroup(m.id, members.map((mm) => mm.id))
@@ -350,7 +348,6 @@ function PerPowerRadioGroup({
           key={m.id}
           power={power}
           entry={m}
-          name={`group-${powerName}-${groupId}`}
           checked={activeId === m.id}
           onSelect={() => select(m.id)}
         />
@@ -365,7 +362,6 @@ function PerPowerRadioGroup({
 interface RadioRowProps {
   power: Power;
   entry: ConditionalEffect;
-  name: string;
   checked: boolean;
   onSelect: () => void;
   /** Display label override — used by the Adaptation picker to show the
@@ -374,7 +370,15 @@ interface RadioRowProps {
   labelOverride?: string;
 }
 
-function RadioRow({ power, entry, name, checked, onSelect, labelOverride }: RadioRowProps) {
+// NOTE: intentionally NO native `name` group on the radios. `checked` is a fully
+// controlled value derived from a single active id (activeStanceOptionId / the
+// group's active member), so React alone enforces mutual exclusivity. Sharing a
+// `name` makes the browser natively uncheck sibling radios on click, which
+// desyncs React's controlled `checked` tracking and left the newly-picked stance
+// visually unfilled until a second click (the "needs a double-click" bug). The
+// Header's stance picker avoids this by using <button>s; the row-level clear is
+// handled by the sibling ClearButton, so we don't rely on re-clicking a radio.
+function RadioRow({ power, entry, checked, onSelect, labelOverride }: RadioRowProps) {
   return (
     <div className="flex flex-col">
       <label
@@ -383,7 +387,6 @@ function RadioRow({ power, entry, name, checked, onSelect, labelOverride }: Radi
       >
         <input
           type="radio"
-          name={name}
           checked={checked}
           onChange={onSelect}
           className="accent-cyan-500 w-3 h-3"

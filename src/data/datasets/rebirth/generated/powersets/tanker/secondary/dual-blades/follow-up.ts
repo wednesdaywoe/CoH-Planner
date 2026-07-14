@@ -51,9 +51,9 @@ export const FollowUp: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
-      "scale": 32,
+      "scale": 24,
       "table": "Melee_Buff_Dmg",
-      "perTarget": 32
+      "perTarget": 24
     },
     "durations": {
       "damageBuff": 10,
@@ -64,9 +64,9 @@ export const FollowUp: Power = {
       "table": "Melee_InherentTaunt"
     },
     "tohitBuff": {
-      "scale": 1.33,
+      "scale": 1,
       "table": "Melee_Buff_ToHit",
-      "perTarget": 1.33
+      "perTarget": 1
     }
   },
   "conditionalEffects": [
@@ -78,8 +78,9 @@ export const FollowUp: Power = {
       "effects": {
         "buffDuration": 10,
         "damageBuff": {
-          "scale": 1,
-          "table": "Melee_Buff_Dmg"
+          "scale": 8,
+          "table": "Melee_Buff_Dmg",
+          "perTarget": 8
         },
         "durations": {
           "damageBuff": 10,
@@ -87,7 +88,8 @@ export const FollowUp: Power = {
         },
         "tohitBuff": {
           "scale": 0.33,
-          "table": "Melee_Buff_ToHit"
+          "table": "Melee_Buff_ToHit",
+          "perTarget": 0.33
         }
       }
     }

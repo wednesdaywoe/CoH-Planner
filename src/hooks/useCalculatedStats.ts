@@ -241,6 +241,58 @@ export function convertToLegacyStats(
 }
 
 // ============================================
+// SHARED CALCULATION CACHE
+// ============================================
+
+/**
+ * Cross-instance memo for the full character calculation.
+ *
+ * `useCharacterCalculation` is consumed by many *per-instance* components —
+ * every PowerRow (Bonus Cap rings), every PowerSlot (Rule-of-5 tracking), every
+ * PermaRing / PowerInfoTooltip — so a full build mounts ~150+ callers. React's
+ * `useMemo` is scoped to a single component instance and is NOT shared, so
+ * without this cache each of those instances would run the entire
+ * `calculateCharacterTotals` pipeline independently on every state change that
+ * touches a calc input (combat mode, procs, exemplar, adjuster sliders, a power
+ * toggle, an incarnate toggle). That N× redundant recompute is what produced
+ * the ~0.5-1s click stall (worse in Chrome, whose constant factor on this
+ * allocation-heavy path is higher).
+ *
+ * All mounted consumers read the same store values within one render pass, so a
+ * single-entry cache keyed on the exact dependency tuple collapses those N runs
+ * into one: the first caller computes, every other caller in the same pass (and
+ * until an input actually changes) reuses the result. Reference/`Object.is`
+ * equality on each dep — identical to what the per-instance `useMemo` compared —
+ * keeps it correct: any real input change misses the cache and recomputes once.
+ */
+let sharedCalcDeps: readonly unknown[] | null = null;
+let sharedCalcResult: CharacterCalculationResult | null = null;
+
+/** Test-only: clear the shared calc cache so cases don't leak into each other. */
+export function _resetSharedCalcCache(): void {
+  sharedCalcDeps = null;
+  sharedCalcResult = null;
+}
+
+export function getSharedCharacterCalculation(
+  deps: readonly unknown[],
+  compute: () => CharacterCalculationResult
+): CharacterCalculationResult {
+  if (
+    sharedCalcResult !== null &&
+    sharedCalcDeps !== null &&
+    sharedCalcDeps.length === deps.length &&
+    sharedCalcDeps.every((d, i) => Object.is(d, deps[i]))
+  ) {
+    return sharedCalcResult;
+  }
+  const result = compute();
+  sharedCalcDeps = deps;
+  sharedCalcResult = result;
+  return result;
+}
+
+// ============================================
 // MAIN HOOKS
 // ============================================
 
@@ -267,20 +319,26 @@ export function useCharacterCalculation(): CharacterCalculationResult {
   // When master Proc toggle is off, disable all proc categories
   const effectiveProcSettings = procsEnabled ? procSettings : ALL_PROCS_DISABLED;
 
+  // The per-instance useMemo skips work when THIS component re-renders with
+  // unchanged deps; the shared cache (keyed on the same dep tuple) skips the
+  // redundant recompute ACROSS the ~150 other instances in the same render pass.
   return useMemo(() => {
-    return calculateCharacterTotals(build, exemplarMode, incarnateActive, {
-      procSettings: effectiveProcSettings,
-      targetsHitValues,
-      exemplarLevel: exemplarMode ? exemplarLevel : undefined,
-      targetLevelOffset,
-      vigilanceTeamSize,
-      furyLevel,
-      incarnateLevelShiftActive,
-      combatMode,
-      globalAdjusters,
-      mechanicAdjusters,
-      destinyTime,
-    });
+    const deps = [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime] as const;
+    return getSharedCharacterCalculation(deps, () =>
+      calculateCharacterTotals(build, exemplarMode, incarnateActive, {
+        procSettings: effectiveProcSettings,
+        targetsHitValues,
+        exemplarLevel: exemplarMode ? exemplarLevel : undefined,
+        targetLevelOffset,
+        vigilanceTeamSize,
+        furyLevel,
+        incarnateLevelShiftActive,
+        combatMode,
+        globalAdjusters,
+        mechanicAdjusters,
+        destinyTime,
+      })
+    );
   }, [build, exemplarMode, exemplarLevel, incarnateActive, incarnateLevelShiftActive, effectiveProcSettings, targetsHitValues, targetLevelOffset, vigilanceTeamSize, furyLevel, combatMode, globalAdjusters, mechanicAdjusters, destinyTime]);
 }
 

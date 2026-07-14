@@ -2737,6 +2737,22 @@ function _collectBaseNegatedPredicates(effects) {
   return negated;
 }
 
+// classifyTemplateForStacking keys Regeneration/Recovery/Heal buffs as
+// regenBuff/recoveryBuff/healBuff, but extractEffects routes their IgnoreStrength
+// ("unenhanceable") copies to the *Unenhanced variant instead. When a conditional
+// group's effects landed on the Unenhanced key, move the matching per-foe patch
+// onto it so the merge lands on the real key rather than spawning a duplicate
+// enhanceable one (Evolving Armor's Efficient +Regen/+Recovery are unenhanceable).
+function _remapUnenhancedPatchKeys(patches, effects) {
+  for (const key of Object.keys(patches)) {
+    const unenh = `${key}Unenhanced`;
+    if (effects[key] === undefined && effects[unenh] !== undefined) {
+      patches[unenh] = patches[key];
+      delete patches[key];
+    }
+  }
+}
+
 function extractConditionalEffects(rawEffects, powerJson) {
   if (!rawEffects?.length) return undefined;
   const powersetKey = powerJson.powerset || powerJson.full_name;
@@ -2749,6 +2765,26 @@ function extractConditionalEffects(rawEffects, powerJson) {
   for (const [id, group] of groups) {
     const damage = extractDamage(group.templates);
     const effects = extractEffects(group.templates, powerJson.name);
+
+    // Per-foe (AoE) scaling for this gated group — the same Stack/Continuous →
+    // { scale, perTarget } model base effects get via detectStackingEffects.
+    // Without it a stance-gated per-foe buff (Evolving Armor's Defensive +Def,
+    // Efficient +Regen/+Recovery) collapses to just its per-foe increment (bag
+    // last-write-wins keeps the Continuous scale, dropping the Replace base),
+    // badly understating the stance bonus. Runs on the group's own templates
+    // (already gate-filtered by the grouping) with the power's AoE geometry.
+    if (effects && Object.keys(effects).length > 0) {
+      const perFoe = computeAoePerTargetPatches(
+        group.templates.map((t) => ({ template: t, tags: [], requires: '' })),
+        {
+          effectArea: EFFECT_AREA_MAP[powerJson.effect_area] ?? powerJson.effect_area,
+          maxTargets: powerJson.max_targets_hit,
+          selfIsCountedTarget: (powerJson.targets_affected || []).includes('Self'),
+        },
+      );
+      _remapUnenhancedPatchKeys(perFoe, effects);
+      if (Object.keys(perFoe).length) mergeStackingPatches(effects, { patches: perFoe });
+    }
 
     // Skip empty groups — a gated effect we couldn't classify into either
     // damage or recognized effects shouldn't pollute the array.
@@ -4791,40 +4827,53 @@ function detectSelfStacking(allTemplatesWithMeta, excludeKeys = new Set()) {
 }
 
 /**
- * Detect per-target stacking effects in a raw power JSON.
- * Analyzes Stack/Continuous templates and returns patches to merge into effects.
+ * Whether a template's `requires_expression` gate is one that
+ * `collectConditionalsGrouped` SURFACES as a `conditionalEffects` entry — Bio
+ * Armor's `kDefensiveAdaptation Source.Mode?`, power-presence (`…source.ownPower?`),
+ * kStealth, drowning, vs-type tags, etc. Only those templates get re-homed into a
+ * conditional (where their per-foe scaling is recomputed), so only those must be
+ * EXCLUDED from base per-target detection.
  *
- * Also detects Execute_Power redirect stacking for non-AoE powers
- * (e.g., Reactive Regeneration → maxStacks from number_allowed).
+ * This deliberately matches `_classifyConditionalGate`, NOT the broader
+ * `_isConditionalGate`: untoggleable gates the planner keeps in base — on-hit /
+ * force-hit (`@ToHitRoll`, Consume's per-foe endurance), `isPVPMap?` (Invincibility's
+ * PvE/PvP defense split), enttype/HasTag content checks — return null there and so
+ * stay in base, exactly as the pre-existing stacking pipeline treated them.
+ * Out-of-combat gates (combat-suppressed, kept in base) also stay.
  */
-function detectStackingEffects(rawJson) {
-  if (!rawJson.effects || rawJson.effects.length === 0) return null;
+function _isBaseExcludedGate(req, powersetKey) {
+  if (!req) return false;
+  if (_isOutOfCombatGate(req)) return false; // combat-gated stays in base
+  return _classifyConditionalGate(req, powersetKey) !== null;
+}
 
-  const allTemplatesWithMeta = collectTemplatesWithMeta(rawJson.effects);
+/**
+ * AoE per-target core — the Stack/Continuous/Replace → `{ scale, perTarget }`
+ * computation shared by base-effect detection (`detectStackingEffects`) and the
+ * per-conditional-group detection (`extractConditionalEffects`). Given a list of
+ * `{ template, tags, requires }` and the power's AoE geometry, returns the
+ * per-target patches for Self-targeted buffs.
+ *
+ * `aoeMeta`:
+ *   - effectArea: normalized ('AoE' | 'Cone' | …) — bin "Sphere" must already be
+ *     mapped through EFFECT_AREA_MAP (missing this dropped Invincibility's regen
+ *     perTarget).
+ *   - maxTargets: max_targets_hit (must be > 1 and != 255 = team-wide).
+ *   - selfIsCountedTarget: whether Self is in targets_affected. When true the
+ *     N=1 slot is self, so a per-target increment whose `requires` excludes self
+ *     (target ≠ source) does NOT apply at N=1 → the N=1 value is the bare base
+ *     (Phalanx Fighting). Foe auras (Invincibility, Evolving Armor) never count
+ *     self, so N=1 already carries one increment.
+ */
+function computeAoePerTargetPatches(templatesWithMeta, aoeMeta) {
   const patches = {};
-  let maxStacks = null;
-
-  // === AoE per-target stacking (Stack/Continuous + Replace) ===
-  // Only for AoE/Cone powers with maxTargets > 1 (not 255 = team-wide).
-  // Normalize through EFFECT_AREA_MAP — bin format uses "Sphere" for what
-  // the planner calls "AoE", and missing this normalization here was the
-  // cause of Invincibility losing its perTarget metadata on regen.
-  const effectArea = EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area;
-  const maxTargets = rawJson.max_targets_hit;
-  const isAoEWithTargets = (effectArea === 'AoE' || effectArea === 'Cone') &&
-    maxTargets && maxTargets > 1 && maxTargets !== 255;
-
-  // Whether self is one of the AoE's counted targets. When true, the first
-  // target slot (N=1) is self; a per-target increment whose `requires`
-  // excludes self (target ≠ source) therefore does NOT apply at N=1, so the
-  // N=1 value is the bare base. Ally/self auras (Phalanx Fighting) hit this;
-  // foe auras (Invincibility, Soul Drain, Energy Absorption) do not, because
-  // self is never in their target set — there the first target is a foe that
-  // does carry the increment. See combinedScale below.
-  const selfIsCountedTarget = (rawJson.targets_affected || []).includes('Self');
+  const isAoEWithTargets = (aoeMeta.effectArea === 'AoE' || aoeMeta.effectArea === 'Cone') &&
+    aoeMeta.maxTargets && aoeMeta.maxTargets > 1 && aoeMeta.maxTargets !== 255;
+  if (!isAoEWithTargets) return patches;
+  const selfIsCountedTarget = aoeMeta.selfIsCountedTarget;
 
   const selfBuffs = [];
-  if (isAoEWithTargets) for (const { template, tags, requires } of allTemplatesWithMeta) {
+  for (const { template, tags, requires } of templatesWithMeta) {
     if (template.target !== 'Self') continue;
     // Stack/Continuous/RefreshToCount are per-target increments; Replace is the
     // always-on base. RefreshToCount is the accumulate-per-foe self-buff behind
@@ -4832,7 +4881,7 @@ function detectStackingEffects(rawJson) {
     if (template.stack !== 'Stack' && template.stack !== 'Continuous'
         && template.stack !== 'Replace' && template.stack !== 'RefreshToCount') continue;
 
-    const isDefiance = tags.some(t =>
+    const isDefiance = (tags || []).some(t =>
       typeof t === 'string' && t.toLowerCase().includes('defiance')
     );
 
@@ -4873,13 +4922,7 @@ function detectStackingEffects(rawJson) {
     const perTarget = stackScale;
 
     // `scale` is the value at N=1 (one target hit). The downstream calc applies
-    // `scale + perTarget × (N − 1)`. Whether the first target carries an
-    // increment depends on the aura's geometry:
-    //   - Foe auras (Invincibility, Soul Drain): the 1 target is a foe that
-    //     contributes → N=1 value = base + one increment.
-    //   - Self-counted ally auras (Phalanx Fighting): the 1 target is self,
-    //     and the increment's `requires` excludes self → N=1 value = base only,
-    //     so a soloist sees the always-on base (matches the live/Mids default).
+    // `scale + perTarget × (N − 1)`. See selfIsCountedTarget above.
     const firstTargetExcluded = selfIsCountedTarget && stacks.every(e => e.excludesSelf);
     const combinedScale = firstTargetExcluded ? replaceScale : replaceScale + stackScale;
 
@@ -4891,6 +4934,43 @@ function detectStackingEffects(rawJson) {
       patches[firstEntry.effectKey] = { scale: combinedScale, table, perTarget };
     }
   }
+  return patches;
+}
+
+/**
+ * Detect per-target stacking effects in a raw power JSON.
+ * Analyzes Stack/Continuous templates and returns patches to merge into effects.
+ *
+ * Also detects Execute_Power redirect stacking for non-AoE powers
+ * (e.g., Reactive Regeneration → maxStacks from number_allowed).
+ */
+function detectStackingEffects(rawJson) {
+  if (!rawJson.effects || rawJson.effects.length === 0) return null;
+
+  const allTemplatesWithMeta = collectTemplatesWithMeta(rawJson.effects);
+  // Mode/state-gated templates (Bio Armor's Defensive/Efficient per-foe buffs,
+  // Domination boosts, …) are surfaced as `conditionalEffects`, not base — the
+  // base template collector (collectTemplatesDeep) already excludes them from
+  // base extractEffects. The per-target detector historically did NOT, folding
+  // their perTarget scaling into the always-on base (Evolving Armor granting
+  // defense/regen in EVERY stance). Mirror the base collector here so the gated
+  // per-foe scaling rides its stance conditional (see extractConditionalEffects)
+  // instead of leaking into base.
+  const stackingPowersetKey = rawJson.powerset || rawJson.full_name;
+  const baseTemplatesWithMeta = allTemplatesWithMeta.filter(
+    (m) => !_isBaseExcludedGate(m.requires, stackingPowersetKey),
+  );
+
+  // === AoE per-target stacking (Stack/Continuous + Replace) ===
+  const aoeMeta = {
+    // Normalize through EFFECT_AREA_MAP — bin format uses "Sphere" for what the
+    // planner calls "AoE".
+    effectArea: EFFECT_AREA_MAP[rawJson.effect_area] ?? rawJson.effect_area,
+    maxTargets: rawJson.max_targets_hit,
+    selfIsCountedTarget: (rawJson.targets_affected || []).includes('Self'),
+  };
+  const patches = computeAoePerTargetPatches(baseTemplatesWithMeta, aoeMeta);
+  let maxStacks = null;
 
   // === Execute_Power redirect stacking (multi-level) ===
   // Handles two patterns under one rule:
@@ -4903,7 +4983,7 @@ function detectStackingEffects(rawJson) {
   //
   // Rule: kind is 'perTarget' when the outer Execute_Power targets AnyAffected
   // OR the redirect declares number_allowed > 1; otherwise 'base'.
-  for (const { template } of allTemplatesWithMeta) {
+  for (const { template } of baseTemplatesWithMeta) {
     const attrib = template.attribs && template.attribs[0] ? template.attribs[0].toLowerCase() : null;
     if (attrib !== 'execute_power') continue;
     if (template.stack !== 'Stack') continue;
@@ -4957,7 +5037,7 @@ function detectStackingEffects(rawJson) {
   // must not be BOTH perTarget and stacksLinear or the InfoPanel double-scales it
   // (Consume Psyche's regen/recovery are perTarget; without this they'd also be
   // stacksLinear → ~N² at 10 foes).
-  const selfStacking = detectSelfStacking(allTemplatesWithMeta, new Set(Object.keys(patches)));
+  const selfStacking = detectSelfStacking(baseTemplatesWithMeta, new Set(Object.keys(patches)));
   let stacksLinear = null;
   let stackCaps = null;
   if (selfStacking) {

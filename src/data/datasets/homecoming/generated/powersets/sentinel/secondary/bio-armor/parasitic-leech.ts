@@ -49,23 +49,23 @@ export const ParasiticLeech: Power = {
       "regenDebuff": 30
     },
     "recoveryBuff": {
-      "scale": 0.558,
+      "scale": 0.429,
       "table": "Melee_Ones",
-      "perTarget": 0.558
+      "perTarget": 0.429
     },
     "regenBuff": {
-      "scale": 0.9279999999999999,
+      "scale": 0.714,
       "table": "Melee_Ones",
-      "perTarget": 0.9279999999999999
+      "perTarget": 0.714
     },
     "regenDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
     },
     "absorb": {
-      "scale": 0.186,
+      "scale": 0.143,
       "table": "Melee_Ones",
-      "perTarget": 0.186
+      "perTarget": 0.143
     }
   },
   "conditionalEffects": [
@@ -99,11 +99,13 @@ export const ParasiticLeech: Power = {
         },
         "recoveryBuffUnenhanced": {
           "scale": 0.129,
-          "table": "Melee_Ones"
+          "table": "Melee_Ones",
+          "perTarget": 0.129
         },
         "regenBuffUnenhanced": {
           "scale": 0.214,
-          "table": "Melee_Ones"
+          "table": "Melee_Ones",
+          "perTarget": 0.214
         }
       },
       "group": "adaptation"
@@ -122,6 +124,11 @@ export const ParasiticLeech: Power = {
         "durations": {
           "absorb": 45,
           "damageDebuff": 30
+        },
+        "absorb": {
+          "scale": 0.043,
+          "table": "Melee_Ones",
+          "perTarget": 0.043
         }
       },
       "group": "adaptation"

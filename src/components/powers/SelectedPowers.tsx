@@ -125,24 +125,8 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
     );
   }
 
-  // Get powerset to look up sub-powers
-  const powerset = getPowerset(powersetId);
-
-  const getSubPowers = (parentPowerName: string): Power[] => {
-    if (!powerset || !hasGrantedPowers(parentPowerName)) return [];
-    const group = getGrantedPowerGroup(parentPowerName);
-    if (!group || group.slottable) return []; // Slottable sub-powers are rendered differently
-    return powerset.powers.filter(p =>
-      group.grantedPowers.includes(p.internalName) &&
-      // A stance only belongs to THIS parent if it actually requires it. Bio
-      // Armor's form-switcher is internally "Evolution" on Scrapper/Brute/Tanker
-      // (which also have a separate internal-"Adaptation" +Res toggle) but
-      // "Adaptation" on Stalker/Sentinel — the requires check keeps the stance
-      // chips on the real switcher in every archetype. Powers without a
-      // `requires` (e.g. Boomerang Slice) keep their existing behavior.
-      (!p.requires || p.requires.endsWith(`.${parentPowerName}`))
-    );
-  };
+  const getSubPowers = (parentPowerName: string): Power[] =>
+    getGrantedStanceSubPowers(parentPowerName, powersetId);
 
   /** Get slottable sub-powers from the build (form sub-powers like Bright Nova Bolt) */
   const getSlottableSubPowers = (parentPowerName: string): SelectedPower[] => {
@@ -294,6 +278,31 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
 // GRANTED SUB-POWERS COMPONENT
 // ============================================
 
+/**
+ * The non-slottable granted sub-powers (stance chips like Bio Armor's
+ * Defensive/Offensive/Efficient Adaptation) that belong to `parentPowerName`
+ * within `powersetId`. Slottable granted groups (Kheldian forms) are rendered
+ * differently and excluded here. Shared by both the "By Powerset" list
+ * (SelectedPowers) and the "By Level" grid (ChronologicalPowerSlot).
+ */
+export function getGrantedStanceSubPowers(parentPowerName: string, powersetId: string): Power[] {
+  if (!hasGrantedPowers(parentPowerName)) return [];
+  const group = getGrantedPowerGroup(parentPowerName);
+  if (!group || group.slottable) return [];
+  const powerset = getPowerset(powersetId);
+  if (!powerset) return [];
+  return powerset.powers.filter(p =>
+    group.grantedPowers.includes(p.internalName) &&
+    // A stance only belongs to THIS parent if it actually requires it. Bio
+    // Armor's form-switcher is internally "Evolution" on Scrapper/Brute/Tanker
+    // (which also have a separate internal-"Adaptation" +Res toggle) but
+    // "Adaptation" on Stalker/Sentinel — the requires check keeps the stance
+    // chips on the real switcher in every archetype. Powers without a
+    // `requires` (e.g. Boomerang Slice) keep their existing behavior.
+    (!p.requires || p.requires.endsWith(`.${parentPowerName}`))
+  );
+}
+
 interface GrantedSubPowersProps {
   subPowers: Power[];
   parentPower: SelectedPower;
@@ -307,7 +316,7 @@ interface GrantedSubPowersProps {
  * Displays granted sub-powers below a parent power
  * For mutually exclusive powers (like Adaptation stances), shows radio-style selection
  */
-function GrantedSubPowers({
+export function GrantedSubPowers({
   subPowers,
   powersetName: _powersetName,
   isMutuallyExclusive,

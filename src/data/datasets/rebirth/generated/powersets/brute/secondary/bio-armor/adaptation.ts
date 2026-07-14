@@ -45,44 +45,44 @@ export const Adaptation: Power = {
     },
     "resistance": {
       "cold": {
-        "scale": 0.5368999999999999,
+        "scale": 0.413,
         "table": "Melee_Res_Dmg",
-        "perTarget": 0.0494
+        "perTarget": 0.038
       },
       "energy": {
-        "scale": 0.5368999999999999,
+        "scale": 0.413,
         "table": "Melee_Res_Dmg",
-        "perTarget": 0.0494
+        "perTarget": 0.038
       },
       "fire": {
-        "scale": 0.5368999999999999,
+        "scale": 0.413,
         "table": "Melee_Res_Dmg",
-        "perTarget": 0.0494
+        "perTarget": 0.038
       },
       "lethal": {
-        "scale": 0.7150000000000001,
+        "scale": 0.55,
         "table": "Melee_Res_Dmg",
-        "perTarget": 0.065
+        "perTarget": 0.05
       },
       "negative": {
-        "scale": 0.5368999999999999,
+        "scale": 0.413,
         "table": "Melee_Res_Dmg",
-        "perTarget": 0.0494
+        "perTarget": 0.038
       },
       "psionic": {
-        "scale": 0.429,
+        "scale": 0.32999999999999996,
         "table": "Melee_Res_Dmg",
-        "perTarget": 0.039
+        "perTarget": 0.03
       },
       "smashing": {
-        "scale": 0.7150000000000001,
+        "scale": 0.55,
         "table": "Melee_Res_Dmg",
-        "perTarget": 0.065
+        "perTarget": 0.05
       },
       "toxic": {
-        "scale": 0.7150000000000001,
+        "scale": 0.55,
         "table": "Melee_Res_Dmg",
-        "perTarget": 0.065
+        "perTarget": 0.05
       }
     },
     "resistanceDebuff": {
@@ -122,53 +122,6 @@ export const Adaptation: Power = {
     "taunt": {
       "scale": 1,
       "table": "Melee_InherentTaunt"
-    },
-    "regenBuff": {
-      "scale": 0.3,
-      "table": "Melee_Ones",
-      "perTarget": 0.05
-    },
-    "recoveryBuff": {
-      "scale": 0.2,
-      "table": "Melee_Ones",
-      "perTarget": 0.05
-    },
-    "defenseBuff": {
-      "smashing": {
-        "scale": 0.42,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.045
-      },
-      "lethal": {
-        "scale": 0.42,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.045
-      },
-      "fire": {
-        "scale": 0.31360000000000005,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.0336
-      },
-      "cold": {
-        "scale": 0.31360000000000005,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.0336
-      },
-      "energy": {
-        "scale": 0.31360000000000005,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.0336
-      },
-      "negative": {
-        "scale": 0.31360000000000005,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.0336
-      },
-      "psionic": {
-        "scale": 0.224,
-        "table": "Melee_Buff_Def",
-        "perTarget": 0.024
-      }
     }
   },
   "conditionalEffects": [
@@ -185,11 +138,13 @@ export const Adaptation: Power = {
         },
         "recoveryBuffUnenhanced": {
           "scale": 0.2,
-          "table": "Melee_Ones"
+          "table": "Melee_Ones",
+          "perTarget": 0.05
         },
         "regenBuffUnenhanced": {
           "scale": 0.3,
-          "table": "Melee_Ones"
+          "table": "Melee_Ones",
+          "perTarget": 0.05
         }
       },
       "group": "adaptation"
@@ -250,32 +205,39 @@ export const Adaptation: Power = {
         "buffDuration": 0.75,
         "defenseBuff": {
           "cold": {
-            "scale": 0.0336,
-            "table": "Melee_Buff_Def"
+            "scale": 0.31360000000000005,
+            "table": "Melee_Buff_Def",
+            "perTarget": 0.0336
           },
           "energy": {
-            "scale": 0.0336,
-            "table": "Melee_Buff_Def"
+            "scale": 0.31360000000000005,
+            "table": "Melee_Buff_Def",
+            "perTarget": 0.0336
           },
           "fire": {
-            "scale": 0.0336,
-            "table": "Melee_Buff_Def"
+            "scale": 0.31360000000000005,
+            "table": "Melee_Buff_Def",
+            "perTarget": 0.0336
           },
           "lethal": {
-            "scale": 0.045,
-            "table": "Melee_Buff_Def"
+            "scale": 0.42,
+            "table": "Melee_Buff_Def",
+            "perTarget": 0.045
           },
           "negative": {
-            "scale": 0.0336,
-            "table": "Melee_Buff_Def"
+            "scale": 0.31360000000000005,
+            "table": "Melee_Buff_Def",
+            "perTarget": 0.0336
           },
           "psionic": {
-            "scale": 0.024,
-            "table": "Melee_Buff_Def"
+            "scale": 0.224,
+            "table": "Melee_Buff_Def",
+            "perTarget": 0.024
           },
           "smashing": {
-            "scale": 0.045,
-            "table": "Melee_Buff_Def"
+            "scale": 0.42,
+            "table": "Melee_Buff_Def",
+            "perTarget": 0.045
           }
         },
         "durations": {
@@ -284,36 +246,44 @@ export const Adaptation: Power = {
         },
         "resistance": {
           "cold": {
-            "scale": 0.0114,
-            "table": "Melee_Res_Dmg"
+            "scale": 0.12390000000000001,
+            "table": "Melee_Res_Dmg",
+            "perTarget": 0.0114
           },
           "energy": {
-            "scale": 0.0114,
-            "table": "Melee_Res_Dmg"
+            "scale": 0.12390000000000001,
+            "table": "Melee_Res_Dmg",
+            "perTarget": 0.0114
           },
           "fire": {
-            "scale": 0.0114,
-            "table": "Melee_Res_Dmg"
+            "scale": 0.12390000000000001,
+            "table": "Melee_Res_Dmg",
+            "perTarget": 0.0114
           },
           "lethal": {
-            "scale": 0.015,
-            "table": "Melee_Res_Dmg"
+            "scale": 0.16499999999999998,
+            "table": "Melee_Res_Dmg",
+            "perTarget": 0.015
           },
           "negative": {
-            "scale": 0.0114,
-            "table": "Melee_Res_Dmg"
+            "scale": 0.12390000000000001,
+            "table": "Melee_Res_Dmg",
+            "perTarget": 0.0114
           },
           "psionic": {
-            "scale": 0.009,
-            "table": "Melee_Res_Dmg"
+            "scale": 0.09899999999999999,
+            "table": "Melee_Res_Dmg",
+            "perTarget": 0.009
           },
           "smashing": {
-            "scale": 0.015,
-            "table": "Melee_Res_Dmg"
+            "scale": 0.16499999999999998,
+            "table": "Melee_Res_Dmg",
+            "perTarget": 0.015
           },
           "toxic": {
-            "scale": 0.015,
-            "table": "Melee_Res_Dmg"
+            "scale": 0.16499999999999998,
+            "table": "Melee_Res_Dmg",
+            "perTarget": 0.015
           }
         }
       },

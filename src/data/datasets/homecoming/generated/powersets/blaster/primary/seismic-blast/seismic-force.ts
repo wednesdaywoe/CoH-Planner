@@ -46,10 +46,6 @@ export const SeismicForce: Power = {
     "tohitBuff": {
       "scale": 5,
       "table": "Melee_Buff_ToHit"
-    },
-    "maxStacks": 2,
-    "stacksLinear": [
-      "specialBuff"
-    ]
+    }
   }
 };

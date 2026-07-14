@@ -77,14 +77,14 @@ export const DNASiphon: Power = {
       "perTarget": 5
     },
     "recoveryBuff": {
-      "scale": 0.21875,
+      "scale": 0.125,
       "table": "Melee_Ones",
-      "perTarget": 0.21875
+      "perTarget": 0.125
     },
     "regenBuff": {
-      "scale": 0.26,
+      "scale": 0.2,
       "table": "Melee_Ones",
-      "perTarget": 0.26
+      "perTarget": 0.2
     },
     "regenDebuff": {
       "scale": 1,
@@ -118,11 +118,13 @@ export const DNASiphon: Power = {
         },
         "recoveryBuffUnenhanced": {
           "scale": 0.09375,
-          "table": "Melee_Ones"
+          "table": "Melee_Ones",
+          "perTarget": 0.09375
         },
         "regenBuffUnenhanced": {
           "scale": 0.06,
-          "table": "Melee_Ones"
+          "table": "Melee_Ones",
+          "perTarget": 0.06
         }
       },
       "group": "adaptation"

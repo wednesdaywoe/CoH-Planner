@@ -8,9 +8,10 @@
 import { useState, useMemo, useCallback } from 'react';
 import { useBuildStore } from '@/stores';
 import { GRANTED_POWER_GROUPS } from '@/data';
-import type { SelectedPower } from '@/types';
+import type { Power, SelectedPower } from '@/types';
 import { ChronologicalPowerSlot } from './ChronologicalPowerSlot';
 import { ChronologicalInherentsSection } from './ChronologicalInherentsSection';
+import { getGrantedStanceSubPowers } from './SelectedPowers';
 
 // Power category for color coding
 export type PowerCategory = 'primary' | 'secondary' | 'pool' | 'epic';
@@ -23,6 +24,10 @@ export interface CategorizedPower extends SelectedPower {
   // Bright Nova Bolt). These don't consume a power pick, so they're rendered
   // nested under the parent toggle's slot rather than getting their own slot.
   slottableSubPowers?: SelectedPower[];
+  // Non-slottable granted stance chips (Bio Armor's Defensive/Offensive/Efficient
+  // Adaptation). Rendered as selectable chips under the parent — mirroring the
+  // "By Powerset" layout so the active stance is switchable in the By-Level grid.
+  stanceSubPowers?: Power[];
 }
 
 // Drag state shared across all slots during a drag operation
@@ -151,12 +156,22 @@ function useChronologicalPowers() {
 
     // Collect primary powers (exclude auto-granted form sub-powers)
     build.primary.powers.filter(p => !p.isAutoGranted).forEach((p) => {
-      allPowers.push({ ...p, category: 'primary', slottableSubPowers: slottableSubsOf(build.primary.powers, p.internalName) });
+      allPowers.push({
+        ...p,
+        category: 'primary',
+        slottableSubPowers: slottableSubsOf(build.primary.powers, p.internalName),
+        stanceSubPowers: getGrantedStanceSubPowers(p.internalName, p.powerSet || build.primary.id || ''),
+      });
     });
 
     // Collect secondary powers (exclude auto-granted form sub-powers)
     build.secondary.powers.filter(p => !p.isAutoGranted).forEach((p) => {
-      allPowers.push({ ...p, category: 'secondary', slottableSubPowers: slottableSubsOf(build.secondary.powers, p.internalName) });
+      allPowers.push({
+        ...p,
+        category: 'secondary',
+        slottableSubPowers: slottableSubsOf(build.secondary.powers, p.internalName),
+        stanceSubPowers: getGrantedStanceSubPowers(p.internalName, p.powerSet || build.secondary.id || ''),
+      });
     });
 
     // Collect pool powers

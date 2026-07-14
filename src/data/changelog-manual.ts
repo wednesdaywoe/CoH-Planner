@@ -30,6 +30,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Fix for DoT damage being overstated; this was widespread', type: 'fix'},
       { message: 'Fix for Rebirth\'s Tanker Martial Prowess epic pool, Art of War was listed as the first selectable power instead of Throwing Dagger and Battle Hardened', type: 'fix'},
       { message: 'Added buff-pet aura toggle and calculations for character totals', type: 'feat'},
+      { message: 'Fixed Bio Armor adaptations leaking into base powers — Evolving Armor\'s defense (Defensive) and regen/recovery (Efficient) now apply only in their stance, at full value', type: 'fix'},
+      { message: 'Fixed the stance picker in the power info window needing a double-click to fill in the selected adaptation', type: 'fix'},
+      { message: 'Adaptations now show as sub-powers of Adaptation in the By-Level layout, matching By-Powerset', type: 'fix'},
     ]
   },
   {

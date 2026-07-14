@@ -41,9 +41,9 @@ export const ParasiticAura: Power = {
   "maxSlots": 6,
   "effects": {
     "absorb": {
-      "scale": 2.133,
+      "scale": 1.1,
       "table": "Melee_Ones",
-      "perTarget": 2.133
+      "perTarget": 1.1
     },
     "buffDuration": 45,
     "damageDebuff": {
@@ -57,14 +57,14 @@ export const ParasiticAura: Power = {
       "regenBuff": 45
     },
     "recoveryBuff": {
-      "scale": 0.425,
+      "scale": 0.3,
       "table": "Melee_Ones",
-      "perTarget": 0.425
+      "perTarget": 0.3
     },
     "regenBuff": {
-      "scale": 0.65,
+      "scale": 0.5,
       "table": "Melee_Ones",
-      "perTarget": 0.65
+      "perTarget": 0.5
     }
   },
   "conditionalEffects": [
@@ -81,11 +81,13 @@ export const ParasiticAura: Power = {
         },
         "recoveryBuffUnenhanced": {
           "scale": 0.125,
-          "table": "Melee_Ones"
+          "table": "Melee_Ones",
+          "perTarget": 0.125
         },
         "regenBuffUnenhanced": {
           "scale": 0.15,
-          "table": "Melee_Ones"
+          "table": "Melee_Ones",
+          "perTarget": 0.15
         }
       },
       "group": "adaptation"
@@ -97,8 +99,9 @@ export const ParasiticAura: Power = {
       "defaultActive": false,
       "effects": {
         "absorb": {
-          "scale": 0.033,
-          "table": "Melee_Ones"
+          "scale": 1.033,
+          "table": "Melee_Ones",
+          "perTarget": 1.033
         },
         "buffDuration": 45,
         "damageDebuff": {

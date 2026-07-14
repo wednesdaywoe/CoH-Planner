@@ -9,11 +9,12 @@
 import { useBuildStore, useUIStore } from '@/stores';
 import { useShowSlotLevels } from '@/stores/uiStore';
 import type { PowerCategory as StorePowerCategory } from '@/stores';
-import { getPowerIconPath } from '@/data';
+import { getPowerIconPath, getGrantedPowerGroup } from '@/data';
 import { useSlotLevels } from '@/hooks';
 import { powerKey } from '@/utils/power-key';
 import { PowerRow } from './PowerRow';
 import { shouldShowToggle } from './power-row-utils';
+import { GrantedSubPowers } from './SelectedPowers';
 import type { CategorizedPower, PowerCategory, DragState } from './ChronologicalPowerView';
 
 // Category colors for left border
@@ -68,6 +69,7 @@ export function ChronologicalPowerSlot({
   const removeSlot = useBuildStore((s) => s.removeSlot);
   const clearEnhancement = useBuildStore((s) => s.clearEnhancement);
   const togglePowerActive = useBuildStore((s) => s.togglePowerActive);
+  const setActiveSubPower = useBuildStore((s) => s.setActiveSubPower);
   const movePowerLevel = useBuildStore((s) => s.movePowerLevel);
   const swapPowerLevels = useBuildStore((s) => s.swapPowerLevels);
   const setInfoPanelContent = useUIStore((s) => s.setInfoPanelContent);
@@ -348,6 +350,21 @@ export function ChronologicalPowerSlot({
             );
           })}
         </div>
+      )}
+
+      {/* Non-slottable granted stance chips (Bio Armor Adaptation's Defensive/
+          Offensive/Efficient). Auto-granted and don't occupy a slot, so they
+          render as selectable chips under the parent — mirroring the "By
+          Powerset" layout so the active stance is switchable here too. */}
+      {power.stanceSubPowers && power.stanceSubPowers.length > 0 && (
+        <GrantedSubPowers
+          subPowers={power.stanceSubPowers}
+          parentPower={power}
+          powersetName={power.powerSet}
+          isMutuallyExclusive={getGrantedPowerGroup(power.internalName)?.mutuallyExclusive ?? false}
+          activeSubPower={power.activeSubPower}
+          onSetActive={(subPowerName) => setActiveSubPower(power.internalName, subPowerName)}
+        />
       )}
     </div>
   );
