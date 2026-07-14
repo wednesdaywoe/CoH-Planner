@@ -155,6 +155,26 @@
       "hash": "abe16c708e81",
       "date": "2026-07-13",
       "preview": "Added buff-pet aura toggle and calculations for character totals"
+    },
+    {
+      "hash": "b2282948b1c0",
+      "date": "2026-07-14",
+      "preview": "Fixed a slowdown on completed builds where toggling powers, adjusting sliders, o"
+    },
+    {
+      "hash": "0962c8f9d93d",
+      "date": "2026-07-14",
+      "preview": "Adaptations now show as sub-powers of Adaptation in the By-Level layout, matchin"
+    },
+    {
+      "hash": "c8c812d5e681",
+      "date": "2026-07-14",
+      "preview": "Fixed Bio Armor adaptations leaking into base powers — Evolving Armor's defense "
+    },
+    {
+      "hash": "80b46bd2b07e",
+      "date": "2026-07-14",
+      "preview": "Fixed the stance picker in the power info window needing a double-click to fill "
     }
   ]
 }

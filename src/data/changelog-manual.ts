@@ -24,6 +24,13 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-07-14',
 
     items: [
+      { message: 'Dear writer who wrote this gem: "Change how people log in. Your system of logging in sucks." Here is my sincere response: 🖕', type: 'feat' },
+    ]
+  },
+  {
+    date: '2026-07-14',
+
+    items: [
       { message: 'Fixed a slowdown on completed builds where toggling powers, adjusting sliders, or swapping enhancements had a ~0.5–1s delay before updating. The character totals were being recalculated once per power/slot instead of a single shared time. Most noticeable in Chrome.', type: 'fix'},
       { message: 'Adaptations now show as sub-powers of Adaptation in the By-Level layout, matching By-Powerset', type: 'fix'},
       { message: 'Fixed Bio Armor adaptations leaking into base powers — Evolving Armor\'s defense (Defensive) and regen/recovery (Efficient) now apply only in their stance, at full value', type: 'fix'},
