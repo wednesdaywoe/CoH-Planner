@@ -40,7 +40,14 @@ export const WildRoar: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,-100,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,-100,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.5,1,30,"Melee_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode?"],
+    ["Unmapped",null,2.25,1,30,"Melee_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode?"],
+    ["Unmapped",null,3.375,1,30,"Melee_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode?"],
+    ["Mez","Terrorized",12,4,0,"Melee_Fear","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kProwlerMode Source.Mode? &&"],
+    ["Mez","Terrorized",3,3,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kProwlerMode Source.Mode? &&"],
+    ["Mez","Terrorized",10,3,0,"Melee_Fear","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kHunterMode Source.Mode? &&"],
+    ["Mez","Terrorized",2,3,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kHunterMode Source.Mode? &&"]
   ],
   "conditionalEffects": [
     {

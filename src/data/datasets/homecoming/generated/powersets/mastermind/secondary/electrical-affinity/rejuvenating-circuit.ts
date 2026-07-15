@@ -46,6 +46,7 @@ export const RejuvenatingCircuit: Power = {
   },
   "atoms": [
     ["Heal",null,1.55,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Heal",null,0.41,1,0,"Ranged_Heal","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1]
   ]
 };

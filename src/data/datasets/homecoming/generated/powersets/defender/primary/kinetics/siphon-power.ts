@@ -64,6 +64,7 @@ export const SiphonPower: Power = {
     ["DamageBuff","Energy",2,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Negative",2,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",2,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Toxic",2,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+    ["DamageBuff","Toxic",2,1,30,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1]
   ]
 };

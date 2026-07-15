@@ -55,6 +55,8 @@ export const SonicRepulsion: Power = {
   },
   "atoms": [
     ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1.100000023841858,null,true,null,null,null,null,"enttype target> critter eq"]
+    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1.100000023841858,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",3,0,0.5,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"]
   ]
 };

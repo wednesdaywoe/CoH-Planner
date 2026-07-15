@@ -83,7 +83,8 @@ export const Dodge: Power = {
     ["Resistance","Fire",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Cold",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Energy",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Resistance","Negative",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Resistance","Negative",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",0,1,0.75,"Melee_Ones","Res","Expression","Self","PvP",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

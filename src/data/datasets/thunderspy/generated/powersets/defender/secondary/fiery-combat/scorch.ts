@@ -54,7 +54,8 @@ export const Scorch: Power = {
   ],
   "atoms": [
     ["Unmapped",null,1.48,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.2,1,1.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
+    ["Unmapped",null,0.2,1,1.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,1.74,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
   ],
   "requires": "Defender_Ranged.Fire_Blast.Fire_Blast !"
 };

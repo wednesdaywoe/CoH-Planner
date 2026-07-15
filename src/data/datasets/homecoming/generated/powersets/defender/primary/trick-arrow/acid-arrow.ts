@@ -104,6 +104,14 @@ export const AcidArrow: Power = {
     ["Regeneration",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
     ["Recovery",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
-    ["EnduranceDiscount",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true]
+    ["EnduranceDiscount",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
+    ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1],
+    ["HealResistance",null,2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["EnduranceDiscount",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true]
   ]
 };

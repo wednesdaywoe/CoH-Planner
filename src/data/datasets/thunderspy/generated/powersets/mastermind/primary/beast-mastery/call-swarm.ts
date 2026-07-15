@@ -54,6 +54,7 @@ export const CallSwarm: Power = {
     ["Unmapped",null,0.264,1,1.5,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.375,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.2,1,8,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.3199999928474426,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !"]
+    ["Unmapped",null,1,0.3199999928474426,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !"],
+    ["Unmapped",null,0.368199,1,1.5,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.375,1,null,null,null,null,null,null,"enttype target> player eq"]
   ]
 };

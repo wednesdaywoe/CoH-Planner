@@ -107,7 +107,10 @@ export const StoneSkin: Power = {
     ["Defense","Fire",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Cold",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Energy",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Defense","Negative",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+    ["Defense","Negative",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Toxic",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1]
   ],
   "requires": "Brute_Melee.Claws !",
   "mechanicType": "parentMechanic"

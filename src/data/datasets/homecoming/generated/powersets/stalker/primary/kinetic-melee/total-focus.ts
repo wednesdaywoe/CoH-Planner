@@ -89,7 +89,15 @@ export const TotalFocus: Power = {
     ["DamageBuff","Negative",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.7,1,12,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Damage","Energy",1.1867,1,3,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&"],
+    ["Damage","Energy",1.1867,1,3,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&"],
+    ["Damage","Energy",0.5171,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1],
+    ["Damage","Energy",1.1724,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",0.8624,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",1.023,1,3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&"],
+    ["Damage","Energy",1.023,1,3,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.100000023841858,0.20000000298023224,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&"]
   ],
   "specialEffects": [
     {

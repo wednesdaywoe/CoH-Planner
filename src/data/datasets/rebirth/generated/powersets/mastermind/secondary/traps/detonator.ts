@@ -39,6 +39,7 @@ export const Detonator: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq Human target.HasTag? ! &&"]
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq Human target.HasTag? ! &&"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"group target> MastermindPets eq Human target.HasTag? &&"]
   ]
 };

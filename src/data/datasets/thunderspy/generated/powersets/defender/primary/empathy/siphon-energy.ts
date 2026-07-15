@@ -35,6 +35,8 @@ export const SiphonEnergy: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,1,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,1,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-30,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? ! Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&"],
+    ["Unmapped",null,3,1,5,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? Defender_Buff.Empathy.Clear_Mind source.ownPower? Controller_Buff.Empathy.Clear_Mind source.ownPower? || &&"]
   ]
 };

@@ -49,6 +49,8 @@ export const Transference: Power = {
   },
   "atoms": [
     ["Endurance",null,40,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Endurance",null,-0.45,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+    ["Endurance",null,-0.45,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,-16.67,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
   ]
 };

@@ -72,7 +72,10 @@ export const InstantRegeneration: Power = {
     ["Regeneration",null,0.055,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat"],
     ["Endurance",null,0.03,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat"],
     ["Recovery",null,0.03,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat"],
-    ["GlobalChanceMod",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat"]
+    ["GlobalChanceMod",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat"],
+    ["Regeneration",null,0.8,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvP",false,"Refresh",2,null,null,1,null,true],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,"OutOfCombat","MissByOther source.EventTimeSince> 2 <= kRegenerationMoG Source.Mode? && Damaged source.EventTimeSince> 2 <= ||"]
   ],
   "requires": "Scrapper_Defense.Regeneration.Instant_Healing !"
 };

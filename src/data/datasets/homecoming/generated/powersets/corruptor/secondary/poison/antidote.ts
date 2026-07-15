@@ -117,6 +117,18 @@ export const Antidote: Power = {
     ["Resistance","Cold",1,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Movement","Run",0.5,1,90,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,0.5,1,90,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Resistance","Toxic",2,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+    ["Resistance","Toxic",2,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Confused",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Terrorized",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Held",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Immobilized",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Stunned",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Sleep",8,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Confused",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
+    ["Mez","Terrorized",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
+    ["Mez","Held",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
+    ["Mez","Immobilized",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
+    ["Mez","Stunned",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
+    ["Mez","Sleep",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true]
   ]
 };

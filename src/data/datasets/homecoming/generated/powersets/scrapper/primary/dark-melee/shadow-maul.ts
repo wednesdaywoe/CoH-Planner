@@ -76,7 +76,13 @@ export const ShadowMaul: Power = {
     ["Damage","Smashing",0.2023,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Negative",0.2023,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.1821,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.625,0]
+    ["Damage","Fire",0.1821,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.625,0],
+    ["Damage","Smashing",0.2385,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Damage","Negative",0.2385,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Damage","Negative",0.2955,1,2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.25,1],
+    ["Damage","Negative",1.9076,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Damage","Negative",1.6183,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||"],
+    ["Damage","Negative",1.6183,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !"]
   ],
   "specialEffects": [
     {

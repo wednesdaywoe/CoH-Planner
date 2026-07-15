@@ -72,7 +72,21 @@ export const ParasiticLeech: Power = {
     ["Recovery",null,0.429,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Regeneration",null,0.714,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Absorb",null,0.143,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1],
-    ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"]
+    ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"],
+    ["Regeneration",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&"],
+    ["Regeneration",null,-1.3,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&"],
+    ["Regeneration",null,-2.6,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&"],
+    ["Recovery",null,0.129,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?"],
+    ["Regeneration",null,0.214,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?"],
+    ["Absorb",null,0.043,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
+    ["DamageBuff","Smashing",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
+    ["DamageBuff","Lethal",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
+    ["DamageBuff","Fire",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
+    ["DamageBuff","Cold",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
+    ["DamageBuff","Energy",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
+    ["DamageBuff","Negative",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
+    ["DamageBuff","Psionic",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
+    ["DamageBuff","Toxic",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"]
   ],
   "conditionalEffects": [
     {

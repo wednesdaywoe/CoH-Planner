@@ -55,6 +55,20 @@ export const DetentionField: Power = {
   "atoms": [
     ["Mez","Untouchable",6,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
     ["Mez","OnlyAffectsSelf",6,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
-    ["Meta",null,-1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"]
+    ["Meta",null,-1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"],
+    ["Mez","Untouchable",4,1,4,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&"],
+    ["Mez","OnlyAffectsSelf",4,1,4,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&"],
+    ["Absorb",null,0.2,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,1,1,5,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,0.2,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,1,1,5,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,0.2,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,1,1,5,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,0.2,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,1,1,5,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,0.2,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,1,1,5,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,0.2,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"],
+    ["Absorb",null,1,1,5,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"target.isFriend?"]
   ]
 };

@@ -106,7 +106,11 @@ export const ArcticAir: Power = {
     ["Stealth",null,-389,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Run",-1,1,2.25,"Ranged_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Confused",2,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
-    ["Mez","Afraid",3,0,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,0.5]
+    ["Mez","Afraid",3,0,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,0.5],
+    ["Mez","Confused",2,1,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Confused",3,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Confused",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Mez","Confused",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"kStealth source> 0.5 >"]
   ],
   "conditionalEffects": [
     {

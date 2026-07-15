@@ -51,7 +51,10 @@ export const InstantHealing: Power = {
   "atoms": [
     ["Regeneration",null,6,1,90,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,2,1,90,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Regeneration",null,4,1,90,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,2,1,90,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true]
   ],
   "requires": "Brute_Defense.Regeneration.Instant_Regeneration !"
 };

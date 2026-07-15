@@ -110,6 +110,10 @@ export const KujiInRetsu: Power = {
     ["Recovery",null,-100,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Endurance",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,-1,1,10,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true]
+    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,180,"Melee_Ones","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
+    ["Elusivity","Ranged",0.2,1,180,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Elusivity","Melee",0.2,1,180,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Elusivity","AoE",0.2,1,180,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
   ]
 };

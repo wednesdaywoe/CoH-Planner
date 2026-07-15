@@ -88,6 +88,12 @@ export const InsulationShield: Power = {
     ["Defense","Negative",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Defense","Cold",1.5,1,240,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Endurance",null,2,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Recovery",null,2,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+    ["Recovery",null,2,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Confused",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
+    ["Mez","Terrorized",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
+    ["Mez","Held",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
+    ["Mez","Immobilized",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
+    ["Mez","Stunned",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
+    ["Mez","Sleep",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true]
   ]
 };

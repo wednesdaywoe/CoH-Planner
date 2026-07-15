@@ -82,7 +82,10 @@ export const Grounded: Power = {
     ["Resistance","Energy",1.25,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Negative",1,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Endurance",null,2,1,1,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Mez","Immobilized",-6,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+    ["Mez","Immobilized",-6,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Knockup",-6,1,5,"Melee_Knockback","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 0.1 >"],
+    ["Mez","Knockback",-6,1,5,"Melee_Knockback","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"NearGround source.EventTimeSince> 0.1 >"],
+    ["MezResist","Immobilized",6,1,1,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

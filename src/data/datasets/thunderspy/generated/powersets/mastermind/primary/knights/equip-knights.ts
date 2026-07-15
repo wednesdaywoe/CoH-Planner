@@ -39,7 +39,25 @@ export const EquipKnights: Power = {
   "maxSlots": 6,
   "effects": {},
   "atoms": [
-    ["Recovery",null,0.15,1,5.25,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Recovery",null,0.15,1,5.25,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Knight_Minion target.VillainName>"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq group target> MastermindPets eq &&"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&"],
+    ["Unmapped",null,1,0,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq group target> MastermindPets eq &&"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&"],
+    ["Unmapped",null,1,0,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_02_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq group target> MastermindPets eq &&"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&"],
+    ["Unmapped",null,1,0,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_03_01 eq kMastermind_Upgrade_2 target.mode? && group target> MastermindPets eq &&"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Knight_Lt target.VillainName>"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Lieutenant_01_01 eq"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Lieutenant_01_01 eq kMastermind_Upgrade_2 target.mode? &&"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Lieutenant_02_01 eq"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Lieutenant_02_01 eq kMastermind_Upgrade_2 target.mode? &&"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Knight_Boss target.VillainName>"],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Boss_01_01 eq"],
+    ["Unmapped",null,1,0,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Boss_01_01 eq kMastermind_Upgrade_2 target.mode? &&"]
   ],
   "mechanicType": "parentMechanic"
 };

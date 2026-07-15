@@ -100,6 +100,14 @@ export const EnervatingField: Power = {
     ["Resistance","Energy",-3,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Negative",-3,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Psionic",-3,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
-    ["Resistance","Toxic",-3,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true]
+    ["Resistance","Toxic",-3,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Smashing",-4,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-4,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-4,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-4,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-4,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-4,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-4,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-4,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true]
   ]
 };

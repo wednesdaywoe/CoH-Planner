@@ -97,6 +97,7 @@ export const MoistureAbsorption: Power = {
     ["Defense","Energy",0.4,1,100,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Negative",0.4,1,100,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Psionic",0.4,1,100,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Defense","Toxic",0.4,1,100,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+    ["Defense","Toxic",0.4,1,100,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Endurance",null,-16.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
   ]
 };

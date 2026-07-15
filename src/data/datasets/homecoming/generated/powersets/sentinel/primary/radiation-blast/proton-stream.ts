@@ -70,6 +70,8 @@ export const ProtonStream: Power = {
   "atoms": [
     ["Damage","Energy",0.57,1,0.41,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1],
     ["Damage","Energy",0.57,1,0.41,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1],
-    ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.5123,1,0.41,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1],
+    ["Damage","Energy",0.5123,1,0.41,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.12999999523162842,1]
   ]
 };

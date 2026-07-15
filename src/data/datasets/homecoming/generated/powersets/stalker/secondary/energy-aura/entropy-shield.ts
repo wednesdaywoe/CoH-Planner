@@ -134,6 +134,23 @@ export const EntropyShield: Power = {
     ["Resistance","All",0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Endurance",null,0.25,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,0.25,1,0.75,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["RechargeTime",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["RechargeTime",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Held",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["MezResist","Immobilized",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["MezResist","Stunned",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["MezResist","Sleep",3,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["MezResist","Knockup",100,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Knockback",100,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Mez","Repel",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["MezResist","Repel",100,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Resistance","All",0.3,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,0.3,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.3,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
   ]
 };

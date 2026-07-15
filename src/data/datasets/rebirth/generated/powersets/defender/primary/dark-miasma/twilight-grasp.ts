@@ -77,6 +77,15 @@ export const TwilightGrasp: Power = {
     ["DamageBuff","Negative",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Toxic",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Psionic",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,-0.5,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"]
+    ["Regeneration",null,-0.5,1,20,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-11.5,1,20,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
+    ["DamageBuff","Smashing",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
+    ["DamageBuff","Lethal",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
+    ["DamageBuff","Fire",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
+    ["DamageBuff","Cold",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
+    ["DamageBuff","Energy",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
+    ["DamageBuff","Negative",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
+    ["DamageBuff","Toxic",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
+    ["DamageBuff","Psionic",1,1,20,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"]
   ]
 };

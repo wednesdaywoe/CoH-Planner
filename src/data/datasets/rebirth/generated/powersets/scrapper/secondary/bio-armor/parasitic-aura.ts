@@ -79,7 +79,19 @@ export const ParasiticAura: Power = {
     ["DamageBuff","Energy",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode? !"],
     ["DamageBuff","Negative",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode? !"],
     ["DamageBuff","Toxic",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode? !"],
-    ["DamageBuff","Psionic",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode? !"]
+    ["DamageBuff","Psionic",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode? !"],
+    ["Recovery",null,0.125,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation source.Mode?"],
+    ["Regeneration",null,0.15,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation source.Mode?"],
+    ["Absorb",null,0.033,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"],
+    ["Absorb",null,1,1,45,"Melee_Ones","Max","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"],
+    ["DamageBuff","Smashing",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"],
+    ["DamageBuff","Lethal",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"],
+    ["DamageBuff","Fire",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"],
+    ["DamageBuff","Cold",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"],
+    ["DamageBuff","Energy",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"],
+    ["DamageBuff","Negative",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"],
+    ["DamageBuff","Toxic",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"],
+    ["DamageBuff","Psionic",2.66,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"]
   ],
   "conditionalEffects": [
     {

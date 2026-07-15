@@ -66,7 +66,8 @@ export const Vines: Power = {
     ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Held",8,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5],
     ["Mez","Held",1.5,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5],
-    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5]
+    ["Mez","Immobilized",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5],
+    ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
   ],
   "specialEffects": [
     {

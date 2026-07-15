@@ -73,6 +73,9 @@ export const CallGenin: Power = {
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["Stealth",null,0,1,2,"Ranged_Ones","Cur","Magnitude","All","PvE",false,"Stack",2,null,null,1],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","All","PvE",false,"Stack",2,null,null,1],
-    ["Mez","Immobilized",3,500,0,"Melee_Ones","Cur","Duration","All","PvE",false,"Stack",2,null,null,1,null,true]
+    ["Mez","Immobilized",3,500,0,"Melee_Ones","Cur","Duration","All","PvE",false,"Stack",2,null,null,1,null,true],
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"combatlevel source> 5 >"],
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"combatlevel source> 17 >"],
+    ["RechargePower",null,25,1,0,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1]
   ]
 };

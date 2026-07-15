@@ -107,7 +107,8 @@ export const ArticAir: Power = {
     ["Movement","Run",-1,1,2.25,"Ranged_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Confused",2,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.30000001192092896],
     ["Mez","Confused",1.3333,1,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.20000000298023224],
-    ["Mez","Afraid",3,0,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,0.5]
+    ["Mez","Afraid",3,0,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,0.5],
+    ["Mez","Confused",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.30000001192092896,null,null,null,null,null,null,"enttype target> player eq"]
   ],
   "specialEffects": [
     {

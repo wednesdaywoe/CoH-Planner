@@ -77,7 +77,12 @@ export const ShiftingTides: Power = {
     ["DamageBuff","Psionic",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
     ["ToHit",null,0.08,1,0,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1],
-    ["RechargeTime",null,0.02,1,0,"Melee_Ones","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
+    ["RechargeTime",null,0.02,1,0,"Melee_Ones","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Meta",null,1,1,0.2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower?"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",false,"No",10,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! && kShiftingTides target.mode? &&"],
+    ["Meta",null,1,188,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true,null,null,null,null,"kWet target.mode? !"],
+    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower? !"],
+    ["GrantPower",null,0,0,0.24,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,"Redirects.Marine_Affinity.Shifting_Tides_FX target.ownPower? !"]
   ],
   "specialEffects": [
     {

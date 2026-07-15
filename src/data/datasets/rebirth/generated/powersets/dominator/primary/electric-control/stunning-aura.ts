@@ -61,6 +61,7 @@ export const StunningAura: Power = {
   "atoms": [
     ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,0.05,1,2.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Recovery",null,0.03125,1,2.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+    ["Recovery",null,0.03125,1,2.25,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Endurance",null,-5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
   ]
 };

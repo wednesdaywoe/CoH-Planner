@@ -126,6 +126,9 @@ export const DispersionBubble: Power = {
     ["Defense","Toxic",1,1,15,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Mez","Held",-30,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
     ["Mez","Immobilized",-30,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
-    ["Mez","Stunned",-30,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1]
+    ["Mez","Stunned",-30,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["MezResist","Held",3,1,15,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Immobilized",3,1,15,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Stunned",3,1,15,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true]
   ]
 };

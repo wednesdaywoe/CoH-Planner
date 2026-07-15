@@ -111,6 +111,8 @@ export const CrackWhip: Power = {
     ["Resistance","Toxic",-1.25,1,10,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1.13,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0.222,1,1.05,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Mez","Knockback",0.64,0.25,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+    ["Mez","Knockback",0.64,0.25,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,2.123105,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Mez","Knockback",0.64,0.25,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
   ]
 };

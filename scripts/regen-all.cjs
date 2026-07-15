@@ -98,5 +98,18 @@ if (datasets.includes('homecoming')) {
   console.log(`\n>>> ${cmd}`);
   execSync(cmd, { stdio: 'inherit' });
 }
+
+// Plan B Phase-1 shadow compare — every discriminator the PowerEffects bag
+// carries (the `*Unenhanced` slots, `unresistable`, `toWho:'Self'`,
+// `durationVariants`) must be recoverable from the power's atom list. This is
+// the precondition for Phase 2 migrating each calc applier off the bag: an
+// atom list missing a bag fact would drop it silently. Sweeps every dataset
+// just regenerated (~4s), so it also catches an atom-emit regression the
+// regen-diff byte gate would see only as churn.
+{
+  const cmd = `node scripts/planb-shadow-bag.cjs ${datasets.map((d) => `--dataset ${d}`).join(' ')}`;
+  console.log(`\n>>> ${cmd}`);
+  execSync(cmd, { stdio: 'inherit' });
+}
 const secs = Number(process.hrtime.bigint() - started) / 1e9;
 console.log(`\n=== regen complete in ${secs.toFixed(0)}s ===`);

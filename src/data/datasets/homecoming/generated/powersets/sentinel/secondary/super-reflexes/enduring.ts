@@ -91,7 +91,14 @@ export const Enduring: Power = {
     ["Resistance","Fire",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Cold",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Energy",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Resistance","Negative",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["Resistance","Negative",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,0.3,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Sentinel_Defense.Super_Reflexes.Master_Brawler source.ownPower? &&"],
+    ["RechargeTime",null,0.3,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Sentinel_Defense.Super_Reflexes.Master_Brawler source.ownPower? &&"],
+    ["Movement","Run",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Sentinel_Defense.Super_Reflexes.Master_Brawler source.ownPower? &&"],
+    ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Sentinel_Defense.Super_Reflexes.Master_Brawler source.ownPower? &&"],
+    ["Movement","Jump",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Sentinel_Defense.Super_Reflexes.Master_Brawler source.ownPower? &&"],
+    ["Movement","JumpHeight",0.5,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? Sentinel_Defense.Super_Reflexes.Master_Brawler source.ownPower? &&"],
+    ["Resistance","Toxic",0,1,0.75,"Melee_Ones","Res","Expression","Self","PvP",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

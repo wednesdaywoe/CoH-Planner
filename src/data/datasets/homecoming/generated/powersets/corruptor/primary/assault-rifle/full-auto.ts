@@ -57,7 +57,10 @@ export const FullAuto: Power = {
   ],
   "atoms": [
     ["Damage","Lethal",0.5958,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
-    ["Damage","Lethal",0.2754,1,2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"]
+    ["Damage","Lethal",0.2754,1,2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.1632,1,2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Damage","Lethal",0.1632,1,2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <"],
+    ["Damage","Lethal",0.2754,1,2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <"]
   ],
   "specialEffects": [
     {

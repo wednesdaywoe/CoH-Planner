@@ -87,6 +87,7 @@ export const Brine: Power = {
     ["Resistance","Psionic",-3,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-3,1,60,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,188,60,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true],
-    ["MaxHP",null,-2,1,60,"Ranged_Heal","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+    ["MaxHP",null,-2,1,60,"Ranged_Heal","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["MaxHP",null,-1,1,60,"Ranged_Heal","Max","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
   ]
 };

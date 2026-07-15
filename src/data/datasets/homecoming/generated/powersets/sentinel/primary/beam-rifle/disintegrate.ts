@@ -86,6 +86,9 @@ export const Disintegrate: Power = {
     ["DamageBuff","Psionic",0.125,1,9.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.125,1,9.4,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["GrantPower",null,1,1,1,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+    ["GrantPower",null,1,1,1,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,-6,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
+    ["Damage","Energy",0.213,1,10.5,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.1100000143051147,1],
+    ["Damage","Energy",0.213,1,10.5,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.1100000143051147,1]
   ]
 };

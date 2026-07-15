@@ -108,7 +108,8 @@ export const DarkNova: Power = {
     ["Meta",null,1,25,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,4,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true],
-    ["Movement","Fly",2,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0]
+    ["Movement","Fly",2,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0],
+    ["Meta",null,1.5,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kWarshade_Blaster_Mode Source.Mode?"]
   ],
   "setsModes": [
     "Suppress_PoolToggles",

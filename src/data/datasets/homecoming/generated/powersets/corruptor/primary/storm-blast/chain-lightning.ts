@@ -59,7 +59,15 @@ export const ChainLightning: Power = {
     ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
     ["Endurance",null,-0.07,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25]
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25],
+    ["Endurance",null,-0.035,1,4.4,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?"],
+    ["Damage","Energy",1.16,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <"],
+    ["Damage","Energy",0.324,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.04,1,2.2,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.6000000238418579,1],
+    ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1],
+    ["Endurance",null,-0.625,1,4.4,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?"],
+    ["Damage","Energy",1.3527,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?"],
+    ["Damage","Energy",0.484,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <"]
   ],
   "conditionalEffects": [
     {

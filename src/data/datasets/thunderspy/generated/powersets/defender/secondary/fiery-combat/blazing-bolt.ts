@@ -57,7 +57,8 @@ export const BlazingBolt: Power = {
   ],
   "atoms": [
     ["Unmapped",null,2.76,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.225,1,3.1,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
+    ["Unmapped",null,0.225,1,3.1,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,5.399679,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
   ],
   "requires": "Defender_Ranged.Fire_Blast.Greater_Fire_Sword !"
 };

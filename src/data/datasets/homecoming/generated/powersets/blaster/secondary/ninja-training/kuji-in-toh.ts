@@ -76,6 +76,7 @@ export const KujiInToh: Power = {
     ["Regeneration",null,1.125,1,210,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,0.5,1,210,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Psionic",1,1,210,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Mez","Terrorized",-30,1,210,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true]
+    ["Mez","Terrorized",-30,1,210,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Terrorized",3,1,210,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
   ]
 };

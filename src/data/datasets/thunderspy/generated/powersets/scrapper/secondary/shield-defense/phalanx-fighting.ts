@@ -54,7 +54,10 @@ export const PhalanxFighting: Power = {
   "atoms": [
     ["Defense","Melee",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","Ranged",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Defense","AoE",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Melee",0.3,1,0.81,"Melee_Buff_Def","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&"],
+    ["Defense","Ranged",0.3,1,0.81,"Melee_Buff_Def","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&"],
+    ["Defense","AoE",0.3,1,0.81,"Melee_Buff_Def","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&"]
   ],
   "mechanicType": "parentMechanic"
 };

@@ -43,7 +43,8 @@ export const Grace: Power = {
   },
   "atoms": [
     ["Unmapped",null,1,1,10.75,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Psionic",1,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Defense","Psionic",1,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.5,1,10.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
   ],
   "mechanicType": "parentMechanic"
 };

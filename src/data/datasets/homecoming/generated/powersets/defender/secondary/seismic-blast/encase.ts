@@ -77,6 +77,7 @@ export const Encase: Power = {
     ["Movement","Fly",-1.6,1,3,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Meta",null,-1.6,1,3,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Movement","Jump",1,1,3,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true],
-    ["Movement","JumpHeight",1,1,3,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true]
+    ["Movement","JumpHeight",1,1,3,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true],
+    ["Damage","Smashing",1.26,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
   ]
 };

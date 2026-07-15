@@ -74,7 +74,18 @@ export const Placate: Power = {
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1]
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["Mez","Placate",6,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["ToHit",null,1,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
+    ["DamageBuff","Smashing",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
+    ["DamageBuff","Lethal",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
+    ["DamageBuff","Fire",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
+    ["DamageBuff","Cold",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
+    ["DamageBuff","Energy",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
+    ["DamageBuff","Negative",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
+    ["DamageBuff","Psionic",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
+    ["DamageBuff","Toxic",2,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"]
   ],
   "conditionalEffects": [
     {

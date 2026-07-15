@@ -68,6 +68,12 @@ export const Gust: Power = {
     ["Movement","Fly",-2.6,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Meta",null,-2.6,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25]
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25],
+    ["Damage","Smashing",0.05,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
+    ["Damage","Smashing",0.05,1,1.5,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
+    ["Damage","Smashing",0.069,1,1.5,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
+    ["Damage","Smashing",0.069,1,1.5,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
+    ["Damage","Smashing",1.379,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",1.379,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1]
   ]
 };

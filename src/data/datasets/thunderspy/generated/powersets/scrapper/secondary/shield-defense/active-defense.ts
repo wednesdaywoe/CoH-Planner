@@ -67,7 +67,8 @@ export const ActiveDefense: Power = {
   "atoms": [
     ["Defense","Melee",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Resistance","Smashing",1.65,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Resistance","Lethal",1.65,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Resistance","Lethal",1.65,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
   ],
   "requires": "Scrapper_Melee.Dual_Blades Scrapper_Melee.Claws || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Katana || Scrapper_Melee.Titan_Weapons || !"
 };

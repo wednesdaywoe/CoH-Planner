@@ -62,7 +62,8 @@ export const Burst: Power = {
     ["Damage","Lethal",0.27,1,0.91,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Meta",null,1,176,30,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Meta",null,1,179,30,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true]
+    ["Meta",null,1,179,30,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Lethal",0.315,1,0.91,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"]
   ],
   "setsModes": [
     "FocusFire_Burst",

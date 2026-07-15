@@ -70,6 +70,8 @@ export const Burst: Power = {
   "atoms": [
     ["Damage","Lethal",0.27,1,0.91,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1],
     ["Damage","Lethal",0.27,1,0.91,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1],
-    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",0.42,1,0.61,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1],
+    ["Damage","Lethal",0.42,1,0.61,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1]
   ]
 };

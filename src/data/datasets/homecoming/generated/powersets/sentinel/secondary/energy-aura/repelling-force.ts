@@ -77,7 +77,15 @@ export const RepellingForce: Power = {
     ["Defense","Energy",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Defense","Negative",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Defense","Psionic",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["Defense","Toxic",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+    ["Defense","Toxic",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Toxic",0.5,1,10.3,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

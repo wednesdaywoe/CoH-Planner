@@ -134,7 +134,21 @@ export const BaneSpiderArmor: Power = {
     ["Mez","Stunned",-4,1,10.25,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
     ["Mez","Sleep",-4,1,10.25,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
     ["MezResist","Sleep",5,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
-    ["MaxHP",null,2,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+    ["MaxHP",null,2,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Smashing",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["MezResist","Confused",0.4,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Terrorized",0.4,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Held",0.4,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Immobilized",0.4,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Stunned",0.4,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Sleep",5.4,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

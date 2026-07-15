@@ -100,7 +100,20 @@ export const DismissPain: Power = {
     ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
     ["Range",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
-    ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true]
+    ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["MaxHP",null,1.2,1,10.3,"Melee_HealSelf","Max","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["MaxHP",null,1.2,1,10.3,"Melee_HealSelf","Max","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
+    ["HealResistance",null,-0.15,1,10.3,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
+    ["Resistance","All",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Range",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

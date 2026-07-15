@@ -3351,6 +3351,64 @@ function collectAllTemplates(effects, parentCombatGated = false) {
 }
 
 /**
+ * Plan B, Phase 1 — collect EVERY template, dropping nothing. The atom-list
+ * counterpart to `collectAllTemplates`.
+ *
+ * `collectAllTemplates` (above) drops eight classes of effect group — PvP-only,
+ * the PvP half of an `enttype` twin, empty chance=0 procs, Containment,
+ * dead-state, hidden-state (`kMeter`), `rand()`, mode/stance (`Source.Mode?`),
+ * and generic positive-state gates. Read its comments and every drop has the
+ * same root justification: the bag's slots are single-valued and last-write-wins,
+ * so a gated group would CLOBBER the base value ("the PvP group is emitted last,
+ * its scale/table/duration would clobber the correct PvE values"). The drops are
+ * a bag-era workaround, not a statement that the effects aren't real — they all
+ * exist in game, under a condition.
+ *
+ * The atom list has no slots to clobber, so it keeps them all. Every drop reason
+ * survives as a first-class field ON the atom, which is what lets a consumer
+ * re-derive any of these subsets exactly:
+ *
+ *   PvP-only group          → pvMode: 'PvP'
+ *   PvP `enttype` twin      → requiresExpression (`enttype target> player eq`)
+ *   chance=0 proc           → baseProbability: 0
+ *   mode/stance, kMeter,    → requiresExpression (the verbatim gate)
+ *     rand(), dead-state,
+ *     Containment
+ *   out-of-combat           → specialCase: 'OutOfCombat'
+ *
+ * Consequence, and the reason this exists: the conditional/stance bags
+ * (`power.conditionalEffects` — Bio Armor's adaptations et al.) are built from
+ * `powerJson.effects` DIRECTLY, i.e. from exactly the groups `collectAllTemplates`
+ * filtered out. Emitting atoms from the filtered list therefore left every
+ * conditional bag with no atom behind it (49 powers; caught corpus-wide by
+ * `scripts/planb-shadow-bag.cjs`), which would have silently blocked Phase 2 from
+ * migrating the resource appliers that Bio Armor feeds.
+ *
+ * NB this does NOT feed the bag — `extractEffects` still reads
+ * `collectAllTemplates`, so `power.effects` is byte-identical. Both collectors
+ * tag templates via the idempotent `_tagGroupContext`, so running both over the
+ * same power JSON is safe.
+ */
+function collectAtomTemplates(effects, parentCombatGated = false) {
+  const templates = [];
+  for (const effect of effects || []) {
+    let combatGated = parentCombatGated;
+    if (effect.requires_expression && _isOutOfCombatGate(effect.requires_expression)) {
+      combatGated = true;
+    }
+    for (const t of effect.templates || []) {
+      if (combatGated) _tagCombatGated(t);
+      _tagGroupContext(t, effect);
+      templates.push(t);
+    }
+    if (effect.child_effects && effect.child_effects.length > 0) {
+      templates.push(...collectAtomTemplates(effect.child_effects, combatGated));
+    }
+  }
+  return templates;
+}
+
+/**
  * Extract damage effects from raw effect templates
  * Only extracts ACTUAL damage (aspect "Cur" or "Abs"), not damage buffs/debuffs
  */
@@ -5827,12 +5885,35 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
 
     if (Object.keys(effects).length) power.effects = effects;
 
-    // Plan B, Phase 0 — emit the pre-projection atom list alongside the bag, from
-    // the SAME templates that fed `extractEffects`. Unused by calc/UI yet; it is
-    // the ground truth the atom-native calc primitives (Phase 1) will read behind
-    // a shadow-compare before the bag is retired. Additive-only: does not touch
-    // `power.effects`.
-    const atoms = encodeAtomsForEmit(allTemplates);
+    // Plan B — emit the pre-projection atom list alongside the bag. Unused by
+    // calc/UI yet; it is the ground truth the atom-native calc primitives read
+    // (`src/data/core/atom-query.ts`) behind a shadow compare before the bag is
+    // retired. Additive-only: does not touch `power.effects`.
+    //
+    // The list is a UNION of two sources, deduped by template identity (every
+    // collector pushes the same template objects, so `Set` identity is exact):
+    //
+    //   1. `allTemplates` — everything the bag saw. Not just `powerJson.effects`:
+    //      a power's templates may come from a redirect chain (Fault), an `_Info`
+    //      display power (Remote Bomb), or `activation_effects` (Dull Pain, whose
+    //      `effects` is empty). Dropping this source silently emptied the atom
+    //      list for every such power.
+    //   2. `collectAtomTemplates(powerJson.effects)` — adds back the gated groups
+    //      the bag's collector drops (mode/stance, PvP, hidden-state, chance-0
+    //      procs) because a single-valued slot cannot hold both the base and the
+    //      gated variant. The atom list can, and each atom carries its own gate.
+    //      This is what gives the conditional/stance bags their atoms.
+    //
+    // Known residual: gated groups nested inside a REDIRECT chain or under
+    // `activation_effects` are still not collected — source 2 only descends the
+    // power's own `effects`. Those paths apply their own modeling filters
+    // (the activation_effects Self / IgnoreStrength-dupe rules) that are not
+    // safe to bypass wholesale here.
+    const atomTemplates = [...new Set([
+      ...allTemplates,
+      ...collectAtomTemplates(powerJson.effects || []),
+    ])];
+    const atoms = encodeAtomsForEmit(atomTemplates);
     if (atoms) power.atoms = atoms;
 
     // Resolve location pseudo-pet redirect lists into synthesized ability lists
@@ -6341,6 +6422,7 @@ module.exports = {
   SPECIAL_ATTRIBS,
   RAW_DATA_PATH,
   collectAllTemplates,
+  collectAtomTemplates,
   resolveRedirectPath,
   collectRedirectTemplates,
   collectTemplatesDeep,

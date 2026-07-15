@@ -78,7 +78,9 @@ export const TemporalHealing: Power = {
     ["RechargeTime",null,0.2,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,0.5,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq ||"],
-    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq || !"]
+    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq || !"],
+    ["Absorb",null,0.045,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?"],
+    ["Absorb",null,0.045,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?"]
   ],
   "conditionalEffects": [
     {

@@ -93,7 +93,16 @@ export const SlowedResponse: Power = {
     ["Resistance","Negative",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
     ["Resistance","Psionic",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
     ["Resistance","Toxic",-3,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
-    ["Defense","All",2,1,30,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"]
+    ["Defense","All",2,1,30,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["Resistance","Smashing",-3.6,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"],
+    ["Resistance","Lethal",-3.6,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"],
+    ["Resistance","Fire",-3.6,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"],
+    ["Resistance","Cold",-3.6,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"],
+    ["Resistance","Energy",-3.6,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"],
+    ["Resistance","Negative",-3.6,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"],
+    ["Resistance","Psionic",-3.6,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"],
+    ["Resistance","Toxic",-3.6,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"],
+    ["Defense","All",2.5,1,30,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"]
   ],
   "conditionalEffects": [
     {

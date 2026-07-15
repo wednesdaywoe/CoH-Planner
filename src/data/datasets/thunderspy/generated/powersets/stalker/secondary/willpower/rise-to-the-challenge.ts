@@ -49,7 +49,8 @@ export const RisetotheChallenge: Power = {
   },
   "atoms": [
     ["Unmapped",null,0.5,1,1,"Melee_DeBuff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"]
+    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
   ],
   "requires": "Stalker_Defense.Willpower.Reconstruction !"
 };

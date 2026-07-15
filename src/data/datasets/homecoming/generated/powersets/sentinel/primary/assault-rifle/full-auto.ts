@@ -67,7 +67,8 @@ export const FullAuto: Power = {
   "atoms": [
     ["Damage","Lethal",0.2261,1,2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1],
     ["Damage","Lethal",0.0935,1,2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,0.1599999964237213,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Lethal",0.0935,1,2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"]
+    ["Damage","Lethal",0.0935,1,2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.1891,1,2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> player eq"]
   ],
   "specialEffects": [
     {

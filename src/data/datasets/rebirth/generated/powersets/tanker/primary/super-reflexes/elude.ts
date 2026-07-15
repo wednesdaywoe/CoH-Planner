@@ -101,7 +101,8 @@ export const Elude: Power = {
     ["Movement","Run",0.5,1,90,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Resistance","All",1,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Absorb",null,4,1,90,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+    ["Absorb",null,4,1,90,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?"]
   ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"

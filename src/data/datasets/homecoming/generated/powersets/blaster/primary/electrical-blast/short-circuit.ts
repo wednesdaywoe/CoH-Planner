@@ -64,7 +64,17 @@ export const ShortCircuit: Power = {
   "atoms": [
     ["Damage","Energy",0.18,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.35,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Recovery",null,-1,1,10,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Recovery",null,-1,1,10,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Electronic target.HasTag?"],
+    ["Damage","Energy",0.18,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
+    ["Endurance",null,3.9,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
+    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
+    ["Damage","Energy",0.1573,1,1.5,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Endurance",null,-10,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Damage","Energy",0.1573,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
+    ["Endurance",null,3.9,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
+    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Blaster_Ranged.Electrical_Blast.Tesla_Cage source.ownPower?"]
   ],
   "conditionalEffects": [
     {

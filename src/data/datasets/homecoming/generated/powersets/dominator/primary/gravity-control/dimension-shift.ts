@@ -56,6 +56,8 @@ export const DimensionShift: Power = {
   },
   "atoms": [
     ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","PvE",true,"Ignore",2,null,null,1],
-    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","PvE",true,"Ignore",2,null,null,1]
+    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","PvE",true,"Ignore",2,null,null,1],
+    ["EntCreate",null,-1,1,3,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1],
+    ["EntCreate",null,-1,1,3,"Ranged_Ones","Cur","Magnitude","Self","PvP",true,"Ignore",2,null,null,1]
   ]
 };

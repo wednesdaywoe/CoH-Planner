@@ -98,7 +98,13 @@ export const DNASiphon: Power = {
     ["Endurance",null,5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
     ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
     ["Recovery",null,0.125,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
-    ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation source.Mode? ! &&"]
+    ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation source.Mode? ! &&"],
+    ["Heal",null,0.375,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation source.Mode? &&"],
+    ["Regeneration",null,0.06,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation source.Mode? &&"],
+    ["Recovery",null,0.09375,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation source.Mode? &&"],
+    ["Regeneration",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation source.Mode? ! &&"],
+    ["Regeneration",null,-1.33,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation source.Mode? &&"],
+    ["Regeneration",null,-2.66,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation source.Mode? &&"]
   ],
   "conditionalEffects": [
     {

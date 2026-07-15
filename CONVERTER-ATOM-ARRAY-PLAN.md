@@ -106,7 +106,14 @@ consumers one applier at a time behind a shadow-comparison, delete the bag last.
   signed scale / aspect / `ignoreStrength` / `toWho` intact). Calc/UI still read
   only the bag.
 
-### Phase 1 — Atom-native calc primitives + shadow compare
+  **Superseded in part by Phase 1:** this phase's DoD ("no diff in computed
+  totals, generated tree grows by a bounded amount") was satisfiable by an atom
+  list that was silently INCOMPLETE, and was — it covered only the base bag.
+  Nothing here could catch that, because the DoD never asked whether the atoms
+  were *sufficient*, only whether they were cheap and harmless. Phase 1's shadow
+  compare asked, and the answer was no; see the Phase 1 note.
+
+### Phase 1 — Atom-native calc primitives + shadow compare ✅ DONE (2026-07-14)
 - Build read helpers the calc will use: `atomsOf(power, effectType)`,
   `byType(atoms)`, `selfDirected(atoms)`, `enhanceableVsNot(atoms)`,
   `resistibleTwin(atoms)`, `durationBuckets(atoms)`. These encapsulate exactly
@@ -116,6 +123,54 @@ consumers one applier at a time behind a shadow-comparison, delete the bag last.
   equality across the whole HC/Rebirth/Thunderspy corpus. This is the Phase-0b
   proof pattern the converter rewrite already used successfully (`DSH6_SHADOW`).
 - **DoD:** shadow harness green corpus-wide; zero divergence.
+
+  **Shipped:** helpers live in `src/data/core/atom-query.ts` (`atomsOf` —
+  WeakMap-memoized decode, `atomsOfType`, `byType`, `bySubType`, `selfDirected`
+  /`targetDirected`, `enhanceableVsNot`, `resistibleTwins`, `durationBuckets`),
+  each documenting the one bag discriminator it replaces; unit-guarded by
+  `atom-query.test.ts` (19 cases). No calc consumer yet — that is Phase 2.
+
+  The shadow harness is `scripts/planb-shadow-bag.cjs`, wired into `npm run
+  regen` (~4s) so it gates CI beside the DSH6 detector. **Scope note:** it
+  asserts `bag ⊆ atoms` — every discriminator the bag carries is recoverable
+  from the atom list — rather than comparing character-totals, because no
+  atom-native applier exists to compare against until Phase 2. That is the
+  precondition Phase 2 actually needs (an atom list missing a bag fact would
+  drop it silently). The converse is deliberately NOT asserted: atoms carrying
+  more than the bag is the point, and that residual is DSH6c's job. Green at
+  8,913 powers / 9,533 checks / 0 divergences across all three datasets.
+
+  **The harness immediately found a Phase-0 gap, which is why Phase 0's DoD was
+  wrong.** `power.atoms` was emitted from `collectAllTemplates` — the *bag's*
+  collector, which drops eight classes of gated group (PvP-only, PvP `enttype`
+  twin, chance-0 procs, Containment, dead-state, `kMeter` hidden-state, `rand()`,
+  mode/stance). Those drops exist solely because a single-valued slot would be
+  clobbered by the gated variant — a bag-era workaround, not a claim the effects
+  are unreal. Consequence: all 49 conditional/stance bags (`conditionalEffects` —
+  Bio Armor's adaptations, Sky Splitter, Parasitic Aura…) had **no atoms behind
+  them**, which would have silently blocked Phase 2 from migrating the resource
+  appliers Bio Armor feeds. Fixed with `collectAtomTemplates` (drops nothing;
+  every drop reason survives as a first-class atom field — `pvMode`,
+  `requiresExpression`, `specialCase`, `baseProbability`), unioned with
+  `allTemplates` so redirect-/`activation_effects`-sourced powers (Dull Pain,
+  Fault, Remote Bomb) keep theirs. Atoms 22,293 → 34,733 (+56%); generated tree
+  HC 17→19 MB, Rebirth 14→16 MB, tspy 13 MB. Known residual: gated groups nested
+  inside a redirect chain or under `activation_effects` are still uncollected.
+  `collectAllTemplates` is untouched, so the bag is unchanged — verified by
+  stripping the `atoms` block from all 6,215 changed files and confirming every
+  one is byte-identical (regen also idempotent, so the CI byte gate holds).
+
+  **The harness was mutation-tested, not just observed green** (the
+  [[dsh6c-discriminator-gate]] lesson: verify the diff, not the gate). Breaking
+  each helper in turn must turn it red: `ignoreStrength` → 153 UNENHANCED,
+  `toWho` → 98 SELF, duration key → 10 DURATIONS. A fourth mutant (corrupting
+  `twinKey`) initially **survived** — the UNRESISTABLE check only asked whether
+  *some* twin carried the bag's magnitude, so it was blind to mis-pairing. Closed
+  with a TWIN-INTEGRITY invariant asserting each returned pair differs in nothing
+  but `resistible` (now kills that mutant: 40 / 32). Two harness self-bugs were
+  found the same way: it walked only `power.effects` (missing every conditional/
+  special discriminator — ~half the corpus), and it silently swallowed
+  `require` failures (an unloadable power read as a pass, not a gap).
 
 ### Phase 2 — Migrate appliers one at a time (behind the shadow)
 Order by isolation, simplest first. For each applier (resistance, defense,

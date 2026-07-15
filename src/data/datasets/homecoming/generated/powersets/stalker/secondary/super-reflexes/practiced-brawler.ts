@@ -94,6 +94,17 @@ export const PracticedBrawler: Power = {
     ["Mez","Held",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
     ["Mez","Immobilized",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
     ["Mez","Stunned",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
-    ["Mez","Sleep",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1]
+    ["Mez","Sleep",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["MezResist","Held",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1],
+    ["MezResist","Immobilized",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1],
+    ["MezResist","Stunned",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1],
+    ["MezResist","Sleep",3,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1],
+    ["Resistance","All",0.3,1,120,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,0.3,1,120,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.3,1,120,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.5,1,120,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.5,1,120,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.5,1,120,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.5,1,120,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
   ]
 };

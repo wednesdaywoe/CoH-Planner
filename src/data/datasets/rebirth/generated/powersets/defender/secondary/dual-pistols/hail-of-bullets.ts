@@ -137,7 +137,14 @@ export const HailofBullets: Power = {
     ["DamageBuff","Energy",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Negative",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Psionic",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+    ["DamageBuff","Psionic",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Damage","Lethal",0.247,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,0.30000001192092896,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Damage","Lethal",0.106,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Mez","Knockback",0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Mez","Knockback",0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Damage","Fire",0.106,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Damage","Cold",0.106,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"],
+    ["Damage","Toxic",0.106,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"]
   ],
   "specialEffects": [
     {

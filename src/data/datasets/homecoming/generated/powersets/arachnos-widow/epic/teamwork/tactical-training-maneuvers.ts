@@ -104,6 +104,17 @@ export const TacticalTrainingManeuvers: Power = {
     ["Defense","Energy",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
     ["Defense","Negative",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
     ["Defense","Psionic",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
-    ["Defense","Toxic",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1]
+    ["Defense","Toxic",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Melee",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1],
+    ["Defense","AoE",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1],
+    ["Defense","Toxic",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvP",false,"Replace",2,null,null,1]
   ]
 };

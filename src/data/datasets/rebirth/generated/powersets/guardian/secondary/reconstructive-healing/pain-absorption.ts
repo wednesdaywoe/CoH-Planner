@@ -82,7 +82,19 @@ export const PainAbsorption: Power = {
     ["Endurance",null,-5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower? ! &&"],
     ["Mez","CombatPhase",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true],
     ["GrantPower",null,-1,1,20,"Ranged_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,2,null,true],
-    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_3 source.ownPower? ! &&"]
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_3 source.ownPower? ! &&"],
+    ["Absorb",null,3,1,20,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower?"],
+    ["Regeneration",null,2,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower?"],
+    ["HealResistance",null,-0.5,1,20,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower?"],
+    ["Endurance",null,-10,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower?"],
+    ["Absorb",null,4,1,20,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower?"],
+    ["Regeneration",null,3,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower?"],
+    ["HealResistance",null,-0.75,1,20,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower?"],
+    ["Endurance",null,-15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower?"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower?"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower?"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower? Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_3 source.ownPower? ||"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower?"]
   ],
   "conditionalEffects": [
     {

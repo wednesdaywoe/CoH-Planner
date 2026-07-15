@@ -127,6 +127,12 @@ export const InnerWill: Power = {
     ["Enhancement","Confused",0.5,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Enhancement","Terrorized",0.5,1,30,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Heal",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Heal",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+    ["Heal",null,0.075,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Stunned",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kStun source> 0 >"],
+    ["Mez","Sleep",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kSleep source> 0 >"],
+    ["Mez","Immobilized",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kImmobilize source> 0 >"],
+    ["Mez","Held",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kHeld source> 0 >"],
+    ["Mez","Confused",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kConfused source> 0 >"],
+    ["Mez","Terrorized",1,1,30,"Melee_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"mod.kTerrorized source> 0 >"]
   ]
 };

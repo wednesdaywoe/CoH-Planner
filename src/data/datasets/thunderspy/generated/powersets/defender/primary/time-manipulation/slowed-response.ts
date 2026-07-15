@@ -41,6 +41,8 @@ export const SlowedResponse: Power = {
   "maxSlots": 6,
   "atoms": [
     ["Unmapped",null,-3,1,30,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
-    ["Unmapped",null,2,1,30,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"]
+    ["Unmapped",null,2,1,30,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["Unmapped",null,-3.6,1,30,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"],
+    ["Unmapped",null,2.5,1,30,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"]
   ]
 };

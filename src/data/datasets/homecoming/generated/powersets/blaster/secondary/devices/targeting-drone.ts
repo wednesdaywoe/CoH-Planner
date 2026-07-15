@@ -82,7 +82,15 @@ export const TargetingDrone: Power = {
     ["ToHit",null,1.85,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["ToHit",null,2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["DamageBuff","Smashing",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOutOfCombat Source.Mode?"],
+    ["DamageBuff","Lethal",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOutOfCombat Source.Mode?"],
+    ["DamageBuff","Fire",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOutOfCombat Source.Mode?"],
+    ["DamageBuff","Cold",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOutOfCombat Source.Mode?"],
+    ["DamageBuff","Energy",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOutOfCombat Source.Mode?"],
+    ["DamageBuff","Negative",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOutOfCombat Source.Mode?"],
+    ["DamageBuff","Psionic",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOutOfCombat Source.Mode?"],
+    ["DamageBuff","Toxic",4.8,1,0.75,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOutOfCombat Source.Mode?"]
   ],
   "conditionalEffects": [
     {
