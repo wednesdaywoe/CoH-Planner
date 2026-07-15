@@ -101,8 +101,19 @@ export function ChronologicalPowerSlot({
     if (!isValidTarget || !dragState) return;
 
     if (power) {
-      // Swap with occupied slot
-      swapPowerLevels(dragState.draggedPower.internalName, power.internalName);
+      // Swap with occupied slot. Both categories are passed: internalName is not
+      // unique across categories, so resolving either end by bare name can swap
+      // the wrong power's level.
+      // NB derive the target's category from `power` here rather than reading the
+      // `storeCategory` const below: that binding is declared after this
+      // component's `if (!power)` early return, so a closure reading it on the
+      // empty-slot path would throw.
+      swapPowerLevels(
+        dragState.draggedPower.internalName,
+        mapCategoryToStoreCategory(dragState.draggedPower.category),
+        power.internalName,
+        mapCategoryToStoreCategory(power.category),
+      );
     } else {
       // Move to empty slot
       movePowerLevel(

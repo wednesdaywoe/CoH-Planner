@@ -113,7 +113,9 @@ interface BuildActions {
   addPower: (category: PowerCategory, power: SelectedPower) => void;
   removePower: (category: PowerCategory, powerName: string) => void;
   movePowerLevel: (category: PowerCategory, powerName: string, newLevel: number) => void;
-  swapPowerLevels: (powerNameA: string, powerNameB: string) => void;
+  /** Categories are REQUIRED: internalName is not unique across categories, so
+   *  resolving either power by bare name can swap the WRONG power's level. */
+  swapPowerLevels: (powerNameA: string, categoryA: PowerCategory, powerNameB: string, categoryB: PowerCategory) => void;
 
   // Pools
   addPool: (poolId: string) => boolean;
@@ -1559,11 +1561,18 @@ export const useBuildStore = create<BuildStore>()(
         }));
       },
 
-      swapPowerLevels: (powerNameA, powerNameB) => {
+      swapPowerLevels: (powerNameA, categoryA, powerNameB, categoryB) => {
         historyCheckpoint();
         set((state) => {
-          const foundA = findPower(state.build, powerNameA);
-          const foundB = findPower(state.build, powerNameB);
+          // Resolve STRICTLY within the given category — `findPower`'s bare-name
+          // fall-through would be a data-corrupting bug here, not a display one:
+          // this reads `.level` off the resolved power and then writes back via
+          // `applyPowerUpdate(foundX.category, …)`. For a Dominator swapping epic
+          // Rain of Fire (internally `Fire_Blast`), a bare search hits the
+          // SECONDARY Fire Blast first, so the swap read the wrong level and
+          // rewrote the wrong power. The caller always knows both categories.
+          const foundA = findPowerInCategory(state.build, powerNameA, categoryA);
+          const foundB = findPowerInCategory(state.build, powerNameB, categoryB);
           if (!foundA || !foundB) return state;
 
           const levelA = foundA.power.level;
