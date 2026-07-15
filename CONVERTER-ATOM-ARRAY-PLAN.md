@@ -1,8 +1,44 @@
 # Plan B — Retire the `PowerEffects` bag: consumers read the atom list
 
-> Status: **planned, not started.** Companion to the shipped interim guard
-> (DSH6c discriminator gate, 2026-07-14). See [[converter-bag-vs-array-rootcause]],
-> [[dsh6-collapse-detector]], `docs/converter-unification-direction.md`.
+> Status: **in progress** on branch `converter-atom-array` (as of 2026-07-15).
+> Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit) — measured,
+> BLOCKED on an in-game check (see “Open: Inner Light” below)** · Phase 3 not
+> started. Nothing here has changed a single computed total yet: the calc still
+> reads the bag end-to-end, and every commit so far is additive.
+>
+> Companion to the shipped interim guard (DSH6c discriminator gate, 2026-07-14).
+> See [[converter-bag-vs-array-rootcause]], [[dsh6-collapse-detector]],
+> `docs/converter-unification-direction.md`.
+
+## Open: Inner Light — needs an in-game / Mids check before Slice 1 lands
+
+The Slice 1 shadow found a real bug on its first run, and answering this
+unblocks the ToHit applier.
+
+**Peacebringer Inner Light** (internally `Build_Up`, source
+`peacebringer_offensive/luminous_blast/build_up.json`) has four templates — a
+short burst and a long tail, all `stack=Stack`, `target=Self`:
+
+| attrib | burst | tail | bag keeps |
+|---|---|---|---|
+| ToHit (Current, `Melee_Buff_ToHit`) | **2.0 @ 10s** | 0.77 @ 30s | 0.77 |
+| 8× `*_Dmg` (Strength, `Melee_Buff_Dmg`) | **8.0 @ 10s** | 3.2 @ 30s | 3.2 |
+
+Both slots are last-write-wins assignments and the 30s template is emitted last,
+so **both silently drop the burst** — the planner shows Inner Light's tail as if
+it were the whole power. `durationVariants` exists for exactly this shape (EMP
+Arrow's -500% regen at 15s *and* 45s) but never fired here, so the converter's
+duration-aware accumulate has a gap worth finding. Affects HC Inner Light and
+Rebirth Inner Light + Inner Umbra (4 divergences; 599/603 +ToHit powers agree).
+
+**The question:** do the two AttribMods STACK for the first 10s (⇒ ToHit +2.77
+then +0.77; damage +1120% then +320%) or does the burst REPLACE the tail (⇒
++2.0/+8.0 then +0.77/+3.2)? Both apply from cast in CoH, which implies stacking
+— but per §Risks, a shadow divergence is verified against Mids/in-game, never
+auto-accepted. **Do not simply sum to 2.77: that overstates after 10s.**
+
+Once answered: fix the converter (emit `durationVariants` on both slots), then
+migrate the ToHit applier to read `durationBuckets(atoms)`.
 
 ## Why this must get done (and why "no observable bug" is a broken gate)
 
@@ -33,6 +69,10 @@ The `converter-rewrite` (merged to `main`) already fixed the **input** side:
 ```
 templatesToAtoms()  →  [immutable atom list]  →  projectAtomsToEffects()  →  PowerEffects
      ✅ clean, one atom per atomic game effect        ⚠️ the bag is minted here
+                              │
+                              └─ Phase 0/1: also emitted as `Power.atoms`, read
+                                 at runtime via atom-query.ts. Nothing consumes
+                                 it yet — the calc still reads only the bag.
 ```
 
 `AtomicEffect` (`src/data/core/atomic-effect.ts`) is a closed record with every
@@ -62,7 +102,7 @@ becomes a **UI-only convenience projection** (or is deleted). The invariant we
 want: *the calc never asks "what's in slot X"; it asks "give me the atoms of
 effectType X" and handles their discriminators explicitly.*
 
-## Blast radius (measured this session)
+## Blast radius (measured 2026-07-14, before Phase 0)
 
 Asymmetric — concentrated in one file.
 
@@ -72,8 +112,12 @@ Asymmetric — concentrated in one file.
 | `calculations/damage.ts` | 14 | named slots (`damage`/`dot`/`maxTargets`) | small |
 | **UI display** (`InfoPanel`, `powerDisplayUtils`, `MechanicAdjusters`, `SharedPowerComponents`, set-bonus/dashboard) | ~80 total | **already ~80% generic**: `Object.entries(effects)` through `EFFECT_REGISTRY` (`src/data/core/effect-registry.ts`, ~76 entries) | cheap — survives on a projection shim |
 
-`AtomicEffect` is currently converter/test-only; **no runtime path imports it.**
-That's the seam to open.
+~~`AtomicEffect` is currently converter/test-only; **no runtime path imports it.**
+That's the seam to open.~~ **Opened (Phase 0/1).** `AtomicEffect` now ships on
+every generated `Power` as `atoms` and is read at runtime through
+`src/data/core/atom-query.ts`. The table above still describes the work
+remaining, though: no calc applier reads atoms yet, so every one of those ~195
+`effects.<slot>` reads is still live.
 
 ## Phased plan (incremental, each phase independently shippable & gated)
 
@@ -215,6 +259,33 @@ incarnate, self-penalties):
 - The `*Unenhanced` five-slot family collapses back into a single
   `enhanceableVsNot(atoms)` split at this step — the tax is repaid.
 - **DoD:** every character-total sourced from atoms; shadow still green.
+
+  **Slice 1 — ToHit: MEASURED, blocked (2026-07-15).** `scripts/planb-shadow-tohit.cjs`
+  (committed, non-gating — a triage report, per §Risks) compares, per power, the
+  bag (`tohitBuff` + `tohitBuffUnenhanced`) against the BASE atoms of
+  `effectType:'ToHit'` minus what the bag routes elsewhere (aspect `Res` →
+  `debuffResistance`, `Str` → `specialBuff`, negative/debuff-table →
+  `tohitDebuff`), split by `ignoreStrength`. Result: **603 powers carry +ToHit,
+  599 agree, 4 diverge** — all Inner Light / Inner Umbra, all real (above).
+  The applier itself is NOT yet written: the divergence must be resolved first,
+  or the migration would bake in whichever answer the code happens to produce.
+
+  **What comparing correctly turned out to mean.** The first cut compared the
+  MULTISET of (|scale|, table, enhanceable) and falsely flagged Soul Drain and
+  Sunless Mire. Their two templates are a flat + per-foe pair the converter
+  legitimately RESHAPES into one slot (Soul Drain: 1.0 flat + 0.2 per foe →
+  `{scale: 1.2, perTarget: 0.2}`). The bag transforms as well as drops, so
+  "different shape" ≠ "lost data". The shape that survives the reshaping is
+  **summed scale per (table, enhanceable) at ONE target** — a resolved number
+  would have been wrong too, since the AT table applies identically on both
+  sides and only adds archetype noise to a routing question.
+
+  **Known interim compromise:** stacking meta (`stacksLinear` / `maxStacks` /
+  `stackCaps`) is keyed by SLOT NAME, so an atom-native applier still needs the
+  bag for it — `adjustForStacking(…, 'tohitBuff', …)`. Re-keying that onto atoms
+  is deferred; it is not the same axis as the discriminators Plan B targets.
+  (`AtomicEffect.stacking`/`stackCap` are per-template bin fields, NOT the
+  converter's `detectStackingEffects` output — do not conflate them.)
 
 ### Phase 3 — Bag becomes UI-only; then delete
 - Point the calc entirely at atoms; the bag is produced solely for the
