@@ -73,8 +73,8 @@ export const GuardedSpin: Power = {
   "atoms": [
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true],
     ["Damage","Smashing",0.2417,1,1.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1],
-    ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Defense","Lethal",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+    ["Defense","Lethal",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
     ["Damage","Smashing",1.2085,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
     ["Damage","Smashing",1.2085,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true],
     ["Damage","Smashing",0.2949,1,1.5,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,null,true],

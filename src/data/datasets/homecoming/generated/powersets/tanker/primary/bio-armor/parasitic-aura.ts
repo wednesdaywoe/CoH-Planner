@@ -70,10 +70,10 @@ export const ParasiticAura: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,0.3,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Regeneration",null,0.5,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Absorb",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Absorb",null,1,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1],
+    ["Recovery",null,0.3,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.3],
+    ["Regeneration",null,0.5,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.5],
+    ["Absorb",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.1],
+    ["Absorb",null,1,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
     ["DamageBuff","Smashing",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
     ["DamageBuff","Lethal",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
     ["DamageBuff","Fire",2,1,30,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],

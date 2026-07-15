@@ -60,7 +60,7 @@ export const DarkConsumption: Power = {
   },
   "atoms": [
     ["Damage","Negative",0.6154,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,25],
     ["Damage","Fire",0.2769,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
   ]
 };

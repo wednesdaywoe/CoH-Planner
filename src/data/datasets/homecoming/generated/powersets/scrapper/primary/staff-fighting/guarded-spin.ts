@@ -73,8 +73,8 @@ export const GuardedSpin: Power = {
   "atoms": [
     ["Damage","Smashing",0.2417,1,1.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1],
     ["Damage","Fire",0.0961,1,1.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,0],
-    ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Defense","Lethal",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Defense","Melee",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
+    ["Defense","Lethal",1.5,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1.5],
     ["Damage","Smashing",1.39,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq || enttype target> player eq || !",true],
     ["Damage","Smashing",1.39,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"arch target> Class_Minion_Grunt eq arch target> Class_Minion_Small eq || arch target> Class_Minion_Pets eq || arch target> Class_Minion_Swarm eq ||",true],
     ["Damage","Smashing",0.2949,1,1.5,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,null,true],

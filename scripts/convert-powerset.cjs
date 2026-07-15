@@ -3633,7 +3633,13 @@ function encodeAtomsForEmit(templates, baseTemplates) {
   const baseSet = new Set(baseTemplates || templates);
   return atoms.map((a) => {
     const src = templates[a._tmplIdx - 1];
-    return encodeAtom(baseSet.has(src) ? a : { ...a, gated: true });
+    // `gated` + `perTarget` are converter verdicts stamped onto the source
+    // template (perTarget by `computeAoePerTargetPatches`, which alone holds the
+    // AoE geometry / redirect / Defiance provenance — see AtomicEffect.perTarget).
+    const patch = {};
+    if (!baseSet.has(src)) patch.gated = true;
+    if (src && src._perTargetIncrement) patch.perTarget = src._perTargetIncrement;
+    return encodeAtom(Object.keys(patch).length ? { ...a, ...patch } : a);
   });
 }
 
@@ -5094,6 +5100,7 @@ function computeAoePerTargetPatches(templatesWithMeta, aoeMeta) {
         stack: template.stack,
         isDefiance,
         excludesSelf: requiresExcludesSelf(requires),
+        template,
       });
     }
   }
@@ -5118,6 +5125,14 @@ function computeAoePerTargetPatches(templatesWithMeta, aoeMeta) {
     const replaceScale = replaces.reduce((sum, e) => sum + e.scale, 0);
     const table = stacks[0].table;
     const perTarget = stackScale;
+
+    // Stamp each increment template with its own per-target contribution so
+    // `encodeAtomsForEmit` can mark its atom(s) `perTarget`. The runtime then
+    // recovers the group's value as Σ atom.perTarget without re-deriving the AoE
+    // geometry / stack-flavor this function alone sees (AtomicEffect.perTarget).
+    for (const e of stacks) {
+      if (e.template) e.template._perTargetIncrement = e.scale;
+    }
 
     // `scale` is the value at N=1 (one target hit). The downstream calc applies
     // `scale + perTarget × (N − 1)`. See selfIsCountedTarget above.

@@ -87,8 +87,8 @@ export const Consume: Power = {
     }
   },
   "atoms": [
-    ["Endurance",null,15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Recovery",null,0.05,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Endurance",null,15,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,15],
+    ["Recovery",null,0.05,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
     ["RechargePower",null,5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Damage","Fire",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Fire",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.75,1],

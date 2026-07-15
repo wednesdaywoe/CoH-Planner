@@ -67,8 +67,8 @@ export const DrainPsyche: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Recovery",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
+    ["Recovery",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,1],
     ["Regeneration",null,-5,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-5,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-5,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],

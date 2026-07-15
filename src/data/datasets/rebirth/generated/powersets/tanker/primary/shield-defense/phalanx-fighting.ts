@@ -58,9 +58,9 @@ export const PhalanxFighting: Power = {
     ["Defense","Melee",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","Ranged",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Defense","AoE",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Defense","Melee",0.3,1,0.81,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true],
-    ["Defense","Ranged",0.3,1,0.81,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true],
-    ["Defense","AoE",0.3,1,0.81,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true]
+    ["Defense","Melee",0.3,1,0.81,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true,0.3],
+    ["Defense","Ranged",0.3,1,0.81,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true,0.3],
+    ["Defense","AoE",0.3,1,0.81,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! enttype target> player eq &&",true,0.3]
   ],
   "mechanicType": "parentMechanic"
 };

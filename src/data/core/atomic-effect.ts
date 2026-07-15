@@ -146,6 +146,26 @@ export interface AtomicEffect {
    */
   gated?: boolean;
 
+  /**
+   * Per-target increment this atom contributes — an AoE self-buff that grows
+   * with the number of foes hit (Soul Drain's +ToHit/+Dmg, Invincibility's
+   * +Def/+ToHit, Consume Psyche's +Regen). Present ONLY on the increment atoms
+   * of a per-target group; absent on flat base atoms and non-AoE powers.
+   *
+   * STAMPED BY THE CONVERTER, not re-derivable at runtime — the bag's
+   * `{ scale, perTarget }` comes from `computeAoePerTargetPatches`, which reads
+   * AoE geometry (`max_targets_hit`, `targets_affected`), redirect-chain
+   * `number_allowed`, Defiance tags, and the raw `Continuous` stack flavor. None
+   * survive to the runtime: `targets_affected` is not emitted, redirect/Defiance
+   * provenance is not on the atom, and `mapStacking` folds `Continuous`→`No`. So,
+   * exactly like {@link gated}, the converter decides and stamps the verdict.
+   *
+   * Reconstruct the bag value with `perTargetValueOf` in `atom-query.ts`:
+   * `perTarget = Σ atom.perTarget`, `scale (at N=1) = Σ |atom.scale|` over the
+   * slot's atoms. Verified bag-equal corpus-wide by `scripts/planb-shadow-pertarget.cjs`.
+   */
+  perTarget?: number;
+
   // --- provenance (debugging + DSH6 migration) ---
   sourceAttrib?: string;
 }
@@ -176,9 +196,13 @@ export const ATOM_TUPLE_FIELDS = [
   'stackCap', 'ticks', 'applicationPeriod', 'baseProbability', 'procsPerMinute',
   'ignoreStrength', 'buffable', 'ignoreED', 'ignoreScaling',
   'specialCase', 'requiresExpression',
-  // `gated` sits LAST on purpose: ~64% of atoms are base (gated absent), and the
-  // encoder trims trailing nulls, so the common case costs zero extra bytes.
+  // `gated` and `perTarget` sit LAST on purpose: ~64% of atoms are base (gated
+  // absent) and only a few hundred carry a per-target increment, and the encoder
+  // trims trailing nulls, so the common case costs zero extra bytes. `perTarget`
+  // follows `gated` so a base per-target increment (Soul Drain: gated absent,
+  // perTarget present) costs just the one interior null.
   'gated',
+  'perTarget',
 ] as const satisfies ReadonlyArray<keyof AtomicEffect>;
 
 /** One atom, positionally encoded. A `null` at position `i` means the field

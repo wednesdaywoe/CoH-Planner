@@ -1,14 +1,16 @@
 # Plan B — Retire the `PowerEffects` bag: consumers read the atom list
 
 > Status: **in progress** on branch `converter-atom-array` (as of 2026-07-15).
-> Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit): the Inner
-> Light divergence is resolved and the converter fix has LANDED (durationVariants
-> on `tohitBuff`); the applier migration is reshaped by a perTarget finding — see
-> below** · Phase 3 not started. The converter fix changes the *bag* for the four
-> Inner Light / Inner Umbra powers (their burst is now represented, not dropped)
-> — the first non-additive commit — but still changes **no computed total**: the
-> calc reads `tohitBuff.scale` (the tail) either way; `durationVariants` is
-> display-only.
+> Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit) ✅ — the ToHit
+> applier now reads atoms, not the bag** · Phase 3 not started. Slice 1 shipped in
+> two parts: (a) the Inner Light burst/tail fix (durationVariants on `tohitBuff`),
+> and (b) the applier migration itself — `character-totals.ts` sources +ToHit from
+> `toHitBuffValue(power)` (atoms), including a converter-STAMPED `perTarget` so the
+> per-foe sliders (Soul Drain 1 vs 8 targets) keep working. Behavior-preserving by
+> construction: the atom value is verified bag-equal corpus-wide
+> (`scripts/planb-shadow-pertarget.cjs`, 603 ToHit / 21 per-target / 0 diverge)
+> and the applier falls back to the bag for any atom-less power, so **no computed
+> total changed**. This is the first character-total sourced from atoms.
 >
 > Companion to the shipped interim guard (DSH6c discriminator gate, 2026-07-14).
 > See [[converter-bag-vs-array-rootcause]], [[dsh6-collapse-detector]],
@@ -295,18 +297,32 @@ incarnate, self-penalties):
   in-game STACK confirmation and the `accumulateBuffSlot` converter fix (see the
   Resolved section up top): **603/603 agree**.
 
-  **The applier itself is still NOT written, and the perTarget axis is why.** The
-  bag's `tohitBuff` is now a lossless projection of the ToHit atoms, but a truly
-  atom-native total can't be sourced from `durationBuckets(atoms)` alone: Sunless
-  Mire / Soul Drain are burst+tail *and* per-foe, and their `{scale, perTarget}`
-  is derived by the perTarget post-pass (`computeAoePerTargetPatches`) from the
-  group/`Execute_Power` structure — NOT from any atom field. `durationBuckets`
-  would hand the applier the raw longest-bucket scale (Sunless Mire 0.5, not the
-  reshaped 1.0), regressing every per-foe ToHit power. So the ToHit applier
-  migration is gated on reconstructing perTarget from atoms — the same axis the
-  interim compromise below already defers — rather than being a quick
-  `durationBuckets` swap. Landing that reconstruction is the real Slice 1 applier
-  task; the converter fix above is the shippable, verified half.
+  **The applier now reads atoms — via a converter-stamped `perTarget` (2026-07-15).**
+  The blocker was that a truly atom-native total can't come from `durationBuckets`
+  alone: Sunless Mire / Soul Drain / Invincibility are per-foe, and their
+  `{scale, perTarget}` is derived by `computeAoePerTargetPatches` from AoE geometry
+  (`max_targets_hit`, `targets_affected`), redirect `number_allowed`, Defiance
+  tags, and the raw `Continuous` stack flavor — **none of which survives to the
+  runtime.** Decisive proof: Invincibility's per-foe increment is `Continuous`, but
+  `mapStacking` has no `Continuous` case so the atom encodes `stacking:'No'` — a
+  runtime re-derivation off `stacking` would silently score its perTarget as 0.
+
+  So, exactly like `gated` (Slice 0), **the converter stamps the verdict.** New
+  `AtomicEffect.perTarget` (last in the tuple → trailing-trims to zero bytes on the
+  non-increment majority) carries each increment atom's contribution;
+  `computeAoePerTargetPatches` stamps `template._perTargetIncrement`, and
+  `encodeAtomsForEmit` copies it onto the atom. The runtime recovers the bag value
+  with `perTargetValueOf` (`perTarget = Σ atom.perTarget`, `scale = Σ |atom.scale|`)
+  behind `toHitBuffValue(power)`, which `character-totals.ts` now reads in place of
+  `effects.tohitBuff` (`?? effects.tohitBuff` for atom-less powers). The stamp is
+  additive-only: a full regen leaves the **bag byte-identical** (only increment atom
+  tuples grow). Gated corpus-wide by `scripts/planb-shadow-pertarget.cjs` (603
+  ToHit / 21 per-target / 0 diverge, wired into `npm run regen`) and pinned in CI by
+  `tohit-atom-native.verify.test.ts` (Soul Drain scales to 8 foes, Invincibility's
+  stamp survives, Inner Light reads its 0.77 tail). The general axis (damage,
+  regen/recovery, defense, endurance — 513 perTarget slots total) reuses the same
+  stamp; its redirect (Fulcrum Shift) and self-counted (Phalanx `firstTargetExcluded`)
+  residuals live in those slices, not ToHit.
 
   **What comparing correctly turned out to mean.** The first cut compared the
   MULTISET of (|scale|, table, enhanceable) and falsely flagged Soul Drain and
@@ -318,12 +334,16 @@ incarnate, self-penalties):
   would have been wrong too, since the AT table applies identically on both
   sides and only adds archetype noise to a routing question.
 
-  **Known interim compromise:** stacking meta (`stacksLinear` / `maxStacks` /
-  `stackCaps`) is keyed by SLOT NAME, so an atom-native applier still needs the
-  bag for it — `adjustForStacking(…, 'tohitBuff', …)`. Re-keying that onto atoms
-  is deferred; it is not the same axis as the discriminators Plan B targets.
-  (`AtomicEffect.stacking`/`stackCap` are per-template bin fields, NOT the
-  converter's `detectStackingEffects` output — do not conflate them.)
+  **Known interim compromise:** self-STACK meta (`stacksLinear` / `maxStacks` /
+  `stackCaps`, the repeated-cast axis — Siphon Speed) is keyed by SLOT NAME, so
+  the applier still passes the bag for it — `adjustForStacking(atomValue, …,
+  'tohitBuff', effects.maxStacks, …)`. Re-keying that onto atoms is deferred; it
+  is not the same axis as the discriminators Plan B targets. NB the per-FOE axis
+  (`perTarget`) is now fully atom-native (stamped, above) — do not conflate the
+  two; `adjustForStacking` routes to `adjustForPerTarget` when the (atom-derived)
+  value carries `perTarget`, and only falls through to slot-keyed self-stacking
+  otherwise. (`AtomicEffect.stacking`/`stackCap` are per-template bin fields, NOT
+  the converter's `detectStackingEffects` output — do not conflate those either.)
 
 ### Phase 3 — Bag becomes UI-only; then delete
 - Point the calc entirely at atoms; the bag is produced solely for the

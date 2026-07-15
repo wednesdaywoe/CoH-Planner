@@ -139,7 +139,7 @@ export const EntropyShield: Power = {
     ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&"],
     ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&"],
     ["RechargeTime",null,0.05,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["RechargeTime",null,0.035,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.035,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.035],
     ["RechargeTime",null,0.2,1,2.25,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref source> entref target> eq !"],
     ["MezResist","Stunned",3,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
     ["MezResist","Held",3,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],

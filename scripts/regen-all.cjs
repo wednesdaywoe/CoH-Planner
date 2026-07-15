@@ -111,5 +111,16 @@ if (datasets.includes('homecoming')) {
   console.log(`\n>>> ${cmd}`);
   execSync(cmd, { stdio: 'inherit' });
 }
+
+// Plan B Slice 1 — the atom-native ToHit applier (character-totals.ts) reads
+// `toHitBuffValue(power)` in place of `effects.tohitBuff`. This gate proves the
+// atom reconstruction (scale + converter-stamped perTarget) still reproduces the
+// bag exactly, so the per-foe sliders (Soul Drain 1 vs 8 targets) and every
+// +ToHit total stay correct after a parser/converter change. GATES (exit 1).
+{
+  const cmd = `node scripts/planb-shadow-pertarget.cjs ${datasets.map((d) => `--dataset ${d}`).join(' ')}`;
+  console.log(`\n>>> ${cmd}`);
+  execSync(cmd, { stdio: 'inherit' });
+}
 const secs = Number(process.hrtime.bigint() - started) / 1e9;
 console.log(`\n=== regen complete in ${secs.toFixed(0)}s ===`);

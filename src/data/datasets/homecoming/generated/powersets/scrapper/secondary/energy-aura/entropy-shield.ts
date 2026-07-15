@@ -112,7 +112,7 @@ export const EntropyShield: Power = {
     ["Mez","Stunned",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Mez","Sleep",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Mez","Immobilized",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["RechargeTime",null,0.035,1,2,"Melee_Ones","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",true],
+    ["RechargeTime",null,0.035,1,2,"Melee_Ones","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",true,0.035],
     ["RechargeTime",null,0.05,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",true],
     ["RechargeTime",null,0.2,1,2.25,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Held source.EventTimeSince> 5 > Stunned source.EventTimeSince> 5 > && Sleep source.EventTimeSince> 5 > &&",true],
     ["Mez","Taunt",2.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&",true],

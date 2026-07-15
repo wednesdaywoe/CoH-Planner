@@ -136,13 +136,13 @@ export const EvolvingArmor: Power = {
     ["Resistance","Toxic",0.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Smashing",0.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",0.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Fire",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Resistance","Cold",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Resistance","Energy",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Resistance","Negative",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Resistance","Psionic",0.03,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Resistance","Toxic",0.05,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Resistance","Smashing",0.05,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Resistance","Lethal",0.05,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+    ["Resistance","Fire",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
+    ["Resistance","Cold",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
+    ["Resistance","Energy",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
+    ["Resistance","Negative",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.038],
+    ["Resistance","Psionic",0.03,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.03],
+    ["Resistance","Toxic",0.05,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
+    ["Resistance","Smashing",0.05,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
+    ["Resistance","Lethal",0.05,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.05]
   ]
 };

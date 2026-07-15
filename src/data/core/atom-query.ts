@@ -29,6 +29,13 @@
 import type { Power } from '@/types/power';
 import { decodeAtoms, type AtomicEffect, type EffectType } from './atomic-effect';
 
+/**
+ * The atom helpers only touch `power.atoms`, so they accept anything carrying it
+ * — a full `Power`, a `PowerWithToggle` in the calc loop, a redirect variant.
+ * Narrowing the parameter here avoids forcing callers to hold a complete `Power`.
+ */
+type AtomSource = Pick<Power, 'atoms'>;
+
 // ============================================================================
 // Access
 // ============================================================================
@@ -39,7 +46,7 @@ import { decodeAtoms, type AtomicEffect, type EffectType } from './atomic-effect
  * memo keyed on the power itself — a `WeakMap` so a dynamically-built or
  * discarded Power (imported build, redirect variant) is still collectable.
  */
-const atomCache = new WeakMap<Power, readonly AtomicEffect[]>();
+const atomCache = new WeakMap<AtomSource, readonly AtomicEffect[]>();
 
 /**
  * The power's atom list — its effects as the flat, pre-projection DSH4 record
@@ -51,7 +58,7 @@ const atomCache = new WeakMap<Power, readonly AtomicEffect[]>();
  * empty atom list while carrying a populated bag. Callers migrating an applier
  * must treat an empty atom list as "fall back to the bag", never as "zero".
  */
-export function atomsOf(power: Power): readonly AtomicEffect[] {
+export function atomsOf(power: AtomSource): readonly AtomicEffect[] {
   const cached = atomCache.get(power);
   if (cached) return cached;
   const atoms: readonly AtomicEffect[] = Object.freeze(decodeAtoms(power.atoms));
@@ -60,7 +67,7 @@ export function atomsOf(power: Power): readonly AtomicEffect[] {
 }
 
 /** The power's atoms of one effectType, in list order. */
-export function atomsOfType(power: Power, effectType: EffectType): AtomicEffect[] {
+export function atomsOfType(power: AtomSource, effectType: EffectType): AtomicEffect[] {
   return atomsOf(power).filter((a) => a.effectType === effectType);
 }
 
@@ -78,7 +85,7 @@ export function atomsOfType(power: Power, effectType: EffectType): AtomicEffect[
  * `baseAtoms(power)` is verified corpus-wide to reproduce the converter's own
  * base set exactly (`scripts/planb-shadow-bag.cjs`).
  */
-export function baseAtoms(power: Power): AtomicEffect[] {
+export function baseAtoms(power: AtomSource): AtomicEffect[] {
   return atomsOf(power).filter((a) => !a.gated);
 }
 
@@ -89,12 +96,12 @@ export function baseAtoms(power: Power): AtomicEffect[] {
  * `baseProbability`. The bag surfaces a curated subset of these as
  * `conditionalEffects`; the atom list keeps them all.
  */
-export function gatedAtoms(power: Power): AtomicEffect[] {
+export function gatedAtoms(power: AtomSource): AtomicEffect[] {
   return atomsOf(power).filter((a) => a.gated);
 }
 
 /** The power's BASE atoms of one effectType — the Phase 2 applier entry point. */
-export function baseAtomsOfType(power: Power, effectType: EffectType): AtomicEffect[] {
+export function baseAtomsOfType(power: AtomSource, effectType: EffectType): AtomicEffect[] {
   return baseAtoms(power).filter((a) => a.effectType === effectType);
 }
 
@@ -263,6 +270,71 @@ export function durationBuckets(atoms: readonly AtomicEffect[]): {
   // never depends on Map insertion (i.e. on converter emit order).
   out.sort((x, y) => y.duration - x.duration || (x.key < y.key ? -1 : x.key > y.key ? 1 : 0));
   return out;
+}
+
+/**
+ * The perTarget axis. An AoE self-buff that grows with foes hit — Soul Drain's
+ * +ToHit (1.0 flat + 0.2/foe), Invincibility's +ToHit (0.2/foe), Consume
+ * Psyche's +Regen — is stored by the bag as a single `{ scale, table, perTarget }`,
+ * where `scale` is the value at ONE target and `perTarget` the increment per
+ * additional foe. The calc applies `scale + perTarget × (N − 1)`.
+ *
+ * Reconstructs that value object from a group of same-slot atoms:
+ *   - `perTarget = Σ atom.perTarget` — the converter stamps each increment atom
+ *     (see {@link AtomicEffect.perTarget}); summing recovers the group total,
+ *     faithful even where the atom's own `stacking` lost the flavor (Invincibility's
+ *     `Continuous` folds to `No`, but its stamped increment survives).
+ *   - `scale` at N=1: for a per-target slot, `Σ |atom.scale|` (base + increments
+ *     — matches the converter's combinedScale for the self-not-counted case that
+ *     covers every ToHit per-target power); otherwise the longest-lived instance
+ *     (the burst/tail primary, so Inner Light reads its 0.77 tail, not 2.77).
+ *
+ * Returns `undefined` for an empty group. Corpus-verified bag-equal for tohitBuff
+ * by `scripts/planb-shadow-pertarget.cjs`.
+ */
+export function perTargetValueOf(
+  atoms: readonly AtomicEffect[],
+): { scale: number; table: string; perTarget?: number } | undefined {
+  if (!atoms.length) return undefined;
+  const table = atoms.find((a) => a.modifierTable)?.modifierTable ?? '';
+  const perTarget = atoms.reduce((s, a) => s + (a.perTarget ?? 0), 0);
+  if (perTarget > 0) {
+    const scale = atoms.reduce((s, a) => s + Math.abs(a.scale), 0);
+    return { scale, table, perTarget };
+  }
+  // No per-target increment: the sustained value is the longest-lived instance
+  // (a burst+tail power's primary bucket), never the overlap sum.
+  const primary = durationBuckets(atoms)[0];
+  return { scale: Math.abs(primary.atoms[0].scale), table };
+}
+
+/**
+ * The atom-native `tohitBuff` / `tohitBuffUnenhanced` value — the +ToHit buff the
+ * calc reads today off `effects.tohitBuff`, reconstructed from atoms (scale +
+ * perTarget + burst/tail collapse). Mirrors the projection's toHit routing: a
+ * ToHit atom lands here when its aspect is neither `Res` (→ debuffResistance) nor
+ * `Str` (→ specialBuff strength), it is not a debuff, and its `ignoreStrength`
+ * matches the requested half (`false` → `tohitBuff`, `true` → `tohitBuffUnenhanced`).
+ *
+ * Returns `undefined` when the power has no such atom — the caller then falls
+ * back to the bag (an atom-less legacy power keeps its `effects.tohitBuff`; see
+ * {@link atomsOf}). Verified bag-equal by `scripts/planb-shadow-pertarget.cjs`.
+ */
+export function toHitBuffValue(
+  power: AtomSource,
+  opts: { ignoreStrength?: boolean } = {},
+): { scale: number; table: string; perTarget?: number } | undefined {
+  const wantIgnoreStrength = opts.ignoreStrength ?? false;
+  const atoms = baseAtoms(power).filter(
+    (a) =>
+      a.effectType === 'ToHit' &&
+      a.aspect !== 'Res' &&
+      a.aspect !== 'Str' &&
+      !!a.ignoreStrength === wantIgnoreStrength &&
+      a.scale > 0 &&
+      !(a.modifierTable || '').toLowerCase().includes('debuff'),
+  );
+  return perTargetValueOf(atoms);
 }
 
 /** Atom identity minus `duration` — the duration-bucketing key. */

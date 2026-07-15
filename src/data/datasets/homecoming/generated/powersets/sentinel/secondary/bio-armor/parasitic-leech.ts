@@ -69,9 +69,9 @@ export const ParasiticLeech: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,0.429,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Regeneration",null,0.714,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-    ["Absorb",null,0.143,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1],
+    ["Recovery",null,0.429,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.429],
+    ["Regeneration",null,0.714,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.714],
+    ["Absorb",null,0.143,1,45,"Melee_Ones","Max","Expression","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.143],
     ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"],
     ["Regeneration",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&",true],
     ["Regeneration",null,-1.3,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&",true],

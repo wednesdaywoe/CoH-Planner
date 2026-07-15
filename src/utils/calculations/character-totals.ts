@@ -50,6 +50,8 @@ import {
   type EnhancementBonuses,
 } from './enhancement-values';
 import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
+import { toHitBuffValue } from '@/data/core/atom-query';
+import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
 import { getEffectiveLevel, areIncarnatesSuppressed } from './effective-level';
@@ -708,6 +710,9 @@ interface PowerWithToggle {
   effectArea?: string;
   isActive?: boolean;
   effects?: ActivePowerEffect;
+  /** Pre-projection atom list (Plan B) — the atom-native appliers read this in
+   *  place of a bag slot. Carried from the powerset definition by `enrich`. */
+  atoms?: EncodedAtom[];
   slots?: (Enhancement | null)[];
   stats?: { endurance?: number; activatePeriod?: number; [key: string]: unknown };
   /** Used by `combineWithAlphaED` to gate Alpha bonuses by what the power
@@ -1122,10 +1127,16 @@ function applyActivePowerBonuses(
     const _debugBefore = _debugEnabled ? { ...global } : null;
 
     // ToHit buff (stored as decimal, convert to percentage)
-    // Enhanced by ToHit enhancements
-    if (effects.tohitBuff !== undefined) {
+    // Enhanced by ToHit enhancements.
+    // Plan B Slice 1: sourced from atoms (scale + perTarget reconstructed by
+    // `toHitBuffValue`, verified bag-equal by scripts/planb-shadow-pertarget.cjs);
+    // `?? effects.tohitBuff` keeps an atom-less legacy power on the bag. Stacking
+    // meta (`stacksLinear`/`maxStacks`/`stackCaps`) stays a bag read, keyed by
+    // slot name — the deferred axis, not a discriminator Plan B targets.
+    const tohitBuff = toHitBuffValue(power) ?? effects.tohitBuff;
+    if (tohitBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.tohit || 0) + strengthBuffs.toHit;
-      const adjustedBuff = adjustForStacking(effects.tohitBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'tohitBuff', effects.maxStacks, effects.stackCaps);
+      const adjustedBuff = adjustForStacking(tohitBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'tohitBuff', effects.maxStacks, effects.stackCaps);
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100 * enhMultiplier;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
@@ -1137,8 +1148,9 @@ function applyActivePowerBonuses(
 
     // ToHit buff that ignores strength (IgnoreStrength) — NOT boosted by ToHit
     // enh or global +ToHit (e.g. Bio Armor Environmental Adaptation's +ToHit).
-    if (effects.tohitBuffUnenhanced !== undefined) {
-      const adjusted = adjustForStacking(effects.tohitBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'tohitBuffUnenhanced', effects.maxStacks, effects.stackCaps);
+    const tohitBuffUnenhanced = toHitBuffValue(power, { ignoreStrength: true }) ?? effects.tohitBuffUnenhanced;
+    if (tohitBuffUnenhanced !== undefined) {
+      const adjusted = adjustForStacking(tohitBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'tohitBuffUnenhanced', effects.maxStacks, effects.stackCaps);
       const value = resolveScaledEffect(adjusted, archetypeId, buildLevel) * 100;
       global.toHit += value;
       addToBreakdown(breakdown, 'toHit', {
@@ -3687,7 +3699,7 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
   // into the caster's totals.
   const enrich = (
     power: { internalName?: string; isActive?: boolean; slots?: unknown },
-    def?: { targetType?: string; powerType?: string; effectArea?: string; effects?: unknown; conditionalEffects?: unknown; setsModes?: string[]; modesSuspended?: string[] },
+    def?: { targetType?: string; powerType?: string; effectArea?: string; effects?: unknown; conditionalEffects?: unknown; setsModes?: string[]; modesSuspended?: string[]; atoms?: EncodedAtom[] },
   ): PowerWithToggle => {
     if (!def) return power as unknown as PowerWithToggle;
     return {
@@ -3697,6 +3709,10 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
       powerType: def.powerType,
       effectArea: def.effectArea,
       effects: def.effects ?? (power as { effects?: unknown }).effects,
+      // Atom list is generated static data — always take the definition's (the
+      // stored build copy is trimmed and carries none). Atom-native appliers
+      // (Plan B) read it; an atom-less power falls back to the bag.
+      atoms: def.atoms ?? (power as { atoms?: EncodedAtom[] }).atoms,
       // Carry mode-/state-gated contributions so the calc can apply the
       // active ones (Bio Armor adaptation modes, …) — see expandActiveConditionals.
       conditionalEffects: def.conditionalEffects ?? (power as { conditionalEffects?: unknown }).conditionalEffects,
