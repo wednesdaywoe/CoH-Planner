@@ -796,6 +796,12 @@ export const KHELDIAN_FORM_VARIANT_POWERS: Record<string, Partial<Power>> = {
         }
       },
       "tohitBuff": {
+        "durationVariants": [
+          {
+            "duration": 10,
+            "scale": 0.5
+          }
+        ],
         "scale": 0.5,
         "table": "Melee_Buff_ToHit"
       }

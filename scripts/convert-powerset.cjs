@@ -5121,25 +5121,63 @@ function computeAoePerTargetPatches(templatesWithMeta, aoeMeta) {
 
     if (stacks.length === 0) continue;
 
-    const stackScale = stacks.reduce((sum, e) => sum + e.scale, 0);
-    const replaceScale = replaces.reduce((sum, e) => sum + e.scale, 0);
-    const table = stacks[0].table;
+    // Restrict to the DOMINANT table (max Σ|scale|). A single-table slot must not
+    // sum cross-table riders: Rebirth strips the `Defiance` tag from a blaster's
+    // +0.063/foe on the flat `Melee_Ones` table, so the `!isDefiance` filter above
+    // can't drop it — without this it leaks into Soul Drain's Melee_Buff_Dmg per-foe
+    // value (4.8 → 4.863). Mirrors `damageBuffValue`'s dominant-table filter so the
+    // bag and the atom reconstruction agree. No-op for the common single-table group.
+    const tableWeight = new Map();
+    for (const e of [...stacks, ...replaces]) tableWeight.set(e.table, (tableWeight.get(e.table) || 0) + e.scale);
+    let domTable = stacks[0].table;
+    let domWeight = -Infinity;
+    for (const [t, w] of tableWeight) if (w > domWeight) ((domWeight = w), (domTable = t));
+    const domStacks = stacks.filter(e => e.table === domTable);
+    const domReplaces = replaces.filter(e => e.table === domTable);
+    if (domStacks.length === 0) continue;
+
+    // Sum DISTINCT (scale, table) increments — not every template. A by-type
+    // buff is ONE logical increment applied across N damage types; some exports
+    // encode it as one multi-attrib template (HC), others as N single-attrib
+    // templates (Rebirth), and a burst+tail buff repeats the same (scale, table)
+    // at two durations. Summing raw templates N×-inflated the per-foe value on
+    // the per-type-template datasets (Rebirth Sunless Mire's +1.25/foe read as
+    // +20/foe — 8 types × 2 durations). Deduping by (scale, table) collapses the
+    // explosion to the one real increment, so the bag matches HC (multi-attrib)
+    // and the atom reconstruction (`damageBuffValue`, which dedups the same way).
+    // Genuinely distinct increments differ in scale, so they still sum.
+    const sumDistinctScale = (arr) => {
+      const seen = new Set();
+      let s = 0;
+      for (const e of arr) {
+        const k = `${e.scale}|${e.table}`;
+        if (seen.has(k)) continue;
+        seen.add(k);
+        s += e.scale;
+      }
+      return s;
+    };
+    const stackScale = sumDistinctScale(domStacks);
+    const replaceScale = sumDistinctScale(domReplaces);
+    const table = domStacks[0].table;
     const perTarget = stackScale;
 
     // Stamp each increment template with its own per-target contribution so
     // `encodeAtomsForEmit` can mark its atom(s) `perTarget`. The runtime then
     // recovers the group's value as Σ atom.perTarget without re-deriving the AoE
     // geometry / stack-flavor this function alone sees (AtomicEffect.perTarget).
-    for (const e of stacks) {
+    // Only the dominant-table increments are stamped — an off-table rider is not
+    // part of this slot's per-foe value (and `damageBuffValue` drops it too).
+    for (const e of domStacks) {
       if (e.template) e.template._perTargetIncrement = e.scale;
     }
 
     // `scale` is the value at N=1 (one target hit). The downstream calc applies
     // `scale + perTarget × (N − 1)`. See selfIsCountedTarget above.
-    const firstTargetExcluded = selfIsCountedTarget && stacks.every(e => e.excludesSelf);
+    const firstTargetExcluded = selfIsCountedTarget && domStacks.every(e => e.excludesSelf);
     const combinedScale = firstTargetExcluded ? replaceScale : replaceScale + stackScale;
 
-    const firstEntry = stacks[0];
+    const firstEntry = domStacks[0];
     if (firstEntry.subKey) {
       if (!patches[firstEntry.effectKey]) patches[firstEntry.effectKey] = {};
       patches[firstEntry.effectKey][firstEntry.subKey] = { scale: combinedScale, table, perTarget };
@@ -5184,6 +5222,15 @@ function detectStackingEffects(rawJson) {
   };
   const patches = computeAoePerTargetPatches(baseTemplatesWithMeta, aoeMeta);
   let maxStacks = null;
+
+  // (scale, table) of every redirect-derived per-target INCREMENT. The redirect
+  // chain's templates are parsed from a separate file, so they are NOT the same
+  // objects that become this power's atoms (allTemplates) — computeAoePerTargetPatches
+  // can stamp `_perTargetIncrement` directly, but this branch cannot. Instead we
+  // collect the signatures here and stamp the matching allTemplates atoms back in
+  // the caller, so `damageBuffValue` recovers Fulcrum Shift's per-foe increment
+  // (its base 4 rides KineticTransferBuffSelf, the +2/foe rides KineticTransferBuff).
+  const redirectPerTargetSigs = [];
 
   // === Execute_Power redirect stacking (multi-level) ===
   // Handles two patterns under one rule:
@@ -5232,6 +5279,7 @@ function detectStackingEffects(rawJson) {
 
           if (isPerTarget) {
             entry.perTarget = (entry.perTarget || 0) + scale;
+            if (scale > 0 && rt.table) redirectPerTargetSigs.push({ scale, table: rt.table });
           } else {
             entry.scale = (entry.scale || 0) + scale;
           }
@@ -5262,7 +5310,7 @@ function detectStackingEffects(rawJson) {
   }
 
   if (Object.keys(patches).length === 0 && maxStacks === null && !stacksLinear) return null;
-  return { patches, maxStacks, stacksLinear, stackCaps };
+  return { patches, maxStacks, stacksLinear, stackCaps, redirectPerTargetSigs };
 }
 
 /**
@@ -5971,6 +6019,21 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
     const stackingResult = detectStackingEffects(stackingSource);
     if (stackingResult) {
       mergeStackingPatches(effects, stackingResult);
+      // Stamp the redirect-derived per-target increment onto the matching emitted
+      // atoms (allTemplates). The redirect chain's own template objects (seen by
+      // detectStackingEffects) are parsed separately and are NOT these, so the
+      // AoE-path `_perTargetIncrement` stamp couldn't reach them — match by
+      // (|scale|, table). Only the increment (KineticTransferBuff scale-2) matches;
+      // the base one-shot (KineticTransferBuffSelf scale-4) has a different scale
+      // and stays base, so `damageBuffValue` reads Fulcrum Shift as {4, perTarget:2}.
+      for (const sig of stackingResult.redirectPerTargetSigs || []) {
+        for (const t of allTemplates) {
+          if (t._perTargetIncrement) continue;
+          if (Math.abs(t.scale || 0) === sig.scale && t.table === sig.table) {
+            t._perTargetIncrement = sig.scale;
+          }
+        }
+      }
     }
 
     if (Object.keys(effects).length) power.effects = effects;

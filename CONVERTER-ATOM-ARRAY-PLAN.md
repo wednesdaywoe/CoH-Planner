@@ -1,16 +1,18 @@
 # Plan B — Retire the `PowerEffects` bag: consumers read the atom list
 
 > Status: **in progress** on branch `converter-atom-array` (as of 2026-07-15).
-> Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit) ✅ — the ToHit
-> applier now reads atoms, not the bag** · Phase 3 not started. Slice 1 shipped in
-> two parts: (a) the Inner Light burst/tail fix (durationVariants on `tohitBuff`),
-> and (b) the applier migration itself — `character-totals.ts` sources +ToHit from
-> `toHitBuffValue(power)` (atoms), including a converter-STAMPED `perTarget` so the
-> per-foe sliders (Soul Drain 1 vs 8 targets) keep working. Behavior-preserving by
-> construction: the atom value is verified bag-equal corpus-wide
-> (`scripts/planb-shadow-pertarget.cjs`, 603 ToHit / 21 per-target / 0 diverge)
-> and the applier falls back to the bag for any atom-less power, so **no computed
-> total changed**. This is the first character-total sourced from atoms.
+> Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit) ✅ · Slice 2
+> (Damage) ✅ — the ToHit and +Damage appliers now read atoms, not the bag** ·
+> Phase 3 not started. Slice 1 shipped in two parts: (a) the Inner Light burst/tail
+> fix (durationVariants on `tohitBuff`), and (b) the applier migration itself —
+> `character-totals.ts` sources +ToHit from `toHitBuffValue(power)` (atoms),
+> including a converter-STAMPED `perTarget` so the per-foe sliders (Soul Drain 1 vs
+> 8 targets) keep working. Behavior-preserving by construction: the atom value is
+> verified bag-equal corpus-wide (`scripts/planb-shadow-pertarget.cjs`) and the
+> applier falls back to the bag for any atom-less power. Slice 2 does the same for
+> `damageBuff` (see §Slice 2), and additionally root-fixes a per-foe over-count
+> that had inflated Rebirth's +Damage/+Def/+Regen ~8× — the shadow now gates both
+> slots at **1252/1252 agree, 0 diverge**.
 >
 > Companion to the shipped interim guard (DSH6c discriminator gate, 2026-07-14).
 > See [[converter-bag-vs-array-rootcause]], [[dsh6-collapse-detector]],
@@ -344,6 +346,49 @@ incarnate, self-penalties):
   value carries `perTarget`, and only falls through to slot-keyed self-stacking
   otherwise. (`AtomicEffect.stacking`/`stackCap` are per-template bin fields, NOT
   the converter's `detectStackingEffects` output — do not conflate those either.)
+
+  **Slice 2 — Damage: applier migrated + a per-foe over-count root-fixed
+  (2026-07-15).** `character-totals.ts` now sources +Damage from
+  `damageBuffValue(power) ?? effects.damageBuff`. Harder than ToHit because a
+  +Damage buff is not scalar — it explodes into one atom per damage type (8–13
+  siblings, identical scale), so `damageBuffValue` (`atom-query.ts`) collapses that
+  dimension and reconstructs perTarget over four atom-derivable axes:
+  - **damage-type collapse** — dedup by `(|scale|, table)` (a by-type buff is one
+    increment; summing raw 8–13×-inflated it);
+  - **dominant table** — keep the table carrying the most |scale|, dropping an
+    off-table rider (a blaster's `Melee_Ones` Defiance increment);
+  - **per-target N=1 via `toWho`** — `perTarget = Σ distinct increment`; the N=1
+    scale adds base (Replace) plus only increments landing on the CASTER (Self/All).
+    That one test separates AAO (Self increment → N=1 = base+increment = 1.55) from
+    **Fulcrum Shift** (Target increment → N=1 = base 4, +2/foe), no extra flag;
+  - **non-uniform primary** — Embrace of Fire (+10 Fire/30s vs +8 all/10s) reports
+    +8, the value covering the most damage types (what one global slot represents).
+  `perTargetFromGroup` is shared with `toHitBuffValue` so the two can't drift.
+
+  **Fulcrum Shift** needed a stamp like ToHit's, but its increment rides a
+  redirect chain (`KineticTransferBuff` +2/foe) whose templates aren't the base
+  power's atoms — so `detectStackingEffects` returns the increment `(scale,table)`
+  signatures and the caller stamps the matching `allTemplates` atoms.
+
+  **The root-fix (the reason this slice changed data).** `computeAoePerTargetPatches`
+  summed *raw* per-foe templates, so datasets that encode a by-type buff as N
+  single-attrib templates (Rebirth) — or a burst/tail as two duration blocks —
+  read the per-foe increment N× too high (Rebirth Sunless Mire's +1.25/foe → +20;
+  Invincibility's +Def, Rise to the Challenge's +Regen likewise). Fixed by summing
+  DISTINCT `(scale, table)` + the same dominant-table filter, so the bag matches
+  HC (which uses multi-attrib templates and was already correct) AND the atom
+  reconstruction. HC bags are unchanged (dedup is a no-op on multi-attrib data);
+  the corrected values were **cross-validated to equal HC's** for every changed
+  Rebirth power. Sole exception flagged for Mids review: HC **Thunderous Blast**
+  `enduranceGain` 13.86 → 6.93 (two byte-identical redirect-sourced self-restore
+  templates deduped — likely a data duplicate, but not cross-validatable).
+
+  Gated corpus-wide by `scripts/planb-shadow-pertarget.cjs` (now tohit + damage,
+  **1252/1252 agree, 0 diverge**) and pinned by `tohit-atom-native.verify.test.ts`
+  (Soul Drain scales to 8 foes; AAO 1.55/0.55; Fulcrum 4/2; Inner Light 3.2 tail;
+  Embrace of Fire +8 not +10). **Deferred (display-only):** the Inner Light *damage*
+  burst durationVariants — the calc total is already correct (majority-longest
+  primary), so this is just the InfoPanel burst row, not shipped this slice.
 
 ### Phase 3 — Bag becomes UI-only; then delete
 - Point the calc entirely at atoms; the bag is produced solely for the

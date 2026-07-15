@@ -47,9 +47,9 @@ export const RisetotheChallenge: Power = {
       "tohitDebuff": 1
     },
     "regenBuff": {
-      "scale": 2.5,
+      "scale": 1.25,
       "table": "Melee_Ones",
-      "perTarget": 0.5
+      "perTarget": 0.25
     },
     "taunt": {
       "scale": 1,

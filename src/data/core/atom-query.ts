@@ -280,14 +280,10 @@ export function durationBuckets(atoms: readonly AtomicEffect[]): {
  * additional foe. The calc applies `scale + perTarget × (N − 1)`.
  *
  * Reconstructs that value object from a group of same-slot atoms:
- *   - `perTarget = Σ atom.perTarget` — the converter stamps each increment atom
- *     (see {@link AtomicEffect.perTarget}); summing recovers the group total,
- *     faithful even where the atom's own `stacking` lost the flavor (Invincibility's
- *     `Continuous` folds to `No`, but its stamped increment survives).
- *   - `scale` at N=1: for a per-target slot, `Σ |atom.scale|` (base + increments
- *     — matches the converter's combinedScale for the self-not-counted case that
- *     covers every ToHit per-target power); otherwise the longest-lived instance
- *     (the burst/tail primary, so Inner Light reads its 0.77 tail, not 2.77).
+ *   - per-target increments present → {@link perTargetFromGroup} (dedup by
+ *     `(|scale|, table)`, base + caster-side increments at N=1);
+ *   - otherwise the longest-lived instance (the burst/tail primary, so Inner
+ *     Light reads its 0.77 tail, not the 2.77 overlap sum).
  *
  * Returns `undefined` for an empty group. Corpus-verified bag-equal for tohitBuff
  * by `scripts/planb-shadow-pertarget.cjs`.
@@ -297,15 +293,38 @@ export function perTargetValueOf(
 ): { scale: number; table: string; perTarget?: number } | undefined {
   if (!atoms.length) return undefined;
   const table = atoms.find((a) => a.modifierTable)?.modifierTable ?? '';
-  const perTarget = atoms.reduce((s, a) => s + (a.perTarget ?? 0), 0);
-  if (perTarget > 0) {
-    const scale = atoms.reduce((s, a) => s + Math.abs(a.scale), 0);
-    return { scale, table, perTarget };
-  }
+  const pt = perTargetFromGroup(atoms, table);
+  if (pt) return pt;
   // No per-target increment: the sustained value is the longest-lived instance
   // (a burst+tail power's primary bucket), never the overlap sum.
   const primary = durationBuckets(atoms)[0];
   return { scale: Math.abs(primary.atoms[0].scale), table };
+}
+
+/**
+ * The per-target `{ scale, perTarget }` of a same-slot atom group, or `undefined`
+ * when the group carries no per-target increment. Shared by {@link perTargetValueOf}
+ * (ToHit) and {@link damageBuffValue} so the two can't drift from each other or
+ * from the converter's `computeAoePerTargetPatches`:
+ *   - `perTarget` = Σ DISTINCT increment (dedup `(|scale|, table)`) — a by-type or
+ *     burst/tail buff repeats the same increment across N atoms; summing raw would
+ *     N×-inflate (the Rebirth per-type-template bug), so the converter and this
+ *     both count each distinct increment once.
+ *   - N=1 `scale` = base (Replace) + only the increments landing on the CASTER
+ *     (`toWho` Self/All). That toWho test is what separates AAO (Self increment →
+ *     N=1 = base+increment) from Fulcrum Shift (Target increment → N=1 = base).
+ */
+function perTargetFromGroup(
+  atoms: readonly AtomicEffect[],
+  table: string,
+): { scale: number; table: string; perTarget: number } | undefined {
+  const increments = atoms.filter((a) => a.perTarget);
+  if (!increments.length) return undefined;
+  const perTarget = sumDistinctAbs(increments, (a) => a.perTarget ?? 0);
+  const bases = atoms.filter((a) => !a.perTarget);
+  const selfIncrements = increments.filter((a) => a.toWho === 'Self' || a.toWho === 'All');
+  const scale = sumDistinctAbs(bases, (a) => a.scale) + sumDistinctAbs(selfIncrements, (a) => a.scale);
+  return { scale, table, perTarget };
 }
 
 /**
@@ -335,6 +354,97 @@ export function toHitBuffValue(
       !(a.modifierTable || '').toLowerCase().includes('debuff'),
   );
   return perTargetValueOf(atoms);
+}
+
+/**
+ * The atom-native `damageBuff` value — the +Damage strength buff the calc reads
+ * off `effects.damageBuff` (Build Up, Assault, Soul Drain, AAO, Fulcrum Shift),
+ * reconstructed from atoms. Harder than {@link toHitBuffValue} because a +damage
+ * buff is not scalar: it explodes into ONE atom per damage type (8–13 siblings
+ * with identical scale), so a naive sum would 8–13× inflate. Four axes are
+ * handled, all derivable from the atoms:
+ *
+ *   - **damage-type collapse** — dedup by `(|scale|, table)` so the per-type (and
+ *     same-scale burst/tail) siblings count once, matching the converter's own
+ *     `sumDistinctScale` in `computeAoePerTargetPatches` (the two must agree, and
+ *     the shadow gate proves it).
+ *   - **dominant table** — keep only atoms on the table carrying the most |scale|,
+ *     dropping an off-table rider (a blaster's `Melee_Ones` Defiance increment,
+ *     which the converter excludes via its `isDefiance` filter).
+ *   - **per-target (N=1) via toWho** — `perTarget = Σ distinct increment`; the
+ *     N=1 scale adds the base (Replace) plus only those increments that land on
+ *     the CASTER (`toWho` Self/All). That one test separates AAO (Self increment,
+ *     N=1 = base+increment = 1.55) from Fulcrum Shift (Target increment, N=1 =
+ *     base 4, increment 2 applies per foe) with no extra flag.
+ *   - **non-uniform primary** — when types differ (Embrace of Fire: +10 Fire/30s
+ *     vs +8 all/10s), the headline is the value covering the MOST damage types
+ *     (ties broken by longest duration), which is what a single global +damage
+ *     slot represents — matching the bag's pick.
+ *
+ * Returns `undefined` for a power with no +damage atom (→ bag fallback; see
+ * {@link atomsOf}). Verified bag-equal corpus-wide by
+ * `scripts/planb-shadow-pertarget.cjs`.
+ */
+export function damageBuffValue(
+  power: AtomSource,
+): { scale: number; table: string; perTarget?: number } | undefined {
+  let atoms = baseAtoms(power).filter(
+    (a) =>
+      a.effectType === 'DamageBuff' &&
+      a.aspect === 'Str' &&
+      a.scale > 0 &&
+      !(a.modifierTable || '').toLowerCase().includes('debuff'),
+  );
+  if (!atoms.length) return undefined;
+
+  // Dominant table: the one carrying the most total |scale|. Off-table riders
+  // (Defiance on `Melee_Ones`) are excluded by the converter and must be here too.
+  const tableWeight = new Map<string, number>();
+  for (const a of atoms) {
+    tableWeight.set(a.modifierTable, (tableWeight.get(a.modifierTable) ?? 0) + Math.abs(a.scale));
+  }
+  let table = '';
+  let best = -Infinity;
+  for (const [t, w] of tableWeight) if (w > best) ((best = w), (table = t));
+  atoms = atoms.filter((a) => a.modifierTable === table);
+
+  // per-target increments present → shared reconstruction (dedup + toWho N=1).
+  const pt = perTargetFromGroup(atoms, table);
+  if (pt) return pt;
+
+  // No per-target increment: the headline is the value shared by the most damage
+  // types (ties → longest-lived), the burst/tail primary for a uniform buff.
+  const groups = new Map<string, { types: Set<string>; duration: number; scale: number }>();
+  for (const a of atoms) {
+    const k = `${Math.abs(a.scale)}|${a.duration}`;
+    let g = groups.get(k);
+    if (!g) groups.set(k, (g = { types: new Set(), duration: a.duration, scale: Math.abs(a.scale) }));
+    g.types.add(a.subType ?? '');
+  }
+  let primary = { types: new Set<string>(), duration: -1, scale: 0 };
+  for (const g of groups.values()) {
+    if (
+      g.types.size > primary.types.size ||
+      (g.types.size === primary.types.size && g.duration > primary.duration) ||
+      (g.types.size === primary.types.size && g.duration === primary.duration && g.scale > primary.scale)
+    ) {
+      primary = g;
+    }
+  }
+  return { scale: primary.scale, table };
+}
+
+/** Σ of `val(a)` over atoms with a DISTINCT `|val|` (dedup the type/duration copies). */
+function sumDistinctAbs(atoms: readonly AtomicEffect[], val: (a: AtomicEffect) => number): number {
+  const seen = new Set<number>();
+  let s = 0;
+  for (const a of atoms) {
+    const v = Math.abs(val(a));
+    if (seen.has(v)) continue;
+    seen.add(v);
+    s += v;
+  }
+  return s;
 }
 
 /** Atom identity minus `duration` — the duration-bucketing key. */

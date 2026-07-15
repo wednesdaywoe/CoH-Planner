@@ -51,9 +51,9 @@ export const FollowUp: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
-      "scale": 24,
+      "scale": 3,
       "table": "Melee_Buff_Dmg",
-      "perTarget": 24
+      "perTarget": 3
     },
     "durations": {
       "damageBuff": 10,
@@ -112,9 +112,9 @@ export const FollowUp: Power = {
       "effects": {
         "buffDuration": 10,
         "damageBuff": {
-          "scale": 8,
+          "scale": 1,
           "table": "Melee_Buff_Dmg",
-          "perTarget": 8
+          "perTarget": 1
         },
         "durations": {
           "damageBuff": 10,

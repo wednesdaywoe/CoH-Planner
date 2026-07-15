@@ -36,9 +36,9 @@ export const AgainstallOdds: Power = {
   "effects": {
     "buffDuration": 1,
     "damageBuff": {
-      "scale": 12.399999999999999,
+      "scale": 1.55,
       "table": "Melee_Buff_Dmg",
-      "perTarget": 4.3999999999999995
+      "perTarget": 0.55
     },
     "damageDebuff": {
       "scale": 1,

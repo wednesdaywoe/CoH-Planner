@@ -46,9 +46,9 @@ export const Burn: Power = {
   "effects": {
     "buffDuration": 9.53,
     "damageBuff": {
-      "scale": 0.488,
+      "scale": 0.061,
       "table": "Melee_Ones",
-      "perTarget": 0.488
+      "perTarget": 0.061
     },
     "durations": {
       "damageBuff": 9.53

@@ -51,9 +51,9 @@ export const SunlessMire: Power = {
   "effects": {
     "buffDuration": 30,
     "damageBuff": {
-      "scale": 20,
+      "scale": 1.25,
       "table": "Melee_Buff_Dmg",
-      "perTarget": 20
+      "perTarget": 1.25
     },
     "durations": {
       "damageBuff": 30,
@@ -84,9 +84,9 @@ export const SunlessMire: Power = {
       }
     },
     "tohitBuff": {
-      "scale": 1,
+      "scale": 0.5,
       "table": "Melee_Buff_ToHit",
-      "perTarget": 1
+      "perTarget": 0.5
     }
   },
   "atoms": [

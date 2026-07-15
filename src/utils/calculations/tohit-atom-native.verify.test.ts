@@ -1,22 +1,28 @@
 /**
- * Plan B Slice 1 — regression guard for the atom-native ToHit applier.
+ * Plan B Slices 1-2 — regression guard for the atom-native ToHit + Damage appliers.
  *
- * `character-totals.ts` now sources +ToHit from `toHitBuffValue(power)` (atoms)
- * instead of `effects.tohitBuff` (bag). This asserts the LIVE atom path returns
- * the value the calc needs, on the real generated data, for the three shapes the
- * migration had to get right:
+ * `character-totals.ts` now sources +ToHit / +Damage from `toHitBuffValue(power)`
+ * / `damageBuffValue(power)` (atoms) instead of the `effects.*` bag. This asserts
+ * the LIVE atom path returns the value the calc needs, on the real generated data,
+ * for the shapes the migration had to get right:
  *   - per-target (Soul Drain: 1.0 flat + 0.2/foe → the per-foe slider),
  *   - per-target where the atom's own `stacking` lost the flavor (Invincibility's
  *     `Continuous` folds to `No`, so only the converter-STAMPED increment survives),
- *   - burst/tail (Inner Light: sustained 0.77 tail, NOT the 2.77 overlap sum).
+ *   - burst/tail (Inner Light: sustained 0.77 ToHit tail, NOT the 2.77 overlap sum),
+ *   - +Damage's per-damage-type explosion (collapsed, not 8× summed),
+ *   - a redirect-sourced increment (Fulcrum Shift: base 4 + 2/foe from the chain),
+ *   - a non-uniform +Damage (Embrace of Fire: +8 all types, not the +10 Fire tail).
  * Corpus-wide equality vs the bag is proven separately by
  * `scripts/planb-shadow-pertarget.cjs`; this pins the headline cases in CI.
  */
 import { describe, it, expect } from 'vitest';
-import { toHitBuffValue } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue } from '@/data/core/atom-query';
 import { SoulDrain } from '@/data/datasets/homecoming/generated/powersets/scrapper/primary/dark-melee/soul-drain';
 import { Invincibility } from '@/data/datasets/homecoming/generated/powersets/scrapper/secondary/invulnerability/invincibility';
 import { BuildUp as InnerLight } from '@/data/datasets/homecoming/generated/powersets/peacebringer/epic/luminous-blast/build-up';
+import { AgainstallOdds } from '@/data/datasets/homecoming/generated/powersets/brute/secondary/shield-defense/against-all-odds';
+import { FulcrumShift } from '@/data/datasets/homecoming/generated/powersets/corruptor/secondary/kinetics/fulcrum-shift';
+import { FieryEmbrace } from '@/data/datasets/homecoming/generated/powersets/dominator/secondary/fiery-assault/fiery-embrace';
 
 // Mirror adjustForPerTarget: scale + perTarget × (N − 1), with N=1 the base.
 const perTargetAt = (scale: number, perTarget: number, n: number) =>
@@ -50,6 +56,48 @@ describe('atom-native ToHit — Inner Light burst/tail (sustained value)', () =>
     const v = toHitBuffValue(InnerLight)!;
     expect(v).toBeDefined();
     expect(v.scale).toBeCloseTo(0.77);
+    expect(v.perTarget ?? 0).toBe(0);
+  });
+});
+
+describe('atom-native Damage — Soul Drain per-foe scaling (the slider)', () => {
+  const v = damageBuffValue(SoulDrain)!;
+  it('collapses the 8 damage-type atoms to { scale: 4.8, perTarget: 0.8 }', () => {
+    expect(v).toBeDefined();
+    expect(v.scale).toBeCloseTo(4.8); // 4.0 base + 0.8/foe at N=1, NOT 8× that
+    expect(v.perTarget).toBeCloseTo(0.8);
+    expect(v.table).toBe('Melee_Buff_Dmg');
+  });
+  it('scales from 1 to 8 targets like the bag would (+0.8 per extra foe)', () => {
+    expect(perTargetAt(v.scale, v.perTarget!, 8)).toBeCloseTo(4.8 + 0.8 * 7); // 10.4
+  });
+});
+
+describe('atom-native Damage — Against All Odds (Self increment counts at N=1)', () => {
+  it('reconstructs 1.0 flat + 0.55/foe as { scale: 1.55, perTarget: 0.55 }', () => {
+    const v = damageBuffValue(AgainstallOdds)!;
+    expect(v.scale).toBeCloseTo(1.55); // Self increment lands on the caster at N=1
+    expect(v.perTarget).toBeCloseTo(0.55);
+  });
+});
+
+describe('atom-native Damage — Fulcrum Shift (redirect increment, Target toWho)', () => {
+  it('recovers { scale: 4, perTarget: 2 } — base one-shot + per-foe from the chain', () => {
+    const v = damageBuffValue(FulcrumShift)!;
+    expect(v.scale).toBeCloseTo(4); // Target increment does NOT add to N=1 (unlike AAO)
+    expect(v.perTarget).toBeCloseTo(2); // converter-stamped onto the base atoms
+  });
+});
+
+describe('atom-native Damage — non-uniform + burst/tail (majority type, no perTarget)', () => {
+  it('Inner Light returns the 3.2 damage tail (not the 8.0 burst), no perTarget', () => {
+    const v = damageBuffValue(InnerLight)!;
+    expect(v.scale).toBeCloseTo(3.2);
+    expect(v.perTarget ?? 0).toBe(0);
+  });
+  it('Embrace of Fire returns +8 (all 7 non-Fire types), NOT the +10 Fire-only tail', () => {
+    const v = damageBuffValue(FieryEmbrace)!;
+    expect(v.scale).toBeCloseTo(8); // majority damage-type value wins the single slot
     expect(v.perTarget ?? 0).toBe(0);
   });
 });

@@ -49,9 +49,9 @@ export const BlackDwarfMire: Power = {
   "effects": {
     "buffDuration": 10,
     "damageBuff": {
-      "scale": 2.5,
+      "scale": 1.25,
       "table": "Melee_Buff_Dmg",
-      "perTarget": 2.5
+      "perTarget": 1.25
     },
     "durations": {
       "damageBuff": 10,

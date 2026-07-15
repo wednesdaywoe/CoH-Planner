@@ -50,7 +50,7 @@ import {
   type EnhancementBonuses,
 } from './enhancement-values';
 import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
-import { toHitBuffValue } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -1180,8 +1180,14 @@ function applyActivePowerBonuses(
     // strength — Damage enhancements and global +Damage raise the OUTPUT of
     // attack powers, not the magnitude of a buff, and no "Damage Buff"
     // enhancement exists in CoH. (Same as accuracyBuff / tohitBuffUnenhanced.)
-    if (effects.damageBuff !== undefined) {
-      const adjustedBuff = adjustForStacking(effects.damageBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'damageBuff', effects.maxStacks, effects.stackCaps);
+    // Plan B Slice 2: sourced from atoms (`damageBuffValue` collapses the
+    // per-damage-type explosion and reconstructs perTarget — Soul Drain's per-foe
+    // slider, Fulcrum Shift's redirect increment); `?? effects.damageBuff` keeps
+    // an atom-less legacy power on the bag. Verified bag-equal by
+    // scripts/planb-shadow-pertarget.cjs. Stacking meta stays a bag read (slot-keyed).
+    const damageBuff = damageBuffValue(power) ?? effects.damageBuff;
+    if (damageBuff !== undefined) {
+      const adjustedBuff = adjustForStacking(damageBuff as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'damageBuff', effects.maxStacks, effects.stackCaps);
       const value = resolveScaledEffect(adjustedBuff, archetypeId, buildLevel) * 100;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {
@@ -1197,7 +1203,7 @@ function applyActivePowerBonuses(
     // boosted by slotted enhancements.
     // Skip crash debuffs: if a power also has damageBuff, the debuff is a crash effect
     // (e.g., Rage: 120s buff + 10s crash) and should not count as sustained damage
-    if (isSelfDirectedEffect(effects.damageDebuff) && effects.damageBuff === undefined) {
+    if (isSelfDirectedEffect(effects.damageDebuff) && damageBuff === undefined) {
       const value = resolveScaledEffect(effects.damageDebuff as ScalarOrScaled, archetypeId, buildLevel) * -100;
       global.damage += value;
       addToBreakdown(breakdown, 'damage', {

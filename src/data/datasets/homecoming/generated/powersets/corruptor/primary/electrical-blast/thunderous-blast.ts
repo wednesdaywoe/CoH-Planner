@@ -68,9 +68,9 @@ export const ThunderousBlast: Power = {
       "table": "Ranged_EndDrain"
     },
     "enduranceGain": {
-      "scale": 13.86,
+      "scale": 6.93,
       "table": "Ranged_EndDrain",
-      "perTarget": 13.86
+      "perTarget": 6.93
     }
   },
   "atoms": [
