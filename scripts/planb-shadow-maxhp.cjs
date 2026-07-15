@@ -19,7 +19,7 @@
  * Scope note: regen/recovery (the other two `*Unenhanced` twins) are NOT covered —
  * their bag values also depend on `foldResourceSlot`'s same-table SUM, a regen-only
  * `StackByAttribAndKey` skip, and a description-text target-trap filter, none of
- * which is on the wire atom. That is a separate slice with its own shadow.
+ * which is on the wire atom. They have their own shadow: planb-shadow-resources.cjs.
  *
  * Exit code is nonzero on any divergence — this GATES, like planb-shadow-resistance.
  *

@@ -39,7 +39,7 @@ export const UpgradeEquipment: Power = {
   "maxSlots": 6,
   "effects": {},
   "atoms": [
-    ["Recovery",null,0.15,1,5.25,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Recovery",null,0.15,1,5.25,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,true],
     ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Knight_Minion target.VillainName>",true],
     ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq group target> MastermindPets eq &&",true],
     ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"costume target> Mastermind_Knight_Minion_01_01 eq kMastermind_Upgrade_1 target.mode? && group target> MastermindPets eq &&",true],

@@ -2,14 +2,19 @@
 
 > Status: **in progress** on branch `converter-atom-array` (as of 2026-07-15).
 > Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit) ✅ · Slice 2
-> (Damage) ✅ · Slice 3 (Resistance) ✅ · Slice 4 (Defense) ✅ · Slice 5 (Max-HP) ✅ —
-> the ToHit, +Damage, +Resistance, +Defense, and +MaxHP appliers now read atoms, not
-> the bag** · **Slice 6 (Regen/Recovery) — DESIGN COMPLETE, PAUSED before any code
-> (2026-07-15): see §Slice 6 for the full divergence categorization, the verified
-> reconstruction rules, the two needed converter changes (target-trap stamp + Consume
-> Psyche perTarget stamp-gap fix), and the maintainer decision to DEFER the Icy Bastion
-> StackByAttribAndKey burst/tail family via bag-fallback. Working tree clean at
-> `bab1ee8f4b`.** · Phase 3 not started. Slice 5 migrates the +MaxHP twin
+> (Damage) ✅ · Slice 3 (Resistance) ✅ · Slice 4 (Defense) ✅ · Slice 5 (Max-HP) ✅ ·
+> Slice 6 (Regen/Recovery) ✅ — the ToHit, +Damage, +Resistance, +Defense, +MaxHP and
+> +Regen/+Recovery appliers now read atoms, not the bag** · Phase 3 not started.
+> **Slice 6 SHIPPED (2026-07-15): all four resource slots (`regenBuff`/
+> `regenBuffUnenhanced`, `recoveryBuff`/`recoveryBuffUnenhanced`) migrated, retiring the
+> LAST two of the five `*Unenhanced` twin slots (only ToHit's and movement's remain).
+> Two additive converter changes — a `notOnCaster` target-trap stamp and the
+> Consume/Devour Psyche redirect perTarget stamp-gap fix — so the bag stays
+> byte-identical and the generated diff is 29 atom tuples (19 `notOnCaster`, 10
+> `perTarget`). Gated by `scripts/planb-shadow-resources.cjs` at **641/641 checked, 0
+> diverge, 58 punts**; the Icy Bastion `StackByAttribAndKey` burst/tail family PUNTS to
+> the bag per the maintainer's decision, pending in-game verification. Gate
+> mutation-tested on 9 axes, all killed. 1113 tests green.** Slice 5 migrates the +MaxHP twin
 > (`effects.maxHPBuff` + `effects.maxHPBuffUnenhanced`) — the FIRST of the
 > `*Unenhanced` twin family to literally fold into one `ignoreStrength` filter; it is a
 > pure runtime swap (NO converter change, generated tree byte-identical, like Slice 3)
@@ -613,13 +618,60 @@ incarnate, self-penalties):
   axis in the corpus, so the applier reads the atom `.scale` directly with no
   `adjustForStacking` — unchanged from before the migration.
 
-  **Slice 6 — Regen/Recovery: DESIGN COMPLETE, PAUSED before implementation (2026-07-15).**
-  The other two `*Unenhanced` twins (`regenBuff`/`regenBuffUnenhanced`,
-  `recoveryBuff`/`recoveryBuffUnenhanced`). **No code written yet** — working tree is
-  clean at commit `bab1ee8f4b` (Slice 5). All findings below are from two scratchpad
-  diagnostics (`diag-resources.cjs`, `diag2.cjs`, not committed) that reconstruct the
-  four slots from atoms and categorize every divergence vs the bag. This section is the
-  turnkey resume spec.
+  **Slice 6 — Regen/Recovery: SHIPPED (2026-07-15).** The other two `*Unenhanced` twins
+  (`regenBuff`/`regenBuffUnenhanced`, `recoveryBuff`/`recoveryBuffUnenhanced`) — the LAST
+  of that family bar ToHit's and movement's. `character-totals.ts` now sources all four
+  slots from `regenBuffValue(power[, {ignoreStrength}])` / `recoveryBuffValue(...)`
+  (`atom-query.ts`), each half falling back to its bag slot independently.
+
+  **Outcome vs the design below (which the implementation confirmed unchanged):** the
+  reconstruction rules 1–6 were right as written; every predicted value landed exactly
+  (Consume Psyche `{0.85, pt 0.35}` / `{0.15, pt 0.05}`, Reactive Regeneration `2` with
+  no phantom twin, Icy Bastion punts leaving the bag's 6/4 untouched). Gated by
+  `scripts/planb-shadow-resources.cjs` (**641 checked / 641 agree / 0 diverge / 58 punts**,
+  wired into `npm run regen`) and pinned by `resources-atom-native.verify.test.ts` (10
+  cases). Full regen is idempotent, `tsc` clean, **1113 tests green** (NB the two
+  `kheldian-travel-inherents.test.ts` failures this doc previously warned about are gone —
+  that note was stale).
+
+  **The generated diff is atoms-only, bag byte-identical:** 24 files, 29 tuples changed —
+  19 gaining `notOnCaster:true` (the Thunderspy pet/foe target-trap) and 10 gaining a
+  `perTarget` (Consume/Devour Psyche across 5 ATs). Every added and removed generated line
+  is an atom tuple; no `effects` byte moved.
+
+  **This gate is shaped differently from Slices 1–5, and deliberately so.** Because two
+  shapes are unsettleable from the wire, the helper PUNTS and the applier keeps the bag —
+  so the gate cannot simply assert bag == atom everywhere. It gates every value the helper
+  RETURNS, **in both directions**, and reports punts without gating them. The
+  atom-defined-but-bag-ABSENT direction is the one that matters most: a punt-to-bag can
+  only preserve behavior, but an over-production invents a total the bag never had. That
+  is exactly the Thunderspy target-trap failure mode, and M2 below proves the gate catches it.
+
+  **The gate was mutation-tested on nine axes, all killed** (the [[mutation-test-your-gates]]
+  / [[dsh6c-discriminator-gate]] discipline — a green gate proves nothing until it's shown
+  it can go red). Each count matches the population the design predicted:
+
+  | mutant | axis | result |
+  |---|---|---|
+  | M1a / M1b | value ×2, perTarget branch / fold branch | 91 red / 550 red — and **91 + 550 = 641**, so every checked slot flows through exactly one branch |
+  | M2 | drop the `notOnCaster` filter | **19 red** = exactly the 19 stamped tspy tuples |
+  | M3 | flip the `ignoreStrength` twin split | 558 red |
+  | M4 | route increments by their own `ignoreStrength` (drop rule 3) | **10 red** = the 10 Consume/Devour Psyche slots |
+  | M5 | drop the `!ignoreStrength` N=1 guard (rule 4) | **5 red** = Reactive Regeneration ×5 ATs |
+  | M6 | fold picks-last instead of summing (rule 5) | 6 red |
+  | M7 | stop punting the burst/tail | 5 red (Icy Bastion) |
+  | M8 | stop punting Expression atoms | **16 red** = the 16 `recoveryBuffUnenhanced` drops |
+
+  A tenth mutant initially read SURVIVED — but with EMPTY output: the mutation had broken
+  the file syntactically, the gate crashed, and the harness scored a crash as a pass.
+  Precisely the "never `catch { continue }` / print the COUNTS" trap from
+  [[mutation-test-your-gates]], caught only because the count line was blank rather than
+  zero. Re-run as M1a/M1b above.
+
+  **The design spec follows, retained as the record of what was verified and why.** All
+  findings were from two scratchpad diagnostics (`diag-resources.cjs`, `diag2.cjs`, not
+  committed) that reconstruct the four slots from atoms and categorize every divergence
+  vs the bag.
 
   **Scope of the divergence.** 718 regen/recovery slots across the three datasets; a
   naive `perTargetValueOf` reconstruction (the Slice-5 shape) diverges on **66**. After
@@ -681,22 +733,28 @@ incarnate, self-penalties):
      atom is present, or (b) a duration-distinct same-table non-perTarget group exists
      (the deferred StackByAttribAndKey burst/tail). Report punt counts openly in the shadow.
 
-  **Two converter changes needed** — both additive/atom-only (like Slices 1 & 4), so the
-  bag stays byte-identical and only atom tuples change:
-  - **target-trap stamp.** `guardThunderspyOnesBuffs` (`convert-powerset.cjs` ~5586) runs
-    POST-atom-emit and deletes bag slots; it must also mark the corresponding atoms so
-    `baseAtoms` excludes them (a new verdict, or drop-from-`power.atoms`; NB the atom
-    also feeds pet display, so a "does-not-apply-to-caster" stamp is cleaner than
-    deletion). Reuses nothing existing — `gated` is off-limits (the hard base-set
-    invariant at ~6139 asserts unstamped == `templatesToAtoms(allTemplates)`, and trapped
-    templates ARE in allTemplates).
-  - **Consume/Devour Psyche perTarget stamp-gap fix.** `computeAoePerTargetPatches` stamps
-    `_perTargetIncrement` on the separately-parsed redirect JSON templates, not
-    `allTemplates`; the emit-site reconciliation (~6081) only replays `redirectPerTargetSigs`
-    (the Execute_Power branch), NOT the AoE-path patches computed on `redirectJson`.
-    Extend the reconciliation to also match the AoE-path patch increments by
-    `(|scale|, table)` onto `allTemplates` (mirror the existing `redirectPerTargetSigs`
-    loop).
+  **Two converter changes — both SHIPPED as specified**, additive/atom-only (like Slices
+  1 & 4), so the bag stays byte-identical and only atom tuples change:
+  - **target-trap stamp — SHIPPED as `AtomicEffect.notOnCaster`** (appended last in
+    `ATOM_TUPLE_FIELDS`, so it trims to zero bytes on all but the 19 atoms that carry it).
+    `guardThunderspyOnesBuffs` (`convert-powerset.cjs`) runs POST-atom-emit and deletes bag
+    slots; its `drop()` now also calls `stampNotOnCaster`, which patches the already-encoded
+    tuples in place by schema field index. A "does-not-apply-to-caster" stamp rather than a
+    deletion, as the design argued — the atom is still real (it describes what the pet/foe
+    receives, and feeds pet display); only the caster's totals must skip it. The slot→atom
+    map is `NOT_ON_CASTER_SLOTS`, keyed `{effectType, ignoreStrength:false}` because the
+    guard drops only `regenBuff`/`recoveryBuff`, never the twins. `gated` was indeed
+    off-limits (the hard base-set invariant asserts unstamped == `templatesToAtoms(allTemplates)`,
+    and trapped templates ARE in allTemplates).
+  - **Consume/Devour Psyche perTarget stamp-gap fix — SHIPPED.** `detectStackingEffects` now
+    also returns `aoePerTargetSigs` (the `(|scale|, table)` of every template
+    `computeAoePerTargetPatches` stamped), and the emit-site reconciliation replays them onto
+    `allTemplates` alongside `redirectPerTargetSigs`. **One refinement the spec didn't call
+    out:** the replay is conditional on `stackingSource !== powerJson`. On the normal path
+    those signatures are redundant — the direct stamp already landed on the very template
+    objects that become the atoms — so replaying by signature there could only mis-stamp an
+    unrelated same-(scale,table) template that is not an increment at all, which would have
+    silently corrupted the already-green ToHit/damage/defense gates.
 
   **Key data facts (verify-don't-assume, already confirmed):**
   - `toWho` distribution of non-Expression regen/recovery base buff atoms: Regen|Self 256,
@@ -708,18 +766,27 @@ incarnate, self-penalties):
     wire atom (`stacking = mapStacking(t.stack)`). `IgnoreStrength` IS on the wire
     (`ignoreStrength`); `Expression` IS (`attribType`); `tick_chance` is NOT.
 
-  **Resume checklist:** (1) add `regenBuffValue`/`recoveryBuffValue` to `atom-query.ts`
-  per rules 1–6; (2) the two converter changes; (3) migrate the four appliers in
-  `character-totals.ts` (~1559–1627) to `helper(power) ?? effects.<slot>`, preserving the
-  `Res_Boolean`-table skip and the `enhMultiplier`/`healOther` handling; (4) build
-  `scripts/planb-shadow-resources.cjs` gating `helper == bag` for every slot the helper
-  RETURNS (punts reported, not gated), wire into `regen-all.cjs`, MUTATION-TEST it
-  ([[dsh6c-discriminator-gate]] discipline); (5) `resources-atom-native.verify.test.ts`
-  (Consume Psyche 0.85/pt 0.35; Reactive Regeneration 2 not 2.25; a clean self-regen twin;
-  Icy Bastion still bag-sourced via punt); (6) full regen — generated diff must be
-  atoms-only (target-trap stamp + Consume Psyche perTarget), bag byte-identical; (7) full
-  vitest (NB `kheldian-travel-inherents.test.ts` has 2 PRE-EXISTING failures unrelated to
-  this work); (8) update this doc + the status header.
+  **Resume checklist — ALL DONE (2026-07-15).** (1) `regenBuffValue`/`recoveryBuffValue` in
+  `atom-query.ts` per rules 1–6, sharing `resourceBuffValue` ✅; (2) the two converter
+  changes ✅; (3) the four appliers in `character-totals.ts` migrated to
+  `helper(power) ?? effects.<slot>`, `Res_Boolean` skip and `enhMultiplier`/`healOther`
+  preserved ✅; (4) `scripts/planb-shadow-resources.cjs` built, wired into `regen-all.cjs`,
+  mutation-tested on 9 axes ✅; (5) `resources-atom-native.verify.test.ts`, 10 cases ✅;
+  (6) full regen — diff atoms-only, bag byte-identical, idempotent ✅; (7) full vitest
+  1113/1113 ✅; (8) this doc ✅.
+
+  **Follow-up left open (NOT a blocker):** the Icy Bastion `StackByAttribAndKey` burst/tail
+  correctness question — does a burst + 30s lingering SUM, replace, or settle to the
+  lingering? The bag currently answers BOTH ways from the same shape (regen +6, recovery
+  +4), so at most one is right. Verify in-game/Mids, then either fix the bag and drop the
+  punt, or stamp the verdict. ~5 powers.
+
+  **Rule 4 footnote, resolved:** the design flagged that the shared `perTargetFromGroup` has
+  no `ignoreStrength` guard on its self-increment sum, and offered two options. Taken: the
+  second — resources reconstruct their per-target branch inside `resourceBuffValue` rather
+  than reusing `perTargetFromGroup`, leaving the ToHit/damage helper untouched (its
+  increments aren't IgnoreStrength, so sharing would have been a no-op there but would have
+  coupled two helpers with genuinely different N=1 rules).
 
 ### Phase 3 — Bag becomes UI-only; then delete
 - Point the calc entirely at atoms; the bag is produced solely for the

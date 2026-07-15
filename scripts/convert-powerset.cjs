@@ -3600,15 +3600,38 @@ function templatesToAtoms(templates) {
   return atoms;
 }
 
-/** Tuple position of `gated`, read from the schema's single source of truth so
- *  a field reorder can never silently point this at the wrong slot. */
-let _atomGatedIdx;
-function _gatedIdx() {
-  if (_atomGatedIdx === undefined) {
-    _atomGatedIdx = _getAtomCore().ATOM_TUPLE_FIELDS.indexOf('gated');
-    if (_atomGatedIdx < 0) throw new Error("[atoms] ATOM_TUPLE_FIELDS has no 'gated' field");
+/** Tuple position of a named atom field, read from the schema's single source of
+ *  truth so a field reorder can never silently point this at the wrong slot. */
+const _atomFieldIdxCache = new Map();
+function _atomFieldIdx(field) {
+  let idx = _atomFieldIdxCache.get(field);
+  if (idx === undefined) {
+    idx = _getAtomCore().ATOM_TUPLE_FIELDS.indexOf(field);
+    if (idx < 0) throw new Error(`[atoms] ATOM_TUPLE_FIELDS has no '${field}' field`);
+    _atomFieldIdxCache.set(field, idx);
   }
-  return _atomGatedIdx;
+  return idx;
+}
+
+function _gatedIdx() {
+  return _atomFieldIdx('gated');
+}
+
+/** Read one field off an encoded atom tuple (past-end / null ⇒ undefined). */
+function _atomField(tuple, field) {
+  const v = tuple[_atomFieldIdx(field)];
+  return v === null ? undefined : v;
+}
+
+/** Set one field on an encoded atom tuple, padding interior positions with null.
+ *  Returns a NEW tuple — the emitted arrays are shared with nothing, but keeping
+ *  this pure makes the stamp sites obvious. */
+function _withAtomField(tuple, field, value) {
+  const idx = _atomFieldIdx(field);
+  const t = tuple.slice();
+  while (t.length <= idx) t.push(null);
+  t[idx] = value;
+  return t;
 }
 
 /**
@@ -5275,6 +5298,25 @@ function detectStackingEffects(rawJson) {
   const patches = computeAoePerTargetPatches(baseTemplatesWithMeta, aoeMeta);
   let maxStacks = null;
 
+  // (scale, table) of every AoE-path per-target INCREMENT, i.e. the templates
+  // `computeAoePerTargetPatches` just stamped `_perTargetIncrement` on. When this
+  // detector runs over the power's OWN json those templates are the same objects
+  // that become its atoms, so the direct stamp already reached them and these
+  // signatures are redundant. They are NOT redundant when the caller reached into
+  // a REDIRECT (Consume/Devour Psyche's RefreshToCount ×10 +Regen/+Recovery):
+  // `redirectJson` is parsed separately, so the stamp lands on template objects
+  // that never reach `allTemplates` and the increment would be missing from the
+  // wire atom. The caller replays these onto `allTemplates` in exactly that case —
+  // mirroring `redirectPerTargetSigs` below, which covers the Execute_Power branch
+  // only. See `AtomicEffect.perTarget`.
+  const aoePerTargetSigs = [];
+  for (const { template } of baseTemplatesWithMeta) {
+    if (!template?._perTargetIncrement) continue;
+    if (template.table) {
+      aoePerTargetSigs.push({ scale: Math.abs(template._perTargetIncrement), table: template.table });
+    }
+  }
+
   // (scale, table) of every redirect-derived per-target INCREMENT. The redirect
   // chain's templates are parsed from a separate file, so they are NOT the same
   // objects that become this power's atoms (allTemplates) — computeAoePerTargetPatches
@@ -5362,7 +5404,7 @@ function detectStackingEffects(rawJson) {
   }
 
   if (Object.keys(patches).length === 0 && maxStacks === null && !stacksLinear) return null;
-  return { patches, maxStacks, stacksLinear, stackCaps, redirectPerTargetSigs };
+  return { patches, maxStacks, stacksLinear, stackCaps, redirectPerTargetSigs, aoePerTargetSigs };
 }
 
 /**
@@ -5583,6 +5625,51 @@ const TSPY_APPLIED_MEZ_KEYS = ['hold', 'stun', 'immobilize', 'sleep', 'confuse',
  *
  * Thunderspy-only; callers gate on datasetId. See parser_logs/THUNDERSPY_TODO.md item 1.
  */
+
+/**
+ * Slots whose target-trap drop must ALSO be recorded on the emitted atoms, and the
+ * atom predicate identifying the atoms behind each. Plan B's atom-native resource
+ * appliers (`regenBuffValue` / `recoveryBuffValue`) read the atom list, not the
+ * bag, so a slot deleted here would otherwise silently reappear in their totals.
+ *
+ * `ignoreStrength: false` matters: the guard drops only `regenBuff`/`recoveryBuff`,
+ * never the `*Unenhanced` twins, so a trapped power keeping an IgnoreStrength half
+ * must keep the atom behind it too.
+ *
+ * Only regen/recovery are listed. The guard also drops `rechargeBuff`,
+ * `enduranceGain` and `defenseBuff`, but no atom-native applier reads those from a
+ * trapped power today (defense migrated in Slice 4 and its shadow is green — the
+ * pet-only `defenseBuff` drops reconstruct to nothing on the atom side). Adding a
+ * slot here is the required step when one of those migrates.
+ */
+const NOT_ON_CASTER_SLOTS = {
+  regenBuff: { effectType: 'Regeneration', ignoreStrength: false },
+  recoveryBuff: { effectType: 'Recovery', ignoreStrength: false },
+};
+
+/**
+ * Mark the emitted atoms behind a target-trapped slot `notOnCaster`, so the
+ * atom-native appliers exclude them from the CASTER's totals exactly as the bag's
+ * deletion does. See `AtomicEffect.notOnCaster` for why this is a converter verdict
+ * and not a runtime re-derivation (it keys on shortHelp text + `targets_affected`,
+ * neither of which is on the wire, and the trapped atoms are byte-identical to the
+ * legitimate Target-recovery buffs the bag keeps).
+ *
+ * Runs POST-emit — `power.atoms` is already the encoded tuple list at this point —
+ * so it patches tuples in place by schema field index rather than re-encoding.
+ * Gated atoms are left alone: the trap is about the bag's BASE slot, and the
+ * appliers only ever consider base atoms.
+ */
+function stampNotOnCaster(power, slot) {
+  const spec = NOT_ON_CASTER_SLOTS[slot];
+  if (!spec || !power.atoms) return;
+  power.atoms = power.atoms.map((t) => {
+    if (_atomField(t, 'gated') === true) return t;
+    if (_atomField(t, 'effectType') !== spec.effectType) return t;
+    if (!!_atomField(t, 'ignoreStrength') !== spec.ignoreStrength) return t;
+    return _withAtomField(t, 'notOnCaster', true);
+  });
+}
 function guardThunderspyOnesBuffs(power, targetsAffected) {
   const e = power.effects;
   if (!e) return;
@@ -5591,6 +5678,7 @@ function guardThunderspyOnesBuffs(power, targetsAffected) {
     if (e[k] !== undefined) {
       delete e[k];
       if (e.durations) delete e.durations[k];
+      stampNotOnCaster(power, k);
       changed = true;
     }
   };
@@ -6078,7 +6166,19 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
       // (|scale|, table). Only the increment (KineticTransferBuff scale-2) matches;
       // the base one-shot (KineticTransferBuffSelf scale-4) has a different scale
       // and stays base, so `damageBuffValue` reads Fulcrum Shift as {4, perTarget:2}.
-      for (const sig of stackingResult.redirectPerTargetSigs || []) {
+      //
+      // The AoE-path signatures are replayed the same way, but ONLY when the
+      // detector ran over a redirect (`stackingSource !== powerJson`) — Consume /
+      // Devour Psyche, whose +Regen/+Recovery RefreshToCount ×10 increment lives
+      // entirely in `Redirects.Psionic_Armor.*`. On the normal path the AoE
+      // stamp already landed on these very template objects, so replaying by
+      // signature would only risk stamping an unrelated same-(scale,table)
+      // template that is not an increment at all.
+      const sigs = [
+        ...(stackingResult.redirectPerTargetSigs || []),
+        ...(stackingSource !== powerJson ? stackingResult.aoePerTargetSigs || [] : []),
+      ];
+      for (const sig of sigs) {
         for (const t of allTemplates) {
           if (t._perTargetIncrement) continue;
           if (Math.abs(t.scale || 0) === sig.scale && t.table === sig.table) {

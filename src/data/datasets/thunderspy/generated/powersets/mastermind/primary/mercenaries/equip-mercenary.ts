@@ -39,7 +39,7 @@ export const EquipMercenary: Power = {
   "maxSlots": 6,
   "effects": {},
   "atoms": [
-    ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,true],
     ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Soldier target.VillainName> Mastermind_Summon.Mercenaries.Tactical_Upgrade source.ownPower? ! &&"],
     ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Soldier target.VillainName> Mastermind_Summon.Mercenaries.Tactical_Upgrade source.ownPower? &&",true],
     ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Soldier target.VillainName>",true],

@@ -190,6 +190,31 @@ export interface AtomicEffect {
    */
   suppressible?: boolean;
 
+  /**
+   * True when this atom's effect does NOT land on the CASTER, despite routing to
+   * a slot the caster's totals read. Thunderspy's `_Ones`-table resource buffs are
+   * the whole population: a Mastermind pet-equip power (Equip Thugs, Train Ninjas)
+   * or a foe attack (Disrupting Torrent) carries a +Recovery/+Regeneration template
+   * that buffs the PET or the FOE, not the player — a target-trap the bag resolves
+   * by DELETING the slot (`guardThunderspyOnesBuffs`).
+   *
+   * STAMPED BY THE CONVERTER, not re-derivable at runtime — like {@link gated},
+   * {@link perTarget} and {@link suppressible}. The verdict is a heuristic over the
+   * power's `shortHelp` TEXT ("Self +Recovery" ⇒ the buff is genuinely the
+   * caster's, so `targets_affected` merely under-reports) plus `targets_affected`
+   * itself; neither is on the wire, and the trapped atoms are `toWho:
+   * Unspecified/Target` — byte-identical to the legitimate HC Target-recovery buffs
+   * the bag KEEPS, so no atom field can distinguish them.
+   *
+   * Stamped rather than dropped from `power.atoms` because the atom is still real:
+   * it describes what the pet/foe receives and feeds pet display. Only the caster's
+   * totals must ignore it, which `regenBuffValue`/`recoveryBuffValue` do by
+   * filtering it out. NB it is deliberately NOT {@link gated} — the hard base-set
+   * invariant at the emit site asserts the unstamped atoms are exactly
+   * `templatesToAtoms(allTemplates)`, and a trapped template IS in `allTemplates`.
+   */
+  notOnCaster?: boolean;
+
   // --- provenance (debugging + DSH6 migration) ---
   sourceAttrib?: string;
 }
@@ -229,9 +254,12 @@ export const ATOM_TUPLE_FIELDS = [
   // (Hide +Def, travel buffs) is neither gated nor per-target, so it only pays
   // for the interior nulls between `baseProbability` and itself, and appending it
   // (rather than reordering) leaves every non-suppressed atom's encoding untouched.
+  // `notOnCaster` (the Thunderspy resource target-trap) is rarest of all — a few
+  // dozen atoms — so it appends last for the same reason.
   'gated',
   'perTarget',
   'suppressible',
+  'notOnCaster',
 ] as const satisfies ReadonlyArray<keyof AtomicEffect>;
 
 /** One atom, positionally encoded. A `null` at position `i` means the field

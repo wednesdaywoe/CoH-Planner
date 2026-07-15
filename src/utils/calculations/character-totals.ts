@@ -50,7 +50,7 @@ import {
   type EnhancementBonuses,
 } from './enhancement-values';
 import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, maxHPBuffValue } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, maxHPBuffValue, regenBuffValue, recoveryBuffValue } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -1556,8 +1556,17 @@ function applyActivePowerBonuses(
     // is populated by set-bonuses.ts from `healing_strength` bonuses; we
     // read it here so it actually contributes to per-power regen.
     // Skip Res_Boolean tables — those are regen debuff resistance, not regen buffs
-    if (effects.regenBuff !== undefined) {
-      const regenVal = effects.regenBuff as ScalarOrScaled;
+    //
+    // Plan B Slice 6: sourced from the atom list (`regenBuffValue`), falling back to
+    // the bag for an atom-less power AND for the two shapes the helper deliberately
+    // PUNTS on — an Expression-typed resource template, and the StackByAttribAndKey
+    // burst/tail family whose bag value is a suspected latent bug (see atom-query.ts).
+    // Each half falls back independently; the shadow gate proves every value the
+    // helper DOES return equals the bag's, so a mixed atom/bag pair still sums right.
+    const regenSlot = regenBuffValue(power) ?? effects.regenBuff;
+    const regenUnenhSlot = regenBuffValue(power, { ignoreStrength: true }) ?? effects.regenBuffUnenhanced;
+    if (regenSlot !== undefined) {
+      const regenVal = regenSlot as ScalarOrScaled;
       const regenTable = (typeof regenVal === 'object' && regenVal !== null && 'table' in regenVal)
         ? (regenVal as { table?: string }).table ?? ''
         : '';
@@ -1566,8 +1575,8 @@ function applyActivePowerBonuses(
         const adjustedRegen = adjustForStacking(regenVal, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuff', effects.maxStacks, effects.stackCaps);
         const value = resolveScaledEffect(adjustedRegen, archetypeId, buildLevel) * 100 * enhMultiplier;
         // If the power also has an unenhanced portion, combine into one breakdown entry
-        const adjustedRegenUnenh = effects.regenBuffUnenhanced !== undefined
-          ? adjustForStacking(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuffUnenhanced', effects.maxStacks, effects.stackCaps)
+        const adjustedRegenUnenh = regenUnenhSlot !== undefined
+          ? adjustForStacking(regenUnenhSlot as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuffUnenhanced', effects.maxStacks, effects.stackCaps)
           : undefined;
         const unenhValue = adjustedRegenUnenh !== undefined
           ? resolveScaledEffect(adjustedRegenUnenh, archetypeId, buildLevel) * 100
@@ -1580,9 +1589,9 @@ function applyActivePowerBonuses(
           type: 'active-power',
         });
       }
-    } else if (effects.regenBuffUnenhanced !== undefined) {
+    } else if (regenUnenhSlot !== undefined) {
       // Power only has unenhanceable regen (no enhanceable portion)
-      const adjustedUnenhOnly = adjustForStacking(effects.regenBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuffUnenhanced', effects.maxStacks, effects.stackCaps);
+      const adjustedUnenhOnly = adjustForStacking(regenUnenhSlot as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'regenBuffUnenhanced', effects.maxStacks, effects.stackCaps);
       const value = resolveScaledEffect(adjustedUnenhOnly, archetypeId, buildLevel) * 100;
       global.regeneration += value;
       addToBreakdown(breakdown, 'regeneration', {
@@ -1595,8 +1604,10 @@ function applyActivePowerBonuses(
     // Recovery buff
     // Enhanced by Endurance Modification enhancements
     // Skip Res_Boolean tables — those are endurance drain resistance, not recovery buffs
-    if (effects.recoveryBuff !== undefined) {
-      const recBuff = effects.recoveryBuff as ScalarOrScaled;
+    // Plan B Slice 6: atom-sourced with the same per-half bag fallback as regen above.
+    const recoverySlot = recoveryBuffValue(power) ?? effects.recoveryBuff;
+    if (recoverySlot !== undefined) {
+      const recBuff = recoverySlot as ScalarOrScaled;
       const table = (typeof recBuff === 'object' && recBuff !== null && 'table' in recBuff)
         ? (recBuff as { table?: string }).table ?? ''
         : '';
@@ -1615,8 +1626,9 @@ function applyActivePowerBonuses(
 
     // Recovery buff that ignores strength (IgnoreStrength) — NOT boosted by End
     // Mod enh or global +recovery (e.g. Bio Armor adaptation's ride-along recovery).
-    if (effects.recoveryBuffUnenhanced !== undefined) {
-      const adjusted = adjustForStacking(effects.recoveryBuffUnenhanced as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'recoveryBuffUnenhanced', effects.maxStacks, effects.stackCaps);
+    const recoveryUnenhSlot = recoveryBuffValue(power, { ignoreStrength: true }) ?? effects.recoveryBuffUnenhanced;
+    if (recoveryUnenhSlot !== undefined) {
+      const adjusted = adjustForStacking(recoveryUnenhSlot as ScalarOrScaled, targetsHitValues[power.internalName], effects.stacksLinear, 'recoveryBuffUnenhanced', effects.maxStacks, effects.stackCaps);
       const value = resolveScaledEffect(adjusted, archetypeId, buildLevel) * 100;
       global.recovery += value;
       addToBreakdown(breakdown, 'recovery', {

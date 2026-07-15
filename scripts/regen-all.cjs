@@ -157,11 +157,24 @@ if (datasets.includes('homecoming')) {
 // twin (Inexhaustible / High Pain Tolerance / Dull Pain: an enhanceable + an
 // IgnoreStrength half that co-apply and sum) reconstructs from atoms split on the
 // `ignoreStrength` flag — the first of the `*Unenhanced` twins to fold back into one
-// filter. Behavior-preserving (no data change). GATES (exit 1). (regen/recovery, the
-// other two twins, are a separate slice — their bag values depend on foldResourceSlot
-// SUM / StackByAttribAndKey / a shortHelp target-trap not on the wire atom.)
+// filter. Behavior-preserving (no data change). GATES (exit 1).
 {
   const cmd = `node scripts/planb-shadow-maxhp.cjs ${datasets.map((d) => `--dataset ${d}`).join(' ')}`;
+  console.log(`\n>>> ${cmd}`);
+  execSync(cmd, { stdio: 'inherit' });
+}
+
+// Plan B Phase 2 Slice 6 — regen/recovery reconstruction. `character-totals.ts` sources
+// all four slots (`regenBuff`/`regenBuffUnenhanced`, `recoveryBuff`/`recoveryBuffUnenhanced`
+// — the LAST two `*Unenhanced` twins) from `regenBuffValue`/`recoveryBuffValue`. Unlike
+// Slices 1-5 the helper deliberately PUNTS on two shapes it cannot settle from the wire
+// (an Expression-typed resource template, and the StackByAttribAndKey burst/tail whose bag
+// value is a suspected latent bug), falling back to the unchanged bag; punts are reported,
+// not gated. What GATES (exit 1) is every value the helper DOES return — in both
+// directions, so an over-production (a phantom total the bag never had, e.g. the Thunderspy
+// pet target-trap without its `notOnCaster` stamp) fails just as loudly as a wrong value.
+{
+  const cmd = `node scripts/planb-shadow-resources.cjs ${datasets.map((d) => `--dataset ${d}`).join(' ')}`;
   console.log(`\n>>> ${cmd}`);
   execSync(cmd, { stdio: 'inherit' });
 }

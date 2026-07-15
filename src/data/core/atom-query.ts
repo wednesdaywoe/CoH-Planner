@@ -682,10 +682,12 @@ export function defenseBuffSuppressibleValue(
  * bag (an atom-less legacy power keeps its `effects.maxHPBuff`; see {@link atomsOf}).
  * Verified bag-equal corpus-wide by `scripts/planb-shadow-maxhp.cjs`.
  *
- * NB regen/recovery — the OTHER two `*Unenhanced` twins — are NOT migrated here: the
- * bag's regen/recovery values also depend on `foldResourceSlot`'s same-table SUM, a
- * regen-only `StackByAttribAndKey` skip, and a description-text target-trap filter,
- * none of which is on the wire atom. That is its own slice.
+ * NB regen/recovery — the OTHER two `*Unenhanced` twins — are deliberately NOT handled
+ * here: their bag values also depend on `foldResourceSlot`'s same-table SUM, a regen-only
+ * `StackByAttribAndKey` skip, and a description-text target-trap filter, none of which is
+ * on the wire atom. They got their own slice and their own helpers — see
+ * {@link regenBuffValue} / {@link recoveryBuffValue}, whose extra rules and two punts are
+ * exactly that list.
  */
 export function maxHPBuffValue(
   power: AtomSource,
@@ -699,6 +701,159 @@ export function maxHPBuffValue(
       !isDebuffAtom(a),
   );
   return perTargetValueOf(atoms);
+}
+
+/**
+ * The atom-native `regenBuff` / `regenBuffUnenhanced` and `recoveryBuff` /
+ * `recoveryBuffUnenhanced` — the LAST two of the five `*Unenhanced` twin slots the
+ * bag minted for the single `ignoreStrength` axis (Slice 5 folded `maxHPBuff`; ToHit's
+ * and movement's remain). Shared by {@link regenBuffValue} and {@link recoveryBuffValue},
+ * which differ only in `effectType`.
+ *
+ * These are the hardest resource slots to reconstruct because the bag's value depends
+ * on several behaviors that never reach the wire atom. Two of those are recovered by a
+ * converter stamp added in this slice ({@link AtomicEffect.notOnCaster}, and the
+ * redirect-path `perTarget` stamp-gap fix); the rest are handled here, and the two that
+ * cannot be settled without a game-correctness call are deliberately PUNTED to the bag:
+ *
+ *   1. **notOnCaster** — Thunderspy's resource target-trap (Equip Thugs, Disrupting
+ *      Torrent): the bag deletes the slot, so the caster's total must skip these atoms.
+ *   2. **increments are always enhanceable** — an atom carrying a converter-stamped
+ *      `perTarget` routes to the ENHANCEABLE slot regardless of its own `ignoreStrength`,
+ *      because the converter's classifier does (`mergeStackingPatches` patches
+ *      `regenBuff`/`recoveryBuff`, never the twin). Reactive Regeneration's increment is
+ *      an IgnoreStrength pseudo-pet buff; routing it by its own flag would both strip
+ *      `regenBuff`'s `perTarget` and mint a phantom `regenBuffUnenhanced`.
+ *   3. **N=1 excludes IgnoreStrength self-increments** — the `!ignoreStrength` test is
+ *      the atom-derivable discriminator between **Consume/Devour Psyche** (a
+ *      non-IgnoreStrength RefreshToCount self-increment, counted at one target → 0.85)
+ *      and **Reactive Regeneration** (an IgnoreStrength pseudo-pet increment, not
+ *      counted → 2, +per foe after).
+ *   4. **`foldResourceSlot` SUM semantics** — unlike defense/resistance (last-write-wins)
+ *      and maxHP (Replace-collapsed), a resource slot RAW-SUMS its same-table entries and
+ *      RESETS on a table change (Obscure Sustenance's recovery: 0.6+0.38+0.1 = 1.08).
+ *
+ * PUNTS (return `undefined` → the applier keeps reading the unchanged bag), each for a
+ * reason no atom field can settle:
+ *   - **any `Expression`-typed resource atom.** The converter's RESOURCES guard drops
+ *     `Expression` templates whose `tick_chance` is 0 (Rebirth's Gravity/Penumbral armor
+ *     toggles) and keeps the rest (Gamma Boost, Defibrillate). `tick_chance` is not on
+ *     the wire, and `Expression ⟺ dropped` is FALSE, so the verdict is unrecoverable.
+ *     Safe either way: if the bag kept it we fall back to the bag's value; if the bag
+ *     dropped it the slot is absent and the fallback yields `undefined` too.
+ *   - **a duration-distinct same-table non-perTarget group** — the `StackByAttribAndKey`
+ *     burst/tail family (Icy Bastion). The bag treats regen and recovery INCONSISTENTLY
+ *     here (regen's routing skips the `StackByAttribAndKey` lingering → +6, drops its
+ *     `4 @ 30s`; recovery has no such skip → `foldResourceSlot` sums its `2 @ 0.75s`
+ *     burst + `2 @ 30s` lingering → +4) off a template `flags[]` entry that is not on
+ *     the wire. That inconsistency is the tell of a latent BAG BUG, not a settled value,
+ *     so rather than stamp either number onto the atom this punts and leaves the bag
+ *     untouched — purely behavior-preserving. The correct in-game behavior (does a
+ *     burst+lingering SUM, replace, or settle to the lingering?) is a separate in-game /
+ *     Mids verification follow-up; per the maintainer's decision (2026-07-15) it is NOT
+ *     auto-matched here. The condition IS detectable on the wire (two same-table,
+ *     same-effectType, non-perTarget atoms at different durations), so no stamp is needed.
+ *
+ * Returns `undefined` for a power with no such atom, or for either punt → bag fallback
+ * (see {@link atomsOf}). Verified bag-equal corpus-wide for every value it DOES return
+ * by `scripts/planb-shadow-resources.cjs` (punts are reported, not gated).
+ */
+function resourceBuffValue(
+  power: AtomSource,
+  effectType: EffectType,
+  opts: { ignoreStrength?: boolean } = {},
+): { scale: number; table: string; perTarget?: number } | undefined {
+  const wantIgnoreStrength = opts.ignoreStrength ?? false;
+  const atoms = baseAtomsOfType(power, effectType).filter(
+    (a) => a.aspect !== 'Res' && !isDebuffAtom(a) && !a.notOnCaster,
+  );
+  if (!atoms.length) return undefined;
+  // PUNT: the Expression + tick-chance-0 drop is not re-derivable (see above).
+  if (atoms.some((a) => a.attribType === 'Expression')) return undefined;
+
+  const increments = atoms.filter((a) => a.perTarget);
+  const flat = atoms.filter((a) => !a.perTarget);
+
+  // Per-target increments belong to the ENHANCEABLE slot whatever their own
+  // `ignoreStrength` — the twin never receives one.
+  if (!wantIgnoreStrength && increments.length) {
+    const table = (increments.find((a) => a.modifierTable) ?? flat.find((a) => a.modifierTable))
+      ?.modifierTable ?? '';
+    const perTarget = sumDistinctAbs(increments, (a) => a.perTarget ?? 0);
+    // At one target: the flat base, plus only those self-increments that are NOT
+    // IgnoreStrength (Consume Psyche counts, Reactive Regeneration does not).
+    const selfIncrements = increments.filter(
+      (a) => (a.toWho === 'Self' || a.toWho === 'All') && !a.ignoreStrength,
+    );
+    const scale =
+      sumDistinctAbs(flat.filter((a) => !a.ignoreStrength), (a) => a.scale) +
+      sumDistinctAbs(selfIncrements, (a) => a.scale);
+    return { scale, table, perTarget };
+  }
+
+  const mine = flat.filter((a) => !!a.ignoreStrength === wantIgnoreStrength);
+  if (!mine.length) return undefined;
+  // PUNT: the StackByAttribAndKey burst/tail family (see above).
+  if (hasDurationSplit(mine)) return undefined;
+  return foldResourceSum(mine);
+}
+
+/** True when some table carries two of these atoms at DIFFERENT durations — the
+ *  burst/tail shape whose bag value is unsettled (Icy Bastion). See the punt note
+ *  on {@link resourceBuffValue}. */
+function hasDurationSplit(atoms: readonly AtomicEffect[]): boolean {
+  const byTable = new Map<string, Set<number>>();
+  for (const a of atoms) {
+    const k = a.modifierTable.toLowerCase();
+    let durs = byTable.get(k);
+    if (!durs) byTable.set(k, (durs = new Set()));
+    durs.add(Number(a.duration.toFixed(4)));
+  }
+  for (const durs of byTable.values()) if (durs.size > 1) return true;
+  return false;
+}
+
+/**
+ * The converter's `foldResourceSlot` SUM semantics, in atom form: walk the atoms in
+ * routing order accumulating `Σ|scale|` while the table holds, and RESET to a fresh
+ * accumulator on a table change (last-table-wins). Resource slots always sum — the
+ * fold's `Replace`-collapse branch is maxHP-scoped (`stack` is carried only on the
+ * maxHP queue entries) and its `durationVariants` branch is debuff-only, so neither
+ * applies to a regen/recovery BUFF.
+ */
+function foldResourceSum(atoms: readonly AtomicEffect[]): { scale: number; table: string } {
+  let cur = { scale: 0, table: atoms[0].modifierTable };
+  for (const a of atoms) {
+    if (a.modifierTable === cur.table) cur.scale += Math.abs(a.scale);
+    else cur = { scale: Math.abs(a.scale), table: a.modifierTable };
+  }
+  return cur;
+}
+
+/**
+ * The atom-native `regenBuff` (`{ ignoreStrength: true }` → the `regenBuffUnenhanced`
+ * twin) — the +Regeneration buff the calc reads today off `effects.regenBuff`
+ * (Health, Fast Healing, Consume Psyche, Reactive Regeneration, Rise to the Challenge).
+ * See {@link resourceBuffValue} for the reconstruction rules and the two punts.
+ */
+export function regenBuffValue(
+  power: AtomSource,
+  opts: { ignoreStrength?: boolean } = {},
+): { scale: number; table: string; perTarget?: number } | undefined {
+  return resourceBuffValue(power, 'Regeneration', opts);
+}
+
+/**
+ * The atom-native `recoveryBuff` (`{ ignoreStrength: true }` → the
+ * `recoveryBuffUnenhanced` twin) — the +Recovery buff the calc reads today off
+ * `effects.recoveryBuff` (Stamina, Quick Recovery, Consume Psyche, Bio Armor's
+ * adaptation ride-along). See {@link resourceBuffValue} for the rules and punts.
+ */
+export function recoveryBuffValue(
+  power: AtomSource,
+  opts: { ignoreStrength?: boolean } = {},
+): { scale: number; table: string; perTarget?: number } | undefined {
+  return resourceBuffValue(power, 'Recovery', opts);
 }
 
 /** Σ of `val(a)` over atoms with a DISTINCT `|val|` (dedup the type/duration copies). */

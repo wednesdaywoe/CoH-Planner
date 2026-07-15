@@ -82,8 +82,8 @@ export const DevourPsyche: Power = {
   "atoms": [
     ["Regeneration",null,0.5,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Recovery",null,0.1,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Regeneration",null,0.35,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1],
-    ["Recovery",null,0.05,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1],
+    ["Regeneration",null,0.35,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,null,null,null,null,null,null,null,0.35],
+    ["Recovery",null,0.05,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1,null,null,null,null,null,null,null,null,0.05],
     ["RechargePower",null,5.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Meta",null,1,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],

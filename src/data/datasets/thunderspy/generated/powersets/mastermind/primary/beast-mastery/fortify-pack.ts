@@ -49,6 +49,6 @@ export const FortifyPack: Power = {
     ["Defense","Energy",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","Negative",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","Psionic",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,0,1,60,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Regeneration",null,0,1,60,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,null,null,null,null,true]
   ]
 };
