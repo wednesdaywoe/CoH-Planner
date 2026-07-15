@@ -85,6 +85,7 @@ export function ChronologicalInherentsSection({ inherents }: ChronologicalInhere
     setInfoPanelContent({
       type: 'slotted-enhancement',
       powerName,
+      powerSet: 'Inherent',
       slotIndex,
     });
   };

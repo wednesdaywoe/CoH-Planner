@@ -101,8 +101,19 @@ export function ChronologicalPowerSlot({
     if (!isValidTarget || !dragState) return;
 
     if (power) {
-      // Swap with occupied slot
-      swapPowerLevels(dragState.draggedPower.internalName, power.internalName);
+      // Swap with occupied slot. Both categories are passed: internalName is not
+      // unique across categories, so resolving either end by bare name can swap
+      // the wrong power's level.
+      // NB derive the target's category from `power` here rather than reading the
+      // `storeCategory` const below: that binding is declared after this
+      // component's `if (!power)` early return, so a closure reading it on the
+      // empty-slot path would throw.
+      swapPowerLevels(
+        dragState.draggedPower.internalName,
+        mapCategoryToStoreCategory(dragState.draggedPower.category),
+        power.internalName,
+        mapCategoryToStoreCategory(power.category),
+      );
     } else {
       // Move to empty slot
       movePowerLevel(
@@ -195,6 +206,7 @@ export function ChronologicalPowerSlot({
     setInfoPanelContent({
       type: 'slotted-enhancement',
       powerName: power.internalName,
+      powerSet: power.powerSet,
       slotIndex: index,
     });
   };
@@ -324,7 +336,7 @@ export function ChronologicalPowerSlot({
                   if (ps) setInfoPanelContent({ type: 'power', powerName: subPower.internalName, powerSet: ps });
                 }}
                 onLeave={handlePowerLeave}
-                onEnhancementHover={(index) => setInfoPanelContent({ type: 'slotted-enhancement', powerName: subPower.internalName, slotIndex: index })}
+                onEnhancementHover={(index) => setInfoPanelContent({ type: 'slotted-enhancement', powerName: subPower.internalName, powerSet: subPower.powerSet || power.powerSet, slotIndex: index })}
                 onRightClick={(e) => {
                   e.preventDefault();
                   const ps = subPower.powerSet || power.powerSet;

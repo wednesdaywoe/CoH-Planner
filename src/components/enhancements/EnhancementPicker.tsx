@@ -120,13 +120,20 @@ export function EnhancementPicker() {
     return lookupPower(picker.currentPowerSet, picker.currentPowerName)?.power ?? null;
   }, [picker.currentPowerName, picker.currentPowerSet]);
 
-  // Get the current power's slots from the build
+  // Get the current power's slots from the build.
+  //
+  // Matches on (powerSet, internalName), NOT internalName alone: internal names
+  // are reused across powersets (a Dominator's epic Rain of Fire is internally
+  // `Fire_Blast`, same as the secondary's tier-1 Fire Blast), so a bare-name
+  // search returns whichever category comes first and shows the WRONG power's
+  // slots. See `findSelectedPowerInBuild` for the full collision list.
   const currentPowerSlots = useMemo(() => {
-    if (!picker.currentPowerName) return [];
+    if (!picker.currentPowerName || !picker.currentPowerSet) return [];
 
     // Search in all power categories
-    const findInPowers = (powers: { name: string; internalName: string; slots: (unknown | null)[] }[]) =>
-      powers.find(p => p.internalName === picker.currentPowerName)?.slots || [];
+    const findInPowers = (powers: { name: string; internalName: string; powerSet: string; slots: (unknown | null)[] }[]) =>
+      powers.find(p => p.internalName === picker.currentPowerName
+                    && p.powerSet === picker.currentPowerSet)?.slots || [];
 
     let slots = findInPowers(build.primary.powers);
     if (slots.length > 0) return slots;
@@ -146,7 +153,7 @@ export function EnhancementPicker() {
 
     slots = findInPowers(build.inherents);
     return slots;
-  }, [picker.currentPowerName, build]);
+  }, [picker.currentPowerName, picker.currentPowerSet, build]);
 
   // Get indices of empty slots (starting from currentSlotIndex)
   // When virtualSlots is set (compare modal), use those instead of the build's slots

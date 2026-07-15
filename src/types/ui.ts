@@ -193,7 +193,11 @@ export type InfoPanelContent =
   | { type: 'power'; powerName: string; powerSet: string }
   | { type: 'enhancement'; enhancementId: string }
   | { type: 'set'; setId: string }
-  | { type: 'slotted-enhancement'; powerName: string; slotIndex: number }
+  // `powerSet` is REQUIRED: a power's identity is (powerSet, internalName), never
+  // internalName alone — internal names are reused across powersets, so resolving
+  // this content by bare name can show a different power's enhancement. Matches
+  // the `power` variant above. See `findSelectedPowerInBuild`.
+  | { type: 'slotted-enhancement'; powerName: string; powerSet: string; slotIndex: number }
   | { type: 'incarnate'; slotId: string; powerId: string };
 
 // ============================================

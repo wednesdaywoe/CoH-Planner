@@ -5,7 +5,7 @@
 
 import { useBuildStore } from '@/stores';
 import { useBonusTracking } from '@/hooks';
-import { getIOSet, getPower, getPowerPool, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
+import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
 import {
   normalizeAspectName,
   getAspectSchedule,
@@ -25,82 +25,36 @@ import {
   OriginEnhancementIcon,
   SpecialEnhancementIcon,
 } from '@/components/enhancements/EnhancementIcon';
+import { findSelectedPowerInBuild } from './powerDisplayUtils';
 import type { IOSetEnhancement, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, Enhancement } from '@/types';
 
 interface EnhancementInfoContentProps {
   powerName: string;
+  /** REQUIRED — a power's identity is (powerSet, internalName). Internal names
+   *  are reused across powersets, so resolving by bare name can show a different
+   *  power's enhancement. See `findSelectedPowerInBuild`. */
+  powerSet: string;
   slotIndex: number;
 }
 
-export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfoContentProps) {
+export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: EnhancementInfoContentProps) {
   const build = useBuildStore((s) => s.build);
   const bonusTracking = useBonusTracking();
 
-  // Find the power and get the enhancement
-  const findEnhancement = (): Enhancement | null => {
-    // Check primary
-    const primaryPower = build.primary.powers.find((p) => p.internalName === powerName);
-    if (primaryPower && primaryPower.slots[slotIndex]) {
-      return primaryPower.slots[slotIndex];
-    }
+  // The power this panel describes. Resolved ONCE via the shared, powerset-aware
+  // lookup — this file previously hand-rolled the same primary→secondary→pools→
+  // epic→inherent search three times, each matching on bare `internalName`, so
+  // each was independently wrong for a collided name.
+  const power = findSelectedPowerInBuild(powerName, powerSet, build);
 
-    // Check secondary
-    const secondaryPower = build.secondary.powers.find((p) => p.internalName === powerName);
-    if (secondaryPower && secondaryPower.slots[slotIndex]) {
-      return secondaryPower.slots[slotIndex];
-    }
-
-    // Check pools
-    for (const pool of build.pools) {
-      const poolPower = pool.powers.find((p) => p.internalName === powerName);
-      if (poolPower && poolPower.slots[slotIndex]) {
-        return poolPower.slots[slotIndex];
-      }
-    }
-
-    // Check epic pool
-    if (build.epicPool) {
-      const epicPower = build.epicPool.powers.find((p) => p.internalName === powerName);
-      if (epicPower && epicPower.slots[slotIndex]) {
-        return epicPower.slots[slotIndex];
-      }
-    }
-
-    // Check inherent powers (Fitness, Basic, Prestige)
-    const inherentPower = build.inherents.find((p) => p.internalName === powerName);
-    if (inherentPower && inherentPower.slots[slotIndex]) {
-      return inherentPower.slots[slotIndex];
-    }
-
-    return null;
-  };
+  const findEnhancement = (): Enhancement | null => power?.slots[slotIndex] ?? null;
 
   // Count how many pieces of a set are slotted in this power
   const countSetPiecesInPower = (setId: string): number => {
-    const findPower = () => {
-      const primary = build.primary.powers.find((p) => p.internalName === powerName);
-      if (primary) return primary;
-      const secondary = build.secondary.powers.find((p) => p.internalName === powerName);
-      if (secondary) return secondary;
-      for (const pool of build.pools) {
-        const poolPower = pool.powers.find((p) => p.internalName === powerName);
-        if (poolPower) return poolPower;
-      }
-      if (build.epicPool) {
-        const epicPower = build.epicPool.powers.find((p) => p.internalName === powerName);
-        if (epicPower) return epicPower;
-      }
-      // Check inherent powers (Fitness, Basic, Prestige)
-      const inherentPower = build.inherents.find((p) => p.internalName === powerName);
-      if (inherentPower) return inherentPower;
-      return null;
-    };
-
-    const power = findPower();
     if (!power) return 0;
 
     return power.slots.filter(
-      (s) => s && s.type === 'io-set' && (s as IOSetEnhancement).setId === setId
+      (s: Enhancement | null) => s && s.type === 'io-set' && (s as IOSetEnhancement).setId === setId
     ).length;
   };
 
@@ -313,38 +267,20 @@ export function EnhancementInfoContent({ powerName, slotIndex }: EnhancementInfo
 
                     {/* PPM Calculation - show for PPM-based procs */}
                     {procData.ppm !== null && (() => {
-                      // Find the power this enhancement is slotted in
-                      const findPowerData = () => {
-                        // Check primary
-                        const primaryPower = build.primary.powers.find((p) => p.internalName === powerName);
-                        if (primaryPower && build.primary.id) {
-                          const basePower = getPower(build.primary.id, powerName);
-                          return { selected: primaryPower, base: basePower };
-                        }
-                        // Check secondary
-                        const secondaryPower = build.secondary.powers.find((p) => p.internalName === powerName);
-                        if (secondaryPower && build.secondary.id) {
-                          const basePower = getPower(build.secondary.id, powerName);
-                          return { selected: secondaryPower, base: basePower };
-                        }
-                        // Check pools
-                        for (const pool of build.pools) {
-                          const poolPower = pool.powers.find((p) => p.internalName === powerName);
-                          if (poolPower) {
-                            const poolData = getPowerPool(pool.id);
-                            const basePower = poolData?.powers.find((p) => p.internalName === powerName);
-                            return { selected: poolPower, base: basePower };
-                          }
-                        }
-                        // Check inherents
-                        const inherentPower = build.inherents.find((p) => p.internalName === powerName);
-                        if (inherentPower) {
-                          return { selected: inherentPower, base: null };
-                        }
-                        return null;
-                      };
-
-                      const powerData = findPowerData();
+                      // The power this enhancement is slotted in. Both halves are
+                      // resolved by (powerSet, internalName): `power` via the
+                      // shared build lookup above, and the base definition via
+                      // `lookupPower`, which searches the right powerset/pool/epic
+                      // rather than guessing a category from a bare name.
+                      //
+                      // The hand-rolled search this replaces was collision-blind
+                      // twice over (its `getPower(build.primary.id, powerName)`
+                      // could read a same-named power out of the wrong set) and
+                      // silently omitted `epicPool` entirely, so epic powers got
+                      // no PPM data at all.
+                      const powerData = power
+                        ? { selected: power, base: lookupPower(powerSet, powerName)?.power ?? null }
+                        : null;
                       if (!powerData) return null;
 
                       const { selected, base } = powerData;
