@@ -12,7 +12,7 @@
 > applier falls back to the bag for any atom-less power. Slice 2 does the same for
 > `damageBuff` (see §Slice 2), and additionally root-fixes a per-foe over-count
 > that had inflated Rebirth's +Damage/+Def/+Regen ~8× — the shadow now gates both
-> slots at **1252/1252 agree, 0 diverge**.
+> slots at **1252/1252 agree, 0 diverge**
 >
 > Companion to the shipped interim guard (DSH6c discriminator gate, 2026-07-14).
 > See [[converter-bag-vs-array-rootcause]], [[dsh6-collapse-detector]],
