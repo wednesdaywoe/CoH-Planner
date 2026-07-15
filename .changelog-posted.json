@@ -175,6 +175,26 @@
       "hash": "80b46bd2b07e",
       "date": "2026-07-14",
       "preview": "Fixed the stance picker in the power info window needing a double-click to fill "
+    },
+    {
+      "hash": "f9e239d0f58f",
+      "date": "2026-07-14",
+      "preview": "Dear writer who wrote this gem: \"Change how people log in. Your system of loggin"
+    },
+    {
+      "hash": "7911dae1e51a",
+      "date": "2026-07-14",
+      "preview": "Bio Armor: Offensive Adaptation now applies its -7.5% Resistance(all) self-penal"
+    },
+    {
+      "hash": "16d713446fcc",
+      "date": "2026-07-14",
+      "preview": "Fixed +MaxHP powers that grant their bonus in two halves — one enhanceable, one "
+    },
+    {
+      "hash": "6affb8167fa5",
+      "date": "2026-07-14",
+      "preview": "Rage's post-crash -20% Defense(All) is now correctly counted as a penalty to you"
     }
   ]
 }
