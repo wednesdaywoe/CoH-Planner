@@ -77,14 +77,14 @@ export const HavokPunch: Power = {
     ["Mez","Knockback",0.01,0.30000001192092896,0,"Melee_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,-1,0.30000001192092896,4,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,8,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,0.777,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Sleep",4,3,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Sleep",22.5,3,0,"Melee_Sleep","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&"],
-    ["Mez","Sleep",4,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&"],
-    ["Mez","Knockback",0.01,0.30000001192092896,0,"Melee_Knockback","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,-4,1,0,"Melee_EndDrain","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,1,0,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Unmapped",null,8,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.777,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Sleep",4,3,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Sleep",22.5,3,0,"Melee_Sleep","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
+    ["Mez","Sleep",4,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
+    ["Mez","Knockback",0.01,0.30000001192092896,0,"Melee_Knockback","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,-4,1,0,"Melee_EndDrain","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1,0,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {

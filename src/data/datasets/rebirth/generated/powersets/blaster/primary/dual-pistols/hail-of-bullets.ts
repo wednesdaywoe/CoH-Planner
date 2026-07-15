@@ -151,13 +151,13 @@ export const HailofBullets: Power = {
     ["DamageBuff","Negative",0.058,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.058,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.058,1,7.5,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Damage","Lethal",0.195,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,0.30000001192092896,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Damage","Lethal",0.083,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Knockback",0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Knockback",0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Damage","Fire",0.083,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Damage","Cold",0.083,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Damage","Toxic",0.083,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Damage","Lethal",0.195,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",false,"Stack",2,null,0.30000001192092896,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.083,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,0.6000000238418579,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,0.10000000149011612,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Knockback",0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Fire",0.083,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Cold",0.083,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Toxic",0.083,1,3.5,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

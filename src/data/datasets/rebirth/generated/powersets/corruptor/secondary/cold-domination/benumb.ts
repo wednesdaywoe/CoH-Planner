@@ -179,7 +179,7 @@ export const Benumb: Power = {
     ["Heal",null,-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["ToHit",null,-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Endurance",null,-0.05,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,-20,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["Endurance",null,-5.5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Regeneration",null,-20,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-5.5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

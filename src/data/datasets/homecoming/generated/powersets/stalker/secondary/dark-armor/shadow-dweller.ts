@@ -121,7 +121,7 @@ export const ShadowDweller: Power = {
     ["Perception",null,1.25,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Perception",null,1.25,1,10.25,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Regeneration",null,1,1,10.3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["MezResist","Immobilized",5.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1]
+    ["MezResist","Immobilized",5.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

@@ -50,6 +50,6 @@ export const Blackstar: Power = {
     ["Unmapped",null,1.23,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,5,1,20,"Ranged_DeBuff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.042,1,10.5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.570621,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Unmapped",null,0.570621,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

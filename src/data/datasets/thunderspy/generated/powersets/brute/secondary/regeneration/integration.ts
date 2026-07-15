@@ -57,7 +57,7 @@ export const Integration: Power = {
     ["Unmapped",null,100,1,2.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Unmapped",null,-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
-    ["Unmapped",null,3,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&"]
+    ["Unmapped",null,3,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true]
   ]
 };

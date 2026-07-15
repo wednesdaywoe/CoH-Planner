@@ -43,6 +43,6 @@ export const IncreaseDensity: Power = {
     ["Unmapped",null,0.1,1,240,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
     ["Unmapped",null,1.25,1,240,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.05,1,240,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Unmapped",null,3,1,240,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
+    ["Unmapped",null,3,1,240,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

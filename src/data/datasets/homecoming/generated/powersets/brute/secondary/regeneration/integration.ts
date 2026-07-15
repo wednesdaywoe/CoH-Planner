@@ -109,6 +109,6 @@ export const Integration: Power = {
     ["Mez","Sleep",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Regeneration",null,0.5,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

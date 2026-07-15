@@ -40,12 +40,12 @@ export const EnchantDemon: Power = {
   "effects": {},
   "atoms": [
     ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Fiery_Demonling target.VillainName>"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Cold_Demonling target.VillainName>"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Hellfire_Demonling target.VillainName>"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Hellfire_Gargoyle target.VillainName>"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Ember_Demon target.VillainName>"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Demon_Prince target.VillainName>"]
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Fiery_Demonling target.VillainName>",true],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Cold_Demonling target.VillainName>",true],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Hellfire_Demonling target.VillainName>",true],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Hellfire_Gargoyle target.VillainName>",true],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Ember_Demon target.VillainName>",true],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Demon_Prince target.VillainName>",true]
   ],
   "mechanicType": "parentMechanic"
 };

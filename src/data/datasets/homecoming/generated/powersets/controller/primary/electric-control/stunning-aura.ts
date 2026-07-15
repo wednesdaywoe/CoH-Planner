@@ -66,6 +66,6 @@ export const StunningAura: Power = {
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Regeneration",null,0.05,1,2,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
     ["Recovery",null,0.0313,1,2,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
-    ["Endurance",null,-5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Endurance",null,-5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

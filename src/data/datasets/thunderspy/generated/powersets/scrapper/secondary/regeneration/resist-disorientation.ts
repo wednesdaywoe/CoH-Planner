@@ -79,7 +79,7 @@ export const ResistDisorientation: Power = {
     ["Resistance","Energy",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Resistance","Negative",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Resistance","Psionic",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,6.5,1,10.25,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
+    ["Unmapped",null,6.5,1,10.25,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "mechanicType": "parentMechanic"
 };

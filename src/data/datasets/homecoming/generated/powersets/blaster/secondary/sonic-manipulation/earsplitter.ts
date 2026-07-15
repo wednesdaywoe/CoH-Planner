@@ -66,9 +66,9 @@ export const Earsplitter: Power = {
     ["Damage","Energy",1.78,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Held",5,1,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75],
     ["Mez","Held",5,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75],
-    ["Damage","Smashing",1.2895,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Damage","Energy",1.2895,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75]
+    ["Damage","Smashing",1.2895,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",1.2895,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,null,true]
   ],
   "specialEffects": [
     {

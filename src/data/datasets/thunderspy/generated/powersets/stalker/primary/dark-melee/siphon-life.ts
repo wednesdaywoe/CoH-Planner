@@ -53,10 +53,10 @@ export const SiphonLife: Power = {
     ["Unmapped",null,1,1,0,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.181954,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,2.181954,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&"],
-    ["Unmapped",null,2.181954,0.20000000298023224,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&"],
-    ["Unmapped",null,1.96,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&"],
-    ["Unmapped",null,1.96,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&"]
+    ["Unmapped",null,2.181954,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,2.181954,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> player eq &&",true],
+    ["Unmapped",null,2.181954,0.20000000298023224,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> .9 < kHeld target> 0 > kSleep target> 0 > || && enttype target> player eq &&",true],
+    ["Unmapped",null,1.96,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kMeter source> .9 < &&",true],
+    ["Unmapped",null,1.96,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kMeter source> 0 > enttype target> critter eq &&",true]
   ]
 };

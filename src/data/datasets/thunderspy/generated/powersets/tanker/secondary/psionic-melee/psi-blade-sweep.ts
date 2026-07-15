@@ -63,14 +63,14 @@ export const PsiBladeSweep: Power = {
     ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! enttype target> critter eq &&"],
     ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Unmapped",null,0.648,0,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.3808966875076294,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&"],
-    ["Unmapped",null,0.496798,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,0.236,1,3.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?"],
-    ["Mez","Stunned",0.3,2,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! enttype target> player eq &&"],
-    ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> critter eq &&"],
-    ["Mez","Stunned",0.3,3,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> player eq &&"],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&"],
-    ["Unmapped",null,6,0.15000000596046448,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Unmapped",null,1,0.3808966875076294,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight_Lockout source.ownPower? ! && Temporary_Powers.Temporary_Powers.Boggled target.ownPower? &&",true],
+    ["Unmapped",null,0.496798,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.236,1,3.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower?",true],
+    ["Mez","Stunned",0.3,2,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? ! enttype target> player eq &&",true],
+    ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> critter eq &&",true],
+    ["Mez","Stunned",0.3,3,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Psionic_Melee_Insight source.ownPower? enttype target> player eq &&",true],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Unmapped",null,6,0.15000000596046448,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {

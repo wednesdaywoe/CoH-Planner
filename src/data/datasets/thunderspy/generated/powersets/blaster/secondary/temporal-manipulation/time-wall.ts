@@ -69,7 +69,7 @@ export const TimeWall: Power = {
     ["Unmapped",null,0.1,1,10,"Melee_SpeedFlying","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.1,1,10,"Melee_SpeedJumping","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.106,1,9.1,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Regeneration",null,-0.2,1,20,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Immobilized",2,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Regeneration",null,-0.2,1,20,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

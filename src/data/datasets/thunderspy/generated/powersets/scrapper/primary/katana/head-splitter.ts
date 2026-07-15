@@ -63,9 +63,9 @@ export const HeadSplitter: Power = {
     ["Unmapped",null,1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1.026,0,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,0.10000000149011612,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower? !"],
-    ["Unmapped",null,2.740122,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,2.740122,0.15000000596046448,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Defense","Ranged",2,1,5,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower?"]
+    ["Unmapped",null,2.740122,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,2.740122,0.15000000596046448,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Defense","Ranged",2,1,5,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.BulletCut source.ownPower?",true]
   ],
   "conditionalEffects": [
     {

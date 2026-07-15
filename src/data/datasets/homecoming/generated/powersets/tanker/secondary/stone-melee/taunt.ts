@@ -45,7 +45,7 @@ export const Taunt: Power = {
   "atoms": [
     ["Mez","Taunt",20,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Range",null,-1,1,20,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Mez","Taunt",5,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1],
-    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Mez","Taunt",5,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

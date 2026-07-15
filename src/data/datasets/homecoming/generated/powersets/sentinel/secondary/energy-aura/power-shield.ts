@@ -76,14 +76,14 @@ export const PowerShield: Power = {
     ["Defense","Cold",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Defense","Negative",1.4,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","All",0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Defense","Fire",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Defense","Energy",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Defense","Negative",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Defense","Cold",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Defense","Psionic",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Elusivity","Fire",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
-    ["Elusivity","Cold",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
-    ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
-    ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
+    ["Defense","Fire",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Defense","Energy",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Defense","Negative",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Defense","Cold",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Defense","Psionic",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Fire",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Elusivity","Cold",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

@@ -112,8 +112,8 @@ export const IncreaseDensity: Power = {
     ["Movement","Jump",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
     ["Movement","Fly",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
     ["Movement","Run",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["MezResist","Stunned",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?"],
-    ["MezResist","Held",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?"],
-    ["MezResist","Immobilized",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?"]
+    ["MezResist","Stunned",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Held",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
+    ["MezResist","Immobilized",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

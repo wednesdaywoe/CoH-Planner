@@ -68,9 +68,9 @@ export const DarkEmbrace: Power = {
     ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Negative",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Toxic",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Resistance","Negative",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Resistance","Toxic",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1]
+    ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Resistance","Negative",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Resistance","Toxic",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

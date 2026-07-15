@@ -50,6 +50,6 @@ export const Howl: Power = {
     ["Unmapped",null,0.405,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,-2,1,8,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.063,1,9.83,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.220029,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Unmapped",null,1.220029,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

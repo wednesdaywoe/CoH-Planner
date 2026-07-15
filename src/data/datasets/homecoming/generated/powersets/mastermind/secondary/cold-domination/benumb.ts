@@ -184,7 +184,7 @@ export const Benumb: Power = {
     ["Enhancement","Toxic",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Enhancement","All",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["ToHit",null,-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Regeneration",null,-20,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["Endurance",null,5.5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Regeneration",null,-20,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,5.5,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

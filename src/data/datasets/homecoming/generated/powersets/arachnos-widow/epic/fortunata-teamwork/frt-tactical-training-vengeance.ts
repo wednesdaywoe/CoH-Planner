@@ -182,7 +182,7 @@ export const FRTTacticalTrainingVengeance: Power = {
     ["Meta",null,1,47,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,130,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
     ["Heal",null,1,1,0,"Melee_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Terrorized",-10,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? ! isPVPMap? ! &&"],
-    ["MezResist","Terrorized",1,1,120,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? ! isPVPMap? &&"]
+    ["MezResist","Terrorized",1,1,120,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? ! isPVPMap? &&",true]
   ],
   "setsModes": [
     "Vengeance_Mode"

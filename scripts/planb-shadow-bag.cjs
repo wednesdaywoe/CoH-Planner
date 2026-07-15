@@ -45,8 +45,10 @@ require('tsx/cjs');
 const fs = require('fs');
 const path = require('path');
 const {
-  atomsOf, atomsOfType, selfDirected, enhanceableVsNot, resistibleTwins, durationBuckets,
+  atomsOf, atomsOfType, baseAtoms, selfDirected, enhanceableVsNot, resistibleTwins,
+  durationBuckets,
 } = require('../src/data/core/atom-query.ts');
+const { identityKey } = require('../src/data/core/atomic-effect.ts');
 
 const REPO = path.resolve(__dirname, '..');
 const argv = process.argv.slice(2);
@@ -117,7 +119,7 @@ function* walkValues(node, trail = []) {
   }
 }
 
-const stats = { datasets: 0, powers: 0, withAtoms: 0, checks: 0, loadFailed: 0 };
+const stats = { datasets: 0, powers: 0, withAtoms: 0, checks: 0, loadFailed: 0, baseAtoms: 0, gatedAtoms: 0 };
 /** Per-invariant check counts — printed every run. A gate whose check count
  *  silently collapses to near-zero reads exactly like a gate that passes, so the
  *  counts are part of the result, not diagnostics. */
@@ -153,18 +155,34 @@ function checkPower(dataset, power, genPath) {
   // --- UNENHANCED ----------------------------------------------------------
   // Anywhere in the power: a conditional/stance-gated bag carries the same
   // parallel slots (Bio Armor's adaptations are exactly this shape).
+  //
+  // The check is PATH-AWARE, and that is the point: `power.effects` is projected
+  // from the power's BASE (ungated) atoms, while `conditionalEffects[].effects`
+  // is projected from its GATED ones. Requiring the atom to come from the right
+  // side is what proves the converter's `gated` stamping is correct — and
+  // `gated` is what Phase 2's appliers rely on to avoid summing every
+  // stance-gated armor into the base. Checking against ALL atoms (as an earlier
+  // cut did) would pass even if every atom were mis-stamped.
+  const base = baseAtoms(power);
+  const gated = atoms.filter((a) => a.gated);
+  stats.baseAtoms += base.length;
+  stats.gatedAtoms += gated.length;
   for (const { path: p, value } of walkValues(power)) {
     // `effects.durations` is a Record<effectKey, seconds> — its
     // `recoveryBuffUnenhanced` key holds that slot's DURATION, not the slot.
     // Both are plain numbers, so only the path distinguishes them.
     if (p.split('.').pop() === 'durations') continue;
+    const conditional = p.startsWith('conditionalEffects');
+    const pool = conditional ? gated : base;
     for (const [slot, effectType] of Object.entries(UNENHANCED_SLOTS)) {
       if (value[slot] === undefined) continue;
       count('UNENHANCED');
-      const { unenhanceable } = enhanceableVsNot(atomsOfType(power, effectType));
+      const { unenhanceable } = enhanceableVsNot(pool.filter((a) => a.effectType === effectType));
       if (unenhanceable.length === 0) {
         fail(dataset, name, 'UNENHANCED',
-          `bag '${p ? p + '.' : ''}${slot}' present but no ignoreStrength ${effectType} atom exists`);
+          `bag '${p ? p + '.' : ''}${slot}' present but no ignoreStrength ${effectType} atom ` +
+          `among the power's ${conditional ? 'GATED' : 'BASE'} atoms ` +
+          `(base ${base.length}, gated ${gated.length})`);
       }
     }
   }
@@ -283,6 +301,7 @@ console.log(`  datasets swept:     ${stats.datasets}`);
 console.log(`  powers checked:     ${stats.powers}`);
 console.log(`  powers with atoms:  ${stats.withAtoms}`);
 console.log(`  failed to load:     ${stats.loadFailed}`);
+console.log(`  atoms base/gated:   ${stats.baseAtoms} / ${stats.gatedAtoms}`);
 console.log(`  invariant checks:   ${stats.checks}`);
 for (const kind of ['ATOMS-PRESENT', 'UNENHANCED', 'TWIN-INTEGRITY', 'UNRESISTABLE', 'SELF', 'DURATIONS']) {
   console.log(`      ${kind.padEnd(14)} ${kindChecks.get(kind) || 0}`);

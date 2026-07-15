@@ -64,11 +64,11 @@ export const WolfSpiderArmor: Power = {
     ["Mez","Held",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Mez","Confused",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Mez","Terrorized",-2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Mez","Stunned",0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"],
-    ["Mez","Immobilized",0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"],
-    ["Mez","Held",0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"],
-    ["Mez","Confused",0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"],
-    ["Mez","Terrorized",0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
+    ["Mez","Stunned",0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Mez","Immobilized",0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Mez","Held",0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Mez","Confused",0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Mez","Terrorized",0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "mechanicType": "parentMechanic"
 };

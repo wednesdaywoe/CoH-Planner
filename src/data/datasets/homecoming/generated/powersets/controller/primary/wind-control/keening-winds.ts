@@ -67,8 +67,8 @@ export const KeeningWinds: Power = {
     ["Mez","Confused",8,1,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,10,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
-    ["Mez","Confused",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Endurance",null,-2.5,1,2.1,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Confused",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-2.5,1,2.1,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

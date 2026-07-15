@@ -79,8 +79,8 @@ export const AbyssalGaze: Power = {
     ["Damage","Negative",0.707,1,2.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
     ["Mez","Held",4.4,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
     ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Negative",0.6697,1,2.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Damage","Negative",0.6697,1,2.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
-    ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1]
+    ["Damage","Negative",0.6697,1,2.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
+    ["Damage","Negative",0.6697,1,2.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,true],
+    ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

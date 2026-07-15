@@ -86,14 +86,14 @@ export const ScrambleThoughts: Power = {
     ["Mez","Placate",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
     ["Mez","Terrorized",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
-    ["Damage","Psionic",0.7262,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
-    ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
-    ["Mez","Placate",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
-    ["Mez","Terrorized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
-    ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
-    ["Damage","Psionic",2.36,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Stunned",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1]
+    ["Damage","Psionic",0.7262,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true,null,null,null,null,null,true],
+    ["Mez","Immobilized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true,null,null,null,null,null,true],
+    ["Mez","Placate",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true,null,null,null,null,null,true],
+    ["Mez","Terrorized",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true,null,null,null,null,null,true],
+    ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true,null,null,null,null,null,true],
+    ["Damage","Psionic",2.36,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Stunned",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ],
   "specialEffects": [
     {

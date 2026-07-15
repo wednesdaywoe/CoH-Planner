@@ -63,8 +63,8 @@ export const TRClawPierce: Power = {
     ["Mez","Taunt",20,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,1,1,6,"Melee_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.859,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Taunt",5,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&"]
+    ["Unmapped",null,0.859,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Taunt",5,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
   ],
   "modesRequired": [
     "Widow_Tarantula_Mode"

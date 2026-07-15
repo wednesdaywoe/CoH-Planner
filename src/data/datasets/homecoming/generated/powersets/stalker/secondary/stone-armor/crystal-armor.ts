@@ -74,9 +74,9 @@ export const CrystalArmor: Power = {
     ["Defense","Negative",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Recovery",null,0.2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Defense","Energy",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Defense","Negative",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1]
+    ["Defense","Energy",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Defense","Negative",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

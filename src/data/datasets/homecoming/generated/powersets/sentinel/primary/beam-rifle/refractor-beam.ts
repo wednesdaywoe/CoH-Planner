@@ -69,11 +69,11 @@ export const RefractorBeam: Power = {
     ["Damage","Energy",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Energy",0.9,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Defense","All",0.5,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",0.099,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1],
-    ["Damage","Energy",0.099,1,3.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1],
-    ["Damage","Energy",0.68,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",0.68,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",0.075,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1],
-    ["Damage","Energy",0.075,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1]
+    ["Damage","Energy",0.099,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,null,true],
+    ["Damage","Energy",0.099,1,3.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,null,true],
+    ["Damage","Energy",0.68,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Damage","Energy",0.68,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Damage","Energy",0.075,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,null,true],
+    ["Damage","Energy",0.075,1,3.1,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,null,true]
   ]
 };

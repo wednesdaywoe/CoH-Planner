@@ -35,6 +35,6 @@ export const BeyondTheVeilAlive: Power = {
   "atoms": [
     ["Unmapped",null,10,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,5,1,0.5,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 1 <"]
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints source> 1 <",true]
   ]
 };

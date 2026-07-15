@@ -38,7 +38,7 @@ export const PackFrenzy: Power = {
   "atoms": [
     ["Unmapped",null,0.1,1,15,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
     ["Unmapped",null,0.5,1,15,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["RechargeTime",null,0.25,1,15,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||"]
+    ["RechargeTime",null,0.25,1,15,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true]
   ],
   "conditionalEffects": [
     {

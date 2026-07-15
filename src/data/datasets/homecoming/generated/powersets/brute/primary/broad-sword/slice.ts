@@ -110,12 +110,12 @@ export const Slice: Power = {
     ["Resistance","Negative",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Psionic",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-1.2,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Lethal",0.8654,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 =="],
-    ["Meta",null,1,64,14,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 =="],
-    ["Damage","Lethal",0.4946,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Lethal",1.5064,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Lethal",0.8431,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 =="],
-    ["Meta",null,1,64,14,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 =="]
+    ["Damage","Lethal",0.8654,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 ==",true],
+    ["Meta",null,1,64,14,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 ==",true],
+    ["Damage","Lethal",0.4946,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Damage","Lethal",1.5064,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Damage","Lethal",0.8431,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 ==",true],
+    ["Meta",null,1,64,14,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kRendingSliceCooldown Source.Mode? 0 ==",true]
   ],
   "conditionalEffects": [
     {

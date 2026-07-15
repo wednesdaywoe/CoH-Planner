@@ -64,6 +64,6 @@ export const MudPots: Power = {
     ["Unmapped",null,-1.5,1,5,"Melee_SpeedRunning","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0.18,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

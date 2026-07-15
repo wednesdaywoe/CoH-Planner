@@ -56,7 +56,7 @@ export const FreezeRay: Power = {
     ["Unmapped",null,0.1,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Held",8,3,0,"Ranged_Sleep","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0.066,1,8.5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,100,1,10,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >"]
+    ["Mez","Held",2,3,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,100,1,10,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true]
   ]
 };

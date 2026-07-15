@@ -31,13 +31,13 @@ export const FieryEmbrace: Power = {
   "maxSlots": 6,
   "atoms": [
     ["GlobalChanceMod",null,1,1,20,"Melee_Ones","Cur","Magnitude","All","PvE",false,"Replace",2,null,null,1,null,true],
-    ["DamageBuff","Fire",10,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Smashing",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Lethal",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Cold",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Energy",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Negative",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Psionic",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Toxic",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true]
+    ["DamageBuff","Fire",10,1,20,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["DamageBuff","Smashing",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["DamageBuff","Lethal",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["DamageBuff","Cold",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["DamageBuff","Energy",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["DamageBuff","Negative",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["DamageBuff","Psionic",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["DamageBuff","Toxic",8,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

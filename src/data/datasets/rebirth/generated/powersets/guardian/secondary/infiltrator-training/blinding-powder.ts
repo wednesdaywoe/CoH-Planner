@@ -73,9 +73,9 @@ export const BlindingPowder: Power = {
     ["ToHit",null,1,1,15,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Mez","Confused",20,2,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Sleep",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Confused",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Sleep",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Confused",2,2,0,"Melee_Ones","Cur","Duration","Target","PvP",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

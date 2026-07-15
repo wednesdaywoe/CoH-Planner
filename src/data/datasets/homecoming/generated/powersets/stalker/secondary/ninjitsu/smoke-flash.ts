@@ -92,8 +92,8 @@ export const SmokeFlash: Power = {
     ["Resistance","Negative",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Psionic",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Toxic",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["MezResist","Knockup",6.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
-    ["MezResist","Knockback",6.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
+    ["MezResist","Knockup",6.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Knockback",6.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

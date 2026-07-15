@@ -50,17 +50,17 @@ export const GeneticContamination: Power = {
     ["Unmapped",null,0.15,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
     ["Unmapped",null,1.5,1,5,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
-    ["Unmapped",null,0.05,1,6,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&"],
-    ["Unmapped",null,1.995,1,5,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
-    ["Unmapped",null,1.995,1,5,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
-    ["Resistance","Smashing",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Resistance","Lethal",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Resistance","Fire",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Resistance","Cold",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Resistance","Energy",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Resistance","Negative",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Resistance","Psionic",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?"]
+    ["Unmapped",null,0.05,1,6,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Unmapped",null,1.995,1,5,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Unmapped",null,1.995,1,5,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Resistance","Smashing",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Lethal",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Fire",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Cold",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Energy",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Negative",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Resistance","Psionic",-0.3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true]
   ],
   "conditionalEffects": [
     {

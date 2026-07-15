@@ -50,6 +50,6 @@ export const Flamethrower: Power = {
   },
   "atoms": [
     ["Damage","Fire",0.242,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Fire",0.232041,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Damage","Fire",0.232041,1,7.1,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

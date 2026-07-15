@@ -150,9 +150,9 @@ export const QuantumAcceleration: Power = {
     ["MezResist","Knockup",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"No",2,null,null,1,null,true],
     ["MezResist","Knockback",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"No",2,null,null,1,null,true],
     ["Movement","Fly",2,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,0],
-    ["MezResist","Immobilized",3,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"No",2,null,null,1,null,true],
-    ["MezResist","Knockup",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"No",2,null,null,1,null,true],
-    ["MezResist","Knockback",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"No",2,null,null,1,null,true]
+    ["MezResist","Immobilized",3,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"No",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Knockup",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"No",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Knockback",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"No",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
   "modesSuspended": [
     "Peacebringer_Blaster_Mode",

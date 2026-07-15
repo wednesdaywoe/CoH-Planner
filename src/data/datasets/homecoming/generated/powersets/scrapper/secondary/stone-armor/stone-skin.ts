@@ -108,9 +108,9 @@ export const StoneSkin: Power = {
     ["Defense","Cold",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Energy",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Negative",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Psionic",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Defense","Psionic",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Defense","Toxic",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1]
+    ["Resistance","Psionic",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Defense","Psionic",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Defense","Toxic",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ],
   "mechanicType": "parentMechanic"
 };

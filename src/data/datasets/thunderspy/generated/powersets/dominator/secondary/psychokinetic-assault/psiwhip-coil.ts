@@ -66,11 +66,11 @@ export const PsiWhipCoil: Power = {
     ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1625,1,2,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Held",4,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Held",9,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&"],
-    ["Mez","Held",4,1,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&"],
-    ["Unmapped",null,8,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Unmapped",null,0.1625,1,2,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Held",4,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Held",9,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
+    ["Mez","Held",4,1,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true],
+    ["Unmapped",null,8,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {

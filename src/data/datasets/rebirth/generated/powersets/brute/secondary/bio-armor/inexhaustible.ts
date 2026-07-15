@@ -82,9 +82,9 @@ export const Inexhaustible: Power = {
     ["Movement","Fly",0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","JumpHeight",0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Jump",0.3,1,5.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["MaxHP",null,0.45,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?"],
-    ["Regeneration",null,0.15,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation source.Mode?"],
-    ["Recovery",null,0.1,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation source.Mode?"]
+    ["MaxHP",null,0.45,1,5.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation source.Mode?",true],
+    ["Regeneration",null,0.15,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation source.Mode?",true],
+    ["Recovery",null,0.1,1,5.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation source.Mode?",true]
   ],
   "conditionalEffects": [
     {

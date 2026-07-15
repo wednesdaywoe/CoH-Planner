@@ -104,12 +104,12 @@ export const DNASiphon: Power = {
     ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
     ["Recovery",null,0.125,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
     ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"],
-    ["Heal",null,0.375,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&"],
-    ["Regeneration",null,0.06,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&"],
-    ["Recovery",null,0.0938,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&"],
-    ["Regeneration",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&"],
-    ["Regeneration",null,-1.33,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&"],
-    ["Regeneration",null,-2.66,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&"]
+    ["Heal",null,0.375,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",true],
+    ["Regeneration",null,0.06,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",true],
+    ["Recovery",null,0.0938,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",true],
+    ["Regeneration",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&",true],
+    ["Regeneration",null,-1.33,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&",true],
+    ["Regeneration",null,-2.66,1,30,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&",true]
   ],
   "conditionalEffects": [
     {

@@ -72,9 +72,9 @@ export const EnvironmentalAdaptation: Power = {
     ["Defense","Negative",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Unmapped",null,100,1,0.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,2.5,1,0.75,"Melee_Res_DMG","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
-    ["Unmapped",null,0.75,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Unmapped",null,3,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"],
-    ["Unmapped",null,100,1,0.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
+    ["Unmapped",null,2.5,1,0.75,"Melee_Res_DMG","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Unmapped",null,0.75,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Unmapped",null,3,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Unmapped",null,100,1,0.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

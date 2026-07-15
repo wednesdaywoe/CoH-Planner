@@ -50,9 +50,9 @@ export const SoulExtraction: Power = {
   "maxSlots": 6,
   "atoms": [
     ["Heal",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,true],
-    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Lich target.VillainName>"],
-    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>"],
-    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Zombie target.VillainName>"]
+    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Lich target.VillainName>",true],
+    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Skeletal_Warrior target.VillainName>",true],
+    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Zombie target.VillainName>",true]
   ],
   "effects": {
     "summon": {

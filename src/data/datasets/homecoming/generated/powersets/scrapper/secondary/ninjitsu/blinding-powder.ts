@@ -80,11 +80,11 @@ export const BlindingPowder: Power = {
     ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["ToHit",null,1,1,15,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Mez","Confused",12,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Sleep",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Placate",6,3,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["ToHit",null,1,1,15,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Confused",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Sleep",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Placate",6,3,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["ToHit",null,1,1,15,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Confused",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

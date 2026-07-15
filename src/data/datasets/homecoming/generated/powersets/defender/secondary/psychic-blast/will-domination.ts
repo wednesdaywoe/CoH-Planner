@@ -55,8 +55,8 @@ export const WillDomination: Power = {
   "atoms": [
     ["Damage","Psionic",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Sleep",16,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929],
-    ["Damage","Psionic",1.6499,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929]
+    ["Damage","Psionic",1.6499,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Sleep",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929,null,null,null,null,null,null,null,true]
   ],
   "specialEffects": [
     {

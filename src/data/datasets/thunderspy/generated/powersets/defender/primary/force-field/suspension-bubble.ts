@@ -46,7 +46,7 @@ export const SuspensionBubble: Power = {
     ["Unmapped",null,4,1,1,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,25,1,1,"Melee_Control","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,25,1,1,"Melee_Friction","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Knockback",0.1,0.10000000149011612,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Knockback",0.1,0.10000000149011612,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Defender_Buff.Force_Field.Force_Bubble !"
 };

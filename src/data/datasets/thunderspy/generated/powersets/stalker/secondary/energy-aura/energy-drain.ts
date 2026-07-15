@@ -92,6 +92,6 @@ export const EnergyDrain: Power = {
     ["Defense","Energy",0.05,1,45,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","Negative",0.05,1,45,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Endurance",null,25,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-10,1,0,"Melee_EndDrain","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Unmapped",null,-10,1,0,"Melee_EndDrain","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

@@ -105,6 +105,6 @@ export const Corruption: Power = {
     ["Resistance","Negative",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Resistance","Psionic",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
     ["Resistance","Toxic",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
-    ["Damage","Fire",1.421,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Damage","Fire",1.421,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

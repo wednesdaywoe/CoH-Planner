@@ -44,6 +44,6 @@ export const Evolution: Power = {
     ["Unmapped",null,4,1,90,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["ToHit",null,3,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
+    ["Unmapped",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

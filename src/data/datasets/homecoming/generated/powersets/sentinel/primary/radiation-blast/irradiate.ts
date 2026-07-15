@@ -71,7 +71,7 @@ export const Irradiate: Power = {
     ["Damage","Energy",0.1,1,4.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
     ["Damage","Energy",0.1,1,4.6,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
     ["Defense","All",3,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",0.0488,1,4.6,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
-    ["Damage","Energy",0.0488,1,4.6,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1]
+    ["Damage","Energy",0.0488,1,4.6,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,true],
+    ["Damage","Energy",0.0488,1,4.6,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,null,true]
   ]
 };

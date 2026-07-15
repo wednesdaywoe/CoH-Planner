@@ -46,6 +46,6 @@ export const FrozenAura: Power = {
   "atoms": [
     ["Mez","Sleep",20,2,0,"Ranged_Sleep","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0.055,1,9.6,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Sleep",2,2,0,"Ranged_Sleep","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Sleep",2,2,0,"Ranged_Sleep","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

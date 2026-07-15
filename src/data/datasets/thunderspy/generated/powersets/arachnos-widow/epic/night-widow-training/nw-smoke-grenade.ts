@@ -46,6 +46,6 @@ export const NWSmokeGrenade: Power = {
     ["Unmapped",null,-0.9,1,60,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.5,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Taunt",10,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Taunt",6,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Taunt",6,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

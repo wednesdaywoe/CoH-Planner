@@ -108,15 +108,15 @@ export const AcidArrow: Power = {
     ["Resistance","Toxic",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Pets_OilSlickTarget target.VillainName> !"],
-    ["Resistance","Smashing",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?"],
-    ["Resistance","Lethal",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?"],
-    ["Resistance","Fire",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?"],
-    ["Resistance","Cold",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?"],
-    ["Resistance","Energy",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?"],
-    ["Resistance","Negative",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?"],
-    ["Resistance","Psionic",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?"],
-    ["Resistance","Toxic",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?"],
-    ["Defense","All",0.4,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?"]
+    ["Resistance","Smashing",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?",true],
+    ["Resistance","Lethal",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?",true],
+    ["Resistance","Fire",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?",true],
+    ["Resistance","Cold",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?",true],
+    ["Resistance","Energy",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?",true],
+    ["Resistance","Negative",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?",true],
+    ["Resistance","Psionic",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?",true],
+    ["Resistance","Toxic",-0.6,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?",true],
+    ["Defense","All",0.4,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.FlashArrow_Dazzled target.ownPower?",true]
   ],
   "conditionalEffects": [
     {

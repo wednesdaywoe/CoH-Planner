@@ -105,6 +105,6 @@ export const SteamyMist: Power = {
     ["Defense","Psionic",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,2,1,2.25,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,5,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-    ["Unmapped",null,7,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
+    ["Unmapped",null,7,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ]
 };

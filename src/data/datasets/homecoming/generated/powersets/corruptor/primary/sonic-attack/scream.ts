@@ -105,9 +105,9 @@ export const Scream: Power = {
     ["Resistance","Negative",-1.5,1,8,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Psionic",-1.5,1,8,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-1.5,1,8,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Energy",0.264,1,1.05,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <"],
-    ["Damage","Smashing",0.1669,1,1.05,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Damage","Energy",0.1669,1,1.05,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Damage","Energy",0.3338,1,1.05,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <"]
+    ["Damage","Energy",0.264,1,1.05,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
+    ["Damage","Smashing",0.1669,1,1.05,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.1669,1,1.05,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.3338,1,1.05,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true]
   ]
 };

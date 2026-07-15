@@ -48,12 +48,12 @@ export const AoEBridge: Power = {
   "atoms": [
     ["Unmapped",null,0.57,1,0.6,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.954107,1,0.6,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Resistance","Lethal",-1.34,1,35,"Melee_Res_DMG","Res","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&"],
-    ["Unmapped",null,1.34,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&"],
-    ["Unmapped",null,0.57,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&"],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&"],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> player eq &&"]
+    ["Unmapped",null,0.954107,1,0.6,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Resistance","Lethal",-1.34,1,35,"Melee_Res_DMG","Res","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
+    ["Unmapped",null,1.34,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
+    ["Unmapped",null,0.57,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> critter eq &&",true],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? enttype target> player eq &&",true]
   ],
   "conditionalEffects": [
     {

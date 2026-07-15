@@ -72,6 +72,6 @@ export const Shock: Power = {
     ["Regeneration",null,-0.75,1,25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Recovery",null,-0.75,1,25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Endurance",null,-0.16,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Endurance",null,-5,0,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Endurance",null,-5,0,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

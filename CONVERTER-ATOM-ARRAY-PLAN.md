@@ -173,6 +173,39 @@ consumers one applier at a time behind a shadow-comparison, delete the bag last.
   `require` failures (an unloadable power read as a pass, not a gap).
 
 ### Phase 2 — Migrate appliers one at a time (behind the shadow)
+
+**Slice 0 — the base/gated split (DONE 2026-07-15).** A prerequisite Phase 1
+surfaced: after Phase 1 made `power.atoms` the COMPLETE effect list, an applier
+can no longer just sum `atomsOf(power)` — that list deliberately includes
+mode/stance, PvP, hidden-state and chance-0 proc atoms which do not apply by
+default. Summing them would over-count every stance-gated armor (the
+[[adaptation-stance-leak-fix]] bug, reintroduced by the front door).
+
+The filter cannot be re-derived at runtime from the gate expression alone:
+base-ness also depends on collection PROVENANCE (a template reached via a
+redirect chain or `activation_effects` passes Self-only / IgnoreStrength-dupe
+filters that no expression records). So the converter — the only scope holding
+`allTemplates` — stamps the verdict: `AtomicEffect.gated` (last in the tuple, so
+the ~64% base case trims to zero bytes). Runtime reads it via `baseAtoms(power)`
+/ `gatedAtoms(power)` / `baseAtomsOfType(power, type)`.
+**Phase 2 appliers read `baseAtoms`, never `atomsOf`.**
+
+Guarded two ways, because neither alone suffices:
+- The shadow harness's UNENHANCED check is now **path-aware** — `power.effects`
+  must be backed by a BASE atom, `conditionalEffects[].effects` by a GATED one.
+  This is what proves the stamping is right way round.
+- A **hard converter assert** at the emit site: unstamped atoms must number
+  exactly `templatesToAtoms(allTemplates)`. This covers what the harness
+  structurally cannot — the harness checks `bag ⊆ atoms` by existence, which is
+  insensitive to OVER-inclusion (mutation-verified: marking every atom base
+  still passes every existence check, so only this assert catches it). The
+  assert itself is mutation-verified to fire on both over- and under-stamping.
+
+Corpus: 53,767 base / 29,386 gated atoms across the three datasets; shadow green
+(8,913 powers, 0 divergences), regen idempotent, diff still `atoms`-only (29,386
+insertions = 29,386 deletions = exactly the gated atoms gaining their flag).
+
+**Slice 1+ — the appliers.**
 Order by isolation, simplest first. For each applier (resistance, defense,
 movement, resources incl. the `*Unenhanced` twins, mez, combat mods, procs,
 incarnate, self-penalties):

@@ -51,7 +51,7 @@ export const ChokingCloud: Power = {
   "atoms": [
     ["Mez","Held",4,2,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Held",4,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Mez","Held",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Held",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.800000011920929,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "specialEffects": [
     {

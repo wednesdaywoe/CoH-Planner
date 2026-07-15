@@ -54,7 +54,7 @@ export const GroundZero: Power = {
     ["Unmapped",null,1,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
     ["Unmapped",null,2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
     ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
-    ["Unmapped",null,1,1,0,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? &&"],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?"]
+    ["Unmapped",null,1,1,0,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? &&",true],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag?",true]
   ]
 };

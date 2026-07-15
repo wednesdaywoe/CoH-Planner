@@ -68,6 +68,6 @@ export const SoothingWave: Power = {
     ["DamageBuff","Psionic",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,188,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

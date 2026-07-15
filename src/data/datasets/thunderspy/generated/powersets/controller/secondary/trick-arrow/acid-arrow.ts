@@ -64,12 +64,12 @@ export const AcidArrow: Power = {
     ["Unmapped",null,-2,1,20,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.01,1,20,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? ||"],
-    ["Unmapped",null,-2,1,20,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >"],
-    ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >"],
-    ["Unmapped",null,-3,1,20,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >"],
-    ["Unmapped",null,3,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >"],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >"],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >"]
+    ["Unmapped",null,0.01,1,20,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? ||",true],
+    ["Unmapped",null,-2,1,20,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Unmapped",null,-3,1,20,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true],
+    ["Unmapped",null,3,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kImmobilized target> 0 >",true],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHeld target> 0 >",true]
   ]
 };

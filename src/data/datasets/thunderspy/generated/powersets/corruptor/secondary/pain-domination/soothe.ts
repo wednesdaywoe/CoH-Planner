@@ -62,6 +62,6 @@ export const Soothe: Power = {
     ["Damage","Negative",1,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Damage","Psionic",1,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Damage","Toxic",1,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Heal",null,1.96,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?"]
+    ["Heal",null,1.96,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
   ]
 };

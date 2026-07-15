@@ -112,11 +112,11 @@ export const IncreaseDensity: Power = {
     ["Movement","Run",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
     ["Movement","Fly",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
     ["Movement","Jump",0.1,1,60,"Ranged_Slow","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["MezResist","Held",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
-    ["MezResist","Immobilized",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
-    ["MezResist","Stunned",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
-    ["Mez","Held",-25,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
-    ["Mez","Immobilized",-25,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
-    ["Mez","Stunned",-25,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true]
+    ["MezResist","Held",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Immobilized",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Stunned",3,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Mez","Held",-25,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Mez","Immobilized",-25,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Mez","Stunned",-25,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

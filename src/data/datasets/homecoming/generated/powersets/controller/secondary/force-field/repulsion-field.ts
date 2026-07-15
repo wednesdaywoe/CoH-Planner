@@ -58,10 +58,10 @@ export const RepulsionField: Power = {
   "atoms": [
     ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858],
     ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"@ToHitRoll .10 + @ToHit >="],
-    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Meta",null,0,0,0,"Ranged_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Repel",10,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll .10 + @ToHit <"]
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"@ToHitRoll .10 + @ToHit >=",true],
+    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Meta",null,0,0,0,"Ranged_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Mez","Repel",10,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll .10 + @ToHit <",true]
   ]
 };

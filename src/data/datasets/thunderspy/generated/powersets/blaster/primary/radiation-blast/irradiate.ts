@@ -53,6 +53,6 @@ export const Irradiate: Power = {
     ["Unmapped",null,3,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,0.3499999940395355,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
     ["Unmapped",null,0.018,1,8.57,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.0245,1,4.6,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Unmapped",null,0.0245,1,4.6,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

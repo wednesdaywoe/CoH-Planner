@@ -70,6 +70,6 @@ export const HowlingTwilight: Power = {
     ["Mez","Stunned",15,2,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Afraid",15,3,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["EntCreate",null,15,3,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Stunned",2,3,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

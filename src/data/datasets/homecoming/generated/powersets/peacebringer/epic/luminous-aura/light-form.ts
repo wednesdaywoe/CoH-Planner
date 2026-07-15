@@ -178,10 +178,10 @@ export const LightForm: Power = {
     ["Mez","Immobilized",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
     ["Mez","Stunned",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
     ["Mez","Sleep",-10,1,90,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
-    ["MezResist","Held",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
-    ["MezResist","Stunned",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
-    ["MezResist","Sleep",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true],
-    ["MezResist","Immobilized",6,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true]
+    ["MezResist","Held",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Stunned",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Sleep",5,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Immobilized",6,1,90,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true]
   ],
   "setsModes": [
     "Peacebringer_Light_Mode"

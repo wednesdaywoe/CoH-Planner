@@ -158,6 +158,6 @@ export const ShadowFall: Power = {
     ["MezResist","Terrorized",5,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Mez","Terrorized",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["ToHit",null,0.692,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["MezResist","Terrorized",7,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?"]
+    ["MezResist","Terrorized",7,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

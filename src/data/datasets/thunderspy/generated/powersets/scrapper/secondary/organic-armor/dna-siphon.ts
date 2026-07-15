@@ -67,12 +67,12 @@ export const DNASiphon: Power = {
     ["Endurance",null,5,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
     ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
     ["Unmapped",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"],
-    ["Unmapped",null,0.375,1,0,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&"],
-    ["Unmapped",null,0.06,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&"],
-    ["Unmapped",null,0.05,1,10,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?"],
-    ["Unmapped",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&"],
-    ["Unmapped",null,1,1,10,"Melee_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Unmapped",null,-1.33,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&"],
-    ["Unmapped",null,-2.66,1,30,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&"]
+    ["Unmapped",null,0.375,1,0,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 > kDefensiveAdaptation Source.Mode? &&",true],
+    ["Unmapped",null,0.06,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 == kRestedAdaptation Source.Mode? &&",true],
+    ["Unmapped",null,0.05,1,10,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
+    ["Unmapped",null,-2,1,30,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? ! &&",true],
+    ["Unmapped",null,1,1,10,"Melee_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Unmapped",null,-1.33,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? &&",true],
+    ["Unmapped",null,-2.66,1,30,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kOffensiveAdaptation Source.Mode? &&",true]
   ]
 };

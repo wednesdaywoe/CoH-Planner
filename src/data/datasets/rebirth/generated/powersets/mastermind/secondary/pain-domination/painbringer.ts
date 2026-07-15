@@ -68,6 +68,6 @@ export const Painbringer: Power = {
     ["DamageBuff","Negative",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Psionic",5,1,90,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"enttype target> player eq",true]
   ]
 };

@@ -67,6 +67,6 @@ export const PoisonDart: Power = {
     ["Unmapped",null,0.1,1,2.1,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
     ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.2,1,4,"Melee_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.141,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Unmapped",null,1.141,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

@@ -56,12 +56,12 @@ export const TurbulentAura: Power = {
   "atoms": [
     ["Mez","Knockback",0.67,1,1,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,true,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
     ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.05000000074505806,null,true,null,null,null,null,"entref target> entref source> eq !"],
-    ["Damage","Cold",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! @ToHitRoll @ToHit < @ForceHit || &&"],
-    ["Damage","Cold",0.1875,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? @ToHitRoll @ToHit < @ForceHit || &&"],
-    ["Mez","Knockback",0.67,1,1,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.15000000596046448,null,true,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
-    ["Mez","Knockback",0.67,1,1,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,true,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&"],
-    ["Mez","Knockback",0.67,1,1,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.1899999976158142,null,true,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&"],
-    ["Heal",null,0.15,1,0,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?"]
+    ["Damage","Cold",0.15,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Damage","Cold",0.1875,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Mez","Knockback",0.67,1,1,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.15000000596046448,null,true,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&",true],
+    ["Mez","Knockback",0.67,1,1,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.25,null,true,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Mez","Knockback",0.67,1,1,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,0.1899999976158142,null,true,null,null,null,null,"enttype target> player eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? &&",true],
+    ["Heal",null,0.15,1,0,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower?",true]
   ],
   "conditionalEffects": [
     {

@@ -41,8 +41,8 @@ export const DisruptionField: Power = {
     ["Unmapped",null,3,1.100000023841858,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,-3,1,5,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,-3,1,5,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,-3,1,5,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Mastermind_Buff.Sonic_Resonance.Disruption_Aura !"
 };

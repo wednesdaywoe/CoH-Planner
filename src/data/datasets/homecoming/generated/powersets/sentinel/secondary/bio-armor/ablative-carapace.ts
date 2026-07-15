@@ -47,8 +47,8 @@ export const AblativeCarapace: Power = {
   "atoms": [
     ["Absorb",null,0.3,1,30,"Melee_Ones","Max","Expression","Self","Any",true,"Replace",2,null,null,1],
     ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Absorb",null,0.09,1,30,"Melee_Ones","Max","Expression","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
-    ["Regeneration",null,0.3,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?"]
+    ["Absorb",null,0.09,1,30,"Melee_Ones","Max","Expression","Self","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Regeneration",null,0.3,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true]
   ],
   "conditionalEffects": [
     {

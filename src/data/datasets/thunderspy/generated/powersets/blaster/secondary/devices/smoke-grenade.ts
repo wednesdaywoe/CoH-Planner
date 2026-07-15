@@ -40,8 +40,8 @@ export const SmokeGrenade: Power = {
   "atoms": [
     ["Unmapped",null,-0.9,1,60,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0.014,1,8.87,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.7,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @ToHitRoll @ToHit < @ForceHit || &&"],
-    ["Unmapped",null,0.7,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&"],
-    ["Unmapped",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&"]
+    ["Unmapped",null,0.7,1,60,"Melee_DeBuff_ToHit","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Unmapped",null,0.7,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true],
+    ["Unmapped",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq @ToHitRoll @ToHit < @ForceHit || &&",true]
   ]
 };

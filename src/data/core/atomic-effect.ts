@@ -125,6 +125,26 @@ export interface AtomicEffect {
   specialCase?: string;
   /** raw gate expression (CoH stack-machine string) or Mids (key,value) pairs. */
   requiresExpression?: string;
+  /**
+   * True when this atom is NOT part of the power's unconditional base — it
+   * applies only under a gate (mode/stance, PvP, hidden-state, Containment,
+   * dead-state, `rand()`, a chance-0 proc trigger). Absent ⇒ always-on base.
+   *
+   * `requiresExpression` says WHAT the gate is; this is the converter's verdict
+   * on whether it fires by default. The two are not redundant: base atoms can
+   * carry a requires (the PvE `enttype` filter, a negated "target NOT drowning"
+   * clause) and still be unconditional, and the classification depends on
+   * collection PROVENANCE as well as the expression — a template reached via a
+   * redirect chain or `activation_effects` passes through filters (Self-only,
+   * IgnoreStrength-dupe removal) that no gate expression records. Only the
+   * converter has that context, so it decides here rather than leaving the
+   * runtime to re-derive a lossy heuristic.
+   *
+   * Read via `baseAtoms()` / `gatedAtoms()` in `atom-query.ts`. Exact by
+   * construction and verified corpus-wide: `baseAtoms(power.atoms)` reproduces
+   * the converter's own base template set (`scripts/planb-shadow-bag.cjs`).
+   */
+  gated?: boolean;
 
   // --- provenance (debugging + DSH6 migration) ---
   sourceAttrib?: string;
@@ -156,6 +176,9 @@ export const ATOM_TUPLE_FIELDS = [
   'stackCap', 'ticks', 'applicationPeriod', 'baseProbability', 'procsPerMinute',
   'ignoreStrength', 'buffable', 'ignoreED', 'ignoreScaling',
   'specialCase', 'requiresExpression',
+  // `gated` sits LAST on purpose: ~64% of atoms are base (gated absent), and the
+  // encoder trims trailing nulls, so the common case costs zero extra bytes.
+  'gated',
 ] as const satisfies ReadonlyArray<keyof AtomicEffect>;
 
 /** One atom, positionally encoded. A `null` at position `i` means the field

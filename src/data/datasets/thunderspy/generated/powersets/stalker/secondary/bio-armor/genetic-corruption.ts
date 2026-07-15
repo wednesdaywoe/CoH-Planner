@@ -47,11 +47,11 @@ export const GeneticCorruption: Power = {
   "atoms": [
     ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&"],
     ["Unmapped",null,1.5,1,5,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"],
-    ["Mez","Sleep",2,2,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&"],
-    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&"],
-    ["Mez","Sleep",2,2,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&"],
-    ["Unmapped",null,0.3,1,4.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq kRestedAdaptation Source.Mode? &&"],
-    ["Unmapped",null,0.75,1,4.25,"Melee_Res_DMG","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&"],
-    ["Unmapped",null,1.995,1,5,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&"]
+    ["Mez","Sleep",2,2,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&",true],
+    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",true],
+    ["Mez","Sleep",2,2,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? &&",true],
+    ["Unmapped",null,0.3,1,4.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq kRestedAdaptation Source.Mode? &&",true],
+    ["Unmapped",null,0.75,1,4.25,"Melee_Res_DMG","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq kDefensiveAdaptation Source.Mode? &&",true],
+    ["Unmapped",null,1.995,1,5,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? &&",true]
   ]
 };

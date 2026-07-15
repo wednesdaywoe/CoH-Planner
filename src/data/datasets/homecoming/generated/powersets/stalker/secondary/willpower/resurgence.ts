@@ -59,7 +59,7 @@ export const Resurgence: Power = {
   "atoms": [
     ["Regeneration",null,2,1,1.12,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Regeneration",null,0.15,1,1.12,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
-    ["Regeneration",null,2,1,1.12,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Regeneration",null,0.15,1,1.12,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
+    ["Regeneration",null,2,1,1.12,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Regeneration",null,0.15,1,1.12,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

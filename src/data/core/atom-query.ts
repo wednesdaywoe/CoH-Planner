@@ -64,6 +64,40 @@ export function atomsOfType(power: Power, effectType: EffectType): AtomicEffect[
   return atomsOf(power).filter((a) => a.effectType === effectType);
 }
 
+/**
+ * The power's ALWAYS-ON atoms — those with no gate. This is the atom-native
+ * equivalent of "what the `PowerEffects` bag holds": the bag's collector drops
+ * every gated group, because a single-valued slot cannot carry both the base
+ * and the gated variant.
+ *
+ * **Phase 2 appliers should read this, not `atomsOf`.** `power.atoms` is the
+ * complete effect list — it deliberately includes mode/stance, PvP,
+ * hidden-state and chance-0 proc atoms that do NOT apply by default. Summing
+ * `atomsOf` directly would over-count every stance-gated armor and every PvP
+ * variant. `gated` is stamped by the converter (see `AtomicEffect.gated`) and
+ * `baseAtoms(power)` is verified corpus-wide to reproduce the converter's own
+ * base set exactly (`scripts/planb-shadow-bag.cjs`).
+ */
+export function baseAtoms(power: Power): AtomicEffect[] {
+  return atomsOf(power).filter((a) => !a.gated);
+}
+
+/**
+ * The power's gated atoms — everything that applies only under a condition
+ * (mode/stance, PvP, hidden-state, `rand()`, chance-0 proc trigger). Each
+ * carries its own gate in `requiresExpression` / `specialCase` / `pvMode` /
+ * `baseProbability`. The bag surfaces a curated subset of these as
+ * `conditionalEffects`; the atom list keeps them all.
+ */
+export function gatedAtoms(power: Power): AtomicEffect[] {
+  return atomsOf(power).filter((a) => a.gated);
+}
+
+/** The power's BASE atoms of one effectType — the Phase 2 applier entry point. */
+export function baseAtomsOfType(power: Power, effectType: EffectType): AtomicEffect[] {
+  return baseAtoms(power).filter((a) => a.effectType === effectType);
+}
+
 /** Index atoms by `effectType` (list order preserved within each bucket). */
 export function byType(atoms: readonly AtomicEffect[]): Map<EffectType, AtomicEffect[]> {
   const m = new Map<EffectType, AtomicEffect[]>();

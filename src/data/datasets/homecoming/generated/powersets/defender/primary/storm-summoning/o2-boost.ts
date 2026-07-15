@@ -94,9 +94,9 @@ export const O2Boost: Power = {
     ["Perception",null,2.5,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Mez","Stunned",-20,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
     ["Mez","Sleep",-20,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
-    ["MezResist","Stunned",2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
-    ["MezResist","Sleep",2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true],
-    ["Mez","Stunned",-25,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true],
-    ["Mez","Sleep",-25,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true]
+    ["MezResist","Stunned",2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Sleep",2,1,60,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Mez","Stunned",-25,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Mez","Sleep",-25,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Suppress",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

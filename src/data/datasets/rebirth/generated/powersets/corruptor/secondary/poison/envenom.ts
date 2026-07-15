@@ -120,7 +120,7 @@ export const Envenom: Power = {
     ["Resistance","Psionic",-2,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["HealResistance",null,1,1,30,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Regeneration",null,-0.25,1,30,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Regeneration",null,-11.5,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Regeneration",null,-5.75,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Regeneration",null,-11.5,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Regeneration",null,-5.75,1,30,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",false,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

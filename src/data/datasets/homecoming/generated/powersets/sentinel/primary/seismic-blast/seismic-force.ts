@@ -68,16 +68,16 @@ export const SeismicForce: Power = {
     ["DamageBuff","Psionic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["DamageBuff","Toxic",5,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Range",null,0.333,1,10,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["RechargePower",null,-1,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"],
-    ["RechargePower",null,-1.75,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"],
-    ["RechargePower",null,-2,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"],
-    ["RechargePower",null,-2.75,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"],
-    ["RechargePower",null,-4,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"],
-    ["RechargePower",null,-3,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"],
-    ["RechargePower",null,-2,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"],
-    ["RechargePower",null,-15,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"],
-    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"],
-    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?"]
+    ["RechargePower",null,-1,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
+    ["RechargePower",null,-1.75,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
+    ["RechargePower",null,-2,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
+    ["RechargePower",null,-2.75,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
+    ["RechargePower",null,-4,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
+    ["RechargePower",null,-3,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
+    ["RechargePower",null,-2,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
+    ["RechargePower",null,-15,0,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
+    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
+    ["Meta",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kSeismicPower Source.Mode?",true]
   ]
 };

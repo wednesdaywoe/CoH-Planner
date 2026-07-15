@@ -66,6 +66,6 @@ export const DawnStrike: Power = {
     ["Unmapped",null,2.096842,0.75,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Knockback",10,1,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Knockback",10,1,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Mez","Knockback",10,1,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

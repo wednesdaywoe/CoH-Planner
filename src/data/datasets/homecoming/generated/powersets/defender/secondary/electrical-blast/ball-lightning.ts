@@ -66,15 +66,15 @@ export const BallLightning: Power = {
     ["Damage","Energy",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Damage","Energy",0.045,1,2.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.07,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Damage","Energy",0.18,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
-    ["Endurance",null,3.79,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
-    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
-    ["Damage","Energy",0.1651,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Damage","Energy",0.0963,1,2.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Damage","Energy",0.18,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
-    ["Endurance",null,3.79,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
-    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <"],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Defender_Ranged.Electrical_Blast.Tesla_Cage source.ownPower? Defender_Buff.Shock_Therapy source.ownPower? ||"]
+    ["Damage","Energy",0.18,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
+    ["Endurance",null,3.79,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
+    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
+    ["Damage","Energy",0.1651,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.0963,1,2.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-1.25,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Energy",0.18,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
+    ["Endurance",null,3.79,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
+    ["Recovery",null,-0.4,1,5,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kEndurance% target> 10 - 100 * 80 10 - / 0 100 minmax rand 100 * <",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Defender_Ranged.Electrical_Blast.Tesla_Cage source.ownPower? Defender_Buff.Shock_Therapy source.ownPower? ||",true]
   ]
 };

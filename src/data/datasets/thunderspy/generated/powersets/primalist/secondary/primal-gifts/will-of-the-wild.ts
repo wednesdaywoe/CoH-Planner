@@ -96,6 +96,6 @@ export const WilloftheWild: Power = {
     ["Resistance","Toxic",2.5,1,120,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Regeneration",null,1,1,120,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.5,1,120,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
-    ["Unmapped",null,0.5,1,120,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||"]
+    ["Unmapped",null,0.5,1,120,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? kProwlerMode Source.Mode? ||",true]
   ]
 };

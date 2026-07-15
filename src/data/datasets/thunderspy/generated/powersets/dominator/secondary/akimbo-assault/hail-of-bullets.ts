@@ -108,14 +108,14 @@ export const HailofBullets: Power = {
     ["Defense","Melee",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","Ranged",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","AoE",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,0.4,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Immobilized",2,1,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,8,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.4,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",2,1,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,8,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

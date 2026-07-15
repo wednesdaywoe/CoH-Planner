@@ -40,10 +40,10 @@ export const TrainNinjas: Power = {
   "effects": {},
   "atoms": [
     ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName>"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Jonin target.VillainName>"],
-    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Oni target.VillainName>"],
-    ["Unmapped",null,100,0,5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jonin target.VillainName> || MastermindPets_Oni target.VillainName> ||"]
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName>",true],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Jonin target.VillainName>",true],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Oni target.VillainName>",true],
+    ["Unmapped",null,100,0,5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jonin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true]
   ],
   "mechanicType": "parentMechanic"
 };

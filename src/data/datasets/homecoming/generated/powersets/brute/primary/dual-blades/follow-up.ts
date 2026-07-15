@@ -89,17 +89,17 @@ export const FollowUp: Power = {
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
     ["Damage","Fire",0.36,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
-    ["Damage","Lethal",1.72,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["ToHit",null,0.33,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
-    ["DamageBuff","Smashing",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
-    ["DamageBuff","Lethal",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
-    ["DamageBuff","Fire",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
-    ["DamageBuff","Cold",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
-    ["DamageBuff","Energy",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
-    ["DamageBuff","Negative",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
-    ["DamageBuff","Psionic",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
-    ["DamageBuff","Toxic",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_2 Source.Mode?"]
+    ["Damage","Lethal",1.72,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["ToHit",null,0.33,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_2 Source.Mode?",true],
+    ["DamageBuff","Smashing",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?",true],
+    ["DamageBuff","Lethal",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?",true],
+    ["DamageBuff","Fire",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?",true],
+    ["DamageBuff","Cold",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?",true],
+    ["DamageBuff","Energy",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?",true],
+    ["DamageBuff","Negative",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?",true],
+    ["DamageBuff","Psionic",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?",true],
+    ["DamageBuff","Toxic",1,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kDD_StatusMode_2 Source.Mode?",true],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kDD_StatusMode_2 Source.Mode?",true]
   ],
   "conditionalEffects": [
     {

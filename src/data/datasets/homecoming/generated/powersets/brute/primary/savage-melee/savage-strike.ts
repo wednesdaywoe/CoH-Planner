@@ -65,7 +65,7 @@ export const SavageStrike: Power = {
     ["Damage","Lethal",0.137,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
     ["Damage","Fire",0.171,1,0.4,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,0],
-    ["Damage","Lethal",0.5301,1,0.4,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Damage","Lethal",0.0852,1,3.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Damage","Lethal",0.5301,1,0.4,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Damage","Lethal",0.0852,1,3.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

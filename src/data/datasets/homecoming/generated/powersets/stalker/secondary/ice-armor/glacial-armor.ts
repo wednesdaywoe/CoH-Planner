@@ -85,12 +85,12 @@ export const GlacialArmor: Power = {
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Defense","Energy",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Defense","Negative",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Defense","Psionic",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Resistance","Cold",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
-    ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
-    ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
+    ["Defense","Energy",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Defense","Negative",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Defense","Psionic",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Resistance","Cold",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

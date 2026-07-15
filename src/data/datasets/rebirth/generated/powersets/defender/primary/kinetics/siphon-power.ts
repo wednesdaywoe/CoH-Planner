@@ -57,13 +57,13 @@ export const SiphonPower: Power = {
     ["DamageBuff","Toxic",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Psionic",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["DamageBuff","Smashing",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Lethal",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Fire",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Cold",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Energy",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Negative",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Toxic",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Psionic",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"]
+    ["DamageBuff","Smashing",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Lethal",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Fire",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Cold",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Energy",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Negative",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Toxic",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Psionic",2,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ]
 };

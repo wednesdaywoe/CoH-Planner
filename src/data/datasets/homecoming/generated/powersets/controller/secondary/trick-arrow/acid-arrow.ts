@@ -104,14 +104,14 @@ export const AcidArrow: Power = {
     ["Recovery",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
     ["EnduranceDiscount",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
-    ["Damage","Toxic",0.01,1,20,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||"],
-    ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1],
-    ["HealResistance",null,2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
-    ["Endurance",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
-    ["ToHit",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
-    ["Regeneration",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
-    ["Recovery",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
-    ["RechargeTime",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true],
-    ["EnduranceDiscount",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true]
+    ["Damage","Toxic",0.01,1,20,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"kTerrorized target> 0 > kImmobilized target> 0 > || kHeld target> 0 > || kStunned target> 0 > || Sleep target.EventTimeSince> 3 <= || IncarnateBoss target.HasTag? ||",true],
+    ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["HealResistance",null,2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Endurance",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["ToHit",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Regeneration",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Recovery",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["RechargeTime",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["EnduranceDiscount",null,-2,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

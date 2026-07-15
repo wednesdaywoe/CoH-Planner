@@ -168,9 +168,9 @@ export const StrengthofWill: Power = {
     ["Mez","Stunned",-50,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Mez","Sleep",-50,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Mez","Held",-50,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
-    ["MezResist","Immobilized",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["MezResist","Stunned",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["MezResist","Sleep",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1],
-    ["MezResist","Held",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1]
+    ["MezResist","Immobilized",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["MezResist","Stunned",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["MezResist","Sleep",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["MezResist","Held",5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

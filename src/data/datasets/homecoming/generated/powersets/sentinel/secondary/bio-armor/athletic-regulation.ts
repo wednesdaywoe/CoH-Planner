@@ -54,12 +54,12 @@ export const AthleticRegulation: Power = {
     ["Movement","Run",0.075,1,2.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Fly",0.075,1,2.25,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","All",0.75,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Run",0.4,1,2.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
-    ["Movement","Fly",0.4,1,2.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?"],
-    ["Movement","Run",0.14,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Movement","Fly",0.14,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?"],
-    ["Movement","Run",0.33,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?"],
-    ["Movement","Fly",0.33,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?"]
+    ["Movement","Run",0.4,1,2.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Movement","Fly",0.4,1,2.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDefensiveAdaptation Source.Mode?",true],
+    ["Movement","Run",0.14,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Movement","Fly",0.14,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode?",true],
+    ["Movement","Run",0.33,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true],
+    ["Movement","Fly",0.33,1,2.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kRestedAdaptation Source.Mode?",true]
   ],
   "conditionalEffects": [
     {

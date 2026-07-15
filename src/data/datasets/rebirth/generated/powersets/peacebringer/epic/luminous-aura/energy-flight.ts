@@ -83,8 +83,8 @@ export const EnergyFlight: Power = {
     ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["GrantPower",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
     ["EntCreate",null,1,133,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Fly",0.83,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?"],
-    ["Movement","Fly",0.66,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?"]
+    ["Movement","Fly",0.83,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Movement","Fly",0.66,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ],
   "requires": "Inherent.Inherent.Energy_Flight !"
 };

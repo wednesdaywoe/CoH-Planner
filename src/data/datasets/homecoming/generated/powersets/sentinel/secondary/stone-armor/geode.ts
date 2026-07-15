@@ -212,10 +212,10 @@ export const Geode: Power = {
     ["DamageBuff","Toxic",-999,1,0.2,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Enhancement","Taunt",-999,1,0.2,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Accuracy",null,-999,1,0.2,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["EntCreate",null,-1,1,99999,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Replace",2,null,null,1],
-    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Sentinel_Defense.Stone_Armor.Brimstone_Armor source.ownPower?"],
-    ["GlobalChanceMod",null,-100,0,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Sentinel_Defense.Stone_Armor.Brimstone_Armor source.ownPower?"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["EntCreate",null,-1,1,99999,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Sentinel_Defense.Stone_Armor.Brimstone_Armor source.ownPower?",true],
+    ["GlobalChanceMod",null,-100,0,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Sentinel_Defense.Stone_Armor.Brimstone_Armor source.ownPower?",true],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ]
 };

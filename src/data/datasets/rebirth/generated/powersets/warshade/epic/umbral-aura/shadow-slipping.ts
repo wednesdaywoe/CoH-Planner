@@ -39,7 +39,7 @@ export const ShadowSlipping: Power = {
     ["EntCreate",null,0,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"allyID source> hero eq praetorianprogress source> normal eq praetorianprogress source> earth eq || && praetoria source.MapTeamArea> eq ! &&"],
     ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"allyID source> villain eq praetorianprogress source> normal eq praetorianprogress source> earth eq || && praetoria source.MapTeamArea> eq ! &&"],
-    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"praetorianprogress source> praetoria eq praetoria source.MapTeamArea> eq ||"]
+    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"praetorianprogress source> praetoria eq praetoria source.MapTeamArea> eq ||",true]
   ],
   "requires": "Warshade_Defensive.Umbral_Aura.Shadow_Slip"
 };

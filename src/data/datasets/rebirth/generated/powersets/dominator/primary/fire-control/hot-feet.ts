@@ -76,6 +76,6 @@ export const HotFeet: Power = {
     ["Movement","JumpHeight",0.7,1,2.25,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","Jump",0.7,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Movement","Run",0.7,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
-    ["Damage","Fire",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||"]
+    ["Damage","Fire",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit ||",true]
   ]
 };

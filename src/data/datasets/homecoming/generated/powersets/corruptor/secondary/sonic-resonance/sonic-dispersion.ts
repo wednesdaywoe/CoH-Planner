@@ -107,8 +107,8 @@ export const SonicDispersion: Power = {
     ["Mez","Held",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
     ["Mez","Immobilized",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
     ["Mez","Stunned",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
-    ["MezResist","Held",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true],
-    ["MezResist","Immobilized",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true],
-    ["MezResist","Stunned",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true]
+    ["MezResist","Held",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Immobilized",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Stunned",2,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

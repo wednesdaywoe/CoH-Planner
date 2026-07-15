@@ -40,7 +40,7 @@ export const ReformEssence: Power = {
   },
   "atoms": [
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode? !"],
-    ["Heal",null,2.5,1,0,"Melee_SSHealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode?"]
+    ["Heal",null,2.5,1,0,"Melee_SSHealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Tanker_Mode source.Mode?",true]
   ],
   "conditionalEffects": [
     {

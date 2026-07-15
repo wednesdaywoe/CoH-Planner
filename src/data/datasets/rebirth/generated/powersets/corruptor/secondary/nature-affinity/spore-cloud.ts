@@ -70,14 +70,14 @@ export const SporeCloud: Power = {
     ["DamageBuff","Toxic",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["DamageBuff","Psionic",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-1.5,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["DamageBuff","Smashing",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Lethal",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Fire",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Cold",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Energy",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Negative",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Toxic",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["DamageBuff","Psionic",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"],
-    ["Regeneration",null,-2,1,0.75,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"]
+    ["DamageBuff","Smashing",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Lethal",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Fire",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Cold",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Energy",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Negative",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Toxic",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["DamageBuff","Psionic",2.25,1,0.75,"Ranged_Debuff_Dam","Str","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true],
+    ["Regeneration",null,-2,1,0.75,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ]
 };

@@ -96,7 +96,7 @@ export const RingofFire: Power = {
     ["DamageBuff","Toxic",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.077,1,8.67,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Movement","Fly",-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-    ["Damage","Fire",0.298989,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Damage","Fire",0.298989,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,1.5,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

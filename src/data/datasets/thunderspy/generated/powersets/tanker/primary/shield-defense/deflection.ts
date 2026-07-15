@@ -59,9 +59,9 @@ export const Deflection: Power = {
     ["Defense","Ranged",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Defense","AoE",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Unmapped",null,0.4,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"],
-    ["Defense","AoE",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"],
-    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
+    ["Defense","Ranged",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Defense","AoE",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "requires": "Tanker_Melee.Staff_Fighting Tanker_Melee.Titan_Weapons || Tanker_Melee.Dual_Blades || Tanker_Melee.Pale_Blade || !"
 };

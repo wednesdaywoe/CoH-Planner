@@ -62,11 +62,11 @@ export const PaleWind: Power = {
     ["Regeneration",null,-0.2,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
     ["Mez","Terrorized",0.5,3,0,"Melee_Fear","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.1,1,6,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_Fester target.ownPower?"],
-    ["Unmapped",null,0.1,1,6,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?"],
-    ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&"],
-    ["Unmapped",null,6,0.21199999749660492,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Unmapped",null,0.1,1,6,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_Fester target.ownPower?",true],
+    ["Unmapped",null,0.1,1,6,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Self_Buff_Plaguebearer source.ownPower?",true],
+    ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < &&",true],
+    ["Unmapped",null,6,0.21199999749660492,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {

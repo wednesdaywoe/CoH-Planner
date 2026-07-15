@@ -127,8 +127,8 @@ export const Burn: Power = {
     ["Mez","Knockup",-30,1,100,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
     ["Mez","Knockback",-30,1,100,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
-    ["MezResist","Immobilized",3,1,100,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
-    ["MezResist","Knockup",3,1,100,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true],
-    ["MezResist","Knockback",3,1,100,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true]
+    ["MezResist","Immobilized",3,1,100,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Knockup",3,1,100,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["MezResist","Knockback",3,1,100,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

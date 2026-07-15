@@ -67,13 +67,13 @@ export const Hailstones: Power = {
     ["Meta",null,1,1,7.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !"],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25],
-    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?"],
-    ["Meta",null,1,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?"],
-    ["Damage","Cold",1.64,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <"],
-    ["Damage","Cold",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1],
-    ["Damage","Cold",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <"],
-    ["Meta",null,1,1,7.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
+    ["Meta",null,1,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower?",true],
+    ["Damage","Cold",1.64,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
+    ["Damage","Cold",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Damage","Cold",1.889,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 10 - 100 * 50 10 - / 0 100 minmax rand 100 * <",true],
+    ["Meta",null,1,1,7.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Mez","Knockback",1,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
   ],
   "conditionalEffects": [
     {

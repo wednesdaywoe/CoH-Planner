@@ -39,7 +39,7 @@ export const HealingRay: Power = {
   "atoms": [
     ["Unmapped",null,-0.25,1,0.13,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.03,1,0.13,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.125,1,null,null,null,null,null,null,"target.TickDamage 0 >"],
-    ["Unmapped",null,0,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.125,1,null,null,null,null,null,null,"target.TickDamage 0 >"]
+    ["Unmapped",null,0,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.125,1,null,null,null,null,null,null,"target.TickDamage 0 >",true],
+    ["Unmapped",null,0,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.125,1,null,null,null,null,null,null,"target.TickDamage 0 >",true]
   ]
 };

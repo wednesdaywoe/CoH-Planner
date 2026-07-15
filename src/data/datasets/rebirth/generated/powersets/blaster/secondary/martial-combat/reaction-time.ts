@@ -110,7 +110,7 @@ export const ReactionTime: Power = {
     ["Movement","Fly",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","JumpHeight",-0.7,1,10,"Melee_Slow","Str","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
     ["Movement","Jump",-0.7,1,10,"Melee_Slow","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,true],
-    ["Absorb",null,0.333,1,2.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq"],
-    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq"]
+    ["Absorb",null,0.333,1,2.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true],
+    ["Recovery",null,0.5,1,3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq",true]
   ]
 };

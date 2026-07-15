@@ -67,10 +67,10 @@ export const DawnStrike: Power = {
     ["Damage","Energy",4,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode? ! enttype target> critter eq &&"],
     ["Mez","Knockback",10,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Energy",4,1,0,"Ranged_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode? enttype target> critter eq &&"],
-    ["Damage","Energy",2.096842,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode? ! enttype target> player eq &&"],
-    ["Damage","Energy",2.096842,1,0,"Ranged_SSDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode? enttype target> player eq &&"],
-    ["Mez","Knockback",10,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Damage","Energy",4,1,0,"Ranged_SSDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode? enttype target> critter eq &&",true],
+    ["Damage","Energy",2.096842,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode? ! enttype target> player eq &&",true],
+    ["Damage","Energy",2.096842,1,0,"Ranged_SSDamage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode source.Mode? enttype target> player eq &&",true],
+    ["Mez","Knockback",10,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {

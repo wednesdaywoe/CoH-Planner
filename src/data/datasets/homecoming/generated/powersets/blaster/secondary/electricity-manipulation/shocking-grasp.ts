@@ -99,10 +99,10 @@ export const ShockingGrasp: Power = {
     ["DamageBuff","Negative",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Damage","Energy",0.2833,1,5.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,5.099999904632568,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Endurance",null,-2.5,1,8.1,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Blaster_Ranged.Electrical_Blast.Tesla_Cage source.ownPower?"]
+    ["Damage","Energy",0.2833,1,5.1,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,5.099999904632568,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-2.5,1,8.1,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Blaster_Ranged.Electrical_Blast.Tesla_Cage source.ownPower?",true]
   ],
   "specialEffects": [
     {

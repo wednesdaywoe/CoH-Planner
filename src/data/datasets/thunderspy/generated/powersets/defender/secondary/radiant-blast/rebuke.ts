@@ -46,7 +46,7 @@ export const Rebuke: Power = {
   "atoms": [
     ["Unmapped",null,1,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
     ["Unmapped",null,0.5,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Ghost target.HasTag? Demon target.HasTag? || Undead target.HasTag? || target.isFriend? ! &&"],
-    ["Unmapped",null,1.7,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&"],
-    ["Unmapped",null,-1,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?"]
+    ["Unmapped",null,1.7,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq target.isFriend? ! &&",true],
+    ["Unmapped",null,-1,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend?",true]
   ]
 };

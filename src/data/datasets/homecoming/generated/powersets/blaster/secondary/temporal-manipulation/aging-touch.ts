@@ -85,9 +85,9 @@ export const AgingTouch: Power = {
     ["DamageBuff","Negative",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Psionic",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",0.066,1,8.5,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Damage","Psionic",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?"],
-    ["Damage","Psionic",1.3399,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"],
-    ["Endurance",null,-1,1,2.1,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.5,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Damage","Psionic",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?",true],
+    ["Damage","Psionic",1.3399,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Endurance",null,-1,1,2.1,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.5,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {

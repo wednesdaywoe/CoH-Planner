@@ -97,6 +97,6 @@ export const SiphonSpeed: Power = {
     ["RechargeTime",null,0.2,1,60,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["Movement","Run",-1,1,60,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
     ["Movement","JumpHeight",0.5,1,60,"Melee_Slow","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
-    ["Movement","JumpHeight",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq"]
+    ["Movement","JumpHeight",0.5,1,60,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"enttype target> player eq",true]
   ]
 };

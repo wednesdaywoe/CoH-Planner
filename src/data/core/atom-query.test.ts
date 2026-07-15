@@ -14,8 +14,8 @@ import { describe, it, expect } from 'vitest';
 import type { Power } from '@/types/power';
 import { encodeAtom, type AtomicEffect } from './atomic-effect';
 import {
-  atomsOf, atomsOfType, byType, bySubType, selfDirected, targetDirected,
-  enhanceableVsNot, resistibleTwins, durationBuckets,
+  atomsOf, atomsOfType, baseAtoms, gatedAtoms, baseAtomsOfType, byType, bySubType,
+  selfDirected, targetDirected, enhanceableVsNot, resistibleTwins, durationBuckets,
 } from './atom-query';
 
 /** A complete AtomicEffect with sane defaults; override only what a test means. */
@@ -51,6 +51,35 @@ describe('atomsOf', () => {
     expect(atomsOf(p)).toEqual([]);
     const q = powerWith([atom()]);
     expect(atomsOf(q)).toBe(atomsOf(q)); // memoized identity
+  });
+});
+
+describe('baseAtoms / gatedAtoms — the gate axis', () => {
+  // Bio Armor's shape: an always-on armor plus a stance-gated bonus. Summing
+  // both into the base is the stance-leak; only the base applies by default.
+  const power = powerWith([
+    atom({ effectType: 'Defense', scale: 1.5 }),
+    atom({ effectType: 'Defense', scale: 0.45, gated: true, requiresExpression: 'kDefensiveAdaptation source.Mode?' }),
+  ]);
+
+  it('base excludes gated atoms; gated is exactly the complement', () => {
+    expect(baseAtoms(power).map((a) => a.scale)).toEqual([1.5]);
+    expect(gatedAtoms(power).map((a) => a.scale)).toEqual([0.45]);
+    expect(baseAtoms(power).length + gatedAtoms(power).length).toBe(atomsOf(power).length);
+  });
+
+  it('an absent gated flag means base (the common case round-trips)', () => {
+    // `gated` is last in the tuple so base atoms trim it away entirely.
+    expect(baseAtoms(powerWith([atom()]))).toHaveLength(1);
+  });
+
+  it('baseAtomsOfType filters both axes at once', () => {
+    expect(baseAtomsOfType(power, 'Defense')).toHaveLength(1);
+    expect(baseAtomsOfType(power, 'Resistance')).toHaveLength(0);
+  });
+
+  it('gated atoms keep the gate that explains them', () => {
+    expect(gatedAtoms(power)[0].requiresExpression).toContain('Mode?');
   });
 });
 

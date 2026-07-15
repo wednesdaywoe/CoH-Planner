@@ -54,6 +54,6 @@ export const SkeletalWarriors: Power = {
   },
   "atoms": [
     ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"combatlevel source> 23 >"]
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"combatlevel source> 23 >",true]
   ]
 };

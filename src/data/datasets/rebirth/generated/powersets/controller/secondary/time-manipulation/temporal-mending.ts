@@ -86,9 +86,9 @@ export const TemporalMending: Power = {
     ["Movement","JumpHeight",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","Jump",0.2,1,30,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Regeneration",null,1,1,30,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Heal",null,1.125,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?"],
-    ["Regeneration",null,0.94,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?"],
-    ["Regeneration",null,1.41,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?"]
+    ["Heal",null,1.125,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower?",true],
+    ["Regeneration",null,0.94,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+    ["Regeneration",null,1.41,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
   ],
   "conditionalEffects": [
     {

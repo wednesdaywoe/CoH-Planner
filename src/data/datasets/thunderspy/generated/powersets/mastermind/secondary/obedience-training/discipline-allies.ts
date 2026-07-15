@@ -39,8 +39,8 @@ export const DisciplineAllies: Power = {
   "maxSlots": 6,
   "atoms": [
     ["Unmapped",null,4,1,120,"Melee_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,2.5,1,30,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 1 - 30 < enttype target> critter eq &&"],
-    ["Regeneration",null,2.5,1,30,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 1 - 30 < enttype target> player eq &&"]
+    ["Regeneration",null,2.5,1,30,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 1 - 30 < enttype target> critter eq &&",true],
+    ["Regeneration",null,2.5,1,30,"Ranged_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 1 - 30 < enttype target> player eq &&",true]
   ],
   "conditionalEffects": [
     {

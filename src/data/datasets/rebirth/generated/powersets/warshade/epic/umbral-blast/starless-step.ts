@@ -110,7 +110,7 @@ export const StarlessStep: Power = {
     ["Defense","Cold",0.725,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Energy",0.725,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Defense","Negative",0.725,1,10,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Damage","Negative",1.512,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq"]
+    ["Damage","Negative",1.512,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Pool.Speed.Whirlwind ! Pool.Teleportation.Team_Teleport ! && Pool.Leaping.Spring_Attack ! && Pool.Flight.Afterburner ! &&"
 };

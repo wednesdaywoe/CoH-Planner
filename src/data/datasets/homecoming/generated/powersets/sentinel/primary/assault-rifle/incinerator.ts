@@ -70,10 +70,10 @@ export const Incinerator: Power = {
     ["Damage","Fire",0.1022,1,5.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1],
     ["Damage","Fire",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Damage","Fire",0.1022,1,5.25,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1],
-    ["EntCreate",null,1,1,5.5,"Melee_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround target.EventTimeSince> 0.5 >="],
-    ["Damage","Fire",0.9077,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.0927,1,5.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1],
-    ["Damage","Fire",0.9077,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Damage","Fire",0.0927,1,5.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1]
+    ["EntCreate",null,1,1,5.5,"Melee_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"NearGround target.EventTimeSince> 0.5 >=",true],
+    ["Damage","Fire",0.9077,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Damage","Fire",0.0927,1,5.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,null,true],
+    ["Damage","Fire",0.9077,1,0,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Damage","Fire",0.0927,1,5.25,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,null,true]
   ]
 };
