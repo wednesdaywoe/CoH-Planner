@@ -228,6 +228,16 @@ function collectRepresented(power) {
   const ids = new Set();       // `et|sub|sign`
   const classes = new Set();   // et present anywhere
   const scalar = new Set();    // `et|sign|R/U|table`  (scalar-identity gate, DSH6b)
+  const unenhancedET = new Set(); // et with an *Unenhanced (IgnoreStrength) representation
+  const selfET = new Set();       // et with a toWho:'Self' value anywhere (DSH6c)
+  // Does a slot value (scalar or by-type map) carry a toWho:'Self' entry?
+  const collectSelf = (et, val) => {
+    if (!val || typeof val !== 'object') return;
+    if (val.toWho === 'Self') { selfET.add(et); return; }
+    for (const v of Object.values(val)) {
+      if (v && typeof v === 'object' && v.toWho === 'Self') { selfET.add(et); return; }
+    }
+  };
   const add = (et, sub, sign) => {
     const s = normSub(sub);
     classes.add(et);
@@ -259,6 +269,11 @@ function collectRepresented(power) {
       }
       const slot = SLOT_TABLE[key];
       if (!slot) continue;
+      // DSH6c discriminator representation: an *Unenhanced slot proves the
+      // IgnoreStrength half survived; a toWho:'Self' value proves a
+      // self-penalty was kept self-directed.
+      if (key.endsWith('Unenhanced')) unenhancedET.add(slot.et);
+      collectSelf(slot.et, val);
       if (slot.byType && val && typeof val === 'object') {
         for (const sub of Object.keys(val)) add(slot.et, sub, slot.sign);
       } else if (slot.byTypeOrScalar && val && typeof val === 'object') {
@@ -300,7 +315,7 @@ function collectRepresented(power) {
   } else if (power.damage && typeof power.damage === 'object') {
     for (const t of Object.keys(power.damage)) add('Damage', '', '+');
   }
-  return { ids, classes, scalar };
+  return { ids, classes, scalar, unenhancedET, selfET };
 }
 
 // ---------------------------------------------------------------------------
@@ -341,6 +356,53 @@ function scalarInputIdentities(sourceJson) {
                sourceAttrib: a.sourceAttrib, scale: a.scale });
   }
   return out;
+}
+
+// ---------------------------------------------------------------------------
+// DISCRIMINATOR gate (DSH6c). The by-type gate keys `(et,sub,sign)` and the
+// scalar gate keys `(et,sign,table)` — both FOLD OUT the two atom discriminators
+// that have caused silent value-collapses at PROJECTION time:
+//
+//   • ignoreStrength — the enhanceable/unenhanceable +MaxHP (and +Recovery/
+//     +Regen/+ToHit) twin idiom. Both halves co-apply and SUM; only the
+//     enhanceable one scales with Strength. If the projection routes the
+//     IgnoreStrength half into the enhanceable slot, half the buff is silently
+//     lost (Inexhaustible / Ailment Resistance, 2026-07-14). The two halves
+//     share (et,sign,table), so the scalar gate saw one key and passed.
+//   • toWho:'Self' — a self-PENALTY: a foe-facing DEBUFF (−Res/−Dmg/−Rech/slow)
+//     that actually lands on the caster. If the projection drops the Self flag,
+//     the calc applies it to foes and never to the player (Offensive Adaptation
+//     −7.5% Res, 2026-07-14). Self and foe share (et,sub,sign), so the by-type
+//     gate saw the sub present and passed.
+//
+// This gate checks the OUTPUT actually REPRESENTS each discriminator: an
+// *Unenhanced slot for the twin half, a toWho:'Self' value for the penalty.
+// Both bugs above shipped CI-green precisely because no prior gate looked here.
+// ---------------------------------------------------------------------------
+const UNENHANCED_ET = new Set(['MaxHP', 'Recovery', 'Regeneration', 'ToHit']);
+const SELF_PENALTY_ET = new Set(['Resistance', 'Defense', 'DamageBuff', 'RechargeTime', 'Movement', 'ToHit']);
+
+function discriminatorInput(sourceJson) {
+  let atoms;
+  try { atoms = ingestExportPower(sourceJson); } catch { return { twinET: new Set(), selfET: new Set() }; }
+  const twinET = new Set(); // et∈UNENHANCED_ET with an IgnoreStrength BUFF atom
+  const selfET = new Set(); // et with a self-directed (toWho:Self) DEBUFF atom
+  for (const a of atoms) {
+    if (a.pvMode === 'PvP' || isPvpVariant(a)) continue; // PvP-only group
+    if (!a.scale) continue;                              // marker/no-op
+    if (a.attribType === 'Expression') continue;         // engine phantoms / caps
+    if (a.aspect === 'Str') continue;                    // Power-Boost → specialBuff (Enhancement)
+    const isDebuff = a.scale < 0 || /debuff/i.test(a.modifierTable || '');
+    // TWIN: an IgnoreStrength magnitude BUFF (aspect Cur/Max) on a type that
+    // carries an *Unenhanced slot — its enhanceability distinction MUST survive
+    // projection. aspect=Res is EXCLUDED: an IgnoreStrength Recovery/Regen atom
+    // on aspect=Res is recovery/regen-debuff RESISTANCE (→ debuffResistance),
+    // not a resource buff, and correctly never lands in a *BuffUnenhanced slot.
+    if (!isDebuff && a.ignoreStrength && a.aspect !== 'Res' && UNENHANCED_ET.has(a.effectType)) twinET.add(a.effectType);
+    // SELF-PENALTY: a foe-facing DEBUFF that lands on the caster (toWho:Self).
+    if (isDebuff && a.toWho === 'Self' && SELF_PENALTY_ET.has(a.effectType)) selfET.add(a.effectType);
+  }
+  return { twinET, selfET };
 }
 
 // ---------------------------------------------------------------------------
@@ -397,6 +459,8 @@ function main() {
   const classAbsent = []; // {power, et, sub, sign, ...}  (whole effectType missing — non-gating)
   const scalarCollapses = [];   // scalar-identity gate: class-present, (sign,resistible,table) variant missing
   const scalarClassAbsent = []; // scalar effectType wholly absent (non-gating)
+  const discriminatorCollapses = []; // DSH6c: class-PRESENT, discriminator missing (gating)
+  const discriminatorClassAbsent = []; // DSH6c: effectType wholly absent (e.g. mode-gated drop; enumerated)
   const cov = { powersTotal: 0, powersChecked: 0, sourceMissing: 0, requireFail: 0,
                 atomsChecked: 0, scalarChecked: 0 };
 
@@ -412,7 +476,7 @@ function main() {
     if (POWER_FILTER && !powerName.toLowerCase().includes(POWER_FILTER.toLowerCase())) continue;
     cov.powersChecked++;
 
-    const { ids, classes, scalar } = collectRepresented(power);
+    const { ids, classes, scalar, unenhancedET: repUnenhancedET, selfET: repSelfET } = collectRepresented(power);
     const inputs = inputIdentities(sourceJson);
     // de-dupe input identities (a power lists many equal atoms)
     const seen = new Set();
@@ -442,6 +506,27 @@ function main() {
                     table: inp.table, sourceAttrib: inp.sourceAttrib, scale: inp.scale };
       if (classes.has(inp.et)) scalarCollapses.push(rec); // class-present, table-variant missing
       else scalarClassAbsent.push(rec);
+    }
+
+    // ---- discriminator gate (DSH6c) ----
+    // Split like the by-type/scalar gates: a MISSING discriminator while the
+    // effectType is otherwise present is a high-confidence collapse (gating); a
+    // wholly-absent effectType is ambiguous with a legit whole-class drop (e.g. a
+    // mode-gated self-conditional like Genetic Corruption's Rested-stance regen)
+    // → the enumerated class-absent bucket (still --gate-checked per the PotD
+    // completeness rule, just not auto-fail).
+    const di = discriminatorInput(sourceJson);
+    for (const et of di.twinET) {
+      if (repUnenhancedET.has(et)) continue; // enhanceable/unenhanceable both represented
+      const rec = { power: powerName, source: sourceRel, kind: 'twin-unenhanced', et };
+      if (classes.has(et)) discriminatorCollapses.push(rec);
+      else discriminatorClassAbsent.push(rec);
+    }
+    for (const et of di.selfET) {
+      if (repSelfET.has(et)) continue;       // self-penalty kept self-directed
+      const rec = { power: powerName, source: sourceRel, kind: 'self-penalty', et };
+      if (classes.has(et)) discriminatorCollapses.push(rec);
+      else discriminatorClassAbsent.push(rec);
     }
   }
 
@@ -477,6 +562,22 @@ function main() {
     const g = sAbsentGroups.get(k); g.count++; if (g.powers.length < 8) g.powers.push(c.power);
   }
   const sAbsentList = [...sAbsentGroups.values()].sort((a, b) => b.count - a.count);
+
+  // group discriminator collapses by (kind, et)
+  const dGroups = new Map();
+  for (const c of discriminatorCollapses) {
+    const k = `${c.kind}|${c.et}`;
+    if (!dGroups.has(k)) dGroups.set(k, { kind: c.kind, et: c.et, count: 0, powers: [] });
+    const g = dGroups.get(k); g.count++; if (g.powers.length < 12) g.powers.push(c.power);
+  }
+  const dGroupList = [...dGroups.values()].sort((a, b) => b.count - a.count);
+  const dAbsentGroups = new Map();
+  for (const c of discriminatorClassAbsent) {
+    const k = `${c.kind}|${c.et}`;
+    if (!dAbsentGroups.has(k)) dAbsentGroups.set(k, { kind: c.kind, et: c.et, count: 0, powers: [] });
+    const g = dAbsentGroups.get(k); g.count++; if (g.powers.length < 12) g.powers.push(c.power);
+  }
+  const dAbsentList = [...dAbsentGroups.values()].sort((a, b) => b.count - a.count);
 
   const result = {
     schema: 'dsh6-collapse-worklist/1',
@@ -514,12 +615,18 @@ function main() {
       scalarCollapses: scalarCollapses.length,
       scalarDistinctGroups: sGroupList.length,
       scalarClassAbsent: scalarClassAbsent.length,
+      discriminatorCollapses: discriminatorCollapses.length,
+      discriminatorGroups: dGroupList.length,
+      discriminatorClassAbsent: discriminatorClassAbsent.length,
     },
     collapseGroups: groupList,
     classAbsentGroups: [...absentGroups.values()].sort((a, b) => b.count - a.count),
     scalarCollapseGroups: sGroupList,
     scalarClassAbsentGroups: sAbsentList,
     scalarCollapses,
+    discriminatorCollapseGroups: dGroupList,
+    discriminatorClassAbsentGroups: dAbsentList,
+    discriminatorCollapses,
   };
   fs.writeFileSync(OUT_PATH, JSON.stringify(result, null, 2));
 
@@ -527,6 +634,7 @@ function main() {
   console.log(`  powers: ${cov.powersChecked}/${cov.powersTotal} checked (source-missing ${cov.sourceMissing}, require-fail ${cov.requireFail})`);
   console.log(`  BY-TYPE gate  : atoms ${cov.atomsChecked} · collapses ${collapses.length} (${groupList.length} groups) · class-absent ${classAbsent.length}`);
   console.log(`  SCALAR gate   : atoms ${cov.scalarChecked} · collapses ${scalarCollapses.length} (${sGroupList.length} groups) · class-absent ${scalarClassAbsent.length}`);
+  console.log(`  DISCRIM gate  : collapses ${discriminatorCollapses.length} (${dGroupList.length} groups) · class-absent ${discriminatorClassAbsent.length}`);
   console.log(`  worklist → ${path.relative(REPO, OUT_PATH)}`);
 
   // -------------------------------------------------------------------------
@@ -559,6 +667,8 @@ function main() {
     check([...absentGroups.values()], (g) => `${g.et}|${g.sub}|${g.sign ?? ''}`, allow.classAbsent, 'by-type CLASS-ABSENT');
     check(sGroupList, (g) => `${g.et}|${g.sign}`, allow.scalarCollapse, 'scalar COLLAPSE');
     check(sAbsentList, (g) => `${g.et}|${g.sign}`, allow.scalarClassAbsent, 'scalar CLASS-ABSENT');
+    check(dGroupList, (g) => `${g.kind}|${g.et}`, allow.discriminatorCollapse, 'DISCRIMINATOR COLLAPSE');
+    check(dAbsentList, (g) => `${g.kind}|${g.et}`, allow.discriminatorClassAbsent, 'DISCRIMINATOR CLASS-ABSENT');
     if (violations.length > 0) {
       console.error(`\nGATE FAIL — ${violations.length} group(s) not in the frozen allowlist:`);
       for (const v of violations) console.error(`  ${v}`);
@@ -577,6 +687,10 @@ function main() {
     console.log(`\n  top ${TOP} SCALAR collapse groups (effectType|sign  ×count  e.g. powers · missing tables):`);
     for (const g of sGroupList.slice(0, TOP)) {
       console.log(`   ${String(g.count).padStart(4)}  ${g.et}|${g.sign}   ${g.powers.slice(0, 4).join(', ')}   [${g.tables.slice(0, 3).join(', ')}]`);
+    }
+    console.log(`\n  top ${TOP} DISCRIMINATOR collapse groups (kind|effectType  ×count  e.g. powers):`);
+    for (const g of dGroupList.slice(0, TOP)) {
+      console.log(`   ${String(g.count).padStart(4)}  ${g.kind}|${g.et}   ${g.powers.slice(0, 5).join(', ')}`);
     }
   }
 }

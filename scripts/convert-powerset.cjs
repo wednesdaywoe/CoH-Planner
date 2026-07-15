@@ -3613,12 +3613,20 @@ function foldResourceSlot(entries) {
         }
         continue;
       }
-      // `Replace`-mode atoms replace rather than accumulate onto the running
-      // scale (`Stack` mode still sums). This distinguishes the IgnoreStrength
-      // /enhanceable +MaxHP twin idiom: Second Wind (Dull Pain) uses stack=Stack
-      // (scale 1 + 1 → +20%, verified in-game) but Ailment Resistance (Revive)
-      // uses stack=Replace (scale 1.2 + 1.2 must stay 1.2 → +188.79 HP for a
-      // level-50 Brute, matching in-game). Blind summation doubled the latter.
+      // Same-table resource atoms: `Stack`-mode atoms accumulate (sum), but
+      // `Replace`-mode atoms do NOT stack — a second application replaces the
+      // first — so identical same-slot Replace DUPLICATES must collapse to one,
+      // not double-count (Call Depths lists its +MaxHP as two identical scale-2
+      // Replace templates → +2, not +4). `stack` is carried only on the maxHP
+      // slots (see addOrAccumulate), so this collapse is maxHP-scoped.
+      //
+      // NOTE: this is NOT the enhanceable/unenhanceable +MaxHP twin idiom
+      // (Inexhaustible, Ailment Resistance/Revive). Those two halves route to
+      // SEPARATE slots (maxHPBuff vs maxHPBuffUnenhanced) BEFORE this fold, so each
+      // per-slot queue holds a single half — the Replace branch never sees them
+      // together, and both survive and SUM at calc time (verified in-game:
+      // +160.63 ×2 = 321.26). The old comment here wrongly cited a "Revive 188.79
+      // HP" collapse for the twin; the twin sums, but same-slot Replace dupes don't.
       if (e.stack === 'Replace') {
         cur.scale = Math.max(cur.scale, Math.abs(e.scale));
       } else {
@@ -3896,7 +3904,9 @@ function projectAtomsToEffects(atoms, powerName) {
       } else if (isDefenseEffect) {
         if (isDebuff) {
           if (!effects.defenseDebuff) effects.defenseDebuff = {};
-          effects.defenseDebuff[dmgType.toLowerCase()] = makeEffect();
+          const e = makeEffect();
+          if (isSelfTargeting) e.toWho = 'Self'; // self -Def penalty (e.g. Rage crash), see resistanceDebuff branch
+          effects.defenseDebuff[dmgType.toLowerCase()] = e;
           recordDuration('defenseDebuff');
         } else if (isCombatSuppressed) {
           if (!effects.defenseBuffSuppressible) effects.defenseBuffSuppressible = {};
@@ -3939,7 +3949,9 @@ function projectAtomsToEffects(atoms, powerName) {
         }
       } else if (isDebuff) {
         if (!effects.defenseDebuff) effects.defenseDebuff = {};
-        effects.defenseDebuff[posType.toLowerCase()] = makeEffect();
+        const e = makeEffect();
+        if (isSelfTargeting) e.toWho = 'Self'; // self -Def penalty (e.g. Rage crash), see resistanceDebuff branch
+        effects.defenseDebuff[posType.toLowerCase()] = e;
         recordDuration('defenseDebuff');
       } else if (isCombatSuppressed) {
         if (!effects.defenseBuffSuppressible) effects.defenseBuffSuppressible = {};
@@ -3971,6 +3983,7 @@ function projectAtomsToEffects(atoms, powerName) {
         }
       } else if (isDebuff) {
         effects.defenseDebuff = makeEffect();
+        if (isSelfTargeting) effects.defenseDebuff.toWho = 'Self'; // self -Def penalty (e.g. Rage crash)
         recordDuration('defenseDebuff');
       } else if (isCombatSuppressed) {
         effects.defenseBuffSuppressible = makeEffect();
@@ -4136,9 +4149,12 @@ function projectAtomsToEffects(atoms, powerName) {
           table,
           isDebuff,
           twin: isTwin,
-          // `stack` is consumed by foldResourceSlot's Replace-collapse branch,
-          // which only fires for the +MaxHP twin idiom. Carry it on the maxHP
-          // slots alone so every other resource slot folds byte-identically.
+          // `stack` is consumed by foldResourceSlot's Replace-collapse branch, which
+          // collapses identical same-slot Replace DUPLICATES (e.g. Call Depths' two
+          // scale-2 +MaxHP templates) so they don't double-count. Carried on the
+          // maxHP slots alone so every other resource slot folds byte-identically
+          // (always-sum). The enhanceable/unenhanceable twin is unaffected — its two
+          // halves are in DIFFERENT slots (maxHPBuff vs maxHPBuffUnenhanced).
           ...(key === 'maxHPBuff' || key === 'maxHPBuffUnenhanced' ? { stack: a._stack } : {}),
           duration: duration && duration > 0 ? duration : null,
         });

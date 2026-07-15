@@ -20,7 +20,10 @@
     "classAbsent": 22,
     "scalarCollapses": 0,
     "scalarDistinctGroups": 0,
-    "scalarClassAbsent": 87
+    "scalarClassAbsent": 87,
+    "discriminatorCollapses": 0,
+    "discriminatorGroups": 0,
+    "discriminatorClassAbsent": 1
   },
   "collapseGroups": [
     {
@@ -242,5 +245,17 @@
       ]
     }
   ],
-  "scalarCollapses": []
+  "scalarCollapses": [],
+  "discriminatorCollapseGroups": [],
+  "discriminatorClassAbsentGroups": [
+    {
+      "kind": "twin-unenhanced",
+      "et": "Regeneration",
+      "count": 1,
+      "powers": [
+        "Genetic Corruption"
+      ]
+    }
+  ],
+  "discriminatorCollapses": []
 }

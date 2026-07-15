@@ -8,7 +8,8 @@
     "months) into an enumerated, frozen exception set: a NEW whole-class drop",
     "now fails CI and can only ship via a reviewed addition to this file,",
     "with a reason. Keys: by-type = 'effectType|subType|sign', scalar =",
-    "'effectType|sign' (sign '' when unsigned).",
+    "'effectType|sign' (sign '' when unsigned), discriminator =",
+    "'kind|effectType' (kind = 'twin-unenhanced' | 'self-penalty').",
     "Reasons distinguish 'by design' (converter documentedly drops it on",
     "purpose) from 'known gap' (real modeling gap, tracked, not yet built)."
   ],
@@ -33,6 +34,10 @@
     "Mez|confuse|": "World of Confusion (Mental Manipulation) — conditional/contact-gated confuse; known gap."
   },
   "scalarCollapse": {},
+  "discriminatorCollapse": {},
+  "discriminatorClassAbsent": {
+    "twin-unenhanced|Regeneration": "Genetic Corruption (Stalker Bio Armor) — its IgnoreStrength +Regen is gated on `kRestedAdaptation Source.Mode?` (Efficient stance only) and wholly dropped from base output, exactly like its already-allowlisted Rested-stance +Res block (see classAbsent Genetic Corruption entries). Same self-conditional known gap; the real enhanceable/unenhanceable regen twins (Gamma Boost, Fast Healing, Obscure Sustenance) all correctly emit regenBuffUnenhanced and pass."
+  },
   "scalarClassAbsent": {
     "Range|-": "Foe -Range debuff (Taunt family, ~75 powers) — dropped by design for caster-stat purposes; the converter's range branch documents it ('foe-side debuff, dropped'). Modeling foe -Range as a first-class debuff is a possible future restoration.",
     "MaxHP|-": "Brine — foe -MaxHP; by design not surfaced (extractEffects: 'Target -MaxHP isn't currently modeled on the build side').",

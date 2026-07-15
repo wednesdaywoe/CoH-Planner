@@ -47,7 +47,8 @@ export const Rage: Power = {
     },
     "defenseDebuff": {
       "scale": 0.2,
-      "table": "Melee_Ones"
+      "table": "Melee_Ones",
+      "toWho": "Self"
     },
     "durations": {
       "damageBuff": 120,

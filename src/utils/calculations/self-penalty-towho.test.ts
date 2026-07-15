@@ -74,4 +74,19 @@ describe('selfPenalty → toWho retirement', () => {
     expect(bolt).toBeDefined();
     expect(hasSelfDirectedPenalty(bolt!.effects)).toBe(false);
   });
+
+  // Rage's crash is TWO self-penalties: -100% damage (long-tagged) AND -20%
+  // Defense(All). The defense branch of the converter was never self-tagged, so
+  // Rage's -Def read as a foe debuff (Rage is Self-target — it debuffs nobody).
+  // The DSH6c discriminator gate caught this on its first run (self-penalty|
+  // Defense). Both AT variants must now carry toWho:'Self' on defenseDebuff.
+  it('HC Rage crash: the -Def(All) is self-directed (DSH6c catch), like its -Dmg', async () => {
+    await loadDataset('homecoming');
+    for (const setId of ['brute/super-strength', 'tanker/super-strength']) {
+      const rage = getPowerset(setId)?.powers.find((p) => p.internalName === 'Rage');
+      expect(rage, setId).toBeDefined();
+      expect(isSelfDirectedEffect(rage!.effects!.defenseDebuff), `${setId} -Def self`).toBe(true);
+      expect(isSelfDirectedEffect(rage!.effects!.damageDebuff), `${setId} -Dmg self`).toBe(true);
+    }
+  });
 });
