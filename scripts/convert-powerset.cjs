@@ -3929,6 +3929,11 @@ function projectAtomsToEffects(atoms, powerName) {
     resourceSlots.get(key).push(entry);
   };
 
+  // Every atom routed to `damageBuff` (one per damage type), for the burst/tail
+  // `durationVariants` post-pass below. Collected here because the primary is
+  // last-write-wins in the loop; the post-pass adds the display-only variant.
+  const damageBuffInstances = [];
+
   for (const a of atoms) {
     // Skip deactivation-only effects (bursts on toggle off).
     if (a._appType === 'OnDeactivate') continue;
@@ -4055,6 +4060,7 @@ function projectAtomsToEffects(atoms, powerName) {
         } else {
           effects.damageBuff = makeEffect();
           recordDuration('damageBuff');
+          damageBuffInstances.push({ scale: Math.abs(scale), duration, type: attrib });
         }
       } else if (aspect === 'resistance') {
         if (isDebuff) {
@@ -4563,6 +4569,46 @@ function projectAtomsToEffects(atoms, powerName) {
     if (folded.duration != null) {
       if (!effects.durations) effects.durations = {};
       effects.durations[key] = folded.duration;
+    }
+  }
+
+  // --- damageBuff burst/tail durationVariants (display-only) ---
+  // Inner Light grants a big +Damage burst (8.0 @10s) plus a lingering tail
+  // (3.2 @30s); like the `tohitBuff` half (accumulateBuffSlot), surface both as
+  // an InfoPanel row. The primary is LEFT UNTOUCHED (last-write == the value the
+  // calc reads via `damageBuffValue`, so the shadow stays green) — this ONLY adds
+  // a variant for a UNIFORM sibling duration: a (scale,duration) group covering the
+  // SAME number of damage types as the primary. That admits Inner Light (both
+  // durations carry all 8 types) but skips a non-uniform buff (Embrace of Fire's
+  // +10 Fire/30s is 1 type, not 8 — it must not masquerade as a burst of the +8
+  // all-types buff). A per-foe damageBuff's variants are dropped downstream when
+  // `computeAoePerTargetPatches` rebuilds the slot as `{scale, perTarget}`.
+  if (
+    effects.damageBuff && typeof effects.damageBuff === 'object' &&
+    typeof effects.damageBuff.scale === 'number' && damageBuffInstances.length
+  ) {
+    const r4 = (n) => Math.round(n * 1e4) / 1e4;
+    const primScale = r4(effects.damageBuff.scale);
+    const primDur = effects.durations && effects.durations.damageBuff;
+    const groups = new Map();
+    for (const inst of damageBuffInstances) {
+      const k = `${r4(inst.scale)}|${inst.duration}`;
+      let g = groups.get(k);
+      if (!g) groups.set(k, (g = { scale: r4(inst.scale), duration: inst.duration, types: new Set() }));
+      g.types.add(inst.type);
+    }
+    const prim = groups.get(`${primScale}|${primDur}`);
+    if (prim) {
+      const variants = [];
+      for (const g of groups.values()) {
+        if (g.duration === prim.duration || g.duration == null || g.duration <= 0) continue;
+        if (g.types.size !== prim.types.size) continue; // uniform sibling only
+        variants.push({ scale: g.scale, duration: g.duration });
+      }
+      if (variants.length) {
+        variants.sort((a, b) => b.duration - a.duration || b.scale - a.scale);
+        effects.damageBuff.durationVariants = variants;
+      }
     }
   }
 

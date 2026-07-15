@@ -46,6 +46,16 @@ export const MomentofGlory: Power = {
   "effects": {
     "buffDuration": 15,
     "damageBuff": {
+      "durationVariants": [
+        {
+          "duration": 10,
+          "scale": 1
+        },
+        {
+          "duration": 5,
+          "scale": 1
+        }
+      ],
       "scale": 0.5,
       "table": "Melee_Buff_Dmg"
     },

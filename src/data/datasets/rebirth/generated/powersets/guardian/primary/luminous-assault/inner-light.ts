@@ -36,6 +36,12 @@ export const InnerLight: Power = {
   "effects": {
     "buffDuration": 30,
     "damageBuff": {
+      "durationVariants": [
+        {
+          "duration": 10,
+          "scale": 8
+        }
+      ],
       "scale": 3.2,
       "table": "Melee_Buff_Dmg"
     },

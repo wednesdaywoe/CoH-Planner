@@ -379,16 +379,26 @@ incarnate, self-penalties):
   HC (which uses multi-attrib templates and was already correct) AND the atom
   reconstruction. HC bags are unchanged (dedup is a no-op on multi-attrib data);
   the corrected values were **cross-validated to equal HC's** for every changed
-  Rebirth power. Sole exception flagged for Mids review: HC **Thunderous Blast**
-  `enduranceGain` 13.86 → 6.93 (two byte-identical redirect-sourced self-restore
-  templates deduped — likely a data duplicate, but not cross-validatable).
+  Rebirth power. The one HC change — **Thunderous Blast** `enduranceGain` per-foe
+  13.86 → 6.93 (two byte-identical redirect-sourced self-restore templates that
+  were being double-counted) — was **confirmed in-game (2026-07-15): the self
+  restore is 6.93**, so the dedup is a genuine fix here too.
 
   Gated corpus-wide by `scripts/planb-shadow-pertarget.cjs` (now tohit + damage,
   **1252/1252 agree, 0 diverge**) and pinned by `tohit-atom-native.verify.test.ts`
   (Soul Drain scales to 8 foes; AAO 1.55/0.55; Fulcrum 4/2; Inner Light 3.2 tail;
-  Embrace of Fire +8 not +10). **Deferred (display-only):** the Inner Light *damage*
-  burst durationVariants — the calc total is already correct (majority-longest
-  primary), so this is just the InfoPanel burst row, not shipped this slice.
+  Embrace of Fire +8 not +10).
+
+  **The Inner Light damage-burst display (durationVariants) shipped too.** A
+  post-pass in `projectAtomsToEffects` (mirroring the `tohitBuff` half) adds a
+  `durationVariants` row for a UNIFORM burst/tail — a non-primary `(scale,duration)`
+  group covering the SAME damage-type count as the primary — while leaving the
+  primary (== `damageBuffValue`) untouched, so it is display-only with no total
+  change and the shadow stays green. It admits Inner Light / Inner Umbra (both
+  durations carry all 8 types) and Moment of Glory's 1/1/0.5 @ 5/10/15s decay, but
+  skips a non-uniform buff (Embrace of Fire's Fire-only +10 is 1 type ≠ 8) and a
+  per-foe damageBuff (the reshape rebuilds that slot as `{scale, perTarget}`,
+  dropping the variant). Regen changes exactly those burst/tail powers, nothing else.
 
 ### Phase 3 — Bag becomes UI-only; then delete
 - Point the calc entirely at atoms; the bag is produced solely for the
