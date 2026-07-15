@@ -330,7 +330,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   }
 
   // Find the selected power from build to get its slots
-  const selectedPower = findSelectedPowerInBuild(powerName, build);
+  const selectedPower = findSelectedPowerInBuild(powerName, powerSet, build);
 
   // Get Alpha incarnate enhancement bonuses (apply to all powers)
   const alphaBonuses = useMemo<EnhancementBonuses>(() => {

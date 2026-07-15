@@ -284,10 +284,33 @@ export function convertGlobalBonusesToAspects(
 }
 
 /**
- * Find a selected power from the build by name
+ * Find a selected power in the build.
+ *
+ * **A power's identity is `(powerSet, internalName)` — never `internalName`
+ * alone.** `internalName` is NOT globally unique and cannot be: CoH identity is
+ * powerset + name, and HC freely reuses an internal slot name across powersets
+ * when it reworks a power. Every dataset has ~23-28 REACHABLE collisions — two
+ * different powers sharing one internal name that a single build can hold at
+ * once:
+ *
+ *   [dominator] `Consume`        = Consume (secondary)   vs Melt Armor (epic)
+ *   [dominator] `Fire_Blast`     = Fire Blast (secondary) vs Rain of Fire (epic)
+ *   [blaster]   `Power_Boost`    = Power Boost (secondary) vs Summon Spiderlings (epic)
+ *   [controller] `Invisibility`  = Superior Invisibility (primary) vs Infiltration (pool)
+ *
+ * The data is correct; the bug was here. Searching primary → secondary → pools →
+ * epic on bare name returns whichever comes FIRST, so a Blaster with Energy
+ * Manipulation + Mace Mastery (a common pairing) saw the wrong power's slots —
+ * silently, since the build data itself stayed right.
+ *
+ * `powerSet` is REQUIRED rather than optional on purpose: every call site
+ * already has it (they resolve the definition with `lookupPower(powerSet,
+ * powerName)` on the neighbouring line), and an optional param would let the
+ * same omission reappear the first time someone is in a hurry.
  */
 export function findSelectedPowerInBuild(
   powerName: string,
+  powerSet: string,
   build: {
     primary: { powers: SelectedPower[] };
     secondary: { powers: SelectedPower[] };
@@ -296,20 +319,23 @@ export function findSelectedPowerInBuild(
     inherents: SelectedPower[];
   }
 ): SelectedPower | null {
-  const primary = build.primary.powers.find((p) => p.internalName === powerName);
+  const matches = (p: SelectedPower) =>
+    p.internalName === powerName && p.powerSet === powerSet;
+
+  const primary = build.primary.powers.find(matches);
   if (primary) return primary;
-  const secondary = build.secondary.powers.find((p) => p.internalName === powerName);
+  const secondary = build.secondary.powers.find(matches);
   if (secondary) return secondary;
   for (const pool of build.pools) {
-    const poolPower = pool.powers.find((p) => p.internalName === powerName);
+    const poolPower = pool.powers.find(matches);
     if (poolPower) return poolPower;
   }
   if (build.epicPool) {
-    const epic = build.epicPool.powers.find((p) => p.internalName === powerName);
+    const epic = build.epicPool.powers.find(matches);
     if (epic) return epic;
   }
   // Check inherent powers
-  const inherent = build.inherents.find((p) => p.internalName === powerName);
+  const inherent = build.inherents.find(matches);
   if (inherent) return inherent;
   return null;
 }
