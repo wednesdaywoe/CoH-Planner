@@ -35,9 +35,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Adaptations now show as sub-powers of Adaptation in the By-Level layout, matching By-Powerset', type: 'fix'},
       { message: 'Fixed Bio Armor adaptations leaking into base powers — Evolving Armor\'s defense (Defensive) and regen/recovery (Efficient) now apply only in their stance, at full value', type: 'fix'},
       { message: 'Fixed the stance picker in the power info window needing a double-click to fill in the selected adaptation', type: 'fix'},
-      { message: 'Bio Armor: Offensive Adaptation now applies its -7.5% Resistance(all) self-penalty to your totals. The trade-off lived on the Offensive toggle itself and wasn\'t being counted; selecting Offensive stance now lowers your resistance accordingly (nominal value, shown before any -Res debuff resistance).', type: 'fix'},
-      { message: 'Fixed +MaxHP powers that grant their bonus in two halves — one enhanceable, one unenhanceable (Inexhaustible, High Pain Tolerance, Dull Pain, Hoarfrost, Earth\'s Embrace, Revive, Serum, and more). Only one half was being counted, so their Max HP was understated by ~50%; both halves now sum (matching the in-game attribute monitor), and only the enhanceable half responds to +Healing enhancement.', type: 'fix'},
-      { message: 'Rage\'s post-crash -20% Defense(All) is now correctly counted as a penalty to yourself rather than a debuff to enemies (Rage only affects you). Surfaced by a new automated conversion check that fails the build if a self-penalty or an enhanceable/unenhanceable effect pair is silently merged.', type: 'fix'},
+      { message: 'Bio Armor: Offensive Adaptation now applies its -7.5% Resistance(all) self-penalty to your totals', type: 'fix'},
+      { message: 'Fixed +MaxHP powers that grant their bonus in two halves — one enhanceable, one unenhanceable (Inexhaustible, High Pain Tolerance, Dull Pain, Hoarfrost, Earth\'s Embrace, Revive, Serum, and more)', type: 'fix'},
+      { message: 'Rage\'s post-crash -20% Defense(All) is now correctly counted as a penalty to yourself rather than a debuff to enemies', type: 'fix'},
     ]
   },
   {
