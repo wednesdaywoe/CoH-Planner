@@ -54,8 +54,8 @@ export const SmokeFlash: Power = {
     }
   },
   "atoms": [
-    ["Stealth",null,54,1,4,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1],
-    ["Stealth",null,500,1,4,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1],
+    ["Stealth",null,54,1,4,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Stealth",null,500,1,4,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Stealth",null,0.2,1,4,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
     ["GlobalChanceMod",null,1,1,4,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,1,null,true],
     ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]

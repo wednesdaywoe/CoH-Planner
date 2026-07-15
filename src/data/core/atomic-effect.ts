@@ -166,6 +166,30 @@ export interface AtomicEffect {
    */
   perTarget?: number;
 
+  /**
+   * True when this atom is combat-SUPPRESSED — the game turns it off while the
+   * caster is in combat (Hide's +Def, Stealth/Cloaking Device's +Def, and every
+   * travel-power speed/cap buff), and the planner's In-Combat toggle removes it
+   * from totals. The bag models this by routing the effect to a parallel slot
+   * (`defenseBuffSuppressible`) or bolting a `suppressible: true` flag onto the
+   * movement `ScaledEffect` — one more discriminator the single-valued slot
+   * forces it to re-materialize per effect type.
+   *
+   * STAMPED BY THE CONVERTER, not re-derivable at runtime — exactly like
+   * {@link gated} and {@link perTarget}. The suppression comes from two sources
+   * the converter folds into one verdict (`isCombatSuppressed`):
+   *   - a `Suppress ActivateAttackClick` (et al.) event on the template's
+   *     `suppress_events` tail — Hide's AoE-defense suppression, travel speed —
+   *     which is NOT part of the wire atom, so the runtime cannot see it;
+   *   - an `OutOfCombat` `requires` gate (also surfaced as `specialCase`).
+   * Because the event half never reaches the runtime, the converter decides and
+   * stamps here (see `encodeAtomsForEmit`). Read as a plain boolean: an applier
+   * splits `baseAtomsOfType(power,'Defense')` on `!!a.suppressible` to reproduce
+   * the bag's `defenseBuff` (always-on) vs `defenseBuffSuppressible` (drops in
+   * combat) pair. Verified bag-equal corpus-wide by `scripts/planb-shadow-defense.cjs`.
+   */
+  suppressible?: boolean;
+
   // --- provenance (debugging + DSH6 migration) ---
   sourceAttrib?: string;
 }
@@ -196,13 +220,18 @@ export const ATOM_TUPLE_FIELDS = [
   'stackCap', 'ticks', 'applicationPeriod', 'baseProbability', 'procsPerMinute',
   'ignoreStrength', 'buffable', 'ignoreED', 'ignoreScaling',
   'specialCase', 'requiresExpression',
-  // `gated` and `perTarget` sit LAST on purpose: ~64% of atoms are base (gated
-  // absent) and only a few hundred carry a per-target increment, and the encoder
-  // trims trailing nulls, so the common case costs zero extra bytes. `perTarget`
-  // follows `gated` so a base per-target increment (Soul Drain: gated absent,
-  // perTarget present) costs just the one interior null.
+  // `gated`, `perTarget` and `suppressible` sit LAST on purpose: ~64% of atoms
+  // are base (gated absent) and only a few hundred carry a per-target increment
+  // or a combat-suppression flag, and the encoder trims trailing nulls, so the
+  // common case costs zero extra bytes. `perTarget` follows `gated` so a base
+  // per-target increment (Soul Drain: gated absent, perTarget present) costs just
+  // the one interior null; `suppressible` follows both — the suppressed set
+  // (Hide +Def, travel buffs) is neither gated nor per-target, so it only pays
+  // for the interior nulls between `baseProbability` and itself, and appending it
+  // (rather than reordering) leaves every non-suppressed atom's encoding untouched.
   'gated',
   'perTarget',
+  'suppressible',
 ] as const satisfies ReadonlyArray<keyof AtomicEffect>;
 
 /** One atom, positionally encoded. A `null` at position `i` means the field

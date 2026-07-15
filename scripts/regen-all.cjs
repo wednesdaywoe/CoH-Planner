@@ -135,5 +135,20 @@ if (datasets.includes('homecoming')) {
   console.log(`\n>>> ${cmd}`);
   execSync(cmd, { stdio: 'inherit' });
 }
+
+// Plan B Slice 4 — the atom-native defense appliers (character-totals.ts) read
+// `defenseBuffValue(power)` / `defenseBuffSuppressibleValue(power)` in place of
+// `effects.defenseBuff` / `effects.defenseBuffSuppressible`. This gate proves the
+// per-position/type reconstruction reproduces the bag for the eleven standard
+// defense globals, split on the converter-stamped `suppressible` flag — the FIRST
+// slice that needed a converter change to make the atom list complete (until the
+// stamp, Hide's always-on +0.25 and combat-suppressed +0.5 defense were
+// indistinguishable on the wire). Also covers Invincibility's per-foe +Def via the
+// shared perTarget stamp. GATES (exit 1).
+{
+  const cmd = `node scripts/planb-shadow-defense.cjs ${datasets.map((d) => `--dataset ${d}`).join(' ')}`;
+  console.log(`\n>>> ${cmd}`);
+  execSync(cmd, { stdio: 'inherit' });
+}
 const secs = Number(process.hrtime.bigint() - started) / 1e9;
 console.log(`\n=== regen complete in ${secs.toFixed(0)}s ===`);

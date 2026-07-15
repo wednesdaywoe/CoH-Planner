@@ -53,9 +53,9 @@ export const Telekinesis: Power = {
     ["Mez","Immobilized",7.5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.25,null,null,null,null,null,null,null,true],
     ["Mez","Immobilized",1,4,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> player eq kHitPoints% target> 0 > &&",true],
     ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"distance 40 < kHitPoints% target> 0 > &&",true],
-    ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"distance 40 < kHitPoints% target> 0 > &&",true],
+    ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"distance 40 < kHitPoints% target> 0 > &&",true,null,true],
     ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Expression","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"distance 60 > kHitPoints% target> 0 > &&",true],
-    ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"distance 60 > kHitPoints% target> 0 > &&",true],
+    ["Mez","Intangible",4,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,true,null,null,null,null,"distance 60 > kHitPoints% target> 0 > &&",true,null,true],
     ["Mez","Repel",1,1,0.5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"No",2,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true],
     ["Movement","Fly",1,1,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,"kHitPoints% target> 0 >",true],
     ["Movement","Fly",1.1788,1,1.5,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"kHitPoints% target> 0 >",true]

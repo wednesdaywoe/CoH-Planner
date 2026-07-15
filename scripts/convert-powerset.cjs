@@ -3633,12 +3633,18 @@ function encodeAtomsForEmit(templates, baseTemplates) {
   const baseSet = new Set(baseTemplates || templates);
   return atoms.map((a) => {
     const src = templates[a._tmplIdx - 1];
-    // `gated` + `perTarget` are converter verdicts stamped onto the source
-    // template (perTarget by `computeAoePerTargetPatches`, which alone holds the
+    // `gated`, `perTarget` and `suppressible` are converter verdicts stamped onto
+    // the atom (perTarget by `computeAoePerTargetPatches`, which alone holds the
     // AoE geometry / redirect / Defiance provenance — see AtomicEffect.perTarget).
     const patch = {};
     if (!baseSet.has(src)) patch.gated = true;
     if (src && src._perTargetIncrement) patch.perTarget = src._perTargetIncrement;
+    // Combat-suppression (Hide +Def, travel buffs). Mirrors the routing's
+    // `isCombatSuppressed`: an `ActivateAttackClick`-family suppress event OR an
+    // OutOfCombat requires-gate. The event half is a template tail field that
+    // never reaches the wire atom, so — like gated/perTarget — the runtime cannot
+    // re-derive it; the converter stamps it here. See AtomicEffect.suppressible.
+    if (a._suppressedByEvents || a._combatGated) patch.suppressible = true;
     return encodeAtom(Object.keys(patch).length ? { ...a, ...patch } : a);
   });
 }

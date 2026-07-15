@@ -81,7 +81,7 @@ export const Defibrillate: Power = {
     ["Heal",null,1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,3.5,1],
     ["Endurance",null,100,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",true,"Ignore",2,null,null,1],
     ["Meta",null,1,1,90,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Stealth",null,300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Stealth",null,300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Mez","Sleep",30,3,0,"Ranged_Sleep","Cur","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Endurance",null,-0.3,0,0,"Ranged_EndDrain","Cur","Expression","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Recovery",null,30,-0.5,0,"Ranged_Ones","Cur","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],

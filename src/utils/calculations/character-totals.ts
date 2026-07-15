@@ -50,7 +50,7 @@ import {
   type EnhancementBonuses,
 } from './enhancement-values';
 import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -1217,7 +1217,15 @@ function applyActivePowerBonuses(
     // Enhanced by Defense enhancements
     // Power data uses either "defense" or "defenseBuff" key for defense effects
     // Skip defenseBuff when defenseBuffExcludesSelf is set (e.g., Grant Cover — team only)
-    const defenseEffects = effects.defense || (!effects.defenseBuffExcludesSelf ? effects.defenseBuff : undefined);
+    // Plan B Slice 4: the "defenseBuff" half is sourced from atoms
+    // (`defenseBuffValue` — always-on Defense atoms, `suppressible:false`, restricted
+    // to the 11 standard globals; Invincibility's per-foe +Def via the shared perTarget
+    // stamp); `?? effects.defenseBuff` keeps an atom-less legacy power on the bag. The
+    // pet-aura/override `effects.defense` still takes precedence, and the
+    // `defenseBuffExcludesSelf` skip (an override-only flag, never on the atom) is
+    // unchanged. Verified bag-equal by scripts/planb-shadow-defense.cjs.
+    const defenseEffects = effects.defense
+      || (!effects.defenseBuffExcludesSelf ? (defenseBuffValue(power) ?? effects.defenseBuff) : undefined);
     if (defenseEffects && typeof defenseEffects === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0) + strengthBuffs.defense;
       for (const [type, value] of Object.entries(defenseEffects)) {
@@ -1236,9 +1244,14 @@ function applyActivePowerBonuses(
     }
 
     // Suppressible defense from stealth/travel powers (skipped in combat mode)
-    if (!combatMode && effects.defenseBuffSuppressible && typeof effects.defenseBuffSuppressible === 'object') {
+    // Plan B Slice 4: sourced from atoms (`defenseBuffSuppressibleValue` — the
+    // `suppressible:true` complement of the always-on half above); `?? effects.
+    // defenseBuffSuppressible` keeps an atom-less legacy power on the bag. Verified
+    // bag-equal by scripts/planb-shadow-defense.cjs.
+    const suppressibleDefense = defenseBuffSuppressibleValue(power) ?? effects.defenseBuffSuppressible;
+    if (!combatMode && suppressibleDefense && typeof suppressibleDefense === 'object') {
       const enhMultiplier = 1 + (enhBonuses.defense || enhBonuses.defenseBuff || 0) + strengthBuffs.defense;
-      for (const [type, value] of Object.entries(effects.defenseBuffSuppressible)) {
+      for (const [type, value] of Object.entries(suppressibleDefense)) {
         const adjustedDef = adjustForStacking(value, targetsHitValues[power.internalName], effects.stacksLinear, 'defenseBuff', effects.maxStacks, effects.stackCaps);
         const percentage = resolveScaledEffect(adjustedDef, archetypeId, buildLevel) * 100 * enhMultiplier;
         const key = `def${capitalizeFirst(type)}` as keyof GlobalBonuses;

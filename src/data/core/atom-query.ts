@@ -455,9 +455,11 @@ const RESIST_STD_SUBTYPES = new Set([
   'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Toxic', 'Psionic',
 ]);
 
-/** True when an atom is a resistance DEBUFF (bag `isDebuff`): negative scale, or a
- *  `*_debuff` table (a −resistance at scale ≥ 0 on a debuff table still debuffs). */
-function isResistanceDebuff(a: AtomicEffect): boolean {
+/** True when an atom is a DEBUFF (the bag's `isDebuff`): negative scale, or a
+ *  `*_debuff` table (a −resistance/−defense at scale ≥ 0 on a debuff table still
+ *  debuffs). Shared by the resistance and defense buff/penalty helpers, which must
+ *  split buffs from debuffs exactly as the converter's routing does. */
+function isDebuffAtom(a: AtomicEffect): boolean {
   return a.scale < 0 || (a.modifierTable || '').toLowerCase().includes('debuff');
 }
 
@@ -487,7 +489,7 @@ export function resistanceBuffValue(
   power: AtomSource,
 ): Record<string, { scale: number; table: string; perTarget?: number }> | undefined {
   const atoms = baseAtomsOfType(power, 'Resistance').filter(
-    (a) => a.aspect === 'Res' && RESIST_STD_SUBTYPES.has(a.subType ?? '') && !isResistanceDebuff(a),
+    (a) => a.aspect === 'Res' && RESIST_STD_SUBTYPES.has(a.subType ?? '') && !isDebuffAtom(a),
   );
   if (!atoms.length) return undefined;
   const out: Record<string, { scale: number; table: string; perTarget?: number }> = {};
@@ -521,7 +523,7 @@ export function resistanceSelfDebuffValue(
     (a) =>
       a.aspect === 'Res' &&
       RESIST_STD_SUBTYPES.has(a.subType ?? '') &&
-      isResistanceDebuff(a) &&
+      isDebuffAtom(a) &&
       (a.toWho === 'Self' || a.toWho === 'All'),
   );
   if (!atoms.length) return undefined;
@@ -531,6 +533,131 @@ export function resistanceSelfDebuffValue(
     out[type.toLowerCase()] = { scale: Math.abs(last.scale), table: last.modifierTable, toWho: 'Self' };
   }
   return out;
+}
+
+/**
+ * The eleven standard defense globals the calc totals: the three positions
+ * (`defMelee`/`defRanged`/`defAoE`) and the eight damage types
+ * (`defSmashing`…`defPsionic`). Restricting the defense helpers to these dodges
+ * the same atom-bridge/bag labelling gaps the resistance restriction does — chiefly
+ * `All` (from a `base_defense` template), which the bag stores as a SCALAR
+ * `defenseBuff` ScaledEffect whose `Object.entries` yield `scale`/`table`, never a
+ * `def<Type>` key, and for which there is no `defAll` global regardless. Every
+ * excluded subType adds zero to a `def<Type>` total on BOTH sides, so the
+ * restriction is behavior-preserving and makes the shadow a clean per-type equality.
+ */
+const DEFENSE_STD_SUBTYPES = new Set([
+  'Melee', 'Ranged', 'AoE',
+  'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Toxic', 'Psionic',
+]);
+
+/**
+ * Reconstruct ONE defense type's `{ scale, perTarget }` from its atoms, mirroring
+ * the bag's `defenseBuff[type]` exactly. Defense exercises two reconstruction axes
+ * that resistance's {@link perTargetValueOf} does not:
+ *
+ *   - **last-write-wins** — the bag assigns `effects.defenseBuff[type] = makeEffect()`
+ *     directly, so when a power carries two same-type base buffs at one duration
+ *     (Rebirth Hide: +0.25 then +0.5) the LAST written value survives, not the
+ *     longest-lived. The atom list preserves routing order, so the last atom is that
+ *     value. (This is behaviourally identical to resistance's last-write-wins; it
+ *     only becomes observable here because defense has the colliding pairs.)
+ *   - **gated firstTargetExcluded increments** — Phalanx Fighting's +0.3/ally rides
+ *     a `target≠self` gate, so its increment atom is `gated` (dropped from the base
+ *     set) yet the converter still folds its perTarget into the base slot (scale
+ *     stays 0.5, self is not counted). `computeAoePerTargetPatches` stamps `perTarget`
+ *     ONLY on increments it folds, so gathering every `perTarget`-stamped atom — base
+ *     OR gated — captures exactly those and no mode/PvP variant. The N=1 base then
+ *     adds only the NON-gated self/all increments (Invincibility +0.1/foe, AAO),
+ *     never the gated firstTargetExcluded one (Phalanx), so `gated` on the increment
+ *     is the runtime-visible "excluded at one target" signal.
+ */
+function defensePerTypeValue(
+  group: readonly AtomicEffect[],
+): { scale: number; table: string; perTarget?: number } | undefined {
+  const base = group.filter((a) => !a.gated);
+  const gatedIncr = group.filter((a) => a.gated && a.perTarget);
+  if (!base.length && !gatedIncr.length) return undefined;
+  const baseIncr = base.filter((a) => a.perTarget);
+  const increments = [...baseIncr, ...gatedIncr];
+  const table = (base.find((a) => a.modifierTable) ?? group.find((a) => a.modifierTable))?.modifierTable ?? '';
+  if (increments.length) {
+    const perTarget = sumDistinctAbs(increments, (a) => a.perTarget ?? 0);
+    const bases = base.filter((a) => !a.perTarget);
+    const selfIncr = baseIncr.filter((a) => a.toWho === 'Self' || a.toWho === 'All');
+    const scale = sumDistinctAbs(bases, (a) => a.scale) + sumDistinctAbs(selfIncr, (a) => a.scale);
+    return { scale, table, perTarget };
+  }
+  // No per-target increment → last-write-wins (the bag's direct slot assignment).
+  const last = base[base.length - 1];
+  return { scale: Math.abs(last.scale), table: last.modifierTable };
+}
+
+/**
+ * The atom-native +Defense buff for one half of the combat-suppression axis.
+ * Shared by {@link defenseBuffValue} (always-on → `effects.defenseBuff`) and
+ * {@link defenseBuffSuppressibleValue} (dropped in combat → `effects.defenseBuffSuppressible`).
+ *
+ * The `Defense` atoms that are BUFFS (not a −Def debuff — the bag's `isDebuff`
+ * routes those to `defenseDebuff`), restricted to the eleven standard globals
+ * ({@link DEFENSE_STD_SUBTYPES}), partitioned by the converter-stamped `suppressible`
+ * flag ({@link AtomicEffect.suppressible}) — the ONLY thing that separated the two bag
+ * slots and, until the stamp, was absent from the wire atom (Hide's attack-click
+ * suppression lives in `suppress_events`, not on the atom). NB the group is drawn
+ * from ALL atoms of the type (not just the base set) so {@link defensePerTypeValue}
+ * can recover Phalanx's gated firstTargetExcluded increment; it re-filters `gated`
+ * itself.
+ */
+function defenseBuffByType(
+  power: AtomSource,
+  wantSuppressible: boolean,
+): Record<string, { scale: number; table: string; perTarget?: number }> | undefined {
+  const atoms = atomsOfType(power, 'Defense').filter(
+    (a) =>
+      DEFENSE_STD_SUBTYPES.has(a.subType ?? '') &&
+      !isDebuffAtom(a) &&
+      !!a.suppressible === wantSuppressible,
+  );
+  if (!atoms.length) return undefined;
+  const out: Record<string, { scale: number; table: string; perTarget?: number }> = {};
+  for (const [type, group] of bySubType(atoms)) {
+    const v = defensePerTypeValue(group);
+    // A reconstruction of exactly 0 with no per-target growth is not a real buff and
+    // the bag surfaces nothing for it (Thunderspy Fortify Pack's pet-granted defense
+    // resolves to a scale-0 placeholder whose whole `effects` bag is empty). Dropping
+    // it is behavior-neutral — 0 contributes 0 to any total — and keeps the shadow a
+    // clean equality. (The shadow checks BOTH directions, so a bag that DID keep a
+    // scale-0 defense would still be caught.)
+    if (v && (v.scale !== 0 || v.perTarget)) out[type.toLowerCase()] = v;
+  }
+  return Object.keys(out).length ? out : undefined;
+}
+
+/**
+ * The atom-native `effects.defenseBuff` — the always-on per-type +defense buff the
+ * calc reads today (line ~1220 of character-totals.ts, alongside the pet-aura/override
+ * `effects.defense`). Keyed by lowercase position/type (`{ melee: {scale,table,
+ * perTarget?}, … }`) — the SAME shape the applier iterates. Returns `undefined` when
+ * the power has no always-on standard-type defense atom (→ bag fallback; see
+ * {@link atomsOf}). Verified bag-equal corpus-wide by `scripts/planb-shadow-defense.cjs`.
+ */
+export function defenseBuffValue(
+  power: AtomSource,
+): Record<string, { scale: number; table: string; perTarget?: number }> | undefined {
+  return defenseBuffByType(power, false);
+}
+
+/**
+ * The atom-native `effects.defenseBuffSuppressible` — the combat-suppressed per-type
+ * +defense buff (Hide, Stealth, Cloaking Device) the calc reads today (line ~1239),
+ * applied ONLY when not in combat mode. Same shape and fallback contract as
+ * {@link defenseBuffValue}; the two are complementary halves of the same atom set,
+ * split by `suppressible`. Verified bag-equal corpus-wide by `scripts/planb-shadow-defense.cjs`.
+ */
+export function defenseBuffSuppressibleValue(
+  power: AtomSource,
+): Record<string, { scale: number; table: string; perTarget?: number }> | undefined {
+  return defenseBuffByType(power, true);
 }
 
 /** Σ of `val(a)` over atoms with a DISTINCT `|val|` (dedup the type/duration copies). */

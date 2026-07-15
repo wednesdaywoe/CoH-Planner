@@ -2,8 +2,9 @@
 
 > Status: **in progress** on branch `converter-atom-array` (as of 2026-07-15).
 > Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit) ✅ · Slice 2
-> (Damage) ✅ · Slice 3 (Resistance) ✅ — the ToHit, +Damage, and +Resistance
-> appliers now read atoms, not the bag** · Phase 3 not started. Slice 1 shipped in
+> (Damage) ✅ · Slice 3 (Resistance) ✅ · Slice 4 (Defense) ✅ — the ToHit, +Damage,
+> +Resistance, and +Defense appliers now read atoms, not the bag** · Phase 3 not
+> started. Slice 1 shipped in
 > two parts: (a) the Inner Light burst/tail fix (durationVariants on `tohitBuff`),
 > and (b) the applier migration itself — `character-totals.ts` sources +ToHit from
 > `toHitBuffValue(power)` (atoms), including a converter-STAMPED `perTarget` so the
@@ -18,7 +19,15 @@
 > perTarget stamp for Bio Armor's per-foe Evolving Armor;
 > `scripts/planb-shadow-resistance.cjs` gates it at **3204/3204 buff + 72/72 self,
 > 0 diverge**. Slice 3 touches NO converter code, so it changes no generated data —
-> a pure runtime-applier swap (see §Slice 3)
+> a pure runtime-applier swap (see §Slice 3). Slice 4 migrates the two +Defense
+> appliers (`effects.defenseBuff` and the combat-suppressed
+> `effects.defenseBuffSuppressible`); it is the FIRST slice that needed a converter
+> change — a stamped `AtomicEffect.suppressible` — because the suppressible/always-on
+> split lived only in a `suppress_events` template tail (Hide's attack-click
+> suppression) that never reached the wire atom. `scripts/planb-shadow-defense.cjs`
+> gates it at **3416/3416 buff + 335/335 suppressible, 0 diverge**; the generated diff
+> is atoms-only (988 tuples gain `suppressible:true`), the bag is byte-identical (see
+> §Slice 4)
 >
 > Companion to the shipped interim guard (DSH6c discriminator gate, 2026-07-14).
 > See [[converter-bag-vs-array-rootcause]], [[dsh6-collapse-detector]],
@@ -454,6 +463,72 @@ incarnate, self-penalties):
   effects.maxStacks, …)`). The per-FOE axis IS atom-native (the Slice-2 stamp,
   reused here). The `unresistable` twin flag on a resistance value is UI-only — the
   calc ignores it for resistance — so it is left on the bag projection.
+
+  **Slice 4 — Defense: two appliers migrated + a converter-stamped `suppressible`
+  (the first slice that needed a converter change) (2026-07-15).**
+  `character-totals.ts` now sources the always-on +Defense buff from
+  `defenseBuffValue(power) ?? effects.defenseBuff` (the pet-aura/override
+  `effects.defense` still takes precedence, and the override-only
+  `defenseBuffExcludesSelf` skip is unchanged) and the combat-suppressed half from
+  `defenseBuffSuppressibleValue(power) ?? effects.defenseBuffSuppressible` (applied
+  only out of combat). Both restrict to the **eleven standard defense globals**
+  (`DEFENSE_STD_SUBTYPES`: Melee/Ranged/AoE + Smashing…Psionic) — same doctrine as
+  Slice 3's eight resistance types (`All` from `base_defense` is a scalar
+  `defenseBuff` ScaledEffect with no `defAll` global, so it adds zero on both sides).
+
+  **Why this one needed a converter change.** The bag splits +Defense across two
+  slots — `defenseBuff` (always on) and `defenseBuffSuppressible` (dropped in combat)
+  — by `isCombatSuppressed = _suppressedByEvents || _combatGated`. But `_combatGated`
+  (an `OutOfCombat` `requires`) was the only half on the wire atom (as
+  `specialCase`); `_suppressedByEvents` (Hide's `Suppress ActivateAttackClick` tail)
+  never reached it, so Hide's always-on +0.25 and its suppressed +0.5 defense were
+  **byte-identical on the wire** (same PvE/Self/table, differing only in scale) — the
+  split was unrecoverable. Fix, exactly like Slice-1's `perTarget`: the converter
+  STAMPS the verdict. New `AtomicEffect.suppressible` (last in the tuple → trailing-
+  trims to zero bytes on the ~non-suppressed majority) is set in `encodeAtomsForEmit`
+  from `_suppressedByEvents || _combatGated`; `defenseBuffByType` partitions on it.
+  The stamp is additive-only: a full regen leaves the **bag byte-identical** — the
+  only generated change is **988 atom tuples gaining `suppressible:true`** across 127
+  files (verified: every removed generated line is a tuple, every added tuple ends
+  `,true]`). This also makes the movement `suppressible` bag-flag (travel-power speed)
+  atom-recoverable for that later slice — the same discriminator, one stamp.
+
+  **Three reconstruction axes resistance didn't exercise** (in `defensePerTypeValue`):
+  - **last-write-wins** — the bag assigns `effects.defenseBuff[type] = makeEffect()`
+    directly, so when a power stacks two same-type base buffs at one duration (Rebirth
+    Hide: +0.25 then +0.5) the LAST survives, not the longest-lived. `perTargetValueOf`
+    (longest-lived, shared with ToHit/Damage) picked 0.25 on the tie; defense takes the
+    last atom in routing order = 0.5. (Behaviourally identical to resistance's
+    last-write-wins; only observable here because defense has the colliding pairs.)
+  - **gated firstTargetExcluded increments** — Phalanx Fighting's +0.3/ally rides a
+    `target≠self` gate, so its increment atom is `gated` (dropped from the base set)
+    yet `computeAoePerTargetPatches` folds its `perTarget` into the base slot (scale
+    stays 0.5). The `perTarget` stamp is present ONLY on increments the converter
+    folds, so gathering every `perTarget`-stamped atom — base OR gated — recovers it and
+    no mode/PvP variant. N=1 then adds only the NON-gated self/all increments
+    (Invincibility +0.1/foe → 0.6, AAO), never the gated one (Phalanx stays 0.5) — so
+    `gated` on the increment is the runtime-visible "excluded at one target" signal.
+  - **scale-0 is behaviourally absent** — a reconstruction of exactly 0 with no
+    per-target growth contributes 0 to any total, and the bag is inconsistent about it
+    (Thunderspy Fortify Pack's pet-granted defense yields an EMPTY `effects` bag;
+    Rebirth Fortify Pack / Thunderspy Superior Invisibility keep a `{scale:0}` entry).
+    The helper drops it and the shadow normalizes it to absent on both sides — the
+    resistance "compare what survives to a total" doctrine. A genuine 0-vs-nonzero
+    mismatch still surfaces as present-vs-absent.
+
+  Gated corpus-wide by `scripts/planb-shadow-defense.cjs` (**3416/3416 buff type-slots
+  incl. 190 per-target + 335/335 suppressible, 0 diverge**, wired into `npm run
+  regen`) and pinned by `defense-atom-native.verify.test.ts` (Hide's 0.25/0.5+AoE-5
+  split; Invincibility +0.6 +0.1/foe scaling to 8; Phalanx +0.5 +0.3/ally with N=1
+  NOT inflated to 0.8). **The gate was mutation-tested:** ignoring `suppressible` →
+  3480 red; last-write-wins→first → 190 red; dropping gated increments → 18 red;
+  adding the gated increment to N=1 → 18 red — all four axes actually verified.
+
+  **Known interim compromise (same as Slices 1–3):** the self-STACK meta stays a
+  bag read, keyed by SLOT NAME (`adjustForStacking(value, …, 'defenseBuff', …)`).
+  Defense has no active-power self-penalty applier (the Rage −20% def crash routes to
+  `defenseDebuff` but nothing consumes it for the caster's totals today), so — unlike
+  resistance — this slice migrated only the two buff appliers.
 
 ### Phase 3 — Bag becomes UI-only; then delete
 - Point the calc entirely at atoms; the bag is produced solely for the
