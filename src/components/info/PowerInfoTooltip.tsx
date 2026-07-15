@@ -1136,9 +1136,11 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
 // Enhancement info content for slotted enhancements
 import { EnhancementInfoContent } from './EnhancementInfoContent';
 
+// `powerSet` is required on BOTH variants: a power's identity is
+// (powerSet, internalName) — see `findSelectedPowerInBuild`.
 type TooltipContent =
   | { type: 'power'; powerName: string; powerSet: string }
-  | { type: 'slotted-enhancement'; powerName: string; slotIndex: number };
+  | { type: 'slotted-enhancement'; powerName: string; powerSet: string; slotIndex: number };
 
 function TooltipBody({ content }: { content: TooltipContent }) {
   return (
@@ -1147,7 +1149,7 @@ function TooltipBody({ content }: { content: TooltipContent }) {
         <PowerInfoContent powerName={content.powerName} powerSet={content.powerSet} />
       )}
       {content.type === 'slotted-enhancement' && (
-        <EnhancementInfoContent powerName={content.powerName} slotIndex={content.slotIndex} />
+        <EnhancementInfoContent powerName={content.powerName} powerSet={content.powerSet} slotIndex={content.slotIndex} />
       )}
     </div>
   );

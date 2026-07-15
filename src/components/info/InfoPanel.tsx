@@ -135,7 +135,7 @@ export function InfoPanel() {
       )}
 
       {content.type === 'slotted-enhancement' && (
-        <EnhancementInfoContent powerName={content.powerName} slotIndex={content.slotIndex} />
+        <EnhancementInfoContent powerName={content.powerName} powerSet={content.powerSet} slotIndex={content.slotIndex} />
       )}
 
       {content.type === 'incarnate' && (

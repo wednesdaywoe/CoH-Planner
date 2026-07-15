@@ -87,6 +87,10 @@ export function SelectedPowers({ category }: SelectedPowersProps) {
     setInfoPanelContent({
       type: 'slotted-enhancement',
       powerName,
+      // Mirrors handlePowerHover: prefer the power's own set, fall back to this
+      // section's. Required so a name reused in another powerset can't resolve
+      // to the wrong power's enhancement.
+      powerSet: powers.find((p) => p.internalName === powerName)?.powerSet || powersetId || '',
       slotIndex,
     });
   };

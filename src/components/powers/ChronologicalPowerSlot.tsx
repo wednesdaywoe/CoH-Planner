@@ -195,6 +195,7 @@ export function ChronologicalPowerSlot({
     setInfoPanelContent({
       type: 'slotted-enhancement',
       powerName: power.internalName,
+      powerSet: power.powerSet,
       slotIndex: index,
     });
   };
@@ -324,7 +325,7 @@ export function ChronologicalPowerSlot({
                   if (ps) setInfoPanelContent({ type: 'power', powerName: subPower.internalName, powerSet: ps });
                 }}
                 onLeave={handlePowerLeave}
-                onEnhancementHover={(index) => setInfoPanelContent({ type: 'slotted-enhancement', powerName: subPower.internalName, slotIndex: index })}
+                onEnhancementHover={(index) => setInfoPanelContent({ type: 'slotted-enhancement', powerName: subPower.internalName, powerSet: subPower.powerSet || power.powerSet, slotIndex: index })}
                 onRightClick={(e) => {
                   e.preventDefault();
                   const ps = subPower.powerSet || power.powerSet;
