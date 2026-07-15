@@ -44,6 +44,12 @@ export const InnerLight: Power = {
       "tohitBuff": 30
     },
     "tohitBuff": {
+      "durationVariants": [
+        {
+          "duration": 10,
+          "scale": 2
+        }
+      ],
       "scale": 0.77,
       "table": "Melee_Buff_ToHit"
     },

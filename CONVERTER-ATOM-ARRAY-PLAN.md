@@ -1,44 +1,68 @@
 # Plan B — Retire the `PowerEffects` bag: consumers read the atom list
 
 > Status: **in progress** on branch `converter-atom-array` (as of 2026-07-15).
-> Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit) — measured,
-> BLOCKED on an in-game check (see “Open: Inner Light” below)** · Phase 3 not
-> started. Nothing here has changed a single computed total yet: the calc still
-> reads the bag end-to-end, and every commit so far is additive.
+> Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit): the Inner
+> Light divergence is resolved and the converter fix has LANDED (durationVariants
+> on `tohitBuff`); the applier migration is reshaped by a perTarget finding — see
+> below** · Phase 3 not started. The converter fix changes the *bag* for the four
+> Inner Light / Inner Umbra powers (their burst is now represented, not dropped)
+> — the first non-additive commit — but still changes **no computed total**: the
+> calc reads `tohitBuff.scale` (the tail) either way; `durationVariants` is
+> display-only.
 >
 > Companion to the shipped interim guard (DSH6c discriminator gate, 2026-07-14).
 > See [[converter-bag-vs-array-rootcause]], [[dsh6-collapse-detector]],
 > `docs/converter-unification-direction.md`.
 
-## Open: Inner Light — needs an in-game / Mids check before Slice 1 lands
-
-The Slice 1 shadow found a real bug on its first run, and answering this
-unblocks the ToHit applier.
+## Resolved: Inner Light STACKS (in-game verified 2026-07-15) — converter fix landed
 
 **Peacebringer Inner Light** (internally `Build_Up`, source
 `peacebringer_offensive/luminous_blast/build_up.json`) has four templates — a
-short burst and a long tail, all `stack=Stack`, `target=Self`:
+short burst and a long tail, all `stack=Stack`, `target=Self`, all `Immediate`
+with `delay=0`:
 
-| attrib | burst | tail | bag keeps |
+| attrib | burst | tail | bag kept (before) |
 |---|---|---|---|
 | ToHit (Current, `Melee_Buff_ToHit`) | **2.0 @ 10s** | 0.77 @ 30s | 0.77 |
 | 8× `*_Dmg` (Strength, `Melee_Buff_Dmg`) | **8.0 @ 10s** | 3.2 @ 30s | 3.2 |
 
-Both slots are last-write-wins assignments and the 30s template is emitted last,
-so **both silently drop the burst** — the planner shows Inner Light's tail as if
-it were the whole power. `durationVariants` exists for exactly this shape (EMP
-Arrow's -500% regen at 15s *and* 45s) but never fired here, so the converter's
-duration-aware accumulate has a gap worth finding. Affects HC Inner Light and
-Rebirth Inner Light + Inner Umbra (4 divergences; 599/603 +ToHit powers agree).
+Both slots were last-write-wins assignments and the 30s template is emitted last,
+so both silently dropped the burst — the planner showed Inner Light's tail as if
+it were the whole power.
 
-**The question:** do the two AttribMods STACK for the first 10s (⇒ ToHit +2.77
-then +0.77; damage +1120% then +320%) or does the burst REPLACE the tail (⇒
-+2.0/+8.0 then +0.77/+3.2)? Both apply from cast in CoH, which implies stacking
-— but per §Risks, a shadow divergence is verified against Mids/in-game, never
-auto-accepted. **Do not simply sum to 2.77: that overstates after 10s.**
+**Answer (STACK):** the user verified in-game — casting Inner Light applies TWO
+simultaneous self-buffs ("Inner Light" the 30s lingering + "Boost Up" the short
+burst); both are active together and both contribute to stats, the burst just
+expires first. Both apply from cast (source data confirms `Immediate`/`delay=0`
+on the tail, so it overlaps the burst). ⇒ peak +2.77 ToHit / +11.2 dmg for the
+first 10s, then +0.77 / +3.2 for the remaining 20s. **Not** a replace (peak is
+2.77, not 2.0); and **not** a naive sum (0.77 is the sustained value, 2.77 only
+holds for 10s). This is the same additive-overlap shape the converter already
+ships for EMP Arrow's −500% regen at 15s *and* 45s.
 
-Once answered: fix the converter (emit `durationVariants` on both slots), then
-migrate the ToHit applier to read `durationBuckets(atoms)`.
+**Converter fix (LANDED, ToHit only).** New `accumulateBuffSlot` helper in
+`convert-powerset.cjs` gives the `tohitBuff` projection the duration-aware
+accumulate the resource-slot fold (`foldResourceSlot`) already had for debuffs:
+a same-table, different-duration second instance becomes a `durationVariants`
+entry (longest-lived = primary) instead of clobbering the slot. Inner Light's
+`tohitBuff` is now `{scale: 0.77, table, durationVariants: [{duration: 10,
+scale: 2}]}`; the InfoPanel (`tohitBuff` is `format: 'percent'`) renders both
+the +ToHit(30s) tail and the +ToHit(10s) burst rows. Verified: a full
+three-dataset regen changes **exactly the four** Inner Light / Inner Umbra
+powers and nothing else (every per-foe ToHit power — Sunless Mire, Soul Drain —
+byte-unchanged, because their longest instance is emitted last and still wins
+the recorded duration the perTarget reshape reads); `planb-shadow-tohit.cjs`
+now **603/603 agree, 0 divergences** (its bag side counts `durationVariants`);
+DSH6 gate PASS, `planb-shadow-bag.cjs` 0 divergences, regen idempotent.
+
+**Damage (`damageBuff`) deferred to the damage slice.** The same burst+tail gap
+exists on `damageBuff` (Inner Light, Moment of Glory's 1/1/0.5 @ 5/10/15s decay,
+Fiery Embrace), but `damageBuff` *also* carries flat + per-foe pairs (Against
+All Odds: 1.0 flat @1.25s + 0.55/foe @1s) that the perTarget post-pass
+(`computeAoePerTargetPatches`) reshapes into `{scale, perTarget}`. Routing those
+different durations through `accumulateBuffSlot` mints a spurious variant and
+leaks a `durations` change past the reshape (observed: AAO buffDuration 1→1.25).
+So the damage variants wait for a slice that first excludes per-foe groups.
 
 ## Why this must get done (and why "no observable bug" is a broken gate)
 
@@ -260,15 +284,29 @@ incarnate, self-penalties):
   `enhanceableVsNot(atoms)` split at this step — the tax is repaid.
 - **DoD:** every character-total sourced from atoms; shadow still green.
 
-  **Slice 1 — ToHit: MEASURED, blocked (2026-07-15).** `scripts/planb-shadow-tohit.cjs`
-  (committed, non-gating — a triage report, per §Risks) compares, per power, the
-  bag (`tohitBuff` + `tohitBuffUnenhanced`) against the BASE atoms of
-  `effectType:'ToHit'` minus what the bag routes elsewhere (aspect `Res` →
+  **Slice 1 — ToHit: divergence resolved, converter fix landed, applier migration
+  reshaped (2026-07-15).** `scripts/planb-shadow-tohit.cjs` (committed, non-gating
+  — a triage report, per §Risks) compares, per power, the bag (`tohitBuff` +
+  `tohitBuffUnenhanced`, now counting `durationVariants`) against the BASE atoms
+  of `effectType:'ToHit'` minus what the bag routes elsewhere (aspect `Res` →
   `debuffResistance`, `Str` → `specialBuff`, negative/debuff-table →
-  `tohitDebuff`), split by `ignoreStrength`. Result: **603 powers carry +ToHit,
-  599 agree, 4 diverge** — all Inner Light / Inner Umbra, all real (above).
-  The applier itself is NOT yet written: the divergence must be resolved first,
-  or the migration would bake in whichever answer the code happens to produce.
+  `tohitDebuff`), split by `ignoreStrength`. It first found **603 powers carry
+  +ToHit, 599 agree, 4 diverge** — all Inner Light / Inner Umbra. After the
+  in-game STACK confirmation and the `accumulateBuffSlot` converter fix (see the
+  Resolved section up top): **603/603 agree**.
+
+  **The applier itself is still NOT written, and the perTarget axis is why.** The
+  bag's `tohitBuff` is now a lossless projection of the ToHit atoms, but a truly
+  atom-native total can't be sourced from `durationBuckets(atoms)` alone: Sunless
+  Mire / Soul Drain are burst+tail *and* per-foe, and their `{scale, perTarget}`
+  is derived by the perTarget post-pass (`computeAoePerTargetPatches`) from the
+  group/`Execute_Power` structure — NOT from any atom field. `durationBuckets`
+  would hand the applier the raw longest-bucket scale (Sunless Mire 0.5, not the
+  reshaped 1.0), regressing every per-foe ToHit power. So the ToHit applier
+  migration is gated on reconstructing perTarget from atoms — the same axis the
+  interim compromise below already defers — rather than being a quick
+  `durationBuckets` swap. Landing that reconstruction is the real Slice 1 applier
+  task; the converter fix above is the shippable, verified half.
 
   **What comparing correctly turned out to mean.** The first cut compared the
   MULTISET of (|scale|, table, enhanceable) and falsely flagged Soul Drain and

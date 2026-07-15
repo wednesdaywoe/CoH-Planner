@@ -3957,6 +3957,59 @@ function projectAtomsToEffects(atoms, powerName) {
       }
     };
 
+    // Duration-aware accumulate for the simple buff slots CoH applies as a
+    // burst+tail pair — Inner Light / Inner Umbra grant a big +ToHit for the
+    // first 10s and a small lingering value for the 30s tail (both from cast;
+    // verified in-game they STACK, so peak = burst+tail). This slot routed by
+    // direct last-write-wins assignment, which silently kept only the
+    // last-emitted (tail) value and dropped the burst. Mirror foldResourceSlot's
+    // debuff `durationVariants`: the longest-lived instance is the primary, each
+    // shorter one survives as a variant so the display can show both rows.
+    // Byte-identical to legacy for single-duration buffs (the common case) and
+    // for same-duration multi-type repeats (Build Up's damage types collapse to
+    // one value): only a same-table, different-duration second instance mints a
+    // variant. See CONVERTER-ATOM-ARRAY-PLAN.md (Plan B Phase 2 Slice 1).
+    //
+    // Scoped to `tohitBuff` for Slice 1. `damageBuff` has the same burst+tail
+    // shape (Inner Light, Moment of Glory, Fiery Embrace) but ALSO carries
+    // flat + per-foe pairs (Against All Odds: 1.0 flat @1.25s + 0.55/foe @1s)
+    // that the perTarget post-pass (`computeAoePerTargetPatches`) reshapes into
+    // `{scale, perTarget}`. Routing those different durations through here mints
+    // a spurious variant and leaks a `durations` change past the reshape, so the
+    // damage variants wait for the damage slice, which must exclude per-foe
+    // groups. (For ToHit this is verified clean: a full three-dataset regen
+    // changes ONLY the four Inner Light / Inner Umbra powers — every per-foe
+    // ToHit power, Sunless Mire and Soul Drain included, is byte-unchanged,
+    // because their longest-lived instance is emitted last and so still wins the
+    // recorded `durations` entry the perTarget reshape reads.)
+    const accumulateBuffSlot = (key, eff) => {
+      const prev = effects[key];
+      const prevDur = effects.durations?.[key];
+      if (!prev || typeof prev !== 'object' || prev.table !== eff.table) {
+        effects[key] = eff; // first instance, or table change (legacy reset)
+        recordDuration(key);
+        return;
+      }
+      if (prevDur != null && duration != null && Math.abs(prevDur - duration) > 0.001) {
+        prev.durationVariants = prev.durationVariants || [];
+        if (duration > prevDur) {
+          // The new atom outlives the current primary — it becomes the primary,
+          // the current value drops to a variant at its (shorter) duration.
+          prev.durationVariants.push({ scale: prev.scale, duration: prevDur });
+          prev.scale = eff.scale;
+          effects.durations[key] = duration;
+        } else {
+          // The new atom is the shorter burst — a variant; primary is unchanged.
+          prev.durationVariants.push({ scale: eff.scale, duration });
+        }
+        return;
+      }
+      // Same (or absent) duration: last-write-wins on scale, variants preserved.
+      prev.scale = eff.scale;
+      if (eff.unresistable) prev.unresistable = true;
+      recordDuration(key);
+    };
+
     const attrib = (a.sourceAttrib || '').toLowerCase();
     if (!attrib) continue;
     if (SPECIAL_ATTRIBS.has(attrib)) continue;
@@ -4381,8 +4434,7 @@ function projectAtomsToEffects(atoms, powerName) {
           effects.tohitBuffUnenhanced = makeEffect();
           recordDuration('tohitBuffUnenhanced');
         } else {
-          effects.tohitBuff = makeEffect();
-          recordDuration('tohitBuff');
+          accumulateBuffSlot('tohitBuff', makeEffect());
         }
       } else if (modType === 'accuracy') {
         if (aspect === 'resistance') {

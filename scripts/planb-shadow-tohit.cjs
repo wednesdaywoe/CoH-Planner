@@ -63,7 +63,14 @@ function summarize(contribs) {
   return [...m].sort().map(([k, v]) => `${k}=${v.toFixed(4)}`);
 }
 
-/** What the calc reads TODAY (character-totals.ts ToHit blocks). */
+/**
+ * What the bag now represents for +ToHit. `tohitBuff`/`tohitBuffUnenhanced` are
+ * single-valued, but a burst+tail power (Inner Light) carries its shorter-lived
+ * instances as `durationVariants[]` on the primary — so summing the primary plus
+ * its variants is the bag's complete contribution set, matching the atoms. Before
+ * Slice 1's converter fix the variants did not exist and the burst was dropped
+ * (the four Inner Light / Inner Umbra divergences this report was built to find).
+ */
 function bagContributions(effects) {
   const out = [];
   const push = (v, enhanceable) => {
@@ -71,6 +78,9 @@ function bagContributions(effects) {
     const scale = typeof v === 'number' ? v : v.scale;
     const table = typeof v === 'number' ? '' : v.table;
     out.push({ scale: Math.abs(scale), table, enhanceable });
+    if (v && typeof v === 'object' && Array.isArray(v.durationVariants)) {
+      for (const dv of v.durationVariants) out.push({ scale: Math.abs(dv.scale), table, enhanceable });
+    }
   };
   push(effects.tohitBuff, true);
   push(effects.tohitBuffUnenhanced, false);
