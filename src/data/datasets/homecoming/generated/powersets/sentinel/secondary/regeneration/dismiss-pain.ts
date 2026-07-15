@@ -68,16 +68,22 @@ export const DismissPain: Power = {
     "durations": {
       "debuffResistance": 10.25,
       "maxHPBuff": 10.3,
+      "maxHPBuffUnenhanced": 10.3,
       "resistanceDebuff": 10.3
     },
     "maxHPBuff": {
       "scale": 1.2,
       "table": "Melee_HealSelf"
     },
+    "maxHPBuffUnenhanced": {
+      "scale": 1.2,
+      "table": "Melee_HealSelf"
+    },
     "resistanceDebuff": {
       "heal": {
         "scale": 0.15,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     }
   },

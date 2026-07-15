@@ -64,7 +64,8 @@ export const PainAbsorption: Power = {
     "resistanceDebuff": {
       "heal": {
         "scale": 0.25,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     },
     "maxStacks": 2,
@@ -102,7 +103,8 @@ export const PainAbsorption: Power = {
         "resistanceDebuff": {
           "heal": {
             "scale": 0.5,
-            "table": "Melee_Ones"
+            "table": "Melee_Ones",
+            "toWho": "Self"
           }
         }
       },
@@ -136,7 +138,8 @@ export const PainAbsorption: Power = {
         "resistanceDebuff": {
           "heal": {
             "scale": 0.75,
-            "table": "Melee_Ones"
+            "table": "Melee_Ones",
+            "toWho": "Self"
           }
         }
       },

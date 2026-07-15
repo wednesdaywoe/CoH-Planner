@@ -39,35 +39,43 @@ export const OffensiveAdaptation: Power = {
     "resistanceDebuff": {
       "cold": {
         "scale": 0.075,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       },
       "energy": {
         "scale": 0.075,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       },
       "fire": {
         "scale": 0.075,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       },
       "lethal": {
         "scale": 0.075,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       },
       "negative": {
         "scale": 0.075,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       },
       "psionic": {
         "scale": 0.075,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       },
       "smashing": {
         "scale": 0.075,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       },
       "toxic": {
         "scale": 0.075,
-        "table": "Melee_Ones"
+        "table": "Melee_Ones",
+        "toWho": "Self"
       }
     }
   },

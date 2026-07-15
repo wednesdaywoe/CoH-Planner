@@ -63,7 +63,7 @@ export const WhiteDwarf: Power = {
       "immobilize": 2.03,
       "knockback": 2.03,
       "knockup": 2.03,
-      "maxHPBuff": 2,
+      "maxHPBuffUnenhanced": 2,
       "mezResistance": 2,
       "movement": 2,
       "recoveryBuff": 2,
@@ -96,7 +96,7 @@ export const WhiteDwarf: Power = {
       "scale": 200,
       "table": "Melee_Ones"
     },
-    "maxHPBuff": {
+    "maxHPBuffUnenhanced": {
       "scale": 7.5,
       "table": "Melee_HealSelf"
     },

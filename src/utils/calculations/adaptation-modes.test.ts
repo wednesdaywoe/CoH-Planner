@@ -81,6 +81,22 @@ describe('Bio Armor Adaptation modes on the dashboard (homecoming)', () => {
     expect(off.defSmashing).toBe(0);
   });
 
+  // Offensive Adaptation's base toggle carries a -7.5% Res(all) SELF penalty
+  // that lives on the granted stance toggle (not a mode-gated conditional on
+  // another power). Selecting the stance materializes that toggle's base effects
+  // so the resistance totals drop by 7.5 across every type. No stance → no
+  // penalty (the granted toggle isn't active).
+  it('applies the Offensive stance self -Res(all) penalty to the dashboard', () => {
+    const none = totals(undefined);
+    const offensive = totals('Offensive_Adaptation');
+    for (const key of ['resSmashing', 'resFire', 'resEnergy', 'resPsionic', 'resToxic'] as const) {
+      expect(offensive[key], `${key} drops under Offensive`).toBeCloseTo(none[key] - 7.5, 3);
+    }
+    // Selecting Defensive/Efficient does NOT apply the Offensive penalty.
+    const defensive = totals('Defensive_Adaptation');
+    expect(defensive.resSmashing).toBeCloseTo(none.resSmashing, 3);
+  });
+
   it('does NOT apply modes when the enabling power (Adaptation) is not taken', () => {
     // The stance can't be selected without the Adaptation parent in the build,
     // so no mode bonus may leak into the dashboard.

@@ -19,7 +19,7 @@ import { AT_INHERENT_CONDITIONAL_IDS } from '@/utils/conditional-effects';
 import { getBuffPetSources, BUFF_PET_TOGGLE_ID, type BuffPetSource } from './buff-pet-auras';
 import type { SummonEffect } from '@/types/power';
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
-import { stanceAdjusterOverrides } from '@/data';
+import { stanceAdjusterOverrides, STANCE_GROUPS, activeStanceOptionId } from '@/data';
 import { getIOSet, getAlphaEffects, getDestinyEffects, getDestinyEffectsAtTime, getDestinySustainedFloorTime, getDestinyBoostsAllowed, applyAlphaToDestiny, getHybridEffects, getLoreEffects, getGenesisEffects, findProcData, getProcEffects, isProcAlwaysOn, calculateAutoToggleProcsPerMinute, calculateProcChance, arcToDegrees, getProcControlType, DEFAULT_STACK_COUNT, resolveProcContribution, procOverrideKey } from '@/data';
 import type { DestinyEffects, GenesisEffects } from '@/data';
 import { getTableValue } from '@/data/at-tables';
@@ -610,6 +610,9 @@ interface ActivePowerEffect {
   defenseBuffExcludesSelf?: boolean;
   defenseBuffSuppressible?: Record<string, ScalarOrScaled>;
   resistance?: Record<string, ScalarOrScaled>;
+  // -Resistance debuff. Enemy-facing by default; entries tagged toWho:'Self'
+  // (Bio Armor Offensive Adaptation) subtract from the CASTER's own resistance.
+  resistanceDebuff?: Record<string, ScalarOrScaled>;
   debuffResistance?: Record<string, ScalarOrScaled>;
   mezResistance?: Record<string, ScalarOrScaled>;
   elusivity?: Record<string, ScalarOrScaled>;
@@ -630,6 +633,11 @@ interface ActivePowerEffect {
   recoveryBuff?: ScalarOrScaled;
   recoveryBuffUnenhanced?: ScalarOrScaled;
   maxHPBuff?: ScalarOrScaled;
+  // Unenhanceable half of a +MaxHP twin (IgnoreStrength — "half of this max-HP
+  // increase is unenhanceable"). Summed onto maxHP like maxHPBuff but WITHOUT
+  // the +Healing enhancement multiplier. See the converter's hitPoints/maximum
+  // split and the maxHPBuff handler below.
+  maxHPBuffUnenhanced?: ScalarOrScaled;
   maxEndBuff?: ScalarOrScaled;
   // Absorb shield. Two magnitude forms (see the aggregation below):
   //  • flat HP     — {scale, table} on a Heal table (Psychokinetic Barrier).
@@ -1247,6 +1255,27 @@ function applyActivePowerBonuses(
       }
     }
 
+    // Self-directed -Resistance penalty (toWho:'Self') — Bio Armor Offensive
+    // Adaptation's -7.5% Res(all) trade-off. Most resistanceDebuff entries are
+    // enemy-facing (they don't touch the caster's totals); only the self-tagged
+    // ones subtract from the player's own resistance. Unenhanceable, and stored
+    // as a positive magnitude by the converter (makeEffect uses Math.abs), so we
+    // negate here. The nominal value is shown before any -Res debuff resistance.
+    if (effects.resistanceDebuff && typeof effects.resistanceDebuff === 'object') {
+      for (const [type, value] of Object.entries(effects.resistanceDebuff)) {
+        if (!isSelfDirectedEffect(value)) continue;
+        const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
+        if (!(key in global)) continue;
+        const percentage = resolveScaledEffect(value as ScalarOrScaled, archetypeId, buildLevel) * 100 * -1;
+        global[key] += percentage;
+        addToBreakdown(breakdown, key, {
+          name: power.name,
+          value: percentage,
+          type: 'active-power',
+        });
+      }
+    }
+
     // Debuff Resistance from active powers
     // Defense Debuff Resistance is enhanced by Defense enhancements
     if (effects.debuffResistance && typeof effects.debuffResistance === 'object') {
@@ -1575,6 +1604,24 @@ function applyActivePowerBonuses(
         ? effects.maxHPBuff
         : effects.maxHPBuff.scale;
       const value = scale * 10 * enhMultiplier;
+      global.maxHP += value;
+      addToBreakdown(breakdown, 'maxHP', {
+        name: power.name,
+        value,
+        type: 'active-power',
+      });
+    }
+
+    // Unenhanceable half of a +MaxHP twin (IgnoreStrength). Same base formula as
+    // maxHPBuff but with NO +Healing multiplier — the game flags this half so it
+    // ignores enhancement strength. Both halves co-apply (Inexhaustible, High
+    // Pain Tolerance, Dull Pain, …); the converter splits them into two slots so
+    // enhancing the power boosts only the enhanceable half.
+    if (effects.maxHPBuffUnenhanced !== undefined) {
+      const scale = typeof effects.maxHPBuffUnenhanced === 'number'
+        ? effects.maxHPBuffUnenhanced
+        : effects.maxHPBuffUnenhanced.scale;
+      const value = scale * 10;
       global.maxHP += value;
       addToBreakdown(breakdown, 'maxHP', {
         name: power.name,
@@ -3696,6 +3743,40 @@ function collectAllPowers(build: Build): PowerWithToggle[] {
     const cat = (power as { inherentCategory?: string }).inherentCategory;
     if (cat === 'fitness' || cat === 'archetype') continue;
     powers.push(power as unknown as PowerWithToggle);
+  }
+
+  // Active stance-toggle base effects. Bio Armor's stance is stored build-scoped
+  // on the parent's `activeSubPower`, and the granted stance toggles
+  // (Offensive/Defensive/Efficient Adaptation) are NOT persisted as their own
+  // build powers — so their OWN base effects (Offensive's -7.5% Res(all) self
+  // penalty, Defensive's -Damage) never reached the totals. Materialize the
+  // active stance's sub-power as a synthetic ACTIVE power so its base effects
+  // flow through applyActivePowerBonuses like any toggle. (The mode-gated
+  // conditionals it enables on OTHER powers are handled separately by
+  // expandActiveConditionals; those live on the base powers, not here.)
+  const stanceDefs = [primaryDef, secondaryDef];
+  for (const group of STANCE_GROUPS) {
+    const activeId = activeStanceOptionId(powers as { internalName: string; activeSubPower?: string }[], group);
+    const opt = group.options.find((o) => o.id === activeId);
+    if (!opt?.subPower) continue;
+    // Skip if a live copy of the toggle is already active in the list (avoids
+    // double-counting an imported/persisted active sub-power).
+    if (powers.some((p) => p.internalName === opt.subPower && p.isActive)) continue;
+    let subDef: { effects?: unknown; powerType?: string; targetType?: string; effectArea?: string } | undefined;
+    for (const def of stanceDefs) {
+      const found = def?.powers.find((p) => p.internalName === opt.subPower);
+      if (found) { subDef = found; break; }
+    }
+    if (!subDef?.effects || Object.keys(subDef.effects as object).length === 0) continue;
+    powers.push({
+      name: opt.label,
+      internalName: opt.subPower,
+      powerType: subDef.powerType,
+      targetType: subDef.targetType,
+      effectArea: subDef.effectArea,
+      isActive: true,
+      effects: subDef.effects,
+    } as unknown as PowerWithToggle);
   }
 
   return powers;

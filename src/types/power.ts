@@ -505,6 +505,10 @@ export interface PowerEffects {
   enduranceGain?: NumberOrScaled;
   /** Max HP buff */
   maxHPBuff?: NumberOrScaled;
+  /** Unenhanceable half of a +MaxHP twin (IgnoreStrength — "half of this max-HP
+   *  increase is unenhanceable"). Co-applies with maxHPBuff but ignores +Healing
+   *  strength; mirrors regenBuffUnenhanced / recoveryBuffUnenhanced. */
+  maxHPBuffUnenhanced?: NumberOrScaled;
   /** Max Endurance buff */
   maxEndBuff?: NumberOrScaled;
   /** Range buff */

@@ -60,22 +60,33 @@ describe('Trick Arrow effect-collapse fixes', () => {
     expect((e.durations as Record<string, number>).specialDebuff).toBe(60);
   });
 
-  it('③ self-buff twins are NOT coalesced/halved (Dull Pain +MaxHP stays 2)', () => {
-    const e = eff(DullPain);
-    expect(scaled(e.maxHPBuff).scale).toBe(2);
+  it('③ stack=Stack +MaxHP twin SUMS across both halves (Dull Pain total 2)', () => {
+    // Dull Pain's two scale-1 stack=Stack templates are distinct halves: one
+    // enhanceable (maxHPBuff), one IgnoreStrength (maxHPBuffUnenhanced). Both
+    // survive so the total stays 2 (+20%) while only the enhanceable half
+    // responds to +Healing. (Previously both summed into one enhanceable slot,
+    // over-enhancing the unenhanceable half.)
+    const e = eff(DullPain) as Record<string, any>;
+    expect(scaled(e.maxHPBuff).scale).toBe(1);
+    expect(scaled(e.maxHPBuffUnenhanced).scale).toBe(1);
+    expect(scaled(e.maxHPBuff).scale + scaled(e.maxHPBuffUnenhanced).scale).toBe(2);
     expect(scaled(e.maxHPBuff).unresistable).toBeUndefined();
   });
 
-  // ⑥ The IgnoreStrength/enhanceable +MaxHP twin combines per the templates'
-  // `stack` mode, not blindly. Dull Pain (above) uses stack=Stack → its two
-  // scale-1 templates SUM to 2 (+20%, verified in-game). Ailment Resistance
-  // (Revive) and Earth's Embrace use stack=Replace → their equal twins must NOT
-  // sum: a level-50 Brute reads +188.79 Max HP from Ailment Resistance in-game
-  // (scale 1.2 × Melee_HealSelf[50] 160.6345), which blind summation doubled to
-  // scale 2.4. Guards foldResourceSlot's Replace-collapse branch.
-  it('⑥ Replace-mode +MaxHP twins collapse (Ailment Resistance 1.2, Earth\'s Embrace 2)', () => {
-    expect(scaled(eff(Revive).maxHPBuff).scale).toBe(1.2);
-    expect(scaled(eff(EarthsEmbrace).maxHPBuff).scale).toBe(2);
+  // ⑥ The IgnoreStrength/enhanceable +MaxHP twin ALWAYS sums both halves,
+  // regardless of stack mode — verified in-game via Inexhaustible (stack=No)
+  // showing two +66.93 Max-HP entries totalling 133.86. Each half lands in its
+  // own slot: the enhanceable one in maxHPBuff, the IgnoreStrength one in
+  // maxHPBuffUnenhanced. So Revive's two scale-1.2 halves and Earth's Embrace's
+  // two scale-2 halves each keep BOTH (the earlier "Replace twins collapse to
+  // one half" reading, based on a mis-derived 188.79-HP figure, was wrong).
+  it('⑥ +MaxHP twins keep both halves (Revive 1.2+1.2, Earth\'s Embrace 2+2)', () => {
+    const r = eff(Revive) as Record<string, any>;
+    expect(scaled(r.maxHPBuff).scale).toBe(1.2);
+    expect(scaled(r.maxHPBuffUnenhanced).scale).toBe(1.2);
+    const e = eff(EarthsEmbrace) as Record<string, any>;
+    expect(scaled(e.maxHPBuff).scale).toBe(2);
+    expect(scaled(e.maxHPBuffUnenhanced).scale).toBe(2);
   });
 
   it('⑤ EMP Field surfaces the +Resistance buff and mez PROTECTION (not offense)', () => {

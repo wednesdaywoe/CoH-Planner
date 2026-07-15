@@ -50,10 +50,15 @@ export const BoundlessEnergy: Power = {
     "durations": {
       "debuffResistance": 5.25,
       "maxHPBuff": 5.25,
+      "maxHPBuffUnenhanced": 5.25,
       "recoveryBuff": 5.25,
       "regenBuff": 5.25
     },
     "maxHPBuff": {
+      "scale": 0.625,
+      "table": "Melee_HealSelf"
+    },
+    "maxHPBuffUnenhanced": {
       "scale": 0.625,
       "table": "Melee_HealSelf"
     },
@@ -75,9 +80,9 @@ export const BoundlessEnergy: Power = {
       "effects": {
         "buffDuration": 5.25,
         "durations": {
-          "maxHPBuff": 5.25
+          "maxHPBuffUnenhanced": 5.25
         },
-        "maxHPBuff": {
+        "maxHPBuffUnenhanced": {
           "scale": 0.5625,
           "table": "Melee_HealSelf"
         }

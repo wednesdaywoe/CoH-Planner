@@ -41,7 +41,7 @@ export const BaneSpiderArmor: Power = {
       "fear": 10.25,
       "hold": 10.25,
       "immobilize": 10.25,
-      "maxHPBuff": 10.25,
+      "maxHPBuffUnenhanced": 10.25,
       "mezResistance": 10.25,
       "resistance": 10.25,
       "sleep": 10.25,
@@ -63,7 +63,7 @@ export const BaneSpiderArmor: Power = {
       "scale": 4,
       "table": "Melee_Ones"
     },
-    "maxHPBuff": {
+    "maxHPBuffUnenhanced": {
       "scale": 2,
       "table": "Melee_HealSelf"
     },

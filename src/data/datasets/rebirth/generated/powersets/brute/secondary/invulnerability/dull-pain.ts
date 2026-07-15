@@ -41,10 +41,15 @@ export const DullPain: Power = {
   "effects": {
     "buffDuration": 120,
     "durations": {
-      "maxHPBuff": 120
+      "maxHPBuff": 120,
+      "maxHPBuffUnenhanced": 120
     },
     "maxHPBuff": {
-      "scale": 4,
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    },
+    "maxHPBuffUnenhanced": {
+      "scale": 2,
       "table": "Melee_HealSelf"
     },
     "maxStacks": 2,

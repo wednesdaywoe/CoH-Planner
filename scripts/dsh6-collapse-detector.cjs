@@ -100,6 +100,7 @@ const SLOT_TABLE = {
   slow: { et: 'Movement', sign: null, byType: true },
   // resources
   maxHPBuff: { et: 'MaxHP', sign: '+' },
+  maxHPBuffUnenhanced: { et: 'MaxHP', sign: '+' }, // IgnoreStrength half of the +MaxHP twin (Inexhaustible/High Pain Tolerance/Dull Pain)
   healing: { et: 'MaxHP', sign: '+' }, // heal shares MaxHP bridge? no — heal is effectType Heal; healing slot excluded from input check
   maxEndBuff: { et: 'MaxEndurance', sign: '+' },
   enduranceGain: { et: 'Endurance', sign: '+' },

@@ -44,9 +44,14 @@ export const FrostProtection: Power = {
     },
     "durations": {
       "debuffResistance": 10.3,
-      "maxHPBuff": 10.3
+      "maxHPBuff": 10.3,
+      "maxHPBuffUnenhanced": 10.3
     },
     "maxHPBuff": {
+      "scale": 0.5,
+      "table": "Melee_HealSelf"
+    },
+    "maxHPBuffUnenhanced": {
       "scale": 0.5,
       "table": "Melee_HealSelf"
     }

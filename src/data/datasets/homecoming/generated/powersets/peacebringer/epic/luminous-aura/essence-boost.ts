@@ -44,10 +44,15 @@ export const EssenceBoost: Power = {
     "buffDuration": 120,
     "durations": {
       "maxHPBuff": 120,
+      "maxHPBuffUnenhanced": 120,
       "resistance": 120
     },
     "maxHPBuff": {
-      "scale": 4,
+      "scale": 2,
+      "table": "Melee_HealSelf"
+    },
+    "maxHPBuffUnenhanced": {
+      "scale": 2,
       "table": "Melee_HealSelf"
     },
     "resistance": {

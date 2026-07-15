@@ -88,6 +88,34 @@ for (const ds of ['homecoming', 'rebirth'] as const) {
         expect(regen.perTarget, `${setId} Efficient regen perTarget`).toBeGreaterThan(0);
         expect(recovery.perTarget, `${setId} Efficient recovery perTarget`).toBeGreaterThan(0);
       });
+
+      // Inexhaustible's +MaxHP is a co-applied enhanceable/unenhanceable twin
+      // ("half of this max-HP increase is unenhanceable"). BOTH halves must
+      // survive as SEPARATE slots — verified in-game: the attribute monitor shows
+      // two +66.93 Max-HP entries (one enhanceable "on self", one "Ignores buffs
+      // and enhancements") totalling 133.86. The old single-slot fold collapsed
+      // the twin to one half, undercounting the power's MaxHP by ~50%.
+      it(`${setId}: Inexhaustible keeps BOTH halves of the +MaxHP twin`, () => {
+        const inex = getPowerset(setId)?.powers.find((p) => p.internalName === 'Inexhaustible');
+        if (!inex) return;
+        const effects = inex.effects as Record<string, any>;
+        expect(effects.maxHPBuff?.scale, `${setId} Inexhaustible enhanceable maxHP`).toBeGreaterThan(0);
+        expect(effects.maxHPBuffUnenhanced?.scale, `${setId} Inexhaustible unenhanceable maxHP`).toBeGreaterThan(0);
+        // The two halves are equal (each half of the total).
+        expect(effects.maxHPBuffUnenhanced.scale).toBeCloseTo(effects.maxHPBuff.scale, 4);
+      });
+
+      // Offensive Adaptation's -7.5% Res(all) is a SELF penalty, tagged
+      // toWho:'Self' so the calc subtracts it from the player's own resistance
+      // rather than treating it as an enemy-facing debuff.
+      it(`${setId}: Offensive Adaptation tags its -Res as a self penalty`, () => {
+        const off = getPowerset(setId)?.powers.find((p) => p.internalName === 'Offensive_Adaptation');
+        if (!off) return;
+        const rd = (off.effects as Record<string, any>)?.resistanceDebuff;
+        expect(rd, `${setId} Offensive resistanceDebuff`).toBeTruthy();
+        expect(rd.smashing?.toWho, `${setId} Offensive -Res(smashing) toWho`).toBe('Self');
+        expect(rd.smashing?.scale, `${setId} Offensive -Res(smashing) scale`).toBeGreaterThan(0);
+      });
     }
   });
 }

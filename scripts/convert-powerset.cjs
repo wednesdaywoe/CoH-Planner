@@ -3880,7 +3880,13 @@ function projectAtomsToEffects(atoms, powerName) {
       } else if (aspect === 'resistance') {
         if (isDebuff) {
           if (!effects.resistanceDebuff) effects.resistanceDebuff = {};
-          effects.resistanceDebuff[dmgType.toLowerCase()] = makeEffect();
+          const e = makeEffect();
+          // A self-directed -Res is a caster PENALTY (Bio Armor Offensive
+          // Adaptation's -7.5% Res(all)), not a foe debuff. Tag it so the calc
+          // subtracts it from the player's own resistance instead of treating
+          // it as enemy-facing (mirrors the damageDebuff self path above).
+          if (isSelfTargeting) e.toWho = 'Self';
+          effects.resistanceDebuff[dmgType.toLowerCase()] = e;
           recordDuration('resistanceDebuff');
         } else {
           if (!effects.resistance) effects.resistance = {};
@@ -3912,7 +3918,9 @@ function projectAtomsToEffects(atoms, powerName) {
       if (aspect === 'resistance') {
         if (isDebuff) {
           if (!effects.resistanceDebuff) effects.resistanceDebuff = {};
-          effects.resistanceDebuff[posType.toLowerCase()] = makeEffect();
+          const e = makeEffect();
+          if (isSelfTargeting) e.toWho = 'Self'; // self -Res penalty, see damage-type branch
+          effects.resistanceDebuff[posType.toLowerCase()] = e;
           recordDuration('resistanceDebuff');
         } else {
           if (!effects.resistance) effects.resistance = {};
@@ -4129,16 +4137,26 @@ function projectAtomsToEffects(atoms, powerName) {
           isDebuff,
           twin: isTwin,
           // `stack` is consumed by foldResourceSlot's Replace-collapse branch,
-          // which only fires for the +MaxHP twin idiom. Carry it on maxHPBuff
-          // alone so every other resource slot folds byte-identically.
-          ...(key === 'maxHPBuff' ? { stack: a._stack } : {}),
+          // which only fires for the +MaxHP twin idiom. Carry it on the maxHP
+          // slots alone so every other resource slot folds byte-identically.
+          ...(key === 'maxHPBuff' || key === 'maxHPBuffUnenhanced' ? { stack: a._stack } : {}),
           duration: duration && duration > 0 ? duration : null,
         });
 
       if (resType === 'hitPoints') {
         if (aspect === 'maximum') {
           if (isDebuff) continue;
-          addOrAccumulate('maxHPBuff');
+          // +MaxHP enhanceable/unenhanceable twin: many armors list their max-HP
+          // bonus as two Maximum templates on the same table — one enhanceable,
+          // one IgnoreStrength ("half of this max-HP increase is unenhanceable",
+          // e.g. Inexhaustible / High Pain Tolerance / Dull Pain). BOTH halves
+          // co-apply and SUM — verified in-game: Inexhaustible's attribute
+          // monitor shows two +66.93 Max-HP entries (one "on self", one "Ignores
+          // buffs and enhancements") totalling 133.86, regardless of the stack
+          // mode. Route the IgnoreStrength half to its own slot so both survive
+          // (the old single-slot fold collapsed same-table Replace twins to one
+          // half) AND only the enhanceable half responds to +Healing strength.
+          addOrAccumulate(a._flags?.includes('IgnoreStrength') ? 'maxHPBuffUnenhanced' : 'maxHPBuff');
         } else {
           addOrAccumulate('healing');
         }
