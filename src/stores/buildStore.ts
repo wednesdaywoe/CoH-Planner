@@ -594,49 +594,54 @@ function syncBuildDefinitions(build: Build): void {
 
 /**
  * Find a power across all categories.
- * When `categoryHint` is provided, searches that category first to avoid
- * collisions when multiple powers share the same internalName.
+ *
+ * `categoryHint` is AUTHORITATIVE: when given, the search is confined to that
+ * category and a miss returns null. It does NOT fall through to a bare-name
+ * search of the other categories.
+ *
+ * That distinction matters because `internalName` is not unique — the same name
+ * lives in two categories in ~23-28 places per dataset ([dominator] `Fire_Blast`
+ * = secondary Fire Blast and epic Rain of Fire). Falling through on a miss would
+ * answer a question nobody asked ("is there ANY power called X?") and hand back a
+ * DIFFERENT power, which callers then mutate via
+ * `applyPowerUpdate(found.category, …)` — writing to the wrong power. "Not in the
+ * category you named" must read as not-found, not as a cue to go guessing.
+ *
+ * With no hint the bare search remains, for callers that genuinely have no
+ * category (legacy `slotOrder` entries predating the `category` field). It is
+ * ambiguous for a collided name and cannot be otherwise — the stored data
+ * carries no powerSet to disambiguate with.
  */
 function findPower(
   build: Build,
   powerName: string,
   categoryHint?: PowerCategory
 ): { power: SelectedPower; category: PowerCategory } | null {
-  // If a category hint is provided, check that category first
-  if (categoryHint) {
-    const hinted = findPowerInCategory(build, powerName, categoryHint);
-    if (hinted) return hinted;
+  // A named category is the answer, hit or miss.
+  if (categoryHint) return findPowerInCategory(build, powerName, categoryHint);
+
+  // No hint: bare search in standard order, first match wins. (The per-category
+  // `categoryHint !== 'x'` guards that used to wrap each step are gone — with the
+  // hinted path returning above, categoryHint is always undefined here, so they
+  // were dead conditions implying a selectivity this branch does not have.)
+  const primaryPower = build.primary.powers.find((p) => p.internalName === powerName);
+  if (primaryPower) return { power: primaryPower, category: 'primary' };
+
+  const secondaryPower = build.secondary.powers.find((p) => p.internalName === powerName);
+  if (secondaryPower) return { power: secondaryPower, category: 'secondary' };
+
+  for (const pool of build.pools) {
+    const poolPower = pool.powers.find((p) => p.internalName === powerName);
+    if (poolPower) return { power: poolPower, category: 'pool' };
   }
 
-  // Fall through to standard search order
-  if (categoryHint !== 'primary') {
-    const primaryPower = build.primary.powers.find((p) => p.internalName === powerName);
-    if (primaryPower) return { power: primaryPower, category: 'primary' };
+  if (build.epicPool) {
+    const epicPower = build.epicPool.powers.find((p) => p.internalName === powerName);
+    if (epicPower) return { power: epicPower, category: 'epic' };
   }
 
-  if (categoryHint !== 'secondary') {
-    const secondaryPower = build.secondary.powers.find((p) => p.internalName === powerName);
-    if (secondaryPower) return { power: secondaryPower, category: 'secondary' };
-  }
-
-  if (categoryHint !== 'pool') {
-    for (const pool of build.pools) {
-      const poolPower = pool.powers.find((p) => p.internalName === powerName);
-      if (poolPower) return { power: poolPower, category: 'pool' };
-    }
-  }
-
-  if (categoryHint !== 'epic') {
-    if (build.epicPool) {
-      const epicPower = build.epicPool.powers.find((p) => p.internalName === powerName);
-      if (epicPower) return { power: epicPower, category: 'epic' };
-    }
-  }
-
-  if (categoryHint !== 'inherent') {
-    const inherentPower = build.inherents.find((p) => p.internalName === powerName);
-    if (inherentPower) return { power: inherentPower, category: 'inherent' };
-  }
+  const inherentPower = build.inherents.find((p) => p.internalName === powerName);
+  if (inherentPower) return { power: inherentPower, category: 'inherent' };
 
   return null;
 }
