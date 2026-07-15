@@ -50,7 +50,7 @@ import {
   type EnhancementBonuses,
 } from './enhancement-values';
 import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, maxHPBuffValue } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -1640,11 +1640,17 @@ function applyActivePowerBonuses(
     // The previous 5%/scale formula produced exactly half of each of
     // those numbers, which is what users were comparing against Mids
     // and seeing too low.
-    if (effects.maxHPBuff !== undefined) {
+    // Plan B Slice 5: sourced from atoms (`maxHPBuffValue` — the MaxHP buff atoms,
+    // aspect Max, split on `ignoreStrength`, restricted to the base set; verified
+    // bag-equal by scripts/planb-shadow-maxhp.cjs). `?? effects.maxHPBuff` keeps an
+    // atom-less legacy power on the bag. Read `.scale` directly (×10, no table
+    // resolution) — the atom value carries no perTarget for any MaxHP power.
+    const maxHPBuff = maxHPBuffValue(power) ?? effects.maxHPBuff;
+    if (maxHPBuff !== undefined) {
       const enhMultiplier = 1 + (enhBonuses.heal || 0);
-      const scale = typeof effects.maxHPBuff === 'number'
-        ? effects.maxHPBuff
-        : effects.maxHPBuff.scale;
+      const scale = typeof maxHPBuff === 'number'
+        ? maxHPBuff
+        : maxHPBuff.scale;
       const value = scale * 10 * enhMultiplier;
       global.maxHP += value;
       addToBreakdown(breakdown, 'maxHP', {
@@ -1657,12 +1663,14 @@ function applyActivePowerBonuses(
     // Unenhanceable half of a +MaxHP twin (IgnoreStrength). Same base formula as
     // maxHPBuff but with NO +Healing multiplier — the game flags this half so it
     // ignores enhancement strength. Both halves co-apply (Inexhaustible, High
-    // Pain Tolerance, Dull Pain, …); the converter splits them into two slots so
-    // enhancing the power boosts only the enhanceable half.
-    if (effects.maxHPBuffUnenhanced !== undefined) {
-      const scale = typeof effects.maxHPBuffUnenhanced === 'number'
-        ? effects.maxHPBuffUnenhanced
-        : effects.maxHPBuffUnenhanced.scale;
+    // Pain Tolerance, Dull Pain, …); the atom list carries the IgnoreStrength half
+    // as its own atom (`ignoreStrength:true`), which is exactly the twin split the
+    // bag re-materialized as a parallel `maxHPBuffUnenhanced` slot.
+    const maxHPBuffUnenhanced = maxHPBuffValue(power, { ignoreStrength: true }) ?? effects.maxHPBuffUnenhanced;
+    if (maxHPBuffUnenhanced !== undefined) {
+      const scale = typeof maxHPBuffUnenhanced === 'number'
+        ? maxHPBuffUnenhanced
+        : maxHPBuffUnenhanced.scale;
       const value = scale * 10;
       global.maxHP += value;
       addToBreakdown(breakdown, 'maxHP', {

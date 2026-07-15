@@ -150,5 +150,20 @@ if (datasets.includes('homecoming')) {
   console.log(`\n>>> ${cmd}`);
   execSync(cmd, { stdio: 'inherit' });
 }
+
+// Plan B Slice 5 — the atom-native max-HP appliers (character-totals.ts) read
+// `maxHPBuffValue(power)` / `maxHPBuffValue(power, {ignoreStrength:true})` in place
+// of `effects.maxHPBuff` / `effects.maxHPBuffUnenhanced`. This gate proves the +MaxHP
+// twin (Inexhaustible / High Pain Tolerance / Dull Pain: an enhanceable + an
+// IgnoreStrength half that co-apply and sum) reconstructs from atoms split on the
+// `ignoreStrength` flag — the first of the `*Unenhanced` twins to fold back into one
+// filter. Behavior-preserving (no data change). GATES (exit 1). (regen/recovery, the
+// other two twins, are a separate slice — their bag values depend on foldResourceSlot
+// SUM / StackByAttribAndKey / a shortHelp target-trap not on the wire atom.)
+{
+  const cmd = `node scripts/planb-shadow-maxhp.cjs ${datasets.map((d) => `--dataset ${d}`).join(' ')}`;
+  console.log(`\n>>> ${cmd}`);
+  execSync(cmd, { stdio: 'inherit' });
+}
 const secs = Number(process.hrtime.bigint() - started) / 1e9;
 console.log(`\n=== regen complete in ${secs.toFixed(0)}s ===`);

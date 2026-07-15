@@ -2,9 +2,19 @@
 
 > Status: **in progress** on branch `converter-atom-array` (as of 2026-07-15).
 > Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit) ✅ · Slice 2
-> (Damage) ✅ · Slice 3 (Resistance) ✅ · Slice 4 (Defense) ✅ — the ToHit, +Damage,
-> +Resistance, and +Defense appliers now read atoms, not the bag** · Phase 3 not
-> started. Slice 1 shipped in
+> (Damage) ✅ · Slice 3 (Resistance) ✅ · Slice 4 (Defense) ✅ · Slice 5 (Max-HP) ✅ —
+> the ToHit, +Damage, +Resistance, +Defense, and +MaxHP appliers now read atoms, not
+> the bag** · Phase 3 not started. Slice 5 migrates the +MaxHP twin
+> (`effects.maxHPBuff` + `effects.maxHPBuffUnenhanced`) — the FIRST of the
+> `*Unenhanced` twin family to literally fold into one `ignoreStrength` filter; it is a
+> pure runtime swap (NO converter change, generated tree byte-identical, like Slice 3)
+> gated by `scripts/planb-shadow-maxhp.cjs` at **194/194, 0 diverge**. Regen/recovery —
+> the OTHER two twins — are DEFERRED to their own slice: their bag values depend on
+> four behaviors not on the wire atom (foldResourceSlot same-table SUM, a regen-only
+> `StackByAttribAndKey` skip, an Expression+tick-chance-0 drop, and a description-text
+> target-trap filter) plus redirect/Execute_Power perTarget-stamp gaps, and a couple
+> (burst/tail resource summing) look like latent bag bugs (see §Slice 5). Slice 1
+> shipped in
 > two parts: (a) the Inner Light burst/tail fix (durationVariants on `tohitBuff`),
 > and (b) the applier migration itself — `character-totals.ts` sources +ToHit from
 > `toHitBuffValue(power)` (atoms), including a converter-STAMPED `perTarget` so the
@@ -529,6 +539,74 @@ incarnate, self-penalties):
   Defense has no active-power self-penalty applier (the Rage −20% def crash routes to
   `defenseDebuff` but nothing consumes it for the caster's totals today), so — unlike
   resistance — this slice migrated only the two buff appliers.
+
+  **Slice 5 — Max-HP: the +MaxHP twin migrated, NO data change (2026-07-15).**
+  `character-totals.ts` now sources +MaxHP from `maxHPBuffValue(power) ?? effects.maxHPBuff`
+  and its IgnoreStrength half from `maxHPBuffValue(power, {ignoreStrength:true}) ??
+  effects.maxHPBuffUnenhanced` (`atom-query.ts`). This is the FIRST of the `*Unenhanced`
+  twin family to literally collapse into a single `ignoreStrength` filter — the tax the
+  parallel slots paid (ToHit's Slice-1 twin used the same shape but the payoff is
+  clearest here: `maxHPBuff` vs `maxHPBuffUnenhanced` exist ONLY so the +Healing
+  strength multiplier hits the enhanceable half, and the atom already carries
+  `ignoreStrength` per template). Reconstruction is the simplest yet: the base MaxHP
+  atoms with aspect `Max` (a non-Max HitPoints atom is a HEAL → `effects.healing`), not
+  a debuff, split on `ignoreStrength`, rebuilt via the shared `perTargetValueOf` — no
+  MaxHP power in the corpus carries a per-target increment, so it resolves to the bag's
+  folded `scale` (the applier reads `.scale` directly, ×10, no table resolution). Like
+  Slice 3 it touches ONLY the runtime — the converter is untouched, so a full regen
+  leaves the generated tree **byte-identical** (git diff on `generated/` empty). Gated
+  by `scripts/planb-shadow-maxhp.cjs` (**194/194 slots, 0 diverge**, wired into `npm run
+  regen`) and pinned by `maxhp-atom-native.verify.test.ts` (High Pain Tolerance twin
+  1+1 → +20%; Black Dwarf IgnoreStrength-only 7.5; Dull Pain twin 2+2 sourced through a
+  redirect / `activation_effects` whose base `effects` is empty — proves the atoms come
+  from `allTemplates`, not just `powerJson.effects`). **The gate was mutation-tested:**
+  doubling the value → 194 red; flipping the `ignoreStrength` split → 128 red (Black
+  Dwarf, One with the Shield, True Grit — the single-half and differing-scale twins);
+  dropping the `ignoreStrength` filter (merging the halves) → 64 red — all three axes
+  actually verified.
+
+  **Why regen/recovery — the OTHER two twins — are NOT migrated here.** A first cut that
+  reused `perTargetValueOf` for all three scalar resources diverged on **93 powers, all
+  regen/recovery (maxHP = 0)**. Categorized against the real converter
+  (`scripts/planb-shadow-*` + the exported input in `exported_powers/`), the regen/recovery
+  bag value depends on four behaviors that are NOT on the wire atom, so the naive
+  helper ships a WRONG non-`undefined` value (no bag fallback):
+  - **`foldResourceSlot` same-table SUM** (~17): the bag RAW-sums every same-table buff
+    template (Obscure Sustenance recovery `0.6+0.38+0.1=1.08`; Icy Bastion recovery
+    `2+2=4`); `perTargetValueOf` picks one bucket.
+  - **regen-only `StackByAttribAndKey` skip** (~10): the regeneration routing (but NOT
+    recovery) SKIPS `StackByAttribAndKey` lingering templates — Icy Bastion regen stays
+    6 and drops its `4 @ 30s` lingering, while recovery sums its `2 @ 0.75s` burst +
+    `2 @ 30s` lingering. The flag is a template `flags[]` entry, not on the atom.
+  - **Expression+tick-chance-0 drop** (16 `recoveryBuffUnenhanced`): the RESOURCES routing
+    guard drops these (Gravity Shield); all 16 are `attribType:'Expression'` (derivable),
+    but the guard also keys on `_tickChance` (not on the atom).
+  - **description-text target-trap filter** (~19): the converter drops
+    `recoveryBuff`/`regenBuff` on MM pet-only and Thunderspy foe powers UNLESS the
+    `shortHelp` text advertises "Self +Recovery" (`guardThunderspyOnesBuffs` in
+    convert-powerset.cjs). Pure text + `targets_affected` heuristic — nothing on the atom.
+
+    Plus **redirect/Execute_Power perTarget-stamp gaps** (~15): Consume/Devour Psyche
+    (redirect-only, `RefreshToCount` ×10) and Reactive Regeneration (Execute_Power
+    redirect) compute perTarget on a SEPARATELY-parsed redirect JSON, so the
+    `_perTargetIncrement` stamp lands on redirect template objects, not the `allTemplates`
+    that become the emitted atoms; the signature reconciliation at the emit site only
+    covers `redirectPerTargetSigs`, not the AoE-path patches. (6 more are redirect-only
+    powers with EMPTY base atoms → helper returns `undefined` → safe bag fallback.)
+
+    Two of these look less like reconstruction gaps and more like **latent bag bugs**:
+    Icy Bastion recovery summing a burst + lingering into `+4` is the Inner Light
+    additive-overlap shape, and the regen-only `StackByAttribAndKey` skip drops a real
+    30s lingering buff. Those are game-correctness calls. Per the maintainer's decision
+    (2026-07-15): ship the clean maxHP twin now; regen/recovery is its own slice, where
+    the fold-SUM / Expression / scale-0 drops reconstruct from atoms, the
+    `StackByAttribAndKey`/target-trap verdicts + perTarget-stamp gaps get a converter
+    fix, and the burst/tail-sum correctness questions are verified against in-game/Mids
+    rather than auto-matched.
+
+  **Known interim compromise (same as Slices 1–4):** MaxHP has no self-STACK or per-foe
+  axis in the corpus, so the applier reads the atom `.scale` directly with no
+  `adjustForStacking` — unchanged from before the migration.
 
 ### Phase 3 — Bag becomes UI-only; then delete
 - Point the calc entirely at atoms; the bag is produced solely for the

@@ -660,6 +660,47 @@ export function defenseBuffSuppressibleValue(
   return defenseBuffByType(power, true);
 }
 
+/**
+ * The atom-native `maxHPBuff` — the +MaxHP buff the calc reads today off
+ * `effects.maxHPBuff` (`{ ignoreStrength: true }` → the `maxHPBuffUnenhanced` twin).
+ * This is the FIRST of the `*Unenhanced` twin family to fold back into a single
+ * `ignoreStrength` filter, repaying the tax the parallel slots paid: the bag mints
+ * `maxHPBuff` vs `maxHPBuffUnenhanced` as two hand-rolled slots purely so the +Healing
+ * strength multiplier hits only the enhanceable half (Inexhaustible / High Pain
+ * Tolerance / Dull Pain list their +MaxHP as an enhanceable + an IgnoreStrength
+ * template that co-apply and SUM).
+ *
+ * Mirrors the bag's HitPoints routing (`convert-powerset.cjs` RESOURCES branch): a
+ * MaxHP atom is a +MaxHP buff when its aspect is `Max` (a non-Max HitPoints atom is a
+ * HEAL → `effects.healing`, not this slot), it is not a debuff ({@link isDebuffAtom} —
+ * a −MaxHP is skipped), and its `ignoreStrength` matches the requested half. The value
+ * is rebuilt by the shared {@link perTargetValueOf}; no MaxHP power in the corpus
+ * carries a per-target increment, so this resolves to the bag's folded `scale`
+ * (the maxHP applier reads `.scale` directly, ×10, with no table resolution).
+ *
+ * Returns `undefined` when the power has no such atom — the caller falls back to the
+ * bag (an atom-less legacy power keeps its `effects.maxHPBuff`; see {@link atomsOf}).
+ * Verified bag-equal corpus-wide by `scripts/planb-shadow-maxhp.cjs`.
+ *
+ * NB regen/recovery — the OTHER two `*Unenhanced` twins — are NOT migrated here: the
+ * bag's regen/recovery values also depend on `foldResourceSlot`'s same-table SUM, a
+ * regen-only `StackByAttribAndKey` skip, and a description-text target-trap filter,
+ * none of which is on the wire atom. That is its own slice.
+ */
+export function maxHPBuffValue(
+  power: AtomSource,
+  opts: { ignoreStrength?: boolean } = {},
+): { scale: number; table: string; perTarget?: number } | undefined {
+  const wantIgnoreStrength = opts.ignoreStrength ?? false;
+  const atoms = baseAtomsOfType(power, 'MaxHP').filter(
+    (a) =>
+      a.aspect === 'Max' &&
+      !!a.ignoreStrength === wantIgnoreStrength &&
+      !isDebuffAtom(a),
+  );
+  return perTargetValueOf(atoms);
+}
+
 /** Σ of `val(a)` over atoms with a DISTINCT `|val|` (dedup the type/duration copies). */
 function sumDistinctAbs(atoms: readonly AtomicEffect[], val: (a: AtomicEffect) => number): number {
   const seen = new Set<number>();
