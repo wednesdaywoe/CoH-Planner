@@ -434,6 +434,105 @@ export function damageBuffValue(
   return { scale: primary.scale, table };
 }
 
+/**
+ * The eight standard damage-type resistance globals (`resSmashing`…`resPsionic`)
+ * — the ONLY resistance types the calc totals. Restricting the resistance helpers
+ * to these sidesteps the atom-bridge/bag routing disagreements on every OTHER
+ * subType, none of which reaches a `res<Type>` total anyway:
+ *   - `All` (from a `base_defense`@Res template) — the atom bridge labels it
+ *     `Resistance`/`All`, but the bag routes `base_defense`@resistance to
+ *     `debuffResistance.defense` (defense-debuff resistance), not `resistance`.
+ *   - `Radiation`/`Electrical`/`Sonic`/`Quantum`/`Unique*` — the atom bridge
+ *     covers these Kheldian/signature types; the bag's `DAMAGE_TYPES` does not,
+ *     so it drops them (and there is no `resRadiation` global regardless).
+ *   - `Heal` (from `heal_dmg`@Res) — the atom bridge maps it to `HealResistance`;
+ *     the bag keys `resistance.heal`, but `resHeal` is not a global either.
+ *   - `Special` — no `resSpecial` global.
+ * All are behavior-irrelevant to the caster's resistance totals, so excluding
+ * them is behavior-preserving and makes the shadow a clean per-type equality.
+ */
+const RESIST_STD_SUBTYPES = new Set([
+  'Smashing', 'Lethal', 'Fire', 'Cold', 'Energy', 'Negative', 'Toxic', 'Psionic',
+]);
+
+/** True when an atom is a resistance DEBUFF (bag `isDebuff`): negative scale, or a
+ *  `*_debuff` table (a −resistance at scale ≥ 0 on a debuff table still debuffs). */
+function isResistanceDebuff(a: AtomicEffect): boolean {
+  return a.scale < 0 || (a.modifierTable || '').toLowerCase().includes('debuff');
+}
+
+/**
+ * The atom-native `effects.resistance` — the per-damage-type +resistance BUFF the
+ * calc reads today (line ~1258 of character-totals.ts), reconstructed from atoms.
+ * Returns an object keyed by lowercase damage type (`{ smashing: { scale, table,
+ * perTarget? }, … }`), the SAME shape the applier already iterates, so the applier
+ * body is unchanged — only its source swaps to `resistanceBuffValue(power) ??
+ * effects.resistance`.
+ *
+ * Mirrors the bag's routing exactly for the eight standard types
+ * ({@link RESIST_STD_SUBTYPES}): a `Resistance`/aspect-`Res` atom is a BUFF when it
+ * is not a debuff ({@link isResistanceDebuff} — so scale-0 "expression" entries on
+ * a non-debuff table are kept, matching the bag). Per type, the value is rebuilt
+ * by the shared {@link perTargetValueOf}: an AoE self-resistance that grows per foe
+ * (Bio Armor's Evolving Armor: +0.5 base +0.05/foe → `{ scale: 0.55, perTarget:
+ * 0.05 }`) reconstructs from its converter-stamped increment atom; a plain buff is
+ * its `|scale|`. `toWho` is NOT filtered — an ally-cast resistance buff routes to
+ * `effects.resistance` too, and the applier adds it to the caster's totals.
+ *
+ * Returns `undefined` when no standard-type buff atom exists (→ bag fallback; see
+ * {@link atomsOf}). Verified bag-equal corpus-wide by
+ * `scripts/planb-shadow-resistance.cjs`.
+ */
+export function resistanceBuffValue(
+  power: AtomSource,
+): Record<string, { scale: number; table: string; perTarget?: number }> | undefined {
+  const atoms = baseAtomsOfType(power, 'Resistance').filter(
+    (a) => a.aspect === 'Res' && RESIST_STD_SUBTYPES.has(a.subType ?? '') && !isResistanceDebuff(a),
+  );
+  if (!atoms.length) return undefined;
+  const out: Record<string, { scale: number; table: string; perTarget?: number }> = {};
+  for (const [type, group] of bySubType(atoms)) {
+    const v = perTargetValueOf(group);
+    if (v) out[type.toLowerCase()] = v;
+  }
+  return Object.keys(out).length ? out : undefined;
+}
+
+/**
+ * The atom-native self-directed −resistance PENALTY — the caster's own resistance
+ * loss the calc reads today off the `toWho:'Self'` entries of
+ * `effects.resistanceDebuff` (Bio Armor Offensive Adaptation's −7.5% Res(all);
+ * line ~1282). Returns `{ smashing: { scale, table, toWho:'Self' }, … }` keyed by
+ * lowercase standard type — the applier still runs its `isSelfDirectedEffect`
+ * filter (a no-op here since every entry is already self-directed, but it keeps the
+ * bag-fallback path correct, where foe debuffs share the slot).
+ *
+ * A resistance atom is a self-penalty when it is a debuff ({@link isResistanceDebuff})
+ * landing on the caster (`toWho` Self/All). Per type the value is `|scale|` of the
+ * last such atom (last-write-wins, matching the bag's direct slot assignment).
+ *
+ * Returns `undefined` when the power has no standard-type self-penalty atom (→ bag
+ * fallback). Verified bag-equal corpus-wide by `scripts/planb-shadow-resistance.cjs`.
+ */
+export function resistanceSelfDebuffValue(
+  power: AtomSource,
+): Record<string, { scale: number; table: string; toWho: 'Self' }> | undefined {
+  const atoms = baseAtomsOfType(power, 'Resistance').filter(
+    (a) =>
+      a.aspect === 'Res' &&
+      RESIST_STD_SUBTYPES.has(a.subType ?? '') &&
+      isResistanceDebuff(a) &&
+      (a.toWho === 'Self' || a.toWho === 'All'),
+  );
+  if (!atoms.length) return undefined;
+  const out: Record<string, { scale: number; table: string; toWho: 'Self' }> = {};
+  for (const [type, group] of bySubType(atoms)) {
+    const last = group[group.length - 1];
+    out[type.toLowerCase()] = { scale: Math.abs(last.scale), table: last.modifierTable, toWho: 'Self' };
+  }
+  return out;
+}
+
 /** Σ of `val(a)` over atoms with a DISTINCT `|val|` (dedup the type/duration copies). */
 function sumDistinctAbs(atoms: readonly AtomicEffect[], val: (a: AtomicEffect) => number): number {
   const seen = new Set<number>();

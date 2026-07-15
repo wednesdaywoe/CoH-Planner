@@ -2,17 +2,23 @@
 
 > Status: **in progress** on branch `converter-atom-array` (as of 2026-07-15).
 > Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit) ✅ · Slice 2
-> (Damage) ✅ — the ToHit and +Damage appliers now read atoms, not the bag** ·
-> Phase 3 not started. Slice 1 shipped in two parts: (a) the Inner Light burst/tail
-> fix (durationVariants on `tohitBuff`), and (b) the applier migration itself —
-> `character-totals.ts` sources +ToHit from `toHitBuffValue(power)` (atoms),
-> including a converter-STAMPED `perTarget` so the per-foe sliders (Soul Drain 1 vs
-> 8 targets) keep working. Behavior-preserving by construction: the atom value is
-> verified bag-equal corpus-wide (`scripts/planb-shadow-pertarget.cjs`) and the
-> applier falls back to the bag for any atom-less power. Slice 2 does the same for
-> `damageBuff` (see §Slice 2), and additionally root-fixes a per-foe over-count
-> that had inflated Rebirth's +Damage/+Def/+Regen ~8× — the shadow now gates both
-> slots at **1252/1252 agree, 0 diverge**
+> (Damage) ✅ · Slice 3 (Resistance) ✅ — the ToHit, +Damage, and +Resistance
+> appliers now read atoms, not the bag** · Phase 3 not started. Slice 1 shipped in
+> two parts: (a) the Inner Light burst/tail fix (durationVariants on `tohitBuff`),
+> and (b) the applier migration itself — `character-totals.ts` sources +ToHit from
+> `toHitBuffValue(power)` (atoms), including a converter-STAMPED `perTarget` so the
+> per-foe sliders (Soul Drain 1 vs 8 targets) keep working. Behavior-preserving by
+> construction: the atom value is verified bag-equal corpus-wide
+> (`scripts/planb-shadow-pertarget.cjs`) and the applier falls back to the bag for
+> any atom-less power. Slice 2 does the same for `damageBuff` (see §Slice 2), and
+> additionally root-fixes a per-foe over-count that had inflated Rebirth's
+> +Damage/+Def/+Regen ~8× — the shadow gates both slots at **1252/1252 agree, 0
+> diverge**. Slice 3 migrates the per-damage-type +Res buff (`effects.resistance`)
+> and the self-directed −Res penalty (Offensive Adaptation), reusing Slice 2's
+> perTarget stamp for Bio Armor's per-foe Evolving Armor;
+> `scripts/planb-shadow-resistance.cjs` gates it at **3204/3204 buff + 72/72 self,
+> 0 diverge**. Slice 3 touches NO converter code, so it changes no generated data —
+> a pure runtime-applier swap (see §Slice 3)
 >
 > Companion to the shipped interim guard (DSH6c discriminator gate, 2026-07-14).
 > See [[converter-bag-vs-array-rootcause]], [[dsh6-collapse-detector]],
@@ -399,6 +405,55 @@ incarnate, self-penalties):
   skips a non-uniform buff (Embrace of Fire's Fire-only +10 is 1 type ≠ 8) and a
   per-foe damageBuff (the reshape rebuilds that slot as `{scale, perTarget}`,
   dropping the variant). Regen changes exactly those burst/tail powers, nothing else.
+
+  **Slice 3 — Resistance: two appliers migrated, NO data change (2026-07-15).**
+  `character-totals.ts` now sources the per-damage-type +Res buff from
+  `resistanceBuffValue(power) ?? effects.resistance` and the self-directed −Res
+  penalty from `resistanceSelfDebuffValue(power) ?? effects.resistanceDebuff`
+  (`atom-query.ts`). Unlike Slices 1–2 this touches ONLY the runtime — the converter
+  is untouched, the perTarget stamp it needs already exists from Slice 2's general
+  axis, so a full regen leaves the generated tree **byte-identical** (git diff on
+  `generated/` empty). Gated by `scripts/planb-shadow-resistance.cjs`
+  (**3204/3204 buff type-slots + 72/72 self, 0 diverge**, wired into `npm run
+  regen`) and pinned by `resistance-atom-native.verify.test.ts` (Fire Shield S/L/F=3
+  Cold=1; Evolving Armor +0.55 +0.05/foe on S/L/Tox; Offensive Adaptation −0.075 ×8).
+
+  **What comparing correctly turned out to mean (the Slice-1/2 lesson again).**
+  Resistance is NOT scalar and NOT collapsed like damage — each damage type is its
+  own `res<Type>` global, so the value is a per-type MAP, not one headline. The first
+  cut compared every atom subType against the bag and flagged ~519 powers, all from
+  atom-bridge/bag routing DISAGREEMENTS on non-standard subTypes that never reach a
+  resistance total:
+  - `All` (from a `base_defense`@Res template) — the atom bridge labels it
+    `Resistance`/`All`, but the bag routes `base_defense`@resistance to
+    `debuffResistance.defense` (defense-debuff resistance);
+  - exotic `Radiation`/`Electrical`/`Sonic`/`Quantum` — the atom bridge covers these
+    Kheldian/signature types, the bag's `DAMAGE_TYPES` does not, so it drops them
+    (and there is no `resRadiation` global regardless);
+  - `Heal` (`heal_dmg`@Res) — atom bridge → `HealResistance`; bag keys
+    `resistance.heal`, but `resHeal` is not a global either.
+  The resolution is the same shape as "sum at one target" from ToHit: compare only
+  what survives to a total. The helpers restrict to the **eight standard damage-type
+  globals** (`RESIST_STD_SUBTYPES`: Smashing…Psionic); every excluded subType adds
+  zero on BOTH sides, so dropping it is behavior-preserving and makes the shadow a
+  clean per-type equality. Two more bag facts had to be mirrored exactly: scale-0
+  "expression" entries are BUFFS (the bag's `isDebuff` is `scale<0 || debuffTable`,
+  so scale-0 on a non-debuff table is kept, not dropped — Agile's `Melee_Ones` 0s);
+  and Bio Armor's Evolving Armor is a per-foe self-buff whose increment reconstructs
+  via the shared `perTargetValueOf` (+0.55 base + 0.05/foe → `{scale:0.55,
+  perTarget:0.05}`), NOT a plain `|scale|`.
+
+  **The gate was mutation-tested, not just observed green** (the [[dsh6c-discriminator-gate]]
+  discipline). Perturbing the buff scale → 0/3204 buff agree; the self scale →
+  0/72 self agree; stripping `perTarget` from the buff atoms turns EXACTLY the 72
+  Evolving Armor slots red (3204→3132) — so all three axes (buff value, self value,
+  per-foe increment) are actually verified, not vacuously passing.
+
+  **Known interim compromise (same as Slices 1–2):** the self-STACK meta stays a
+  bag read, keyed by SLOT NAME (`adjustForStacking(value, …, 'resistance',
+  effects.maxStacks, …)`). The per-FOE axis IS atom-native (the Slice-2 stamp,
+  reused here). The `unresistable` twin flag on a resistance value is UI-only — the
+  calc ignores it for resistance — so it is left on the bag projection.
 
 ### Phase 3 — Bag becomes UI-only; then delete
 - Point the calc entirely at atoms; the bag is produced solely for the

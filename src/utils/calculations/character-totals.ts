@@ -50,7 +50,7 @@ import {
   type EnhancementBonuses,
 } from './enhancement-values';
 import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
-import { toHitBuffValue, damageBuffValue } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -1255,8 +1255,13 @@ function applyActivePowerBonuses(
 
     // Resistance from active powers
     // Enhanced by Resistance enhancements
-    if (effects.resistance && typeof effects.resistance === 'object') {
-      const res = effects.resistance;
+    // Plan B Slice 3: sourced from atoms (`resistanceBuffValue` rebuilds each
+    // damage type's { scale, perTarget } — Bio Armor's per-foe Evolving Armor —
+    // restricted to the 8 standard resistance globals); `?? effects.resistance`
+    // keeps an atom-less legacy power on the bag. Verified bag-equal by
+    // scripts/planb-shadow-resistance.cjs. Stacking meta stays a bag read (slot-keyed).
+    const res = resistanceBuffValue(power) ?? effects.resistance;
+    if (res && typeof res === 'object') {
       const enhMultiplier = 1 + (enhBonuses.resistance || 0);
       for (const [type, value] of Object.entries(res)) {
         const adjustedRes = adjustForStacking(value, targetsHitValues[power.internalName], effects.stacksLinear, 'resistance', effects.maxStacks, effects.stackCaps);
@@ -1279,8 +1284,14 @@ function applyActivePowerBonuses(
     // ones subtract from the player's own resistance. Unenhanceable, and stored
     // as a positive magnitude by the converter (makeEffect uses Math.abs), so we
     // negate here. The nominal value is shown before any -Res debuff resistance.
-    if (effects.resistanceDebuff && typeof effects.resistanceDebuff === 'object') {
-      for (const [type, value] of Object.entries(effects.resistanceDebuff)) {
+    // Plan B Slice 3: sourced from atoms (`resistanceSelfDebuffValue` — the
+    // self-directed −Res atoms only, per standard type); `?? effects.resistanceDebuff`
+    // keeps an atom-less legacy power on the bag (where the `isSelfDirectedEffect`
+    // filter still separates the self penalty from co-slotted foe debuffs). Verified
+    // bag-equal by scripts/planb-shadow-resistance.cjs.
+    const resSelfDebuff = resistanceSelfDebuffValue(power) ?? effects.resistanceDebuff;
+    if (resSelfDebuff && typeof resSelfDebuff === 'object') {
+      for (const [type, value] of Object.entries(resSelfDebuff)) {
         if (!isSelfDirectedEffect(value)) continue;
         const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (!(key in global)) continue;

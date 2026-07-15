@@ -122,5 +122,18 @@ if (datasets.includes('homecoming')) {
   console.log(`\n>>> ${cmd}`);
   execSync(cmd, { stdio: 'inherit' });
 }
+
+// Plan B Slice 3 — the atom-native resistance appliers (character-totals.ts) read
+// `resistanceBuffValue(power)` / `resistanceSelfDebuffValue(power)` in place of
+// `effects.resistance` / the self-directed `effects.resistanceDebuff` entries. This
+// gate proves the per-damage-type reconstruction (scale + converter-stamped
+// perTarget — Bio Armor's per-foe Evolving Armor) still reproduces the bag for the
+// eight standard resistance globals, so every +Res total and self −Res penalty
+// (Offensive Adaptation) stay correct after a parser/converter change. GATES (exit 1).
+{
+  const cmd = `node scripts/planb-shadow-resistance.cjs ${datasets.map((d) => `--dataset ${d}`).join(' ')}`;
+  console.log(`\n>>> ${cmd}`);
+  execSync(cmd, { stdio: 'inherit' });
+}
 const secs = Number(process.hrtime.bigint() - started) / 1e9;
 console.log(`\n=== regen complete in ${secs.toFixed(0)}s ===`);
