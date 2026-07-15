@@ -124,5 +124,30 @@ export const PowerBoost: Power = {
         "table": "Melee_Stun"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Enhancement","Stunned",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Sleep",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Confused",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Terrorized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Immobilized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Held",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Fly",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","All",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Melee",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Ranged",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","AoE",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Smashing",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Lethal",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Fire",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Cold",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Energy",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Negative",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Psionic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Heal",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["ToHit",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Endurance",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ]
 };

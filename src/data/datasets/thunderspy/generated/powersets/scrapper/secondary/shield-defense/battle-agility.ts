@@ -28,5 +28,10 @@ export const BattleAgility: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,100,1,120,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,0.5,1,120,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

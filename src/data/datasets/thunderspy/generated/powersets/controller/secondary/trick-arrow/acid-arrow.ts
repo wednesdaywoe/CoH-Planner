@@ -58,5 +58,11 @@ export const AcidArrow: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.01,1,20,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,-2,1,20,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

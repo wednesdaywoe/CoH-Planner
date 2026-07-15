@@ -43,5 +43,12 @@ export const AgingTouch: Power = {
       "scale": 2.54,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Knockback",2.54,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.15,1,10,"Melee_SpeedFlying","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.1,1,10,"Melee_SpeedJumping","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.066,1,8.5,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

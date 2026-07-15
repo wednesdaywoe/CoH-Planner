@@ -77,5 +77,14 @@ export const PsionicShield: Power = {
         "table": "Melee_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Fire",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",0.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Endurance",null,0.75,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+  ]
 };

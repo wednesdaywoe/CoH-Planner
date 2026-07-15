@@ -59,5 +59,13 @@ export const Rebirth: Power = {
       "scale": 0.5,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"1"],
+    ["Heal",null,5,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
+    ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,0.454545,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+  ]
 };

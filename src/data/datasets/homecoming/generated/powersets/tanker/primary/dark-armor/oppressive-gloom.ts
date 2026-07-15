@@ -62,5 +62,10 @@ export const OppressiveGloom: Power = {
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Special",0.0786,1,0,"Melee_Damage","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !"]
+  ]
 };

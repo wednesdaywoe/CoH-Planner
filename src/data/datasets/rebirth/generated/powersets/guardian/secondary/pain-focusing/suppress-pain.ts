@@ -50,5 +50,8 @@ export const SuppressPain: Power = {
       "scale": 2,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Regeneration",null,2,1,4.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+  ]
 };

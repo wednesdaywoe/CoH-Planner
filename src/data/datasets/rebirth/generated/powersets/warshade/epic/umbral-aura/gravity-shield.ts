@@ -54,5 +54,10 @@ export const GravityShield: Power = {
         "table": "Melee_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Recovery",null,1,1,2,"Melee_Ones","Cur","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"]
+  ]
 };

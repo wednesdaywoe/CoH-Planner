@@ -28,5 +28,8 @@ export const FieryEmbrace: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,1,1,20,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"]
+  ]
 };

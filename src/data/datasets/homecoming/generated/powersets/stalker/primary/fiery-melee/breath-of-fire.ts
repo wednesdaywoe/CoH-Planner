@@ -59,6 +59,11 @@ export const BreathofFire: Power = {
       "cancelOnMiss": true
     }
   ],
+  "atoms": [
+    ["Damage","Fire",0.3744,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
+    ["Damage","Fire",0.071,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

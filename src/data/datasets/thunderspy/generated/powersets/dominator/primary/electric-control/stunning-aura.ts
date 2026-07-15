@@ -54,5 +54,9 @@ export const StunningAura: Power = {
       "scale": 0.15,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Endurance",null,-0.075,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,0.15,1,2.25,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

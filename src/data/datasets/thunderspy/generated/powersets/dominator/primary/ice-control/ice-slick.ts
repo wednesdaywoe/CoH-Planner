@@ -37,5 +37,8 @@ export const IceSlick: Power = {
       "entity": "Pets_IceSlick",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

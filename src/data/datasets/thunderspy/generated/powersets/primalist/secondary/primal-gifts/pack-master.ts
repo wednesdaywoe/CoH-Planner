@@ -31,5 +31,23 @@ export const PackMaster: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,0.05,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
+    ["Unmapped",null,0.1,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
+    ["Unmapped",null,1.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
+    ["Unmapped",null,1.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&"],
+    ["Unmapped",null,2.4,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! && entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.1,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.1,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? entref target> entref source> eq ! &&"],
+    ["Unmapped",null,0.2,0,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerMode Source.Mode? entref target> entref source> eq ! &&"]
+  ],
   "mechanicType": "parentMechanic"
 };

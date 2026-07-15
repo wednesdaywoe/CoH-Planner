@@ -65,6 +65,11 @@ export const FlashBang: Power = {
       "table": "Ranged_Debuff_ToHit"
     }
   },
+  "atoms": [
+    ["ToHit",null,0.5,1,20,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Damage","Energy",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

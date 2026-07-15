@@ -28,5 +28,8 @@ export const FieryEmbrace: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["GlobalChanceMod",null,1,1,20,"Melee_Ones","Cur","Magnitude","All","PvE",false,"Replace",2,null,null,1,null,true]
+  ]
 };

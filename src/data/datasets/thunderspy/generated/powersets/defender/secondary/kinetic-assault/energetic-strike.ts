@@ -44,6 +44,17 @@ export const EnergeticStrike: Power = {
     "scale": 2.314,
     "table": "Melee_Damage"
   },
+  "atoms": [
+    ["Damage","Smashing",1,1,10,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Lethal",1,1,10,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Energy",1,1,10,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Negative",1,1,10,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Fire",1,1,10,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Cold",1,1,10,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Toxic",1,1,10,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Psionic",1,1,10,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2.314,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "conditionalEffects": [
     {
       "id": "kinetic_assault_impulse",

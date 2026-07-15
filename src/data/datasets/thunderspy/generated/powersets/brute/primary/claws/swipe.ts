@@ -44,5 +44,10 @@ export const Swipe: Power = {
     "scale": 1.24,
     "table": "Melee_Damage"
   },
+  "atoms": [
+    ["Unmapped",null,1.24,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Unmapped",null,0.558,0,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Brute_Defense.Shield_Defense ! Brute_Defense.Stone_Armor ! &&"
 };

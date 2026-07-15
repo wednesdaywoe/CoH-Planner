@@ -59,5 +59,12 @@ export const FollowUp: Power = {
       "table": "Melee_Buff_ToHit"
     }
   },
+  "atoms": [
+    ["Unmapped",null,0.6384,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,1,1,10,"Melee_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,3,1,10,"Melee_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,1,6,"Melee_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Widow_Training.Night_Widow_Training.Build_Up !"
 };

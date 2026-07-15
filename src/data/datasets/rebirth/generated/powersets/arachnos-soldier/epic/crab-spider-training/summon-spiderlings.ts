@@ -46,5 +46,10 @@ export const SummonSpiderlings: Power = {
       "entityCount": 3,
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,240,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,240,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,240,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
+  ]
 };

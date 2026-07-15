@@ -64,5 +64,10 @@ export const ActiveDefense: Power = {
       }
     }
   },
+  "atoms": [
+    ["Defense","Melee",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Smashing",1.65,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Lethal",1.65,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Brute_Melee.Dual_Blades Brute_Melee.Claws || Brute_Melee.Staff_Fighting || Brute_Melee.Katana || Brute_Melee.Titan_Weapons || !"
 };

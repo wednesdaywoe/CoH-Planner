@@ -60,6 +60,11 @@ export const ExplosiveArrow: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "atoms": [
+    ["Damage","Fire",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.45,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",2,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

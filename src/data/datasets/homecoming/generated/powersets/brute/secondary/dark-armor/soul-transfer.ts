@@ -99,5 +99,26 @@ export const SoulTransfer: Power = {
       "scale": 25,
       "table": "Melee_Res_Boolean"
     }
-  }
+  },
+  "atoms": [
+    ["Absorb",null,2,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["Mez","Terrorized",-25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Held",-25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Immobilized",-25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Stunned",-25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Sleep",-25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Knockback",-25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Endurance",null,1.1,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,1.1,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Absorb",null,0.2,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["Mez","Terrorized",-1.25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Held",-1.25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Immobilized",-1.25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Stunned",-1.25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Sleep",-1.25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Knockback",-1.25,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Endurance",null,0.11,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["ToHit",null,0.11,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["RechargePower",null,290,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1]
+  ]
 };

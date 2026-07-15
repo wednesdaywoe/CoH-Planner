@@ -34,5 +34,9 @@ export const Frostwork: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,4,1,120,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,120,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

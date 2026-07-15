@@ -37,5 +37,18 @@ export const FortifyPack: Power = {
     "Healing"
   ],
   "maxSlots": 6,
-  "effects": {}
+  "effects": {},
+  "atoms": [
+    ["Defense","Ranged",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Melee",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","AoE",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Smashing",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Lethal",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Fire",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Cold",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Energy",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Negative",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Psionic",0,1,60,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,0,1,60,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

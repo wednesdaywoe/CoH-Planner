@@ -52,5 +52,9 @@ export const DualWield: Power = {
       "scale": 0.64,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.98,1,0.3,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.64,0.25,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

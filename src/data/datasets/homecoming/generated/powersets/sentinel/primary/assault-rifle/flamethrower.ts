@@ -56,5 +56,9 @@ export const Flamethrower: Power = {
       "duration": 4.7,
       "tickRate": 1
     }
+  ],
+  "atoms": [
+    ["Damage","Fire",0.3872,1,4.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.3872,1,4.7,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1]
   ]
 };

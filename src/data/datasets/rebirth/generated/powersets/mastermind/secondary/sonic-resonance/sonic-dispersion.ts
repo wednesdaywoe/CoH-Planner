@@ -95,5 +95,17 @@ export const SonicDispersion: Power = {
       "scale": 20,
       "table": "Ranged_Res_Boolean"
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Smashing",1.5,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",1.5,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",1.5,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",1.5,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",1.5,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",1.5,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",1.5,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Mez","Held",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Stunned",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-20,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"]
+  ]
 };

@@ -49,5 +49,13 @@ export const SpeedSiphon: Power = {
     "type": "Special",
     "scale": 0.11,
     "table": "Ranged_Damage"
-  }
+  },
+  "atoms": [
+    ["Movement","Run",0.05,1,10,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Jump",0.05,1,10,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.05,1,10,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.11,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
+    ["Unmapped",null,0.5,1,5,"Melee_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
+    ["Unmapped",null,-1.5,1,5,"Melee_SpeedRunning","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"]
+  ]
 };

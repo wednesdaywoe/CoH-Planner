@@ -58,6 +58,12 @@ export const JetStream: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Damage","Smashing",0.8,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
+    ["Mez","Repel",4,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25]
+  ],
   "conditionalEffects": [
     {
       "id": "stormblast_instormcell",

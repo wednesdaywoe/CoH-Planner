@@ -77,6 +77,12 @@ export const Ripper: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Damage","Lethal",2.3,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Defense","All",3,1,12,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

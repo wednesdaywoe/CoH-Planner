@@ -142,5 +142,30 @@ export const WetIce: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     }
-  }
+  },
+  "atoms": [
+    ["MezResist","Knockup",100,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Knockback",100,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Held",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Immobilized",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Stunned",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Sleep",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Defense","Smashing",0.1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0.1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0.1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0.1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0.1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0.1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Toxic",0.1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

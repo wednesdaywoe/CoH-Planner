@@ -93,5 +93,21 @@ export const FortifyPack: Power = {
       "scale": 0,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Defense","Ranged",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Melee",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Toxic",0,1,60,"Ranged_Buff_Def","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,0,1,60,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
+  ]
 };

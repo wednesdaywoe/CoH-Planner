@@ -56,6 +56,10 @@ export const BrightNovaBolt: Power = {
       "defenseDebuff": 3
     }
   },
+  "atoms": [
+    ["Damage","Energy",0.6,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1,1,3,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
   "requires": "Peacebringer_Offensive.Luminous_Blast.Bright_Nova Inherent.Inherent.Bright_Nova_Bolt ! &&",
   "modesRequired": [
     "Peacebringer_Blaster_Mode"

@@ -41,5 +41,9 @@ export const WarriorsProvocation: Power = {
       "scale": 20,
       "table": "Melee_Taunt"
     }
-  }
+  },
+  "atoms": [
+    ["Range",null,-1,1,20,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Mez","Taunt",20,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

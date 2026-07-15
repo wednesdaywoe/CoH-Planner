@@ -37,5 +37,10 @@ export const DisruptionField: Power = {
     "Knockback"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,3,1.100000023841858,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-3,1,5,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Mastermind_Buff.Sonic_Resonance.Disruption_Aura !"
 };

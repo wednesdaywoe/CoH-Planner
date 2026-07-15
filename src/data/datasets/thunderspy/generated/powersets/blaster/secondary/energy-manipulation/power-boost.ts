@@ -28,5 +28,8 @@ export const PowerBoost: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Mez","Stunned",0.75,1,15,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

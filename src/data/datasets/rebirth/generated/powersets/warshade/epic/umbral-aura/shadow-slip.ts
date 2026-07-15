@@ -60,5 +60,11 @@ export const ShadowSlip: Power = {
       "scale": 2.1,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Mez","Teleport",2.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+  ]
 };

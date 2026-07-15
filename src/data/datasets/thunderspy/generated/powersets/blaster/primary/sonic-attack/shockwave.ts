@@ -53,5 +53,10 @@ export const Shockwave: Power = {
       "scale": 3,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.32,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",3,1,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.058,1,9.67,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

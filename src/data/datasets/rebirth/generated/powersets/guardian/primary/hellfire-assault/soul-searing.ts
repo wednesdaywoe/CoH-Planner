@@ -47,6 +47,11 @@ export const SoulSearing: Power = {
       "tohitBuff"
     ]
   },
+  "atoms": [
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["ToHit",null,0.12,1,40,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Meta",null,1,1,40,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ]

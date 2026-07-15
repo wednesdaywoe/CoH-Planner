@@ -49,5 +49,9 @@ export const PowerBolt: Power = {
       "scale": 0.7,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.3,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.7,0.20000000298023224,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

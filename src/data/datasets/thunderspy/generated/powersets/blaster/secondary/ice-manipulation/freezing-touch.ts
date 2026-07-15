@@ -52,5 +52,10 @@ export const FreezingTouch: Power = {
       "scale": 10,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.19,1,5.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,100,1,6,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

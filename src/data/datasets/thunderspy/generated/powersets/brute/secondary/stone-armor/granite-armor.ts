@@ -79,5 +79,18 @@ export const GraniteArmor: Power = {
         "table": "Melee_Res_DMG"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Smashing",5,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Smashing",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Lethal",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Fire",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Cold",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Energy",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Negative",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-50,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,-10,1,0.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"@CustomFX NoTransform eq !"],
+    ["Unmapped",null,1,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

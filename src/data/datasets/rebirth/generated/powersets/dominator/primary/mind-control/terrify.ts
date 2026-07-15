@@ -60,6 +60,10 @@ export const Terrify: Power = {
       "table": "Ranged_Fear"
     }
   },
+  "atoms": [
+    ["Mez","Terrorized",15,3,0,"Ranged_Fear","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

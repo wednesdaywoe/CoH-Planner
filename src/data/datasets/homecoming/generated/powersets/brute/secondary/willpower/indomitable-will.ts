@@ -117,5 +117,20 @@ export const IndomitableWill: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Confused",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Terrorized",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Held",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Immobilized",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Stunned",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Sleep",-30,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Defense","Psionic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["MezResist","Knockup",100,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Knockback",100,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Repel",100,1,0.75,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Repel",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+  ]
 };

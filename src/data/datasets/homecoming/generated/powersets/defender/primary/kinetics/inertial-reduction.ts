@@ -60,5 +60,11 @@ export const InertialReduction: Power = {
         "table": "Melee_Friction"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Movement","JumpHeight",1,1,60,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Jump",1,1,60,"Melee_SpeedJumping","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Control",10,1,60,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Friction",10,1,60,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"]
+  ]
 };

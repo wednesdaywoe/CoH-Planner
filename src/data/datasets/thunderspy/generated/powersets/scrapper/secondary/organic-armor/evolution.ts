@@ -24,5 +24,8 @@ export const Evolution: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "atoms": [
+    ["Unmapped",null,1,1,999999,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

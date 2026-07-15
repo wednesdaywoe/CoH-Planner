@@ -50,5 +50,10 @@ export const CobraStrike: Power = {
       "scale": 10,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1.96,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Stunned",10,3,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.882,0,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

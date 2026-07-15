@@ -76,5 +76,17 @@ export const CorrosiveSap: Power = {
         "table": "Ranged_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Smashing",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Lethal",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Fire",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Cold",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Energy",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Negative",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Psionic",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Toxic",-2.5,1,30,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.6,1,30,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1,1,30,"Ranged_SpeedRunning","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

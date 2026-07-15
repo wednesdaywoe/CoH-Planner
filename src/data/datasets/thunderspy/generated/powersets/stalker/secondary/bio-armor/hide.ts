@@ -60,5 +60,12 @@ export const Hide: Power = {
         "table": "Melee_Res_DMG"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,-1,1,0.75,"Melee_Res_DMG","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["Resistance","Fire",0.375,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Cold",0.375,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Energy",0.375,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Negative",0.375,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

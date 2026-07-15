@@ -62,6 +62,20 @@ export const EnergeticStrike: Power = {
       "damageDebuff": 10
     }
   },
+  "atoms": [
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["Damage","Smashing",2.314,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",1.246,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",1,1,10,"Melee_Debuff_Dam","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",1,1,10,"Melee_Debuff_Dam","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",1,1,10,"Melee_Debuff_Dam","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",1,1,10,"Melee_Debuff_Dam","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",1,1,10,"Melee_Debuff_Dam","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",1,1,10,"Melee_Debuff_Dam","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",1,1,10,"Melee_Debuff_Dam","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",1,1,10,"Melee_Debuff_Dam","Str","Expression","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+  ],
   "conditionalEffects": [
     {
       "id": "kinetic_assault_impulse",

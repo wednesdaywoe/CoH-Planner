@@ -51,5 +51,9 @@ export const Stalagmite: Power = {
       "scale": 6,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Stunned",6,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",0.75,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

@@ -45,5 +45,8 @@ export const LifegivingSpores: Power = {
       "isPseudoPet": false
     }
   },
+  "atoms": [
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Corruptor_Buff.Nature_Affinity.Living_Spores !"
 };

@@ -49,5 +49,8 @@ export const WaterGolem: Power = {
       "entity": "Pets_Water_Control_Water_Golem",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

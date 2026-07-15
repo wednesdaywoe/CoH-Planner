@@ -59,5 +59,11 @@ export const Updraft: Power = {
         "table": "Ranged_Ones"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockup",6,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","Fly",-1.5,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+  ]
 };

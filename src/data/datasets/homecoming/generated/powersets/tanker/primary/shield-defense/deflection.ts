@@ -62,5 +62,10 @@ export const Deflection: Power = {
       "defenseBuff": 0.75
     }
   },
+  "atoms": [
+    ["Defense","Ranged",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","AoE",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ],
   "requires": "Tanker_Melee.Dual_Blades Tanker_Melee.Staff_Fighting || Tanker_Melee.Titan_Weapons || Tanker_Melee.Spines || Tanker_Melee.Katana || Tanker_Melee.Claws || !"
 };

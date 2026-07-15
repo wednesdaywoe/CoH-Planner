@@ -58,5 +58,10 @@ export const ChargedShield: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["MaxEndurance",null,10,1,0.6,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,1.5,1,0.6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,0.5,1,0.6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

@@ -56,6 +56,10 @@ export const Flashfire: Power = {
       "table": "Ranged_Stun"
     }
   },
+  "atoms": [
+    ["Damage","Fire",0.06,1,4,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

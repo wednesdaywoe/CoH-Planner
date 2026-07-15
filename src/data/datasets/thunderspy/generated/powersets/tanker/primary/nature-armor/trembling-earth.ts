@@ -42,5 +42,10 @@ export const TremblingEarth: Power = {
     "type": "Special",
     "scale": 0.86,
     "table": "Melee_Damage"
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.86,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1.5,1,16,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

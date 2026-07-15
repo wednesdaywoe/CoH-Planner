@@ -56,5 +56,10 @@ export const LightningRod: Power = {
       ],
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1,0,4,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

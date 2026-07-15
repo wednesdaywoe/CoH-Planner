@@ -81,5 +81,32 @@ export const HailofBullets: Power = {
       "scale": 10.1,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.4,1,3.5,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.4,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.113,1,2.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.2,0,10,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,0,10,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,0,10,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,0,10,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,0,10,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Immobilized",10.1,1,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.059,1,3.5,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0,10,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Melee",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Ranged",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","AoE",1,1,5,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

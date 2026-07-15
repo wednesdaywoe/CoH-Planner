@@ -28,5 +28,8 @@ export const BoostRange: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,0.5,1,30,"Melee_Stun","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

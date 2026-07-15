@@ -50,5 +50,9 @@ export const Suppression: Power = {
     "table": "Ranged_Damage",
     "duration": 3.1,
     "tickRate": 0.6000000238418579
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.185397,1,3.1,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.6000000238418579,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,5,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

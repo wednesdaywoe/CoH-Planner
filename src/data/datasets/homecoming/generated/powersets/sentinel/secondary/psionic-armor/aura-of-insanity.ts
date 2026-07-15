@@ -144,6 +144,38 @@ export const AuraofInsanity: Power = {
       "table": "Melee_DeBuff_ToHit"
     }
   },
+  "atoms": [
+    ["Damage","Special",-0.05,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Regeneration",null,-0.75,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Resistance","Smashing",1,1,4,"Melee_Debuff_Def","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Resistance","Lethal",1,1,4,"Melee_Debuff_Def","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Resistance","Fire",1,1,4,"Melee_Debuff_Def","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Resistance","Cold",1,1,4,"Melee_Debuff_Def","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Resistance","Energy",1,1,4,"Melee_Debuff_Def","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Resistance","Negative",1,1,4,"Melee_Debuff_Def","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Resistance","Psionic",1,1,4,"Melee_Debuff_Def","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Resistance","Toxic",1,1,4,"Melee_Debuff_Def","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Defense","All",1,1,4,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["ToHit",null,1,1,4,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",1.995,1,4,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",1.995,1,4,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",1.995,1,4,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",1.995,1,4,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",1.995,1,4,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",1.995,1,4,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",1.995,1,4,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",1.995,1,4,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Confused",2,2,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.20000000298023224],
+    ["Mez","Confused",0.5,0.5,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.20000000298023224,null,true],
+    ["Mez","Stunned",2,2,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.25],
+    ["Mez","Stunned",0.5,0.5,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.25,null,true],
+    ["Mez","Sleep",2,2,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.33329999446868896],
+    ["Mez","Sleep",0.5,0.5,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.33329999446868896,null,true],
+    ["Mez","Held",2,2,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.5],
+    ["Mez","Held",0.5,0.5,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,0.5,null,true],
+    ["Mez","Terrorized",2,2,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1],
+    ["Mez","Terrorized",0.5,1.25,4,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -80,6 +80,19 @@ export const FortifyMind: Power = {
       "absorb": 2
     }
   },
+  "atoms": [
+    ["Absorb",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["MaxHP",null,1,1,45,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,0.5,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Endurance",null,0.2,1,45,"Melee_Ones","Res","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,1,null,true],
+    ["Regeneration",null,0.2,1,45,"Melee_Ones","Res","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,1,null,true],
+    ["Recovery",null,0.2,1,45,"Melee_Ones","Res","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,45,"Melee_Ones","Res","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,1,null,true],
+    ["GlobalChanceMod",null,1,1,35,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,1,null,true],
+    ["GlobalChanceMod",null,1,1,45,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,3,1,35,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",3,null,null,-2,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

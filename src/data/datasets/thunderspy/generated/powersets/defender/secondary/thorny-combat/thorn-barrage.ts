@@ -65,5 +65,11 @@ export const ThornBarrage: Power = {
       "scale": 1,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.53,1,1.75,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,3.1,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Mez","Knockback",1,1,1.75,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

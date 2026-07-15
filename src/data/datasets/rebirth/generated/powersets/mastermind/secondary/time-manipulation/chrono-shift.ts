@@ -82,6 +82,16 @@ export const ChronoShift: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "atoms": [
+    ["Heal",null,1.056,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
+    ["Heal",null,1.584,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
+    ["Heal",null,0.176,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
+    ["Heal",null,0.264,1,30,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,3,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
+    ["Endurance",null,0.15,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Recovery",null,0.3,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.5,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ]

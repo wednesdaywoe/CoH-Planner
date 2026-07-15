@@ -59,5 +59,10 @@ export const Eviscerate: Power = {
     "durations": {
       "defenseDebuff": 10
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Lethal",2.181,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.9815,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+  ]
 };

@@ -54,5 +54,10 @@ export const FlashArrow: Power = {
       "table": "Ranged_Debuff_ToHit",
       "unresistable": true
     }
-  }
+  },
+  "atoms": [
+    ["ToHit",null,0.75,1,60,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.75,1,60,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Perception",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

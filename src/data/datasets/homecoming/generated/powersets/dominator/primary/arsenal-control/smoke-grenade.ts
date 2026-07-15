@@ -92,5 +92,8 @@ export const SmokeGrenade: Power = {
         }
       ]
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,30,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

@@ -52,5 +52,9 @@ export const FistfulofArrows: Power = {
       "scale": 0.91,
       "table": "Ranged_InherentDamage"
     }
+  ],
+  "atoms": [
+    ["Damage","Lethal",0.91,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",0.91,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

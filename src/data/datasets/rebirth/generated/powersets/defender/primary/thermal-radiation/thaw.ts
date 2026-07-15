@@ -102,6 +102,19 @@ export const Thaw: Power = {
       "table": "Ranged_Res_Boolean"
     }
   },
+  "atoms": [
+    ["Mez","Stunned",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Sleep",5,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Confused",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Terrorized",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Resistance","Cold",1,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.8,1,90,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.8,1,90,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+  ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ]

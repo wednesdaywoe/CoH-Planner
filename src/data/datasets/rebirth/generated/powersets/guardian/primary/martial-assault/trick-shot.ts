@@ -50,6 +50,13 @@ export const TrickShot: Power = {
       "isPseudoPet": false
     }
   },
+  "atoms": [
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"No",3,null,null,1,null,true],
+    ["Damage","Lethal",1.4,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["EntCreate",null,1,59,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.300000190734863,1,null,true]
+  ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ]

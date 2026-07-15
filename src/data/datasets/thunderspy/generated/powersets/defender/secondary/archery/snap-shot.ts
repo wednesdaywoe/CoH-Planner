@@ -42,5 +42,8 @@ export const SnapShot: Power = {
     "type": "Lethal",
     "scale": 0.68,
     "table": "Ranged_Damage"
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.68,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

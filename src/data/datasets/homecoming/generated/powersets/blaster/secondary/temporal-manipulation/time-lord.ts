@@ -64,6 +64,15 @@ export const TimeLord: Power = {
       "table": "Melee_Res_Boolean"
     }
   },
+  "atoms": [
+    ["RechargeTime",null,0.2,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",1,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Stunned",-10,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Stunned",-5,1,0.5,"Melee_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"]
+  ],
   "conditionalEffects": [
     {
       "id": "temporal_selection_buff",

@@ -65,5 +65,11 @@ export const ShadowBolt: Power = {
         "table": "Ranged_Slow"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Negative",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","Fly",0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,4,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+  ]
 };

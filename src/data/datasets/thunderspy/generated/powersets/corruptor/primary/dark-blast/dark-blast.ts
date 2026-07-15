@@ -45,5 +45,9 @@ export const DarkBlast: Power = {
     "type": "Negative",
     "scale": 1,
     "table": "Ranged_Damage"
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.75,1,6,"Ranged_DeBuff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

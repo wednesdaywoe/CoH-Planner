@@ -55,5 +55,11 @@ export const TelekineticPulse: Power = {
       "scale": 0.01,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Knockback",0.01,0.20000000298023224,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.055,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,2,1],
+    ["Unmapped",null,0.5,1,5,"Melee_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1.5,1,5,"Melee_SpeedRunning","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

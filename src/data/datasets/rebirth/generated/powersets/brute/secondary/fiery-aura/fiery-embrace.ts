@@ -34,5 +34,8 @@ export const FieryEmbrace: Power = {
     "stacksLinear": [
       "damageBuff"
     ]
-  }
+  },
+  "atoms": [
+    ["GrantPower",null,1,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"]
+  ]
 };

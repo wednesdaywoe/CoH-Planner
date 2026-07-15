@@ -48,5 +48,8 @@ export const TripMine: Power = {
         "Pets.Trip_Mine_Dominator.TripMine_Info"
       ]
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,170,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1]
+  ]
 };

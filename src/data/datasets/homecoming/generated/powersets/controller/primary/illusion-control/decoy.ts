@@ -50,5 +50,15 @@ export const Decoy: Power = {
     "stacksLinear": [
       "specialBuff"
     ]
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq || !"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||"],
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||"],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX Mirror eq @CustomFX PhantomMirror eq ||"]
+  ]
 };

@@ -43,5 +43,8 @@ export const AuraofConfusion: Power = {
       "scale": 20,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

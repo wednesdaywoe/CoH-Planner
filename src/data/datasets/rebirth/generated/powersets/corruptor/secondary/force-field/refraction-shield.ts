@@ -51,5 +51,10 @@ export const RefractionShield: Power = {
       "scale": 6,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Untouchable",6,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
+    ["Mez","OnlyAffectsSelf",6,1,30,"Ranged_Immobilize","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq target.isFriend? ! &&"],
+    ["Meta",null,-1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"target.isFriend? !"]
+  ]
 };

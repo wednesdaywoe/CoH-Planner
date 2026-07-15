@@ -79,5 +79,18 @@ export const EnergyAbsorption: Power = {
       "scale": 15,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Endurance",null,15,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Smashing",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Lethal",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Fire",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Cold",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Energy",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Negative",0.06,1,45,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Endurance",null,-0.35,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.7,1,45,"Melee_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1,1,45,"Melee_SpeedRunning","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"]
+  ]
 };

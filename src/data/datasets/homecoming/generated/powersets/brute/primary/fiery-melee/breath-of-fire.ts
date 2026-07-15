@@ -74,5 +74,11 @@ export const BreathofFire: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
+  ],
+  "atoms": [
+    ["Damage","Fire",0.5426,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
+    ["Damage","Fire",0.071,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Fire",0.2173,1,0.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,0],
+    ["Damage","Fire",0.032,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0]
   ]
 };

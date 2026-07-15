@@ -63,5 +63,11 @@ export const NWEviscerate: Power = {
       "scale": 0.25,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1.4592,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,3.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.4,1,10,"Melee_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

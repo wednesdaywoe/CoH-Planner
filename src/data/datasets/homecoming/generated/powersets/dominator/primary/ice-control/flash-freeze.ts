@@ -54,6 +54,11 @@ export const FlashFreeze: Power = {
       "table": "Ranged_Sleep"
     }
   },
+  "atoms": [
+    ["Damage","Cold",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? !"],
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

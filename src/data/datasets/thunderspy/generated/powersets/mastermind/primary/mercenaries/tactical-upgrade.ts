@@ -38,5 +38,9 @@ export const TacticalUpgrade: Power = {
   ],
   "maxSlots": 6,
   "effects": {},
+  "atoms": [
+    ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Soldier target.VillainName> Mastermind_Pets.Soldier_2.Assault_Rifle_Heavy_Burst target.ownPower? ! &&"]
+  ],
   "mechanicType": "parentMechanic"
 };

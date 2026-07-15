@@ -96,5 +96,32 @@ export const ConduitofPain: Power = {
       "recoveryBuff",
       "tohitBuff"
     ]
-  }
+  },
+  "atoms": [
+    ["Heal",null,4,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
+    ["Endurance",null,4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,60,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,1.75,1,60,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.75,1,60,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["ToHit",null,2,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Stealth",null,300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["ToHit",null,2,1,30,"Ranged_Debuff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+  ]
 };

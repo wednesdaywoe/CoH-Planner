@@ -48,5 +48,9 @@ export const Gremlins: Power = {
       "entityCount": 2,
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1]
+  ]
 };

@@ -37,5 +37,10 @@ export const Alkaloid: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,1.73,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.865,1,1,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,60,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Controller_Buff.Poison.Alkaloid_Splash !"
 };

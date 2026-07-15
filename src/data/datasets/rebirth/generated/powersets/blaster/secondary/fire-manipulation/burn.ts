@@ -69,5 +69,19 @@ export const Burn: Power = {
       "entity": "Pets_Burn",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["Mez","Immobilized",100,-15,0,"Melee_Res_Boolean","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Fire",1.6,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@ToHitRoll @ToHit < @ForceHit || Entref source> Entref target> == ! &&"],
+    ["DamageBuff","Smashing",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.061,1,9.53,"Melee_Ones","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Immobilized",1,-15,0,"Melee_Res_Boolean","Res","Duration","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

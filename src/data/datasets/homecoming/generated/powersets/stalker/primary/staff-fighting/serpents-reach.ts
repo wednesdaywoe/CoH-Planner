@@ -54,6 +54,11 @@ export const SerpentsReach: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.949999988079071,null,true],
+    ["Damage","Smashing",1.8,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929]
+  ],
   "specialEffects": [
     {
       "kind": "grant",

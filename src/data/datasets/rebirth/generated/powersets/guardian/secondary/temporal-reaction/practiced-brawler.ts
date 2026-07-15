@@ -94,5 +94,16 @@ export const PracticedBrawler: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     }
-  }
+  },
+  "atoms": [
+    ["MezResist","Knockback",100,1,2.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockup",100,1,2.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockback",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Knockup",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Stunned",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Absorb",null,0.8,1,10,"Melee_HealSelf","Max","Magnitude","Target","Any",false,"Ignore",2,null,null,1]
+  ]
 };

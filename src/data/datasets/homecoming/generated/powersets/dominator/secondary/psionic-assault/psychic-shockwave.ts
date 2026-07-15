@@ -63,6 +63,11 @@ export const PsychicShockwave: Power = {
       "table": "Melee_Stun"
     }
   },
+  "atoms": [
+    ["Damage","Psionic",1.0954,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.5,1,20,"Melee_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

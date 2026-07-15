@@ -53,5 +53,18 @@ export const EmpoweringCircuit: Power = {
       "scale": 1.2,
       "table": "Ranged_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["DamageBuff","Smashing",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
+    ["DamageBuff","Fire",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
+    ["DamageBuff","Cold",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
+    ["DamageBuff","Energy",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
+    ["DamageBuff","Negative",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true],
+    ["ToHit",null,1.2,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Meta",null,0,0,0,"Ranged_Buff_Dmg","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+  ]
 };

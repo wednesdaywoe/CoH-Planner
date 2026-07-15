@@ -74,6 +74,13 @@ export const Shred: Power = {
       "defenseDebuff": 10
     }
   },
+  "atoms": [
+    ["Damage","Lethal",0.21,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.211,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1.2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.8799999952316284,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

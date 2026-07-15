@@ -65,5 +65,10 @@ export const Evasion: Power = {
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     }
-  }
+  },
+  "atoms": [
+    ["Defense","AoE",1.85,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","All",0.4,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !"]
+  ]
 };

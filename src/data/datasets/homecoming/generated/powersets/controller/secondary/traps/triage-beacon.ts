@@ -40,5 +40,8 @@ export const TriageBeacon: Power = {
       "entity": "Pets_Traps_Triage_Beacon",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+  ]
 };

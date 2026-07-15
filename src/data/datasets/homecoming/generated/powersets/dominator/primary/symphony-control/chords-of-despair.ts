@@ -46,6 +46,11 @@ export const ChordsofDespair: Power = {
       "table": "Ranged_Immobilize"
     }
   },
+  "atoms": [
+    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargePower",null,14.5,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

@@ -45,5 +45,10 @@ export const RiseofthePhoenix: Power = {
       "entity": "Pets_Phoenix",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,5,1,0.5,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["EntCreate",null,1,1,5,"Melee_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,10,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

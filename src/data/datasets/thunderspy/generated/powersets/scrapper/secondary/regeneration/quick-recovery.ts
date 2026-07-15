@@ -39,5 +39,8 @@ export const QuickRecovery: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Recovery",null,0.3,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

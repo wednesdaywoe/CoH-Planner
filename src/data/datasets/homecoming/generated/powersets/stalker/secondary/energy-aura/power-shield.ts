@@ -69,5 +69,12 @@ export const PowerShield: Power = {
       "debuffResistance": 0.75,
       "defenseBuff": 0.75
     }
-  }
+  },
+  "atoms": [
+    ["Defense","Fire",2.2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Cold",2.2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Energy",2.2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Negative",1.7,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","All",0.5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

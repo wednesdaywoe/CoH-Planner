@@ -51,6 +51,10 @@ export const BoneSmasher: Power = {
       "table": "Melee_Stun"
     }
   },
+  "atoms": [
+    ["Unmapped",null,0.6,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

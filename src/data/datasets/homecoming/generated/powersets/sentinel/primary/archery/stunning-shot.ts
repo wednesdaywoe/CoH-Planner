@@ -58,5 +58,10 @@ export const StunningShot: Power = {
       "scale": 4,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Smashing",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",1.64,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Stunned",4,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

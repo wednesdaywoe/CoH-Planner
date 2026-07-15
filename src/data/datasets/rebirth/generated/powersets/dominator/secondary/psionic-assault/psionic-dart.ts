@@ -51,5 +51,9 @@ export const PsionicDart: Power = {
       "scale": 0.3,
       "table": "Ranged_Slow"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Psionic",0.84,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.3,1,5,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+  ]
 };

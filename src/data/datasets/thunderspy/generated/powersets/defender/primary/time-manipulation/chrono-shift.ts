@@ -42,5 +42,10 @@ export const ChronoShift: Power = {
       "scale": 0.15,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1.2,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? ! isPVPMap? ! &&"],
+    ["Unmapped",null,1.8,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Temporal_Selection_Buff target.ownPower? isPVPMap? ! &&"],
+    ["Endurance",null,0.15,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

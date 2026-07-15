@@ -3542,6 +3542,37 @@ function templatesToAtoms(templates) {
   return atoms;
 }
 
+/**
+ * Plan B, Phase 0 — encode a template list's atoms to the compact `EncodedAtom[]`
+ * wire form emitted on `Power.atoms`. This is the SAME `templatesToAtoms` list
+ * that feeds `projectAtomsToEffects`, serialized losslessly for the canonical
+ * schema (converter-local `_`-fields and `sourceAttrib` are dropped by the
+ * encoder). Returns `undefined` for an empty list so the field is simply absent.
+ */
+function encodeAtomsForEmit(templates) {
+  const { encodeAtom } = _getAtomCore();
+  const atoms = templatesToAtoms(templates);
+  if (!atoms.length) return undefined;
+  return atoms.map((a) => encodeAtom(a));
+}
+
+/**
+ * Serialize a Power to its generated-file literal. Identical to
+ * `JSON.stringify(power, null, 2)` EXCEPT the `atoms` wire list renders one
+ * tuple per line (`[...]`) rather than exploding every scalar onto its own line
+ * — the default pretty-printer would inflate the compact encoding ~10× on disk
+ * and churn the byte-reviewed generated tree. `atoms` is always a top-level
+ * Power field (depth 1 ⇒ 2-space key indent, 4-space element indent).
+ */
+function serializePower(power) {
+  if (!power.atoms || !power.atoms.length) return JSON.stringify(power, null, 2);
+  const SENTINEL = '@@ATOMS_TUPLES@@';
+  const s = JSON.stringify({ ...power, atoms: SENTINEL }, null, 2);
+  const inline =
+    '[\n' + power.atoms.map((t) => '    ' + JSON.stringify(t)).join(',\n') + '\n  ]';
+  return s.replace(`"${SENTINEL}"`, () => inline);
+}
+
 // DSH6 Phase 0c — canonical field order for emitted effects bags. The legacy
 // extractEffects writes bag keys in forward-pass first-touch order, so the
 // emitted key order encodes the ROUTING ORDER of the extraction — any
@@ -5796,6 +5827,14 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
 
     if (Object.keys(effects).length) power.effects = effects;
 
+    // Plan B, Phase 0 — emit the pre-projection atom list alongside the bag, from
+    // the SAME templates that fed `extractEffects`. Unused by calc/UI yet; it is
+    // the ground truth the atom-native calc primitives (Phase 1) will read behind
+    // a shadow-compare before the bag is retired. Additive-only: does not touch
+    // `power.effects`.
+    const atoms = encodeAtomsForEmit(allTemplates);
+    if (atoms) power.atoms = atoms;
+
     // Resolve location pseudo-pet redirect lists into synthesized ability lists
     // (Storm Cell, Category Five, Freezing Rain, …) so the runtime can surface
     // their DoT + debuffs. See PSEUDO-PET-POWER-RESOLUTION.md.
@@ -6112,7 +6151,7 @@ function convertPowerset(category, powersetName) {
 
 import type { Power } from '@/types';
 
-export const ${exportName}: Power = ${JSON.stringify(power, null, 2)};
+export const ${exportName}: Power = ${serializePower(power)};
 `;
     fs.writeFileSync(path.join(generatedDir, powerFileName), generatedContent);
 

@@ -52,6 +52,11 @@ export const Subdue: Power = {
       "table": "Ranged_Immobilize"
     }
   },
+  "atoms": [
+    ["Unmapped",null,2.28,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",6,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-2,1,8,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

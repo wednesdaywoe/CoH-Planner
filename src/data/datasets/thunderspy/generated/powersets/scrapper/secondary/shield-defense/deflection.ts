@@ -55,5 +55,10 @@ export const Deflection: Power = {
       "defenseBuff": 0.75
     }
   },
+  "atoms": [
+    ["Defense","Ranged",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Defense","AoE",1.65,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,0.4,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Scrapper_Melee.Dual_Blades Scrapper_Melee.Claws || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Katana || Scrapper_Melee.Titan_Weapons || !"
 };

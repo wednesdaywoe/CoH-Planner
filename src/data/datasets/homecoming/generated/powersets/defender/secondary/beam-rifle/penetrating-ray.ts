@@ -55,6 +55,10 @@ export const PenetratingRay: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "atoms": [
+    ["Damage","Energy",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.44999998807907104,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "quickSnipe": {
     "stats": {
       "castTime": 1.67,

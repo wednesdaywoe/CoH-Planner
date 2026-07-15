@@ -60,6 +60,13 @@ export const PsiWhipCoil: Power = {
       "isPseudoPet": false
     }
   },
+  "atoms": [
+    ["Unmapped",null,0.1625,1,2,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",6,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,-1,1,6,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

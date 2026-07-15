@@ -44,5 +44,8 @@ export const StoneShelter: Power = {
     "durations": {
       "absorb": 15
     }
-  }
+  },
+  "atoms": [
+    ["Absorb",null,1,1,15,"Ranged_Heal","Max","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+  ]
 };

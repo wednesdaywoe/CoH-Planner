@@ -55,6 +55,12 @@ export const ProtonVolley: Power = {
       "table": "Ranged_Stun"
     }
   },
+  "atoms": [
+    ["Unmapped",null,0.49,1,1.6,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,0.30000001192092896,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

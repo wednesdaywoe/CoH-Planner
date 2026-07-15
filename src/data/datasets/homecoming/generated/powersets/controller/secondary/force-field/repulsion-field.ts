@@ -54,5 +54,9 @@ export const RepulsionField: Power = {
       "scale": 10,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858],
+    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

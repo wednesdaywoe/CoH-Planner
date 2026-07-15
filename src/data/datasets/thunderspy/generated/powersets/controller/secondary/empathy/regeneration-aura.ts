@@ -46,5 +46,8 @@ export const RegenerationAura: Power = {
       "scale": 5,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Regeneration",null,5,1,60,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

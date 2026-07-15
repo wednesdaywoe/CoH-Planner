@@ -131,6 +131,63 @@ export interface AtomicEffect {
 }
 
 // ============================================================================
+// Positional tuple codec — the runtime wire format (Plan B, Phase 0)
+// ============================================================================
+//
+// The generated `Power` carries its atom list as `atoms: EncodedAtom[]` — a
+// positional array per atom rather than a keyed object, chosen to keep the
+// committed generated tree (and the runtime chunk) small: field NAMES dominate
+// the object encoding, so dropping them cuts ~5× (measured: 619 → 124 B/atom on
+// the HC corpus). The `effects` bag stays human-readable during migration; only
+// the new `atoms` field is tuple-encoded. Consumers decode with `decodeAtoms`.
+//
+// `sourceAttrib` (debugging provenance) and every converter-local `_`-prefixed
+// field are deliberately NOT part of the wire format — only the canonical
+// AtomicEffect schema ships. `ATOM_TUPLE_FIELDS` is the ONE source of truth for
+// field order; both the converter's encoder and the runtime decoder read it, so
+// adding/reordering a field is a single edit here.
+
+/** Canonical AtomicEffect fields, in wire order. Identity/value fields first so
+ *  the rarely-set flags fall at the tail and trim away (encoder drops trailing
+ *  nulls). `sourceAttrib` and `_`-prefixed provenance are intentionally absent. */
+export const ATOM_TUPLE_FIELDS = [
+  'effectType', 'subType', 'scale', 'magnitude', 'duration', 'modifierTable',
+  'aspect', 'attribType', 'toWho', 'pvMode', 'resistible', 'stacking',
+  'stackCap', 'ticks', 'applicationPeriod', 'baseProbability', 'procsPerMinute',
+  'ignoreStrength', 'buffable', 'ignoreED', 'ignoreScaling',
+  'specialCase', 'requiresExpression',
+] as const satisfies ReadonlyArray<keyof AtomicEffect>;
+
+/** One atom, positionally encoded. A `null` at position `i` means the field
+ *  `ATOM_TUPLE_FIELDS[i]` is absent; trailing nulls are trimmed, so a short
+ *  array leaves every field past its end absent. */
+export type EncodedAtom = ReadonlyArray<string | number | boolean | null>;
+
+/** Encode one AtomicEffect to its positional tuple (trailing nulls trimmed). */
+export function encodeAtom(a: AtomicEffect): EncodedAtom {
+  const t: (string | number | boolean | null)[] = ATOM_TUPLE_FIELDS.map((f) => {
+    const v = a[f];
+    return v === undefined ? null : (v as string | number | boolean);
+  });
+  while (t.length > 0 && t[t.length - 1] === null) t.pop();
+  return t;
+}
+
+/** Decode a wire atom list back to AtomicEffect records. `null` / past-end
+ *  positions restore to `undefined`; every stored non-null value round-trips. */
+export function decodeAtoms(encoded: readonly EncodedAtom[] | undefined): AtomicEffect[] {
+  if (!encoded) return [];
+  return encoded.map((tuple) => {
+    const a = {} as Record<string, unknown>;
+    for (let i = 0; i < ATOM_TUPLE_FIELDS.length; i++) {
+      const v = tuple[i];
+      if (v !== undefined && v !== null) a[ATOM_TUPLE_FIELDS[i]] = v;
+    }
+    return a as unknown as AtomicEffect;
+  });
+}
+
+// ============================================================================
 // Canonical identity keys
 // ============================================================================
 

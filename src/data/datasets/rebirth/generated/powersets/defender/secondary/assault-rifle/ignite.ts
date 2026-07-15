@@ -44,5 +44,8 @@ export const Ignite: Power = {
       "entity": "Pets_FlameThrower",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,10,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

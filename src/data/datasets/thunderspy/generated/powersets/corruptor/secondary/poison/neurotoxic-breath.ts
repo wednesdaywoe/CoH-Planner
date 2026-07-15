@@ -46,5 +46,10 @@ export const NeurotoxicBreath: Power = {
       "table": "Ranged_Immobilize"
     }
   },
+  "atoms": [
+    ["Unmapped",null,0.65,1,20,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Held",3,2,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-1.5,1,20,"Ranged_SpeedRunning","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "requires": "Corruptor_Buff.Poison.Hallucinogenic_Spray !"
 };

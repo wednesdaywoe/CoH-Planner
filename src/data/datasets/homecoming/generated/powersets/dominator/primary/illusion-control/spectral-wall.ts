@@ -65,6 +65,11 @@ export const SpectralWall: Power = {
       "table": "Ranged_Debuff_ToHit"
     }
   },
+  "atoms": [
+    ["Mez","Immobilized",15,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Psionic",0.2,1,9.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.75,1,15,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

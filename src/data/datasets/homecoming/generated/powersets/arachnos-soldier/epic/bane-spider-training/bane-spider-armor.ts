@@ -118,5 +118,23 @@ export const BaneSpiderArmor: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Resistance","Smashing",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",0.75,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Confused",-4,1,10.25,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Terrorized",-4,1,10.25,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Held",-4,1,10.25,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Immobilized",-4,1,10.25,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Stunned",-4,1,10.25,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Sleep",-4,1,10.25,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["MezResist","Sleep",5,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["MaxHP",null,2,1,10.25,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "mechanicType": "parentMechanic"
 };

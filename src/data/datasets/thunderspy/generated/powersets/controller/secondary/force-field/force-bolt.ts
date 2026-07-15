@@ -54,5 +54,10 @@ export const ForceBolt: Power = {
       "scale": 9.1,
       "table": "Ranged_Knockback"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Knockback",9,1,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.1,1,1,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

@@ -52,5 +52,9 @@ export const ShieldCharge: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

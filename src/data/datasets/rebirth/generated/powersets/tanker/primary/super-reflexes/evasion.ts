@@ -64,5 +64,10 @@ export const Evasion: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Defense","AoE",1.85,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Resistance","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Taunt",1,4,0,"Melee_Ones","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"]
+  ]
 };

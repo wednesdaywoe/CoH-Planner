@@ -49,5 +49,10 @@ export const AbsorbPain: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,5,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,3,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

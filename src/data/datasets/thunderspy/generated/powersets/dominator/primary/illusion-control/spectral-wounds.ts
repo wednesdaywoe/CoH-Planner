@@ -51,5 +51,11 @@ export const SpectralWounds: Power = {
       "scale": -0.49,
       "table": "Ranged_Damage"
     }
+  ],
+  "atoms": [
+    ["Meta",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2.45,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-0.49,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0,1,10,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

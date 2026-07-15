@@ -75,5 +75,12 @@ export const ShadowMaul: Power = {
       "scale": 0.75,
       "table": "Melee_DeBuff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Smashing",0.2695,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Negative",0.2695,1,2,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.625,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Damage","Fire",0.24255,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,6.25,1]
+  ]
 };

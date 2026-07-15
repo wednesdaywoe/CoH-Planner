@@ -109,5 +109,23 @@ export const RallyTheMilitia: Power = {
       ],
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["Defense","Melee",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Smashing",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Lethal",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Fire",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Cold",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Energy",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Negative",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Psionic",1,1,90,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,0.5,1,90,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,5,1,90,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

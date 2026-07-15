@@ -64,6 +64,13 @@ export const LightningClap: Power = {
       "table": "Melee_Stun"
     }
   },
+  "atoms": [
+    ["Damage","Energy",2.76,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",1.242,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929],
+    ["Mez","Stunned",8,1,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5],
+    ["Mez","Knockback",0.5,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.800000011920929]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

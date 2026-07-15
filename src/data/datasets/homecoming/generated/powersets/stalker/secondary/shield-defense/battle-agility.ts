@@ -117,5 +117,20 @@ export const BattleAgility: Power = {
     "stacksLinear": [
       "debuffResistance"
     ]
-  }
+  },
+  "atoms": [
+    ["Mez","Confused",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Terrorized",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Held",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Immobilized",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Stunned",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Sleep",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockup",100,1,120,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockback",100,1,120,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Repel",100,1,120,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockup",-10,1,120,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Knockback",-10,1,120,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Repel",-10,1,120,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Resistance","All",0.5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ]
 };

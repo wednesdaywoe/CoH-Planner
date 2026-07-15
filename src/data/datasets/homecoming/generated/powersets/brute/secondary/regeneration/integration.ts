@@ -96,5 +96,18 @@ export const Integration: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&"],
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? !"],
+    ["Mez","Knockup",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Knockback",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Held",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Immobilized",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Stunned",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Sleep",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Regeneration",null,0.5,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+  ]
 };

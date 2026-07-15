@@ -98,6 +98,31 @@ export const DualWield: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "atoms": [
+    ["Damage","Lethal",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",1.32,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25],
+    ["Damage","Fire",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",1.32,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.113,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Movement","Run",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Movement","Fly",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Movement","Jump",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Movement","JumpHeight",0.15,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true],
+    ["RechargeTime",null,0.15,1,8,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,true],
+    ["Damage","Cold",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Cold",1.32,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+    ["DamageBuff","Lethal",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+    ["DamageBuff","Fire",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+    ["DamageBuff","Cold",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+    ["DamageBuff","Energy",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+    ["DamageBuff","Negative",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+    ["DamageBuff","Psionic",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+    ["DamageBuff","Toxic",1,1,6,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,0,null,true],
+    ["Damage","Toxic",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Toxic",1.32,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

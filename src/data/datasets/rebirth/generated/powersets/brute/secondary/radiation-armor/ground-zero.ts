@@ -73,5 +73,11 @@ export const GroundZero: Power = {
       "scale": 1,
       "table": "Melee_InherentTaunt"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
+    ["Damage","Toxic",0.1,1,9.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
+    ["Defense","All",2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! &&"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"]
+  ]
 };

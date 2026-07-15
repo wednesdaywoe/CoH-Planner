@@ -71,5 +71,14 @@ export const RisetotheChallenge: Power = {
       "scale": 0.5,
       "table": "Melee_DeBuff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["ToHit",null,0.5,1,1,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Regeneration",null,1,1,1.12,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Regeneration",null,0.075,1,1.12,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,0.25,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"No",2,null,null,1],
+    ["Regeneration",null,0.0225,1,1,"Melee_Ones","Res","Magnitude","Self","PvE",false,"No",2,null,null,1,null,true],
+    ["Mez","Taunt",1.25,3,0,"Melee_Ones","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? !"]
+  ]
 };

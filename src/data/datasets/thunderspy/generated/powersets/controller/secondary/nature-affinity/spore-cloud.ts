@@ -47,5 +47,17 @@ export const SporeCloud: Power = {
       "scale": 2,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Smashing",2.25,1,5,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Lethal",2.25,1,5,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Fire",2.25,1,5,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Cold",2.25,1,5,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Energy",2.25,1,5,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Negative",2.25,1,5,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Psionic",2.25,1,5,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Toxic",2.25,1,5,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-2,1,5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

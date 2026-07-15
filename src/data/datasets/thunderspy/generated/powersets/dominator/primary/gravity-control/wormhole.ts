@@ -54,6 +54,11 @@ export const Wormhole: Power = {
       "table": "Ranged_Stun"
     }
   },
+  "atoms": [
+    ["Unmapped",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",7,1,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

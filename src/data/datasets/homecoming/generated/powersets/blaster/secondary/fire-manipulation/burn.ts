@@ -121,5 +121,11 @@ export const Burn: Power = {
         }
       ]
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Immobilized",-30,1,100,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockup",-30,1,100,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockback",-30,1,100,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1]
+  ]
 };

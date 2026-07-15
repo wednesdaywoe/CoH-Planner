@@ -45,6 +45,11 @@ export const Telekinesis: Power = {
     "Immobilize"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["MezResist","Knockup",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",2,null,null,1],
+    ["MezResist","Knockback",100,1,1.5,"Ranged_Ones","Res","Magnitude","Target","Any",true,"No",2,null,null,1],
+    ["Meta",null,1,175,1.5,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

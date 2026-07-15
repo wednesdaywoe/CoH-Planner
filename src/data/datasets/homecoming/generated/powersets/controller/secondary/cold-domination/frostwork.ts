@@ -51,5 +51,9 @@ export const Frostwork: Power = {
         "table": "Ranged_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["MaxHP",null,4,1,120,"Ranged_Heal","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",2,1,120,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+  ]
 };

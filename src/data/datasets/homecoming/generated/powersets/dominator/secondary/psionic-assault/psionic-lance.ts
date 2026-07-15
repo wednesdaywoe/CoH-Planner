@@ -56,6 +56,10 @@ export const PsionicLance: Power = {
       "table": "Ranged_Slow"
     }
   },
+  "atoms": [
+    ["Damage","Psionic",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+  ],
   "quickSnipe": {
     "stats": {
       "castTime": 1.33,

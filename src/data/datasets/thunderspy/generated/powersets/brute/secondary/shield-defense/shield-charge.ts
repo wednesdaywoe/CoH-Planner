@@ -47,5 +47,8 @@ export const ShieldCharge: Power = {
       "entity": "Pets_Shield_Charge_Brute",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

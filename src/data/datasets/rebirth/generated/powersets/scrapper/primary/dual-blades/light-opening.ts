@@ -44,6 +44,18 @@ export const LightOpening: Power = {
     "duration": 0.5,
     "tickRate": 0.33000001311302185
   },
+  "atoms": [
+    ["Damage","Lethal",0.42,1,0.5,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["EntCreate",null,1,49,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true],
+    ["EntCreate",null,1,47,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true],
+    ["Meta",null,1,50,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,48,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,51,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,52,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,53,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,54,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Fire",0.189,1,0.5,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.33000001311302185,1]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

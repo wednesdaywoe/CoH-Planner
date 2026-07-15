@@ -93,5 +93,16 @@ export const SoulTransfer: Power = {
       "scale": 10,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Negative",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Stunned",10,30,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,0.05,1,90,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Regeneration",null,0.15,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,3,1,0.5,"Melee_Heal","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1],
+    ["Mez","Untouchable",10,1,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,30,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Immobilized",4,50,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,60,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

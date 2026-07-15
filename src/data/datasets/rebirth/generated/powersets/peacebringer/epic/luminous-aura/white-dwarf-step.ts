@@ -71,6 +71,14 @@ export const WhiteDwarfStep: Power = {
       "fly"
     ]
   },
+  "atoms": [
+    ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Movement","Fly",1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","Fly",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","Control",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","Friction",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+  ],
   "requires": "Peacebringer_Defensive.Luminous_Aura.White_Dwarf Inherent.Inherent.White_Dwarf_Step ! &&",
   "modesRequired": [
     "Peacebringer_Tanker_Mode"

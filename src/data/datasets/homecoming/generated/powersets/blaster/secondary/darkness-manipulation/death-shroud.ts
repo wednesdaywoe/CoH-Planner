@@ -48,5 +48,8 @@ export const DeathShroud: Power = {
     "type": "Negative",
     "scale": 0.2,
     "table": "Melee_Damage"
-  }
+  },
+  "atoms": [
+    ["Damage","Negative",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

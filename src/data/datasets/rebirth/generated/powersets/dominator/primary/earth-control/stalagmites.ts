@@ -63,6 +63,11 @@ export const Stalagmites: Power = {
       "table": "Ranged_Stun"
     }
   },
+  "atoms": [
+    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Defense","All",2,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

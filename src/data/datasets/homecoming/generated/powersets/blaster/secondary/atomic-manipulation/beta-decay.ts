@@ -63,5 +63,11 @@ export const BetaDecay: Power = {
       "scale": 0.75,
       "table": "Melee_DeBuff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["ToHit",null,0.75,1,1.25,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Defense","All",1.5,1,1,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.1,1,1.25,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.025,1,1,"Melee_Ones","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true]
+  ]
 };

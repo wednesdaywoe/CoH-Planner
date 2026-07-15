@@ -10,6 +10,9 @@ import type {
   EnhancementStatType,
   IOSetCategory,
 } from './common';
+// Plan B, Phase 0: the pre-projection atom list carried on `Power.atoms`.
+// `atomic-effect.ts` has no imports, so this type-only reference is cycle-free.
+import type { EncodedAtom } from '@/data/core/atomic-effect';
 
 // ============================================
 // SCALED EFFECT (new format with AT tables)
@@ -915,6 +918,17 @@ export interface Power {
   grantedDamageProcs?: GrantedDamageProc[];
   /** Mutually exclusive power(s) — picking this power prevents picking the listed internalNames */
   excludes?: string[];
+  /**
+   * Plan B, Phase 0 — the power's effects as the pre-projection **atom list**
+   * (DSH4 `AtomicEffect[]`), the same list `templatesToAtoms` feeds to the
+   * `effects` bag projection. Carried in the compact positional `EncodedAtom`
+   * wire form (see `src/data/core/atomic-effect.ts`); decode with `decodeAtoms`.
+   *
+   * Emitted alongside `effects` so no discriminator can be lost by projection.
+   * Currently UNUSED by calc/UI — exposed so the atom-native calc primitives
+   * (Phase 1) can read it behind a shadow-compare before the bag is retired.
+   */
+  atoms?: EncodedAtom[];
 }
 
 /**

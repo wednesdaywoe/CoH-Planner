@@ -47,5 +47,10 @@ export const HardLife: Power = {
       "scale": 1,
       "table": "Melee_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["ToHit",null,1,1,30,"Melee_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,5,1,30,"Melee_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["RechargeTime",null,0.3,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

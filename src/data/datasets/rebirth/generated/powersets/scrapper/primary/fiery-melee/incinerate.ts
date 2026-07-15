@@ -53,6 +53,10 @@ export const Incinerate: Power = {
       "tickRate": 0.5
     }
   ],
+  "atoms": [
+    ["Damage","Fire",0.25,1,4.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.1125,1,4.6,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -114,5 +114,35 @@ export const Serum: Power = {
       "scale": 1,
       "table": "Ranged_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Smashing",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Lethal",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Fire",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Cold",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Energy",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Negative",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Toxic",4,1,60,"Ranged_Res_Dmg","Res","Magnitude","All","Any",false,"Stack",2,null,null,1],
+    ["Mez","Held",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Immobilized",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Stunned",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Sleep",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockup",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockback",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Repel",-30,1,60,"Ranged_Res_Boolean","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Radiation",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Electrical",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Sonic",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Quantum",10,1,60,"Ranged_Buff_Dmg","Str","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true],
+    ["ToHit",null,1,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1],
+    ["Recovery",null,1,1,60,"Ranged_Ones","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1]
+  ]
 };

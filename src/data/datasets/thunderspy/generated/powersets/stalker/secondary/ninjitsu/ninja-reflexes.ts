@@ -50,5 +50,9 @@ export const NinjaReflexes: Power = {
     "durations": {
       "defenseBuff": 0.75
     }
-  }
+  },
+  "atoms": [
+    ["Defense","Melee",2,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.5,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

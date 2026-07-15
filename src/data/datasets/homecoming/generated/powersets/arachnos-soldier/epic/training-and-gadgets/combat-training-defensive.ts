@@ -42,5 +42,8 @@ export const CombatTrainingDefensive: Power = {
       "defenseBuff": 0.75
     }
   },
+  "atoms": [
+    ["Defense","Ranged",0.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

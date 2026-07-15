@@ -54,5 +54,10 @@ export const PsiWhipCrack: Power = {
       "entity": "Pets_Telekinetic_Sword",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.82,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.3,0.4000000059604645,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

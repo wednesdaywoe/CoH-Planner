@@ -72,5 +72,13 @@ export const KineticBolt: Power = {
         "table": "Ranged_Slow"
       }
     }
-  }
+  },
+  "atoms": [
+    ["RechargeTime",null,0.15,1,8,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","JumpHeight",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Jump",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Run",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.15,1,8,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.546,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

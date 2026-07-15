@@ -58,5 +58,10 @@ export const LancerShot: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",2.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",2.12,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

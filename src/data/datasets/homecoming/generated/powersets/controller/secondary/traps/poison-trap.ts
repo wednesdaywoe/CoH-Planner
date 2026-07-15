@@ -42,5 +42,8 @@ export const PoisonTrap: Power = {
       "entity": "Pets_Traps_Poison_Trap",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,260,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

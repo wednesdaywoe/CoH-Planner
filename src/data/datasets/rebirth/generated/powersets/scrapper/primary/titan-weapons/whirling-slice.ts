@@ -62,6 +62,12 @@ export const WhirlingSlice: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Damage","Smashing",1.15,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.1,1,2.1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,0.8500000238418579,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.5175,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

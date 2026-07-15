@@ -60,5 +60,11 @@ export const StunningAura: Power = {
       "scale": 0.05,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["Regeneration",null,0.05,1,2,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Recovery",null,0.0313,1,2,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1]
+  ]
 };

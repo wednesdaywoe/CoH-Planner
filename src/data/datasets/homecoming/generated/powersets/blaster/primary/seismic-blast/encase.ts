@@ -76,5 +76,13 @@ export const Encase: Power = {
         "table": "Ranged_Slow"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",0.5,1,3,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",-1.6,1,3,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Meta",null,-1.6,1,3,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","Jump",1,1,3,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true],
+    ["Movement","JumpHeight",1,1,3,"Ranged_Slow","Max","Magnitude","Target","Any",true,"Suppress",2,null,null,1,null,true]
+  ]
 };

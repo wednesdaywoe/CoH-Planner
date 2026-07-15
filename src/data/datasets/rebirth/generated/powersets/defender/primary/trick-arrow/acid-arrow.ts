@@ -96,6 +96,19 @@ export const AcidArrow: Power = {
       }
     }
   },
+  "atoms": [
+    ["Damage","Toxic",0.01,1,20,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Resistance","Smashing",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Lethal",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Fire",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Cold",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Energy",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Negative",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Psionic",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Toxic",-3,1,20,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",2,1,20,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Pets_OilSlickTarget target.VillainName> !"]
+  ],
   "conditionalEffects": [
     {
       "id": "flasharrow_dazzled",

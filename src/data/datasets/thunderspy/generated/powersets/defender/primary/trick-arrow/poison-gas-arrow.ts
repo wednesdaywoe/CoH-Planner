@@ -42,5 +42,8 @@ export const PoisonGasArrow: Power = {
       "entity": "Pets_PoisonGasArrow",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,20,"Melee_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

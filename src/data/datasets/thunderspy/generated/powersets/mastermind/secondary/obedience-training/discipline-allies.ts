@@ -37,6 +37,9 @@ export const DisciplineAllies: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,4,1,120,"Melee_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "conditional",

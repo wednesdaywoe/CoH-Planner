@@ -73,5 +73,12 @@ export const BallLightning: Power = {
       "scale": 0.07,
       "table": "Ranged_EndDrain"
     }
-  }
+  },
+  "atoms": [
+    ["Endurance",null,-0.07,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.045,1,2.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1],
+    ["Damage","Energy",0.9,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.045,1,2.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1]
+  ]
 };

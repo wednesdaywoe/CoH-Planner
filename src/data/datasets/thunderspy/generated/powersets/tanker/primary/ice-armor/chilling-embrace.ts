@@ -77,5 +77,16 @@ export const ChillingEmbrace: Power = {
         "table": "Melee_Res_DMG"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Regeneration",null,4,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Smashing",5,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Lethal",5,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Fire",5,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Cold",5,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Energy",5,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Negative",5,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Toxic",5,1,30,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-50,1,30,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"]
+  ]
 };

@@ -70,5 +70,11 @@ export const LifeDrain: Power = {
       "scale": 0.75,
       "table": "Ranged_Debuff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Negative",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Negative",1.64,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,1,1,0,"Ranged_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["ToHit",null,0.75,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

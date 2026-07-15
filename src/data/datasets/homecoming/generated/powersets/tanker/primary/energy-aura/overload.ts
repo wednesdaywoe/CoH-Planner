@@ -100,5 +100,18 @@ export const Overload: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Defense","Smashing",2.5,1,30,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",2.5,1,30,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",2.5,1,30,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",2.5,1,30,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",2.5,1,30,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",2.5,1,30,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",2,1,30,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Toxic",2,1,30,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MaxHP",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["Resistance","All",1,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,1,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+  ]
 };

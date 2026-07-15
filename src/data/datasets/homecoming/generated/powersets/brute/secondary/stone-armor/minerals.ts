@@ -82,6 +82,14 @@ export const Minerals: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Defense","Psionic",2.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Confused",-30,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["MezResist","Confused",2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.15,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "modesSuspended": [
     "Granite_Mode"
   ]

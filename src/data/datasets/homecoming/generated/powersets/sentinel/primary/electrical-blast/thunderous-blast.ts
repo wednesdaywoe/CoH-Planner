@@ -78,5 +78,15 @@ export const ThunderousBlast: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Energy",2.253,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",0.928,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",0.928,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,-0.55,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,-0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,-0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Recovery",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Recovery",null,-1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

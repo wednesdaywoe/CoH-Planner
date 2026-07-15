@@ -53,5 +53,12 @@ export const Combustion: Power = {
       "duration": 2.25,
       "tickRate": 0.25
     }
+  ],
+  "atoms": [
+    ["Unmapped",null,0.5,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,2.25,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.25,1],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Unmapped",null,0.225,0,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.045,1,7.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
   ]
 };

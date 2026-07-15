@@ -45,5 +45,8 @@ export const DistortionField: Power = {
       "entity": "Pets_DistortionField_Controller",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

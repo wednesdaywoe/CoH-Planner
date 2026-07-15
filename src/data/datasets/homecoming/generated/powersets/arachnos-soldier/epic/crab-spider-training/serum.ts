@@ -56,5 +56,10 @@ export const Serum: Power = {
     "stacksLinear": [
       "maxHPBuff"
     ]
-  }
+  },
+  "atoms": [
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ]
 };

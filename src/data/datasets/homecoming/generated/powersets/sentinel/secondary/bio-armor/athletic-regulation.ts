@@ -50,6 +50,11 @@ export const AthleticRegulation: Power = {
       }
     }
   },
+  "atoms": [
+    ["Movement","Run",0.075,1,2.25,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Fly",0.075,1,2.25,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","All",0.75,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "conditionalEffects": [
     {
       "id": "defensiveadaptation",

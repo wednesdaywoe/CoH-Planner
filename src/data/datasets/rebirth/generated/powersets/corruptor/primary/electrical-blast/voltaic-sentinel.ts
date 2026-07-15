@@ -47,5 +47,8 @@ export const VoltaicSentinel: Power = {
       "entity": "Pets_VoltaicSentinel_Corruptor",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

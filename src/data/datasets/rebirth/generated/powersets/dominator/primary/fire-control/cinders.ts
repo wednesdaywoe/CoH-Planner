@@ -45,6 +45,10 @@ export const Cinders: Power = {
       "table": "Ranged_Immobilize"
     }
   },
+  "atoms": [
+    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq @customFX BrightFieryBinds eq ! && @customFX DarkFieryBinds eq ! &&"],
+    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@customFX BrightFieryBinds eq @customFX DarkFieryBinds eq || enttype target> critter eq &&"]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

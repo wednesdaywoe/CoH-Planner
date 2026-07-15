@@ -47,6 +47,9 @@ export const RangedShot: Power = {
     "scale": 4.5,
     "table": "Ranged_Damage"
   },
+  "atoms": [
+    ["Damage","Lethal",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "quickSnipe": {
     "stats": {
       "castTime": 1.67,

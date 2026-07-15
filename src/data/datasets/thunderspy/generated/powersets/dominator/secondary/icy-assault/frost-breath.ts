@@ -48,5 +48,9 @@ export const FrostBreath: Power = {
     "table": "Ranged_Damage",
     "duration": 0.6,
     "tickRate": 0.5
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.55,1,0.6,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.2,1,10,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

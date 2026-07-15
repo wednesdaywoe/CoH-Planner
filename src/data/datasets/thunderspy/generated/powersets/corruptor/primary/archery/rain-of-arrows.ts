@@ -53,5 +53,9 @@ export const RainofArrows: Power = {
       ],
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,3,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,3,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

@@ -52,5 +52,8 @@ export const CarrionCreepers: Power = {
       "entity": "Pets_Creeper_Patch",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

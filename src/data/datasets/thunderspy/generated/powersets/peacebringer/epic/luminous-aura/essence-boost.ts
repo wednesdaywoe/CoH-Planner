@@ -46,5 +46,9 @@ export const EssenceBoost: Power = {
         "table": "Melee_Res_DMG"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,2,1,120,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Toxic",2,1,120,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

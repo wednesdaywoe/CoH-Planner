@@ -66,5 +66,11 @@ export const Hoarfrost: Power = {
       "maxHPBuff"
     ]
   },
+  "atoms": [
+    ["Resistance","Toxic",2,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MaxHP",null,2,1,120,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,4,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ],
   "requires": "Sentinel_Defense.Ice_Armor.Rime_Ice !"
 };

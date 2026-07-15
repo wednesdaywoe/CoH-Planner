@@ -126,6 +126,27 @@ export const ShadowCloak: Power = {
       }
     }
   },
+  "atoms": [
+    ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Smashing",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Lethal",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Fire",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Cold",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Energy",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Negative",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Psionic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Toxic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Immobilized",-10,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Stealth",null,0,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"@CustomFX NoFade eq !"],
+    ["Stealth",null,390,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Stealth",null,35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","MissionObjectClick source.EventTimeSince> 10 >"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat","MissionObjectClick source.EventTimeSince> 10 >"]
+  ],
   "setsModes": [
     "Hidden_Attack"
   ],

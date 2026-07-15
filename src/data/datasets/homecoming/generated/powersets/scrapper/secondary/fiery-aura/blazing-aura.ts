@@ -55,5 +55,9 @@ export const BlazingAura: Power = {
       "scale": 0.099,
       "table": "Melee_Damage"
     }
+  ],
+  "atoms": [
+    ["Damage","Fire",0.22,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.099,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
   ]
 };

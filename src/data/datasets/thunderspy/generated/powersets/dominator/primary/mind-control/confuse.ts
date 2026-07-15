@@ -51,5 +51,9 @@ export const Confuse: Power = {
       "confuse": 1
     },
     "effectDuration": 1
-  }
+  },
+  "atoms": [
+    ["Mez","Confused",4,4,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",4,2,1,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

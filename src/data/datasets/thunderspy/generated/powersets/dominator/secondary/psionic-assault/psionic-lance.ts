@@ -44,5 +44,9 @@ export const PsionicLance: Power = {
     "type": "Psionic",
     "scale": 3.56,
     "table": "Ranged_Damage"
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,3.56,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.15,1,10,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

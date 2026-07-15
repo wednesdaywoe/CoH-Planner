@@ -61,6 +61,12 @@ export const HurlBoulder: Power = {
       }
     }
   },
+  "atoms": [
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.699999988079071,null,true],
+    ["Movement","Fly",-1,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.8999999761581421],
+    ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5]
+  ],
   "specialEffects": [
     {
       "kind": "grant",

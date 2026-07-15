@@ -55,5 +55,9 @@ export const ShadowRecall: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "atoms": [
+    ["Stealth",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+  ],
   "requires": "Inherent.Inherent.Shadow_Recall !"
 };

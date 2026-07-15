@@ -58,6 +58,14 @@ export const SynapticOverload: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "atoms": [
+    ["Mez","Confused",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["EntCreate",null,-1,1,2.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["EntCreate",null,-1,1,4.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["EntCreate",null,1,62,8,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,4.25,1,null,true],
+    ["Recovery",null,-1,1,8,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

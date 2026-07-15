@@ -67,5 +67,11 @@ export const AbsorbPain: Power = {
     "stacksLinear": [
       "resistance"
     ]
-  }
+  },
+  "atoms": [
+    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
+    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["HealResistance",null,1,1,20,"Ranged_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Damage","Special",3,1,0,"Ranged_Damage","Abs","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true]
+  ]
 };

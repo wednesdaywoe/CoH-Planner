@@ -50,5 +50,9 @@ export const Bayonet: Power = {
       "duration": 5.1,
       "tickRate": 1
     }
+  ],
+  "atoms": [
+    ["Damage","Lethal",1.44,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.12,1,5.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1]
   ]
 };

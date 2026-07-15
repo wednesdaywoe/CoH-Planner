@@ -44,5 +44,10 @@ export const Eviscerate: Power = {
     "type": "Lethal",
     "scale": 1.99,
     "table": "Melee_Damage"
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1.99,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1.99,0.15000000596046448,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.8955,0,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

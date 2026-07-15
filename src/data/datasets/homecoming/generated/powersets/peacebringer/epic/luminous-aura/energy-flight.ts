@@ -73,6 +73,19 @@ export const EnergyFlight: Power = {
       }
     }
   },
+  "atoms": [
+    ["Movement","Fly",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Movement","Control",2,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Movement","Friction",2,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Meta",null,1,168,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true],
+    ["Movement","Fly",0.01,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",1.1788,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Movement","Fly",2.0475,1,0.75,"Melee_Ones","Max","Magnitude","Self","PvE",false,"Suppress",2,null,null,1,null,true]
+  ],
   "requires": "Inherent.Inherent.Energy_Flight !",
   "setsModes": [
     "FlyOn"

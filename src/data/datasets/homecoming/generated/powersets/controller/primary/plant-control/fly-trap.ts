@@ -49,5 +49,8 @@ export const FlyTrap: Power = {
       "entity": "Pets_Fly_Trap_Controller",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

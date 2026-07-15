@@ -41,5 +41,9 @@ export const GammaBoost: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Regeneration",null,1,1,1.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.5,1,1.25,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

@@ -78,5 +78,13 @@ export const HotFeet: Power = {
         "table": "Ranged_Slow"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Fire",0.25,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Afraid",4,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["Movement","Fly",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.7,1,2.25,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.7,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Run",0.7,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

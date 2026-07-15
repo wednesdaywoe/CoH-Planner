@@ -46,5 +46,8 @@ export const Caltrops: Power = {
       "entity": "Pets_Caltrops",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

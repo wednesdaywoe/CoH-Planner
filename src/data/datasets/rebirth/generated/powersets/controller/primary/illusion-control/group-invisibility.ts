@@ -98,5 +98,32 @@ export const GroupInvisibility: Power = {
       "scale": 1,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Stealth",null,60,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Stealth",null,667,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Melee",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Melee",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0.25,1,120,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["EntCreate",null,0.1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["EntCreate",null,0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["ThreatLevel",null,-1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

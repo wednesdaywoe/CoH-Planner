@@ -100,5 +100,20 @@ export const TimeBomb: Power = {
         "table": "Ranged_Ones"
       }
     }
-  }
+  },
+  "atoms": [
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Damage","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Fire",1.182,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",0.818,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockback",4,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.375,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Fly",0.375,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["RechargeTime",null,0.375,1,30,"Ranged_Ones","Str","Magnitude","Target","Any",false,"No",2,null,null,1,null,true],
+    ["Recovery",null,0.375,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"No",2,null,null,1],
+    ["RechargeTime",null,-0.4,1,30,"Ranged_Ones","Str","Magnitude","Target","Any",true,"No",2,null,null,1,null,true],
+    ["Movement","Run",-0.5,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",2,null,null,1],
+    ["Movement","Fly",-0.5,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",2,null,null,1],
+    ["Recovery",null,-0.3,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"No",2,null,null,1]
+  ]
 };

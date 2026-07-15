@@ -101,5 +101,18 @@ export const Thaw: Power = {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Confused",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Terrorized",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Held",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Immobilized",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Stunned",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Sleep",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
+    ["MezResist","Sleep",5,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","PvE",false,"Stack",2,null,null,1],
+    ["Meta",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Resistance","Cold",1,1,90,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.8,1,90,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.8,1,90,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+  ]
 };

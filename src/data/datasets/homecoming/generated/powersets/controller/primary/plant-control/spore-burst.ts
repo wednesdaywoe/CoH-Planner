@@ -46,6 +46,12 @@ export const SporeBurst: Power = {
       "table": "Ranged_Sleep"
     }
   },
+  "atoms": [
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? !"],
+    ["Mez","Sleep",6,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Sleep",6,1,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

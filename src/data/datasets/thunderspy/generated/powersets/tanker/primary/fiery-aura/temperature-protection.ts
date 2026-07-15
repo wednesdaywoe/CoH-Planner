@@ -41,5 +41,9 @@ export const Temperatureprotection: Power = {
       }
     }
   },
+  "atoms": [
+    ["Resistance","Cold",1,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

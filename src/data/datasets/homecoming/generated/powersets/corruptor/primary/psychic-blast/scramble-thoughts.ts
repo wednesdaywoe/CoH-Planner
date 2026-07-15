@@ -78,6 +78,15 @@ export const ScrambleThoughts: Power = {
       "table": "Ranged_Stun"
     }
   },
+  "atoms": [
+    ["Damage","Psionic",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Sleep",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
+    ["Mez","Immobilized",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
+    ["Mez","Placate",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
+    ["Mez","Terrorized",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true],
+    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

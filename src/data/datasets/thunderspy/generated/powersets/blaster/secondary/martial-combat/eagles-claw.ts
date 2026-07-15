@@ -50,5 +50,10 @@ export const EaglesClaw: Power = {
       "scale": 4,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,2.28,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",4,3,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-0.25,1,10,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

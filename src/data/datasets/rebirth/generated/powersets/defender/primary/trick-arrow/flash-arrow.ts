@@ -60,6 +60,13 @@ export const FlashArrow: Power = {
       "table": "Ranged_DeBuff_ToHit"
     }
   },
+  "atoms": [
+    ["Perception",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.5,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,1,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Pets_OilSlickTarget target.VillainName> !"],
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "acidarrow_acidburn",

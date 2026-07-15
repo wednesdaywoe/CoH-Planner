@@ -44,6 +44,9 @@ export const SoulExtraction: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["Heal",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,true]
+  ],
   "effects": {
     "summon": {
       "isPseudoPet": false,

@@ -62,6 +62,12 @@ export const Hurricane: Power = {
       "table": "Ranged_Debuff_ToHit"
     }
   },
+  "atoms": [
+    ["Range",null,-0.6,1,10,"Ranged_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,3,1,10,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Repel",1,1,1.05,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",4,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

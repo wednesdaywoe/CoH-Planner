@@ -44,5 +44,9 @@ export const ForceBarrier: Power = {
     "durations": {
       "absorb": 60
     }
-  }
+  },
+  "atoms": [
+    ["Absorb",null,0.3,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,60,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1]
+  ]
 };

@@ -42,5 +42,8 @@ export const Hoarfrost: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

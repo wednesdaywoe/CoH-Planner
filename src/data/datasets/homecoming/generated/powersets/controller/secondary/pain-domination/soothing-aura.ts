@@ -45,5 +45,8 @@ export const SoothingAura: Power = {
     "type": "Heal",
     "scale": 0.375,
     "table": "Ranged_Heal"
-  }
+  },
+  "atoms": [
+    ["Heal",null,0.375,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

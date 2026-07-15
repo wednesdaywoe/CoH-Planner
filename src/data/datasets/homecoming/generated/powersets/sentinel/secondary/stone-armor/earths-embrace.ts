@@ -61,5 +61,11 @@ export const EarthsEmbrace: Power = {
         "table": "Melee_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["MaxHP",null,2,1,60,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["MaxHP",null,2,1,60,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",2,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Heal",null,1.35,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1]
+  ]
 };

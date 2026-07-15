@@ -33,5 +33,9 @@ export const ElectricFence: Power = {
   ],
   "maxSlots": 6,
   "effects": {},
+  "atoms": [
+    ["RechargeTime",null,0.2,1,10.25,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.5,1,10.25,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

@@ -62,5 +62,8 @@ export const CallJounin: Power = {
       "entity": "MastermindPets_Jonin",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
+  ]
 };

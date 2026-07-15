@@ -57,6 +57,11 @@ export const Pendulum: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Damage","Lethal",1.3463,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
+    ["Damage","Fire",0.6059,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

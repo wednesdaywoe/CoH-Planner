@@ -60,5 +60,10 @@ export const FragGrenade: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "atoms": [
+    ["Damage","Lethal",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.67,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.75,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "requires": "Arachnos_Soldiers.Crab_Spider_Soldier.CS_Frag_Grenade !"
 };

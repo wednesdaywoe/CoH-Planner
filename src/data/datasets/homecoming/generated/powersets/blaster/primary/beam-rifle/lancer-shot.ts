@@ -52,6 +52,10 @@ export const LancerShot: Power = {
       "table": "Ranged_Stun"
     }
   },
+  "atoms": [
+    ["Damage","Energy",2.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "conditionalEffects": [
     {
       "id": "beam_rifle_debuff",

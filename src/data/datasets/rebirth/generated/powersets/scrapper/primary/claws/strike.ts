@@ -42,6 +42,10 @@ export const Strike: Power = {
     "scale": 1.08,
     "table": "Melee_Damage"
   },
+  "atoms": [
+    ["Damage","Lethal",1.08,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.486,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -63,6 +63,11 @@ export const Zapp: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "atoms": [
+    ["Damage","Energy",4.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.3,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Range",null,0.5,1,10,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "quickSnipe": {
     "stats": {
       "castTime": 1.33,

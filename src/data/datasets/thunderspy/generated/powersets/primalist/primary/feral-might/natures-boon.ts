@@ -28,5 +28,9 @@ export const NaturesBoon: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,1,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.5,1,30,"Melee_Stun","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

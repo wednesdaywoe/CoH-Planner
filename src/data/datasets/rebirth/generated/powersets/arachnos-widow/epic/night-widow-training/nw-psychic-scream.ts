@@ -55,5 +55,9 @@ export const NWPsychicScream: Power = {
       "scale": 0.5,
       "table": "Ranged_Slow"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Psionic",1.217935,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["RechargeTime",null,0.5,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+  ]
 };

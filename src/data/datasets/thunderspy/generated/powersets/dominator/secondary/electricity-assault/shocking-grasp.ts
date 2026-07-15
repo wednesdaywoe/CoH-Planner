@@ -51,5 +51,8 @@ export const ShockingGrasp: Power = {
       "entity": "Pets_VoltaicSentinel_Dominator",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

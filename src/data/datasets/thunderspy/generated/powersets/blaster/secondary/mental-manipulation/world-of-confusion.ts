@@ -58,5 +58,9 @@ export const WorldofConfusion: Power = {
       "scale": 1.5,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Confused",1.5,2,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.12,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,2,1]
+  ]
 };

@@ -66,6 +66,12 @@ export const ConfoundingChant: Power = {
       "table": "Ranged_Stun"
     }
   },
+  "atoms": [
+    ["Damage","Psionic",0.125,1,19.75,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1],
+    ["Damage","Psionic",0.125,1,34.75,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1],
+    ["Mez","Stunned",8,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

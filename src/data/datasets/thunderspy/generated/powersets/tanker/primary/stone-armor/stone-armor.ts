@@ -54,5 +54,10 @@ export const StoneArmor: Power = {
     "durations": {
       "defenseBuff": 0.75
     }
-  }
+  },
+  "atoms": [
+    ["Defense","Smashing",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Lethal",1.6,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.4,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

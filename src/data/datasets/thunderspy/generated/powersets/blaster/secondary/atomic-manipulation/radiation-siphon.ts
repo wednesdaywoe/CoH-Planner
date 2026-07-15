@@ -46,5 +46,12 @@ export const RadiationSiphon: Power = {
     "type": "Energy",
     "scale": 0.78,
     "table": "Melee_Damage"
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.78,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1.5,1,10,"Melee_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.5,1,2.1,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,1,0.3199999928474426,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"],
+    ["Unmapped",null,0.129,1,9.17,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

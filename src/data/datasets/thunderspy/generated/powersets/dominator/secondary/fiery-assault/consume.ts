@@ -48,5 +48,8 @@ export const Consume: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Endurance",null,0.5,1,120,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

@@ -62,5 +62,11 @@ export const ProtonArmor: Power = {
         "table": "Melee_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Energy",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",0.75,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+  ]
 };

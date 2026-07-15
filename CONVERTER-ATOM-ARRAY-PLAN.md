@@ -81,7 +81,7 @@ Guiding principle: **never a big-bang cutover.** Keep `projectAtomsToEffects`
 producing the identical bag throughout, add the atom list *alongside*, migrate
 consumers one applier at a time behind a shadow-comparison, delete the bag last.
 
-### Phase 0 — Expose atoms at runtime (no behavior change)
+### Phase 0 — Expose atoms at runtime (no behavior change) ✅ DONE (2026-07-14)
 - Emit the atom list on the generated `Power` (e.g. `power.atoms: AtomicEffect[]`),
   produced by the same `templatesToAtoms` the projection already runs. Gate on
   size/byte budget — this roughly doubles per-power effect data; measure, and if
@@ -89,6 +89,22 @@ consumers one applier at a time behind a shadow-comparison, delete the bag last.
 - Add `AtomicEffect` to the runtime type barrel; keep it unused by calc/UI.
 - **DoD:** builds, no diff in computed totals, generated tree grows by a bounded,
   reviewed amount.
+
+  **Shipped:** measured the encoding cost on the HC corpus (full objects 619
+  B/atom → 13.8 MB/dataset; positional tuple 124 B/atom → 2.75 MB) and chose a
+  **positional-tuple wire form** decoded at load. Codec + single source-of-truth
+  field order (`ATOM_TUPLE_FIELDS`, `encodeAtom`, `decodeAtoms`, `EncodedAtom`)
+  live in `src/data/core/atomic-effect.ts`; `Power.atoms?: EncodedAtom[]` added
+  and the atom types re-exported from the `@/types` barrel. The converter emits
+  `power.atoms` from the same `templatesToAtoms(allTemplates)` that feeds the bag
+  (`encodeAtomsForEmit` + a custom `serializePower` that renders one tuple per
+  line so the compact form survives the pretty-printer). Verified: additive-only
+  diff (every `effects`/`damage`/`stats` bag byte-identical modulo an append
+  comma), lossless round-trip across all 22,293 HC atoms, generated tree +~5–6 MB
+  total (HC 15→17 MB), `tsc` clean, 1051 tests green, DSH6 gate PASS, and the
+  runtime seam confirmed (committed tuple → `decodeAtoms` → `AtomicEffect` with
+  signed scale / aspect / `ignoreStrength` / `toWho` intact). Calc/UI still read
+  only the bag.
 
 ### Phase 1 — Atom-native calc primitives + shadow compare
 - Build read helpers the calc will use: `atomsOf(power, effectType)`,

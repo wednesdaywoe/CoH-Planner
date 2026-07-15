@@ -65,5 +65,12 @@ export const Rebirth: Power = {
         "table": "Melee_Ones"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Endurance",null,0.5,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,0.4545,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Stealth",null,300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+  ]
 };

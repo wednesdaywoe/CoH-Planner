@@ -40,5 +40,9 @@ export const BuildUp: Power = {
       "scale": 1,
       "table": "Melee_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["ToHit",null,1,1,5.25,"Melee_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

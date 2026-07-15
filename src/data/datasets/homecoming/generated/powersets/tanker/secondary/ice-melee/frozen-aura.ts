@@ -57,5 +57,10 @@ export const FrozenAura: Power = {
       "scale": 10,
       "table": "Melee_Sleep"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Sleep",10,2,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+    ["Damage","Cold",1.424,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.6408,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+  ]
 };

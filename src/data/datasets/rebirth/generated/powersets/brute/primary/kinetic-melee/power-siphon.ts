@@ -46,5 +46,9 @@ export const PowerSiphon: Power = {
     "stacksLinear": [
       "tohitBuff"
     ]
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,86,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,1,null,true],
+    ["ToHit",null,0.75,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ]
 };

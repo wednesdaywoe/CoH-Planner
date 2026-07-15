@@ -68,5 +68,10 @@ export const DartBurst: Power = {
       "scale": 0.25,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Lethal",0.255,1,0.8,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.33000001311302185,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-0.25,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Toxic",0.11,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1]
+  ]
 };

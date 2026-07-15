@@ -67,5 +67,12 @@ export const MudBath: Power = {
         "table": "Melee_SpeedRunning"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Movement","Run",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Jump",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","JumpHeight",0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Recovery",null,0.5,1,2.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ]
 };

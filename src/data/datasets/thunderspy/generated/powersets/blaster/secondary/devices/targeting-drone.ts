@@ -48,5 +48,10 @@ export const TargetingDrone: Power = {
       "scale": 1.85,
       "table": "Melee_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["ToHit",null,1.85,1,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,0.75,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

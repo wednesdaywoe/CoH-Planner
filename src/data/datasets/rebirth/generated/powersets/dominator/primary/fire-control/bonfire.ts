@@ -44,5 +44,8 @@ export const Bonfire: Power = {
       "entity": "Pets_Bonfire",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

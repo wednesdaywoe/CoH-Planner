@@ -58,5 +58,10 @@ export const AlphaBarrier: Power = {
         "table": "Melee_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Smashing",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",3.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+  ]
 };

@@ -46,5 +46,9 @@ export const SoulAbsorption: Power = {
       "entity": "Pets_SoulAbsorptionBuff",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"]
+  ]
 };

@@ -53,5 +53,9 @@ export const Shockwave: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1.13,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.5,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

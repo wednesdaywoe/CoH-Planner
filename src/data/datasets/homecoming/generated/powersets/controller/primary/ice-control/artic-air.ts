@@ -96,6 +96,19 @@ export const ArticAir: Power = {
       }
     }
   },
+  "atoms": [
+    ["RechargeTime",null,0.5,1,2.25,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.65,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Fly",0.65,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Jump",0.65,1,2.25,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","JumpHeight",0.65,1,2.25,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Stealth",null,-35,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Stealth",null,-389,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Run",-1,1,2.25,"Ranged_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",2,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.30000001192092896],
+    ["Mez","Confused",1.3333,1,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.20000000298023224],
+    ["Mez","Afraid",3,0,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,0.5]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

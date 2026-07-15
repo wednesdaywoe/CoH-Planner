@@ -44,5 +44,9 @@ export const AssassinsStrike: Power = {
     "table": "Melee_Damage"
   },
   "fromHideBonus": 0.47058823529411775,
-  "midCombatCast": 0.67
+  "midCombatCast": 0.67,
+  "atoms": [
+    ["Unmapped",null,1.75,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1,1,8,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

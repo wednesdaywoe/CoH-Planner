@@ -113,6 +113,28 @@ export const CombatFlight: Power = {
       }
     }
   },
+  "atoms": [
+    ["Movement","Fly",4,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Movement","Fly",0,1,0.75,"Melee_Ones","Cur","Expression","Self","Any",false,"Suppress",2,null,null,1],
+    ["Movement","Control",25,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Movement","Friction",25,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Overlap",2,null,null,1,null,true],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0],
+    ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1],
+    ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Suppress",2,null,null,1]
+  ],
   "requires": "Inherent.Inherent.Combat_Flight !",
   "modesSuspended": [
     "Peacebringer_Blaster_Mode",

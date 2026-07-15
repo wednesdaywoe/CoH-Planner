@@ -56,5 +56,10 @@ export const PlasmaShield: Power = {
         "table": "Ranged_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Energy",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+  ]
 };

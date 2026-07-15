@@ -55,6 +55,10 @@ export const FullAuto: Power = {
       "tickRate": 0.20000000298023224
     }
   ],
+  "atoms": [
+    ["Damage","Lethal",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,0.10000000149011612],
+    ["Damage","Lethal",0.162,1,3.3,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.20000000298023224,1,null,null,null,null,null,null,"Enttype target> critter eq"]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

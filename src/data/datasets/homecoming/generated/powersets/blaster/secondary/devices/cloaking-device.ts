@@ -171,6 +171,40 @@ export const CloakingDevice: Power = {
       }
     }
   },
+  "atoms": [
+    ["Stealth",null,15,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Smashing",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Lethal",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Fire",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Cold",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Energy",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Toxic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Regeneration",null,1.125,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,1.125,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Stealth",null,0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"@CustomFX NoFade eq !"],
+    ["Stealth",null,35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Stealth",null,390,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","Ranged",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","Melee",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","AoE",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","Smashing",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","Lethal",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","Fire",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","Cold",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","Energy",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","Negative",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","Psionic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Defense","Toxic",0.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked source.EventTimeSince> 10 > HitByFoe source.EventTimeSince> 10 > && MissionObjectClick source.EventTimeSince> 10 > &&"],
+    ["Stealth",null,0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,"OutOfCombat","@CustomFX NoFade eq !"]
+  ],
   "setsModes": [
     "Hidden_Attack"
   ]

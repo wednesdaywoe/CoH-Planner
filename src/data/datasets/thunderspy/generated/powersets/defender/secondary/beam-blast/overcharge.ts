@@ -66,6 +66,12 @@ export const Overcharge: Power = {
       "table": "Ranged_Stun"
     }
   },
+  "atoms": [
+    ["Unmapped",null,3,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,4.1,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Mez","Stunned",4,3,0,"Ranged_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Beam_Rifle_Debuff target.ownPower? ! &&"],
+    ["Unmapped",null,1.5,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "beam_rifle_debuff",

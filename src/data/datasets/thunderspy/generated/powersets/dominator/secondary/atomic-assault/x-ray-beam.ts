@@ -44,5 +44,10 @@ export const XRayBeam: Power = {
     "type": "Energy",
     "scale": 1.148,
     "table": "Ranged_Damage"
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1.148,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,2,1,6,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0.23000000417232513,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? !"]
+  ]
 };

@@ -31,5 +31,8 @@ export const DefensiveAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "atoms": [
+    ["Unmapped",null,1,1,1.1,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Scrapper_Defense.Organic_Armor.Evolution"
 };

@@ -46,5 +46,10 @@ export const CrabSpiderArmor: Power = {
       }
     }
   },
+  "atoms": [
+    ["Resistance","Smashing",0.3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Resistance","Lethal",0.3,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Unmapped",null,-4,1,10,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"]
+  ],
   "mechanicType": "parentMechanic"
 };

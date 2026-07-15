@@ -75,6 +75,22 @@ export const ForceBubble: Power = {
       }
     }
   },
+  "atoms": [
+    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&"],
+    ["Mez","Knockback",0.1,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.009999999776482582,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&"],
+    ["Movement","Run",0.4,1,0.3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&"],
+    ["Movement","Fly",0.4,1,0.3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&"],
+    ["Movement","JumpHeight",0.4,1,0.3,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&"],
+    ["Movement","Jump",0.4,1,0.3,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&"],
+    ["DamageBuff","Smashing",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"],
+    ["DamageBuff","Lethal",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"],
+    ["DamageBuff","Fire",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"],
+    ["DamageBuff","Cold",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"],
+    ["DamageBuff","Energy",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"],
+    ["DamageBuff","Negative",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"],
+    ["DamageBuff","Toxic",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"],
+    ["DamageBuff","Psionic",2.5,1,0.3,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= entref target> entref source> eq ! &&"]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -63,5 +63,12 @@ export const HowlingTwilight: Power = {
       "entity": "Pets_HowlingVillain",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.5,1,30,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.25,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Stunned",15,2,0,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Afraid",15,3,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,15,3,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

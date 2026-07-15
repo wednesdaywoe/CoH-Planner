@@ -49,5 +49,8 @@ export const Sleet: Power = {
       "entity": "Pets_Sleet_Defender",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

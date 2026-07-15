@@ -127,5 +127,28 @@ export const ArcticFog: Power = {
         "table": "Ranged_Ones"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Stealth",null,35,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Stealth",null,389,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Melee",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0.5,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["EntCreate",null,0.7,1,2.25,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",2,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",2,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",2,1,2.25,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.6,1,2.25,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.6,1,2.25,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.6,1,2.25,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.6,1,2.25,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.6,1,2.25,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

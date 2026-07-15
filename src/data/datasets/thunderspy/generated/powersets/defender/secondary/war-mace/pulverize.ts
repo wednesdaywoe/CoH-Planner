@@ -50,5 +50,9 @@ export const Pulverize: Power = {
       "scale": 5,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1.64,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",5,2,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

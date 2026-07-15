@@ -50,5 +50,9 @@ export const NightFall: Power = {
     "table": "Ranged_Damage",
     "duration": 2.8,
     "tickRate": 0.30000001192092896
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.11,1,2.8,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

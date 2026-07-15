@@ -52,5 +52,10 @@ export const EnergizingCircuit: Power = {
       "scale": 1.25,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Endurance",null,25,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["RechargeTime",null,1.25,1,5,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+  ]
 };

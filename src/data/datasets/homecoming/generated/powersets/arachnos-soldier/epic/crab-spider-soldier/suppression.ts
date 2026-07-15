@@ -60,5 +60,9 @@ export const Suppression: Power = {
     "durations": {
       "defenseDebuff": 12
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Energy",0.1854,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.6000000238418579,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

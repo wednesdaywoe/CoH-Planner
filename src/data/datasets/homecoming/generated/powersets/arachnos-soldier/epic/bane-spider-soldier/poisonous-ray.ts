@@ -57,5 +57,9 @@ export const PoisonousRay: Power = {
     "durations": {
       "defenseDebuff": 15
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Toxic",0.4,1,2.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

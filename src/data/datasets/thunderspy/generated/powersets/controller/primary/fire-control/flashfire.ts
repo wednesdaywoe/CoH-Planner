@@ -55,5 +55,10 @@ export const Flashfire: Power = {
       "scale": 15,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.06,1,4,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Mez","Stunned",15,3,0,"Ranged_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",11.25,1,0,"Ranged_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

@@ -47,5 +47,8 @@ export const FreezingRain: Power = {
       "entity": "Pets_IceStorm_Defender",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

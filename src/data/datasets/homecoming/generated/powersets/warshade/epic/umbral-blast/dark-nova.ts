@@ -93,6 +93,23 @@ export const DarkNova: Power = {
       "table": "Melee_Buff_ToHit"
     }
   },
+  "atoms": [
+    ["Movement","Fly",4,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Fly",1.5,1,2,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Control",2,1,2,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Friction",2,1,2,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Recovery",null,0.15,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["ToHit",null,1,1,2,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["DamageBuff","Smashing",5,1,2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",5,1,2,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",0.15,1,2,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",0.15,1,2,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,39,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,25,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,4,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,3,1,null,true],
+    ["Movement","Fly",2,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,0]
+  ],
   "setsModes": [
     "Suppress_PoolToggles",
     "Disable_Walk",

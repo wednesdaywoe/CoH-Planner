@@ -42,5 +42,10 @@ export const BloodThirst: Power = {
       "scale": 1.5,
       "table": "Melee_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["ToHit",null,1.5,1,20,"Melee_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,6,1,20,"Melee_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,20,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

@@ -47,5 +47,9 @@ export const ParasiticAura: Power = {
       "scale": 0.3,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Recovery",null,0.3,1,45,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,30,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"]
+  ]
 };

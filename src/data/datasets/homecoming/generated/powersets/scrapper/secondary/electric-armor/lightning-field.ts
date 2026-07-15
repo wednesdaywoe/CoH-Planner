@@ -56,5 +56,9 @@ export const LightningField: Power = {
       "scale": 0.03,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Energy",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,-0.03,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

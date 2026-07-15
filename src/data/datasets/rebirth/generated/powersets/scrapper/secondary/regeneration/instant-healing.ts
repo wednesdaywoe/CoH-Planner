@@ -48,6 +48,11 @@ export const InstantHealing: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Regeneration",null,6,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,2,1,90,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"]
+  ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ]

@@ -124,6 +124,33 @@ export const Adaptation: Power = {
       "table": "Melee_InherentTaunt"
     }
   },
+  "atoms": [
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Resistance","Smashing",-1,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation source.Mode? ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["Resistance","Lethal",-1,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation source.Mode? ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["Resistance","Fire",-1,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation source.Mode? ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["Resistance","Cold",-1,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation source.Mode? ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["Resistance","Energy",-1,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation source.Mode? ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["Resistance","Negative",-1,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation source.Mode? ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["Resistance","Psionic",-1,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation source.Mode? ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["Resistance","Toxic",-1,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation source.Mode? ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["Resistance","Fire",0.375,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",0.375,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",0.375,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",0.375,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",0.3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",0.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Smashing",0.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",0.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Cold",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Energy",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Negative",0.038,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Psionic",0.03,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Toxic",0.05,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Smashing",0.05,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Lethal",0.05,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "restedadaptation",

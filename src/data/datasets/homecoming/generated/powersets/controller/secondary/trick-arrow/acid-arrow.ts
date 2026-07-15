@@ -93,5 +93,16 @@ export const AcidArrow: Power = {
         "table": "Ranged_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Toxic",0.01,1,20,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Defense","All",2,1,45,"Ranged_Debuff_Def","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1],
+    ["HealResistance",null,4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true],
+    ["EnduranceDiscount",null,-4,1,45,"Ranged_Res_Dmg","Res","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true]
+  ]
 };

@@ -134,5 +134,26 @@ export const Quickness: Power = {
       "scale": 0.2,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Defense","Ranged",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Melee",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","AoE",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Toxic",0.25,1,0.5,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Knockup",-9,1,0.5,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockback",-9,1,0.5,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,0.5,"Melee_Ones","Str","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.1,1,0.5,"Melee_SpeedRunning","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Movement","Fly",0.1,1,0.5,"Melee_SpeedFlying","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.4,1,0.5,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.4,1,0.5,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.4,1,0.5,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true]
+  ]
 };

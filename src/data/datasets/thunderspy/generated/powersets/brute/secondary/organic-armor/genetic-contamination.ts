@@ -46,6 +46,11 @@ export const GeneticContamination: Power = {
     "scale": 0.15,
     "table": "Melee_Damage"
   },
+  "atoms": [
+    ["Unmapped",null,0.15,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"],
+    ["Unmapped",null,1.5,1,5,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"]
+  ],
   "conditionalEffects": [
     {
       "id": "offensiveadaptation",

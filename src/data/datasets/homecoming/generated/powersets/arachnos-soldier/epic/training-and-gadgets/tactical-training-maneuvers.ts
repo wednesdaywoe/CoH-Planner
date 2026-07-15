@@ -92,5 +92,18 @@ export const TacticalTrainingManeuvers: Power = {
     "durations": {
       "defenseBuff": 2.25
     }
-  }
+  },
+  "atoms": [
+    ["Defense","Ranged",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Melee",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","AoE",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Fire",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Cold",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Energy",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Negative",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Toxic",1,1,2.25,"Ranged_Buff_Def","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1]
+  ]
 };

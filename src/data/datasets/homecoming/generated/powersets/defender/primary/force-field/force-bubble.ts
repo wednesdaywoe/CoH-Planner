@@ -114,5 +114,8 @@ export const ForceBubble: Power = {
         }
       ]
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,45,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1]
+  ]
 };

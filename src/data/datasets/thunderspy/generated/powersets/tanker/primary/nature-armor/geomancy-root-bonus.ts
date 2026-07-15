@@ -24,6 +24,9 @@ export const GeomancyRootBonus: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "atoms": [
+    ["Unmapped",null,100,1,10.75,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Tanker_Defense.Sacred_Armor.Geomancy",
   "mechanicType": "parentMechanic"
 };

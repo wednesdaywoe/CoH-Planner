@@ -39,6 +39,9 @@ export const WildRoar: Power = {
     "Fear"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,-100,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "prowlermode",

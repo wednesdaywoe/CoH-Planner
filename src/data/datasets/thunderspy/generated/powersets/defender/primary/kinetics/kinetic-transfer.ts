@@ -38,5 +38,9 @@ export const KineticTransfer: Power = {
       "entity": "Pets_KineticTransferDebuff",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["Meta",null,0,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

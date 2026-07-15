@@ -65,5 +65,12 @@ export const MudPots: Power = {
         "table": "Melee_SpeedRunning"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Movement","Run",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.5,1,5,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.5,1,5,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

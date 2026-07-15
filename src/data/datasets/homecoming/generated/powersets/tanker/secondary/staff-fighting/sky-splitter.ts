@@ -74,6 +74,13 @@ export const SkySplitter: Power = {
       "table": "Melee_Stun"
     }
   },
+  "atoms": [
+    ["Damage","Smashing",1.38,1,1.9,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Mez","Stunned",5,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockup",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",-1.6,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.621,1,1.9,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0]
+  ],
   "conditionalEffects": [
     {
       "id": "perfection_of_body_level_3",

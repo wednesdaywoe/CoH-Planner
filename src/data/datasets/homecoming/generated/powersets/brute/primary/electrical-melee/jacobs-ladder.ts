@@ -73,6 +73,13 @@ export const JacobsLadder: Power = {
       "table": "Melee_Sleep"
     }
   },
+  "atoms": [
+    ["Damage","Energy",1.5233,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.7409,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Endurance",null,-0.07,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Recovery",null,-1,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612],
+    ["Mez","Sleep",6,2,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

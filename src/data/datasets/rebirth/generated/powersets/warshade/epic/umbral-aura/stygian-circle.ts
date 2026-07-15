@@ -56,6 +56,12 @@ export const StygianCircle: Power = {
       "perTarget": 20
     }
   },
+  "atoms": [
+    ["Meta",null,1,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Heal",null,3,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Lt_Grunt eq arch target> Class_Lt_Sniper eq || kWarshade_Tanker_Mode source.Mode? ! &&"],
+    ["Heal",null,5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"arch target> Class_Boss_Archvillain eq arch target> Class_Boss_Monster eq || kWarshade_Tanker_Mode source.Mode? ! &&"],
+    ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ]

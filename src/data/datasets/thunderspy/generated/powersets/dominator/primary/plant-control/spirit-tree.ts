@@ -41,5 +41,8 @@ export const SpiritTree: Power = {
       "entity": "Pets_Spirit_Tree",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,90,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

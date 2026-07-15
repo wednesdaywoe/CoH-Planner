@@ -50,5 +50,8 @@ export const SonicRepulsion: Power = {
       "scale": 2,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Regeneration",null,2,1,10,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

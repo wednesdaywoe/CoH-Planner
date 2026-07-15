@@ -101,5 +101,16 @@ export const EntropyShield: Power = {
       "table": "Melee_Ones",
       "perTarget": 0.035
     }
-  }
+  },
+  "atoms": [
+    ["MezResist","Teleport",1,1,2.25,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Mez","Knockup",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Knockback",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Repel",-10,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["MezResist","Repel",100,1,2.25,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Held",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Stunned",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Sleep",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Immobilized",-30,1,2.25,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+  ]
 };

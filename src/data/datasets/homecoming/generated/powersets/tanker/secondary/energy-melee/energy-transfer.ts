@@ -60,5 +60,11 @@ export const EnergyTransfer: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Energy",4.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",8,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.6000000238418579],
+    ["Damage","Special",-1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Damage","Fire",2.052,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+  ]
 };

@@ -50,5 +50,8 @@ export const ChilloftheNight: Power = {
       "entity": "Pets_DarkServant",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

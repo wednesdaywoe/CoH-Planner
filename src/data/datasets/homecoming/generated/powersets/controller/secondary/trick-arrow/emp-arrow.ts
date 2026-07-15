@@ -258,5 +258,37 @@ export const EMPArrow: Power = {
         }
       ]
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,240,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Heal",null,-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Absorb",null,-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Confused",-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Terrorized",-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Held",-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Immobilized",-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Stunned",-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Sleep",-2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Ranged",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Melee",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","AoE",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Smashing",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","All",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,-0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-5,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-5,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",7,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Electronic target.HasTag? !"],
+    ["Mez","Held",7,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5]
+  ]
 };

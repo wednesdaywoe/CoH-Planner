@@ -56,6 +56,11 @@ export const EyeoftheStorm: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Damage","Smashing",0.205,1,2.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645],
+    ["Damage","Fire",0.0923,1,2.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,0]
+  ],
   "conditionalEffects": [
     {
       "id": "perfection_of_body_level_3",

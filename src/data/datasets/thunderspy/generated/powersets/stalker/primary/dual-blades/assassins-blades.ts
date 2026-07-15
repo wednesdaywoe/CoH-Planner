@@ -44,5 +44,10 @@ export const AssassinsBlades: Power = {
     "table": "Melee_Damage"
   },
   "fromHideBonus": 0.5,
-  "midCombatCast": 1
+  "midCombatCast": 1,
+  "atoms": [
+    ["Unmapped",null,1.25,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1,1,8,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.ComboBlade1 source.ownPower? ! Temporary_Powers.Temporary_Powers.ComboBlade2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.ComboBlade3 source.ownPower? ! &&"]
+  ]
 };

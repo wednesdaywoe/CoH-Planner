@@ -52,5 +52,9 @@ export const MasterfulThrow: Power = {
       "duration": 10,
       "tickRate": 2
     }
+  ],
+  "atoms": [
+    ["Unmapped",null,2.6,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,10,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,2,1]
   ]
 };

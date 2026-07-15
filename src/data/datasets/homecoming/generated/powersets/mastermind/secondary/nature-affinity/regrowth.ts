@@ -51,5 +51,10 @@ export const Regrowth: Power = {
       "duration": 4.1,
       "tickRate": 1
     }
+  ],
+  "atoms": [
+    ["Heal",null,0.75,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Heal",null,0.15,1,4.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1]
   ]
 };

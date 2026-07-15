@@ -39,5 +39,8 @@ export const Repair: Power = {
       "scale": 0.25,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Endurance",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+  ]
 };

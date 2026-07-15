@@ -57,5 +57,9 @@ export const Longfang: Power = {
     "durations": {
       "defenseDebuff": 10
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Lethal",0.66,1,0.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

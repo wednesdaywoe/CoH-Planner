@@ -58,6 +58,10 @@ export const WillDomination: Power = {
       "table": "Ranged_Sleep"
     }
   },
+  "atoms": [
+    ["Damage","Psionic",1,0,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Sleep",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.800000011920929]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

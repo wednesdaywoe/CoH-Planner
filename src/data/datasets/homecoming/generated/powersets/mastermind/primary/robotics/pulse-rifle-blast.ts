@@ -53,6 +53,11 @@ export const PulseRifleBlast: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "atoms": [
+    ["Damage","Energy",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-2,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,179,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "setsModes": [
     "PersonalAttack1"
   ]

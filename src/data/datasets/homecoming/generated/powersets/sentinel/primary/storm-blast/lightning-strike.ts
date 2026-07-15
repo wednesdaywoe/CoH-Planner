@@ -58,6 +58,13 @@ export const LightningStrike: Power = {
       "table": "Ranged_EndDrain"
     }
   },
+  "atoms": [
+    ["Damage","Energy",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",2.28,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
+    ["Endurance",null,-0.1,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25]
+  ],
   "conditionalEffects": [
     {
       "id": "stormblast_instormcell",

@@ -40,5 +40,8 @@ export const FollowUp: Power = {
       "table": "Melee_Buff_ToHit"
     }
   },
+  "atoms": [
+    ["ToHit",null,1,1,1.25,"Melee_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"]
+  ],
   "mechanicType": "parentMechanic"
 };

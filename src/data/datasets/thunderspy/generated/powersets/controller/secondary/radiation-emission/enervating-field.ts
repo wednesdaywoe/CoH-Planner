@@ -73,5 +73,15 @@ export const EnervatingField: Power = {
         "table": "Ranged_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Smashing",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Lethal",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Fire",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Cold",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Energy",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Negative",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Psionic",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Toxic",-3,1,5,"Ranged_Res_Dmg","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

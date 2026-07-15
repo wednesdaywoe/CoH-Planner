@@ -56,5 +56,8 @@ export const BlazingAura: Power = {
     "type": "Special",
     "scale": 0.2,
     "table": "Melee_Damage"
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.2,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! && cur.kHeld source> 0 > cur.kStun source> 0 > || cur.kSleep source> 0 > || cur.kTerrorized source> 0 > || ! &&"]
+  ]
 };

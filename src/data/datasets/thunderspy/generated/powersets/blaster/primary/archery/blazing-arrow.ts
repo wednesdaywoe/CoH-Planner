@@ -51,5 +51,10 @@ export const BlazingArrow: Power = {
       "duration": 4.12,
       "tickRate": 1
     }
+  ],
+  "atoms": [
+    ["Unmapped",null,1.96,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.125,1,4.12,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,0.121,1,9.33,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

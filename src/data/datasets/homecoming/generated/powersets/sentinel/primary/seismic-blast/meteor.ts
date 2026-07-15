@@ -94,5 +94,8 @@ export const Meteor: Power = {
         }
       ]
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,10,"Melee_Level","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1]
+  ]
 };

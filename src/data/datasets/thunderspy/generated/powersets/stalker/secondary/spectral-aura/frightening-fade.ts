@@ -41,5 +41,11 @@ export const FrighteningFade: Power = {
       "scale": 8,
       "table": "Melee_Taunt"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1,1,20,"Melee_DeBuff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1.5,1,20,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Taunt",8,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,150,1,10,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

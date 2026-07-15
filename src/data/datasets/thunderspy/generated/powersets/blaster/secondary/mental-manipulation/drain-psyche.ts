@@ -53,5 +53,9 @@ export const DrainPsyche: Power = {
       "scale": 2.5,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Regeneration",null,0.75,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-2.5,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

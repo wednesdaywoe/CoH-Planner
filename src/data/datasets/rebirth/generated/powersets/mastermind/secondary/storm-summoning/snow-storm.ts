@@ -70,5 +70,14 @@ export const SnowStorm: Power = {
         "table": "Ranged_SpeedRunning"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Movement","Run",0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.5,1,0.75,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.5,1,0.75,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-1.5,1,0.75,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Jump",0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Fly",0.5,1,0.75,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Fly",-1.6,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

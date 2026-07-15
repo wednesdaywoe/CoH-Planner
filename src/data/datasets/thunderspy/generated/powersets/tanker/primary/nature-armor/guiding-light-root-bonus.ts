@@ -24,6 +24,10 @@ export const GuidingLightRootBonus: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "atoms": [
+    ["Unmapped",null,0.03,1,10.25,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1],
+    ["Unmapped",null,1.5,1,10.25,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Tanker_Defense.Sacred_Armor.Guiding_Light",
   "mechanicType": "parentMechanic"
 };

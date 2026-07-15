@@ -56,5 +56,17 @@ export const SoothingWave: Power = {
     "stacksLinear": [
       "specialBuff"
     ]
-  }
+  },
+  "atoms": [
+    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",-0.85,1,10,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,188,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Refresh",2,null,null,1,null,true]
+  ]
 };

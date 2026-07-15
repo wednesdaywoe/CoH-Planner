@@ -43,5 +43,8 @@ export const SonicCage: Power = {
       "scale": 4,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,4,1,30,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

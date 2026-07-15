@@ -50,5 +50,13 @@ export const BrightNova: Power = {
       "scale": 1,
       "table": "Melee_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,4,1,1.5,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.5,1,1.5,"Melee_SpeedFlying","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,1.5,"Melee_Control","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,1.5,"Melee_Friction","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["ToHit",null,1,1,1.5,"Melee_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,5,1,1.5,"Melee_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

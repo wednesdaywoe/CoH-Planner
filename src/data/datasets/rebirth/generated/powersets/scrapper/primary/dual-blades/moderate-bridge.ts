@@ -58,6 +58,17 @@ export const ModerateBridge: Power = {
       "defenseDebuff": 10
     }
   },
+  "atoms": [
+    ["Damage","Lethal",0.66,1,0.6,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Meta",null,1,49,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,47,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,51,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,52,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["EntCreate",null,1,53,5,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_StatusMode_1 source.Mode? ! kDD_DebuffMode_1 source.Mode? ! ||"],
+    ["Meta",null,1,54,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Fire",0.38829,1,1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

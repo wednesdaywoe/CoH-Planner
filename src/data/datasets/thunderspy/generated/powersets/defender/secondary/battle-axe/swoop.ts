@@ -49,5 +49,9 @@ export const Swoop: Power = {
       "scale": 3,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,2.28,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",3,0.699999988079071,0,"Melee_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

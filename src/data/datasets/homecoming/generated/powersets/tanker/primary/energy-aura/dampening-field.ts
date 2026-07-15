@@ -60,5 +60,12 @@ export const DampeningField: Power = {
       }
     }
   },
+  "atoms": [
+    ["Resistance","Smashing",1.25,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",1.25,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Endurance",null,0.25,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,0.25,1,10.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",1,1,10.25,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

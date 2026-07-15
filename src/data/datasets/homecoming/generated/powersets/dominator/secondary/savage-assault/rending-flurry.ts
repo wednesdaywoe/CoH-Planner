@@ -55,5 +55,10 @@ export const RendingFlurry: Power = {
       "chance": 0.75,
       "cancelOnMiss": true
     }
+  ],
+  "atoms": [
+    ["Damage","Lethal",1.182,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.095,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
   ]
 };

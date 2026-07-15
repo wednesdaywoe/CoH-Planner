@@ -44,5 +44,20 @@ export const GangWar: Power = {
       "entity": "Pets_Thug_Pose_01",
       "entityCount": 13
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,0.5,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,0.25,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,0.10000000149011612,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,0.10000000149011612,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

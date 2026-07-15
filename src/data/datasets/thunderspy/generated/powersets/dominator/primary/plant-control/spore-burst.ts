@@ -46,6 +46,9 @@ export const SporeBurst: Power = {
       "table": "Ranged_Sleep"
     }
   },
+  "atoms": [
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

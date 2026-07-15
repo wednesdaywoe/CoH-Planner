@@ -44,6 +44,17 @@ export const ModerateOpening: Power = {
     "duration": 1,
     "tickRate": 0.4000000059604645
   },
+  "atoms": [
+    ["Damage","Lethal",0.3867,1,1,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,52,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,47,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,48,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,51,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,49,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["EntCreate",null,1,53,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,5.25,1,null,true,null,null,null,null,"kDD_DebuffMode_1 source.Mode? !"],
+    ["Meta",null,1,54,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.75,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "grant",

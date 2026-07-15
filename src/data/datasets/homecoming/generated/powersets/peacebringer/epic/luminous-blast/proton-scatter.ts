@@ -58,5 +58,9 @@ export const ProtonScatter: Power = {
     "durations": {
       "defenseDebuff": 8
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Energy",0.99,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",1,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

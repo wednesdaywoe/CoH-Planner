@@ -98,5 +98,20 @@ export const FRTMindLink: Power = {
       "scale": 0.5,
       "table": "Melee_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["ToHit",null,0.5,1,90,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",3,1,90,"Melee_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Melee",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Defense","Toxic",1,1,90,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+  ]
 };

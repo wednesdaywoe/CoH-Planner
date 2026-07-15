@@ -45,5 +45,8 @@ export const SummonDemonlings: Power = {
       "entity": "MastermindPets_Fiery_Demonling",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

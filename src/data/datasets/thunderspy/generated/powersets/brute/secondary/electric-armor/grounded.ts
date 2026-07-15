@@ -42,5 +42,11 @@ export const Grounded: Power = {
       }
     }
   },
+  "atoms": [
+    ["Resistance","Energy",1.25,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,10.25,"Melee_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Knockback",-6,1,10.25,"Melee_Knockback","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-6,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"]
+  ],
   "mechanicType": "parentMechanic"
 };

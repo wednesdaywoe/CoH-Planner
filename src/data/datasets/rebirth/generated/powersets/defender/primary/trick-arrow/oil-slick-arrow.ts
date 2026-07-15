@@ -56,6 +56,9 @@ export const OilSlickArrow: Power = {
       "isPseudoPet": false
     }
   },
+  "atoms": [
+    ["EntCreate",null,-1,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "oilslick_ignited",

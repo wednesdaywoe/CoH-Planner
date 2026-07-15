@@ -54,5 +54,9 @@ export const FullAuto: Power = {
       "scale": 1,
       "table": "Ranged_Damage"
     }
+  ],
+  "atoms": [
+    ["Unmapped",null,0.162,1,3.3,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.20000000298023224,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,0.10000000149011612,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

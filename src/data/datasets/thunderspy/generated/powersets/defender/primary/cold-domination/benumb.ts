@@ -41,5 +41,10 @@ export const Benumb: Power = {
       "scale": 5,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,5,1,30,"Ranged_Debuff_Dam","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-5,1,30,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-0.75,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

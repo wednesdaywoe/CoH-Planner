@@ -43,6 +43,13 @@ export const Attune: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["Meta",null,1,201,0.6,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true],
+    ["Meta",null,1,206,0.6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
+    ["GlobalChanceMod",null,1,1,0.6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
+    ["Meta",null,1,204,0.6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,"kSonicAtune1Foe target.mode? !"],
+    ["Meta",null,1,205,0.6,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,"kSonicAtune2Foe target.mode? !"]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -51,5 +51,8 @@ export const DarkServant: Power = {
       "entity": "Pets_V_DarkServant",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,240,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

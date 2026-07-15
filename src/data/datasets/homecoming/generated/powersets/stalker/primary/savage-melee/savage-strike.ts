@@ -58,6 +58,12 @@ export const SavageStrike: Power = {
       "cancelOnMiss": true
     }
   ],
+  "atoms": [
+    ["Damage","Lethal",0.38,1,0.4,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.137,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Savage_Melee_Exhausted source.ownPower? !"],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.6299999952316284,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

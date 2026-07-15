@@ -45,5 +45,10 @@ export const Repulse: Power = {
       "scale": 4,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.7,1,5,"Melee_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1,1,5,"Melee_SpeedRunning","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

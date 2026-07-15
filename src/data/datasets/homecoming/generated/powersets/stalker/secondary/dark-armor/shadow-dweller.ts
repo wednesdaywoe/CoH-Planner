@@ -106,5 +106,21 @@ export const ShadowDweller: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Mez","Immobilized",-4,1,10.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["MezResist","Immobilized",1.5,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","Ranged",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Melee",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","AoE",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Smashing",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Lethal",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Fire",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Cold",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Energy",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Negative",0.25,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Perception",null,1.25,1,10.25,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Perception",null,1.25,1,10.25,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,1,1,10.3,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

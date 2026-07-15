@@ -81,5 +81,8 @@ export const DisruptionArrow: Power = {
         }
       ]
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,45,"Ranged_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1]
+  ]
 };

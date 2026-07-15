@@ -45,5 +45,9 @@ export const StoneSkin: Power = {
       }
     }
   },
+  "atoms": [
+    ["Resistance","Smashing",1,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Lethal",1,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

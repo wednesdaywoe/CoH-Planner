@@ -47,5 +47,8 @@ export const WorldofConfusion: Power = {
     "scale": 0.12,
     "table": "Ranged_Damage",
     "tickRate": 2
-  }
+  },
+  "atoms": [
+    ["Damage","Psionic",0.12,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1]
+  ]
 };

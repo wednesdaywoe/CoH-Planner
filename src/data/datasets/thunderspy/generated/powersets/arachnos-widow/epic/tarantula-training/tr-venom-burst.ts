@@ -55,6 +55,10 @@ export const TRVenomBurst: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "atoms": [
+    ["Unmapped",null,1.0923,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-2.5,1,30,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "modesRequired": [
     "Widow_Tarantula_Mode"
   ]

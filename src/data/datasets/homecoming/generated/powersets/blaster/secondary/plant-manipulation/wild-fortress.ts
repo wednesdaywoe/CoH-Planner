@@ -69,5 +69,12 @@ export const WildFortress: Power = {
         "table": "Ranged_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq !"],
+    ["Mez","Confused",-30,1,2.5,"Ranged_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq"],
+    ["Recovery",null,0.5,1,2.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",2,1,2.5,"Ranged_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ]
 };

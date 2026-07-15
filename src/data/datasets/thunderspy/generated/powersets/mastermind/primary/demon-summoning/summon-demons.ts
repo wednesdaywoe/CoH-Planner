@@ -49,5 +49,8 @@ export const SummonDemons: Power = {
       "entity": "MastermindPets_Ember_Demon",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

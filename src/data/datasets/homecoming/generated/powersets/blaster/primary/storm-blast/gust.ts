@@ -61,6 +61,13 @@ export const Gust: Power = {
       }
     }
   },
+  "atoms": [
+    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
+    ["Movement","Fly",-2.6,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Meta",null,-2.6,1,4,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25]
+  ],
   "conditionalEffects": [
     {
       "id": "stormblast_instormcell",

@@ -55,5 +55,10 @@ export const PowerThrust: Power = {
       "scale": 8,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.24,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",8,1,0,"Melee_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.066,1,8.5,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

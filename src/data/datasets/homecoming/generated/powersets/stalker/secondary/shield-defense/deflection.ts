@@ -61,5 +61,10 @@ export const Deflection: Power = {
       "debuffResistance": 0.75,
       "defenseBuff": 0.75
     }
-  }
+  },
+  "atoms": [
+    ["Defense","Ranged",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","AoE",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ]
 };

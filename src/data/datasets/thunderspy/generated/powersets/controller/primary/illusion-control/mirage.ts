@@ -43,5 +43,8 @@ export const Mirage: Power = {
       "entity": "MirageAttackerHit",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,10,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

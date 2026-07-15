@@ -47,5 +47,8 @@ export const Flamethrower: Power = {
     "table": "Ranged_Damage",
     "duration": 4.7,
     "tickRate": 1
-  }
+  },
+  "atoms": [
+    ["Damage","Fire",0.3872,1,4.7,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

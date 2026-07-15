@@ -59,5 +59,10 @@ export const RepulsionBomb: Power = {
       "scale": 8,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Stunned",8,2,0,"Ranged_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

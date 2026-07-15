@@ -59,6 +59,11 @@ export const PenumbralShield: Power = {
       }
     }
   },
+  "atoms": [
+    ["Resistance","Fire",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",2,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+  ],
   "modesSuspended": [
     "Warshade_Blaster_Mode",
     "Warshade_Tanker_Mode"

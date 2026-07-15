@@ -47,5 +47,9 @@ export const FireBreath: Power = {
     "table": "Ranged_Damage",
     "duration": 2.1,
     "tickRate": 1
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.585,1,2.1,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.082,1,10.17,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

@@ -143,5 +143,41 @@ export const Benumb: Power = {
         "table": "Ranged_Stun"
       }
     }
-  }
+  },
+  "atoms": [
+    ["DamageBuff","Smashing",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,-5,1,30,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Enhancement","Stunned",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Sleep",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Confused",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Terrorized",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Immobilized",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Held",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Knockback",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Knockup",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Repel",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Run",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Movement","Fly",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","All",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Melee",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Ranged",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","AoE",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Smashing",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Lethal",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Fire",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Cold",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Energy",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Negative",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Enhancement","Psionic",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Heal",null,-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["ToHit",null,-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Endurance",null,-0.05,1,0,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

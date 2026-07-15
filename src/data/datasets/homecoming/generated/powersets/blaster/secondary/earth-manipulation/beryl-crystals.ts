@@ -67,5 +67,12 @@ export const BerylCrystals: Power = {
       "scale": 0.6,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Confused",-30,1,0.75,"Ranged_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Perception",null,0.6,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Accuracy",null,0.33,0,0.75,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

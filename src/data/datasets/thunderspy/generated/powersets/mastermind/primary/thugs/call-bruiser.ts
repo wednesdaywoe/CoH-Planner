@@ -47,5 +47,8 @@ export const CallBruiser: Power = {
       "entity": "MastermindPets_Thug_Boss",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

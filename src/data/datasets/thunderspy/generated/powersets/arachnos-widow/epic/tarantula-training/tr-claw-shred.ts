@@ -61,6 +61,12 @@ export const TRClawShred: Power = {
       "table": "Melee_Taunt"
     }
   },
+  "atoms": [
+    ["Unmapped",null,1.329,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Taunt",20,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,6,"Melee_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "modesRequired": [
     "Widow_Tarantula_Mode"
   ]

@@ -51,5 +51,10 @@ export const FireSwordCircle: Power = {
       "duration": 2.1,
       "tickRate": 0.75
     }
+  ],
+  "atoms": [
+    ["Unmapped",null,0.775,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,2.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.75,1],
+    ["Unmapped",null,0.07,1,10.17,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

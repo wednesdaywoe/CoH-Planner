@@ -42,5 +42,8 @@ export const Riptide: Power = {
       "entity": "Pets_Water_Control_Riptide",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

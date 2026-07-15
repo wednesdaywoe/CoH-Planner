@@ -44,5 +44,10 @@ export const WaterJet: Power = {
     "type": "Cold",
     "scale": 0.49,
     "table": "Ranged_Damage"
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.49,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.2,1,8,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.094,1,8.93,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

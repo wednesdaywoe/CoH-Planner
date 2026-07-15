@@ -46,6 +46,11 @@ export const FireImps: Power = {
       "isPseudoPet": false
     }
   },
+  "atoms": [
+    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["EntCreate",null,1,1,99999,"Ranged_LevelMinus","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,0.6000000238418579]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

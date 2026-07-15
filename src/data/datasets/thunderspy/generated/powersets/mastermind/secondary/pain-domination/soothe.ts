@@ -50,5 +50,17 @@ export const Soothe: Power = {
       "scale": 0.1,
       "table": "Melee_Ones"
     }
+  ],
+  "atoms": [
+    ["Damage","Psionic",1.32,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["Damage","Psionic",0.1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Smashing",3,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Lethal",3,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Fire",3,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Cold",3,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Energy",3,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Negative",3,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Psionic",3,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Toxic",3,1,10,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

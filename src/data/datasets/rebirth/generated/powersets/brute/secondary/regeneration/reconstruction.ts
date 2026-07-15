@@ -55,5 +55,9 @@ export const Reconstruction: Power = {
     "stacksLinear": [
       "resistance"
     ]
-  }
+  },
+  "atoms": [
+    ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Toxic",2,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ]
 };

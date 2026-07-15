@@ -46,5 +46,11 @@ export const Reactiontime: Power = {
   "allowedSetCategories": [
     "Slow Movement"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,0.7,1,5,"Melee_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
+    ["Unmapped",null,-1,1,5,"Melee_SpeedRunning","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! &&"],
+    ["Unmapped",null,-0.7,1,10,"Melee_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,10,"Melee_SpeedRunning","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

@@ -51,5 +51,9 @@ export const FRTDominate: Power = {
       "scale": 12,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1.387692,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",12,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

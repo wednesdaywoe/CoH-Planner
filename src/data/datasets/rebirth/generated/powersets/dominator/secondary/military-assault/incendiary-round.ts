@@ -57,5 +57,10 @@ export const IncendiaryRound: Power = {
       "duration": 4.12,
       "tickRate": 1
     }
+  ],
+  "atoms": [
+    ["Damage","Lethal",1.32,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.1,1,4.12,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1]
   ]
 };

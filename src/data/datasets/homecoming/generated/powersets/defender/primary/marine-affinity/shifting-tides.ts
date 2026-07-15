@@ -65,6 +65,21 @@ export const ShiftingTides: Power = {
       "table": "Ranged_Buff_ToHit"
     }
   },
+  "atoms": [
+    ["Meta",null,1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Damage","Cold",0.5,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.24,1,0,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["ToHit",null,0.08,1,0,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1],
+    ["RechargeTime",null,0.02,1,0,"Melee_Ones","Str","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! target.isFriend? ! && Redirects.Marine_Affinity.Shifting_Tides target.ownPower? ! &&"]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

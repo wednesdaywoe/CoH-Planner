@@ -45,5 +45,8 @@ export const BattleDrones: Power = {
       "entity": "MastermindPets_Droid",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
+  ]
 };

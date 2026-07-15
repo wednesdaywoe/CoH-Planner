@@ -46,5 +46,9 @@ export const FastHealing: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Regeneration",null,0.75,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Regeneration",null,0.2,1,10,"Melee_Ones","Res","Magnitude","Self","Any",false,"No",2,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

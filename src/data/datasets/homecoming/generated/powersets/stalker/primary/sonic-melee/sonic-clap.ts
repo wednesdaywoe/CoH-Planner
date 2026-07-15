@@ -69,6 +69,15 @@ export const SonicClap: Power = {
       "table": "Melee_Fear"
     }
   },
+  "atoms": [
+    ["Damage","Smashing",0.3919,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.3919,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockback",0.65,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
+    ["Mez","Stunned",5,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224],
+    ["Mez","Stunned",8,2,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.20000000298023224],
+    ["Damage","Fire",0.2554,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.8999999761581421,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

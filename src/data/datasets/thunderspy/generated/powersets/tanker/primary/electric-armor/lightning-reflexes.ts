@@ -37,5 +37,10 @@ export const LightningReflexes: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.1,1,10.25,"Melee_SpeedRunning","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.1,1,10.25,"Melee_SpeedFlying","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

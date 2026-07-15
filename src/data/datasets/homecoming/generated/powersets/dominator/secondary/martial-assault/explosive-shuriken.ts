@@ -41,5 +41,8 @@ export const ExplosiveShuriken: Power = {
     "type": "Fire",
     "scale": 2.28,
     "table": "Ranged_Damage"
-  }
+  },
+  "atoms": [
+    ["Damage","Fire",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

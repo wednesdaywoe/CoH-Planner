@@ -98,5 +98,25 @@ export const AccelerateMetabolism: Power = {
       "scale": 0.3,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["DamageBuff","Smashing",2,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",2,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",2,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",2,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",2,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",2,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",2,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",2,1,120,"Ranged_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Held",5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Stunned",5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Sleep",5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Immobilized",5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["RechargeTime",null,0.3,1,120,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,1.5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,1.5,1,120,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Movement","Fly",0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Run",0.3,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"]
+  ]
 };

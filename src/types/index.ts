@@ -68,6 +68,12 @@ export type {
 
 export { getScaleValue, isScaledEffect, isMezEffect, isSelfDirectedEffect, hasSelfDirectedPenalty } from './power';
 
+// Atomic effect model (Plan B) — the pre-projection atom list carried on
+// `Power.atoms`. Exposed here so runtime calc/UI can read it (`decodeAtoms`)
+// without reaching into the converter/data-core internals.
+export type { AtomicEffect, EncodedAtom, EffectType, Aspect, AttribType, ToWho, PvMode, Stacking } from '@/data/core/atomic-effect';
+export { decodeAtoms } from '@/data/core/atomic-effect';
+
 // Enhancement types
 export type {
   EnhancementType,

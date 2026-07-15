@@ -39,5 +39,9 @@ export const WarriorsChallenge: Power = {
       "scale": 15,
       "table": "Melee_Taunt"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Taunt",15,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-0.75,1,12,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

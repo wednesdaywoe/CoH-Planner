@@ -38,5 +38,8 @@ export const UpgradeEquipment: Power = {
   ],
   "maxSlots": 6,
   "effects": {},
+  "atoms": [
+    ["Recovery",null,0.15,1,5.25,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

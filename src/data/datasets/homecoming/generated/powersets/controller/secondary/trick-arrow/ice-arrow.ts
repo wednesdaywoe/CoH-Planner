@@ -171,5 +171,47 @@ export const IceArrow: Power = {
         "table": "Ranged_Special"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Lethal",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Fire",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Cold",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Energy",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Negative",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Psionic",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Toxic",1.6,1,60,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Heal",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Absorb",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Endurance",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Confused",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Terrorized",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Held",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Immobilized",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Stunned",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Sleep",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Ranged",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Melee",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","AoE",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Smashing",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Lethal",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Fire",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Cold",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Energy",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Negative",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Psionic",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Toxic",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Enhancement","All",-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,-0.45,1,60,"Ranged_Special","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.1,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.1,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.3,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["MezResist","Knockup",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["MezResist","Knockback",100,1,10,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

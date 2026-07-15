@@ -62,5 +62,10 @@ export const HotFeet: Power = {
         "table": "Melee_Slow"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Afraid",4,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",-10,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Movement","Run",0.7,1,2.3,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

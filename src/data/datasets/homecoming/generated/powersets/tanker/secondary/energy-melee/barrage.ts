@@ -67,6 +67,12 @@ export const Barrage: Power = {
       "table": "Melee_Stun"
     }
   },
+  "atoms": [
+    ["Damage","Energy",0.5,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Smashing",0.16,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,"Redirects.Energy_Melee.Energy_Store source.ownPower? !"],
+    ["Damage","Fire",0.297,1,0.3,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,0]
+  ],
   "conditionalEffects": [
     {
       "id": "energy_store",

@@ -49,5 +49,8 @@ export const LivingSpores: Power = {
       "isPseudoPet": false
     }
   },
+  "atoms": [
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Controller_Buff.Nature_Affinity.Lifegiving_Spores !"
 };

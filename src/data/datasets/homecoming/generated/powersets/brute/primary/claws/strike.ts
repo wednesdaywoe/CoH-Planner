@@ -47,5 +47,9 @@ export const Strike: Power = {
     "scale": 1.24,
     "table": "Melee_Damage"
   },
+  "atoms": [
+    ["Damage","Lethal",1.24,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.558,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+  ],
   "requires": "Brute_Defense.Shield_Defense ! Brute_Defense.Stone_Armor ! &&"
 };

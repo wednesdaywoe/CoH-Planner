@@ -58,5 +58,11 @@ export const BreathofFire: Power = {
       "duration": 3.1,
       "tickRate": 1
     }
+  ],
+  "atoms": [
+    ["Unmapped",null,0.68,1,0.6,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,3.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq &&"],
+    ["Unmapped",null,0.306,1,0.6,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1]
   ]
 };

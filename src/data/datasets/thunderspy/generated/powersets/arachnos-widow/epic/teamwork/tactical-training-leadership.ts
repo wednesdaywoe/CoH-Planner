@@ -50,5 +50,17 @@ export const TacticalTrainingLeadership: Power = {
       "scale": 1,
       "table": "Ranged_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Smashing",1.5,1,2.25,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Lethal",1.5,1,2.25,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Fire",1.5,1,2.25,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Cold",1.5,1,2.25,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Energy",1.5,1,2.25,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Negative",1.5,1,2.25,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Toxic",1.5,1,2.25,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Psionic",1.5,1,2.25,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["ToHit",null,1,1,2.25,"Ranged_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.5,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

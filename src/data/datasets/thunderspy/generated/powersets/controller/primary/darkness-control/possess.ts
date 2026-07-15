@@ -43,5 +43,9 @@ export const Possess: Power = {
       "scale": 20,
       "table": "Ranged_Immobilize"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",15,1,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

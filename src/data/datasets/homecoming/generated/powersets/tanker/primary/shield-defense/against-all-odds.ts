@@ -60,5 +60,39 @@ export const AgainstallOdds: Power = {
       "scale": 1.1,
       "table": "Melee_InherentTaunt"
     }
-  }
+  },
+  "atoms": [
+    ["DamageBuff","Smashing",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Radiation",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Electrical",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Sonic",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Quantum",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Special",1,1,1.25,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0.55,1,1,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
+    ["DamageBuff","Smashing",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",1,1,1,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&"],
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&"],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Raid target.HasTag? !"]
+  ]
 };

@@ -78,5 +78,14 @@ export const SpeedBoost: Power = {
       "scale": 0.5,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["RechargeTime",null,0.5,1,120,"Melee_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,0.5,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.5,1,120,"Melee_SpeedRunning","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Fly",0.5,1,120,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["RechargeTime",null,0.5,1,120,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.5,1,120,"Melee_SpeedRunning","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Movement","Fly",0.5,1,120,"Melee_SpeedFlying","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+  ]
 };

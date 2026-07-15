@@ -53,5 +53,10 @@ export const ParticleShielding: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Absorb",null,3,1,60,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Recovery",null,0.5,1,60,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

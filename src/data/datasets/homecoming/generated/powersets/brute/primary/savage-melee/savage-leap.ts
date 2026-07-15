@@ -57,5 +57,10 @@ export const SavageLeap: Power = {
       "chance": 0.8,
       "cancelOnMiss": true
     }
+  ],
+  "atoms": [
+    ["Damage","Lethal",0.845,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.068,1,3.1,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.38,1,0,"Melee_Damage","Abs","Expression","Target","Any",true,"Stack",2,null,null,0]
   ]
 };

@@ -93,5 +93,17 @@ export const Corruption: Power = {
         "table": "Ranged_Debuff_Res_Dmg"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Fire",0.76,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.15,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Resistance","Smashing",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Lethal",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Fire",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Cold",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Energy",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Negative",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Psionic",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Resistance","Toxic",-1.25,1,5,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+  ]
 };

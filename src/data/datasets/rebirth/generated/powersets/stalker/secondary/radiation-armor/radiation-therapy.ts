@@ -69,5 +69,11 @@ export const RadiationTherapy: Power = {
       "scale": 1.5,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Energy",0.1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Toxic",0.05,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Heal",null,1.25,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Regeneration",null,-1.5,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

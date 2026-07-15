@@ -72,6 +72,12 @@ export const PsionicTornado: Power = {
       "table": "Ranged_Slow"
     }
   },
+  "atoms": [
+    ["Mez","Knockup",1.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
+    ["Damage","Psionic",0.178,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Psionic",0.178,1,4.1,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["RechargeTime",null,0.3,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -57,5 +57,11 @@ export const StarlessStep: Power = {
     "stacksLinear": [
       "tohitBuff"
     ]
-  }
+  },
+  "atoms": [
+    ["Mez","Teleport",1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["ToHit",null,1,1,5,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["RechargePower",null,1,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true],
+    ["GlobalChanceMod",null,-1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true]
+  ]
 };

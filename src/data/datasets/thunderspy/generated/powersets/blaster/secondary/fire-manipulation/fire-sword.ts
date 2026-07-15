@@ -50,5 +50,10 @@ export const FireSword: Power = {
       "duration": 3.1,
       "tickRate": 0.75
     }
+  ],
+  "atoms": [
+    ["Unmapped",null,1,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,3.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.75,1],
+    ["Unmapped",null,0.088,1,8.83,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

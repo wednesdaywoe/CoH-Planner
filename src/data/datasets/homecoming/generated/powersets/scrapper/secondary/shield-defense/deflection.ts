@@ -62,5 +62,10 @@ export const Deflection: Power = {
       "defenseBuff": 0.75
     }
   },
+  "atoms": [
+    ["Defense","Ranged",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Defense","AoE",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","All",0.4,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ],
   "requires": "Scrapper_Melee.Claws Scrapper_Melee.Katana || Scrapper_Melee.Dual_Blades || Scrapper_Melee.Quills || Scrapper_Melee.Staff_Fighting || Scrapper_Melee.Titan_Weapons || !"
 };

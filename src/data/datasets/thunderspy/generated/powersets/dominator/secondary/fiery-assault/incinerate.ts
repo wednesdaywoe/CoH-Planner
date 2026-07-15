@@ -42,5 +42,9 @@ export const Incinerate: Power = {
     "table": "Melee_Damage",
     "duration": 2.25,
     "tickRate": 0.25
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.25,1,2.25,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,0,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

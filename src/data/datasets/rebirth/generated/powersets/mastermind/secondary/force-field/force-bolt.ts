@@ -55,5 +55,8 @@ export const ForceBolt: Power = {
         "table": "Melee_Ones"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Movement","Fly",-1.6,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

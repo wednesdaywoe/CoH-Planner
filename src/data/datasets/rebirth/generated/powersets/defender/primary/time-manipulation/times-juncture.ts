@@ -77,6 +77,23 @@ export const TimesJuncture: Power = {
       "table": "Ranged_DeBuff_ToHit"
     }
   },
+  "atoms": [
+    ["ToHit",null,1.25,1,1,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["Movement","Run",0.3,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["Movement","Run",-1,1,1,"Ranged_SpeedRunning","Max","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? ! enttype target> critter eq &&"],
+    ["Movement","JumpHeight",0.3,1,1,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["Movement","Jump",0.3,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["Movement","Fly",0.3,1,1,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["Movement","Fly",-1.6,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["DamageBuff","Smashing",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["DamageBuff","Lethal",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["DamageBuff","Toxic",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["DamageBuff","Psionic",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["DamageBuff","Fire",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["DamageBuff","Cold",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["DamageBuff","Energy",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
+    ["DamageBuff","Negative",2,1,1,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"]
+  ],
   "conditionalEffects": [
     {
       "id": "time_crawl_debuff",

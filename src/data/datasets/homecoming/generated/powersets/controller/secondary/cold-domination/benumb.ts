@@ -147,5 +147,42 @@ export const Benumb: Power = {
         "table": "Ranged_Stun"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Regeneration",null,-5,1,30,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.05,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["DamageBuff","Smashing",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",5,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Heal",null,-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Confused",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Terrorized",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Held",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Immobilized",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Stunned",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Sleep",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Knockup",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Knockback",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Repel",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Ranged",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Melee",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","AoE",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Smashing",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Lethal",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Fire",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Cold",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Energy",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Negative",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Psionic",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","Toxic",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Enhancement","All",-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["ToHit",null,-0.5,1,30,"Ranged_Stun","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+  ]
 };

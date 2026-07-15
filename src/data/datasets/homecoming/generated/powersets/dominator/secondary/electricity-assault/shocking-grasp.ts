@@ -91,5 +91,8 @@ export const ShockingGrasp: Power = {
         }
       ]
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1]
+  ]
 };

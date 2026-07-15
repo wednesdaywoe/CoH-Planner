@@ -55,5 +55,10 @@ export const HotFeet: Power = {
       "scale": 4,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.25,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Afraid",4,3,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.7,1,2.25,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

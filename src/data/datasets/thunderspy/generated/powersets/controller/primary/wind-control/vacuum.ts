@@ -59,5 +59,10 @@ export const Vacuum: Power = {
         "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure"
       ]
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,8,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq !"],
+    ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&"],
+    ["Mez","Held",7.5,1,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&"]
+  ]
 };

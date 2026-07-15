@@ -76,5 +76,9 @@ export const AssassinsCorruption: Power = {
     }
   ],
   "fromHideBonus": 2.173913043478261,
-  "midCombatCast": 1
+  "midCombatCast": 1,
+  "atoms": [
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.8600000143051147,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated target.ownPower? ! Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated_Imunity target.ownPower? ! &&"]
+  ]
 };

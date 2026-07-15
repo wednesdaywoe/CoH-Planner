@@ -116,5 +116,17 @@ export const KujiInRin: Power = {
     "stacksLinear": [
       "resistance"
     ]
-  }
+  },
+  "atoms": [
+    ["Mez","Confused",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Terrorized",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Held",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Immobilized",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Stunned",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Sleep",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Resistance","Psionic",3,1,120,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Movement","Run",0.1,1,120,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Jump",0.1,1,120,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","JumpHeight",0.1,1,120,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ]
 };

@@ -60,5 +60,10 @@ export const MercurialBlow: Power = {
       "defenseDebuff": 8
     }
   },
+  "atoms": [
+    ["Damage","Smashing",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Defense","All",1,1,8,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.378,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+  ],
   "requires": "Tanker_Defense.Shield_Defense !"
 };

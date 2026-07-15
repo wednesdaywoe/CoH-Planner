@@ -43,5 +43,9 @@ export const StygianCircle: Power = {
       "table": "Melee_Ones",
       "perTarget": 20
     }
-  }
+  },
+  "atoms": [
+    ["Meta",null,1,1,5,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Endurance",null,20,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ]
 };

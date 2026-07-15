@@ -64,5 +64,10 @@ export const ActiveDefense: Power = {
       }
     }
   },
+  "atoms": [
+    ["Defense","Melee",1.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Smashing",1.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",1.5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+  ],
   "requires": "Tanker_Melee.Dual_Blades Tanker_Melee.Staff_Fighting || Tanker_Melee.Titan_Weapons || Tanker_Melee.Spines || Tanker_Melee.Katana || Tanker_Melee.Claws || !"
 };

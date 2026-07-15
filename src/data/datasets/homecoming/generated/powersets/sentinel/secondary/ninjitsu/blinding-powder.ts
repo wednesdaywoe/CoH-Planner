@@ -75,6 +75,13 @@ export const BlindingPowder: Power = {
       "table": "Melee_DeBuff_ToHit"
     }
   },
+  "atoms": [
+    ["Mez","Sleep",10,3,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Placate",8,3,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Perception",null,-0.9,1,20,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["ToHit",null,1,1,15,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Confused",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

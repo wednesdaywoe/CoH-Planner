@@ -117,5 +117,20 @@ export const BattleAgility: Power = {
     "stacksLinear": [
       "debuffResistance"
     ]
-  }
+  },
+  "atoms": [
+    ["Mez","Stunned",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Sleep",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Held",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Confused",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Terrorized",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Immobilized",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Knockback",100,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Knockup",100,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Knockback",-10,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Knockup",-10,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["MezResist","Repel",100,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Mez","Repel",-10,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+    ["Resistance","All",0.5,1,120,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ]
 };

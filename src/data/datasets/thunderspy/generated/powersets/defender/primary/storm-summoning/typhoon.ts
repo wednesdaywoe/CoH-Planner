@@ -49,5 +49,10 @@ export const Typhoon: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "atoms": [
+    ["Unmapped",null,-0.3,1,5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1.5,1,5,"Ranged_DeBuff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Knockback",0.02,1,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "requires": "Defender_Buff.Storm_Summoning.Hurricane !"
 };

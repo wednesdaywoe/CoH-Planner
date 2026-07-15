@@ -43,5 +43,8 @@ export const Discharge: Power = {
       "entity": "Pets_GalvanicSentinel",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,120,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

@@ -31,5 +31,9 @@ export const BeyondTheVeilAlive: Power = {
   "allowedSetCategories": [
     "Endurance Modification"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,10,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,5,1,0.5,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
+  ]
 };

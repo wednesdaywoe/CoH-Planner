@@ -128,6 +128,29 @@ export const QuantumAcceleration: Power = {
       }
     }
   },
+  "atoms": [
+    ["Defense","Ranged",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Defense","Melee",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Defense","AoE",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Defense","Smashing",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Defense","Lethal",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Defense","Fire",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Defense","Cold",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Defense","Energy",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Defense","Negative",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Defense","Psionic",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Defense","Toxic",1.5,1,0.2,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Meta",null,1,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
+    ["Meta",null,1,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
+    ["Movement","Fly",4,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,0],
+    ["Movement","Control",15,1,0.2,"Melee_Control","Cur","Magnitude","Self","Any",false,"No",2,null,null,0],
+    ["Movement","Friction",15,1,0.2,"Melee_Friction","Cur","Magnitude","Self","Any",false,"No",2,null,null,0],
+    ["Movement","Fly",0.4,1,0.2,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"No",2,null,null,0],
+    ["Mez","Immobilized",-30,1,0.2,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"No",2,null,null,1,null,true],
+    ["MezResist","Knockup",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"No",2,null,null,1,null,true],
+    ["MezResist","Knockback",1.75,1,0.2,"Melee_Res_Boolean","Res","Magnitude","Self","PvE",false,"No",2,null,null,1,null,true],
+    ["Movement","Fly",2,1,0.2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,0]
+  ],
   "modesSuspended": [
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Tanker_Mode"

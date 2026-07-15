@@ -130,6 +130,35 @@ export const Adaptation: Power = {
       "table": "Melee_InherentTaunt"
     }
   },
+  "atoms": [
+    ["Resistance","Smashing",-1,1,1.12,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["Resistance","Lethal",-1,1,1.12,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["Resistance","Fire",-1,1,1.12,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["Resistance","Cold",-1,1,1.12,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["Resistance","Energy",-1,1,1.12,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["Resistance","Negative",-1,1,1.12,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["Resistance","Psionic",-1,1,1.12,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["Resistance","Toxic",-1,1,1.12,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"kOffensiveAdaptation Source.Mode? ! kDefensiveAdaptation Source.Mode? ! &&"],
+    ["Resistance","Fire",0.375,1,1.12,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Cold",0.375,1,1.12,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Energy",0.375,1,1.12,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",0.375,1,1.12,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",0.3,1,1.12,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Smashing",0.5,1,1.12,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Lethal",0.5,1,1.12,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Toxic",0.5,1,1.12,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Fire",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Resistance","Cold",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Resistance","Energy",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Resistance","Negative",0.038,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Resistance","Psionic",0.03,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Resistance","Smashing",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Resistance","Lethal",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Resistance","Toxic",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"No",2,null,null,1],
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && entref source> entref target> eq ! &&"],
+    ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && entref source> entref target> eq ! &&"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? !"]
+  ],
   "conditionalEffects": [
     {
       "id": "restedadaptation",

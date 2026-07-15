@@ -113,6 +113,32 @@ export const HailofBullets: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "atoms": [
+    ["Damage","Lethal",0.3178,1,2.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1],
+    ["Damage","Lethal",0.1362,1,2.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1],
+    ["Damage","Fire",0.1362,1,2.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1],
+    ["Damage","Fire",0.2,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Cold",0.1362,1,2.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1],
+    ["Movement","Run",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Fly",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","Jump",0.2,1,10,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Movement","JumpHeight",0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+    ["Damage","Toxic",0.1362,1,2.3,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1],
+    ["DamageBuff","Smashing",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",2,1,8,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Mez","Knockback",0.4,1,2.3,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,0.20000000298023224,1],
+    ["Mez","Knockback",0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Defense","Ranged",1.5,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Defense","Melee",1.5,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Defense","AoE",1.5,1,5,"Ranged_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "conditionalEffects": [
     {
       "id": "cryoammunition",

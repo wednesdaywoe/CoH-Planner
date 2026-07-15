@@ -109,5 +109,9 @@ export const Vines: Power = {
         }
       ]
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,0,"Melee_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Meta",null,1,1,0,"Melee_Ones","Cur","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true]
+  ]
 };

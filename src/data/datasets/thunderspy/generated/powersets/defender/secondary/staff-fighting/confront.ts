@@ -50,5 +50,9 @@ export const Confront: Power = {
       "scale": 5,
       "table": "Melee_Taunt"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Taunt",5,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","AoE",1.5,1,40,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

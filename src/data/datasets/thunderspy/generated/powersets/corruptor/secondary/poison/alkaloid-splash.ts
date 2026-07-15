@@ -35,5 +35,9 @@ export const AlkaloidSplash: Power = {
     "Healing"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,1,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,60,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "requires": "Corruptor_Buff.Poison.Alkaloid !"
 };

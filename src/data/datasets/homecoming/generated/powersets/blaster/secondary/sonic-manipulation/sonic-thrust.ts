@@ -73,5 +73,11 @@ export const SonicThrust: Power = {
       "scale": 4,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Smashing",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.4,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",8,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Repel",4,1,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

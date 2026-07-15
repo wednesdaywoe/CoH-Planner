@@ -42,5 +42,9 @@ export const RepulsionFieldNew: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "atoms": [
+    ["Mez","Knockback",3,1,0.75,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || enttype target> critter eq && entref target> entref source> eq ! &&"],
+    ["Endurance",null,-1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"cur.kUntouchable target> 0 <= Temporary_Powers.Temporary_Powers.DetentionAnchor target.ownPower? || entref target> entref source> eq ! &&"]
+  ],
   "requires": "Defender_Buff.Force_Field.Force_Bubble"
 };

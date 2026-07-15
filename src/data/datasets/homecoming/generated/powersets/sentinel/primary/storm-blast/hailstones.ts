@@ -72,6 +72,16 @@ export const Hailstones: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "atoms": [
+    ["Mez","Knockback",0.67,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !"],
+    ["Meta",null,1,1,7.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,"temporary_powers.temporary_powers.StormBlast_InStormCell target.ownPower? !"],
+    ["Damage","Cold",0.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Cold",0.25,1,1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1],
+    ["Damage","Cold",0.64,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1],
+    ["Damage","Cold",0.25,1,1,"Ranged_InherentDamage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25]
+  ],
   "conditionalEffects": [
     {
       "id": "stormblast_instormcell",

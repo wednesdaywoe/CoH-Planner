@@ -49,5 +49,8 @@ export const MoteOfLight: Power = {
       "entity": "Pets_HolyLightMote",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

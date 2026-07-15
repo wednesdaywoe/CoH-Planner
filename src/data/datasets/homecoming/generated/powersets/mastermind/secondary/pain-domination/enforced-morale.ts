@@ -110,5 +110,20 @@ export const EnforcedMorale: Power = {
       "scale": 30,
       "table": "Ranged_Res_Boolean"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Confused",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter target> 0.9 < isPVPMap? ! &&"],
+    ["Mez","Terrorized",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter target> 0.9 < isPVPMap? ! &&"],
+    ["Mez","Held",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter target> 0.9 < isPVPMap? ! &&"],
+    ["Mez","Immobilized",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter target> 0.9 < isPVPMap? ! &&"],
+    ["Mez","Stunned",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter target> 0.9 < isPVPMap? ! &&"],
+    ["Mez","Sleep",-30,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter target> 0.9 < isPVPMap? ! &&"],
+    ["MezResist","Sleep",5,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"kMeter target> 0.9 < isPVPMap? ! &&"],
+    ["Movement","Run",0.05,1,90,"Ranged_SpeedRunning","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kRunSpeed target> 1.25 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&"],
+    ["Movement","Fly",0.05,1,90,"Ranged_SpeedFlying","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kFlySpeed target> 1.25 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&"],
+    ["Movement","Jump",0.05,1,90,"Ranged_SpeedJumping","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kSpeedJumping target> 1.25 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&"],
+    ["Movement","JumpHeight",0.05,1,90,"Ranged_Leap","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kJumpHeight target> 1.12 < && Power_DisallowSpeedBoost target.TokenOwned? ! &&"],
+    ["Perception",null,2.5,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["Perception",null,2.5,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+  ]
 };

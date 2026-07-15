@@ -52,5 +52,9 @@ export const Smoke: Power = {
       "scale": 0.5,
       "table": "Ranged_DeBuff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["Perception",null,-0.9,1,60,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.5,1,60,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

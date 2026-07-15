@@ -58,6 +58,11 @@ export const ShurikenThrow: Power = {
       "cancelOnMiss": true
     }
   ],
+  "atoms": [
+    ["Damage","Lethal",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.4,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.1,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

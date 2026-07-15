@@ -51,5 +51,9 @@ export const Blaze: Power = {
       "duration": 4.1,
       "tickRate": 1
     }
+  ],
+  "atoms": [
+    ["Unmapped",null,2.12,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.225,1,4.1,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
   ]
 };

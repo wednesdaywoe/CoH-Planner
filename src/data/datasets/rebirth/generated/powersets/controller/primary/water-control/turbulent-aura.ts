@@ -53,6 +53,10 @@ export const TurbulentAura: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "atoms": [
+    ["Mez","Knockback",0.67,1,1,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,0.20000000298023224,null,true,null,null,null,null,"enttype target> critter eq Temporary_Powers.Temporary_Powers.Water_Control_Drowning target.ownPower? ! &&"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.05000000074505806,null,true,null,null,null,null,"entref target> entref source> eq !"]
+  ],
   "conditionalEffects": [
     {
       "id": "water_control_drowning",

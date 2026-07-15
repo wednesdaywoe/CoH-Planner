@@ -71,6 +71,15 @@ export const ShadowStep: Power = {
       "fly"
     ]
   },
+  "atoms": [
+    ["EntCreate",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","Fly",1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
+    ["Movement","Fly",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
+    ["Movement","Control",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
+    ["Movement","Friction",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"]
+  ],
   "conditionalEffects": [
     {
       "id": "shadow_slipping",

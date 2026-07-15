@@ -56,6 +56,11 @@ export const Scorch: Power = {
       "cancelOnMiss": true
     }
   ],
+  "atoms": [
+    ["Damage","Fire",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.1,1,1.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.6499999761581421,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

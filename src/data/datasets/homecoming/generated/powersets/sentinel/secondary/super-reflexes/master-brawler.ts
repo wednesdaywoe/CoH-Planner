@@ -39,5 +39,8 @@ export const MasterBrawler: Power = {
       "absorb": 30
     }
   },
+  "atoms": [
+    ["Absorb",null,4,1,30,"Melee_HealSelf","Max","Expression","Self","PvE",true,"Replace",2,null,null,1]
+  ],
   "requires": "Sentinel_Defense.Super_Reflexes.Practiced_Brawler !"
 };

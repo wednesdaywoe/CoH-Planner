@@ -53,6 +53,11 @@ export const SaltCrystals: Power = {
       "table": "Ranged_Sleep"
     }
   },
+  "atoms": [
+    ["Mez","Sleep",10,3,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Sleep",7.5,1,0,"Ranged_Sleep","Cur","Duration","Target","PvE",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",2,1,15,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

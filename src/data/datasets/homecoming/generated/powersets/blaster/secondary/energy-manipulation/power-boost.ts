@@ -129,6 +129,32 @@ export const PowerBoost: Power = {
       "specialBuff"
     ]
   },
+  "atoms": [
+    ["Meta",null,1,172,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Heal",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Absorb",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Endurance",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","Run",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Movement","Fly",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Confused",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Terrorized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Held",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Immobilized",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Stunned",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Sleep",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Ranged",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Melee",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","AoE",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Smashing",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Lethal",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Fire",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Cold",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Energy",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Negative",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","Psionic",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Enhancement","All",0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["ToHit",null,0.66,1,15,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+  ],
   "setsModes": [
     "BoostPower"
   ]

@@ -46,6 +46,10 @@ export const Spin: Power = {
     "scale": 1.58,
     "table": "Melee_Damage"
   },
+  "atoms": [
+    ["Damage","Lethal",1.58,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.711,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

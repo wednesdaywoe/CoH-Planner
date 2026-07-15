@@ -82,5 +82,16 @@ export const Enduring: Power = {
       }
     }
   },
+  "atoms": [
+    ["Recovery",null,0.3,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","Psionic",1,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","All",0.2,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Smashing",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",0,1,0.75,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "mechanicType": "parentMechanic"
 };

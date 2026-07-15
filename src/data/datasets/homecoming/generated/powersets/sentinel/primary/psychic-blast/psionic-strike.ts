@@ -59,5 +59,10 @@ export const PsionicStrike: Power = {
       "scale": 0.15,
       "table": "Ranged_Slow"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Psionic",2.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Psionic",2.6,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+  ]
 };

@@ -57,5 +57,9 @@ export const IntimidatingPresence: Power = {
       "scale": 15,
       "table": "Melee_Immobilize"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Terrorized",10,3,0,"Ranged_Fear","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Immobilized",15,3,2,"Melee_Immobilize","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

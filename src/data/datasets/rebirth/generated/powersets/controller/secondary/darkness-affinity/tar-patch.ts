@@ -42,5 +42,8 @@ export const TarPatch: Power = {
       "entity": "Pets_TarPatch",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

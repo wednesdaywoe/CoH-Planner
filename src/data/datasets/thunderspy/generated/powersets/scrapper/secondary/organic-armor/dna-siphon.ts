@@ -60,5 +60,12 @@ export const DNASiphon: Power = {
       "scale": 0.2,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.2,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Unmapped",null,1.25,1,0,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Endurance",null,5,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
+    ["Unmapped",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation Source.Mode? ! &&"]
+  ]
 };

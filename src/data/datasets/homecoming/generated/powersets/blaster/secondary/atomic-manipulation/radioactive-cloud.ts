@@ -48,6 +48,22 @@ export const RadioactiveCloud: Power = {
       "table": "Ranged_Immobilize"
     }
   },
+  "atoms": [
+    ["Mez","Held",8,2,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5],
+    ["Mez","Held",5,1,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5],
+    ["Mez","Immobilized",8,2,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5],
+    ["Mez","Immobilized",5,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5],
+    ["Mez","Held",8,2,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Held",5,1,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Fire",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Cold",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Energy",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Negative",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",0,0,0,"Ranged_Ones","Str","Expression","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

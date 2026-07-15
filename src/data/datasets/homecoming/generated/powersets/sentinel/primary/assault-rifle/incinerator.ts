@@ -63,5 +63,12 @@ export const Incinerator: Power = {
       "duration": 5.25,
       "tickRate": 0.25
     }
+  ],
+  "atoms": [
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Damage","Fire",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.1022,1,5.25,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1],
+    ["Damage","Fire",1,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",0.1022,1,5.25,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1]
   ]
 };

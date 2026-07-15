@@ -57,5 +57,10 @@ export const RimeIce: Power = {
       }
     }
   },
+  "atoms": [
+    ["Resistance","Toxic",2,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,3,1,30,"Melee_HealSelf","Max","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ],
   "requires": "Stalker_Defense.Ice_Armor.Hoarfrost !"
 };

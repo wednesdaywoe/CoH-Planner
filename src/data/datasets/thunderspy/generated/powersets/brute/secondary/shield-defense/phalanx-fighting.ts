@@ -51,5 +51,10 @@ export const PhalanxFighting: Power = {
       "defenseBuff": 1.25
     }
   },
+  "atoms": [
+    ["Defense","Melee",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Ranged",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","AoE",0.5,1,1.25,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

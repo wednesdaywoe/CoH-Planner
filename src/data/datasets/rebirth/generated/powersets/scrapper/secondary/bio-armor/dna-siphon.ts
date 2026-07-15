@@ -91,6 +91,15 @@ export const DNASiphon: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Damage","Lethal",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Damage","Toxic",0.1,1,2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.800000011920929,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Heal",null,1.25,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Endurance",null,5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 >"],
+    ["Regeneration",null,0.2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
+    ["Recovery",null,0.125,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Cur.kHitPoints target> 0 =="],
+    ["Regeneration",null,-1,1,30,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq kOffensiveAdaptation source.Mode? ! &&"]
+  ],
   "conditionalEffects": [
     {
       "id": "defensiveadaptation",

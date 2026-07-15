@@ -69,5 +69,11 @@ export const ShortCircuit: Power = {
       "scale": 1,
       "table": "Ranged_EndDrain"
     }
-  }
+  },
+  "atoms": [
+    ["Endurance",null,-0.35,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Energy",0.18,1,1.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1],
+    ["Damage","Energy",0.18,1,1.5,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.3499999940395355,1],
+    ["Recovery",null,-1,1,10,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

@@ -49,6 +49,11 @@ export const Swipe: Power = {
       "table": "Melee_Damage"
     }
   ],
+  "atoms": [
+    ["Damage","Lethal",0.76,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.3,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.5849999785423279,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "grant",

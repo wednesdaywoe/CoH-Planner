@@ -46,5 +46,8 @@ export const GunDrone: Power = {
       "entity": "Pets_GunDrone_Tri_Controller",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

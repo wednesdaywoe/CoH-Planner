@@ -55,5 +55,10 @@ export const BitterFreezeRay: Power = {
       "table": "Ranged_Immobilize"
     }
   },
+  "atoms": [
+    ["Unmapped",null,1.32,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.2,1,18,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "requires": "Defender_Ranged.Ice_Blast.Freezing_Touch !"
 };

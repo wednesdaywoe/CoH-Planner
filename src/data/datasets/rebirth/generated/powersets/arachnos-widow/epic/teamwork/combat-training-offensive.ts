@@ -45,5 +45,9 @@ export const CombatTrainingOffensive: Power = {
       "debuffResistance": 0.75
     }
   },
+  "atoms": [
+    ["Accuracy",null,1,1,0.75,"Melee_Buff_ToHit","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["ToHit",null,0.33,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "mechanicType": "parentMechanic"
 };

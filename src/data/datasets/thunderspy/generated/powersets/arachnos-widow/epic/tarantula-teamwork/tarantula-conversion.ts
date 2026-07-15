@@ -54,5 +54,14 @@ export const TarantulaConversion: Power = {
         "table": "Melee_Res_DMG"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Smashing",2,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Resistance","Lethal",2,1,10.25,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.5,1,10.25,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,3,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,10.25,1,null,null,null,null,null,null,"@CustomFX FemaleTarantula eq !"],
+    ["Unmapped",null,1,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,10.25,1,null,null,null,null,null,null,"@CustomFX FemaleTarantula eq"],
+    ["Unmapped",null,1.35,1,10.25,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

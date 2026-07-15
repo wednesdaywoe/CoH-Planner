@@ -38,5 +38,8 @@ export const MementoMori: Power = {
     "Fear",
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["RechargePower",null,290,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1]
+  ]
 };

@@ -95,5 +95,19 @@ export const SuppressiveFire: Power = {
       "scale": 3.2,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Lethal",0.0984,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Stunned",3.2,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",0.0984,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Fire",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Mez","Held",2,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",1.64,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Cold",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Held",4,4,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+    ["Damage","Cold",1.64,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Toxic",0.87,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Mez","Held",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Toxic",0.87,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

@@ -59,6 +59,10 @@ export const Vacuum: Power = {
       "isPseudoPet": false
     }
   },
+  "atoms": [
+    ["EntCreate",null,-1,1,8,"Ranged_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target.owner> entref source> eq !"],
+    ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"entref target.owner> entref source> eq ! target.isFriend? ! && enttype target> critter eq &&"]
+  ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ]

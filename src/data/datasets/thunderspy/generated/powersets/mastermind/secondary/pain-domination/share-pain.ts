@@ -40,5 +40,16 @@ export const SharePain: Power = {
     "type": "Psionic",
     "scale": 0.025,
     "table": "Melee_Ones"
-  }
+  },
+  "atoms": [
+    ["Damage","Psionic",0.025,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Damage","Smashing",-2.5,1,2,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["Damage","Lethal",-2.5,1,2,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["Damage","Fire",-2.5,1,2,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["Damage","Cold",-2.5,1,2,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["Damage","Energy",-2.5,1,2,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["Damage","Negative",-2.5,1,2,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["Damage","Psionic",-2.5,1,2,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"],
+    ["Damage","Toxic",-2.5,1,2,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"target.isFriend? !"]
+  ]
 };

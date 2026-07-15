@@ -46,5 +46,8 @@ export const AdrenalinBoost: Power = {
       "scale": 8,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Recovery",null,8,1,60,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

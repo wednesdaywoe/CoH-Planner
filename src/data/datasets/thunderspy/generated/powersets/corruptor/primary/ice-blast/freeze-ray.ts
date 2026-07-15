@@ -51,5 +51,10 @@ export const FreezeRay: Power = {
       "scale": 8,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.1,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Held",8,3,0,"Ranged_Sleep","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,100,1,10,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

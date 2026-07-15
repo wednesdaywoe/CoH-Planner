@@ -87,5 +87,16 @@ export const CSVenomGrenade: Power = {
       }
     }
   },
+  "atoms": [
+    ["Damage","Toxic",0.1964,1,4.12,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Resistance","Smashing",-2,1,16,"Ranged_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Lethal",-2,1,16,"Ranged_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Fire",-2,1,16,"Ranged_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Cold",-2,1,16,"Ranged_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",-2,1,16,"Ranged_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Negative",-2,1,16,"Ranged_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Psionic",-2,1,16,"Ranged_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Resistance","Toxic",-4,1,16,"Ranged_Res_DMG","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true]
+  ],
   "requires": "Arachnos_Soldiers.Arachnos_Soldier.Venom_Grenade !"
 };

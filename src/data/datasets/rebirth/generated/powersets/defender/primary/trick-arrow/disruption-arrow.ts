@@ -37,5 +37,8 @@ export const DisruptionArrow: Power = {
       "entity": "Pets_SonicDebuffArrow",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,30,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

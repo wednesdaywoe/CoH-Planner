@@ -61,5 +61,15 @@ export const CallDepths: Power = {
       "scale": 4,
       "table": "Ranged_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["MaxHP",null,2,1,60,"Ranged_Heal","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["MaxEndurance",null,10,1,60,"Ranged_Ones","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,2,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Range",null,0.375,1,60,"Melee_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Ignore",2,null,null,1],
+    ["MaxHP",null,2,1,60,"Ranged_Heal","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["MaxEndurance",null,10,1,60,"Ranged_Ones","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,2,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+  ]
 };

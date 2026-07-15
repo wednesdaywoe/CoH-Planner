@@ -49,5 +49,9 @@ export const SnapShot: Power = {
       "scale": 0.84,
       "table": "Ranged_InherentDamage"
     }
+  ],
+  "atoms": [
+    ["Damage","Lethal",0.84,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",0.84,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

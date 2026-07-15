@@ -52,5 +52,9 @@ export const GreaterFireSword: Power = {
       "tickRate": 1
     }
   ],
+  "atoms": [
+    ["Unmapped",null,0.78,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.39,1,2.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
+  ],
   "requires": "Defender_Ranged.Fire_Blast.Blazing_Bolt !"
 };

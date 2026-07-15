@@ -65,5 +65,10 @@ export const ThornyDarts: Power = {
     "durations": {
       "defenseDebuff": 5
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Lethal",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.0595,1,3.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Defense","All",2,1,5,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

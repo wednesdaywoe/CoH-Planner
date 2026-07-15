@@ -45,5 +45,8 @@ export const FistfulofArrows: Power = {
     "type": "Lethal",
     "scale": 1.055556,
     "table": "Ranged_Damage"
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1.055556,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

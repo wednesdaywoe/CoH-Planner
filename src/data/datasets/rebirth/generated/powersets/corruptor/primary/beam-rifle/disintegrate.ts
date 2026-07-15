@@ -55,6 +55,12 @@ export const Disintegrate: Power = {
       "table": "Ranged_Ones"
     }
   },
+  "atoms": [
+    ["Damage","Energy",0.216,1,10.5,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Regeneration",null,-1.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,1,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ]

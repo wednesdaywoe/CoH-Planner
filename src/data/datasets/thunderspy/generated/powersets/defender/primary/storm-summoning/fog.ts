@@ -49,5 +49,8 @@ export const Fog: Power = {
       "entity": "Pets_FreezingRain",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,15,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

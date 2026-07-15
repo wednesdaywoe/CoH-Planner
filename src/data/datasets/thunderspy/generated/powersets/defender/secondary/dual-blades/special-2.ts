@@ -45,6 +45,10 @@ export const Special2: Power = {
     "scale": 1.7,
     "table": "Melee_Damage"
   },
+  "atoms": [
+    ["Unmapped",null,1.7,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "comboblade3",

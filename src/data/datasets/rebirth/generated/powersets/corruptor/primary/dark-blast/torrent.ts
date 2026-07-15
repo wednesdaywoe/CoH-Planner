@@ -65,5 +65,10 @@ export const Torrent: Power = {
       "scale": 0.75,
       "table": "Ranged_DeBuff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Negative",0.4,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Knockback",5,1,0,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,0.75,1,10,"Ranged_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

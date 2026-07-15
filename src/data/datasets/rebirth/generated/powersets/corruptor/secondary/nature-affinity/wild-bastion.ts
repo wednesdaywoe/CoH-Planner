@@ -51,5 +51,11 @@ export const WildBastion: Power = {
     "durations": {
       "absorb": 60
     }
-  }
+  },
+  "atoms": [
+    ["Absorb",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,60,"Ranged_Ones","Max","Expression","Target","Any",false,"Replace",2,null,null,1],
+    ["Heal",null,0.272727,1,10.1,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true]
+  ]
 };

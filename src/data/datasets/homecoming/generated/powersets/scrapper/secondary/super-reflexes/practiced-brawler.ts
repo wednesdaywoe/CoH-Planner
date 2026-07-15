@@ -85,5 +85,15 @@ export const PracticedBrawler: Power = {
       "scale": 30,
       "table": "Melee_Res_Boolean"
     }
-  }
+  },
+  "atoms": [
+    ["MezResist","Knockup",100,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["MezResist","Knockback",100,1,120,"Melee_Ones","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Mez","Knockup",-10,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Knockback",-10,1,120,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Mez","Held",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Immobilized",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Stunned",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1],
+    ["Mez","Sleep",-30,1,120,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1]
+  ]
 };

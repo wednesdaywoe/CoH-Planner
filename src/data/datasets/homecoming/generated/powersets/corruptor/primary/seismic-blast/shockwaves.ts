@@ -32,6 +32,9 @@ export const Shockwaves: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Ignore",2,null,null,0.05000000074505806,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

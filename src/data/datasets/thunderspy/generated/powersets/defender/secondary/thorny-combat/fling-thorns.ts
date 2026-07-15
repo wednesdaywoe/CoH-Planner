@@ -57,5 +57,10 @@ export const FlingThorns: Power = {
       "duration": 4.1,
       "tickRate": 1
     }
+  ],
+  "atoms": [
+    ["Unmapped",null,0.9,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.1,1,4.1,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,2,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

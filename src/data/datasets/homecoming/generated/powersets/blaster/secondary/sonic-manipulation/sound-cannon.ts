@@ -51,5 +51,10 @@ export const SoundCannon: Power = {
       "scale": 8,
       "table": "Melee_Fear"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Stunned",8,2,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",5,1,0,"Melee_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.65,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

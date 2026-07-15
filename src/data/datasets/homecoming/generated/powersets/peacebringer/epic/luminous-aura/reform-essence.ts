@@ -37,5 +37,9 @@ export const ReformEssence: Power = {
     "type": "Heal",
     "scale": 2.5,
     "table": "Melee_HealSelf"
-  }
+  },
+  "atoms": [
+    ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Meta",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+  ]
 };

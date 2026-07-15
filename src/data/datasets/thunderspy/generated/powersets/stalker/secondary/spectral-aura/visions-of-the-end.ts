@@ -41,5 +41,9 @@ export const VisionsOfTheEnd: Power = {
       "scale": 10,
       "table": "Melee_Fear"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Terrorized",10,1,0,"Melee_Fear","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

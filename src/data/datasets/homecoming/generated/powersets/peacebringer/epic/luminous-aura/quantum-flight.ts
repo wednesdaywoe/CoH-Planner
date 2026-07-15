@@ -82,6 +82,23 @@ export const QuantumFlight: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Movement","Fly",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Movement","Fly",5,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Movement","Control",3,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["Movement","Friction",3,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Suppress",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true],
+    ["GlobalChanceMod",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Stealth",null,0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
+    ["Stealth",null,20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
+    ["Stealth",null,222,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
+    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
+    ["Mez","CombatPhase",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
+    ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
+    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle Source.Mode? !"]
+  ],
   "modesSuspended": [
     "Suppress_FlyToggles"
   ]

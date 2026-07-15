@@ -24,6 +24,9 @@ export const Adaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "atoms": [
+    ["Meta",null,1,1,999999,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+  ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ],

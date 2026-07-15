@@ -63,5 +63,12 @@ export const HypnotizingLights: Power = {
       "scale": 12,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "atoms": [
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+    ["Mez","Confused",7.5,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+    ["Damage","Psionic",0.1,1,5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1]
+  ]
 };

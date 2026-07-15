@@ -53,5 +53,9 @@ export const SaltCrystals: Power = {
       "scale": 12,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Sleep",12,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,1],
+    ["Defense","All",1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1]
+  ]
 };

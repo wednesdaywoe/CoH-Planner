@@ -42,6 +42,10 @@ export const Eviscerate: Power = {
     "scale": 2.23,
     "table": "Melee_Damage"
   },
+  "atoms": [
+    ["Damage","Lethal",2.23,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.9433500170707703,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "grant",

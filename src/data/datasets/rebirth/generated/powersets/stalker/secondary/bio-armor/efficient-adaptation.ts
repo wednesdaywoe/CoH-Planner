@@ -31,5 +31,8 @@ export const EfficientAdaptation: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "atoms": [
+    ["EntCreate",null,1,112,1.1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "requires": "Stalker_Defense.Bio_Organic_Armor.Adaptation"
 };

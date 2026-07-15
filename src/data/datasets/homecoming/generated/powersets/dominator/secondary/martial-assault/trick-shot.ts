@@ -46,5 +46,8 @@ export const TrickShot: Power = {
     "type": "Lethal",
     "scale": 1.1,
     "table": "Ranged_Damage"
-  }
+  },
+  "atoms": [
+    ["Damage","Lethal",1.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };

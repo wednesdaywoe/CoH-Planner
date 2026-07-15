@@ -46,5 +46,9 @@ export const CloakofFear: Power = {
       "scale": 5,
       "table": "Melee_Fear"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Terrorized",5,2,0,"Melee_Fear","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,-0.075,1,5,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

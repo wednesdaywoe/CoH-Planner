@@ -49,6 +49,11 @@ export const SonicRepulsion: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "atoms": [
+    ["Mez","Knockback",3,1,0.5,"Ranged_Knockback","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Meta",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "setsModes": [
     "Peacebringer_Blaster_Mode"
   ]

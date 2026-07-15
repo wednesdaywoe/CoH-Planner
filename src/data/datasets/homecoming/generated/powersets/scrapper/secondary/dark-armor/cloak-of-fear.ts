@@ -79,5 +79,22 @@ export const CloakofFear: Power = {
       "scale": 0.05,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Terrorized",1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Terrorized",1,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",false,"RefreshToCount",1,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],
+    ["ToHit",null,-0.05,1,3,"Melee_Ones","Cur","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1],
+    ["DamageBuff","Smashing",2,1,3,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["DamageBuff","Lethal",2,1,3,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["DamageBuff","Fire",2,1,3,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["DamageBuff","Cold",2,1,3,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["DamageBuff","Energy",2,1,3,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["DamageBuff","Negative",2,1,3,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["DamageBuff","Psionic",2,1,3,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["DamageBuff","Toxic",2,1,3,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["Enhancement","Knockup",-0.25,1,3,"Melee_Ones","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["Enhancement","Knockback",-0.25,1,3,"Melee_Ones","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["Mez","Knockup",-1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1],
+    ["Mez","Knockback",-1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1]
+  ]
 };

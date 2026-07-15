@@ -48,5 +48,9 @@ export const PowerofthePhoenix: Power = {
       "entity": "Pets_Phoenix",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,7,1,0.5,"Ranged_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

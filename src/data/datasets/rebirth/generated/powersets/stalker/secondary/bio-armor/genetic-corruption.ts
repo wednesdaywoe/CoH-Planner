@@ -53,6 +53,17 @@ export const GeneticCorruption: Power = {
       "table": "Melee_Stun"
     }
   },
+  "atoms": [
+    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Duration","Target","PvE",true,"Replace",2,null,null,0.6600000262260437,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation source.Mode? ! &&"],
+    ["DamageBuff","Smashing",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["DamageBuff","Lethal",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["DamageBuff","Fire",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["DamageBuff","Cold",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["DamageBuff","Energy",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["DamageBuff","Negative",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["DamageBuff","Toxic",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation source.Mode? ! &&"],
+    ["DamageBuff","Psionic",1.5,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation source.Mode? ! &&"]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

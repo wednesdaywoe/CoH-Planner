@@ -43,5 +43,9 @@ export const Ignite: Power = {
     "table": "Ranged_Damage",
     "duration": 5.5,
     "tickRate": 0.25
-  }
+  },
+  "atoms": [
+    ["Damage","Fire",0.1254,1,5.5,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.25,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

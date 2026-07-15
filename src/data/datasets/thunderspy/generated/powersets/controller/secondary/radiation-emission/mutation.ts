@@ -44,5 +44,10 @@ export const Mutation: Power = {
       "scale": 3,
       "table": "Ranged_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,4,1,90,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["ToHit",null,3,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

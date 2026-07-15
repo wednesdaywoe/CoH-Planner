@@ -51,5 +51,9 @@ export const DarkRegeneration: Power = {
       "scale": 3,
       "table": "Melee_HealSelf"
     }
+  ],
+  "atoms": [
+    ["Damage","Negative",0.2,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,3,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1]
   ]
 };

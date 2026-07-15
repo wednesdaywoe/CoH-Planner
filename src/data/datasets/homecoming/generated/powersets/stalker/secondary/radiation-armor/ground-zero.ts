@@ -78,5 +78,13 @@ export const GroundZero: Power = {
     "durations": {
       "defenseDebuff": 10
     }
-  }
+  },
+  "atoms": [
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Heal",null,0.05,1,9.1,"Melee_HealSelf","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Damage","Energy",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Toxic",0.1,1,9.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Defense","All",2,1,10,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

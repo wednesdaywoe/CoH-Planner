@@ -55,5 +55,9 @@ export const HealingFlames: Power = {
     "stacksLinear": [
       "resistance"
     ]
-  }
+  },
+  "atoms": [
+    ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Resistance","Toxic",2,1,60,"Melee_Res_DMG","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1]
+  ]
 };

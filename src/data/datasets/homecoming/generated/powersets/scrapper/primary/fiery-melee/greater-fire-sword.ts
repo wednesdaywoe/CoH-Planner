@@ -70,6 +70,12 @@ export const GreaterFireSword: Power = {
       "cancelOnMiss": true
     }
   ],
+  "atoms": [
+    ["Damage","Fire",2.28,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",1.026,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0],
+    ["Damage","Fire",0.09,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,-0.20000000298023224],
+    ["Damage","Fire",0.2,1,4.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

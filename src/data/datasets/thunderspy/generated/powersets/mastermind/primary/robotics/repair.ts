@@ -35,5 +35,8 @@ export const Repair: Power = {
     "Endurance Modification"
   ],
   "maxSlots": 6,
-  "effects": {}
+  "effects": {},
+  "atoms": [
+    ["Endurance",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

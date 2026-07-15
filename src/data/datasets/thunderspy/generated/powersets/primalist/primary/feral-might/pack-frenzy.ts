@@ -35,6 +35,10 @@ export const PackFrenzy: Power = {
     "To Hit Buff"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,0.1,1,15,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kHunterMode Source.Mode? ! kProwlerMode Source.Mode? ! &&"],
+    ["Unmapped",null,0.5,1,15,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "huntermode",

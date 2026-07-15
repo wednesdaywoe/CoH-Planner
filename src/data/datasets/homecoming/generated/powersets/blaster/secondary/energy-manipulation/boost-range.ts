@@ -39,6 +39,10 @@ export const BoostRange: Power = {
       "table": "Melee_Stun"
     }
   },
+  "atoms": [
+    ["Range",null,0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Meta",null,1,171,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "setsModes": [
     "BoostRange"
   ]

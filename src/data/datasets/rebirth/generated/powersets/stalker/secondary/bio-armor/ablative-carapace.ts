@@ -48,6 +48,11 @@ export const AblativeCarapace: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Absorb",null,0.3,1,0,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Absorb",null,1,1,30,"Melee_Ones","Max","Expression","Self","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,1,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+  ],
   "conditionalEffects": [
     {
       "id": "defensiveadaptation",

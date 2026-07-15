@@ -74,6 +74,16 @@ export const PainAbsorption: Power = {
       "resistance"
     ]
   },
+  "atoms": [
+    ["Resistance","Toxic",2,1,60,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Absorb",null,2,1,20,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower? ! &&"],
+    ["Regeneration",null,1,1,20,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower? ! &&"],
+    ["HealResistance",null,-0.25,1,20,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower? ! &&"],
+    ["Endurance",null,-5,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",1,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower? ! &&"],
+    ["Mez","CombatPhase",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,2,null,true],
+    ["GrantPower",null,-1,1,20,"Ranged_Ones","Cur","Expression","Self","Any",false,"Stack",2,null,null,2,null,true],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_1 source.ownPower? ! Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_2 source.ownPower? ! && Temporary_Powers.Temporary_Powers.Pain_Absorption_Level_3 source.ownPower? ! &&"]
+  ],
   "conditionalEffects": [
     {
       "id": "pain_absorption_level_1",

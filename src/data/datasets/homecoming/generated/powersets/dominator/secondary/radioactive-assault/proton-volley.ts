@@ -61,6 +61,11 @@ export const ProtonVolley: Power = {
       "defenseDebuff": 12
     }
   },
+  "atoms": [
+    ["Damage","Energy",1.125,1,1.6,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.5,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",3,1,12,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,0.30000001192092896,null,true]
+  ],
   "quickSnipe": {
     "stats": {
       "castTime": 1.33,

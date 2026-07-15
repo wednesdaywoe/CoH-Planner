@@ -59,6 +59,11 @@ export const Inferno: Power = {
       "cancelOnMiss": true
     }
   ],
+  "atoms": [
+    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",3,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Fire",0.3,1,8.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0.9900000095367432]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

@@ -49,6 +49,10 @@ export const Telekinesis: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Mez","Held",0.75,3,0,"Melee_Immobilize","Cur","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Repel",1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "conditionalEffects": [
     {
       "id": "domination",

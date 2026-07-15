@@ -69,6 +69,17 @@ export const TemporalHealing: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Recovery",null,0.5,1,2.25,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Movement","Run",0.2,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.2,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.2,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.2,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.2,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Regeneration",null,0.5,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq ||"],
+    ["Absorb",null,0.15,1,12,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"@CustomFX ShowFloaters eq @CustomFX ShowFloatersDark eq || !"]
+  ],
   "conditionalEffects": [
     {
       "id": "temporal_selection_buff",

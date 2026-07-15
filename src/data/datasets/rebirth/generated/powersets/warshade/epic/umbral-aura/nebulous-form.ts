@@ -78,5 +78,21 @@ export const NebulousForm: Power = {
       "scale": 1,
       "table": "Melee_Ones"
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["EntCreate",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
+    ["EntCreate",null,0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle source.Mode? !"],
+    ["Stealth",null,20,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle source.Mode? !"],
+    ["Stealth",null,222,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle source.Mode? !"],
+    ["GlobalChanceMod",null,0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle source.Mode? !"],
+    ["GlobalChanceMod",null,0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle source.Mode? !"],
+    ["Mez","Intangible",0.75,3,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kDisable_Toggle source.Mode? !"],
+    ["Movement","JumpHeight",0.5,1,0.75,"Melee_Leap","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Jump",0.5,1,0.75,"Melee_SpeedJumping","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Control",10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","Friction",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Extend",2,null,null,1,null,true],
+    ["ThreatLevel",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kDisable_Toggle source.Mode? !"]
+  ]
 };

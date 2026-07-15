@@ -58,5 +58,10 @@ export const Beanbag: Power = {
       "scale": 2.5,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Smashing",1.16,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",1.16,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Stunned",2.5,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

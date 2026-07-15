@@ -47,5 +47,9 @@ export const DarkExtraction: Power = {
       "entity": "Pets_Warshade_Extraction",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
+    ["Heal",null,0,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1,null,true]
+  ]
 };

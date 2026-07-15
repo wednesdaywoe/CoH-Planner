@@ -65,5 +65,10 @@ export const CuttingBeam: Power = {
     "durations": {
       "defenseDebuff": 10
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Energy",0.943,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.943,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Defense","All",1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

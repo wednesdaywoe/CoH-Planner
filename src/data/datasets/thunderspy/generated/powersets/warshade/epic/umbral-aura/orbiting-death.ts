@@ -45,5 +45,9 @@ export const OrbitingDeath: Power = {
     "table": "Melee_Damage",
     "duration": 2.5,
     "tickRate": 3
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.17,1,2.5,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,3,1],
+    ["Unmapped",null,1,1,2.5,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,2,1]
+  ]
 };

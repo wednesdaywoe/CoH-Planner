@@ -174,5 +174,9 @@ export const CategoryFive: Power = {
         }
       ]
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,20,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+    ["EntCreate",null,1,1,17,"Melee_Level","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1]
+  ]
 };

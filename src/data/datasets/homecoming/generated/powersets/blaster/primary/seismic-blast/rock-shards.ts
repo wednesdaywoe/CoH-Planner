@@ -69,5 +69,10 @@ export const RockShards: Power = {
     "durations": {
       "defenseDebuff": 8
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Lethal",0.7593,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Lethal",0.0759,1,3.1,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Defense","All",0.5,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

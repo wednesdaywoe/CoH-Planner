@@ -46,6 +46,21 @@ export const GangWar: Power = {
       "entityCount": 10
     }
   },
+  "atoms": [
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.5,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.25,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.10000000149011612,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["EntCreate",null,1,1,0,"Ranged_Levelminus2","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,0.10000000149011612,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

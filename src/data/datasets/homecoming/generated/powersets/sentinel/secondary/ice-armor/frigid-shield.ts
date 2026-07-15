@@ -59,5 +59,14 @@ export const FrigidShield: Power = {
       "absorb": 20,
       "debuffResistance": 4
     }
-  }
+  },
+  "atoms": [
+    ["Absorb",null,0.25,1,20,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1],
+    ["Absorb",null,0.25,1,20,"Melee_HealSelf","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
+    ["Movement","Run",0.1,1,4,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Fly",0.1,1,4,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","Jump",0.1,1,4,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Movement","JumpHeight",0.1,1,4,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.1,1,4,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

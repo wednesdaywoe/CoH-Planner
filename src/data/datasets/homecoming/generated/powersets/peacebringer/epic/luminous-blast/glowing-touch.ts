@@ -39,5 +39,8 @@ export const GlowingTouch: Power = {
     "type": "Heal",
     "scale": 1.96,
     "table": "Ranged_Heal"
-  }
+  },
+  "atoms": [
+    ["Heal",null,1.96,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

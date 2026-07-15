@@ -49,5 +49,9 @@ export const GroupEnergyFlight: Power = {
     "table": "Ranged_Damage",
     "duration": 1.25,
     "tickRate": 0.5
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.08,1,1.25,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1],
+    ["Unmapped",null,1,1,3,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

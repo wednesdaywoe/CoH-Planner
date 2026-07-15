@@ -48,5 +48,9 @@ export const Flares: Power = {
       "scale": 0.2898,
       "table": "Ranged_Damage"
     }
+  ],
+  "atoms": [
+    ["Unmapped",null,0.588,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.2898,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

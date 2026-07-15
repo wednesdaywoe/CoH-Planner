@@ -38,5 +38,8 @@ export const EquipThugs: Power = {
   ],
   "maxSlots": 6,
   "effects": {},
+  "atoms": [
+    ["Recovery",null,0.15,1,240,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

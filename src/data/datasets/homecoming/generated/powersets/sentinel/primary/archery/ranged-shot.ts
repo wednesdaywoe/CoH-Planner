@@ -49,5 +49,9 @@ export const RangedShot: Power = {
       "scale": 2.28,
       "table": "Ranged_InherentDamage"
     }
+  ],
+  "atoms": [
+    ["Damage","Lethal",2.28,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Lethal",2.28,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

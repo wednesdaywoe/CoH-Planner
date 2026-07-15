@@ -46,5 +46,9 @@ export const BloodCraze: Power = {
       "duration": 9.1,
       "tickRate": 1
     }
+  ],
+  "atoms": [
+    ["Heal",null,1,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,0.25,1,9.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Stack",2,null,1,1]
   ]
 };

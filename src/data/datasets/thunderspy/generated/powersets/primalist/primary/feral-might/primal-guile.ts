@@ -36,5 +36,9 @@ export const PrimalGuile: Power = {
       "scale": 6,
       "table": "Melee_Taunt"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Placate",8,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Placate",6,1,0,"Melee_Taunt","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

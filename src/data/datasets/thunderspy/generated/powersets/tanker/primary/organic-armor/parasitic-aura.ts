@@ -50,6 +50,11 @@ export const ParasiticAura: Power = {
       "table": "Melee_Ones"
     }
   },
+  "atoms": [
+    ["Recovery",null,0.3,1,45,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,30,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDefensiveAdaptation Source.Mode? !"],
+    ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq Raid target.HasTag? ! &&"]
+  ],
   "conditionalEffects": [
     {
       "id": "offensiveadaptation",

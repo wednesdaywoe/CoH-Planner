@@ -43,5 +43,9 @@ export const GeneticCorruption: Power = {
       "scale": 6,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Sleep",6,2,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref target> entref source> eq ! && kOffensiveAdaptation Source.Mode? ! &&"],
+    ["Unmapped",null,1.5,1,5,"Melee_Debuff_Dam","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq ! kDefensiveAdaptation Source.Mode? ! &&"]
+  ]
 };

@@ -61,5 +61,10 @@ export const SirensSong: Power = {
       "scale": 30,
       "table": "Ranged_Sleep"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Sleep",30,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",1.1902,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",1.1902,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

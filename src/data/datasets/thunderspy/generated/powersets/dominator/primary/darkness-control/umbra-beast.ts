@@ -52,5 +52,8 @@ export const UmbraBeast: Power = {
       "entity": "Pets_Umbra_Beast",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

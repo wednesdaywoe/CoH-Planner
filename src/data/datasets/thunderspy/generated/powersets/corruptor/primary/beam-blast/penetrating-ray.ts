@@ -54,6 +54,10 @@ export const PenetratingRay: Power = {
       "table": "Ranged_Knockback"
     }
   },
+  "atoms": [
+    ["Unmapped",null,2.76,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Knockback",0.7,0.44999998807907104,0,"Ranged_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ],
   "conditionalEffects": [
     {
       "id": "beam_rifle_debuff",

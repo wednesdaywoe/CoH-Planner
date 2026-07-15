@@ -140,6 +140,29 @@ export const ShadowFall: Power = {
       }
     }
   },
+  "atoms": [
+    ["Defense","Ranged",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Melee",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Defense","AoE",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Smashing",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Lethal",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Fire",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Cold",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Energy",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Negative",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Psionic",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Defense","Toxic",0.5,1,0.75,"Ranged_Buff_Def","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1],
+    ["Stealth",null,0.7,1,0.75,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Resistance","Energy",2,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",2,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Resistance","Psionic",2,1,0.75,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Terrorized",5,1,0.75,"Ranged_Res_Boolean","Res","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Terrorized",-20,1,0.75,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,true],
+    ["Stealth",null,390,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","Attacked target.EventTimeSince> 10 > HitByFoe target.EventTimeSince> 10 > && MissionObjectClick target.EventTimeSince> 10 > &&"],
+    ["Meta",null,1,104,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["Stealth",null,35.5,1,0.75,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,"OutOfCombat","MissionObjectClick target.EventTimeSince> 10 >"]
+  ],
   "setsModes": [
     "Hidden_Attack"
   ]

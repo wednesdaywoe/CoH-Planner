@@ -50,6 +50,12 @@ export const Cloudburst: Power = {
     "duration": 2.9,
     "tickRate": 0.30000001192092896
   },
+  "atoms": [
+    ["Damage","Cold",0.2275,1,2.9,"Ranged_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,0.30000001192092896,1],
+    ["Meta",null,1,188,8,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"kLightningCat5 Source.Mode? !"],
+    ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","All","Any",true,"Replace",2,null,null,0.25]
+  ],
   "conditionalEffects": [
     {
       "id": "stormblast_instormcell",

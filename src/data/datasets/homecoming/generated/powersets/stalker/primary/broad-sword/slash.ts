@@ -58,6 +58,11 @@ export const Slash: Power = {
       "defenseDebuff": 6
     }
   },
+  "atoms": [
+    ["Damage","Lethal",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Defense","All",1,1,6,"Melee_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,0.699999988079071,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

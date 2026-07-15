@@ -68,5 +68,10 @@ export const FlingThorns: Power = {
     "durations": {
       "defenseDebuff": 8
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Lethal",0.7747,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Damage","Toxic",0.086,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1],
+    ["Defense","All",2,1,8,"Ranged_Debuff_Def","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

@@ -61,6 +61,13 @@ export const KeeningWinds: Power = {
       "perTarget": 10
     }
   },
+  "atoms": [
+    ["Mez","Confused",15,3,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,-0.04,1,2.1,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Confused",8,1,0,"Ranged_Fear","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Endurance",null,10,1,0,"Ranged_EndDrain","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","All","Any",false,"Stack",2,null,null,1,null,true]
+  ],
   "specialEffects": [
     {
       "kind": "effect-proc",

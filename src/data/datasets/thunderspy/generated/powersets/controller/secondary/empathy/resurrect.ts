@@ -29,5 +29,8 @@ export const Resurrect: Power = {
     "EnduranceReduction",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
+  ]
 };

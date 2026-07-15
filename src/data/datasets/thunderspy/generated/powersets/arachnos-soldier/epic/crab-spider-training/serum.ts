@@ -32,5 +32,8 @@ export const Serum: Power = {
   "allowedSetCategories": [
     "Healing"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,2,1,120,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

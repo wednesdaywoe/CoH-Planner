@@ -52,5 +52,8 @@ export const SummonLions: Power = {
       "entity": "MastermindPets_Lioness",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,1,1,99999,"Ranged_Levelminus","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
+  ]
 };

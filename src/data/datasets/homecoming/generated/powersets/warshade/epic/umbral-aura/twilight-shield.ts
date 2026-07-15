@@ -55,6 +55,10 @@ export const TwilightShield: Power = {
       }
     }
   },
+  "atoms": [
+    ["Resistance","Energy",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Resistance","Negative",3,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1]
+  ],
   "modesSuspended": [
     "Warshade_Blaster_Mode",
     "Warshade_Tanker_Mode"

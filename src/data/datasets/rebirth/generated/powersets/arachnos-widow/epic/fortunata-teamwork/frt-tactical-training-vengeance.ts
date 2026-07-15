@@ -141,5 +141,40 @@ export const FRTTacticalTrainingVengeance: Power = {
       "scale": 3.5,
       "table": "Melee_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["Defense","Melee",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Defense","Ranged",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Defense","AoE",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Defense","Smashing",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Defense","Lethal",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Defense","Fire",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Defense","Cold",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Defense","Energy",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Defense","Negative",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Defense","Psionic",2.5,1,120,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Heal",null,1,1,0,"Melee_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["ToHit",null,3.5,1,120,"Melee_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Mez","Terrorized",-10,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? ! isPVPMap? ! &&"],
+    ["MezResist","Terrorized",2,1,120,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["MezResist","Stunned",2,1,120,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["MezResist","Sleep",2,1,120,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["MezResist","Immobilized",2,1,120,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["MezResist","Held",2,1,120,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["MezResist","Confused",2,1,120,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["MezResist","Taunt",2,1,120,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["MezResist","Placate",2,1,120,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Mez","Knockup",-100,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Mez","Knockback",-100,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["Mez","Repel",-10,1,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["DamageBuff","Smashing",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["DamageBuff","Lethal",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["DamageBuff","Fire",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["DamageBuff","Cold",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["DamageBuff","Energy",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["DamageBuff","Negative",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["DamageBuff","Toxic",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["DamageBuff","Psionic",3.5,1,120,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"],
+    ["EntCreate",null,1,38,120,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,130,1,null,true,null,null,null,null,"kVengeance_Mode target.mode? !"]
+  ]
 };

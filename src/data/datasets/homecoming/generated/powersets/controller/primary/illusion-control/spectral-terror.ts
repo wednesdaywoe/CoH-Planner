@@ -47,5 +47,8 @@ export const SpectralTerror: Power = {
       "entity": "Pets_Terror",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

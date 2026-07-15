@@ -86,5 +86,14 @@ export const TacticalTrainingLeadership: Power = {
       "scale": 1,
       "table": "Ranged_Buff_ToHit"
     }
-  }
+  },
+  "atoms": [
+    ["ToHit",null,1,1,2.25,"Ranged_Buff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Perception",null,1.5,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Perception",null,2,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["MezResist","Confused",1.75,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["MezResist","Terrorized",1.75,1,2.25,"Ranged_Res_Boolean","Res","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Confused",-15,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1],
+    ["Mez","Terrorized",-15,1,2.25,"Ranged_Res_Boolean","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1]
+  ]
 };

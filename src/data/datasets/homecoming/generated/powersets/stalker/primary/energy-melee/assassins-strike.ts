@@ -76,5 +76,8 @@ export const AssassinsStrike: Power = {
     }
   ],
   "fromHideBonus": 2.173913043478261,
-  "midCombatCast": 1
+  "midCombatCast": 1,
+  "atoms": [
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+  ]
 };

@@ -65,5 +65,14 @@ export const InstantRegeneration: Power = {
       "perTarget": 0.25
     }
   },
+  "atoms": [
+    ["Regeneration",null,2,1,2.25,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
+    ["Meta",null,1,1,90,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Refresh",2,null,null,1,null,true],
+    ["Regeneration",null,0.25,1,20,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat"],
+    ["Regeneration",null,0.055,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat"],
+    ["Endurance",null,0.03,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat"],
+    ["Recovery",null,0.03,1,20,"Melee_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,"OutOfCombat"],
+    ["GlobalChanceMod",null,1,1,1,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,"OutOfCombat"]
+  ],
   "requires": "Brute_Defense.Regeneration.Instant_Healing !"
 };

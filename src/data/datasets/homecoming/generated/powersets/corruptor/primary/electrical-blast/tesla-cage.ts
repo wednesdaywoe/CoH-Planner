@@ -72,5 +72,14 @@ export const TeslaCage: Power = {
     "stacksLinear": [
       "enduranceGain"
     ]
-  }
+  },
+  "atoms": [
+    ["Recovery",null,-1,1,8,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Energy",0.1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Held",8,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,-0.2,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Endurance",null,-0.01,1,0,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Recovery",null,-0.1,1,8,"Ranged_EndDrain","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true]
+  ]
 };

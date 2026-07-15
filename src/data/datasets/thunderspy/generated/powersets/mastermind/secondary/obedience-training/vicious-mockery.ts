@@ -43,5 +43,8 @@ export const ViciousMockery: Power = {
       "scale": 0.1,
       "table": "Melee_Knockback"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Knockback",0.1,1,0,"Melee_Knockback","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

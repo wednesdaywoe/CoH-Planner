@@ -41,5 +41,9 @@ export const Grace: Power = {
       "defenseBuff": 10.75
     }
   },
+  "atoms": [
+    ["Unmapped",null,1,1,10.75,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Psionic",1,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ],
   "mechanicType": "parentMechanic"
 };

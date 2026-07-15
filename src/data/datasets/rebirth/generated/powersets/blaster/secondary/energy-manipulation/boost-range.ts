@@ -38,5 +38,8 @@ export const BoostRange: Power = {
       "scale": 0.5,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Range",null,0.5,1,30,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ]
 };

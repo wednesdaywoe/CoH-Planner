@@ -50,5 +50,10 @@ export const LightningClap: Power = {
       "scale": 8,
       "table": "Melee_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! &&"],
+    ["Mez","Knockback",1,1,0,"Melee_Knockback","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq entref source> entref target> eq ! &&"],
+    ["Unmapped",null,0.025,1,8.73,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

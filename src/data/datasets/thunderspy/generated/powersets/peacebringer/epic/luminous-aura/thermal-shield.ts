@@ -50,5 +50,8 @@ export const ThermalShield: Power = {
         "table": "Melee_Res_DMG"
       }
     }
-  }
+  },
+  "atoms": [
+    ["Resistance","Fire",3,1,0.75,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kPeacebringer_Blaster_Mode Source.Mode? !"]
+  ]
 };

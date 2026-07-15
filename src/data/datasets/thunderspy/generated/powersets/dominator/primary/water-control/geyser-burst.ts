@@ -46,5 +46,8 @@ export const GeyserBurst: Power = {
       "entity": "Pets_Water_Control_Geyser_Burst",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

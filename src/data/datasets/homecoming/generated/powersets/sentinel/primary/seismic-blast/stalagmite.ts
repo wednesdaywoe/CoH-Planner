@@ -58,5 +58,10 @@ export const Stalagmite: Power = {
       "scale": 6,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Damage","Smashing",0.75,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",0.75,1,0,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Mez","Stunned",6,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1]
+  ]
 };

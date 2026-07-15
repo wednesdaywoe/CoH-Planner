@@ -50,5 +50,8 @@ export const ChokingCloud: Power = {
       "entity": "Pets_Radiation_Melee_Irradiated_Ground_Pet",
       "isPseudoPet": false
     }
-  }
+  },
+  "atoms": [
+    ["EntCreate",null,-1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+  ]
 };

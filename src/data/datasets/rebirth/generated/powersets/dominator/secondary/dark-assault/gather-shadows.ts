@@ -134,5 +134,38 @@ export const GatherShadows: Power = {
       "damageBuff",
       "specialBuff"
     ]
-  }
+  },
+  "atoms": [
+    ["Enhancement","Stunned",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Enhancement","Sleep",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Confused",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Terrorized",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Immobilized",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Held",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Movement","Run",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Movement","Fly",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","All",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Melee",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Ranged",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","AoE",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Smashing",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Lethal",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Fire",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Cold",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Energy",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Negative",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Enhancement","Psionic",0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Heal",null,0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Absorb",null,0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["ToHit",null,0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["Endurance",null,0.5,1,10,"Melee_Stun","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+    ["DamageBuff","Smashing",4,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Lethal",4,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Fire",4,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Cold",4,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Energy",4,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Negative",4,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Toxic",4,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
+    ["DamageBuff","Psionic",4,1,10,"Melee_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
+  ]
 };

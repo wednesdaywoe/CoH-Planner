@@ -57,5 +57,11 @@ export const TerraFirma: Power = {
       "table": "Melee_Buff_ToHit"
     }
   },
+  "atoms": [
+    ["ToHit",null,0.25,0,0.75,"Melee_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["ToHit",null,1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Accuracy",null,0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["Range",null,0.15,1,0.75,"Melee_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
+  ],
   "mechanicType": "parentMechanic"
 };

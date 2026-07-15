@@ -53,5 +53,9 @@ export const PhotonGrenade: Power = {
       "scale": 4,
       "table": "Ranged_Stun"
     }
-  }
+  },
+  "atoms": [
+    ["Unmapped",null,0.3,1,0,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Stunned",4,2,0,"Ranged_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+  ]
 };
