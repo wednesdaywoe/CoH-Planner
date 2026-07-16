@@ -106,15 +106,27 @@ describe('atom-native resources — Equip Thugs (the Thunderspy target-trap)', (
   });
 });
 
-describe('atom-native resources — Icy Bastion (the deliberate StackByAttribAndKey punt)', () => {
-  it('punts to the bag rather than auto-matching the burst/tail (bag value untouched)', () => {
-    // Both halves are a same-table burst + 30s lingering. The bag's two values are
-    // INCONSISTENT with each other (regen drops the lingering, recovery sums it) — the
-    // tell of a latent bug — so the helper declines to reconstruct either.
-    expect(regenBuffValue(IcyBastion)).toBeUndefined();
-    expect(recoveryBuffValue(IcyBastion)).toBeUndefined();
-    // The applier therefore keeps reading these, unchanged by this slice.
-    expect((IcyBastion.effects?.regenBuff as { scale: number }).scale).toBeCloseTo(6);
+describe('atom-native resources — Icy Bastion (the StackByAttribAndKey burst/tail)', () => {
+  // A temp toggle (activate_period 0.5): its own effects carry the larger +6 regen /
+  // +2 recovery at 0.75s — re-applied every tick, so alive only while the toggle is up —
+  // while an OnTick Execute_Power applies the +4 / +2 @30s lingering half that survives
+  // an early detoggle. Both are active for the 30s the power is doing its job, so the
+  // value is their SUM. Confirmed in-game and by the power's own display_help.
+  it('sums the toggle-gated burst and the 30s lingering half (+10 regen)', () => {
+    const r = regenBuffValue(IcyBastion)!;
+    expect(r).toBeDefined();
+    expect(r.scale).toBeCloseTo(10); // 6 (toggle-refreshed) + 4 (lingering)
+    expect(r.table).toBe('Melee_Ones');
+  });
+  it('sums recovery the same way (+4), the half that was always right', () => {
+    expect(recoveryBuffValue(IcyBastion)!.scale).toBeCloseTo(4); // 2 + 2
+  });
+  it('reconstructs rather than punting — the bag now agrees on both halves', () => {
+    // Regression pin for the converter fix: the regen routing used to skip
+    // `StackByAttribAndKey` outright, dropping the lingering +4 and reporting +6 while
+    // recovery (no such skip) summed to +4. Reading the flag as "ignore me" rather than
+    // "refresh, don't stack" was the bug; regen and recovery must never diverge again.
+    expect((IcyBastion.effects?.regenBuff as { scale: number }).scale).toBeCloseTo(10);
     expect((IcyBastion.effects?.recoveryBuff as { scale: number }).scale).toBeCloseTo(4);
   });
 });

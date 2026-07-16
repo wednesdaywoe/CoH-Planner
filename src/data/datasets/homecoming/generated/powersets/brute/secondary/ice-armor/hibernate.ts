@@ -57,7 +57,7 @@ export const Hibernate: Power = {
       "knockup": 30,
       "mezResistance": 30,
       "recoveryBuff": 30,
-      "regenBuff": 0.75,
+      "regenBuff": 30,
       "repel": 30,
       "resistance": 30,
       "sleep": 30,
@@ -106,7 +106,7 @@ export const Hibernate: Power = {
       "table": "Melee_Ones"
     },
     "regenBuff": {
-      "scale": 6,
+      "scale": 10,
       "table": "Melee_Ones"
     },
     "repel": {

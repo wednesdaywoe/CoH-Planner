@@ -4417,8 +4417,38 @@ function projectAtomsToEffects(atoms, powerName) {
           recordDuration('debuffResistance');
         } else if (isDebuff || scale < 0) {
           addOrAccumulate('regenDebuff');
-        } else if (a._flags?.includes('StackByAttribAndKey')) {
-          // handled downstream by the perTarget pipeline — see extractEffects
+        } else if (
+          a._flags?.includes('StackByAttribAndKey') &&
+          (a._stack === 'Stack' || a._stack === 'Continuous')
+        ) {
+          // Handled downstream by the perTarget pipeline — see extractEffects.
+          //
+          // The `Stack`/`Continuous` test is load-bearing, and the flag ALONE is not a
+          // skip signal. `StackByAttribAndKey` means "key this buff by (attrib,
+          // stack_key) so re-application REFRESHES rather than stacks" — it is refresh
+          // semantics, not an instruction to ignore the template. Only the
+          // Stack/Continuous ones are the per-target increments `computeAoePerTargetPatches`
+          // folds in (Reactive Regeneration's 0.055/0.08/0.25 @20s), and skipping those
+          // is what stops them double-counting.
+          //
+          // Skipping on the flag alone silently DELETED Icy Bastion's lingering +4
+          // regen (`Replace`, 30s, stack_key=IcyBastion): a temp toggle
+          // (`activate_period` 0.5) whose own effects carry the larger +6 @0.75s
+          // toggle-refreshed buff while an OnTick Execute_Power applies the +4 @30s
+          // lingering half via Redirects.Ice_Armor.Icy_Bastion_NoCast — the flag being
+          // exactly what lets 60 re-executions refresh one buff instead of stacking to
+          // +24,000%. Both apply while the toggle is up, so the power is +10 regen /
+          // +4 recovery; the bag reported 6 (burst only, lingering dropped) while
+          // RECOVERY — which never had this skip — correctly summed to 4. That
+          // regen/recovery asymmetry was the bug, confirmed in-game and by the power's
+          // own display_help ("While the power is active... Should you deactivate the
+          // power earlier, some of the ... effects will remain until the full 30
+          // seconds window is over").
+          //
+          // NB Supremacy also carries flagged regen (0.02, `Suppress`) but is not in
+          // scope: it is never converted to a player power, and its templates are
+          // henchman-facing anyway (gated `group target> MastermindPets eq`, the
+          // damage-sharing plumbing).
         } else if (a._flags?.includes('IgnoreStrength')) {
           addOrAccumulate('regenBuffUnenhanced');
         } else {

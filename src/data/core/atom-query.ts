@@ -733,30 +733,30 @@ export function maxHPBuffValue(
  *      and maxHP (Replace-collapsed), a resource slot RAW-SUMS its same-table entries and
  *      RESETS on a table change (Obscure Sustenance's recovery: 0.6+0.38+0.1 = 1.08).
  *
- * PUNTS (return `undefined` → the applier keeps reading the unchanged bag), each for a
- * reason no atom field can settle:
- *   - **any `Expression`-typed resource atom.** The converter's RESOURCES guard drops
- *     `Expression` templates whose `tick_chance` is 0 (Rebirth's Gravity/Penumbral armor
- *     toggles) and keeps the rest (Gamma Boost, Defibrillate). `tick_chance` is not on
- *     the wire, and `Expression ⟺ dropped` is FALSE, so the verdict is unrecoverable.
- *     Safe either way: if the bag kept it we fall back to the bag's value; if the bag
- *     dropped it the slot is absent and the fallback yields `undefined` too.
- *   - **a duration-distinct same-table non-perTarget group** — the `StackByAttribAndKey`
- *     burst/tail family (Icy Bastion). The bag treats regen and recovery INCONSISTENTLY
- *     here (regen's routing skips the `StackByAttribAndKey` lingering → +6, drops its
- *     `4 @ 30s`; recovery has no such skip → `foldResourceSlot` sums its `2 @ 0.75s`
- *     burst + `2 @ 30s` lingering → +4) off a template `flags[]` entry that is not on
- *     the wire. That inconsistency is the tell of a latent BAG BUG, not a settled value,
- *     so rather than stamp either number onto the atom this punts and leaves the bag
- *     untouched — purely behavior-preserving. The correct in-game behavior (does a
- *     burst+lingering SUM, replace, or settle to the lingering?) is a separate in-game /
- *     Mids verification follow-up; per the maintainer's decision (2026-07-15) it is NOT
- *     auto-matched here. The condition IS detectable on the wire (two same-table,
- *     same-effectType, non-perTarget atoms at different durations), so no stamp is needed.
+ * ONE PUNT remains (return `undefined` → the applier keeps reading the unchanged bag):
+ * **any `Expression`-typed resource atom.** The converter's RESOURCES guard drops
+ * `Expression` templates whose `tick_chance` is 0 (Rebirth's Gravity/Penumbral armor
+ * toggles) and keeps the rest (Gamma Boost, Defibrillate). `tick_chance` is not on the
+ * wire, and `Expression ⟺ dropped` is FALSE, so the verdict is unrecoverable. Safe
+ * either way: if the bag kept it we fall back to the bag's value; if the bag dropped it
+ * the slot is absent and the fallback yields `undefined` too.
  *
- * Returns `undefined` for a power with no such atom, or for either punt → bag fallback
- * (see {@link atomsOf}). Verified bag-equal corpus-wide for every value it DOES return
- * by `scripts/planb-shadow-resources.cjs` (punts are reported, not gated).
+ * A SECOND punt used to live here, on the `StackByAttribAndKey` burst/tail family (Icy
+ * Bastion), because the bag answered that shape two different ways: regen's routing
+ * skipped the lingering `4 @ 30s` (reporting +6, the 0.75s burst alone) while recovery,
+ * which never had that skip, summed its `2 @ 0.75s` + `2 @ 30s` to +4. That
+ * inconsistency was correctly read as a latent BAG BUG rather than a settled value, so
+ * the helper declined to reconstruct it. **The bug is now fixed at the converter** (the
+ * skip was keying on a flag that means "refresh, don't stack", not "ignore me" — see the
+ * regen routing in `convert-powerset.cjs`), regen and recovery both sum, and the punt is
+ * gone: this family reconstructs through {@link foldResourceSum} like any other. Icy
+ * Bastion is +10 regen / +4 recovery while its toggle is up, confirmed in-game and by the
+ * power's own `display_help`. The lesson generalizes — a punt that exists to dodge an
+ * inconsistency is a bug report, not a design.
+ *
+ * Returns `undefined` for a power with no such atom, or for the Expression punt → bag
+ * fallback (see {@link atomsOf}). Verified bag-equal corpus-wide for every value it DOES
+ * return by `scripts/planb-shadow-resources.cjs` (punts are reported, not gated).
  */
 function resourceBuffValue(
   power: AtomSource,
@@ -793,24 +793,7 @@ function resourceBuffValue(
 
   const mine = flat.filter((a) => !!a.ignoreStrength === wantIgnoreStrength);
   if (!mine.length) return undefined;
-  // PUNT: the StackByAttribAndKey burst/tail family (see above).
-  if (hasDurationSplit(mine)) return undefined;
   return foldResourceSum(mine);
-}
-
-/** True when some table carries two of these atoms at DIFFERENT durations — the
- *  burst/tail shape whose bag value is unsettled (Icy Bastion). See the punt note
- *  on {@link resourceBuffValue}. */
-function hasDurationSplit(atoms: readonly AtomicEffect[]): boolean {
-  const byTable = new Map<string, Set<number>>();
-  for (const a of atoms) {
-    const k = a.modifierTable.toLowerCase();
-    let durs = byTable.get(k);
-    if (!durs) byTable.set(k, (durs = new Set()));
-    durs.add(Number(a.duration.toFixed(4)));
-  }
-  for (const durs of byTable.values()) if (durs.size > 1) return true;
-  return false;
 }
 
 /**
@@ -820,6 +803,15 @@ function hasDurationSplit(atoms: readonly AtomicEffect[]): boolean {
  * fold's `Replace`-collapse branch is maxHP-scoped (`stack` is carried only on the
  * maxHP queue entries) and its `durationVariants` branch is debuff-only, so neither
  * applies to a regen/recovery BUFF.
+ *
+ * Summing is also right for a burst/tail pair, which is what makes the old punt
+ * unnecessary: the two instances OVERLAP rather than replace, so the power's value while
+ * it is doing its job is their sum. Icy Bastion / Hibernate (`6 @0.75s` toggle-refreshed
+ * + `4 @30s` lingering → +10) and Geode (`7.5 @0.2s` + `2.5 @30s` → +10) are temp toggles
+ * whose short instance is re-applied every tick while active; Obscure Sustenance's
+ * `1.72 @10s + 1.72 @20s + 1 @60s → 4.44` is a decay chain whose three instances all
+ * start at cast. Same additive-overlap shape the converter already ships for Inner
+ * Light's ToHit burst/tail and EMP Arrow's −500% regen at 15s *and* 45s.
  */
 function foldResourceSum(atoms: readonly AtomicEffect[]): { scale: number; table: string } {
   let cur = { scale: 0, table: atoms[0].modifierTable };
