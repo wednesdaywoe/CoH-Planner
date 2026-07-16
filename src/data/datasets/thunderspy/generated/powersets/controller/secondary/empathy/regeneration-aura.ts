@@ -48,6 +48,6 @@ export const RegenerationAura: Power = {
     }
   },
   "atoms": [
-    ["Regeneration",null,5,1,60,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Regeneration",null,5,1,60,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

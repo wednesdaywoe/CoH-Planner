@@ -61,20 +61,20 @@ export const Pounce: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,2.76,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1.38,0.10000000149011612,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
-    ["Unmapped",null,0.1,1,4.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
-    ["Unmapped",null,0.1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
-    ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
-    ["Mez","Stunned",4,4,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
-    ["Unmapped",null,1.38,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? &&",true],
-    ["Unmapped",null,2.1468,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,1.0734,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kProwlerMode Source.Mode? &&",true],
-    ["Unmapped",null,1.0734,0.10000000149011612,0,"Melee_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kProwlerCloakMode Source.Mode? ! &&",true],
-    ["Unmapped",null,0.2,1,4.1,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode?",true],
-    ["Unmapped",null,0.2,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode?",true],
-    ["Mez","Stunned",6,4,0,"Melee_Stun","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? enttype target> critter eq &&",true],
-    ["Mez","Stunned",2,2,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,2.76,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1.38,0.10000000149011612,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? ! &&"],
+    ["Unmapped",null,0.1,1,4.1,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
+    ["Unmapped",null,0.1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? !"],
+    ["Mez","Stunned",4,4,0,"Melee_Stun","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
+    ["Mez","Stunned",4,4,0,"Melee_Stun","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? ! enttype target> critter eq &&"],
+    ["Unmapped",null,1.38,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kProwlerCloakMode Source.Mode? &&",true],
+    ["Unmapped",null,2.1468,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,1.0734,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kProwlerMode Source.Mode? &&",true],
+    ["Unmapped",null,1.0734,0.10000000149011612,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kProwlerCloakMode Source.Mode? ! &&",true],
+    ["Unmapped",null,0.2,1,4.1,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode?",true],
+    ["Unmapped",null,0.2,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode?",true],
+    ["Mez","Stunned",6,4,0,"Melee_Stun","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"kProwlerCloakMode Source.Mode? enttype target> critter eq &&",true],
+    ["Mez","Stunned",2,2,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "conditionalEffects": [
     {

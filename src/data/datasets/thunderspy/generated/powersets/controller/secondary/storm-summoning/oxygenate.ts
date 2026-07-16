@@ -37,8 +37,8 @@ export const Oxygenate: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,1,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,1,1,0,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2,1,60,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ],
   "requires": "Controller_Buff.Storm_Summoning.O2_Boost !"
 };

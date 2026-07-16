@@ -34,8 +34,24 @@
 /** ePvX — which combat context this effect applies in. */
 export type PvMode = 'Any' | 'PvE' | 'PvP';
 
-/** eAspect — which face of the attribute is modified. */
-export type Aspect = 'Res' | 'Max' | 'Abs' | 'Str' | 'Cur';
+/**
+ * eAspect — which face of the attribute is modified.
+ *
+ * `Unspecified` means the source template STATED no aspect — it is not a synonym for
+ * `Cur`. Homecoming and Rebirth always state one (0 empty aspects between them);
+ * Thunderspy states one on 538 of 30,519 templates and leaves the rest blank, because
+ * its exports carry no aspect field for the parser to read (only a prior fix's
+ * synthesized `Resistance`/`Strength` are populated — see [[tspy-player-vocab-gap]]).
+ *
+ * This used to default to `Cur`, which fabricated "Current" for a template that said
+ * nothing. That is the collapse Plan B exists to prevent, and it bit: the bag routes a
+ * foe-targeted movement effect to `effects.movement` only on a literal
+ * `aspect === 'current'` test, so a blank-aspect Thunderspy template is dropped by the
+ * bag but was indistinguishable, on the wire, from a genuine HC `Current` one. Keeping
+ * the two apart costs nothing — no consumer tests `=== 'Cur'` to mean "any", and every
+ * `=== 'Res'/'Str'/'Max'` test excludes a blank aspect either way.
+ */
+export type Aspect = 'Res' | 'Max' | 'Abs' | 'Str' | 'Cur' | 'Unspecified';
 
 /** eAttribType — how the scale is interpreted. ('Constant' is a bin-export-only
  *  application flavor folded onto Magnitude here.) */
@@ -74,7 +90,9 @@ export type EffectType =
   | 'MaxHP' | 'MaxEndurance'
   // utility stats
   | 'RechargeTime' | 'Range' | 'ThreatLevel' | 'Perception' | 'Stealth'
-  // movement (subType: Run|Fly|Jump|JumpHeight|Control|Friction)
+  // movement (subType: Run|Fly|FlyMode|Jump|JumpHeight|Control|Friction).
+  // `Fly` is the FlyingSpeed buff; `FlyMode` is the kFly flight-mode grant
+  // (magnitude = "can fly"), a different attrib entirely — see MOVEMENT_AXIS.
   | 'Movement'
   // meta / engine (grant/execute/summon/mode/etc. — not a numeric player stat)
   | 'GrantPower' | 'ExecutePower' | 'RechargePower' | 'GlobalChanceMod'
@@ -112,6 +130,16 @@ export interface AtomicEffect {
   applicationPeriod?: number;
   stacking: Stacking;
   stackCap?: number;
+  /**
+   * Raw `stack_key` — the binary's mutual-suppression group (`TravelBuff` on
+   * Combat Jumping / Super Jump / Super Speed / Fly, `TravelMaxBuff` on their cap
+   * raises, `Stealth` on the stealth family). Meaningful only alongside
+   * `stacking: 'Suppress'`: powers sharing a key suppress each other per stat, so
+   * only the strongest applies. A parser field (see `parse_stack_key_table`), NOT
+   * a converter verdict — it carries here as data and the rule is applied by the
+   * consumer.
+   */
+  stackKey?: string;
   baseProbability: number;
   procsPerMinute?: number;
 
@@ -255,11 +283,15 @@ export const ATOM_TUPLE_FIELDS = [
   // for the interior nulls between `baseProbability` and itself, and appending it
   // (rather than reordering) leaves every non-suppressed atom's encoding untouched.
   // `notOnCaster` (the Thunderspy resource target-trap) is rarest of all — a few
-  // dozen atoms — so it appends last for the same reason.
+  // dozen atoms — so it appends last for the same reason. `stackKey` follows it:
+  // only 0.8% of templates carry one (and only ~320 pair it with `Suppress`, the
+  // one flavor that means anything), so appending keeps every other atom's
+  // encoding byte-identical and the keyed few pay a handful of interior nulls.
   'gated',
   'perTarget',
   'suppressible',
   'notOnCaster',
+  'stackKey',
 ] as const satisfies ReadonlyArray<keyof AtomicEffect>;
 
 /** One atom, positionally encoded. A `null` at position `i` means the field
@@ -383,10 +415,21 @@ const SCALAR_EFFECT: Record<string, EffectType> = {
   stealthradius_pvp: 'Stealth', absorb: 'Absorb',
 };
 
-/** movement attribs → Movement/<axis>. */
+/**
+ * movement attribs → Movement/<axis>.
+ *
+ * `fly` (kFly) and `flyingspeed` are DIFFERENT attribs and must not share an axis.
+ * kFly is the flight-MODE grant — its scale is a mode magnitude ("can fly": Hover
+ * 4.0, Fly 2.0), not a speed percentage — while FlyingSpeed is the actual speed
+ * buff. Mapping both to `Fly` made the pair unrecoverable from the wire on the 32
+ * powers carrying both (Hover is the worst: kFly 2.0 and FlyingSpeed 0 share a
+ * `Melee_Ones` table, so scale and table cannot separate them either), and reading
+ * the grant as a speed buff double-counts Fly by +200% — the bug the bag's own
+ * `movement.fly` / `movement.flySpeed` split exists to avoid.
+ */
 const MOVEMENT_AXIS: Record<string, string> = {
   runningspeed: 'Run', flyingspeed: 'Fly', jumpingspeed: 'Jump',
-  jumpheight: 'JumpHeight', fly: 'Fly', movementcontrol: 'Control',
+  jumpheight: 'JumpHeight', fly: 'FlyMode', movementcontrol: 'Control',
   movementfriction: 'Friction',
 };
 
@@ -531,6 +574,7 @@ export interface ExportTemplate {
   duration?: string | number;
   application_period?: number;
   stack?: string;
+  stack_key?: string;
   stack_limit?: number;
   flags?: string[];
 }
@@ -552,6 +596,18 @@ function mapToWho(target?: string): ToWho {
   if (t.includes('AnyAffected') || t === 'Target') return 'Target';
   return 'Unspecified';
 }
+/**
+ * `stack_key` unresolved-registry sentinel (0xFFFFFFFF). The exporter emits it
+ * verbatim where a template carries no key; it is "absent", not a group name.
+ * It never co-occurs with `stack: 'Suppress'` in the corpus, so no consumer has
+ * been misled by it — but it must not reach the wire as a groupable key.
+ */
+const STACK_KEY_NONE = '4294967295';
+
+function mapStackKey(k?: string): string | undefined {
+  return !k || k === STACK_KEY_NONE ? undefined : k;
+}
+
 function mapStacking(s?: string): Stacking {
   const known: Record<string, Stacking> = {
     Stack: 'Stack', Replace: 'Replace', Extend: 'Extend', Refresh: 'Refresh',
@@ -598,7 +654,8 @@ export function mapPvMode(isPvp?: string): PvMode {
 export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEffect[] {
   const resistible = !(t.flags ?? []).includes('IgnoreResistance');
   const ignoreStrength = (t.flags ?? []).includes('IgnoreStrength');
-  const aspect = ASPECT_MAP[t.aspect ?? ''] ?? 'Cur';
+  // NOT `?? 'Cur'` — an unstated aspect stays `Unspecified`. See the Aspect type.
+  const aspect = ASPECT_MAP[t.aspect ?? ''] ?? 'Unspecified';
   const attribType = mapAttribType(t.type);
   const toWho = mapToWho(t.target);
   const stacking = mapStacking(t.stack);
@@ -620,6 +677,7 @@ export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEff
       applicationPeriod: t.application_period || undefined,
       stacking,
       stackCap: t.stack_limit && t.stack_limit > 0 ? t.stack_limit : undefined,
+      stackKey: mapStackKey(t.stack_key),
       baseProbability: ctx.baseProbability,
       procsPerMinute: ctx.procsPerMinute,
       ignoreStrength: ignoreStrength || undefined,

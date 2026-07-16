@@ -59,7 +59,7 @@ export const IntimidatingPresence: Power = {
     }
   },
   "atoms": [
-    ["Mez","Terrorized",10,3,0,"Ranged_Fear","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Mez","Immobilized",15,3,2,"Melee_Immobilize","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Mez","Terrorized",10,3,0,"Ranged_Fear","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Immobilized",15,3,2,"Melee_Immobilize","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

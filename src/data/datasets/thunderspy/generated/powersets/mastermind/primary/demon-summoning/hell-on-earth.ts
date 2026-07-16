@@ -55,17 +55,17 @@ export const HellonEarth: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,1,1,90,"Ranged_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,90,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,1,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.949999988079071,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.8999999761581421,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.8500000238418579,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.800000011920929,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.75,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,1,0.699999988079071,0,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["ToHit",null,1,1,90,"Ranged_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,5,1,90,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,1,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,0.949999988079071,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,0.8999999761581421,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,0.8500000238418579,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,0.800000011920929,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,0.75,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,1,0.699999988079071,0,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

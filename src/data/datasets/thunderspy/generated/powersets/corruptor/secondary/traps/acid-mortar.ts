@@ -47,6 +47,6 @@ export const AcidMortar: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,1,1,60,"Ranged_Level","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,1,1,60,"Ranged_Level","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

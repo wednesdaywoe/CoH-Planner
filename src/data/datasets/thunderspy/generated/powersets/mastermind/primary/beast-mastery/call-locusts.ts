@@ -54,11 +54,11 @@ export const CallLocusts: Power = {
     "tickRate": 0.375
   },
   "atoms": [
-    ["Unmapped",null,0.3036,1,1.5,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,0.375,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,1,1,10,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.2,1,10,"Ranged_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1.6,1,10,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,0.6883780360221863,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !"],
-    ["Unmapped",null,0.398131,1,1.5,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,0.375,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.3036,1,1.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,0.375,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,1,1,10,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.2,1,10,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,-1.6,1,10,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,0.6883780360221863,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"temporary_powers.temporary_powers.Pack_Mentality_Lock source.ownPower? !"],
+    ["Unmapped",null,0.398131,1,1.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,0.375,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

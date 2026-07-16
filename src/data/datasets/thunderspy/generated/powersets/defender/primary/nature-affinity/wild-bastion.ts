@@ -36,7 +36,7 @@ export const WildBastion: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,0.25,1,0,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.272727,1,10.1,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
+    ["Unmapped",null,0.25,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,0.272727,1,10.1,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
   ]
 };

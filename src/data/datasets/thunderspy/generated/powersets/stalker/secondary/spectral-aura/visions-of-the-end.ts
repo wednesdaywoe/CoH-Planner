@@ -43,7 +43,7 @@ export const VisionsOfTheEnd: Power = {
     }
   },
   "atoms": [
-    ["Mez","Terrorized",10,1,0,"Melee_Fear","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Mez","Terrorized",10,1,0,"Melee_Fear","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

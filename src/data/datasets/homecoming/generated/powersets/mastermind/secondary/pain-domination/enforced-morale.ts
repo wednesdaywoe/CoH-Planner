@@ -131,12 +131,12 @@ export const EnforcedMorale: Power = {
     ["MezResist","Immobilized",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
     ["MezResist","Stunned",3,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
     ["MezResist","Sleep",8,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
-    ["Mez","Confused",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
-    ["Mez","Terrorized",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
-    ["Mez","Held",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
-    ["Mez","Immobilized",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
-    ["Mez","Stunned",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
-    ["Mez","Sleep",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true],
+    ["Mez","Confused",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"],
+    ["Mez","Terrorized",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"],
+    ["Mez","Held",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"],
+    ["Mez","Immobilized",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"],
+    ["Mez","Stunned",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"],
+    ["Mez","Sleep",-25,1,90,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",false,"Suppress",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < isPVPMap? &&",true,null,null,null,"PvPMezProt"],
     ["Damage","Special",1,1,0,"Ranged_Ones","Abs","Expression","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Cur.kHitPoints target> Max.kHitPoints target> 0.9 * > &&",true],
     ["RechargeTime",null,0.05,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kMeter target> 0.9 < Str.kRechargeTime target> 1.21 < &&",true]
   ]

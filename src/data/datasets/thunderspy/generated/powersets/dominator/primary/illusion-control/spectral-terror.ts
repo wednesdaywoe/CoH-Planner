@@ -47,8 +47,8 @@ export const SpectralTerror: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["EntCreate",null,-1,1,45,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kStealth source> 0.5 >",true]
+    ["EntCreate",null,-1,1,45,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["EntCreate",null,-1,1,45,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kStealth source> 0.5 >",true]
   ],
   "conditionalEffects": [
     {

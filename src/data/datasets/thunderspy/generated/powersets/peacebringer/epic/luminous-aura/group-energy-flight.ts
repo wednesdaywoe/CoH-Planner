@@ -51,9 +51,9 @@ export const GroupEnergyFlight: Power = {
     "tickRate": 0.5
   },
   "atoms": [
-    ["Unmapped",null,0.08,1,1.25,"Ranged_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1],
-    ["Unmapped",null,1,1,3,"Ranged_Debuff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && kPeacebringer_Tanker_Mode Source.Mode? &&",true],
-    ["Unmapped",null,1,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && kPeacebringer_Tanker_Mode Source.Mode? &&",true]
+    ["Unmapped",null,0.08,1,1.25,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,0.5,1],
+    ["Unmapped",null,1,1,3,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && kPeacebringer_Tanker_Mode Source.Mode? &&",true],
+    ["Unmapped",null,1,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && kPeacebringer_Tanker_Mode Source.Mode? &&",true]
   ]
 };

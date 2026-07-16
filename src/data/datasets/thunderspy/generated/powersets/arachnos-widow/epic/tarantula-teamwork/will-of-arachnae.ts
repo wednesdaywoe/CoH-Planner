@@ -34,7 +34,7 @@ export const WillOfArachnae: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,2,1,60,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,2,1,60,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ],
   "modesRequired": [
     "Widow_Tarantula_Mode"

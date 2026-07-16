@@ -44,6 +44,6 @@ export const Fallout: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"group target> MastermindPets eq",true]
+    ["EntCreate",null,-1,1,1,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"group target> MastermindPets eq",true]
   ]
 };

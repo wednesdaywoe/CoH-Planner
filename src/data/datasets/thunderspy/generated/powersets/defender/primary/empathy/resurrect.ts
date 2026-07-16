@@ -31,6 +31,6 @@ export const Resurrect: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
+    ["Unmapped",null,1,1,0.5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1]
   ]
 };

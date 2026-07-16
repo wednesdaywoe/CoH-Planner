@@ -179,10 +179,17 @@ function sc4Check(power) {
   return { siblingPairs, accountedDrops, unaccounted };
 }
 
+// `flymode` (kFly, the flight-mode grant → the bag's `fly` key) and `fly`
+// (FlyingSpeed, the speed buff → `flySpeed`) are now distinct axes on the atom, so
+// each maps to exactly ONE bag key. This used to read `fly → ['fly', 'flySpeed']`:
+// the bridge collapsed both attribs onto subType `Fly`, so SC-5 had to accept either
+// key as a source or it would false-flag. That fudge cost precision — a self-slow on
+// one key was satisfied by an atom belonging to the other — and is no longer needed.
 function movementSlotKeys(subType) {
   const s = String(subType || '').toLowerCase();
   if (s === 'run' || s === 'runspeed') return ['runSpeed'];
-  if (s === 'fly' || s === 'flyspeed') return ['fly', 'flySpeed'];
+  if (s === 'flymode') return ['fly'];
+  if (s === 'fly' || s === 'flyspeed') return ['flySpeed'];
   if (s === 'jumpheight') return ['jumpHeight'];
   if (s === 'jump' || s === 'jumpspeed') return ['jumpSpeed'];
   if (s === 'control' || s === 'movementcontrol') return ['movementControl'];

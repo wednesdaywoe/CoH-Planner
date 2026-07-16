@@ -52,6 +52,6 @@ export const CarrionCreepers: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,120,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,-1,1,120,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

@@ -40,7 +40,7 @@ export const Revive: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,7.5,1,0.5,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Endurance",null,50,1,0,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,7.5,1,0.5,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Endurance",null,50,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

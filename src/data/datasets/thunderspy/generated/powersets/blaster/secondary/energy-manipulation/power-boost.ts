@@ -30,6 +30,6 @@ export const PowerBoost: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Mez","Stunned",0.75,1,15,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Mez","Stunned",0.75,1,15,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

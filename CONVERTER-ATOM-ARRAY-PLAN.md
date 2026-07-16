@@ -1,10 +1,23 @@
 # Plan B — Retire the `PowerEffects` bag: consumers read the atom list
 
-> Status: **in progress** on branch `converter-atom-array` (as of 2026-07-15).
+> Status: **in progress** on branch `converter-atom-array` (as of 2026-07-16).
 > Phase 0 ✅ · Phase 1 ✅ · Phase 2 Slice 0 ✅ · **Slice 1 (ToHit) ✅ · Slice 2
 > (Damage) ✅ · Slice 3 (Resistance) ✅ · Slice 4 (Defense) ✅ · Slice 5 (Max-HP) ✅ ·
-> Slice 6 (Regen/Recovery) ✅ — the ToHit, +Damage, +Resistance, +Defense, +MaxHP and
-> +Regen/+Recovery appliers now read atoms, not the bag** · Phase 3 not started.
+> Slice 6 (Regen/Recovery) ✅ · Slice 7 (Movement) ✅ — the ToHit, +Damage, +Resistance,
+> +Defense, +MaxHP, +Regen/+Recovery and movement appliers now read atoms, not the bag**
+> · Phase 3 not started.
+> **Slice 7 SHIPPED (2026-07-16): the movement buff map (`effects.movement`) migrated.
+> The slice that found the atom list collapsing on its OWN axis** — `MOVEMENT_AXIS`
+> mapped both the kFly flight-mode GRANT and the FlyingSpeed BUFF to subType `Fly`, and
+> reading the grant as a speed buff double-counts Fly by +200%. Three schema fixes, each
+> removing fabricated or missing information rather than working around it: the `FlyMode`
+> subType split, `stackKey` on the wire (the `TravelBuff` mutual-suppression group), and
+> — the root one — **`aspect` no longer defaults `''` → `Cur`**, which had been inventing
+> "Current" for a template that stated none. Gated by `scripts/planb-shadow-movement.cjs`
+> at **281/281, 0 diverge**, mutation-tested on **12 axes, all killed**. Bag byte-identical
+> (every one of ~58k changed generated lines is an atom tuple), regen idempotent, 1139
+> tests green. **Found, not fixed: every Thunderspy travel power gives +0 movement** —
+> see §The Thunderspy movement blackout.
 > **Slice 6 SHIPPED (2026-07-15): all four resource slots (`regenBuff`/
 > `regenBuffUnenhanced`, `recoveryBuff`/`recoveryBuffUnenhanced`) migrated, retiring the
 > LAST two of the five `*Unenhanced` twin slots (only ToHit's and movement's remain).
@@ -362,10 +375,15 @@ now happens exclusively at *projection time*, when two distinct atoms route to
 the same named slot. The mitigation each time is to mint a discriminator:
 
 - **Parallel slots:** `maxHPBuffUnenhanced`, `recoveryBuffUnenhanced`,
-  `regenBuffUnenhanced`, `tohitBuffUnenhanced`, `runSpeedUnenhanced` — **five
-  hand-rolled slots for the one `IgnoreStrength` axis.**
+  `regenBuffUnenhanced`, `tohitBuffUnenhanced` — **four hand-rolled slots for the one
+  `IgnoreStrength` axis, all now folded back to an `enhanceableVsNot` split at the
+  atom-native applier (Slices 1/5/6).** (`runSpeedUnenhanced` LOOKS like a fifth but
+  isn't a converter slot at all — it is a hand-authored Sprint literal in `levels.ts`
+  with no atom behind it; see the Slice-7 correction below.)
 - **Per-value flags bolted onto `ScaledEffect`:** `toWho`, `unresistable`,
-  `durationVariants`, `perTarget`, `stackKey`, `suppressible`.
+  `durationVariants`, `perTarget`, `stackKey`, `suppressible` — each now carried as a
+  first-class atom field or converter stamp, so the projection can re-materialize the
+  bag flag without the runtime re-deriving it.
 
 This is the tax. The discriminator is a property of the *atom*; the bag forces
 us to re-materialize it as a sibling slot or a flag, once per effect type,
@@ -1022,6 +1040,159 @@ incarnate, self-penalties):
   increments aren't IgnoreStrength, so sharing would have been a no-op there but would have
   coupled two helpers with genuinely different N=1 rules).
 
+  **Slice 7 — Movement: the buff map migrated + three schema fixes (2026-07-16).**
+  `character-totals.ts` now sources the movement buff map from `movementBuffValue(power)
+  ?? effects.movement` (`atom-query.ts`) — the same `{ axis: {scale, table, stackKey?,
+  suppressible?} }` shape the applier already iterates, so its body is unchanged. The
+  hand-authored inherents in `levels.ts` (Sprint, Ninja Run, Beast Run) carry no atoms
+  and reach the calc through the scalar `effects.runSpeed`/`flySpeed`/… path, NOT this
+  map, so this slice does not touch them; the DoD's framing of `runSpeedUnenhanced` as
+  "one of the last two `*Unenhanced` twins" was wrong — see the correction below.
+
+  **This is the slice where the atom list was found collapsing on its OWN axis.** The
+  bridge's `MOVEMENT_AXIS` mapped BOTH `flyingspeed` (the FlyingSpeed speed buff) and
+  `fly` (kFly, the flight-MODE grant whose scale is a mode magnitude — "can fly": Hover
+  2.0, Fly 2.0 — not a percentage) to subType `Fly`. 32 powers carry both, and Hover is
+  the unrecoverable case: kFly 2.0 and FlyingSpeed 0 share subType AND the `Melee_Ones`
+  table, so neither scale nor table separates them. The bag keeps `movement.fly` and
+  `movement.flySpeed` apart precisely because conflating them reads the +200% mode grant
+  as a speed buff (character-totals.ts has carried that warning for a while). So this is
+  Plan B's own thesis pointed at itself — the fix is to MINT the discriminator on the
+  atom, not re-derive it. `planb-shadow-bag.cjs` never caught it because it checks
+  effectType existence, not subType.
+
+  **Three schema fixes, each removing fabricated-or-missing information rather than
+  patching around it (the CLAUDE.md root-cause discipline):**
+  - **`FlyMode` subType split** — `fly` (kFly) now bridges to `Movement/FlyMode`,
+    `flyingspeed` stays `Movement/Fly`. The helper's axis map covers only the four axes
+    that reach a total (Run/Fly/Jump/JumpHeight); `FlyMode`, `Control` and `Friction` are
+    structurally excluded, matching the applier's own `movementKeyMap`. +416 `FlyMode`
+    tuples in the generated tree.
+  - **`stackKey` on the wire** — the `TravelBuff`/`TravelMaxBuff`/`Stealth` mutual-
+    suppression group was bag-only. Unlike Slice 4's `suppressible` (a converter VERDICT),
+    `stack_key` is a genuine PARSER field, so it rides as first-class atom data
+    (`AtomicEffect.stackKey`), meaningful only with `stacking: 'Suppress'`. Only 0.8% of
+    templates carry one; the `0xFFFFFFFF` unresolved-registry sentinel is mapped to absent
+    (`mapStackKey`) so it never reaches the wire as a groupable key — it never co-occurs
+    with `Suppress`, so no live consumer was misled, but 269 atoms would have carried a
+    bogus key. Appended last in `ATOM_TUPLE_FIELDS`, so every other atom stays byte-identical.
+  - **`aspect` no longer defaults `'' → 'Cur'` (the root fix)** — `ingestTemplate` used
+    `ASPECT_MAP[t.aspect ?? ''] ?? 'Cur'`, fabricating "Current" for a template that stated
+    no aspect. That is the exact collapse Plan B exists to prevent, and it bit here: the
+    bag routes a foe-targeted movement effect to `effects.movement` ONLY on a literal
+    `aspect === 'current'` test, so a blank-aspect Thunderspy template is DROPPED by the
+    bag but was indistinguishable on the wire from a genuine HC `Current` one. The first
+    cut over-produced a phantom +5% run/jump/fly on Velocity Siphon (Thunderspy, blank
+    aspect, `toWho:Unspecified`). New `Aspect` member `'Unspecified'`; the default is gone.
+    Blast radius measured before the change and confirmed zero: HC and Rebirth export 0
+    empty aspects between them (only Thunderspy does, on 98% of its templates), and no
+    helper tests `=== 'Cur'` to mean "any" — every `=== 'Res'/'Str'/'Max'` test excludes
+    a blank aspect either way. All six prior slice gates stayed green through it; the one
+    other non-generated `'Cur'` consumer (`dsh8-incarnate-collapse-detector.cjs`, a
+    non-gating local tool) was updated to accept `Unspecified` alongside `Cur` so it does
+    not silently drop Thunderspy's mez protection. This is the reason the migration's first
+    principle held: **an unstated value is not a default value.**
+
+  **`movementBuffValue` reproduces the bag's MOVEMENT routing chain from atom fields
+  that are all on the wire** — a peel sequence (aspect `Res` → debuffResistance; self +
+  `Str` → specialBuff; self + `Max` + scale>0 → the travel-CAP raise `movementCapBump`,
+  which is what stopped Super Speed reporting 1.938×Melee_Ones instead of its real
+  1.0×Melee_SpeedRunning; slow → `slow`; else self, or the trailing `aspect === 'Cur'`
+  for a foe-targeted current-movement buff like Speed Boost). Last-write-wins per axis,
+  matching the bag's direct assignment (mutation M12 proved the ordering is load-bearing).
+  `stackKey` and `suppressible` ride along per entry.
+
+  A converter self-check needed a matching fix: `validate-converter-output.cjs`'s SC-5
+  leak check mapped subType `Fly → ['fly','flySpeed']` — a two-key fudge that existed
+  ONLY because the bridge had collapsed the two attribs. With them split it maps exactly
+  one key each (`FlyMode → fly`, `Fly → flySpeed`), which is strictly MORE precise (a
+  self-slow on one key is no longer satisfied by an atom on the other). SC-3/4/5 GATE PASS
+  on all three datasets.
+
+  Gated corpus-wide by `scripts/planb-shadow-movement.cjs` (**281/281 axis slots, 0
+  diverge**, wired into `npm run regen`) and pinned by `movement-atom-native.verify.test.ts`
+  (Super Speed's run buff not absorbing its cap raise; Fly reporting FlyingSpeed 1.1788
+  not kFly 2.0; Hover's flySpeed = 0 not 2; Combat Jumping keyed-but-not-suppressed vs
+  Super Jump suppressed; Swift unkeyed). **The gate checks BOTH directions per axis**
+  (an over-production — an atom minting a movement entry the bag never had, the failure a
+  fallback CANNOT protect against — fails as loudly as a drop) **and was mutation-tested
+  on 12 axes, all killed, none crashed:**
+
+  | mutant | axis | result |
+  |---|---|---|
+  | M1 | value ×2 | 281 red |
+  | M2 | drop `table` | 281 red |
+  | M3 | drop `stackKey` | **21 red** = the 21 keyed axis slots (cross-checked vs census) |
+  | M4 | drop `suppressible` | **19 red** = the 19 suppressed axis slots (cross-checked) |
+  | M5 | route `FlyMode` → flySpeed (the +200% bug) | 14 red |
+  | M6 | drop the `movementCapBump` peel | 12 red |
+  | M7 | drop the `slow` peel | 1804 red |
+  | M8 | keep all non-self movement | 14 red |
+  | M9 | drop the `Str` (specialBuff) peel | 44 red |
+  | M10 | drop the `Res` (debuffResistance) peel | 339 red |
+  | M11 | `atomsOfType` instead of `baseAtomsOfType` (ignore gated) | 25 red |
+  | M12 | first-write-wins instead of last | 6 red |
+
+  M5/M6 kill BELOW their census upper bounds (14 vs 29 fly clashes, 12 vs 17 capBumps)
+  because a leaked atom only diverges when routing order actually clobbers — coherent, and
+  the reason M12 (ordering) is its own axis rather than folded into the others. The bag is
+  byte-identical: every one of ~58k changed generated lines is an atom tuple (`FlyMode` /
+  `Unspecified` / `stackKey` gains), verified by filtering the diff to non-tuple lines
+  (zero), and regen is idempotent.
+
+  **Known interim compromise (same as Slices 1–6):** the self-STACK meta stays a bag read,
+  keyed by SLOT NAME (`adjustForStacking(…, 'runSpeed', …)` on the scalar path). The
+  `tohitDebuff`/`damageDebuff` guard that gates the WHOLE movement map (a foe-slow aura
+  like Time's Juncture) also stays a bag read on purpose: it is a power-level heuristic
+  about sibling slots, not a property of a movement atom, so it is not this slice's to move.
+
+  ### The Thunderspy movement blackout — FOUND, NOT FIXED (2026-07-16)
+
+  Surfaced the moment the Slice 7 gate printed per-dataset coverage: **Thunderspy scores
+  0 movement axis slots**, while HC has 160 and Rebirth 121. Thunderspy SHIPS Super Speed,
+  Fly, Super Jump, Hover and Combat Jumping — so this is not "no travel powers", it is
+  **every Thunderspy travel power giving +0 movement in the planner today**, in the bag and
+  the atoms alike (which is why the shadow agrees vacuously and stayed silent about it —
+  the coverage line is what makes it visible, per the plan's "a gate's SWEEP is part of its
+  claim").
+
+  Root cause, verified in `exported_powers/thunderspy` (the data is PRESENT and correct —
+  `SpeedRunning`, `Melee_SpeedRunning`, scale 1.25, so this is a conversion gap not missing
+  data):
+  1. **Attrib spelling.** Thunderspy names the attrib `SpeedRunning` / `SpeedJumping` /
+     `SpeedFlying` (280 / 137 / 107 templates) where HC/Rebirth name it `RunningSpeed` /
+     `JumpingSpeed` / `FlyingSpeed`. Neither the bag's `MOVEMENT_TYPES` (`convert-powerset.cjs`)
+     nor the bridge's `MOVEMENT_AXIS` maps the `Speed*` spelling, so every such template
+     falls through to no slot at all. This is [[thunderspy-attrib-index-array]] /
+     [[tspy-player-vocab-gap]] in a new costume — the tspy exporter's vocabulary diverges.
+  2. **Empty aspect.** Even aliased, Thunderspy exports `aspect: ''` on 29,981 of 30,519
+     templates (only a prior parser fix's synthesized `Resistance`/`Strength` are populated),
+     so the Current-vs-Maximum split that separates a speed BUFF from a travel-CAP raise
+     (`movementCapBump`) is not recoverable. A converter-only alias would mis-route tspy
+     travel caps.
+
+  **Deliberately deferred, not folded into Slice 7** (maintainer decision 2026-07-16): the
+  fix is parser-side (map the `Speed*` vocabulary AND decide the aspect synthesis) plus a
+  re-export of all three datasets per the re-export discipline — separate work from a
+  behavior-preserving applier migration. A converter alias alone is a partial fix that risks
+  mis-routing caps, so it was rejected. Slice 7 records the gap in the gate header and the
+  per-dataset coverage line so a future tspy fix has a ready oracle: when tspy movement
+  starts flowing, the gate will light up and must be re-verified against HC twins.
+
+  ### Correction: `runSpeedUnenhanced` is NOT a converter twin (2026-07-16)
+
+  The DoD listed "the last two `*Unenhanced` twins — ToHit's and movement's" as remaining
+  work, implying Slice 7 would retire `runSpeedUnenhanced` the way Slice 5 retired
+  `maxHPBuffUnenhanced`. It cannot, because it is not the same kind of slot. The entire
+  top-level movement family (`runSpeed`/`flySpeed`/`jumpHeight`/`jumpSpeed`/
+  `runSpeedUnenhanced`) is produced ONLY by hand-authored inherents in
+  `src/data/datasets/homecoming/levels.ts` (Sprint, Ninja Run, Beast Run) — the CONVERTER
+  emits zero of them, and those inherents carry no atoms. `runSpeedUnenhanced` is Sprint's
+  second flat `Melee_Ones` template hand-modelled as a literal, not an `IgnoreStrength`
+  projection the converter mints. So the only genuine remaining `*Unenhanced` twin is
+  ToHit's (Slice 1 migrated its atom-backed half; the movement one has no atom to migrate).
+  The `*Unenhanced` twin family is effectively fully repaid by the converter side.
+
 ### Phase 3 — Bag becomes UI-only; then delete
 
 **Prerequisite CLEARED 2026-07-15:** Phase 3 was silently blocked on the pool/epic atom
@@ -1078,14 +1249,25 @@ game effect discriminator requires handling it in one atom helper, not minting a
 new slot — and forgetting to handle it is impossible to do *silently*, because
 the atom carries it and the calc must consume it explicitly.
 
-**Remaining to reach it** (as of 2026-07-15, Phase 2 complete):
+**Remaining to reach it** (as of 2026-07-16, Phase 2 Slices 0–7 complete):
 1. **Phase 3** — point the calc entirely at atoms; demote or delete `PowerEffects`.
    Prerequisite cleared: no known atom-less player power remains (corpus 10,321).
 2. **Self-STACK meta off slot names** — `stacksLinear`/`maxStacks`/`stackCaps` are
-   still bag-keyed by SLOT NAME. This is the one carry-over that actually blocks
-   deleting the bag, as opposed to merely bypassing it.
-3. **The last two `*Unenhanced` twins** — ToHit's and movement's.
+   still bag-keyed by SLOT NAME across every slice. This is the one carry-over that
+   actually blocks deleting the bag, as opposed to merely bypassing it.
+3. **The remaining calc appliers still on the bag** — after Slice 7, `character-totals.ts`
+   still sources these named slots directly: mez/`protection`, `absorb`, `rechargeBuff`,
+   `slow` (the foe/self movement debuff), `elusivity`, `debuffResistance`,
+   `damageDebuff`, `stealth`, `taunt`/`placate`, `range`/`accuracy`/`perception`,
+   `endurance*`, `maxEndBuff`. Each is a candidate slice on the Slice-1..7 pattern.
+   (The `*Unenhanced` twin family is now effectively fully repaid — ToHit's atom-backed
+   half migrated in Slice 1, and `runSpeedUnenhanced` is a hand-authored `levels.ts`
+   literal with no atom, NOT a converter twin; see the Slice-7 correction.)
 4. **The other two converters** — `convert-incarnate-effects.cjs` and
    `convert-pet-entities.cjs` still emit no atoms (pet-entities has no gate at
    all). Not Plan B scope, but the DoD's "impossible to do silently" claim is
    false for any power they build. See `docs/converter-unification-direction.md`.
+5. **The Thunderspy movement blackout** — every tspy travel power gives +0 movement;
+   parser-side vocabulary + aspect fix plus a 3-dataset re-export. FOUND in Slice 7,
+   deferred (see §The Thunderspy movement blackout). Not a Phase 3 blocker (no bag fact
+   is lost — both sides are equally empty), but a real user-facing bug.

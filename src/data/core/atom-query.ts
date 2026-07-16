@@ -848,6 +848,86 @@ export function recoveryBuffValue(
   return resourceBuffValue(power, 'Recovery', opts);
 }
 
+/**
+ * Movement axis (`AtomicEffect.subType`) → the bag's `effects.movement` key, for the
+ * FOUR axes that reach a character total.
+ *
+ * Deliberately partial. The bag's movement map also holds `fly`, `movementControl` and
+ * `movementFriction`, and the applier's own `movementKeyMap` ignores all three, so they
+ * add zero on both sides — the "compare only what survives to a total" doctrine from
+ * Slice 3. `fly` matters most: it is the kFly flight-MODE grant, and reading its mode
+ * magnitude as a speed buff double-counts Fly by +200% (see character-totals.ts). It is
+ * excluded here structurally rather than by a scale/table guess, because the atom now
+ * carries it as its own `FlyMode` axis — before that split, kFly and FlyingSpeed shared
+ * subType `Fly` and Hover's pair (kFly 2.0 / FlyingSpeed 0, both `Melee_Ones`) was
+ * genuinely unrecoverable from the wire.
+ */
+const MOVEMENT_AXIS_TO_KEY: Record<string, string> = {
+  Run: 'runSpeed', Fly: 'flySpeed', Jump: 'jumpSpeed', JumpHeight: 'jumpHeight',
+};
+
+/** A movement atom the bag routes to `slow` rather than `movement`. */
+function isSlowAtom(a: AtomicEffect): boolean {
+  return isDebuffAtom(a) || (a.modifierTable || '').toLowerCase().includes('slow');
+}
+
+/**
+ * The atom-native `effects.movement` — the self/current movement BUFF map the calc
+ * reads today (line ~1483 of character-totals.ts), keyed exactly as the applier
+ * iterates it (`{ runSpeed: {scale,table,stackKey?,suppressible?}, … }`). Returns
+ * `undefined` when the power has no contributing movement atom (→ bag fallback).
+ *
+ * Mirrors the bag's MOVEMENT routing (`convert-powerset.cjs`), whose branches are a
+ * chain of aspect tests peeling other slots off before `movement` gets the remainder:
+ *   - aspect `Res` → `debuffResistance.movement`;
+ *   - self + aspect `Str` → `specialBuff.movement`;
+ *   - self + aspect `Max` + scale > 0 → `movementCapBump` (a travel-CAP raise, not a
+ *     speed buff — this is the split that stopped Super Speed reporting 1.938×Melee_Ones
+ *     instead of its real 1.0×Melee_SpeedRunning);
+ *   - slow (negative scale, or a `debuff`/`slow` table) → `slow`;
+ *   - self → `movement`; non-self → `movement` ONLY via the trailing `aspect === 'current'`
+ *     branch (a foe-targeted Absolute/Maximum movement effect is dropped entirely).
+ * Last-write-wins per axis, matching the bag's direct assignment.
+ *
+ * `stackKey` and `suppressible` ride along per entry: both are travel-suppression
+ * metadata the applier reads via `movementMeta` (mutual suppression within a
+ * `TravelBuff` group; combat suppression of Super Speed / Fly / Super Jump). `stackKey`
+ * is only meaningful with `stacking: 'Suppress'`, which is how the bag gates it too.
+ *
+ * KNOWN GAP, and it is a gap in the DATA not this helper: Thunderspy contributes
+ * nothing here, because no Thunderspy movement template reaches an atom at all — it
+ * spells the attrib `SpeedRunning`/`SpeedJumping`/`SpeedFlying` where HC spells it
+ * `RunningSpeed`, and neither the bag's `MOVEMENT_TYPES` nor the bridge's
+ * `MOVEMENT_AXIS` maps that spelling. Every Thunderspy travel power therefore yields
+ * +0 movement, in the bag and in the atoms alike. Both sides are equally empty, so the
+ * shadow is silent about it by construction — a parser-side fix, tracked separately.
+ * Verified bag-equal across HC+Rebirth by `scripts/planb-shadow-movement.cjs`.
+ */
+export function movementBuffValue(
+  power: AtomSource,
+): Record<string, { scale: number; table: string; stackKey?: string; suppressible?: boolean }> | undefined {
+  const atoms = baseAtomsOfType(power, 'Movement').filter((a) => {
+    if (!MOVEMENT_AXIS_TO_KEY[a.subType ?? '']) return false;
+    const self = a.toWho === 'Self';
+    if (a.aspect === 'Res') return false;
+    if (self && a.aspect === 'Str') return false;
+    if (self && a.aspect === 'Max' && a.scale > 0) return false;
+    if (isSlowAtom(a)) return false;
+    return self || a.aspect === 'Cur';
+  });
+  if (!atoms.length) return undefined;
+  const out: Record<string, { scale: number; table: string; stackKey?: string; suppressible?: boolean }> = {};
+  for (const a of atoms) {
+    out[MOVEMENT_AXIS_TO_KEY[a.subType!]] = {
+      scale: Math.abs(a.scale),
+      table: a.modifierTable,
+      ...(a.stacking === 'Suppress' && a.stackKey ? { stackKey: a.stackKey } : {}),
+      ...(a.suppressible ? { suppressible: true } : {}),
+    };
+  }
+  return out;
+}
+
 /** Σ of `val(a)` over atoms with a DISTINCT `|val|` (dedup the type/duration copies). */
 function sumDistinctAbs(atoms: readonly AtomicEffect[], val: (a: AtomicEffect) => number): number {
   const seen = new Set<number>();

@@ -91,17 +91,17 @@ export const Fortitude: Power = {
     }
   },
   "atoms": [
-    ["ToHit",null,1.5,1,120,"Ranged_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.5,1,120,"Ranged_Buff_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Melee",1.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Ranged",1.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","AoE",1.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Smashing",1.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Lethal",1.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Fire",1.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Cold",1.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Energy",1.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Negative",1.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Defense","Psionic",1.5,1,120,"Ranged_Buff_Def","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["ToHit",null,1.5,1,120,"Ranged_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2.5,1,120,"Ranged_Buff_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Melee",1.5,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Ranged",1.5,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","AoE",1.5,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Smashing",1.5,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Lethal",1.5,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Fire",1.5,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Cold",1.5,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Energy",1.5,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Negative",1.5,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Defense","Psionic",1.5,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

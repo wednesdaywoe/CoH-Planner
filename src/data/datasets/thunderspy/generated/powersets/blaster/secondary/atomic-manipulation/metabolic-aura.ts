@@ -59,7 +59,7 @@ export const MetabolicAura: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.333,1,2.25,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Recovery",null,0.5,1,2.25,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.333,1,2.25,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Recovery",null,0.5,1,2.25,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

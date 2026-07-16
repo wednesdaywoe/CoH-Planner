@@ -68,21 +68,21 @@ export const GroupEnergyFlight: Power = {
     }
   },
   "atoms": [
-    ["Movement","Fly",2,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
+    ["Movement","FlyMode",2,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
     ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
     ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
     ["Movement","Friction",10,1,10,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
     ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,10,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Fly",2,1,2.25,"Melee_Ones","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1],
-    ["Movement","Fly",0.5,1,2.25,"Melee_SpeedFlying","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1],
-    ["Movement","Control",10,1,2.25,"Melee_Control","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1],
-    ["Movement","Friction",10,1,2.25,"Melee_Friction","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1],
+    ["Movement","FlyMode",2,1,2.25,"Melee_Ones","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
+    ["Movement","Fly",0.5,1,2.25,"Melee_SpeedFlying","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
+    ["Movement","Control",10,1,2.25,"Melee_Control","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
+    ["Movement","Friction",10,1,2.25,"Melee_Friction","Cur","Magnitude","All","Any",false,"Suppress",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,"TravelBuff"],
     ["GlobalChanceMod",null,1,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"No",2,null,null,1,null,true],
     ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Meta",null,1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
-    ["Movement","Fly",0.1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Movement","Fly",2,1,2.25,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,0]
+    ["Movement","FlyMode",0.1,1,2.25,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","FlyMode",2,1,2.25,"Melee_Ones","Cur","Magnitude","All","Any",false,"Replace",2,null,null,0]
   ],
   "modesSuspended": [
     "Peacebringer_Blaster_Mode",

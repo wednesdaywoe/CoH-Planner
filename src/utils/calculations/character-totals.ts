@@ -50,7 +50,7 @@ import {
   type EnhancementBonuses,
 } from './enhancement-values';
 import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, maxHPBuffValue, regenBuffValue, recoveryBuffValue } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -1459,7 +1459,16 @@ function applyActivePowerBonuses(
     // Skip when the power also has tohitDebuff or damageDebuff — those indicate
     // enemy-targeting debuff auras (e.g., Time's Juncture) where movement is a
     // foe slow, not a self-buff
-    if (effects.movement && typeof effects.movement === 'object' &&
+    //
+    // Plan B Slice 7: sourced from the atom list (`movementBuffValue`, verified
+    // bag-equal corpus-wide by scripts/planb-shadow-movement.cjs), falling back to
+    // the bag for any atom-less power — the hand-authored inherents in levels.ts
+    // (Sprint, Ninja Run, Beast Run) carry no atoms and reach the calc through the
+    // scalar `effects.runSpeed` path above, not this map. The tohitDebuff/damageDebuff
+    // guard stays a BAG read on purpose: it is a power-level heuristic about sibling
+    // slots, not a property of a movement atom, so it is not this slice's to move.
+    const movementMap = movementBuffValue(power) ?? effects.movement;
+    if (movementMap && typeof movementMap === 'object' &&
         effects.tohitDebuff === undefined && effects.damageDebuff === undefined) {
       // NOTE: the `fly` entry (the kFly attrib) is deliberately NOT mapped.
       // It's the flight-mode grant (magnitude > 0 = "can fly"), not a speed
@@ -1480,7 +1489,7 @@ function applyActivePowerBonuses(
         jumpHeight: 'jump',
         jumpSpeed: 'jump',
       };
-      for (const [type, val] of Object.entries(effects.movement)) {
+      for (const [type, val] of Object.entries(movementMap)) {
         const key = movementKeyMap[type];
         if (key && key in global) {
           // Stack-aware: stacksLinear uses the bare effect key (e.g. 'runSpeed'),

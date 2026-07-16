@@ -40,7 +40,7 @@ export const Evasion: Power = {
     }
   },
   "atoms": [
-    ["Recovery",null,0.3,1,10.25,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Recovery",null,0.3,1,10.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

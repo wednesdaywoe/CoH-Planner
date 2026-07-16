@@ -42,6 +42,6 @@ export const ChillingEmbrace: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,0.7,1,5,"Melee_Slow","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.7,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

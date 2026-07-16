@@ -33,6 +33,6 @@ export const PrimalForce: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,-500,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,-500,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

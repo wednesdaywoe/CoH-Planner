@@ -40,7 +40,7 @@ export const Praise: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,0.35,1,5,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
-    ["Unmapped",null,1.5,1,60,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,0.35,1,5,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,1,1],
+    ["Unmapped",null,1.5,1,60,"Ranged_Res_Dmg","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

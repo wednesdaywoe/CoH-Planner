@@ -67,12 +67,12 @@ export const Disintegrate: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.216,1,10.5,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.108,1,10.5,"Ranged_Damage","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.125,1,9.4,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Regeneration",null,-1.5,1,15,"Ranged_Ones","Cur","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.288,1,10.5,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,0.144,1,10.5,"Ranged_Damage","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
-    ["Unmapped",null,-6,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
+    ["Unmapped",null,0.216,1,10.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.108,1,10.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.125,1,9.4,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Regeneration",null,-1.5,1,15,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Unmapped",null,0.288,1,10.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,0.144,1,10.5,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,1.1100000143051147,1,null,null,null,null,null,null,"enttype target> player eq",true],
+    ["Unmapped",null,-6,1,15,"Ranged_Res_Boolean","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

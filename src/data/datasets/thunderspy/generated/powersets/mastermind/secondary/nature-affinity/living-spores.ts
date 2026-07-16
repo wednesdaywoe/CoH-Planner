@@ -50,7 +50,7 @@ export const LivingSpores: Power = {
     }
   },
   "atoms": [
-    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ],
   "requires": "Mastermind_Buff.Nature_Affinity.Lifegiving_Spores !"
 };

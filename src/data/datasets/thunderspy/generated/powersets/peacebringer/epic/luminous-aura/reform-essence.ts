@@ -37,7 +37,7 @@ export const ReformEssence: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Unmapped",null,4,1,0,"Melee_HealSelf","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,2.25,1,1,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,4,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Unmapped",null,2.25,1,1,"Ranged_Heal","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

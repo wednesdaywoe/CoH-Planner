@@ -178,5 +178,21 @@ if (datasets.includes('homecoming')) {
   console.log(`\n>>> ${cmd}`);
   execSync(cmd, { stdio: 'inherit' });
 }
+// Plan B Phase 2 Slice 7 — movement reconstruction. `character-totals.ts` sources the
+// movement buff map from `movementBuffValue`. Checked in BOTH directions, per axis,
+// including the three metadata fields the applier reads (`table` — a movement scale is
+// meaningless without it; `stackKey` — the TravelBuff mutual-suppression group, whose
+// loss silently stacks CJ + SJ + SS; `suppressible` — combat suppression). GATES (exit 1).
+//
+// Its printed per-dataset coverage is part of the claim, not decoration: Thunderspy
+// scores 0 axis slots because it has NO movement data on either side (it spells the
+// attrib `SpeedRunning` where HC spells it `RunningSpeed`, and neither the bag nor the
+// bridge maps that), so every Thunderspy travel power yields +0 movement today. This
+// gate agrees vacuously about all of it — see the header and CONVERTER-ATOM-ARRAY-PLAN.md.
+{
+  const cmd = `node scripts/planb-shadow-movement.cjs ${datasets.map((d) => `--dataset ${d}`).join(' ')}`;
+  console.log(`\n>>> ${cmd}`);
+  execSync(cmd, { stdio: 'inherit' });
+}
 const secs = Number(process.hrtime.bigint() - started) / 1e9;
 console.log(`\n=== regen complete in ${secs.toFixed(0)}s ===`);

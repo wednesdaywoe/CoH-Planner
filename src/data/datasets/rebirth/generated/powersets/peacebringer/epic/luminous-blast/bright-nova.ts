@@ -98,7 +98,7 @@ export const BrightNova: Power = {
     }
   },
   "atoms": [
-    ["Movement","Fly",4,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Movement","FlyMode",4,1,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Fly",1.5,1,2,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Control",2,1,2,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Movement","Friction",2,1,2,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],

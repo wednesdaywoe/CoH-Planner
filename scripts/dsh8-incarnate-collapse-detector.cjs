@@ -243,7 +243,11 @@ function inputIdentities(sourceJson, slot) {
     // polarity: incarnate buff slots are beneficial. A buff is scale>0; mez PROTECTION
     // is aspect=Cur negative-scale (the converter Math.abs's it). MezResist is aspect=Res.
     let beneficial;
-    if (et === 'Mez') beneficial = a.aspect === 'Cur' && a.scale < 0;   // protection, not applying a foe mez
+    // `Unspecified` (a template that states no aspect — every Thunderspy one) counts
+    // alongside `Cur` here: the ingest used to default it to `Cur`, and this test means
+    // "not the Res face", not "literally stated Current". Excluding it would silently
+    // drop Thunderspy's mez protection from the detector's view.
+    if (et === 'Mez') beneficial = (a.aspect === 'Cur' || a.aspect === 'Unspecified') && a.scale < 0;   // protection, not applying a foe mez
     else if (et === 'MezResist') beneficial = a.scale > 0;
     else beneficial = a.scale > 0;
     if (!beneficial) continue;

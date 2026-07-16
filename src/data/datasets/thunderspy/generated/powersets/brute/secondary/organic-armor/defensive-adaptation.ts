@@ -32,7 +32,7 @@ export const DefensiveAdaptation: Power = {
   "allowedEnhancements": [],
   "maxSlots": 0,
   "atoms": [
-    ["Unmapped",null,1,1,1.1,"Melee_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Unmapped",null,1,1,1.1,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ],
   "requires": "Brute_Defense.Organic_Armor.Evolution"
 };

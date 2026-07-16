@@ -1073,7 +1073,7 @@ export const POWER_POOLS_RAW = {
           ["EntCreate",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
           ["EntCreate",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
           ["EntCreate",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-          ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Defense","Melee",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Defense","Ranged",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Defense","AoE",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
@@ -1205,7 +1205,7 @@ export const POWER_POOLS_RAW = {
           "Universal Damage Sets"
         ],
         "atoms": [
-          ["Movement","Fly",-1.6,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Movement","FlyMode",-1.6,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
           ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Knockup",0.75,1,0,"Melee_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Damage","Smashing",2.24434,1,0,"Melee_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq arch source> Class_Tanker eq &&",true],
@@ -1287,7 +1287,7 @@ export const POWER_POOLS_RAW = {
           ["EntCreate",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
           ["EntCreate",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
           ["EntCreate",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-          ["Movement","Fly",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",0.83,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Movement","Fly",-1,1,0.75,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",0.66,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
@@ -1362,7 +1362,7 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Movement","Fly",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","FlyMode",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",-0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -1401,7 +1401,7 @@ export const POWER_POOLS_RAW = {
           ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || isPVPMap? ! &&"],
           ["Movement","Control",15,1,0.75,"Melee_Control","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || Power_DisallowMoveControlFriction target.TokenOwned? ! &&"],
           ["Movement","Friction",15,1,0.75,"Melee_Friction","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"arch source> Class_Tanker eq arch source> Class_Scrapper eq || arch source> Class_Blaster eq || arch source> Class_Defender eq || arch source> Class_Controller eq || arch source> Class_Guardian eq || arch source> Class_Brute eq || arch source> Class_Stalker eq || arch source> Class_Corruptor eq || arch source> Class_Dominator eq || arch source> Class_Mastermind eq || arch source> Class_Arachnos_Soldier eq || arch source> Class_Arachnos_Widow eq || Power_DisallowMoveControlFriction target.TokenOwned? ! &&"],
-          ["Movement","Fly",3.75,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1],
+          ["Movement","FlyMode",3.75,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",true,"Replace",2,null,null,1],
           ["Movement","Fly",0.2,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
           ["EntCreate",null,1,129,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
           ["EntCreate",null,1,135,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
@@ -1609,7 +1609,7 @@ export const POWER_POOLS_RAW = {
         "allowedEnhancements": [],
         "allowedSetCategories": [],
         "atoms": [
-          ["Movement","Fly",1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
+          ["Movement","FlyMode",1,1,10,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
           ["Movement","Control",10,1,10,"Melee_Control","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
           ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
           ["Movement","Friction",10,1,10,"Melee_Friction","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
@@ -1667,7 +1667,7 @@ export const POWER_POOLS_RAW = {
           ["Movement","Fly",1,1,0.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-          ["Movement","Fly",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
+          ["Movement","FlyMode",2,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -2259,7 +2259,7 @@ export const POWER_POOLS_RAW = {
           ["Mez","Knockback",-100,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Mez","Knockup",-100,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Movement","JumpHeight",-500,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
-          ["Movement","Fly",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+          ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Regeneration",null,-0.5,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Regeneration",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
         ],
@@ -2403,7 +2403,7 @@ export const POWER_POOLS_RAW = {
           ["EntCreate",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
           ["EntCreate",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
           ["EntCreate",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-          ["Movement","Fly",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","FlyMode",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",0.83,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Movement","Fly",0.66,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
           ["Movement","Fly",0.83,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -4887,7 +4887,7 @@ export const POWER_POOLS_RAW = {
           ["EntCreate",null,1,3,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
           ["EntCreate",null,1,8,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
           ["EntCreate",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
-          ["Movement","Fly",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+          ["Movement","FlyMode",1,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
           ["Movement","Fly",0.83,1,0.75,"Ranged_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Movement","Fly",0.66,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
           ["Movement","Fly",0.83,1,0.75,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
@@ -5863,7 +5863,7 @@ export const POWER_POOLS_RAW = {
           ["EntCreate",null,1,9,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,3,1,null,true],
           ["EntCreate",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
           ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
-          ["Movement","Fly",1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
+          ["Movement","FlyMode",1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
           ["Movement","Fly",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
           ["Movement","Control",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
           ["Movement","Friction",-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"kTravelFlyOn source.Mode? ! kFlyOn source.Mode? ! && kHoverOn source.Mode? ! && kEnergyFlyOn source.Mode? ! && kJetpackOn source.Mode? ! && kMysticFlightOn source.Mode? ! && kSpeedofSoundOn source.Mode? ! && kSuperSpeedOn source.Mode? ! && kMightyLeapOn source.Mode? ! && kFreeRunningOn source.Mode? ! && kSuperJumpOn source.Mode? ! &&"],
@@ -6207,7 +6207,7 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Mez","Immobilized",12,3,0,"Ranged_Immobilize","Cur","Duration","Target","PvE",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-          ["Movement","Fly",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+          ["Movement","FlyMode",-10,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
           ["Mez","Knockback",0.67,1,12,"Ranged_Ones","Cur","Magnitude","Target","PvE",true,"Stack",2,null,3,0.44999998807907104,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Mez","Immobilized",2,3,0,"Ranged_Ones","Cur","Duration","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
           ["Mez","Knockback",0.67,1,12,"Ranged_Ones","Cur","Magnitude","Target","PvP",true,"Stack",2,null,3,0.44999998807907104,null,null,null,null,null,null,"enttype target> player eq",true]
