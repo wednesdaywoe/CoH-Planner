@@ -17278,13 +17278,30 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "atoms": [
+          ["Damage","Psionic",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["RechargeTime",null,0.15,1,10,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true]
+        ],
         "effects": {
           "accuracy": 1,
           "range": 175,
           "recharge": 24,
           "endurance": 14.352,
           "activationTime": 1.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Psionic",
+            "scale": 3.56,
+            "table": "Melee_Damage"
+          },
+          "buffDuration": 10,
+          "durations": {
+            "rechargeDebuff": 10
+          },
+          "rechargeDebuff": {
+            "scale": 0.15,
+            "table": "Ranged_Slow"
+          }
         }
       },
       {
@@ -17775,6 +17792,11 @@ export const EPIC_POOLS_RAW = {
           "Ranged AoE Damage",
           "Universal Damage Sets"
         ],
+        "atoms": [
+          ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Damage","Lethal",1.49,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Knockback",0.7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5]
+        ],
         "effects": {
           "accuracy": 1.05,
           "range": 150,
@@ -17783,7 +17805,23 @@ export const EPIC_POOLS_RAW = {
           "activationTime": 3.87,
           "effectArea": "AoE",
           "radius": 20,
-          "maxTargets": 16
+          "maxTargets": 16,
+          "damage": [
+            {
+              "type": "Smashing",
+              "scale": 1,
+              "table": "Ranged_Damage"
+            },
+            {
+              "type": "Lethal",
+              "scale": 1.49,
+              "table": "Ranged_Damage"
+            }
+          ],
+          "knockback": {
+            "scale": 0.7,
+            "table": "Ranged_Knockback"
+          }
         }
       }
     ]
@@ -20361,13 +20399,59 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "atoms": [
+          ["Damage","Cold",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Sleep",8,3,0,"Ranged_Sleep","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.75],
+          ["Movement","JumpHeight",0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+          ["RechargeTime",null,0.2,1,18,"Ranged_Slow","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,true],
+          ["Movement","Run",0.2,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Movement","Fly",0.2,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+          ["Movement","Jump",0.2,1,18,"Ranged_Slow","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+        ],
         "effects": {
           "accuracy": 1,
           "range": 150,
           "recharge": 24,
           "endurance": 14.352,
           "activationTime": 1.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Cold",
+            "scale": 3.56,
+            "table": "Melee_Damage"
+          },
+          "buffDuration": 18,
+          "durations": {
+            "rechargeDebuff": 18,
+            "slow": 18
+          },
+          "rechargeDebuff": {
+            "scale": 0.2,
+            "table": "Ranged_Slow"
+          },
+          "sleep": {
+            "mag": 3,
+            "scale": 8,
+            "table": "Ranged_Sleep"
+          },
+          "slow": {
+            "flySpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "jumpHeight": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "jumpSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            },
+            "runSpeed": {
+              "scale": 0.2,
+              "table": "Ranged_Slow"
+            }
+          }
         }
       },
       {
@@ -24921,13 +25005,26 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "atoms": [
+          ["Damage","Energy",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Mez","Knockback",2,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"]
+        ],
         "effects": {
           "accuracy": 1.05,
           "range": 150,
           "recharge": 24,
           "endurance": 14.352,
           "activationTime": 2,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 3.56,
+            "table": "Melee_Damage"
+          },
+          "knockback": {
+            "scale": 2,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -25244,13 +25341,40 @@ export const EPIC_POOLS_RAW = {
           "Sniper Attacks",
           "Universal Damage Sets"
         ],
+        "atoms": [
+          ["Damage","Energy",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Endurance",null,-0.14,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Recovery",null,-1,1,4,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5],
+          ["Endurance",null,8.97,1,0,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,0.30000001192092896]
+        ],
         "effects": {
           "accuracy": 1,
           "range": 150,
           "recharge": 24,
           "endurance": 14.352,
           "activationTime": 1.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Energy",
+            "scale": 3.56,
+            "table": "Melee_Damage"
+          },
+          "buffDuration": 4,
+          "durations": {
+            "recoveryDebuff": 4
+          },
+          "enduranceDrain": {
+            "scale": 0.14,
+            "table": "Melee_Ones"
+          },
+          "enduranceGain": {
+            "scale": 8.97,
+            "table": "Melee_Ones"
+          },
+          "recoveryDebuff": {
+            "scale": 1,
+            "table": "Melee_Ones"
+          }
         }
       },
       {
@@ -25569,13 +25693,30 @@ export const EPIC_POOLS_RAW = {
           "To Hit Debuff",
           "Universal Damage Sets"
         ],
+        "atoms": [
+          ["Damage","Negative",4.5,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["ToHit",null,0.75,1,10,"Melee_DeBuff_ToHit","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+        ],
         "effects": {
           "accuracy": 1,
           "range": 150,
           "recharge": 24,
           "endurance": 14.352,
           "activationTime": 1.33,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Negative",
+            "scale": 4.5,
+            "table": "Melee_Damage"
+          },
+          "buffDuration": 10,
+          "durations": {
+            "tohitDebuff": 10
+          },
+          "tohitDebuff": {
+            "scale": 0.75,
+            "table": "Melee_DeBuff_ToHit"
+          }
         }
       },
       {

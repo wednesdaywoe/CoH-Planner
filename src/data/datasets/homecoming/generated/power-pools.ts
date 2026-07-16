@@ -4273,13 +4273,21 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "atoms": [
+          ["Heal",null,1.96,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+        ],
         "effects": {
           "accuracy": 1,
           "range": 25,
           "recharge": 10,
           "endurance": 6.5,
           "activationTime": 3.93,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "damage": {
+            "type": "Heal",
+            "scale": 1.96,
+            "table": "Ranged_Heal"
+          }
         }
       },
       {
@@ -5334,13 +5342,31 @@ export const POWER_POOLS_RAW = {
           "Teleport",
           "Universal Travel"
         ],
+        "atoms": [
+          ["Stealth",null,0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1]
+        ],
         "effects": {
           "accuracy": 1,
           "range": 10000,
           "recharge": 6,
           "endurance": 15,
           "activationTime": 5.93,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 1.5,
+          "durations": {
+            "stealth": 1.5
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0,
+              "table": "Ranged_Ones"
+            }
+          },
+          "teleport": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {
@@ -5416,12 +5442,73 @@ export const POWER_POOLS_RAW = {
           "Teleport",
           "Universal Travel"
         ],
+        "atoms": [
+          ["Stealth",null,0,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+          ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1],
+          ["Movement","Fly",1,0,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Movement","Fly",500,0,1,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Movement","Control",8,0,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Movement","Friction",8,0,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Mez","Intangible",8,0,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Meta",null,1,66,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Movement","Fly",1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Movement","Fly",500,1,15,"Melee_SpeedFlying","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Movement","Control",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Movement","Friction",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Mez","Intangible",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Meta",null,1,66,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+          ["Mez","Untouchable",1000,1000,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
+          ["Stealth",null,0.25,1,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
+          ["Meta",null,-1,1,3,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
+          ["Mez","Untouchable",1000,1000,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
+          ["GlobalChanceMod",null,1,1,30,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !"],
+          ["Stealth",null,0.25,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true],
+          ["Meta",null,-1,1,1,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"Temporary_Powers.Temporary_Powers.NoPhase source.ownPower? !",null,null,true]
+        ],
         "effects": {
           "accuracy": 1,
           "range": 350,
           "endurance": 13,
           "activationTime": 1.5,
-          "effectArea": "Location"
+          "effectArea": "Location",
+          "buffDuration": 1,
+          "durations": {
+            "movement": 15,
+            "stealth": 1,
+            "untouchable": 1
+          },
+          "movement": {
+            "fly": {
+              "scale": 1,
+              "table": "Ranged_Ones"
+            },
+            "flySpeed": {
+              "scale": 500,
+              "table": "Melee_SpeedFlying"
+            },
+            "movementControl": {
+              "scale": 8,
+              "table": "Melee_Ones"
+            },
+            "movementFriction": {
+              "scale": 8,
+              "table": "Melee_Ones"
+            }
+          },
+          "stealth": {
+            "translucency": {
+              "scale": 0.25,
+              "table": "Ranged_Ones"
+            }
+          },
+          "teleport": {
+            "scale": 1,
+            "table": "Ranged_Ones"
+          },
+          "untouchable": {
+            "scale": 1000,
+            "table": "Ranged_Ones"
+          }
         }
       },
       {

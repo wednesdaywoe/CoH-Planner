@@ -38,5 +38,11 @@ export const Serum: Power = {
     "Resist Damage",
     "To Hit Buff"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,4,1,60,"Ranged_Res_Dmg","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||",true],
+    ["Recovery",null,0.5,1,60,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||",true],
+    ["Unmapped",null,-10,1,60,"Ranged_Res_Boolean","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||",true],
+    ["ToHit",null,0.5,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Soldier target.VillainName> MastermindPets_Medic target.VillainName> || MastermindPets_Spec_Ops target.VillainName> || MastermindPets_Commando target.VillainName> ||",true]
+  ]
 };

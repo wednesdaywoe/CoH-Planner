@@ -1035,6 +1035,58 @@ function collectRedirectTemplates(powerJson) {
 }
 
 /**
+ * A power's BASE template set: its own `effects`, or — when it has none — whatever its
+ * redirect chain resolves to (with the `*_Info` display-damage fallback behind it).
+ *
+ * Shared by all three power converters. It exists as a function because it did NOT used
+ * to: this logic lived inline in `convertPower` here, so `convert-pool-powers.cjs` and
+ * `convert-epic-pools.cjs` — which run their own shortened pipelines — collected
+ * `collectTemplatesDeep(rawJson.effects)` unconditionally and simply produced NOTHING for
+ * a redirect-only power. That silently shipped 6 epic snipes (Psionic Lance, LRM Rocket,
+ * Frozen Spear, Mace Beam, Zapp, Moonbeam) with **no damage at all**, plus Aid Other /
+ * Teleport / Teleport Target with no effects, for as long as those converters have
+ * existed. The snipes are the tell that this is a divergence bug and not a data quirk:
+ * Blaster Dark Blast's Moonbeam is the SAME redirect-only shape and resolves fine, purely
+ * because it happens to be converted by this file.
+ *
+ * Callers must not reimplement the branch. Following a redirect correctly is not
+ * `JSON.parse(target).effects` — the chain carries PvE/PvP `enttype` twins, gated
+ * variants, `*_InherentDamage` twins and dead-state conditionals that
+ * `collectTemplatesDeep` + `extractDamage` already know how to fold. A hand-rolled
+ * follower in a second converter is how this class of bug reproduces.
+ *
+ * @param {Object} powerJson - raw power JSON
+ * @returns {{templates: Array, usedInfoRedirect: boolean}} `usedInfoRedirect` tells the
+ *   caller the damage came from a declared `*_Info` display power, so it must skip the
+ *   Fiery-Embrace-bonus heuristic (see `_filterFieryEmbraceBonus`).
+ */
+function collectBaseTemplates(powerJson) {
+  if (powerJson.effects?.length) {
+    return { templates: collectTemplatesDeep(powerJson.effects), usedInfoRedirect: false };
+  }
+  if (!powerJson.redirect?.length) return { templates: [], usedInfoRedirect: false };
+
+  // Power has empty effects but redirects to other powers — follow the redirect chain.
+  let templates = collectRedirectTemplates(powerJson);
+  let usedInfoRedirect = false;
+  // If the mechanical redirect carried no real damage (Remote Bomb's Self/Target
+  // detonation is just a scale-0 placeholder + the bomb-pet summon), fall back to
+  // the `*_Info` display power the game uses to surface the damage numbers.
+  if (!extractDamage(templates)) {
+    const infoTemplates = collectInfoRedirectTemplates(powerJson);
+    if (infoTemplates.length > 0) {
+      templates = templates.concat(infoTemplates);
+      usedInfoRedirect = true;
+      console.log(`  [redirect] Used _Info display damage for ${powerJson.display_name}`);
+    }
+  }
+  if (templates.length > 0) {
+    console.log(`  [redirect] Resolved ${templates.length} templates from redirect chain for ${powerJson.display_name}`);
+  }
+  return { templates, usedInfoRedirect };
+}
+
+/**
  * Pull damage templates from a power's `*_Info` display redirect.
  *
  * Some pure-redirect powers apply their damage through a summoned pet / multi-stage
@@ -3428,8 +3480,25 @@ function collectAtomTemplates(effects, parentCombatGated = false) {
  * Heuristic: Fire damage on a Melee_Damage table on a non-fire-themed
  * powerset → drop. Fire-themed powersets (Fiery Melee, Fiery Assault,
  * Fire Manipulation) genuinely deal Fire damage and are kept.
+ *
+ * `(?<![a-z0-9])` rather than `\b`: underscore is a WORD character, so `\bfire` does NOT
+ * match `Epic.Corruptor_Fire_Mastery` — there is no boundary between `_` and `F`. The
+ * `\b` form only ever worked because POWERSET names happen to put a `.` before the theme
+ * word (`Blaster_Support.Fire_Manipulation`); it silently depends on that convention.
+ * Sets named `<AT>_Fire_Mastery` (every epic pool) read as non-fire-themed.
+ *
+ * Unreachable today — this filter is only applied to powerset powers, whose names all
+ * carry the `.`. It is fixed rather than left alone because the trap is invisible at the
+ * call site: sharing this helper with convert-epic-pools.cjs looks safe and immediately
+ * strips genuine Fire damage from every `*_Fire_Mastery` pool. Tried 2026-07-15; caught
+ * before shipping only because Rebirth's Pyre Mastery Fire Ball came out as
+ * "Smashing 0.2" with no Fire at all.
+ *
+ * NOTE for anyone who does apply this to epic pools: the theme list is ALSO incomplete
+ * for them — `Pyre_Mastery` and `Heat_Mastery` are fire pools that match none of these
+ * words. Fixing the regex alone is not enough. See docs/converter-unification-direction.md.
  */
-const FIRE_THEMED_POWERSET_RE = /\b(fire|fiery|flame|burn|magma|lava|inferno|blaze|cinder|ember|combust)/i;
+const FIRE_THEMED_POWERSET_RE = /(?<![a-z0-9])(fire|fiery|flame|burn|magma|lava|inferno|blaze|cinder|ember|combust)/i;
 function _filterFieryEmbraceBonus(damage, powerJson) {
   if (!damage) return damage;
   const powerset = powerJson.powerset || powerJson.full_name || '';
@@ -6099,28 +6168,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
   // Recursively collect from child_effects AND follow Execute_Power redirects
   // (e.g. Fault → Redirects.Stone_Melee.Fault_Brute / Fault_Cone_Brute, where
   // the actual damage/knockback/stun lives in the redirect targets).
-  let allTemplates = [];
-  let usedInfoRedirect = false;
-  if (powerJson.effects?.length) {
-    allTemplates = collectTemplatesDeep(powerJson.effects);
-  } else if (powerJson.redirect?.length > 0) {
-    // Power has empty effects but redirects to other powers — follow the redirect chain
-    allTemplates = collectRedirectTemplates(powerJson);
-    // If the mechanical redirect carried no real damage (Remote Bomb's Self/Target
-    // detonation is just a scale-0 placeholder + the bomb-pet summon), fall back to
-    // the `*_Info` display power the game uses to surface the damage numbers.
-    if (!extractDamage(allTemplates)) {
-      const infoTemplates = collectInfoRedirectTemplates(powerJson);
-      if (infoTemplates.length > 0) {
-        allTemplates = allTemplates.concat(infoTemplates);
-        usedInfoRedirect = true;
-        console.log(`  [redirect] Used _Info display damage for ${powerJson.display_name}`);
-      }
-    }
-    if (allTemplates.length > 0) {
-      console.log(`  [redirect] Resolved ${allTemplates.length} templates from redirect chain for ${powerJson.display_name}`);
-    }
-  }
+  let { templates: allTemplates, usedInfoRedirect } = collectBaseTemplates(powerJson);
 
   // Also collect templates from activation_effects. Two distinct patterns share
   // this slot:
@@ -6245,47 +6293,62 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
 
     if (Object.keys(effects).length) power.effects = effects;
 
-    // Plan B — emit the pre-projection atom list alongside the bag. Unused by
-    // calc/UI yet; it is the ground truth the atom-native calc primitives read
-    // (`src/data/core/atom-query.ts`) behind a shadow compare before the bag is
-    // retired. Additive-only: does not touch `power.effects`.
-    //
-    // The list is a UNION of two sources, deduped by template identity (every
-    // collector pushes the same template objects, so `Set` identity is exact):
-    //
-    //   1. `allTemplates` — everything the bag saw. Not just `powerJson.effects`:
-    //      a power's templates may come from a redirect chain (Fault), an `_Info`
-    //      display power (Remote Bomb), or `activation_effects` (Dull Pain, whose
-    //      `effects` is empty). Dropping this source silently emptied the atom
-    //      list for every such power.
-    //   2. `collectAtomTemplates(powerJson.effects)` — adds back the gated groups
-    //      the bag's collector drops (mode/stance, PvP, hidden-state, chance-0
-    //      procs) because a single-valued slot cannot hold both the base and the
-    //      gated variant. The atom list can, and each atom carries its own gate.
-    //      This is what gives the conditional/stance bags their atoms.
-    //
-    // Known residual: gated groups nested inside a REDIRECT chain or under
-    // `activation_effects` are still not collected — source 2 only descends the
-    // power's own `effects`. Those paths apply their own modeling filters
-    // (the activation_effects Self / IgnoreStrength-dupe rules) that are not
-    // safe to bypass wholesale here.
-    // Atoms from source 2 that source 1 didn't already have are the gated ones;
-    // `encodeAtomsForEmit` stamps them `gated: true` off this base set, so a
-    // consumer can recover the bag's exact base view (`baseAtoms`) or the full
-    // truth, without re-deriving the collector's filter at runtime.
-    const atomTemplates = [...new Set([
-      ...allTemplates,
-      ...collectAtomTemplates(powerJson.effects || []),
-    ])];
-    // The base-set hard invariant is asserted inside `encodeAtomsForEmit`.
-    const atoms = encodeAtomsForEmit(atomTemplates, allTemplates, powerJson.name);
-    if (atoms) power.atoms = atoms;
-
     // Resolve location pseudo-pet redirect lists into synthesized ability lists
     // (Storm Cell, Category Five, Freezing Rain, …) so the runtime can surface
     // their DoT + debuffs. See PSEUDO-PET-POWER-RESOLUTION.md.
     attachResolvedPseudoPets(powerJson, power.effects);
 
+  }
+
+  // Atom emit — deliberately OUTSIDE the `allTemplates.length` guard above.
+  //
+  // `allTemplates` is the BAG's view. Gating the atom list on it means "a power gets
+  // atoms only if the bag found something," which is backwards: the atom list exists
+  // precisely to carry what the bag cannot. A power whose every effect group is gated
+  // (all 16 Mastermind upgrade powers — Equip Robot, Train Beasts, Enchant Undead… —
+  // plus Heat Loss) has ZERO base templates but a full set of gated ones, and shipped
+  // with no atoms at all until 2026-07-15. Same family as the pool/epic gap: the bag
+  // fallback made it behavior-preserving and therefore invisible.
+  //
+  // Guard on `atomTemplates` instead. When `allTemplates` is empty the base set is
+  // empty, so every atom stamps `gated: true` and `baseAtoms` stays empty — appliers
+  // see exactly what they saw before. The hard invariant inside `encodeAtomsForEmit`
+  // (unstamped count === templatesToAtoms(allTemplates).length) enforces that.
+  //
+  // Union of two sources (both collectors push the same template objects, so `Set`
+  // identity is exact):
+  //
+  //   1. `allTemplates` — everything the bag saw. Not just `powerJson.effects`: a
+  //      power's templates may come from a redirect chain (Fault), an `_Info` display
+  //      power (Remote Bomb), or `activation_effects` (Dull Pain, whose `effects` is
+  //      empty). Dropping this source silently emptied the atom list for every such
+  //      power.
+  //   2. `collectAtomTemplates(powerJson.effects)` — adds back the gated groups the
+  //      bag's collector drops (mode/stance, PvP, hidden-state, chance-0 procs)
+  //      because a single-valued slot cannot hold both the base and the gated variant.
+  //      The atom list can, and each atom carries its own gate. This is what gives the
+  //      conditional/stance bags their atoms.
+  //
+  // Atoms from source 2 that source 1 didn't already have are the gated ones;
+  // `encodeAtomsForEmit` stamps them `gated: true` off this base set, so a consumer can
+  // recover the bag's exact base view (`baseAtoms`) or the full truth, without
+  // re-deriving the collector's filter at runtime.
+  //
+  // Known residual: gated groups nested inside a REDIRECT chain or under
+  // `activation_effects` are still not collected — source 2 only descends the power's
+  // own `effects`. Those paths apply their own modeling filters (the
+  // activation_effects Self / IgnoreStrength-dupe rules) that are not safe to bypass
+  // wholesale here.
+  {
+    const atomTemplates = [...new Set([
+      ...allTemplates,
+      ...collectAtomTemplates(powerJson.effects || []),
+    ])];
+    if (atomTemplates.length > 0) {
+      // The base-set hard invariant is asserted inside `encodeAtomsForEmit`.
+      const atoms = encodeAtomsForEmit(atomTemplates, allTemplates, powerJson.name);
+      if (atoms) power.atoms = atoms;
+    }
   }
 
   // Multi-pet summon count correction (Phantom Army FX double-count → 3; Gang War
@@ -6791,6 +6854,8 @@ module.exports = {
   encodeAtomsForEmit,
   resolveRedirectPath,
   collectRedirectTemplates,
+  collectBaseTemplates,
+  _filterFieryEmbraceBonus,
   collectTemplatesDeep,
   resolveSummonRedirects,
   classifyPseudoPetEffect,

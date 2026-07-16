@@ -24,6 +24,7 @@ const {
   extractDamage,
   collectTemplatesDeep,
   collectAtomTemplates,
+  collectBaseTemplates,
   encodeAtomsForEmit,
   detectStackingEffects,
   mergeStackingPatches,
@@ -213,10 +214,18 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     effects.maxTargets = rawJson.max_targets_hit;
   }
 
-  // Extract effects from raw JSON using recursive template collection
-  if (rawJson.effects && rawJson.effects.length > 0) {
-    const allTemplates = collectTemplatesDeep(rawJson.effects);
-
+  // Extract effects from raw JSON using recursive template collection.
+  //
+  // `collectBaseTemplates` (shared with convert-powerset.cjs) covers BOTH shapes: a
+  // power's own `effects`, and — when those are empty — its redirect chain. This
+  // converter used to inline `collectTemplatesDeep(rawJson.effects)` behind an
+  // `if (rawJson.effects?.length)` guard, so the six redirect-only epic snipes (Psionic
+  // Lance, LRM Rocket, Frozen Spear, Mace Beam, Zapp, Moonbeam) shipped with NO DAMAGE
+  // AT ALL. Their powerset twins — e.g. Blaster Dark Blast's Moonbeam — are the same
+  // redirect-only shape and resolve correctly, purely because convert-powerset.cjs
+  // converts them. See collectBaseTemplates' docstring.
+  const { templates: allTemplates } = collectBaseTemplates(rawJson);
+  if (allTemplates.length > 0) {
     // Damage
     const damage = extractDamage(allTemplates);
     if (damage) effects.damage = damage;
@@ -243,18 +252,24 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     const stackingResult = detectStackingEffects(rawJson);
     if (stackingResult) mergeStackingPatches(effects, stackingResult);
 
-    // Plan B — emit the pre-projection atom list alongside the bag, exactly as
-    // convert-powerset.cjs and convert-pool-powers.cjs do. Epic-pool powers went
-    // without it until 2026-07-15, so every atom-native applier silently fell back to
-    // the bag for the whole epic/patron tier — safe, but invisible, and a Phase 3
-    // blocker. See the same block in convert-powerset.cjs for the full rationale; the
-    // base-set hard invariant is asserted inside `encodeAtomsForEmit`.
+  }
+
+  // Plan B — emit the pre-projection atom list alongside the bag, exactly as
+  // convert-powerset.cjs and convert-pool-powers.cjs do. Epic-pool powers went
+  // without it until 2026-07-15, so every atom-native applier silently fell back to
+  // the bag for the whole epic/patron tier — safe, but invisible, and a Phase 3
+  // blocker. Guarded on `atomTemplates`, NOT on the bag's `allTemplates` — see the
+  // same block in convert-powerset.cjs. The base-set hard invariant is asserted
+  // inside `encodeAtomsForEmit`.
+  {
     const atomTemplates = [...new Set([
       ...allTemplates,
-      ...collectAtomTemplates(rawJson.effects),
+      ...collectAtomTemplates(rawJson.effects || []),
     ])];
-    const atoms = encodeAtomsForEmit(atomTemplates, allTemplates, rawJson.name);
-    if (atoms) power.atoms = atoms;
+    if (atomTemplates.length > 0) {
+      const atoms = encodeAtomsForEmit(atomTemplates, allTemplates, rawJson.name);
+      if (atoms) power.atoms = atoms;
+    }
   }
 
   power.effects = effects;

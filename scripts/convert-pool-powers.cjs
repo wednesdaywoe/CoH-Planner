@@ -26,6 +26,7 @@ const {
   normalizeIconPath,
   collectTemplatesDeep,
   collectAtomTemplates,
+  collectBaseTemplates,
   encodeAtomsForEmit,
   RAW_DATA_PATH,
   BIN_BOOST_MAP,
@@ -259,10 +260,16 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     effects.maxTargets = rawJson.max_targets_hit;
   }
 
-  // Extract effects from raw JSON using recursive template collection
-  if (rawJson.effects && rawJson.effects.length > 0) {
-    const allTemplates = collectTemplatesDeep(rawJson.effects);
-
+  // Extract effects from raw JSON using recursive template collection.
+  //
+  // `collectBaseTemplates` (shared with convert-powerset.cjs) covers BOTH shapes: a
+  // power's own `effects`, and — when those are empty — its redirect chain. This
+  // converter used to inline `collectTemplatesDeep(rawJson.effects)` behind an
+  // `if (rawJson.effects?.length)` guard, so every redirect-only pool power produced
+  // an empty bag: Aid Other, Teleport and Teleport Target have shipped with no effects
+  // for as long as this file has existed. See collectBaseTemplates' docstring.
+  const { templates: allTemplates } = collectBaseTemplates(rawJson);
+  if (allTemplates.length > 0) {
     // Damage
     const damage = extractDamage(allTemplates);
     if (damage) effects.damage = damage;
@@ -292,22 +299,30 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     // the detector off here rather than run a heuristic whose only live effect is a false
     // positive. Revisit if a per-foe pool power ever appears — with a gate first.
 
-    // Plan B — emit the pre-projection atom list alongside the bag, exactly as
-    // convert-powerset.cjs does for archetype powers. Pool powers went without it
-    // until 2026-07-15, which meant every atom-native applier silently fell back to
-    // the bag for Health, Stamina, Tough, Weave, Maneuvers, Assault et al. — safe
-    // (that is what the fallback is for) but invisible, and a hard blocker on Phase 3,
-    // since the bag cannot be deleted while ~15% of powers have no atom representation.
-    //
-    // Union of `allTemplates` (what the bag saw) with `collectAtomTemplates` (which adds
-    // back the gated groups the bag's collector drops); the difference is stamped
-    // `gated: true`. See the same block in convert-powerset.cjs for the full rationale.
+  }
+
+  // Plan B — emit the pre-projection atom list alongside the bag, exactly as
+  // convert-powerset.cjs does for archetype powers. Pool powers went without it
+  // until 2026-07-15, which meant every atom-native applier silently fell back to
+  // the bag for Health, Stamina, Tough, Weave, Maneuvers, Assault et al. — safe
+  // (that is what the fallback is for) but invisible, and a hard blocker on Phase 3,
+  // since the bag cannot be deleted while ~15% of powers have no atom representation.
+  //
+  // Union of `allTemplates` (what the bag saw) with `collectAtomTemplates` (which adds
+  // back the gated groups the bag's collector drops); the difference is stamped
+  // `gated: true`. Guarded on `atomTemplates`, NOT on the bag's `allTemplates` — see
+  // the same block in convert-powerset.cjs for why (Victory Rush is this converter's
+  // instance: every one of its effect groups is rank-gated, so the bag sees nothing
+  // while the atom list has 6).
+  {
     const atomTemplates = [...new Set([
       ...allTemplates,
-      ...collectAtomTemplates(rawJson.effects),
+      ...collectAtomTemplates(rawJson.effects || []),
     ])];
-    const atoms = encodeAtomsForEmit(atomTemplates, allTemplates, rawJson.name);
-    if (atoms) power.atoms = atoms;
+    if (atomTemplates.length > 0) {
+      const atoms = encodeAtomsForEmit(atomTemplates, allTemplates, rawJson.name);
+      if (atoms) power.atoms = atoms;
+    }
   }
 
   power.effects = effects;

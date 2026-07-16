@@ -99,3 +99,73 @@ describe('epic-pool Soul Drain scales per foe (a real bug the widened sweep foun
     expect(d.scale + (d.perTarget ?? 0) * 7).toBeCloseTo(10.4); // was 4.0
   });
 });
+
+describe('redirect-only pool/epic powers resolve their redirect chain', () => {
+  // The pool converters collected `collectTemplatesDeep(rawJson.effects)` behind an
+  // `if (rawJson.effects?.length)` guard and never followed redirects, so a power whose
+  // own `effects` is empty produced an empty bag. Ten powers were affected; the six epic
+  // snipes had NO DAMAGE IN THE PLANNER AT ALL. Their powerset twins are the same
+  // redirect-only shape and always worked, purely because convert-powerset.cjs converts
+  // them — which is what makes this a converter-divergence bug rather than a data quirk.
+  // Fixed 2026-07-15 by sharing `collectBaseTemplates` across all three converters.
+
+  it.each([
+    ['Psionic Lance', 'Psionic', 3.56],
+    ['Frozen Spear', 'Cold', 3.56],
+    ['Mace Beam', 'Energy', 3.56],
+    ['Zapp', 'Energy', 3.56],
+    ['Moonbeam', 'Negative', 4.5],
+  ])('%s deals %s damage (was: none at all)', (name, type, scale) => {
+    const p = findPower(EPIC_POOLS_RAW, name as string);
+    const d = p.effects.damage;
+    expect(d, `${name} has no damage`).toBeDefined();
+    expect(d.type).toBe(type);
+    expect(d.scale).toBeCloseTo(scale as number);
+  });
+
+  it('LRM Rocket deals its Smashing + Lethal split', () => {
+    const d = findPower(EPIC_POOLS_RAW, 'LRM Rocket').effects.damage;
+    expect(d.map((x: any) => x.type)).toEqual(['Smashing', 'Lethal']);
+    expect(d[0].scale).toBeCloseTo(1);
+    expect(d[1].scale).toBeCloseTo(1.49);
+  });
+
+  it('drops the chance-0 Fiery Embrace bonus rather than shipping it as base damage', () => {
+    // Every snipe redirect carries an FE bonus template (Fire_Dmg ~1.6 on Melee_Damage,
+    // chance 0.0 — the engine flips it to 1 only while Fiery Embrace is up). It must not
+    // land as unconditional damage on a Cold/Energy/Negative attack.
+    for (const n of ['Frozen Spear', 'Zapp', 'Moonbeam', 'Mace Beam']) {
+      const d = findPower(EPIC_POOLS_RAW, n).effects.damage;
+      const types = (Array.isArray(d) ? d : [d]).map((x: any) => x.type);
+      expect(types, `${n} shipped the FE bonus`).not.toContain('Fire');
+    }
+  });
+
+  it('Aid Other resolves its heal through the redirect, matching its powerset twin', () => {
+    // Empathy's Heal Other is the oracle: same 1.96 / Ranged_Heal.
+    const d = findPower(POWER_POOLS_RAW, 'Aid Other').effects.damage;
+    expect(d.type).toBe('Heal');
+    expect(d.scale).toBeCloseTo(1.96);
+    expect(d.table).toBe('Ranged_Heal');
+  });
+
+  it('Teleport and Teleport Target recover their effects', () => {
+    for (const n of ['Teleport', 'Teleport Target']) {
+      const p = findPower(POWER_POOLS_RAW, n);
+      expect(Object.keys(p.effects), `${n} has an empty bag`).toContain('teleport');
+    }
+  });
+});
+
+describe('all-gated powers still get atoms (the atom emit is not bag-gated)', () => {
+  // The atom emit sat inside `if (allTemplates.length > 0)` — the BAG's view. A power
+  // whose every effect group is gated has zero base templates but a full gated set, so
+  // it got no atoms at all: the 16 Mastermind upgrade powers, Heat Loss, Victory Rush.
+  // Guarding on the atom set instead is what fixes it; every such atom is `gated`, so
+  // `baseAtoms` stays empty and no applier changes behavior.
+  it('Victory Rush has atoms even though its bag sees nothing', () => {
+    const vr = findPower(POWER_POOLS_RAW, 'Victory Rush');
+    expect(atomsOf(vr).length).toBeGreaterThan(0);
+    expect(atomsOf(vr).every((a) => a.gated), 'a base atom leaked').toBe(true);
+  });
+});

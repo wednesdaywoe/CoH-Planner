@@ -3096,6 +3096,9 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [
           "Healing"
         ],
+        "atoms": [
+          ["Unmapped",null,1.96,1,0,"Ranged_Heal","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+        ],
         "effects": {
           "accuracy": 1,
           "range": 40,

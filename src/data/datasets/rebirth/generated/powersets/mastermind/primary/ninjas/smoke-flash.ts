@@ -29,5 +29,12 @@ export const SmokeFlash: Power = {
     "Range",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Stealth",null,54,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true],
+    ["Stealth",null,500,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true],
+    ["Meta",null,1,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true],
+    ["EntCreate",null,0.2,1,10,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true]
+  ]
 };

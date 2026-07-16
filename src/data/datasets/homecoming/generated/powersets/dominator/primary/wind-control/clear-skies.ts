@@ -30,6 +30,14 @@ export const ClearSkies: Power = {
   },
   "allowedEnhancements": [],
   "maxSlots": 0,
+  "atoms": [
+    ["ToHit",null,2.5,1,2.1,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kClearSkies Source.Mode?",true],
+    ["RechargeTime",null,0.25,1,2.1,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kClearSkies Source.Mode?",true],
+    ["EnduranceDiscount",null,0.25,1,2.1,"Ranged_Ones","Str","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kClearSkies Source.Mode?",true],
+    ["Recovery",null,0.25,1,2.1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"kClearSkies Source.Mode?",true],
+    ["Meta",null,-1,1,2.1,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kClearSkies Source.Mode?",true],
+    ["Meta",null,-1,1,2.1,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"kClearSkies Source.Mode? ! kCloudedSkies Source.Mode? &&",true]
+  ],
   "conditionalEffects": [
     {
       "id": "clearskies",

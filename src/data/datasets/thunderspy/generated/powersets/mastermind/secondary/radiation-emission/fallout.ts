@@ -42,5 +42,8 @@ export const Fallout: Power = {
     "To Hit Debuff",
     "Universal Damage Sets"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"group target> MastermindPets eq",true]
+  ]
 };

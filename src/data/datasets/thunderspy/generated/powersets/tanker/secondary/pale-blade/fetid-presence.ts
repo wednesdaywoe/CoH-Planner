@@ -36,6 +36,18 @@ export const FetidPresence: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,0.03,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_Lash target.ownPower?",true],
+    ["Unmapped",null,0,1,3,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_Lash target.ownPower?",true],
+    ["Unmapped",null,0.03,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_Flay target.ownPower?",true],
+    ["Unmapped",null,0,1,3,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_Flay target.ownPower?",true],
+    ["Unmapped",null,0.03,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_RendFlesh target.ownPower?",true],
+    ["Unmapped",null,0,1,3,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_RendFlesh target.ownPower?",true],
+    ["Unmapped",null,0.03,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_Khloros target.ownPower?",true],
+    ["Unmapped",null,0,1,3,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_Khloros target.ownPower?",true],
+    ["Unmapped",null,0.03,1,0,"Melee_Damage","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_PaleBlade target.ownPower?",true],
+    ["Unmapped",null,0,1,3,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Pale_Enemy_PaleBlade target.ownPower?",true]
+  ],
   "conditionalEffects": [
     {
       "id": "pale_enemy_lash",

@@ -30,5 +30,8 @@ export const SmokeFlash: Power = {
     "Range",
     "Recharge"
   ],
-  "maxSlots": 6
+  "maxSlots": 6,
+  "atoms": [
+    ["Unmapped",null,54,1,30,"Ranged_Ones","Cur","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"MastermindPets_Genin target.VillainName> MastermindPets_Jounin target.VillainName> || MastermindPets_Oni target.VillainName> ||",true]
+  ]
 };
