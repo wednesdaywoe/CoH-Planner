@@ -574,11 +574,17 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
   },
 
   // === MOVEMENT (all teal) ===
+  // Movement speed/height buffs are percentages (scale × the AT movement table,
+  // e.g. Super Speed's 1.0 × Melee_SpeedRunning ≈ +350% @50), so they render as
+  // `percent` and route through getEffectBaseValue's AT-table branch — the same
+  // resolution the dashboard does via resolveMovementPercent. `format: 'value'`
+  // here used to surface the raw scale (a bare "1.0") which read as a modifier,
+  // not a speed. Teleport/untouchable below stay non-percent (distance/duration).
   fly: {
     label: 'Fly',
     category: 'movement',
     colorClass: STAT_COLORS.fly,
-    format: 'value',
+    format: 'percent',
     enhancementAspect: 'fly',
     priority: 1,
   },
@@ -586,7 +592,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     label: 'Fly Speed',
     category: 'movement',
     colorClass: STAT_COLORS.flySpeed,
-    format: 'value',
+    format: 'percent',
     enhancementAspect: 'fly',
     priority: 1,
   },
@@ -594,7 +600,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     label: 'Run Speed',
     category: 'movement',
     colorClass: STAT_COLORS.runSpeed,
-    format: 'value',
+    format: 'percent',
     // The Run Speed enhancement category (SO and IO) normalizes to 'run'
     // in ASPECT_NAME_MAP. Use the same key here so slotted enhancements
     // are reflected in the Power Effects three-tier display.
@@ -605,7 +611,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     label: 'Jump Speed',
     category: 'movement',
     colorClass: STAT_COLORS.jumpSpeed,
-    format: 'value',
+    format: 'percent',
     // The Jumping enhancement boosts both jump speed and jump height in-game.
     enhancementAspect: 'jump',
     priority: 3,
@@ -614,7 +620,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     label: 'Jump Height',
     category: 'movement',
     colorClass: STAT_COLORS.jumpHeight,
-    format: 'value',
+    format: 'percent',
     enhancementAspect: 'jump',
     priority: 4,
   },
