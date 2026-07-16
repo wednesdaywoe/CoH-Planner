@@ -9,12 +9,21 @@
 > `regenBuffUnenhanced`, `recoveryBuff`/`recoveryBuffUnenhanced`) migrated, retiring the
 > LAST two of the five `*Unenhanced` twin slots (only ToHit's and movement's remain).
 > Two additive converter changes — a `notOnCaster` target-trap stamp and the
-> Consume/Devour Psyche redirect perTarget stamp-gap fix — so the bag stays
-> byte-identical and the generated diff is 29 atom tuples (19 `notOnCaster`, 10
-> `perTarget`). Gated by `scripts/planb-shadow-resources.cjs` at **641/641 checked, 0
-> diverge, 58 punts**; the Icy Bastion `StackByAttribAndKey` burst/tail family PUNTS to
-> the bag per the maintainer's decision, pending in-game verification. Gate
-> mutation-tested on 9 axes, all killed. 1113 tests green.** Slice 5 migrates the +MaxHP twin
+> Consume/Devour Psyche redirect perTarget stamp-gap fix. Gated by
+> `scripts/planb-shadow-resources.cjs` at **778/778 checked, 0 diverge, 34 punts** (the
+> one remaining punt class is the un-derivable Expression + tick-chance-0 guard); gate
+> mutation-tested on 9 axes, all killed.**
+>
+> **Three bugs found and fixed the same day, each surfaced by the work rather than
+> reported:** (a) **Icy Bastion / Hibernate** dropped its lingering +4 regen (+6 → **+10**)
+> — the regen routing read `StackByAttribAndKey`, which means *refresh don't stack*, as a
+> skip; recovery never had the skip and was right, and that asymmetry was the tell. The
+> Slice 6 burst/tail punt died with it. (b) **The pool/epic atom gap** — ~1,358 powers
+> (Health, Stamina, Tough, Weave, the whole epic tier) had NO atoms, and all seven shadows
+> swept only `generated/powersets` so no gate could see it. (c) **Epic Soul Drain** shipped
+> with no per-foe scaling at all (+1.0/+4.0 instead of +2.6/+10.4 at 8 foes) — the
+> epic-pool converter never ran the stacking detector. All seven gates now green on
+> **10,271** powers (was 8,913). 1121 tests green.** Slice 5 migrates the +MaxHP twin
 > (`effects.maxHPBuff` + `effects.maxHPBuffUnenhanced`) — the FIRST of the
 > `*Unenhanced` twin family to literally fold into one `ignoreStrength` filter; it is a
 > pure runtime swap (NO converter change, generated tree byte-identical, like Slice 3)
@@ -52,6 +61,105 @@
 > Companion to the shipped interim guard (DSH6c discriminator gate, 2026-07-14).
 > See [[converter-bag-vs-array-rootcause]], [[dsh6-collapse-detector]],
 > `docs/converter-unification-direction.md`.
+
+## The pool/epic atom gap — closed 2026-07-15 (read this before trusting a slice note)
+
+Every slice note below said its applier "reads atoms". Until 2026-07-15 that was true
+only for `generated/powersets`. **Pool and epic-pool powers had no atoms at all** —
+~1,358 across the three datasets: Health, Stamina, Tough, Weave, Maneuvers, Assault,
+Focused Accuracy, Physical Perfection, and the entire epic/patron tier. They are built
+by two converters separate from `convert-powerset.cjs` (`convert-pool-powers.cjs`,
+`convert-epic-pools.cjs`), and neither called `encodeAtomsForEmit`. Every atom-native
+applier silently fell back to the bag for all of them.
+
+**Two bugs stacked so each hid the other.** The fallback made the missing atoms
+behavior-preserving, hence invisible; and all seven `planb-shadow-*` gates swept only
+`generated/powersets`, so every "corpus-wide, 0 divergences" claim was structurally
+silent about ~15% of the corpus. Mutation-testing the gates could not have found this —
+every mutant still passes on a corpus that excludes the affected powers. This is the
+Phase-0 lesson again in a new costume: a DoD that asks "is it harmless?" instead of "is
+it sufficient?" cannot see absence.
+
+Closed by: both converters now emit atoms; the base-set hard invariant moved INTO
+`encodeAtomsForEmit` (it is a property of the encoding, and duplicated per call site it
+is one a new emitter can forget — which is precisely what happened); and ONE shared
+sweep, `scripts/planb-shadow-sweep.cjs`, walking `generated/` whole, used by all seven
+shadows. Coverage: bag 8,913 → **10,271** powers; pertarget 1,252 → 1,343 slots;
+resistance 3,204 → 3,665; defense 3,416 → 3,887; maxhp 194 → 220; resources 641 → 778.
+Verified the widened gates genuinely cover the new tree rather than merely counting it
+(mutating the fold branch turns Physical Perfection red).
+
+**The widened corpus immediately found a real user-facing bug** — see §Epic Soul Drain
+below. That is the argument for widening: the gap was not academic.
+
+## Epic Soul Drain shipped with no per-foe scaling — fixed 2026-07-15
+
+Found the moment the shadows widened past `generated/powersets`. `convert-epic-pools.cjs`
+never ran `detectStackingEffects`, so the **entire epic/patron tier shipped its AoE
+self-buffs flat**:
+
+| | epic pool (before) | Dark Melee primary | at 8 foes |
+|---|---|---|---|
+| Soul Drain +ToHit | `{scale: 1}` | `{1.2, perTarget: 0.2}` | +1.0 vs **+2.6** |
+| Soul Drain +Damage | `{scale: 4}` | `{4.8, perTarget: 0.8}` | +4.0 vs **+10.4** |
+
+The same power, wrong numbers, for every Blaster/Controller/Corruptor taking Soul Drain
+(or Spirit Drain) through an epic pool. Fixed by running the detector before the atom
+emit — order matters: `computeAoePerTargetPatches` stamps `_perTargetIncrement` on the
+templates and `encodeAtomsForEmit` copies it onto the atom, so reversing the two silently
+drops the stamp. Epic Soul Drain now equals its powerset twin exactly.
+
+Every other epic bag change was cross-validated against its powerset twin — the shapes
+MATCH (Build Up, Power Boost, Hoarfrost, Dark Consumption), and where values differ
+(Consume 20 vs 15) the raw binary genuinely differs, verified in `exported_powers`.
+
+**The detector is deliberately NOT run for pool powers.** Tried for pipeline symmetry, it
+REGRESSED Cross Punch: its +5% ToHit / +5% Recharge are **Fighting Synergy** — granted
+per FIGHTING POOL POWER OWNED (Boxing/Kick), applied once per cast — but the power is a
+5-target Cone, so the AoE heuristic read its Self-targeted `Stack` template as a per-foe
+increment. It minted a bogus `perTarget: 0.05` *and* a `tohitBuff` slot duplicating the
+existing IgnoreStrength `tohitBuffUnenhanced` half, which the calc would have counted
+twice. No pool power is known to be genuinely per-foe, so running a heuristic whose only
+live effect is a false positive is worse than not running it. Pinned by
+`pool-atoms.verify.test.ts`.
+
+## Resolved: Icy Bastion's lingering regen was dropped (in-game verified 2026-07-15)
+
+The regen routing skipped any `StackByAttribAndKey` template outright. **That flag means
+"key this buff by (attrib, stack_key) so re-application REFRESHES rather than stacks"** —
+refresh semantics, not an instruction to ignore the template. Reading it as a skip
+silently deleted Icy Bastion's lingering +4 regen.
+
+Icy Bastion (Tanker/Brute ship it as `hibernate.json` — the usual
+[[hc-slot-reuse-rename-gotcha]]) is a **temp toggle**, `activate_period` 0.5:
+
+| | toggle-gated (0.75s, re-applied each tick) | lingering (30s, via OnTick Execute_Power → `Icy_Bastion_NoCast`) | correct | bag before |
+|---|---|---|---|---|
+| Regeneration | 6 | 4 | **+10** | +6 ❌ |
+| Recovery | 2 | 2 | **+4** | +4 ✅ |
+
+The flag is exactly what lets ~60 re-executions refresh one 30s buff instead of stacking
+to +24,000%. Both halves are active for the 30s the power is doing its job. The tell was
+that regen and recovery — the *same* two-template shape — disagreed; recovery never had
+the skip and was right all along. Confirmed in-game by the maintainer and by the power's
+own `display_help`: *"While the power is active you heal damage and recover endurance at
+an incredible rate... Should you deactivate the power earlier, some of the resistance to
+damage and other effects will remain until the full 30 seconds window is over."*
+
+The skip is now narrowed to `Stack`/`Continuous` — the per-target increments
+`computeAoePerTargetPatches` actually folds in (Reactive Regeneration), which is what its
+comment always claimed. Supremacy also carries flagged regen (0.02, `Suppress`) but is
+out of scope: never converted to a player power, and henchman-facing anyway (gated `group
+target> MastermindPets eq` — the damage-sharing plumbing, which is not expressible without
+modelling minion stats).
+
+Bag change: 5 files, one power. `regenBuff` 6 → 10, and its recorded duration 0.75s → 30s
+(the planner had the buff lasting under a second). **With the bag consistent, Slice 6's
+burst/tail punt became unnecessary and was deleted** — the family now reconstructs through
+`foldResourceSum` like any other, since burst and tail OVERLAP rather than replace (the
+same additive shape as Inner Light's ToHit and EMP Arrow's −500% regen at 15s *and* 45s).
+The shadow went 641/641 with 58 punts → 667/667 with 32. **A punt that exists to dodge an
+inconsistency is a bug report, not a design.**
 
 ## Resolved: Inner Light STACKS (in-game verified 2026-07-15) — converter fix landed
 
@@ -683,13 +791,25 @@ incarnate, self-penalties):
   | ~32 | **bag-only, atom list empty** (Gamma Boost, Defibrillate, Fortify Pack, Consume rebirth, Disrupting Torrent) — redirect/gated-only powers whose increment never reaches the base atom set | SAFE — helper returns `undefined` → bag fallback. No action. |
   | ~19 | **tspy target-trap** — `guardThunderspyOnesBuffs` deletes `recoveryBuff`/`regenBuff` on MM-pet/foe powers via a shortHelp heuristic (Equip Thugs, Train Ninjas, Kuji In Zen, Disrupting Torrent…) | CONVERTER STAMP (see below). Not re-derivable: trapped atoms are `toWho:Unspecified/Target`, identical to legit HC Target-recovery buffs the bag keeps. |
   | ~16 | **Expression + tick-chance-0 drop** (Rebirth armor toggles: Gravity/Penumbral/Shadow/Twilight/Brimstone/Crystal…) — `recoveryBuffUnenhanced` `sc=1 Expression Replace dur=2 ign=true` | PUNT (helper → `undefined` → bag). `Expression⟺drop` is FALSE (Gamma Boost/Defibrillate/Fortify Pack KEEP an Expression regen/recovery — `tick_chance≠0`), and `tick_chance` is not on the wire, so the helper punts on ANY Expression resource atom. Safe either way: kept→bag has it, dropped→bag absent. |
-  | ~10 | **StackByAttribAndKey burst+tail** (Icy Bastion) — the correctness fork | **DEFER via bag-fallback** (maintainer decision 2026-07-15, below). |
+  | ~10 | **StackByAttribAndKey burst+tail** (Icy Bastion) — the correctness fork | **ROOT-FIXED** (2026-07-15) — was a converter bug, not a fork. Punt deleted; see above. |
   | ~6 | **Consume/Devour Psyche perTarget stamp gap** — bag `regenBuff {0.85, pt:0.35}` / `recoveryBuff {0.15, pt:0.05}`, atom has no `perTarget` | CONVERTER FIX (stamp-gap, see below). Bag is correct; atom just lacks the stamp. |
 
-  **Maintainer decision (2026-07-15): DEFER the StackByAttribAndKey burst/tail family via
-  bag-fallback.** Icy Bastion's regen and recovery are the *same* two-template shape
-  (both `Replace` + `StackByAttribAndKey`, same `Melee_Ones` table, a short burst + a 30s
-  lingering) yet the bag treats them INCONSISTENTLY — the tell of a latent bug, not a
+  **SUPERSEDED (2026-07-15, same day): the StackByAttribAndKey family was ROOT-FIXED, not
+  deferred.** The decision below — punt via bag-fallback pending in-game verification —
+  was taken and then overtaken within hours: the maintainer described Icy Bastion's actual
+  in-game behavior (a temp toggle; both buffs while active; detoggle early and only the
+  smaller lingers), the data confirmed it exactly, and the "inconsistency" turned out to be
+  a plain converter bug — the regen routing read a *refresh-semantics* flag as a skip. See
+  §"Icy Bastion's lingering regen was dropped" above. Regen is now +10 (was +6), recovery
+  +4 (always right), **the punt is deleted**, and the family reconstructs like any other.
+  The analysis below is retained because its reasoning held up: it correctly identified the
+  bag's self-inconsistency as a latent bug rather than auto-matching either number, which is
+  exactly what left the fix clean when the game behavior arrived.
+
+  **Original decision (2026-07-15, now superseded): DEFER the StackByAttribAndKey burst/tail
+  family via bag-fallback.** Icy Bastion's regen and recovery are the *same* two-template
+  shape (both `Replace` + `StackByAttribAndKey`, same `Melee_Ones` table, a short burst + a
+  30s lingering) yet the bag treats them INCONSISTENTLY — the tell of a latent bug, not a
   settled value:
 
   | | burst | lingering | current bag | why |
@@ -789,6 +909,17 @@ incarnate, self-penalties):
   coupled two helpers with genuinely different N=1 rules).
 
 ### Phase 3 — Bag becomes UI-only; then delete
+
+**Prerequisite CLEARED 2026-07-15:** Phase 3 was silently blocked on the pool/epic atom
+gap — the bag cannot be deleted while ~15% of powers have no atom representation. Pool
+and epic-pool powers now emit atoms and every gate sweeps them (see §The pool/epic atom
+gap). Remaining known atom-less powers: the 9 **redirect-only** pool/epic powers whose
+own `effects` are empty (6 epic snipes — Psionic Lance, LRM Rocket, Frozen Spear, Mace
+Beam, Zapp, Moonbeam — plus Aid Other, Teleport, Teleport Target). The pool converters do
+not follow redirects, so these have **no damage/effects in the bag either** — an open bug
+predating Plan B, and a real one for the snipes. Fixing it means teaching the pool
+converters the redirect-following `convert-powerset.cjs` already does. Not a Plan B
+blocker (they have no bag facts to lose), but it is the next honest gap.
 - Point the calc entirely at atoms; the bag is produced solely for the
   `EFFECT_REGISTRY`-driven display layer.
 - Optionally re-express the display projection as `atoms → registry rows`
