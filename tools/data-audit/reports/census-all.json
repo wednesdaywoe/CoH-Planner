@@ -1,0 +1,260 @@
+{
+ "homecoming": {
+  "partitions": {
+   "epic": {
+    "powers": 405,
+    "withAtoms": 405,
+    "atomTotal": 3375,
+    "families": {
+     "Damage": 1025,
+     "Defense": 197,
+     "Resistance": 574,
+     "ToHit": 70,
+     "Heal": 25,
+     "MaxHP": 18,
+     "Regeneration": 21,
+     "Recovery": 69,
+     "Endurance": 127,
+     "EnduranceDiscount": 8,
+     "RechargeTime": 44,
+     "Movement": 187,
+     "Mez": 418,
+     "MezResist": 100,
+     "DamageBuff": 176,
+     "Absorb": 6,
+     "Stealth": 7,
+     "Perception": 20,
+     "Elusivity": 69
+    }
+   },
+   "pool": {
+    "powers": 83,
+    "withAtoms": 83,
+    "atomTotal": 980,
+    "families": {
+     "Damage": 222,
+     "Defense": 209,
+     "Resistance": 35,
+     "ToHit": 10,
+     "Heal": 9,
+     "MaxHP": 0,
+     "Regeneration": 9,
+     "Recovery": 6,
+     "Endurance": 7,
+     "EnduranceDiscount": 0,
+     "RechargeTime": 8,
+     "Movement": 138,
+     "Mez": 107,
+     "MezResist": 45,
+     "DamageBuff": 64,
+     "Absorb": 3,
+     "Stealth": 24,
+     "Perception": 2,
+     "Elusivity": 0
+    }
+   },
+   "powerset": {
+    "powers": 3359,
+    "withAtoms": 3359,
+    "atomTotal": 36755,
+    "families": {
+     "Damage": 6773,
+     "Defense": 3301,
+     "Resistance": 4107,
+     "ToHit": 636,
+     "Heal": 329,
+     "MaxHP": 160,
+     "Regeneration": 578,
+     "Recovery": 551,
+     "Endurance": 720,
+     "EnduranceDiscount": 33,
+     "RechargeTime": 616,
+     "Movement": 2542,
+     "Mez": 4779,
+     "MezResist": 1364,
+     "DamageBuff": 5264,
+     "Absorb": 100,
+     "Stealth": 292,
+     "Perception": 151,
+     "Elusivity": 199
+    }
+   }
+  },
+  "structuralZeros": [
+   "pool has ZERO MaxHP atoms while powerset has plenty",
+   "pool has ZERO Elusivity atoms while epic has plenty"
+  ],
+  "empty": []
+ },
+ "rebirth": {
+  "partitions": {
+   "epic": {
+    "powers": 375,
+    "withAtoms": 375,
+    "atomTotal": 3022,
+    "families": {
+     "Damage": 791,
+     "Defense": 155,
+     "Resistance": 536,
+     "ToHit": 54,
+     "Heal": 15,
+     "MaxHP": 12,
+     "Regeneration": 29,
+     "Recovery": 64,
+     "Endurance": 115,
+     "EnduranceDiscount": 8,
+     "RechargeTime": 34,
+     "Movement": 138,
+     "Mez": 510,
+     "MezResist": 70,
+     "DamageBuff": 175,
+     "Absorb": 4,
+     "Stealth": 4,
+     "Perception": 24,
+     "Elusivity": 69
+    }
+   },
+   "pool": {
+    "powers": 83,
+    "withAtoms": 83,
+    "atomTotal": 1498,
+    "families": {
+     "Damage": 416,
+     "Defense": 369,
+     "Resistance": 44,
+     "ToHit": 7,
+     "Heal": 8,
+     "MaxHP": 0,
+     "Regeneration": 9,
+     "Recovery": 16,
+     "Endurance": 7,
+     "EnduranceDiscount": 0,
+     "RechargeTime": 9,
+     "Movement": 144,
+     "Mez": 198,
+     "MezResist": 44,
+     "DamageBuff": 64,
+     "Absorb": 12,
+     "Stealth": 11,
+     "Perception": 2,
+     "Elusivity": 0
+    }
+   },
+   "powerset": {
+    "powers": 2806,
+    "withAtoms": 2806,
+    "atomTotal": 29396,
+    "families": {
+     "Damage": 5758,
+     "Defense": 2256,
+     "Resistance": 2697,
+     "ToHit": 493,
+     "Heal": 271,
+     "MaxHP": 76,
+     "Regeneration": 366,
+     "Recovery": 317,
+     "Endurance": 471,
+     "EnduranceDiscount": 26,
+     "RechargeTime": 441,
+     "Movement": 1908,
+     "Mez": 4471,
+     "MezResist": 1076,
+     "DamageBuff": 4364,
+     "Absorb": 185,
+     "Stealth": 157,
+     "Perception": 107,
+     "Elusivity": 126
+    }
+   }
+  },
+  "structuralZeros": [
+   "pool has ZERO MaxHP atoms while powerset has plenty",
+   "pool has ZERO Elusivity atoms while epic has plenty"
+  ],
+  "empty": []
+ },
+ "thunderspy": {
+  "partitions": {
+   "epic": {
+    "powers": 330,
+    "withAtoms": 330,
+    "atomTotal": 1573,
+    "families": {
+     "Damage": 24,
+     "Defense": 76,
+     "Resistance": 135,
+     "ToHit": 17,
+     "Heal": 0,
+     "MaxHP": 0,
+     "Regeneration": 10,
+     "Recovery": 41,
+     "Endurance": 51,
+     "EnduranceDiscount": 0,
+     "RechargeTime": 1,
+     "Movement": 2,
+     "Mez": 238,
+     "MezResist": 0,
+     "DamageBuff": 0,
+     "Absorb": 0,
+     "Stealth": 0,
+     "Perception": 0,
+     "Elusivity": 0
+    }
+   },
+   "pool": {
+    "powers": 82,
+    "withAtoms": 82,
+    "atomTotal": 621,
+    "families": {
+     "Damage": 8,
+     "Defense": 110,
+     "Resistance": 3,
+     "ToHit": 4,
+     "Heal": 0,
+     "MaxHP": 0,
+     "Regeneration": 8,
+     "Recovery": 1,
+     "Endurance": 5,
+     "EnduranceDiscount": 0,
+     "RechargeTime": 5,
+     "Movement": 25,
+     "Mez": 49,
+     "MezResist": 0,
+     "DamageBuff": 0,
+     "Absorb": 0,
+     "Stealth": 0,
+     "Perception": 0,
+     "Elusivity": 0
+    }
+   },
+   "powerset": {
+    "powers": 2798,
+    "withAtoms": 2798,
+    "atomTotal": 17698,
+    "families": {
+     "Damage": 430,
+     "Defense": 1093,
+     "Resistance": 844,
+     "ToHit": 220,
+     "Heal": 2,
+     "MaxHP": 0,
+     "Regeneration": 193,
+     "Recovery": 141,
+     "Endurance": 179,
+     "EnduranceDiscount": 0,
+     "RechargeTime": 44,
+     "Movement": 204,
+     "Mez": 2561,
+     "MezResist": 0,
+     "DamageBuff": 0,
+     "Absorb": 0,
+     "Stealth": 2,
+     "Perception": 0,
+     "Elusivity": 0
+    }
+   }
+  },
+  "structuralZeros": [],
+  "empty": []
+ }
+}

@@ -1,0 +1,1393 @@
+{
+ "homecoming": {
+  "total": 3847,
+  "twinKeys": 116,
+  "byClass": {
+   "FAMILY_GAP": 23,
+   "FAMILY_EXTRA": 13
+  },
+  "findings": [
+   {
+    "key": "conserve_power",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Regeneration|",
+     "Heal|"
+    ],
+    "extra": [],
+    "gatedDelta": 1,
+    "examples": [
+     "Conserve Power",
+     "Conserve Power",
+     "Conserve Power"
+    ],
+    "refExamples": [
+     "Conserve_Power",
+     "Conserve_Power",
+     "Conserve_Power"
+    ]
+   },
+   {
+    "key": "cremate",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Mez|Knockup"
+    ],
+    "extra": [],
+    "gatedDelta": 1,
+    "examples": [
+     "Cremate"
+    ],
+    "refExamples": [
+     "Cremate",
+     "Cremate"
+    ]
+   },
+   {
+    "key": "cryo_freeze_ray",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Movement|FlyMode"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Cryo Freeze Ray"
+    ],
+    "refExamples": [
+     "Cryo_Freeze_Ray",
+     "Cryo_Freeze_Ray"
+    ]
+   },
+   {
+    "key": "em_pulse",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Mez|Held"
+    ],
+    "extra": [
+     "Mez|Stunned"
+    ],
+    "gatedDelta": 1,
+    "examples": [
+     "EM Pulse"
+    ],
+    "refExamples": [
+     "EM_Pulse",
+     "EM_Pulse"
+    ]
+   },
+   {
+    "key": "fold_space",
+    "cls": "FAMILY_GAP",
+    "src": "pool",
+    "missing": [
+     "EntCreate|"
+    ],
+    "extra": [
+     "Mez|Teleport",
+     "MezResist|Teleport"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Fold Space"
+    ],
+    "refExamples": [
+     "Fold_Space"
+    ]
+   },
+   {
+    "key": "fossilize",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "MezResist|Knockup",
+     "MezResist|Knockback"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Fossilize"
+    ],
+    "refExamples": [
+     "Fossilize",
+     "Fossilize"
+    ]
+   },
+   {
+    "key": "frozen_armor",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Resistance|All"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Frozen Armor",
+     "Frozen Armor",
+     "Frozen Armor"
+    ],
+    "refExamples": [
+     "Frozen_Armor",
+     "Frozen_Armor"
+    ]
+   },
+   {
+    "key": "hibernate",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Resistance|Smashing",
+     "Resistance|Lethal",
+     "Resistance|Fire",
+     "Resistance|Cold",
+     "Resistance|Energy",
+     "Resistance|Negative",
+     "Resistance|Toxic",
+     "Mez|Repel",
+     "MezResist|Repel",
+     "Mez|Held",
+     "Mez|Stunned",
+     "Mez|Sleep"
+    ],
+    "extra": [],
+    "gatedDelta": 1,
+    "examples": [
+     "Hibernate",
+     "Hibernate",
+     "Hibernate"
+    ],
+    "refExamples": [
+     "Hibernate",
+     "Hibernate"
+    ]
+   },
+   {
+    "key": "hurl_boulder",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Movement|FlyMode"
+    ],
+    "extra": [],
+    "gatedDelta": 2,
+    "examples": [
+     "Hurl Boulder"
+    ],
+    "refExamples": [
+     "Hurl_Boulder",
+     "Hurl_Boulder",
+     "Hurl_Boulder"
+    ]
+   },
+   {
+    "key": "indomitable_will",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Mez|Immobilized",
+     "MezResist|Knockup",
+     "MezResist|Knockback",
+     "MezResist|Repel",
+     "Mez|Knockup",
+     "Mez|Knockback",
+     "Mez|Repel"
+    ],
+    "extra": [],
+    "gatedDelta": 15,
+    "examples": [
+     "Indomitable Will",
+     "Indomitable Will"
+    ],
+    "refExamples": [
+     "Indomitable_Will",
+     "Indomitable_Will",
+     "Indomitable_Will"
+    ]
+   },
+   {
+    "key": "murky_cloud",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Endurance|",
+     "Recovery|"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Murky Cloud",
+     "Murky Cloud",
+     "Murky Cloud"
+    ],
+    "refExamples": [
+     "Murky_Cloud",
+     "Murky_Cloud",
+     "Murky_Cloud"
+    ]
+   },
+   {
+    "key": "penumbral_grasp",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "DamageBuff|Smashing",
+     "DamageBuff|Lethal",
+     "DamageBuff|Fire",
+     "DamageBuff|Cold",
+     "DamageBuff|Energy",
+     "DamageBuff|Negative",
+     "DamageBuff|Psionic",
+     "DamageBuff|Toxic"
+    ],
+    "extra": [
+     "MezResist|Knockup",
+     "MezResist|Knockback"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Penumbral Grasp"
+    ],
+    "refExamples": [
+     "Penumbral_Grasp"
+    ]
+   },
+   {
+    "key": "personal_force_field",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "MezResist|Teleport"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Personal Force Field",
+     "Personal Force Field"
+    ],
+    "refExamples": [
+     "Personal_Force_Field",
+     "Personal_Force_Field",
+     "Personal_Force_Field"
+    ]
+   },
+   {
+    "key": "power_boost",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Meta|"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Power Boost",
+     "Power Boost",
+     "Power Boost"
+    ],
+    "refExamples": [
+     "Power_Boost",
+     "Power_Boost",
+     "Power_Boost"
+    ]
+   },
+   {
+    "key": "provoke",
+    "cls": "FAMILY_GAP",
+    "src": "pool",
+    "missing": [
+     "Range|"
+    ],
+    "extra": [],
+    "gatedDelta": 1,
+    "examples": [
+     "Provoke"
+    ],
+    "refExamples": [
+     "Provoke"
+    ]
+   },
+   {
+    "key": "repulsion_field",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Mez|Repel"
+    ],
+    "extra": [],
+    "gatedDelta": 3,
+    "examples": [
+     "Repulsion Field"
+    ],
+    "refExamples": [
+     "Repulsion_Field",
+     "Repulsion_Field",
+     "Repulsion_Field"
+    ]
+   },
+   {
+    "key": "ring_of_fire",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Movement|FlyMode"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Ring of Fire",
+     "Ring of Fire"
+    ],
+    "refExamples": [
+     "Ring_of_Fire",
+     "Ring_of_Fire",
+     "Ring_of_Fire"
+    ]
+   },
+   {
+    "key": "rise_of_the_phoenix",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "MaxHP|"
+    ],
+    "extra": [
+     "Mez|Untouchable",
+     "Mez|Immobilized"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Rise of the Phoenix",
+     "Rise of the Phoenix",
+     "Rise of the Phoenix"
+    ],
+    "refExamples": [
+     "Rise_of_the_Phoenix",
+     "Rise_of_the_Phoenix",
+     "Rise_of_the_Phoenix"
+    ]
+   },
+   {
+    "key": "rock_armor",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Resistance|All"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Rock Armor"
+    ],
+    "refExamples": [
+     "Rock_Armor"
+    ]
+   },
+   {
+    "key": "shatter_armor",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Defense|All"
+    ],
+    "extra": [
+     "Meta|"
+    ],
+    "gatedDelta": 1,
+    "examples": [
+     "Shatter Armor"
+    ],
+    "refExamples": [
+     "Shatter_Armor",
+     "Shatter_Armor",
+     "Shatter_Armor"
+    ]
+   },
+   {
+    "key": "sleep_grenade",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "EntCreate|"
+    ],
+    "extra": [
+     "Mez|Sleep",
+     "Damage|Smashing"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Sleep Grenade"
+    ],
+    "refExamples": [
+     "Sleep_Grenade",
+     "Sleep_Grenade"
+    ]
+   },
+   {
+    "key": "soul_transfer",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Absorb|",
+     "Mez|Terrorized",
+     "Mez|Held",
+     "Mez|Sleep",
+     "Mez|Knockback",
+     "ToHit|",
+     "RechargePower|"
+    ],
+    "extra": [
+     "Damage|Negative",
+     "Heal|",
+     "Endurance||PT",
+     "Mez|Untouchable",
+     "Stealth|",
+     "Meta|"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Soul Transfer"
+    ],
+    "refExamples": [
+     "Soul_Transfer",
+     "Soul_Transfer",
+     "Soul_Transfer"
+    ]
+   },
+   {
+    "key": "telekinesis",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Meta|"
+    ],
+    "extra": [
+     "Mez|Repel",
+     "Mez|Immobilized"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Telekinesis"
+    ],
+    "refExamples": [
+     "Telekinesis",
+     "Telekinesis"
+    ]
+   },
+   {
+    "key": "ball_lightning",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Recovery|"
+    ],
+    "gatedDelta": 2,
+    "examples": [
+     "Ball Lightning",
+     "Ball Lightning",
+     "Ball Lightning"
+    ],
+    "refExamples": [
+     "Ball_Lightning",
+     "Ball_Lightning",
+     "Ball_Lightning"
+    ]
+   },
+   {
+    "key": "block_of_ice",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Mez|Knockup",
+     "Mez|Knockback"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Block of Ice",
+     "Block of Ice"
+    ],
+    "refExamples": [
+     "Block_of_Ice",
+     "Block_of_Ice"
+    ]
+   },
+   {
+    "key": "chain_fences",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "MezResist|Knockup",
+     "MezResist|Knockback"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Chain Fences"
+    ],
+    "refExamples": [
+     "Chain_Fences",
+     "Chain_Fences"
+    ]
+   },
+   {
+    "key": "energy_transfer",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Damage|Smashing"
+    ],
+    "gatedDelta": 1,
+    "examples": [
+     "Energy Transfer"
+    ],
+    "refExamples": [
+     "Energy_Transfer",
+     "Energy_Transfer",
+     "Energy_Transfer"
+    ]
+   },
+   {
+    "key": "havoc_punch",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Mez|Knockback"
+    ],
+    "gatedDelta": 3,
+    "examples": [
+     "Havoc Punch"
+    ],
+    "refExamples": [
+     "Havoc_Punch",
+     "Havoc_Punch",
+     "Havoc_Punch"
+    ]
+   },
+   {
+    "key": "petrifying_gaze",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Damage|Negative"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Petrifying Gaze",
+     "Petrifying Gaze"
+    ],
+    "refExamples": [
+     "Petrifying_Gaze",
+     "Petrifying_Gaze",
+     "Petrifying_Gaze"
+    ]
+   },
+   {
+    "key": "poisonous_ray",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Damage|Energy",
+     "Resistance|Smashing",
+     "Resistance|Lethal",
+     "Resistance|Fire",
+     "Resistance|Cold",
+     "Resistance|Energy",
+     "Resistance|Negative",
+     "Resistance|Psionic",
+     "Resistance|Toxic"
+    ],
+    "gatedDelta": 1,
+    "examples": [
+     "Poisonous Ray",
+     "Poisonous Ray"
+    ],
+    "refExamples": [
+     "Poisonous_Ray"
+    ]
+   },
+   {
+    "key": "possess",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "ToHit|",
+     "Heal|",
+     "DamageBuff|Smashing",
+     "DamageBuff|Lethal",
+     "DamageBuff|Fire",
+     "DamageBuff|Cold",
+     "DamageBuff|Energy",
+     "DamageBuff|Negative",
+     "DamageBuff|Psionic",
+     "DamageBuff|Toxic",
+     "Enhancement|Ranged",
+     "Enhancement|Melee",
+     "Enhancement|AoE",
+     "Enhancement|Smashing",
+     "Enhancement|Lethal",
+     "Enhancement|Fire",
+     "Enhancement|Cold",
+     "Enhancement|Energy",
+     "Enhancement|Negative",
+     "Enhancement|Psionic",
+     "Enhancement|Toxic",
+     "Enhancement|All",
+     "Absorb|",
+     "Endurance|",
+     "Movement|Run",
+     "Movement|Fly",
+     "Enhancement|Confused",
+     "Enhancement|Terrorized",
+     "Enhancement|Held",
+     "Enhancement|Immobilized",
+     "Enhancement|Stunned",
+     "Enhancement|Sleep"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Possess",
+     "Possess"
+    ],
+    "refExamples": [
+     "Possess",
+     "Possess"
+    ]
+   },
+   {
+    "key": "targeting_drone",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Accuracy|"
+    ],
+    "gatedDelta": 8,
+    "examples": [
+     "Targeting Drone",
+     "Targeting Drone"
+    ],
+    "refExamples": [
+     "Targeting_Drone",
+     "Targeting_Drone"
+    ]
+   },
+   {
+    "key": "tenebrous_tentacles",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "MezResist|Knockup",
+     "MezResist|Knockback"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Tenebrous Tentacles"
+    ],
+    "refExamples": [
+     "Tenebrous_Tentacles",
+     "Tenebrous_Tentacles",
+     "Tenebrous_Tentacles"
+    ]
+   },
+   {
+    "key": "web_cocoon",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Damage|Toxic"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Web Cocoon",
+     "Web Cocoon",
+     "Web Cocoon"
+    ],
+    "refExamples": [
+     "Web_Cocoon"
+    ]
+   },
+   {
+    "key": "web_grenade",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Damage|Smashing"
+    ],
+    "gatedDelta": 2,
+    "examples": [
+     "Web Grenade",
+     "Web Grenade"
+    ],
+    "refExamples": [
+     "Web_Grenade",
+     "Web_Grenade",
+     "Web_Grenade"
+    ]
+   },
+   {
+    "key": "zapp",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Recovery|"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Zapp"
+    ],
+    "refExamples": [
+     "Zapp",
+     "Zapp",
+     "Zapp"
+    ]
+   }
+  ]
+ },
+ "rebirth": {
+  "total": 3264,
+  "twinKeys": 91,
+  "byClass": {
+   "MISSING_DAMAGE": 2,
+   "FAMILY_GAP": 16,
+   "FAMILY_EXTRA": 6
+  },
+  "findings": [
+   {
+    "key": "knockout_blow",
+    "cls": "MISSING_DAMAGE",
+    "src": "epic",
+    "missing": [
+     "Mez|Taunt",
+     "Damage|Fire"
+    ],
+    "extra": [],
+    "gatedDelta": 2,
+    "examples": [
+     "Knockout Blow"
+    ],
+    "refExamples": [
+     "Knockout_Blow",
+     "Knockout_Blow"
+    ]
+   },
+   {
+    "key": "shatter_armor",
+    "cls": "MISSING_DAMAGE",
+    "src": "epic",
+    "missing": [
+     "Meta|",
+     "Defense|All",
+     "Damage|Fire",
+     "EntCreate|",
+     "RechargePower|"
+    ],
+    "extra": [],
+    "gatedDelta": 2,
+    "examples": [
+     "Shatter Armor",
+     "Shatter Armor"
+    ],
+    "refExamples": [
+     "Shatter_Armor",
+     "Shatter_Armor",
+     "Shatter_Armor"
+    ]
+   },
+   {
+    "key": "boggle",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Meta|"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Boggle"
+    ],
+    "refExamples": [
+     "Boggle",
+     "Boggle",
+     "Boggle"
+    ]
+   },
+   {
+    "key": "conserve_power",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Regeneration|",
+     "Heal|"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Conserve Power",
+     "Conserve Power",
+     "Conserve Power"
+    ],
+    "refExamples": [
+     "Conserve_Power",
+     "Conserve_Power",
+     "Conserve_Power"
+    ]
+   },
+   {
+    "key": "em_pulse",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Mez|Held"
+    ],
+    "extra": [
+     "Mez|Stunned"
+    ],
+    "gatedDelta": 1,
+    "examples": [
+     "EM Pulse",
+     "EM Pulse"
+    ],
+    "refExamples": [
+     "EM_Pulse"
+    ]
+   },
+   {
+    "key": "fossilize",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "MezResist|Knockback",
+     "MezResist|Knockup",
+     "Mez|Knockback",
+     "Mez|Knockup"
+    ],
+    "extra": [
+     "Damage|Fire"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Fossilize"
+    ],
+    "refExamples": [
+     "Fossilize",
+     "Fossilize"
+    ]
+   },
+   {
+    "key": "frozen_armor",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Resistance|All"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Frozen Armor",
+     "Frozen Armor",
+     "Frozen Armor"
+    ],
+    "refExamples": [
+     "Frozen_Armor"
+    ]
+   },
+   {
+    "key": "hurl_boulder",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Movement|FlyMode"
+    ],
+    "extra": [],
+    "gatedDelta": 2,
+    "examples": [
+     "Hurl Boulder"
+    ],
+    "refExamples": [
+     "Hurl_Boulder",
+     "Hurl_Boulder",
+     "Hurl_Boulder"
+    ]
+   },
+   {
+    "key": "indomitable_will",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Mez|Immobilized",
+     "MezResist|Knockback",
+     "MezResist|Knockup",
+     "Mez|Knockback",
+     "Mez|Knockup",
+     "MezResist|Repel",
+     "Mez|Repel"
+    ],
+    "extra": [],
+    "gatedDelta": 15,
+    "examples": [
+     "Indomitable Will",
+     "Indomitable Will"
+    ],
+    "refExamples": [
+     "Indomitable_Will",
+     "Indomitable_Will",
+     "Indomitable_Will"
+    ]
+   },
+   {
+    "key": "invisibility",
+    "cls": "FAMILY_GAP",
+    "src": "pool",
+    "missing": [
+     "Defense|Psionic"
+    ],
+    "extra": [
+     "Mez|OnlyAffectsSelf"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Invisibility"
+    ],
+    "refExamples": [
+     "Invisibility"
+    ]
+   },
+   {
+    "key": "mass_levitate",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Meta|"
+    ],
+    "extra": [],
+    "gatedDelta": 3,
+    "examples": [
+     "Mass Levitate"
+    ],
+    "refExamples": [
+     "Mass_Levitate",
+     "Mass_Levitate",
+     "Mass_Levitate"
+    ]
+   },
+   {
+    "key": "personal_force_field",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "MezResist|Teleport",
+     "Meta|",
+     "EntCreate|"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Personal Force Field",
+     "Personal Force Field"
+    ],
+    "refExamples": [
+     "Personal_Force_Field",
+     "Personal_Force_Field",
+     "Personal_Force_Field"
+    ]
+   },
+   {
+    "key": "provoke",
+    "cls": "FAMILY_GAP",
+    "src": "pool",
+    "missing": [
+     "Range|"
+    ],
+    "extra": [],
+    "gatedDelta": 1,
+    "examples": [
+     "Provoke"
+    ],
+    "refExamples": [
+     "Provoke"
+    ]
+   },
+   {
+    "key": "repulsion_field",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "EntCreate|"
+    ],
+    "extra": [
+     "Mez|Knockback",
+     "Endurance|"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Repulsion Field"
+    ],
+    "refExamples": [
+     "Repulsion_Field",
+     "Repulsion_Field",
+     "Repulsion_Field"
+    ]
+   },
+   {
+    "key": "ring_of_fire",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Movement|FlyMode"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Ring of Fire",
+     "Ring of Fire",
+     "Ring of Fire"
+    ],
+    "refExamples": [
+     "Ring_of_Fire",
+     "Ring_of_Fire",
+     "Ring_of_Fire"
+    ]
+   },
+   {
+    "key": "rock_armor",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Recovery|",
+     "Resistance|All"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Rock Armor"
+    ],
+    "refExamples": [
+     "Rock_Armor"
+    ]
+   },
+   {
+    "key": "static_discharge",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Meta|"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Static Discharge",
+     "Static Discharge",
+     "Static Discharge"
+    ],
+    "refExamples": [
+     "Static_Discharge"
+    ]
+   },
+   {
+    "key": "targeting_drone",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "EntCreate|"
+    ],
+    "extra": [
+     "Accuracy|"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Targeting Drone",
+     "Targeting Drone",
+     "Targeting Drone"
+    ],
+    "refExamples": [
+     "Targeting_Drone"
+    ]
+   },
+   {
+    "key": "consume",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Endurance||PT"
+    ],
+    "gatedDelta": 7,
+    "examples": [
+     "Consume",
+     "Consume"
+    ],
+    "refExamples": [
+     "Consume",
+     "Consume",
+     "Consume"
+    ]
+   },
+   {
+    "key": "poisonous_ray",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Damage|Energy",
+     "Resistance|Smashing",
+     "Resistance|Lethal",
+     "Resistance|Fire",
+     "Resistance|Cold",
+     "Resistance|Energy",
+     "Resistance|Negative",
+     "Resistance|Toxic",
+     "Resistance|Psionic"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Poisonous Ray",
+     "Poisonous Ray"
+    ],
+    "refExamples": [
+     "Poisonous_Ray",
+     "Poisonous_Ray"
+    ]
+   },
+   {
+    "key": "repulsion_bomb",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "DamageBuff|Smashing",
+     "DamageBuff|Lethal",
+     "DamageBuff|Fire",
+     "DamageBuff|Cold",
+     "DamageBuff|Energy",
+     "DamageBuff|Negative",
+     "DamageBuff|Toxic",
+     "DamageBuff|Psionic"
+    ],
+    "gatedDelta": 1,
+    "examples": [
+     "Repulsion Bomb"
+    ],
+    "refExamples": [
+     "Repulsion_Bomb",
+     "Repulsion_Bomb",
+     "Repulsion_Bomb"
+    ]
+   },
+   {
+    "key": "soul_drain",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "DamageBuff|Toxic|PT"
+    ],
+    "gatedDelta": 2,
+    "examples": [
+     "Soul Drain",
+     "Soul Drain",
+     "Soul Drain"
+    ],
+    "refExamples": [
+     "Soul_Drain",
+     "Soul_Drain",
+     "Soul_Drain"
+    ]
+   },
+   {
+    "key": "stalagmites",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Damage|Fire"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Stalagmites"
+    ],
+    "refExamples": [
+     "Stalagmites",
+     "Stalagmites"
+    ]
+   },
+   {
+    "key": "stone_prison",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Damage|Fire"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Stone Prison"
+    ],
+    "refExamples": [
+     "Stone_Prison",
+     "Stone_Prison"
+    ]
+   }
+  ]
+ },
+ "thunderspy": {
+  "total": 3210,
+  "twinKeys": 95,
+  "byClass": {
+   "FAMILY_GAP": 6,
+   "FAMILY_EXTRA": 1
+  },
+  "findings": [
+   {
+    "key": "em_pulse",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Mez|Held",
+     "Endurance|"
+    ],
+    "extra": [
+     "Mez|Stunned",
+     "Unmapped|",
+     "Regeneration|",
+     "Recovery|"
+    ],
+    "gatedDelta": 1,
+    "examples": [
+     "EM Pulse",
+     "EM Pulse"
+    ],
+    "refExamples": [
+     "EM_Pulse",
+     "EM_Pulse"
+    ]
+   },
+   {
+    "key": "fire_shield",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Unmapped|"
+    ],
+    "extra": [],
+    "gatedDelta": 1,
+    "examples": [
+     "Fire Shield",
+     "Fire Shield",
+     "Fire Shield"
+    ],
+    "refExamples": [
+     "Fire_Shield",
+     "Fire_Shield",
+     "Fire_Shield"
+    ]
+   },
+   {
+    "key": "frozen_armor",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Defense|Lethal",
+     "Unmapped|"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Frozen Armor",
+     "Frozen Armor",
+     "Frozen Armor"
+    ],
+    "refExamples": [
+     "Frozen_Armor"
+    ]
+   },
+   {
+    "key": "hoarfrost",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Regeneration|"
+    ],
+    "extra": [
+     "Unmapped|",
+     "Resistance|Toxic"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Hoarfrost",
+     "Hoarfrost",
+     "Hoarfrost"
+    ],
+    "refExamples": [
+     "Hoarfrost",
+     "Hoarfrost"
+    ]
+   },
+   {
+    "key": "provoke",
+    "cls": "FAMILY_GAP",
+    "src": "pool",
+    "missing": [
+     "Unmapped|"
+    ],
+    "extra": [],
+    "gatedDelta": 1,
+    "examples": [
+     "Provoke"
+    ],
+    "refExamples": [
+     "Provoke"
+    ]
+   },
+   {
+    "key": "rock_armor",
+    "cls": "FAMILY_GAP",
+    "src": "epic",
+    "missing": [
+     "Unmapped|"
+    ],
+    "extra": [],
+    "gatedDelta": 0,
+    "examples": [
+     "Rock Armor"
+    ],
+    "refExamples": [
+     "Rock_Armor"
+    ]
+   },
+   {
+    "key": "choking_cloud",
+    "cls": "FAMILY_EXTRA",
+    "src": "epic",
+    "missing": [],
+    "extra": [
+     "Unmapped|"
+    ],
+    "gatedDelta": 0,
+    "examples": [
+     "Choking Cloud"
+    ],
+    "refExamples": [
+     "Choking_Cloud",
+     "Choking_Cloud",
+     "Choking_Cloud"
+    ]
+   }
+  ]
+ }
+}
