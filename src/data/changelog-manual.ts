@@ -28,9 +28,11 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     ]
   },
   {
-    date: '2026-07-15',
+    date: '2026-07-16',
 
     items: [
+      { message: 'Movement speeds in the info panel should now be displayed with rates instead of modifer values.', type: 'fix' },
+      { message: 'A broad swath of powers should now have attribMods to surface their effects correctly instead of being smooshed', type: 'fix' },  
       { message: 'Fix for internal name collisions that could result in powers accepting the wrong enhancments', type: 'fix' },
     ]
   },
