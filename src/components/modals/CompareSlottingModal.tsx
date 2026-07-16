@@ -67,7 +67,7 @@ export function CompareSlottingModal() {
   // Find the current build slotting
   const selectedPower = useMemo(() => {
     if (!compareTarget) return null;
-    return findSelectedPowerInBuild(compareTarget.powerName, build);
+    return findSelectedPowerInBuild(compareTarget.powerName, compareTarget.powerSet, build);
   }, [compareTarget, build]);
 
   // Build list of all slotted powers for the power selector dropdown

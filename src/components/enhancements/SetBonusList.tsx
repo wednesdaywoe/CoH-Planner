@@ -61,9 +61,12 @@ export function SetBonusList({ set, piecesInPower: piecesInPowerProp }: SetBonus
   // Count how many pieces of this set are already slotted in the current power
   const setId = set.id || set.name;
   const piecesInPowerFromPicker = useMemo(() => {
-    if (!picker.currentPowerName) return 0;
-    const findPower = (powers: { name: string; internalName: string; slots: (unknown | null)[] }[]) =>
-      powers.find(p => p.internalName === picker.currentPowerName);
+    if (!picker.currentPowerName || !picker.currentPowerSet) return 0;
+    // Match on (powerSet, internalName): internal names are reused across
+    // powersets, so a bare-name search can count another power's set pieces.
+    const findPower = (powers: { name: string; internalName: string; powerSet: string; slots: (unknown | null)[] }[]) =>
+      powers.find(p => p.internalName === picker.currentPowerName
+                    && p.powerSet === picker.currentPowerSet);
 
     const power = findPower(build.primary.powers)
       || findPower(build.secondary.powers)
@@ -78,7 +81,7 @@ export function SetBonusList({ set, piecesInPower: piecesInPowerProp }: SetBonus
       const ioEnh = s as { type?: string; setId?: string };
       return ioEnh.type === 'io-set' && ioEnh.setId === setId;
     }).length;
-  }, [build, picker.currentPowerName, setId]);
+  }, [build, picker.currentPowerName, picker.currentPowerSet, setId]);
 
   const piecesInPower = piecesInPowerProp ?? piecesInPowerFromPicker;
 

@@ -79,10 +79,14 @@ export function PoolPowers() {
     // Don't clear — keep showing the last-hovered power until a new one is hovered
   };
 
-  const handleEnhancementHover = (powerName: string, slotIndex: number) => {
+  // poolId is threaded in the same way handlePowerHover takes it: a power's
+  // identity is (powerSet, internalName), and pool names collide with primary
+  // ones ([controller] `Invisibility` = Superior Invisibility vs Infiltration).
+  const handleEnhancementHover = (powerName: string, poolId: string, slotIndex: number) => {
     setInfoPanelContent({
       type: 'slotted-enhancement',
       powerName,
+      powerSet: poolId,
       slotIndex,
     });
   };
@@ -143,7 +147,7 @@ export function PoolPowers() {
             onSetActiveSubPower={setActiveSubPower}
             onPowerLeave={handlePowerLeave}
             onPowerRightClick={(e, power) => handlePowerRightClick(e, power, poolSelection.id)}
-            onEnhancementHover={handleEnhancementHover}
+            onEnhancementHover={(powerName, slotIndex) => handleEnhancementHover(powerName, poolSelection.id, slotIndex)}
             onClearEnhancement={handleClearEnhancement}
             onAddSlots={handleAddSlots}
             onRemoveSlot={handleRemoveSlot}
@@ -255,7 +259,8 @@ export function InherentPowers({ group }: { group?: InherentGroupKey } = {}) {
     // Keep showing the last-hovered power until a new one is hovered.
   };
   const handleEnhancementHover = (powerName: string, slotIndex: number) => {
-    setInfoPanelContent({ type: 'slotted-enhancement', powerName, slotIndex });
+    // Matches handlePowerHover above — this section renders inherents only.
+    setInfoPanelContent({ type: 'slotted-enhancement', powerName, powerSet: 'Inherent', slotIndex });
   };
   const handlePowerRightClick = (e: React.MouseEvent, power: SelectedPower) => {
     e.preventDefault();
@@ -656,6 +661,10 @@ function EpicPoolSelectedPowers({ epicPool, isPowerLocked, slotLevelsMap }: Epic
     setInfoPanelContent({
       type: 'slotted-enhancement',
       powerName,
+      // Matches the lockInfoPanel 'power' content above — this section renders
+      // the epic pool only. Epic names collide with secondary ones ([dominator]
+      // `Fire_Blast` = Fire Blast vs Rain of Fire), so this must be explicit.
+      powerSet: epicPool.id,
       slotIndex,
     });
   };

@@ -28,6 +28,13 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     ]
   },
   {
+    date: '2026-07-15',
+
+    items: [
+      { message: 'Fix for internal name collisions that could result in powers accepting the wrong enhancments', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-07-14',
 
     items: [
