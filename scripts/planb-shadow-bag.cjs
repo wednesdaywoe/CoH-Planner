@@ -44,6 +44,7 @@
 require('tsx/cjs');
 const fs = require('fs');
 const path = require('path');
+const { sweepDataset } = require('./planb-shadow-sweep.cjs');
 const {
   atomsOf, atomsOfType, baseAtoms, selfDirected, enhanceableVsNot, resistibleTwins,
   durationBuckets,
@@ -94,6 +95,13 @@ const NON_ATOM_SLOTS = new Set([
   'accuracy', 'range', 'recharge', 'enduranceCost', 'activatePeriod', 'castTime',
   'effectArea', 'radius', 'arc', 'maxTargets', 'buffDuration', 'durations',
   'maxStacks', 'stacksLinear', 'stackCaps', 'stackInterval', 'summon',
+  // The pool / epic-pool converters spell two of the same metadata fields differently
+  // ("legacy naming for the transformation layer", per convert-pool-powers.cjs):
+  // `endurance` for `enduranceCost` and `activationTime` for `castTime`. Both are power
+  // metadata with no atom obligation, exactly like their powerset-side spellings — this
+  // list only became load-bearing for them once the sweep widened past
+  // `generated/powersets` to reach the pool trees at all (2026-07-15).
+  'endurance', 'activationTime',
 ]);
 
 /**
@@ -260,35 +268,23 @@ function checkPower(dataset, power, genPath) {
   }
 }
 
+// Sweeps the dataset's WHOLE generated tree (see planb-shadow-sweep.cjs) — including
+// power-pools.ts / epic-pools.ts, which every shadow's hand-rolled sweep used to miss.
 function sweep(dataset) {
-  const root = path.join(REPO, 'src/data/datasets', dataset, 'generated/powersets');
-  if (!fs.existsSync(root)) { console.log(`  (no generated tree for ${dataset} — skipped)`); return; }
-  stats.datasets++;
-  const stack = [root];
-  while (stack.length) {
-    const d = stack.pop();
-    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-      const p = path.join(d, e.name);
-      if (e.isDirectory()) { stack.push(p); continue; }
-      if (!e.name.endsWith('.ts') || e.name === 'index.ts') continue;
-      let mod;
-      // A generated power that will not load is not a pass — it is a power this
-      // harness never checked. Surface it as a divergence rather than skipping
-      // it, or the corpus-wide claim quietly stops being corpus-wide.
-      try {
-        mod = require(p);
-      } catch (err) {
-        stats.loadFailed++;
-        fail(dataset, path.relative(REPO, p), 'LOAD', `generated power failed to load: ${err.message}`);
-        continue;
-      }
-      for (const v of Object.values(mod)) {
-        if (v && typeof v === 'object' && !Array.isArray(v) && (v.effects || v.atoms)) {
-          checkPower(dataset, v, path.relative(REPO, p));
-        }
-      }
-    }
+  if (!fs.existsSync(path.join(REPO, 'src/data/datasets', dataset, 'generated'))) {
+    console.log(`  (no generated tree for ${dataset} — skipped)`);
+    return;
   }
+  stats.datasets++;
+  sweepDataset(dataset, (power, rel) => checkPower(dataset, power, rel), {
+    // A generated power that will not load is not a pass — it is a power this
+    // harness never checked. Surface it as a divergence rather than skipping
+    // it, or the corpus-wide claim quietly stops being corpus-wide.
+    onLoadError: (rel, err) => {
+      stats.loadFailed++;
+      fail(dataset, rel, 'LOAD', `generated power failed to load: ${err.message}`);
+    },
+  });
 }
 
 for (const ds of DATASETS) {

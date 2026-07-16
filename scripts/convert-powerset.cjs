@@ -3647,14 +3647,28 @@ function _withAtomField(tuple, field, value) {
  * provenance (redirect chains, `activation_effects` filters), not just on the
  * gate expression, so the runtime cannot re-derive it. See `AtomicEffect.gated`.
  */
-function encodeAtomsForEmit(templates, baseTemplates) {
+function encodeAtomsForEmit(templates, baseTemplates, powerName) {
   const { encodeAtom } = _getAtomCore();
   const atoms = templatesToAtoms(templates);
   if (!atoms.length) return undefined;
+  // HARD INVARIANT (asserted below, after stamping): the atoms left unstamped
+  // (`baseAtoms` at runtime) must be EXACTLY the atoms of `baseTemplates` — the set
+  // that fed the bag. Phase 2's appliers read `baseAtoms` in place of a bag slot, so
+  // an over-inclusive stamp double-counts every gated variant (a stance-gated armor
+  // summed into the base) and an under-inclusive one silently drops real effects.
+  //
+  // This lives in the ENCODER rather than at a call site because it is a property of
+  // the encoding, and every emitter needs it: the pool/epic-pool converters gained
+  // atoms later than convert-powerset.cjs, and an invariant duplicated per call site
+  // is one a new emitter can forget. It also covers what the shadow harness
+  // structurally cannot — that harness checks `bag ⊆ atoms` by existence, which is
+  // insensitive to over-inclusion (marking every atom base still satisfies every
+  // existence check — verified by mutation). Cheap and exact, so it runs unconditionally.
+  const expectedBase = templatesToAtoms(baseTemplates || templates).length;
   // `templatesToAtoms` stamps `_tmplIdx` as the 1-based index into `templates`,
   // so it maps each atom back to the template it came from.
   const baseSet = new Set(baseTemplates || templates);
-  return atoms.map((a) => {
+  const encoded = atoms.map((a) => {
     const src = templates[a._tmplIdx - 1];
     // `gated`, `perTarget` and `suppressible` are converter verdicts stamped onto
     // the atom (perTarget by `computeAoePerTargetPatches`, which alone holds the
@@ -3670,6 +3684,17 @@ function encodeAtomsForEmit(templates, baseTemplates) {
     if (a._suppressedByEvents || a._combatGated) patch.suppressible = true;
     return encodeAtom(Object.keys(patch).length ? { ...a, ...patch } : a);
   });
+
+  const actualBase = encoded.filter((t) => t[_gatedIdx()] !== true).length;
+  if (actualBase !== expectedBase) {
+    throw new Error(
+      `[atoms] base-set mismatch for "${powerName || '(unnamed)'}": ${actualBase} unstamped ` +
+      `atoms but baseTemplates yields ${expectedBase}. The gated stamp no longer tracks ` +
+      `the bag's template set — check for duplicate template objects in baseTemplates ` +
+      `(the union's Set would collapse them) or a collector that rewrites templates.`
+    );
+  }
+  return encoded;
 }
 
 /**
@@ -6252,32 +6277,9 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType) {
       ...allTemplates,
       ...collectAtomTemplates(powerJson.effects || []),
     ])];
-    const atoms = encodeAtomsForEmit(atomTemplates, allTemplates);
+    // The base-set hard invariant is asserted inside `encodeAtomsForEmit`.
+    const atoms = encodeAtomsForEmit(atomTemplates, allTemplates, powerJson.name);
     if (atoms) power.atoms = atoms;
-
-    // HARD INVARIANT: the atoms left unstamped (`baseAtoms` at runtime) must be
-    // EXACTLY the atoms of `allTemplates` — the set that fed the bag. Phase 2's
-    // appliers read `baseAtoms` in place of a bag slot, so an over-inclusive
-    // stamp double-counts every gated variant (a stance-gated armor summed into
-    // the base) and an under-inclusive one silently drops real effects.
-    //
-    // This is asserted HERE, not in the shadow harness, because only this scope
-    // holds `allTemplates`. It also covers what the harness structurally cannot:
-    // that harness checks `bag ⊆ atoms` by existence, which is insensitive to
-    // over-inclusion (marking every atom base still satisfies every existence
-    // check — verified by mutation). Cheap and exact, so it runs unconditionally.
-    if (atoms) {
-      const expected = templatesToAtoms(allTemplates).length;
-      const actual = atoms.filter((t) => t[_gatedIdx()] !== true).length;
-      if (actual !== expected) {
-        throw new Error(
-          `[atoms] base-set mismatch for "${powerJson.name}": ${actual} unstamped atoms ` +
-          `but allTemplates yields ${expected}. The gated stamp no longer tracks the ` +
-          `bag's template set — check for duplicate template objects in allTemplates ` +
-          `(the union's Set would collapse them) or a collector that rewrites templates.`
-        );
-      }
-    }
 
     // Resolve location pseudo-pet redirect lists into synthesized ability lists
     // (Storm Cell, Category Five, Freezing Rain, …) so the runtime can surface
@@ -6786,6 +6788,7 @@ module.exports = {
   RAW_DATA_PATH,
   collectAllTemplates,
   collectAtomTemplates,
+  encodeAtomsForEmit,
   resolveRedirectPath,
   collectRedirectTemplates,
   collectTemplatesDeep,

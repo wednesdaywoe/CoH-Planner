@@ -25,6 +25,8 @@ const {
   inferAllowedSetCategories,
   normalizeIconPath,
   collectTemplatesDeep,
+  collectAtomTemplates,
+  encodeAtomsForEmit,
   RAW_DATA_PATH,
   BIN_BOOST_MAP,
   EFFECT_AREA_MAP,
@@ -275,6 +277,37 @@ function convertPoolPower(rawJson, rank, availableLevel) {
         effects[key] = value;
       }
     }
+
+    // NB per-target stacking (`detectStackingEffects`) is deliberately NOT run here,
+    // unlike convert-epic-pools.cjs where it fixes Soul Drain's missing per-foe scaling.
+    // It was tried for pipeline symmetry and REGRESSED Cross Punch: the detector's AoE
+    // heuristic reads "a Self-targeted Stack template in an AoE" as a per-foe increment,
+    // but Cross Punch's +5% ToHit / +5% Recharge are Fighting Synergy — granted per
+    // FIGHTING POOL POWER OWNED (Boxing/Kick), applied once per cast, and it is a Cone
+    // with max_targets_hit 5. The detector minted a bogus `perTarget: 0.05` and, worse,
+    // a `tohitBuff` slot duplicating the existing IgnoreStrength `tohitBuffUnenhanced`
+    // half, so the calc would have counted the buff twice.
+    //
+    // No pool power is known to be genuinely per-foe, so the honest position is to leave
+    // the detector off here rather than run a heuristic whose only live effect is a false
+    // positive. Revisit if a per-foe pool power ever appears — with a gate first.
+
+    // Plan B — emit the pre-projection atom list alongside the bag, exactly as
+    // convert-powerset.cjs does for archetype powers. Pool powers went without it
+    // until 2026-07-15, which meant every atom-native applier silently fell back to
+    // the bag for Health, Stamina, Tough, Weave, Maneuvers, Assault et al. — safe
+    // (that is what the fallback is for) but invisible, and a hard blocker on Phase 3,
+    // since the bag cannot be deleted while ~15% of powers have no atom representation.
+    //
+    // Union of `allTemplates` (what the bag saw) with `collectAtomTemplates` (which adds
+    // back the gated groups the bag's collector drops); the difference is stamped
+    // `gated: true`. See the same block in convert-powerset.cjs for the full rationale.
+    const atomTemplates = [...new Set([
+      ...allTemplates,
+      ...collectAtomTemplates(rawJson.effects),
+    ])];
+    const atoms = encodeAtomsForEmit(atomTemplates, allTemplates, rawJson.name);
+    if (atoms) power.atoms = atoms;
   }
 
   power.effects = effects;
@@ -419,6 +452,16 @@ function serializeValue(val, indent) {
     const keys = Object.keys(val);
     if (keys.length === 0) return '{}';
     const entries = keys.map(k => {
+      // `atoms` is the Plan B wire list — one positional tuple per atom. Render each
+      // tuple on ONE line; the generic array branch above would explode every scalar
+      // onto its own line, inflating the compact encoding ~10× on disk. Mirrors
+      // `serializePower` in convert-powerset.cjs.
+      if (k === 'atoms' && Array.isArray(val[k]) && val[k].length) {
+        const tuples = val[k]
+          .map(t => `${' '.repeat(indent + 4)}${JSON.stringify(t)}`)
+          .join(',\n');
+        return `${' '.repeat(indent + 2)}${JSON.stringify(k)}: [\n${tuples}\n${' '.repeat(indent + 2)}]`;
+      }
       const v = serializeValue(val[k], indent + 2);
       return `${' '.repeat(indent + 2)}${JSON.stringify(k)}: ${v}`;
     });

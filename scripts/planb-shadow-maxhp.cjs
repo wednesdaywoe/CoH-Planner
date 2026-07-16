@@ -32,6 +32,7 @@
 require('tsx/cjs');
 const fs = require('fs');
 const path = require('path');
+const { sweepDataset } = require('./planb-shadow-sweep.cjs');
 const { maxHPBuffValue } = require('../src/data/core/atom-query.ts');
 
 const REPO = path.resolve(__dirname, '..');
@@ -80,25 +81,10 @@ function checkPower(dataset, power, genPath) {
   }
 }
 
+// Sweeps the dataset's WHOLE generated tree (see planb-shadow-sweep.cjs) — including
+// power-pools.ts / epic-pools.ts, which every shadow's hand-rolled sweep used to miss.
 function sweep(dataset) {
-  const root = path.join(REPO, 'src/data/datasets', dataset, 'generated/powersets');
-  if (!fs.existsSync(root)) return;
-  const stack = [root];
-  while (stack.length) {
-    const d = stack.pop();
-    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-      const p = path.join(d, e.name);
-      if (e.isDirectory()) { stack.push(p); continue; }
-      if (!e.name.endsWith('.ts') || e.name === 'index.ts') continue;
-      let mod;
-      try { mod = require(p); } catch { continue; }
-      for (const v of Object.values(mod)) {
-        if (v && typeof v === 'object' && !Array.isArray(v) && (v.effects || v.atoms)) {
-          checkPower(dataset, v, path.relative(REPO, p));
-        }
-      }
-    }
-  }
+  sweepDataset(dataset, (power, rel) => checkPower(dataset, power, rel));
 }
 
 for (const ds of DATASETS) sweep(ds);

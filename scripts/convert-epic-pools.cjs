@@ -23,6 +23,10 @@ const {
   extractEffects,
   extractDamage,
   collectTemplatesDeep,
+  collectAtomTemplates,
+  encodeAtomsForEmit,
+  detectStackingEffects,
+  mergeStackingPatches,
   RAW_DATA_PATH,
   EFFECT_AREA_MAP,
   BIN_BOOST_MAP,
@@ -224,6 +228,33 @@ function convertEpicPower(rawJson, rank, availableLevel) {
         effects[key] = value;
       }
     }
+
+    // Per-target stacking (Soul Drain / Spirit Drain's +ToHit/+Damage per foe hit).
+    // This converter never ran the detector, so the ENTIRE epic/patron tier shipped its
+    // AoE self-buffs as flat values: epic Soul Drain was {scale:1}/{scale:4} where the
+    // identical Dark Melee primary power is {1.2, perTarget:0.2}/{4.8, perTarget:0.8}.
+    // At 8 foes that under-reported +2.6 ToHit as +1.0 and +10.4 damage as +4.0 — a real
+    // planner bug for every Blaster/Controller/Corruptor taking Soul Drain via an epic
+    // pool, invisible until the Plan B shadows widened to sweep this tree (2026-07-15).
+    //
+    // Must run BEFORE the atom emit below: `computeAoePerTargetPatches` stamps
+    // `_perTargetIncrement` on the templates, and `encodeAtomsForEmit` copies it onto
+    // the atom (see AtomicEffect.perTarget). Reversing the order silently drops the stamp.
+    const stackingResult = detectStackingEffects(rawJson);
+    if (stackingResult) mergeStackingPatches(effects, stackingResult);
+
+    // Plan B — emit the pre-projection atom list alongside the bag, exactly as
+    // convert-powerset.cjs and convert-pool-powers.cjs do. Epic-pool powers went
+    // without it until 2026-07-15, so every atom-native applier silently fell back to
+    // the bag for the whole epic/patron tier — safe, but invisible, and a Phase 3
+    // blocker. See the same block in convert-powerset.cjs for the full rationale; the
+    // base-set hard invariant is asserted inside `encodeAtomsForEmit`.
+    const atomTemplates = [...new Set([
+      ...allTemplates,
+      ...collectAtomTemplates(rawJson.effects),
+    ])];
+    const atoms = encodeAtomsForEmit(atomTemplates, allTemplates, rawJson.name);
+    if (atoms) power.atoms = atoms;
   }
 
   power.effects = effects;
@@ -438,6 +469,16 @@ function serializeValue(val, indent) {
     const keys = Object.keys(val);
     if (keys.length === 0) return '{}';
     const entries = keys.map(k => {
+      // `atoms` is the Plan B wire list — one positional tuple per atom, rendered one
+      // per line. The generic array branch above would explode every scalar onto its
+      // own line, inflating the compact encoding ~10× on disk. Mirrors `serializePower`
+      // in convert-powerset.cjs.
+      if (k === 'atoms' && Array.isArray(val[k]) && val[k].length) {
+        const tuples = val[k]
+          .map(t => `${' '.repeat(indent + 4)}${JSON.stringify(t)}`)
+          .join(',\n');
+        return `${' '.repeat(indent + 2)}${JSON.stringify(k)}: [\n${tuples}\n${' '.repeat(indent + 2)}]`;
+      }
       const v = serializeValue(val[k], indent + 2);
       return `${' '.repeat(indent + 2)}${JSON.stringify(k)}: ${v}`;
     });
