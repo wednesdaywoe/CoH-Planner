@@ -29,12 +29,33 @@ export const BoostRange: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 30,
+    "durations": {
+      "movement": 10
+    },
+    "effectDuration": 30,
+    "movement": {
+      "flySpeed": {
+        "scale": 0.15,
+        "table": "Melee_SpeedFlying"
+      },
+      "jumpSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedJumping"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
+      }
+    }
+  },
   "atoms": [
     ["Unmapped",null,0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["RechargeTime",null,0.2,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.15,1,10,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,10,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Jump",0.1,1,10,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.11,1,9.17,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

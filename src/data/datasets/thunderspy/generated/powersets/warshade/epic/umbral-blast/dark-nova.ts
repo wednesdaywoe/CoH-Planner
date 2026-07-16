@@ -44,7 +44,14 @@ export const DarkNova: Power = {
   "effects": {
     "buffDuration": 2,
     "durations": {
+      "movement": 2,
       "tohitBuff": 2
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 1.5,
+        "table": "Melee_SpeedFlying"
+      }
     },
     "tohitBuff": {
       "scale": 1,
@@ -53,7 +60,7 @@ export const DarkNova: Power = {
   },
   "atoms": [
     ["Unmapped",null,4,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,2,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",1.5,1,2,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,2,1,2,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,2,1,2,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["ToHit",null,1,1,2,"Melee_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],

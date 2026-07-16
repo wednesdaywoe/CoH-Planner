@@ -2121,6 +2121,12 @@ const MOVEMENT_TYPES = {
   'jumpingspeed': 'jumpSpeed', 'speed_jumping': 'jumpSpeed',
   'movementcontrol': 'movementControl',
   'movementfriction': 'movementFriction',
+  // Thunderspy spelling of the same axes (SpeedRunning/SpeedJumping/SpeedFlying + the
+  // odd RunSpeed/FlySpeed) — mirrors MOVEMENT_AXIS in atomic-effect.ts. See the note
+  // there: mapped rather than parser-renamed because the current tspy binary is
+  // incomplete and re-exporting would regress the committed movement data.
+  'speedrunning': 'runSpeed', 'speedjumping': 'jumpSpeed', 'speedflying': 'flySpeed',
+  'runspeed': 'runSpeed', 'flyspeed': 'flySpeed',
 };
 
 // Resource attributes
@@ -5946,7 +5952,46 @@ function getStrengthsDisallowedIndex() {
   return idx;
 }
 
+/**
+ * Thunderspy drops the per-template `target` (the [[tspy-player-vocab-gap]] schema gap —
+ * it also drops `aspect`), so a tspy movement template arrives with `target: ''`. The bag
+ * routes movement to the self `movement` slot only when `target === 'Self'`, and the atom
+ * bridge's `toWho` comes from the same field — so an empty target means every Thunderspy
+ * travel power (Super Speed, Combat Jumping, Hover, Sprint…) contributes +0 movement, in
+ * both the bag and the atom paths. The power-level `targets_affected` is the authoritative
+ * recipient list (GAME-DATA-PRINCIPLES §7), so resolve the empty target from it here,
+ * BEFORE `extractEffects`/`collectAtomTemplates` read it — one fix, both paths.
+ *
+ * Deliberately narrow: fires ONLY for a movement-attrib template whose target is empty AND
+ * whose power is a pure self-buff (`targets_affected === ['Self']`). That covers the 219
+ * self-targeted tspy travel/sprint powers without touching the foe-slow (`['Foe']`) or mixed
+ * (`['Foe','Self']`) cases, where a per-template self/foe split can't be read from the
+ * power-level list and mislabeling a foe slow as a self buff would be worse than the status
+ * quo. HC/Rebirth templates carry real targets, so the empty-target guard makes this a
+ * no-op there — it needs no dataset flag.
+ */
+function resolveThunderspyMovementTargets(powerJson) {
+  const ta = powerJson.targets_affected;
+  if (!Array.isArray(ta) || ta.length !== 1 || ta[0] !== 'Self') return;
+  const isMoveAttrib = (a) => MOVEMENT_TYPES[String(a || '').toLowerCase()] !== undefined;
+  const walk = (groups) => {
+    for (const g of groups || []) {
+      for (const t of g.templates || []) {
+        if (!t.target && Array.isArray(t.attribs) && t.attribs.some(isMoveAttrib)) {
+          t.target = 'Self';
+        }
+      }
+      if (g.child_effects) walk(g.child_effects);
+    }
+  };
+  walk(powerJson.effects);
+}
+
 function convertPower(powerJson, availableLevel, archetypeId, powerType) {
+  // Thunderspy movement target-trap: resolve empty movement-template targets from
+  // targets_affected before any collector reads them (see the helper's docstring).
+  resolveThunderspyMovementTargets(powerJson);
+
   // Map target type to valid TypeScript type (or undefined if unknown)
   const rawTargetType = powerJson.target_type;
   const mappedTargetType = rawTargetType ? TARGET_TYPE_MAP[rawTargetType] : undefined;
@@ -6823,6 +6868,7 @@ module.exports = {
   applyThunderspyDamageType,
   guardThunderspyOnesBuffs,
   guardThunderspyAppliedMez,
+  resolveThunderspyMovementTargets,
   extractEffects,
   templatesToAtoms,
   projectAtomsToEffects,

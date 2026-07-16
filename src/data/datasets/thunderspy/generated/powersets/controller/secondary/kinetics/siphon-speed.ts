@@ -41,18 +41,25 @@ export const SiphonSpeed: Power = {
   "effects": {
     "buffDuration": 60,
     "durations": {
-      "rechargeDebuff": 60
+      "rechargeDebuff": 60,
+      "slow": 60
     },
     "rechargeDebuff": {
       "scale": 0.2,
       "table": "Melee_Ones"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
     }
   },
   "atoms": [
     ["Unmapped",null,0.5,1,60,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["RechargeTime",null,-0.2,1,60,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1,1,60,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,0.85,1,60,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.85,1,60,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Movement","Run",-1,1,60,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",0.85,1,60,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.85,1,60,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

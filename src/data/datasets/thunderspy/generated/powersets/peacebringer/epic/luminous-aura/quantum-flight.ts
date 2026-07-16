@@ -34,9 +34,21 @@ export const QuantumFlight: Power = {
     "Recharge"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "movement": 0.75
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 5,
+        "table": "Melee_SpeedFlying"
+      }
+    }
+  },
   "atoms": [
     ["Unmapped",null,1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,5,1,0.75,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",5,1,0.75,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,3,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,3,1,0.75,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.8,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !"]

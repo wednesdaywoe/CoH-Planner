@@ -43,6 +43,16 @@ export const Shiver: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 60,
+    "durations": {
+      "slow": 60
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    },
     "stun": {
       "mag": 3,
       "scale": 15,
@@ -52,7 +62,7 @@ export const Shiver: Power = {
   "atoms": [
     ["Mez","Stunned",15,3,0,"Ranged_Stun","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0.65,1,60,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1,1,60,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",-1,1,60,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Stunned",22,3,0,"Ranged_Stun","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kStealth source> 0.5 > &&",true],
     ["Mez","Stunned",4,4,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Mez","Stunned",4,1,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq kStealth source> 0.5 > &&",true]

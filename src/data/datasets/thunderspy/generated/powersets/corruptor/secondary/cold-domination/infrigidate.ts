@@ -39,9 +39,21 @@ export const Infrigidate: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "slow": 20
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    }
+  },
   "atoms": [
     ["Unmapped",null,0.7,1,20,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1,1,20,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",-1,1,20,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,2.5,1,20,"Ranged_Debuff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,3,1,20,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]

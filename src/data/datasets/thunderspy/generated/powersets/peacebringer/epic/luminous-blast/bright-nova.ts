@@ -44,7 +44,14 @@ export const BrightNova: Power = {
   "effects": {
     "buffDuration": 1.5,
     "durations": {
+      "movement": 1.5,
       "tohitBuff": 1.5
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 1.5,
+        "table": "Melee_SpeedFlying"
+      }
     },
     "tohitBuff": {
       "scale": 1,
@@ -53,7 +60,7 @@ export const BrightNova: Power = {
   },
   "atoms": [
     ["Unmapped",null,4,1,1.5,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,1.5,1,1.5,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",1.5,1,1.5,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,2,1,1.5,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,2,1,1.5,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["ToHit",null,1,1,1.5,"Melee_Buff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],

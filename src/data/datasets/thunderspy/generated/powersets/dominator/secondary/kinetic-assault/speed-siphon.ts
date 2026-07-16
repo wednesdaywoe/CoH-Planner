@@ -49,12 +49,24 @@ export const SpeedSiphon: Power = {
     "scale": 0.11,
     "table": "Ranged_Damage"
   },
+  "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "slow": 5
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1.5,
+        "table": "Melee_SpeedRunning"
+      }
+    }
+  },
   "atoms": [
     ["Movement","Run",0.05,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Movement","Jump",0.05,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Movement","Fly",0.05,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.11,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
     ["Unmapped",null,0.5,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"],
-    ["Unmapped",null,-1.5,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"]
+    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"entref source> entref target> eq !"]
   ]
 };

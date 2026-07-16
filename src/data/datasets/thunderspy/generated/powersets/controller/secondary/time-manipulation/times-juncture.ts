@@ -43,16 +43,49 @@ export const TimesJuncture: Power = {
     "To Hit Debuff"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 1,
+    "durations": {
+      "slow": 1
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    }
+  },
   "atoms": [
     ["Unmapped",null,1.25,1,1,"Ranged_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
     ["Unmapped",null,0.3,1,1,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
-    ["Unmapped",null,-1,1,1,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? ! enttype target> critter eq &&"],
+    ["Movement","Run",-1,1,1,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? ! enttype target> critter eq &&"],
     ["Unmapped",null,-1.6,1,1,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
     ["Unmapped",null,2,1,1,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? !"],
     ["Unmapped",null,1.5,1,1,"Ranged_DeBuff_ToHit","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?",true],
     ["Unmapped",null,0.36,1,1,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?",true],
-    ["Unmapped",null,-1.2,1,1,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? enttype target> critter eq &&",true],
+    ["Movement","Run",-1.2,1,1,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower? enttype target> critter eq &&",true],
     ["Unmapped",null,-1.92,1,1,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?",true],
     ["Unmapped",null,2.4,1,1,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Temporary_Powers.Temporary_Powers.Time_Crawl_Debuff target.ownPower?",true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "time_crawl_debuff",
+      "label": "Time Crawl Debuff",
+      "scope": "per-power",
+      "defaultActive": false,
+      "mode": "replace",
+      "effects": {
+        "buffDuration": 1,
+        "durations": {
+          "slow": 1
+        },
+        "slow": {
+          "runSpeed": {
+            "scale": 1.2,
+            "table": "Ranged_SpeedRunning"
+          }
+        }
+      }
+    }
   ]
 };

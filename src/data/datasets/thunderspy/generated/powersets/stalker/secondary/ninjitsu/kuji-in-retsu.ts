@@ -59,7 +59,14 @@ export const KujiInRetsu: Power = {
     },
     "durations": {
       "defenseBuff": 90,
+      "movement": 90,
       "recoveryBuff": 90
+    },
+    "movement": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedRunning"
+      }
     },
     "recoveryBuff": {
       "scale": 1,
@@ -71,7 +78,7 @@ export const KujiInRetsu: Power = {
     ["Defense","Ranged",6,1,90,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","AoE",6,1,90,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Recovery",null,1,1,90,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,90,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Run",0.5,1,90,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,1,90,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,4,1,60,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]

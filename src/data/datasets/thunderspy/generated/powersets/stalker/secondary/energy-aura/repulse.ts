@@ -40,6 +40,16 @@ export const Repulse: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "slow": 5
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Melee_SpeedRunning"
+      }
+    },
     "stun": {
       "mag": 2,
       "scale": 4,
@@ -49,7 +59,7 @@ export const Repulse: Power = {
   "atoms": [
     ["Mez","Stunned",4,2,0,"Melee_Stun","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0.7,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Run",-1,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Stunned",2,2,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true],
     ["Endurance",null,-0.25,1,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kStunned target> 0 >",true]
   ]

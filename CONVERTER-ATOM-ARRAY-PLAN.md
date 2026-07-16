@@ -16,8 +16,10 @@
 > "Current" for a template that stated none. Gated by `scripts/planb-shadow-movement.cjs`
 > at **281/281, 0 diverge**, mutation-tested on **12 axes, all killed**. Bag byte-identical
 > (every one of ~58k changed generated lines is an atom tuple), regen idempotent, 1139
-> tests green. **Found, not fixed: every Thunderspy travel power gives +0 movement** —
-> see §The Thunderspy movement blackout.
+> tests green. **Follow-up FIXED same day (2026-07-16): the Thunderspy movement blackout**
+> (every tspy travel power gave +0 movement) — resolved converter-side after the re-export
+> investigation found the tspy binary incomplete; tspy gate coverage 0 → 59 slots, 1149
+> tests. See §The Thunderspy movement blackout.
 > **Slice 6 SHIPPED (2026-07-15): all four resource slots (`regenBuff`/
 > `regenBuffUnenhanced`, `recoveryBuff`/`recoveryBuffUnenhanced`) migrated, retiring the
 > LAST two of the five `*Unenhanced` twin slots (only ToHit's and movement's remain).
@@ -1146,7 +1148,16 @@ incarnate, self-penalties):
   like Time's Juncture) also stays a bag read on purpose: it is a power-level heuristic
   about sibling slots, not a property of a movement atom, so it is not this slice's to move.
 
-  ### The Thunderspy movement blackout — FOUND, NOT FIXED (2026-07-16)
+  ### The Thunderspy movement blackout — FIXED (2026-07-16, converter-side)
+
+  > **Resolved the same day it was documented as deferred.** The "parser + re-export"
+  > decision below was reversed by the data (verify-don't-assume, §6 of GAME-DATA-PRINCIPLES):
+  > investigating the re-export revealed the **current tspy `bin.pigg` is incomplete** — it
+  > parses Super Speed down to a single `["Ones"] 35.0` template, with the real movement
+  > templates GONE from the binary but PRESENT in the committed export. A re-export would have
+  > *regressed* the whole tspy dataset. So the movement data was already in
+  > `exported_powers/thunderspy` all along; the fix is purely converter-side and needs no
+  > re-export. See §"The fix that shipped" at the end of this section.
 
   Surfaced the moment the Slice 7 gate printed per-dataset coverage: **Thunderspy scores
   0 movement axis slots**, while HC has 160 and Rebirth 121. Thunderspy SHIPS Super Speed,
@@ -1171,13 +1182,56 @@ incarnate, self-penalties):
      (`movementCapBump`) is not recoverable. A converter-only alias would mis-route tspy
      travel caps.
 
-  **Deliberately deferred, not folded into Slice 7** (maintainer decision 2026-07-16): the
-  fix is parser-side (map the `Speed*` vocabulary AND decide the aspect synthesis) plus a
-  re-export of all three datasets per the re-export discipline — separate work from a
-  behavior-preserving applier migration. A converter alias alone is a partial fix that risks
-  mis-routing caps, so it was rejected. Slice 7 records the gap in the gate header and the
-  per-dataset coverage line so a future tspy fix has a ready oracle: when tspy movement
-  starts flowing, the gate will light up and must be re-verified against HC twins.
+  There is also a SECOND, dropped-field half (below), and originally the plan was to fix both
+  at the parser with a re-export. **That plan was reversed by what the re-export investigation
+  found** (see the callout above): the tspy binary on disk is incomplete, so re-exporting
+  regresses. The committed export already carries the movement data, so the fix moved
+  converter-side.
+
+  **The dropped target.** Beyond spelling, tspy drops the per-template `target` (the
+  [[tspy-player-vocab-gap]] schema gap), so a movement template arrives `target: ''`. The bag
+  routes movement to the self `movement` slot only on `target === 'Self'`, and the atom
+  bridge's `toWho` reads the same field — so even with the spelling mapped, an empty target
+  means +0. The power-level `targets_affected: ['Self']` is the authoritative recipient
+  (GAME-DATA-PRINCIPLES §7), so the target is resolved from it.
+
+  ### The fix that shipped (2026-07-16, converter-side, no re-export)
+
+  Three edits, all on the committed data:
+  1. **Spelling map** — `speedrunning`/`speedjumping`/`speedflying` (+ the odd
+     `runspeed`/`flyspeed`) added to `MOVEMENT_TYPES` (`convert-powerset.cjs`) and
+     `MOVEMENT_AXIS` (`atomic-effect.ts`). Same axes, same `Melee_Speed*` tables as HC.
+  2. **Target resolution** — new `resolveThunderspyMovementTargets(powerJson)` sets a
+     movement template's empty target to `Self` when `targets_affected === ['Self']`, BEFORE
+     any collector reads it, so both the bag and the atom path route it as self. Narrow by
+     design: only movement attribs, only pure-`['Self']` powers (the 219 self travel/sprint
+     powers) — the foe (`['Foe']`) and mixed cases keep the status quo, since a per-template
+     self/foe split can't be read from the power-level list. HC/Rebirth carry real targets,
+     so the empty-target guard makes it a no-op there (no dataset flag needed).
+  3. **Applied in all three converters** — the [[three-power-converters]] drift: the travel
+     powers live in the POOL converter, so `resolveThunderspyMovementTargets` is exported
+     from `convert-powerset.cjs` and called by `convert-pool-powers.cjs` and
+     `convert-epic-pools.cjs` too (this is why the powerset-only first cut left Super
+     Speed/Fly/Super Jump at +0 while 44 powerset-movement slots resolved).
+
+  **Result:** the Slice 7 gate's tspy coverage went **0 → 59 axis slots, 0 divergences**;
+  Super Speed (run 1.25), Fly (fly 1.25), Super Jump (jump 1.25), Sprint and Swift all
+  resolve. Diff is tspy-only (HC/Rebirth generated byte-identical, 116 tspy files), regen
+  idempotent, 1149 tests. Pinned by three tspy cases in `movement-atom-native.verify.test.ts`.
+
+  **TWO gaps remain open (both real, both deferred):**
+  - **Combat Jumping / Hover jumpHeight** — their jump/fly is encoded `Ones`-front (CJ's
+    jumpHeight is a `["Ones"] 2.0 Melee_Ones` template, matching HC CJ's jumpHeight) with the
+    real attrib in the post-`requires` index array. That is a DIFFERENT, deeper front-vs-index
+    layer than the `SpeedRunning` spelling — recovering it needs the index array, i.e. a
+    parser change, which is blocked by the incomplete binary. CJ's defense already works; only
+    its jumpHeight is missing. Both sides (bag + atom) miss it equally, so the gate stays green.
+  - **The incomplete tspy `bin.pigg`** — the current on-disk tspy binary is a stale/partial
+    download (Super Speed → single `Ones` 35 template). The committed export predates it and
+    is BETTER. tspy cannot be safely re-exported until a complete binary is obtained and
+    verified (parses Super Speed's movement). This is the [[tspy-player-vocab-gap]] "confirm
+    download complete before parsing" gotcha; it blocks any tspy parser fix, including the
+    CJ/Hover jumpHeight one above.
 
   ### Correction: `runSpeedUnenhanced` is NOT a converter twin (2026-07-16)
 
@@ -1267,7 +1321,8 @@ the atom carries it and the calc must consume it explicitly.
    `convert-pet-entities.cjs` still emit no atoms (pet-entities has no gate at
    all). Not Plan B scope, but the DoD's "impossible to do silently" claim is
    false for any power they build. See `docs/converter-unification-direction.md`.
-5. **The Thunderspy movement blackout** — every tspy travel power gives +0 movement;
-   parser-side vocabulary + aspect fix plus a 3-dataset re-export. FOUND in Slice 7,
-   deferred (see §The Thunderspy movement blackout). Not a Phase 3 blocker (no bag fact
-   is lost — both sides are equally empty), but a real user-facing bug.
+5. **The Thunderspy movement blackout — FIXED converter-side (2026-07-16).** The speed-based
+   travel powers (Super Speed, Fly, Super Jump, Sprint, Swift) now resolve; tspy gate coverage
+   0 → 59 slots. Two follow-ups remain OPEN, both blocked on a complete tspy binary: Combat
+   Jumping / Hover jumpHeight (an `Ones`-front index-array recovery, parser-side) and the
+   incomplete on-disk tspy `bin.pigg` itself. See §The Thunderspy movement blackout.

@@ -5,7 +5,7 @@
 
 Prefer fixing root problems properly over quick fixes. The planner handles complex game mechanics with many interacting systems (AT tables, enhancement calculations, power effects, set bonuses). Band-aid fixes create compounding issues that are harder to debug later. When a bug surfaces, investigate whether it's a symptom of a deeper systemic issue before patching the surface behavior. This is essential for making the app reliable and maintainable.
 
-**Before touching game data (bin parser, converters, calc), read [GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md)** — the durable principles and the specific gotchas (strength meta-templates, resistance-aspect traps, proc/pet exclusions, the verify-don't-assume discipline, the re-export de-risk workflow). The running issue log is [HOMECOMING_PARSER.md](docs/HOMECOMING_PARSER.md).
+**Before touching game data (bin parser, converters, calc), read [GAME-DATA-PRINCIPLES.md](GAME-DATA-PRINCIPLES.md)** — the durable principles and the specific gotchas (strength meta-templates, resistance-aspect traps, proc/pet exclusions, the verify-don't-assume discipline, the re-export de-risk workflow). For the structural *why* behind those gotchas — how CoH models a power as a flat list of atomic effects, the discriminators that distinguish them, and why any name-bucketed representation collapses — read [docs/COH-DATA-MODEL.md](COH-DATA-MODEL.md) first. The running issue log is [HOMECOMING_PARSER.md](docs/HOMECOMING_PARSER.md).
 
 ## Source Data
 

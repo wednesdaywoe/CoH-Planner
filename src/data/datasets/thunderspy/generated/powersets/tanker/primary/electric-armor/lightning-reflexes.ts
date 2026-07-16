@@ -30,7 +30,18 @@ export const LightningReflexes: Power = {
   "effects": {
     "buffDuration": 10.25,
     "durations": {
+      "movement": 10.25,
       "rechargeBuff": 10.25
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedFlying"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
+      }
     },
     "rechargeBuff": {
       "scale": 0.2,
@@ -39,8 +50,8 @@ export const LightningReflexes: Power = {
   },
   "atoms": [
     ["RechargeTime",null,0.2,1,10.25,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,10.25,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,10.25,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

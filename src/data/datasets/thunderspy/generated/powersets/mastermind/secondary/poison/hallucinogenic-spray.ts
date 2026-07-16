@@ -42,16 +42,26 @@ export const HallucinogenicSpray: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "buffDuration": 20,
+    "durations": {
+      "slow": 20
+    },
     "fear": {
       "mag": 3,
       "scale": 15,
       "table": "Ranged_Fear"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1.5,
+        "table": "Ranged_SpeedRunning"
+      }
     }
   },
   "atoms": [
     ["Unmapped",null,0.65,1,20,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Terrorized",15,3,0,"Ranged_Fear","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
-    ["Unmapped",null,-1.5,1,20,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",-1.5,1,20,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Mez","Terrorized",2,3,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Mastermind_Buff.Poison.Neurotoxic_Breath !"

@@ -37,6 +37,18 @@ export const SnowStorm: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "slow": 5
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
+    }
+  },
   "atoms": [
     ["Damage","Smashing",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Damage","Lethal",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
@@ -47,7 +59,7 @@ export const SnowStorm: Power = {
     ["Damage","Psionic",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Damage","Toxic",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.5,1,5,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1,1,5,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",-1,1,5,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,-1.6,1,5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ],
   "requires": "Controller_Buff.Cold_Domination.Snow_Field !"

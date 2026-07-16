@@ -58,7 +58,14 @@ export const Elude: Power = {
     },
     "durations": {
       "defenseBuff": 60,
+      "movement": 60,
       "recoveryBuff": 60
+    },
+    "movement": {
+      "runSpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedRunning"
+      }
     },
     "recoveryBuff": {
       "scale": 1,
@@ -70,7 +77,7 @@ export const Elude: Power = {
     ["Defense","Ranged",3,1,60,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","AoE",3,1,60,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Recovery",null,1,1,60,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,60,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Run",0.5,1,60,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,1,60,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,1,1,60,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Unmapped",null,4,1,60,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],

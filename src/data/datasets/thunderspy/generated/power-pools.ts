@@ -138,15 +138,25 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Unmapped",null,1,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,1,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.182,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
+          "movement": {
+            "runSpeed": {
+              "scale": 1,
+              "table": "Melee_SpeedRunning"
+            }
+          }
         }
       },
       {
@@ -848,13 +858,27 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Unmapped",null,0.1,1,10.25,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,0.1,1,10.25,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+          ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
+          ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
           "activatePeriod": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 10.25,
+          "durations": {
+            "movement": 10.25
+          },
+          "movement": {
+            "flySpeed": {
+              "scale": 0.1,
+              "table": "Melee_SpeedFlying"
+            },
+            "runSpeed": {
+              "scale": 0.1,
+              "table": "Melee_SpeedRunning"
+            }
+          }
         }
       },
       {
@@ -878,12 +902,22 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Unmapped",null,0.06,1,10.25,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,0.5,1,10.25,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+          ["Movement","Jump",0.5,1,10.25,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
           "activatePeriod": 10,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 10.25,
+          "durations": {
+            "movement": 10.25
+          },
+          "movement": {
+            "jumpSpeed": {
+              "scale": 0.5,
+              "table": "Melee_SpeedJumping"
+            }
+          }
         }
       },
       {
@@ -1137,18 +1171,28 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Unmapped",null,1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,1.25,1,0.75,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Fly",1.25,1,0.75,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,0.8,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,2,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,2,1,0.75,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,1,1,0.75,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+          ["Movement","Fly",1,1,0.75,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Unmapped",null,0.8,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.182,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
+          "movement": {
+            "flySpeed": {
+              "scale": 1.25,
+              "table": "Melee_SpeedFlying"
+            }
+          }
         }
       },
       {
@@ -1174,7 +1218,7 @@ export const POWER_POOLS_RAW = {
         "atoms": [
           ["Unmapped",null,1,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
           ["Unmapped",null,10,1,10,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-          ["Unmapped",null,0.5,1,10,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
+          ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
           ["Unmapped",null,10,1,10,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
           ["Unmapped",null,1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
         ],
@@ -1427,18 +1471,28 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Unmapped",null,1,1,0.75,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-          ["Unmapped",null,1,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,10,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,1,1,0.75,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-          ["Unmapped",null,1,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Unmapped",null,10,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.182,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
+          "movement": {
+            "jumpSpeed": {
+              "scale": 1,
+              "table": "Melee_SpeedJumping"
+            }
+          }
         }
       },
       {
@@ -1774,18 +1828,28 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Unmapped",null,1,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,0.8,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,2,1,0.75,"Ranged_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,2,1,0.75,"Ranged_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Unmapped",null,0.8,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.182,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
+          "movement": {
+            "flySpeed": {
+              "scale": 1,
+              "table": "Ranged_SpeedFlying"
+            }
+          }
         }
       },
       {
@@ -2215,7 +2279,7 @@ export const POWER_POOLS_RAW = {
           ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,3,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,0.1,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Run",0.1,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
           ["Unmapped",null,10,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,-30,1,0.75,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,3,1,0.75,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
@@ -2271,7 +2335,14 @@ export const POWER_POOLS_RAW = {
             }
           },
           "durations": {
-            "defenseBuff": 0.75
+            "defenseBuff": 0.75,
+            "movement": 0.75
+          },
+          "movement": {
+            "runSpeed": {
+              "scale": 0.1,
+              "table": "Melee_SpeedRunning"
+            }
           }
         }
       }
@@ -2778,17 +2849,27 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Unmapped",null,1.25,1,0.75,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-          ["Unmapped",null,1.25,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Jump",1.25,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,10,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,1,1,0.75,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-          ["Unmapped",null,1,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+          ["Movement","Jump",1,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Unmapped",null,10,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.182,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
+          "movement": {
+            "jumpSpeed": {
+              "scale": 1.25,
+              "table": "Melee_SpeedJumping"
+            }
+          }
         }
       },
       {
@@ -3366,18 +3447,28 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Unmapped",null,1,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,0.8,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,2,1,0.75,"Ranged_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,2,1,0.75,"Ranged_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+          ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Unmapped",null,0.8,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.182,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
+          "movement": {
+            "flySpeed": {
+              "scale": 1,
+              "table": "Ranged_SpeedFlying"
+            }
+          }
         }
       },
       {
@@ -3620,15 +3711,25 @@ export const POWER_POOLS_RAW = {
           "Universal Travel"
         ],
         "atoms": [
-          ["Unmapped",null,1.25,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Run",1.25,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,35,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,1,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+          ["Movement","Run",1,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.182,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
+          "movement": {
+            "runSpeed": {
+              "scale": 1.25,
+              "table": "Melee_SpeedRunning"
+            }
+          }
         }
       },
       {
@@ -4016,20 +4117,34 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Unmapped",null,0.25,1,0.75,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-          ["Unmapped",null,0.55,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,10,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-          ["Unmapped",null,0.4,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
+          ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,0.25,1,0.75,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-          ["Unmapped",null,0.55,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
+          ["Movement","Jump",0.55,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Unmapped",null,10,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
-          ["Unmapped",null,0.4,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
+          ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
         "effects": {
           "accuracy": 1,
           "endurance": 0.182,
           "activatePeriod": 0.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 0.75,
+          "durations": {
+            "movement": 0.75
+          },
+          "movement": {
+            "jumpSpeed": {
+              "scale": 0.55,
+              "table": "Melee_SpeedJumping"
+            },
+            "runSpeed": {
+              "scale": 0.4,
+              "table": "Melee_SpeedRunning"
+            }
+          }
         }
       },
       {
@@ -4142,15 +4257,29 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [],
         "atoms": [
           ["Unmapped",null,0.3,1,30,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,0.66,1,30,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Jump",0.66,1,30,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
           ["Unmapped",null,10,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,0.5,1,30,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+          ["Movement","Run",0.5,1,30,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
           "recharge": 60,
           "endurance": 6.5,
-          "effectArea": "SingleTarget"
+          "effectArea": "SingleTarget",
+          "buffDuration": 30,
+          "durations": {
+            "movement": 30
+          },
+          "movement": {
+            "jumpSpeed": {
+              "scale": 0.66,
+              "table": "Melee_SpeedJumping"
+            },
+            "runSpeed": {
+              "scale": 0.5,
+              "table": "Melee_SpeedRunning"
+            }
+          }
         }
       }
     ]

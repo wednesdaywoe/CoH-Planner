@@ -51,15 +51,25 @@ export const TelekineticPulse: Power = {
     "tickRate": 2
   },
   "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "slow": 5
+    },
     "knockback": {
       "scale": 0.01,
       "table": "Ranged_Knockback"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1.5,
+        "table": "Melee_SpeedRunning"
+      }
     }
   },
   "atoms": [
     ["Mez","Knockback",0.01,0.20000000298023224,0,"Ranged_Knockback","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0.055,1,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,2,1],
     ["Unmapped",null,0.5,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1.5,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };

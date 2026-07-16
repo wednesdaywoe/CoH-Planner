@@ -431,6 +431,15 @@ const MOVEMENT_AXIS: Record<string, string> = {
   runningspeed: 'Run', flyingspeed: 'Fly', jumpingspeed: 'Jump',
   jumpheight: 'JumpHeight', fly: 'FlyMode', movementcontrol: 'Control',
   movementfriction: 'Friction',
+  // Thunderspy names the movement attrib differently — `SpeedRunning`/`SpeedJumping`/
+  // `SpeedFlying` (and the odd `RunSpeed`/`FlySpeed`) where HC uses `RunningSpeed` etc.
+  // These are the SAME axis (verified: same `Melee_Speed*` tables, self-targeted travel
+  // powers). Mapping them here — not renaming at the parser — because the committed tspy
+  // export already carries this spelling and its current binary is incomplete, so a
+  // re-export would regress the data (see [[tspy-player-vocab-gap]]). `speedflying` is the
+  // FlyingSpeed buff (axis `Fly`), NOT the kFly mode grant.
+  speedrunning: 'Run', speedjumping: 'Jump', speedflying: 'Fly',
+  runspeed: 'Run', flyspeed: 'Fly',
 };
 
 /** engine / meta attribs → their effectType (or 'Meta' for non-stat markers). */

@@ -32,7 +32,7 @@ export const CombatTrainingDefensive: Power = {
   ],
   "maxSlots": 6,
   "effects": {
-    "buffDuration": 0.75,
+    "buffDuration": 10.25,
     "defenseBuff": {
       "melee": {
         "scale": 0.75,
@@ -40,14 +40,25 @@ export const CombatTrainingDefensive: Power = {
       }
     },
     "durations": {
-      "defenseBuff": 0.75
+      "defenseBuff": 0.75,
+      "movement": 10.25
+    },
+    "movement": {
+      "flySpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedFlying"
+      },
+      "runSpeed": {
+        "scale": 0.1,
+        "table": "Melee_SpeedRunning"
+      }
     }
   },
   "atoms": [
     ["Defense","Melee",0.75,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,10.25,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.1,1,10.25,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Movement","Run",0.1,1,10.25,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
+    ["Movement","Fly",0.1,1,10.25,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1]
   ],
   "mechanicType": "parentMechanic"
 };

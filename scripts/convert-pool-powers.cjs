@@ -22,6 +22,7 @@ const {
   extractEffects,
   extractDamage,
   guardThunderspyOnesBuffs,
+  resolveThunderspyMovementTargets,
   inferAllowedSetCategories,
   normalizeIconPath,
   collectTemplatesDeep,
@@ -234,6 +235,13 @@ function convertPoolPower(rawJson, rank, availableLevel) {
       hasTeleportAttrib,
     );
   }
+
+  // Thunderspy movement target-trap: resolve empty movement-template targets from
+  // targets_affected before any collector reads them. The pool converter is a SEPARATE
+  // pipeline from convert-powerset (the five-converters drift, [[three-power-converters]]),
+  // so the fix that lands powerset movement must be called here too — this is where the
+  // travel powers (Super Speed, Fly, Combat Jumping, Hover, Super Jump) actually live.
+  resolveThunderspyMovementTargets(rawJson);
 
   // Effects object (legacy format: stats mixed in with effects)
   const effects = {};

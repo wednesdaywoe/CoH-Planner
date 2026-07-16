@@ -53,15 +53,25 @@ export const MudPots: Power = {
     "table": "Melee_Damage"
   },
   "effects": {
+    "buffDuration": 5,
+    "durations": {
+      "slow": 5
+    },
     "immobilize": {
       "mag": 2,
       "scale": 2.25,
       "table": "Melee_Ones"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1.5,
+        "table": "Melee_SpeedRunning"
+      }
     }
   },
   "atoms": [
     ["Unmapped",null,0.5,1,5,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1.5,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Run",-1.5,1,5,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0.18,1,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Immobilized",2.25,2,0,"Melee_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

@@ -22,6 +22,7 @@ const {
   SET_CATEGORY_MAP,
   extractEffects,
   extractDamage,
+  resolveThunderspyMovementTargets,
   collectTemplatesDeep,
   collectAtomTemplates,
   collectBaseTemplates,
@@ -108,6 +109,11 @@ const FALLBACK_POOLS = loadFallbackPoolMetadata();
 
 function convertEpicPower(rawJson, rank, availableLevel) {
   const power = {};
+
+  // Thunderspy movement target-trap: resolve empty movement-template targets from
+  // targets_affected before any collector reads them (the five-converters drift — see
+  // convert-pool-powers.cjs and [[three-power-converters]]).
+  resolveThunderspyMovementTargets(rawJson);
 
   // Basic metadata
   power.name = rawJson.display_name || rawJson.name;

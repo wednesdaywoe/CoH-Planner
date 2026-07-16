@@ -206,7 +206,7 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Unmapped",null,0.65,1,10,"Melee_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,-1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Movement","Run",-1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Unmapped",null,0.48708,0,0,"Melee_Damage","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? @ToHitRoll 0.2 + @ToHit < && arch source> Class_Tanker == &&",true],
           ["Unmapped",null,1,1,0,"Melee_InherentTaunt","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"Raid target.HasTag? ! enttype target> critter eq && arch source> Class_Tanker == &&",true],
@@ -221,7 +221,17 @@ export const EPIC_POOLS_RAW = {
           "effectArea": "Cone",
           "radius": 80,
           "arc": 2.356194496154785,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "buffDuration": 10,
+          "durations": {
+            "slow": 10
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 1,
+              "table": "Melee_SpeedRunning"
+            }
+          }
         }
       },
       {
@@ -3381,7 +3391,7 @@ export const EPIC_POOLS_RAW = {
           ["Damage","Psionic",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Damage","Toxic",3,1,5,"Ranged_Debuff_Dam","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,0.5,1,5,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,-1,1,5,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+          ["Movement","Run",-1,1,5,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
           ["Unmapped",null,-10,1,5,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
         ],
         "effects": {
@@ -3393,7 +3403,17 @@ export const EPIC_POOLS_RAW = {
           "activatePeriod": 0.5,
           "effectArea": "AoE",
           "radius": 25,
-          "maxTargets": 10
+          "maxTargets": 10,
+          "buffDuration": 5,
+          "durations": {
+            "slow": 5
+          },
+          "slow": {
+            "runSpeed": {
+              "scale": 1,
+              "table": "Ranged_SpeedRunning"
+            }
+          }
         }
       },
       {

@@ -53,15 +53,25 @@ export const ArticAir: Power = {
     "table": "Ranged_Damage"
   },
   "effects": {
+    "buffDuration": 2.25,
     "confuse": {
       "mag": 3,
       "scale": 4,
       "table": "Ranged_Fear"
     },
+    "durations": {
+      "slow": 2.25
+    },
     "fear": {
       "mag": 3,
       "scale": 2,
       "table": "Ranged_Fear"
+    },
+    "slow": {
+      "runSpeed": {
+        "scale": 1,
+        "table": "Ranged_SpeedRunning"
+      }
     }
   },
   "atoms": [
@@ -69,7 +79,7 @@ export const ArticAir: Power = {
     ["Mez","Afraid",2,3,0,"Ranged_Fear","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Confused",4,3,0,"Ranged_Fear","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,0.5,1,2.25,"Ranged_Slow","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,-1,1,2.25,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Movement","Run",-1,1,2.25,"Ranged_SpeedRunning","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,-35,1,2.25,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,0.2,0.75,0,"Ranged_Damage","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq kImmobilized target> 0 > kHeld target> 0 > || kSleep target> 0 > || kStunned target> 0 > || IncarnateBoss target.HasTag? || &&",true],
     ["Mez","Confused",4,3,0,"Ranged_Fear","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]

@@ -25,13 +25,21 @@
 import { describe, it, expect } from 'vitest';
 import { movementBuffValue } from '@/data/core/atom-query';
 import { POWER_POOLS_RAW } from '@/data/datasets/homecoming/generated/power-pools';
+import { POWER_POOLS_RAW as TSPY_POOLS_RAW } from '@/data/datasets/thunderspy/generated/power-pools';
 
 type Pools = Record<string, { powers?: Array<Record<string, unknown>> }>;
 const pools = POWER_POOLS_RAW as unknown as Pools;
+const tspyPools = TSPY_POOLS_RAW as unknown as Pools;
 
 function pool(poolId: string, name: string) {
   const p = pools[poolId]?.powers?.find((x) => x.name === name);
   if (!p) throw new Error(`fixture missing: ${poolId}/${name}`);
+  return p as Parameters<typeof movementBuffValue>[0];
+}
+
+function tspyPool(poolId: string, name: string) {
+  const p = tspyPools[poolId]?.powers?.find((x) => x.name === name);
+  if (!p) throw new Error(`tspy fixture missing: ${poolId}/${name}`);
   return p as Parameters<typeof movementBuffValue>[0];
 }
 
@@ -99,5 +107,31 @@ describe('atom-native movement — Swift (unkeyed, always-on)', () => {
     expect(mv.runSpeed.stackKey).toBeUndefined();
     expect(mv.runSpeed.suppressible).toBeUndefined();
     expect(mv.flySpeed.table).toBe('Melee_SpeedFlying');
+  });
+});
+
+describe('atom-native movement — Thunderspy travel powers (the blackout fix)', () => {
+  // Regression guard for the Thunderspy movement blackout: every tspy travel power gave
+  // +0 movement because tspy names the attrib `SpeedRunning`/`SpeedJumping`/`SpeedFlying`
+  // (unmapped) AND drops the per-template target (so the self routing never fired). The
+  // fix maps the spelling and resolves the empty target from `targets_affected: ['Self']`.
+  // These fixtures come from the tspy tree specifically — the HC tree never exercised the
+  // bug. NB the fix is applied by the POOL converter too (these are pool powers), which is
+  // a separate pipeline from the powerset one.
+  it('Super Speed resolves its run buff (was +0)', () => {
+    const mv = movementBuffValue(tspyPool('speed', 'Super Speed'))!;
+    expect(mv).toBeDefined();
+    expect(mv.runSpeed.scale).toBeCloseTo(1.25);
+    expect(mv.runSpeed.table).toBe('Melee_SpeedRunning');
+  });
+  it('Fly resolves its fly-speed buff (was +0)', () => {
+    const mv = movementBuffValue(tspyPool('flight', 'Fly'))!;
+    expect(mv.flySpeed.scale).toBeCloseTo(1.25);
+    expect(mv.flySpeed.table).toBe('Melee_SpeedFlying');
+  });
+  it('Super Jump resolves its jump-speed buff (was +0)', () => {
+    const mv = movementBuffValue(tspyPool('leaping', 'Super Jump'))!;
+    expect(mv.jumpSpeed.scale).toBeCloseTo(1.25);
+    expect(mv.jumpSpeed.table).toBe('Melee_SpeedJumping');
   });
 });

@@ -80,8 +80,28 @@ real effects and a confirmed over-enhance bug. Concretely:
   is *"vestigial," "never read," "safe to ignore,"* or *"handled elsewhere"* as a
   hypothesis to verify with a grep, not a fact — and when you confirm one is false, **fix
   the comment in the same change** so it can't mislead the next person.
+- **Reused code lies about its assumptions too — read the diff, not the green gate.**
+  Sharing a helper across contexts (the standing §0 goal) is right, but a helper carries
+  its *origin's* assumptions invisibly — they are nowhere in its name or signature. A
+  fire-themed-powerset regex, `\b(fire|fiery|…)`, silently encoded "set names have a dot
+  before the theme word" (`Blaster_Support.Fire_Manipulation`), because `_` is a word
+  character so `\bfire` never matches `Corruptor_Fire_Mastery`. It worked for years on
+  powersets and, reused for epic pools, read every `*_Fire_Mastery` pool as non-fire and
+  nearly stripped their Fire damage — a 9-power fix that ballooned into a 66-power damage
+  change, caught only by reading the generated diff power-by-power. Every green gate stayed
+  green. **When you share code into a new context, read its output diff by hand for that
+  context** — a passing gate proves the new call site didn't break the *helper's* invariant,
+  not that the helper's buried assumptions hold where you're now calling it.
 
 ## 3. The recurring traps (read before any effect-data analysis)
+
+> **Every trap below is an instance of one idea: a CoH effect is distinguished from
+> its neighbours by a fixed set of *discriminators* (aspect, sign, target, `pvMode`,
+> `IgnoreStrength`, …), and a naïve match collapses two different effects whenever it
+> keys on the wrong axis. The structural model behind this — why a power is a flat list
+> of self-describing atoms and why any name-bucketed representation loses a discriminator
+> — is [docs/COH-DATA-MODEL.md](COH-DATA-MODEL.md). Read that first if the traps
+> below feel like a disconnected list; they are all the same mistake in different clothes.**
 
 These are why a naïve `flags.includes('X')` or attrib match over-fires:
 
@@ -126,6 +146,20 @@ These are why a naïve `flags.includes('X')` or attrib match over-fires:
   bonuses were dropped while Offensive (a plain `enttype`+mode gate) survived. The general
   rule: strip the ignored clauses first, then classify what remains.
 
+- **An unstated field is not a defaulted field — encoding absence as a value fabricates
+  a discriminator.** When a schema omits a field, decoding it to a *default* silently
+  invents information the source never carried, and that invented value then collapses a
+  real distinction. The atom ingest defaulted a missing `aspect` to `Current`; Thunderspy
+  omits `aspect` on 98% of its templates (only prior parser fixes populate any), so a
+  blank-aspect movement template became indistinguishable *on the wire* from a genuine HC
+  `Current` one — even though the bag routes them differently (it drops the blank via a
+  literal `aspect === 'current'` test). The result was a phantom +5% run/jump/fly buff on
+  a Thunderspy power that has none. **Decode absence AS absence** (a distinct `Unspecified`
+  / `undefined`, never a plausible default), and check downstream that no consumer reads
+  the default to mean "any" — here nothing tested `=== 'Current'` as a wildcard, so keeping
+  the two apart cost nothing. This is the §7 "format drops a discriminator" trap turned
+  inward: the drop you fabricate around is your own decoder's, not the exporter's.
+
 **The validated discriminator for "the player's own enhanceable stat":**
 `aspect ∈ {Current, Absolute, Magnitude}`, non-proc, non-pet, and positive scale where
 sign distinguishes buff from debuff/protection.
@@ -160,6 +194,22 @@ needs a `.powers`↔export name-map before its numbers are trustworthy (`kDefens
 verify against. For data we *derive* or used to hand-port (archetypes, IO sets),
 there are TWO oracles — the prior hand-port (what was true when written) and the
 binary (what's true now); diff both. See §12 for the cross-domain method.
+
+**A sibling code path is a free oracle — when two converters process the same data
+shape, each is the other's ground truth.** This project has FIVE power-shaped converters
+(`convert-powerset`, `convert-pool-powers`, `convert-epic-pools`, `convert-incarnate-effects`,
+`convert-pet-entities`) that independently reinvented the same model and drift apart. When
+one is more complete than another, the complete one is an oracle *for free* — no external
+source needed. Epic Soul Drain shipped flat (+1.0/+4.0 instead of +2.6/+10.4 at 8 foes)
+and six epic snipes shipped with NO damage, both caught by comparing against their powerset
+twins: Dark Melee's Soul Drain and Blaster Dark Blast's Moonbeam are the *same underlying
+power* converted correctly by `convert-powerset`, so "same data shape, two code paths, one
+answer each" localizes the bug to the diverging converter. The corollary is a warning:
+**divergence between parallel code paths HIDES bugs as readily as it reveals them** — the
+gap is only an oracle once you think to diff the two, and until then each path's output
+looks internally fine (the §5 "self-consistent pipeline proves nothing" rule, applied
+across converters instead of within one). See `docs/COH-DATA-MODEL.md` for why the five
+exist and `docs/converter-unification-direction.md` for the unification direction.
 
 **Diff the WHOLE export against the oracle — silent drops are invisible from the
 inside (2026-06-11, the bite that keeps biting).** "Trip Mine shows no damage" looked
@@ -503,6 +553,48 @@ inverse of the truth. Correct data + lying comments is the §2 failure mode wear
 victory lap. When you change what the data *means* (source swapped, pins retired, a field's
 authority moved), grep for every comment/README/header that describes the old meaning and
 fix it in the **same** change — the headers and docs are part of the data, not separate from it.
+
+## 14. Gates prove less than they seem — verify the gate, not just the result
+
+A passing gate is evidence about *coverage*, not correctness, until you have asked two
+questions of it. Both failure modes below bit this project repeatedly, on work that was
+carefully argued and cited its gates as proof.
+
+- **A green gate is a statement about the OBSERVER — state what it cannot see before you
+  cite it.** The deferral test is not "does a user observe a bug?" (invalid here: 5,277
+  powers × dozens of attributes, a handful of people who report mismatches, so silent-and-
+  wrong is the DEFAULT state of an unguarded collapse, not the exception). It is not even
+  "could this gate observe a bug?" — it is **"could this gate observe a bug, given its
+  SWEEP?"** The same blindness wore three costumes: (a) a census that said "three
+  converters" when there are five, and couldn't feel its own two missing members; (b) a
+  collapse detector hardcoding `GEN_ROOT = …/homecoming/generated/powersets` — HC only,
+  powersets only — while running in `regen` and being read as corpus-wide, so the entire
+  epic tier's flat AoE self-buffs and six damage-less snipes sat in its blind spot; (c) a
+  mutation harness that scored a *crash* as a pass. **Before cite-ing a gate green, write
+  down what it does not look at** (which datasets, which categories, which directions of
+  comparison). Print per-partition coverage so a structural zero (e.g. Thunderspy has no
+  movement data at all) stays visible instead of hiding inside a corpus-wide total.
+- **Mutation-testing CANNOT close a coverage hole** — every mutant passes on a corpus that
+  excludes the affected powers. It proves the gate's *checks* are live; it says nothing
+  about its *sweep*. The two questions are orthogonal; you need both.
+- **A green gate proves nothing until you have shown it can go red.** Mutation-test every
+  gate you rely on: break each reconstruction axis in turn and confirm the gate fails.
+  Discipline that makes it trustworthy (learned the hard way):
+  - **Print the COUNTS, and one mutant per axis.** A gate that says only "PASS/FAIL"
+    hides how many rows it checked; a mutant that turns 641 rows red tells you far more
+    than one that "fails." Cross-check each mutant's kill count against an *independent*
+    census of the population it should hit (e.g. "drop the `stackKey` field → exactly the
+    21 keyed axis slots go red"). A kill count that doesn't match the census means the
+    gate is testing something other than what you think.
+  - **Never `catch { continue }` around the gate body.** A mutation that breaks the gate
+    *syntactically* makes it crash, and a harness that treats "no output" as "no
+    divergences" scores the crash as a PASS — the exact trap that let a broken mutant read
+    SURVIVED. Require a literal count line; a blank where a number belongs is an INVALID
+    run, not a green one.
+  - **Check the gate in BOTH directions.** An atom-derived value reproducing the bag is
+    half the claim; the bag having no value the atom invents is the other half — a
+    one-directional gate is blind to over-production (a phantom total the bag never had),
+    which a runtime bag-fallback cannot protect against.
 
 *When you learn a new gotcha or principle, add it here — not just to a commit message —
 so every session (local and remote) benefits. The principles span all game-data

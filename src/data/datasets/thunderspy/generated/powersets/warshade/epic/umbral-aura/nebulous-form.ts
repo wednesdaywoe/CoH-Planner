@@ -39,10 +39,22 @@ export const NebulousForm: Power = {
     "Universal Travel"
   ],
   "maxSlots": 6,
+  "effects": {
+    "buffDuration": 0.75,
+    "durations": {
+      "movement": 0.75
+    },
+    "movement": {
+      "jumpSpeed": {
+        "scale": 0.5,
+        "table": "Melee_SpeedJumping"
+      }
+    }
+  },
   "atoms": [
     ["Unmapped",null,0.8,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"kDisable_Toggle Source.Mode? !"],
     ["Unmapped",null,0.5,1,0.75,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Jump",0.5,1,0.75,"Melee_SpeedJumping","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Unmapped",null,10,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };
