@@ -14,7 +14,7 @@
 > one remaining punt class is the un-derivable Expression + tick-chance-0 guard); gate
 > mutation-tested on 9 axes, all killed.**
 >
-> **Three bugs found and fixed the same day, each surfaced by the work rather than
+> **Five bugs found and fixed the same day, each surfaced by the work rather than
 > reported:** (a) **Icy Bastion / Hibernate** dropped its lingering +4 regen (+6 → **+10**)
 > — the regen routing read `StackByAttribAndKey`, which means *refresh don't stack*, as a
 > skip; recovery never had the skip and was right, and that asymmetry was the tell. The
@@ -22,8 +22,12 @@
 > (Health, Stamina, Tough, Weave, the whole epic tier) had NO atoms, and all seven shadows
 > swept only `generated/powersets` so no gate could see it. (c) **Epic Soul Drain** shipped
 > with no per-foe scaling at all (+1.0/+4.0 instead of +2.6/+10.4 at 8 foes) — the
-> epic-pool converter never ran the stacking detector. All seven gates now green on
-> **10,271** powers (was 8,913). 1121 tests green.** Slice 5 migrates the +MaxHP twin
+> epic-pool converter never ran the stacking detector. (d) **Six epic snipes had NO DAMAGE
+> AT ALL** (Psionic Lance, LRM Rocket, Frozen Spear, Mace Beam, Zapp, Moonbeam) — the pool
+> converters never followed redirects; fixed by sharing `collectBaseTemplates`. (e) **The
+> atom emit was gated on the BAG's template set** in all three converters, so an all-gated
+> power got no atoms (16 Mastermind upgrade powers, Heat Loss, Victory Rush). All seven
+> gates now green on **10,321** powers (was 8,913). 1131 tests green.** Slice 5 migrates the +MaxHP twin
 > (`effects.maxHPBuff` + `effects.maxHPBuffUnenhanced`) — the FIRST of the
 > `*Unenhanced` twin family to literally fold into one `ignoreStrength` filter; it is a
 > pure runtime swap (NO converter change, generated tree byte-identical, like Slice 3)
@@ -84,13 +88,14 @@ Closed by: both converters now emit atoms; the base-set hard invariant moved INT
 `encodeAtomsForEmit` (it is a property of the encoding, and duplicated per call site it
 is one a new emitter can forget — which is precisely what happened); and ONE shared
 sweep, `scripts/planb-shadow-sweep.cjs`, walking `generated/` whole, used by all seven
-shadows. Coverage: bag 8,913 → **10,271** powers; pertarget 1,252 → 1,343 slots;
-resistance 3,204 → 3,665; defense 3,416 → 3,887; maxhp 194 → 220; resources 641 → 778.
-Verified the widened gates genuinely cover the new tree rather than merely counting it
-(mutating the fold branch turns Physical Perfection red).
+shadows. Coverage: bag 8,913 → **10,271** powers (**10,321** after the atom-emit guard
+fix below); pertarget 1,252 → 1,343 slots; resistance 3,204 → 3,665; defense 3,416 →
+3,887; maxhp 194 → 220; resources 641 → 778. Verified the widened gates genuinely cover
+the new tree rather than merely counting it (mutating the fold branch turns Physical
+Perfection red).
 
-**The widened corpus immediately found a real user-facing bug** — see §Epic Soul Drain
-below. That is the argument for widening: the gap was not academic.
+**The widened corpus immediately found real user-facing bugs** — see §Epic Soul Drain and
+§The six dead snipes below. That is the argument for widening: the gap was not academic.
 
 ## Epic Soul Drain shipped with no per-foe scaling — fixed 2026-07-15
 
@@ -122,6 +127,85 @@ existing IgnoreStrength `tohitBuffUnenhanced` half, which the calc would have co
 twice. No pool power is known to be genuinely per-foe, so running a heuristic whose only
 live effect is a false positive is worse than not running it. Pinned by
 `pool-atoms.verify.test.ts`.
+
+## The six dead snipes + the bag-gated atom emit — fixed 2026-07-15 (`f667b75d8b`)
+
+Two more of the same family, both closed. Neither was a Plan B blocker; both were real.
+
+**Six epic snipes had no damage in the planner at all.** `convert-pool-powers.cjs` and
+`convert-epic-pools.cjs` collected `collectTemplatesDeep(rawJson.effects)` behind an
+`if (rawJson.effects?.length)` guard and never followed redirects, so a redirect-only
+power produced an empty bag: Psionic Lance, LRM Rocket, Frozen Spear, Mace Beam, Zapp,
+Moonbeam, plus Aid Other / Teleport / Teleport Target (9 HC, 1 tspy, 0 Rebirth).
+
+The tell that this is **converter divergence, not a data quirk**: Blaster Dark Blast's
+Moonbeam is the *same* redirect-only shape (`Pets.Blaster_Dark_Snipe.Moonbeam_Quick` /
+`_Normal`) and has always resolved fine — purely because `convert-powerset.cjs` converts
+it. Same data shape, two converters, one answer each.
+
+Fixed by extracting that converter's inline branch into a shared `collectBaseTemplates`
+rather than copying it. This matters: following a redirect correctly is **not**
+`JSON.parse(target).effects`. The chain carries PvE/PvP `enttype` twins, gated variants,
+`*_InherentDamage` twins and chance-0 Fiery Embrace bonuses that `collectTemplatesDeep`
++ `extractDamage` already fold. A hand-rolled follower in a second converter is exactly
+how this bug class reproduces.
+
+| Snipe | Now | Powerset twin (oracle) |
+|---|---|---|
+| Psionic Lance | Psionic 3.56 `Melee_Damage` | Psychic Blast: Psionic 4.5 `Ranged_Damage` |
+| Frozen Spear | Cold 3.56 `Melee_Damage` | *(none)* |
+| Mace Beam | Energy 3.56 `Melee_Damage` | *(none comparable)* |
+| Zapp | Energy 3.56 `Melee_Damage` | Electrical Blast: Energy 4.5 `Ranged_Damage` |
+| Moonbeam | Negative 4.5 `Melee_Damage` | Dark Blast: Negative 4.5 `Ranged_Damage` |
+| LRM Rocket | Smashing 1.0 + Lethal 1.49 | *(none)* |
+| Aid Other | Heal 1.96 `Ranged_Heal` | Empathy Heal Other: **identical** |
+
+Types match the twins exactly; melee-AT epics scale off `Melee_Damage` at 3.56 where
+blasters use `Ranged_Damage` at 4.5 — a genuine per-AT binary difference, same category
+as "epic Consume is really scale 20 vs the powerset's 15".
+
+**The atom emit was gated on the BAG's view** — `if (allTemplates.length > 0)`, in all
+three converters. A power whose every effect group is gated has ZERO base templates but a
+full gated set, so it got no atoms at all: the 16 Mastermind upgrade powers (Equip Robot,
+Train Beasts, Enchant Undead, Kuji-In Zen…), Heat Loss, Clear Skies, Noxious Gas, Fallout,
+Victory Rush. **"A power gets atoms only if the bag found something" is backwards** — the
+atom list exists precisely to carry what the bag cannot. Guarding on `atomTemplates`
+instead adds 50 powers (10,271 → **10,321**); every new atom is `gated`, so `baseAtoms`
+stays empty and no applier changes behavior. The generated diff is atoms-only (the only
+other churn is `"maxSlots": 6` gaining a trailing comma), and the encoder's base-set
+invariant enforces it. Note the pool converter's looser old guard (`rawJson.effects.length`)
+is why Victory Rush *accidentally* had atoms — "fixing" pools to match powersets would
+have propagated the powerset bug.
+
+### FOUND, NOT FIXED: epic-tier Fiery Embrace contamination — and why sharing that filter is a trap
+
+Sharing `_filterFieryEmbraceBonus` with the pool converters looked like free correctness
+and was **reverted** after nearly shipping a regression. Three findings, in order:
+
+1. `FIRE_THEMED_POWERSET_RE` used `\b(fire|fiery|…)`. **Underscore is a word character**,
+   so `\bfire` does not match `Epic.Corruptor_Fire_Mastery` — no boundary between `_` and
+   `F`. It only ever worked because powerset names put a `.` before the theme word
+   (`Blaster_Support.Fire_Manipulation`). Applied to epic pools, every `*_Fire_Mastery`
+   pool read as non-fire-themed and lost its genuine Fire damage.
+2. Fixing the regex (`(?<![a-z0-9])`, now shipped — proven a no-op on the current corpus)
+   was **not sufficient**: `Pyre_Mastery` and `Heat_Mastery` are fire pools matching *no*
+   theme word. Rebirth's Pyre Mastery Fire Ball came out as `Smashing 0.2` with **no Fire
+   at all**. Caught only by reading the diff power-by-power — every gate stayed green.
+3. The redirect fix never needed the filter: `collectTemplatesDeep` already drops the
+   chance-0 FE templates, so all six snipes resolve clean (verified: zero `Fire_Dmg`
+   templates survive).
+
+**The contamination is real and still open.** HC's `Epic.Body_Mastery.Laser_Beam_Eyes`,
+`Epic.Darkness_Mastery.Dark_Blast`, `Epic.Weapon_Mastery.Shuriken` and ~17 others carry
+Fire damage they should not; Rebirth's epic tier has ~46 such entries. Fixing it needs a
+per-power twin oracle and its own gate. **Do not "just add the filter."**
+
+**Lesson — a shared helper carries its origin's assumptions, and they are invisible at
+the new call site.** `\bfire` encodes "set names have a dot in them" nowhere in its name,
+signature or docstring. This is the sharp edge on the unification thesis in
+`docs/converter-unification-direction.md`: divergence hides bugs and unification is still
+right, but it is not free, and each sharing move needs its diff read by hand rather than
+a green gate. Speculative sharing turned a 9-power fix into a 66-power damage change.
 
 ## Resolved: Icy Bastion's lingering regen was dropped (in-game verified 2026-07-15)
 
@@ -232,6 +316,28 @@ reported**; the DSH6c gate found it mechanically on its first run. The interim
 guard converts *known* discriminator classes from "ships silently" to "fails
 CI." Plan B removes the class of defect entirely, so new discriminators can't
 silently collapse in the first place.
+
+**2026-07-15 raised the bar on the argument.** The deferral test isn't just
+"does a user observe a bug?" — it's **"could this gate observe a bug?"**, and
+that question has to be asked of the gate's *sweep*, not its checks:
+
+- `docs/converter-unification-direction.md` deferred converter unification as
+  cleanliness-only, citing DSH6a's green detector as proof no collapse remained.
+  `dsh6-collapse-detector.cjs` hardcodes `GEN_ROOT` to
+  `homecoming/generated/powersets` — HC only, powersets only, no `--dataset`
+  flag — while running in `regen` and reading as corpus-wide. Sitting in that
+  blind spot: the entire epic tier's AoE self-buffs shipped flat, and six epic
+  snipes shipped with no damage at all.
+- All seven Plan B shadows had the identical hole until it was found.
+- **Six epic snipes had NO DAMAGE and no user reported it.** Not because nobody
+  plays them — because "this power shows 0 damage" reads as *the planner not
+  modelling something*, not as a bug worth reporting. The reporting channel is
+  biased against exactly the defects that matter most.
+
+So: **"no observable bug (detector green)" is a statement about the observer.**
+A green gate is evidence about coverage until you have asked what it cannot see.
+Three costumes so far — an incomplete census, a narrow sweep, a mutation harness
+that scored a crash as a pass. Expect a fourth.
 
 ## Where we are (the door is ~80% shut)
 
@@ -742,6 +848,14 @@ incarnate, self-penalties):
   `kheldian-travel-inherents.test.ts` failures this doc previously warned about are gone —
   that note was stale).
 
+  > **This paragraph is the as-shipped record, not current state.** Both figures were
+  > overturned the same day: the Icy Bastion punt was a converter bug, not a modelling
+  > choice (§Icy Bastion), and the gate's sweep was missing ~15% of the corpus (§The
+  > pool/epic atom gap). Current: **778 checked / 0 diverge / 34 punts**, 1131 tests.
+  > Kept because the *reasoning* held up — refusing to auto-match an inconsistent bag is
+  > what left the fix clean — and because a punt count that moved 58 → 34 without any
+  > change to the helper is the evidence that punts are holding positions, not designs.
+
   **The generated diff is atoms-only, bag byte-identical:** 24 files, 29 tuples changed —
   19 gaining `notOnCaster:true` (the Thunderspy pet/foe target-trap) and 10 gaining a
   `perTarget` (Consume/Devour Psyche across 5 ATs). Every added and removed generated line
@@ -913,13 +1027,21 @@ incarnate, self-penalties):
 **Prerequisite CLEARED 2026-07-15:** Phase 3 was silently blocked on the pool/epic atom
 gap — the bag cannot be deleted while ~15% of powers have no atom representation. Pool
 and epic-pool powers now emit atoms and every gate sweeps them (see §The pool/epic atom
-gap). Remaining known atom-less powers: the 9 **redirect-only** pool/epic powers whose
-own `effects` are empty (6 epic snipes — Psionic Lance, LRM Rocket, Frozen Spear, Mace
-Beam, Zapp, Moonbeam — plus Aid Other, Teleport, Teleport Target). The pool converters do
-not follow redirects, so these have **no damage/effects in the bag either** — an open bug
-predating Plan B, and a real one for the snipes. Fixing it means teaching the pool
-converters the redirect-following `convert-powerset.cjs` already does. Not a Plan B
-blocker (they have no bag facts to lose), but it is the next honest gap.
+gap). The two follow-on gaps that were open when that section was written are now also
+closed (see §The six dead snipes): redirect-only powers resolve their chain in all three
+converters, and the atom emit no longer depends on the bag's collector finding something.
+**No known atom-less player power remains.** Corpus 10,321.
+
+Known open items that are NOT Phase 3 blockers (no bag facts to lose, but real):
+- **Epic-tier Fiery Embrace contamination** (~20 HC, ~46 Rebirth powers carry Fire they
+  should not) — needs a per-power twin oracle, not the existing heuristic. See §FOUND,
+  NOT FIXED above.
+- **`internalName` collisions** — a bug *class*, not a Plan B concern, but it will bite
+  any atom-keyed lookup that assumes global uniqueness. CoH identity is powerset+name.
+- **Self-STACK meta** (`stacksLinear`/`maxStacks`/`stackCaps`) is still bag-keyed by SLOT
+  NAME across every slice — the repeated-cast axis. NOT the same axis as the per-FOE
+  `perTarget` (which is atom-native). This is the one real carry-over into Phase 3: the
+  bag cannot fully die until it moves.
 - Point the calc entirely at atoms; the bag is produced solely for the
   `EFFECT_REGISTRY`-driven display layer.
 - Optionally re-express the display projection as `atoms → registry rows`
@@ -941,9 +1063,29 @@ blocker (they have no bag facts to lose), but it is the next honest gap.
 - **The shadow "proves equality" but the bag was wrong** → where a known bag bug
   exists (a collapse), the shadow will *diverge*; that divergence is the fix
   landing, and each is verified against Mids/in-game as usual, not auto-accepted.
+- **A gate is green because it isn't looking** → the failure mode that actually
+  bit, twice (§Why this must get done). A gate's SWEEP is part of its claim.
+  Before citing green, state what the gate cannot see. Mutation-testing does not
+  help here: every mutant passes on a corpus that excludes the powers.
+- **A shared helper carries invisible assumptions** → unification is the goal, but
+  each sharing move needs its diff read power-by-power. `\bfire` silently encoded
+  "set names have a dot in them" and nearly stripped Fire damage from every fire
+  epic pool (§FOUND, NOT FIXED). Green gates did not notice.
 
 ## Definition of done
 No character-total is computed from a named `PowerEffects` slot. Adding a new
 game effect discriminator requires handling it in one atom helper, not minting a
 new slot — and forgetting to handle it is impossible to do *silently*, because
 the atom carries it and the calc must consume it explicitly.
+
+**Remaining to reach it** (as of 2026-07-15, Phase 2 complete):
+1. **Phase 3** — point the calc entirely at atoms; demote or delete `PowerEffects`.
+   Prerequisite cleared: no known atom-less player power remains (corpus 10,321).
+2. **Self-STACK meta off slot names** — `stacksLinear`/`maxStacks`/`stackCaps` are
+   still bag-keyed by SLOT NAME. This is the one carry-over that actually blocks
+   deleting the bag, as opposed to merely bypassing it.
+3. **The last two `*Unenhanced` twins** — ToHit's and movement's.
+4. **The other two converters** — `convert-incarnate-effects.cjs` and
+   `convert-pet-entities.cjs` still emit no atoms (pet-entities has no gate at
+   all). Not Plan B scope, but the DoD's "impossible to do silently" claim is
+   false for any power they build. See `docs/converter-unification-direction.md`.
