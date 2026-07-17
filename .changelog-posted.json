@@ -107,7 +107,7 @@
       "preview": "Corrected Obscure Sustenance's recharge"
     },
     {
-      "hash": "f48a124e9965",
+      "hash": "1c29a202ffe1",
       "date": "2026-07-08",
       "preview": "🚨 A very large and comprehensive data converter rewrite was implemented to addr"
     },
@@ -187,7 +187,7 @@
       "preview": "Bio Armor: Offensive Adaptation now applies its -7.5% Resistance(all) self-penal"
     },
     {
-      "hash": "16d713446fcc",
+      "hash": "32189b3e1a50",
       "date": "2026-07-14",
       "preview": "Fixed +MaxHP powers that grant their bonus in two halves — one enhanceable, one "
     },
@@ -197,7 +197,7 @@
       "preview": "Rage's post-crash -20% Defense(All) is now correctly counted as a penalty to you"
     },
     {
-      "hash": "577b8a33ecfb",
+      "hash": "5b8534486c2f",
       "date": "2026-07-16",
       "preview": "Movement speeds in the info panel should now be displayed with rates instead of "
     },
@@ -207,9 +207,34 @@
       "preview": "A broad swath of powers should now have attribMods to surface their effects corr"
     },
     {
-      "hash": "6129e9876351",
+      "hash": "836868a11a87",
       "date": "2026-07-16",
       "preview": "Fix for internal name collisions that could result in powers accepting the wrong"
+    },
+    {
+      "hash": "8f114865daf8",
+      "date": "2026-07-17",
+      "preview": "Fixed overstated absorb on Bio Armor caused by a stale override and a converter "
+    },
+    {
+      "hash": "8b4f6c0a060c",
+      "date": "2026-07-17",
+      "preview": "Parasitic Aura's absorb now grows with the number of foes hit (up to 10), instea"
+    },
+    {
+      "hash": "199f8e0720cf",
+      "date": "2026-07-17",
+      "preview": "Fixed the targets-hit slider computing its 1-target value while displaying \"Off\""
+    },
+    {
+      "hash": "227fdcefb8ec",
+      "date": "2026-07-17",
+      "preview": "Bio Armor: Offensive Adaptation's -7.5% Resistance self-penalty is now reduced b"
+    },
+    {
+      "hash": "99877e04037d",
+      "date": "2026-07-17",
+      "preview": "Fixed the Adaptation stance occasionally desyncing from the sub-power stance dis"
     }
   ]
 }
