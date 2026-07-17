@@ -42,9 +42,9 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-07-16',
 
     items: [
-      { message: 'Movement speeds in the info panel should now be displayed with rates instead of modifer values.', type: 'fix' },
+      { message: 'Movement speeds in the info panel should now be displayed with rates instead of modifier values.', type: 'fix' },
       { message: 'A broad swath of powers should now have attribMods to surface their effects correctly instead of being smooshed', type: 'fix' },  
-      { message: 'Fix for internal name collisions that could result in powers accepting the wrong enhancments', type: 'fix' },
+      { message: 'Fix for internal name collisions that could result in powers accepting the wrong enhancements', type: 'fix' },
     ]
   },
   {
@@ -56,7 +56,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Fixed Bio Armor adaptations leaking into base powers — Evolving Armor\'s defense (Defensive) and regen/recovery (Efficient) now apply only in their stance, at full value', type: 'fix'},
       { message: 'Fixed the stance picker in the power info window needing a double-click to fill in the selected adaptation', type: 'fix'},
       { message: 'Bio Armor: Offensive Adaptation now applies its -7.5% Resistance(all) self-penalty to your totals', type: 'fix'},
-      { message: 'Fixed +MaxHP powers that grant their bonus in two halves — one enhanceable, one unenhanceable (Inexhaustible, High Pain Tolerance, Dull Pain, Hoarfrost, Earth\'s Embrace, Revive, Serum, and more)', type: 'fix'},
+      { message: 'Fixed +MaxHP powers that grant their bonus in two halves — one enhanceable, one un-enhanceable (Inexhaustible, High Pain Tolerance, Dull Pain, Hoarfrost, Earth\'s Embrace, Revive, Serum, and more)', type: 'fix'},
       { message: 'Rage\'s post-crash -20% Defense(All) is now correctly counted as a penalty to yourself rather than a debuff to enemies', type: 'fix'},
     ]
   },
@@ -103,7 +103,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
       { message: 'Stance and mode toggles should now correctly suppress the powers they disable', type: 'fix'},
       { message: 'Power hover-tooltips now show conditional, stance-gated healing (such as DNA Siphon) that previously only appeared in the full info panel.', type: 'fix'},
       { message: 'Corrected Obscure Sustenance\'s recharge', type: 'update'},
-      { message: '🚨 A very large and comprehensive data converter rewrite was implemented to address a large family of bugs related to the old coverter flattening data and dropping important attributes before it reached the planner (ie: a power does energy/smashing damage, but in the planner you only see the smashing damage portion). If the change is successful, you won\'t notice anything has changed other than more information surfacing in the planner that was previously missing 🚨', type: 'fix'},
+      { message: '🚨 A very large and comprehensive data converter rewrite was implemented to address a large family of bugs related to the old converter flattening data and dropping important attributes before it reached the planner (ie: a power does energy/smashing damage, but in the planner you only see the smashing damage portion). If the change is successful, you won\'t notice anything has changed other than more information surfacing in the planner that was previously missing 🚨', type: 'fix'},
       { message: 'Added support for Incarnate Judgement power in attack chain calculations', type: 'feat'},
     ]
   },
