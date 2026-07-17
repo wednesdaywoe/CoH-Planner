@@ -1,240 +1,220 @@
 {
-  "version": 1,
+  "version": 2,
   "posted": [
     {
-      "hash": "e75db8389064",
-      "date": "2026-07-11",
-      "preview": "Fix for Rebirth's Tanker Martial Prowess epic pool, Art of War was listed as the"
-    },
-    {
-      "hash": "122b8ba8ff61",
-      "date": "2026-07-11",
-      "preview": "Added buff-pet aura toggle and calculations for character totals"
-    },
-    {
-      "hash": "ba26362ed20f",
-      "date": "2026-07-10",
-      "preview": "The Sidekick main planner surface can now be reorganized with drag-n-drop, adjus"
-    },
-    {
-      "hash": "0e920efff2ea",
-      "date": "2026-07-10",
-      "preview": "Added an import guard that warns you when the import has created an illegal buil"
-    },
-    {
-      "hash": "48cf195a7762",
-      "date": "2026-07-10",
-      "preview": "Switching servers now keeps a separate build for each one. Your Homecoming, Rebi"
-    },
-    {
-      "hash": "64c4e9e4cb59",
-      "date": "2026-07-10",
-      "preview": "Importing a shared build (or opening a .skif) made on a different server now cor"
-    },
-    {
-      "hash": "16baed8f7899",
-      "date": "2026-07-10",
-      "preview": "Loaded builds should now load the appropriate server dataset BEFORE loading the "
-    },
-    {
-      "hash": "8f264dd174ee",
-      "date": "2026-07-10",
-      "preview": "Added account-synced favorites with local cache reconciliation"
-    },
-    {
-      "hash": "5d719433688c",
-      "date": "2026-07-10",
-      "preview": "Added a neat system atlas for the nerds 🤓: Menu > System Atlas"
-    },
-    {
-      "hash": "309d49c374b0",
-      "date": "2026-07-10",
-      "preview": "New \"Absorb\" stat — a trackable total for your absorb shield (the temporary HP l"
-    },
-    {
-      "hash": "84e296ee3f6e",
-      "date": "2026-07-10",
-      "preview": "Absorb shields that scale off Max HP now compute correctly. Wild Bastion, Ablati"
-    },
-    {
-      "hash": "4b9057d06bd1",
-      "date": "2026-07-10",
-      "preview": "Thunderspy: ~1,000 powers that were showing no effects should now display correc"
-    },
-    {
-      "hash": "5ddc7cc92d98",
-      "date": "2026-07-10",
-      "preview": "Thunderspy: multi-type defense powers now show all their defense types. Mind Lin"
-    },
-    {
-      "hash": "fcf665f46c43",
-      "date": "2026-07-10",
-      "preview": "Thunderspy: some damage-type resistances were mislabeled as damage. Glacial Shie"
-    },
-    {
-      "hash": "c45fd74f60d8",
-      "date": "2026-07-10",
-      "preview": "Shortened a few stat labels (healing and jump) so the totals panel reads more cl"
-    },
-    {
-      "hash": "6e63f43b87c6",
-      "date": "2026-07-08",
-      "preview": "New \"Slotted Procs\" controls in the power info panel: each slotted proc now has "
-    },
-    {
-      "hash": "2da553cdd9ce",
-      "date": "2026-07-08",
-      "preview": "Might of the Tanker's +Res(All) proc now contributes to your resistance totals ("
-    },
-    {
-      "hash": "47aaba35a6b2",
-      "date": "2026-07-08",
-      "preview": "Thunderspy: the Gadgetry power and Utility Belt pools are now available. It was "
-    },
-    {
-      "hash": "8ab6d8d972f8",
-      "date": "2026-07-08",
-      "preview": "Stance and mode toggles should now correctly suppress the powers they disable"
-    },
-    {
-      "hash": "24a1036f8bc4",
-      "date": "2026-07-08",
-      "preview": "Power hover-tooltips now show conditional, stance-gated healing (such as DNA Sip"
-    },
-    {
-      "hash": "4cec5084c969",
-      "date": "2026-07-08",
-      "preview": "Corrected Obscure Sustenance's recharge"
-    },
-    {
-      "hash": "1c29a202ffe1",
-      "date": "2026-07-08",
-      "preview": "🚨 A very large and comprehensive data converter rewrite was implemented to addr"
-    },
-    {
-      "hash": "c4b95d99d46d",
-      "date": "2026-07-08",
-      "preview": "Added support for Incarnate Judgement power in attack chain calculations"
-    },
-    {
-      "hash": "59a31cc24417",
-      "date": "2026-07-11",
-      "preview": "Removed vertical cell adjustment for now, it has some unintended consequences th"
-    },
-    {
-      "hash": "e22e6c228047",
-      "date": "2026-07-11",
-      "preview": "Fix for DoT damage being overstated; this was widespread"
-    },
-    {
-      "hash": "d5e9168503cb",
-      "date": "2026-07-13",
-      "preview": "Fixed some movement speed oddities"
-    },
-    {
-      "hash": "758e8b7f6c09",
-      "date": "2026-07-13",
-      "preview": "Fixed combat suppression for travel powers"
-    },
-    {
-      "hash": "e97c0e9645f3",
-      "date": "2026-07-13",
-      "preview": "Removed vertical cell adjustment for now, it has some unintended consequences th"
-    },
-    {
-      "hash": "e74b12c1e799",
-      "date": "2026-07-13",
-      "preview": "Fix for DoT damage being overstated; this was widespread"
-    },
-    {
-      "hash": "f00253e999de",
-      "date": "2026-07-13",
-      "preview": "Fix for Rebirth's Tanker Martial Prowess epic pool, Art of War was listed as the"
-    },
-    {
-      "hash": "abe16c708e81",
-      "date": "2026-07-13",
-      "preview": "Added buff-pet aura toggle and calculations for character totals"
-    },
-    {
-      "hash": "b2282948b1c0",
-      "date": "2026-07-14",
-      "preview": "Fixed a slowdown on completed builds where toggling powers, adjusting sliders, o"
-    },
-    {
-      "hash": "0962c8f9d93d",
-      "date": "2026-07-14",
-      "preview": "Adaptations now show as sub-powers of Adaptation in the By-Level layout, matchin"
-    },
-    {
-      "hash": "c8c812d5e681",
-      "date": "2026-07-14",
-      "preview": "Fixed Bio Armor adaptations leaking into base powers — Evolving Armor's defense "
-    },
-    {
-      "hash": "80b46bd2b07e",
-      "date": "2026-07-14",
-      "preview": "Fixed the stance picker in the power info window needing a double-click to fill "
-    },
-    {
-      "hash": "f9e239d0f58f",
+      "id": "login-feedback-response",
       "date": "2026-07-14",
       "preview": "Dear writer who wrote this gem: \"Change how people log in. Your system of loggin"
     },
     {
-      "hash": "7911dae1e51a",
-      "date": "2026-07-14",
-      "preview": "Bio Armor: Offensive Adaptation now applies its -7.5% Resistance(all) self-penal"
-    },
-    {
-      "hash": "32189b3e1a50",
-      "date": "2026-07-14",
-      "preview": "Fixed +MaxHP powers that grant their bonus in two halves — one enhanceable, one "
-    },
-    {
-      "hash": "6affb8167fa5",
-      "date": "2026-07-14",
-      "preview": "Rage's post-crash -20% Defense(All) is now correctly counted as a penalty to you"
-    },
-    {
-      "hash": "5b8534486c2f",
-      "date": "2026-07-16",
-      "preview": "Movement speeds in the info panel should now be displayed with rates instead of "
-    },
-    {
-      "hash": "fca1b8a31d9b",
-      "date": "2026-07-16",
-      "preview": "A broad swath of powers should now have attribMods to surface their effects corr"
-    },
-    {
-      "hash": "836868a11a87",
-      "date": "2026-07-16",
-      "preview": "Fix for internal name collisions that could result in powers accepting the wrong"
-    },
-    {
-      "hash": "8f114865daf8",
+      "id": "bio-absorb-overstated",
       "date": "2026-07-17",
       "preview": "Fixed overstated absorb on Bio Armor caused by a stale override and a converter "
     },
     {
-      "hash": "8b4f6c0a060c",
+      "id": "parasitic-absorb-per-target",
       "date": "2026-07-17",
       "preview": "Parasitic Aura's absorb now grows with the number of foes hit (up to 10), instea"
     },
     {
-      "hash": "199f8e0720cf",
+      "id": "targets-hit-slider-off",
       "date": "2026-07-17",
       "preview": "Fixed the targets-hit slider computing its 1-target value while displaying \"Off\""
     },
     {
-      "hash": "227fdcefb8ec",
+      "id": "offensive-adaptation-res-resisted",
       "date": "2026-07-17",
       "preview": "Bio Armor: Offensive Adaptation's -7.5% Resistance self-penalty is now reduced b"
     },
     {
-      "hash": "99877e04037d",
+      "id": "adaptation-stance-desync",
       "date": "2026-07-17",
       "preview": "Fixed the Adaptation stance occasionally desyncing from the sub-power stance dis"
+    },
+    {
+      "id": "movement-speed-display-rates",
+      "date": "2026-07-16",
+      "preview": "Movement speeds in the info panel should now be displayed with rates instead of "
+    },
+    {
+      "id": "attribmod-coverage-expansion",
+      "date": "2026-07-16",
+      "preview": "A broad swath of powers should now have attribMods to surface their effects corr"
+    },
+    {
+      "id": "internal-name-collisions",
+      "date": "2026-07-16",
+      "preview": "Fix for internal name collisions that could result in powers accepting the wrong"
+    },
+    {
+      "id": "calc-perf-per-instance",
+      "date": "2026-07-14",
+      "preview": "Fixed a slowdown on completed builds where toggling powers, adjusting sliders, o"
+    },
+    {
+      "id": "adaptations-by-level-subpowers",
+      "date": "2026-07-14",
+      "preview": "Adaptations now show as sub-powers of Adaptation in the By-Level layout, matchin"
+    },
+    {
+      "id": "bio-adaptation-stance-leak",
+      "date": "2026-07-14",
+      "preview": "Fixed Bio Armor adaptations leaking into base powers — Evolving Armor's defense "
+    },
+    {
+      "id": "stance-picker-double-click",
+      "date": "2026-07-14",
+      "preview": "Fixed the stance picker in the power info window needing a double-click to fill "
+    },
+    {
+      "id": "offensive-adaptation-self-penalty",
+      "date": "2026-07-14",
+      "preview": "Bio Armor: Offensive Adaptation now applies its -7.5% Resistance(all) self-penal"
+    },
+    {
+      "id": "maxhp-two-halves",
+      "date": "2026-07-14",
+      "preview": "Fixed +MaxHP powers that grant their bonus in two halves — one enhanceable, one "
+    },
+    {
+      "id": "rage-crash-defense-self",
+      "date": "2026-07-14",
+      "preview": "Rage's post-crash -20% Defense(All) is now correctly counted as a penalty to you"
+    },
+    {
+      "id": "movement-speed-oddities",
+      "date": "2026-07-13",
+      "preview": "Fixed some movement speed oddities"
+    },
+    {
+      "id": "travel-combat-suppression",
+      "date": "2026-07-13",
+      "preview": "Fixed combat suppression for travel powers"
+    },
+    {
+      "id": "removed-vertical-cell-adjustment",
+      "date": "2026-07-13",
+      "preview": "Removed vertical cell adjustment for now, it has some unintended consequences th"
+    },
+    {
+      "id": "dot-damage-overstated",
+      "date": "2026-07-13",
+      "preview": "Fix for DoT damage being overstated; this was widespread"
+    },
+    {
+      "id": "rebirth-martial-prowess-order",
+      "date": "2026-07-13",
+      "preview": "Fix for Rebirth's Tanker Martial Prowess epic pool, Art of War was listed as the"
+    },
+    {
+      "id": "buff-pet-aura-toggle",
+      "date": "2026-07-13",
+      "preview": "Added buff-pet aura toggle and calculations for character totals"
+    },
+    {
+      "id": "planner-layout-rearrange",
+      "date": "2026-07-10",
+      "preview": "The Sidekick main planner surface can now be reorganized with drag-n-drop, adjus"
+    },
+    {
+      "id": "import-illegal-build-guard",
+      "date": "2026-07-10",
+      "preview": "Added an import guard that warns you when the import has created an illegal buil"
+    },
+    {
+      "id": "per-server-build-persistence",
+      "date": "2026-07-10",
+      "preview": "Switching servers now keeps a separate build for each one. Your Homecoming, Rebi"
+    },
+    {
+      "id": "shared-build-server-switch",
+      "date": "2026-07-10",
+      "preview": "Importing a shared build (or opening a .skif) made on a different server now cor"
+    },
+    {
+      "id": "build-load-dataset-order",
+      "date": "2026-07-10",
+      "preview": "Loaded builds should now load the appropriate server dataset BEFORE loading the "
+    },
+    {
+      "id": "account-synced-favorites",
+      "date": "2026-07-10",
+      "preview": "Added account-synced favorites with local cache reconciliation"
+    },
+    {
+      "id": "system-atlas",
+      "date": "2026-07-10",
+      "preview": "Added a neat system atlas for the nerds 🤓: Menu > System Atlas"
+    },
+    {
+      "id": "absorb-stat",
+      "date": "2026-07-10",
+      "preview": "New \"Absorb\" stat — a trackable total for your absorb shield (the temporary HP l"
+    },
+    {
+      "id": "absorb-maxhp-scaling",
+      "date": "2026-07-10",
+      "preview": "Absorb shields that scale off Max HP now compute correctly. Wild Bastion, Ablati"
+    },
+    {
+      "id": "tspy-empty-powers-restored",
+      "date": "2026-07-10",
+      "preview": "Thunderspy: ~1,000 powers that were showing no effects should now display correc"
+    },
+    {
+      "id": "tspy-multi-type-defense",
+      "date": "2026-07-10",
+      "preview": "Thunderspy: multi-type defense powers now show all their defense types. Mind Lin"
+    },
+    {
+      "id": "tspy-resistance-mislabeled",
+      "date": "2026-07-10",
+      "preview": "Thunderspy: some damage-type resistances were mislabeled as damage. Glacial Shie"
+    },
+    {
+      "id": "stat-label-shortening",
+      "date": "2026-07-10",
+      "preview": "Shortened a few stat labels (healing and jump) so the totals panel reads more cl"
+    },
+    {
+      "id": "slotted-proc-controls",
+      "date": "2026-07-08",
+      "preview": "New \"Slotted Procs\" controls in the power info panel: each slotted proc now has "
+    },
+    {
+      "id": "might-of-tanker-proc-totals",
+      "date": "2026-07-08",
+      "preview": "Might of the Tanker's +Res(All) proc now contributes to your resistance totals ("
+    },
+    {
+      "id": "tspy-gadgetry-utility-belt",
+      "date": "2026-07-08",
+      "preview": "Thunderspy: the Gadgetry power and Utility Belt pools are now available. It was "
+    },
+    {
+      "id": "stance-mode-suppression",
+      "date": "2026-07-08",
+      "preview": "Stance and mode toggles should now correctly suppress the powers they disable"
+    },
+    {
+      "id": "tooltip-conditional-healing",
+      "date": "2026-07-08",
+      "preview": "Power hover-tooltips now show conditional, stance-gated healing (such as DNA Sip"
+    },
+    {
+      "id": "obscure-sustenance-recharge",
+      "date": "2026-07-08",
+      "preview": "Corrected Obscure Sustenance's recharge"
+    },
+    {
+      "id": "converter-rewrite",
+      "date": "2026-07-08",
+      "preview": "🚨 A very large and comprehensive data converter rewrite was implemented to addr"
+    },
+    {
+      "id": "judgement-attack-chain",
+      "date": "2026-07-08",
+      "preview": "Added support for Incarnate Judgement power in attack chain calculations"
     }
   ]
 }

@@ -44,7 +44,7 @@ That's it. The next commit that changes `changelog-manual.ts` will post its new 
 1. You add entries to `MANUAL_CHANGELOG_GROUPS` in `changelog-manual.ts` and commit.
 2. The `post-commit` hook notices the file changed and runs `npm run changelog:push`.
 3. The push script ([`scripts/push-changelog-discord.ts`](../scripts/push-changelog-discord.ts))
-   hashes every entry (`date|type|message`), compares against the committed state file
+   reads each entry's stable `id`, compares against the committed state file
    [`.changelog-posted.json`](../.changelog-posted.json), and POSTs only the entries not yet
    posted — as rich Discord embeds, one per date group, colored/emoji'd by type.
 4. On a successful post it appends the new hashes to `.changelog-posted.json`, and the hook
@@ -77,16 +77,37 @@ npm run changelog:push -- --force-backlog  # post every entry, even already-post
 - If there's no state file yet, the first run **baselines silently** (records everything as
   posted, sends nothing) so you don't spam the channel with the whole backlog. Use
   `--force-backlog` if you actually want to blast the full history.
+- **Flags must match exactly.** Unknown arguments are a hard error, not a silent no-op —
+  `--dry run` (missing hyphen) used to read as "not a dry run" and fire a real post. It now
+  refuses and exits 1.
+
+## Entry ids
+
+Every entry needs a stable, unique `id` — this is the dedup key:
+
+```ts
+{ id: 'absorb-maxhp-scaling', message: 'Absorb shields that scale off Max HP…', type: 'fix' },
+```
+
+- **Assign it once, never change it.** The id is what lets you reword an entry or fix a typo
+  without it reposting. Changing an id *does* repost the entry (that's the escape hatch if you
+  ever genuinely want a re-send).
+- **Ids must be unique across the whole file**, not just within a date group. The script refuses
+  to run on a missing or duplicated id rather than silently swallowing an entry.
+- Prefer short kebab-case that describes the change (`rage-crash-defense-self`), not the date or
+  a number — it should still make sense when you read it in the state file a year later.
 
 ## Gotchas
 
-- **Rewording an already-posted entry reposts it.** Dedup is by content hash, so changing the
-  wording produces a new hash. Finalize wording before committing the changelog. (If this
-  becomes a problem, add a stable `id` field per entry and hash on that instead.)
 - **The hook adds a follow-up commit.** Intentional — keeps the posted-state in git without
   rewriting your original commit. It's skipped during rebase/merge/cherry-pick to avoid spam.
 - **`core.hooksPath` is per-clone.** A fresh clone won't have the hook until you run
   `npm run hooks:install` again.
+- **Commit `.changelog-posted.json` after a manual push.** Nothing commits it for you when the
+  hook is off. If another machine pushes from a stale committed copy, it reposts the backlog.
+- **Deleting a message in Discord does not un-post it.** The state file still records the entry.
+  To genuinely re-send, remove that entry's record from `.changelog-posted.json` (or change its
+  id) — see `--force-backlog` to resend everything.
 
 ## Files
 
