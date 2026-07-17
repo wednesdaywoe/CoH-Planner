@@ -141,14 +141,17 @@ export default defineConfig({
         // them would download the entire icon library on SW install. They are
         // runtime-cached on demand below instead.
         globPatterns: ['**/*.{js,css,html}'],
-        // The dataset bundle is a large JS chunk (~11 MB) that boot must load
-        // before the app can render — so it's downloaded on first load anyway,
-        // and precaching it adds ~no first-load cost while enabling offline +
-        // instant repeat loads. Raise the per-file cap above it (Workbox's 2 MiB
-        // default would drop it from the precache and fail the build). Revisit
-        // if the bundle keeps growing — at some point runtime-caching the data
+        // The dataset bundle is a large JS chunk that boot must load before the
+        // app can render — so it's downloaded on first load anyway, and
+        // precaching it adds ~no first-load cost while enabling offline +
+        // instant repeat loads. Raise the per-file cap above it (a globbed file
+        // over the limit is a hard build error here, not a warning). Revisit if
+        // the bundle keeps growing — at some point runtime-caching the data
         // chunk on demand beats precaching it.
-        maximumFileSizeToCacheInBytes: 16 * 1024 * 1024,
+        // 16 -> 40 MiB on 2026-07-17: the converter atom-array work grew the
+        // data chunk to ~29 MB, past the old 16 MiB cap. (This failure was
+        // masked until the build OOM ceiling was raised in the same session.)
+        maximumFileSizeToCacheInBytes: 40 * 1024 * 1024,
         cleanupOutdatedCaches: true,
         // SPA navigations are served the precached index.html — instant + works
         // offline. Freshness is governed by the controlled update prompt (the
