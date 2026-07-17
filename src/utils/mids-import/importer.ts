@@ -28,6 +28,8 @@ import {
   getIncarnatePower,
   getIncarnateTree,
   GRANTED_POWER_GROUPS,
+  STANCE_GROUPS,
+  findStanceParent,
 } from '@/data';
 import { getActiveDataset, type DatasetId } from '@/data/dataset';
 import type { InherentPowerDef } from '@/data';
@@ -485,16 +487,31 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     }
   }
 
-  // 8b. Apply activeSubPower to parent powers from granted sub-power tracking
-  for (const [parentName, activeSubName] of activeSubPowers) {
-    const allPowerLists = [primaryPowers, secondaryPowers];
-    for (const powers of allPowerLists) {
-      const parent = powers.find(p => p.internalName === parentName);
-      if (parent) {
-        parent.activeSubPower = activeSubName;
-        break;
-      }
+  // 8b. Apply activeSubPower to parent powers from granted sub-power tracking.
+  //
+  // `parentName` comes from the reverse map, which collapses last-write-wins for
+  // stances whose sub-powers are granted by more than one internal name — Bio
+  // Armor registers BOTH "Adaptation" and "Evolution" as granting the stances,
+  // so `parentName` is always "Evolution". That is correct on Scrapper/Brute/
+  // Tanker but WRONG on Stalker/Sentinel, whose switcher is internal
+  // "Adaptation" (no "Evolution" power exists) — a bare `internalName === parentName`
+  // match would drop the imported stance there. For stance-group sub-powers,
+  // resolve the real switcher via `findStanceParent` (which prefers the
+  // `parentMechanic` and never picks the same-named "Evolving Armor" toggle);
+  // fall back to the name match for non-stance grants (Boomerang Slice, etc.).
+  const stanceGroupBySubPower = new Map<string, (typeof STANCE_GROUPS)[number]>();
+  for (const group of STANCE_GROUPS) {
+    for (const o of group.options) {
+      if (o.subPower) stanceGroupBySubPower.set(o.subPower, group);
     }
+  }
+  const allImportedPlayerPowers = [...primaryPowers, ...secondaryPowers];
+  for (const [parentName, activeSubName] of activeSubPowers) {
+    const stanceGroup = stanceGroupBySubPower.get(activeSubName);
+    const parent = stanceGroup
+      ? (findStanceParent(allImportedPlayerPowers, stanceGroup) as SelectedPower | undefined)
+      : allImportedPlayerPowers.find(p => p.internalName === parentName);
+    if (parent) parent.activeSubPower = activeSubName;
   }
 
   // 8c. Auto-detect primary/secondary powerset if initial resolution failed

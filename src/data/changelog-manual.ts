@@ -28,6 +28,17 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     ]
   },
   {
+    date: '2026-07-17',
+
+    items: [
+      { message: 'Fixed overstated absorb on Bio Armor caused by a stale override and a converter that summed a placeholder value. They now grant the 30% (Ablative) and 10% of Max HP per foe hit (Parasitic).', type: 'fix' },
+      { message: 'Parasitic Aura\'s absorb now grows with the number of foes hit (up to 10), instead of ignoring the targets-hit slider.', type: 'fix' },
+      { message: 'Fixed the targets-hit slider computing its 1-target value while displaying "Off". Evolving Armor, Parasitic Aura, DNA Siphon and every other power with a targets-hit slider now read 0 at "Off".', type: 'fix' },
+      { message: 'Bio Armor: Offensive Adaptation\'s -7.5% Resistance self-penalty is now reduced by your own resistance to each damage type.', type: 'fix' },
+      { message: 'Fixed the Adaptation stance occasionally desyncing from the sub-power stance display, including a case where importing a Stalker/Sentinel build dropped the stance entirely.', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-07-16',
 
     items: [

@@ -11,15 +11,9 @@
  */
 import type { Power } from '@/types';
 
-export const overrides: Partial<Power> = {
-  "effects": {
-    "absorb": {
-      "scale": 0.3,
-      "table": "Melee_Ones"
-    },
-    "regenBuff": {
-      "scale": 1,
-      "table": "Melee_Ones"
-    }
-  }
-};
+// Absorb + regenBuff pins retired 2026-07-17: the generated layer now sources
+// the correct 30%-of-MaxHP absorb (`maxHPFraction: 0.3`, +Absorb strength) from
+// the live bin's Expression, and regenBuff already matches the old {scale:1}
+// pin. The stale `absorb: {scale:1}` here read as 100% of MaxHP (Melee_Ones ⇒
+// scale is a MaxHP fraction), the "very large absorb" bug. Nothing left to override.
+export const overrides: Partial<Power> = {};

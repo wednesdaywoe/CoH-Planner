@@ -3659,6 +3659,7 @@ function templatesToAtoms(templates) {
       a._type = t.type;
       a._target = t.target;
       a._duration = t.duration;
+      a._scale = t.scale;
       a._magExpr = t.magnitude_expression;
       a._appType = t.application_type;
       a._tickChance = t.tick_chance;
@@ -3907,6 +3908,34 @@ function foldResourceSlot(entries) {
  *   - ENTITY CREATION (`effects.summon` + derived conditionalEntities) stays
  *     template-owned (`extractSummon`) — `create_entity` atoms are skipped here.
  */
+/**
+ * Parse a MaxHP-fraction absorb Expression (aspect=Maximum, type=Expression)
+ * into its fraction of the caster's Max HP. Two shapes appear in HC bins:
+ *   `Max.kHitPoints source> C * [@Strength *]`  — literal fraction C. The
+ *      canonical form on Wild Bastion and Scrapper/Brute/Tanker/Stalker Ablative
+ *      & Parasitic. `@Strength *` ⇒ +Absorb strength scales it.
+ *   `Max.kHitPoints source> @StdResult *`        — the fraction is the template's
+ *      OWN scale×table (`@StdResult`). On a `_ones` (MaxHP-fraction) table that
+ *      is simply the scale. Sentinel Ablative uses this; strength applies
+ *      (StdResult is the post-strength standard result), matching the literal
+ *      form's `@Strength`.
+ * Returns { fraction, appliesStrength } or null for a form the converter can't
+ * evaluate (Master Brawler's `(100 - HP%)/200`, multi-token @StdResult chains) —
+ * callers leave those absorbs duration-only, unchanged.
+ */
+function parseAbsorbMaxHPFraction(expr, templateScale) {
+  const e = (expr || '').trim();
+  if (!e) return null;
+  const LITERAL = /^Max\.kHitPoints\s+source>\s+([\d.]+)\s+\*(?:\s+(@Strength)\s+\*)?\s*$/;
+  const m = LITERAL.exec(e);
+  if (m) return { fraction: parseFloat(m[1]), appliesStrength: !!m[2] };
+  const STDRESULT = /^Max\.kHitPoints\s+source>\s+@StdResult\s+\*\s*$/;
+  if (STDRESULT.test(e) && typeof templateScale === 'number' && templateScale > 0) {
+    return { fraction: templateScale, appliesStrength: true };
+  }
+  return null;
+}
+
 function projectAtomsToEffects(atoms, powerName) {
   const effects = {};
 
@@ -3955,15 +3984,16 @@ function projectAtomsToEffects(atoms, powerName) {
   // magnitude and kept only the duration. We recover the simple
   // `Max.kHitPoints source> C * [@Strength *]` shape here as a MaxHP fraction.
   //
-  // DEFERRED (left duration-only, byte-identical to before): powers with
-  // MULTIPLE distinct fractions — adaptation/mode-gated conditionals like
-  // Ablative Carapace (0.3 / 0.09) and Parasitic Aura (0.1 / 0.033) — or an
-  // unparseable expression — Master Brawler's `(100 - HP%)/200`, `@StdResult`
-  // chains. The calc can't model those conditionals faithfully yet.
+  // DEFERRED (left duration-only): powers with MULTIPLE distinct fractions in
+  // ONE (non-gated) scan — or a form parseAbsorbMaxHPFraction can't evaluate
+  // (Master Brawler's `(100 - HP%)/200`, multi-token @StdResult chains). The
+  // calc can't model those conditionals faithfully yet. Adaptation/mode-gated
+  // conditionals (Ablative 0.3/0.09, Parasitic 0.1/0.033) scan per gated group,
+  // so each group sees a single fraction. The `@StdResult` single-token form
+  // (Sentinel Ablative) IS now recovered — its fraction is the template scale.
   let absorbMaxHPFraction = null;
   let absorbFractionStrength = false;
   {
-    const SIMPLE = /^Max\.kHitPoints\s+source>\s+([\d.]+)\s+\*(?:\s+(@Strength)\s+\*)?\s*$/;
     const fractions = new Set();
     let complex = false;
     let appliesStrength = false;
@@ -3973,10 +4003,10 @@ function projectAtomsToEffects(atoms, powerName) {
       if (a._type !== 'Expression') continue;
       const expr = (a._magExpr || '').trim();
       if (!expr) continue; // empty = placeholder/PvP variant — ignore
-      const m = SIMPLE.exec(expr);
-      if (m) {
-        fractions.add(parseFloat(m[1]));
-        if (m[2]) appliesStrength = true;
+      const parsed = parseAbsorbMaxHPFraction(expr, a._scale);
+      if (parsed) {
+        fractions.add(parsed.fraction);
+        if (parsed.appliesStrength) appliesStrength = true;
       } else {
         complex = true;
       }
@@ -5298,9 +5328,29 @@ function computeAoePerTargetPatches(templatesWithMeta, aoeMeta) {
     if (classifications.length === 0) continue;
 
     for (const classification of classifications) {
+      // Absorb per-foe increment: an `Absorb` power grants absorb via a
+      // Current/Magnitude template (scale = the MaxHP fraction) AND raises the
+      // absorb cap via a twin Maximum/Expression template whose numeric `scale`
+      // is a 1.0 PLACEHOLDER — its real magnitude lives in the RPN
+      // (`Max.kHitPoints source> C * @Strength *`). The two encode ONE value, so
+      // summing them (Parasitic Aura: Current 0.1 + placeholder 1.0 = 1.1 ⇒ 110%
+      // MaxHP/foe) is wrong. Re-value the Maximum/Expression twin to its RPN
+      // fraction so `sumDistinctScale` DEDUPES it against the Current twin
+      // (0.1|table == 0.1|table → 0.1). ATs whose export ships only the Maximum
+      // twin (Brute Parasitic lacks the Current grant) still recover the 0.1/foe
+      // from the RPN. Unparseable RPN → skip the placeholder (leave the Current
+      // twin, or nothing, rather than inject a bogus 1.0).
+      let scale = Math.abs(template.scale || 0);
+      if (classification.effectKey === 'absorb'
+          && (template.aspect || '').toLowerCase() === 'maximum'
+          && template.type === 'Expression') {
+        const parsed = parseAbsorbMaxHPFraction(template.magnitude_expression, template.scale);
+        if (!parsed) continue;
+        scale = parsed.fraction;
+      }
       selfBuffs.push({
         ...classification,
-        scale: Math.abs(template.scale || 0),
+        scale,
         table: template.table,
         stack: template.stack,
         isDefiance,
@@ -5606,6 +5656,20 @@ function mergeStackingPatches(effects, stackingResult) {
       // collectStrengthBuffs doesn't read off specialBuff values anyway (it uses
       // stacksLinear/maxStacks), so skip it and keep extractEffects' keyed
       // container authoritative.
+      // A per-target absorb patch (real `scale` + `perTarget`) supersedes a flat
+      // `maxHPFraction`-form absorb the pre-scan recovered from the Maximum/
+      // Expression twin: Brute Parasitic ships ONLY that twin (no Current grant),
+      // so extractEffects set `{ maxHPFraction }` with no `scale`, which the
+      // generic guard below would (wrongly) shield from the per-foe scaling. The
+      // scale-form is numerically identical (`_ones` table ⇒ scale is the MaxHP
+      // fraction) and applies +Absorb strength (maxHPFraction absent), so replace
+      // it and keep the per-target increment. Only fires for absorb with a real
+      // per-target patch — every other maxHPFraction consumer is untouched.
+      if (key === 'absorb' && existing && typeof existing === 'object'
+          && !('scale' in existing) && patchValue && 'scale' in patchValue && patchValue.perTarget) {
+        effects[key] = { scale: patchValue.scale, table: patchValue.table || existing.table, perTarget: patchValue.perTarget };
+        continue;
+      }
       if (key === 'specialBuff' || key === 'specialDebuff'
           || (existing && typeof existing === 'object' && !('scale' in existing))) {
         continue;

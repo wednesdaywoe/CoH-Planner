@@ -518,7 +518,7 @@ export function resistanceBuffValue(
  */
 export function resistanceSelfDebuffValue(
   power: AtomSource,
-): Record<string, { scale: number; table: string; toWho: 'Self' }> | undefined {
+): Record<string, { scale: number; table: string; toWho: 'Self'; resistible: boolean }> | undefined {
   const atoms = baseAtomsOfType(power, 'Resistance').filter(
     (a) =>
       a.aspect === 'Res' &&
@@ -527,10 +527,14 @@ export function resistanceSelfDebuffValue(
       (a.toWho === 'Self' || a.toWho === 'All'),
   );
   if (!atoms.length) return undefined;
-  const out: Record<string, { scale: number; table: string; toWho: 'Self' }> = {};
+  const out: Record<string, { scale: number; table: string; toWho: 'Self'; resistible: boolean }> = {};
   for (const [type, group] of bySubType(atoms)) {
     const last = group[group.length - 1];
-    out[type.toLowerCase()] = { scale: Math.abs(last.scale), table: last.modifierTable, toWho: 'Self' };
+    // `resistible` drives same-type resistance mitigation in the calc: a -Res
+    // debuff applied to the caster (Bio Offensive Adaptation's -7.5% Res) is
+    // reduced by the caster's own resistance to that type. IgnoreResistance
+    // (`resistible === false`) debuffs apply flat.
+    out[type.toLowerCase()] = { scale: Math.abs(last.scale), table: last.modifierTable, toWho: 'Self', resistible: last.resistible !== false };
   }
   return out;
 }

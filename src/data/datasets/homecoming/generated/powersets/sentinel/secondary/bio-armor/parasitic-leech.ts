@@ -41,6 +41,11 @@ export const ParasiticLeech: Power = {
   ],
   "maxSlots": 6,
   "effects": {
+    "absorb": {
+      "scale": 0.143,
+      "table": "Melee_Ones",
+      "perTarget": 0.143
+    },
     "buffDuration": 45,
     "durations": {
       "absorb": 45,
@@ -61,11 +66,6 @@ export const ParasiticLeech: Power = {
     "regenDebuff": {
       "scale": 1,
       "table": "Melee_Ones"
-    },
-    "absorb": {
-      "scale": 0.143,
-      "table": "Melee_Ones",
-      "perTarget": 0.143
     }
   },
   "atoms": [
@@ -136,6 +136,11 @@ export const ParasiticLeech: Power = {
       "scope": "global",
       "defaultActive": false,
       "effects": {
+        "absorb": {
+          "scale": 0.043,
+          "table": "Melee_Ones",
+          "perTarget": 0.043
+        },
         "buffDuration": 45,
         "damageDebuff": {
           "scale": 2.66,
@@ -144,11 +149,6 @@ export const ParasiticLeech: Power = {
         "durations": {
           "absorb": 45,
           "damageDebuff": 30
-        },
-        "absorb": {
-          "scale": 0.043,
-          "table": "Melee_Ones",
-          "perTarget": 0.043
         }
       },
       "group": "adaptation"

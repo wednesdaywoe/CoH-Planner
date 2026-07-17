@@ -195,6 +195,21 @@
       "hash": "6affb8167fa5",
       "date": "2026-07-14",
       "preview": "Rage's post-crash -20% Defense(All) is now correctly counted as a penalty to you"
+    },
+    {
+      "hash": "577b8a33ecfb",
+      "date": "2026-07-16",
+      "preview": "Movement speeds in the info panel should now be displayed with rates instead of "
+    },
+    {
+      "hash": "fca1b8a31d9b",
+      "date": "2026-07-16",
+      "preview": "A broad swath of powers should now have attribMods to surface their effects corr"
+    },
+    {
+      "hash": "6129e9876351",
+      "date": "2026-07-16",
+      "preview": "Fix for internal name collisions that could result in powers accepting the wrong"
     }
   ]
 }

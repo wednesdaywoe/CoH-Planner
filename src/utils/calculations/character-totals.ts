@@ -548,10 +548,15 @@ function adjustForPerTarget(value: ScalarOrScaled, targetsHit?: number): ScalarO
   if (typeof value !== 'object' || value === null) return value;
   const obj = value as { scale: number; table?: string; perTarget?: number };
   if (!obj.perTarget) return value;
-  if (targetsHit === undefined) return value;
-  if (targetsHit <= 0) return { ...value, scale: 0 };
-  if (targetsHit === 1) return value;
-  return { ...value, scale: value.scale + obj.perTarget * (targetsHit - 1) };
+  // An untouched slider (no map entry ⇒ `undefined`) reads as "Off" in the UI
+  // (InfoPanel coerces the absent value to 0 and renders "Off"), so the calc must
+  // treat it as 0 targets too — otherwise the power silently computes its N=1
+  // value while the slider says Off (the "defaults to 1-target values despite
+  // showing Off" bug). Coerce absent → 0.
+  const n = targetsHit ?? 0;
+  if (n <= 0) return { ...value, scale: 0 };
+  if (n === 1) return value;
+  return { ...value, scale: value.scale + obj.perTarget * (n - 1) };
 }
 
 /**
@@ -579,9 +584,12 @@ function adjustForStacking(
   }
   // For stacksLinear effects (self-stacking from repeated casts, e.g. Siphon
   // Speed's +Recharge), the targets-hit slider doubles as a stack-count
-  // slider. Mirror adjustForPerTarget semantics so the two views behave the
-  // same: explicit 0 = power whiffed / no stacks active (scale 0);
-  // undefined = no slider input → default to 1 stack (return as-is).
+  // slider. Explicit 0 = power whiffed / no stacks active (scale 0); an untouched
+  // slider (undefined) keeps the BASE 1-stack value. Unlike a per-target AoE buff
+  // (where "Off" genuinely means 0 foes hit → 0, see adjustForPerTarget), a
+  // self-stacking recast buff is already applied once when the power is active
+  // (Psychokinetic Barrier's base absorb, Siphon Speed's first +Recharge), so its
+  // default is 1 stack — the slider only adds stacks 2..cap on top.
   if (targetsHit === 0 && stacksLinear?.includes(effectKey)) {
     if (typeof value === 'object' && value !== null) {
       return { ...value, scale: 0 };
@@ -1075,7 +1083,11 @@ function applyActivePowerBonuses(
   // resolveMovementTotals once every active-power pass has run — travel
   // suppress groups (kTravelBuff) take their strongest member instead of
   // summing, and combat mode drops suppressible buffs.
-  movementContribs: MovementContribution[] = []
+  movementContribs: MovementContribution[] = [],
+  // Resistible self-directed -Res debuffs (Offensive Adaptation) — collected
+  // here and applied by the caller AFTER powers + set bonuses are fully summed,
+  // because each is reduced by the caster's own same-type resistance.
+  resSelfDebuffContribs: { name: string; type: string; nominal: number; resistible: boolean }[] = []
 ): void {
   for (const power of powers) {
     // Auto powers are always active; others require explicit isActive toggle
@@ -1296,25 +1308,34 @@ function applyActivePowerBonuses(
     // enemy-facing (they don't touch the caster's totals); only the self-tagged
     // ones subtract from the player's own resistance. Unenhanceable, and stored
     // as a positive magnitude by the converter (makeEffect uses Math.abs), so we
-    // negate here. The nominal value is shown before any -Res debuff resistance.
+    // negate here.
+    //
+    // CoH mitigates a RESISTIBLE -Res debuff by the caster's own resistance to
+    // that type: effective = nominal × (1 − R_type). Verified in-game — a -7.5%
+    // Smashing debuff drops a 39.75% total by only 4.52% (= 7.5 × (1 − 0.3975)),
+    // and the breakdown still shows the nominal -7.5%. Because R must include
+    // EVERY resistance source (powers + IO set bonuses, both summed across all
+    // active-power passes), we can't mitigate inline here — defer to the caller
+    // via `resSelfDebuffContribs` and apply once the totals are complete. An
+    // IgnoreResistance (`resistible === false`) self-debuff applies flat.
     // Plan B Slice 3: sourced from atoms (`resistanceSelfDebuffValue` — the
     // self-directed −Res atoms only, per standard type); `?? effects.resistanceDebuff`
     // keeps an atom-less legacy power on the bag (where the `isSelfDirectedEffect`
-    // filter still separates the self penalty from co-slotted foe debuffs). Verified
-    // bag-equal by scripts/planb-shadow-resistance.cjs.
+    // filter still separates the self penalty from co-slotted foe debuffs).
     const resSelfDebuff = resistanceSelfDebuffValue(power) ?? effects.resistanceDebuff;
     if (resSelfDebuff && typeof resSelfDebuff === 'object') {
       for (const [type, value] of Object.entries(resSelfDebuff)) {
         if (!isSelfDirectedEffect(value)) continue;
         const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
         if (!(key in global)) continue;
-        const percentage = resolveScaledEffect(value as ScalarOrScaled, archetypeId, buildLevel) * 100 * -1;
-        global[key] += percentage;
-        addToBreakdown(breakdown, key, {
-          name: power.name,
-          value: percentage,
-          type: 'active-power',
-        });
+        const nominal = resolveScaledEffect(value as ScalarOrScaled, archetypeId, buildLevel) * 100 * -1;
+        // Atom path carries the `resistible` flag; the bag fallback ({scale,toWho})
+        // does not — default resistible (the only known self -Res, Offensive
+        // Adaptation, is resistible, and CoH resists -Res by default).
+        const resistible = (typeof value === 'object' && value !== null && 'resistible' in value)
+          ? (value as { resistible?: boolean }).resistible !== false
+          : true;
+        resSelfDebuffContribs.push({ name: power.name, type: type.toLowerCase(), nominal, resistible });
       }
     }
 
@@ -1723,7 +1744,21 @@ function applyActivePowerBonuses(
     // why Wild Bastion grows with +HP accolades). Boosted like healing:
     // slotted Heal enhancement + +Strength(Absorb) from Power Boost / Clarion.
     if (effects.absorb !== undefined && effects.absorb !== null) {
-      const ab = effects.absorb;
+      // Per-foe absorb (Parasitic Aura: +10% MaxHP/foe up to 10) rides the same
+      // targets-hit slider as every other buff slot, so run it through
+      // adjustForStacking like tohit/damage/defense/resistance do — the block
+      // used to resolve absorb flat, ignoring `perTarget` entirely. Non-AoE
+      // absorbs (Ablative, Wild Bastion) carry no perTarget and pass through
+      // unchanged. adjustForStacking only ever adjusts `scale`, so maxHPFraction/
+      // appliesStrength/table survive the spread.
+      const ab = adjustForStacking(
+        effects.absorb as ScalarOrScaled,
+        targetsHitValues[power.internalName],
+        effects.stacksLinear,
+        'absorb',
+        effects.maxStacks,
+        effects.stackCaps,
+      ) as { scale?: number; table?: string; perTarget?: number; maxHPFraction?: number; appliesStrength?: boolean };
       // The MaxHP-fraction form is scaled by strength unless it opts out
       // (appliesStrength:false — ATO procs, which don't reach this path).
       const applyStrength = ab.maxHPFraction == null || ab.appliesStrength !== false;
@@ -4251,7 +4286,10 @@ export function calculateCharacterTotals(
   // committed together by resolveMovementTotals (travel suppress-group max +
   // additive sum + combat-mode suppression).
   const movementContribs: MovementContribution[] = [];
-  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs, stealthContribs, absorbFractionContribs, movementContribs);
+  // Resistible self -Res debuffs (Offensive Adaptation) — mitigated by same-type
+  // resistance after every pass has summed the totals (see resolution below).
+  const resSelfDebuffContribs: { name: string; type: string; nominal: number; resistible: boolean }[] = [];
+  applyActivePowerBonuses(allPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', alphaBonuses, alphaEdBypassRatio, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, strengthBuffs, stealthContribs, absorbFractionContribs, movementContribs, resSelfDebuffContribs);
 
   // Step 7.1: Apply active mode-/state-gated conditional contributions (Bio
   // Armor adaptation modes, …). Each active conditional is a synthetic active
@@ -4274,7 +4312,7 @@ export function calculateCharacterTotals(
     options?.mechanicAdjusters ?? {},
   );
   if (conditionalPowers.length > 0) {
-    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs, movementContribs);
+    applyActivePowerBonuses(conditionalPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs, movementContribs, resSelfDebuffContribs);
   }
 
   // Step 7.2: Fold toggled-on buff-pet auras (Force Field Generator, Barrier
@@ -4285,7 +4323,7 @@ export function calculateCharacterTotals(
   // Default-safe: no buff-pet toggled → no synthetics → totals unchanged.
   const buffPetPowers = expandBuffPetAuras(allPowers, options?.mechanicAdjusters ?? {});
   if (buffPetPowers.length > 0) {
-    applyActivePowerBonuses(buffPetPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs, movementContribs);
+    applyActivePowerBonuses(buffPetPowers, globalBonuses, breakdown, effectiveLevel, build.archetype.id || '', {}, 0, options?.targetsHitValues ?? {}, exemplarLevel, options?.combatMode, emptyStrengthBuffs(), stealthContribs, absorbFractionContribs, movementContribs, resSelfDebuffContribs);
   }
   if (_debug) debugGroupEnd();
 
@@ -4374,6 +4412,34 @@ export function calculateCharacterTotals(
       if (hp <= 0) continue;
       globalBonuses.absorb += hp;
       addToBreakdown(breakdown, 'absorb', { name, value: hp, type: 'active-power' });
+    }
+  }
+
+  // Step 9.3: Apply resistible self -Res debuffs (Bio Offensive Adaptation)
+  // now that every resistance source — powers, IO set bonuses, procs,
+  // accolades, incarnates — has summed. CoH reduces such a debuff by the
+  // caster's own resistance to that type: effective = nominal × (1 − R), while
+  // the breakdown still shows the nominal magnitude. Snapshot R per type BEFORE
+  // applying any deferred debuff so multiple debuffs of one type all resist
+  // against the same pre-debuff total (no cascade order-dependence). An
+  // IgnoreResistance (`resistible:false`) debuff applies flat.
+  if (resSelfDebuffContribs.length > 0) {
+    const resSnapshot: Partial<Record<keyof GlobalBonuses, number>> = {};
+    for (const { type } of resSelfDebuffContribs) {
+      const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
+      if (key in globalBonuses && resSnapshot[key] === undefined) {
+        resSnapshot[key] = (globalBonuses[key] as number) || 0;
+      }
+    }
+    for (const { name, type, nominal, resistible } of resSelfDebuffContribs) {
+      const key = `res${capitalizeFirst(type)}` as keyof GlobalBonuses;
+      if (!(key in globalBonuses)) continue;
+      const R = resSnapshot[key] ?? 0;
+      // nominal is already negative (e.g. -7.5). Mitigation clamps the factor to
+      // ≥0 so an over-100% raw resistance can't flip the debuff into a buff.
+      const factor = resistible ? Math.max(0, 1 - R / 100) : 1;
+      (globalBonuses[key] as number) = ((globalBonuses[key] as number) || 0) + nominal * factor;
+      addToBreakdown(breakdown, key, { name, value: nominal, type: 'active-power' });
     }
   }
 

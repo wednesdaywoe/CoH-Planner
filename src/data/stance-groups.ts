@@ -111,6 +111,12 @@ export const STANCE_GROUPS: readonly StanceGroup[] = [
 export interface StancePowerLike {
   internalName: string;
   activeSubPower?: string;
+  /** Distinguishes the stance SWITCHER (the `parentMechanic` that grants the
+   *  stance chips) from a same-internalName impostor. Bio Armor's switcher is
+   *  internal "Evolution" (Scrapper/Brute/Tanker) or "Adaptation" (Stalker/
+   *  Sentinel) and is always a `parentMechanic`; the "Evolving Armor" +Res
+   *  toggle *also* has internalName "Adaptation" but is NOT a parentMechanic. */
+  mechanicType?: string;
 }
 
 /** The stance group a conditional `id` belongs to, or undefined if the id isn't
@@ -120,12 +126,24 @@ export function stanceGroupForConditionalId(id: string): StanceGroup | undefined
 }
 
 /** The group's enabling parent power present in `powers`, or undefined. The
- *  stance is only available — and only settable — when this exists. */
+ *  stance is only available — and only settable — when this exists.
+ *
+ *  `internalName` is NOT unique within a powerset, so a bare `parents` match can
+ *  bind to the WRONG power: on Scrapper/Brute/Tanker Bio Armor both the switcher
+ *  (internal "Evolution") and the unrelated "Evolving Armor" +Res toggle
+ *  (internal "Adaptation") match `parents: ['Adaptation', 'Evolution']`. The
+ *  real switcher — the one whose granted stance chips `requires` it, and the one
+ *  the subpower chips (Surface A) bind to — is always the `parentMechanic`. Pick
+ *  that over any same-name impostor so every stance surface resolves to the same
+ *  parent. Falls back to the first match when nothing is tagged (single
+ *  candidate, or callers passing minimal power shapes). */
 export function findStanceParent(
   powers: readonly StancePowerLike[],
   group: StanceGroup,
 ): StancePowerLike | undefined {
-  return powers.find((p) => group.parents.includes(p.internalName));
+  const candidates = powers.filter((p) => group.parents.includes(p.internalName));
+  if (candidates.length <= 1) return candidates[0];
+  return candidates.find((p) => p.mechanicType === 'parentMechanic') ?? candidates[0];
 }
 
 /** The active option id for a group given the build's powers. Reads the
