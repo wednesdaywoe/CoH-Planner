@@ -124,7 +124,9 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(git -C /home/jiiwii/Github/CoH-Sidekick status)",
-      "Bash(time node -e \"require\\('tsx/cjs'\\); const a=require\\('./src/data/core/atomic-effect.ts'\\); console.log\\(typeof a.bridgeAttrib\\)\")"
+      "Bash(time node -e \"require\\('tsx/cjs'\\); const a=require\\('./src/data/core/atomic-effect.ts'\\); console.log\\(typeof a.bridgeAttrib\\)\")",
+      "Bash(git show *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.scripts,null,2\\)\\)\")"
     ],
     "additionalDirectories": [
       "/tmp"
