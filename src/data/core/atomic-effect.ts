@@ -541,6 +541,16 @@ export function bridgeAttrib(attrib: string, aspect?: string, table?: string): B
   // else (Abs/Max on a non-def/res table) ⇒ deferred to DSH6's holistic routing.
   const sub = a === 'base_defense' ? 'All' : DAMAGE_SUBTYPE[a];
   if (sub) {
+    // [BRIDGE-1] base_defense IS the defense characteristic; its @Resistance (or
+    // res-table) face is defense-DEBUFF-RESISTANCE — route to Defense, NOT all-damage
+    // Resistance. ingestTemplate preserves aspect=Res from the template ⇒ the atom
+    // becomes Defense/All aspect=Res (an encoding coh_data already models). 'All' is
+    // excluded from both the defense-buff and resistance totals, so this reclassifies
+    // typing only — no total moves. A bare positional <type> attrib's Res face genuinely
+    // IS damage resistance (the NPC "Resistance" powers whose real resistance rides
+    // <type>_Dmg@Res), so it stays on the Resistance rule below.
+    if (a === 'base_defense' && (isRes || (resTable && !defTable)))
+      return { effectType: 'Defense', subType: sub };
     if (isRes || (resTable && !defTable)) return { effectType: 'Resistance', subType: sub };
     if (defTable) return { effectType: 'Defense', subType: sub };
     // A bare position/type attrib with no `_Dmg` suffix IS the *defense* characteristic
