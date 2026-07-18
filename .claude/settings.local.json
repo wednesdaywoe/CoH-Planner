@@ -143,10 +143,19 @@
       "mcp__playwright__browser_snapshot",
       "mcp__playwright__browser_close",
       "Bash(pkill -f \"vite preview\")",
-      "Bash(pkill -f \"npm run preview\")"
+      "Bash(pkill -f \"npm run preview\")",
+      "Bash(mkdir -p /home/jiiwii/Github/CoH-Sidekick/docs/superpowers/specs && ls /home/jiiwii/Github/CoH-Sidekick/docs/superpowers/specs/ 2>/dev/null)",
+      "Bash(git commit -q -m 'docs: spec for Road to 1.0 roadmap panel in Announcement modal *)",
+      "Bash(git check-ignore *)",
+      "Bash(npx tsc *)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(node -e \"console.log\\(JSON.stringify\\(require\\('./package.json'\\).scripts,null,1\\)\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)"
     ],
     "additionalDirectories": [
-      "/tmp"
+      "/tmp",
+      "/home/jiiwii/Github/CoH-Sidekick/docs/superpowers"
     ]
   }
 }

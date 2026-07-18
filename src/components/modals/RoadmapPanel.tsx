@@ -1,8 +1,9 @@
 /**
  * The "Road to 1.0" panel rendered inside AnnouncementModal's pinned tab.
- * Vertical path of category nodes (glow = in-progress), each expandable to its
- * item checklist; an expandable intro carries the author's explainer. Pure
- * presentation over the roadmap data model — see data/core/roadmap.
+ * A git-graph of the roadmap: group nodes sit on a vertical trunk; expanding a
+ * group sprouts its item nodes on a branch curving off the trunk. State is
+ * carried entirely by the node ring — no emoji. Pure presentation over the
+ * roadmap data model — see data/core/roadmap.
  */
 
 import { useState } from 'react';
@@ -15,18 +16,34 @@ import {
   type RoadmapGroup,
 } from '@/data/core/roadmap';
 
-const STATE_ICON: Record<StepState, string> = {
-  done: '✅',
-  'in-progress': '🔄',
-  planned: '⬜',
-};
-
-/** Marker ring per node state. In-progress glows with the theme accent. */
-function nodeMarkerClass(state: StepState): string {
-  if (state === 'done') return 'bg-[var(--color-selected)] border-[var(--color-selected)]';
-  if (state === 'in-progress')
-    return 'bg-[var(--color-sk-magenta)] border-[var(--color-sk-magenta)] roadmap-glow';
-  return 'bg-transparent border-gray-600';
+/**
+ * A single graph node. State is drawn by the ring, not an emoji:
+ *   done        → magenta ring with a filled magenta center dot
+ *   in-progress → magenta ring, hollow center, subtle glow (the "current work")
+ *   planned     → grey ring, hollow center
+ * `size` scales the same visual between the trunk (group) and branch (item).
+ */
+function NodeMarker({ state, size }: { state: StepState; size: 'group' | 'item' }) {
+  const isGroup = size === 'group';
+  const ringColor =
+    state === 'planned' ? 'border-gray-600' : 'border-[var(--color-sk-magenta)]';
+  const glow = state === 'in-progress' ? 'roadmap-glow' : '';
+  return (
+    <span
+      className={`inline-flex items-center justify-center rounded-full border-2 bg-transparent ${
+        isGroup ? 'w-6 h-6' : 'w-3.5 h-3.5'
+      } ${ringColor} ${glow}`}
+      aria-hidden
+    >
+      {state === 'done' && (
+        <span
+          className={`rounded-full bg-[var(--color-sk-magenta)] ${
+            isGroup ? 'w-2.5 h-2.5' : 'w-1.5 h-1.5'
+          }`}
+        />
+      )}
+    </span>
+  );
 }
 
 function groupProgress(group: RoadmapGroup): string {
@@ -62,15 +79,20 @@ export function RoadmapPanel({ onSeeWhatsNew }: { onSeeWhatsNew: () => void }) {
           type="button"
           onClick={() => setIntroOpen((o) => !o)}
           aria-expanded={introOpen}
-          className="w-full flex items-start gap-2 text-left px-4 py-3"
+          className="w-full flex items-start gap-2.5 text-left px-4 py-3 rounded-lg hover:bg-gray-700/40 transition-colors"
         >
           <span
-            className={`mt-0.5 text-gray-400 transition-transform ${introOpen ? 'rotate-90' : ''}`}
+            className={`mt-px text-lg leading-none text-[var(--color-sk-magenta)] transition-transform ${
+              introOpen ? 'rotate-90' : ''
+            }`}
             aria-hidden
           >
             ▸
           </span>
-          <span className="text-sm text-gray-200">{ROADMAP_INTRO.teaser}</span>
+          <span className="flex-1 text-sm text-gray-200">{ROADMAP_INTRO.teaser}</span>
+          <span className="mt-px shrink-0 text-xs font-semibold text-[var(--color-sk-magenta)]">
+            {introOpen ? 'Show less' : 'Read more'}
+          </span>
         </button>
         {introOpen && (
           <div className="px-4 pb-4 max-h-72 overflow-y-auto">{ROADMAP_INTRO.full}</div>
@@ -93,7 +115,7 @@ export function RoadmapPanel({ onSeeWhatsNew }: { onSeeWhatsNew: () => void }) {
         </div>
       </div>
 
-      {/* Vertical node path */}
+      {/* Node graph: trunk of group nodes, item nodes on branches */}
       <ol className="relative pl-1">
         {ROADMAP_GROUPS.map((group, idx) => {
           const state = deriveGroupState(group);
@@ -102,18 +124,17 @@ export function RoadmapPanel({ onSeeWhatsNew }: { onSeeWhatsNew: () => void }) {
           const isLast = idx === ROADMAP_GROUPS.length - 1;
           return (
             <li key={group.id} className="relative pl-8 pb-4">
-              {/* Connector line */}
+              {/* Trunk: vertical line below this node down to the next group */}
               {!isLast && (
                 <span
-                  className="absolute left-[11px] top-6 bottom-0 w-px bg-gray-700"
+                  className="absolute left-[11px] top-7 bottom-0 w-0.5 bg-gray-600"
                   aria-hidden
                 />
               )}
-              {/* Node marker */}
-              <span
-                className={`absolute left-0 top-1 w-6 h-6 rounded-full border-2 ${nodeMarkerClass(state)}`}
-                aria-hidden
-              />
+              {/* Group node on the trunk */}
+              <span className="absolute left-0 top-1" aria-hidden>
+                <NodeMarker state={state} size="group" />
+              </span>
               <button
                 type="button"
                 onClick={() => toggleGroup(group.id)}
@@ -121,27 +142,49 @@ export function RoadmapPanel({ onSeeWhatsNew }: { onSeeWhatsNew: () => void }) {
                 aria-controls={panelId}
                 className="w-full flex items-center gap-2 text-left py-1"
               >
-                <span className="text-sm">{STATE_ICON[state]}</span>
                 <span className="text-sm font-medium text-gray-100 flex-1">{group.title}</span>
                 <span className="text-xs text-gray-400 tabular-nums">{groupProgress(group)}</span>
-                <span className={`text-gray-400 transition-transform ${isOpen ? 'rotate-90' : ''}`} aria-hidden>
+                <span
+                  className={`text-lg leading-none text-gray-400 transition-transform ${
+                    isOpen ? 'rotate-90' : ''
+                  }`}
+                  aria-hidden
+                >
                   ▸
                 </span>
               </button>
+
               {isOpen && (
-                <ul id={panelId} className="mt-1 space-y-1.5">
-                  {group.items.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
-                      <span aria-hidden>{STATE_ICON[item.state]}</span>
-                      <span>
-                        {item.label}
-                        {item.detail && (
-                          <span className="block text-xs text-gray-500">{item.detail}</span>
-                        )}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                // -ml-8 cancels the li's pl-8 so branch elements share the trunk's
+                // coordinate origin (trunk at x=11, branch at x=26).
+                <div id={panelId} className="relative -ml-8 mt-1">
+                  {/* Elbow: peels off the trunk and curves into the branch line */}
+                  <span
+                    className="absolute left-[11px] top-0 h-3 w-[15px] border-l-2 border-b-2 border-gray-600 rounded-bl-lg"
+                    aria-hidden
+                  />
+                  {/* Branch line the item nodes sit on */}
+                  <span
+                    className="absolute left-[26px] top-3 bottom-5 w-0.5 bg-gray-600"
+                    aria-hidden
+                  />
+                  <ul>
+                    {group.items.map((item, i) => (
+                      <li key={i} className="relative pl-10 pb-2.5">
+                        {/* Item node on the branch */}
+                        <span className="absolute left-[20px] top-[5px]" aria-hidden>
+                          <NodeMarker state={item.state} size="item" />
+                        </span>
+                        <div className="text-sm text-gray-300">
+                          {item.label}
+                          {item.detail && (
+                            <span className="block text-xs text-gray-500">{item.detail}</span>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </li>
           );

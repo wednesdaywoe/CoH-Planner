@@ -36,22 +36,27 @@ export function AnnouncementModal() {
 
   const [visible, setVisible] = useState(true);
   const [dontShow, setDontShow] = useState(false);
-  const firstUnseen = Math.max(0, ANNOUNCEMENTS.findIndex((a) => !dismissed.includes(a.id)));
-  const [activeTab, setActiveTab] = useState<ActiveTab>(firstUnseen);
+  // The roadmap is the landing tab; featurettes are browsed from their own tabs.
+  const [activeTab, setActiveTab] = useState<ActiveTab>('roadmap');
 
   const hasUnseen = ANNOUNCEMENTS.some((a) => !dismissed.includes(a.id));
   const roadmapKey = `roadmap-v${ROADMAP_VERSION}`;
   const roadmapUnseen = !dismissed.includes(roadmapKey);
+  const isOpen = announcementModalOpen || (visible && hasUnseen);
 
-  // Manual open (menu) → focus the requested tab; mark roadmap seen when shown.
+  // Manual open (menu) → snap back to the roadmap tab.
   useLayoutEffect(() => {
     if (announcementModalOpen && announcementInitialTab === 'roadmap') {
       setActiveTab('roadmap');
-      dismiss(roadmapKey);
     }
-  }, [announcementModalOpen, announcementInitialTab, dismiss, roadmapKey]);
+  }, [announcementModalOpen, announcementInitialTab]);
 
-  const isOpen = announcementModalOpen || (visible && hasUnseen);
+  // Mark the roadmap seen once it's shown, so its "new" dot clears (covers both
+  // the default landing and a manual open).
+  useLayoutEffect(() => {
+    if (isOpen && activeTab === 'roadmap' && roadmapUnseen) dismiss(roadmapKey);
+  }, [isOpen, activeTab, roadmapUnseen, dismiss, roadmapKey]);
+
   if (!isOpen) return null;
 
   const onRoadmapTab = activeTab === 'roadmap';
