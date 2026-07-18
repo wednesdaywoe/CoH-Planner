@@ -11,6 +11,7 @@ import { getBaselineHealth } from '@/utils/calculations/stats';
 import { formatBonusValue } from '@/utils/set-bonus-format';
 import { getArchetype } from '@/data';
 import { getDefenseSoftcap } from '@/data/purple-patch';
+import { isOverCapMuted } from '@/data/set-bonus-groups';
 import { Tooltip } from '@/components/ui';
 import { StatsConfigModal, AccoladesModal, AboutModal, DonateModal, ExportImportModal, FeedbackModal, ChangelogModal, EnhancementListModal, WelcomeModal, SetBonusLookupModal, ControlsModal, HelpModal, CompareSlottingModal, DetailedTotalsModal, PowersetCompareModal, ProcSettingsModal, EnhancementToolsModal, AttackChainModal, AnnouncementModal, BuildImageModal } from '@/components/modals';
 import { IncarnateSlotGrid, IncarnateModal, IncarnateCraftingModal, DestinyTimeSlider } from '@/components/incarnate';
@@ -225,6 +226,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
   const resistanceCap = (at?.stats.resistanceCap ?? 0.75) * 100;
   const breakdowns = calcResult.breakdown;
   const globalBonuses = calcResult.globalBonuses;
+  const mutedOverCapStats = build.mutedOverCapStats;
 
   // Level-scoped power-pick and slot budgets (shared with the mobile build bar).
   const { currentPowerCount, powerBudget, currentSlotCount, slotBudget } = useBuildBudget();
@@ -359,15 +361,20 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
     stats: visibleStats.filter((s) => section.categories.includes(STAT_CATEGORY[s.id])),
   })).filter((section) => section.stats.length > 0);
 
-  // Auto-track stats that have Rule of 5 violations so the user sees them immediately
+  // Auto-track stats that have Rule of 5 violations so the user sees them
+  // immediately — but not stats the user has muted (no nagging tile for noise).
   useEffect(() => {
     const cappedKeys = visibleStats
-      .filter(s => s.breakdownKey && s.breakdown?.sources.some(src => src.capped))
+      .filter(s =>
+        s.breakdownKey &&
+        s.breakdown?.sources.some(src => src.capped) &&
+        !isOverCapMuted(s.breakdownKey, mutedOverCapStats),
+      )
       .map(s => s.breakdownKey!);
     if (cappedKeys.length > 0) {
       ensureTrackedStats(cappedKeys);
     }
-  }, [visibleStats, ensureTrackedStats]);
+  }, [visibleStats, ensureTrackedStats, mutedOverCapStats]);
 
   return (
     <>
@@ -434,6 +441,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
                       onTrack={stat.breakdownKey ? () => toggleTrackedStat(stat.breakdownKey!) : undefined}
                       hpCap={stat.hpCap}
                       cap={stat.cap}
+                      overCapMuted={stat.breakdownKey ? isOverCapMuted(stat.breakdownKey, mutedOverCapStats) : false}
                     />
                   ))}
                 </div>
@@ -869,10 +877,14 @@ interface StatItemProps {
   hpCap?: number;
   /** Stat cap as percentage (e.g. 75 for resistance, 45 for defense) */
   cap?: number;
+  /** When true, suppress the Rule-of-5 over-cap warning ring for this tile
+   *  (the stat's over-cap warnings are muted). Softcap/hardcap display and the
+   *  numeric total are unaffected. */
+  overCapMuted?: boolean;
 }
 
-function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', totalBaseOffset = 0, formatTotal, formatBreakdownSource, rawValue, className = '', tracked, onTrack, hpCap, cap }: StatItemProps) {
-  const hasCapped = breakdown?.sources.some(s => s.capped) ?? false;
+function StatItem({ label, value, color = 'text-gray-300', tooltip, breakdown, breakdownUnit = '%', totalBaseOffset = 0, formatTotal, formatBreakdownSource, rawValue, className = '', tracked, onTrack, hpCap, cap, overCapMuted }: StatItemProps) {
+  const hasCapped = !overCapMuted && (breakdown?.sources.some(s => s.capped) ?? false);
   const numericValue = typeof rawValue === 'number' ? rawValue : undefined;
   const isAtCap = cap !== undefined && numericValue !== undefined && numericValue >= cap;
   const overCap = isAtCap ? numericValue - cap : 0;
