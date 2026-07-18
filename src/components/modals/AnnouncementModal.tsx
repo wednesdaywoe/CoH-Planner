@@ -13,7 +13,7 @@
  * data-only: see data/core/announcements.
  */
 
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { Modal, ModalBody, ModalFooter } from './Modal';
 import { RoadmapPanel } from './RoadmapPanel';
@@ -44,7 +44,7 @@ export function AnnouncementModal() {
   const roadmapUnseen = !dismissed.includes(roadmapKey);
 
   // Manual open (menu) → focus the requested tab; mark roadmap seen when shown.
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (announcementModalOpen && announcementInitialTab === 'roadmap') {
       setActiveTab('roadmap');
       dismiss(roadmapKey);

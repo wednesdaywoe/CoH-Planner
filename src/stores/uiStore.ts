@@ -1329,6 +1329,7 @@ export const useUIStore = create<UIStore>()(
       closeAboutModal: () =>
         set({ aboutModalOpen: false }),
 
+      // Announcement Modal (manual open / roadmap tab)
       openAnnouncementModal: (tab?: 'roadmap') =>
         set({ announcementModalOpen: true, announcementInitialTab: tab ?? null }),
 
