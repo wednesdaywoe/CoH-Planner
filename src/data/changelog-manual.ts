@@ -29,7 +29,8 @@ export interface ManualEntry {
   message: string;
   type: 'feat' | 'fix' | 'update' | 'known-issue';
 }
-
+/*When ready, npm run changelog:push -- --dry-run
+*/
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {

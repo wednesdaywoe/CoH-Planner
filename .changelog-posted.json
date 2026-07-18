@@ -215,6 +215,11 @@
       "id": "judgement-attack-chain",
       "date": "2026-07-08",
       "preview": "Added support for Incarnate Judgement power in attack chain calculations"
+    },
+    {
+      "id": "dataset-lazy-load-slimdown",
+      "date": "2026-07-17",
+      "preview": "Sidekick went on a weight-loss program 🍩, and lost 26mb of entry chunk and 35mb"
     }
   ]
 }
