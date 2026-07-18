@@ -623,3 +623,15 @@ body {
   /* accent-as-text: dark shade of the theme accent for the light canvas. */
   --color-link: #8A5A1E;
 }
+
+.roadmap-glow {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-sk-magenta) 40%, transparent);
+  animation: roadmap-glow-pulse 2s ease-in-out infinite;
+}
+@keyframes roadmap-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-sk-magenta) 30%, transparent); }
+  50% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-sk-magenta) 55%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .roadmap-glow { animation: none; }
+}
