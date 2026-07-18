@@ -114,6 +114,12 @@ interface UIState {
   /** About modal open state */
   aboutModalOpen: boolean;
 
+  /** AnnouncementModal manual (non-auto) open state — lets the roadmap tab
+   *  be opened on demand even when no featurette is unseen. */
+  announcementModalOpen: boolean;
+  /** Which tab AnnouncementModal should focus when opened manually. */
+  announcementInitialTab: 'roadmap' | null;
+
   /** Donate ("Support Sidekick") modal open state */
   donateModalOpen: boolean;
 
@@ -529,6 +535,10 @@ interface UIActions {
   openAboutModal: () => void;
   closeAboutModal: () => void;
 
+  // Announcement Modal (manual open / roadmap tab)
+  openAnnouncementModal: (tab?: 'roadmap') => void;
+  closeAnnouncementModal: () => void;
+
   // Donate ("Support Sidekick") Modal
   openDonateModal: () => void;
   closeDonateModal: () => void;
@@ -835,6 +845,8 @@ export const useUIStore = create<UIStore>()(
       statsConfigScrollTo: null,
       accoladesModalOpen: false,
       aboutModalOpen: false,
+      announcementModalOpen: false,
+      announcementInitialTab: null,
       donateModalOpen: false,
       incarnateModalOpen: false,
       incarnateCraftingModalOpen: false,
@@ -1316,6 +1328,12 @@ export const useUIStore = create<UIStore>()(
 
       closeAboutModal: () =>
         set({ aboutModalOpen: false }),
+
+      openAnnouncementModal: (tab?: 'roadmap') =>
+        set({ announcementModalOpen: true, announcementInitialTab: tab ?? null }),
+
+      closeAnnouncementModal: () =>
+        set({ announcementModalOpen: false, announcementInitialTab: null }),
 
       // Donate ("Support Sidekick") Modal
       openDonateModal: () =>
