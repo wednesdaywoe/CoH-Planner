@@ -58,6 +58,7 @@ import {
 import { slimBuild, hydrateBuild } from '@/utils/build-serialization';
 import { encodeImportFragment } from '@/utils/import-url';
 import { getActiveDataset, getAllDatasetMetadata } from '@/data/dataset';
+import { toCanonicalStatKey } from '@/data/set-bonus-groups';
 import { showDatasetSwitchOverlay } from '@/utils/dataset-switch-overlay';
 import {
   migratePerServerState,
@@ -182,6 +183,12 @@ interface BuildActions {
   setProcOverride: (powerName: string, slotIndex: number, patch: Partial<ProcOverride>) => void;
   /** Remove a proc's override entirely (back to enabled + auto). */
   clearProcOverride: (powerName: string, slotIndex: number) => void;
+
+  // Per-build over-cap warning mutes (canonical `group|label` stat keys). Sparse.
+  /** Add the stat's canonical key if absent, remove it if present. */
+  toggleOverCapMute: (statKey: string) => void;
+  /** Remove every over-cap mute (no-op when already empty). */
+  clearOverCapMutes: () => void;
 
   /**
    * Walk every slotted enhancement and bump it to its "finalized" form.
@@ -2095,6 +2102,24 @@ export const useBuildStore = create<BuildStore>()(
           delete map[key];
           return { build: { ...state.build, procOverrides: map } };
         });
+      },
+
+      toggleOverCapMute: (statKey) => {
+        historyCheckpoint();
+        const canonical = toCanonicalStatKey(statKey);
+        set((state) => {
+          const current = state.build.mutedOverCapStats ?? [];
+          const next = current.includes(canonical)
+            ? current.filter((k) => k !== canonical)
+            : [...current, canonical];
+          return { build: { ...state.build, mutedOverCapStats: next } };
+        });
+      },
+
+      clearOverCapMutes: () => {
+        if ((get().build.mutedOverCapStats ?? []).length === 0) return; // nothing to clear
+        historyCheckpoint();
+        set((state) => ({ build: { ...state.build, mutedOverCapStats: [] } }));
       },
 
       maximizeEnhancementLevels: (options) => {
