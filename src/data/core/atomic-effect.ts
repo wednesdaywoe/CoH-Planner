@@ -411,8 +411,23 @@ const SCALAR_EFFECT: Record<string, EffectType> = {
   endurancediscount: 'EnduranceDiscount', recovery: 'Recovery',
   regeneration: 'Regeneration', hitpoints: 'MaxHP', accuracy: 'Accuracy',
   tohit: 'ToHit', range: 'Range', threatlevel: 'ThreatLevel',
-  perceptionradius: 'Perception', stealthradius_pve: 'Stealth',
-  stealthradius_pvp: 'Stealth', absorb: 'Absorb',
+  perceptionradius: 'Perception', absorb: 'Absorb',
+};
+
+/**
+ * [BRIDGE-2] stealth-radius attribs → Stealth/<axis>.
+ *
+ * The bin export carries the PvE and PvP stealth radii as DISTINCT attribs
+ * (`StealthRadius_PvE` / `StealthRadius_PvP`) and `Translucency` as the visual-alpha
+ * component — three faces of the Stealth family. Without a subType all three collapse to
+ * one indistinguishable `Stealth` atom (within a power the two radii differ ONLY in raw
+ * scale), which is exactly why the stealth applier could not read atoms PvE-vs-PvP. The
+ * subType names the axis so they stay separable — the bag already keeps them apart in
+ * `stealthPvE`/`stealthPvP`. Named `Radius*` (not bare `PvE`/`PvP`) to avoid colliding with
+ * the separate `pvMode` field.
+ */
+const STEALTH_AXIS: Record<string, string> = {
+  stealthradius_pve: 'RadiusPvE', stealthradius_pvp: 'RadiusPvP', translucency: 'Translucency',
 };
 
 /**
@@ -453,9 +468,8 @@ const META_EFFECT: Record<string, EffectType> = {
   // Engine / script markers surfaced by the 2026-07-07 export refresh (mode-system
   // parsing + the attrib-118 byte-granular sub-index fix, which stopped collapsing
   // several of these onto Set_Mode). None is a numeric player stat — all are
-  // non-stat engine/reward/script/costume markers → 'Meta' (translucency is the
-  // stealth-visual component → 'Stealth', alongside `stealth`).
-  translucency: 'Stealth',
+  // non-stat engine/reward/script/costume markers → 'Meta'. (`translucency` is the
+  // stealth-visual component → Stealth/Translucency; see STEALTH_AXIS [BRIDGE-2].)
   revoke_power: 'Meta', cancel_mods: 'Meta', set_costume: 'Meta',
   silent_kill: 'Meta', xpdebtprotection: 'Meta', token_add: 'Meta',
   token_set: 'Meta', clear_damagers: 'Meta', view_attributes: 'Meta',
@@ -522,6 +536,10 @@ export function bridgeAttrib(attrib: string, aspect?: string, table?: string): B
   }
 
   // Scalar stats keep their type at any aspect (Mids keeps Recovery/Regen/ToHit at
+  // Stealth radius / translucency — the axis lives in the subType [BRIDGE-2]. Must precede
+  // SCALAR/META (which used to catch these attrib-typed with no subType).
+  if (a in STEALTH_AXIS) return { effectType: 'Stealth', subType: STEALTH_AXIS[a] };
+
   // Str); only Endurance gains a Max variant.
   if (a in SCALAR_EFFECT) {
     if (a === 'endurance' && asp === 'maximum') return { effectType: 'MaxEndurance' };
