@@ -224,6 +224,14 @@ export interface Build {
    *  Build-identity data — travels through save / load / export / share. See
    *  {@link ProcOverride} and the InfoPanel "Slotted Procs" block. */
   procOverrides?: Record<string, ProcOverride>;
+
+  /** Canonical stat keys whose Rule-of-5 over-cap *warnings* the user has muted.
+   *  Display-only: the engine still rejects the 6th+ bonus and the muted bonus
+   *  still doesn't count toward any total — this suppresses warnings only. Keys
+   *  are `group|label` (see `toCanonicalStatKey` in set-bonus-groups.ts). Sparse
+   *  (typically 0–2 entries); build identity — travels through save / load /
+   *  export / share. */
+  mutedOverCapStats: string[];
 }
 
 /**
@@ -281,6 +289,7 @@ export function createEmptyBuild(serverId: 'homecoming' | 'rebirth' | 'thundersp
     incarnateObtained: createEmptyIncarnateObtainedState(),
     shoppingListAcquired: {},
     slotOrder: [],
+    mutedOverCapStats: [],
   };
 }
 
@@ -325,6 +334,8 @@ export interface SlimBuildData {
   attackChains?: AttackChain[];
   /** Per-slotted-proc control overrides. Optional for backward compat. */
   procOverrides?: Record<string, ProcOverride>;
+  /** Muted over-cap warning stat keys. Optional for backward compat. */
+  mutedOverCapStats?: string[];
   [key: string]: unknown;
 }
 

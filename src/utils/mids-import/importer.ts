@@ -626,6 +626,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
     incarnateObtained: {},
     shoppingListAcquired: {},
     slotOrder: [],
+    mutedOverCapStats: [],
   };
 
   // 13. Recompute set tracking

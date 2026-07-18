@@ -659,6 +659,7 @@ export function importFromParsedData(parsed: GameExportData): GameImportResult {
     incarnateObtained: {},
     shoppingListAcquired: {},
     slotOrder: [],
+    mutedOverCapStats: [],
   };
 
   // 10. Recompute set tracking
