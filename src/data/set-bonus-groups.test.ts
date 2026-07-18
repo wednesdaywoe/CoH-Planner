@@ -113,4 +113,13 @@ describe('over-cap mute canonicalization', () => {
   it('isOverCapMuted is false for an empty mute set', () => {
     expect(isOverCapMuted('mezResist', [])).toBe(false);
   });
+
+  it('falls an unmapped exotic stat into a stable misc token (case-insensitive; read/write agree)', () => {
+    // Not present in STAT_GROUP_INFO or PROC_BREAKDOWN_KEY_TO_GROUP_KEY.
+    expect(toCanonicalStatKey('someExoticStat').startsWith('misc|')).toBe(true);
+    // write vs read vocabularies (case difference) still agree for an exotic key
+    expect(toCanonicalStatKey('SomeExoticStat')).toBe(toCanonicalStatKey('someexoticstat'));
+    // a digit-bearing unmapped key must NOT collapse onto a real mapped stat
+    expect(toCanonicalStatKey('damage2')).not.toBe(toCanonicalStatKey('damage'));
+  });
 });

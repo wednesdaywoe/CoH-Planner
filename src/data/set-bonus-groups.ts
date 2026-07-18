@@ -168,7 +168,7 @@ export function toCanonicalStatKey(rawKey: string): string {
   const remapped = PROC_BREAKDOWN_KEY_TO_GROUP_KEY[rawKey] ?? rawKey;
   const info =
     STAT_GROUP_INFO[remapped] ??
-    STAT_GROUP_INFO[remapped.toLowerCase().replace(/[^a-z]/g, '')];
+    STAT_GROUP_INFO[remapped.toLowerCase().replace(/[^a-z0-9]/g, '')];
   if (info) return `${info.group}|${info.label}`;
   return `misc|${remapped.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
 }
