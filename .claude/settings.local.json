@@ -126,7 +126,24 @@
       "Bash(git -C /home/jiiwii/Github/CoH-Sidekick status)",
       "Bash(time node -e \"require\\('tsx/cjs'\\); const a=require\\('./src/data/core/atomic-effect.ts'\\); console.log\\(typeof a.bridgeAttrib\\)\")",
       "Bash(git show *)",
-      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.scripts,null,2\\)\\)\")"
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.scripts,null,2\\)\\)\")",
+      "Bash(awk 'NR<=2')",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=10240\" npm run build)",
+      "Bash(node -e ' *)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=8192\" npx vitest run)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=8192\" npx vitest run dormant-pools)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=8192\" npx vitest run dormant-pools --testTimeout=60000)",
+      "Bash(time NODE_OPTIONS=\"--max-old-space-size=8192\" npx vitest run --testTimeout=30000)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=8192\" npx vitest run --testTimeout=30000 --hookTimeout=30000)",
+      "Bash(grep -n \"ioSetsRaw\\\\|powersetsRaw\\\\|IOSetRegistry\\\\` lazily\\\\|active server's set data\" src/data/dataset.ts)",
+      "Bash(NODE_OPTIONS=\"--max-old-space-size=8192\" npx vitest run --testTimeout=30000 --hookTimeout=30000 genesis-incarnate alpha-enhances-destiny destiny-decay destiny-scaling incarnate)",
+      "Bash(time NODE_OPTIONS=\"--max-old-space-size=8192\" npm test)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_close",
+      "Bash(pkill -f \"vite preview\")",
+      "Bash(pkill -f \"npm run preview\")"
     ],
     "additionalDirectories": [
       "/tmp"
