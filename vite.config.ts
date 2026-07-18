@@ -141,17 +141,23 @@ export default defineConfig({
         // them would download the entire icon library on SW install. They are
         // runtime-cached on demand below instead.
         globPatterns: ['**/*.{js,css,html}'],
-        // The dataset bundle is a large JS chunk that boot must load before the
-        // app can render — so it's downloaded on first load anyway, and
-        // precaching it adds ~no first-load cost while enabling offline +
-        // instant repeat loads. Raise the per-file cap above it (a globbed file
-        // over the limit is a hard build error here, not a warning). Revisit if
-        // the bundle keeps growing — at some point runtime-caching the data
-        // chunk on demand beats precaching it.
-        // 16 -> 40 MiB on 2026-07-17: the converter atom-array work grew the
-        // data chunk to ~29 MB, past the old 16 MiB cap. (This failure was
-        // masked until the build OOM ceiling was raised in the same session.)
-        maximumFileSizeToCacheInBytes: 40 * 1024 * 1024,
+        // Exclude the per-dataset chunks (`dataset-<id>-*.js`, named via
+        // build.rollupOptions.output.chunkFileNames). Each is 8-15 MB and only
+        // ONE is ever loaded per visitor (the active server, chosen at boot),
+        // so precaching all three would download ~34 MB of data on SW install —
+        // ~2/3 of it for datasets that visitor never opens. Instead boot loads
+        // the active dataset's chunk over the network (content-hashed →
+        // immutable → HTTP-cached for repeat loads). Offline dataset switching
+        // isn't a goal (no distributable; effectively all use is online).
+        globIgnores: ['assets/dataset-*.js'],
+        // Precache is now the app shell only (~1.7 MB entry + CSS). This low cap
+        // is a regression tripwire: a globbed file over the limit is a hard
+        // build error, so if a future change re-leaks a whole dataset (8 MB+)
+        // into an eager/precached chunk, the build fails loudly here.
+        // History: 16 MiB, then 40 MiB on 2026-07-17 to fit the ~29 MB data
+        // chunk that used to be welded into the eager entry; that data now
+        // lives in the globIgnored dataset chunks (perf/dataset-lazy-facades).
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         cleanupOutdatedCaches: true,
         // SPA navigations are served the precached index.html — instant + works
         // offline. Freshness is governed by the controlled update prompt (the
@@ -215,6 +221,22 @@ export default defineConfig({
     // sourceMappingURL comment in the deployed JS (so browsers won't fetch
     // the maps from the public site).
     sourcemap: 'hidden',
+    rollupOptions: {
+      output: {
+        // Give the per-dataset dynamic-import chunks a stable, greppable name
+        // (`dataset-<id>-<hash>.js`) so the service worker can exclude them
+        // from precache by glob (see workbox.globIgnores). This is naming ONLY
+        // — it does NOT move modules between chunks (a directory-based
+        // manualChunks would, and would re-pull the ~100 KB of small modules
+        // still statically imported from datasets/* back into the eager entry).
+        // Each dataset's index.ts is the facade module of its own dynamic chunk.
+        chunkFileNames: (chunkInfo) => {
+          const id = chunkInfo.facadeModuleId
+          const m = id?.match(/[/\\]datasets[/\\](homecoming|rebirth|thunderspy)[/\\]index\.ts$/)
+          return m ? `assets/dataset-${m[1]}-[hash].js` : 'assets/[name]-[hash].js'
+        },
+      },
+    },
   },
   server: {
     port: 3000,
