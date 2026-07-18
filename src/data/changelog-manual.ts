@@ -43,6 +43,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-07-17',
 
     items: [
+      { id: 'dataset-lazy-load-slimdown', message: 'Sidekick went on a weight-loss program 🍩, and lost 26mb of entry chunk and 35mb precache.', type: 'update' },
       { id: 'bio-absorb-overstated', message: 'Fixed overstated absorb on Bio Armor caused by a stale override and a converter that summed a placeholder value. They now grant the 30% (Ablative) and 10% of Max HP per foe hit (Parasitic).', type: 'fix' },
       { id: 'parasitic-absorb-per-target', message: 'Parasitic Aura\'s absorb now grows with the number of foes hit (up to 10), instead of ignoring the targets-hit slider.', type: 'fix' },
       { id: 'targets-hit-slider-off', message: 'Fixed the targets-hit slider computing its 1-target value while displaying "Off". Evolving Armor, Parasitic Aura, DNA Siphon and every other power with a targets-hit slider now read 0 at "Off".', type: 'fix' },
