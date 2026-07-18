@@ -164,8 +164,25 @@ export function statKeyToLabel(breakdownKey: string): string {
  * (mezResist→mezresist, maxHP→maxhp, …); an unmapped exotic stat falls back to a
  * stable normalized token so the write and read sides still agree.
  */
+/**
+ * Breakdown/global keys that a SET BONUS can produce which are renamed BEYOND
+ * case from their STAT_GROUP_INFO tracking key, and which no proc emits (so they
+ * are intentionally absent from PROC_BREAKDOWN_KEY_TO_GROUP_KEY). Kept separate
+ * from that map so the popup's proc-fold contract ("exactly proc keys") is
+ * unchanged. Source of truth for the rename: STAT_TO_GLOBAL in
+ * src/utils/calculations/character-totals.ts — when an engine stat's global key
+ * diverges from its normalized name, add the reverse here so the over-cap mute
+ * (written from the popup, read against the breakdown) still round-trips.
+ */
+const OVERCAP_BREAKDOWN_ALIASES: Record<string, string> = {
+  maxEndurance: 'maxend',
+  endurance: 'endrdx',
+  mezResistKnockback: 'kbresistance',
+};
+
 export function toCanonicalStatKey(rawKey: string): string {
-  const remapped = PROC_BREAKDOWN_KEY_TO_GROUP_KEY[rawKey] ?? rawKey;
+  const remapped =
+    PROC_BREAKDOWN_KEY_TO_GROUP_KEY[rawKey] ?? OVERCAP_BREAKDOWN_ALIASES[rawKey] ?? rawKey;
   const info =
     STAT_GROUP_INFO[remapped] ??
     STAT_GROUP_INFO[remapped.toLowerCase().replace(/[^a-z0-9]/g, '')];

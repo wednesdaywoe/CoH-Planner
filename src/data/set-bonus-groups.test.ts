@@ -122,4 +122,20 @@ describe('over-cap mute canonicalization', () => {
     // a digit-bearing unmapped key must NOT collapse onto a real mapped stat
     expect(toCanonicalStatKey('damage2')).not.toBe(toCanonicalStatKey('damage'));
   });
+
+  it('agrees on write (tracking) vs read (breakdown global) key for divergent-global set bonuses', () => {
+    // These three set-bonus stats have breakdown/global keys renamed beyond case
+    // (STAT_TO_GLOBAL in character-totals.ts). Muting from the popup (tracking key)
+    // must suppress the ring/banner (breakdown global key).
+    expect(toCanonicalStatKey('maxEndurance')).toBe(toCanonicalStatKey('maxend'));
+    expect(toCanonicalStatKey('endurance')).toBe(toCanonicalStatKey('endrdx'));
+    expect(toCanonicalStatKey('mezResistKnockback')).toBe(toCanonicalStatKey('kbresistance'));
+    // and none of them fall into the misc bucket
+    expect(toCanonicalStatKey('maxEndurance').startsWith('misc|')).toBe(false);
+  });
+
+  it('a popup mute of Max Endurance suppresses the breakdown-key ring/banner', () => {
+    const muted = [toCanonicalStatKey('maxend')]; // what the popup bell stores
+    expect(isOverCapMuted('maxEndurance', muted)).toBe(true); // breakdown key the ring reads
+  });
 });
