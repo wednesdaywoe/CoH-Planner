@@ -12,8 +12,7 @@
 import { useMemo } from 'react';
 import { useBuildStore, useUIStore } from '@/stores';
 import { getIOSet } from '@/data';
-import { statKeyToLabel } from '@/data/set-bonus-groups';
-import { formatBonusValue } from '@/utils/set-bonus-format';
+import { computeOffendingPowerReasons, type CappedBonusReason } from '@/utils/over-cap-mute';
 import type { SetBonus } from '@/types';
 import type { ProcSettings } from '@/stores/uiStore';
 import type { BonusTracking } from '@/utils/calculations';
@@ -453,11 +452,7 @@ export function useBonusTracking(): BonusTracking {
  *  "+10%"). Drives the orange-ring tooltip so the user can see *which* bonus is
  *  over the cap — often a hidden component bundled into a differently-named set
  *  bonus (a resistance set silently carrying Mez Resistance, etc.). */
-export interface CappedBonusReason {
-  label: string;
-  /** Pre-formatted value with sign + unit, e.g. "+10%". */
-  display: string;
-}
+export type { CappedBonusReason };
 
 /**
  * Map of `power.name` → the distinct Rule-of-5-capped bonuses it contributes.
@@ -473,45 +468,12 @@ export interface CappedBonusReason {
  */
 export function useOffendingPowerReasons(): Map<string, CappedBonusReason[]> {
   const enabled = useUIStore((s) => s.ruleOf5AlertEnabled);
+  const muted = useBuildStore((s) => s.build.mutedOverCapStats);
   const { breakdown } = useCharacterCalculation();
-
-  return useMemo(() => {
-    const reasons = new Map<string, CappedBonusReason[]>();
-    if (!enabled) return reasons;
-    for (const [statKey, stat] of breakdown.entries()) {
-      // Group this stat's sources by value (the Rule of 5 fires per
-      // (stat, value) bucket). If any source in a bucket is capped, every
-      // power in that bucket is part of the issue.
-      const byValue = new Map<string, { capped: boolean; powerNames: string[] }>();
-      for (const source of stat.sources) {
-        if (!source.powerName) continue;
-        const key = source.value.toFixed(2);
-        const entry = byValue.get(key);
-        if (entry) {
-          entry.powerNames.push(source.powerName);
-          if (source.capped) entry.capped = true;
-        } else {
-          byValue.set(key, { capped: !!source.capped, powerNames: [source.powerName] });
-        }
-      }
-      for (const [valueKey, entry] of byValue.entries()) {
-        if (!entry.capped) continue;
-        const reason: CappedBonusReason = {
-          label: statKeyToLabel(statKey),
-          display: `+${formatBonusValue(Number(valueKey))}%`,
-        };
-        for (const name of entry.powerNames) {
-          const list = reasons.get(name);
-          if (list) {
-            if (!list.some((r) => r.label === reason.label && r.display === reason.display)) list.push(reason);
-          } else {
-            reasons.set(name, [reason]);
-          }
-        }
-      }
-    }
-    return reasons;
-  }, [breakdown, enabled]);
+  return useMemo(
+    () => computeOffendingPowerReasons(breakdown, enabled, muted),
+    [breakdown, enabled, muted],
+  );
 }
 
 /**

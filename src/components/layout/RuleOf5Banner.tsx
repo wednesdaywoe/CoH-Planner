@@ -12,7 +12,9 @@
 
 import { useState, useMemo } from 'react';
 import { useUIStore } from '@/stores/uiStore';
+import { useBuildStore } from '@/stores/buildStore';
 import { useCharacterCalculation } from '@/hooks/useCalculatedStats';
+import { countUnmutedCappedSources } from '@/utils/over-cap-mute';
 
 const SESSION_KEY = 'coh-rule-of-5-banner-dismissed';
 
@@ -20,6 +22,7 @@ export function RuleOf5Banner() {
   const enabled = useUIStore((s) => s.ruleOf5AlertEnabled);
   const openHelpModal = useUIStore((s) => s.openHelpModal);
   const { breakdown } = useCharacterCalculation();
+  const muted = useBuildStore((s) => s.build.mutedOverCapStats);
 
   const [dismissed, setDismissed] = useState(() => {
     try {
@@ -35,14 +38,8 @@ export function RuleOf5Banner() {
   // through the set-bonus tracking object).
   const cappedCount = useMemo(() => {
     if (!enabled) return 0;
-    let n = 0;
-    for (const stat of breakdown.values()) {
-      for (const source of stat.sources) {
-        if (source.capped) n++;
-      }
-    }
-    return n;
-  }, [breakdown, enabled]);
+    return countUnmutedCappedSources(breakdown, muted);
+  }, [breakdown, enabled, muted]);
 
   if (!enabled || dismissed || cappedCount === 0) return null;
 
