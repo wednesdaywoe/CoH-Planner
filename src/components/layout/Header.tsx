@@ -137,6 +137,7 @@ export function Header() {
   const toggleRuleOf5AlertEnabled = useUIStore((s) => s.toggleRuleOf5AlertEnabled);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
   const openWelcomeModal = useUIStore((s) => s.openWelcomeModal);
+  const openAnnouncementModal = useUIStore((s) => s.openAnnouncementModal);
   const openChangelogModal = useUIStore((s) => s.openChangelogModal);
 
   const navigate = useNavigate();
@@ -184,6 +185,7 @@ export function Header() {
             onEnhancementTools={openEnhancementToolsModal}
             onAbout={openAboutModal}
             onWhatsNew={openWelcomeModal}
+            onRoadmap={() => openAnnouncementModal('roadmap')}
             onChangelog={openChangelogModal}
           />
         </div>
@@ -775,6 +777,7 @@ function ActionMenu({
   onEnhancementTools,
   onAbout,
   onWhatsNew,
+  onRoadmap,
   onChangelog,
 }: {
   onOpenModal: (tab?: 'save' | 'load-import' | 'share-export') => void;
@@ -786,6 +789,7 @@ function ActionMenu({
   onEnhancementTools: () => void;
   onAbout: () => void;
   onWhatsNew: () => void;
+  onRoadmap: () => void;
   onChangelog: () => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -1050,6 +1054,10 @@ function ActionMenu({
               Install app
             </button>
           )}
+          <button onClick={() => { onRoadmap(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors flex items-center gap-2" title="Track the Sidekick 1.0 rebuild.">
+            <span className="w-4 h-4 flex items-center justify-center" aria-hidden>🚀</span>
+            Road to 1.0
+          </button>
           <button onClick={() => { onWhatsNew(); setOpen(false); }} className="w-full text-left px-3 py-2 text-sm text-amber-300 hover:bg-gray-700 hover:text-amber-200 transition-colors flex items-center gap-2" title="Recent changes and announcements.">
             <svg className="w-4 h-4 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
