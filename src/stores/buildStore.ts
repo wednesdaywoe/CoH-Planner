@@ -2762,6 +2762,7 @@ export const useBuildStore = create<BuildStore>()(
           if (!state.build.shoppingListAcquired) state.build.shoppingListAcquired = {};
           if (!Array.isArray(state.build.accolades)) state.build.accolades = [];
           if (!state.build.sets) state.build.sets = {};
+          if (!Array.isArray(state.build.mutedOverCapStats)) state.build.mutedOverCapStats = [];
           try {
           // Convert pieces arrays back to Sets after rehydration
           // The persisted state has arrays, but we need Sets
