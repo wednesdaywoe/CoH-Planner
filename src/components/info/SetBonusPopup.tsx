@@ -17,12 +17,12 @@
  */
 
 import { useMemo, useState, useCallback } from 'react';
-import { useUIStore } from '@/stores';
+import { useUIStore, useBuildStore } from '@/stores';
 import { useBonusTracking, useStatBreakdowns, useIsTouchDevice } from '@/hooks';
 import { Tooltip, FloatingWindow } from '@/components/ui';
 import { Modal } from '@/components/modals/Modal';
 import { formatBonusValue } from '@/utils/set-bonus-format';
-import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY } from '@/data/set-bonus-groups';
+import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY, toCanonicalStatKey, isOverCapMuted } from '@/data/set-bonus-groups';
 import type { ValueTracking } from '@/utils/calculations/set-bonuses';
 
 const DEFAULT_WIDTH = 380;
@@ -57,6 +57,8 @@ export function SetBonusPopup() {
   const closeSetBonusPopup = useUIStore((s) => s.closeSetBonusPopup);
   const tracking = useBonusTracking();
   const breakdowns = useStatBreakdowns();
+  const mutedOverCapStats = useBuildStore((s) => s.build.mutedOverCapStats);
+  const toggleOverCapMute = useBuildStore((s) => s.toggleOverCapMute);
 
   const groups = useMemo<BonusGroup[]>(() => {
     // 1. Per-stat Rule-of-5 buckets, seeded from the set-bonus tracking.
@@ -160,6 +162,37 @@ export function SetBonusPopup() {
     <span className="tabular-nums font-medium text-emerald-300 shrink-0">+{formatBonusValue(v)}%</span>
   );
 
+  const renderBell = (row: StatRow) => {
+    const muted = isOverCapMuted(row.stat, mutedOverCapStats);
+    return (
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation(); // don't trigger the touch row's tap-to-expand
+          toggleOverCapMute(toCanonicalStatKey(row.stat));
+        }}
+        className={`shrink-0 ml-1 p-0.5 rounded transition-colors ${
+          muted ? 'text-slate-500 hover:text-slate-300' : 'text-slate-500 hover:text-amber-300'
+        }`}
+        title={muted ? 'Over-cap warnings muted — click to un-mute' : 'Mute over-cap warnings for this stat'}
+        aria-label={`${muted ? 'Un-mute' : 'Mute'} ${row.label} over-cap warnings`}
+        aria-pressed={muted}
+      >
+        {muted ? (
+          // bell-slash
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.73 21a2 2 0 0 1-3.46 0M18.63 13A17.9 17.9 0 0 1 18 8M6.26 6.26A5.86 5.86 0 0 0 6 8c0 7-3 9-3 9h14M18 8a6 6 0 0 0-9.33-5M3 3l18 18" />
+          </svg>
+        ) : (
+          // bell
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5m6 0v1a3 3 0 1 1-6 0v-1m6 0H9" />
+          </svg>
+        )}
+      </button>
+    );
+  };
+
   const renderBuckets = (row: StatRow) => (
     <div className="space-y-0.5">
       {row.buckets.map((b, bi) => (
@@ -209,20 +242,24 @@ export function SetBonusPopup() {
               <span className="truncate">{g.group}</span>
               {wastedDot(g.wastedCount)}
             </div>
-            {g.rows.map((r) =>
-              isTouch ? (
-                <div key={r.stat}>
-                  <button
-                    onClick={() => toggleExpanded(r.stat)}
-                    className="w-full flex items-baseline justify-between gap-2 px-2 py-1.5 text-xs text-left hover:bg-slate-800/70 active:bg-slate-700/70"
-                  >
-                    <span className="text-slate-300 truncate flex items-baseline">
-                      <span className={`mr-1 text-[9px] transition-transform ${expanded.has(r.stat) ? 'rotate-90' : ''}`}>▶</span>
-                      {r.label}
-                      {wastedDot(r.wastedCount)}
-                    </span>
-                    {valueSpan(r.total)}
-                  </button>
+            {g.rows.map((r) => {
+              const muted = isOverCapMuted(r.stat, mutedOverCapStats);
+              return isTouch ? (
+                <div key={r.stat} className={muted ? 'opacity-60' : ''}>
+                  <div className="flex items-stretch">
+                    <button
+                      onClick={() => toggleExpanded(r.stat)}
+                      className="flex-1 min-w-0 flex items-baseline justify-between gap-2 px-2 py-1.5 text-xs text-left hover:bg-slate-800/70 active:bg-slate-700/70"
+                    >
+                      <span className="text-slate-300 truncate flex items-baseline">
+                        <span className={`mr-1 text-[9px] transition-transform ${expanded.has(r.stat) ? 'rotate-90' : ''}`}>▶</span>
+                        {r.label}
+                        {!muted && wastedDot(r.wastedCount)}
+                      </span>
+                      {valueSpan(r.total)}
+                    </button>
+                    <span className="flex items-center pr-1">{renderBell(r)}</span>
+                  </div>
                   {expanded.has(r.stat) && (
                     <div className="px-2 pb-1.5 pt-1 text-xs border-t border-slate-700/40 bg-slate-900/40">
                       {renderBuckets(r)}
@@ -231,16 +268,19 @@ export function SetBonusPopup() {
                 </div>
               ) : (
                 <Tooltip key={r.stat} content={renderBreakdown(`${g.group} · ${r.label}`, r)} position="left">
-                  <div className="flex items-baseline justify-between gap-2 px-2 py-0.5 text-xs hover:bg-slate-800/70 cursor-default">
+                  <div className={`flex items-baseline justify-between gap-2 px-2 py-0.5 text-xs hover:bg-slate-800/70 cursor-default ${muted ? 'opacity-60' : ''}`}>
                     <span className="text-slate-300 truncate">
                       {r.label}
-                      {wastedDot(r.wastedCount)}
+                      {!muted && wastedDot(r.wastedCount)}
                     </span>
-                    {valueSpan(r.total)}
+                    <span className="flex items-baseline shrink-0">
+                      {valueSpan(r.total)}
+                      {renderBell(r)}
+                    </span>
                   </div>
                 </Tooltip>
-              )
-            )}
+              );
+            })}
           </div>
         ))}
       </div>
