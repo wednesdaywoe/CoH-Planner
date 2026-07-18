@@ -14,9 +14,6 @@ import type {
   EnhancementStatType,
   PowerType,
 } from '@/types';
-import { POWER_POOLS_RAW as POWER_POOLS_RAW_HC } from './datasets/homecoming/power-pools-raw';
-import { POWER_POOLS_RAW as POWER_POOLS_RAW_REBIRTH } from './datasets/rebirth/power-pools-raw';
-import { POWER_POOLS_RAW as POWER_POOLS_RAW_THUNDERSPY } from './datasets/thunderspy/power-pools-raw';
 import { getActiveDataset } from './dataset';
 import { POOL_UNLOCK_LEVEL } from './levels';
 
@@ -77,7 +74,7 @@ interface LegacyPowerPool {
   powers: LegacyPoolPower[];
 }
 
-type LegacyPowerPoolRegistry = Record<string, LegacyPowerPool>;
+export type LegacyPowerPoolRegistry = Record<string, LegacyPowerPool>;
 
 // ============================================
 // DATA TRANSFORMATION
@@ -174,21 +171,15 @@ function transformRegistry(legacy: LegacyPowerPoolRegistry): PowerPoolRegistry {
 // POWER POOL REGISTRY
 // ============================================
 
-// Lazy-cache the transformed registry per dataset.
+// Lazy-cache the transformed registry per dataset. The raw registry rides in
+// the active dataset's dynamic chunk via `getActiveDataset().powerPoolsRaw`
+// (not a static cross-dataset import), so only the active server's power-pool
+// data is downloaded; the transform runs once per dataset on first access.
 const _registryCache = new Map<string, PowerPoolRegistry>();
 
-function _resolveRawForDataset(datasetId: string) {
-  switch (datasetId) {
-    case 'rebirth': return POWER_POOLS_RAW_REBIRTH;
-    case 'thunderspy': return POWER_POOLS_RAW_THUNDERSPY;
-    case 'homecoming':
-    default: return POWER_POOLS_RAW_HC;
-  }
-}
-
 function _activeRegistry(): PowerPoolRegistry {
-  const id = getActiveDataset().id;
-  let r = _registryCache.get(id);
+  const ds = getActiveDataset();
+  let r = _registryCache.get(ds.id);
   if (!r) {
     // Drop dormant pools — present in this server's bins but not released
     // (their powers are locked behind a dev-only `accesslevel > 0` gate,
@@ -197,13 +188,13 @@ function _activeRegistry(): PowerPoolRegistry {
     // available for a possible future "show unreleased" toggle. This is the
     // pool analog of the powerset dormancy filter in src/data/powersets.ts,
     // and replaces the former hand-maintained per-dataset pool allowlist.
-    const raw = _resolveRawForDataset(id) as Record<string, { dormant?: boolean }>;
+    const raw = ds.powerPoolsRaw as unknown as Record<string, { dormant?: boolean }>;
     const live: Record<string, unknown> = {};
     for (const [poolId, pool] of Object.entries(raw)) {
       if (!pool.dormant) live[poolId] = pool;
     }
     r = transformRegistry(live as unknown as LegacyPowerPoolRegistry);
-    _registryCache.set(id, r);
+    _registryCache.set(ds.id, r);
   }
   return r;
 }

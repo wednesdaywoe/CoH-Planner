@@ -7,10 +7,8 @@
  */
 
 import type { Powerset, Power } from '@/types';
-import { MODULAR_POWERSETS as HC_POWERSETS_RAW } from './datasets/homecoming/powersets/index';
-import { MODULAR_POWERSETS as REBIRTH_POWERSETS } from './datasets/rebirth/powersets/index';
-import { MODULAR_POWERSETS as THUNDERSPY_POWERSETS } from './datasets/thunderspy/powersets/index';
 import { getActiveDataset } from './dataset';
+import type { DatasetId } from './dataset';
 
 // ============================================
 // POWERSET REGISTRY TYPE
@@ -39,20 +37,20 @@ function withoutDormant(registry: PowersetRegistry): PowersetRegistry {
   return filtered;
 }
 
-const HC_POWERSETS = withoutDormant(HC_POWERSETS_RAW);
-const REBIRTH_POWERSETS_LIVE = withoutDormant(REBIRTH_POWERSETS);
-const THUNDERSPY_POWERSETS_LIVE = withoutDormant(THUNDERSPY_POWERSETS);
+// Lazy-load + cache the dormant-filtered registry per dataset. The raw
+// registry (with dormant sets) rides in the active dataset's dynamic chunk
+// via `getActiveDataset().powersetsRaw`, so only the active server's powerset
+// data is downloaded; the filter runs once per dataset on first access.
+const _liveRegistryCache = new Map<DatasetId, PowersetRegistry>();
 
 function getRegistry(): PowersetRegistry {
-  switch (getActiveDataset().id) {
-    case 'rebirth':
-      return REBIRTH_POWERSETS_LIVE;
-    case 'thunderspy':
-      return THUNDERSPY_POWERSETS_LIVE;
-    case 'homecoming':
-    default:
-      return HC_POWERSETS;
+  const ds = getActiveDataset();
+  let live = _liveRegistryCache.get(ds.id);
+  if (!live) {
+    live = withoutDormant(ds.powersetsRaw);
+    _liveRegistryCache.set(ds.id, live);
   }
+  return live;
 }
 
 /**

@@ -13,9 +13,6 @@ import type {
   EnhancementStatType,
   PowerType,
 } from '@/types';
-import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_HC } from './datasets/homecoming/epic-pools-raw';
-import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_REBIRTH } from './datasets/rebirth/epic-pools-raw';
-import { EPIC_POOLS_RAW as EPIC_POOLS_RAW_THUNDERSPY } from './datasets/thunderspy/epic-pools-raw';
 import { getActiveDataset } from './dataset';
 import { EPIC_POOL_LEVEL, EPIC_TIER_REQUIREMENTS } from './levels';
 
@@ -85,7 +82,7 @@ interface LegacyEpicPool {
   powers: LegacyEpicPower[];
 }
 
-type LegacyEpicPoolRegistry = Record<string, LegacyEpicPool>;
+export type LegacyEpicPoolRegistry = Record<string, LegacyEpicPool>;
 
 // ============================================
 // DATA TRANSFORMATION
@@ -183,26 +180,18 @@ function transformRegistry(legacy: LegacyEpicPoolRegistry): EpicPoolRegistry {
 // EPIC POOL REGISTRY
 // ============================================
 
-// Lazy-cache the transformed registry per dataset.
+// Lazy-cache the transformed registry per dataset. The raw registry rides in
+// the active dataset's dynamic chunk via `getActiveDataset().epicPoolsRaw`
+// (not a static cross-dataset import), so only the active server's epic-pool
+// data is downloaded; the transform runs once per dataset on first access.
 const _registryCache = new Map<string, EpicPoolRegistry>();
 
-function _resolveRawForDataset(datasetId: string) {
-  switch (datasetId) {
-    case 'rebirth': return EPIC_POOLS_RAW_REBIRTH;
-    case 'thunderspy': return EPIC_POOLS_RAW_THUNDERSPY;
-    case 'homecoming':
-    default: return EPIC_POOLS_RAW_HC;
-  }
-}
-
 function _activeRegistry(): EpicPoolRegistry {
-  const id = getActiveDataset().id;
-  let r = _registryCache.get(id);
+  const ds = getActiveDataset();
+  let r = _registryCache.get(ds.id);
   if (!r) {
-    r = transformRegistry(
-      _resolveRawForDataset(id) as unknown as LegacyEpicPoolRegistry
-    );
-    _registryCache.set(id, r);
+    r = transformRegistry(ds.epicPoolsRaw);
+    _registryCache.set(ds.id, r);
   }
   return r;
 }

@@ -13,7 +13,11 @@
  * See MULTI_DATASET_PLAN.md for the broader plan.
  */
 
-import type { ArchetypeId, ArchetypeRegistry, Archetype } from '@/types';
+import type { ArchetypeId, ArchetypeRegistry, Archetype, Powerset } from '@/types';
+import type { LegacyIOSetRegistry } from './io-sets';
+import type { LegacyEpicPoolRegistry } from './epic-pools';
+import type { IncarnateEffectsRaw } from './incarnate-effects';
+import type { LegacyPowerPoolRegistry } from './power-pools';
 
 // ============================================
 // DATA SHAPES SHARED ACROSS DATASETS
@@ -196,6 +200,37 @@ export interface Dataset {
   // Pet entities — pet abilities + upgrade tiers used for pet damage
   // calculation (Mastermind summons, Voltaic Sentinel, Lore pets, etc.).
   petEntities: Record<string, PetEntity>;
+
+  // Raw powerset registry (INCLUDES dormant sets). Lives on the dataset —
+  // and therefore in this dataset's dynamic chunk — so only the active
+  // server's ~13-20 MB of powerset data loads, instead of all three being
+  // welded into the eager entry bundle by a static cross-dataset import.
+  // The `powersets` facade filters dormant sets lazily per active dataset;
+  // the raw is kept whole for a possible future "show unreleased sets" toggle.
+  powersetsRaw: Record<string, Powerset>;
+
+  // Raw (untransformed) IO-set registry. Same rationale as `powersetsRaw`:
+  // lives on the dataset so only the active server's set data loads. The
+  // `io-sets` facade transforms it to the runtime `IOSetRegistry` lazily.
+  ioSetsRaw: LegacyIOSetRegistry;
+
+  // Raw epic-pool registry. Same rationale as `powersetsRaw`/`ioSetsRaw`. The
+  // per-dataset generated literal is structurally looser than the facade's
+  // `LegacyEpicPoolRegistry`, so each dataset asserts the type at assignment
+  // (the cast that formerly lived in the epic-pools facade).
+  epicPoolsRaw: LegacyEpicPoolRegistry;
+
+  // Raw incarnate effect tables (alpha/destiny/hybrid/interface/judgement/lore/
+  // genesis + destiny timeline & boosts) for this server. Same rationale as the
+  // other `*Raw` fields — keeps all three servers' incarnate data out of the
+  // eager bundle. The `incarnate-effects` facade reads each slot on demand.
+  incarnateEffectsRaw: IncarnateEffectsRaw;
+
+  // Raw power-pool registry (INCLUDES dormant pools). Same rationale/shape as
+  // `epicPoolsRaw`; the `power-pools` facade drops dormant pools and transforms
+  // lazily per active dataset. The generated literal is structurally looser than
+  // `LegacyPowerPoolRegistry`, so each dataset asserts the type at assignment.
+  powerPoolsRaw: LegacyPowerPoolRegistry;
 
   // Helpers closed over this dataset's own data records.
   getTableValue: (archetype: string, tableName: string, level: number) => number | undefined;

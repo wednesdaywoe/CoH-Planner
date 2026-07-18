@@ -13,50 +13,14 @@
  */
 
 import type { IncarnateSlotId } from '@/types';
-import {
-  GENERATED_ALPHA_EFFECTS as HC_ALPHA,
-  GENERATED_DESTINY_EFFECTS as HC_DESTINY,
-  GENERATED_DESTINY_TIMELINE as HC_DESTINY_TIMELINE,
-  GENERATED_DESTINY_BOOSTS as HC_DESTINY_BOOSTS,
-  GENERATED_HYBRID_EFFECTS as HC_HYBRID,
-  GENERATED_INTERFACE_EFFECTS as HC_INTERFACE,
-  GENERATED_JUDGEMENT_EFFECTS as HC_JUDGEMENT,
-  GENERATED_LORE_EFFECTS as HC_LORE,
-} from './datasets/homecoming/generated/incarnate-effects';
-import {
-  GENERATED_ALPHA_EFFECTS as REBIRTH_ALPHA,
-  GENERATED_DESTINY_EFFECTS as REBIRTH_DESTINY,
-  GENERATED_DESTINY_TIMELINE as REBIRTH_DESTINY_TIMELINE,
-  GENERATED_DESTINY_BOOSTS as REBIRTH_DESTINY_BOOSTS,
-  GENERATED_HYBRID_EFFECTS as REBIRTH_HYBRID,
-  GENERATED_INTERFACE_EFFECTS as REBIRTH_INTERFACE,
-  GENERATED_JUDGEMENT_EFFECTS as REBIRTH_JUDGEMENT,
-  GENERATED_LORE_EFFECTS as REBIRTH_LORE,
-  // Genesis is Rebirth-only — Homecoming's generated file has no such export.
-  GENERATED_GENESIS_EFFECTS as REBIRTH_GENESIS,
-} from './datasets/rebirth/generated/incarnate-effects';
-import {
-  GENERATED_ALPHA_EFFECTS as THUNDERSPY_ALPHA,
-  GENERATED_DESTINY_EFFECTS as THUNDERSPY_DESTINY,
-  GENERATED_DESTINY_TIMELINE as THUNDERSPY_DESTINY_TIMELINE,
-  GENERATED_DESTINY_BOOSTS as THUNDERSPY_DESTINY_BOOSTS,
-  GENERATED_HYBRID_EFFECTS as THUNDERSPY_HYBRID,
-  GENERATED_INTERFACE_EFFECTS as THUNDERSPY_INTERFACE,
-  GENERATED_JUDGEMENT_EFFECTS as THUNDERSPY_JUDGEMENT,
-  GENERATED_LORE_EFFECTS as THUNDERSPY_LORE,
-  // Thunderspy also ships a Genesis slot.
-  GENERATED_GENESIS_EFFECTS as THUNDERSPY_GENESIS,
-} from './datasets/thunderspy/generated/incarnate-effects';
 import { getActiveDataset } from './dataset';
 
-/** Pick the per-dataset table for the active dataset (HC is the default). */
-function _pick3<T>(hc: T, rebirth: T, thunderspy: T): T {
-  const id = getActiveDataset().id;
-  return id === 'rebirth' ? rebirth : id === 'thunderspy' ? thunderspy : hc;
-}
-
-// Lazy per-dataset accessors. The active dataset isn't loaded yet at module
-// evaluation time, so we resolve on demand (see _pick3 above).
+// The raw generated incarnate tables ride in the active dataset's dynamic
+// chunk via `getActiveDataset().incarnateEffectsRaw` (not a static
+// cross-dataset import), so only the active server's incarnate data loads.
+// Each dataset's index assembles the tables into this container; every slot
+// accessor below reads its field on demand (the active dataset isn't loaded
+// at module-evaluation time).
 
 // ============================================
 // TYPES
@@ -334,6 +298,27 @@ export interface GenesisEffects {
 }
 
 /**
+ * Per-dataset container for all raw incarnate effect tables. Assembled in each
+ * `datasets/<id>/index.ts` from that server's generated files and hung on the
+ * `Dataset` object, so only the active server's incarnate data is bundled into
+ * its dynamic chunk. The generated literals are structurally looser than these
+ * runtime types (the assertion that formerly lived in each `_pick3(...) as ...`
+ * cast), so each dataset asserts the whole container once at assembly.
+ */
+export interface IncarnateEffectsRaw {
+  alpha: Record<string, AlphaEffects>;
+  destiny: Record<string, DestinyEffects>;
+  destinyTimeline: Record<string, DestinyTimeline>;
+  destinyBoosts: Record<string, string[]>;
+  hybrid: Record<string, HybridEffects>;
+  interface: Record<string, InterfaceEffects>;
+  judgement: Record<string, JudgementEffects>;
+  lore: Record<string, LoreEffects>;
+  /** Homecoming ships no Genesis slot — its container holds an empty map. */
+  genesis: Record<string, GenesisEffects>;
+}
+
+/**
  * Combined incarnate power effects
  */
 export interface IncarnatePowerEffects {
@@ -354,15 +339,8 @@ export interface IncarnatePowerEffects {
 // ============================================
 
 // Alpha data auto-generated — see scripts/convert-incarnate-effects.cjs
-const _alphaCache = new Map<string, Record<string, AlphaEffects>>();
 function alphaEffects(): Record<string, AlphaEffects> {
-  const id = getActiveDataset().id;
-  let r = _alphaCache.get(id);
-  if (!r) {
-    r = _pick3(HC_ALPHA, REBIRTH_ALPHA, THUNDERSPY_ALPHA) as Record<string, AlphaEffects>;
-    _alphaCache.set(id, r);
-  }
-  return r;
+  return getActiveDataset().incarnateEffectsRaw.alpha;
 }
 
 // ============================================
@@ -370,42 +348,21 @@ function alphaEffects(): Record<string, AlphaEffects> {
 // ============================================
 
 // Destiny data auto-generated — see scripts/convert-incarnate-effects.cjs
-const _destinyCache = new Map<string, Record<string, DestinyEffects>>();
 function destinyEffects(): Record<string, DestinyEffects> {
-  const id = getActiveDataset().id;
-  let r = _destinyCache.get(id);
-  if (!r) {
-    r = _pick3(HC_DESTINY, REBIRTH_DESTINY, THUNDERSPY_DESTINY) as Record<string, DestinyEffects>;
-    _destinyCache.set(id, r);
-  }
-  return r;
+  return getActiveDataset().incarnateEffectsRaw.destiny;
 }
 
 // Per-stat decay tiers for diminishing Destiny buffs. Only powers that
 // actually decay (a stat with >1 tier) appear here; everything else is fully
 // described by the flat peak values in destinyEffects().
-const _destinyTimelineCache = new Map<string, Record<string, DestinyTimeline>>();
 function destinyTimelines(): Record<string, DestinyTimeline> {
-  const id = getActiveDataset().id;
-  let r = _destinyTimelineCache.get(id);
-  if (!r) {
-    r = _pick3(HC_DESTINY_TIMELINE, REBIRTH_DESTINY_TIMELINE, THUNDERSPY_DESTINY_TIMELINE) as Record<string, DestinyTimeline>;
-    _destinyTimelineCache.set(id, r);
-  }
-  return r;
+  return getActiveDataset().incarnateEffectsRaw.destinyTimeline;
 }
 
 // Boost categories each Destiny power accepts — the game's rule for which Alpha
 // enhancement aspects can enhance it.
-const _destinyBoostsCache = new Map<string, Record<string, string[]>>();
 function destinyBoosts(): Record<string, string[]> {
-  const id = getActiveDataset().id;
-  let r = _destinyBoostsCache.get(id);
-  if (!r) {
-    r = _pick3(HC_DESTINY_BOOSTS, REBIRTH_DESTINY_BOOSTS, THUNDERSPY_DESTINY_BOOSTS) as Record<string, string[]>;
-    _destinyBoostsCache.set(id, r);
-  }
-  return r;
+  return getActiveDataset().incarnateEffectsRaw.destinyBoosts;
 }
 
 // ============================================
@@ -413,15 +370,8 @@ function destinyBoosts(): Record<string, string[]> {
 // ============================================
 
 // Hybrid data auto-generated — see scripts/convert-incarnate-effects.cjs
-const _hybridCache = new Map<string, Record<string, HybridEffects>>();
 function hybridEffects(): Record<string, HybridEffects> {
-  const id = getActiveDataset().id;
-  let r = _hybridCache.get(id);
-  if (!r) {
-    r = _pick3(HC_HYBRID, REBIRTH_HYBRID, THUNDERSPY_HYBRID) as unknown as Record<string, HybridEffects>;
-    _hybridCache.set(id, r);
-  }
-  return r;
+  return getActiveDataset().incarnateEffectsRaw.hybrid;
 }
 
 // ============================================
@@ -429,15 +379,8 @@ function hybridEffects(): Record<string, HybridEffects> {
 // ============================================
 
 // Interface data auto-generated — see scripts/convert-incarnate-effects.cjs
-const _interfaceCache = new Map<string, Record<string, InterfaceEffects>>();
 function interfaceEffectsRegistry(): Record<string, InterfaceEffects> {
-  const id = getActiveDataset().id;
-  let r = _interfaceCache.get(id);
-  if (!r) {
-    r = _pick3(HC_INTERFACE, REBIRTH_INTERFACE, THUNDERSPY_INTERFACE) as unknown as Record<string, InterfaceEffects>;
-    _interfaceCache.set(id, r);
-  }
-  return r;
+  return getActiveDataset().incarnateEffectsRaw.interface;
 }
 
 // ============================================
@@ -445,15 +388,8 @@ function interfaceEffectsRegistry(): Record<string, InterfaceEffects> {
 // ============================================
 
 // Judgement data auto-generated — see scripts/convert-incarnate-effects.cjs
-const _judgementCache = new Map<string, Record<string, JudgementEffects>>();
 function judgementEffectsRegistry(): Record<string, JudgementEffects> {
-  const id = getActiveDataset().id;
-  let r = _judgementCache.get(id);
-  if (!r) {
-    r = _pick3(HC_JUDGEMENT, REBIRTH_JUDGEMENT, THUNDERSPY_JUDGEMENT) as unknown as Record<string, JudgementEffects>;
-    _judgementCache.set(id, r);
-  }
-  return r;
+  return getActiveDataset().incarnateEffectsRaw.judgement;
 }
 
 // ============================================
@@ -464,15 +400,8 @@ function judgementEffectsRegistry(): Record<string, JudgementEffects> {
 // Generated programmatically to avoid 189 manual entries.
 
 // Lore data auto-generated — see scripts/convert-incarnate-effects.cjs
-const _loreCache = new Map<string, Record<string, LoreEffects>>();
 function loreEffectsRegistry(): Record<string, LoreEffects> {
-  const id = getActiveDataset().id;
-  let r = _loreCache.get(id);
-  if (!r) {
-    r = _pick3(HC_LORE, REBIRTH_LORE, THUNDERSPY_LORE) as unknown as Record<string, LoreEffects>;
-    _loreCache.set(id, r);
-  }
-  return r;
+  return getActiveDataset().incarnateEffectsRaw.lore;
 }
 
 // ============================================
@@ -480,15 +409,10 @@ function loreEffectsRegistry(): Record<string, LoreEffects> {
 // ============================================
 
 // Genesis data auto-generated — see scripts/convert-incarnate-effects.cjs.
-// Homecoming has no Genesis slot, so this is empty for HC; Rebirth and
-// Thunderspy both ship one.
-const _genesisEmpty: Record<string, GenesisEffects> = {};
+// Homecoming has no Genesis slot, so its container holds an empty map; Rebirth
+// and Thunderspy both ship one (see each dataset's index assembly).
 function genesisEffectsRegistry(): Record<string, GenesisEffects> {
-  return _pick3(
-    _genesisEmpty,
-    REBIRTH_GENESIS as unknown as Record<string, GenesisEffects>,
-    THUNDERSPY_GENESIS as unknown as Record<string, GenesisEffects>,
-  );
+  return getActiveDataset().incarnateEffectsRaw.genesis;
 }
 
 // ============================================

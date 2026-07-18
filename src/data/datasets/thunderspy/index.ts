@@ -28,6 +28,14 @@ import {
 import { getBaseToHit, getCombatModifier, getDefenseSoftcap } from './purple-patch';
 import { GRANTED_POWER_GROUPS } from './granted-powers';
 import { PET_ENTITIES } from './pet-entities';
+import { MODULAR_POWERSETS } from './powersets/index';
+import { IO_SETS_RAW } from './io-sets-raw';
+import { EPIC_POOLS_RAW } from './epic-pools-raw';
+import type { LegacyEpicPoolRegistry } from '../../epic-pools';
+import * as IncarnateGen from './generated/incarnate-effects';
+import type { IncarnateEffectsRaw } from '../../incarnate-effects';
+import { POWER_POOLS_RAW } from './power-pools-raw';
+import type { LegacyPowerPoolRegistry } from '../../power-pools';
 
 const dataset: Dataset = {
   id: 'thunderspy',
@@ -60,6 +68,22 @@ const dataset: Dataset = {
   },
 
   petEntities: PET_ENTITIES,
+
+  powersetsRaw: MODULAR_POWERSETS,
+  ioSetsRaw: IO_SETS_RAW,
+  epicPoolsRaw: EPIC_POOLS_RAW as unknown as LegacyEpicPoolRegistry,
+  incarnateEffectsRaw: {
+    alpha: IncarnateGen.GENERATED_ALPHA_EFFECTS,
+    destiny: IncarnateGen.GENERATED_DESTINY_EFFECTS,
+    destinyTimeline: IncarnateGen.GENERATED_DESTINY_TIMELINE,
+    destinyBoosts: IncarnateGen.GENERATED_DESTINY_BOOSTS,
+    hybrid: IncarnateGen.GENERATED_HYBRID_EFFECTS,
+    interface: IncarnateGen.GENERATED_INTERFACE_EFFECTS,
+    judgement: IncarnateGen.GENERATED_JUDGEMENT_EFFECTS,
+    lore: IncarnateGen.GENERATED_LORE_EFFECTS,
+    genesis: IncarnateGen.GENERATED_GENESIS_EFFECTS,
+  } as unknown as IncarnateEffectsRaw,
+  powerPoolsRaw: POWER_POOLS_RAW as unknown as LegacyPowerPoolRegistry,
 
   getTableValue,
   calculateEffectValue,

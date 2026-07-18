@@ -14,9 +14,6 @@ import type {
   IOSetPiece,
   SetBonus,
 } from '@/types';
-import { IO_SETS_RAW as IO_SETS_RAW_HC } from './datasets/homecoming/io-sets-raw';
-import { IO_SETS_RAW as IO_SETS_RAW_REBIRTH } from './datasets/rebirth/io-sets-raw';
-import { IO_SETS_RAW as IO_SETS_RAW_THUNDERSPY } from './datasets/thunderspy/io-sets-raw';
 import { getActiveDataset } from './dataset';
 
 // ============================================
@@ -184,7 +181,7 @@ interface LegacyIOSet {
   icon: string;
 }
 
-type LegacyIOSetRegistry = Record<string, LegacyIOSet>;
+export type LegacyIOSetRegistry = Record<string, LegacyIOSet>;
 
 // ============================================
 // DATA TRANSFORMATION
@@ -237,26 +234,18 @@ function transformRegistry(legacy: LegacyIOSetRegistry): IOSetRegistry {
 // IO SET REGISTRY
 // ============================================
 
-// Lazy-load + cache the transformed registry per dataset. Both raw data
-// files are statically imported so they share the chunk graph; the
-// transform runs once per dataset on first access.
+// Lazy-load + cache the transformed registry per dataset. The raw registry
+// rides in the active dataset's dynamic chunk via `getActiveDataset().ioSetsRaw`
+// (not a static cross-dataset import), so only the active server's set data is
+// downloaded; the transform runs once per dataset on first access.
 const _registryCache = new Map<string, IOSetRegistry>();
 
-function _resolveRawForDataset(datasetId: string) {
-  switch (datasetId) {
-    case 'rebirth': return IO_SETS_RAW_REBIRTH;
-    case 'thunderspy': return IO_SETS_RAW_THUNDERSPY;
-    case 'homecoming':
-    default: return IO_SETS_RAW_HC;
-  }
-}
-
 function _activeRegistry(): IOSetRegistry {
-  const id = getActiveDataset().id;
-  let r = _registryCache.get(id);
+  const ds = getActiveDataset();
+  let r = _registryCache.get(ds.id);
   if (!r) {
-    r = transformRegistry(_resolveRawForDataset(id));
-    _registryCache.set(id, r);
+    r = transformRegistry(ds.ioSetsRaw);
+    _registryCache.set(ds.id, r);
   }
   return r;
 }
