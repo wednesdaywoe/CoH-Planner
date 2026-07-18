@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY, statKeyToLabel } from './set-bonus-groups';
+import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY, statKeyToLabel, toCanonicalStatKey, isOverCapMuted } from './set-bonus-groups';
 import { STAT_NAME_MAP } from '@/utils/calculations/set-bonuses';
 
 /**
@@ -75,5 +75,42 @@ describe('statKeyToLabel (Rule-of-5 ring tooltip)', () => {
 
   it('falls back to the raw key rather than dropping an unknown stat', () => {
     expect(statKeyToLabel('someFutureStat')).toBe('someFutureStat');
+  });
+});
+
+describe('over-cap mute canonicalization', () => {
+  it('collapses a paired defense stat to one key (defEnergy === defNegative)', () => {
+    expect(toCanonicalStatKey('defEnergy')).toBe(toCanonicalStatKey('defNegative'));
+    expect(toCanonicalStatKey('resSmashing')).toBe(toCanonicalStatKey('resLethal'));
+    expect(toCanonicalStatKey('defFire')).toBe(toCanonicalStatKey('defCold'));
+  });
+
+  it('does NOT collapse across groups (defense E/N !== resistance E/N)', () => {
+    expect(toCanonicalStatKey('defEnergy')).not.toBe(toCanonicalStatKey('resEnergy'));
+  });
+
+  it('write vocabulary (popup row.stat) and read vocabulary (breakdown key) agree', () => {
+    // mez: popup emits 'mezresist', breakdown emits 'mezResist'
+    expect(toCanonicalStatKey('mezresist')).toBe(toCanonicalStatKey('mezResist'));
+    // maxHP: popup 'maxhp', breakdown 'maxHP'
+    expect(toCanonicalStatKey('maxhp')).toBe(toCanonicalStatKey('maxHP'));
+    // toHit: popup 'tohit', breakdown 'toHit'
+    expect(toCanonicalStatKey('tohit')).toBe(toCanonicalStatKey('toHit'));
+  });
+
+  it('isOverCapMuted round-trips a popup mute onto BOTH breakdown halves of a pair', () => {
+    // Player mutes the "Energy/Negative" Defense popup row; row.stat may be either half.
+    const muted = [toCanonicalStatKey('defEnergy')];
+    expect(isOverCapMuted('defEnergy', muted)).toBe(true);
+    expect(isOverCapMuted('defNegative', muted)).toBe(true); // the key the bare-stat approach would miss
+  });
+
+  it('isOverCapMuted does not leak a defense mute onto resistance', () => {
+    const muted = [toCanonicalStatKey('defEnergy')];
+    expect(isOverCapMuted('resEnergy', muted)).toBe(false);
+  });
+
+  it('isOverCapMuted is false for an empty mute set', () => {
+    expect(isOverCapMuted('mezResist', [])).toBe(false);
   });
 });

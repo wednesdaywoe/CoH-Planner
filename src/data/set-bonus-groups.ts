@@ -144,3 +144,37 @@ export function statKeyToLabel(breakdownKey: string): string {
   const normalized = breakdownKey.toLowerCase().replace(/[^a-z]/g, '');
   return STAT_GROUP_INFO[breakdownKey]?.label ?? STAT_GROUP_INFO[normalized]?.label ?? breakdownKey;
 }
+
+/**
+ * Canonical key for the per-build over-cap mute set (`Build.mutedOverCapStats`).
+ *
+ * A mute is WRITTEN from a Set Bonus Totals popup row (`row.stat`, a
+ * STAT_GROUP_INFO key like `defEnergy` / `mezresist`) but READ against a raw
+ * dashboard `breakdown` key (`defEnergy`, `defNegative`, `mezResist`, `maxHP`, …).
+ * Those vocabularies differ in case AND in pairing: the popup collapses each
+ * paired defense/resistance stat (defEnergy + defNegative → one "Energy/Negative"
+ * row) while the breakdown keeps both halves as separate keys. A bare stat key
+ * would silence only one half of a pair.
+ *
+ * So the canonical form is `group|label`. STAT_GROUP_INFO deliberately gives a
+ * pair the SAME label, so both halves collapse to one canonical key — muting the
+ * row silences every breakdown member it represents; the group prefix keeps
+ * Defense "Energy/Negative" distinct from Resistance "Energy/Negative". Proc /
+ * breakdown camelCase keys are first remapped into the STAT_GROUP_INFO vocabulary
+ * (mezResist→mezresist, maxHP→maxhp, …); an unmapped exotic stat falls back to a
+ * stable normalized token so the write and read sides still agree.
+ */
+export function toCanonicalStatKey(rawKey: string): string {
+  const remapped = PROC_BREAKDOWN_KEY_TO_GROUP_KEY[rawKey] ?? rawKey;
+  const info =
+    STAT_GROUP_INFO[remapped] ??
+    STAT_GROUP_INFO[remapped.toLowerCase().replace(/[^a-z]/g, '')];
+  if (info) return `${info.group}|${info.label}`;
+  return `misc|${remapped.toLowerCase().replace(/[^a-z0-9]/g, '')}`;
+}
+
+/** True when `rawKey`'s canonical stat is in the muted set. */
+export function isOverCapMuted(rawKey: string, muted: readonly string[]): boolean {
+  if (muted.length === 0) return false;
+  return muted.includes(toCanonicalStatKey(rawKey));
+}
