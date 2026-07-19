@@ -44,7 +44,7 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-07-19',
 
     items: [
-      { id: 'set-damage-bonus', message: 'Fixed a damage set bonus multiplier that was hardcoded for HC and inflating values for Rebirth', type: 'fix'}
+      { id: 'set-damage-bonus', message: 'Fixed a damage set bonus multiplier that was hardcoded for HC and inflating values for Rebirth', type: 'fix'},
       { id: 'belt-of-liberty', message: 'Rebirth: Added Belt of Liberty enhancement set', type: 'fix'},
       { id: 'ruleof5-per-bonus-override', message: 'You can now hide pesky Rule of 5 warnings at a per-set-bonus level, just open the Set Totals menu', type: 'feat' },
     ]
