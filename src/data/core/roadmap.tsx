@@ -188,7 +188,7 @@ export const ROADMAP_GROUPS: RoadmapGroup[] = [
     items: [
       { label: 'Attack chains & DPS', state: 'planned' },
       { label: 'Exemplaring', state: 'planned' },
-      { label: 'Modals galore: reimplementation of all other existing modals', type: 'planned'}
+      { label: 'Modals galore: reimplementation of all other existing modals', state: 'planned'}
     ],
   },
 ];

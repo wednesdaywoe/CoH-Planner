@@ -1268,7 +1268,10 @@ function ProcsContent({
         if (isPieceInCurrentPower(setId, piece.num)) {
           disabledReason = 'Already in this power';
         } else if (!isCompareMode) {
-          const isSpecialRarity = set.category === 'purple' || set.category === 'event' || set.category === 'ato';
+          // Event is NOT wholesale unique-per-build — its uniqueness lives in the
+          // per-piece `unique` flag (see isPieceDisabled). Keep purple/ATO as
+          // category-unique (tspy Primalist ATO ships unique=0).
+          const isSpecialRarity = set.category === 'purple' || set.category === 'ato';
           if ((piece.unique || isSpecialRarity) && isUniqueEnhancementSlotted(setId, piece.num)) {
             disabledReason = 'Already slotted in build';
           }
@@ -1492,9 +1495,15 @@ function IOSetRow({
     const setId = set.id || set.name;
     // Always prevent duplicate of the same piece in the same power
     if (isPieceInCurrentPower(setId, piece.num)) return 'Already in this power';
-    // Unique pieces and special rarity sets: prevent across entire build (not in compare mode)
+    // Across-build uniqueness (not in compare mode). Purple/ATO sets are
+    // wholesale unique-per-build; every piece is flagged unique in HC/Rebirth,
+    // but the tspy Primalist ATO ships unique=0, so keep the category guard for
+    // those two rarities. Event is NOT wholesale unique — its uniqueness lives
+    // in the per-piece `unique` flag, so a rule-of-5 event global (Liberty's
+    // Belt +Dmg, unique=0) slots in up to 5 powers like LotG, while a genuinely
+    // unique event global (Winter's Gift Slow Resistance, unique=1) stays capped.
     if (!isCompareMode) {
-      const isSpecialRarity = set.category === 'purple' || set.category === 'event' || set.category === 'ato';
+      const isSpecialRarity = set.category === 'purple' || set.category === 'ato';
       if ((piece.unique || isSpecialRarity) && isUniqueEnhancementSlotted(setId, piece.num)) {
         return 'Already slotted in build';
       }

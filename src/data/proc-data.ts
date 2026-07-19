@@ -2397,7 +2397,8 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     type: "Global",
     levelRange: "22--50",
     pool: "Event",
-    unique: "Unique"
+    // Not globally unique — rule-of-5 like LotG (mirror LotG's empty `unique`).
+    unique: ""
   },
 };
 
