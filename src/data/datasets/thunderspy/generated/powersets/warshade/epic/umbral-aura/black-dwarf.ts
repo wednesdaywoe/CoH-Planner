@@ -98,7 +98,7 @@ export const BlackDwarf: Power = {
     ["Resistance","Toxic",3,1,2,"Melee_Res_DMG","Res","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,7.5,1,2,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Recovery",null,0.15,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,10,1,2,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Control",10,1,2,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Unmapped",null,100,1,2,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Unmapped",null,-50,1,2.03,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
     ["Unmapped",null,5,1,2,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]

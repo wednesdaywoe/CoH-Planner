@@ -5524,7 +5524,7 @@ export const EPIC_POOLS_RAW = {
           "Healing"
         ],
         "atoms": [
-          ["Unmapped",null,1,1,90,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Mez","Stunned",1,1,90,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,0,1,90,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
         ],
@@ -12629,7 +12629,7 @@ export const EPIC_POOLS_RAW = {
           "Healing"
         ],
         "atoms": [
-          ["Unmapped",null,0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Mez","Stunned",0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Regeneration",null,1,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
         ],
@@ -12928,7 +12928,7 @@ export const EPIC_POOLS_RAW = {
           "Healing"
         ],
         "atoms": [
-          ["Unmapped",null,0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Mez","Stunned",0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Regeneration",null,1,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
         ],
@@ -13178,7 +13178,7 @@ export const EPIC_POOLS_RAW = {
           "Healing"
         ],
         "atoms": [
-          ["Unmapped",null,0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Mez","Stunned",0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Regeneration",null,1,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,2.5,1,0,"Melee_HealSelf","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
         ],

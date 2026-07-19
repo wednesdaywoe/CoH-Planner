@@ -39,7 +39,7 @@ export const InertialReduction: Power = {
   "atoms": [
     ["Unmapped",null,1,1,60,"Melee_Leap","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
     ["Movement","Jump",1,1,60,"Melee_SpeedJumping","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Unmapped",null,10,1,60,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
-    ["Unmapped",null,10,1,60,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"]
+    ["Movement","Control",10,1,60,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"],
+    ["Movement","Friction",10,1,60,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowSpeedBoost target.TokenOwned? !"]
   ]
 };

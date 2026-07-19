@@ -44,8 +44,8 @@ export const SuspensionBubble: Power = {
   "atoms": [
     ["Mez","Knockback",0.1,0.10000000149011612,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,4,1,1,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,25,1,1,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,25,1,1,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Control",25,1,1,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Movement","Friction",25,1,1,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Mez","Knockback",0.1,0.10000000149011612,0,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ],
   "requires": "Defender_Buff.Force_Field.Force_Bubble !"

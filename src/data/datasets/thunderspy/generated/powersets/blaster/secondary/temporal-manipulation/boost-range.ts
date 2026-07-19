@@ -51,7 +51,7 @@ export const BoostRange: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Mez","Stunned",0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["RechargeTime",null,0.2,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Movement","Run",0.1,1,10,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
     ["Movement","Fly",0.15,1,10,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],

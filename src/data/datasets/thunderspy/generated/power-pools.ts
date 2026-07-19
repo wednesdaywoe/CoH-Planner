@@ -1035,8 +1035,8 @@ export const POWER_POOLS_RAW = {
           ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,4,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,25,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,25,1,0.75,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+          ["Movement","Control",25,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Friction",25,1,0.75,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -1173,8 +1173,8 @@ export const POWER_POOLS_RAW = {
           ["Unmapped",null,1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Movement","Fly",1.25,1,0.75,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,0.8,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-          ["Unmapped",null,2,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,2,1,0.75,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Control",2,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Friction",2,1,0.75,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Movement","Fly",1,1,0.75,"Melee_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Unmapped",null,0.8,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
@@ -1217,9 +1217,9 @@ export const POWER_POOLS_RAW = {
         ],
         "atoms": [
           ["Unmapped",null,1,1,10,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-          ["Unmapped",null,10,1,10,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
+          ["Movement","Control",10,1,10,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
           ["Movement","Fly",0.5,1,10,"Melee_SpeedFlying","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
-          ["Unmapped",null,10,1,10,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
+          ["Movement","Friction",10,1,10,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"Power_DisallowGroupFly target.TokenOwned? !"],
           ["Unmapped",null,1,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
         ],
         "effects": {
@@ -1267,8 +1267,8 @@ export const POWER_POOLS_RAW = {
           ["Defense","Energy",1.5,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Defense","Negative",1.5,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Defense","Psionic",1.5,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-          ["Unmapped",null,15,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,15,1,0.75,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Control",15,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Friction",15,1,0.75,"Melee_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Defense","Melee",1.5,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Defense","Ranged",1.5,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Defense","AoE",1.5,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
@@ -1830,8 +1830,8 @@ export const POWER_POOLS_RAW = {
           ["Unmapped",null,1,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,0.8,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-          ["Unmapped",null,2,1,0.75,"Ranged_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,2,1,0.75,"Ranged_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Control",2,1,0.75,"Ranged_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Friction",2,1,0.75,"Ranged_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Unmapped",null,0.8,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
@@ -1971,8 +1971,8 @@ export const POWER_POOLS_RAW = {
         "allowedSetCategories": [],
         "atoms": [
           ["Unmapped",null,1,1,30,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,15,1,30,"Ranged_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,15,1,30,"Ranged_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+          ["Movement","Control",15,1,30,"Ranged_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Friction",15,1,30,"Ranged_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
         ],
         "effects": {
           "accuracy": 1,
@@ -2280,7 +2280,7 @@ export const POWER_POOLS_RAW = {
           ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,3,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Movement","Run",0.1,1,0.75,"Melee_SpeedRunning","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,10,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Control",10,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,-30,1,0.75,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,3,1,0.75,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
@@ -2770,7 +2770,7 @@ export const POWER_POOLS_RAW = {
           ["Defense","Negative",0.25,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Defense","Psionic",0.25,1,0.75,"Melee_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,2,1,0.75,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,10,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Control",10,1,0.75,"Melee_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Unmapped",null,-30,1,0.75,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,3,1,0.75,"Melee_Res_Boolean","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],
@@ -3449,8 +3449,8 @@ export const POWER_POOLS_RAW = {
           ["Unmapped",null,1,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
           ["Unmapped",null,0.8,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap? !"],
-          ["Unmapped",null,2,1,0.75,"Ranged_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-          ["Unmapped",null,2,1,0.75,"Ranged_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Control",2,1,0.75,"Ranged_Control","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+          ["Movement","Friction",2,1,0.75,"Ranged_Friction","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
           ["Movement","Fly",1,1,0.75,"Ranged_SpeedFlying","Unspecified","Magnitude","Self","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true],
           ["Unmapped",null,0.8,1,0.75,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1,null,null,null,null,null,null,"isPVPMap?",true]
         ],

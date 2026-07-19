@@ -230,6 +230,11 @@
       "id": "ruleof5-per-bonus-override",
       "date": "2026-07-18",
       "preview": "You can now hide pesky Rule of 5 warnings at a per-set-bonus level, just open th"
+    },
+    {
+      "id": "set-damage-bonus",
+      "date": "2026-07-19",
+      "preview": "Fixed a damage set bonus multiplier that was hardcoded for HC and inflating valu"
     }
   ]
 }

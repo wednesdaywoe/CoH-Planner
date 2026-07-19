@@ -45,7 +45,7 @@ export const SonicCage: Power = {
     }
   },
   "atoms": [
-    ["Unmapped",null,4,1,30,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
+    ["Mez","Immobilized",4,1,30,"Ranged_Immobilize","Unspecified","Magnitude","Unspecified","PvE",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Unmapped",null,4,1,4,"Ranged_Ones","Unspecified","Magnitude","Unspecified","PvP",true,"No",null,null,null,1,null,null,null,null,null,null,"enttype target> player eq",true]
   ]
 };

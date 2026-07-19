@@ -31,6 +31,6 @@ export const NaturesBoon: Power = {
   "maxSlots": 6,
   "atoms": [
     ["Unmapped",null,1,1,30,"Melee_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
-    ["Unmapped",null,0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
+    ["Mez","Stunned",0.5,1,30,"Melee_Stun","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1]
   ]
 };
