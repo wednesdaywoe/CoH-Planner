@@ -122,77 +122,78 @@ export const ROADMAP_INTRO: { teaser: ReactNode; full: ReactNode } = {
 export const ROADMAP_GROUPS: RoadmapGroup[] = [
   {
     id: 'the-app',
-    title: 'Rust + Dioxus core',
+    title: 'Rust + Dioxus Foundation & Interface',
     items: [
-      { label: 'Runs in a browser and as a desktop app', state: 'done' },
-      { label: 'Light/dark themes and mobile support', state: 'done' },
+      { label: 'Data audit', state: 'done' },
+      { label: 'Data pipeline', state: 'done' },
+      { label: 'Unified power format', state: 'done' },
+      { label: 'Strict data loading', state: 'done' },
+      { label: 'Defense & resistance', state: 'done' },
+      { label: 'App shell', state: 'done' },
+      { label: 'Automated testing', state: 'done' },
+      { label: 'Default theme', state: 'done' },
       { label: 'Full React-style grid, make everything re-arrangeable', state: 'in-progress' },
     ],
   },
   {
     id: 'character-stats',
-    title: 'Calculator pipeline',
+    title: 'Core Stat Engine',
     items: [
-      { label: 'Defense & resistance totals', state: 'done' },
-      { label: 'Damage, to-hit & accuracy', state: 'done' },
-      { label: 'Health, regeneration, recovery & endurance', state: 'done' },
-      { label: 'Recharge, movement, mez protection/resistance, stealth & more', state: 'done' },
-      { label: 'Enhancement Diversification (ED) and enhancement bonuses', state: 'done' },
-      { label: 'Archetype inherents and accolades', state: 'done' },
-      { label: 'Complete Thunderspy dataset export', state: 'in-progress' },
-      { label: 'Complete the atomic effect register for all datasets', state: 'in-progress' },
+      { label: 'To-hit', state: 'done' },
+      { label: 'Damage', state: 'done' },
+      { label: 'Max HP', state: 'done' },
+      { label: 'Regen & recovery', state: 'done' },
+      { label: 'Movement', state: 'done' },
+      { label: 'Enhancements & ED', state: 'done' },
+      { label: 'Build-wide totals', state: 'in-progress' },
+      { label: 'Accuracy check', state: 'in-progress' },
     ],
   },
   {
     id: 'building',
-    title: 'Building your character',
+    title: 'Build & Slotting',
     items: [
-      { label: 'Character totals for dashboard evaluator', state: 'done' },
-      { label: 'Point-and-click power picker & drag-to-slot enhancements', state: 'in-progress' },
-      { label: 'Save & load', state: 'planned' },
+      { label: 'Character build model', state: 'in-progress' },
+      { label: 'Active-power resolution', state: 'done' },
+      { label: 'Self-buffs', state: 'done' },
+      { label: 'Per-power bonuses', state: 'done' },
+      { label: 'Complete totals', state: 'done' },
+      { label: 'Whole-build verification', state: 'done' },
+      { label: 'Save & restore', state: 'planned' },
       { label: 'Undo / redo', state: 'planned' },
+      { label: 'Data double-check', state: 'planned' },
+      { label: 'Power picker & slotting UI', state: 'planned' },
+      { label: 'Level-difference modifiers', state: 'done' },
+
     ],
   },
   {
     id: 'enhancements',
-    title: 'Enhancements, sets & Incarnates',
+    title: 'Sets, Procs & Incarnates and Services',
     items: [
-      { label: 'Slot regular enhancements (SOs, IOs) with ED applied', state: 'done' },
+      { label: 'Formula engine', state: 'done' },
       { label: 'Set bonuses', state: 'planned' },
-      { label: 'Procs (PPM)', state: 'planned' },
-      { label: 'Incarnate abilities', state: 'planned' },
-      { label: 'Wire all to dashboard evaluator', state: 'planned' },
+      { label: 'Incarnate data prep', state: 'planned' },
+      { label: 'Procs & incarnates', state: 'planned' },
+      { label: 'Travel powers', state: 'planned' },
+      { label: 'Server wiring, Auth', state: 'planned' },
+      { label: 'Native desktop app', state: 'planned' },
+      { label: 'Stats dashboard', state: 'planned' },
+      { label: 'Reimplementation of all helper modals', state: 'planned' },
     ],
   },
   {
     id: 'import-export',
     title: 'Importing & exporting builds',
     items: [
-      { label: 'Import from Mids Reborn', state: 'planned' },
-      { label: 'Import from the game (/buildsave) and shared build links', state: 'planned' },
+      { label: 'Native save format', state: 'planned' },
+      { label: 'Importer utils', state: 'planned' },
       { label: "Export to BBCode, image, SKIF", state: 'planned' },
-    ],
-  },
-  {
-    id: 'sharing',
-    title: 'Sharing & accounts (web)',
-    items: [
-      { label: 'Accounts & sign-in. No wipe or migration, all existing builds preserved', state: 'planned' },
-      { label: 'Browse and share builds, author profiles', state: 'planned' },
-      { label: 'Bulk Mids import (with some limits)', state: 'planned'}
-    ],
-  },
-  {
-    id: 'advanced',
-    title: 'Advanced',
-    items: [
-      { label: 'Attack chains & DPS', state: 'planned' },
-      { label: 'Exemplaring', state: 'planned' },
-      { label: 'Modals galore: reimplementation of all other existing modals', state: 'planned'}
+      { label: 'Data cleanup', state: 'planned' },
+      { label: "Beta handover", state: 'planned' },
     ],
   },
 ];
-
 /** Derived node state — all done → done; all planned → planned; else in-progress. */
 export function deriveGroupState(group: RoadmapGroup): StepState {
   const states = group.items.map((i) => i.state);
