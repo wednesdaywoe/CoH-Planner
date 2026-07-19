@@ -51,18 +51,18 @@ export const ROADMAP_INTRO: { teaser: ReactNode; full: ReactNode } = {
 
       <section className="space-y-2">
         <h4 className="text-gray-100 font-semibold">The Parser</h4>
-        <p className="italic">&ldquo;CoH is far more complex than many of us realize.&rdquo;</p>
+        <p className="italic">CoH is far more complex than many of us realize.</p>
         <p>
-          The data I exported was the foundation everything else stood on, and it
+          The data I exported was the foundation for everything else, but it
           was incomplete. I decided what data to pull before I understood the game
           well enough to know what mattered. I thought character planning needed
           power names and their headline numbers, and some tables those numbers
           scale against. What I didn&apos;t grab was the discriminators that say how
           an effect applies and the runtime conditions that gate it.
         </p>
-        <blockquote className="border-l-2 border-gray-600 pl-3 italic text-gray-400">
+        <p className="italic text-sk-magenta">
           This is, objectively, a terrible way to make a CoH Character Planner.
-        </blockquote>
+        </p>
         <p>
           That&apos;s the original sin that Sidekick has been paying for ever since.
           It&apos;s why the alpha version was so wild, and why users continue to find
@@ -85,8 +85,8 @@ export const ROADMAP_INTRO: { teaser: ReactNode; full: ReactNode } = {
         <p>
           The next incarnation of Sidekick is simply a machine that reads all of the
           data exported directly from the game binary, and uses that data to
-          determine how to present that information to the user. No hardcoding the
-          level that a power unlocks — the planner is <em>told</em> by the data when
+          determine how to present it to the user. No hardcoding the
+          level that a power unlocks. The planner is <em>told</em> by the data when
           the power unlocks. This way, when servers make changes to powers,
           it&apos;s picked up automatically. When Regen gets nerfed, those nerfs are
           replicated faithfully instead of through reinterpretation.
@@ -111,7 +111,7 @@ export const ROADMAP_INTRO: { teaser: ReactNode; full: ReactNode } = {
         <h4 className="text-gray-100 font-semibold">Thank you</h4>
         <p>
           The support and encouragement for Sidekick has been amazing. And bug
-          reporters (you know who you are) — Sidekick could never get this far
+          reporters (you know who you are)...Sidekick could never get this far
           without your help!
         </p>
       </section>
@@ -122,24 +122,24 @@ export const ROADMAP_INTRO: { teaser: ReactNode; full: ReactNode } = {
 export const ROADMAP_GROUPS: RoadmapGroup[] = [
   {
     id: 'the-app',
-    title: 'The app',
+    title: 'Rust + Dioxus core',
     items: [
-      { label: 'Runs in your browser and as a desktop app', state: 'done' },
-      { label: 'Light/dark themes and a mobile-friendly layout', state: 'done' },
-      { label: 'Reads live Homecoming, Rebirth, and Thunderspy game data', state: 'done' },
+      { label: 'Runs in a browser and as a desktop app', state: 'done' },
+      { label: 'Light/dark themes and mobile support', state: 'done' },
+      { label: 'Full React-style grid, make everything re-arrangeable', state: 'in-progress' },
     ],
   },
   {
     id: 'character-stats',
-    title: 'Character stats (the calculator)',
+    title: 'Calculator pipeline',
     items: [
       { label: 'Defense & resistance totals', state: 'done' },
       { label: 'Damage, to-hit & accuracy', state: 'done' },
       { label: 'Health, regeneration, recovery & endurance', state: 'done' },
       { label: 'Recharge, movement, mez protection/resistance, stealth & more', state: 'done' },
       { label: 'Enhancement Diversification (ED) and enhancement bonuses', state: 'done' },
-      { label: 'Archetype inherents that change your stats (Vigilance, Fury, and the rest)', state: 'done' },
-      { label: 'Stat caps and final totals', state: 'done' },
+      { label: 'Archetype inherents and accolades', state: 'done' },
+      { label: 'Complete Thunderspy dataset export', state: 'in-progress' },
       { label: 'Complete the atomic effect register for all datasets', state: 'in-progress' },
     ],
   },
@@ -147,9 +147,9 @@ export const ROADMAP_GROUPS: RoadmapGroup[] = [
     id: 'building',
     title: 'Building your character',
     items: [
-      { label: 'Full builds calculate end-to-end under the hood', state: 'done' },
+      { label: 'Character totals for dashboard evaluator', state: 'done' },
       { label: 'Point-and-click power picker & drag-to-slot enhancements', state: 'in-progress' },
-      { label: 'Save & load your builds', state: 'planned' },
+      { label: 'Save & load', state: 'planned' },
       { label: 'Undo / redo', state: 'planned' },
     ],
   },
@@ -158,10 +158,10 @@ export const ROADMAP_GROUPS: RoadmapGroup[] = [
     title: 'Enhancements, sets & Incarnates',
     items: [
       { label: 'Slot regular enhancements (SOs, IOs) with ED applied', state: 'done' },
-      { label: 'Invention set bonuses (Rule of Five)', state: 'planned' },
+      { label: 'Set bonuses', state: 'planned' },
       { label: 'Procs (PPM)', state: 'planned' },
       { label: 'Incarnate abilities', state: 'planned' },
-      { label: 'Accolades', state: 'planned' },
+      { label: 'Wire all to dashboard evaluator', state: 'planned' },
     ],
   },
   {
@@ -170,15 +170,16 @@ export const ROADMAP_GROUPS: RoadmapGroup[] = [
     items: [
       { label: 'Import from Mids Reborn', state: 'planned' },
       { label: 'Import from the game (/buildsave) and shared build links', state: 'planned' },
-      { label: "Export to forums (BBCode), image, and Sidekick's own format", state: 'planned' },
+      { label: "Export to BBCode, image, SKIF", state: 'planned' },
     ],
   },
   {
     id: 'sharing',
     title: 'Sharing & accounts (web)',
     items: [
-      { label: 'Accounts & sign-in', state: 'planned' },
+      { label: 'Accounts & sign-in. No wipe or migration, all existing builds preserved', state: 'planned' },
       { label: 'Browse and share builds, author profiles', state: 'planned' },
+      { label: 'Bulk Mids import (with some limits)', state: 'planned'}
     ],
   },
   {
@@ -187,6 +188,7 @@ export const ROADMAP_GROUPS: RoadmapGroup[] = [
     items: [
       { label: 'Attack chains & DPS', state: 'planned' },
       { label: 'Exemplaring', state: 'planned' },
+      { label: 'Modals galore: reimplementation of all other existing modals', type: 'planned'}
     ],
   },
 ];

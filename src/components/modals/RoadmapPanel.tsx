@@ -124,15 +124,17 @@ export function RoadmapPanel({ onClose }: { onClose: () => void }) {
           const isLast = idx === ROADMAP_GROUPS.length - 1;
           return (
             <li key={group.id} className="relative pl-8 pb-4">
-              {/* Trunk: vertical line below this node down to the next group */}
+              {/* Trunk: vertical line below this node down to the next group.
+                  Starts at the node's bottom edge (top-[2px] + h-6 = 26px). */}
               {!isLast && (
                 <span
-                  className="absolute left-[11px] top-7 bottom-0 w-0.5 bg-gray-600"
+                  className="absolute left-[11px] top-[26px] bottom-0 w-0.5 bg-gray-600"
                   aria-hidden
                 />
               )}
-              {/* Group node on the trunk */}
-              <span className="absolute left-0 top-1" aria-hidden>
+              {/* Group node on the trunk. `flex` collapses the wrapper to the marker
+                  so top-[2px] centres the ring on the title's first text line. */}
+              <span className="absolute left-0 top-[2px] flex" aria-hidden>
                 <NodeMarker state={state} size="group" />
               </span>
               <button
@@ -171,8 +173,10 @@ export function RoadmapPanel({ onClose }: { onClose: () => void }) {
                   <ul>
                     {group.items.map((item, i) => (
                       <li key={i} className="relative pl-10 pb-2.5">
-                        {/* Item node on the branch */}
-                        <span className="absolute left-[20px] top-[5px]" aria-hidden>
+                        {/* Item node on the branch. `flex` collapses the wrapper to
+                            the marker (an inline wrapper baseline-drops the ring ~7px);
+                            top-[3px] then centres it on the label's first text line. */}
+                        <span className="absolute left-[20px] top-[3px] flex" aria-hidden>
                           <NodeMarker state={item.state} size="item" />
                         </span>
                         <div className="text-sm text-gray-300">
