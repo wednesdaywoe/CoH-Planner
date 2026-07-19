@@ -181,6 +181,11 @@ const OVERCAP_BREAKDOWN_ALIASES: Record<string, string> = {
  * stable normalized token so the write and read sides still agree.
  */
 export function toCanonicalStatKey(rawKey: string): string {
+  // Idempotent: a canonical key ("group|label" or "misc|token") already contains
+  // "|", which no raw stat/breakdown key ever does. Return it unchanged so applying
+  // this twice (the popup and the store both canonicalize on the write path) can't
+  // corrupt it into a "misc|<mash>" that never matches the read side.
+  if (rawKey.includes('|')) return rawKey;
   const remapped =
     PROC_BREAKDOWN_KEY_TO_GROUP_KEY[rawKey] ?? OVERCAP_BREAKDOWN_ALIASES[rawKey] ?? rawKey;
   const info =

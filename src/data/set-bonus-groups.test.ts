@@ -138,4 +138,18 @@ describe('over-cap mute canonicalization', () => {
     const muted = [toCanonicalStatKey('maxend')]; // what the popup bell stores
     expect(isOverCapMuted('maxEndurance', muted)).toBe(true); // breakdown key the ring reads
   });
+
+  it('is idempotent — applying it to an already-canonical key returns it unchanged', () => {
+    // The write path canonicalizes TWICE (the popup passes toCanonicalStatKey(row.stat)
+    // AND the store re-canonicalizes). If the function is not idempotent, the stored
+    // value ('misc|<mash>') never matches what the read side computes ('group|label'),
+    // and NO warning is ever suppressed. Guards that double-application is harmless.
+    for (const raw of ['mezresist', 'defEnergy', 'resSmashing', 'maxend', 'someExoticStat']) {
+      const once = toCanonicalStatKey(raw);
+      expect(toCanonicalStatKey(once)).toBe(once);
+    }
+    // end-to-end: even a double-canonicalized store value still suppresses the breakdown key
+    const doubled = toCanonicalStatKey(toCanonicalStatKey('mezresist'));
+    expect(isOverCapMuted('mezResist', [doubled])).toBe(true);
+  });
 });

@@ -3,7 +3,7 @@
 import '@/test/localstorage-polyfill';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { createEmptyBuild } from '@/types/build';
-import { toCanonicalStatKey } from '@/data/set-bonus-groups';
+import { toCanonicalStatKey, isOverCapMuted } from '@/data/set-bonus-groups';
 import { useBuildStore } from '@/stores/buildStore';
 import { useHistoryStore } from '@/stores/historyStore';
 
@@ -34,6 +34,34 @@ describe('toggleOverCapMute', () => {
     const before = useHistoryStore.getState().past.length;
     useBuildStore.getState().toggleOverCapMute('mezResist');
     expect(useHistoryStore.getState().past.length).toBe(before + 1);
+  });
+});
+
+// End-to-end write→read invariant: muting a stat from a Set Bonus Totals popup row
+// (row.stat = a tracking key) must make the ring/banner surfaces — which read the raw
+// breakdown key via isOverCapMuted — treat that stat as muted. Regression guard for the
+// double-canonicalization bug (popup pre-canonicalized AND the store re-canonicalized,
+// storing a "misc|<mash>" that never matched, so NO warning was suppressed).
+describe('popup → store → read round-trip', () => {
+  it('muting a popup row suppresses the matching breakdown-key warning', () => {
+    const { toggleOverCapMute } = useBuildStore.getState();
+    toggleOverCapMute('mezresist'); // what the popup passes: the row's tracking key (RAW)
+    const muted = useBuildStore.getState().build.mutedOverCapStats;
+    expect(isOverCapMuted('mezResist', muted)).toBe(true); // breakdown key the ring/banner read
+  });
+
+  it('still works if a caller accidentally pre-canonicalizes (idempotency defense)', () => {
+    const { toggleOverCapMute } = useBuildStore.getState();
+    toggleOverCapMute(toCanonicalStatKey('mezresist')); // the OLD buggy popup call
+    const muted = useBuildStore.getState().build.mutedOverCapStats;
+    expect(muted).toEqual([toCanonicalStatKey('mezresist')]); // stored once-canonical, not misc|mash
+    expect(isOverCapMuted('mezResist', muted)).toBe(true);
+  });
+
+  it('round-trips a divergent-global stat (Max Endurance) too', () => {
+    useBuildStore.getState().toggleOverCapMute('maxend'); // popup row.stat
+    const muted = useBuildStore.getState().build.mutedOverCapStats;
+    expect(isOverCapMuted('maxEndurance', muted)).toBe(true); // breakdown global key
   });
 });
 

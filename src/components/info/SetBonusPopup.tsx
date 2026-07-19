@@ -22,7 +22,7 @@ import { useBonusTracking, useStatBreakdowns, useIsTouchDevice } from '@/hooks';
 import { Tooltip, FloatingWindow } from '@/components/ui';
 import { Modal } from '@/components/modals/Modal';
 import { formatBonusValue } from '@/utils/set-bonus-format';
-import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY, toCanonicalStatKey, isOverCapMuted } from '@/data/set-bonus-groups';
+import { STAT_GROUP_INFO, SET_BONUS_GROUP_ORDER, PROC_BREAKDOWN_KEY_TO_GROUP_KEY, isOverCapMuted } from '@/data/set-bonus-groups';
 import type { ValueTracking } from '@/utils/calculations/set-bonuses';
 
 const DEFAULT_WIDTH = 380;
@@ -169,7 +169,7 @@ export function SetBonusPopup() {
         type="button"
         onClick={(e) => {
           e.stopPropagation(); // don't trigger the touch row's tap-to-expand
-          toggleOverCapMute(toCanonicalStatKey(row.stat));
+          toggleOverCapMute(row.stat); // store canonicalizes; don't double-apply
         }}
         className={`shrink-0 ml-1 p-0.5 rounded transition-colors ${
           muted ? 'text-slate-500 hover:text-slate-300' : 'text-slate-500 hover:text-amber-300'
