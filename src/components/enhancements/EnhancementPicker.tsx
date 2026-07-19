@@ -180,15 +180,12 @@ export function EnhancementPicker() {
   const standardCategories = useMemo(() => {
     const cats = new Set<string>();
     for (const set of availableSets) {
-      if ((set.category === 'uncommon' || set.category === 'rare') && set.type !== 'Universal Damage Sets') {
-        cats.add(set.type);
-      }
-      // A handful of curated set types are conceptually standard sidebar
-      // categories (universal control / rest buff niches) but ship with
-      // event-tier rarity for exemplar-immunity. Surface them as standard
-      // categories so users can find sets like Forced Indoctrination
-      // without first knowing to click the Event filter.
-      if (set.type === 'Universal Control Duration' || set.type === 'Rest Buff' || set.type === 'Universal Debuff' || set.type === 'Resurrection') {
+      // Group every set under its real in-game Set Category (its `type`).
+      // "Event" is not a game category — it's a rarity/source — so event sets
+      // live under their functional type (Resist Damage, Holds, …) just like
+      // uncommon/rare sets. Purple/ATO/PvP keep their own dedicated rarity tabs
+      // (they ARE distinct game groupings), and Universal Damage owns its tab.
+      if ((set.category === 'uncommon' || set.category === 'rare' || set.category === 'event') && set.type !== 'Universal Damage Sets') {
         cats.add(set.type);
       }
     }
@@ -203,8 +200,6 @@ export function EnhancementPicker() {
     availableSets.some((set) => set.type === 'Universal Damage Sets'), [availableSets]);
   const hasVeryRare = useMemo(() =>
     availableSets.some((set) => set.category === 'purple'), [availableSets]);
-  const hasEvent = useMemo(() =>
-    availableSets.some((set) => set.category === 'event'), [availableSets]);
   const hasArchetype = useMemo(() =>
     availableSets.some((set) => set.category === 'ato'), [availableSets]);
   const hasPvP = useMemo(() =>
@@ -212,11 +207,13 @@ export function EnhancementPicker() {
   const hasProcs = useMemo(() =>
     availableSets.some((set) => set.pieces.some((p) => p.proc)), [availableSets]);
 
-  // Helper to check if a set is a "special" category (excluded from normal filters)
+  // Helper to check if a set is a "special" category (excluded from the
+  // standard Set Category tabs because it owns a dedicated rarity tab). NB
+  // 'event' is intentionally NOT here — event sets group under their real Set
+  // Category. Purple / ATO / PvP / Universal Damage are genuine game groupings.
   const isSpecialSet = (set: IOSet) =>
     set.category === 'purple' ||
     set.category === 'ato' ||
-    set.category === 'event' ||
     set.category === 'pvp' ||
     set.type === 'Universal Damage Sets';
 
@@ -224,10 +221,9 @@ export function EnhancementPicker() {
   const specialSortOrder = (set: IOSet): number => {
     if (set.type === 'Universal Damage Sets') return 1;
     if (set.category === 'purple') return 2;
-    if (set.category === 'event') return 3;
     if (set.category === 'pvp') return 4;
     if (set.category === 'ato') return 5;
-    return 0;
+    return 0; // standard sets (incl. event) sort first in the 'all' view
   };
 
   const levelUpMode = useUIStore((s) => s.levelUpMode);
@@ -246,6 +242,9 @@ export function EnhancementPicker() {
         sets = availableSets.filter((set) => set.category === 'purple');
         break;
       case 'event':
+        // Back-compat only: event sets now live under their real Set Category,
+        // so there is no longer an "Event" sidebar button. This case still
+        // resolves any stale persisted 'event' filter without showing nothing.
         sets = availableSets.filter((set) => set.category === 'event');
         break;
       case 'archetype':
@@ -258,16 +257,10 @@ export function EnhancementPicker() {
         sets = availableSets.filter((set) => set.pieces.some((p) => p.proc));
         break;
       default:
-        // Special-set classification (ATO / purple / event / pvp) normally
-        // hides those sets from standard type filters because they own
-        // their own sidebar buttons. But the niche "Universal Control
-        // Duration" / "Rest Buff" categories ARE their own home — Forced
-        // Indoctrination / Inexhaustibility ship with event rarity for
-        // exemplar-immunity but conceptually belong here. Skip the
-        // special filter when the user has selected one of these.
-        sets = (sidebarFilter === 'Universal Control Duration' || sidebarFilter === 'Rest Buff' || sidebarFilter === 'Universal Debuff' || sidebarFilter === 'Resurrection')
-          ? availableSets.filter((set) => set.type === sidebarFilter)
-          : availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
+        // Standard Set Category tab: every set of this type that isn't in a
+        // dedicated rarity tab (purple / ATO / PvP / Universal Damage). Event
+        // sets are not special, so they appear here under their real category.
+        sets = availableSets.filter((set) => set.type === sidebarFilter && !isSpecialSet(set));
     }
     // Level Up mode: only show sets the character can use at their current level
     if (levelUpMode) {
@@ -330,12 +323,7 @@ export function EnhancementPicker() {
     if (set.category === 'purple') return 'very-rare';
     if (set.category === 'ato') return 'archetype';
     if (set.category === 'pvp') return 'pvp';
-    // Niche event-rarity sets that are surfaced as standard categories (see
-    // standardCategories) live under their own type, not the Event group.
-    if (set.type === 'Universal Control Duration' || set.type === 'Rest Buff' || set.type === 'Universal Debuff' || set.type === 'Resurrection') {
-      return set.type;
-    }
-    if (set.category === 'event') return 'event';
+    // Everything else — including event sets — lives under its real Set Category.
     return set.type;
   };
 
@@ -841,16 +829,6 @@ export function EnhancementPicker() {
                 title="Very Rare (Purple) sets — level 50 only, but always exemplar-safe"
               />
             )}
-            {hasEvent && (
-              <MobileCategoryButton
-                label="Event"
-                count={availableSets.filter((s) => s.category === 'event').length}
-                isActive={sidebarFilter === 'event'}
-                onClick={() => setSidebarFilter('event')}
-                textColor="text-cyan-400"
-                title="Event sets (Winter, Summer, Anniversary) — earned from seasonal events; attuned by default"
-              />
-            )}
             {hasArchetype && (
               <MobileCategoryButton
                 label="ATO"
@@ -930,18 +908,6 @@ export function EnhancementPicker() {
                   onClick={() => setSidebarFilter('very-rare')}
                   textColor="text-purple-400"
                   title="Very Rare (Purple) sets — level 50 only, but always exemplar-safe"
-                />
-              )}
-
-              {/* Event (Winter, etc.) */}
-              {hasEvent && (
-                <SidebarButton
-                  label="Event"
-                  count={availableSets.filter((s) => s.category === 'event').length}
-                  isActive={sidebarFilter === 'event'}
-                  onClick={() => setSidebarFilter('event')}
-                  textColor="text-cyan-400"
-                  title="Event sets (Winter, Summer, Anniversary) — earned from seasonal events; attuned by default"
                 />
               )}
 
