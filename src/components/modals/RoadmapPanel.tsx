@@ -51,7 +51,7 @@ function groupProgress(group: RoadmapGroup): string {
   return `${done}/${group.items.length}`;
 }
 
-export function RoadmapPanel({ onSeeWhatsNew }: { onSeeWhatsNew: () => void }) {
+export function RoadmapPanel({ onClose }: { onClose: () => void }) {
   const [introOpen, setIntroOpen] = useState(false);
   // Default-expand the in-progress groups so the "current work" is visible.
   const [openGroups, setOpenGroups] = useState<Set<string>>(
@@ -191,14 +191,14 @@ export function RoadmapPanel({ onSeeWhatsNew }: { onSeeWhatsNew: () => void }) {
         })}
       </ol>
 
-      {/* Link to the featurette tabs */}
+      {/* Close the modal */}
       <div className="text-right">
         <button
           type="button"
-          onClick={onSeeWhatsNew}
-          className="text-sm text-[var(--color-sk-magenta)] hover:underline"
+          onClick={onClose}
+          className="px-3 py-1.5 text-sm rounded border border-gray-600 text-gray-200 hover:bg-gray-800 transition-colors"
         >
-          See what else is new →
+          Close
         </button>
       </div>
     </div>

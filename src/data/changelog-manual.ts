@@ -41,6 +41,14 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     ]
   },
   {
+    date: '2026-07-18',
+
+    items: [
+      { id: 'belt-of-liberty', message: 'Rebirth: Added Belt of Liberty enhancement set', type: 'fix'},
+      { id: 'ruleof5-per-bonus-override', message: 'You can now hide pesky Rule of 5 warnings at a per-set-bonus level, just open the Set Totals menu', type: 'feat' },
+    ]
+  },
+  {
     date: '2026-07-17',
 
     items: [

@@ -12801,9 +12801,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
         "aspects": [
           "Damage Resistance"
         ],
-        "name": "Damage Resistance",
+        "name": "Resistance/Global Damage Bonus",
         "num": 6,
-        "proc": false,
+        "proc": true,
         "totalAspects": 2,
         "unique": false
       }

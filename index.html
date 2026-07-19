@@ -47,6 +47,23 @@
       @keyframes spin {
         to { transform: rotate(360deg); }
       }
+      @keyframes load-trouble-in {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      #load-trouble kbd {
+        display: inline-block;
+        background: #0f172a;
+        border: 1px solid #475569;
+        border-bottom-width: 2px;
+        border-radius: 4px;
+        padding: 1px 6px;
+        margin: 0 1px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 12px;
+        color: #e2e8f0;
+        line-height: 1.4;
+      }
     </style>
     <!--
       Donations are handled in-app by DonateModal, which embeds Buy Me a Coffee
@@ -94,6 +111,36 @@
               } catch (e) { /* ignore */ }
             })();
           </script>
+
+          <!--
+            Stale-cache recovery hint. Hidden by default; revealed only when a
+            dynamically imported chunk fails to load (Vite's vite:preloadError,
+            or an unhandled module-load rejection) or when loading clearly
+            stalls. This is the failure mode where a previous deploy's cached
+            entry chunk imports a content-hashed dataset chunk that a newer
+            deploy has since removed (404) — a hard refresh bypasses the stale
+            cache and fixes it. See index.html detection script below.
+          -->
+          <div id="load-trouble" role="alert" style="
+            display: none;
+            margin: 28px auto 0;
+            max-width: 480px;
+            background: #1e293b;
+            border: 1px solid #f59e0b;
+            border-left: 4px solid #f59e0b;
+            border-radius: 10px;
+            padding: 16px 18px;
+            text-align: left;
+            animation: load-trouble-in 0.25s ease-out;
+          ">
+            <div style="font-size: 15px; font-weight: 700; color: #fbbf24; margin: 0 0 6px;">Taking a while to load?</div>
+            <p style="font-size: 13px; color: #cbd5e1; margin: 0; line-height: 1.6;">
+              If Sidekick appears to be taking a long time to load or not loading at all,
+              perform a hard refresh on your browser with
+              <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> (PC), or
+              <kbd>&#8984;</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> (Mac).
+            </p>
+          </div>
         </div>
 
         <!-- Feature cards -->
@@ -141,6 +188,45 @@
         </noscript>
       </div>
     </div>
+    <!--
+      Reveal the stale-cache recovery hint (#load-trouble) when a dynamically
+      imported module fails to load or when loading stalls. Registered as a
+      classic (non-module) script BEFORE main.tsx so the listeners are in place
+      before the app bundle runs and can throw. data-cfasync="false" keeps
+      Cloudflare Rocket Loader from deferring it.
+    -->
+    <script data-cfasync="false">
+      (function () {
+        var shown = false;
+        function showLoadTrouble() {
+          if (shown) return;
+          var el = document.getElementById('load-trouble');
+          // If React has mounted, #root has been replaced and el is null — no-op.
+          if (!el) return;
+          shown = true;
+          el.style.display = 'block';
+        }
+        function isModuleLoadError(msg) {
+          return /dynamically imported module|dynamic import|Importing a module script failed|Failed to fetch|module script|preload|ChunkLoadError/i.test(msg || '');
+        }
+        // Vite's official signal that a dynamic-import preload failed.
+        window.addEventListener('vite:preloadError', showLoadTrouble);
+        // The failed import() surfaces as an unhandled promise rejection
+        // (matches the "error loading dynamically imported module" report).
+        window.addEventListener('unhandledrejection', function (e) {
+          var r = e && e.reason;
+          var msg = r && (r.message || (typeof r === 'string' ? r : ''));
+          if (isModuleLoadError(msg)) showLoadTrouble();
+        });
+        window.addEventListener('error', function (e) {
+          if (e && e.message && isModuleLoadError(e.message)) showLoadTrouble();
+        }, true);
+        // Safety net for a silent stall. The homecoming dataset chunk is large
+        // (~16MB), so keep this generous to avoid nagging genuinely slow loads;
+        // real chunk-404 failures trip the listeners above near-instantly.
+        setTimeout(showLoadTrouble, 20000);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

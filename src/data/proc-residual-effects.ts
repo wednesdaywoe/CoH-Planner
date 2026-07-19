@@ -72,6 +72,10 @@ export const PROC_RESIDUAL_EFFECTS: Record<string, ProcEffect[]> = {
     { category: 'SlowResistance', value: 25 },
     { category: 'RechargeResistance', value: 25 },
   ],
+  // Liberty's Belt (Rebirth): always-on global +7.5% Damage to all the user's
+  // powers — the LotG +Recharge analogue for damage, Rule-of-5 capped. Never
+  // functional in Mids (value not cleanly in the boost template), hence hand-curated.
+  "Liberty's Belt: Resistance/Global Damage Bonus": [{ category: 'Damage', value: 7.5 }],
 
   // --- PBAoE ally buffs (caster + nearby allies; slotted-power-scaled) --------
   'Vigilant Assault: Recharge/Chance for +Absorb': [{ category: 'Absorb' }],

@@ -2597,6 +2597,19 @@ function applySingleProcEffect(
       });
       break;
 
+    // Always-on global +Damage (e.g. Liberty's Belt: Resistance/Global Damage
+    // Bonus) — the LotG +Recharge analogue for damage. Rule-of-5 tracked under
+    // the 'damage' stat via PROC_CATEGORY_TO_STAT.
+    case 'Damage':
+      global.damage += value;
+      addToBreakdown(breakdown, 'damage', {
+        name: sourceName,
+        value,
+        type: 'proc',
+        powerName,
+      });
+      break;
+
     case 'RunSpeed':
       global.runSpeed += value;
       addToBreakdown(breakdown, 'runSpeed', {
@@ -2689,6 +2702,7 @@ const PROC_CATEGORY_TO_STAT: Record<string, string | null> = {
   Absorb:            'absorb',
   Recharge:          'recharge',
   RunSpeed:          'runspeed',
+  Damage:            'damage',       // Always-on +Damage globals (Liberty's Belt), Rule-of-5 capped
 };
 
 /** Maps proc effect categories to procSettings keys */

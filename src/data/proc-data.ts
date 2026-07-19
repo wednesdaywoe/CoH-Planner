@@ -2382,6 +2382,23 @@ export const PROC_DATABASE: Record<string, ProcData> = {
     pool: "",
     unique: "Unique"
   },
+  // Rebirth-only. Always-on global +7.5% Damage fused onto the set's 6th
+  // (Resistance) piece — the LotG +Recharge analogue for damage, Rule-of-5
+  // capped. Effect in proc-residual-effects.ts (category 'Damage'). The IO-set
+  // piece is "Resistance/Global Damage Bonus" (see extract-rebirth-io-sets-v2.py
+  // REBIRTH_PIECE_PATCHES); findProcData resolves it via the set-name fallback.
+  "Liberty's Belt: Resistance/Global Damage Bonus": {
+    setCategory: "Resist Damage",
+    setName: "Liberty's Belt",
+    ioName: "Resistance/Global Damage Bonus",
+    ppm: null,
+    mechanics: "Buff(Damage 7.5%)",
+    pvpNotes: "",
+    type: "Global",
+    levelRange: "22--50",
+    pool: "Event",
+    unique: "Unique"
+  },
 };
 
 // Merge binary-sourced structured global effects (Phase 2: always-on globals).

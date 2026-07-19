@@ -140,7 +140,7 @@ export const ROADMAP_GROUPS: RoadmapGroup[] = [
       { label: 'Enhancement Diversification (ED) and enhancement bonuses', state: 'done' },
       { label: 'Archetype inherents that change your stats (Vigilance, Fury, and the rest)', state: 'done' },
       { label: 'Stat caps and final totals', state: 'done' },
-      { label: 'Cross-checking a handful of numbers against the live game / Mids', state: 'in-progress' },
+      { label: 'Complete the atomic effect register for all datasets', state: 'in-progress' },
     ],
   },
   {

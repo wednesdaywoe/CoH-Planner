@@ -130,7 +130,7 @@ export function AnnouncementModal() {
 
       <ModalBody>
         {onRoadmapTab ? (
-          <RoadmapPanel onSeeWhatsNew={() => setActiveTab(0)} />
+          <RoadmapPanel onClose={close} />
         ) : (
           <div className="space-y-4">
             <div className="flex items-center gap-2">

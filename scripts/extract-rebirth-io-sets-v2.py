@@ -238,9 +238,20 @@ REBIRTH_PIECE_ASPECT_OVERRIDES: dict[str, dict[int, list[str]]] = {
 #       tick. The proc itself is already captured (proc-data.ts +
 #       proc-residual-effects.ts, category 'Special' like the other bespoke
 #       Rebirth self-procs). Nothing is missing.
+#   Liberty's Belt #6 ("Resistance/Global Damage Bonus") carries an always-on
+#   global +Damage bonus FUSED onto a real Damage-Resistance enhancement aspect
+#   (the same shape as LotG's "Defense/+Recharge" in HC_PIECE_PATCHES). Proc
+#   detection misses the global because the piece also has a plain enhancement
+#   aspect, so the binary tags it proc=false / name="Damage Resistance"
+#   (leaving a tell-tale totalAspects=2). Restore the curated name + proc flag;
+#   findProcData resolves the effect by set name → the "Liberty's Belt:
+#   Resistance/Global Damage Bonus" PROC_DATABASE / proc-residual-effects entry.
 REBIRTH_PIECE_PATCHES: dict[str, dict[int, dict]] = {
     'inexhaustibility': {
         1: {'name': 'Inexhaustibility', 'proc': True},
+    },
+    'libertys_belt': {
+        6: {'name': 'Resistance/Global Damage Bonus', 'proc': True},
     },
 }
 

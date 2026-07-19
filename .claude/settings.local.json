@@ -151,7 +151,10 @@
       "Skill(run)",
       "Skill(run:*)",
       "Bash(node -e \"console.log\\(JSON.stringify\\(require\\('./package.json'\\).scripts,null,1\\)\\)\")",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173)",
+      "Bash(curl -sS -I \"https://coh-sidekick.com/assets/dataset-homecoming-BfB8npuI.js\")",
+      "Bash(curl -sS \"https://coh-sidekick.com/index.html\")",
+      "Bash(npx tsx -e ' *)"
     ],
     "additionalDirectories": [
       "/tmp",
