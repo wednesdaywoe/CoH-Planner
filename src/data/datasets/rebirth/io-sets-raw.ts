@@ -190,9 +190,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Damage",
+            "desc": "+3.0% Damage",
             "stat": "damage",
-            "value": 7.5
+            "value": 3.0
           }
         ],
         "pieces": 2
@@ -6459,9 +6459,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Damage",
+            "desc": "+2.0% Damage",
             "stat": "damage",
-            "value": 5.0
+            "value": 2.0
           }
         ],
         "pieces": 5
@@ -8350,9 +8350,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Damage",
+            "desc": "+2.5% Damage",
             "stat": "damage",
-            "value": 6.25
+            "value": 2.5
           }
         ],
         "pieces": 3
@@ -11275,9 +11275,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Damage",
+            "desc": "+3.0% Damage",
             "stat": "damage",
-            "value": 7.5
+            "value": 3.0
           }
         ],
         "pieces": 5
@@ -12698,9 +12698,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Damage",
+            "desc": "+2.5% Damage",
             "stat": "damage",
-            "value": 6.25
+            "value": 2.5
           }
         ],
         "pieces": 3
@@ -17382,9 +17382,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+6.25% Damage",
+            "desc": "+2.5% Damage",
             "stat": "damage",
-            "value": 6.25
+            "value": 2.5
           }
         ],
         "pieces": 4
@@ -20067,9 +20067,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Damage",
+            "desc": "+4.0% Damage",
             "stat": "damage",
-            "value": 10.0
+            "value": 4.0
           }
         ],
         "pieces": 2
@@ -21897,9 +21897,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Damage",
+            "desc": "+4.0% Damage",
             "stat": "damage",
-            "value": 10.0
+            "value": 4.0
           }
         ],
         "pieces": 5
@@ -24098,9 +24098,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Damage",
+            "desc": "+4.0% Damage",
             "stat": "damage",
-            "value": 10.0
+            "value": 4.0
           }
         ],
         "pieces": 2
@@ -24836,9 +24836,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Damage",
+            "desc": "+4.0% Damage",
             "stat": "damage",
-            "value": 10.0
+            "value": 4.0
           }
         ],
         "pieces": 6
@@ -25126,9 +25126,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+10.0% Damage",
+            "desc": "+4.0% Damage",
             "stat": "damage",
-            "value": 10.0
+            "value": 4.0
           }
         ],
         "pieces": 2
@@ -25629,9 +25629,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Damage",
+            "desc": "+2.0% Damage",
             "stat": "damage",
-            "value": 5.0
+            "value": 2.0
           }
         ],
         "pieces": 2
@@ -28290,9 +28290,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+7.5% Damage",
+            "desc": "+3.0% Damage",
             "stat": "damage",
-            "value": 7.5
+            "value": 3.0
           }
         ],
         "pieces": 6
@@ -28578,9 +28578,9 @@ export const IO_SETS_RAW: LegacyIOSetRegistry = {
       {
         "effects": [
           {
-            "desc": "+5.0% Damage",
+            "desc": "+2.0% Damage",
             "stat": "damage",
-            "value": 5.0
+            "value": 2.0
           }
         ],
         "pieces": 2

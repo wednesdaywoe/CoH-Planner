@@ -403,6 +403,14 @@ const MEZ_SUBTYPE: Record<string, string> = {
   untouchable: 'Untouchable', onlyaffectsself: 'OnlyAffectsSelf',
   combat_phase: 'CombatPhase', knockback: 'Knockback', knockup: 'Knockup',
   repel: 'Repel', evade: 'Evade',
+  // Thunderspy respells two applied-mez attribs where HC/Rebirth use the canonical
+  // participle (`Stun`→`Stunned`, `Immobilize`→`Immobilized`), on the matching
+  // `*_Stun`/`*_Immobilize` tables. Same present-but-respelled class as the movement
+  // vocab below and the converter's own MEZ_TYPES (which already reads both spellings, so
+  // the effects bag already credits these) — mapping here converges the atom to the bag,
+  // recovering the tspy `specialBuff.stun` mez-STRENGTH the Rust reader was reading as 0
+  // (Conserve Power / Energize). TSPY-3 step 2. [[tspy-player-vocab-gap]]
+  stun: 'Stunned', immobilize: 'Immobilized',
 };
 
 /** scalar-stat attribs → effectType (no subType). */
@@ -455,6 +463,16 @@ const MOVEMENT_AXIS: Record<string, string> = {
   // FlyingSpeed buff (axis `Fly`), NOT the kFly mode grant.
   speedrunning: 'Run', speedjumping: 'Jump', speedflying: 'Fly',
   runspeed: 'Run', flyspeed: 'Fly',
+  // Thunderspy also drops the `Movement` prefix on the friction/control axes
+  // (`Friction`→MovementFriction, `Control`→MovementControl) on the same
+  // `*_Friction`/`*_Control` tables HC uses. Verified: tspy `Friction` sits on
+  // `Melee_Friction` (== HC MovementFriction's table) and co-occurs with MovementControl
+  // on 169/170 files, mirroring HC's always-paired travel-power rule — so the old TSPY-2
+  // note that "tspy MovementFriction is absent" was just this respelling (the census
+  // looked for `MovementFriction`, missed `Friction`). The parser already relabels most
+  // front-`Control`→`MovementControl`; `control` here catches the 1 residual it misses.
+  // Both axes are excluded from movement totals (movement.rs), so this only de-Unmaps them.
+  friction: 'Friction', control: 'Control',
 };
 
 /** engine / meta attribs → their effectType (or 'Meta' for non-stat markers). */

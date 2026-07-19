@@ -901,19 +901,29 @@ _BONUS_STAT_PAIRS = [
     ('+res(recharge_debuff)', '+res(slow)'),
 ]
 
-# Per-attrib scale→value multiplier. Empirically derived and cross-validated
-# against all 225 shared HC hand-data sets (scripts: see HC-IO-SETS-BINARY-
-# SOURCING.md): every shared tier reproduces the hand value within float
-# rounding. The game multiplies the stored `scale` by an attrib-specific
-# modifier to get the displayed %:
-#   - damage buff (damage-type attribs, aspect=Strength) → ×250
+# Per-dataset damage-buff (aspect=Strength) set-bonus multiplier. The damage
+# set-bonus SCALE is stored differently per server: HC stores it at 0.4× the
+# natural value (raw scale 0.016 → 4%), so the game applies ×250; Rebirth stores
+# the SAME bonuses at the natural scale (raw 0.04 → 4%), so they need ×100.
+# Verified against the in-game Liberty's Belt tooltip: 3pc raw scale 0.025 →
+# 2.5% (×100), NOT 6.25% (×250). Confirmed by raw-bin comparison — HC damage
+# scales span 0.004–0.016, Rebirth's 0.01–0.04 (exactly 2.5× HC's). Non-damage
+# Strength buffs (recharge/accuracy/…) use ×100 on BOTH servers and are correct.
+# Set by main() from DATASET_CONFIG; default 250 (HC/tspy).
+_DAMAGE_STRENGTH_MULT: float = 250.0
+
+# Per-attrib scale→value multiplier. Cross-validated against all 225 shared HC
+# hand-data sets (see HC-IO-SETS-BINARY-SOURCING.md). The game multiplies the
+# stored `scale` by an attrib-specific modifier to get the displayed %:
+#   - damage buff (damage-type attribs, aspect=Strength) → _DAMAGE_STRENGTH_MULT
+#     (×250 HC/tspy, ×100 Rebirth — the raw bin scale differs; see above)
 #   - max HP (HitPoints/Maximum)                         → ×10
 #   - max endurance (Endurance/Maximum)                  → ×1 (scale is already %)
 #   - everything else (resistance, defence, recharge,
 #     recovery, regen, movement, mez-res, durations, …)  → ×100
 def _bonus_multiplier(attrib: str, aspect: str) -> float:
     if aspect == 'Strength' and attrib in DAMAGE_ATTRIBS:
-        return 250.0
+        return _DAMAGE_STRENGTH_MULT
     if aspect == 'Maximum':
         if attrib == 'HitPoints':
             return 10.0
@@ -1562,6 +1572,9 @@ DATASET_CONFIG = {
         'output': OUTPUT_PATH,
         'pigg': 'G:/Thunderspy Gaming/Sweet Tea/rebirth/z_rebirth_bin.pigg',
         'server': 'Rebirth',
+        # Rebirth bins store damage set-bonus scales at the natural value → ×100
+        # (HC's are 0.4×, needing ×250). See _DAMAGE_STRENGTH_MULT.
+        'damage_strength_mult': 100.0,
         'apply_overrides': _apply_rebirth_overrides,
         'extra_notes': (
             ' * Includes Rebirth-only sets (Guardian\'s Gift, Absolute Resolution,\n'
@@ -1574,6 +1587,7 @@ DATASET_CONFIG = {
         'output': HC_IO_SETS_PATH,
         'pigg': 'G:/Homecoming/assets/live/bin*.pigg',
         'server': 'Homecoming',
+        'damage_strength_mult': 250.0,  # HC damage scales are 0.4× → ×250
         'apply_overrides': _apply_homecoming_overrides,
         'extra_notes': (
             ' * Targeted hand overrides (from the prior curated io-sets-raw) cover\n'
@@ -1586,6 +1600,10 @@ DATASET_CONFIG = {
         'output': THUNDERSPY_IO_SETS_PATH,
         'pigg': 'G:/Thunderspy Gaming/Sweet Tea/tspy/bin.pigg',
         'server': 'Thunderspy',
+        # tspy-only damage bonuses come from _apply_thunderspy_overrides, not the
+        # ×250 path; its committed values are correct at 250. (Bins incomplete —
+        # do NOT re-extract tspy; see the tspy-bin-incomplete note.)
+        'damage_strength_mult': 250.0,
         'apply_overrides': _apply_thunderspy_overrides,
         'extra_notes': (
             ' * Shared sets reuse HC\'s hand-curated entry. The 4 sets that are NOT on\n'
@@ -1677,6 +1695,10 @@ def main(dataset: str | None = None) -> int:
         print(f'Unknown dataset {dataset!r}; choose from {sorted(DATASET_CONFIG)}')
         return 2
     cfg = {**cfg, '_id': dataset}
+
+    # Dataset-specific damage set-bonus multiplier (HC/tspy ×250, Rebirth ×100).
+    global _DAMAGE_STRENGTH_MULT
+    _DAMAGE_STRENGTH_MULT = cfg.get('damage_strength_mult', 250.0)
 
     print(f'[{dataset}] Loading bins from {cfg["assets"]}…')
     resolver = BinResolver(cfg['assets'])
