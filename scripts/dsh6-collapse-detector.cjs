@@ -161,6 +161,20 @@ const META_SLOT = new Set([
 const CHECKABLE_ET = new Set(['Defense', 'Resistance', 'Elusivity', 'Mez', 'MezResist', 'Movement']);
 // effectTypes whose slots encode sign (buff/debuff split) — match sign strictly.
 const SIGNED_ET = new Set(['Defense', 'Resistance']);
+// by-type effectTypes whose aspect=Res form is NOT the primary buff but debuff-
+// RESISTANCE (→ debuffResistance.<child>, which collectRepresented registers as the
+// unsigned `<et>||` identity, never `<et>|<sub>|+`). An aspect=Res atom on one of these
+// must be skipped in the by-type gate or it false-positives as a dropped by-type buff.
+//   • Defense — Base_Defense DDR (Agile / Heightened Senses / Rooted / … 128 powers):
+//     `Base_Defense` + aspect=Res bridges to Defense|All and routes to
+//     debuffResistance.defense. It USED to bridge to Resistance|all (hence checkableSub's
+//     stale "NOT 'all'" exclusion below); the bridge now gives it the correct Defense
+//     effectType, moving the false-positive from a suppressed Resistance|all to an
+//     un-suppressed Defense|all — this set re-suppresses it at the right effectType.
+//   • Movement — slow-RES → debuffResistance.movement (already handled here historically).
+// Resistance is deliberately ABSENT: its aspect=Res form IS the primary damage-resistance
+// buff (Fire Shield +3 Fire = Resistance|fire, aspect=Res), so it must stay checkable.
+const DDR_BY_TYPE_ET = new Set(['Defense', 'Movement']);
 
 // Canonical subtype token: map BOTH the bridge subType names and the converter
 // slot keys onto one token, so `Run`(bridge) and `runSpeed`(slot) — or
@@ -211,7 +225,7 @@ const STD_TYPE = new Set(['smashing', 'lethal', 'fire', 'cold', 'energy', 'negat
 const MEZ_SUB = new Set(['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear', 'taunt', 'placate', 'teleport', 'untouchable', 'onlyaffectsself']);
 const MOVE_AXIS = new Set(['run', 'fly', 'jump', 'jumpheight', 'control', 'friction']);
 function checkableSub(et, canon) {
-  if (et === 'Resistance') return STD_TYPE.has(canon);            // NOT 'all' (that is base-defense DDR)
+  if (et === 'Resistance') return STD_TYPE.has(canon);            // typed only, NOT 'all' (base-defense DDR now bridges to Defense — see DDR_BY_TYPE_ET)
   if (et === 'Defense') return STD_TYPE.has(canon) || canon === 'all';
   if (et === 'Elusivity') return STD_TYPE.has(canon) || canon === 'all';
   if (et === 'Mez' || et === 'MezResist') return MEZ_SUB.has(canon);
@@ -418,7 +432,7 @@ function inputIdentities(sourceJson) {
     if (!a.scale) continue;                            // scale 0 = marker/no-op
     if (a.attribType === 'Expression') continue;       // engine phantoms / caps
     if (a.aspect === 'Str') continue;                  // Power-Boost → specialBuff (Enhancement boundary)
-    if (a.aspect === 'Res' && a.effectType === 'Movement') continue; // slow-RES → debuffResistance.movement
+    if (a.aspect === 'Res' && DDR_BY_TYPE_ET.has(a.effectType)) continue; // DDR → debuffResistance.<child>, not a by-type buff
     if (!CHECKABLE_ET.has(a.effectType)) continue;     // scalar/DamageBuff/Heal/Damage/engine/Unmapped
     const subL = normSub(a.subType);
     if (!checkableSub(a.effectType, subL)) continue;   // exotic type / KB / base-defense DDR / unrouted mez

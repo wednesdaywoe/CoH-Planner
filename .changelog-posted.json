@@ -220,6 +220,16 @@
       "id": "dataset-lazy-load-slimdown",
       "date": "2026-07-17",
       "preview": "Sidekick went on a weight-loss program 🍩, and lost 26mb of entry chunk and 35mb"
+    },
+    {
+      "id": "belt-of-liberty",
+      "date": "2026-07-18",
+      "preview": "Rebirth: Added Belt of Liberty enhancement set"
+    },
+    {
+      "id": "ruleof5-per-bonus-override",
+      "date": "2026-07-18",
+      "preview": "You can now hide pesky Rule of 5 warnings at a per-set-bonus level, just open th"
     }
   ]
 }

@@ -106,7 +106,7 @@ export const GrantCover: Power = {
     ["Defense","Cold",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
     ["Defense","Energy",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
     ["Defense","Negative",1.125,1,2.25,"Melee_Buff_Def","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,"entref target> entref source> eq !"],
-    ["Resistance","All",0.4,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Defense","All",0.4,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["RechargeTime",null,0.3,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

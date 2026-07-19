@@ -112,7 +112,7 @@ export const ConduitofPain: Power = {
     ["DamageBuff","Psionic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Toxic",3,1,60,"Ranged_Buff_Dmg","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["ToHit",null,2,1,60,"Ranged_Buff_ToHit","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
-    ["Stealth",null,300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Stealth","RadiusPvE",300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Smashing",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],
     ["DamageBuff","Lethal",3,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true],

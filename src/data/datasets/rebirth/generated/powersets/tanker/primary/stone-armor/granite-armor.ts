@@ -227,7 +227,7 @@ export const GraniteArmor: Power = {
     ["Movement","Jump",0.5,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Movement","FlyMode",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["EntCreate",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,"isPVPMap? !"],
-    ["Resistance","All",1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
+    ["Defense","All",1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? !"],
     ["EntCreate",null,1,136,2,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,1,3,null,true],
     ["GrantPower",null,-1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
     ["GrantPower",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",1,null,null,1,null,true],
@@ -252,6 +252,6 @@ export const GraniteArmor: Power = {
     ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
     ["Mez","Repel",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true],
     ["EntCreate",null,1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,"isPVPMap?",true],
-    ["Resistance","All",1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
+    ["Defense","All",1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap?",true]
   ]
 };

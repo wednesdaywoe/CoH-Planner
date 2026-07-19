@@ -91,7 +91,7 @@ export const GroupInvisibility: Power = {
     }
   },
   "atoms": [
-    ["Stealth",null,60,1,120,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
+    ["Stealth","RadiusPvE",60,1,120,"Ranged_Ones","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","Smashing",0.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","Lethal",0.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],
     ["Defense","Energy",0.25,1,120,"Ranged_Buff_Def","Unspecified","Magnitude","Unspecified","Any",true,"No",null,null,null,1],

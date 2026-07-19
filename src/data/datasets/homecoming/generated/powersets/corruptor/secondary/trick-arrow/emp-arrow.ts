@@ -282,7 +282,7 @@ export const EMPArrow: Power = {
     ["Resistance","Negative",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Psionic",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Toxic",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
-    ["Resistance","All",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Defense","All",-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["ToHit",null,-1.2,1,45,"Ranged_Res_Boolean","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
     ["Endurance",null,-0.4,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,"enttype target> critter eq"],
     ["Regeneration",null,-5,1,15,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,"enttype target> critter eq"],

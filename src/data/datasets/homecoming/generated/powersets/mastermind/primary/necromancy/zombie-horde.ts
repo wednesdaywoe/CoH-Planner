@@ -69,7 +69,7 @@ export const ZombieHorde: Power = {
   },
   "atoms": [
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true],
-    ["Stealth",null,0,1,2,"Ranged_Ones","Cur","Magnitude","All","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Stealth","Translucency",0,1,2,"Ranged_Ones","Cur","Magnitude","All","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","All","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
     ["Mez","Immobilized",3,500,0,"Melee_Ones","Cur","Duration","All","PvE",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
     ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,"combatlevel source> 5 >",true],

@@ -79,7 +79,7 @@ export const Lucky: Power = {
   },
   "atoms": [
     ["Defense","AoE",0.75,1,2.5,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1],
-    ["Resistance","All",0.2,1,2.5,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
+    ["Defense","All",0.2,1,2.5,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Smashing",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1],
     ["Resistance","Fire",0,1,2.5,"Melee_Ones","Res","Expression","Self","Any",false,"Replace",2,null,null,1],

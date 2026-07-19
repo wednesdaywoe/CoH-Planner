@@ -118,7 +118,7 @@ export const WolfSpiderArmor: Power = {
     ["MezResist","Immobilized",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["MezResist","Stunned",0.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["MezResist","Sleep",5.2,1,10.25,"Melee_Ones","Res","Magnitude","Target","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Resistance","All",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Defense","All",0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["ToHit",null,0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["RechargeTime",null,0.3,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Movement","Run",0.5,1,10.25,"Melee_Ones","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],

@@ -160,7 +160,7 @@ export const DispersionBubble: Power = {
     ["MezResist","Held",3,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq &&",true],
     ["MezResist","Sleep",3,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq &&",true],
     ["MezResist","Immobilized",3,1,2.25,"Melee_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq &&",true],
-    ["Resistance","All",0.3,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq &&",true],
+    ["Defense","All",0.3,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq &&",true],
     ["ToHit",null,0.3,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq &&",true],
     ["RechargeTime",null,0.3,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq &&",true],
     ["Movement","Run",0.5,1,2.25,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,"isPVPMap? entref target> entref source> eq &&",true],
