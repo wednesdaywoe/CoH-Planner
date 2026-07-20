@@ -50,7 +50,7 @@ import {
   type EnhancementBonuses,
 } from './enhancement-values';
 import { INCARNATE_TIER_REGISTRY } from '@/data/core/incarnate-registry';
-import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue } from '@/data/core/atom-query';
+import { toHitBuffValue, damageBuffValue, resistanceBuffValue, resistanceSelfDebuffValue, defenseBuffValue, defenseBuffSuppressibleValue, maxHPBuffValue, regenBuffValue, recoveryBuffValue, movementBuffValue, kbProtectionValue } from '@/data/core/atom-query';
 import type { EncodedAtom } from '@/data/core/atomic-effect';
 import { warnFallback } from '@/utils/fallback-warnings';
 import { calculateVigilanceDamageBonus, calculateFuryDamageBonus } from './inherents';
@@ -1867,41 +1867,51 @@ function applyActivePowerBonuses(
     // powers still stack because each power runs this block separately.
     let kbProtFromThisPower = 0;
     for (const { field, key } of mezProtTypes) {
-      const mezVal = effects[field];
-      if (mezVal === undefined || typeof mezVal === 'number') continue;
-      const mez = mezVal as MezScaled;
-      if (!mez.table) continue;
+      const isKb = field === 'knockback' || field === 'knockup';
+      // KB/KU protection is atom-native (ATOM15 / PASS2B-1): kbProtectionValue accumulates ONLY the
+      // power's SELF-directed KB protection atoms (foe-attack knockback excluded, MezResist included),
+      // so a self-atom result is caster protection by construction — the old effectArea+powerType proxy
+      // (which miscredited SingleTarget foe attacks like Battle Axe Gash) is retired. Only Thunderspy
+      // (no KB atoms — TSPY-3) falls to the bag, gated by isResBoolean below. The six MEZ types stay
+      // bag-read (the frozen oracle; the rebuild leads them via ATOM11).
+      let mez: MezScaled | undefined;
+      let kbIsSelfAtom = false;
+      if (isKb) {
+        const atomVal = kbProtectionValue(power, field as 'knockback' | 'knockup');
+        if (atomVal) {
+          mez = atomVal as MezScaled;
+          kbIsSelfAtom = true;
+        } else {
+          const bagVal = effects[field];
+          if (bagVal !== undefined && typeof bagVal !== 'number') mez = bagVal as MezScaled;
+        }
+      } else {
+        const bagVal = effects[field];
+        if (bagVal !== undefined && typeof bagVal !== 'number') mez = bagVal as MezScaled;
+      }
+      if (!mez || !mez.table) continue;
       const tableLower = mez.table.toLowerCase();
       const isResBoolean = tableLower.includes('res_boolean');
-      // Knockback effects on SingleTarget Self-targeted powers are protection even without Res_Boolean
-      // (e.g., Acrobatics uses Melee_Ones table for KB protection, Practiced Brawler is a Click)
-      // AoE toggles like Repulsion Field and Hurricane are offensive KB, not protection
-      const powerTypeLower = power.powerType?.toLowerCase();
-      const isKbSelfProt = (field === 'knockback' || field === 'knockup') &&
-        (effects.effectArea === 'SingleTarget' || power.effectArea === 'SingleTarget') &&
-        (powerTypeLower === 'toggle' || powerTypeLower === 'auto' || powerTypeLower === 'click');
-      if (isResBoolean || isKbSelfProt) {
-        // Mez protection uses level 50 table values — protection magnitude is a fixed value
-        // that doesn't scale down during leveling (matches Mids/in-game behavior)
-        const tableValue = getTableValue(archetypeId, tableLower, 50);
-        if (tableValue !== undefined) {
-          let mag = Math.abs(mez.scale) * tableValue;
-          // Knockback enhancements boost KB protection magnitude (per Acrobatics description)
-          if (isKbSelfProt && !isResBoolean) {
-            mag *= (1 + (enhBonuses.knockback || 0));
-          }
-          if (key === 'protKnockback') {
-            // Fold the Knockback/Knockup pair into one contribution (see note above).
-            kbProtFromThisPower = Math.max(kbProtFromThisPower, mag);
-          } else {
-            global[key] += mag;
-            addToBreakdown(breakdown, key, {
-              name: power.name,
-              value: mag,
-              type: 'active-power',
-            });
-          }
-        }
+      if (!(isResBoolean || kbIsSelfAtom)) continue;
+      // Mez protection uses level 50 table values — protection magnitude is a fixed value
+      // that doesn't scale down during leveling (matches Mids/in-game behavior)
+      const tableValue = getTableValue(archetypeId, tableLower, 50);
+      if (tableValue === undefined) continue;
+      let mag = Math.abs(mez.scale) * tableValue;
+      // Knockback enhancements boost non-Res_Boolean self-KB protection (per Acrobatics description).
+      if (kbIsSelfAtom && !isResBoolean) {
+        mag *= (1 + (enhBonuses.knockback || 0));
+      }
+      if (key === 'protKnockback') {
+        // Fold the Knockback/Knockup pair into one contribution (see note above).
+        kbProtFromThisPower = Math.max(kbProtFromThisPower, mag);
+      } else {
+        global[key] += mag;
+        addToBreakdown(breakdown, key, {
+          name: power.name,
+          value: mag,
+          type: 'active-power',
+        });
       }
     }
     if (kbProtFromThisPower > 0) {

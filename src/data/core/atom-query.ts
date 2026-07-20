@@ -959,3 +959,37 @@ function durationlessKey(a: AtomicEffect): string {
     a.scale.toFixed(4),
   ].join('|');
 }
+
+/**
+ * The `effects.knockback` / `effects.knockup` PROTECTION slot, atom-native (ATOM15 / PASS2B-1).
+ * `field ∈ {'knockback','knockup'}`. Reproduces the converter's KB accumulate fold
+ * (`convert-powerset.cjs:4356`), restricted to SELF-DIRECTED PROTECTION atoms — the converter's
+ * branches 2a (`Self` + aspect=Res + Res_Boolean) and 3 (`Self` + aspect≠Res). Branch 1
+ * (`toWho ≠ 'Self'`) is EXCLUDED: that is offensive foe-knockback (Battle Axe Gash's 0.67), not
+ * caster protection — the PASS2B-1 fix that retires the `effectArea + powerType` proxy. Spans BOTH
+ * `Mez` AND `MezResist` effectTypes (the converter keys on the resolved attrib string, so a
+ * `MezResist/Knockback` protection atom counts — Quantum/Evasive Maneuvers carry ONLY that). PvP-twin
+ * atoms are dropped (the converter excludes them upstream). Accumulate `|scale|` with
+ * reset-on-table-change, in list order; returns `{scale, table}` or `undefined`.
+ */
+export function kbProtectionValue(
+  power: AtomSource,
+  field: 'knockback' | 'knockup',
+): { scale: number; table: string } | undefined {
+  const subType = field === 'knockback' ? 'Knockback' : 'Knockup';
+  let cur: { scale: number; table: string } | undefined;
+  for (const a of baseAtoms(power)) {
+    if (a.effectType !== 'Mez' && a.effectType !== 'MezResist') continue;
+    if (a.subType !== subType) continue;
+    if (a.toWho !== 'Self') continue; // branch 1 (foe) excluded → PASS2B-1
+    if (a.pvMode === 'PvP') continue; // the converter drops the PvP twin upstream
+    // branch 2b: a Self aspect=Res KB atom on a NON-Res_Boolean table is KB *resistance*, not protection
+    if (a.aspect === 'Res' && !(a.modifierTable || '').toLowerCase().includes('res_boolean')) continue;
+    if (!a.modifierTable) continue;
+    const table = a.modifierTable;
+    const scale = Math.abs(a.scale || 0);
+    if (cur && cur.table === table) cur.scale += scale;
+    else cur = { scale, table };
+  }
+  return cur;
+}

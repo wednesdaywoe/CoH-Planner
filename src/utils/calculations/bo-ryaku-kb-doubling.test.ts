@@ -7,14 +7,19 @@ import { createEmptyBuild } from '@/types/build';
 /**
  * Regression guard for the Bo Ryaku (Ninjitsu) KB-protection doubling.
  *
- * The generated power carries BOTH effects.knockback{scale:20} and
- * effects.knockup{scale:20} on Melee_Res_Boolean because the bin stores a single
- * template with attribs:[Knockup, Knockback]. In CoH these are the SAME physical
- * KB-protection stat and are always equal. The mezProtTypes loop in
- * character-totals used to map knockback->protKnockback AND knockup->protKnockback
- * and `+=` both, summing them and displaying ~2x the true value (bug: Bo Ryaku
- * ~14 instead of ~7, Unyielding ~20 instead of ~10). The fix folds the pair into
- * a single per-power contribution (max), while still stacking across powers.
+ * Bo Ryaku carries paired Knockup/Knockback protection at an equal magnitude. In
+ * CoH these are the SAME physical KB-protection stat; the mezProtTypes loop maps
+ * both knockup->protKnockback AND knockback->protKnockback, and summing them via
+ * `+=` would DOUBLE the value (bug: Bo Ryaku ~14 instead of ~7). The guard is the
+ * per-power `max` fold that counts the pair once while still stacking across powers.
+ *
+ * KB/KU protection is now atom-native (ATOM15 / PASS2B-1) — the value + the
+ * self-protection discriminator come from `kbProtectionValue(power, field)`, not the
+ * bag + effectArea/powerType proxy. So these mocks carry self-directed KB protection
+ * ATOMS: Bo Ryaku's `MezResist/Knockback +5 (Res)` + `Mez/Knockback -15 (Cur)`
+ * (Self, Melee_Res_Boolean) accumulate to 20; the second power is an Acrobatics-shaped
+ * `Mez/Knockback -10 (Cur, Self, Melee_Ones)`. Tuple order = ATOM_TUPLE_FIELDS
+ * (effectType, subType, scale, magnitude, duration, modifierTable, aspect, attribType, toWho, pvMode).
  */
 
 const boRyaku = () => ({
@@ -25,14 +30,20 @@ const boRyaku = () => ({
   effectArea: 'SingleTarget',
   isActive: true,
   slots: [],
-  effects: {
-    knockup: { scale: 20, table: 'Melee_Res_Boolean' },
-    knockback: { scale: 20, table: 'Melee_Res_Boolean' },
-  },
+  // A non-empty bag clears the `if (!power.effects) continue` active-power gate;
+  // it deliberately carries NO knockback/knockup key, so the credited protection
+  // can ONLY come from the atoms below — proving the source is atom-native.
+  effects: {},
+  atoms: [
+    ['MezResist', 'Knockback', 5, 1, 0, 'Melee_Res_Boolean', 'Res', 'Magnitude', 'Self', 'PvE'],
+    ['Mez', 'Knockback', -15, 1, 0, 'Melee_Res_Boolean', 'Cur', 'Magnitude', 'Self', 'PvE'],
+    ['MezResist', 'Knockup', 5, 1, 0, 'Melee_Res_Boolean', 'Res', 'Magnitude', 'Self', 'PvE'],
+    ['Mez', 'Knockup', -15, 1, 0, 'Melee_Res_Boolean', 'Cur', 'Magnitude', 'Self', 'PvE'],
+  ],
 });
 
-// A second Self KB-protection power (Melee_Ones / isKbSelfProt path, à la
-// Unyielding/Acrobatics) used to prove different powers still STACK after the fix.
+// A second Self KB-protection power (Acrobatics-shaped: self aspect=Cur on Melee_Ones,
+// credited via the atom's toWho=Self) used to prove different powers still STACK.
 const secondKbPower = () => ({
   name: 'Second KB Power',
   internalName: 'Second_KB_Power',
@@ -41,10 +52,11 @@ const secondKbPower = () => ({
   effectArea: 'SingleTarget',
   isActive: true,
   slots: [],
-  effects: {
-    knockup: { scale: 10, table: 'Melee_Ones' },
-    knockback: { scale: 10, table: 'Melee_Ones' },
-  },
+  effects: {},
+  atoms: [
+    ['Mez', 'Knockback', -10, 1, 0, 'Melee_Ones', 'Cur', 'Magnitude', 'Self', 'PvE'],
+    ['Mez', 'Knockup', -10, 1, 0, 'Melee_Ones', 'Cur', 'Magnitude', 'Self', 'PvE'],
+  ],
 });
 
 function scrapperBuildWith(powers: unknown[]) {
