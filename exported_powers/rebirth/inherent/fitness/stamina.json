@@ -90,10 +90,10 @@
   "modes_disallowed": [
     "Disable_All"
   ],
-  "modes_suspended": [
-    "ServerTrayOverride",
-    "Warshade_Form_Change",
-    "Disable_Inspiration_Small"
+  "free_boost_slots_on_power": [
+    0,
+    10,
+    20
   ],
   "available_level": 1,
   "powerset": "Inherent.Fitness"

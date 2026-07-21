@@ -199,6 +199,17 @@ class PowerRecord:
     modes_disallowed: list[int] = field(default_factory=list)
     modes_suspended: list[int] = field(default_factory=list)
 
+    # `FreeBoostSlotsOnPower` in the .def (powers_load.c parse table, the
+    # V23 field between ModesDisallowed and AIGroups) — a per-power override
+    # of the global free-slot schedule (BasePower.pFreeBoostSlotsOnPower,
+    # PowerInfo.c). Entries are 0-based levels-OWNED offsets: a slot opens
+    # when (character level − level bought) reaches the entry, so Rebirth
+    # Health's [0, 6, 14] bought at level 2 = the base slot plus bonus slots
+    # at levels 8 and 16. Parse6/Rebirth carries it (sole non-empty carriers:
+    # Health/Stamina); HC's authored defs never use the token and Thunderspy's
+    # layout has no slot for it.
+    free_boost_slots_on_power: list[int] = field(default_factory=list)
+
     # `GroupMembership` in the .def (field 75, HC; field 74 tail, Parse6) — a
     # u4_array, read but previously discarded. Powers sharing a non-empty
     # group id are presumed mutually exclusive (e.g. Dual Pistols' ammo

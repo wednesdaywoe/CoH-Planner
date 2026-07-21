@@ -341,6 +341,13 @@ def power_to_dict(pw, msgs=None, set_cats_index=None, mode_table=None,
             if names:
                 d[field_name] = names
 
+    # Per-power free-slot schedule (FreeBoostSlotsOnPower) — 0-based
+    # levels-owned offsets overriding the global schedules.bin grant (see
+    # PowerRecord for semantics). Level data, not mode indices, so it needs
+    # no mode table. Sparse: Rebirth Health/Stamina only in shipped data.
+    if pw.free_boost_slots_on_power:
+        d['free_boost_slots_on_power'] = pw.free_boost_slots_on_power
+
     return d
 
 

@@ -132,10 +132,10 @@
   "modes_disallowed": [
     "Disable_All"
   ],
-  "modes_suspended": [
-    "ServerTrayOverride",
-    "Warshade_Blaster_Mode",
-    "Disable_Pool"
+  "free_boost_slots_on_power": [
+    0,
+    6,
+    14
   ],
   "available_level": 1,
   "powerset": "Inherent.Fitness"

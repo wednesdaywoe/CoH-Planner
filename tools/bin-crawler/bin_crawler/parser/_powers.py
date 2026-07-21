@@ -2320,7 +2320,7 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
     redirects: list[dict] = []
     modes_required: list[int] = []
     modes_disallowed: list[int] = []
-    modes_suspended: list[int] = []
+    free_boost_slots_on_power: list[int] = []
     try:
         modes_required = r.read_u4_array()
         modes_disallowed = r.read_u4_array()
@@ -2336,7 +2336,15 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
                               f"redirect parse failed ({e}); effects may be lost")
                 r.skip_to_end()
         else:
-            modes_suspended = r.read_u4_array()
+            # PARSE6-1 (2026-07-21): this u4_array is FreeBoostSlotsOnPower
+            # (the ParseCommonPower slot between ModesDisallowed and AIGroups
+            # in the released source's parse table — there is NO ModesSuspended
+            # token there). It was mislabeled modes_suspended, which resolved
+            # Rebirth Health/Stamina's slot levels into bogus mode names.
+            # Census: sole non-empty carriers = those two records, with level
+            # semantics; every genuine HC ModesSuspended carrier has an empty
+            # twin here.
+            free_boost_slots_on_power = r.read_u4_array()
             r.read_string_array()  # AIGroups (e.g. kEarlyBattle on pet powers)
         try:
             if veracity:
@@ -2413,6 +2421,6 @@ def _parse_power_parse6(r: BinReader, *, thunderspy: bool = False,
         redirects=redirects,
         modes_required=modes_required,
         modes_disallowed=modes_disallowed,
-        modes_suspended=modes_suspended,
+        free_boost_slots_on_power=free_boost_slots_on_power,
         exclusion_groups=exclusion_groups,
     )
