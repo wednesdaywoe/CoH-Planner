@@ -528,6 +528,15 @@ export function bridgeAttrib(attrib: string, aspect?: string, table?: string): B
     return isRes ? { effectType: 'HealResistance' } : { effectType: 'Heal' };
   }
 
+  // [ATOM-TSPY step 2] Thunderspy respells HC's `HitPoints`@Maximum (+MaxHP) as bare
+  // `Heal`/`HealSelf` on the same `*_HealSelf`/`*_Heal` tables (HC splits the two faces:
+  // HitPoints@Maximum is the cap, Heal_Dmg is the applied heal). Only the Maximum face is a
+  // consumed total, so only it bridges — to MaxHP, exactly as `hitpoints`@maximum does. The
+  // converter's RESOURCE_TYPES mirrors this (heal→hitPoints ⇒ maxHPBuff), keeping atom==bag.
+  // Applied-heal / heal-strength faces (Absolute/Current/Strength) stay Unmapped on BOTH
+  // sides — no calc total reads them. tspy-only: HC/Rebirth carry 0 bare Heal/HealSelf.
+  if ((a === 'heal' || a === 'healself') && asp === 'maximum') return { effectType: 'MaxHP' };
+
   // Damage / DamageBuff: `<type>_Dmg`. aspect=Str ⇒ a buff to the Damage attribute.
   if (a.endsWith('_dmg')) {
     const sub = DAMAGE_SUBTYPE[a.slice(0, -4)];

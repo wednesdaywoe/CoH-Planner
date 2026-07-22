@@ -2132,6 +2132,9 @@ const MOVEMENT_TYPES = {
 // Resource attributes
 const RESOURCE_TYPES = {
   'hitpoints': 'hitPoints', 'hit_points': 'hitPoints',
+  // [ATOM-TSPY step 2] tspy spells HC's HitPoints as `Heal`/`HealSelf`; @maximum ⇒ maxHPBuff,
+  // same as hitPoints. Non-maximum faces fall through unrouted (no heal total). tspy-only.
+  'heal': 'hitPoints', 'healself': 'hitPoints',
   'endurance': 'endurance',
   'recovery': 'recovery',
   'regeneration': 'regeneration', 'regen': 'regeneration',
