@@ -128,7 +128,7 @@ export const ROADMAP_GROUPS: RoadmapGroup[] = [
       { label: 'Data pipeline', state: 'done' },
       { label: 'Unified power format', state: 'done' },
       { label: 'Strict data loading', state: 'done' },
-      { label: 'Complete Bin Crawler\'s resolution for all datasets', state: 'in-progress' },
+      { label: 'Complete Bin Crawler\'s resolution for all datasets', state: 'done' },
       { label: 'App shell', state: 'done' },
       { label: 'Automated testing', state: 'done' },
       { label: 'Default theme', state: 'done' },
