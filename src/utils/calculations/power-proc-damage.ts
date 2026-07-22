@@ -32,6 +32,10 @@ export interface SlottedProcDamageInput {
   rechargeEnh: number;
   /** Character level used to interpolate proc damage. */
   buildLevel: number;
+  /** True when this power's foe damage is main-target-only despite an AoE radius
+   *  (Propel — its 15ft radius is the knockback splash, not the damage). Damage
+   *  procs then roll the single-target area-factor; see isDamageMainTargetOnlyPower. */
+  damageMainTargetOnly?: boolean;
 }
 
 /**
@@ -40,6 +44,11 @@ export interface SlottedProcDamageInput {
  */
 export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput): number {
   const { slots, baseRecharge, castTime, radius, arcDegrees, rechargeEnh, buildLevel } = input;
+  // Every proc handled here is a foe-damage proc (filtered below), so a
+  // main-target-only-damage power (Propel) scores them all single-target: the
+  // AoE radius belongs to a non-damage effect the damage proc never rolls against.
+  const areaRadius = input.damageMainTargetOnly ? 0 : radius;
+  const areaArc = input.damageMainTargetOnly ? 360 : arcDegrees;
   let total = 0;
   for (const slot of slots) {
     if (!slot || slot.type !== 'io-set') continue;
@@ -61,7 +70,7 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
     // levelRange. (@Redlynne report, 2026-06-12 — was using io.level for
     // non-attuned, so Global-IO-Level builds under-counted 10×.)
     const procDmg = interpolateProcDamage(dmg.value, dmg.valueMax, procData.levelRange, buildLevel);
-    const procChance = calculateProcChance(procData.ppm, baseRecharge, castTime, radius, arcDegrees, rechargeEnh);
+    const procChance = calculateProcChance(procData.ppm, baseRecharge, castTime, areaRadius, areaArc, rechargeEnh);
     total += procDmg * procChance;
   }
   return total;

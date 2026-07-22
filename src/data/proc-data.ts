@@ -2743,6 +2743,49 @@ export function calculateProcsPerMinute(
   return procChance * activationsPerMinute;
 }
 
+/**
+ * True when a proc's payload is FOE DAMAGE — a Damage effect carrying a
+ * value..valueMax range. This is the exact shape every damage-proc site keys on
+ * (Build Up's self-buff Damage carries a duration and no valueMax, so it's
+ * excluded). Centralized here so the main-target-only area-factor rule below and
+ * `calculateSlottedProcDamagePerCast` apply to precisely the same set of procs.
+ */
+export function isFoeDamageProc(procData: ProcData): boolean {
+  return getProcEffects(procData).some(
+    (e) => e.category === 'Damage' && e.value !== undefined && e.valueMax !== undefined,
+  );
+}
+
+/**
+ * Powers whose FOE DAMAGE lands on the main target only — the game flags them
+ * `ProcMainTargetOnly` / tags each damage effect group `MainTargetOnly` — even
+ * though the power carries an AoE radius from a *secondary* effect. Propel is the
+ * canonical (and, among player powers, the only) case: its 15ft radius is the
+ * knockback splash, while the Smashing damage strikes just the main target.
+ *
+ * For a DAMAGE proc slotted in one of these, the PPM area-factor must be scored
+ * single-target (radius 0), not against the power's AoE radius — matching the
+ * in-game proc rate. Non-damage procs are unaffected: Force Feedback (+Recharge)
+ * is a Knockback proc that rolls against the AoE knockback, so it keeps the
+ * power's 15ft radius.
+ *
+ * This curated set stands in for a datum the binary parser currently drops — it
+ * reads the effect-group flag word but keeps only the PvE/PvP bits, discarding
+ * `MainTargetOnly` (see docs/DATA-GAP-REGISTER.md, gap HC-3). The durable fix is
+ * to capture that flag in the parser + re-export; until then this is the
+ * keep-the-lights-on correction. Keyed by `internalName` so one entry covers
+ * every dataset (HC/Rebirth/Thunderspy) and both the Controller/Dominator copies.
+ */
+export const DAMAGE_MAIN_TARGET_ONLY_POWERS: ReadonlySet<string> = new Set([
+  'Propel',
+]);
+
+/** Whether a power's foe damage is main-target-only (see the set above). Safe on
+ *  undefined/empty names. */
+export function isDamageMainTargetOnlyPower(internalName: string | undefined | null): boolean {
+  return !!internalName && DAMAGE_MAIN_TARGET_ONLY_POWERS.has(internalName);
+}
+
 // ============================================================================
 // VARIABLE-PROC CONTROLS (per-proc toggles & stack / HP sliders)
 // ============================================================================

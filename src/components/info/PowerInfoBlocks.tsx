@@ -27,6 +27,8 @@ import { Chip, type TagKind } from './TagsRow';
 import {
   findProcData,
   isProcAlwaysOn,
+  isFoeDamageProc,
+  isDamageMainTargetOnlyPower,
   calculateProcChance,
   calculateAutoToggleProcChance,
   getPPMAreaDenominator,
@@ -248,6 +250,9 @@ export function GeneralStatsBlock({
         radius={procAreaGeometry.radius}
         arcDegrees={procAreaGeometry.arcDegrees}
         slottedRechargeBonus={enhancementBonuses.recharge ?? 0}
+        // Propel & co.: damage procs score single-target (the AoE radius is a
+        // secondary knockback), while non-damage procs (Force Feedback) keep it.
+        damageMainTargetOnly={isDamageMainTargetOnlyPower(power.internalName)}
       />
     </div>
   );
@@ -291,6 +296,10 @@ interface ProcChanceRowProps {
   radius: number;
   arcDegrees: number | undefined;
   slottedRechargeBonus: number;
+  /** True when the power's foe damage is main-target-only despite an AoE radius
+   *  (Propel): damage procs are scored single-target while non-damage procs keep
+   *  the power's radius. See isDamageMainTargetOnlyPower. */
+  damageMainTargetOnly?: boolean;
 }
 
 interface ProcEntry {
@@ -300,6 +309,10 @@ interface ProcEntry {
   ppm: number | null;
   /** undefined when always-on (no PPM); otherwise the computed chance 0–1 */
   chance?: number;
+  /** Area denominator used for THIS proc's chance — per-proc so a main-target-only
+   *  damage proc (denom 1) and an AoE non-damage proc (denom > 1) in the same
+   *  power each show their own formula. */
+  areaDenom: number;
 }
 
 function ProcChanceRow({
@@ -310,6 +323,7 @@ function ProcChanceRow({
   radius,
   arcDegrees,
   slottedRechargeBonus,
+  damageMainTargetOnly,
 }: ProcChanceRowProps) {
   // Per-view local expansion plus a persisted "pin" toggle. The pin
   // wins when on — Power Info shows the breakdown automatically for
@@ -349,13 +363,22 @@ function ProcChanceRow({
         name: ioSlot.name,
         setName: ioSlot.setName,
         ppm: null,
+        areaDenom,
       });
       continue;
     }
 
+    // A foe-damage proc in a main-target-only-damage power (Propel) rolls the
+    // single-target area-factor; every other proc — incl. Force Feedback, which
+    // rolls against the AoE knockback — keeps the power's radius.
+    const singleTarget = !!damageMainTargetOnly && isFoeDamageProc(procData);
+    const procRadius = singleTarget ? 0 : radius;
+    const procArc = singleTarget ? 360 : arcDeg;
+    const procAreaDenom = singleTarget ? 1 : areaDenom;
+
     const chance = isToggleOrAuto
-      ? calculateAutoToggleProcChance(procData.ppm, radius, arcDeg)
-      : calculateProcChance(procData.ppm, baseRecharge, castTime, radius, arcDeg, slottedRechargeBonus);
+      ? calculateAutoToggleProcChance(procData.ppm, procRadius, procArc)
+      : calculateProcChance(procData.ppm, baseRecharge, castTime, procRadius, procArc, slottedRechargeBonus);
 
     entries.push({
       key,
@@ -363,6 +386,7 @@ function ProcChanceRow({
       setName: ioSlot.setName,
       ppm: procData.ppm,
       chance,
+      areaDenom: procAreaDenom,
     });
   }
 
@@ -437,7 +461,7 @@ function ProcChanceRow({
               isToggleOrAuto={isToggleOrAuto}
               modifiedRecharge={modifiedRecharge}
               castTime={castTime}
-              areaDenom={areaDenom}
+              areaDenom={entry.areaDenom}
               hasRechargeMod={slottedRechargeBonus > 0}
               baseRecharge={baseRecharge}
             />

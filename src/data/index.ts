@@ -310,6 +310,9 @@ export {
   getProcEffectLabel,
   getProcEffectColor,
   isProcAlwaysOn,
+  isFoeDamageProc,
+  isDamageMainTargetOnlyPower,
+  DAMAGE_MAIN_TARGET_ONLY_POWERS,
   interpolateProcDamage,
   // PPM calculation functions
   getPPMAreaFactor,

@@ -9,7 +9,7 @@
 
 import type { Build, SelectedPower, PowerEffects } from '@/types';
 import { hasSelfDirectedPenalty, INCARNATE_REQUIRED_LEVEL } from '@/types';
-import { getIOSet, arcToDegrees, getJudgementEffects } from '@/data';
+import { getIOSet, arcToDegrees, getJudgementEffects, isDamageMainTargetOnlyPower } from '@/data';
 import { getTableValue, calculateIncarnateDamage } from '@/data/at-tables';
 import {
   calculatePowerEnhancementBonuses,
@@ -329,6 +329,7 @@ export function buildChainPowers(
         arcDegrees: radiusP > 0 ? (arcToDegrees(powerArc(p)) || 360) : 360,
         rechargeEnh: enh.recharge || 0,
         buildLevel: build.level,
+        damageMainTargetOnly: isDamageMainTargetOnlyPower(p.internalName),
       });
       const dot = dotData && !dotInCast
         ? {

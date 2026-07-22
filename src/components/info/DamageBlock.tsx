@@ -17,7 +17,7 @@
 
 import type { PowerDamageResult } from '@/utils/calculations';
 import { calculateArcanaTime, abbreviateDamageType } from '@/utils/calculations';
-import { arcToDegrees } from '@/data';
+import { arcToDegrees, isDamageMainTargetOnlyPower } from '@/data';
 import { resolveProcAreaGeometry } from '@/utils/calculations/pet-damage';
 import { calculateSlottedProcDamagePerCast } from '@/utils/calculations/power-proc-damage';
 import type { SelectedPower } from '@/types';
@@ -479,6 +479,7 @@ function computeProcDamagePerActivation(props: DamageBlockProps): number {
       arcDegrees,
       rechargeEnh: enhancementBonuses.recharge ?? 0,
       buildLevel,
+      damageMainTargetOnly: isDamageMainTargetOnlyPower(selectedPower.internalName),
     });
   }
   return total;

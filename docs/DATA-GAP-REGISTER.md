@@ -76,6 +76,22 @@ eligibility), `OverCapMultiplier`/`OverCapTrigger` (63), `MaxBoosts` (63), `Chai
 (36), and server-only `StrengthsDisallowed` (952 — not in the client bin; would need
 `raw defs/` sourcing). None feed a currently-modeled calc feature.
 
+### HC-3 — effect-group `MainTargetOnly` flag dropped (proc area-factor mis-scoring)
+**Severity: low (one player power, worked around) · Status: RECORDED · Blocked on: parser change + re-export**
+`_parse_effect_group` reads the group flag word (`flags_val`) but keeps only the PvE/PvP
+bits (bit 0/1), discarding `MainTargetOnly` — and the power-level `ProcMainTargetOnly`
+isn't parsed at all. Consequence: a power whose damage lands on the main target only
+while it carries an AoE radius from a *secondary* effect is indistinguishable from a
+genuine AoE (Propel's damage groups look identical to Fire Ball's — both `radius_outer -1`
+= "inherit power area"). Damage procs slotted in such a power were scored against the 15ft
+AoE area-factor (~22–28%) instead of single-target (~59–76%). **Only Propel is affected
+among player powers** (Controller/Dominator Gravity Control; scan of 10,707 HC powers).
+Worked around in the calc layer via the curated `DAMAGE_MAIN_TARGET_ONLY_POWERS` set
+(`src/data/proc-data.ts`) — damage procs there roll single-target, non-damage procs
+(Force Feedback) keep the AoE radius (matches in-game). Durable fix: decode the
+`MainTargetOnly` bit in the parser + re-export, then key the override off the real flag.
+Note: `ProcAllowed` (HC-2 backlog) lives in the same power-level flag family.
+
 ### TWIN-1 — converter-twin shape divergences: triage worklist
 **Severity: low-medium (each needs an individual eyeball) · Status: RECORDED, worklist**
 After filtering gated conditionals, chance-0 riders (see METHOD-1), and §3 strength

@@ -26,6 +26,7 @@ import {
   interpolateProcDamage,
   calculateProcChance,
   arcToDegrees,
+  isDamageMainTargetOnlyPower,
   getActiveDamageConversion,
 } from '@/data';
 import { useGlobalBonuses } from '@/hooks/useCalculatedStats';
@@ -766,6 +767,12 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     const directArc = effectivePower?.stats?.arc ?? effectivePower?.effects?.arc;
     const { radius, arcDegrees } = resolveProcAreaGeometry(
       directRadius, arcToDegrees(directArc) || undefined, effectivePower?.effects?.summon);
+    // Propel & co.: foe damage is main-target-only despite the power's AoE radius
+    // (that radius is a secondary knockback). This whole loop is foe-damage procs,
+    // so score them single-target. Force Feedback etc. aren't here (non-damage).
+    const damageMainTargetOnly = isDamageMainTargetOnlyPower(effectivePower?.internalName);
+    const procRadius = damageMainTargetOnly ? 0 : radius;
+    const procArc = damageMainTargetOnly ? 360 : arcDegrees;
     if (!baseRecharge && !castTime) return null;
 
     // Cycle time uses the *enhanced* recharge (slotted + global) and
@@ -810,8 +817,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         procData.ppm,
         baseRecharge,
         castTime,
-        radius,
-        arcDegrees,
+        procRadius,
+        procArc,
         enhancementBonuses.recharge || 0,
       );
       const perActivation = chance * avgDamage;
